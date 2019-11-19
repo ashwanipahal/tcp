@@ -45,6 +45,7 @@ exports[`Shipping Form should render correctly 1`] = `
           "current": null,
         }
       }
+      getEmailSignUpLabels={Object {}}
       handleShipIntClick={[Function]}
       isAddNewAddress={false}
       isEditing={false}
@@ -186,7 +187,16 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     </div>
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
-      fieldName="sendEmailSignup"
+      fieldName="emailSignUp"
+      labels={
+        Object {
+          "childrenPlaceCheckoutTxt": undefined,
+          "emailSignUpDisclaimer": undefined,
+          "emailSignUpHeader": undefined,
+          "emailSignUpSubHeader": undefined,
+          "gymboreePlaceCheckoutTxt": undefined,
+        }
+      }
     />
     <Styled(Row)
       fullBleed={true}
@@ -313,221 +323,19 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-<<<<<<< HEAD
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
-      fieldName="sendEmailSignup"
+      fieldName="emailSignUp"
+      labels={
+        Object {
+          "childrenPlaceCheckoutTxt": undefined,
+          "emailSignUpDisclaimer": undefined,
+          "emailSignUpHeader": undefined,
+          "emailSignUpSubHeader": undefined,
+          "gymboreePlaceCheckoutTxt": undefined,
+        }
+      }
     />
-=======
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-    ",
-                  [Function],
-                  "
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-  & #checkbox__error__iAgree {
-    margin-top: 4px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupHeading
-          </Styled(BodyCopy)>
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubHeading
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubSubHeading
-          </Styled(BodyCopy)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          >
-            lbl_pickup_emailSignupContact
-          </Styled(Anchor)>
-        </div>
-      </div>
-    </FormSection>
->>>>>>> 2fd4e24549c55d52bcdc123fff694b6fa4dd48cb
     <Styled(Row)
       fullBleed={true}
     >
@@ -827,221 +635,19 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-<<<<<<< HEAD
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
-      fieldName="sendEmailSignup"
+      fieldName="emailSignUp"
+      labels={
+        Object {
+          "childrenPlaceCheckoutTxt": undefined,
+          "emailSignUpDisclaimer": undefined,
+          "emailSignUpHeader": undefined,
+          "emailSignUpSubHeader": undefined,
+          "gymboreePlaceCheckoutTxt": undefined,
+        }
+      }
     />
-=======
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-    ",
-                  [Function],
-                  "
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-  & #checkbox__error__iAgree {
-    margin-top: 4px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupHeading
-          </Styled(BodyCopy)>
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubHeading
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubSubHeading
-          </Styled(BodyCopy)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          >
-            lbl_pickup_emailSignupContact
-          </Styled(Anchor)>
-        </div>
-      </div>
-    </FormSection>
->>>>>>> 2fd4e24549c55d52bcdc123fff694b6fa4dd48cb
     <Styled(Row)
       fullBleed={true}
     >
@@ -1318,221 +924,19 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-<<<<<<< HEAD
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
-      fieldName="sendEmailSignup"
+      fieldName="emailSignUp"
+      labels={
+        Object {
+          "childrenPlaceCheckoutTxt": undefined,
+          "emailSignUpDisclaimer": undefined,
+          "emailSignUpHeader": undefined,
+          "emailSignUpSubHeader": undefined,
+          "gymboreePlaceCheckoutTxt": undefined,
+        }
+      }
     />
-=======
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-    ",
-                  [Function],
-                  "
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-  & #checkbox__error__iAgree {
-    margin-top: 4px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupHeading
-          </Styled(BodyCopy)>
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubHeading
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_pickup_emailSignupSubSubHeading
-          </Styled(BodyCopy)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          >
-            lbl_pickup_emailSignupContact
-          </Styled(Anchor)>
-        </div>
-      </div>
-    </FormSection>
->>>>>>> 2fd4e24549c55d52bcdc123fff694b6fa4dd48cb
     <Styled(Row)
       fullBleed={true}
     >

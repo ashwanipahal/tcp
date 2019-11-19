@@ -17,9 +17,7 @@ exports[`Shipping Form should render correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      SIGN UP FOR EMAILS*
-    </Styled(BodyCopy)>
+    />
     <Styled(BodyCopy)
       className="email-signUp-subHeading"
       color="text.primary"
@@ -32,9 +30,7 @@ exports[`Shipping Form should render correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Stay updated on special promos & new arrivals.
-    </Styled(BodyCopy)>
+    />
     <div
       className="email-checkbox-container"
     >
@@ -48,7 +44,7 @@ exports[`Shipping Form should render correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-bxivhb",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -171,7 +167,7 @@ exports[`Shipping Form should render correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-bxivhb",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -193,9 +189,7 @@ exports[`Shipping Form should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          >
-            The Children’s Place
-          </Styled(BodyCopy)>
+          />
         </Field>
         <Field
           className="email-signup-gym"
@@ -204,7 +198,7 @@ exports[`Shipping Form should render correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-bxivhb",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -327,7 +321,7 @@ exports[`Shipping Form should render correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-bxivhb",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -335,7 +329,7 @@ exports[`Shipping Form should render correctly 1`] = `
             }
           }
           dataLocator="signUp-checkbox-field"
-          name="emailSignUp-gym"
+          name="emailSignUpGYM"
         >
           <Styled(BodyCopy)
             className={null}
@@ -349,28 +343,18 @@ exports[`Shipping Form should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          >
-            Gymboree
-          </Styled(BodyCopy)>
+          />
         </Field>
       </div>
       <div
         className="email-signup-text"
       >
-        <Styled(BodyCopy)
+        <Styled(RichText)
           className="email-signup-disclaimer_txt"
-          color="text.primary"
-          component="p"
           fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          lbl_pickup_emailSignupSubSubHeading
-        </Styled(BodyCopy)>
+        />
       </div>
     </div>
   </div>
