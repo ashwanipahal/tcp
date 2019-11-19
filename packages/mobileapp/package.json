@@ -242,7 +242,9 @@
       "**/redux-persist-transform-immutable",
       "**/redux-persist-transform-immutable/**",
       "**/react-native-video",
-      "**/react-native-video/**"
+      "**/react-native-video/**",
+      "**/@adobe",
+      "**/@adobe**"
     ]
   }
 }
