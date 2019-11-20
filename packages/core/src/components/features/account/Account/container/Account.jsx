@@ -144,6 +144,10 @@ Account.getInitialProps = (reduxProps, pageProps) => {
   };
 };
 
+Account.pageInfo = {
+  pageId: 'Account',
+};
+
 export const mapDispatchToProps = dispatch => {
   return {
     getAccountNavigationAction: () => {

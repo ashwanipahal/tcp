@@ -7,12 +7,15 @@ import { getAPIConfig } from '../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api.constants';
 
 function* fetchPageSEOData(action) {
+  console.info('action', action)
   const { payload: { page } = {} } = action;
   const seoDataSelector = state => {
+    console.info('SEO_DATA_REDUCER_KEY--->>', SEO_DATA_REDUCER_KEY, page, state )
     const pageData = state[SEO_DATA_REDUCER_KEY] && state[SEO_DATA_REDUCER_KEY][page];
     return pageData || false;
   };
   const isSEODataExist = yield select(seoDataSelector);
+  console.info('isSEODataExist-->>', isSEODataExist)
   if (!isSEODataExist) {
     const apiConfig = getAPIConfig();
     const { language } = apiConfig;
