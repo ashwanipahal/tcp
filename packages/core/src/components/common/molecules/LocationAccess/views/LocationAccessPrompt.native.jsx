@@ -16,6 +16,7 @@ const locationImage = require('../../../../../../src/assets/location.png');
 const closeImage = require('../../../../../../src/assets/close.png');
 
 const PROPMT_WIDTH = getScreenWidth() - 60;
+const isStatus = true;
 
 class LocationAccessPrompt extends React.PureComponent {
   constructor() {
@@ -24,11 +25,11 @@ class LocationAccessPrompt extends React.PureComponent {
   }
 
   componentDidMount() {
-    // if (true) {
-    //   this.setState({
-    //     isOpenBool: true,
-    //   });
-    // }
+    if (isStatus) {
+      this.setState({
+        isOpenBool: true,
+      });
+    }
   }
 
   openModal = () => {
@@ -41,11 +42,11 @@ class LocationAccessPrompt extends React.PureComponent {
   render() {
     const { isOpenBool } = this.state;
     return (
-      <ModalNative visible={isOpenBool} onRequestClose={this.openModal} customTransparent>
+      <ModalNative isOpen={isOpenBool} onRequestClose={this.openModal} customTransparent>
         <Container>
           <Wrapper width={PROPMT_WIDTH}>
             <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
-            <Touchable accessibilityRole="button" onPress={() => this.openModal}>
+            <Touchable accessibilityRole="button" onPress={this.openModal}>
               <StyledImage source={closeImage} width="15px" height="15px" />
             </Touchable>
             <MessageContainer>
@@ -88,6 +89,7 @@ class LocationAccessPrompt extends React.PureComponent {
                 underline
                 fontSizeVariation="large"
                 marginTop="18px"
+                onPress={this.openModal}
               />
             </MessageContainer>
           </Wrapper>
