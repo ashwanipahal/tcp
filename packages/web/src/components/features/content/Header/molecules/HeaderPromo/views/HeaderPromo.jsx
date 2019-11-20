@@ -117,7 +117,9 @@ const renderDesktopMarkup = (dataPromo, className) => {
 };
 
 const renderHtmlPromoBannerData = (dataHtmlPromo, className) => {
-  return dataHtmlPromo.map(item => <ModuleX className={className} richTextList={[item]} />);
+  return dataHtmlPromo
+    ? dataHtmlPromo.map(item => <ModuleX className={className} richTextList={[item]} />)
+    : null;
 };
 
 const renderHeaderPromoMarkup = (mobileMarkup, wrapperClass, dataTextPromo, dataHtmlPromo) => {
