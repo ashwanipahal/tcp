@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
-import { withTheme } from 'styled-components/native';
+import { withTheme } from 'styled-components';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
