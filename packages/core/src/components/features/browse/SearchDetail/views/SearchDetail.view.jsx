@@ -75,6 +75,7 @@ const SearchListingView = ({
             sortLabels={sortLabels}
             getProducts={getProducts}
             slpLabels={slpLabels}
+            isLoadingMore={isLoadingMore}
           />
         </Col>
       </Row>
