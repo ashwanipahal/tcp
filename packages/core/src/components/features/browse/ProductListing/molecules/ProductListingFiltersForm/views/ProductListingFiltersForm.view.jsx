@@ -184,6 +184,7 @@ class ProductListingFiltersForm extends React.Component {
       ? initialValues[fieldName].filter(entryId => entryId !== filterId)
       : [];
     change(fieldName, changeParam);
+    localStorage.setItem('handleRemoveFilter', true);
     this.handleSubmitOnChange();
   }
 
