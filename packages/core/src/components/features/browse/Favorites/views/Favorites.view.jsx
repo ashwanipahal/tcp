@@ -42,6 +42,8 @@ class FavoritesView extends React.PureComponent {
       sortId,
       gymSelected,
       tcpSelected,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
 
     let filteredItemsList =
@@ -67,6 +69,8 @@ class FavoritesView extends React.PureComponent {
             isFavoriteView
             removeFavItem={setLastDeletedItemId}
             createNewWishListMoveItem={createNewWishListMoveItem}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
           />
           <QuickViewModal selectedColorProductId={selectedColorProductId} />
         </>
@@ -326,6 +330,8 @@ FavoritesView.propTypes = {
   selectBrandType: PropTypes.string.isRequired,
   gymSelected: PropTypes.bool.isRequired,
   tcpSelected: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
   defaultWishList: PropTypes.shape({}),
 };
 
@@ -333,6 +339,7 @@ FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
   selectedColorProductId: '',
+  outOfStockLabels: {},
   slpLabels: {},
   defaultWishList: {},
 };
