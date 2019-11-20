@@ -46,10 +46,13 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="guestBilling"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
+    showVenmoSubmit={false}
+    venmoError=""
   />
 </Fragment>
 `;
@@ -240,10 +243,13 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="guestBilling"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
+    showVenmoSubmit={false}
+    venmoError=""
   />
 </Fragment>
 `;

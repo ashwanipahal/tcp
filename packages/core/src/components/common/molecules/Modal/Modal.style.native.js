@@ -1,6 +1,16 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
+const getAdditionalStyle = props => {
+  const { margins, paddings, modalHeadingMargin, childrenMargins } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(paddings && { padding: paddings }),
+    ...(modalHeadingMargin && { margin: modalHeadingMargin }),
+    ...(childrenMargins && { margin: childrenMargins }),
+  };
+};
+
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   ${props =>
@@ -37,7 +47,8 @@ const ModalHeading = styled.View`
       ? `
       position: relative;
   `
-      : ``}
+      : ``};
+  ${getAdditionalStyle};
 `;
 
 const LineWrapper = styled.View`
@@ -86,6 +97,17 @@ const Heading = styled.View`
   background-color: ${props => props.theme.colors.WHITE};
 `;
 
+const ViewContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+const ScrollView = styled.ScrollView`
+  ${getAdditionalStyle};
+`;
+
+const ChildrenContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+
 export {
   StyledCrossImage,
   ImageWrapper,
@@ -95,4 +117,7 @@ export {
   RowWrapper,
   ModalCustomWrapper,
   Heading,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
 };

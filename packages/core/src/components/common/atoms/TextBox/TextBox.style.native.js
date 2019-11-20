@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import get from 'lodash/get';
 
 const StyledTextBoxWrapper = styled.View`
   margin-bottom: ${props => (props.marginBottom ? props.theme.spacing.ELEM_SPACING.XL : 0)};
@@ -20,6 +21,11 @@ const TextBoxStyle = css`
 
 const StyledTextBox = styled.TextInput`
   border-bottom-width: 1px;
+  border-bottom-color: ${props =>
+    props.bottomBorderColor
+      ? get(props.theme.colorPalette, props.bottomBorderColor, props.theme.colorPalette.gray[500])
+      : props.theme.colorPalette.gray[500]};
+
   height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: 0;

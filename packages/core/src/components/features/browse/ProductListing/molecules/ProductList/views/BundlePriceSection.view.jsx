@@ -20,9 +20,9 @@ export default function(
           fontFamily="secondary"
           fontSize={['fs15', 'fs18', 'fs20']}
         >
-          {`${currencySymbol} ${lowOfferPrice.toFixed(
+          {`${currencySymbol}${lowOfferPrice.toFixed(
             2
-          )} - ${currencySymbol} ${highOfferPrice.toFixed(2)}`}
+          )} - ${currencySymbol}${highOfferPrice.toFixed(2)}`}
         </BodyCopy>
       ) : (
         <BodyCopy
@@ -32,7 +32,7 @@ export default function(
           fontFamily="secondary"
           fontSize={['fs15', 'fs18', 'fs20']}
         >
-          {`${currencySymbol} ${lowOfferPrice.toFixed(2)}`}
+          {`${currencySymbol}${lowOfferPrice.toFixed(2)}`}
         </BodyCopy>
       )}
       {!!highListPrice && !!lowListPrice && highListPrice !== lowListPrice ? (

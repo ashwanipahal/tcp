@@ -23,7 +23,8 @@ class ReactTooltip extends React.Component<Props> {
     displayTooltip: false,
   };
 
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     if (isClient()) {
       document.body.addEventListener('click', this.handleClick);
     }
