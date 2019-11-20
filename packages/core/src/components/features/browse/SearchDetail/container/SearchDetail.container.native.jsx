@@ -182,6 +182,7 @@ class SearchDetailContainer extends React.PureComponent {
                 isLoggedIn={isLoggedIn}
                 labelsLogin={labelsLogin}
                 navigation={navigation}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             ) : (
