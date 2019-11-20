@@ -21,6 +21,7 @@ import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNum
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import LinkConfig from '../../../../../config/footerLinkActionMapping.config';
 import FooterView from '../views';
+import { isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } from './Footer.selectors';
 
 const mapStateToProps = state => {
   const { Footer } = state;
@@ -57,6 +58,8 @@ const mapStateToProps = state => {
     loginModalMountedState: loginModalOpenState(state),
     isLoggedIn: getUserLoggedInState(state),
     linkConfig: LinkConfig,
+    isLocationEnabledForLoggedInUser: isLocationEnabledForLoggedInUser(state),
+    isLocationEnabledForGuest: isLocationEnabledForGuest(state)
   };
 };
 
