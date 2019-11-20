@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, RichText, Button, Col, Row } from '../../../../../../common/atoms';
+import { RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
 import { getLabelValue } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { redirectToBag, redirectToHome, getFooterButtonSize } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
@@ -21,6 +21,7 @@ const ExistingPLCCUserView = ({
   resetPLCCResponse,
   isRtpsFlow,
   togglePLCCModal,
+  closePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -31,7 +32,7 @@ const ExistingPLCCUserView = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="existing_checkout_button"
           >
             <Button
@@ -54,20 +55,19 @@ const ExistingPLCCUserView = ({
         <Row fullBleed className="submit_buttons_set">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="existing_continue_button"
           >
-            <Anchor
-              url={redirectToHome()}
-              fontSizeVariation="large"
+            <Button
+              onClick={() => redirectToHome(isPLCCModalFlow, closePLCCModal, resetPLCCResponse)}
               buttonVariation="fixed-width"
-              anchorVariation="button"
+              type="submit"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
               centered
               className="existing_continue_button"
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Anchor>
+            </Button>
           </Col>
         </Row>
       )}
@@ -82,6 +82,7 @@ ExistingPLCCUserView.propTypes = {
   resetPLCCResponse: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
   togglePLCCModal: PropTypes.func.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ExistingPLCCUserView;

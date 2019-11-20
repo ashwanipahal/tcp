@@ -109,17 +109,17 @@ class CheckoutCartItemsList extends Component {
             </BodyCopy>
             {storeTodayOpenRange && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${today}${storeTodayOpenRange}`}
+                {`${today}: ${storeTodayOpenRange}`}
               </BodyCopy>
             )}
             {storeTomorrowOpenRange && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${tomorrow}${storeTomorrowOpenRange}`}
+                {`${tomorrow}: ${storeTomorrowOpenRange}`}
               </BodyCopy>
             )}
             {storePhoneNumber && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${phone}${storePhoneNumber}`}
+                {`${phone}: ${storePhoneNumber}`}
               </BodyCopy>
             )}
           </>

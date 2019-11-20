@@ -104,6 +104,8 @@ class Header extends React.PureComponent {
 
     return (
       <header className={className}>
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
+
         <HeaderTopNav
           className="header-topnav"
           brandTabs={brandTabs}

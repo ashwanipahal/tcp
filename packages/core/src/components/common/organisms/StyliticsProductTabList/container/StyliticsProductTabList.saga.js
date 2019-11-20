@@ -38,7 +38,7 @@ export function* fetchStyliticsProductTabListDataforOutfit({ payload }) {
   const { categoryId } = payload;
   try {
     yield put(isFetchingDataForOutfit(true));
-    const res = yield call(styliticsProductListing.getOutfit, payload);
+    const res = yield call(styliticsProductListing.getData, payload);
     if (res) {
       yield put(
         styliticsProductTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })

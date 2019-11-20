@@ -24,10 +24,11 @@ const getApplyCardLayoutView = (
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
         isRtpsFlow={renderViewInfo.isRtpsFlow}
         togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
-  if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
+  if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
     return (
       <ApplicationInProgress
         labels={labels}
@@ -35,6 +36,7 @@ const getApplyCardLayoutView = (
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
         isRtpsFlow={renderViewInfo.isRtpsFlow}
         togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
@@ -49,6 +51,7 @@ const getApplyCardLayoutView = (
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
         isRtpsFlow={renderViewInfo.isRtpsFlow}
         togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }

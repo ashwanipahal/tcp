@@ -1,11 +1,16 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import SEOTags from '@tcp/web/src/components/common/atoms';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
-import ProductDetail from '../views';
+import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
 import {
   getIsShowPriceRange,
   getIsKeepAliveProduct,
@@ -33,12 +38,23 @@ import {
   getAlternateSizes,
 } from './ProductDetail.selectors';
 
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
+
 import {
   addToCartEcom,
   clearAddToBagErrorState,
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const ProductDetailWithRef = withRefWrapper(ProductDetailView);
+ProductDetailWithRef.displayName = 'ProductDetailPage';
+const ProductDetail = withHotfix(ProductDetailWithRef);
 
 class ProductDetailContainer extends React.PureComponent {
   static extractPID = props => {
@@ -76,6 +92,25 @@ class ProductDetailContainer extends React.PureComponent {
     // TODO - fix this to extract the product ID from the page.
     const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
     await getDetails({ productColorId: productId });
+
+    // Build a page name for tracking
+    let pageName = '';
+    if (productId) {
+      const productIdParts = productId.split('_');
+      pageName = `product:${productIdParts[0]}:${pid
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+
+    return {
+      pageProps: {
+        pageName,
+      },
+    };
   };
 
   componentDidMount() {
@@ -137,6 +172,9 @@ class ProductDetailContainer extends React.PureComponent {
       isLoggedIn,
       alternateSizes,
       isShowPriceRangeKillSwitch,
+      outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -160,7 +198,7 @@ class ProductDetailContainer extends React.PureComponent {
               plpLabels={plpLabels}
               pdpLabels={pdpLabels}
               currency={currency}
-              currencyExchange={currencyAttributes.exchangevalue}
+              currencyAttributes={currencyAttributes}
               productInfo={productInfo}
               handleAddToBag={this.handleAddToBag}
               addToBagError={addToBagError}
@@ -168,6 +206,9 @@ class ProductDetailContainer extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               alternateSizes={alternateSizes}
               isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
+              outOfStockLabels={outOfStockLabels}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
           ) : null}
         </React.Fragment>
@@ -196,12 +237,15 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
     isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
     isKeepAliveProduct: getIsKeepAliveProduct(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     store: state,
   };
 }
@@ -219,6 +263,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddItemToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }
@@ -254,6 +301,9 @@ ProductDetailContainer.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  outOfStockLabels: PropTypes.shape({}).isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -276,6 +326,8 @@ ProductDetailContainer.defaultProps = {
   pdpLabels: {},
   isLoggedIn: false,
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withIsomorphicRenderer({

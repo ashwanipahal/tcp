@@ -7,6 +7,8 @@ import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import SelectWishListDropdown from '../molecules/SelectWishListDropdown';
+import CustomSelect from '../../../../common/molecules/CustomSelect/views';
 
 const FavoritesView = props => {
   const {
@@ -18,6 +20,7 @@ const FavoritesView = props => {
     createNewWishList,
     setLastDeletedItemId,
     labels,
+    slpLabels,
     onQuickViewOpenClick,
     selectedColorProductId,
     // deleteWishList, @TODO will be used in the wish-list pop-up
@@ -28,33 +31,14 @@ const FavoritesView = props => {
     selectBrandType,
     gymSelected,
     tcpSelected,
+    isKeepAliveEnabled,
+    outOfStockLabels,
+    defaultWishList,
   } = props;
 
-  const favoriteListMap = wishlistsSummaries.map(favorite => {
-    const { id, displayName, itemsCount, isDefault } = favorite;
-    const updatedDisplayName = displayName || id;
-    return (
-      <>
-        <button className="wish-list" onClick={() => getActiveWishlist(id)}>
-          <span className="favorite-list-name">
-            {updatedDisplayName}
-            {isDefault && <i className="heart-icon-container">Default</i>}
-          </span>
-          <p>
-            <span>
-              {updatedDisplayName}
-              {isDefault && <i className="heart-icon-container">Default</i>}
-            </span>
-            <span className="item-list">
-              {itemsCount}
-              item
-              {itemsCount > 1 ? 's' : ''}
-            </span>
-          </p>
-        </button>
-      </>
-    );
-  });
+  const shareClickHandler = value => {
+    console.log(value);
+  };
 
   const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
 
@@ -80,6 +64,8 @@ const FavoritesView = props => {
         isFavoriteView
         removeFavItem={setLastDeletedItemId}
         createNewWishListMoveItem={createNewWishListMoveItem}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
       />
       <QuickViewModal selectedColorProductId={selectedColorProductId} />
     </>
@@ -100,6 +86,42 @@ const FavoritesView = props => {
     },
   ];
 
+  const shareOptions = [
+    {
+      title: 'Email',
+      value: 'Email',
+      content: <span>Email</span>,
+    },
+    {
+      title: labels.lbl_fav_copyLink,
+      value: labels.lbl_fav_copyLink,
+      content: <span>{labels.lbl_fav_copyLink}</span>,
+    },
+  ];
+
+  const BrandFilterList = () => {
+    return (
+      <>
+        <div>
+          <ul className="brand-option-list">
+            <li className="brand-options is-label">{labels.lbl_fav_brand}</li>
+            {brandOptions.map(({ name, dataLocator, brandLabel, checked }) => (
+              <li className="brand-options" key={name}>
+                <InputCheckBox
+                  execOnChangeByDefault={false}
+                  dataLocator={dataLocator}
+                  input={{ value: checked, onChange: selectBrandType, name }}
+                >
+                  {brandLabel}
+                </InputCheckBox>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className={className}>
       <Row fullBleed>
@@ -108,28 +130,42 @@ const FavoritesView = props => {
           ignoreGutter={{ small: true, medium: true, large: true }}
         >
           <BodyCopy fontWeight="extrabold" fontSize="fs16" className="favorite-title">
-            MY FAVORITES
+            {labels.lbl_fav_myFavorites}
           </BodyCopy>
         </Col>
-        <Col
-          colSize={{ small: 6, medium: 8, large: 6 }}
-          offsetLeft={{ small: 0, medium: 0, large: 3 }}
-          className="favorite-list"
-        >
-          {favoriteListMap}
-          <button onClick={createNewWishList}>Create New List</button>
+      </Row>
+      <Row fullBleed className="list-selection-row">
+        <Col colSize={{ small: 6, medium: 6, large: 8 }}>
+          <Row fullBleed>
+            <Col colSize={{ small: 6, medium: 5, large: 6 }} offsetLeft={{ medium: 3, large: 6 }}>
+              <SelectWishListDropdown
+                labels={labels}
+                wishlistsSummaries={wishlistsSummaries}
+                createNewWishList={createNewWishList}
+                getActiveWishlist={getActiveWishlist}
+                activeWishList={activeWishList}
+                defaultWishList={defaultWishList}
+              />
+            </Col>
+          </Row>
         </Col>
-        <Col
-          colSize={{ small: 6, medium: 8, large: 2 }}
-          offsetLeft={{ small: 0, medium: 0, large: 1 }}
-          className="share-list"
-          ignoreGutter={{ small: true, medium: true, large: true }}
-        >
-          {/* Placeholder for dropdown */}
-          <span>Dropdown end</span>
+        <Col colSize={{ small: 6, medium: 2, large: 4 }}>
+          <Row fullBleed>
+            <Col
+              colSize={{ small: 2, medium: 6, large: 4 }}
+              offsetLeft={{ small: 4, medium: 2, large: 8 }}
+            >
+              <CustomSelect
+                options={shareOptions}
+                activeTitle={labels.lbl_fav_share}
+                clickHandler={(e, value) => shareClickHandler(value)}
+                customSelectClassName="social-share-fav-list"
+              />
+            </Col>
+          </Row>
         </Col>
       </Row>
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductListingFiltersForm
             filtersMaps={{
@@ -142,6 +178,7 @@ const FavoritesView = props => {
             initialValues={{}}
             filtersLength={{}}
             labels={labels}
+            slpLabels={slpLabels}
             isFavoriteView
             favoriteSortingParams={getSortsList(labels)}
             onFilterSelection={onFilterSelection}
@@ -150,24 +187,9 @@ const FavoritesView = props => {
           />
         </Col>
       </Row>
-      <Row>
+      <Row className="brand-filter-section" fullBleed>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <div>
-            <ul className="brand-option-list">
-              <li className="brand-options is-label">{labels.lbl_fav_brand}</li>
-              {brandOptions.map(({ name, dataLocator, brandLabel, checked }) => (
-                <li className="brand-options" key={name}>
-                  <InputCheckBox
-                    execOnChangeByDefault={false}
-                    dataLocator={dataLocator}
-                    input={{ value: checked, onChange: selectBrandType, name }}
-                  >
-                    {brandLabel}
-                  </InputCheckBox>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <BrandFilterList />
         </Col>
       </Row>
       <Row>
@@ -197,10 +219,12 @@ FavoritesView.propTypes = {
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
   // deleteWishList: PropTypes.func.isRequired, @TODO will be used in the wish-list pop-up
-  getActiveWishlist: PropTypes.func.isRequired,
+  // getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
+  getActiveWishlist: PropTypes.func.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  slpLabels: PropTypes.shape({}),
   onQuickViewOpenClick: PropTypes.func.isRequired,
   selectedColorProductId: PropTypes.string,
   filteredId: PropTypes.string.isRequired,
@@ -210,12 +234,18 @@ FavoritesView.propTypes = {
   selectBrandType: PropTypes.string.isRequired,
   gymSelected: PropTypes.bool.isRequired,
   tcpSelected: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
+  defaultWishList: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
   selectedColorProductId: '',
+  outOfStockLabels: {},
+  slpLabels: {},
+  defaultWishList: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

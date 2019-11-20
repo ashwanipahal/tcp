@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isCanada } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
-import { isCanada, isUsOnly } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -34,17 +35,11 @@ const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
   return isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn;
 };
 
-const getItemPrice = (currencySymbol, price) => {
-  return `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) ||
-    0}`;
-};
-
 const AddedToBagViewPoints = ({
   className,
   pointsSummary,
   labels,
   isPlcc,
-  currencySymbol,
   isInternationalShipping,
   isUserLoggedIn,
 }) => {
@@ -72,7 +67,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {getItemPrice(currencySymbol, itemPrice)}
+          <PriceCurrency price={itemPrice} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -106,7 +101,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {getItemPrice(currencySymbol, bagSubTotal)}
+          <PriceCurrency price={bagSubTotal} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -160,7 +155,6 @@ AddedToBagViewPoints.propTypes = {
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
   isPlcc: PropTypes.bool.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
 };

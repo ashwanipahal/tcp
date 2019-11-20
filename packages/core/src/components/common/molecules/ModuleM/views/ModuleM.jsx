@@ -116,7 +116,7 @@ export class ModuleM extends React.PureComponent {
       <Row className="image-items-container" noLastMargin>
         {selectedProductList &&
           selectedProductList.map((productItem, index) => {
-            const { image, link } = productItem;
+            const { image, link, video } = productItem;
             /**
              * Calculate each row first element and last element and apply margin left and right respectively.
              */
@@ -150,6 +150,7 @@ export class ModuleM extends React.PureComponent {
                       imgConfigs={config.IMG_DATA.productImgConfig}
                       imgData={image}
                       link={link}
+                      videoData={video}
                     />
                   </div>
                   <BodyCopy
@@ -287,7 +288,7 @@ export class ModuleM extends React.PureComponent {
    *  Returns type of grid item
    */
   getProductImageList = (flexbox, list) =>
-    flexbox ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
+    parseInt(flexbox, 10) ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
 
   onTabChange = (id, imageList, linkClass) => {
     this.setState({

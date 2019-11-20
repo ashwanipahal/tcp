@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PriceCurrency component with Australian Dollar renders correctly 1`] = `"$ 0"`;
+
+exports[`PriceCurrency component with USD Currency renders correctly 1`] = `"$0"`;

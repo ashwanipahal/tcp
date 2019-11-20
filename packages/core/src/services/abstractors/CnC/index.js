@@ -15,7 +15,6 @@ export { applyCouponToCart, removeCouponOrPromo, getAllCoupons } from './Coupon'
 export {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
   addPaymentToOrder,

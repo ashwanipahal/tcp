@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Carousel from '../../../../common/molecules/Carousel';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BundleProduct.style';
@@ -9,6 +11,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import SocialConnect from '../../../../common/organisms/ProductImages/views/SocialConnect.view';
 import Product from '../../ProductDetail/molecules/Product/views/Product.view';
 import ProductDetailImage from '../../../../common/molecules/ProductDetailImage';
+import BundleProductItems from '../molecules/BundleProductItems';
 import config from './config';
 import {
   getImagesToDisplay,
@@ -43,7 +46,16 @@ class BundleProduct extends React.PureComponent {
 
   getBreadCrumb = () => {
     const { breadCrumbs } = this.props;
-    return breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />;
+    if (breadCrumbs) {
+      return (
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
+            <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+          </Col>
+        </Row>
+      );
+    }
+    return '';
   };
 
   getSocialConnectWidget = () => {
@@ -63,7 +75,7 @@ class BundleProduct extends React.PureComponent {
       productDetails,
       pdpLabels,
       currency,
-      currencyExchange,
+      currencyAttributes,
       ...otherProps
     } = this.props;
     const selectedColorProductId = currentColorEntry.colorProductId;
@@ -77,7 +89,7 @@ class BundleProduct extends React.PureComponent {
               isGiftCard={currentProduct.isGiftCard}
               selectedColorProductId={selectedColorProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isBundleProduct
               {...otherProps}
             />
@@ -87,6 +99,48 @@ class BundleProduct extends React.PureComponent {
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
+        </Col>
+      </Row>
+    );
+  };
+
+  getBundleProductsList = () => {
+    const {
+      currentBundle,
+      plpLabels,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+      outfitLabels,
+      addToBagErrorId,
+      addToBagError,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      currencyAttributes,
+      currency,
+    } = this.props;
+    return (
+      <Row fullBleed className="product-items-section">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BundleProductItems
+            currentBundle={currentBundle}
+            plpLabels={plpLabels}
+            handleAddToBag={handleAddToBag}
+            addToFavorites={addToFavorites}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            isLoggedIn={isLoggedIn}
+            outfitLabels={outfitLabels}
+            addToBagErrorId={addToBagErrorId}
+            addToBagError={addToBagError}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+            currencySymbol={currency}
+            currencyAttributes={currencyAttributes}
+            className="bundle-products-list"
+          />
         </Col>
       </Row>
     );
@@ -107,6 +161,43 @@ class BundleProduct extends React.PureComponent {
         </Col>
         <Col colSize={{ small: 2, medium: 2, large: 3 }}>{this.getSocialConnectWidget()}</Col>
       </Row>
+    );
+  };
+
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
+    const { breadCrumbs } = this.props;
+    if (breadCrumbs) {
+      const category = breadCrumbs.map((crumb, index) => {
+        const { displayName } = crumb;
+        const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
+        return displayName + separationChar;
+      });
+      return category.join('');
+    }
+    return '';
+  };
+
+  getRecommendations = () => {
+    const { itemPartNumber, pdpLabels } = this.props;
+    const categoryId = this.getCatIdForRecommendation();
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+      categoryName: categoryId,
+      partNumber: itemPartNumber,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
+    return (
+      <div className="product-detail-section">
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          {...recommendationAttributes}
+        />
+      </div>
     );
   };
 
@@ -142,17 +233,13 @@ class BundleProduct extends React.PureComponent {
 
       return (
         <div className={className}>
-          <Row>
-            <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
-              {this.getBreadCrumb()}
-            </Col>
-          </Row>
+          {this.getBreadCrumb()}
           <Row className="placeholder-large">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
-          <Row>
+          <Row className="product-container">
             <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
@@ -163,8 +250,10 @@ class BundleProduct extends React.PureComponent {
                 >
                   {this.getProductSummary(currentColorEntry)}
                   {this.getProductDescription()}
+                  {this.getRecommendations()}
                 </Col>
               </Row>
+              {this.getBundleProductsList()}
             </Col>
           </Row>
         </div>
@@ -180,11 +269,23 @@ BundleProduct.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  outfitLabels: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape({}),
   currentProduct: PropTypes.shape({}).isRequired,
   productDetails: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
+  plpLabels: PropTypes.shape({}),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -193,10 +294,15 @@ BundleProduct.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   pdpLabels: {},
+  outfitLabels: {},
   breadCrumbs: [],
   productDetails: {},
   currency: 'USD',
-  currencyExchange: '',
+  plpLabels: {},
+  isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(BundleProduct, styles);
