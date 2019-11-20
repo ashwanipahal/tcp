@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
@@ -211,10 +212,16 @@ class PickupStoreListItem extends React.Component {
     className: PropTypes.string,
     onStoreUpdate: PropTypes.func.isRequired,
     updateCartItemStore: PropTypes.bool.isRequired,
+    currentProduct: PropTypes.string,
+    pageNameProp: PropTypes.string,
+    setClickAnalyticsData: PropTypes.func.isRequired,
+    trackClick: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: '',
+    currentProduct: '',
+    pageNameProp: '',
   };
 
   constructor(props) {
@@ -256,7 +263,34 @@ class PickupStoreListItem extends React.Component {
     // TODO - const {  isBoss = false } = e.target.something;
     const isBoss = this.isBossSelected;
     // Fetch isBoss from component instead of a new Arrow funct.
-    const { onStoreSelect, store } = this.props;
+    const {
+      onStoreSelect,
+      store,
+      currentProduct,
+      pageNameProp,
+      setClickAnalyticsData,
+      trackClick,
+    } = this.props;
+    let pageName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    if (productId) {
+      pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
+    }
+    // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
+    setClickAnalyticsData({
+      customEvents: ['event132'],
+      pageName,
+    });
+    trackClick();
+
+    // as this is an async call, adding setTimeout for this.
+    setTimeout(() => {
+      setClickAnalyticsData({
+        customEvents: ['scAdd,scOpen,event85,event61'],
+        pageName,
+      });
+      trackClick();
+    }, 1000);
     return onStoreSelect(store.basicInfo.id, isBoss);
   }
 
@@ -267,8 +301,36 @@ class PickupStoreListItem extends React.Component {
    * @memberof PickupStoreListItem
    */
   handleStoreUpdate() {
-    const { onStoreUpdate, store } = this.props;
+    const {
+      onStoreUpdate,
+      store,
+      setClickAnalyticsData,
+      trackClick,
+      currentProduct,
+      pageNameProp,
+    } = this.props;
     const isBoss = this.isBossSelected;
+    let pageName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    if (productId) {
+      pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
+    }
+
+    // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
+    setClickAnalyticsData({
+      customEvents: ['event132'],
+      pageName,
+    });
+    trackClick();
+
+    // as this is an async call, adding setTimeout for this.
+    setTimeout(() => {
+      setClickAnalyticsData({
+        pageName,
+        customEvents: ['scAdd,scOpen,event85,event61'],
+      });
+      trackClick();
+    }, 1000);
     return onStoreUpdate(store.basicInfo.id, isBoss);
   }
 

@@ -64,6 +64,25 @@ const getPageFullCategoryName = store => {
   return state.ProductListing && state.ProductListing.entityCategory;
 };
 
+const getStoreSearchCriteria = store => {
+  const state = store.getState();
+  return (
+    state.form &&
+    state.form.pickupSearchStoresForm &&
+    state.form.pickupSearchStoresForm.values &&
+    state.form.pickupSearchStoresForm.values.addressLocation
+  );
+};
+const getStoreSearchDistance = store => {
+  const state = store.getState();
+  return (
+    state.form &&
+    state.form.pickupSearchStoresForm &&
+    state.form.pickupSearchStoresForm.values &&
+    state.form.pickupSearchStoresForm.values.distance
+  );
+};
+
 export const generateBrowseDataLayer = store => {
   return {
     listingFilterList: {
@@ -109,6 +128,16 @@ export const generateBrowseDataLayer = store => {
     productFindingMethod: {
       get() {
         return getPageType(store) || '';
+      },
+    },
+    storeSearchCriteria: {
+      get() {
+        return getStoreSearchCriteria(store) || '';
+      },
+    },
+    storeSearchDistance: {
+      get() {
+        return getStoreSearchDistance(store) || '';
       },
     },
   };

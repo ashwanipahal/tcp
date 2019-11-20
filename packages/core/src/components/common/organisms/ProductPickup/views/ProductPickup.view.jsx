@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
@@ -430,7 +431,6 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
-  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -441,7 +441,7 @@ class ProductPickup extends React.PureComponent {
       sizeUnavailable,
       isOutfitVariant,
     } = this.props;
-
+    const pageName = 'product';
     return (
       <React.Fragment>
         {isOutfitVariant && (
@@ -496,17 +496,19 @@ class ProductPickup extends React.PureComponent {
                     {showPickupInfo && this.renderPickupInfo()}
                   </div>
                 </div>
-                <Button
-                  className="button-find-in-store"
-                  buttonVariation="fixed-width"
-                  fill="BLACK"
-                  disabled={isSubmitting}
-                  onClick={this.handlePickupModalClick}
-                >
-                  {showPickupInfo
-                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                    : labels.lbl_Product_pickup_FIND_STORE}
-                </Button>
+                <ClickTracker clickData={{ pageName }}>
+                  <Button
+                    className="button-find-in-store"
+                    buttonVariation="fixed-width"
+                    fill="BLACK"
+                    disabled={isSubmitting}
+                    onClick={this.handlePickupModalClick}
+                  >
+                    {showPickupInfo
+                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                      : labels.lbl_Product_pickup_FIND_STORE}
+                  </Button>
+                </ClickTracker>
               </div>
             </div>
           </div>

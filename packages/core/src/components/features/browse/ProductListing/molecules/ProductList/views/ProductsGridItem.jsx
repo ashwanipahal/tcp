@@ -4,6 +4,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -376,12 +377,16 @@ class ProductsGridItem extends React.PureComponent {
     ) : null;
   };
 
+  getGeneralProductId = generalProductId => {
+    return generalProductId && generalProductId.split('_')[0];
+  };
+
   renderSubmitButton = itemNotAvailable => {
     const {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard, generalProductId },
+        productInfo: { bundleProduct, isGiftCard, generalProductId, pdpUrl },
       },
       removeFavItem,
       isFavoriteView,
@@ -393,6 +398,20 @@ class ProductsGridItem extends React.PureComponent {
     const fulfilmentSection =
       AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
+    let pageShortName = '';
+    const productId = this.getGeneralProductId(generalProductId);
+    if (productId) {
+      const productIdParts = productId.split('_');
+      const splitPdpUrl = pdpUrl.split('/p/')[1];
+      pageShortName = `product:${productIdParts[0]}:${splitPdpUrl
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -407,23 +426,32 @@ class ProductsGridItem extends React.PureComponent {
       </div>
     ) : (
       <div className={fulfilmentSection}>
-        <Button
-          className="added-to-bag"
-          fullWidth
-          buttonVariation="fixed-width"
-          dataLocator={getLocator('global_addtocart_Button')}
-          onClick={
-            // eslint-disable-next-line no-nested-ternary
-            isGiftCard
-              ? () => {} // TODO Gift Card Quick View Modal
-              : isShowQuickView && !isBundleProduct
-              ? this.handleQuickViewOpenClick
-              : this.handleViewBundleClick
-          }
-          fill={isFavoriteView ? 'BLUE' : ''}
+        <ClickTracker
+          clickData={{
+            eventName: 'cart add',
+            pageShortName,
+            pageName,
+            products: [{ id: `${generalProductId}` }],
+          }}
         >
-          {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
-        </Button>
+          <Button
+            className="added-to-bag"
+            fullWidth
+            buttonVariation="fixed-width"
+            dataLocator={getLocator('global_addtocart_Button')}
+            onClick={
+              // eslint-disable-next-line no-nested-ternary
+              isGiftCard
+                ? () => {} // TODO Gift Card Quick View Modal
+                : isShowQuickView && !isBundleProduct
+                ? this.handleQuickViewOpenClick
+                : this.handleViewBundleClick
+            }
+            fill={isFavoriteView ? 'BLUE' : ''}
+          >
+            {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
+          </Button>
+        </ClickTracker>
       </div>
     );
   };
