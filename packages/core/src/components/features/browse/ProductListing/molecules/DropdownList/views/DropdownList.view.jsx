@@ -144,8 +144,7 @@ class DropdownList extends React.Component {
     }
   }
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { optionsMap, highlightedIndex } = this.props;
     if (optionsMap !== nextProps.optionsMap || highlightedIndex !== nextProps.highlightedIndex) {
       // flag that after this component renders the highlighted element should be scrolled into view

@@ -41,8 +41,7 @@ class CollapsibleContainer extends React.Component {
     };
   }
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { defaultOpen } = this.props;
     if (defaultOpen !== nextProps.defaultOpen) {
       this.setState({
