@@ -689,4 +689,5 @@ export default {
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,
+  isAndroidWeb,
 };
