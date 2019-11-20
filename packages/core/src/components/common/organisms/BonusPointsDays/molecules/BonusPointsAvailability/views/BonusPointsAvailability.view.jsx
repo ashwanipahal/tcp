@@ -49,7 +49,7 @@ const BonusPointsAvailability = ({
                 color="black"
                 id={index}
                 data-locator={item.dataLocator}
-                className={`${btnClass} ${isPlaceRewardsPage ? 'placeRewardsPage-btn' : ''}`}
+                className={`${btnClass} ${isPlaceRewardsPage ? 'pointerEventsNone' : ''}`}
                 onClick={() =>
                   applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
                 }
