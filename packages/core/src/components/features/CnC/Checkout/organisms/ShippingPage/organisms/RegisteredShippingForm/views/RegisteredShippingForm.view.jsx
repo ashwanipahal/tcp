@@ -349,7 +349,7 @@ class RegisteredShippingForm extends React.Component {
           <ErrorMessage error={editShipmentDetailsError} className="edit-shipping-error" />
         )}
         <Row fullBleed className="elem-mt-XL edit-cta">
-          <Col colSize={{ small: 6, medium: 2, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 3 }} className="save-cancel-btn">
             <Button
               fill="WHITE"
               type="button"
@@ -361,7 +361,7 @@ class RegisteredShippingForm extends React.Component {
               {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
             </Button>
           </Col>
-          <Col colSize={{ small: 6, medium: 2, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 3 }} className="save-cancel-btn">
             <Button
               type="button"
               buttonVariation="fixed-width"

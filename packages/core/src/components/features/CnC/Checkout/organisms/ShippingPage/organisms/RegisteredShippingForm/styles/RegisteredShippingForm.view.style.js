@@ -126,6 +126,12 @@ const styles = css`
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
+
+  .save-cancel-btn {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 162px;
+    }
+  }
 `;
 
 export default styles;

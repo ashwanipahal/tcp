@@ -47,19 +47,20 @@ export default css`
   .giftServicesField {
     display: inline-block;
     width: 142px;
+    .CheckBox__text {
+      padding-top: 4px;
+    }
   }
 
   .dropdownliBottomBorder {
-    height: 71px;
+    min-height: 77px;
     cursor: pointer;
     padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
     > div {
       height: 100%;
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
   .price {
@@ -72,7 +73,7 @@ export default css`
   .giftServicesDetailsLink {
     text-decoration: underline;
     cursor: pointer;
-    padding-top: 3px;
+    padding-top: 7px;
   }
 
   .phone-field-wrapper {
@@ -114,6 +115,7 @@ export default css`
   }
 
   .dropdownDivOverFlow {
+    overflow-y: inherit;
     div {
       font-family: ${props => props.theme.fonts.secondaryFontFamily};
     }
