@@ -139,6 +139,7 @@ class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       loadShipmentMethods,
       onPickupSubmit,
+      updateFromMSG,
       orderHasShipping,
       routeToPickupPage,
       updateShippingMethodSelection,
@@ -195,6 +196,7 @@ class CheckoutPage extends React.PureComponent {
             smsSignUpLabels={smsSignUpLabels}
             orderHasShipping={orderHasShipping}
             onPickupSubmit={onPickupSubmit}
+            updateFromMSG={updateFromMSG}
             navigation={navigation}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */

@@ -217,6 +217,7 @@ class PickUpFormPart extends React.Component {
       isBagLoaded,
       checkoutRoutingDone,
       emailSignUpFlags,
+      updateFromMSG,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
     if (!checkoutRoutingDone) {
@@ -270,6 +271,7 @@ class PickUpFormPart extends React.Component {
                 <div className="pick-up-form-container" dataLocator="pickup-sms">
                   <FormSection name="smsSignUp">
                     <SMSFormFields
+                      onCheckBoxChange={value => updateFromMSG(value)}
                       isOrderUpdateChecked={isOrderUpdateChecked}
                       formName="checkoutPickup"
                       formSection="smsSignUp"
