@@ -16,7 +16,6 @@ class SMSFormFields extends React.PureComponent {
   static smsFormFieldsConfig = getStandardConfig(['phoneNumber']);
 
   handleChange = (e, value) => {
-    // console.log({params})
     const { dispatch, addressPhoneNo, formName, formSection, onCheckBoxChange } = this.props;
     if (dispatch) {
       dispatch(change(formName, `${formSection}.phoneNumber`, addressPhoneNo));
