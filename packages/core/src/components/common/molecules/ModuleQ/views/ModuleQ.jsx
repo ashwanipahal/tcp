@@ -28,6 +28,15 @@ class ModuleQ extends React.PureComponent {
     };
   }
 
+  /* Return the offset object for main wrapper */
+  getWrapperOffset = fullBleed => {
+    return {
+      small: 0,
+      medium: 0,
+      large: fullBleed ? 0.5 : 2,
+    };
+  };
+
   onProductTabChange = (catId, tabItem) => {
     this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
@@ -150,6 +159,7 @@ class ModuleQ extends React.PureComponent {
       selectedColorProductId,
       showRelatedOutfitHeader,
       isRelatedOutfit,
+      fullBleed,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -212,18 +222,10 @@ class ModuleQ extends React.PureComponent {
             colSize={{
               small: 6,
               medium: 8,
-              large: 8,
+              large: fullBleed ? 11 : 8,
             }}
-            offsetLeft={{
-              small: 0,
-              medium: 0,
-              large: 2,
-            }}
-            offsetRight={{
-              small: 0,
-              medium: 0,
-              large: 2,
-            }}
+            offsetLeft={this.getWrapperOffset(fullBleed)}
+            offsetRight={this.getWrapperOffset(fullBleed)}
           >
             {dataStatus ? (
               <StyledSkeleton
@@ -264,6 +266,7 @@ ModuleQ.defaultProps = {
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
   isRelatedOutfit: false,
+  fullBleed: false,
 };
 
 ModuleQ.propTypes = {
@@ -304,6 +307,7 @@ ModuleQ.propTypes = {
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
   isRelatedOutfit: PropTypes.bool,
+  fullBleed: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);
