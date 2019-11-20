@@ -23,7 +23,7 @@ const styles = css`
 
   .no-rewards-msg {
     text-align: center;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG };
   }
 
   .shop-now-btn-wrapper {
@@ -37,9 +37,6 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-    }
-    @media ${props => props.theme.mediaQuery.xlarge} {
       margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     }
   }
