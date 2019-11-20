@@ -7,11 +7,17 @@ const styles = css`
     background: #fff;
   }
   .order-summary {
+    padding-bottom: 0;
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
     }
     .checkoutBtnTracker {
       flex: none;
+    }
+    .item-closed {
+      .elem-mb-MED {
+        margin-bottom: 0;
+      }
     }
   }
 

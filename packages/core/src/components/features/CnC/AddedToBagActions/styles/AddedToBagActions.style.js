@@ -75,7 +75,6 @@ const ctaStyle = css`
   }
   .checkoutBtnTracker {
     display: inline-flex;
-    /* flex: ${props => (props.isBagPageStickyHeader ? '1' : 'none')}; */
     flex: 1;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

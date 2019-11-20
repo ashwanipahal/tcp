@@ -53,10 +53,12 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
       isPayPalWebViewEnable={false}
       isReviewPage={true}
       onBackLinkPress={[Function]}
+      onVenmoSubmit={[Function]}
       pageCategory="review"
       routeToPage=""
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>

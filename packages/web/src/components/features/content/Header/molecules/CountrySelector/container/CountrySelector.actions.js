@@ -53,20 +53,6 @@ export const updateSelectedCurrency = currency => {
   };
 };
 
-export const storeCountriesMap = payload => {
-  return {
-    payload,
-    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_COUNTRIES_MAP,
-  };
-};
-
-export const storeCurrenciesMap = payload => {
-  return {
-    payload,
-    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_CURRENCIES_MAP,
-  };
-};
-
 export const udpateSiteId = siteId => {
   return {
     siteId,
@@ -81,8 +67,6 @@ export default {
   updateSelectedCountry,
   updateSelectedLanguage,
   updateSelectedCurrency,
-  storeCountriesMap,
-  storeCurrenciesMap,
   setModuleXContent,
   udpateSiteId,
 };
