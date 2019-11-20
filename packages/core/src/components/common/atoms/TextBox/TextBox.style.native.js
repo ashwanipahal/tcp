@@ -30,6 +30,7 @@ const StyledLabel = styled.Text`
   position: absolute;
   left: 0;
   top: ${props => (!props.isFocused ? props.theme.spacing.ELEM_SPACING.MED : '0')};
+  font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props =>
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14

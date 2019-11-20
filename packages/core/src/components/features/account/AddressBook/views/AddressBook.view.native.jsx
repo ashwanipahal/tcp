@@ -31,6 +31,7 @@ class AddressBook extends React.PureComponent<Props> {
           isOpen={isOpenBool}
           onRequestClose={this.openModal}
           heading={labels.acc_lbl_create_account}
+          headingFontFamily="secondary"
         >
           <CreateAccount />
         </ModalNative>

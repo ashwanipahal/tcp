@@ -32,3 +32,36 @@ export function track(ruleName, detail) {
     global._satellite.track(ruleName, detail);
   }
 }
+
+export function getParam(name, url) {
+  let urlParam = null;
+  // No URL
+  if (!url) {
+    urlParam = window.location.href;
+  } else if (url.indexOf('?') === -1) {
+    // Just query string
+    urlParam = `?${url}`;
+  }
+  urlParam = decodeURIComponent(urlParam);
+  const regexS = `[\\?&]+${name}=([^&#]*)`;
+  const regex = new RegExp(regexS, 'i');
+  let results = regex.exec(urlParam);
+  if (results === null) {
+    return '';
+  }
+  results = results[1].replace(/^[ \t]+|[ \t]+$/, '');
+  return results;
+}
+
+export function readCookie(key) {
+  if (window.satellite && window.satellite.readCookie) {
+    window._satellite.readCookie(key);
+  }
+}
+
+export function setCookie(args) {
+  const { key, value, daysAlive } = args;
+  if (window.satellite && window.satellite.setCookie) {
+    window._satellite.setCookie(key, value, daysAlive);
+  }
+}

@@ -57,13 +57,16 @@ exports[`Shipping Form should render correctly 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={true}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -140,6 +143,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           dataLocator="shipping-email-signUp-contact-anchor"
           fontSizeVariation="small"
           href="#"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -175,13 +179,16 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={true}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -246,13 +253,16 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;

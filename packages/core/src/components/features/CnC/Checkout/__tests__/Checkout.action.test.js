@@ -1,5 +1,4 @@
 import CHECKOUT_ACTIONS, {
-  initCheckoutAction,
   submitPickupSection,
   checkoutSetCartData,
   getSetGiftWrapOptionsActn,
@@ -38,10 +37,11 @@ import CHECKOUT_ACTIONS, {
   submitBillingSection,
   setGiftCardError,
 } from '../container/Checkout.action';
+import { resetCheckoutReducer, setServerErrorCheckout } from '../container/Checkout.action.util';
 
 describe('#chekcoutActions', () => {
   it('initCheckoutAction', () => {
-    expect(initCheckoutAction()).toEqual({ type: 'INIT_CHECKOUT' });
+    expect(CHECKOUT_ACTIONS.initCheckoutAction()).toEqual({ type: 'INIT_CHECKOUT' });
   });
   it('submitPickupSection', () => {
     expect(submitPickupSection()).toEqual({
@@ -251,6 +251,17 @@ describe('#chekcoutActions', () => {
     expect(CHECKOUT_ACTIONS.setServerErrorCheckout()).toEqual({
       type: 'SET_SERVER_ERROR_CHECKOUT',
       payload: undefined,
+    });
+  });
+  it('resetCheckoutReducer', () => {
+    expect(resetCheckoutReducer(true)).toEqual({
+      type: 'RESET_CHECKOUT_REDUCER',
+    });
+  });
+  it('setServerErrorCheckout', () => {
+    expect(setServerErrorCheckout(true)).toEqual({
+      payload: true,
+      type: 'SET_SERVER_ERROR_CHECKOUT',
     });
   });
 });

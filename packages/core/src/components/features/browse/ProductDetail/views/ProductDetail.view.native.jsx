@@ -21,7 +21,6 @@ import {
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
@@ -158,13 +157,11 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-    const { categoryId } = currentProduct;
     const recommendationAttributes = {
       variation: 'moduleO',
       navigation,
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
-      categoryName: categoryId,
-      partNumber: selectedColorProductId,
+      partNumber: itemPartNumber,
       isHeaderAccordion: true,
     };
 
@@ -219,7 +216,6 @@ class ProductDetailView extends React.PureComponent {
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
-          <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
             <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>

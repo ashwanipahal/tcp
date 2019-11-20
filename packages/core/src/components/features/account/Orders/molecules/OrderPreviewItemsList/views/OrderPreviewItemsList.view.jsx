@@ -55,7 +55,6 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
             buttonVariation="fixed-width"
             fill="BLUE"
             centered
-            target="_blank"
           >
             {getLabelValue(labels, 'lbl_orders_fullOrderDetail', 'orders')}
           </Anchor>

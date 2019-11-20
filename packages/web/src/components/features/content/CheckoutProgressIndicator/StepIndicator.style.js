@@ -29,10 +29,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 374px;
       padding: 6px 0 4px;
+      padding-bottom: 20px;
     }
 
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      padding-bottom: 20px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 8px;
     }
 
     &.pickup-shipping {
@@ -78,6 +79,10 @@ export default css`
       right: calc(50% + 12px);
       left: calc(-50% + 12px);
       z-index: 1;
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        right: calc(50% + 10px);
+        left: calc(-50% + 10px);
+      }
     }
 
     &:first-child:after {
@@ -143,6 +148,11 @@ export default css`
       padding: 1px;
       content: '';
       background-color: ${props => props.theme.colors.WHITE};
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        background-position: center;
+        padding: 0;
+        margin-bottom: 6px;
+      }
     }
 
     .white-dot {
@@ -159,6 +169,11 @@ export default css`
         left: 50%;
         transform: translateX(-50%);
       }
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: 18px;
+        width: 18px;
+        left: ${props => (props.availableStages.length > 3 ? '37%' : '41%')};
+      }
     }
   }
 
@@ -166,6 +181,10 @@ export default css`
     &:before {
       background-color: ${props => props.theme.colors.WHITE};
       border: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: 20px;
+        width: 20px;
+      }
     }
   }
 

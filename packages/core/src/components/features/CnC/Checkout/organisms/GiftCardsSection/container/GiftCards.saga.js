@@ -15,7 +15,9 @@ import {
   addGiftCardSuccess,
   resetAddGiftCard,
   setIsLoadingShippingMethods,
+  getSetIsBillingVisitedActn,
 } from '../../../container/Checkout.action';
+import checkoutSelectors from '../../../container/Checkout.selector';
 import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 export function* applyGiftCard(payloadData) {
@@ -56,6 +58,10 @@ export function* removeGiftCardFromOrder(payloadData) {
     const { payload } = payloadData;
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
+    const isPaymentDisabled = yield select(checkoutSelectors.getIsPaymentDisabled);
+    if (isPaymentDisabled) {
+      yield put(getSetIsBillingVisitedActn(false));
+    }
     yield call(removeGiftCard, payload, labels);
     yield put(
       BAG_PAGE_ACTIONS.getCartData({

@@ -3,12 +3,12 @@ import { withRouter } from 'next/router';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
-import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
+import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
+import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { isTCP } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -87,6 +87,7 @@ const HomePageView = dynamic({
     moduleJ: () => import('@tcp/core/src/components/common/molecules/ModuleJ').then(returnModule),
     moduleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     moduleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
+    moduleM: () => import('@tcp/core/src/components/common/molecules/ModuleM').then(returnModule),
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
     moduleQ: () => import('@tcp/core/src/components/common/molecules/ModuleQ').then(returnModule),
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
@@ -96,6 +97,7 @@ const HomePageView = dynamic({
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -114,13 +116,12 @@ const HomePageView = dynamic({
         pageName={pageName}
       >
         <PageSlots slots={slots} modules={modules} />
+        <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
-        <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
         />
-        <AddedToBagContainer />
       </HomePageWithRouter>
     );
   },
@@ -149,5 +150,11 @@ HomePageView.propTypes = {
   openCountrySelectorModal: PropTypes.func.isRequired,
 };
 
-export default errorBoundary(HomePageView);
+const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
+
+// Wrap the home page with a ref-forwarding element
+const RefWrappedHomePageView = withRefWrapper(HomePageViewWithErrorBoundary);
+
+export default RefWrappedHomePageView;
+
 export { HomePageView as HomePageViewVanilla };

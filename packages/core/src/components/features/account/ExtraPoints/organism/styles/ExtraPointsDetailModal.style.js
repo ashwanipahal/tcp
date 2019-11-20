@@ -17,9 +17,13 @@ const CouponDetailModalStyle = css`
   }
 
   .buttonWrapper {
-    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    }
   }
 
   .earnExtraPointsTileImage {

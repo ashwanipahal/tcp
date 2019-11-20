@@ -34,6 +34,9 @@ const styles = css`
       width: auto;
       flex-direction: row;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      ${props => (props.showPayPalButton ? 'flex-direction: column-reverse' : null)};
+    }
 
     .back-space {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -99,8 +102,8 @@ const styles = css`
         width: 192px;
       }
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        position: absolute;
-        width: 347px;
+        display: block;
+        width: 100%;
       }
     }
   }

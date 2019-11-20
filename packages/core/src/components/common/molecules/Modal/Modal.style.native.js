@@ -29,7 +29,7 @@ const ModalCustomWrapper = styled.SafeAreaView`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-const ModalHeading = styled.Text`
+const ModalHeading = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
   ${props =>
@@ -61,6 +61,12 @@ const RowWrapper = styled.View`
     props.stickyCloseIcon
       ? `
       margin: 14px 14px 0 14px
+      `
+      : ``}
+  ${props =>
+    props.customHeaderMargin
+      ? `
+      margin: ${props.customHeaderMargin}
       `
       : ``}
 `;

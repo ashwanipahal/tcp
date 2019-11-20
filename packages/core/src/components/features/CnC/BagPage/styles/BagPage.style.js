@@ -153,6 +153,28 @@ export const addedToBagActionsStyles = css`
 
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
+    margin-top: 7px;
+    float: right;
+    width: 324px;
+    padding: 0 3px 0 13px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 366px;
+    }
+    .checkout {
+      height: 42px;
+      padding: 12px 0;
+    }
+    .paypal-venmo {
+      flex: 1;
+      display: inline-flex;
+      margin-bottom: 7px;
+      .paypal-wrapper {
+        min-width: unset;
+      }
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   .checkout-sticky-header {
@@ -168,12 +190,37 @@ export const addedToBagActionsStyles = css`
     padding: 0 13px 0;
     box-sizing: border-box;
     margin-top: 35px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-top: 0;
+      padding: 0;
+      .checkout {
+        height: 42px;
+        padding: 12px 0;
+      }
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   button.checkout {
     width: 100%;
     margin: 0 0 10px 0;
     padding: 16px 0;
+  }
+`;
+
+export const recommendationStyles = css`
+  && .slick-list {
+    margin-right: 0;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    &.recommendations-tile {
+      .recommendations-section-row {
+        padding-left: 6px;
+      }
+    }
   }
 `;
 

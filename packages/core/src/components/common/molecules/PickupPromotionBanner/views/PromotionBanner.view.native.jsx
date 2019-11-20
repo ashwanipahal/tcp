@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import { RichText } from '../../../atoms';
-import { getBrand } from '../../../../../utils';
 import CONSTANTS from '../../../../features/CnC/Checkout/Checkout.constants';
 import {
   FullBleedBannerStyle,
   TriangleBanner,
   LeftTriangle,
   TriangleBannerText,
+  TopTriangle,
 } from '../styles/PromotionBanner.style.native';
 
 /**
@@ -21,8 +21,8 @@ import {
  * @memberof PromotionBanner
  */
 export const modifiedBannerText = (label, props) => {
-  const brandName = getBrand();
-  const { bossBanner, labels, tcpSegmentValue } = props;
+  const { bossBanner, labels, tcpSegmentValue, itemBrand } = props;
+  const brandName = itemBrand.toLowerCase();
   const pickupType = bossBanner
     ? CONSTANTS.ORDER_ITEM_TYPE.BOSS.toLowerCase()
     : CONSTANTS.ORDER_ITEM_TYPE.BOPIS.toLowerCase();
@@ -36,7 +36,7 @@ export const modifiedBannerText = (label, props) => {
 };
 
 const PromotionBanner = props => {
-  const { labels, fullBleed } = props;
+  const { labels, fullBleed, isPickupMobilePromotion } = props;
   return (
     <>
       {fullBleed ? (
@@ -52,7 +52,7 @@ const PromotionBanner = props => {
         </FullBleedBannerStyle>
       ) : (
         <TriangleBanner>
-          <LeftTriangle />
+          {!isPickupMobilePromotion ? <LeftTriangle /> : <TopTriangle />}
           <TriangleBannerText>
             <RichText
               source={{
@@ -72,10 +72,12 @@ const PromotionBanner = props => {
 PromotionBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBanner.defaultProps = {
   fullBleed: false,
+  isPickupMobilePromotion: false,
 };
 
 export default withStyles(PromotionBanner);
