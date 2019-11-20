@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -68,6 +68,15 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
   return <RowWrapper />;
 };
 
+const getProductsWrapper = (addedToBagData, labels, quantity) => {
+  if (Array.isArray(addedToBagData)) {
+    return addedToBagData.map(item => {
+      return <ProductInformation data={item} labels={labels} />;
+    });
+  }
+  return <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />;
+};
+
 const AddedToBag = ({
   openState,
   onRequestClose,
@@ -76,7 +85,16 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   navigation,
+  addedToBagInterval,
 }) => {
+  useEffect(() => {
+    if (addedToBagInterval > 0) {
+      setTimeout(() => {
+        onRequestClose();
+      }, addedToBagInterval);
+    }
+  });
+
   return (
     <Modal
       isOpen={openState}
@@ -110,7 +128,7 @@ const AddedToBag = ({
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
           <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
+            {getProductsWrapper(addedToBagData, labels, quantity)}
             <AddedToBagViewPoints labels={labels} />
             <AddedToBagActions
               labels={labels}
@@ -164,6 +182,7 @@ AddedToBag.propTypes = {
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  addedToBagInterval: PropTypes.number.isRequired,
 };
 
 AddedToBag.defaultProps = {
