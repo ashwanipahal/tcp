@@ -23,6 +23,8 @@ const L3Panel = props => {
     hideL2Drawer,
     closeNav,
     name,
+    shopalllink,
+    shopallaspath,
     className,
     links,
     open,
@@ -65,7 +67,7 @@ const L3Panel = props => {
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
             <li>
-              <Anchor to="/c" data-locator="l3_link_shop_all">
+              <Anchor to={shopalllink} data-locator="l3_link_shop_all" asPath={shopallaspath}>
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -127,6 +129,8 @@ L3Panel.propTypes = {
   hideL2Drawer: PropTypes.func.isRequired,
   closeNav: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  shopalllink: PropTypes.string.isRequired,
+  shopallaspath: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   links: PropTypes.shape([]).isRequired,
   accessibilityLabels: PropTypes.shape({}).isRequired,

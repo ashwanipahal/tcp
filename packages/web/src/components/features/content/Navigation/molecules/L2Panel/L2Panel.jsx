@@ -57,7 +57,7 @@ const renderL3Panel = (
   l3Drawer,
   hideL3Drawer,
   name,
-  subCategories,
+  { url, asPath, subCategories },
   { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav, analyticsData }
 ) => {
   return (
@@ -71,6 +71,8 @@ const renderL3Panel = (
         hideL2Nav={hideL2Nav}
         name={name}
         links={subCategories}
+        shopalllink={url}
+        shopallaspath={asPath}
         accessibilityLabels={accessibilityLabels}
         closeNav={closeNav}
         analyticsData={analyticsData}
@@ -136,11 +138,11 @@ const createLinks = (
             subCategories,
             hasL3,
           } = l2Links;
+          const shopallparams = { url, asPath, subCategories };
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <ClickTracker
@@ -174,7 +176,7 @@ const createLinks = (
                 l3Drawer,
                 hideL3Drawer,
                 name,
-                subCategories,
+                shopallparams,
                 navHandler
               )}
             </li>

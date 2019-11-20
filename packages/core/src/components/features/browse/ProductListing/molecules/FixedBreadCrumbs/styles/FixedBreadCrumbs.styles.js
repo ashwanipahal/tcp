@@ -13,4 +13,5 @@ export default css`
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     vertical-align: middle;
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
