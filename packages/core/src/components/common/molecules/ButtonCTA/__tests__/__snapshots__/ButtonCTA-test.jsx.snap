@@ -6,12 +6,14 @@ exports[`Button CTA component renders correctly 1`] = `
   className="ctaClassName"
   dataLocator="undefined-link"
   key="test_key"
+  role="button"
   title="title"
   to="/test"
 >
   <Styled(Button)
     buttonVariation="fixed-width"
     className="dropdown-items"
+    tabIndex={-1}
   >
     text
   </Styled(Button)>
