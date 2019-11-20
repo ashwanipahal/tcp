@@ -15,10 +15,10 @@ class ModalWrapper extends React.PureComponent {
   renderCheckBox = () => {};
 
   render() {
-    const { isOpenAddList, children, heading, widthConfig, heightConfig } = this.props;
+    const { isOpenModal, children, heading, widthConfig, heightConfig } = this.props;
     return (
       <Modal
-        isOpen={isOpenAddList}
+        isOpen={isOpenModal}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         fixedWidth
@@ -40,7 +40,7 @@ class ModalWrapper extends React.PureComponent {
 }
 
 ModalWrapper.propTypes = {
-  isOpenAddList: PropTypes.bool.isRequired,
+  isOpenModal: PropTypes.bool.isRequired,
   children: PropTypes.element,
   onCloseModal: PropTypes.func,
   heading: PropTypes.string.isRequired,

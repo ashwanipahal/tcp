@@ -1,21 +1,28 @@
 import { css } from 'styled-components';
 
 export default css`
-  .add-list-field {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  }
-  .add-list-fav-check {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-  }
-  .add-list-save {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-  }
-  .add-list-cancel {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-  }
   .default-check-row {
     p {
       padding-top: 5px;
+    }
+  }
+  .delete-list-link {
+    button {
+      text-align: center;
+      border: none;
+      text-decoration: underline;
+      text-transform: none;
+      padding: 0;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      font-weight: ${props => props.theme.typography.fontWeights.regular};
+      min-height: 12px;
+      height: auto;
+      &:hover {
+        background: none;
+      }
+      &:focus {
+        background: none;
+      }
     }
   }
 `;

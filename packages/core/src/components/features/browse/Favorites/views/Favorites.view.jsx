@@ -20,7 +20,7 @@ class FavoritesView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenAddList: false,
+      isOpenModal: false,
     };
   }
 
@@ -119,30 +119,27 @@ class FavoritesView extends React.PureComponent {
   handleAddList = () => {
     this.currentPopupName = 'addList';
     this.setState({
-      isOpenAddList: true,
+      isOpenModal: true,
     });
   };
 
   handleEditList = () => {
     this.currentPopupName = 'editList';
     this.setState({
-      isOpenAddList: true,
+      isOpenModal: true,
     });
   };
 
   onCloseModal = () => {
     this.setState({
-      isOpenAddList: false,
+      isOpenModal: false,
     });
   };
 
   getCurrentPopUpHeading = () => {
     const { labels } = this.props;
     if (this.currentPopupName === 'addList') {
-      return getLabelValue(labels, 'lbl_fav_creat_new_list_heading');
-    }
-    if (this.currentPopupName === 'editList') {
-      return getLabelValue(labels, 'lbl_fav_edit_list');
+      return getLabelValue(labels, 'lbl_fav_create_new_list_heading');
     }
     return '';
   };
@@ -157,13 +154,13 @@ class FavoritesView extends React.PureComponent {
 
   renderModalWrapper = () => {
     const { labels } = this.props;
-    const { isOpenAddList } = this.state;
+    const { isOpenModal } = this.state;
     return (
       <ModalWrapper
         labels={labels}
         heading={this.getCurrentPopUpHeading()}
         modalMargins="0 14px 0 14px"
-        isOpenAddList={isOpenAddList}
+        isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
         heightConfig={{ minHeight: '459px', height: '459px', maxHeight: '459px' }}
@@ -176,10 +173,22 @@ class FavoritesView extends React.PureComponent {
   getCurrentPopUp = () => {
     const { labels } = this.props;
     if (this.currentPopupName === 'addList') {
-      return <AddList labels={labels} onHandleSubmit={this.onAddNewListHandler} />;
+      return (
+        <AddList
+          labels={labels}
+          onHandleSubmit={this.onAddNewListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
     }
     if (this.currentPopupName === 'editList') {
-      return <EditList labels={labels} onHandleSubmit={this.onEditListHandler} />;
+      return (
+        <EditList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
     }
     return null;
   };

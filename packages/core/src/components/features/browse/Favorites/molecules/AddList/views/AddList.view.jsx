@@ -2,13 +2,9 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import { Row, TextBox, BodyCopy, Col, Button } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Button from '@tcp/core/src/components/common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/AddList.style';
@@ -23,17 +19,13 @@ class AddList extends React.PureComponent {
     })();
   };
 
-  onCancel = () => {
-    this.toggleModal();
-  };
-
   render() {
-    const { labels, className } = this.props;
+    const { labels, className, onCloseModal } = this.props;
 
     return (
       <>
         <form className={className}>
-          <Row fullBleed className="add-list-field">
+          <Row fullBleed className="elem-mb-MED">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field
                 placeholder={getLabelValue(labels, 'lbl_fav_list_name')}
@@ -45,7 +37,7 @@ class AddList extends React.PureComponent {
               />
             </Col>
           </Row>
-          <Row fullBleed className="add-list-fav-check">
+          <Row fullBleed className="elem-mb-XXL">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field
                 name="makeDefaultList"
@@ -65,8 +57,12 @@ class AddList extends React.PureComponent {
               </Field>
             </Col>
           </Row>
-          <Row fullBleed className="add-list-save">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Row fullBleed className="elem-mb-LRG">
+            <Col
+              colSize={{ small: 4, medium: 6, large: 10 }}
+              offsetLeft={{ small: 1, medium: 1, large: 1 }}
+              offsetRight={{ small: 1, medium: 1, large: 1 }}
+            >
               <Button
                 buttonVariation="fixed-width"
                 type="submit"
@@ -78,12 +74,16 @@ class AddList extends React.PureComponent {
               </Button>
             </Col>
           </Row>
-          <Row fullBleed className="add-list-cancel">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Row fullBleed className="elem-mb-XL">
+            <Col
+              colSize={{ small: 4, medium: 6, large: 10 }}
+              offsetLeft={{ small: 1, medium: 1, large: 1 }}
+              offsetRight={{ small: 1, medium: 1, large: 1 }}
+            >
               <Button
                 buttonVariation="fixed-width"
                 dataLocator="CancelListFormBtn"
-                onClick={this.onCancel}
+                onClick={onCloseModal}
               >
                 {getLabelValue(labels, 'btn_fav_cancel')}
               </Button>
@@ -102,6 +102,7 @@ AddList.propTypes = {
   className: PropTypes.string,
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };
 AddList.defaultProps = {
   labels: {},

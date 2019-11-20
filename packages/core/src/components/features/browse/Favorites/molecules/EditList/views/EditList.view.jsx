@@ -2,18 +2,22 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import { Row, TextBox, BodyCopy, Col, Button } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Button from '@tcp/core/src/components/common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import DeleteList from '../../DeleteList/views';
 import styles from '../styles/EditList.style';
 
 class EditList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowRemoveModal: false,
+    };
+  }
+
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -23,17 +27,45 @@ class EditList extends React.PureComponent {
     })();
   };
 
-  onCancel = () => {
-    this.toggleModal();
+  showDeleteModal = () => {
+    this.setState({
+      isShowRemoveModal: true,
+    });
+  };
+
+  hideDeleteModal = () => {
+    this.setState({
+      isShowRemoveModal: false,
+    });
   };
 
   render() {
-    const { labels, className } = this.props;
-
+    const { labels, className, onCloseModal } = this.props;
+    const { isShowRemoveModal } = this.state;
+    if (isShowRemoveModal) {
+      return <DeleteList labels={labels} hideDeleteModal={this.hideDeleteModal} />;
+    }
     return (
       <>
+        <Row fullBleed className={`${className} elem-mb-LRG`}>
+          <Col
+            colSize={{ small: 4, medium: 6, large: 10 }}
+            offsetLeft={{ small: 1, medium: 1, large: 1 }}
+            offsetRight={{ small: 1, medium: 1, large: 1 }}
+          >
+            <BodyCopy
+              component="h3"
+              fontSize="fs22"
+              fontFamily="secondary"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              {getLabelValue(labels, 'lbl_fav_edit_list')}
+            </BodyCopy>
+          </Col>
+        </Row>
         <form className={className}>
-          <Row fullBleed className="add-list-field">
+          <Row fullBleed className="elem-mb-MED">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field
                 placeholder={getLabelValue(labels, 'lbl_fav_list_name')}
@@ -41,11 +73,11 @@ class EditList extends React.PureComponent {
                 id="listName"
                 type="text"
                 component={TextBox}
-                dataLocator="childNameField"
+                dataLocator="listNameField"
               />
             </Col>
           </Row>
-          <Row fullBleed className="add-list-fav-check">
+          <Row fullBleed className="elem-mb-LRG">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field
                 name="makeDefaultList"
@@ -65,8 +97,12 @@ class EditList extends React.PureComponent {
               </Field>
             </Col>
           </Row>
-          <Row fullBleed className="add-list-save">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Row fullBleed className="elem-mb-MED">
+            <Col
+              colSize={{ small: 4, medium: 6, large: 10 }}
+              offsetLeft={{ small: 1, medium: 1, large: 1 }}
+              offsetRight={{ small: 1, medium: 1, large: 1 }}
+            >
               <Button
                 buttonVariation="fixed-width"
                 type="submit"
@@ -78,14 +114,33 @@ class EditList extends React.PureComponent {
               </Button>
             </Col>
           </Row>
-          <Row fullBleed className="add-list-cancel">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Row fullBleed className="elem-mb-MED">
+            <Col
+              colSize={{ small: 4, medium: 6, large: 10 }}
+              offsetLeft={{ small: 1, medium: 1, large: 1 }}
+              offsetRight={{ small: 1, medium: 1, large: 1 }}
+            >
               <Button
                 buttonVariation="fixed-width"
                 dataLocator="CancelListFormBtn"
-                onClick={this.onCancel}
+                onClick={onCloseModal}
               >
                 {getLabelValue(labels, 'btn_fav_cancel')}
+              </Button>
+            </Col>
+          </Row>
+          <Row fullBleed className="delete-list-link">
+            <Col
+              colSize={{ small: 4, medium: 6, large: 10 }}
+              offsetLeft={{ small: 1, medium: 1, large: 1 }}
+              offsetRight={{ small: 1, medium: 1, large: 1 }}
+            >
+              <Button
+                buttonVariation="fixed-width"
+                dataLocator="DeleteListFormBtn"
+                onClick={this.showDeleteModal}
+              >
+                {getLabelValue(labels, 'btn_fav_delete_list')}
               </Button>
             </Col>
           </Row>
@@ -102,6 +157,7 @@ EditList.propTypes = {
   className: PropTypes.string,
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };
 EditList.defaultProps = {
   labels: {},
