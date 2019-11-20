@@ -270,8 +270,8 @@ StoreSearch.propTypes = {
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
   showSubmitError: PropTypes.func,
-  setClickAnalyticsData: PropTypes.func.isRequired,
-  trackClick: PropTypes.func.isRequired,
+  setClickAnalyticsData: PropTypes.func,
+  trackClick: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
@@ -279,6 +279,8 @@ StoreSearch.defaultProps = {
   labels: {},
   mapView: false,
   showSubmitError: () => false,
+  setClickAnalyticsData: () => null,
+  trackClick: () => null,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));
