@@ -133,7 +133,7 @@ export class ProductBundleContainer extends React.PureComponent {
         itemPartNumber={itemPartNumber}
         longDescription={longDescription}
         currency={currency}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes.exchangevalue}
         currentBundle={currentBundle}
         handleAddToBag={this.handleAddToBag}
         addToBagEcom={addToBagEcom}

@@ -298,3 +298,309 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
   </div>
 </Styled(Modal)>
 `;
+
+exports[`Added to Bag View with Multiple Items should render Added to Bag view  1`] = `
+<Styled(Modal)
+  aria={
+    Object {
+      "describedby": "Added To Bag Modal",
+      "labelledby": "Added To Bag",
+    }
+  }
+  className="TCPModal__Content, test"
+  closeIconDataLocator="added-to-bg-close"
+  data-locator="addedToBag-modal"
+  fixedWidth={true}
+  heading="ADDED TO BAG"
+  inheritedStyles={
+    Array [
+      "
+  div.TCPModal__InnerContent.atb-innerContent {
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
+    padding: 7px 15px 20px 17px;
+    width: 350px;
+    @media ",
+      [Function],
+      " {
+      width: 375px;
+    }
+
+    .Modal_Heading {
+      font-size: 16px;
+      font-family: ",
+      [Function],
+      ";
+      font-weight: normal;
+      line-height: 43px;
+      border: none;
+      margin-bottom: 0;
+      padding: 0;
+      display: inline;
+    }
+  }
+",
+    ]
+  }
+  innerContentClassName="atb-innerContent"
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div
+    className="addedToBagWrapper"
+  >
+    <div
+      className="elem-mb-SM"
+    >
+      <ProductInformation
+        data={
+          Object {
+            "branc": "tcp",
+          }
+        }
+        inheritedStyles={
+          Array [
+            "
+  .product {
+    margin: 0;
+    width: 100%;
+  }
+",
+          ]
+        }
+        labels={Object {}}
+      />
+    </div>
+    <Connect(AddedToBagViewPointsContainer)
+      className="added-to-bag-points"
+      inheritedStyles={
+        Array [
+          "
+  .row-padding {
+    margin: 0;
+    width: 100%;
+  }
+  .divided-line {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+",
+        ]
+      }
+      labels={Object {}}
+    />
+    <Connect(AddedToBagContainer)
+      containerId="paypal-button-container-added-to-bag"
+      handleCartCheckout={[MockFunction]}
+      inheritedStyles={
+        Array [
+          "
+  .view-bag-container {
+    margin: 0;
+    width: 100%;
+  }
+  .checkout-button {
+    margin: 0;
+    width: 100%;
+  }
+",
+        ]
+      }
+      isAddedToBag={true}
+      labels={Object {}}
+      showVenmo={false}
+    />
+    <div
+      className="loyaltyAddedToBagWrapper"
+    >
+      <Connect(LoyaltyBannerContainer)
+        inheritedStyles={
+          Array [
+            "
+  .loyalty-banner-wrapper {
+    padding: 0;
+  }
+",
+          ]
+        }
+        pageCategory="isAddedToBagPage"
+      />
+    </div>
+    <BOSSBanner
+      labels={Object {}}
+    />
+    <div
+      className="recommendationWrapper"
+    >
+      <Connect(Styled(Recommendations))
+        carouselConfigProps={
+          Object {
+            "infinite": true,
+            "responsive": Array [
+              Object {
+                "breakpoint": 1199,
+                "settings": Object {
+                  "arrows": false,
+                  "slidesToScroll": 2,
+                  "slidesToShow": 3,
+                },
+              },
+              Object {
+                "breakpoint": 767,
+                "settings": Object {
+                  "arrows": false,
+                  "slidesToScroll": 2,
+                  "slidesToShow": 3,
+                },
+              },
+            ],
+            "slidesToScroll": 3,
+            "slidesToShow": 3,
+          }
+        }
+        inheritedStyles={
+          Array [
+            "
+  .recommendations-header {
+    font-size: ",
+            [Function],
+            ";
+    font-family: ",
+            [Function],
+            ";
+  }
+  .container-price > p {
+    font-size: ",
+            [Function],
+            ";
+  }
+  && .product-image-container > a {
+    min-height: 130px;
+  }
+  && .slick-list {
+    margin-right: -20%;
+    margin-left: -8%;
+    @media ",
+            [Function],
+            " {
+      margin-right: -8%;
+    }
+  }
+  && .recommendations-tile .slick-arrow {
+    top: 35%;
+  }
+  && .slick-prev {
+    top: 18%;
+    margin-left: 13%;
+
+    background-image: none;
+    width: ",
+            [Function],
+            ";
+    height: 72px;
+    opacity: 0.79;
+    background-color: ",
+            [Function],
+            ";
+    border-top-right-radius: ",
+            [Function],
+            ";
+    border-bottom-right-radius: ",
+            [Function],
+            ";
+  }
+  && .slick-prev::after {
+    content: '';
+    border: solid black;
+    border-width: 0 ",
+            [Function],
+            "
+      ",
+            [Function],
+            " 0;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: ",
+            [Function],
+            ";
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+  && .slick-next {
+    top: 18%;
+    margin-right: 13%;
+
+    background-image: none;
+    width: ",
+            [Function],
+            ";
+    height: 72px;
+    opacity: 0.79;
+    background-color: ",
+            [Function],
+            ";
+    border-top-left-radius: ",
+            [Function],
+            ";
+    border-bottom-left-radius: ",
+            [Function],
+            ";
+  }
+  && .slick-next::after {
+    content: '';
+    border: solid black;
+    border-width: 0 ",
+            [Function],
+            "
+      ",
+            [Function],
+            " 0;
+    display: inline-block;
+    padding: ",
+            [Function],
+            ";
+    transform: rotate(-45deg);
+    background: none;
+  }
+  && .product-list {
+    margin: 0 ",
+            [Function],
+            ";
+    @media ",
+            [Function],
+            " {
+      margin: 0 ",
+            [Function],
+            ";
+    }
+  }
+",
+          ]
+        }
+        page="cart"
+        priceOnly={true}
+        variations="moduleO"
+      />
+    </div>
+    <div
+      className="continue-shopping"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="addedToBag-continueShopping"
+        fontSizeVariation="medium"
+        handleLinkClick={[MockFunction]}
+        noLink={true}
+        to=""
+        underline={true}
+      />
+    </div>
+  </div>
+</Styled(Modal)>
+`;
