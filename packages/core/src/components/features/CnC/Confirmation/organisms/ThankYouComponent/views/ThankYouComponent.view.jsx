@@ -78,7 +78,7 @@ const ThankYouComponent = ({
           </Col>
         </Row>
       )}
-      <PlaceCashBanner isOrderConfirmation />
+      <PlaceCashBanner isOrderConfirmation className="variable-width" />
       <Row fullBleed className="variable-width ">
         <Col
           colSize={{

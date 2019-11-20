@@ -43,7 +43,8 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               colSize={{ small: 6, medium: 8, large: 12 }}
               textAlign="center"
             >
-              {/* imgConfigs={['t_mod_plcc_bag_s','t_mod_plcc_bag_m','t_mod_plcc_bag_d']} */}
+              {/* Fix Me: wiith given zeplin assets transforms are not working properly
+              need correct zeplin assets : mod_placeBug_bag_d */}
               <DamImage
                 className="place-cash__img"
                 imgConfigs={[]}

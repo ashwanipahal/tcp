@@ -38,17 +38,8 @@ import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.s
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const {
-      needHelpContentId,
-      fetchNeedHelpContent,
-      placeCashBagContentId,
-      placeCashConfirmationContentId,
-    } = this.props;
-    fetchNeedHelpContent([
-      needHelpContentId,
-      placeCashBagContentId,
-      placeCashConfirmationContentId,
-    ]);
+    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
@@ -233,10 +224,6 @@ export const mapStateToProps = state => {
     placeCashBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
       state,
       PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
-    ),
-    placeCashConfirmationContentId: PlaceCashSelector.getPlaceDetailsContentId(
-      state,
-      PlaceCashSelector.getPlaceCashDetailBannerLabel(state, null, true)
     ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
