@@ -1,7 +1,7 @@
 import React from 'react';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 
-export {PlatformProvider, usePlatformState};
+export { PlatformProvider, usePlatformState };
 
 export const PlatformContext = React.createContext({});
 
@@ -12,7 +12,7 @@ function getInitialContextState(props) {
   };
 }
 
-function PlatformProvider({children, ...props}) {
+function PlatformProvider({ children, ...props }) {
   const state = getInitialContextState(props);
   return (
     <PlatformContext.Provider value={state} {...props}>
