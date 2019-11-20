@@ -8,6 +8,7 @@ import {
   enableBodyScroll,
   disableBodyScroll,
   removeBodyScrollLocks,
+  isAndroidWeb,
 } from '@tcp/core/src/utils';
 import { Row } from '@tcp/core/src/components/common/atoms';
 import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
@@ -53,13 +54,31 @@ class Drawer extends React.Component {
     this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
   }
 
+  componentDidMount() {
+    if (this.drawerRef && isAndroidWeb()) {
+      this.drawerRef.addEventListener('touchstart', this.handleInputBlur);
+    }
+  }
+
   componentDidUpdate() {
     this.init();
   }
 
   componentWillUnmount() {
+    if (this.drawerRef && isAndroidWeb()) {
+      this.drawerRef.removeEventListener('touchstart', this.handleInputBlur);
+    }
     enableBodyScroll(this.scrollTargetElement);
   }
+
+  /**
+   * To hide the keyboard in case user scrolls through navigation menu.
+   */
+  handleInputBlur = () => {
+    if (document.activeElement.nodeName === 'INPUT') {
+      document.activeElement.blur();
+    }
+  };
 
   init = () => {
     const { open, renderOverlay } = this.props;
@@ -214,7 +233,7 @@ class Drawer extends React.Component {
     const classToShowOnViewports = showOnViewport({ small, medium, large });
 
     return (
-      <div className={className} ref={this.setDrawerRef}>
+      <div className={className} ref={this.setDrawerRef} id="drawer-wrapper">
         {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
         // User will have to handle display of this element with CSS
         isDrawerNotRequiredOnAllViewports(small, medium, large) && (
