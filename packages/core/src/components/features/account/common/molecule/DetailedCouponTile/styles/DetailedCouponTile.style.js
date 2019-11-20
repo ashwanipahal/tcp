@@ -13,7 +13,12 @@ const styles = css`
     top: 0;
     width: 100%;
   }
-
+  .warning-icon {
+    height: 15px;
+    width: 13px;
+    flex-shrink: 0;
+    background-size: contain;
+  }
   .content {
     display: grid;
     min-height: 302px;
