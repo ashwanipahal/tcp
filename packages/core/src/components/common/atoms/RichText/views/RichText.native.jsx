@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { WebView } from 'react-native-webview';
-import { Dimensions, View, Text } from 'react-native';
+import { WebView, Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 

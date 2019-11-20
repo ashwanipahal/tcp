@@ -20,6 +20,7 @@ describe('SMSNotificationsFormContainer', () => {
     passwordLabels: {},
     createAccountSuccess: false,
     createAccountError: false,
+    fetchContent: jest.fn(),
   };
 
   it('should not render sms notification', () => {
