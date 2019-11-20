@@ -10,6 +10,7 @@ import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { formatPhoneNumber } from '../../../../../utils/formValidation/phoneNumber';
 
 class SMSFormFields extends React.PureComponent {
   static smsFormFieldsConfig = getStandardConfig(['phoneNumber']);
@@ -59,6 +60,7 @@ class SMSFormFields extends React.PureComponent {
                 dataLocator="phone-number-field"
                 enableSuccessCheck={false}
                 className="phone-field"
+                normalize={formatPhoneNumber}
               />
             </Col>
             <Row fullBleed>

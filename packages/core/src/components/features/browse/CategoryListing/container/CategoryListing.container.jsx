@@ -1,39 +1,82 @@
 import React, { PureComponent, Fragment } from 'react';
-import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
+import { getCategoryIds, getImagesGrids } from '../utils/utility';
 
 export class CategoryListingContainer extends PureComponent {
-  pageInfo = {
-    name: 'categoryListingPage',
+  static getInitialProps = async ({ props }) => {
+    const {
+      getLayout,
+      router: {
+        query: { cid },
+      },
+    } = props;
+
+    await getLayout(cid);
   };
 
+  componentDidUpdate(prevProps) {
+    const {
+      getLayout,
+      router: {
+        query: { cid },
+      },
+    } = this.props;
+
+    const {
+      router: {
+        query: { cid: preCid },
+      },
+    } = prevProps;
+    if (preCid !== cid) {
+      getLayout(cid);
+    }
+  }
+
   render() {
-    const { getLayout } = this.props;
+    const {
+      layouts,
+      Modules,
+      router: {
+        query: { cid },
+      },
+    } = this.props;
+    const categoryListingSlots = (layouts[cid] && layouts[cid].slots) || [];
+    const categoryIds = getCategoryIds(categoryListingSlots);
+    const categoryPromoModules = getImagesGrids(categoryIds, Modules);
     return (
       <Fragment>
-        <CategoryListing getLayout={getLayout} />
+        <CategoryListing {...this.props} categoryPromoModules={categoryPromoModules} />
       </Fragment>
     );
   }
 }
 
-CategoryListingContainer.propTypes = {
-  getLayout: PropTypes.func.isRequired,
-};
-
-CategoryListingContainer.defaultProps = {};
-
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    layouts: state.Layouts || {},
+    Modules: state.Modules || {},
+  };
 };
 
 export const mapDispatchToProps = dispatch => ({
-  getLayout: (pageName, layoutName) => dispatch(fetchPageLayout(pageName, layoutName)),
+  getLayout: (pageName, layoutName) =>
+    dispatch(fetchPageLayout(pageName, layoutName, { clpPage: true })),
 });
 
-export default connect(
+CategoryListingContainer.propTypes = {
+  categoryListingSlots: PropTypes.shape([]).isRequired,
+  Modules: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
+  layouts: PropTypes.shape({}).isRequired,
+  getLayout: PropTypes.func.isRequired,
+};
+
+export default withIsomorphicRenderer({
+  WrappedComponent: CategoryListingContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(CategoryListingContainer);
+  mapDispatchToProps,
+});

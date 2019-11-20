@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MyPlaceRewardsCreditCardComponent from '../views';
-import { getMyPlaceRewardCreditCard } from '../../../../Payment/container/Payment.selectors';
+import {
+  getMyPlaceRewardCreditCard,
+  getCardListFetchingState,
+} from '../../../../Payment/container/Payment.selectors';
 import { getCardList } from '../../../../Payment/container/Payment.actions';
 import { toggleApplyNowModal } from '../../../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import MyPlaceRewardsCreditCardTileSkeleton from '../skeleton/MyPlaceRewardsCreditCardTileSkeleton.view';
 
 export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   static propTypes = {
@@ -14,6 +18,8 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
     }),
     cardList: PropTypes.shape({}),
     toggleModal: PropTypes.func,
+    handleComponentChange: PropTypes.func,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -23,6 +29,8 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
     },
     cardList: {},
     toggleModal: () => {},
+    handleComponentChange: () => {},
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -37,13 +45,19 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   };
 
   render() {
-    const { cardList, labels } = this.props;
+    const { cardList, labels, handleComponentChange, toggleModal, isFetching } = this.props;
     const cardListValue = cardList && cardList.get(0);
+
+    if (isFetching) {
+      return <MyPlaceRewardsCreditCardTileSkeleton />;
+    }
     return (
       <MyPlaceRewardsCreditCardComponent
         myPlaceRewardCard={cardListValue}
         labels={labels}
         openModal={this.openModal}
+        handleComponentChange={handleComponentChange}
+        toggleModal={toggleModal}
       />
     );
   }
@@ -63,6 +77,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     cardList: getMyPlaceRewardCreditCard(state),
+    isFetching: getCardListFetchingState(state),
   };
 };
 

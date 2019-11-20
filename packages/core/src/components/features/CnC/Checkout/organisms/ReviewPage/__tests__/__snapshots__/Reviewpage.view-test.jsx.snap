@@ -12,9 +12,13 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     name="expressReviewShippingSection"
   />
   <Connect(BillingSectionContainer)
+    bagLoading={false}
     isExpressCheckout={false}
   />
-  <Connect(CheckoutCartItemList) />
+  <Connect(CheckoutCartItemList)
+    bagLoading={false}
+    disableProductRedirect={true}
+  />
   <Styled(CheckoutOrderInfo)
     fullPageInfo={true}
     pageCategory=""
@@ -43,4 +47,10 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     hideBackLink={true}
   />
 </form>
+`;
+
+exports[`ReviewPageVanilla component should renders correctly when not routing done  1`] = `
+<div>
+  Loading....
+</div>
 `;

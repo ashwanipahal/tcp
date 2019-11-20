@@ -38,7 +38,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
           <Col
             colSize={{
               small: 5,
-              large: 10,
+              large: 11,
               medium: 7,
             }}
           >
@@ -49,14 +49,14 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
           <Col
             colSize={{
               small: 1,
-              large: 2,
+              large: 1,
               medium: 1,
             }}
           >
             <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
               {defaultShippingAddress && defaultShippingAddress.length ? (
                 <Anchor
-                  fontSizeVariation="medium"
+                  fontSizeVariation="large"
                   underline
                   anchorVariation="primary"
                   to={`/account?id=edit-address&addressId=${defaultShippingAddress[0].addressId}`}
@@ -68,7 +68,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                 </Anchor>
               ) : (
                 <Anchor
-                  fontSizeVariation="medium"
+                  fontSizeVariation="large"
                   underline
                   anchorVariation="primary"
                   to="/account?id=address-book&subSection=add-new-address"
@@ -80,7 +80,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             </BodyCopy>
           </Col>
         </Row>
-        <Row fullBleed className="elem-mb-XL">
+        <Row fullBleed className="elem-mb-MED">
           <Col
             colSize={{
               small: 5,
@@ -104,7 +104,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
           <Col
             colSize={{
               small: 5,
-              large: 10,
+              large: 11,
               medium: 7,
             }}
           >
@@ -115,13 +115,13 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
           <Col
             colSize={{
               small: 1,
-              large: 2,
+              large: 1,
               medium: 1,
             }}
           >
             {defaultBillingAddress && defaultBillingAddress.length ? (
               <Anchor
-                fontSizeVariation="medium"
+                fontSizeVariation="large"
                 underline
                 anchorVariation="primary"
                 to="/account?id=payment"
@@ -131,7 +131,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               </Anchor>
             ) : (
               <Anchor
-                fontSizeVariation="medium"
+                fontSizeVariation="large"
                 underline
                 anchorVariation="primary"
                 to="/account?id=add-credit-card"

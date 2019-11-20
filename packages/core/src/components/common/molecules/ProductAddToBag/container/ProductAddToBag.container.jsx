@@ -13,20 +13,19 @@ import ProductAddToBag from '../views/ProductAddToBag.view';
 class ProductAddToBagContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { currentProduct, selectedColorProductId, getProductInitialValues } = props;
+    const { currentProduct, selectedColorProductId } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
-
-    if (typeof getProductInitialValues === 'function')
-      getProductInitialValues(this.initialValuesForm);
-
+    this.displayATBErrorMessage = this.displayATBErrorMessage.bind(this);
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
       selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
       selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
       selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
       isErrorMessageDisplayed: false,
+      isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
+      keepAlive: this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
     };
   }
 
@@ -112,7 +111,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   getDefaultSizeForProduct = (colorFitsSizesMap, initialFormValues) => {
-    const firstSizeName = colorFitsSizesMap[0].fits[0].sizes[0].sizeName;
+    const firstSizeName = colorFitsSizesMap[0]
+      ? colorFitsSizesMap[0].fits[0].sizes[0].sizeName
+      : '';
 
     if (initialFormValues) {
       return initialFormValues.Size;
@@ -133,20 +134,31 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
-    const colorFitsSizesMapEntry =
-      currentProduct &&
-      this.getMapSliceForColorProductId(
-        currentProduct.colorFitsSizesMap,
-        currentProduct.generalProductId,
-        selectedColorProductId
-      );
+    const colorFitsSizesMapEntry = currentProduct
+      ? this.getMapSliceForColorProductId(
+          currentProduct.colorFitsSizesMap,
+          currentProduct.generalProductId,
+          selectedColorProductId
+        )
+      : {};
+    this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
+    let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
-    const { initialFormValues } =
-      nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
+    const { fromBagPage } = this.props;
+
+    if (fromBagPage) {
+      const { productInfoFromBag } = this.props;
+      initialFormValues = {
+        color: productInfoFromBag.selectedColor,
+        Size: productInfoFromBag.selectedSize,
+        Fit: productInfoFromBag.selectedFit,
+        Quantity: productInfoFromBag.selectedQty,
+      };
+    }
 
     return {
       color: {
-        name: colorFitsSizesMapEntry.color.name,
+        name: colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name,
       },
       Fit: colorFitsSizesMapEntry.hasFits
         ? {
@@ -188,6 +200,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: true,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
@@ -199,20 +212,27 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: false,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
     }
   };
 
-  colorChange = e => {
+  colorChange = (e, colorIndex) => {
     const { selectedSize, selectedFit, selectedQuantity } = this.state;
-    const { onChangeColor } = this.props;
+    const {
+      onChangeColor,
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const selectedColor = this.getSelectedColorData(colorFitsSizesMap, e);
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
-      fitChanged: true,
+      isATBErrorMessageDisplayed: false,
+      fitChanged: selectedSize.name === '',
+      keepAlive: selectedColor && selectedColor[0] && selectedColor[0].miscInfo.keepAlive,
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -220,7 +240,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         e,
         selectedSize && selectedSize.name,
         selectedFit && selectedFit.name,
-        selectedQuantity
+        selectedQuantity,
+        colorIndex
       );
     }
   };
@@ -328,6 +349,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
   };
 
+  displayATBErrorMessage = displayError => {
+    this.setState({
+      isATBErrorMessageDisplayed: displayError,
+    });
+  };
+
   /**
    * @function getQuantityList
    * @returns quantity list with labels and values to render dropdown
@@ -342,14 +369,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }));
   };
 
-  getSelectedColorData = (colorFitsSizesMap, selectedColor) => {
+  getSelectedColorData = (colorFitsSizesMap, selectedColor = {}) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
         const {
           color: { name },
         } = colorItem;
-        return (selectedColor && selectedColor.name) || selectedColor === name;
+        return (selectedColor.name || selectedColor) === name;
       })
     );
   };
@@ -370,18 +397,24 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   sizeChange = e => {
-    const { selectedFit } = this.state;
+    const { selectedColor, selectedFit, selectedQuantity } = this.state;
     const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
       fitChanged: false,
+      isATBErrorMessageDisplayed: false,
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
     }
     if (onChangeSize) {
-      onChangeSize(e);
+      onChangeSize(
+        selectedColor && selectedColor.name,
+        e,
+        selectedFit && selectedFit.name,
+        selectedQuantity
+      );
     }
   };
 
@@ -393,12 +426,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   setPreSelectedValuesForProduct = productInfoFromBag => {
     const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
-    const { getProductInitialValues } = this.props;
     this.initialValuesForm.Fit = selectedFit;
     this.initialValuesForm.Quantity = selectedQty || 1;
     this.initialValuesForm.Size = selectedSize;
     this.initialValuesForm.color = selectedColor;
-    getProductInitialValues(this.initialValuesForm);
   };
 
   /**
@@ -432,6 +463,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       navigation,
       isPickup,
+      onCloseClick,
+      isBundleProduct,
+      outOfStockLabels,
+      isKeepAliveEnabled,
       ...otherProps
     } = this.props;
     const {
@@ -440,7 +475,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedSize,
       fitChanged,
       isErrorMessageDisplayed,
+      isATBErrorMessageDisplayed,
       selectedQuantity,
+      keepAlive,
     } = this.state;
     if (fromBagPage) {
       this.setPreSelectedValuesForProduct(productInfoFromBag);
@@ -467,8 +504,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         plpLabels={plpLabels}
         fitChanged={fitChanged}
         isErrorMessageDisplayed={isErrorMessageDisplayed}
+        isATBErrorMessageDisplayed={isATBErrorMessageDisplayed}
         initialValues={initialValues}
         displayErrorMessage={this.displayErrorMessage}
+        displayATBErrorMessage={this.displayATBErrorMessage}
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
         generalProductId={generalProductId}
@@ -493,6 +532,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeChartLinkVisibility={sizeChartLinkVisibility}
         navigation={navigation}
         isPickup={isPickup}
+        onCloseClick={onCloseClick}
+        isBundleProduct={isBundleProduct}
+        keepAlive={isKeepAliveEnabled && keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }

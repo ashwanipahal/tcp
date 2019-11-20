@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
 import {
@@ -15,6 +16,8 @@ import {
   getQuickViewFormValues,
   getProductInfoFromBag,
   getLoadingState,
+  getFromBagPage,
+  getIsFromBagProductSfl,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -28,6 +31,7 @@ import {
   clearAddToCartMultipleItemErrorState,
 } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
+import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
 
 class QuickViewModalContainer extends React.PureComponent {
@@ -46,7 +50,9 @@ class QuickViewModalContainer extends React.PureComponent {
       formValues,
       productInfo,
       closeQuickViewModalAction,
+      isFromBagProductSfl,
       productInfoFromBag,
+      updateCartSflItemAction,
     } = this.props;
     const [{ product }] = productInfo;
     const [formValue] = formValues;
@@ -54,17 +60,25 @@ class QuickViewModalContainer extends React.PureComponent {
     const {
       skuInfo: { skuId, variantNo, variantId },
     } = cartItemInfo;
-    const { quantity } = cartItemInfo;
-    const { orderItemId } = productInfoFromBag;
-    const payload = {
-      skuId,
-      itemId: orderItemId,
-      quantity,
-      variantNo,
-      itemPartNumber: variantId,
-      callBack: closeQuickViewModalAction,
-    };
-    updateCartItemAction(payload);
+    if (isFromBagProductSfl) {
+      updateCartSflItemAction({
+        oldSkuId: productInfoFromBag.skuId,
+        newSkuId: skuId,
+        callBack: closeQuickViewModalAction,
+      });
+    } else {
+      const { quantity } = cartItemInfo;
+      const { orderItemId } = productInfoFromBag;
+      const payload = {
+        skuId,
+        itemId: orderItemId,
+        quantity,
+        variantNo,
+        itemPartNumber: variantId,
+        callBack: closeQuickViewModalAction,
+      };
+      updateCartItemAction(payload);
+    }
   };
 
   render() {
@@ -74,6 +88,7 @@ class QuickViewModalContainer extends React.PureComponent {
       productInfo,
       plpLabels,
       currencyAttributes,
+      toastMessage,
       ...otherProps
     } = this.props;
     return (
@@ -84,7 +99,8 @@ class QuickViewModalContainer extends React.PureComponent {
         plpLabels={plpLabels}
         handleAddToBag={this.handleAddToBag}
         handleUpdateItem={this.handleUpdateItem}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes}
+        toastMessage={toastMessage}
         {...otherProps}
       />
     );
@@ -108,6 +124,8 @@ function mapStateToProps(state) {
     addToBagError: getAddedToBagError(state) || '',
     addToBagMultipleItemError: getMultipleItemsAddedToBagError(state) || {},
     productInfoFromBag: getProductInfoFromBag(state),
+    fromBagPage: getFromBagPage(state),
+    isFromBagProductSfl: getIsFromBagProductSfl(state),
   };
 }
 
@@ -131,6 +149,12 @@ function mapDispatchToProps(dispatch) {
     updateCartItemAction: payload => {
       dispatch(updateCartItem(payload));
     },
+    updateCartSflItemAction: payload => {
+      dispatch(BAG_PAGE_ACTIONS.updateSflItem(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 }
 
@@ -145,6 +169,9 @@ QuickViewModalContainer.propTypes = {
   productInfo: PropTypes.shape([PRODUCT_INFO_PROP_TYPE_SHAPE]).isRequired,
   productInfoFromBag: PropTypes.shape({}),
   currencyAttributes: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
+  isFromBagProductSfl: PropTypes.bool,
+  updateCartSflItemAction: PropTypes.func.isRequired,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -153,6 +180,8 @@ QuickViewModalContainer.defaultProps = {
   currencyAttributes: {
     exchangevalue: 1,
   },
+  toastMessage: () => {},
+  isFromBagProductSfl: false,
 };
 
 export default connect(

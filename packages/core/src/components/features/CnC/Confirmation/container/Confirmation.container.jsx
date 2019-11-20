@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ConfirmationView from '../views';
 import selectors from './Confirmation.selectors';
-import { isGuest, isUsSite, getVenmoUserName } from '../../Checkout/container/Checkout.selector';
+import getVenmoUserName, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
 import { fetchUpdateOrderDetailsData } from './Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 
@@ -47,6 +47,7 @@ class ConfirmationContainer extends React.Component {
     venmoUserName: PropTypes.string,
     pageCategory: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -110,6 +111,7 @@ class ConfirmationContainer extends React.Component {
       venmoUserName,
       isVenmoPaymentInProgress,
       pageCategory,
+      navigation,
     } = this.props;
     return (
       <ConfirmationView
@@ -127,6 +129,7 @@ class ConfirmationContainer extends React.Component {
         venmoUserName={venmoUserName}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         pageCategory={pageCategory}
+        navigation={navigation}
       />
     );
   }
@@ -176,7 +179,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
-    venmoUserName: getVenmoUserName(),
+    venmoUserName: getVenmoUserName(state),
   };
 };
 

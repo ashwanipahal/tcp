@@ -29,7 +29,7 @@ class ModuleQ extends React.PureComponent {
   }
 
   onProductTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
 
   /** This method is to add protocol to image url
@@ -46,57 +46,59 @@ class ModuleQ extends React.PureComponent {
    */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const { shopThisLookLabel } = this.props;
+    const { shopThisLookLabel, isRelatedOutfit } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
     const { RECOMMENDATION } = constant;
+    const outfitUrl =
+      outfitParams &&
+      outfitParams.length > 1 &&
+      `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+        outfitParams[outfitParams.length - 1]
+      }&viaModule=${RECOMMENDATION}`;
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={
-            outfitParams &&
-            outfitParams.length > 1 &&
-            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
-              outfitParams[outfitParams.length - 1]
-            }&viaModule=${RECOMMENDATION}`
-          }
+          to={outfitUrl}
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
           <div className="looks-large-image">
             <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
             <div className="shop-this-look-link">
-              <Anchor withCaret centered>
+              <Anchor to={outfitUrl} asPath={pdpUrl} withCaret centered>
                 <BodyCopy component="span" color="gray.900" fontFamily="secondary" fontSize="fs12">
                   {shopThisLookLabel}
                 </BodyCopy>
               </Anchor>
             </div>
           </div>
-          <div className="looks-images-wrapper">
-            {looksImages.map(({ smallImageUrl, name, remoteId }) => {
-              return (
-                <div className="looks-image">
-                  <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+          {!isRelatedOutfit && (
+            <div className="looks-images-wrapper">
+              {looksImages.map(({ smallImageUrl, name, remoteId }) => {
+                return (
+                  <div className="looks-image">
+                    <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+                  </div>
+                );
+              })}
+              {hiddenImagesCount > 0 ? (
+                <div className="looks-image looks-image-last">
+                  <BodyCopy
+                    color="gray.900"
+                    fontFamily="secondary"
+                    fontSize="fs22"
+                    fontWeight="extrabold"
+                  >
+                    {`+${hiddenImagesCount}`}
+                  </BodyCopy>
                 </div>
-              );
-            })}
-            {hiddenImagesCount > 0 ? (
-              <div className="looks-image looks-image-last">
-                <BodyCopy
-                  color="gray.900"
-                  fontFamily="secondary"
-                  fontSize="fs22"
-                  fontWeight="extrabold"
-                >
-                  {`+${hiddenImagesCount}`}
-                </BodyCopy>
-              </div>
-            ) : null}
-          </div>
+              ) : null}
+            </div>
+          )}
         </Anchor>
       </div>
     );
@@ -146,6 +148,8 @@ class ModuleQ extends React.PureComponent {
       styliticsProductTabList,
       hideTabs,
       selectedColorProductId,
+      showRelatedOutfitHeader,
+      isRelatedOutfit,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -159,6 +163,10 @@ class ModuleQ extends React.PureComponent {
     let dataStatus = true;
     if (styliticsProductTabList && styliticsProductTabList.completed) {
       dataStatus = styliticsProductTabList.completed[currentCatId];
+    }
+
+    if (showCarousel && showRelatedOutfitHeader) {
+      showRelatedOutfitHeader(true);
     }
 
     return (
@@ -194,6 +202,7 @@ class ModuleQ extends React.PureComponent {
               tabItems={divTabs}
               selectedColorProductId={selectedColorProductId}
               dataLocator={getLocator('moduleQ_cta_link')}
+              isRelatedOutfit={isRelatedOutfit}
             />
           </div>
         </Row>
@@ -226,6 +235,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
             {showCarousel ? (
               <Carousel
+                key={currentCatId.toString()}
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
                   autoplay: false,
@@ -252,6 +262,8 @@ ModuleQ.defaultProps = {
   promoBanner: [],
   hideTabs: false,
   selectedColorProductId: '',
+  showRelatedOutfitHeader: null,
+  isRelatedOutfit: false,
 };
 
 ModuleQ.propTypes = {
@@ -290,6 +302,8 @@ ModuleQ.propTypes = {
   ).isRequired,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
+  showRelatedOutfitHeader: PropTypes.func,
+  isRelatedOutfit: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

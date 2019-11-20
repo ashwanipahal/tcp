@@ -421,6 +421,13 @@ const getGiftServiceTotal = createSelector(
   }
 );
 
+const getTotalOrderSavings = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.totalOrderSavings;
+  }
+);
+
 /* istanbul ignore next */
 const getLedgerSummaryDataConfirmation = state => {
   return {
@@ -436,6 +443,7 @@ const getLedgerSummaryDataConfirmation = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     currencySymbol: getCurrencySymbol(state),
     isOrderHasShipping: getIsOrderHasShipping(state),
+    totalOrderSavings: getTotalOrderSavings(state),
   };
 };
 

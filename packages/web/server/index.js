@@ -35,12 +35,19 @@ const {
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
+const isLocalEnv = process.env.RWD_WEB_ENV_ID === 'LOCAL';
 const port = process.env.RWD_WEB_PORT || 3000;
 
 const app = next({ dev, dir: './src' });
 
+const xrayEnabled = process.env.XRAY_ENABLED === 'true';
+
 const server = express();
 
+if (xrayEnabled) {
+  var AWSXRay = require('aws-xray-sdk');
+  server.use(AWSXRay.express.openSegment(process.env.XRAY_ENVIRONMENT));
+}
 const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
@@ -86,6 +93,19 @@ const setSiteDetails = (req, res) => {
 };
 
 const setBrandId = (req, res) => {
+  if (isLocalEnv) {
+    const { hostname } = req;
+    let brandId = 'tcp';
+    const reqUrl = hostname.split('.');
+    for (let i = 0; i < reqUrl.length - 1; i++) {
+      if (reqUrl[i].toLowerCase() === 'gymboree') {
+        brandId = 'gym';
+        break;
+      }
+    }
+    res.locals.brandId = brandId;
+    return null;
+  }
   res.locals.brandId = process.env.RWD_WEB_BRANDID;
 };
 
@@ -99,6 +119,7 @@ connectRedis({
 
 const setHostname = (req, res) => {
   const { hostname } = req;
+  logger.info('hostname: ', hostname);
   res.locals.hostname = hostname;
 };
 
@@ -234,6 +255,9 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
+  if (xrayEnabled) {
+    server.use(AWSXRay.express.closeSegment());
+  }
   server.listen(port, err => {
     if (err) throw err;
     logger.info(`> Ready on http://localhost:${port}`);

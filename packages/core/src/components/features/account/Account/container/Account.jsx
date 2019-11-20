@@ -9,6 +9,7 @@ import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import RouteTracker from '../../../../../../../web/src/components/common/atoms/RouteTracker';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -18,7 +19,7 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * @param {router} router Router object to get the query key
  */
 
-const excludeRouteMapping = ['order-details'];
+const excludeRouteMapping = ['/TrackOrder'];
 
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
@@ -44,16 +45,30 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
-    const { isUserLoggedIn } = this.props;
+    const { isUserLoggedIn, router } = this.props;
 
-    if (isUserLoggedIn === false && !excludeRouteMapping.includes(componentToLoad)) {
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
       routerPush('/home?target=login', '/home/login');
+    }
+
+    if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
+      this.activePageRef.blur();
+      setTimeout(() => {
+        this.activePageRef.focus({ preventScroll: true });
+      }, 100);
     }
 
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
   }
+
+  /**
+   * Set the wrapper ref
+   */
+  setPageRef = ref => {
+    this.activePageRef = ref;
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
@@ -91,15 +106,19 @@ export class Account extends React.PureComponent {
     // _app.jsx itself.
     if (typeof labels === 'object' && isUserLoggedIn !== null) {
       return (
-        <MyAccountLayout
-          mainContent={AccountComponentMapping[componentToLoad]}
-          active={activeComponent}
-          activeSubComponent={componentToLoad}
-          navData={navData}
-          router={router}
-          labels={labels}
-          isUserLoggedIn={isUserLoggedIn}
-        />
+        <>
+          <MyAccountLayout
+            mainContent={AccountComponentMapping[componentToLoad]}
+            active={activeComponent}
+            activeSubComponent={componentToLoad}
+            navData={navData}
+            router={router}
+            labels={labels}
+            pageContentRef={this.setPageRef}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+          {process.env.ANALYTICS && <RouteTracker />}
+        </>
       );
     }
 
@@ -119,6 +138,7 @@ Account.getInitialProps = (reduxProps, pageProps) => {
           ? accountPageNameMapping[componentToLoad].pageName
           : '',
         pageSection: 'myplace',
+        loadAnalyticsOnload: false,
       },
     },
   };

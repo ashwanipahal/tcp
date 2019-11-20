@@ -180,7 +180,10 @@ class ProductListingFiltersForm extends React.Component {
    */
   handleRemoveFilter(fieldName, filterId) {
     const { change, initialValues } = this.props;
-    change(fieldName, initialValues[fieldName].filter(entryId => entryId !== filterId));
+    const changeParam = initialValues[fieldName]
+      ? initialValues[fieldName].filter(entryId => entryId !== filterId)
+      : [];
+    change(fieldName, changeParam);
     this.handleSubmitOnChange();
   }
 
@@ -376,6 +379,7 @@ class ProductListingFiltersForm extends React.Component {
               <LoadedProductsCount
                 totalProductsCount={totalProductsCount}
                 showingItemsLabel={slpLabels}
+                isFavoriteView={isFavoriteView}
               />
             </Col>
           </Row>

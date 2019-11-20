@@ -284,17 +284,24 @@ export const scrollTopElement = elem => {
   }
 };
 
+/**
+ * 2019-11-05: Hotfix PR needed to address issue with this
+ * array of countries increasing in size with each call
+ * (up to over 400k items in some pages).
+ *
+ * @TODO RCA is re-rendering of the App component itself.
+ * Need to fix that. This is just a symptom.
+ */
 export const getCountriesMap = data => {
-  const countries = defaultCountries;
-  data.map(value =>
-    countries.push(
+  return [
+    ...defaultCountries,
+    ...data.map(value =>
       Object.assign({}, value.country, {
         siteId: 'us',
         currencyId: value.currency.id,
       })
-    )
-  );
-  return countries;
+    ),
+  ];
 };
 
 export const getCurrenciesMap = data => {
@@ -348,11 +355,13 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
-  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
 
-  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
-  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKeyTCP =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
+  const unbxdApiKeyGYM =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -368,12 +377,16 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
 
-    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_TCP`]
+    }`,
     unbxdApiKeyTCP,
-    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_GYM`]
+    }`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
-    previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
+    previewEnvId: processEnv.RWD_WEB_PREVIEW_ENV,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -387,6 +400,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    paypalStaticUrl: processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
     styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
@@ -460,7 +474,8 @@ export const createAPIConfig = resLocals => {
   const basicConfig = getAPIInfoFromEnv(
     apiSiteInfo,
     processEnv,
-    countryConfig && countryConfig.countryKey
+    countryConfig && countryConfig.countryKey,
+    language
   );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
@@ -474,6 +489,7 @@ export const createAPIConfig = resLocals => {
     country,
     currency,
     language,
+    hostname,
   };
 };
 
@@ -560,18 +576,38 @@ export const getDirections = address => {
  * To Identify whether the device is ios for web.
  */
 
-export const isIosWeb = () => {
+export const isiOSWeb = () => {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
     return true;
   }
   return false;
 };
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+
+export const isAndroidWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android/.test(userAgent)) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+export const isMobileWeb = () => {
+  return isiOSWeb() || isAndroidWeb();
+};
+
 /**
  * This function will remove all the body scroll locks.
  */
 export const removeBodyScrollLocks = () => {
-  if (isIosWeb() && isClient()) {
+  if (isiOSWeb() && isClient()) {
     clearAllBodyScrollLocks();
   }
 };
@@ -580,7 +616,7 @@ export const removeBodyScrollLocks = () => {
  */
 export const enableBodyScroll = targetElem => {
   if (isClient()) {
-    if (isIosWeb() && targetElem) {
+    if (isiOSWeb() && targetElem) {
       enableBodyScrollLib(targetElem);
       return;
     }
@@ -594,13 +630,33 @@ export const enableBodyScroll = targetElem => {
  */
 export const disableBodyScroll = targetElem => {
   if (isClient()) {
-    if (isIosWeb() && targetElem) {
+    if (isiOSWeb() && targetElem) {
       disableBodyScrollLib(targetElem);
       return;
     }
     const [body] = document.getElementsByTagName('body');
     body.classList.add('disableBodyScroll');
   }
+};
+
+export const constructToPath = url => {
+  let toPath = url;
+  if (url) {
+    if (url.indexOf('/outfit/') !== -1) {
+      const outfitParams = url && url.split('/');
+      toPath =
+        outfitParams &&
+        outfitParams.length > 1 &&
+        `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+          outfitParams[outfitParams.length - 1]
+        }`;
+    } else if (url.indexOf('/c/') !== -1) {
+      toPath = url.replace('/c/', '/c?cid=');
+    } else if (url.indexOf('/p/') !== -1) {
+      toPath = url.replace('/p/', '/p?pid=');
+    }
+  }
+  return toPath;
 };
 
 export default {
@@ -629,8 +685,9 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
-  isIosWeb,
+  isMobileWeb,
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,
+  isAndroidWeb,
 };

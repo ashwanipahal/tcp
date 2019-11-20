@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render correctly 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED margin-left-MED margin-right-MED"
+    text="abc"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED margin-left-MED margin-right-MED"
+    text="abc"
+    textDecoration={null}
+  />
+</Styled(View)>
+`;

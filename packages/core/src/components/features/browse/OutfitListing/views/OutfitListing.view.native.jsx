@@ -1,7 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { Image, Anchor } from '../../../../common/atoms';
+import { Image, Anchor, Skeleton } from '../../../../common/atoms';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Container, Separator, AnchorStyle } from '../OutfitListing.style.native';
 
@@ -70,10 +70,20 @@ class OutfitListing extends React.PureComponent {
   itemSeparator = () => <Separator />;
 
   render() {
-    const { outfitDetails, asPath } = this.props;
+    const {
+      outfitDetails,
+      outfitDetails: { isFetchingDataForOutfit },
+      asPath,
+    } = this.props;
     const outfits = (outfitDetails && outfitDetails[asPath]) || [];
 
     const flatlistContentContainerStyle = { paddingBottom: 32 };
+    if (isFetchingDataForOutfit)
+      return (
+        <ScrollView>
+          <Skeleton row={6} col={1} outFitSkeleton height={350} width={getScreenWidth() - 24} />
+        </ScrollView>
+      );
     return (
       <Container
         renderItem={this.renderItem}

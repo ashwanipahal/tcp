@@ -26,6 +26,7 @@ class NativeDropDown extends React.PureComponent {
     super(props);
     const { selectedValue } = props;
     this.state = { showPicker: false, tempValue: selectedValue, isAndroidPlatform: isAndroid() };
+    this.valueToDisplayMap = this.getValueToDisplayNameMap(props.data);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,6 +36,17 @@ class NativeDropDown extends React.PureComponent {
       this.setState({ tempValue: selectedValue });
     }
   }
+
+  getValueToDisplayNameMap = options => {
+    return options.reduce((optionsMap, current) => {
+      return {
+        ...optionsMap,
+        ...{
+          [current.id]: current.displayName,
+        },
+      };
+    }, {});
+  };
 
   /**
    * @function setPickerState
@@ -94,6 +106,7 @@ class NativeDropDown extends React.PureComponent {
       textAlignLeft,
       lightGrayColor,
     } = this.props;
+    const selectedLabel = this.valueToDisplayMap[selectedValue] || selectedValue;
     const itemList = data.map(item => {
       const label = (item.displayName && item.displayName.toString()) || item.displayName;
       return <Picker.Item label={label} value={item.id} />;
@@ -122,7 +135,7 @@ class NativeDropDown extends React.PureComponent {
           buttonVariation={buttonVariation}
           type="button"
           data-locator="pdp_quantity"
-          text={selectedValue}
+          text={selectedLabel}
           onPress={() => {
             this.setPickerState(true);
           }}

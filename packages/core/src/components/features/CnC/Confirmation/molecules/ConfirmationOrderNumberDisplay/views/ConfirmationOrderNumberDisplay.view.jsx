@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getDateInformation } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import CONFIRMATION_CONSTANTS from '../../../Confirmation.constants';
-import { getDateInformation } from '../../../../../../../utils';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -73,7 +74,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
           {isGuest ? (
             <Anchor
               underline
-              to={`${trackOrder.link}&orderId=${orderNumber}&email=${encryptedEmailAddress}`}
+              to={`${trackOrder.link}&orderId=${orderNumber}&emailAddress=${encryptedEmailAddress}`}
               asPath={`${trackOrder.path}/${orderNumber}/${encryptedEmailAddress}`}
             >
               {orderNumber}
@@ -93,7 +94,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            {`${labels.currencySign} ${orderTotal.toFixed(2)}`}
+            <PriceCurrency price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

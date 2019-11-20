@@ -10,22 +10,19 @@ export default css`
   }
 
   .get-candid-main-heading {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
-
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 
   .get-candid-heading-desc {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
@@ -44,27 +41,32 @@ export default css`
   }
 
   .gellary-button-right {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-left: 7px;
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-left: 6px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: 210px;
+      margin-left: 6px;
     }
   }
 
   .gallery-button-left {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: 210px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

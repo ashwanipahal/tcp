@@ -1,6 +1,7 @@
 import React from 'react';
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
+import Safe from 'react-safe';
 
 import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 
@@ -17,6 +18,10 @@ import RenderPerf from '../components/common/molecules/RenderPerf';
 const CSSOverride = () => {
   return <link href={process.env.RWD_WEB_CSS_OVERRIDE_URL} rel="stylesheet" />;
 };
+
+function HotfixScript() {
+  return <Safe.script>{`window.TCP_HOTFIX_BROWSER = {}`}</Safe.script>;
+}
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -49,9 +54,12 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
-          <link rel="icon" href="/static/images/favicon.png" />
+          <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
           <link href="/static/app.css" rel="stylesheet" />
+          <link href="/static/video-js.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
+          {/* Empty global object definition for external hotfix sources to append */}
+          <HotfixScript />
         </Head>
         <body
           /* eslint-disable-next-line react-native/no-inline-styles */

@@ -69,7 +69,7 @@ export const PersonalInformationContainerView = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  height: 40px;
+  height: 55px;
 `;
 
 export const DateContainerView = styled.View`
@@ -96,9 +96,8 @@ export const CheckBoxContainerView = styled.View`
 `;
 
 export const CheckBoxImage = styled.View`
-  width: 40px;
-  height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  width: 80%;
 `;
 
 export const CheckMessageView = styled.View`

@@ -13,7 +13,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bZQynM",
+        "componentId": "sc-gzVnrw",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bZQynM",
+      "styledComponentId": "sc-gzVnrw",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kjoXOD",
+              "componentId": "sc-cHGsZl",
               "isStatic": false,
               "rules": Array [
                 "
@@ -230,6 +230,7 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ",
                 [Function],
                 ";
@@ -342,6 +343,52 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+  .spaced_text_regular_black {
+    display: block;
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: normal;
+    text-align: center;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -356,10 +403,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kEYyzF",
+              "sc-kkGfuU",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kjoXOD",
+            "styledComponentId": "sc-cHGsZl",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -403,7 +450,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gisBJw",
+              "componentId": "sc-kjoXOD",
               "isStatic": false,
               "rules": Array [
                 "
@@ -603,6 +650,7 @@ exports[`ModuleK component renders correctly 1`] = `
       outline: none;
       background: transparent;
       padding: 0;
+
       &:before {
         content: '';
         box-sizing: border-box;
@@ -676,14 +724,14 @@ exports[`ModuleK component renders correctly 1`] = `
     top: 50%;
   }
   .slick-next {
-    height: 50px;
+    height: 54px;
     right: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-prev {
-    height: 50px;
+    height: 54px;
     left: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-dots {
     bottom: -20px;
@@ -693,10 +741,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-chPdSV",
+              "sc-kgoBCf",
             ],
             "render": [Function],
-            "styledComponentId": "sc-gisBJw",
+            "styledComponentId": "sc-kjoXOD",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -731,8 +779,9 @@ exports[`ModuleK component renders correctly 1`] = `
                 },
               },
             ],
-            "speed": 1000,
+            "speed": 200,
             "swipe": true,
+            "swipeToSlide": true,
           }
         }
       >
@@ -843,11 +892,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >
@@ -975,11 +1032,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >

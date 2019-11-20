@@ -31,6 +31,7 @@ exports[`GiftServices component should renders correctly props not present 1`] =
         customStyle={Object {}}
         fontFamily="secondary"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -129,6 +130,7 @@ exports[`GiftServices component should renders correctly props not present 1`] =
             "data": Array [],
             "dropDownItemFontWeight": "semibold",
             "dropDownStyle": null,
+            "isAnimateList": true,
             "itemStyle": null,
             "onValueChange": null,
             "openDropdownOnLoad": false,
@@ -262,6 +264,7 @@ exports[`GiftServices component should renders correctly props not present 2`] =
         customStyle={Object {}}
         fontFamily="secondary"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}

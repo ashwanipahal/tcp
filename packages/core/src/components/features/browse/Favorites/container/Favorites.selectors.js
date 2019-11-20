@@ -48,6 +48,18 @@ export const selectActiveWishlistId = state => {
   }
   return activeWishlistId;
 };
+
+export const selectDefaultWishlist = state => {
+  const wishlistsSummaries = selectWishlistsSummaries(state);
+  return (
+    wishlistsSummaries &&
+    wishlistsSummaries.length > 0 &&
+    wishlistsSummaries.filter(wishlist => {
+      return wishlist.isDefault === true;
+    })
+  );
+};
+
 export const fetchCurrencySymbol = state => {
   const currency = state.session && state.session.siteDetails.currency;
   if (currency) {
@@ -56,7 +68,13 @@ export const fetchCurrencySymbol = state => {
   return '$';
 };
 
+export const fetchAddToFavoriteErrorMsg = state => {
+  return state.Favorites && state.Favorites.get('isAddToFavError');
+};
+
 export const getLabelsFavorites = state => state.Labels.Browse && state.Labels.Browse.Favorites;
+
+export const getSLPLabels = state => state.Labels.Browse && state.Labels.Browse.SLP;
 
 export default fetchCurrencySymbol;
 

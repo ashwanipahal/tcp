@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -38,17 +39,18 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    setVenmoInProgress(false); // Setting venmo progress as false. User can select normal checkout on cart page.
     this.fetchInitialActions();
   }
 
   componentDidUpdate(prevProps) {
     if (isClient()) {
       const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-      const { router, isRegisteredUserCallDone } = this.props;
-      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+      const { router, isRegisteredUserCallDone, bagPageIsRouting } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && !bagPageIsRouting) {
         this.fetchInitialActions();
       }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
@@ -56,6 +58,11 @@ export class BagPageContainer extends React.Component<Props> {
         document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
       }
     }
+  }
+
+  componentWillUnmount() {
+    const { resetBagLoadedState } = this.props;
+    resetBagLoadedState();
   }
 
   closeModal = () => {};
@@ -93,9 +100,15 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessagePositionInfo,
       cartItemSflError,
       currencySymbol,
+      isPayPalWebViewEnable,
       isPickupModalOpen,
       isMobile,
       bagPageServerError,
+      isBagPage,
+      setClickAnalyticsDataBag,
+      cartOrderItems,
+      isCartLoaded,
+      trackPageViewBag,
     } = this.props;
 
     const showAddTobag = false;
@@ -126,14 +139,36 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
+        isBagPage={isBagPage}
+        cartOrderItems={cartOrderItems}
+        setClickAnalyticsDataBag={setClickAnalyticsDataBag}
+        isCartLoaded={isCartLoaded}
+        trackPageViewBag={trackPageViewBag}
       />
     );
   }
 }
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
+
+BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shopping bag';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'shopping bag',
+        pageSection: loadedComponent,
+        pageNavigationText: 'header-cart',
+        loadAnalyticsOnload: false,
+      },
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -164,6 +199,15 @@ export const mapDispatchToProps = dispatch => {
     toastMessagePositionInfo: palyoad => {
       dispatch(toastMessagePosition(palyoad));
     },
+    setClickAnalyticsDataBag: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+    trackPageViewBag: payload => {
+      dispatch(trackPageView(payload));
+    },
+    resetBagLoadedState: () => {
+      dispatch(BAG_PAGE_ACTIONS.resetBagLoadedState());
+    },
   };
 };
 
@@ -187,10 +231,14 @@ export const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
+    isCartLoaded: BagPageSelector.getCartLoadedState(state),
+    bagPageIsRouting: BagPageSelector.isBagRouting(state),
   };
 };
 

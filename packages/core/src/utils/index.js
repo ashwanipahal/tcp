@@ -36,7 +36,9 @@ export {
   getDirections,
   enableBodyScroll,
   disableBodyScroll,
+  isMobileWeb,
   removeBodyScrollLocks,
+  isAndroidWeb,
 } from './utils.web';
 
 export {
@@ -83,4 +85,6 @@ export {
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,
+  calculatePriceValue,
+  getProductUrlForDAM,
 } from './utils';

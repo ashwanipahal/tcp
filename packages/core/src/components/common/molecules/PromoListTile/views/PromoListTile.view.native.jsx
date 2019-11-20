@@ -25,15 +25,23 @@ const PromoListTile = ({ tileData }) => {
       <BodyCopyWithSpacing
         fontSize="fs16"
         fontFamily="secondary"
-        fontWeight="black"
+        fontWeight="bold"
         textAlign="center"
         text={tileData.headLine[0].text}
         spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
       />
-      <BodyCopy textAlign="center" fontSize="fs14" text={tileData.subHeadLine[0].text} />
+      <BodyCopy
+        textAlign="center"
+        fontSize="fs14"
+        fontFamily="secondary"
+        fontWeight="regular"
+        text={tileData.subHeadLine[0].text}
+      />
       {tileData.buttonList && (
         <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-MED">
           <Anchor
+            fontFamily="secondary"
+            fontWeight="regular"
             fontSizeVariation="large"
             underline
             noLink

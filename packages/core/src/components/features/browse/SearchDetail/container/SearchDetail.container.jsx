@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
-import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
+import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
@@ -21,6 +21,7 @@ import {
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
 import {
   getLoadedProductsCount,
@@ -34,6 +35,7 @@ import {
   getAppliedSortId,
   getIsLoadingMore,
   checkIfSearchResultsAvailable,
+  getPDPLabels,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -46,26 +48,38 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      router: {
-        query: { searchQuery },
-        asPath,
-      },
-      getProducts,
-      formValues,
-    } = this.props;
+  static pageProps = {
+    pageData: {
+      pageName: 'search',
+    },
+  };
+  static getInitialProps = async ({ props, query, req, isServer }) => {
+    const { getProducts, formValues } = props;
+    let searchQuery;
+    let asPath = '';
+    if (isServer) {
+      ({ searchQuery } = query);
+      ({ originalUrl: asPath } = req);
+    } else {
+      ({
+        router: {
+          query: { searchQuery },
+          asPath,
+        },
+      } = props);
+    }
     const splitAsPathBy = `/search/${searchQuery}?`;
     const queryString = asPath.split(splitAsPathBy);
     const filterSortString = (queryString.length && queryString[1]) || '';
-    getProducts({
+    await getProducts({
       URI: 'search',
       asPath: filterSortString,
       searchQuery,
       ignoreCache: true,
       formValues,
+      url: asPath,
     });
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const {
@@ -75,13 +89,15 @@ class SearchDetailContainer extends React.PureComponent {
       },
       getProducts,
       formValues,
-    } = prevProps;
+      isLoggedIn: currentLyLoggedIn,
+    } = this.props;
 
     const {
       router: {
         query: { searchQuery: currentSearchQuery },
       },
-    } = this.props;
+      isLoggedIn,
+    } = prevProps;
     if (searchQuery !== currentSearchQuery) {
       const splitAsPathBy = `/search/${searchQuery}?`;
       const queryString = asPath.split(splitAsPathBy);
@@ -92,6 +108,20 @@ class SearchDetailContainer extends React.PureComponent {
         searchQuery,
         ignoreCache: true,
         formValues,
+        url: asPath,
+      });
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
+      const splitAsPathBy = `/search/${searchQuery}?`;
+      const queryString = asPath.split(splitAsPathBy);
+      const filterSortString = (queryString.length && queryString[1]) || '';
+      getProducts({
+        URI: 'search',
+        asPath: filterSortString,
+        searchQuery,
+        ignoreCache: true,
+        formValues,
+        url: asPath,
       });
     }
   }
@@ -124,12 +154,13 @@ class SearchDetailContainer extends React.PureComponent {
       isSearchResultsAvailable,
       router: {
         query: { searchQuery },
-        asPath,
+        asPath: asPathVal,
       },
       currency,
       currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      pdpLabels,
       ...otherProps
     } = this.props;
 
@@ -159,6 +190,8 @@ class SearchDetailContainer extends React.PureComponent {
                 currency={currency}
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
+                isSearchListing={true}
+                asPathVal={asPathVal}
                 {...otherProps}
               />
             ) : (
@@ -169,6 +202,7 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={searchedText}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             )}
@@ -196,6 +230,8 @@ class SearchDetailContainer extends React.PureComponent {
               currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
+              isSearchListing={true}
+              asPathVal={asPathVal}
               {...otherProps}
             />
           </div>
@@ -208,6 +244,8 @@ class SearchDetailContainer extends React.PureComponent {
 SearchDetailContainer.pageInfo = {
   pageId: 'search',
 };
+
+SearchDetailContainer.getInitActions = () => initActions;
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
@@ -247,14 +285,18 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     slpLabels: getLabels(state),
     searchResultSuggestions:
-      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+      state.SearchListingPage && state.SearchListingPage.searchResultSuggestions,
     sortLabels: getSortLabels(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    pdpLabels: getPDPLabels(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -293,6 +335,7 @@ SearchDetailContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isLoadingMore: PropTypes.bool,
   isSearchResultsAvailable: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -302,11 +345,11 @@ SearchDetailContainer.defaultProps = {
   initialValues: {},
   isLoadingMore: false,
   isSearchResultsAvailable: false,
+  pdpLabels: {},
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SearchDetailContainer)
-);
+export default withIsomorphicRenderer({
+  WrappedComponent: SearchDetailContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});
