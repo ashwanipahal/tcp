@@ -145,31 +145,33 @@ const createLinks = (
           const hasSubCategories = subCategories && subCategories.length > 0;
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <ClickTracker
-                clickData={{
-                  pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
-                }}
-              >
-                <Anchor
-                  asPath={asPath}
-                  to={url}
-                  onClick={e =>
-                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                  }
+              <div className="L2-panel-container">
+                <ClickTracker
+                  clickData={{
+                    pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                  }}
                 >
-                  <BodyCopy
-                    className="l2-nav-link"
-                    fontFamily="secondary"
-                    fontSize={['fs13', 'fs13', 'fs14']}
-                    lineHeight="lh107"
-                    color="text.primary"
+                  <Anchor
+                    asPath={asPath}
+                    to={url}
+                    onClick={e =>
+                      openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                    }
                   >
-                    {renderLabel(classForRedContent, promoBadge, name)}
-                    {renderPromoBadge(promoBadge, currentIndex)}
-                    {renderArrowIcon(hasSubCategories)}
-                  </BodyCopy>
-                </Anchor>
-              </ClickTracker>
+                    <BodyCopy
+                      className="l2-nav-link"
+                      fontFamily="secondary"
+                      fontSize={['fs13', 'fs13', 'fs14']}
+                      lineHeight="lh107"
+                      color="text.primary"
+                    >
+                      {renderLabel(classForRedContent, promoBadge, name)}
+                      {renderPromoBadge(promoBadge, currentIndex)}
+                      {renderArrowIcon(hasSubCategories)}
+                    </BodyCopy>
+                  </Anchor>
+                </ClickTracker>
+              </div>
               {renderL3Panel(
                 hasSubCategories,
                 currentIndex,
