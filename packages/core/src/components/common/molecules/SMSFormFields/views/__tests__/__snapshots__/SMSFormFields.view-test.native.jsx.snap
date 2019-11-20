@@ -59,7 +59,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
                 "autoCapitalize": "sentences",
-                "bottomBorderColor": null,
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -178,7 +177,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
                 "autoCapitalize": "sentences",
-                "bottomBorderColor": null,
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
