@@ -6,6 +6,7 @@ import style from './L3Panel.style';
 import Drawer from '../Drawer';
 import { keyboard } from '../../../../../../constants/constants';
 import mock from './mock';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 /* Method to close L3Drawer on keydown(ENTER and SPACE) */
 const keydownHideL3Drawer = (e, hideL3Drawer) => {
@@ -22,13 +23,15 @@ const L3Panel = props => {
     hideL2Drawer,
     closeNav,
     name,
+    shopalllink,
+    shopallaspath,
     className,
     links,
     open,
     close,
     accessibilityLabels: { previousButton },
+    analyticsData,
   } = props;
-
   return (
     <Drawer
       className={className}
@@ -64,7 +67,7 @@ const L3Panel = props => {
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
             <li>
-              <Anchor to="/c" data-locator="l3_link_shop_all">
+              <Anchor to={shopalllink} data-locator="l3_link_shop_all" asPath={shopallaspath}>
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -84,26 +87,32 @@ const L3Panel = props => {
               } = l3Links;
               return (
                 <li>
-                  <Anchor
-                    to={url}
-                    asPath={asPath}
-                    onClick={e => {
-                      hideL3Drawer(e);
-                      hideL2Drawer(e, true);
-                      closeNav();
+                  <ClickTracker
+                    clickData={{
+                      pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
                     }}
-                    dataLocator={`l3_link_${index}`}
                   >
-                    <BodyCopy
-                      className="l2-nav-link"
-                      fontFamily="secondary"
-                      fontSize={['fs13', 'fs13', 'fs14']}
-                      lineHeight="lh107"
-                      color="text.primary"
+                    <Anchor
+                      to={url}
+                      asPath={asPath}
+                      onClick={e => {
+                        hideL3Drawer(e);
+                        hideL2Drawer(e, true);
+                        closeNav();
+                      }}
+                      dataLocator={`l3_link_${index}`}
                     >
-                      <span className="nav-bar-item-label full-width">{l3Name}</span>
-                    </BodyCopy>
-                  </Anchor>
+                      <BodyCopy
+                        className="l2-nav-link"
+                        fontFamily="secondary"
+                        fontSize={['fs13', 'fs13', 'fs14']}
+                        lineHeight="lh107"
+                        color="text.primary"
+                      >
+                        <span className="nav-bar-item-label full-width">{l3Name}</span>
+                      </BodyCopy>
+                    </Anchor>
+                  </ClickTracker>
                 </li>
               );
             })}
@@ -120,11 +129,14 @@ L3Panel.propTypes = {
   hideL2Drawer: PropTypes.func.isRequired,
   closeNav: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  shopalllink: PropTypes.string.isRequired,
+  shopallaspath: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   links: PropTypes.shape([]).isRequired,
   accessibilityLabels: PropTypes.shape({}).isRequired,
   open: PropTypes.bool.isRequired,
   close: PropTypes.bool.isRequired,
+  analyticsData: PropTypes.string.isRequired,
 };
 
 export { L3Panel as L3PanelVanilla };

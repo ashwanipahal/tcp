@@ -22,7 +22,69 @@ import {
 } from '../styles/CnCTemplate.style.native';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 import PayPalButton from '../../PayPalButton';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
+
+const getPaymentButton = params => {
+  const {
+    btnText,
+    onPress,
+    backLinkText,
+    onBackLinkPress,
+    footerBody,
+    navigation,
+    getPayPalSettings,
+    isPayPalWebViewEnable,
+    showPayPalButton,
+    showVenmoSubmit,
+    onVenmoSubmit,
+  } = params;
+  return (
+    <ButtonWrapper
+      showPayPalButton={showPayPalButton}
+      isPayPalWebViewEnable={isPayPalWebViewEnable}
+    >
+      {showPayPalButton && (
+        <PayPalButtonContainer>
+          <PayPalButton
+            getPayPalSettings={getPayPalSettings}
+            navigation={navigation}
+            isBillingPage
+            fullWidth
+            setVenmoState={() => {}}
+            closeModal={() => {}}
+          />
+        </PayPalButtonContainer>
+      )}
+      {showVenmoSubmit && <VenmoPaymentButton onSuccess={onVenmoSubmit} isVenmoBlueButton />}
+      {!showPayPalButton && !showVenmoSubmit && (
+        <CheckoutButton onPress={onPress}>
+          <BodyCopy
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs13"
+            text={btnText}
+            dataLocator="reviewBtn"
+          />
+        </CheckoutButton>
+      )}
+      {footerBody}
+      {!isPayPalWebViewEnable && !!backLinkText && (
+        <TouchableOpacity
+          accessibilityRole="link"
+          onPress={onBackLinkPress}
+          dataLocator="returnToLink"
+        >
+          <BackLinkWrapperWrapper>
+            <BackIcon />
+            <BackLinkText>{backLinkText}</BackLinkText>
+          </BackLinkWrapperWrapper>
+        </TouchableOpacity>
+      )}
+    </ButtonWrapper>
+  );
+};
 
 const CnCCommonTemplate = ({
   btnText,
@@ -38,6 +100,8 @@ const CnCCommonTemplate = ({
   getPayPalSettings,
   isPayPalWebViewEnable,
   showPayPalButton,
+  showVenmoSubmit,
+  onVenmoSubmit,
 }) => {
   return (
     <CnContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
@@ -62,49 +126,17 @@ const CnCCommonTemplate = ({
               <BonusPointsDays />
             </BonusPointsWrapper>
           )}
-
-          <ButtonWrapper
-            showPayPalButton={showPayPalButton}
-            isPayPalWebViewEnable={isPayPalWebViewEnable}
-          >
-            {showPayPalButton && (
-              <PayPalButtonContainer>
-                <PayPalButton
-                  getPayPalSettings={getPayPalSettings}
-                  navigation={navigation}
-                  isBillingPage
-                  fullWidth
-                  setVenmoState={() => {}}
-                  closeModal={() => {}}
-                />
-              </PayPalButtonContainer>
-            )}
-            {!showPayPalButton && (
-              <CheckoutButton onPress={onPress}>
-                <BodyCopy
-                  color="white"
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  text={btnText}
-                  dataLocator="reviewBtn"
-                />
-              </CheckoutButton>
-            )}
-            {footerBody}
-            {!isPayPalWebViewEnable && !!backLinkText && (
-              <TouchableOpacity
-                accessibilityRole="link"
-                onPress={onBackLinkPress}
-                dataLocator="returnToLink"
-              >
-                <BackLinkWrapperWrapper>
-                  <BackIcon />
-                  <BackLinkText>{backLinkText}</BackLinkText>
-                </BackLinkWrapperWrapper>
-              </TouchableOpacity>
-            )}
-          </ButtonWrapper>
+          {getPaymentButton({
+            btnText,
+            onPress,
+            backLinkText,
+            onBackLinkPress,
+            footerBody,
+            getPayPalSettings,
+            showPayPalButton,
+            showVenmoSubmit,
+            onVenmoSubmit,
+          })}
         </CnContent>
       ) : (
         <View>
@@ -139,6 +171,8 @@ CnCCommonTemplate.propTypes = {
   getPayPalSettings: PropTypes.shape({}),
   isPayPalWebViewEnable: PropTypes.bool,
   showPayPalButton: PropTypes.bool,
+  showVenmoSubmit: PropTypes.bool,
+  onVenmoSubmit: PropTypes.func,
 };
 
 CnCCommonTemplate.defaultProps = {
@@ -147,6 +181,8 @@ CnCCommonTemplate.defaultProps = {
   getPayPalSettings: {},
   isPayPalWebViewEnable: false,
   showPayPalButton: false,
+  showVenmoSubmit: false,
+  onVenmoSubmit: () => {},
 };
 
 export default CnCCommonTemplate;

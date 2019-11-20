@@ -28,6 +28,10 @@ target 'gymboree_uat' do
   social
 end
 
+target 'gymboree_preview' do
+  social
+end
+
 target 'mobileapp' do
   social
   target 'mobileappTests' do
@@ -50,5 +54,9 @@ target 'mobileapp_prod' do
 end
 
 target 'mobileapp_uat' do
+  social
+end
+
+target 'mobileapp_preview' do
   social
 end

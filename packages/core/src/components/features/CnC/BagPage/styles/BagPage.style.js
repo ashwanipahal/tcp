@@ -7,8 +7,14 @@ const styles = css`
     background: #fff;
   }
   .order-summary {
+    padding-bottom: 0;
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
+    }
+    .item-closed {
+      .elem-mb-MED {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -213,6 +219,14 @@ export const addedToBagActionsStyles = css`
 export const recommendationStyles = css`
   && .slick-list {
     margin-right: 0;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    &.recommendations-tile {
+      .recommendations-section-row {
+        padding-left: 6px;
+      }
+    }
   }
 `;
 

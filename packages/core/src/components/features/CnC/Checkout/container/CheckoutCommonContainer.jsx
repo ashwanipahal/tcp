@@ -158,13 +158,15 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
     } = this.props;
-    const { pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
@@ -175,6 +177,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        emailSignUpFlags={emailSignUpFlags}
         isRegisteredUserCallDone={isRegisteredUserCallDone}
         isBagLoaded={isBagLoaded}
         initialValues={initialValues}
@@ -241,6 +244,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}

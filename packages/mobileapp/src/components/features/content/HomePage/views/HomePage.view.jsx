@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container/UserOnboardingScreen.container';
 import {
   ModuleD,
   ModuleH,
@@ -28,9 +29,7 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
-
-import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container/UserOnboardingScreen.container';
-import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
+// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -176,7 +175,7 @@ class HomePageView extends React.PureComponent<Props> {
         </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <ModuleS {...mockS.moduleS.composites} />
+        {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations
           navigation={navigation}

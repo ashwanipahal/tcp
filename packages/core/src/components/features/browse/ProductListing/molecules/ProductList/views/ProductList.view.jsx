@@ -43,7 +43,7 @@ const ProductList = props => {
     onProductCardHover,
     isBopisEnabledForClearance,
     onQuickBopisOpenClick,
-    currencyExchange,
+    currencyAttributes,
     siblingProperties,
     loadedProductCount,
     labels,
@@ -54,9 +54,13 @@ const ProductList = props => {
     isFavoriteView,
     removeFavItem,
     createNewWishListMoveItem,
+    outOfStockLabels,
+    isKeepAliveEnabled,
     isSearchListing,
     getProducts,
     asPathVal,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
   let gridIndex = 0;
 
@@ -79,16 +83,18 @@ const ProductList = props => {
             <hr className="horizontal-bar" />
           </Heading>
         ) : (
-          <div className={`${className} product-tile ${productTileVariation}`}>
+          <div
+            className={`${className} product-tile ${productTileVariation}`}
+            key={item.productInfo.generalProductId}
+          >
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}
-              key={item.productInfo.generalProductId}
               item={item}
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               onQuickViewOpenClick={onQuickViewOpenClick}
               onPickUpOpenClick={onPickUpOpenClick}
@@ -113,16 +119,19 @@ const ProductList = props => {
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
               isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
-              isKeepAliveKillSwitch={false}
+              isKeepAliveEnabled={isKeepAliveEnabled}
               labels={labels}
               isLoggedIn={isLoggedIn}
               wishlistsSummaries={wishlistsSummaries}
               isFavoriteView={isFavoriteView}
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
+              outOfStockLabels={outOfStockLabels}
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
           </div>
         );
@@ -138,7 +147,7 @@ ProductList.propTypes = {
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
   currency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({}).isRequired,
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
@@ -167,9 +176,13 @@ ProductList.propTypes = {
   isFavoriteView: PropTypes.bool,
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
+  outOfStockLabels: PropTypes.shape({}),
+  isKeepAliveEnabled: PropTypes.bool,
   isSearchListing: PropTypes.bool,
   getProducts: PropTypes.func,
   asPathVal: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -186,7 +199,6 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: 1,
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',
@@ -199,9 +211,13 @@ ProductList.defaultProps = {
   isFavoriteView: false,
   removeFavItem: null,
   createNewWishListMoveItem: null,
+  outOfStockLabels: {},
+  isKeepAliveEnabled: false,
   isSearchListing: false,
   getProducts: () => {},
   asPathVal: '',
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductList, ProductListStyle);
