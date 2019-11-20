@@ -25,6 +25,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -144,6 +145,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
                 "autoCapitalize": "sentences",
+                "bottomBorderColor": null,
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -196,6 +198,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
                 "autoCapitalize": "sentences",
+                "bottomBorderColor": null,
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",

@@ -33,4 +33,5 @@ export const ICON_NAME = {
   large: 'large',
   filledHeart: 'filled-heart',
   starFilled: 'star-filled',
+  heart: 'heart',
 };
