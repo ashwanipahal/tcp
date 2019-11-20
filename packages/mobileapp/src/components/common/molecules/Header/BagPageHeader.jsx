@@ -10,14 +10,11 @@ import {
   CloseIconTouchable,
   CloseContainer,
   BagPageContainer,
-  Header,
 } from './Header.style';
 
 // @flow
 type Props = {
   navigation: object,
-  closeModal: Function,
-  isApplyNowModal: Boolean,
 };
 
 /**
@@ -38,30 +35,22 @@ const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.
  */
 class BagPageHeader extends React.PureComponent<Props> {
   closeIconAction = () => {
-    const { navigation, closeModal } = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
-    if (closeModal) {
-      closeModal();
-    }
   };
 
   render() {
-    const { isApplyNowModal } = this.props;
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
         <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
-          {!isApplyNowModal ? (
-            <BrandIconSection>
-              <BrandIcon
-                source={isGymboree() ? gymIcon : tcpIcon}
-                data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
-                accessibilityRole="image"
-              />
-            </BrandIconSection>
-          ) : (
-            <Header />
-          )}
+          <BrandIconSection>
+            <BrandIcon
+              source={isGymboree() ? gymIcon : tcpIcon}
+              data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
+              accessibilityRole="image"
+            />
+          </BrandIconSection>
           <CloseContainer>
             <CloseIconTouchable onPress={this.closeIconAction}>
               <CloseIcon

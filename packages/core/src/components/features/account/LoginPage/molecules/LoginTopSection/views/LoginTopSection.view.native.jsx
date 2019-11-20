@@ -49,12 +49,14 @@ const LoginTopSection = props => {
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
+            fontFamily="secondary"
             text={getLabelValue(labels, 'lbl_login_subDescription_heading_1', 'login')}
           />
 
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
+            fontFamily="secondary"
             text={getLabelValue(labels, 'lbl_login_Description_heading_2', 'login')}
           />
           <ResetPassword>
@@ -71,6 +73,7 @@ const LoginTopSection = props => {
             <BodyCopy
               component="span"
               fontSize="fs12"
+              fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_login_Description_heading_3', 'login')}
             />
           </ResetPassword>
@@ -88,7 +91,7 @@ const LoginTopSection = props => {
               text={getLabelValue(labels, 'lbl_login_favorites_modal_heading', 'login')}
               fontSize="fs16"
               fontWeight="black"
-              mobilefontFamily={['secondary']}
+              fontFamily="secondary"
               textAlign="center"
             />
           </FavtHeading>
@@ -96,7 +99,7 @@ const LoginTopSection = props => {
             <BodyCopy
               component="span"
               fontSize="fs12"
-              mobilefontFamily={['secondary']}
+              fontFamily="secondary"
               textAlign="center"
               text={getLabelValue(labels, 'lbl_login_favorites_modal_heading_1', 'login')}
             />
@@ -109,7 +112,7 @@ const LoginTopSection = props => {
             <BodyCopy
               fontSize="fs28"
               fontWeight="black"
-              fontFamily="primary"
+              fontFamily="secondary"
               textAlign="center"
               text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             />

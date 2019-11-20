@@ -15,6 +15,12 @@ import {
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
+jest.mock('../util/utility', () => {
+  return {
+    makeBrandToggling: () => false,
+  };
+});
+
 describe('Added to bag saga', () => {
   it('should dispatch addToCartEcomGen action for success resposnse', () => {
     const payload = {
@@ -25,6 +31,7 @@ describe('Added to bag saga', () => {
       wishlistItemId: '333',
     };
     const addToCartEcomGen = addToCartEcom({ payload });
+    addToCartEcomGen.next();
     addToCartEcomGen.next();
     addToCartEcomGen.next();
     addToCartEcomGen.next();
@@ -72,6 +79,7 @@ describe('Added to bag saga', () => {
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
 
     const response = {
       orderItemId: '1111',
@@ -80,7 +88,8 @@ describe('Added to bag saga', () => {
       ...payload.productInfo,
       ...response,
     };
-    const putDescriptor = addItemToCartBopisGen.next(response).value;
+    addItemToCartBopisGen.next(response);
+    const putDescriptor = addItemToCartBopisGen.next().value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
     const err = {
       ...response,

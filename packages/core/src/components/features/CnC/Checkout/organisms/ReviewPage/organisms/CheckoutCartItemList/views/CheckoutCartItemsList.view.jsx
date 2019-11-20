@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -50,6 +51,7 @@ class CheckoutCartItemsList extends Component {
     gettingSortedItemList: PropTypes.func.isRequired,
     showAccordian: PropTypes.bool,
     disableProductRedirect: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   /**
@@ -107,17 +109,17 @@ class CheckoutCartItemsList extends Component {
             </BodyCopy>
             {storeTodayOpenRange && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${today}${storeTodayOpenRange}`}
+                {`${today}: ${storeTodayOpenRange}`}
               </BodyCopy>
             )}
             {storeTomorrowOpenRange && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${tomorrow}${storeTomorrowOpenRange}`}
+                {`${tomorrow}: ${storeTomorrowOpenRange}`}
               </BodyCopy>
             )}
             {storePhoneNumber && (
               <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
-                {`${phone}${storePhoneNumber}`}
+                {`${phone}: ${storePhoneNumber}`}
               </BodyCopy>
             )}
           </>
@@ -365,7 +367,7 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels, showAccordian } = this.props;
+    const { itemsCount, className, bagPageLabels, showAccordian, bagLoading } = this.props;
     const header = (
       <BodyCopy
         fontWeight="semibold"
@@ -398,7 +400,7 @@ class CheckoutCartItemsList extends Component {
         </Col>
         <div className={showAccordian ? 'hide-in-medium-down' : ''}>
           {header}
-          {this.renderItems()}
+          {!bagLoading ? this.renderItems() : <AddressSkeleton />}
         </div>
       </div>
     );
@@ -410,6 +412,7 @@ CheckoutCartItemsList.defaultProps = {
   bagPageLabels: {},
   showAccordian: true,
   disableProductRedirect: false, // Disable Product Redirect
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

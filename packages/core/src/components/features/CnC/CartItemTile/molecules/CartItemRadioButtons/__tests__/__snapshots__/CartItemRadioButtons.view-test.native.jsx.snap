@@ -107,6 +107,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -246,6 +247,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -444,6 +446,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -642,6 +645,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -840,6 +844,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1094,6 +1099,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1196,6 +1202,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1369,6 +1376,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1542,6 +1550,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1724,6 +1733,7 @@ exports[`CartItemRadioButtons native Component should open change store popup fo
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}

@@ -6,7 +6,8 @@ const buildQuery = ({ slot, contentId, lang }) => `
 		set {
 			val
 			key
-		}
+    }
+    errorMessage
 		composites {
 			headLine {
 				text

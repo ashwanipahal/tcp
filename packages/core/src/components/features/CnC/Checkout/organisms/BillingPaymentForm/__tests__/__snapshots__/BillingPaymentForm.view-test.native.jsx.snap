@@ -628,12 +628,17 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -1009,12 +1014,17 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -1066,12 +1076,17 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -1238,6 +1253,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
             margins={null}
             noLink={true}
@@ -1410,12 +1426,17 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -1614,6 +1635,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
             margins={null}
             noLink={true}
@@ -1786,12 +1808,17 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -1842,102 +1869,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                     "touch": undefined,
                   },
                   "payload": "PLACE CARD",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "PLACE CARD",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "PLACE CARD",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": null,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "isPLCCEnabled",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": undefined,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardNumber",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "expMonth",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "expYear",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cvvCode",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
                   "type": "@@redux-form/CHANGE",
                 },
               ],
@@ -2015,38 +1946,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               ],
             ],
             "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -2185,102 +2084,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                       "persistentSubmitErrors": undefined,
                       "touch": undefined,
                     },
-                    "payload": "PLACE CARD",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "cardType",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": null,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "isPLCCEnabled",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "cardNumber",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "expMonth",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "expYear",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "cvvCode",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "cardType",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "PLACE CARD",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "cardType",
-                      "form": "checkoutBillingPayment",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
                     "payload": null,
                     "type": "@@redux-form/CHANGE",
                   },
@@ -2335,38 +2138,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                 ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -2479,102 +2250,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                     "persistentSubmitErrors": undefined,
                     "touch": undefined,
                   },
-                  "payload": "PLACE CARD",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": null,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "isPLCCEnabled",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": undefined,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardNumber",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "expMonth",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "expYear",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cvvCode",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "PLACE CARD",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "cardType",
-                    "form": "checkoutBillingPayment",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
                   "payload": null,
                   "type": "@@redux-form/CHANGE",
                 },
@@ -2629,38 +2304,6 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               ],
             ],
             "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -2749,12 +2392,17 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -2764,12 +2412,17 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;

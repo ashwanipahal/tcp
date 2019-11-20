@@ -212,6 +212,7 @@ export class DetailedCouponTile extends React.Component {
             <TileDesc>
               <View>
                 <BodyCopy
+                  fontFamily="secondary"
                   data-locator="accountoverview-myplacerewatdstile-rewarduseby"
                   text={`${
                     isPlaceCash
@@ -220,6 +221,7 @@ export class DetailedCouponTile extends React.Component {
                   }`}
                 />
                 <BodyCopy
+                  fontFamily="secondary"
                   text={
                     isPlaceCash
                       ? `${coupon.effectiveDate} - ${coupon.expirationDate}`

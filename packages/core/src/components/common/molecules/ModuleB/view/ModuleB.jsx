@@ -35,18 +35,12 @@ const getButtonListVariationProps = ctaType => {
  * This function returns column size for grid on the basis of moduleWidth param
  * @param {*} moduleWidth
  */
-const getColSize = moduleWidth => {
-  const colSize = {
+const getColSize = () => {
+  return {
     small: 6,
     medium: 8,
     large: 12,
   };
-  if (moduleWidth === MODULE_WIDTH_HALF) {
-    colSize.medium = 4;
-    colSize.large = 6;
-  }
-
-  return colSize;
 };
 
 /**
@@ -57,15 +51,13 @@ const ModuleB = props => {
     className,
     ctaItems,
     largeCompImage: [{ headerText, promoBanner, linkedImage }],
-    moduleWidth,
     ctaType,
     bannerPosition,
     expandableTitle,
   } = props;
-
   const buttonListCtaType = getButtonListVariation(ctaType);
   const buttonListProps = getButtonListVariationProps(ctaType);
-  const colSize = getColSize(moduleWidth);
+  const colSize = getColSize();
 
   const dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
 

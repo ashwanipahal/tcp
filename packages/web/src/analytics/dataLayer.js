@@ -1,3 +1,5 @@
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import {
   generateBrowseDataLayer,
@@ -27,27 +29,58 @@ export default function create(store) {
   const homepageDataLayer = generateHomePageDataLayer(store);
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
+  const { pageCountCookieKey } = API_CONFIG;
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
     ...clickHandlerDataLayer,
+    pageCount: {
+      get() {
+        return readCookie(pageCountCookieKey);
+      },
+    },
     pageName: {
       get() {
-        return `gl:${store.getState().pageData.pageName}`;
+        /* If clickActionAnalyticsData has pageName then this will be used else
+           pageName will used from pageData. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+
+        return `gl:${pageName}`;
       },
     },
 
     isCurrentRoute: () => false,
 
-    pageshortName: {
+    pageShortName: {
       get() {
-        return store.getState().pageData.pageName;
+        /* If clickActionAnalyticsData has pageShortName then this will be used else
+           pageShortName will used from pageData. Also if pageShortName is not available then pageName will
+           be used. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageShortName = clickActionAnalyticsData.pageShortName
+          ? clickActionAnalyticsData.pageShortName
+          : pageData.pageShortName;
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+        return `gl:${pageShortName || pageName}`;
       },
     },
 
     pageType: {
       get() {
-        return store.getState().pageData.pageName;
+        const { pageData } = store.getState();
+        return pageData.pageType ? pageData.pageType : pageData.pageName;
       },
     },
 
@@ -85,7 +118,7 @@ export default function create(store) {
       get() {
         return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
-          : 'rewards member:logged in';
+          : 'no rewards:logged in';
       },
     },
 
@@ -108,7 +141,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency;
+        return store.getState().APIConfig.currency.toUpperCase();
       },
     },
 
@@ -136,6 +169,14 @@ export default function create(store) {
       },
     },
 
+    pageNavigationText: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
@@ -158,6 +199,14 @@ export default function create(store) {
           typeCart = 'boss';
         }
         return typeCart;
+      },
+    },
+
+    products: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
       },
     },
   });

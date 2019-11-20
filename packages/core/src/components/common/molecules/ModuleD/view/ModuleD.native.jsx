@@ -25,13 +25,19 @@ const keyExtractor = (_, index) => index.toString();
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module D single element item.
  */
-const renderItem = (item, navigation) => {
+const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   const {
-    item: { image, link },
+    item: { image, link, video },
     index,
   } = item;
 
   const anchorEnable = true;
+  const videoData = video &&
+    video.url && {
+      videoWidth: imageSize,
+      videoHeight: imageSize,
+      ...video,
+    };
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
@@ -41,10 +47,11 @@ const renderItem = (item, navigation) => {
           url={image.url}
           crop={image.crop_m}
           height={imageSize}
+          videoData={videoData}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
           imgConfig={config.IMG_DATA_2.imgConfig[0]}
-          host={LAZYLOAD_HOST_NAME.HOME}
+          host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
         />
       </Anchor>
 
@@ -76,7 +83,14 @@ const renderItem = (item, navigation) => {
  * @prop {object} navigation: Naviation object.
  */
 
-const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
+const ModuleD = ({
+  smallCompImage,
+  headerText,
+  promoBanner,
+  singleCTAButton,
+  navigation,
+  ignoreLazyLoadImage,
+}) => {
   return (
     <Wrapper>
       <HeaderContainer>
@@ -109,7 +123,7 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
             numColumns={2}
             data={smallCompImage}
             keyExtractor={keyExtractor}
-            renderItem={item => renderItem(item, navigation)}
+            renderItem={item => renderItem(item, navigation, ignoreLazyLoadImage)}
           />
         )}
       </ListContainer>
@@ -133,6 +147,7 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
 ModuleD.defaultProps = {
   promoBanner: [],
   singleCTAButton: {},
+  ignoreLazyLoadImage: false,
 };
 
 ModuleD.propTypes = {
@@ -156,6 +171,7 @@ ModuleD.propTypes = {
   ).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
+  ignoreLazyLoadImage: PropTypes.bool,
 };
 
 export default ModuleD;

@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import LoyaltyBannerSkeleton from '../../../skeleton/LoyaltyBannerSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -88,6 +89,7 @@ const LoyaltyBannerSection = props => {
     openOverlay,
     closeAddedToBagModal,
     openApplyNowModal,
+    bagLoading,
     footerLabels,
   } = props;
   let showSubtotal = false;
@@ -164,34 +166,45 @@ const LoyaltyBannerSection = props => {
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        <BodyCopy className="loyalty-banner-section-wrapper" component="div" fontFamily="secondary">
-          <GuestMprPlccSection
-            labels={labels}
-            headingLabel={headingLabel}
-            subHeadingLabel={subHeadingLabel}
-            descriptionLabel={descriptionLabel}
-            remainingPlcc={remainingPlcc}
-            showSubtotal={showSubtotal}
-            getCurrencySymbol={getCurrencySymbol}
-            currentSubtotal={currentSubtotal}
-            estimatedSubtotal={estimatedSubtotal}
-            isPlcc={isPlcc}
-            isGuest={isGuest}
-            pageCategory={pageCategory}
-            isProductDetailView={isProductDetailView}
-            earnedRewardAvailable={earnedRewardAvailable}
-          />
-          <div className="footer">
-            <LoyaltyFooterSection
-              className={className}
-              footerLabels={footerLabels}
-              openOverlay={openOverlay}
-              closeAddedToBagModal={closeAddedToBagModal}
-              openApplyNowModal={openApplyNowModal}
+        {isProductDetailView || !bagLoading ? (
+          <BodyCopy
+            className="loyalty-banner-section-wrapper"
+            component="div"
+            fontFamily="secondary"
+          >
+            <GuestMprPlccSection
+              labels={labels}
+              headingLabel={headingLabel}
+              subHeadingLabel={subHeadingLabel}
+              descriptionLabel={descriptionLabel}
+              remainingPlcc={remainingPlcc}
+              showSubtotal={showSubtotal}
+              getCurrencySymbol={getCurrencySymbol}
+              currentSubtotal={currentSubtotal}
+              estimatedSubtotal={estimatedSubtotal}
+              isPlcc={isPlcc}
+              isGuest={isGuest}
+              pageCategory={pageCategory}
               isProductDetailView={isProductDetailView}
+              earnedRewardAvailable={earnedRewardAvailable}
             />
-          </div>
-        </BodyCopy>
+
+            <div className="footer">
+              <LoyaltyFooterSection
+                footerLabels={footerLabels}
+                className={className}
+                openOverlay={openOverlay}
+                closeAddedToBagModal={closeAddedToBagModal}
+                openApplyNowModal={openApplyNowModal}
+                isProductDetailView={isProductDetailView}
+              />
+            </div>
+          </BodyCopy>
+        ) : (
+          <>
+            <LoyaltyBannerSkeleton />
+          </>
+        )}
       </div>
     </div>
   );
@@ -215,6 +228,7 @@ LoyaltyBannerSection.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -230,6 +244,7 @@ LoyaltyBannerSection.defaultProps = {
   pageCategory: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
+  bagLoading: false,
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

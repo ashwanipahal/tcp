@@ -5,7 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MiniBagHeader.style';
@@ -37,13 +37,13 @@ class MiniBagHeader extends React.Component {
       currentPoints,
       totalRewards,
       isPlcc,
-      isRememberedUser,
       isUserLoggedIn,
     } = this.props;
 
     const createAccount = 'createAccount';
     const login = 'login';
     const accountDrawer = 'accountDrawer';
+    const isCA = isCanada();
     return (
       <div className={className}>
         <Row className="mainWrapper">
@@ -78,7 +78,7 @@ class MiniBagHeader extends React.Component {
             ) : (
               <>
                 <BodyCopy
-                  className="userName"
+                  className={`userName ${isCA ? 'elem-pr-XL' : ''}`}
                   component="span"
                   fontSize="fs14"
                   fontWeight="extrabold"
@@ -88,7 +88,7 @@ class MiniBagHeader extends React.Component {
                 >
                   {`${labels.hi}, ${userName} `}
                 </BodyCopy>
-                {!isRememberedUser && (
+                {!isCA && (
                   <BodyCopy
                     className="pointsRewards"
                     color={getPointsColor(isPlcc)}
@@ -149,7 +149,6 @@ MiniBagHeader.propTypes = {
   onRequestClose: PropTypes.func.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isPlcc: PropTypes.bool.isRequired,
-  isRememberedUser: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
 };
 

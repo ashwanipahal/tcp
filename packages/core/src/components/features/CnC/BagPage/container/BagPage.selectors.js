@@ -116,7 +116,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = getLabelValue(state.Labels, 'addedToBagModal', 'global');
+  const { referred = [] } = state.Labels.global.addedToBagModal;
 
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
@@ -227,7 +227,6 @@ const getPayPalWebViewStatus = state => {
 const isBagLoaded = state => {
   return state.CartPageReducer.getIn(['loaded']);
 };
-
 const getBagStickyHeaderInterval = state => {
   return (
     parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
@@ -237,6 +236,25 @@ const getBagStickyHeaderInterval = state => {
 
 const getIsPayPalHidden = state => {
   return state.CartPageReducer.getIn(['paypalBtnHidden']);
+};
+
+const isBagLoading = state => {
+  return state.CartPageReducer.getIn(['bagLoading']);
+};
+
+const isBagRouting = state => {
+  return state.CartPageReducer.get('isRouting');
+};
+
+const getCartLoadedState = state => {
+  return state.CartPageReducer.get('loaded');
+};
+
+const getIfEmailSignUpDone = state => {
+  return {
+    emailSignUpTCP: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpTCP']),
+    emailSignUpGYM: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpGYM']),
+  };
 };
 
 export default {
@@ -269,4 +287,8 @@ export default {
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
   getIsPayPalHidden,
+  isBagLoading,
+  getCartLoadedState,
+  isBagRouting,
+  getIfEmailSignUpDone,
 };

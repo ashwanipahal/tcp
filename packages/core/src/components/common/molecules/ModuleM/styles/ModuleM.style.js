@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import Col from '../../../atoms/Col';
 
 export const ImageGrid = styled(Col)`
-  margin-bottom: 32px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   border-radius: ${props => (props.round ? '100%' : 0)};
 
   img {
@@ -14,7 +14,7 @@ export const ImageGrid = styled(Col)`
 export const ImageRoundFlex = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
   img {
     height: 143px;
@@ -43,7 +43,7 @@ export const CtaButtonWrapper = styled(Col)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     font-size: ${props => props.theme.typography.fontSizes.fs26};
@@ -54,7 +54,8 @@ export const CtaButtonWrapper = styled(Col)`
   }
 
   .moduleM__shopAllBtn {
-    padding: 48px 61px;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 61px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -64,7 +65,7 @@ export const CtaButtonWrapper = styled(Col)`
 export default css`
   .image-items-container {
     justify-content: center;
-    margin: 24px auto 0;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} auto 0;
   }
   .moduleM__productName {
     display: flex;
@@ -73,42 +74,22 @@ export default css`
 
   .promoBanner {
     background: ${props => props.theme.colorPalette.blue[500]};
-    color: ${props => props.theme.colors.WHITE};
-    margin-top: 16px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
 
-    .medium_text_semibold {
-      font-weight: ${props => props.theme.fonts.fontWeight.medium};
-      padding-top: 8px;
-      @media ${props => props.theme.mediaQuery.mediumOnly} {
-        display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs20};
-      }
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs20};
-      }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0;
     }
 
-    .fixed_medium_text_black {
-      @media ${props => props.theme.mediaQuery.mediumOnly} {
-        display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs48};
-      }
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs48};
+    .promo-text {
+      display: block;
+
+      @media ${props => props.theme.mediaQuery.large} {
+        display: inline;
       }
     }
   }
-  .promo-header {
-    .medium_text_subpromo {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        padding: 0 75px;
-        display: flex;
-      }
-    }
-  }
+
   .image-items-container-category {
     display: flex;
     flex-wrap: wrap;
@@ -126,9 +107,10 @@ export default css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .image-items-container__flex--item {
-    margin-bottom: 32px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-right: 14px;
     img {
       width: 142px;
@@ -156,11 +138,12 @@ export default css`
     justify-content: center;
     align-items: center;
     height: 142px;
-    margin-bottom: 32px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     width: 142px;
 
     .moduleM__shopAllBtn {
-      padding: 48px 61px;
+      font-family: ${props => props.theme.typography.fonts.primary};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 61px;
       text-align: center;
     }
 
@@ -180,18 +163,18 @@ export default css`
   .product-tab-list {
     display: flex;
     justify-content: center;
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     > :not(:last-child) {
       border-right: 1px solid #c3c3c3;
     }
 
     .product-tab-list__item {
-      padding: 0px 10px;
+      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
   }
   .promo-header .link-text {
-    margin-bottom: 8px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .moduleM__productImage {
     height: 100%;
@@ -200,5 +183,9 @@ export default css`
 
   .header-container {
     margin-right: 0;
+  }
+
+  .moduleM__productContainer {
+    height: 100%;
   }
 `;

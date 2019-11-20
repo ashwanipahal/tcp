@@ -23,6 +23,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       customStyle={Object {}}
       data-locator="earnExtraPointsViewAll"
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}

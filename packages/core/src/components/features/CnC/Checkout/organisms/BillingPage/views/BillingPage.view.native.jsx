@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import GiftCardsContainer from '../../GiftCardsSection';
-import style from '../styles/BillingPage.style.native';
+import style, { BillingPageContainer } from '../styles/BillingPage.style.native';
 import GuestBillingForm from '../../GuestBillingForm';
 import BillingPaymentForm from '../../BillingPaymentForm';
 
@@ -35,6 +35,9 @@ class BillingPage extends React.PureComponent {
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
     setCheckoutStage: PropTypes.func.isRequired,
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoEnabled: PropTypes.bool,
+    isPayPalWebViewEnable: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -45,6 +48,9 @@ class BillingPage extends React.PureComponent {
     billingData: null,
     userAddresses: null,
     creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
+    isVenmoEnabled: false,
+    isPayPalWebViewEnable: false,
   };
 
   componentDidMount() {
@@ -71,24 +77,29 @@ class BillingPage extends React.PureComponent {
       userAddresses,
       creditFieldLabels,
       setCheckoutStage,
+      isVenmoPaymentInProgress,
+      isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
+      isPayPalWebViewEnable,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
-
     return (
-      <>
-        <CheckoutProgressIndicator
-          activeStage="billing"
-          navigation={navigation}
-          availableStages={availableStages}
-          setCheckoutStage={setCheckoutStage}
-        />
+      <BillingPageContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
+        {!isPayPalWebViewEnable && (
+          <CheckoutProgressIndicator
+            activeStage="billing"
+            navigation={navigation}
+            availableStages={availableStages}
+            setCheckoutStage={setCheckoutStage}
+          />
+        )}
         <ScrollView
           ref={scrollView => {
             this.scrollView = scrollView;
           }}
+          disableScrollViewPanResponder={!isPayPalWebViewEnable}
         >
-          <Container>
+          <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />
             <GiftCardsContainer />
             {isGuest ? (
@@ -107,6 +118,9 @@ class BillingPage extends React.PureComponent {
                 btnText={nextSubmitText}
                 creditFieldLabels={creditFieldLabels}
                 setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             ) : (
               <BillingPaymentForm
@@ -126,11 +140,14 @@ class BillingPage extends React.PureComponent {
                 creditFieldLabels={creditFieldLabels}
                 scrollView={this.scrollView}
                 setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             )}
           </Container>
         </ScrollView>
-      </>
+      </BillingPageContainer>
     );
   }
 }

@@ -1,25 +1,52 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import PointsPage from '@tcp/core/src/components/features/account/PointsClaim';
 import PointsHistory from '@tcp/core/src/components/features/account/PointHistory';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import OrderDetail from '@tcp/core/src/components/features/account/OrderDetails';
+import Settings from '@tcp/core/src/components/features/account/Settings';
 import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
+import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
+import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
 import Header from '../components/common/molecules/Header';
 import ROUTE_NAMES from '../reduxStore/routes';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const getNewHeader = navigation => {
   const title = navigation && navigation.getParam('title');
   const showHeader = navigation && navigation.getParam('noHeader');
   return {
-    header: props => (!showHeader ? <HeaderNew {...props} title={title} /> : null),
+    header: props =>
+      !showHeader ? (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <HeaderNew {...props} title={title} />
+        </SafeAreaView>
+      ) : null,
     headerBackground: 'transparent',
   };
+};
+
+const getDefaultHeaderForStore = (navigation, navTitle) => {
+  const title = navTitle || (navigation && navigation.getParam('title'));
+  return {
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+        <Header {...props} title={title} navigation={navigation} headertype="store" />
+      </SafeAreaView>
+    ),
+    headerBackground: 'transparent',
+  };
+};
+
+const storeLocatorNavigationOptions = ({ navigation }) => {
+  const title = navigation && navigation.getParam('title');
+  const navTitle = (title && `${title.toUpperCase()}`) || '';
+  return getDefaultHeaderForStore(navigation, navTitle);
 };
 
 const AccountStack = createStackNavigator(
@@ -54,6 +81,23 @@ const AccountStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
+    AppSettings: {
+      // eslint-disable-next-line react/prop-types
+      screen: ({ navigation }) => {
+        const handleToggle = navigation.getParam('handleToggle');
+        const isUserLoggedIn = navigation.getParam('isUserLoggedIn');
+        return (
+          <Settings
+            handleToggle={handleToggle}
+            navigation={navigation}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        );
+      },
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
     OrderDetailPage: {
       // eslint-disable-next-line react/prop-types
       screen: ({ navigation }) => {
@@ -70,10 +114,24 @@ const AccountStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
+    StoreDetails: {
+      screen: StoreDetails,
+      path: 'store-details/:storeId',
+      navigationOptions: storeLocatorNavigationOptions,
+    },
+    StoreLanding: {
+      screen: StoreLanding,
+      path: 'store-landing',
+      navigationOptions: storeLocatorNavigationOptions,
+    },
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

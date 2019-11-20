@@ -21,6 +21,7 @@ describe('AddEditCreditCard saga', () => {
         creditCardId: '12345',
       };
       addCreditCardGen.next();
+      addCreditCardGen.next();
       addCreditCardGen.next(List([{}]));
       addCreditCardGen.next(
         List([
@@ -31,6 +32,7 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next(response);
+      addCreditCardGen.next();
       addCreditCardGen.next();
       addCreditCardGen.next();
       const putDescriptor = addCreditCardGen.next().value;
@@ -47,6 +49,7 @@ describe('AddEditCreditCard saga', () => {
       };
       const addCreditCardGen = addCreditCardSaga({ payload });
       addCreditCardGen.next();
+      addCreditCardGen.next();
       addCreditCardGen.next(List());
       addCreditCardGen.next(
         List([
@@ -57,8 +60,8 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
-        .value;
+      addCreditCardGen.throw({ response: { body: { errors: ['test'] } } });
+      const putDescriptor = addCreditCardGen.next().value;
       expect(putDescriptor).toEqual(put(addCreditCardError('test')));
     });
   });
@@ -75,6 +78,7 @@ describe('AddEditCreditCard saga', () => {
         creditCardId: '12345',
       };
       addCreditCardGen.next();
+      addCreditCardGen.next();
       addCreditCardGen.next(
         List([
           {
@@ -84,6 +88,7 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next(response);
+      addCreditCardGen.next();
       addCreditCardGen.next();
       addCreditCardGen.next();
       const putDescriptor = addCreditCardGen.next().value;
@@ -109,8 +114,8 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
-        .value;
+      addCreditCardGen.throw({ response: { body: { errors: ['test'] } } });
+      const putDescriptor = addCreditCardGen.next().value;
       expect(putDescriptor).toEqual(put(addCreditCardError('test')));
     });
   });

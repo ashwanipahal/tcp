@@ -136,6 +136,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           dataLocator=""
           fontFamily="secondary"
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -207,6 +208,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
       }
       fontSizeVariation="xlarge"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -218,6 +220,8 @@ exports[`LoginForm component should renders correctly 1`] = `
       borderColor={null}
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={28}
     />
   </View>

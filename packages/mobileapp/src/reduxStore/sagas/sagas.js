@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LayoutSaga from '@tcp/core/src/reduxStore/sagas/layout';
+import SubNavigationSaga from '@tcp/core/src/reduxStore/sagas/subNavigation';
 import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
@@ -68,6 +69,7 @@ import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recom
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
 import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import BundleProductSaga from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.saga';
+import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -140,5 +142,7 @@ export default function* rootSaga() {
     SubscribeStoreSaga(),
     ResetPasswordSaga(),
     BundleProductSaga(),
+    ProductPickup(),
+    SubNavigationSaga(),
   ]);
 }

@@ -35,16 +35,19 @@ export class ChangePasswordInfo extends React.PureComponent {
         >
           <BodyCopyWithSpacing
             fontSize="fs16"
+            fontFamily="secondary"
             spacingStyles="margin-bottom-MED"
             text={getLabelValue(labels, 'lbl_profile_change_your_password')}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
+            fontFamily="secondary"
             spacingStyles="margin-bottom-MED"
             text={getLabelValue(labels, 'lbl_profile_password_info_line1')}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
+            fontFamily="secondary"
             text={getLabelValue(labels, 'lbl_profile_password_info_line2')}
           />
         </MyProfileTile>
@@ -53,6 +56,7 @@ export class ChangePasswordInfo extends React.PureComponent {
           isOpen={showChangePasswordModal}
           onRequestClose={this.toggleModal}
           heading={getLabelValue(labels, 'lbl_profile_change_password')}
+          headingFontFamily="secondary"
         >
           <SafeAreaView>
             <ModalViewWrapper>

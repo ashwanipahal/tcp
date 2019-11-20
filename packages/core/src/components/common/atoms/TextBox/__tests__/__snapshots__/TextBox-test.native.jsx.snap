@@ -18,6 +18,12 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
         error="food"
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "food",
+            "touched": "foo",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -65,6 +71,12 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         error=""
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -129,6 +141,12 @@ exports[`Textbox component renders correctly 1`] = `
         error=""
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -183,6 +201,12 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
           id="input"
           keyboardType="default"
           label="input"
+          meta={
+            Object {
+              "error": "",
+              "touched": "",
+            }
+          }
           onBlur={[Function]}
           onChangeText={[Function]}
           onEndEditing={[Function]}

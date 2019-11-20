@@ -18,6 +18,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
@@ -29,6 +30,7 @@ describe('Shipping Page', () => {
       shippingAddress: {
         addressLine1: '',
       },
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -70,6 +72,7 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -95,6 +98,8 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
+
       shipmentMethods: [{}],
       addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
@@ -120,6 +125,7 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -165,7 +171,7 @@ describe('Shipping Page', () => {
       ]),
       formatPayload: () => {},
       shippingDidMount: () => {},
-
+      emailSignUpFlags: { emailSignUpTCP: true },
       addEditResponseAddressId: '34789',
     };
     const tree = shallow(<ShippingPage {...props} />);
@@ -183,6 +189,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
@@ -214,6 +221,7 @@ describe('Shipping Page', () => {
       saveToAddressBook: true,
       verifyAddressAction: () => {},
       shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpGYM: true },
     };
 
     const tree = shallow(<ShippingPage {...props} />);

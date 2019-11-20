@@ -1,5 +1,6 @@
 export default {
   FORM_NAME: 'checkoutBillingPayment',
+  GUEST_FORM_NAME: 'checkoutBilling',
   EDIT_FORM_NAME: 'checkoutCardEditPayment',
   FETCH_MODULEX_CONTENT: 'FETCH_MODULEX_CONTENT_CREDIT',
   SET_MODULEX_CONTENT: 'SET_MODULEX_CONTENT_CREDIT',

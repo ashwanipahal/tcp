@@ -8,6 +8,36 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CheckoutFooter extends React.PureComponent {
+  renderNextButton = () => {
+    const {
+      showVenmoSubmit,
+      showPayPalButton,
+      disableNext,
+      ariaLabelNextButton,
+      nextHandler,
+      nextButtonText,
+    } = this.props;
+    return (
+      !showVenmoSubmit &&
+      !showPayPalButton && (
+        <Button
+          disabled={disableNext}
+          aria-label={ariaLabelNextButton}
+          type="submit"
+          className="footer-button footer-button-mob"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          buttonVariation="variable-width"
+          fill="BLUE"
+          onClick={nextHandler}
+          dataLocator="reviewBtn"
+        >
+          {nextButtonText}
+        </Button>
+      )
+    );
+  };
+
   render() {
     const {
       className,
@@ -43,20 +73,7 @@ class CheckoutFooter extends React.PureComponent {
               {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
             </>
           ) : (
-            <Button
-              disabled={disableNext}
-              aria-label={ariaLabelNextButton}
-              type="submit"
-              className="footer-button footer-button-mob"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              buttonVariation="variable-width"
-              fill="BLUE"
-              onClick={nextHandler}
-              dataLocator="reviewBtn"
-            >
-              {nextButtonText}
-            </Button>
+            this.renderNextButton()
           )}
           <div className="back-space">
             {hideBackLink && (

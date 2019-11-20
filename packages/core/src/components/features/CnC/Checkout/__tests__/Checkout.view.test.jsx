@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
+import { getCurrentSection } from '../views/CheckoutPage.view.util';
 
 describe('CheckoutPageVanilla component', () => {
   const initialProps = {
@@ -19,6 +20,7 @@ describe('CheckoutPageVanilla component', () => {
     shippingProps: {
       shipmentMethods: {},
     },
+    setCheckoutStage: jest.fn(),
   };
 
   const tree = shallow(<CheckoutPageVanilla {...initialProps} />);
@@ -37,6 +39,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -57,6 +60,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -64,7 +68,14 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling getCurrentSection method', () => {
-    expect(tree.instance().getCurrentSection()).toEqual('shipping');
+    const props = {
+      router: {
+        query: {
+          section: 'shipping',
+        },
+      },
+    };
+    expect(getCurrentSection(props)).toEqual('shipping');
   });
 
   it('calling isVenmoPickupDisplayed method', () => {
@@ -75,6 +86,7 @@ describe('CheckoutPageVanilla component', () => {
   it('calling isShowVenmoBanner method', () => {
     const props = {
       ...initialProps,
+      isVenmoPickupBannerDisplayed: false,
       router: { query: { subSection: CHECKOUT_STAGES.PICKUP, section: CHECKOUT_STAGES.PICKUP } },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
@@ -83,7 +95,15 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isShowVenmoBanner method for Shipping', () => {
-    const componentInstance = tree.instance();
+    const props = {
+      ...initialProps,
+      isVenmoShippingBannerDisplayed: false,
+      router: {
+        query: { subSection: CHECKOUT_STAGES.SHIPPING, section: CHECKOUT_STAGES.SHIPPING },
+      },
+    };
+    const component = shallow(<CheckoutPageVanilla {...props} />);
+    const componentInstance = component.instance();
     expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING)).toBeTruthy();
   });
 
@@ -98,6 +118,9 @@ describe('CheckoutPageVanilla component', () => {
       router: { query: { section: 'pickup', subSection: 'pickup' } },
       onPickupSubmit: () => {},
       reviewProps: { labels: {} },
+      isVenmoPickupBannerDisplayed: false,
+      isVenmoPaymentInProgress: true,
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
@@ -105,7 +128,30 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isVenmoShippingDisplayed method', () => {
-    const componentInstance = tree.instance();
+    const props = {
+      className: 'className',
+      backLinkText: 'backLinkText',
+      nextButtonText: 'nextButtonText',
+      disableNext: false,
+      backLinkHandler: () => {},
+      disableBackLink: false,
+      router: { query: { section: 'pickup', subSection: 'pickup' } },
+      onPickupSubmit: () => {},
+      isVenmoShippingBannerDisplayed: false,
+      reviewProps: {
+        labels: {
+          ariaLabelSubmitOrderButton: '',
+          applyConditionPreText: '',
+          applyConditionTermsText: '',
+          nextSubmitText: '',
+          applyConditionPolicyText: '',
+          applyConditionAndText: '',
+        },
+      },
+      setCheckoutStage: jest.fn(),
+    };
+    const component = shallow(<CheckoutPageVanilla {...props} />);
+    const componentInstance = component.instance();
     expect(componentInstance.isVenmoShippingDisplayed()).toBeFalsy();
   });
 });

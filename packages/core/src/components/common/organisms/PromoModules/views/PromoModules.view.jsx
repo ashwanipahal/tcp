@@ -1,51 +1,68 @@
-import React, { PureComponent } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../hoc/withStyles';
-import { Col } from '../../../atoms';
-import styles from '../styles/PromoModules.style';
-import DivisionTabModule from '../../../molecules/DivisionTabModule';
-import OutfitModule from '../../../molecules/OutfitCarouselModule';
-import JeansModule from '../../../molecules/JeansModule';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 
-export class PromoModules extends PureComponent {
-  static propTypes = {
-    divisionTab: PropTypes.shape({}),
-    onTabChange: PropTypes.func,
-    className: PropTypes.string,
-    outfitModule: PropTypes.shape({}),
-    jeansModule: PropTypes.shape({}),
-    asPath: PropTypes.string,
-    plpTopPromos: PropTypes.shape({}),
-  };
+const modules = {
+  divisionTabs: lazy(() => import('@tcp/core/src/components/common/molecules/DivisionTabModule')),
+  outfitCarousel: lazy(() =>
+    import('@tcp/core/src/components/common/molecules/OutfitCarouselModule')
+  ),
+  jeans: lazy(() => import('@tcp/core/src/components/common/molecules/JeansModule')),
+  moduleA: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleA')),
+  moduleD: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleD')),
+  moduleG: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleG')),
+  moduleM: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleM')),
+  moduleQ: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleQ')),
+};
 
-  static defaultProps = {
-    divisionTab: {},
-    onTabChange: () => {},
-    className: '',
-    outfitModule: {},
-    jeansModule: {},
-    asPath: '',
-    plpTopPromos: {},
-  };
+const PromoModules = ({ asPath, plpTopPromos }) => {
+  // isMounted state is needed to ensure the <Suspense> only renders client-side
+  // We don't want to render this in SSR (and can't because NextJS will error).
+  const [isMounted, setMounted] = useState(false);
 
-  render() {
-    const { onTabChange, className, asPath, plpTopPromos } = this.props;
+  // Set mounted flag on mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    // TODO - Replace this with dynamic loading with story for promo module component - RWD-12792
-    const divisionTab = plpTopPromos[2];
-    const outfitModule = plpTopPromos[0];
-    const jeansModule = plpTopPromos[1];
+  return isMounted ? (
+    <Suspense fallback={null}>
+      {plpTopPromos.map(promo => {
+        const { contentId, moduleName, data: slotData, ...others } = promo;
+        const Module = modules[moduleName];
+        return (
+          Module && (
+            <Module
+              fullBleed
+              key={contentId}
+              data={promo}
+              asPath={asPath}
+              {...slotData}
+              {...others}
+            />
+          )
+        );
+      })}
+      {/* UX timer for when the lazy promos above resolve */}
+      <RenderPerf.Measure name={PROMOTION_VISIBLE} />
+    </Suspense>
+  ) : null;
+};
 
-    return (
-      <Col className={className} colSize={{ small: 6, medium: 8, desktop: 12 }}>
-        {jeansModule && <JeansModule jeansModule={jeansModule} />}
-        {outfitModule && <OutfitModule outfitModule={outfitModule} />}
-        {divisionTab && (
-          <DivisionTabModule divisionTab={divisionTab} onTabChange={onTabChange} asPath={asPath} />
-        )}
-      </Col>
-    );
-  }
-}
+PromoModules.propTypes = {
+  asPath: PropTypes.string,
+  plpTopPromos: PropTypes.arrayOf(
+    PropTypes.shape({
+      // Only including the most important property
+      moduleName: PropTypes.string,
+    })
+  ),
+};
 
-export default withStyles(PromoModules, styles);
+PromoModules.defaultProps = {
+  asPath: '',
+  plpTopPromos: [],
+};
+
+export default PromoModules;

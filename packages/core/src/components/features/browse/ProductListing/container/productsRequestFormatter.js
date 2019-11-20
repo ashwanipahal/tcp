@@ -350,7 +350,7 @@ export default class ProductsOperator {
     );
   }
 
-  getProductsListingForUrlLocation(state, location = window.location, sortParam, sortBySelected) {
+  getProductsListingForUrlLocation(state, location, sortParam, sortBySelected) {
     const match =
       matchPath(location.pathname, { path: PAGES.PRODUCT_LISTING_PAGE }) ||
       matchPath(location.pathname, { path: PAGES.SEARCH_PAGE });
@@ -453,7 +453,7 @@ export default class ProductsOperator {
     filtersAndSort,
     pageNumber,
     // TODO - fix this for mobile APP - location needs to be defined
-    location = window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
+    location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
     startProductCount,
     numberOfProducts,
     categoryPathMap,
@@ -539,9 +539,9 @@ export default class ProductsOperator {
       return null; // nothing more to load
     }
 
-    const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+    const { appliedFiltersIds } = state.ProductListing;
     // TODO - take the fallback from sort array once sort functionality is merged
-    const sort = (state.ProductListing && state.ProductListing.get('appliedSortId')) || '';
+    const sort = (state.ProductListing && state.ProductListing.appliedSortId) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
     return this.getProductsListingInfo({
@@ -569,7 +569,7 @@ export default class ProductsOperator {
       if (!this.bucketingConfig.L3Left.length) {
         return null; // nothing more to load
       }
-      const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+      const { appliedFiltersIds } = state.ProductListing;
 
       const categoryNameList = [...this.bucketingConfig.currL2NameList];
       // Pushing the first L3 available in L3left variable
@@ -584,7 +584,7 @@ export default class ProductsOperator {
         filtersAndSort: appliedFiltersAndSort,
         pageNumber: false,
         // location: routingInfoStoreView.getHistory(this.store.getState()).location,
-        location: window.location,
+        location,
         startProductCount: this.bucketingConfig.start,
         numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
         categoryPathMap,

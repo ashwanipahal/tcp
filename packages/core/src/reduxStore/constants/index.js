@@ -8,6 +8,7 @@ export default {
   BOOTSTRAP_API: 'BOOTSTRAP_API',
   SITE_CONFIG: 'SITE_CONFIG',
   SET_API_CONFIG: `${APICONFIG_ACTION_PATTERN}SET_API_CONFIG`,
+  SET_PREVIEW_DATE: `${APICONFIG_ACTION_PATTERN}SET_PREVIEW_DATE`,
   GET_MODULEX_CONTENT: 'GET_MODULEX_CONTENT',
   SET_MODULEX_CONTENT: 'SET_MODULEX_CONTENT',
   LOAD_LAYOUT_DATA: 'LOAD_LAYOUT_DATA',
@@ -33,6 +34,8 @@ export default {
   SET_DEVICE_INFO: 'SET_DEVICE_INFO',
   SET_OPTIMIZELY_FEATURES_LIST: 'SET_OPTIMIZELY_FEATURES_LIST',
   FETCH_PAGE_LAYOUT: 'FETCH_PAGE_LAYOUT',
+  SET_SUB_NAVIGATION_DATA: 'SET_SUB_NAVIGATION_DATA',
+  GET_SUB_NAVIGATION_DATA: 'GET_SUB_NAVIGATION_DATA',
 };
 
 export const LABELS = {
@@ -47,4 +50,13 @@ export const LABELS = {
 export const SEO_DATA = {
   seoData: 'seoData',
   home: '/home',
+  account: '/account',
+  bag: '/bag',
+  checkout: '/checkout',
+  search: '/search',
+};
+
+export const MODULES_CONSTANT = {
+  placeholder: 'placeholder',
+  subNavigation: 'SubNavigation',
 };

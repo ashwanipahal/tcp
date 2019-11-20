@@ -52,7 +52,7 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   render() {
-    const { productInfo, formRef, currencyExchange } = this.props;
+    const { productInfo, formRef, currencyAttributes, onCloseClick } = this.props;
     const { currentColorEntry, formEnabled } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&
@@ -70,7 +70,8 @@ class ProductCustomizeFormPartContainer extends React.Component {
         onInputSelectionChange={this.onInputSelectionChange}
         formRef={formRef}
         formEnabled={formEnabled}
-        currencyExchange={currencyExchange}
+        currencyAttributes={currencyAttributes}
+        onCloseClick={onCloseClick}
       />
     );
   }
@@ -91,7 +92,7 @@ ProductCustomizeFormPartContainer.propTypes = {
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   currency: PropTypes.string,
   addToBagError: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 ProductCustomizeFormPartContainer.defaultProps = {
@@ -99,7 +100,7 @@ ProductCustomizeFormPartContainer.defaultProps = {
   addToBagError: '',
   navigation: {},
   formRef: {},
-  currencyExchange: 1,
+  currencyAttributes: {},
 };
 
 export default ProductCustomizeFormPartContainer;

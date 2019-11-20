@@ -34,7 +34,7 @@ class ModuleR extends React.PureComponent {
   onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
-      currentTabItem: tabItem,
+      currentTabItem: [tabItem],
     });
   };
 
@@ -108,6 +108,7 @@ class ModuleR extends React.PureComponent {
                   medium: 2,
                   large: 2,
                 }}
+                ignoreNthRule
               >
                 <Anchor
                   to={pdpUrl}
@@ -128,6 +129,7 @@ class ModuleR extends React.PureComponent {
               key={index.toString()}
               className="image-item-wrapper"
               colSize={{ small: 2, medium: 4, large: 4 }}
+              ignoreNthRule
             >
               {productItem}
             </Col>
