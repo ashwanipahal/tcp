@@ -200,7 +200,13 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
     if (isCLP) {
-      return <CategoryListing />;
+      return (
+        <CategoryListing
+          breadCrumbs={breadCrumbs}
+          currentNavIds={currentNavIds}
+          navTree={navTree}
+        />
+      );
     }
     return !isOutfit ? (
       <ProductListing

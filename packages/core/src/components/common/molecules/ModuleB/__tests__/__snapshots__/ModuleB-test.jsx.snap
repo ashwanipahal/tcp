@@ -8,8 +8,8 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 12,
+          "medium": 8,
           "small": 6,
         }
       }
@@ -129,8 +129,8 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 12,
+          "medium": 8,
           "small": 6,
         }
       }

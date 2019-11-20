@@ -360,6 +360,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_payPalLongText',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
+      'lbl_billing_venmoLongText',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -396,6 +397,7 @@ const getBillingLabels = createSelector(
       lbl_billing_payPalLongText: payPalLongText,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
+      lbl_billing_venmoLongText: venmoLongText,
     } = labels;
     return {
       header,
@@ -429,6 +431,7 @@ const getBillingLabels = createSelector(
       continueWithPayPal,
       payPalLongText,
       addCreditCard,
+      venmoLongText,
     };
   }
 );

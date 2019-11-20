@@ -46,6 +46,7 @@ import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
 import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
+import SMSNotificationSelectors from '../../Confirmation/organisms/SMSNotifications/container/SMSNotifications.selectors';
 import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 const {
@@ -283,6 +284,8 @@ export const mapStateToProps = state => {
     isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     pageData: getPageData(state),
+    notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
+    subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
   };
@@ -296,6 +299,8 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   } = props;
   fetchNeedHelpContent([
     needHelpContentId,
@@ -303,5 +308,7 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   ]);
 };
