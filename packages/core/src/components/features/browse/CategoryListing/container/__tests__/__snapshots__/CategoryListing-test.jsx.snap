@@ -116,6 +116,20 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
               categoryPromoImages={Object {}}
             />
           </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Styled(ReadMore)
+              className=" seo-text seo-text-wrapper"
+              labels={Object {}}
+            />
+          </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>
     </Styled(Row)>

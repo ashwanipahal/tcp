@@ -24,6 +24,7 @@ export default class ShippingPage extends React.PureComponent {
     checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
     orderHasPickUp: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
+    emailSignUpFlags: PropTypes.shape({}).isRequired,
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
@@ -176,6 +177,7 @@ export default class ShippingPage extends React.PureComponent {
       defaultShipping,
       saveToAddressBook,
       smsSignUp = {},
+      emailSignUp,
     } = data;
     const { isGuest, userAddresses, verifyAddressAction } = this.props;
     const { isAddNewAddress } = this.state;
@@ -211,7 +213,6 @@ export default class ShippingPage extends React.PureComponent {
         address: shipAddress,
         addressId: shipAddress.addressId,
         emailAddress: shipAddress.emailAddress,
-        emailSignup: true,
         onFileAddressKey,
         phoneNumber: shipAddress.phoneNumber,
         saveToAccount: saveToAddressBook,
@@ -221,6 +222,7 @@ export default class ShippingPage extends React.PureComponent {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
+      emailSignUp,
       hasSetGiftOptions,
     };
 
@@ -361,6 +363,7 @@ export default class ShippingPage extends React.PureComponent {
       userAddresses,
       onFileAddressKey,
       isLoadingShippingMethods,
+      emailSignUpFlags,
     } = this.props;
     const { isMobile, newUserPhoneNo, shippingAddressId } = this.props;
     const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
@@ -386,6 +389,7 @@ export default class ShippingPage extends React.PureComponent {
               checkoutRoutingDone={checkoutRoutingDone}
               bagLoading={bagLoading}
               toggleCountrySelector={toggleCountrySelector}
+              emailSignUpFlags={emailSignUpFlags}
               checkoutServerError={checkoutServerError}
               isSubmitting={isSubmitting}
               routeToPickupPage={routeToPickupPage}
@@ -398,6 +402,10 @@ export default class ShippingPage extends React.PureComponent {
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
                 saveToAddressBook: !isGuest,
                 onFileAddressKey: shippingAddressId || primaryAddressId,
+                emailSignUp: {
+                  emailSignUp: emailSignUpFlags.emailSignUpTCP,
+                  emailSignUpGYM: emailSignUpFlags.emailSignUpGYM,
+                },
               }}
               selectedShipmentId={selectedShipmentId}
               checkPOBoxAddress={this.checkPOBoxAddress}

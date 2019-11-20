@@ -106,6 +106,27 @@ export const generateBrowseDataLayer = store => {
       },
     },
 
+    externalReferrer: {
+      get() {
+        const { pageData } = store.getState();
+        return (pageData && pageData.pageReferer) || '';
+      },
+    },
+    campaignId: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'campaignId'], '');
+      },
+    },
+    internalCampaignId: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
+      },
+    },
+
     productFindingMethod: {
       get() {
         return getPageType(store) || '';

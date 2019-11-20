@@ -205,7 +205,7 @@ export const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
-
+    emailSignUpFlags: BagPageSelector.getIfEmailSignUpDone(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
