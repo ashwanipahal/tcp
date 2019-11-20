@@ -1042,10 +1042,11 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       fullBleed={true}
     >
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
@@ -1062,10 +1063,11 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         </Styled(Button)>
       </Styled(Col)>
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
@@ -2462,10 +2464,11 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       fullBleed={true}
     >
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
@@ -2482,10 +2485,11 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         </Styled(Button)>
       </Styled(Col)>
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
