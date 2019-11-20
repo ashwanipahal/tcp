@@ -15,6 +15,7 @@ const createRwdStyle = styleConfig => props => {
   if (typeof breakpoints === 'undefined') {
     return;
   }
+  // eslint-disable-next-line consistent-return
   return breakpoints.keys.reduce((rwdStyle, breakpointKey, breakpointKeyIndex) => {
     const breakpointValue = breakpoints.values[breakpointKey];
     let totalRwdStyle = '';
