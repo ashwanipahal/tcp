@@ -63,17 +63,14 @@ const getBreakpointImgUrl = (type, props) => {
 
 const RenderVideo = videoProps => {
   const { video, image } = videoProps;
-  const { autoplay, controls, url: src } = video;
+  const { autoplay, controls, url, muted, loop } = video;
 
   const options = {
     autoplay,
     controls,
-    sources: [
-      {
-        src,
-        type: 'video/mp4',
-      },
-    ],
+    url,
+    muted,
+    loop,
     image,
   };
 
