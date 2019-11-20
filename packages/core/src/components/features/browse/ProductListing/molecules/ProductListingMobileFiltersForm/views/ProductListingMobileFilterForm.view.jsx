@@ -1,22 +1,20 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import ProductListingMobileFiltersFormStyle, {
-  customModalCss,
-} from '../styles/ProductListingMobileFiltersForm.style';
+import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
 import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
-import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
-import Modal from '../../../../../../common/molecules/Modal';
 import { getLocator } from '../../../../../../../utils';
 import SortSelector from '../../SortSelector';
 import getSortOptions from '../../SortSelector/views/Sort.util';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
+import AppliedFiltersList from '../../AppliedFiltersList';
 
 // @flow
 type Props = {
@@ -181,15 +179,13 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param none
    */
   showModal = () => {
-    this.setState({ show: true, isSortOpenModal: false });
-    document.body.style.height = '90vh';
-    document.body.style.position = 'fixed';
+    const { show } = this.state;
+    this.setState({ show: !show, isSortOpenModal: false });
   };
 
   showSortModal = () => {
-    this.setState({ show: true, isSortOpenModal: true });
-    document.body.style.height = '90vh';
-    document.body.style.position = 'fixed';
+    const { isSortOpenModal } = this.state;
+    this.setState({ show: false, isSortOpenModal: !isSortOpenModal });
   };
   /**
    * @function toggleFilterIcon
@@ -209,8 +205,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
    * @param {String} facetName - filter names "category, color etc"
    */
-  renderFilterField(selectedFilters, filterName, facetName) {
-    const { filtersMaps, isFavoriteView, onFilterSelection } = this.props;
+  renderFilterField = (selectedFilters, filterName, facetName) => {
+    const {
+      filtersMaps,
+      isFavoriteView,
+      onFilterSelection,
+      handleSubmitOnChange,
+      isLoadingMore,
+    } = this.props;
     const optionsMap = getFilterOptionsMap(filtersMaps[facetName]);
 
     const className = 'item-list-collapsible item-list-collapsible-expanded size-detail-chips';
@@ -229,9 +231,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         forwardRef
         disableExpandStateChanges
         onFilterSelection={onFilterSelection}
+        onOptionSelected={handleSubmitOnChange}
+        isLoadingMore={isLoadingMore}
       />
     );
-  }
+  };
 
   /**
    * @function renderColorFilterField This handles to render the color filter fields
@@ -239,8 +243,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param {filterName} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
    * @param {facetName} facetName - filter names "category, color etc"
    */
-  renderColorFilterField(selectedFilters, filterName, facetName) {
-    const { filtersMaps, labels } = this.props;
+  renderColorFilterField = (selectedFilters, filterName, facetName) => {
+    const { filtersMaps, labels, handleSubmitOnChange, isLoadingMore } = this.props;
     const className = 'color-filter-chip size-detail';
     return (
       <Field
@@ -259,16 +263,18 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         forwardRef
         onBlur={this.handleFilterFieldBlur}
         labels={labels}
+        onOptionSelected={handleSubmitOnChange}
+        isLoadingMore={isLoadingMore}
       />
     );
-  }
+  };
 
   /**
    * @function renderMobilePlpFilterForm
    * @summary This handles to render the desktop filter fields
    * @param none
    */
-  renderMobilePlpFilterForm() {
+  renderMobilePlpFilterForm = () => {
     const { isSortOpenModal } = this.state;
     const {
       handleSubmit,
@@ -306,6 +312,48 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         )}
       </div>
     );
+  };
+
+  handleRemoveFilter = (fieldName, filterId) => {
+    const { onChange, initialValues, handleSubmitOnChange } = this.props;
+    onChange(fieldName, initialValues[fieldName].filter(entryId => entryId !== filterId));
+    handleSubmitOnChange(true);
+  };
+
+  handleRemoveAllFilters = () => {
+    const { onChange, initialValues, handleSubmitOnChange } = this.props;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in initialValues) {
+      if (Object.prototype.hasOwnProperty.call(initialValues, key) && key !== 'sort') {
+        onChange(key, []);
+      }
+    }
+    handleSubmitOnChange();
+  };
+
+  renderAppliedFiltersList(appliedFilters, facetName, cssKey) {
+    const { labels, className } = this.props;
+    const filterLength =
+      (appliedFilters && appliedFilters[facetName] && appliedFilters[facetName].length) || 0;
+    const filter = [];
+
+    if (filterLength > 0) {
+      filter.push(appliedFilters[facetName]);
+    }
+
+    const containerClassName = cssClassName('applied-filters-list-container ', cssKey);
+
+    return filterLength > 0 ? (
+      <div key={cssKey} className={containerClassName}>
+        <AppliedFiltersList
+          onRemoveFilter={this.handleRemoveFilter}
+          removeAllFilters={this.handleRemoveAllFilters}
+          appliedFilters={filter}
+          className={className}
+          labels={labels}
+        />
+      </div>
+    ) : null;
   }
 
   /**
@@ -313,21 +361,35 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @summary This handles to render the desktop filter fields
    * @param none
    */
-  renderMobileFilters() {
-    const { filtersMaps, filtersLength, className, selectedKeyValue } = this.props;
+  renderMobileFilters = () => {
+    const { filtersMaps, filtersLength, className, selectedKeyValue, initialValues } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const accordionItems = [];
     const { show } = this.state;
-
+    const appliedFilterComponent = [];
     filterKeys.map(key => {
       if (this.isUnbxdFacetKey(key)) {
+        const appliedFilter = {
+          [key]: initialValues[key]
+            ? initialValues[key].map(filterId =>
+                filtersMaps[key].find(filterOption => filterId === filterOption.id)
+              )
+            : [],
+        };
+        const filterLength = appliedFilter[key] ? appliedFilter[key].length : 0;
         const titleKey = {
           header: {
             title: unbxdKeyMapping[key] || selectedKeyValue,
+            filterLength,
           },
         };
         accordionItems.push(titleKey);
+        appliedFilterComponent[titleKey.header.title] = this.renderAppliedFiltersList(
+          appliedFilter,
+          [key],
+          'size-filter-applied-filters-list'
+        );
       }
       return false;
     });
@@ -342,7 +404,12 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         ignoreGutter={{ small: true, medium: true }}
         className="accordion-class"
       >
-        <AccordionList accordionItems={accordionItems} className={className} show={show}>
+        <AccordionList
+          accordionItems={accordionItems}
+          className={className}
+          show={show}
+          appliedFilterComponent={appliedFilterComponent}
+        >
           {/* eslint-disable */}
           {filterKeys.map(key => {
             if (key.toLowerCase() === FACETS_FIELD_KEY.color) {
@@ -362,7 +429,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         </AccordionList>
       </Col>
     );
-  }
+  };
 
   render() {
     const {
@@ -401,44 +468,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
     const sortClassName = isSortOpenModal ? 'mobile-sort-container' : '';
 
-    const customStyles = {
-      overlay: {
-        zIndex: 9,
-      },
-    };
+    const toggleFilter = !show ? 'hide-filter' : 'show-filter';
+    const toggleSort = !isSortOpenModal ? 'hide-sort' : 'show-sort';
 
     return (
       <React.Fragment>
-        <Modal
-          isOpen={show}
-          widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
-          heightConfig={{ height: '100%' }}
-          style={customStyles}
-          inheritedStyles={customModalCss}
-          bodyOpenClassName={null}
-        >
-          <form
-            className={`${className} available-filters-sorting-container`}
-            onSubmit={handleSubmit(formValues => {
-              this.hideModal(true);
-              handleImmediateSubmit(formValues);
-            })}
-          >
-            <FilterModal
-              show={show}
-              handleClose={this.hideModal}
-              classNames={classNames}
-              labels={labels}
-              isSortOpenModal={isSortOpenModal}
-              sortLabels={sortLabels}
-            >
-              <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
-                {this.renderMobilePlpFilterForm()}
-              </div>
-            </FilterModal>
-          </form>
-        </Modal>
-
         <Row centered className={`filter-row ${className}`}>
           <Col
             colSize={{
@@ -455,7 +489,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               onClick={this.showModal}
               id="filter-open"
             >
-              {labels.lbl_filter}
+              {appliedFiltersCount > 0
+                ? `${labels.lbl_filter} (${appliedFiltersCount})`
+                : labels.lbl_filter}
             </Button>
           </Col>
           <Col
@@ -474,6 +510,72 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             >
               {labels.lbl_sort}
             </Button>
+          </Col>
+        </Row>
+        <form
+          className={`${className} ${toggleSort} ${toggleFilter} available-filters-sorting-container`}
+          onSubmit={handleSubmit(formValues => {
+            this.hideModal(true);
+            handleImmediateSubmit(formValues);
+          })}
+        >
+          <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
+            {this.renderMobilePlpFilterForm(appliedFilters)}
+          </div>
+          {!isSortOpenModal && (
+            <div className="modal-spacing">
+              <Row centered>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
+                  className="close-button"
+                >
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="button"
+                    className="gallery-button-left"
+                    data-locator="view_gallery_button"
+                    onClick={() => this.hideModal()}
+                  >
+                    {labels.lbl_clear}
+                  </Button>
+                </Col>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
+                >
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="button"
+                    className="gallery-button-left"
+                    data-locator="plp_filter_apply_button"
+                    fill="BLACK"
+                    onClick={() => this.showModal()}
+                  >
+                    {labels.lbl_apply}
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          )}
+        </form>
+        <Row fullBleed className={`${className} filtered-by-section`}>
+          <Col colSize={{ small: 0, medium: 8 }}>
+            {this.getAppliedFiltersCount() > 0 && (
+              <AppliedFiltersList
+                onRemoveFilter={this.handleRemoveFilter}
+                appliedFilters={appliedFilters}
+                removeAllFilters={this.handleRemoveAllFilters}
+                className={className}
+                labels={labels}
+              />
+            )}
           </Col>
         </Row>
       </React.Fragment>
@@ -497,6 +599,8 @@ ProductListingMobileFiltersForm.propTypes = {
   onSortSelection: PropTypes.func,
   onFilterSelection: PropTypes.func,
   favoriteSortingParams: PropTypes.shape({}),
+  isLoadingMore: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
@@ -510,6 +614,8 @@ ProductListingMobileFiltersForm.defaultProps = {
   onSortSelection: null,
   onFilterSelection: null,
   favoriteSortingParams: null,
+  isLoadingMore: false,
+  onChange: () => {},
 };
 export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 

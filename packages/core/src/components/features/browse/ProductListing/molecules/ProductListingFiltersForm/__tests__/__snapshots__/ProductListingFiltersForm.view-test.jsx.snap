@@ -3085,7 +3085,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           }
         }
         isFavoriteView={false}
+        isLoadingMore={false}
         labels={Object {}}
+        onChange={[Function]}
         onSortSelection={[Function]}
         onSubmit={[MockFunction]}
         removeAllFilters={[Function]}
