@@ -38,7 +38,6 @@ exports[`ConfirmationView should render correctly 1`] = `
     showPayPalButton={false}
     showVenmoSubmit={false}
   />
-  <Connect(ConfirmationAccountFormContainer) />
 </Styled(ScrollViewMock)>
 `;
 
@@ -106,7 +105,6 @@ exports[`ConfirmationView should render correctly 2`] = `
     showPayPalButton={false}
     showVenmoSubmit={false}
   />
-  <Connect(ConfirmationAccountFormContainer) />
 </Styled(ScrollViewMock)>
 `;
 
@@ -169,6 +167,5 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
     showPayPalButton={false}
     showVenmoSubmit={false}
   />
-  <Connect(ConfirmationAccountFormContainer) />
 </Styled(ScrollViewMock)>
 `;
