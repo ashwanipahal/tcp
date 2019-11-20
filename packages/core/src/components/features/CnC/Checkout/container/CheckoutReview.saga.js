@@ -339,7 +339,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     yield all(pendingPromises);
     const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
     if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
+      utility.routeToPage(CHECKOUT_ROUTES.confirmationPage, { fromReview: 'true' });
     } else if (navigation) {
       navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
     }
