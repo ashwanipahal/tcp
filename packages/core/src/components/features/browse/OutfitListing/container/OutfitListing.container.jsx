@@ -30,7 +30,7 @@ class OutfitListingContainer extends React.PureComponent {
     if (navigation) {
       const oldNavigationUrl = oldNavigation.getParam('url');
       const newNavigationUrl = navigation.getParam('url');
-      if (navigation && oldNavigationUrl !== newNavigationUrl) {
+      if (oldNavigationUrl !== newNavigationUrl) {
         getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
       }
     }
