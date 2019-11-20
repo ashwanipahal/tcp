@@ -218,9 +218,6 @@ class TCPWebApp extends App {
       apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
-      // response headers
-      apiConfig.resHeaders = res.getHeaders();
-      apiConfig.reqHeaders = req.headers;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
