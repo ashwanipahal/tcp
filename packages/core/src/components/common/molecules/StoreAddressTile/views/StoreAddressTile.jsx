@@ -83,7 +83,7 @@ class StoreAddressTile extends PureComponent {
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
             as={Anchor}
-            clickData={{ customEvents: ['event80,event96'], internalCampaignId: 'check' }}
+            clickData={{ customEvents: ['event80,event96'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </ClickTracker>
@@ -452,3 +452,5 @@ StoreAddressTile.propTypes = propTypes;
 StoreAddressTile.defaultProps = defaultProps;
 
 export default withStyles(StoreAddressTile, style);
+
+export { StoreAddressTile as StoreAddressTileVanilla };
