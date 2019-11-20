@@ -4689,7 +4689,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4744,7 +4744,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4800,7 +4800,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4855,7 +4855,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4911,7 +4911,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4966,7 +4966,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -5021,7 +5021,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-prod";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -5075,7 +5075,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-prod";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
