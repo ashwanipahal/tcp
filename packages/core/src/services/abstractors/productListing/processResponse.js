@@ -296,9 +296,67 @@ const processResponse = (
   }
 
   try {
-    if (res.body.banner) {
-      bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
-    }
+    // if (res.body.banner) {
+    // bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+    bannerInfo = {
+      cid: '06961395-c28d-4647-bd4e-9aab0e385568',
+      typ: 'promoCombination',
+      sub: 'plp',
+      val: {
+        top: [
+          {
+            typ: 'slot',
+            sub: 'slot_1',
+            val: {
+              cid: '38796a2d-58c3-4299-a4a1-989061a9b783',
+              typ: 'module',
+              sub: 'moduleA',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_2',
+            val: {
+              cid: '08142819-d8a4-466d-87b1-f132aa18311f',
+              typ: 'module',
+              sub: 'moduleQ',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_3',
+            val: {
+              cid: 'de2bd00b-82a7-469b-bfeb-7036f6225668',
+              typ: 'module',
+              sub: 'outfitCarousel',
+              val: '',
+            },
+          },
+        ],
+        grid: [],
+        horizontal: [],
+      },
+      loyaltyBanner: [
+        {
+          userType: 'guest',
+          html:
+            "<style>.plp-promo-banner{display:none}</style><div class=product-promo-banner style=padding:21px15px17px;margin-bottom:31px;background-color:#fff> <div class=plcc-promo-banner-container style=overflow:hidden> <div class=plcc-banner-border-left style=width:10px;min-height:75px;float:left;overflow:hidden></div><div class=promo-banner style=padding-right:10px;margin-top:15px> <span class=perk style=width:54%;display:block;font-family:Avenir;font-size:48px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.0;color:#e86726;letter-spacing:-.5px;float:left;text-align:left>EARN DOUBLE POINTS</span> <span class=perk-info style=width:43%;display:block;font-family:Avenir;font-size:18px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.44;letter-spacing:-.1px;color:#333;float:left;text-align:right>ON ALL MY PLACE REWARDS PURCHASES THROUGH 2/28/19</span> </div><div class=promo-banner-links style=font-size:13px;font-family:Avenir;color:#666;text-align:right;padding-right:32px;margin-bottom:5px> <button class='promo-banner-link js-page-link' dest-app='MY_PLACE_REWARDS_CONTENT' dest-web='/us/content/double-up?icid=gl_na_na_regplcc_020319_doubleup' style=text-decoration:underline;color:#666;font-family:Avenir;font-weight:500;font-size:13px>Details</button> <span class=promo-banner-link-divider style=margin:02px>/</span> <a class='promo-banner-link js-banner-create-link' style=text-decoration:underline;color:#666;font-family:Avenir;font-weight:500;font-size:13px> Create Account </a> <span class=promo-banner-link-divider style=margin:02px>/</span> <button class='promo-banner-link js-login' style=text-decoration:underline;color:#666;font-family:Avenir;font-weight:500;font-size:13px>Log In</button> </div></div></div>",
+        },
+        {
+          userType: 'mpr',
+          html:
+            "<style>.plp-promo-banner{display:none}</style><div class=product-promo-banner style=padding:21px15px17px;margin-bottom:31px;background-color:#fff> <div class='plcc-promo-banner-container user-tier-border-theme' style=overflow:hidden> <div class=plcc-banner-border-left style=width:10px;min-height:75px;float:left;overflow:hidden></div><div class=promo-banner style=padding-right:10px;margin-top:15px> <span class='perk user-tier-theme' style=width:53%;display:block;font-family:Avenir;font-size:48px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.0;color:#e86726;letter-spacing:-.5px;float:left;text-align:left>EARN DOUBLE POINTS</span> <span class=perk-info style=width:44%;display:block;font-family:Avenir;font-size:18px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.44;letter-spacing:-.1px;color:#333;float:left;text-align:right>ON ALL MY PLACE REWARDS PURCHASES THROUGH 2/28/19</span> </div><div class=promo-banner-links style=font-size:13px;font-family:Avenir;color:#666;text-align:right;padding-right:32px;margin-bottom:5px> <button class='promo-banner-link js-page-link' dest-app='MY_PLACE_REWARDS_CONTENT' dest-web='/us/content/double-up?icid=gl_na_na_regplcc_020319_doubleup' style=text-decoration:underline;color:#666;font-family:Avenir;font-weight:500;font-size:13px>Details</button> </div></div></div>",
+        },
+        {
+          userType: 'plcc',
+          html:
+            "<style>.plp-promo-banner{display:none}</style><div class=product-promo-banner style=padding:21px15px17px;margin-bottom:31px;background-color:#fff> <div class='plcc-promo-banner-container user-tier-border-theme' style=overflow:hidden> <div class=plcc-banner-border-left style=width:10px;min-height:75px;float:left;overflow:hidden></div><style>.content-slot-list-container .product-promo-banner .plcc-promo-banner-container .promo-banner, .product-promo-banner .plcc-promo-banner-container .promo-banner {flex-wrap:wrap}.content-slot-list-container .product-promo-banner .perk-info, .product-promo-banner .perk-info {margin-left:22px}.content-slot-list-container .product-promo-banner .promo-banner-links .promo-banner-link, .product-promo-banner .promo-banner-links .promo-banner-link {margin-left:5px}.content-slot-list-container .product-promo-banner .perk-info, .product-promo-banner .perk-info {width:297px!important} .content-slot-list-container .product-promo-banner .plcc-promo-banner-container .promo-banner, .product-promo-banner .plcc-promo-banner-container .promo-banner {padding-right:0px} @media only screen and (min-width:480px){.content-slot-list-container .product-promo-banner .plcc-promo-banner-container .promo-banner{flex-wrap:nowrap}.content-slot-list-container .product-promo-banner .perk-info{margin-left:0}.content-slot-list-container .product-promo-banner .promo-banner-links .promo-banner-link{margin-left:0}.content-slot-list-container .product-promo-banner .perk-info{width:66%!important} .content-slot-list-container .product-promo-banner .plcc-promo-banner-container .promo-banner{padding-right:10px}}</style><div class=promo-banner style=margin-top:15px;display:flex;><span class='perk user-tier-theme' style=width:100%!important;display:block;font-family:Avenir;font-size:48px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.0;color:#00a7e8;letter-spacing:0.4px;text-align:left>EARN DOUBLE REWARDS</span><span class=perk-info style=width:74%;display:block;font-family:Avenir;font-size:19px;font-weight:900;font-style:normal;font-stretch:normal;line-height:1.44;letter-spacing:-.1px;color:#333;text-align:right>WITH YOUR MY PLACE REWARDS CREDIT CARD THROUGH 2/28/19</span> </div><div class=promo-banner-links style=font-size:13px;font-family:Avenir-Medium;color:#666;text-align:right;padding-right:12px;margin-bottom:5px> <button class='promo-banner-link js-page-link' dest-app='MY_PLACE_REWARDS_CONTENT' dest-web='/us/content/double-up?icid=gl_na_na_regplcc_020319_doubleup' style=text-decoration:underline;color:#666;font-size:13px;font-weight:500>Details</button> </div></div></div>",
+        },
+      ],
+      // };
+    };
   } catch (error) {
     logger.error(error);
   }

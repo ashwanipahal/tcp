@@ -6,6 +6,7 @@ import {
   setPlpProducts,
   setListingFirstProductsPage,
   setPlpLoadingState,
+  loadPlpLoyaltyBanner,
 } from './ProductListing.actions';
 import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
@@ -69,8 +70,12 @@ export function* fetchPlpProducts({ payload }) {
           instanceProductListing.parsedModuleData,
           plpProducts.bannerInfo
         );
+        console.log('plpProducts.bannerInfo #### ', plpProducts.bannerInfo);
         yield put(loadLayoutData(layout, 'productListingPage'));
         yield put(loadModulesData(modules));
+        if (plpProducts.bannerInfo && plpProducts.bannerInfo.loyaltyBanner) {
+          yield put(loadPlpLoyaltyBanner({ loyaltyBanner: plpProducts.bannerInfo.loyaltyBanner }));
+        }
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         const isGuest = !getUserLoggedInState({ ...state });

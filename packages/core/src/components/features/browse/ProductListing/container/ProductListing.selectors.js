@@ -297,3 +297,8 @@ export const getPLPTopPromos = state => {
     []
   );
 };
+
+export const getLoyaltyBanner = state => {
+  const { loyaltyBanner } = state.ProductListing;
+  return loyaltyBanner;
+};

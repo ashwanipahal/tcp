@@ -7,6 +7,7 @@ import {
   RESULTS_VISIBLE,
 } from '@tcp/core/src/constants/rum.constants';
 import PromoModules from '../../../../common/organisms/PromoModules';
+import RichText from '../../../../common/atoms/RichText';
 
 // Changes as per RWD-9852. Keeping this for future reference.
 // import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -72,8 +73,10 @@ const ProductListView = ({
   isSearchListing,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  loyaltyBanner,
   ...otherProps
 }) => {
+  console.log('loyaltyBanner $$$$$$$$$$$$$ ', loyaltyBanner[0] && loyaltyBanner[0].html);
   // State needed to trigger UX timer once initial product results have rendered
   const [resultsExist, setResultsExist] = useState(false);
 
@@ -106,6 +109,7 @@ const ProductListView = ({
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
+          {loyaltyBanner && loyaltyBanner[0] && <RichText richTextHtml={loyaltyBanner[0].html} />}
           {plpTopPromos.length > 0 && (
             <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
           )}
