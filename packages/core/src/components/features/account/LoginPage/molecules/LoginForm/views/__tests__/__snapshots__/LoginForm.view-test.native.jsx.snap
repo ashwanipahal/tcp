@@ -28,6 +28,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -81,6 +82,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

@@ -9,6 +9,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -61,6 +62,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -127,6 +129,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -177,6 +180,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -550,6 +554,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -621,6 +626,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -742,6 +748,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -794,6 +801,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -860,6 +868,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -910,6 +919,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1283,6 +1293,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1354,6 +1365,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",

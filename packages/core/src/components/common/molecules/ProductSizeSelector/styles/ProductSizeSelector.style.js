@@ -33,6 +33,7 @@ const styles = css`
       display: inline-block;
       text-transform: capitalize;
       font-size: ${props => props.theme.fonts.fontSize.anchor.small}px;
+      color: ${props => props.theme.colorPalette.gray[400]};
       border-radius: 6px;
       text-align: center;
       width: 54px;

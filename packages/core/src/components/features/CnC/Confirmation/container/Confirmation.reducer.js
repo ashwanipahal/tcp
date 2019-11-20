@@ -35,6 +35,24 @@ const initialState = fromJS({
   updateOrderDetails: null,
 });
 
+const orderConfirmationNotificationReducer = (state, action) => {
+  switch (action.type) {
+    case CONFIRMATION_CONSTANTS.SET_LOADING_STATE:
+      return state.set('isLoading', action.payload.isLoading);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SMS_NOTIFICATION:
+      return state.setIn(['orderConfirmation', 'error'], null);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SMS_NOTIFICATION_ERR:
+      return state.setIn(['orderConfirmation', 'error'], action.payload);
+    case CONFIRMATION_CONSTANTS.RESET_CONFIRMATION_SMS_NOTIFICATION_ERR:
+      return state.setIn(['orderConfirmation', 'error'], null);
+    default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
+
 const orderConfirmationReducer = (state = initialState, action) => {
   switch (action.type) {
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_ORDER_CONFIRMATION:
@@ -51,11 +69,10 @@ const orderConfirmationReducer = (state = initialState, action) => {
       return state.set('updateOrderDetails', action.payload);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS:
       return state.setIn(['orderConfirmation', 'createAccountSuccess'], action.payload);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_SMS_NOTIFICATION_SUCCESS:
+      return state.setIn(['orderConfirmation', 'smsNotificationSuccess'], action.payload);
     default:
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return orderConfirmationNotificationReducer(state, action);
   }
 };
 
