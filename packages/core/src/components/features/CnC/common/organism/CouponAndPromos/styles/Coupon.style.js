@@ -45,6 +45,11 @@ const styles = css`
       }
     }
   }
+  .available_coupon {
+    .cart-show-more-btn {
+      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    }
+  }
 `;
 
 export default styles;

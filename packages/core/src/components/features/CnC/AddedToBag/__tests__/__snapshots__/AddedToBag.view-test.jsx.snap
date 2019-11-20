@@ -43,6 +43,15 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
       padding: 0;
       display: inline;
     }
+
+    .close-modal {
+      right: ",
+      [Function],
+      ";
+      top: ",
+      [Function],
+      ";
+    }
   }
 ",
     ]
@@ -341,6 +350,15 @@ exports[`Added to Bag View with Multiple Items should render Added to Bag view  
       margin-bottom: 0;
       padding: 0;
       display: inline;
+    }
+
+    .close-modal {
+      right: ",
+      [Function],
+      ";
+      top: ",
+      [Function],
+      ";
     }
   }
 ",

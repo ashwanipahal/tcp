@@ -53,7 +53,6 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -111,7 +110,6 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -230,7 +228,6 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -288,7 +285,6 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
