@@ -41,6 +41,7 @@ import {
   isVenmoPaymentAvailable,
   getVenmoUserName,
 } from './CheckoutVenmo.selector';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -594,6 +595,9 @@ function getPickupInitialPickupSectionValues(state) {
     ...{ hasAlternatePickup: isPickupAlt(state) },
     ...getPickupAltValues(state),
   };
+  const { emailSignUpTCP: emailSignUp, emailSignUpGYM } = BagPageSelectors.getIfEmailSignUpDone(
+    state
+  );
   return {
     pickUpContact: {
       firstName: pickupValues.firstName || getUserName(state),
@@ -607,6 +611,10 @@ function getPickupInitialPickupSectionValues(state) {
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
+    emailSignUp: {
+      emailSignUp,
+      emailSignUpGYM,
+    },
   };
 }
 

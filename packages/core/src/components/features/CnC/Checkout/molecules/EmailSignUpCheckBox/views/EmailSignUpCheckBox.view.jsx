@@ -48,8 +48,8 @@ class EmailSignUpCheckBox extends React.PureComponent {
                 dataLocator="signUp-checkbox-field"
                 name={fieldName}
                 component={InputCheckbox}
-                checked={emailSignUpTCP}
                 className="email-signup-tcp"
+                defaultChecked={emailSignUpTCP}
               >
                 <BodyCopy
                   dataLocator="pickup-email-signUp-heading-lbl"
@@ -63,9 +63,9 @@ class EmailSignUpCheckBox extends React.PureComponent {
               <Field
                 dataLocator="signUp-checkbox-field"
                 name={`${fieldName}GYM`}
-                checked={emailSignUpGYM}
                 component={InputCheckbox}
                 className="email-signup-gym"
+                defaultChecked={emailSignUpGYM}
               >
                 <BodyCopy
                   dataLocator="pickup-email-signUp-heading-lbl"

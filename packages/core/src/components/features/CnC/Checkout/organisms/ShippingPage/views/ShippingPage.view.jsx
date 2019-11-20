@@ -397,6 +397,10 @@ export default class ShippingPage extends React.PureComponent {
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
                 saveToAddressBook: !isGuest,
                 onFileAddressKey: shippingAddressId || primaryAddressId,
+                emailSignUp: {
+                  emailSignUp: emailSignUpFlags.emailSignUpTCP,
+                  emailSignUpGYM: emailSignUpFlags.emailSignUpGYM,
+                },
               }}
               selectedShipmentId={selectedShipmentId}
               checkPOBoxAddress={this.checkPOBoxAddress}
