@@ -1,8 +1,8 @@
 import React from 'react';
-import {PlatformProvider, usePlatformState} from './platform-context';
-import {DeviceProvider, useDeviceState} from './device-context';
+import { PlatformProvider, usePlatformState } from './platform-context';
+import { DeviceProvider, useDeviceState } from './device-context';
 
-export {InfoProvider, useInfoState};
+export { InfoProvider, useInfoState };
 
 const InfoContext = React.createContext({});
 
@@ -13,7 +13,7 @@ function getInitialContextState(props) {
   };
 }
 
-function InfoProvider({children, ...props}) {
+function InfoProvider({ children, ...props }) {
   return (
     <InfoContext.Provider value={getInitialContextState(props)}>{children}</InfoContext.Provider>
   );

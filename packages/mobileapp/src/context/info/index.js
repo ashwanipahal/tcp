@@ -1,1 +1,1 @@
-export {default as InfoProvider, useInfoState} from './info-provider';
+export { default as InfoProvider, useInfoState } from './info-provider';
