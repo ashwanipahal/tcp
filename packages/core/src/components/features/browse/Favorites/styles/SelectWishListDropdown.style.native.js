@@ -22,11 +22,22 @@ const DropDownStyle = css`
     props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
       : props.theme.colorPalette.white};
-  width: 100%;
+  width: ${props => (props.width ? props.width : '100%')};
 `;
+
+const getAdditionalHeaderStyle = props => {
+  const { isWishlist } = props;
+  return {
+    ...(isWishlist && { 'align-self': 'center' }),
+    ...(isWishlist && { 'background-color': 'green' }),
+  };
+};
 
 const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  flex-direction: row;
+  align-items: center;
+  ${getAdditionalHeaderStyle}
 `;
 
 const HeaderItemContainer = styled.View`
@@ -37,7 +48,9 @@ const Row = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   ${props =>
-    props.variation === 'primary' ? 'justify-content: center' : 'justify-content: space-between'};
+    props.variation === 'primary' || props.isWishlist
+      ? 'justify-content: center'
+      : 'justify-content:space-between'};
   align-items: center;
 `;
 

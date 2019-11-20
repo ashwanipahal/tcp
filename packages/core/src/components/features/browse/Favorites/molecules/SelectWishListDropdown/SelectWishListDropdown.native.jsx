@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, View, Modal, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { getScreenHeight, getLabelValue } from '../../../../../../utils/index.native';
+import { getScreenHeight } from '../../../../../../utils/index.native';
 import withStyles from '../../../../../common/hoc/withStyles.native';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
@@ -15,10 +15,7 @@ import {
   Separator,
   FlatList,
   FlatListWrapper,
-  DropDownWishlistItemContainer,
-  SelectedWishlistContainer,
-  ItemCountContainer,
-} from '../../../../../common/atoms/DropDown/DropDown.style.native';
+} from '../../styles/SelectWishListDropdown.style.native';
 
 const downIcon = require('../../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../../assets/carrot-small-up.png');
@@ -52,6 +49,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderFooter: PropTypes.func,
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
     defaultWishList: PropTypes.shape({}),
+    renderItems: PropTypes.func,
   };
 
   static defaultProps = {
@@ -72,6 +70,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderFooter: null,
     labels: {},
     defaultWishList: {},
+    renderItems: null,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -106,19 +105,10 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       height: 0,
     };
 
-    const { data, selectedValue, defaultWishList } = this.props;
-    const selectedObject = data.find(item => {
-      return item.value === selectedValue;
-    });
-
+    const { selectedValue, defaultWishList, isShareOptions, labels } = this.props;
     let selectedLabelState = '';
-    if (selectedValue) {
-      if (selectedObject) {
-        selectedLabelState = selectedObject.displayName;
-      } else if (data && data.length > 0) {
-        // in case selectedValue is not part of data optionSet passed, then it should be the first option label
-        selectedLabelState = data[0].displayName;
-      }
+    if (isShareOptions) {
+      selectedLabelState = selectedValue || labels.lbl_fav_share;
     } else {
       selectedLabelState =
         defaultWishList && defaultWishList.length && defaultWishList[0].displayName;
@@ -204,64 +194,12 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     });
   };
 
-  renderItemCount = (itemsCount, isDefault) => {
-    const { labels, dropDownItemFontWeight, itemStyle } = this.props;
-    return (
-      <ItemCountContainer>
-        <BodyCopy
-          margin="0 4px 0 0"
-          fontFamily="secondary"
-          fontSize="fs13"
-          color={isDefault ? 'gray.900' : itemStyle.color}
-          fontWeight={isDefault ? 'extrabold' : dropDownItemFontWeight}
-          text={itemsCount}
-        />
-        <BodyCopy
-          margin="0 12px 0 0"
-          fontFamily="secondary"
-          fontSize="fs13"
-          color={itemStyle.color}
-          fontWeight={dropDownItemFontWeight}
-          text={getLabelValue(labels, 'lbl_fav_items')}
-        />
-      </ItemCountContainer>
-    );
-  };
-
   /**
    * Render drop down item for wishlist
    */
   renderDropDownItem = ({ item }) => {
-    const { variation, itemStyle, dropDownItemFontWeight, isWishlist } = this.props;
-    const { displayName, itemsCount, isDefault } = item;
-
-    if (isWishlist) {
-      return (
-        <DropDownWishlistItemContainer
-          onPress={() => this.onDropDownItemClick(item)}
-          style={itemStyle}
-        >
-          <SelectedWishlistContainer>
-            {isDefault && (
-              <CustomIcon
-                margins="0 4px 0 0"
-                name={ICON_NAME.checkmark}
-                size="fs16"
-                color={itemStyle.color}
-              />
-            )}
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              color={isDefault ? 'gray.900' : itemStyle.color}
-              fontWeight={isDefault ? 'extrabold' : dropDownItemFontWeight}
-              text={displayName}
-            />
-          </SelectedWishlistContainer>
-          {this.renderItemCount(itemsCount, isDefault)}
-        </DropDownWishlistItemContainer>
-      );
-    }
+    const { variation, itemStyle, dropDownItemFontWeight } = this.props;
+    const { displayName } = item;
 
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
@@ -332,6 +270,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       fontSize,
       renderHeader,
       renderFooter,
+      renderItems,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
@@ -392,8 +331,12 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
                 {dropDownIsOpen && (
                   <FlatList
                     data={data}
-                    renderItem={this.renderDropDownItem}
-                    keyExtractor={item => item.key}
+                    renderItem={item =>
+                      renderItems
+                        ? renderItems(item, this.onDropDownItemClick)
+                        : this.renderDropDownItem(item)
+                    }
+                    keyExtractor={(_, index) => index.toString()}
                     bounces={bounces}
                     style={{ height: flatListHeight }}
                     ListHeaderComponent={renderHeader}

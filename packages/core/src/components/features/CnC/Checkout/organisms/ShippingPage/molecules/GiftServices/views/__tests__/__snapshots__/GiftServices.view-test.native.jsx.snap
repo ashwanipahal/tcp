@@ -154,9 +154,7 @@ exports[`GiftServices component should renders correctly props not present 1`] =
   background-color: ",
               [Function],
               ";
-  width: ",
-              [Function],
-              ";
+  width: 100%;
 ",
               ";
   ",

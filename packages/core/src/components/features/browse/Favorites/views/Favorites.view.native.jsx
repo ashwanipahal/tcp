@@ -13,29 +13,29 @@ import {
   ShareDropDownContainer,
   ListHeaderContainer,
   ListFooterContainer,
+  DropDownWishlistItemContainer,
+  SelectedWishlistContainer,
+  ItemCountContainer,
 } from '../styles/Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
 import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWishListDropdown.native';
 import { Button } from '../../../../common/atoms';
+import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
+import CustomIcon from '../../../../common/atoms/Icon';
 
-const shareOptions = [
-  {
-    id: 'share',
-    displayName: 'Share',
-    value: 'share',
-  },
-  {
-    id: 'email',
-    displayName: 'Email',
-    value: 'email',
-  },
-  {
-    id: 'copyLink',
-    displayName: 'Copy Link',
-    value: 'copyLink',
-  },
-];
+const dropDownStyle = {
+  height: 49,
+  border: 1,
+};
+const itemStyle = {
+  height: 49,
+  color: 'gray.800',
+};
+const arrowImageStyle = {
+  position: 'absolute',
+  right: 0,
+};
 class FavoritesView extends React.PureComponent {
   brandOptions;
   // eslint-disable-next-line
@@ -58,7 +58,7 @@ class FavoritesView extends React.PureComponent {
     ];
     this.state = {
       selectedWishlist: '',
-      selectedShareOption: 'share',
+      selectedShareOption: '',
     };
   }
 
@@ -159,6 +159,59 @@ class FavoritesView extends React.PureComponent {
 
   createWishlist = () => {};
 
+  renderWishlistItems = ({ item }, onDropDownItemClick) => {
+    const { displayName, itemsCount, isDefault } = item;
+    return (
+      <DropDownWishlistItemContainer
+        onPress={() => onDropDownItemClick && onDropDownItemClick(item)}
+        style={itemStyle}
+      >
+        <SelectedWishlistContainer>
+          {isDefault && (
+            <CustomIcon
+              margins="0 4px 0 0"
+              name={ICON_NAME.checkmark}
+              size="fs16"
+              color={itemStyle.color}
+            />
+          )}
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs13"
+            color={isDefault ? 'gray.900' : itemStyle.color}
+            fontWeight={isDefault ? 'extrabold' : 'regular'}
+            text={displayName}
+          />
+        </SelectedWishlistContainer>
+        {this.renderItemCount(itemsCount, isDefault)}
+      </DropDownWishlistItemContainer>
+    );
+  };
+
+  renderItemCount = (itemsCount, isDefault) => {
+    const { labels } = this.props;
+    return (
+      <ItemCountContainer>
+        <BodyCopy
+          margin="0 4px 0 0"
+          fontFamily="secondary"
+          fontSize="fs13"
+          color={isDefault ? 'gray.900' : itemStyle.color}
+          fontWeight={isDefault ? 'extrabold' : 'regular'}
+          text={itemsCount}
+        />
+        <BodyCopy
+          margin="0 12px 0 0"
+          fontFamily="secondary"
+          fontSize="fs13"
+          color={itemStyle.color}
+          fontWeight="regular"
+          text={getLabelValue(labels, 'lbl_fav_items')}
+        />
+      </ItemCountContainer>
+    );
+  };
+
   render() {
     const {
       activeWishListProducts,
@@ -196,18 +249,20 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
-    const dropDownStyle = {
-      height: 49,
-      border: 1,
-    };
-    const itemStyle = {
-      height: 49,
-      color: 'gray.800',
-    };
-    const arrowImageStyle = {
-      position: 'absolute',
-      right: 0,
-    };
+    const shareOptions = [
+      {
+        displayName: labels.lbl_fav_facebook,
+        value: labels.lbl_fav_facebook,
+      },
+      {
+        displayName: labels.lbl_fav_email,
+        value: labels.lbl_fav_email,
+      },
+      {
+        displayName: labels.lbl_fav_copyLink,
+        value: labels.lbl_fav_copyLink,
+      },
+    ];
 
     return (
       <PageContainer>
@@ -238,6 +293,7 @@ class FavoritesView extends React.PureComponent {
             dropDownItemFontWeight="regular"
             renderHeader={this.renderHeader}
             renderFooter={this.renderFooter}
+            renderItems={this.renderWishlistItems}
             fontSize="fs24"
             labels={labels}
             arrowImageStyle={arrowImageStyle}
@@ -247,7 +303,7 @@ class FavoritesView extends React.PureComponent {
         <DropDownContainer>
           <Anchor
             locator="pdp_write_review_icon"
-            accessibilityLabel="Edit List Settings"
+            accessibilityLabel={getLabelValue(labels, 'lbl_fav_editListSettings')}
             text={getLabelValue(labels, 'lbl_fav_editListSettings')}
             anchorVariation="custom"
             colorName="gray.900"
