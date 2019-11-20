@@ -1,7 +1,12 @@
 import React from 'react';
-import { Modal, ScrollView, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { Modal, KeyboardAvoidingView, Platform } from 'react-native';
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
-import { ModalCustomWrapper } from '../Modal.style.native';
+import {
+  ModalCustomWrapper,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
+} from '../Modal.style.native';
 import ModalNativeHeader from './Modal.native.header';
 
 // How To use this react native modal
@@ -38,6 +43,10 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     rightAlignCrossIcon,
     noscroll,
     customHeaderMargin,
+    modalHeadingMargin,
+    margins,
+    paddings,
+    childrenMargins,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
@@ -48,7 +57,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
 
   let Component = ScrollView;
   if (noscroll) {
-    Component = View;
+    Component = ViewContainer;
   }
 
   return (
@@ -69,6 +78,8 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
               stickyHeaderIndices={[0]}
+              margins={margins}
+              paddings={paddings}
             >
               <ModalNativeHeader
                 heading={heading}
@@ -85,8 +96,10 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                 borderColor={borderColor}
                 rightAlignCrossIcon={rightAlignCrossIcon}
                 customHeaderMargin={customHeaderMargin}
+                modalHeadingMargin={modalHeadingMargin}
               />
-              {children}
+
+              <ChildrenContainer childrenMargins={childrenMargins}>{children}</ChildrenContainer>
             </Component>
           </KeyboardAvoidingView>
         </ModalCustomWrapper>

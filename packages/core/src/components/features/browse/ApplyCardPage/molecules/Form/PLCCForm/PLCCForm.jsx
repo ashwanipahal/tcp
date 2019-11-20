@@ -337,6 +337,8 @@ class PLCCForm extends React.PureComponent {
             time={120}
             isTimedOutModalActive={isTimedOutModalActive}
             handleFormReset={this.handleFormReset}
+            isRtpsFlow={isRtpsFlow}
+            closePLCCModal={closePLCCModal}
           />
         ) : null}
       </StyledPLCCFormWrapper>
