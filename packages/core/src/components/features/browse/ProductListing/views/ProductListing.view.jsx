@@ -110,6 +110,18 @@ const ProductListView = ({
             <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
           )}
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="promo-area">
+              {/*
+              // Changes as per RWD-9852. Keeping this for future reference.
+              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
+              <ModuleD {...moduleDMock.composites} fullBleed />
+              <ModuleG {...moduleGMock.moduleG.composites} />
+              <ModuleQ {...moduleQMock.moduleQ.composites} />
+              <Recommendations variations="moduleO,moduleP" />
+              */}
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section">
               <ProductListingFiltersForm
                 filtersMaps={filters}
