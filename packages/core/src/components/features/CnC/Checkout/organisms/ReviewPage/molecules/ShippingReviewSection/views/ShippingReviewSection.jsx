@@ -32,6 +32,7 @@ export class ShippingReviewSection extends React.PureComponent {
       shipmentMethods,
       formName,
       formSection,
+      checkoutRoutingDone,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
@@ -99,6 +100,7 @@ export class ShippingReviewSection extends React.PureComponent {
                   formSection={formSection}
                   selectedShipmentId={shippingMethod.id}
                   shipmentHeader={shippingMethodTitle}
+                  checkoutRoutingDone={checkoutRoutingDone}
                 />
               )}
               {isGiftOptionsEnabled && !isExpressCheckout && (
