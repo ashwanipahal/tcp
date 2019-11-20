@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import { isGymboree, isCanada } from '@tcp/core/src/utils/utils';
 import logger from '../../../../../utils/loggerInstance';
