@@ -2,7 +2,6 @@ import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
-import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PropTypes } from 'prop-types';
@@ -29,15 +28,6 @@ import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
-import {
-  AppProvider,
-  store,
-  useInfoState,
-  usePermissionState,
-  useLocationState,
-  useErrorReporter,
-} from '../context';
-import { getOnNavigationStateChange } from '../navigation/helpers';
 import constants from '../constants/config.constants';
 
 const styles = StyleSheet.create({
@@ -55,8 +45,8 @@ export class App extends React.PureComponent {
     apiConfig: null,
   };
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillMount() {
+  componentWillMount() {
+    const { store } = initializeStore();
     this.store = store;
     const { appType } = this.props;
 
@@ -80,7 +70,6 @@ export class App extends React.PureComponent {
 
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
-    codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
     this.store.dispatch(SetTcpSegmentMethodCall()); // this method needs to be exposed and will be called by Adobe target if required. and in fututr a payload neess to be passed in it , for reference please check _app.jsx of web.
     if (isErrorReportingActive) {
       initAppErrorReporter({
@@ -160,31 +149,32 @@ export class App extends React.PureComponent {
   };
 
   render() {
-    const { appType, context } = this.props;
+    const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
-      <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
-        <Box style={styles.container}>
-          {Platform.OS === 'ios' ? (
-            <StatusBar barStyle="default" />
-          ) : (
-            <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-          )}
+      <Provider store={this.store}>
+        <NetworkProvider>
+          <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
+            <Loader />
+            <Box style={styles.container}>
+              {Platform.OS === 'ios' ? (
+                <StatusBar barStyle="default" />
+              ) : (
+                <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+              )}
 
-          <AppNavigator
-            {...getOnNavigationStateChange(this.store)}
-            ref={navigatorRef => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-            screenProps={{
-              toggleBrandAction: this.toggleBrandAction,
-              apiConfig,
-            }}
-          />
-          {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
-          {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}
-        </Box>
-      </ThemeWrapperHOC>
+              <AppNavigator
+                screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
+                ref={navigatorRef => {
+                  NavigationService.setTopLevelNavigator(navigatorRef);
+                }}
+              />
+              {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
+              {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}
+            </Box>
+          </ThemeWrapperHOC>
+        </NetworkProvider>
+      </Provider>
     );
   }
 }
@@ -198,30 +188,4 @@ App.defaultProps = {
   appType: APP_TYPE.TCP,
 };
 
-App = codePush(App);
-
-function RenderApp(props) {
-  const info = useInfoState();
-  const { permissions, request, ...rest } = usePermissionState();
-  const location = useLocationState();
-  const error = useErrorReporter();
-  const context = {
-    ...info,
-    permissions: { ...rest },
-    location,
-    error,
-  };
-  // console.log(context);
-  const { appName } = context.device;
-  const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
-
-  return <App context={context} appType={appType} {...props} />;
-}
-
-export default props => {
-  return (
-    <AppProvider>
-      <RenderApp {...props} />
-    </AppProvider>
-  );
-};
+export default App;

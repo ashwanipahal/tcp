@@ -28,8 +28,8 @@ class NativeDropDown extends React.PureComponent {
     this.state = { showPicker: false, tempValue: selectedValue, isAndroidPlatform: isAndroid() };
     this.valueToDisplayMap = this.getValueToDisplayNameMap(props.data);
   }
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+
+  componentWillReceiveProps(nextProps) {
     const { selectedValue } = nextProps;
     const { tempValue } = this.state;
     if (selectedValue && selectedValue !== tempValue) {

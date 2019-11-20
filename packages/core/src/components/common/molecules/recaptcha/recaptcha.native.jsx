@@ -1,5 +1,5 @@
 import React from 'react';
-import { WebView } from 'react-native-webview';
+import { WebView } from 'react-native';
 import PropTypes from 'prop-types';
 
 const patchPostMessageJsCode = `(${String(() => {
