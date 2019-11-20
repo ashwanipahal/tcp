@@ -14,6 +14,7 @@ import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import { getExpirationRequiredFlag } from '../../../util/utility';
+import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view.native';
 
 /**
  * @class GuestBillingForm
@@ -46,6 +47,7 @@ class GuestBillingForm extends React.Component {
     paymentMethodId: PropTypes.string,
     isPayPalEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.func,
+    bagLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -112,6 +114,7 @@ class GuestBillingForm extends React.Component {
       getPayPalSettings,
       isPayPalEnabled,
       isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -176,17 +179,21 @@ class GuestBillingForm extends React.Component {
                   billingData={billingData}
                   creditFieldLabels={creditFieldLabels}
                 />
-                <CheckoutBillingAddress
-                  isGuest={isGuest}
-                  orderHasShipping={orderHasShipping}
-                  addressLabels={addressLabels}
-                  dispatch={dispatch}
-                  shippingAddress={shippingAddress}
-                  isSameAsShippingChecked={isSameAsShippingChecked}
-                  labels={labels}
-                  billingData={billingData}
-                  formName="checkoutBilling"
-                />
+                {!bagLoading ? (
+                  <CheckoutBillingAddress
+                    isGuest={isGuest}
+                    orderHasShipping={orderHasShipping}
+                    addressLabels={addressLabels}
+                    dispatch={dispatch}
+                    shippingAddress={shippingAddress}
+                    isSameAsShippingChecked={isSameAsShippingChecked}
+                    labels={labels}
+                    billingData={billingData}
+                    formName="checkoutBilling"
+                  />
+                ) : (
+                  <AddressSkeleton />
+                )}
               </>
             ) : null}
           </>

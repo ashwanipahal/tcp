@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
+import PickupPageSkeleton from './PickupPageSkeleton.native';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
@@ -189,6 +190,7 @@ class PickUpFormPart extends React.Component {
       setCheckoutStage,
       checkoutPageEmptyBagLabels,
       cartOrderItemsCount,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated, editPickupError } = this.state;
     if (!dataUpdated) {
@@ -227,34 +229,38 @@ class PickUpFormPart extends React.Component {
                       dataLocator="pickup-title"
                     />
                   )}
-                  <PickUpForm>
-                    <FormSection name="pickUpContact">
-                      {isGuest ? (
-                        <ContactFormFields
-                          className="pickup-contact-guest-form"
-                          showEmailAddress
-                          showPhoneNumber
-                          labels={pickUpLabels}
-                        />
-                      ) : (
-                        <PickupMainContactEditForm
-                          errorMessageRef={ref => {
-                            this.errorMessageRef = ref;
-                          }}
-                          editModeSubmissionError={editPickupError}
-                          dispatch={dispatch}
-                          labels={pickUpLabels}
-                          handleSubmit={handleSubmit}
-                          isEditing={isEditing}
-                          className="pickup-contact-guest-form"
-                          showPhoneNumber
-                          formData={pickUpContact}
-                          onEditModeChange={this.handleEditModeChange}
-                          handleExitEditModeClick={this.handleExitEditModeClick}
-                        />
-                      )}
-                    </FormSection>
-                  </PickUpForm>
+                  {bagLoading ? (
+                    <PickupPageSkeleton />
+                  ) : (
+                    <PickUpForm>
+                      <FormSection name="pickUpContact">
+                        {isGuest ? (
+                          <ContactFormFields
+                            className="pickup-contact-guest-form"
+                            showEmailAddress
+                            showPhoneNumber
+                            labels={pickUpLabels}
+                          />
+                        ) : (
+                          <PickupMainContactEditForm
+                            errorMessageRef={ref => {
+                              this.errorMessageRef = ref;
+                            }}
+                            editModeSubmissionError={editPickupError}
+                            dispatch={dispatch}
+                            labels={pickUpLabels}
+                            handleSubmit={handleSubmit}
+                            isEditing={isEditing}
+                            className="pickup-contact-guest-form"
+                            showPhoneNumber
+                            formData={pickUpContact}
+                            onEditModeChange={this.handleEditModeChange}
+                            handleExitEditModeClick={this.handleExitEditModeClick}
+                          />
+                        )}
+                      </FormSection>
+                    </PickUpForm>
+                  )}
                   {isSmsUpdatesEnabled && (
                     <SmsSignUpForm>
                       <FormSection name="smsSignUp">
@@ -379,6 +385,7 @@ PickUpFormPart.propTypes = {
   setCheckoutStage: PropTypes.func.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  bagLoading: PropTypes.number.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

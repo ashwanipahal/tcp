@@ -36,6 +36,7 @@ class BillingPage extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     setCheckoutStage: PropTypes.func.isRequired,
     isPayPalWebViewEnable: PropTypes.bool,
+    isFetching: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -74,6 +75,7 @@ class BillingPage extends React.PureComponent {
       creditFieldLabels,
       setCheckoutStage,
       isPayPalWebViewEnable,
+      isFetching,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -95,7 +97,7 @@ class BillingPage extends React.PureComponent {
         >
           <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />
-            <GiftCardsContainer />
+            <GiftCardsContainer isFetching={isFetching} />
             {isGuest ? (
               <GuestBillingForm
                 shippingAddress={shippingAddress}

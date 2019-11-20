@@ -49,6 +49,7 @@ class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      bagLoading,
       availableStages,
       labels,
       submitBilling,
@@ -85,6 +86,7 @@ class CheckoutPage extends React.PureComponent {
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
             pickupInitialValues={pickupInitialValues}
+            bagLoading={bagLoading}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -189,6 +191,7 @@ CheckoutPage.propTypes = {
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,

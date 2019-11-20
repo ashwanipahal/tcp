@@ -163,6 +163,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
+      bagLoading,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -195,6 +196,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isUsSite={isUsSite}
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
+        bagLoading={bagLoading}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}

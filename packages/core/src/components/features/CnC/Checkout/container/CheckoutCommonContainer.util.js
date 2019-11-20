@@ -193,6 +193,7 @@ export const mapStateToProps = state => {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
     checkoutRoutingDone: selectors.getIfCheckoutRoutingDone(state),
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
     isGuest: isGuestUser(state),

@@ -1,5 +1,8 @@
+/* eslint-disable max-lines */
+/* eslint-disable complexity */
 import React from 'react';
 import { FormSection, reduxForm, change, Field } from 'redux-form';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -47,6 +50,7 @@ import {
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
 } from './BillingPaymentForm.util';
+import CCskeleton from './CCskeleton.native';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -77,7 +81,11 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const { isSameAsShippingChecked, isEditFormSameAsShippingChecked = false } = this.props;
+    const {
+      bagLoading,
+      isSameAsShippingChecked,
+      isEditFormSameAsShippingChecked = false,
+    } = this.props;
     const { selectedOnFileAddressId, userAddresses, labels, cardList, isGuest } = this.props;
     const { orderHasShipping, addressLabels, editFormSelectedOnFileAddressId } = this.props;
     const { dispatch, shippingAddress, billingData } = this.props;
@@ -88,7 +96,7 @@ export class BillingPaymentForm extends React.PureComponent {
     if (!editFormSelectedOnFileAddressId && editMode) {
       addressId = '';
     }
-    return (
+    return !bagLoading ? (
       <CheckoutBillingAddress
         isGuest={isGuest}
         orderHasShipping={orderHasShipping}
@@ -110,6 +118,8 @@ export class BillingPaymentForm extends React.PureComponent {
         }
         editMode={editMode}
       />
+    ) : (
+      <AddressSkeleton />
     );
   };
 
@@ -370,6 +380,7 @@ export class BillingPaymentForm extends React.PureComponent {
       getPayPalSettings,
       isPayPalWebViewEnable,
       isPayPalEnabled,
+      bagLoading,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -413,16 +424,25 @@ export class BillingPaymentForm extends React.PureComponent {
                 />
               </PayPalTextContainer>
             ) : null}
-            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
-              this.getCreditCardWrapper({
-                labels,
-                creditCardList,
-                cvvCodeRichText,
-                onFileCardKey,
-                dispatch,
-              })
+            {!bagLoading ? (
+              <>
+                {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+                  this.getCreditCardWrapper({
+                    labels,
+                    creditCardList,
+                    cvvCodeRichText,
+                    onFileCardKey,
+                    dispatch,
+                  })
+                ) : (
+                  <SubHeader />
+                )}
+              </>
             ) : (
-              <SubHeader />
+              <>
+                <CCskeleton />
+                <AddressSkeleton />
+              </>
             )}
           </PaymentMethodMainWrapper>
         )}

@@ -53,6 +53,7 @@ export default class ShippingPage extends React.Component {
     newUserPhoneNo: PropTypes.string,
     hasSetGiftOptions: PropTypes.bool,
     setCheckoutStage: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -293,6 +294,7 @@ export default class ShippingPage extends React.Component {
       formatPayload,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      bagLoading,
     } = this.props;
 
     const { defaultAddressId, showAddressVerification } = this.state;
@@ -371,6 +373,7 @@ export default class ShippingPage extends React.Component {
                       onFileAddressKey: defaultAddressId,
                     }}
                     selectedShipmentId={selectedShipmentId}
+                    bagLoading={bagLoading}
                     scrollView={this.scrollView}
                     isGuest={isGuest}
                     isUsSite={isUsSite}

@@ -19,6 +19,7 @@ import GiftServices from '../../../molecules/GiftServices';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
+import PickupPageSkeleton from '../../../../PickupPage/views/PickupPageSkeleton.native';
 
 const ShippingForm = ({
   shipmentMethods,
@@ -50,6 +51,7 @@ const ShippingForm = ({
   setCheckoutStage,
   emailSignUpLabels,
   scrollView,
+  bagLoading,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [editType, setEditType] = useState('');
@@ -82,45 +84,51 @@ const ShippingForm = ({
   return (
     <>
       <ShippingFormWrapper>
-        {!isGuest && (
-          <RegisteredShippingFormView
-            labels={labels}
-            userAddresses={userAddresses}
-            addressFormLabels={addressFormLabels}
-            formName="checkoutShipping"
-            dispatch={dispatch}
-            addressPhoneNo={addressPhoneNo}
-            loadShipmentMethods={loadShipmentMethods}
-            onFileAddressKey={onFileAddressKey}
-            isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-            updateShippingAddress={updateShippingAddress}
-            addNewShippingAddress={addNewShippingAddress}
-            address={address}
-            isGuest={isGuest}
-            setAsDefaultShipping={setAsDefaultShipping}
-            defaultAddressId={defaultAddressId}
-            syncErrorsObject={syncErrorsObject}
-            newUserPhoneNo={newUserPhoneNo}
-            setEditState={setEditState}
-            editShipmentDetailsError={editShipmentDetailsError}
-            setEditModalRef={modalRef => {
-              editModalRef = modalRef;
-            }}
-          />
-        )}
-        {isGuest && (
-          <FormSection name="address">
-            <AddressFields
-              addressFormLabels={addressFormLabels}
-              showDefaultCheckbox={false}
-              formName="checkoutShipping"
-              formSection="address"
-              dispatch={dispatch}
-              addressPhoneNo={addressPhoneNo}
-              loadShipmentMethods={loadShipmentMethods}
-              disableCountry
-            />
-          </FormSection>
+        {bagLoading ? (
+          <PickupPageSkeleton />
+        ) : (
+          <>
+            {!isGuest && (
+              <RegisteredShippingFormView
+                labels={labels}
+                userAddresses={userAddresses}
+                addressFormLabels={addressFormLabels}
+                formName="checkoutShipping"
+                dispatch={dispatch}
+                addressPhoneNo={addressPhoneNo}
+                loadShipmentMethods={loadShipmentMethods}
+                onFileAddressKey={onFileAddressKey}
+                isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                updateShippingAddress={updateShippingAddress}
+                addNewShippingAddress={addNewShippingAddress}
+                address={address}
+                isGuest={isGuest}
+                setAsDefaultShipping={setAsDefaultShipping}
+                defaultAddressId={defaultAddressId}
+                syncErrorsObject={syncErrorsObject}
+                newUserPhoneNo={newUserPhoneNo}
+                setEditState={setEditState}
+                editShipmentDetailsError={editShipmentDetailsError}
+                setEditModalRef={modalRef => {
+                  editModalRef = modalRef;
+                }}
+              />
+            )}
+            {isGuest && (
+              <FormSection name="address">
+                <AddressFields
+                  addressFormLabels={addressFormLabels}
+                  showDefaultCheckbox={false}
+                  formName="checkoutShipping"
+                  formSection="address"
+                  dispatch={dispatch}
+                  addressPhoneNo={addressPhoneNo}
+                  loadShipmentMethods={loadShipmentMethods}
+                  disableCountry
+                />
+              </FormSection>
+            )}
+          </>
         )}
         {!orderHasPickUp && isUsSite && (
           <FormSection name="smsSignUp">
@@ -272,6 +280,7 @@ ShippingForm.propTypes = {
   setCheckoutStage: PropTypes.func.isRequired,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   scrollView: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 ShippingForm.defaultProps = {
