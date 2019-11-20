@@ -1,6 +1,6 @@
 import throttle from 'lodash/throttle';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import { isClient } from '../../../../../utils';
+import { isClient, scrollPage } from '../../../../../utils';
 
 const getOffset = elem => {
   let x = 0;
@@ -68,10 +68,26 @@ const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems) => {
   });
 };
 
+const getDefaultStateValues = () => {
+  return {
+    activeSection: null,
+    showCondensedHeader: false,
+    loadPaypalStickyHeader: false,
+    showStickyHeaderMob: false,
+    headerError: false,
+  };
+};
+
+const onPageUnload = () => {
+  scrollPage();
+};
+
 export default {
   getElementStickyPosition,
   bindScrollEvent,
   getPageLevelHeaderHeight,
   setBagPageAnalyticsData,
   formatBagProductsData,
+  getDefaultStateValues,
+  onPageUnload,
 };
