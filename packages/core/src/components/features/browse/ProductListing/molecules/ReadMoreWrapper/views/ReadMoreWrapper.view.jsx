@@ -10,9 +10,11 @@ class ReadMoreWrapper extends React.PureComponent {
     const { longDescription, className, labels } = this.props;
 
     return (
-      <Col className={className} colSize={{ small: 6, medium: 8, large: 12 }}>
-        <ReadMore description={longDescription} labels={labels} className="seo-text" />
-      </Col>
+      <div className="seo-text">
+        <Col className={className} colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ReadMore description={longDescription} labels={labels} className="seo-text" />
+        </Col>
+      </div>
     );
   }
 }
