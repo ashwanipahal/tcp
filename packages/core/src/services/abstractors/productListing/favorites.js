@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, parseBoolean, getBrand } from '@tcp/core/src/utils';
 import {
@@ -72,8 +73,9 @@ const addItemToWishlist = wishlistDetails => {
       return {
         errorMessage:
           (err && err.errorResponse && err.errorResponse.errorMessage) ||
-          // eslint-disable-next-line no-underscore-dangle
-          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error),
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (errorMapping && errorMapping.DEFAULT) ||
+          '',
       };
     });
 };
