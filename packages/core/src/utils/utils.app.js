@@ -272,12 +272,12 @@ export const navigateToPage = (url, navigation, extraParams = {}) => {
         ...extraParams,
       });
     case URL_PATTERN.OUTFIT_DETAILS: {
-      const outfitIdPart = url.split('/outfit/');
-      const outfitIds = outfitIdPart[1] && outfitIdPart[1].split('/');
+      const outfitIdPart = (url && url.split('/outfit/')) || [];
+      const outfitIds = (outfitIdPart[1] && outfitIdPart[1].split('/')) || [];
       return navigation.navigate('OutfitDetail', {
         title: 'COMPLETE THE LOOK',
-        outfitId: outfitIds && outfitIds[0],
-        vendorColorProductIdsList: outfitIds && outfitIds[1],
+        outfitId: outfitIds[0],
+        vendorColorProductIdsList: outfitIds[1],
         reset: true,
       });
     }
