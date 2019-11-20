@@ -91,3 +91,27 @@ export const setCreateAccountSuccess = payload => ({
   type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS,
   payload,
 });
+
+export const smsNotification = payload => ({
+  type: CONFIRMATION_CONSTANTS.CONFIRMATION_SMS_NOTIFICATION,
+  payload,
+});
+
+export const smsNotificationErr = payload => ({
+  type: CONFIRMATION_CONSTANTS.CONFIRMATION_SMS_NOTIFICATION_ERR,
+  payload,
+});
+
+export const resetNotificationErr = () => ({
+  type: CONFIRMATION_CONSTANTS.RESET_CONFIRMATION_SMS_NOTIFICATION_ERR,
+});
+
+export const setLoadingState = payload => ({
+  type: CONFIRMATION_CONSTANTS.SET_LOADING_STATE,
+  payload,
+});
+
+export const setSmsNotificationSuccess = payload => ({
+  type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_SMS_NOTIFICATION_SUCCESS,
+  payload,
+});

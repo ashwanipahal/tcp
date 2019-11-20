@@ -1107,6 +1107,61 @@ export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
     });
 }
 
+export function subscribeSmsNotification(payload, errorsMapping) {
+  const { ACQUISITION_ID } = getAPIConfig();
+  const { brandTCP, brandGYM } = payload;
+
+  let subscriptionBrands = brandTCP ? 'TCP' : '';
+  if (brandGYM) {
+    subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},GYM` : 'GYM';
+  }
+
+  const body = {
+    acquisition_id: ACQUISITION_ID,
+    mobile_phone: {
+      mdn: payload.phoneNumber.replace(/\D/g, ''),
+    },
+    custom_fields: {
+      src_cd: '1',
+      sub_src_cd: 'sms_footer',
+    },
+  };
+
+  const reqObj = {
+    webService: endpoints.addSmsSignup,
+    body,
+    header: {
+      brandSubscribe: subscriptionBrands,
+    },
+  };
+  return executeStatefulAPICall(reqObj)
+    .then(resp => {
+      if (responseContainsErrors(resp)) {
+        throw new ServiceResponseError(resp);
+      }
+      return resp.body;
+    })
+    .catch(err => {
+      const statusCode = err.status;
+      let message;
+
+      switch (statusCode) {
+        case 422:
+          message = 'VIDES_ERRRO_2';
+          break;
+        case 409:
+          message = 'VIDES_ERRRO_1';
+          break;
+        default:
+          message = 'VIDES_ERRRO_2';
+          break;
+      }
+
+      const error = { response: { body: { errors: [{ errorMessageKey: message }] } } };
+      throw getServerErrorMessage(error, errorsMapping);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getShippingMethods,
@@ -1122,4 +1177,5 @@ export default {
   requestPersonalizedCoupons,
   addGiftCard,
   getInternationCheckoutSettings,
+  subscribeSmsNotification,
 };

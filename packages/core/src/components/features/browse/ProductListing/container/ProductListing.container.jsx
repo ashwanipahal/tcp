@@ -200,7 +200,13 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
     if (isCLP) {
-      return <CategoryListing />;
+      return (
+        <CategoryListing
+          breadCrumbs={breadCrumbs}
+          currentNavIds={currentNavIds}
+          navTree={navTree}
+        />
+      );
     }
     return !isOutfit ? (
       <ProductListing
@@ -419,6 +425,7 @@ const IsomorphicProductListingContainer = withIsomorphicRenderer({
  */
 const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
 RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+// eslint-disable-next-line no-unused-vars
 const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
 
-export default HotfixAwareProductListingContainer;
+export default IsomorphicProductListingContainer;
