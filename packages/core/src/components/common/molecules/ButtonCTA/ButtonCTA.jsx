@@ -1,8 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { configureInternalNavigationFromCMSUrl } from '../../../../utils';
-import { Anchor, Button } from '../../atoms';
+import { Anchor } from '../../atoms';
+import { BodyCopyVanilla } from '../../atoms/BodyCopy/views/BodyCopy';
 import errorBoundary from '../../hoc/withErrorBoundary';
+import withStyles from '../../hoc/withStyles';
+import buttonStyles from '../../atoms/Button/Button.style';
+
+const BodyCopyButtonStyled = withStyles(BodyCopyVanilla, buttonStyles);
+
+const AnchorStyled = styled(Anchor)`
+  span {
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+  }
+`;
 
 /**
  * @desc This component generates button list. The three variations of buttonlist are:
@@ -30,9 +44,8 @@ const ButtonCTA = props => {
   if (!actualUrl) {
     to = configureInternalNavigationFromCMSUrl(url);
   }
-
   return (
-    <Anchor
+    <AnchorStyled
       key={uniqueKey}
       className={ctaClassName}
       to={to}
@@ -42,16 +55,17 @@ const ButtonCTA = props => {
       role="button"
       dataLocator={dataLocatorCTA || `${dataLocator}-link`}
     >
-      <Button
-        className={className}
+      <BodyCopyButtonStyled
+        className={`${className || ''} cta-button-text`}
         tabIndex={-1}
+        component="span"
         buttonVariation={ctaVariation}
         dataLocator={dataLocator}
         {...otherProps}
       >
         {text}
-      </Button>
-    </Anchor>
+      </BodyCopyButtonStyled>
+    </AnchorStyled>
   );
 };
 
