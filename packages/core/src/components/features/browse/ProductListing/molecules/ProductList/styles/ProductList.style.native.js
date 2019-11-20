@@ -8,7 +8,7 @@ const ItemCountContainer = styled.View`
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 12px;
-  margin-top: 16px;
+  margin-top: 4px;
   flex: 1;
 `;
 

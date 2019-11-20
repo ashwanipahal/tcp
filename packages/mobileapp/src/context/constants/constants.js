@@ -1,4 +1,4 @@
-import {Platform, Dimensions, NativeModules, I18nManager} from 'react-native';
+import { Platform, Dimensions, NativeModules, I18nManager } from 'react-native';
 
 const dimensionsScope = {
   WINDOW: 'window',
@@ -13,4 +13,4 @@ export const orientations = {
 export const isAndroid = Platform.OS === 'android';
 export const isIOS = Platform.OS === 'ios';
 
-const {height, width} = Dimensions.get(dimensionsScope.WINDOW);
+const { height, width } = Dimensions.get(dimensionsScope.WINDOW);

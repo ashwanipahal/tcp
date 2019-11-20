@@ -74,6 +74,15 @@ const updatePayload = (req, payload, Component) => {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }
     }
+    if (req && req.headers) {
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
+    }
   }
 
   return updatedPayload;
@@ -232,7 +241,6 @@ class TCPWebApp extends App {
           optimizelyHeadersObject[item] = optimizelyHeaderValue;
         });
       }
-
       payload = {
         siteConfig: true,
         apiConfig,

@@ -1,9 +1,9 @@
 import React from 'react';
 import DeviceInfo from 'react-native-device-info';
-import {usePlatformState} from './platform-context';
-import {Dimensions} from 'react-native';
+import { usePlatformState } from './platform-context';
+import { Dimensions } from 'react-native';
 
-export {DeviceProvider, useDeviceState};
+export { DeviceProvider, useDeviceState };
 
 /**
  * TODO Implement remaining, platform-specific APIs:
@@ -12,12 +12,12 @@ export {DeviceProvider, useDeviceState};
 
 export const DeviceContext = React.createContext();
 
-function DeviceProvider({children, ...props}) {
+function DeviceProvider({ children, ...props }) {
   const platform = usePlatformState();
   const [state, setState] = React.useState(null);
   React.useEffect(() => {
     async function getDeviceInfo() {
-      const deviceInfo = await getInitialContextState({platform, ...props});
+      const deviceInfo = await getInitialContextState({ platform, ...props });
       setState(deviceInfo);
     }
     getDeviceInfo();
@@ -39,7 +39,7 @@ function useDeviceState() {
 }
 
 async function getCommonPlatformSettings() {
-  const {height, width} = Dimensions.get('window');
+  const { height, width } = Dimensions.get('window');
 
   return {
     uniqueId: await DeviceInfo.getUniqueId(),
@@ -74,10 +74,10 @@ async function getIOSOnlySettings() {
   return {};
 }
 
-async function getInitialContextState({platform}) {
+async function getInitialContextState({ platform }) {
   return Object.assign(
     {},
     await getCommonPlatformSettings(),
-    await (platform.isIOS ? getIOSOnlySettings : getAndroidOnlySettings)(),
+    await (platform.isIOS ? getIOSOnlySettings : getAndroidOnlySettings)()
   );
 }

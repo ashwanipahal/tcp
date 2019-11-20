@@ -137,6 +137,9 @@ describe('Checkout Selectors', () => {
           },
         },
       }),
+      CartPageReducer: fromJS({
+        orderDetails: { emailSignUpTCP: true },
+      }),
       User: fromJS({
         personalData: {
           userId: '320503',
@@ -171,6 +174,10 @@ describe('Checkout Selectors', () => {
       },
       hasAlternatePickup: false,
       pickUpAlternate: {},
+      emailSignUp: {
+        emailSignUp: true,
+        emailSignUpGYM: undefined,
+      },
     });
   });
   it('#getShippingAddress', () => {
