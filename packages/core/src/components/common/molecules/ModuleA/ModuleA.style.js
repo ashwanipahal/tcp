@@ -153,18 +153,19 @@ const style = css`
     background: transparent url('/static/images/module-a-ribbon-right.png') no-repeat right 0;
     background-size: 100% auto;
     position: absolute;
+    background-position: left;
     right: 0;
     bottom: 12px;
-    width: 168px;
-    height: 48px;
+    width: 174px;
+    height: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      width: 234px;
-      height: 67px;
+      width: 196px;
+      height: 61px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -212,6 +213,7 @@ const style = css`
     .ribbon-container {
       background: transparent url('/static/images/module-a-ribbon-left.png') no-repeat 0 0;
       background-size: 100% auto;
+      background-position: right;
       right: auto;
       left: 0;
     }

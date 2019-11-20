@@ -174,13 +174,6 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
-
-    if (navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        localStorage.setItem('lat', pos.coords.latitude);
-        localStorage.setItem('lng', pos.coords.longitude);
-      });
-    }
   }
 
   componentDidUpdate() {
