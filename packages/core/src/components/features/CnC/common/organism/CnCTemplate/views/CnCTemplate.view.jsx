@@ -14,6 +14,7 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
+import BAG_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 const getBagActions = ({ BagActions }) => {
   return BagActions && <BagActions />;
@@ -99,7 +100,7 @@ const CnCTemplate = ({
                     />
 
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
-                    {pageCategory === 'bagPage' && <PlaceCashBanner />}
+                    {pageCategory === BAG_CONSTANTS.BAG_PAGE && <PlaceCashBanner />}
                     <AirmilesBanner />
                     <CouponAndPromos
                       fullPageInfo={!isCheckoutView || orderLedgerAfterView}
