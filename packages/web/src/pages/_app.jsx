@@ -73,6 +73,15 @@ const updatePayload = (req, payload, Component) => {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }
     }
+    if (req && req.headers) {
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
+    }
   }
 
   return updatedPayload;
@@ -173,13 +182,6 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
-
-    if (navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        localStorage.setItem('lat', pos.coords.latitude);
-        localStorage.setItem('lng', pos.coords.longitude);
-      });
-    }
   }
 
   componentDidUpdate() {
@@ -214,12 +216,9 @@ class TCPWebApp extends App {
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
-      apiConfig.isPreviewEnv = req.query.preview || '';
+      apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
-      // response headers
-      apiConfig.resHeaders = res.getHeaders();
-      apiConfig.reqHeaders = req.headers;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -238,7 +237,6 @@ class TCPWebApp extends App {
           optimizelyHeadersObject[item] = optimizelyHeaderValue;
         });
       }
-
       payload = {
         siteConfig: true,
         apiConfig,

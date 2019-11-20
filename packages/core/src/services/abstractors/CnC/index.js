@@ -29,5 +29,6 @@ export {
   getServerErrorMessage,
   updateRTPSData,
   acceptOrDeclinePreScreenOffer,
+  subscribeSmsNotification,
 } from './Checkout';
 export { getVenmoToken } from './venmo';

@@ -33,8 +33,10 @@ exports[`ConfirmationView should render correctly 1`] = `
     isGuest={true}
     isPayPalWebViewEnable={false}
     navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -98,8 +100,10 @@ exports[`ConfirmationView should render correctly 2`] = `
     isGuest={true}
     isPayPalWebViewEnable={false}
     navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -158,8 +162,10 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
     isGuest={true}
     isPayPalWebViewEnable={false}
     navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;
