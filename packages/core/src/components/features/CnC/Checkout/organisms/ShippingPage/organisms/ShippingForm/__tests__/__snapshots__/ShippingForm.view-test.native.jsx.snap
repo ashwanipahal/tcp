@@ -63,10 +63,12 @@ exports[`Shipping Form should render correctly 1`] = `
     isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -185,10 +187,12 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
     isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -259,10 +263,12 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
     isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoSubmit={[Function]}
     pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
