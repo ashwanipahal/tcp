@@ -15,6 +15,7 @@ type Props = {
   children: node,
   isOverlay?: boolean,
   inheritedStyles?: String,
+  noHeader?: boolean,
 };
 
 const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
@@ -37,6 +38,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     rightAlignCrossIcon,
     noscroll,
     customHeaderMargin,
+    noHeader,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
@@ -69,22 +71,24 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
               keyboardShouldPersistTaps="handled"
               stickyHeaderIndices={[0]}
             >
-              <ModalNativeHeader
-                heading={heading}
-                onRequestClose={onRequestClose}
-                headingAlign={headingAlign}
-                headingFontFamily={headingFontFamily}
-                headerStyle={headerStyle}
-                headingFontWeight={headingFontWeight}
-                fontSize={fontSize}
-                iconType={iconType}
-                fullWidth={fullWidth}
-                stickyCloseIcon={stickyCloseIcon}
-                horizontalBar={horizontalBar}
-                borderColor={borderColor}
-                rightAlignCrossIcon={rightAlignCrossIcon}
-                customHeaderMargin={customHeaderMargin}
-              />
+              {noHeader ? null : (
+                <ModalNativeHeader
+                  heading={heading}
+                  onRequestClose={onRequestClose}
+                  headingAlign={headingAlign}
+                  headingFontFamily={headingFontFamily}
+                  headerStyle={headerStyle}
+                  headingFontWeight={headingFontWeight}
+                  fontSize={fontSize}
+                  iconType={iconType}
+                  fullWidth={fullWidth}
+                  stickyCloseIcon={stickyCloseIcon}
+                  horizontalBar={horizontalBar}
+                  borderColor={borderColor}
+                  rightAlignCrossIcon={rightAlignCrossIcon}
+                  customHeaderMargin={customHeaderMargin}
+                />
+              )}
               {children}
             </Component>
           </KeyboardAvoidingView>
@@ -98,6 +102,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
 ModalNative.defaultProps = {
   isOverlay: false,
   inheritedStyles: '',
+  noHeader: false,
 };
 
 export default ModalNative;

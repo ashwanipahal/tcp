@@ -28,6 +28,8 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+
+import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container/UserOnboardingScreen.container';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -168,6 +170,7 @@ class HomePageView extends React.PureComponent<Props> {
     const { value } = this.state;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <UserOnBoardingScreen navigation={navigation} />
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>

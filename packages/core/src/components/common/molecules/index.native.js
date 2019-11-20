@@ -24,6 +24,7 @@ import StoreLocations from './StoreLocations';
 import FullScreenImageCarousel from './FullScreenImageCarousel';
 import SearchBar from './SearchBar';
 import ModuleE from './ModuleE';
+// import UserOnBoardingScreen from './UserOnBoardingScreen';
 
 export {
   Carousel,
@@ -52,4 +53,5 @@ export {
   ModuleS,
   SearchBar,
   ModuleE,
+  // UserOnBoardingScreen,
 };
