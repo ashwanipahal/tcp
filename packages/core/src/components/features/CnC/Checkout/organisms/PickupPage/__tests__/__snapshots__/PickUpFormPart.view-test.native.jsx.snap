@@ -144,10 +144,12 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -297,10 +299,12 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -400,10 +404,12 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       isConfirmationPage={false}
       isGuest={false}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
