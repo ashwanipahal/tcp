@@ -71,7 +71,7 @@ const AddedToBagViewPoints = ({
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
-        <Row className="row-padding">
+        <Row className="row-padding bag-points">
           <Col colSize={{ large: 8, small: 5, medium: 6 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {getRewardsPointsLabel(labels, isUserLoggedIn)}

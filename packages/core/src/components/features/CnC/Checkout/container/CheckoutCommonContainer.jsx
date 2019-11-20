@@ -166,7 +166,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       dispatchReviewReduxForm,
       pageData,
     } = this.props;
-    const { pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
@@ -177,6 +177,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        emailSignUpFlags={emailSignUpFlags}
         isRegisteredUserCallDone={isRegisteredUserCallDone}
         isBagLoaded={isBagLoaded}
         initialValues={initialValues}

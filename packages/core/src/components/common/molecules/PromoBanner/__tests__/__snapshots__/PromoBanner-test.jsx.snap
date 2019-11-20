@@ -59,9 +59,113 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   link={null}
   textAlign="left"
 >
-  <Styled(Anchor)
+  <Connect(Component)
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  font-family: ",
+            [Function],
+            ";
+  color: inherit;
+
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+
+  .left-arrow {
+    border: solid ",
+            [Function],
+            ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+            ";
+",
+          ],
+        },
+        "displayName": "Styled(Anchor)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": [Function],
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
     asPath="http://example.com235"
     className="promo-text-link"
+    clickData={
+      Object {
+        "customEvents": Array [
+          "event80",
+          "event81",
+        ],
+        "internalCampaignId": "aboveheader_na_na_mpr_120118_mprc",
+      }
+    }
     external={0}
     target=""
     title=""
@@ -78,6 +182,6 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     >
        50% OFF
     </span>
-  </Styled(Anchor)>
+  </Connect(Component)>
 </StyledComponent>
 `;
