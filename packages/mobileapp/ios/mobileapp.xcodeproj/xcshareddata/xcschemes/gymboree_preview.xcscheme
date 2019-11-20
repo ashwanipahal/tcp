@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
-   version = "1.3">
+   LastUpgradeVersion = "1110"
+   version = "1.7">
    <BuildAction
-      parallelizeBuildables = "NO"
+      parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <PreActions>
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Load the right env file&#10;echo &quot;src/env/.env.int&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "# Load the right env file&#10;echo &quot;src/env/.env.preview&quot; &gt; /tmp/envfile&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "D96E3C2C238588F6007879C7"
+                     BuildableName = "Gymboree-Preview.app"
+                     BlueprintName = "gymboree_preview"
+                     ReferencedContainer = "container:mobileapp.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
             </ActionContent>
          </ExecutionAction>
       </PreActions>
@@ -23,37 +32,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83CBBA2D1A601D0E00E9B192"
-               BuildableName = "libReact.a"
-               BlueprintName = "React"
-               ReferencedContainer = "container:../node_modules/react-native/React/React.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84677A57230BCD44001F5301"
-               BuildableName = "mobileapp_int.app"
-               BlueprintName = "mobileapp_int"
-               ReferencedContainer = "container:mobileapp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "mobileappTests.xctest"
-               BlueprintName = "mobileappTests"
+               BlueprintIdentifier = "D96E3C2C238588F6007879C7"
+               BuildableName = "gymboree_preview.app"
+               BlueprintName = "gymboree_preview"
                ReferencedContainer = "container:mobileapp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -64,15 +45,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84677A57230BCD44001F5301"
-            BuildableName = "mobileapp_int.app"
-            BlueprintName = "mobileapp_int"
-            ReferencedContainer = "container:mobileapp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
@@ -90,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84677A57230BCD44001F5301"
-            BuildableName = "mobileapp_int.app"
-            BlueprintName = "mobileapp_int"
+            BlueprintIdentifier = "D96E3C2C238588F6007879C7"
+            BuildableName = "gymboree_preview.app"
+            BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -107,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84677A57230BCD44001F5301"
-            BuildableName = "mobileapp_int.app"
-            BlueprintName = "mobileapp_int"
+            BlueprintIdentifier = "D96E3C2C238588F6007879C7"
+            BuildableName = "gymboree_preview.app"
+            BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

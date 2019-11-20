@@ -100,12 +100,12 @@ const getSubscribeSuccessMsgRichTextSelector = state => {
  */
 const getSmsNotificationSuccess = createSelector(
   getOrderConfirmation,
-  orderConfirmation => orderConfirmation && orderConfirmation.get('smsNotificationSuccess')
+  orderConfirmation => orderConfirmation && orderConfirmation.smsNotificationSuccess
 );
 
 const getSmsNotificationError = createSelector(
   getOrderConfirmation,
-  orderConfirmation => orderConfirmation && orderConfirmation.get('error')
+  orderConfirmation => orderConfirmation && orderConfirmation.error
 );
 
 export default {
