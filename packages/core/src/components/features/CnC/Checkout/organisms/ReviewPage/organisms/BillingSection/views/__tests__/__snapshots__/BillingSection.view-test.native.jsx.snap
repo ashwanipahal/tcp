@@ -106,6 +106,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

@@ -55,7 +55,7 @@ export const getAddressInitialValues = scope => {
   if (!!shippingAddressLine1 && (isGuest || !userAddresses || userAddresses.size === 0)) {
     return setShippingAddress(shippingAddress, shippingPhoneAndEmail);
   }
-  if (!shippingAddressLine1 && isGuest && orderHasPickUp) {
+  if (!shippingAddressLine1 && orderHasPickUp) {
     return setPickupInitialValues(pickUpContactPerson);
   }
   return {
@@ -108,5 +108,3 @@ export const propsTypes = {
     venmoBannerText: PropTypes.string,
   }),
 };
-
-export default setPickupInitialValues;

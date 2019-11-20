@@ -312,7 +312,9 @@ class PLCCForm extends React.PureComponent {
                   <BodyCopy
                     fontFamily="secondary"
                     component="div"
-                    onClick={() => (isRtpsFlow ? closePLCCModal() : backToHome)}
+                    onClick={() =>
+                      isRtpsFlow || isPLCCModalFlow ? closePLCCModal() : backToHome()
+                    }
                     textAlign="center"
                     tabIndex="0"
                   >

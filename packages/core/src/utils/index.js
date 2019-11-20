@@ -38,6 +38,7 @@ export {
   disableBodyScroll,
   isMobileWeb,
   removeBodyScrollLocks,
+  isAndroidWeb,
 } from './utils.web';
 
 export {
