@@ -374,14 +374,19 @@ export function* startPaypalCheckout({ payload }) {
   }
 }
 
-export function* startPaypalNativeCheckout() {
-  yield put(getSetIsPaypalPaymentSettings(null));
-  const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
-  // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
-  const fromPage = 'AjaxOrderItemDisplayView';
-  const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
-  if (res) {
-    yield put(getSetIsPaypalPaymentSettings(res));
+export function* startPaypalNativeCheckout({ payload }) {
+  try {
+    const { isBillingPage } = payload;
+    console.log('startPaypalNativeCheckout', isBillingPage);
+    yield put(getSetIsPaypalPaymentSettings(null));
+    const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+    const fromPage = isBillingPage ? 'OrderBillingView' : 'AjaxOrderItemDisplayView';
+    const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+    if (res) {
+      yield put(getSetIsPaypalPaymentSettings(res));
+    }
+  } catch (e) {
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
