@@ -39,7 +39,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
   }
 }
 
-export function* validateAndSubmitEmailSignup(emailAddress, field1, brandGYM, brandTCP) {
+export function* validateAndSubmitEmailSignup(emailAddress, field1, brandTCP, brandGYM) {
   if (emailAddress) {
     const statusCode = call(briteVerifyStatusExtraction, emailAddress);
     yield subscribeEmailAddress(
