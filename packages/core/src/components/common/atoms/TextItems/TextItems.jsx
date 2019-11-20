@@ -7,22 +7,33 @@ import textItemStyle from './TextItems.style';
 
 const getIcon = icon => icon && <Image src={getIconPath(icon)} className="header-icon" />;
 
-const TextItems = ({ className, textItems, icon }) => {
-  const { placement, icon: name } = icon;
-  console.log(placement);
-  console.log(name);
+const finalText = (str, placement, icon) => {
+  const text = str.split(' ');
+  if (text.length > 1 && icon && placement && placement === 'middle') {
+    return (
+      <>
+        {text[0]}
+        {getIcon(icon)}
+        {text.slice(1, text.length).join(' ')}
+      </>
+    );
+  }
+  return str;
+};
 
+const TextItems = ({ className, textItems, icon }) => {
+  const { placement, icon: iconName } = icon || {};
   if (!textItems) {
     return null;
   }
   return textItems.map(({ style, text }, index) => {
     return (
       <span className={className}>
-        {name && placement && placement === 'left' && getIcon(name)}
+        {iconName && placement && placement === 'left' && getIcon(iconName)}
         <span key={index.toString()} className={style}>
-          {index ? ` ${text}` : text}
+          {index ? ` ${text}` : finalText(text, placement, iconName)}
         </span>
-        {name && placement && placement === 'right' && getIcon(name)}
+        {iconName && placement && placement === 'right' && getIcon(iconName)}
       </span>
     );
   });
