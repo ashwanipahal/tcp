@@ -95,12 +95,12 @@ export class TextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="15px" height="15px" />
+              <Image source={errorIcon} width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
             fontFamily="secondary"
-            fontWeight="semibold"
+            fontWeight="extrabold"
             fontSize="fs12"
             text={error}
             color="error"
@@ -149,7 +149,7 @@ export class TextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { error },
+      meta,
       input,
       enableSuccessCheck,
       keyboardType,
@@ -178,10 +178,11 @@ export class TextBox extends React.Component {
           keyboardType={keyboardType}
           autoCapitalize={autoCapitalize}
           returnKeyType="next"
-          error={error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
+          meta={meta}
+          error={meta.error}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>
