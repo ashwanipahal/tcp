@@ -19,11 +19,6 @@ class CategoryListing extends PureComponent {
             <Col className="bread-crumb-container" colSize={{ large: 12, medium: 8, small: 6 }}>
               <FixedBreadCrumbs inheritedStyles={customBreadCrumbStyle} crumbs={breadCrumbs} />
             </Col>
-            <Row fullBleed>
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div className="promo-area-1">PROMO AREA 1</div>
-              </Col>
-            </Row>
           </Row>
           <Row fullBleed>
             <Col

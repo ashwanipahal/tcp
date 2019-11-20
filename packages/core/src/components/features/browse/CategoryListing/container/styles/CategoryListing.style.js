@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export default css`
   .promo-area-1 {
     background: #d8d8d8;
-    padding: 24px 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
     margin-bottom: 14px;
     margin-top: 25px;
     text-align: center;
@@ -14,7 +14,7 @@ export default css`
   }
 
   .image-tile-desktop {
-    padding: 12px 10px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 10px;
     text-align: center;
     a {
       display: inline-flex;
@@ -41,19 +41,19 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.large} {
     .image-tile-desktop {
-      padding: 22px 16px;
+      padding: 22px ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     .image-tile-desktop-4-up {
-      width: calc(25% - 32px);
+      width: calc(25% - ${props => props.theme.spacing.ELEM_SPACING.XL});
     }
     .image-tile-desktop-3-up {
-      width: calc(33% - 32px);
+      width: calc(33% - ${props => props.theme.spacing.ELEM_SPACING.XL});
     }
     .image-tile-desktop-2-up {
-      width: calc(50% - 32px);
+      width: calc(50% - ${props => props.theme.spacing.ELEM_SPACING.XL});
     }
     .image-tile-full-bleed {
-      width: calc(100% - 32px);
+      width: calc(100% - ${props => props.theme.spacing.ELEM_SPACING.XL});
     }
   }
 `;

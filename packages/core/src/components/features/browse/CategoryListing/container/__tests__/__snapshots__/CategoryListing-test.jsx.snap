@@ -56,25 +56,6 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           }
         />
       </Styled(Col)>
-      <Styled(Row)
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-        >
-          <div
-            className="promo-area-1"
-          >
-            PROMO AREA 1
-          </div>
-        </Styled(Col)>
-      </Styled(Row)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}

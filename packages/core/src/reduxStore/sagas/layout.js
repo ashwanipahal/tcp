@@ -32,7 +32,12 @@ function* fetchPageLayout(action) {
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
     const { errorMessage } = layoutData;
     if (!errorMessage) {
-      yield put(loadLayoutData(layoutData.items[0].layout, layoutName || page));
+      yield put(
+        loadLayoutData(
+          (layoutData.items[0] && layoutData.items[0].layout) || {},
+          layoutName || page
+        )
+      );
       const modulesData = yield call(
         layoutAbstractor.getModulesFromLayout,
         layoutData,

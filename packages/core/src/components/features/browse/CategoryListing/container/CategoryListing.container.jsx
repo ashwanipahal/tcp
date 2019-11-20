@@ -14,7 +14,7 @@ export class CategoryListingContainer extends PureComponent {
       },
     } = props;
 
-    await getLayout(cid, 'categoryListingPage');
+    await getLayout(cid);
   };
 
   componentDidUpdate(prevProps) {
@@ -31,12 +31,19 @@ export class CategoryListingContainer extends PureComponent {
       },
     } = prevProps;
     if (preCid !== cid) {
-      getLayout(cid, 'categoryListingPage');
+      getLayout(cid);
     }
   }
 
   render() {
-    const { categoryListingSlots, Modules } = this.props;
+    const {
+      layouts,
+      Modules,
+      router: {
+        query: { cid },
+      },
+    } = this.props;
+    const categoryListingSlots = (layouts[cid] && layouts[cid].slots) || [];
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);
     return (
@@ -50,7 +57,7 @@ export class CategoryListingContainer extends PureComponent {
 const mapStateToProps = state => {
   return {
     deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
-    categoryListingSlots: (state.categoryListingPage && state.categoryListingPage.slots) || [],
+    layouts: state.Layouts || {},
     Modules: state.Modules || {},
   };
 };
@@ -64,6 +71,7 @@ CategoryListingContainer.propTypes = {
   categoryListingSlots: PropTypes.shape([]).isRequired,
   Modules: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
+  layouts: PropTypes.shape({}).isRequired,
   getLayout: PropTypes.func.isRequired,
 };
 
