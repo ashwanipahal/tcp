@@ -10,6 +10,8 @@ import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import { isTCP } from '@tcp/core/src/utils/utils';
+import ReadMoreWrapper from '@tcp/core/src/components/features/browse/ProductListing/molecules/ReadMoreWrapper/views';
+import mockReadMoreWrapper from '@tcp/core/src/services/abstractors/common/ReadMoreWrapper/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
@@ -117,6 +119,7 @@ const HomePageView = dynamic({
       >
         <PageSlots slots={slots} modules={modules} />
         <ModuleS {...mockS.moduleS.composites} />
+        <ReadMoreWrapper {...mockReadMoreWrapper.ReadMoreWrapper.composites} />
         <GetCandid />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
