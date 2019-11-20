@@ -97,6 +97,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                 customHeaderMargin={customHeaderMargin}
                 modalHeadingMargin={modalHeadingMargin}
               />
+
               <ChildrenContainer childrenMargins={childrenMargins}>{children}</ChildrenContainer>
             </Component>
           </KeyboardAvoidingView>

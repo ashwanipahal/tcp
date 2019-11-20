@@ -8,6 +8,7 @@ describe('BundleProductItemsVanilla', () => {
     labels: {},
     handleSubmit: () => {},
     margins: null,
+    onCloseModal: () => {},
   };
 
   beforeEach(() => {

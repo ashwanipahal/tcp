@@ -26,7 +26,7 @@ class FavoritesView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenAddList: false,
+      isOpenModal: false,
     };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
@@ -56,6 +56,90 @@ class FavoritesView extends React.PureComponent {
     if (selectBrandType) {
       selectBrandType(data);
     }
+  };
+
+  onAddNewListHandler = data => {
+    console.tron.log('onAddNewListHandler:', data);
+  };
+
+  onEditListHandler = data => {
+    console.tron.log('onEditListHandler:', data);
+  };
+
+  onRemoveListHandler = data => {
+    console.tron.log('onRemoveListHandler:', data);
+  };
+
+  handleEditList = () => {
+    this.currentPopupName = EDIT_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleAddList = () => {
+    this.currentPopupName = ADD_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({
+      isOpenModal: false,
+    });
+  };
+
+  renderModalWrapper = () => {
+    const { labels } = this.props;
+    const { isOpenModal } = this.state;
+    return (
+      <ModalWrapper
+        labels={labels}
+        heading={this.getCurrentPopUpHeading()}
+        modalMargins="0 14px 0 14px"
+        isOpenModal={isOpenModal}
+        onCloseModal={this.onCloseModal}
+      >
+        {this.getCurrentPopUp()}
+      </ModalWrapper>
+    );
+  };
+
+  getCurrentPopUpHeading = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return getLabelValue(labels, 'lbl_fav_create_new_list_heading');
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return null;
+    }
+    return '';
+  };
+
+  getCurrentPopUp = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return (
+        <AddList
+          labels={labels}
+          onHandleSubmit={this.onAddNewListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return (
+        <EditList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+          onRemoveList={this.onRemoveListHandler}
+        />
+      );
+    }
+
+    return null;
   };
 
   renderBrandFilter = () => {
@@ -95,66 +179,6 @@ class FavoritesView extends React.PureComponent {
         </RowContainer>
       </BrandFilterContainer>
     );
-  };
-
-  onAddNewListHandler = data => {
-    console.tron.log('onAddNewListHandler:', data);
-  };
-
-  onEditListHandler = data => {
-    console.tron.log('onEditListHandler:', data);
-  };
-
-  handleEditList = () => {
-    this.currentPopupName = EDIT_LIST;
-    this.setState({
-      isOpenAddList: true,
-    });
-  };
-
-  onCloseModal = () => {
-    this.setState({
-      isOpenAddList: false,
-    });
-  };
-
-  renderModalWrapper = () => {
-    const { labels } = this.props;
-    const { isOpenAddList } = this.state;
-    return (
-      <ModalWrapper
-        labels={labels}
-        heading={this.getCurrentPopUpHeading()}
-        modalMargins="0 14px 0 14px"
-        isOpenAddList={isOpenAddList}
-        onCloseModal={this.onCloseModal}
-      >
-        {this.getCurrentPopUp()}
-      </ModalWrapper>
-    );
-  };
-
-  getCurrentPopUp = () => {
-    const { labels } = this.props;
-    if (this.currentPopupName === ADD_LIST) {
-      return <AddList labels={labels} onHandleSubmit={this.onAddNewListHandler} />;
-    }
-    if (this.currentPopupName === EDIT_LIST) {
-      return <EditList labels={labels} onHandleSubmit={this.onEditListHandler} />;
-    }
-
-    return null;
-  };
-
-  getCurrentPopUpHeading = () => {
-    const { labels } = this.props;
-    if (this.currentPopupName === ADD_LIST) {
-      return getLabelValue(labels, 'lbl_fav_creat_new_list_heading');
-    }
-    if (this.currentPopupName === EDIT_LIST) {
-      return getLabelValue(labels, 'lbl_fav_edit_list');
-    }
-    return '';
   };
 
   render() {
@@ -218,7 +242,7 @@ class FavoritesView extends React.PureComponent {
         <Anchor
           locator="pdp_write_review_icon"
           accessibilityRole="link"
-          accessibilityLabel="Edit List Settings"
+          accessibilityLabel={getLabelValue(labels, 'lbl_fav_editListSettings')}
           text={getLabelValue(labels, 'lbl_fav_editListSettings')}
           anchorVariation="custom"
           colorName="gray.900"

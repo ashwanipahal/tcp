@@ -18,12 +18,12 @@ class ModalWrapper extends React.PureComponent {
   renderCheckBox = () => {};
 
   render() {
-    const { isOpenAddList, margins, modalMargins, heading, children } = this.props;
+    const { isOpenModal, margins, modalMargins, heading, children } = this.props;
     return (
       <Container margins={margins}>
         <ModalNative
           heading={heading}
-          isOpen={isOpenAddList}
+          isOpen={isOpenModal}
           onRequestClose={this.toggleModal}
           closeIconDataLocator=""
           closeIconLeftAligned={false}
@@ -52,7 +52,7 @@ class ModalWrapper extends React.PureComponent {
 
 ModalWrapper.propTypes = {
   labels: PropTypes.shape({}),
-  isOpenAddList: PropTypes.bool.isRequired,
+  isOpenModal: PropTypes.bool.isRequired,
   margins: PropTypes.string,
   modalMargins: PropTypes.string,
   children: PropTypes.element,

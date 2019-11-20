@@ -1,19 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { EditListVanilla } from '../views/EditList.view.native';
+import { RemoveListVanilla } from '../views/RemoveList.view.native';
 
 describe('BundleProductItemsVanilla', () => {
   let component;
   const props = {
     labels: {},
-    handleSubmit: () => {},
     margins: null,
     onCloseModal: () => {},
-    onRemoveList: () => {},
   };
 
   beforeEach(() => {
-    component = shallow(<EditListVanilla {...props} />);
+    component = shallow(<RemoveListVanilla {...props} />);
   });
 
   it('should be defined', () => {
@@ -24,12 +22,8 @@ describe('BundleProductItemsVanilla', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should return Field component value two', () => {
-    expect(component.find('Field')).toHaveLength(2);
-  });
-
-  it('should return Styled(View) component value two', () => {
-    expect(component.find('Styled(View)')).toHaveLength(2);
+  it('should return Styled(BodyCopy) component value one', () => {
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(1);
   });
 
   it('should return Styled(CustomButton) component value two', () => {

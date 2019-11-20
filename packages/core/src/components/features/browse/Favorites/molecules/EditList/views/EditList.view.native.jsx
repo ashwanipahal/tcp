@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import {
   ICON_NAME,
   ICON_FONT_CLASS,
@@ -14,8 +16,16 @@ import { Container, RowContainer } from '../styles/EditList.style.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import RemoveList from '../../RemoveList';
 
 class EditList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowRemoveModal: false,
+    };
+  }
+
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -25,16 +35,43 @@ class EditList extends React.PureComponent {
     })();
   };
 
-  onCancel = () => {
-    this.toggleModal();
+  onRemoveListHandler = () => {
+    this.setState({
+      isShowRemoveModal: true,
+    });
   };
 
-  renderCheckBox = () => {};
+  onRemoveCancel = () => {
+    this.setState({
+      isShowRemoveModal: false,
+    });
+  };
+
+  renderRemoveListPopup = () => {
+    const { labels, onRemoveList } = this.props;
+    return (
+      <RemoveList labels={labels} onRemoveList={onRemoveList} onCloseModal={this.onRemoveCancel} />
+    );
+  };
 
   render() {
-    const { labels, margins } = this.props;
+    const { labels, margins, onCloseModal } = this.props;
+    const { isShowRemoveModal } = this.state;
+    if (isShowRemoveModal) {
+      return this.renderRemoveListPopup();
+    }
     return (
       <Container margins={margins}>
+        <BodyCopy
+          margin="0 0 60px 0"
+          dataLocator="fav_brand_title"
+          mobileFontFamily="secondary"
+          fontSize="fs22"
+          fontWeight="bold"
+          color="gray.900"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_fav_edit_list')}
+        />
         <Field
           label={getLabelValue(labels, 'lbl_fav_list_name')}
           name="listName"
@@ -76,8 +113,21 @@ class EditList extends React.PureComponent {
           margin="24px 0 0 0"
           fill="WHITE"
           type="submit"
-          onPress={this.onCancel}
+          onPress={onCloseModal}
           text={getLabelValue(labels, 'btn_fav_cancel')}
+        />
+        <Anchor
+          locator="btn_fav_delete_list"
+          accessibilityRole="link"
+          accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
+          text={getLabelValue(labels, 'btn_fav_delete_list')}
+          anchorVariation="custom"
+          colorName="gray.900"
+          fontSizeVariation="large"
+          onPress={this.onRemoveListHandler}
+          centered
+          underline
+          margins="22px 0 0 0"
         />
       </Container>
     );
@@ -89,12 +139,16 @@ EditList.propTypes = {
   handleSubmit: PropTypes.func,
   margins: PropTypes.string,
   onHandleSubmit: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func,
+  onRemoveList: PropTypes.func,
 };
 
 EditList.defaultProps = {
   labels: {},
   handleSubmit: () => {},
   margins: null,
+  onCloseModal: () => {},
+  onRemoveList: () => {},
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));

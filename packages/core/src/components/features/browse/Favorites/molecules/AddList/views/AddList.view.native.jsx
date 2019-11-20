@@ -25,14 +25,8 @@ class AddList extends React.PureComponent {
     })();
   };
 
-  onCancel = () => {
-    this.toggleModal();
-  };
-
-  renderCheckBox = () => {};
-
   render() {
-    const { labels, margins } = this.props;
+    const { labels, margins, onCloseModal } = this.props;
     return (
       <Container margins={margins}>
         <Field
@@ -76,7 +70,7 @@ class AddList extends React.PureComponent {
           margin="24px 0 0 0"
           fill="WHITE"
           type="submit"
-          onPress={this.onCancel}
+          onPress={onCloseModal}
           text={getLabelValue(labels, 'btn_fav_cancel')}
         />
       </Container>
@@ -89,12 +83,14 @@ AddList.propTypes = {
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
   margins: PropTypes.string,
+  onCloseModal: PropTypes.func,
 };
 
 AddList.defaultProps = {
   labels: {},
   handleSubmit: () => {},
   margins: null,
+  onCloseModal: () => {},
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));
