@@ -23,7 +23,7 @@ import { DamImage } from '../../../../../../common/atoms';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
-import OutOfStockWaterMarkView from '../../OutOfStockWaterMark';
+import OutOfStockWaterMark from '../../OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -147,7 +147,9 @@ class ImageCarousel extends React.PureComponent {
 
   renderOutOfStockOverlay = () => {
     const { keepAlive, outOfStockLabels } = this.props;
-    return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
+    return keepAlive ? (
+      <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} fontSize="fs24" />
+    ) : null;
   };
 
   renderNormalImage = imgSource => {

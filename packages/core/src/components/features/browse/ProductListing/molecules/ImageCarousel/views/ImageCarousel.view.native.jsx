@@ -7,7 +7,7 @@ import {
   getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
 import { DamImage } from '../../../../../../common/atoms';
-import OutOfStockWaterMarkView from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
+import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -44,7 +44,7 @@ class ImageCarousel extends React.PureComponent {
 
   renderOutOfStockOverlay = () => {
     const { keepAlive, outOfStockLabels } = this.props;
-    return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
+    return keepAlive ? <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} /> : null;
   };
 
   render() {

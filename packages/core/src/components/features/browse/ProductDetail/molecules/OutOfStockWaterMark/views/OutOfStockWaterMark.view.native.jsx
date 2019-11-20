@@ -4,12 +4,12 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import WaterMarkContainer from '../styles/OutOfStockWaterMark.style';
 
-const OutOfStockWaterMark = ({ label, fontSizes }) => {
+const OutOfStockWaterMark = ({ label, fontSize }) => {
   return (
     <WaterMarkContainer>
       <BodyCopy
         fontFamily="secondary"
-        fontSize={fontSizes}
+        fontSize={fontSize}
         fontWeight="extrabold"
         color="gray[900]"
         text={label}
@@ -20,11 +20,11 @@ const OutOfStockWaterMark = ({ label, fontSizes }) => {
 
 OutOfStockWaterMark.propTypes = {
   label: PropTypes.string.isRequired,
-  fontSizes: PropTypes.shape([]),
+  fontSize: PropTypes.string,
 };
 
 OutOfStockWaterMark.defaultProps = {
-  fontSizes: ['fs16', 'fs16', 'fs24'],
+  fontSize: 'fs16',
 };
 
 export default withStyles(OutOfStockWaterMark);
