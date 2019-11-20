@@ -7,7 +7,7 @@ import MobileApp from './src/pages/_app';
 import { name as appName } from './app.json';
 import codePush from 'react-native-code-push';
 
-let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
 
 AppRegistry.registerComponent(appName, () => MobileApp);
 

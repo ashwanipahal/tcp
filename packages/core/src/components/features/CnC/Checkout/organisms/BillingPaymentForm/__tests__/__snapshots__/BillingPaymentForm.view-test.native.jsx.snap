@@ -1308,7 +1308,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
                   "autoCapitalize": "sentences",
-                  "bottomBorderColor": null,
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -1691,7 +1690,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
                   "autoCapitalize": "sentences",
-                  "bottomBorderColor": null,
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
