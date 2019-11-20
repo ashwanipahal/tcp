@@ -7,7 +7,7 @@ import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
-import SelectWishListDropdown from '../molecules/SelectWishListDropdown';
+import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWishListDropdown';
 import CustomSelect from '../../../../common/molecules/CustomSelect/views';
 
 const FavoritesView = props => {

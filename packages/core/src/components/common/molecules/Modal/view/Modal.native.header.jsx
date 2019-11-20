@@ -86,6 +86,7 @@ const ModalHeaderNative = ({ isOverlay, ...otherProps }: Props) => {
     borderColor = 'black',
     rightAlignCrossIcon,
     customHeaderMargin,
+    modalHeadingMargin,
   } = otherProps;
 
   return (
@@ -97,7 +98,11 @@ const ModalHeaderNative = ({ isOverlay, ...otherProps }: Props) => {
         customHeaderMargin={customHeaderMargin}
       >
         {heading && (
-          <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
+          <ModalHeading
+            stickyCloseIcon={stickyCloseIcon}
+            fullWidth={fullWidth}
+            modalHeadingMargin={modalHeadingMargin}
+          >
             <BodyCopy
               mobileFontFamily={headingFontFamily || 'primary'}
               fontWeight={headingFontWeight || 'extrabold'}

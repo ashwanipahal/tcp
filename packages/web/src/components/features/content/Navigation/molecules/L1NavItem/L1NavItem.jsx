@@ -7,6 +7,7 @@ import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 import { DELAY_TO_OPEN } from './L1NavItem.config';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 const HideDrawerContext = React.createContext({});
 const HideDrawerProvider = HideDrawerContext.Provider;
@@ -100,8 +101,10 @@ class L1NavItem extends React.PureComponent {
       // showOnlyOnApp,
       removeL1Focus,
       hasL2,
+      clickData,
       ...others
     } = this.props;
+
     const { hovered } = this.state;
 
     let classForHovered = '';
@@ -141,7 +144,14 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
+            <ClickTracker
+              as={Anchor}
+              to={url}
+              asPath={asPath}
+              clickData={{
+                pageNavigationText: clickData,
+              }}
+            >
               <div className="nav-bar-l1-content">
                 <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
                 <span
@@ -154,7 +164,7 @@ class L1NavItem extends React.PureComponent {
                 </span>
                 <span className="icon-arrow" />
               </div>
-            </Anchor>
+            </ClickTracker>
             {(hovered || this.childRendered) && children}
             <div
               className={`${className} l1-overlay ${classForHovered}`}
@@ -178,10 +188,12 @@ L1NavItem.propTypes = {
   removeL1Focus: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
   hasL2: PropTypes.number.isRequired,
+  clickData: PropTypes.string,
 };
 
 L1NavItem.defaultProps = {
   dataLocator: '',
+  clickData: '',
 };
 
 export { L1NavItem as L1NavItemVanilla };
