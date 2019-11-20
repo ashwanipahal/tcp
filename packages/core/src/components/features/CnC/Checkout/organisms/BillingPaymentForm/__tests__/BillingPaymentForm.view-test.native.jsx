@@ -72,14 +72,6 @@ describe('ButtonList component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('renders correctly with method onAddNewCreditCardClick', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
-    instance.onAddNewCreditCardClick();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
-  });
-
   it('renders correctly with method getCreditListView', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
@@ -222,13 +214,5 @@ describe('ButtonList component', () => {
     const spyGetCreditListView = jest.spyOn(instance, 'unsetFormEditState');
     instance.unsetFormEditState();
     expect(spyGetCreditListView).toHaveBeenCalled();
-  });
-  it('renders correctly with method onCCDropDownChange', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    component.setState({ addNewCCState: true });
-    const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
-    instance.onCCDropDownChange();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
 });

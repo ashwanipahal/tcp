@@ -46,6 +46,9 @@ import {
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
+  getPaymentMethods,
+  onAddCreditCardClick,
+  onCCDropDownChange,
 } from './BillingPaymentForm.util';
 
 export class BillingPaymentForm extends React.PureComponent {
@@ -58,19 +61,6 @@ export class BillingPaymentForm extends React.PureComponent {
     this.state = { addNewCCState: false, editMode: false, editModeSubmissionError: '' };
     this.ediCardErrorRef = React.createRef();
   }
-
-  /**
-   * @function onAddNewCreditCardClick
-   * @description sets the add new credit card state as true
-   */
-  onAddNewCreditCardClick = () => {
-    const { dispatch } = this.props;
-    this.setState({ addNewCCState: true });
-    dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
-    dispatch(change(constants.FORM_NAME, 'expMonth', ''));
-    dispatch(change(constants.FORM_NAME, 'expYear', ''));
-    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
-  };
 
   /**
    * @function getCheckoutBillingAddress
@@ -216,19 +206,6 @@ export class BillingPaymentForm extends React.PureComponent {
     unsetPaymentFormEditState(this, e);
   };
 
-  /**
-   * @function onCCDropDownChange
-   * @description sets the add new credit card state to false if it is true
-   */
-  onCCDropDownChange = () => {
-    const { addNewCCState } = this.state;
-    if (addNewCCState) {
-      this.setState({ addNewCCState: false });
-    }
-    const { dispatch } = this.props;
-    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
-  };
-
   getCCDropDown = ({
     labels,
     creditCardList,
@@ -257,12 +234,12 @@ export class BillingPaymentForm extends React.PureComponent {
             creditCardList={creditCardList}
             labels={labels}
             onFileCardKey={onFileCardKey}
-            addNewCC={this.onAddNewCreditCardClick}
+            addNewCC={() => onAddCreditCardClick(this)}
             selectedOnFileCardKey={selectedCard && selectedCard.creditCardId}
             dispatch={dispatch}
             formName={constants.FORM_NAME}
             addNewCCState={addNewCCState}
-            onChange={this.onCCDropDownChange}
+            onChange={() => onCCDropDownChange(this)}
           />
         </CreditCardWrapper>
         {selectedCard ? getCardDetailsMethod(labels, setFormToEditState, editMode, this) : null}
@@ -370,12 +347,10 @@ export class BillingPaymentForm extends React.PureComponent {
       getPayPalSettings,
       isPayPalWebViewEnable,
       isPayPalEnabled,
+      isVenmoEnabled,
+      venmoError,
     } = this.props;
-    const paymentMethods = [
-      { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
-      { id: constants.PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
-      { id: constants.PAYMENT_METHOD_VENMO, displayName: labels.venmo },
-    ];
+    const paymentMethods = getPaymentMethods(labels);
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
@@ -413,6 +388,18 @@ export class BillingPaymentForm extends React.PureComponent {
                 />
               </PayPalTextContainer>
             ) : null}
+            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
+              <PayPalTextContainer>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  spacingStyles="margin-bottom-MED"
+                  color="gray.900"
+                  dataLocator="venmoLabelText"
+                  text={labels.venmoLongText}
+                />
+              </PayPalTextContainer>
+            )}
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
               this.getCreditCardWrapper({
                 labels,
@@ -442,6 +429,10 @@ export class BillingPaymentForm extends React.PureComponent {
           getPayPalSettings={getPayPalSettings}
           showPayPalButton={isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
           isPayPalWebViewEnable={isPayPalWebViewEnable}
+          showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
+          onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
+          venmoError={venmoError}
         />
       </>
     );

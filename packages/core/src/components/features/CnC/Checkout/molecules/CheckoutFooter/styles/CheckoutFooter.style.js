@@ -10,7 +10,7 @@ const styles = css`
     transform: rotate(135deg);
   }
   @media ${props => props.theme.mediaQuery.medium} {
-    border-top: 1px solid ${props => props.theme.colors.BLACK};
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .footer-body-container {

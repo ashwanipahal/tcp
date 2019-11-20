@@ -11,7 +11,7 @@ const LayoutAbstractor = {
    * This function loads data from graphQL service
    * @param {Object} params Object containing {page, brand, country, channel}
    */
-  getLayoutData: async ({ page, brand, country, channel }) => {
+  getLayoutData: async ({ page, brand, country, channel, pageName }) => {
     logger.info(`Executing Layout Query for ${page}: `);
     logger.debug(
       'Executing Layout Query with params: ',
@@ -28,10 +28,11 @@ const LayoutAbstractor = {
           brand,
           country,
           channel,
+          pageName,
         },
       })
       .then(response => {
-        const result = response.data[page];
+        const result = response.data[pageName || page];
         logger.info('Layout Query Executed Successfully');
         logger.debug('Layout Query Result: ', result);
         return result;
