@@ -215,9 +215,6 @@ export const formValidationRules = {
     name: true,
     maxLength: 50,
   },
-  wishlistName: {
-    nonEmpty: true,
-  },
   acceptAddChildAgreement: {
     required: true,
   },
