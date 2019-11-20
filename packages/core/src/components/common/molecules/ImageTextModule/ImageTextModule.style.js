@@ -6,6 +6,9 @@ const ImgWrapper = styled.div`
   @media ${props => props.theme.mediaQuery.medium} {
     max-height: 689px;
   }
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    padding: 0 15px;
+  }
   @media ${props => props.theme.mediaQuery.large} {
     max-height: 576px;
   }
@@ -13,23 +16,40 @@ const ImgWrapper = styled.div`
     max-height: 689px;
   }
 `;
-const PromoBannerWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const style = css`
-  .image-col {
-    position: relative;
+const ContentContainer = styled.div`
+  @media ${props => props.theme.mediaQuery.large} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 483px;
   }
 `;
 
-export { ImgWrapper, PromoBannerWrapper, style };
+const style = css`
+  .content-wrapper {
+    position: relative;
+    text-align: center;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding: 0 15px;
+    }
+  }
+  .headline,
+  .headsubline {
+    margin-bottom: 16px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding: 0 14px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 24px;
+    }
+  }
+`;
+
+export { ImgWrapper, ContentContainer, style };
 
 export default {
   ImgWrapper,
-  PromoBannerWrapper,
+  ContentContainer,
   style,
 };

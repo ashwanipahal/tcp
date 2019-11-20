@@ -3,72 +3,28 @@ export default {
   name: 'imageText',
   type: 'module',
   composites: {
-    headerText: [
+    headLine: [
       {
-        textItems: [
-          {
-            text: 'NEW WASHES.',
-            style: 'style1',
-          },
-          {
-            text: 'MORE FITS.',
-            style: 'style1',
-          },
-        ],
-        link: {
-          url: '/c/girls-denim-bottomsw',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-          action: '',
-        },
-        icon: {
-          icon: '',
-          placement: '',
-        },
+        text: 'SHORTS FOR',
+        style: 'style1',
       },
       {
-        textItems: [
-          {
-            text: 'SLIM, PLUS & HUSKY',
-            style: 'style2',
-          },
-          {
-            text: 'SIZES UP TO 18!',
-            style: 'style1',
-          },
-        ],
-        link: {
-          url: '/c/girls-denim-bottoms',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-          action: '',
-        },
-        icon: {
-          icon: '',
-          placement: '',
-        },
+        text: ' EVERY-YEAR',
+        style: 'style1',
       },
     ],
-    promoBanner: [
+    subHeadLine: [
       {
-        link: {
-          url: '/c/girls-denim-bottoms',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-          action: '',
-        },
-        textItems: [
-          {
-            text: 'ALL BASIC DENIM',
-            style: 'small_text_black',
-          },
-        ],
+        text: 'So many prints ',
+        style: 'style1',
+      },
+      {
+        text: ', length and details',
+        style: 'style1',
+      },
+      {
+        text: 'to climp and play in..',
+        style: 'style1',
       },
     ],
     ctaItems: [
@@ -125,12 +81,12 @@ export default {
     ],
     mediaWrapper: [
       {
-        url: 'https://test5.childrensplace.com/image/upload/module-E-test-large-1.jpg',
+        url: 'http://image1.sm/url',
         alt: 'Buy 1 get one free',
         title: 'Buy 1 get one free',
-        crop_d: '',
-        crop_t: '',
-        crop_m: '',
+        crop_d: 'c_crop...',
+        crop_t: 'c_crop...',
+        crop_m: 'c_crop...',
         url_m: '',
         url_t: '',
       },
@@ -148,11 +104,11 @@ export default {
     },
     {
       key: 'headerPosition',
-      val: 'left',
+      val: 'left|right',
     },
     {
       key: 'expandableTitle',
-      val: '<title>',
+      val: 'Shop Cat',
     },
   ],
 };
