@@ -83,11 +83,13 @@ const ProductList = props => {
             <hr className="horizontal-bar" />
           </Heading>
         ) : (
-          <div className={`${className} product-tile ${productTileVariation}`}>
+          <div
+            className={`${className} product-tile ${productTileVariation}`}
+            key={item.productInfo.generalProductId}
+          >
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}
-              key={item.productInfo.generalProductId}
               item={item}
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}

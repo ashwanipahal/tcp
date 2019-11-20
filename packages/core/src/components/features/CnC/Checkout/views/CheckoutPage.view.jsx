@@ -37,9 +37,8 @@ class CheckoutPage extends React.PureComponent {
     setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
     setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
     setLoaderState(false);
-    const { router, setCheckoutStage } = this.props;
-    const section = router.query.section || router.query.subSection;
-    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const { setCheckoutStage } = this.props;
+    const currentSection = this.getCurrentCheckoutSection();
     setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
@@ -47,12 +46,9 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { checkoutServerError, router, setCheckoutStage } = this.props;
-    const { router: prevRouter } = prevProps;
-    const section = router.query.section || router.query.subSection;
-    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
-    const prevSection = prevRouter.query.section || prevRouter.query.subSection;
-    if (currentSection !== prevSection) {
+    const { checkoutServerError, setCheckoutStage, activeStage } = this.props;
+    const currentSection = this.getCurrentCheckoutSection();
+    if (currentSection !== activeStage) {
       setCheckoutStage(currentSection);
     }
     if (
@@ -64,6 +60,12 @@ class CheckoutPage extends React.PureComponent {
     }
     updateAnalyticsData(this.props, prevProps);
   }
+
+  getCurrentCheckoutSection = () => {
+    const { router } = this.props;
+    const section = router.query.section || router.query.subSection;
+    return section || CHECKOUT_STAGES.SHIPPING;
+  };
 
   /**
    * This method will set venmo banner state once it is visible, so that it won't be visible
@@ -119,7 +121,6 @@ class CheckoutPage extends React.PureComponent {
 
   renderLeftSection = () => {
     const {
-      router,
       isGuest,
       isMobile,
       isUsSite,
@@ -165,8 +166,7 @@ class CheckoutPage extends React.PureComponent {
     const { clearCheckoutServerError, setClickAnalyticsDataCheckout, cartOrderItems } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
-    const section = router.query.section || router.query.subSection;
-    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const currentSection = this.getCurrentCheckoutSection();
     const isFormLoad = getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
 
@@ -315,7 +315,6 @@ class CheckoutPage extends React.PureComponent {
   render() {
     const {
       isGuest,
-      router,
       dispatchReviewReduxForm,
       reviewProps,
       checkoutServerError,
@@ -325,8 +324,7 @@ class CheckoutPage extends React.PureComponent {
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
-    const section = router.query.section || router.query.subSection;
-    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const currentSection = this.getCurrentCheckoutSection();
 
     return (
       <>

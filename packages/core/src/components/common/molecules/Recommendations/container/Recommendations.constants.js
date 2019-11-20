@@ -14,6 +14,7 @@ export const RECOMMENDATIONS_PAGES_MAPPING = {
   NO_PAGE_FOUND: '404_page',
   SEARCH: 'search',
   NULL_SEARCH: 'null_search',
+  COLLECTION: 'collection',
 };
 export const RECOMMENDATIONS_MBOXNAMES = {
   RECENTLY_VIEWED: 'recently-viewed-products',
