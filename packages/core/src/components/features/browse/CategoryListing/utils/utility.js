@@ -22,3 +22,13 @@ export const getImagesGrids = (categoryIds, modules) => {
   }
   return categoryPromoModules;
 };
+
+export const getSeoText = (listOfL1, cid) => {
+  let description = '';
+  for (let i = 0; i < listOfL1.length; i += 1) {
+    if (listOfL1[i] && listOfL1[i].url && listOfL1[i].url.split('/c?cid=')[1] === cid) {
+      description = listOfL1[i].categoryContent && listOfL1[i].categoryContent.longDescription;
+    }
+  }
+  return description;
+};

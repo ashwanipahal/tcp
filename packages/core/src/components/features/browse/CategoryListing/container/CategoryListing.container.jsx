@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
-import { getCategoryIds, getImagesGrids } from '../utils/utility';
+import { getCategoryIds, getImagesGrids, getSeoText } from '../utils/utility';
+import { getLabels } from './CategoryListing.selectors';
 
 export class CategoryListingContainer extends PureComponent {
   static getInitialProps = async ({ props }) => {
@@ -39,6 +40,7 @@ export class CategoryListingContainer extends PureComponent {
     const {
       layouts,
       Modules,
+      navigationData,
       router: {
         query: { cid },
       },
@@ -46,9 +48,14 @@ export class CategoryListingContainer extends PureComponent {
     const categoryListingSlots = (layouts[cid] && layouts[cid].slots) || [];
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);
+    const seoText = getSeoText(navigationData, cid);
     return (
       <Fragment>
-        <CategoryListing {...this.props} categoryPromoModules={categoryPromoModules} />
+        <CategoryListing
+          {...this.props}
+          seoText={seoText}
+          categoryPromoModules={categoryPromoModules}
+        />
       </Fragment>
     );
   }
@@ -59,6 +66,8 @@ const mapStateToProps = state => {
     deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
     layouts: state.Layouts || {},
     Modules: state.Modules || {},
+    navigationData: (state.Navigation && state.Navigation.navigationData) || [],
+    labels: getLabels(state),
   };
 };
 
@@ -72,6 +81,7 @@ CategoryListingContainer.propTypes = {
   Modules: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   layouts: PropTypes.shape({}).isRequired,
+  navigationData: PropTypes.shape([]).isRequired,
   getLayout: PropTypes.func.isRequired,
 };
 
