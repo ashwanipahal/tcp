@@ -27,11 +27,9 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { plccData, fetchModuleXContent, labels, plccUser, isGuestUser } = this.props;
-    if (isGuestUser) {
-      const { resetPLCCApplicationStatus } = this.props;
-      resetPLCCApplicationStatus({ status: null });
-    }
+    const { plccData, fetchModuleXContent, labels, plccUser } = this.props;
+    const { resetPLCCApplicationStatus } = this.props;
+    resetPLCCApplicationStatus({ status: null });
     if (plccUser) {
       routerPush(window.location.href, '/home');
     } else if (!plccData && labels && labels.referred) {
