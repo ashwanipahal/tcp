@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -23,6 +24,9 @@ import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWi
 import { Button } from '../../../../common/atoms';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 import CustomIcon from '../../../../common/atoms/Icon';
+import ModalWrapper from '../molecules/ModalWrapper';
+import AddList from '../molecules/AddList';
+import EditList from '../molecules/EditList';
 
 const dropDownStyle = {
   height: 49,
@@ -36,11 +40,20 @@ const arrowImageStyle = {
   position: 'absolute',
   right: 0,
 };
+
+const ADD_LIST = 'addList';
+const EDIT_LIST = 'editList';
+
 class FavoritesView extends React.PureComponent {
+  currentPopupName;
+
   brandOptions;
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      isOpenModal: false,
+    };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
       {
@@ -59,6 +72,7 @@ class FavoritesView extends React.PureComponent {
     this.state = {
       selectedWishlist: '',
       selectedShareOption: '',
+      isOpenModal: false,
     };
   }
 
@@ -73,6 +87,90 @@ class FavoritesView extends React.PureComponent {
     if (selectBrandType) {
       selectBrandType(data);
     }
+  };
+
+  onAddNewListHandler = data => {
+    console.tron.log('onAddNewListHandler:', data);
+  };
+
+  onEditListHandler = data => {
+    console.tron.log('onEditListHandler:', data);
+  };
+
+  onRemoveListHandler = data => {
+    console.tron.log('onRemoveListHandler:', data);
+  };
+
+  handleEditList = () => {
+    this.currentPopupName = EDIT_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleAddList = () => {
+    this.currentPopupName = ADD_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({
+      isOpenModal: false,
+    });
+  };
+
+  renderModalWrapper = () => {
+    const { labels } = this.props;
+    const { isOpenModal } = this.state;
+    return (
+      <ModalWrapper
+        labels={labels}
+        heading={this.getCurrentPopUpHeading()}
+        modalMargins="0 14px 0 14px"
+        isOpenModal={isOpenModal}
+        onCloseModal={this.onCloseModal}
+      >
+        {this.getCurrentPopUp()}
+      </ModalWrapper>
+    );
+  };
+
+  getCurrentPopUpHeading = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return getLabelValue(labels, 'lbl_fav_create_new_list_heading');
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return null;
+    }
+    return '';
+  };
+
+  getCurrentPopUp = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return (
+        <AddList
+          labels={labels}
+          onHandleSubmit={this.onAddNewListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return (
+        <EditList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+          onRemoveList={this.onRemoveListHandler}
+        />
+      );
+    }
+
+    return null;
   };
 
   renderBrandFilter = () => {
@@ -115,8 +213,6 @@ class FavoritesView extends React.PureComponent {
       </BrandFilterContainer>
     );
   };
-
-  handleEditList = () => {};
 
   handleWishlistClick = value => {
     const { getActiveWishlist } = this.props;
@@ -212,6 +308,24 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
+  getSharingOptions = () => {
+    const { labels } = this.props;
+    return [
+      {
+        displayName: labels.lbl_fav_facebook,
+        value: labels.lbl_fav_facebook,
+      },
+      {
+        displayName: labels.lbl_fav_email,
+        value: labels.lbl_fav_email,
+      },
+      {
+        displayName: labels.lbl_fav_copyLink,
+        value: labels.lbl_fav_copyLink,
+      },
+    ];
+  };
+
   render() {
     const {
       activeWishListProducts,
@@ -233,6 +347,7 @@ class FavoritesView extends React.PureComponent {
       wishlistsSummaries,
       defaultWishList,
     } = this.props;
+
     const { selectedWishlist, selectedShareOption } = this.state;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
@@ -248,24 +363,9 @@ class FavoritesView extends React.PureComponent {
         filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
       }
     }
-
-    const shareOptions = [
-      {
-        displayName: labels.lbl_fav_facebook,
-        value: labels.lbl_fav_facebook,
-      },
-      {
-        displayName: labels.lbl_fav_email,
-        value: labels.lbl_fav_email,
-      },
-      {
-        displayName: labels.lbl_fav_copyLink,
-        value: labels.lbl_fav_copyLink,
-      },
-    ];
-
     return (
       <PageContainer>
+        {this.renderModalWrapper()}
         <BodyCopy
           margin="40px 0 0 0"
           dataLocator="fav_lbl_myFavorites"
@@ -317,7 +417,7 @@ class FavoritesView extends React.PureComponent {
         <ShareDropDownContainer>
           <SelectWishListDropdown
             selectedValue={selectedShareOption}
-            data={shareOptions}
+            data={this.getSharingOptions()}
             onValueChange={itemValue => {
               this.setState({ selectedShareOption: itemValue }, () =>
                 this.handleShareClick(itemValue)

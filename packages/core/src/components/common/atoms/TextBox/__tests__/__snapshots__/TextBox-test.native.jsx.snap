@@ -12,6 +12,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
       <Styled(TextInput)
         aria-label="input"
         autoCapitalize="sentences"
+        bottomBorderColor={null}
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={false}
@@ -26,6 +27,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
           Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -59,6 +61,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
       <Styled(TextInput)
         aria-label="input"
         autoCapitalize="sentences"
+        bottomBorderColor={null}
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={true}
@@ -73,6 +76,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
           Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": true,
             "id": "input",
@@ -123,6 +127,7 @@ exports[`Textbox component renders correctly 1`] = `
       <Styled(TextInput)
         aria-label="input"
         autoCapitalize="sentences"
+        bottomBorderColor={null}
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={false}
@@ -137,6 +142,7 @@ exports[`Textbox component renders correctly 1`] = `
           Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -175,6 +181,7 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
           aria-label="input"
           ariaLabel="input"
           autoCapitalize="sentences"
+          bottomBorderColor={null}
           className="TextBox__input"
           data-locator="input-field"
           dataLocator="input-field"
