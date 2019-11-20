@@ -303,7 +303,7 @@ exports[`Bag page View should render with only SFL condition 1`] = `
       display: inline-flex;
       margin-bottom: 7px;
       .paypal-wrapper {
-        min-width: unset;
+        min-width: auto;
       }
       .venmo-button {
         height: 42px;
@@ -543,7 +543,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
       display: inline-flex;
       margin-bottom: 7px;
       .paypal-wrapper {
-        min-width: unset;
+        min-width: auto;
       }
       .venmo-button {
         height: 42px;
