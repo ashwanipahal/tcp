@@ -41,6 +41,7 @@ export const addMultipleProductsInEcom = paramsArray => {
           atbSuccessProducts.push({
             orderId: res.body.orderId && res.body.orderId[0],
             orderItemId: res.body.orderItemId && res.body.orderItemId[0],
+            ...params.product,
           });
           return atbSuccessProducts;
         })

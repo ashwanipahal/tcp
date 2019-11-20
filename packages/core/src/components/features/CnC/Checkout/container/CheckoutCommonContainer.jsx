@@ -158,6 +158,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
@@ -241,6 +243,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}
