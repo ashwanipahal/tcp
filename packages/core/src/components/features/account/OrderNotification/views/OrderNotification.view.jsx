@@ -11,7 +11,8 @@ import styles from '../styles/OrderNotification.style';
  * This function component use for Order Notification
  * can be passed in the component.
  */
-const OrderNotification = ({ className, labels, order }) => {
+const OrderNotification = ({ className, labels, order, closedOverlay }) => {
+  const orderStatus = order ? getOrderStatusForNotification(order.orderStatus) : '';
   return (
     <>
       {order && (
@@ -20,15 +21,19 @@ const OrderNotification = ({ className, labels, order }) => {
             component="div"
             className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
           >
-            <BodyCopy color="white" fontSize="fs18" fontWeight="extrabold" fontFamily="secondary">
-              {getLabelValue(
-                labels,
-                getOrderStatusForNotification(order.orderStatus),
-                'OrderNotification'
-              )}
-            </BodyCopy>
+            {orderStatus && (
+              <BodyCopy
+                className="elem-mb-SM"
+                color="white"
+                fontSize="fs18"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
+                {getLabelValue(labels, orderStatus, 'OrderNotification')}
+              </BodyCopy>
+            )}
 
-            <BodyCopy component="div" className="elem-mt-SM">
+            <BodyCopy component="div">
               <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
                 {getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
               </BodyCopy>
@@ -39,6 +44,7 @@ const OrderNotification = ({ className, labels, order }) => {
                 anchorVariation="primary"
                 fontSize="fs12"
                 dataLocator="order-number-value"
+                onClick={() => closedOverlay()}
                 to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
                 asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
                 fontFamily="secondary"
@@ -51,6 +57,7 @@ const OrderNotification = ({ className, labels, order }) => {
                 anchorVariation="secondary"
                 underline
                 className="view-order-link elem-ml-LRG"
+                onClick={() => closedOverlay()}
                 to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
                 asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
               >
@@ -69,6 +76,7 @@ const OrderNotification = ({ className, labels, order }) => {
                     anchorVariation="secondary"
                     underline
                     href={order.orderTrackingUrl}
+                    onClick={() => closedOverlay()}
                     className="view-order-link"
                     to={order.orderTrackingUrl}
                     target="_blank"
@@ -104,6 +112,7 @@ OrderNotification.propTypes = {
   order: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string,
+  closedOverlay: PropTypes.func.isRequired,
 };
 
 OrderNotification.defaultProps = {

@@ -57,6 +57,8 @@ export function* submitCreditCardForm({ payload = '' }) {
       currentCheckoutStage === 'review',
       isRTPSFlow
     );
+    // GetRegisteredUserInfo post processWIC.
+    yield put(getUserInfo({ ignoreCache: true }));
     // Check for mobile App and to showcase the toast message of results.
     if (isMobileApp() && ERR_CONFIG.indexOf(res.status) === -1) {
       yield put(toastMessageInfo(res.status));
@@ -69,7 +71,6 @@ export function* submitCreditCardForm({ payload = '' }) {
         yield put(getAddressList({ ignoreCache: true }));
         yield put(getCardList({ ignoreCache: true }));
       }
-      yield put(getUserInfo({ ignoreCache: true }));
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: false,

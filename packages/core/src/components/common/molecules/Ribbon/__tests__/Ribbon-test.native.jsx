@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Ribbon from '../Ribbon.native';
-import mock from '../../../../../services/abstractors/common/moduleS/mock-v2';
+import { mockV2 } from '../../../../../services/abstractors/common/moduleS/mock';
 
 describe('RibbonComponentVanilla', () => {
   let wrapper;
@@ -10,7 +10,7 @@ describe('RibbonComponentVanilla', () => {
     wrapper = shallow(
       <Ribbon
         navigation={{}}
-        ribbonBanner={mock.moduleS.composites.ribbonBanner}
+        ribbonBanner={mockV2.moduleS.composites.ribbonBanner}
         width="200px"
         height="70px"
         color="white"

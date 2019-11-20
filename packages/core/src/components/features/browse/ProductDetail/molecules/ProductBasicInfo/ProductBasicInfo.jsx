@@ -4,9 +4,9 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
-import { isClient } from '../../../../../../utils';
 import withStyles from '../../../../../common/hoc/withStyles';
 import ProductBasicInfoStyle from './ProductBasicInfo.style';
 // import {FavoriteButtonContainer} from './FavoriteButtonContainer.js';
@@ -18,9 +18,12 @@ import {
 class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isInDefaultWishlist: false,
-    };
+    this.state = {};
+  }
+
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
   }
 
   title = () => {
@@ -43,15 +46,11 @@ class ProductBasicInfo extends React.Component {
 
   handleAddToWishlist = () => {
     const {
-      productInfo: { generalProductId },
       onAddItemToFavorites,
-      isLoggedIn,
+      productMiscInfo: { colorProductId },
     } = this.props;
 
-    onAddItemToFavorites({ colorProductId: generalProductId });
-    if (isClient() && isLoggedIn) {
-      this.setState({ isInDefaultWishlist: true });
-    }
+    onAddItemToFavorites({ colorProductId, page: 'PDP' });
   };
 
   render() {
@@ -63,9 +62,14 @@ class ProductBasicInfo extends React.Component {
       className,
       // isShowFavoriteCount,
       productInfo: { ratingsProductId },
+      keepAlive,
+      outOfStockLabels,
+      productMiscInfo,
+      AddToFavoriteErrorMsg,
     } = this.props;
-
-    const { isInDefaultWishlist } = this.state;
+    const isFavorite =
+      productMiscInfo.isFavorite ||
+      (productMiscInfo.miscInfo && productMiscInfo.miscInfo.isInDefaultWishlist);
     const title = this.title();
     const isFavoriteView = false;
     return (
@@ -76,6 +80,18 @@ class ProductBasicInfo extends React.Component {
           className="inline-badge-item"
           text={badge}
         />
+        {keepAlive && (
+          <BodyCopy color="red.500" fontSize="fs10" fontFamily="secondary">
+            {outOfStockLabels.itemSoldOutMessage}
+          </BodyCopy>
+        )}
+        {AddToFavoriteErrorMsg && (
+          <Notification
+            status="error"
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message={AddToFavoriteErrorMsg}
+          />
+        )}
         <div className="information-container">
           <div className="title-wrapper">
             {typeof pdpUrl === 'string' ? (
@@ -90,9 +106,10 @@ class ProductBasicInfo extends React.Component {
                 {!isBundleProduct &&
                   WishListIcon(
                     isFavoriteView,
-                    isInDefaultWishlist,
-                    this.handleAddToWishlist
-                    // itemNotAvailable
+                    isFavorite,
+                    this.handleAddToWishlist,
+                    false, // itemNotAvailable
+                    productMiscInfo.favoritedCount
                   )}
               </div>
             )}
@@ -121,16 +138,32 @@ ProductBasicInfo.propTypes = {
   badge: PropTypes.string,
   isGiftCard: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
+  productMiscInfo: PropTypes.shape({
+    isInDefaultWishlist: PropTypes.bool,
+  }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductBasicInfo.defaultProps = {
   className: '',
   pdpUrl: null,
   badge: '',
-  isLoggedIn: false,
   isBundleProduct: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
+  keepAlive: false,
+  productMiscInfo: {
+    isInDefaultWishlist: false,
+  },
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);
