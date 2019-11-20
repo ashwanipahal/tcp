@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ConfirmationView from '../views';
 import selectors from './Confirmation.selectors';
-import checkoutSelector, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
 import { fetchUpdateOrderDetailsData } from './Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 
+const { getVenmoUserName } = checkoutSelectors;
 /**
  * @class ConfirmationContainer
  * @description container component to render confirmation component.
@@ -183,7 +184,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
-    venmoUserName: checkoutSelector.getVenmoUserName(state),
+    venmoUserName: getVenmoUserName(state),
     isGymboreeCanadaSite: selectors.isGymboreeCanadaSite(state),
   };
 };
