@@ -250,6 +250,13 @@ const getCartLoadedState = state => {
   return state.CartPageReducer.get('loaded');
 };
 
+const getIfEmailSignUpDone = state => {
+  return {
+    emailSignUpTCP: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpTCP']),
+    emailSignUpGYM: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpGYM']),
+  };
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -283,4 +290,5 @@ export default {
   isBagLoading,
   getCartLoadedState,
   isBagRouting,
+  getIfEmailSignUpDone,
 };

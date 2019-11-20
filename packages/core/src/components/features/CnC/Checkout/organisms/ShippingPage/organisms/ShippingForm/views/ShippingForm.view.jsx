@@ -1,16 +1,14 @@
 import React from 'react';
-import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
+import { FormSection, reduxForm, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { Row, Col } from '../../../../../../../../common/atoms';
-
-import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
-import Anchor from '../../../../../../../../common/atoms/Anchor';
+import EmailSignUpCheckBox from '../../../../../molecules/EmailSignUpCheckBox';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
@@ -140,54 +138,17 @@ class ShippingForm extends React.Component {
   };
 
   renderEmailSignUp = () => {
-    const { orderHasPickUp, isGuest, isUsSite, labels } = this.props;
+    const { orderHasPickUp, isGuest, isUsSite, emailSignUpLabels, emailSignUpFlags } = this.props;
     return (
       !orderHasPickUp &&
       isGuest &&
       !isUsSite && (
-        <FormSection name="emailSignUp">
-          <div className="email-signup-container">
-            <Field
-              dataLocator="signUp-checkbox-field"
-              name="sendEmailSignup"
-              component={InputCheckbox}
-              className="email-signup"
-            >
-              <BodyCopy
-                dataLocator="pickup-email-signUp-heading-lbl"
-                fontSize="fs16"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-            </Field>
-            <div className="email-signup-text">
-              <BodyCopy
-                dataLocator="pickup-email-signUp-sub-heading-text"
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <Anchor
-                noUnderline
-                anchorVariation="primary"
-                fontSizeVariation="small"
-                noLink
-                href="#"
-                target="_blank"
-                dataLocator="shipping-email-signUp-contact-anchor"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
-              </Anchor>
-            </div>
-          </div>
-        </FormSection>
+        <EmailSignUpCheckBox
+          labels={emailSignUpLabels}
+          fieldName="emailSignUp"
+          bottomSeparator
+          emailSignUpFlags={emailSignUpFlags}
+        />
       )
     );
   };
