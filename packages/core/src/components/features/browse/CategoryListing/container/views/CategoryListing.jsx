@@ -7,10 +7,19 @@ import style, { customBreadCrumbStyle } from '../styles/CategoryListing.style';
 import GlobalNavigationMenuDesktopL2 from '../../../ProductListing/molecules/GlobalNavigationMenuDesktopL2/views';
 import FixedBreadCrumbs from '../../../ProductListing/molecules/FixedBreadCrumbs/views';
 import CategoryPromoImages from '../../molecules/CategoryPromoImages';
+import ReadMore from '../../../ProductListing/molecules/ReadMore/views';
 
 class CategoryListing extends PureComponent {
   render() {
-    const { className, navTree, currentNavIds, breadCrumbs, categoryPromoModules } = this.props;
+    const {
+      className,
+      navTree,
+      currentNavIds,
+      breadCrumbs,
+      categoryPromoModules,
+      seoText,
+      labels,
+    } = this.props;
 
     return (
       <div className={className}>
@@ -40,6 +49,13 @@ class CategoryListing extends PureComponent {
                 >
                   <CategoryPromoImages categoryPromoImages={categoryPromoModules} />
                 </Col>
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <ReadMore
+                    description={seoText}
+                    labels={labels}
+                    className={`${className} seo-text seo-text-wrapper`}
+                  />
+                </Col>
               </Row>
             </Col>
           </Row>
@@ -52,14 +68,17 @@ class CategoryListing extends PureComponent {
 CategoryListing.propTypes = {
   className: PropTypes.string.isRequired,
   navTree: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
   categoryPromoModules: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape([]),
+  seoText: PropTypes.string.isRequired,
   currentNavIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 CategoryListing.defaultProps = {
   navTree: {},
   categoryPromoModules: {},
+  labels: {},
   currentNavIds: [],
   breadCrumbs: [],
 };

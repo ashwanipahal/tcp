@@ -1005,9 +1005,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -1019,6 +1016,10 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
