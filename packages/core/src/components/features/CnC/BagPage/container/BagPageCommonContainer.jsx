@@ -39,17 +39,18 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    setVenmoInProgress(false); // Setting venmo progress as false. User can select normal checkout on cart page.
     this.fetchInitialActions();
   }
 
   componentDidUpdate(prevProps) {
     if (isClient()) {
       const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-      const { router, isRegisteredUserCallDone } = this.props;
-      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+      const { router, isRegisteredUserCallDone, bagPageIsRouting } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && !bagPageIsRouting) {
         this.fetchInitialActions();
       }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
@@ -154,13 +155,13 @@ export class BagPageContainer extends React.Component<Props> {
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
 BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
-  const DEFAULT_ACTIVE_COMPONENT = 'shipping bag';
+  const DEFAULT_ACTIVE_COMPONENT = 'shopping bag';
   const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
   return {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shipping bag',
+        pageName: 'shopping bag',
         pageSection: loadedComponent,
         pageNavigationText: 'header-cart',
         loadAnalyticsOnload: false,
@@ -237,6 +238,7 @@ export const mapStateToProps = state => {
     bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
     isCartLoaded: BagPageSelector.getCartLoadedState(state),
+    bagPageIsRouting: BagPageSelector.isBagRouting(state),
   };
 };
 

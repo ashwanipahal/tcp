@@ -34,7 +34,10 @@ export const OrdersList = ({
       )}
       {isMostRecentOrderDetailFetching && <OrderPreviewItemsListSkeleton />}
 
-      {!isMostRecentOrderDetailFetching && orderItems && orderItems.length > 0 ? (
+      {!isMostRecentOrderDetailFetching &&
+      orderItems &&
+      orderItems.length > 0 &&
+      ordersListItems ? (
         <OrderPreviewItemsList
           labels={labels}
           items={orderItems.slice(0, 3)}

@@ -18687,11 +18687,6 @@ react-native-barcode-builder@^1.0.5:
   dependencies:
     jsbarcode "^3.8.0"
 
-react-native-check-notification-permission@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-check-notification-permission/-/react-native-check-notification-permission-1.0.5.tgz#d7de26eba92c1fb775737e218b659fce345d3eed"
-  integrity sha512-p6knr3bE1bU1zyPO7FqKOTB8FQGpcHJA1vAT3sOTOiD6ojuhwNip/AyvrJKZ9QvVtxzEc6JPB94R2urT0VYFJw==
-
 react-native-config@^0.11.7:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"

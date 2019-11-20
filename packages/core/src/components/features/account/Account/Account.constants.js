@@ -20,6 +20,8 @@ const ACCOUNT_CONSTANTS = {
       welcomeMsg: 'header-welcome message',
     },
   },
+  FOOTER_LINKS: 'account-footer-links',
+  LEGAL_LINKS: 'account-legal-links',
 };
 
 export default ACCOUNT_CONSTANTS;

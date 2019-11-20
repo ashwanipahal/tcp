@@ -54,6 +54,9 @@ describe('Cart Item saga remove', () => {
       isMiniBag: true,
     };
     const removeCartItemGen = removeCartItem(payload);
+    removeCartItemGen.next();
+    removeCartItemGen.next();
+
     expect(removeCartItemGen.next().value).toEqual(
       call(confirmRemoveItem, { payload: '3001545548', isMiniBag: true })
     );
@@ -71,6 +74,8 @@ describe('Cart Item saga remove', () => {
     removeCartItemGen.next();
     removeCartItemGen.next();
     removeCartItemGen.next();
+    removeCartItemGen.next();
+    removeCartItemGen.next(true);
 
     expect(removeCartItemGen.next(true).value).toEqual(
       put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payloadValue))
