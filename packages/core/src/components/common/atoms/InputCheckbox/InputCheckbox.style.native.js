@@ -11,12 +11,12 @@ const getAdditionalStyle = props => {
 const StyledCheckBox = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   ${getAdditionalStyle}
 `;
 
 const StyledImage = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const StyledText = styled.Text`
@@ -25,7 +25,7 @@ const StyledText = styled.Text`
 `;
 
 const StyledErrorIcon = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
 `;
 

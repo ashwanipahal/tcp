@@ -31,6 +31,11 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_venmo_banner: venmoBannerText,
     lbl_pickup_nextToBilling: nextToBilling,
     lbl_pickup_editFormSubmitError: editFormSubmitError,
+    lbl_shipping_emailSignUpHeader: emailSignUpHeader,
+    lbl_shipping_emailSignUpSubHeader: emailSignUpSubHeader,
+    lbl_shipping_childrenPlaceCheckoutTxt: childrenPlaceCheckoutTxt,
+    lbl_shipping_emailSignUpDisclaimer: emailSignUpDisclaimer,
+    lbl_shipping_gymboreePlaceCheckoutTxt: gymboreePlaceCheckoutTxt,
   } = state.Labels.global && state.Labels.checkout.pickup;
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
@@ -65,6 +70,11 @@ const getPickUpContactFormLabels = state => {
     reviewText,
     nextToBilling,
     editFormSubmitError,
+    emailSignUpHeader,
+    emailSignUpSubHeader,
+    childrenPlaceCheckoutTxt,
+    emailSignUpDisclaimer,
+    gymboreePlaceCheckoutTxt,
   };
 };
 
