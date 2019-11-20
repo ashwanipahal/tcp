@@ -222,6 +222,7 @@ const getColorsMap = ({
     {
       colorProductId: uniqueId,
       imageName: product.imagename,
+      productImage: product.productimage,
       miscInfo: {
         isClearance: extractAttributeValue(product, attributesNames.clearance),
         isBopisEligible: isBOPIS && !processHelpers.isGiftCard(product),
@@ -324,6 +325,7 @@ export const parseProductInfo = (
     bossProductDisabled: isBossProductDisabled(product),
     bossCategoryDisabled: isBopisProductDisabled(product),
   };
+  const imageExtension = product.productimage || '';
   const imagesByColor = extractExtraImages(
     rawColors,
     product.alt_img,
@@ -331,7 +333,8 @@ export const parseProductInfo = (
     uniqueId,
     defaultColor,
     false,
-    hasShortImage
+    hasShortImage,
+    imageExtension
   );
   const colorsMap = getColorsMap({
     uniqueId,

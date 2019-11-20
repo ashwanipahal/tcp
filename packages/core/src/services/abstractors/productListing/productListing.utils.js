@@ -10,12 +10,18 @@ function altImageArray(imagename, altImg) {
 }
 
 // inner function
-function parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPath) {
+function parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPath, productImage) {
   try {
     const altImages = altImageArray(imageBasePath, altImgs);
     const shortImage = [];
     const normalImage = [];
     let availableImages;
+    let imageExtension = '';
+
+    if (productImage) {
+      const productImageExt = productImage.split('.');
+      imageExtension = productImageExt[productImageExt.length - 1];
+    }
 
     altImages.forEach(image => {
       if (image.indexOf('-s') < 0) {
@@ -33,7 +39,7 @@ function parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPat
 
     return availableImages.map(img => {
       const hasExtension = img.indexOf('.jpg') !== -1; // we currently only support .jpg but we can make this a regex in the future if needed
-      const { productImages } = getImgPath(img, hasExtension);
+      const { productImages } = getImgPath(img, hasExtension, imageExtension);
 
       // See DTN-155 for image suffex value definitions
       const isOnModalImage = parseInt(img.split('-')[1], 10) > 5; // this is assumming a structure of <alpahnumeric>-<numeric><other (optional)>
@@ -53,6 +59,7 @@ function parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPat
 }
 
 // We seem to be iterating over all colors and added alt images in this location
+// eslint-disable-next-line max-params
 export function extractExtraImages(
   rawColors,
   altImgs,
@@ -60,15 +67,23 @@ export function extractExtraImages(
   uniqueId,
   defaultColor,
   isGiftCard,
-  hasShortImage
+  hasShortImage,
+  productImage
 ) {
   const colorsImageMap = {};
   // backend send the colors in a very weird format
+  let imageExtension = '';
+  if (productImage) {
+    const productImageExt = productImage.split('.');
+    imageExtension = productImageExt[productImageExt.length - 1];
+  }
+
   try {
     if (rawColors && rawColors !== '') {
       // DTN-6314 Gift card pdp page broken
       // handle senario if gift card product_name contains '|' character in it.
       let colors = [];
+
       if (isGiftCard) {
         colors.push(rawColors);
       } else {
@@ -82,18 +97,31 @@ export function extractExtraImages(
           colorName = defaultColor;
           imageBasePath = uniqueId;
         }
-        const { productImages } = getImgPath(imageBasePath);
+
+        const { productImages } = getImgPath(imageBasePath, '', imageExtension);
 
         colorsImageMap[colorName] = {
           basicImageUrl: productImages[500],
-          extraImages: parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPath),
+          extraImages: parseAltImagesForColor(
+            imageBasePath,
+            hasShortImage,
+            altImgs,
+            getImgPath,
+            productImage
+          ),
         };
       }
     } else {
-      const { productImages } = getImgPath(uniqueId);
+      const { productImages } = getImgPath(uniqueId, '', imageExtension);
       colorsImageMap[defaultColor] = {
         basicImageUrl: productImages[500],
-        extraImages: parseAltImagesForColor(uniqueId, hasShortImage, altImgs, getImgPath),
+        extraImages: parseAltImagesForColor(
+          uniqueId,
+          hasShortImage,
+          altImgs,
+          getImgPath,
+          productImage
+        ),
       };
     }
   } catch (error) {

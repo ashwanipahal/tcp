@@ -58,10 +58,10 @@ export default class ProductsOperator {
     };
   };
 
-  getImgPath(id, excludeExtension) {
+  getImgPath(id, excludeExtension, imageExtension) {
     return {
       colorSwatch: this.getSwatchImgPath(id, excludeExtension),
-      productImages: this.getProductImagePath(id, excludeExtension),
+      productImages: this.getProductImagePath(id, excludeExtension, imageExtension),
     };
   }
 
@@ -112,15 +112,16 @@ export default class ProductsOperator {
     };
   };
 
-  getProductImagePath = (id, excludeExtension) => {
+  getProductImagePath = (id, excludeExtension, imageExtension) => {
     const imageName = (id && id.split('_')) || [];
     const imagePath = imageName[0];
+    const extension = imageExtension ? `.${imageExtension}` : '.jpg';
 
     return {
-      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      125: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
     };
   };
 
