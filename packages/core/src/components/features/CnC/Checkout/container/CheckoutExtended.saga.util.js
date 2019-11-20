@@ -11,7 +11,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
   const { payload } = emailObj;
   let brandGYM = !!(isGymboree() || payload.isEmailOptInSecondBrand);
   let brandTCP = !!(!isGymboree() || payload.isEmailOptInSecondBrand);
-  if (payload.source === 'checkout') {
+  if (payload.isCheckoutFow) {
     const { brandGYM: GYM, brandTCP: TCP } = payload;
     brandGYM = GYM;
     brandTCP = TCP;
@@ -42,7 +42,7 @@ export function* validateAndSubmitEmailSignup(emailAddress, field1, brandTCP, br
   if (emailAddress) {
     const statusCode = call(briteVerifyStatusExtraction, emailAddress);
     yield subscribeEmailAddress(
-      { payload: { signup: emailAddress, source: 'checkout', brandGYM, brandTCP } },
+      { payload: { signup: emailAddress, isCheckoutFow: true, brandGYM, brandTCP } },
       statusCode,
       field1
     );
