@@ -11,6 +11,7 @@ exports[`ProductListItem component should render correctly 1`] = `
     text=""
   />
   <ImageSection
+    isFavorite={true}
     item={
       Object {
         "colorsMap": Array [
@@ -24,9 +25,18 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
+          "pdpUrl": "",
         },
+        "quantityPurchased": 1,
       }
     }
     onGoToPDPPage={[MockFunction]}
@@ -36,10 +46,26 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderBadge2
     text=""
   />
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation="custom"
+    colorName="gray.900"
+    customStyle={Object {}}
+    dataLocator=""
+    fontFamily="secondary"
+    fontSizeVariation="medium"
+    justifyContent=""
+    locator=""
+    margins={null}
+    onPress={[Function]}
+    text=""
+    underline={true}
+    visible={false}
+  />
   <RenderPricesSection
     accessibilityLabel="Price Section"
     hideFavorite={false}
-    isFavorite={false}
+    isFavorite=""
     isLoggedIn={false}
     item={
       Object {
@@ -54,17 +80,32 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
+          "pdpUrl": "",
         },
+        "quantityPurchased": 1,
       }
     }
-    itemInfo={Object {}}
+    itemInfo={
+      Object {
+        "availability": "OK",
+        "quantity": 1,
+      }
+    }
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
     productInfo={
       Object {
         "name": "tcp",
+        "pdpUrl": "",
       }
     }
     setLastDeletedItemId={[MockFunction]}
@@ -96,15 +137,25 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
+          "pdpUrl": "",
         },
+        "quantityPurchased": 1,
       }
     }
     onGoToPDPPage={[MockFunction]}
     productInfo={
       Object {
         "name": "tcp",
+        "pdpUrl": "",
       }
     }
     selectedColorIndex={0}
@@ -126,6 +177,35 @@ exports[`ProductListItem component should render correctly 1`] = `
     }
     setSelectedColorIndex={[Function]}
   />
+  <RenderSizeFit
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
+        "productInfo": Object {
+          "name": "tcp",
+          "pdpUrl": "",
+        },
+        "quantityPurchased": 1,
+      }
+    }
+  />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
@@ -141,9 +221,10 @@ exports[`ProductListItem component should render correctly 1`] = `
       iconName="chevron-down"
       iconSize="fs12"
       locator=""
+      margin="0 6px 0 0"
       navigation={Object {}}
       onPress={[Function]}
-      paddings="12px 12px 12px 12px"
+      paddings="12px 8px 12px 8px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -154,5 +235,64 @@ exports[`ProductListItem component should render correctly 1`] = `
       withNoLineHeight={false}
     />
   </Styled(View)>
+  <RenderPurchasedQuantity
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
+        "productInfo": Object {
+          "name": "tcp",
+          "pdpUrl": "",
+        },
+        "quantityPurchased": 1,
+      }
+    }
+  />
+  <RenderMoveToListOrSeeSuggestedList
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "itemInfo": Object {
+          "availability": "OK",
+          "quantity": 1,
+        },
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
+        "productInfo": Object {
+          "name": "tcp",
+          "pdpUrl": "",
+        },
+        "quantityPurchased": 1,
+      }
+    }
+    labelsPlpTiles={Object {}}
+  />
 </Styled(View)>
 `;

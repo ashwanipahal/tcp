@@ -10,26 +10,38 @@ import style from '../styles/HelpCenterModuleTwoCol.style';
 const returnModule = mod => mod.default;
 const DynamicColumns = dynamic({
   modules: () => ({
-    navigationModule: () =>
-      import('@tcp/core/src/components/common/molecules/LeftNavigation').then(returnModule),
-    helpCenterTabs: () =>
+    placeholder: () =>
+      import('@tcp/core/src/components/common/molecules/Placeholder').then(returnModule),
+    divisionTabs: () =>
       import('@tcp/core/src/components/common/molecules/HelpTabs').then(returnModule),
+    accordion: () =>
+      import('@tcp/core/src/components/common/molecules/AccordionModule').then(returnModule),
   }),
   render: (properties, modules) => {
     const { className, slot: slots, ...others } = properties;
-
     return (
       slots &&
       slots
         .filter(
-          slot => slot && (slot.module === 'navigationModule' || slot.module === 'helpCenterTabs')
+          slot =>
+            slot &&
+            (slot.moduleName === 'placeholder' ||
+              slot.moduleName === 'divisionTabs' ||
+              slot.moduleName === 'accordion')
         )
         .map((slotData, index) => {
-          const Module = modules[slotData.module];
+          const Module = modules[slotData.moduleName];
+          const largeColSize = slotData.moduleName === 'accordion' ? 10 : 9;
+          const colOffset =
+            slotData.moduleName === 'accordion' ? {} : { large: 1, small: 0, medium: 0 };
           return (
             <Col
-              colSize={{ small: 6, medium: 8, large: index === 0 ? 2 : 9 }}
-              offsetRight={index === 1 ? { large: 1, small: 0, medium: 0 } : {}}
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: index === 1 ? largeColSize : 2,
+              }}
+              offsetRight={index === 1 ? colOffset : {}}
             >
               <Module halfWidth {...slotData} {...others} />
             </Col>

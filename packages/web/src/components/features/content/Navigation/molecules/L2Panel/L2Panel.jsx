@@ -1,44 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getViewportInfo, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
-import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getViewportInfo } from '@tcp/core/src/utils';
+import { Heading, Row, Col, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import PromoLayout from '../PromoLayout';
 import { keyboard } from '../../../../../../constants/constants';
 import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
 import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 const MAX_ITEMS_IN_COL = 8;
 const FOUR_COL = 4;
 const TWO_COL = 2;
-
-const createShopByLinks = (links, column, hideL2Nav) => {
-  return (
-    <ul>
-      {links.map((link, index) => {
-        const { url, text, title, target } = link;
-        const to = configureInternalNavigationFromCMSUrl(url);
-        const currentIndex = column > 1 ? index + 5 : index;
-        return (
-          <li>
-            <Anchor
-              to={to}
-              asPath={url}
-              title={title}
-              target={target}
-              dataLocator={`l2_size_btn_${currentIndex}`}
-              onClick={() => hideL2Nav()}
-            >
-              <BodyCopy className="l2-circle-link">{text}</BodyCopy>
-            </Anchor>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
 
 const renderArrowIcon = hasSubCategories => {
   return hasSubCategories && <span className="icon-arrow" />;
@@ -62,14 +38,27 @@ const renderPromoBadge = (promoBadge, currentIndex) => {
   );
 };
 
+/**
+ * This function will return whether the next column after unbxd data is shop by size or not.
+ * @param {*} categoryLayout
+ */
+const isNextColShopBySize = categoryLayout => {
+  if (categoryLayout) {
+    const [categoryData] = categoryLayout;
+    const { name } = categoryData;
+    return name === 'shopBySizeTwoColumns';
+  }
+  return false;
+};
+
 const renderL3Panel = (
   hasSubCategories,
   index,
   l3Drawer,
   hideL3Drawer,
   name,
-  subCategories,
-  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }
+  { url, asPath, subCategories },
+  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav, analyticsData }
 ) => {
   return (
     hasSubCategories && (
@@ -82,8 +71,11 @@ const renderL3Panel = (
         hideL2Nav={hideL2Nav}
         name={name}
         links={subCategories}
+        shopalllink={url}
+        shopallaspath={asPath}
         accessibilityLabels={accessibilityLabels}
         closeNav={closeNav}
+        analyticsData={analyticsData}
       />
     )
   );
@@ -125,6 +117,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   }
 ) => {
   const navHandler = {
@@ -132,6 +125,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   };
   if (links.length) {
     return (
@@ -144,39 +138,47 @@ const createLinks = (
             subCategories,
             hasL3,
           } = l2Links;
+          const shopallparams = { url, asPath, subCategories };
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor
-                asPath={asPath}
-                to={url}
-                onClick={e =>
-                  openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                }
-              >
-                <BodyCopy
-                  className="l2-nav-link"
-                  fontFamily="secondary"
-                  fontSize={['fs13', 'fs13', 'fs14']}
-                  lineHeight="lh107"
-                  color="text.primary"
+              <div className="L2-panel-container">
+                <ClickTracker
+                  clickData={{
+                    pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                  }}
                 >
-                  {renderLabel(classForRedContent, promoBadge, name)}
-                  {renderPromoBadge(promoBadge, currentIndex)}
-                  {renderArrowIcon(hasSubCategories)}
-                </BodyCopy>
-              </Anchor>
+                  <Anchor
+                    asPath={asPath}
+                    to={url}
+                    onClick={e =>
+                      openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                    }
+                  >
+                    <BodyCopy
+                      className="l2-nav-link"
+                      fontFamily="secondary"
+                      fontSize={['fs13', 'fs13', 'fs14']}
+                      lineHeight="lh107"
+                      color="text.primary"
+                    >
+                      {renderLabel(classForRedContent, promoBadge, name)}
+                      {renderPromoBadge(promoBadge, currentIndex)}
+                      {renderArrowIcon(hasSubCategories)}
+                    </BodyCopy>
+                  </Anchor>
+                </ClickTracker>
+              </div>
               {renderL3Panel(
                 hasSubCategories,
                 currentIndex,
                 l3Drawer,
                 hideL3Drawer,
                 name,
-                subCategories,
+                shopallparams,
                 navHandler
               )}
             </li>
@@ -187,83 +189,42 @@ const createLinks = (
   }
   return ``;
 };
-const createShopBySizeCol = (columns, l1Index, context) => {
-  const { hideL2Nav } = context;
-  return columns.map(({ imageBanner, shopBySize }) => {
-    const sizes = shopBySize ? shopBySize[0] : {};
-    const shopBySizeCol1 = shopBySize ? sizes.linkList.slice(0, 5) : [];
-    const shopBySizeCol2 = shopBySize ? sizes.linkList.slice(5) : [];
-    return (
-      <React.Fragment>
-        {shopBySize && (
-          <Col
-            className="l2-nav-category shop-by-size-category"
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 2,
-            }}
-            ignoreNthRule
-          >
-            <div className="l2-nav-category-header">
-              <Heading
-                variant="h6"
-                className="l2-nav-category-heading"
-                dataLocator="l2_col_heading_3"
-              >
-                {shopBySize ? sizes.text.text : ''}
-              </Heading>
-              <span className="l2-nav-category-divider" />
-            </div>
-            <div className="shop-by-size-links">
-              {createShopByLinks(shopBySizeCol1, 1, hideL2Nav)}
-              {createShopByLinks(shopBySizeCol2, 2, hideL2Nav)}
-            </div>
-          </Col>
-        )}
-        {imageBanner && (
-          <Col
-            className="l2-image-banner"
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 2,
-            }}
-            ignoreNthRule
-          >
-            {imageBanner.map(({ image, link }) => (
-              <React.Fragment>
-                <Anchor
-                  className="l2-image-banner-link"
-                  to={link.url}
-                  title={link.title}
-                  dataLocator={`overlay_img_link_${l1Index}`}
-                  target={link.target}
-                >
-                  <Image
-                    className="l2-image-banner-image"
-                    data-locator={`overlay_img_${l1Index}`}
-                    {...image}
-                  />
-                  <BodyCopy
-                    className="l2-nav-link"
-                    fontFamily="secondary"
-                    fontSize={['fs13', 'fs13', 'fs14']}
-                    lineHeight="lh107"
-                    color="text.primary"
-                    textAlign="center"
-                  >
-                    <span className="nav-bar-l1-item-label">{link.text}</span>
-                    <span className="icon-arrow" />
-                  </BodyCopy>
-                </Anchor>
-              </React.Fragment>
-            ))}
-          </Col>
-        )}
-      </React.Fragment>
-    );
+
+/**
+ * This function will return the total column used by unbxd data.
+ * @param {*} panelData
+ */
+const getPanelColCount = panelData => {
+  let count = 0;
+  Object.keys(panelData).map(category => {
+    const { items } = panelData[category];
+    count += items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL;
+    return category;
   });
+  return count;
+};
+
+/**
+ * This function will be used create the unbxd columns header.
+ * @param {*} label
+ * @param {*} hideOnMobileClass
+ * @param {*} categoryIndex
+ */
+const getHeader = (label, hideOnMobileClass, categoryIndex) => {
+  return label ? (
+    <div className="l2-nav-category-header">
+      <Heading
+        variant="h6"
+        className={`l2-nav-category-heading ${hideOnMobileClass}`}
+        dataLocator={`l2_col_heading_${categoryIndex}`}
+      >
+        {label}
+      </Heading>
+      <span className="l2-nav-category-divider" />
+    </div>
+  ) : (
+    <div className="l2-nav-category-empty-header" />
+  );
 };
 
 const L2Panel = props => {
@@ -279,9 +240,12 @@ const L2Panel = props => {
     l3Drawer,
     accessibilityLabels,
     closeNav,
+    analyticsData,
   } = props;
   const { previousButton } = accessibilityLabels;
-
+  const isShopBySizeCol = isNextColShopBySize(categoryLayout);
+  const panelDataCount = getPanelColCount(panelData);
+  let tempPanelDataCount = 0;
   return (
     <HideDrawerConsumer>
       {context => (
@@ -321,29 +285,23 @@ const L2Panel = props => {
                       };
                       const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
                       const secondCol = items.slice(MAX_ITEMS_IN_COL);
-                      let columnClass = '';
-                      if (firstCol.length && secondCol.length) {
-                        columnClass = 'half-width';
-                      }
+                      const columnClass = firstCol.length && secondCol.length ? 'half-width' : '';
+                      // tempPanelDataCount will be used to identify the last unbxd column
+                      tempPanelDataCount += items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL;
+                      const isLastPanelCol = tempPanelDataCount === panelDataCount;
+                      // setting tempPanelDataCount to 0 because it will be equal to totalpanel data count and is last column
+                      tempPanelDataCount = isLastPanelCol ? 0 : tempPanelDataCount;
                       const hideOnMobileClass =
                         category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
+                      const noBorderClass = isLastPanelCol && !isShopBySizeCol ? 'no-border' : '';
                       return (
                         <React.Fragment>
-                          <Col colSize={colSize} ignoreNthRule className="l2-nav-category">
-                            {label ? (
-                              <div className="l2-nav-category-header">
-                                <Heading
-                                  variant="h6"
-                                  className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                                  dataLocator={`l2_col_heading_${categoryIndex}`}
-                                >
-                                  {label}
-                                </Heading>
-                                <span className="l2-nav-category-divider" />
-                              </div>
-                            ) : (
-                              <div className="l2-nav-category-empty-header" />
-                            )}
+                          <Col
+                            colSize={colSize}
+                            ignoreNthRule
+                            className={`l2-nav-category ${noBorderClass}`}
+                          >
+                            {getHeader(label, hideOnMobileClass, categoryIndex)}
                             <div className="l2-nav-category-links">
                               {createLinks(firstCol, 1, categoryIndex, {
                                 openL3Drawer,
@@ -354,6 +312,7 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                               {createLinks(secondCol, 2, categoryIndex, {
                                 openL3Drawer,
@@ -364,16 +323,19 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                             </div>
                           </Col>
                         </React.Fragment>
                       );
                     })}
-                  {categoryLayout &&
-                    categoryLayout.map(({ columns }) =>
-                      createShopBySizeCol(columns, l1Index, context)
-                    )}
+                  <PromoLayout
+                    categoryLayout={categoryLayout}
+                    l1Index={l1Index}
+                    hideL2Nav={context.hideL2Nav}
+                    panelColCount={getPanelColCount(panelData)}
+                  />
                 </Row>
               </Row>
             </div>
@@ -396,6 +358,7 @@ L2Panel.propTypes = {
   closeNav: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
   accessibilityLabels: PropTypes.shape({}).isRequired,
+  analyticsData: PropTypes.string.isRequired,
 };
 
 L2Panel.defaultProps = {

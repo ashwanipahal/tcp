@@ -41,7 +41,7 @@ class ProductVariantSelector extends React.PureComponent {
     }
   }
 
-  renderColor = ({ item }) => {
+  renderColor = ({ item, index }) => {
     const {
       color: { name, swatchImage },
     } = item;
@@ -66,7 +66,7 @@ class ProductVariantSelector extends React.PureComponent {
             name,
           };
           this.handleItemChange(value);
-          selectColor(name);
+          selectColor(name, index);
         }}
         width={componentWidth}
         height={componentHeight}
@@ -140,7 +140,7 @@ class ProductVariantSelector extends React.PureComponent {
           <BodyCopy
             fontWeight="black"
             color="gray.900"
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs14"
             text={titleValue.toUpperCase()}
             dataLocator={key}

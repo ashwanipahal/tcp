@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CheckoutSelectors, {
-  isGuest as isGuestUser,
+  isGuest,
   isExpressCheckout,
 } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import { getCardList } from '../../../../../account/Payment/container/Payment.actions';
@@ -103,6 +103,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isExpressCheckoutUser,
       isFromReview,
       isPaymentDisabled,
+      isGuestUser,
+      isFetching,
     } = this.props;
 
     let availableGiftCards = [];
@@ -140,6 +142,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isExpressCheckout={isExpressCheckoutUser}
         isFromReview={isFromReview}
         isPaymentDisabled={isPaymentDisabled}
+        isFetching={isFetching}
       />
     );
   }
@@ -200,6 +203,7 @@ const mapStateToProps = state => {
     isLoading: GiftCardSelector.getIsLoading(state),
     isExpressCheckoutUser: isExpressCheckout(state),
     isPaymentDisabled: getIsPaymentDisabled(state),
+    isGuestUser: isGuest(state),
   };
 };
 

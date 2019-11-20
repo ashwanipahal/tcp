@@ -16,6 +16,9 @@ export default css`
       width: 210px;
     }
   }
+  .moduleD_header {
+    margin-bottom: 16px;
+  }
   .moduleD_tile {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
@@ -24,9 +27,10 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
   }
-
-  .moduleD_textlink::after {
-    position: relative;
-    top: 3px;
+  .moduleD_image {
+    width: 100%;
+  }
+  .moduleD__promo-banner {
+    margin-bottom: 16px;
   }
 `;

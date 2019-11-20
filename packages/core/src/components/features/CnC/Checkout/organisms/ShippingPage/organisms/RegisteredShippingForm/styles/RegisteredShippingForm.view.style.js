@@ -1,11 +1,11 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   .address-dropDown {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
     pointer-events: ${props => (props.isEditing ? 'none' : 'auto')};
     .address {
@@ -19,6 +19,14 @@ const styles = css`
     }
     .default-badge {
       height: 13px;
+    }
+    .dropdown-title {
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+    .customSelectTitle {
+      margin-top: 0px;
+      padding-top: 4px;
     }
   }
 
@@ -96,10 +104,7 @@ const styles = css`
     display: flex;
   }
   .edit-link-placement {
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
+    @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
       align-items: center;
     }
@@ -111,9 +116,20 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
+  .CheckBox__input {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+
   .shipping-section-header {
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
+    @media ${props => props.theme.mediaQuery.medium} {
       width: auto;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+
+  .save-cancel-btn {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 162px;
     }
   }
 `;

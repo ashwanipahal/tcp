@@ -1,22 +1,21 @@
 import React from 'react';
-import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
+import { FormSection, reduxForm, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { Row, Col } from '../../../../../../../../common/atoms';
-
-import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
-import Anchor from '../../../../../../../../common/atoms/Anchor';
+import EmailSignUpCheckBox from '../../../../../molecules/EmailSignUpCheckBox';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
@@ -106,13 +105,17 @@ class ShippingForm extends React.Component {
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
+  closeEditingMode = () => {
+    this.setState({ isEditing: false });
+  };
+
   checkPropsOnMoreUpdation = prevProps => {
     const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-      this.setState({ isEditing: false });
+      this.closeEditingMode();
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -135,54 +138,17 @@ class ShippingForm extends React.Component {
   };
 
   renderEmailSignUp = () => {
-    const { orderHasPickUp, isGuest, isUsSite, labels } = this.props;
+    const { orderHasPickUp, isGuest, isUsSite, emailSignUpLabels, emailSignUpFlags } = this.props;
     return (
       !orderHasPickUp &&
       isGuest &&
       !isUsSite && (
-        <FormSection name="emailSignUp">
-          <div className="email-signup-container">
-            <Field
-              dataLocator="signUp-checkbox-field"
-              name="sendEmailSignup"
-              component={InputCheckbox}
-              className="email-signup"
-            >
-              <BodyCopy
-                dataLocator="pickup-email-signUp-heading-lbl"
-                fontSize="fs16"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-            </Field>
-            <div className="email-signup-text">
-              <BodyCopy
-                dataLocator="pickup-email-signUp-sub-heading-text"
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <Anchor
-                noUnderline
-                anchorVariation="primary"
-                fontSizeVariation="small"
-                noLink
-                href="#"
-                target="_blank"
-                dataLocator="shipping-email-signUp-contact-anchor"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
-              </Anchor>
-            </div>
-          </div>
-        </FormSection>
+        <EmailSignUpCheckBox
+          labels={emailSignUpLabels}
+          fieldName="emailSignUp"
+          bottomSeparator
+          emailSignUpFlags={emailSignUpFlags}
+        />
       )
     );
   };
@@ -266,6 +232,7 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -312,6 +279,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              afterAddressUpdate={this.closeEditingMode}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
               errorMessageRef={this.editShippingErrorRef}
@@ -368,6 +336,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -389,6 +358,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>
@@ -409,5 +379,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

@@ -1,4 +1,5 @@
 import { Map, fromJS, List } from 'immutable';
+import { logout } from '@tcp/core/src/components/features/account/Logout/container/LogOut.actions';
 import AddressBookReducer from '../AddressBook.reducer';
 import { setAddressList, setAddressBookNotification } from '../AddressBook.actions';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
@@ -143,6 +144,26 @@ describe('Address List reducer', () => {
       })
     );
   });
+
+  it('should clear ErrorState', () => {
+    // const error = fromJS({
+    //   statusCode: 400,
+    //   message: 'Object not found',
+    // });
+    const initialState = fromJS({
+      showUpdatedNotificationOnModal: 'error',
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.CLEAR_ERROR_STATE,
+      })
+    ).toEqual(
+      fromJS({
+        showUpdatedNotificationOnModal: null,
+      })
+    );
+  });
+
   it('should handle modal mounted state', () => {
     const payload = {
       state: true,
@@ -177,5 +198,10 @@ describe('Address List reducer', () => {
         showUpdatedNotification: 'success',
       })
     );
+  });
+  it('should return initial state in case of LOGOUT action', () => {
+    const state = AddressBookReducer(undefined, setAddressList(addressList));
+    const loggedOutState = AddressBookReducer(state, logout());
+    expect(loggedOutState.get('list')).toBeNull();
   });
 });

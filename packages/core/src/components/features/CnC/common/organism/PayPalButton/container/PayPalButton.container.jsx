@@ -1,22 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getAPIConfig, isMobileApp } from '@tcp/core/src/utils/utils';
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
-import { getAPIConfig, isMobileApp } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
-  constructor(props) {
-    super(props);
-    const apiConfigObj = getAPIConfig();
-    const { paypalEnv } = apiConfigObj;
-    this.paypalEnv = paypalEnv;
-    const { paypalStaticUrl } = apiConfigObj;
-    this.paypalStaticUrl = paypalStaticUrl;
-  }
-
   componentDidMount() {
     const { startPaypalNativeCheckoutAction } = this.props;
     if (isMobileApp()) startPaypalNativeCheckoutAction();
@@ -35,12 +26,12 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       isBillingPage,
     } = this.props;
 
-    const { containerId, height } = data;
+    const { containerId, height, paypalEnv } = data;
     const options = {
       locale: CONSTANTS.PAYPAL_LOCATE,
       style: {
         size: 'responsive',
-        color: 'blue',
+        color: isBillingPage ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT,
         shape: 'rect',
         label: CONSTANTS.PAYPAL_LABEL,
         tagline: false,
@@ -49,7 +40,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       funding: {
         disallowed: [window.paypal && window.paypal.FUNDING.CREDIT],
       },
-      env: this.paypalEnv,
+      env: paypalEnv,
       payment: () => {
         return new Promise((resolve, reject) =>
           startPaypalCheckout({ resolve, reject, isBillingPage })
@@ -68,17 +59,25 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     const {
       isQualifedOrder,
       containerId,
+      height,
       navigation,
       getPayPalSettings,
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
       setVenmoState,
+      isBillingPage,
       closeModal,
+      top,
+      fullWidth,
     } = this.props;
+
+    const apiConfigObj = getAPIConfig();
+    const { paypalEnv, paypalStaticUrl } = apiConfigObj;
     return (
       <PayPalButton
         isQualifedOrder={isQualifedOrder}
+        height={height}
         initalizePayPalButton={this.initalizePayPalButton}
         containerId={containerId}
         navigation={navigation}
@@ -86,10 +85,13 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         payPalWebViewHandle={payPalWebViewHandle}
         paypalAuthorizationHandle={paypalAuthorizationHandle}
         clearPaypalSettings={clearPaypalSettings}
-        paypalEnv={this.paypalEnv}
-        paypalStaticUrl={this.paypalStaticUrl}
+        paypalEnv={paypalEnv}
+        paypalStaticUrl={paypalStaticUrl}
         setVenmoState={setVenmoState}
         closeModal={closeModal}
+        top={top}
+        isBillingPage={isBillingPage}
+        fullWidth={fullWidth}
       />
     );
   }

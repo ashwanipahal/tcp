@@ -1,13 +1,15 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView, View } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer } from '../styles/ProductList.style.native';
+import { styles, PageContainer, ItemCountContainer } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
@@ -22,6 +24,7 @@ class ProductList extends React.PureComponent {
     this.state = {
       showModal: false,
       favorites: true,
+      colorProductId: '',
     };
   }
 
@@ -39,8 +42,15 @@ class ProductList extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites, getProducts, navigation, isSearchListing } = props;
+    const { colorProductId } = state;
     if (props.isLoggedIn && state.showModal) {
-      return { showModal: false };
+      this.categoryUrl = navigation && navigation.getParam('url');
+      getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
+      if (colorProductId !== '') {
+        onAddItemToFavorites({ colorProductId, page: isSearchListing ? 'SLP' : 'PLP' });
+      }
+      return { showModal: false, colorProductId: '' };
     }
     return null;
   }
@@ -50,12 +60,15 @@ class ProductList extends React.PureComponent {
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
-
-    onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
-
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
     if (!isLoggedIn) {
+      this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
     }
   };
 
@@ -117,9 +130,9 @@ class ProductList extends React.PureComponent {
       setLastDeletedItemId,
       isLoggedIn,
       labelsPlpTiles,
+      onrenderItemCountView,
     } = this.props;
-    const { item } = itemData;
-
+    const { item, index } = itemData;
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -138,6 +151,31 @@ class ProductList extends React.PureComponent {
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
 
+    if (index === 0) {
+      return (
+        <ItemCountContainer>
+          <BodyCopy
+            dataLocator="pdp_product_badges"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            color="gray.900"
+            text={`${onrenderItemCountView()} `}
+          />
+          <BodyCopy
+            dataLocator="pdp_product_badges"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            color="gray.900"
+            text="Items"
+          />
+        </ItemCountContainer>
+      );
+    }
+    if (index === 1) {
+      return <View />;
+    }
     return (
       <ListItem
         item={item}
@@ -221,8 +259,9 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products, isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
-
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
+    let { products } = this.props;
+    products = products.length > 0 && [products[0], products[1], ...products];
     const { logIn } = labelsLogin;
     const { showModal, favorites } = this.state;
     return (
@@ -298,6 +337,7 @@ ProductList.propTypes = {
   unbxdId: PropTypes.string,
   onProductCardHover: PropTypes.func,
   isBopisEnabledForClearance: PropTypes.bool,
+  onrenderItemCountView: PropTypes.number.isRequired,
   onQuickBopisOpenClick: PropTypes.func,
   siblingProperties: PropTypes.shape({
     colorMap: PropTypes.arrayOf(PropTypes.shape({})),
@@ -320,6 +360,7 @@ ProductList.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -352,6 +393,7 @@ ProductList.defaultProps = {
   labelsPlpTiles: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isSearchListing: false,
 };
 
 export default withStyles(ProductList, styles);

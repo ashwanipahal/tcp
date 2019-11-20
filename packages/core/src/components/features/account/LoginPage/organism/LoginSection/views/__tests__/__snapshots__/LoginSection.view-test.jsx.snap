@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Fragment>
   <Styled(LoginTopSection)
-    className="elem-mb-SM elem-mt-XXL"
+    className="elem-mb-SM elem-mt-MED"
     isCanada={false}
     labels={
       Object {
@@ -14,7 +14,7 @@ exports[`LoginSection component should renders correctly 1`] = `
   />
   <Styled(Row)>
     <Styled(Col)
-      className="elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
+      className="elem-pt-SM elem-pl-LRG elem-pr-LRG loginForm"
       colSize={
         Object {
           "large": "12",
@@ -100,7 +100,7 @@ exports[`LoginSection component should renders correctly 1`] = `
 exports[`LoginSection component should renders correctly if remmemberme user 1`] = `
 <Fragment>
   <Styled(LoginTopSection)
-    className="elem-mb-SM logintop-alignment"
+    className="elem-mb-SM elem-mt-MED"
     isCanada={false}
     labels={
       Object {
@@ -111,7 +111,7 @@ exports[`LoginSection component should renders correctly if remmemberme user 1`]
   />
   <Styled(Row)>
     <Styled(Col)
-      className="elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
+      className="elem-pt-SM elem-pl-LRG elem-pr-LRG loginForm"
       colSize={
         Object {
           "large": "12",

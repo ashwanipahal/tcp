@@ -7,6 +7,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import { handleShipToHome, handlePickupToggle } from './CartItemRadioButtons.utils';
 import { maxAllowedStoresInCart } from '../../../../../../common/organisms/PickupStoreModal/PickUpStoreModal.config';
 
 class CartItemRadioButtons extends React.Component {
@@ -34,144 +35,6 @@ class CartItemRadioButtons extends React.Component {
   };
 
   /**
-   * @function handleShipToHome Ship to Home click handler
-   * @param {bool} isECOMOrder Represents Whether it is STH option selected already
-   * @param {bool} isEcomSoldout Represents whether the product has been soldout or not.
-   * @memberof CartItemRadioButtons
-   */
-  handleShipToHome = (isECOMOrder, isEcomSoldout) => {
-    const {
-      setShipToHome,
-      productDetail: {
-        itemInfo: { itemId },
-        miscInfo: { orderItemType },
-      },
-    } = this.props;
-
-    /* istanbul ignore else */
-    if (!isECOMOrder && !isEcomSoldout) {
-      setShipToHome(itemId, orderItemType);
-    }
-  };
-
-  handleSingleStore = ({ pickupType, switchingToBopisOption, switchingToBossOption, formData }) => {
-    const { openPickUpModal, autoSwitchPickupItemInCart, pickupStoresInCart } = this.props;
-    return pickupStoresInCart.getIn([0, 'isStoreBOSSEligible']) || switchingToBopisOption
-      ? autoSwitchPickupItemInCart(formData, switchingToBopisOption, switchingToBossOption)
-      : openPickUpModal(pickupType);
-  };
-
-  /**
-   * @return condition - checking if the store available in user's account is bossEligible
-   * or switching product to bopis store.
-   * @method autoSwitchPickupItemInCart is called if the the store is eligible for BOSS
-   * @method OpenPickUpModal opens warning modal if the store is ineligible for BOSS
-   */
-  handleDifferentStores = ({
-    pickupType,
-    switchingToBopisOption,
-    switchingToBossOption,
-    formData,
-    bossStoreIndex,
-  }) => {
-    const { openPickUpModal, autoSwitchPickupItemInCart, pickupStoresInCart } = this.props;
-    return pickupStoresInCart.getIn([bossStoreIndex, 'isStoreBOSSEligible']) ||
-      switchingToBopisOption
-      ? autoSwitchPickupItemInCart(formData, switchingToBopisOption, switchingToBossOption)
-      : openPickUpModal(pickupType, false, false, true);
-  };
-
-  getBossBopisStoreIndexes = () => {
-    const { BOSS, BOPIS } = CONSTANTS.ORDER_ITEM_TYPE;
-    const { pickupStoresInCart } = this.props;
-    const bossStoreIndex = pickupStoresInCart.getIn([0, 'orderType']) === BOSS ? 0 : 1;
-    const bopisStoreIndex = pickupStoresInCart.getIn([0, 'orderType']) === BOPIS ? 0 : 1;
-    return {
-      bossStoreIndex,
-      bopisStoreIndex,
-    };
-  };
-
-  getSwitchingOptions = pickupType => {
-    const { BOSS, BOPIS } = CONSTANTS.ORDER_ITEM_TYPE;
-    const switchingToBopisOption = pickupType === BOPIS;
-    const switchingToBossOption = pickupType === BOSS;
-    return {
-      switchingToBopisOption,
-      switchingToBossOption,
-    };
-  };
-
-  createFormData = pickupType => {
-    const {
-      productDetail: {
-        productInfo: { skuId, itemPartNumber, variantNo, generalProductId },
-        itemInfo: { isGiftItem, itemId, qty: quantity },
-        miscInfo: { orderItemType, store },
-      },
-      orderId,
-    } = this.props;
-    return {
-      itemId,
-      quantity,
-      skuId: isGiftItem ? generalProductId : skuId,
-      itemPartNumber,
-      variantNo,
-      orderItemType,
-      targetOrderType: pickupType,
-      orderId,
-      store,
-    };
-  };
-
-  handlePickupToggle = pickupType => {
-    const { BOSS } = CONSTANTS.ORDER_ITEM_TYPE;
-    const { OPEN_SELECTION_MODAL, AUTO_SWITCH } = CARTPAGE_CONSTANTS.STORE_SWITCH;
-    const { openPickUpModal, pickupStoresInCart } = this.props;
-    const formData = this.createFormData(pickupType);
-    const { switchingToBopisOption, switchingToBossOption } = this.getSwitchingOptions(pickupType);
-
-    /* istanbul ignore else */
-    // when no stores are seleceted
-    if (pickupStoresInCart.size === OPEN_SELECTION_MODAL) {
-      return openPickUpModal(pickupType);
-    }
-    /* istanbul ignore else */
-    if (pickupStoresInCart.size === AUTO_SWITCH) {
-      // when one store is selected boss/bopis
-      formData.storeId = pickupStoresInCart.getIn([0, 'stLocId']);
-      return this.handleSingleStore({
-        pickupType,
-        switchingToBopisOption,
-        switchingToBossOption,
-        formData,
-      });
-    }
-    /* istanbul ignore else */
-    if (pickupStoresInCart.getIn([0, 'orderType']) !== pickupStoresInCart.getIn([1, 'orderType'])) {
-      // when 1 boss and 1 bopis stpre is selected
-      const { bossStoreIndex, bopisStoreIndex } = this.getBossBopisStoreIndexes();
-      formData.storeId = switchingToBossOption
-        ? pickupStoresInCart.getIn([bossStoreIndex, 'stLocId'])
-        : pickupStoresInCart.getIn([bopisStoreIndex, 'stLocId']);
-      return this.handleDifferentStores({
-        pickupType,
-        switchingToBopisOption,
-        switchingToBossOption,
-        formData,
-        bossStoreIndex,
-      });
-    }
-    /* istanbul ignore else */
-    if (pickupType === BOSS) {
-      // when 2 bopis stores are selected and toggled to boss
-      return openPickUpModal(pickupType, false, false, true);
-    }
-    // when 2 bopis stores are selected and toggled to bopis
-    return openPickUpModal(pickupType, false, true);
-  };
-
-  /**
    * @function showBoss Handles to show BOSS Item or not
    * @param isBossOrder Represents the current product is BOSS or not
    * @param isBossEnabled Represents the Country/State level kill switch for BOSS
@@ -194,8 +57,13 @@ class CartItemRadioButtons extends React.Component {
    * @memberof CartItemRadioButtons
    */
   renderBossBanner = (isBossItem, onlineClearanceMessage) => {
+    const {
+      productDetail: {
+        itemInfo: { itemBrand },
+      },
+    } = this.props;
     return isBossItem && !onlineClearanceMessage ? (
-      <PickupPromotionBanner bossBanner />
+      <PickupPromotionBanner bossBanner itemBrand={itemBrand} />
     ) : null;
   };
 
@@ -392,7 +260,7 @@ class CartItemRadioButtons extends React.Component {
             data-locator={getLocator('cart_item_no_rush_radio_button')}
             onClick={() =>
               !isBOSSOrder && !bossDisabled
-                ? this.handlePickupToggle(CONSTANTS.ORDER_ITEM_TYPE.BOSS)
+                ? handlePickupToggle(this.props, CONSTANTS.ORDER_ITEM_TYPE.BOSS)
                 : ''
             }
           >
@@ -422,7 +290,7 @@ class CartItemRadioButtons extends React.Component {
             data-locator={getLocator('cart_item_pickup_radio_today_button')}
             onClick={() =>
               !isBOPISOrder && !bopisDisabled
-                ? this.handlePickupToggle(CONSTANTS.ORDER_ITEM_TYPE.BOPIS)
+                ? handlePickupToggle(this.props, CONSTANTS.ORDER_ITEM_TYPE.BOPIS)
                 : ''
             }
           >
@@ -449,7 +317,7 @@ class CartItemRadioButtons extends React.Component {
           checked={isECOMOrder}
           disabled={isEcomSoldout}
           onClick={() => {
-            this.handleShipToHome(isECOMOrder, isEcomSoldout);
+            handleShipToHome(this.props, isECOMOrder, isEcomSoldout);
           }}
           data-locator={getLocator('cart_item_ship_to_home_radio_button')}
         >
@@ -486,10 +354,7 @@ CartItemRadioButtons.propTypes = {
   bossDisabled: PropTypes.bool.isRequired,
   bopisDisabled: PropTypes.bool.isRequired,
   openPickUpModal: PropTypes.bool.isRequired,
-  setShipToHome: PropTypes.func.isRequired,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
-  autoSwitchPickupItemInCart: PropTypes.func.isRequired,
-  orderId: PropTypes.number.isRequired,
 };
 
 export default withStyles(CartItemRadioButtons, style);

@@ -4,12 +4,20 @@ import throttle from 'lodash/throttle';
 import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-import { Anchor, Col, Image, Row, BodyCopy, Button } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { Anchor, Col, DamImage, Row, BodyCopy, Button } from '../../../atoms';
+import { getLocator, isGymboree } from '../../../../../utils';
 import { Grid, LinkText, PromoBanner } from '../..';
 import style, { ImageGrid, CtaButtonWrapper, ImageRoundFlex } from '../styles/ModuleM.style';
 import config from '../moduleM.config';
 
+/**
+ * @class ModuleM - global reusable component will display display a featured
+ * category module with category links and featured product images
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {headerText} headerText the list of data for header
+ * @param {promoBanner} promoBanner promo banner data
+ * @param {divTabs} divTabs division tabs data
+ */
 export class ModuleM extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -18,6 +26,7 @@ export class ModuleM extends React.PureComponent {
       isMobile: viewportInfo && viewportInfo.isMobile,
       isTablet: viewportInfo && viewportInfo.isTablet,
       productCategoryImageList: [],
+      singleCTAButton: {},
       activeTab: 'tablList-0',
     };
     this.gridImageRef = React.createRef();
@@ -27,17 +36,18 @@ export class ModuleM extends React.PureComponent {
     const { divTabs } = this.props;
     window.addEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
     this.setState({
-      productCategoryImageList: divTabs[0].smallCompImages,
+      productCategoryImageList: divTabs[0].smallCompImage,
+      singleCTAButton: divTabs[0].linkClass,
     });
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
+    window.removeEventListener('resize', this.windowResizeEventHandler.bind(this));
   }
 
   /**
-+   * Set state based on view port.
-+   */
+   * Set state based on view port.
+   */
   windowResizeEventHandler = () => {
     const viewportInfo = isClient() ? getViewportInfo() : null;
     this.setState({
@@ -46,6 +56,9 @@ export class ModuleM extends React.PureComponent {
     });
   };
 
+  /**
+   * Returns module header
+   */
   getHeaderText = headerText => {
     return (
       <div className="promo-header-wrapper">
@@ -59,6 +72,9 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   * Returns promo banner for module
+   */
   getPromoBanner = promoBanner => {
     return (
       promoBanner && (
@@ -71,6 +87,9 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   * Returns viewport keys ie. sm|md|lg
+   */
   getViewportKey = () => {
     let gutterViewportKey;
     const { isMobile, isTablet } = this.state;
@@ -81,8 +100,11 @@ export class ModuleM extends React.PureComponent {
     return gutterViewportKey;
   };
 
+  /**
+   *  Renders image grid for tab item
+   */
   getProductImageGrid = selectedProductList => {
-    const { singleCTAButton } = this.props;
+    const { singleCTAButton } = this.state;
     const viewportKey = this.getViewportKey();
     const imageData = config[`images${selectedProductList.length}`];
     const rowMaxImages = imageData ? imageData.rowMaxImages[viewportKey] : 0;
@@ -94,7 +116,7 @@ export class ModuleM extends React.PureComponent {
       <Row className="image-items-container" noLastMargin>
         {selectedProductList &&
           selectedProductList.map((productItem, index) => {
-            const { image, link } = productItem;
+            const { image, link, video } = productItem;
             /**
              * Calculate each row first element and last element and apply margin left and right respectively.
              */
@@ -121,24 +143,23 @@ export class ModuleM extends React.PureComponent {
                 <Anchor
                   to={link.url}
                   asPath={link.url}
-                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                  dataLocator={`${getLocator('moduleM_image')}_${index}`}
+                  className="moduleM__productContainer"
                 >
                   <div ref={this.gridImageRef} className="moduleM__productImage">
-                    <Image alt={image.title} src={image.url} />
+                    <DamImage
+                      imgConfigs={config.IMG_DATA.productImgConfig}
+                      imgData={image}
+                      link={{ ...link, className: 'moduleM__productContainer' }}
+                      videoData={video}
+                    />
                   </div>
-                  {/* TO DO - Implement Dam image after cms integration */}
-                  {/* <DamImage
-                    imgConfigs={config.IMG_DATA.productImgConfig}
-                    imgData={image}
-                    data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
-                    link={link}
-                  /> */}
                   <BodyCopy
                     component="div"
                     className="moduleM__productName"
                     fontSize="fs15"
                     color="text.primary"
-                    fontFamily="secondary"
+                    fontFamily="primary"
                   >
                     {link.text}
                   </BodyCopy>
@@ -146,7 +167,7 @@ export class ModuleM extends React.PureComponent {
               </ImageGrid>
             );
           })}
-        {selectedProductList.length > 0 && (
+        {singleCTAButton && selectedProductList.length > 0 && (
           <CtaButtonWrapper
             length={selectedProductList.length}
             colSize={config[`images${selectedProductList.length}`].colSize}
@@ -160,7 +181,7 @@ export class ModuleM extends React.PureComponent {
               to={singleCTAButton.url}
               asPath={singleCTAButton.url}
               title={singleCTAButton.text}
-              dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+              dataLocator={`${getLocator('moduleM_cta_btn')}`}
               className="moduleM__shopAllBtn"
             >
               {singleCTAButton.text}
@@ -171,9 +192,11 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   *  Renders flex image grid for tab item
+   */
   getProductImageFlex = selectedProductList => {
-    const { singleCTAButton } = this.props;
-
+    const { singleCTAButton } = this.state;
     return (
       <div className="image-items-container__flex">
         {selectedProductList &&
@@ -184,9 +207,13 @@ export class ModuleM extends React.PureComponent {
                 <Anchor
                   to={link.url}
                   asPath={link.url}
-                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                  dataLocator={`${getLocator('moduleM_image')}_${index}`}
                 >
-                  <Image alt={image.title} src={image.url} />
+                  <DamImage
+                    imgConfigs={config.IMG_DATA.productImgConfig}
+                    imgData={image}
+                    link={link}
+                  />
                   <BodyCopy
                     component="div"
                     className="moduleM__productName"
@@ -200,36 +227,46 @@ export class ModuleM extends React.PureComponent {
               </div>
             );
           })}
-        <div className="moduleM__shopAllBtnWrapper">
-          <Anchor
-            to={singleCTAButton.url}
-            asPath={singleCTAButton.url}
-            title={singleCTAButton.tex}
-            dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
-            className="moduleM__shopAllBtn"
-          >
-            {singleCTAButton.text}
-          </Anchor>
-        </div>
+        {singleCTAButton ? (
+          <div className="moduleM__shopAllBtnWrapper">
+            <Anchor
+              to={singleCTAButton.url}
+              asPath={singleCTAButton.url}
+              title={singleCTAButton.tex}
+              dataLocator={`${getLocator('moduleM_cta_btn')}`}
+              className="moduleM__shopAllBtn"
+            >
+              {singleCTAButton.text}
+            </Anchor>
+          </div>
+        ) : null}
       </div>
     );
   };
 
-  getCategoryImageList = ctaItems => {
+  /**
+   *  Renders image grid for tab item
+   *  specific for Gymboree
+   */
+  getCategoryImageList = selectedProductList => {
     return (
-      ctaItems && (
+      selectedProductList && (
         <div className="image-items-container-category">
-          {ctaItems &&
-            ctaItems.map((productItem, index) => {
-              const { image, button } = productItem;
+          {selectedProductList &&
+            selectedProductList.map((productItem, index) => {
+              const { image, link } = productItem;
               return (
                 <ImageRoundFlex className="imagecategory__list">
                   <Anchor
-                    to={button.url}
-                    asPath={button.url}
-                    dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                    to={link.url}
+                    asPath={link.url}
+                    dataLocator={`${getLocator('moduleM_image')}_${index}`}
                   >
-                    <Image alt={image.alt} src={image.url} />
+                    <DamImage
+                      imgConfigs={config.IMG_DATA.productImgConfig}
+                      imgData={image}
+                      link={link}
+                    />
                     <BodyCopy
                       component="div"
                       className="moduleM__productName"
@@ -237,7 +274,7 @@ export class ModuleM extends React.PureComponent {
                       color="text.primary"
                       fontFamily="secondary"
                     >
-                      {button.text}
+                      {link.text}
                     </BodyCopy>
                   </Anchor>
                 </ImageRoundFlex>
@@ -248,29 +285,39 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
-  getProductImageList = (type, list) =>
-    type === 'flex' ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
+  /**
+   *  Returns type of grid item
+   */
+  getProductImageList = (flexbox, list) =>
+    parseInt(flexbox, 10) ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
 
-  onTabChange = (id, imageList) => {
-    this.setState({ productCategoryImageList: imageList, activeTab: id });
+  onTabChange = (id, imageList, linkClass) => {
+    this.setState({
+      productCategoryImageList: imageList,
+      singleCTAButton: linkClass,
+      activeTab: id,
+    });
   };
 
+  /**
+   *  Render button tab list
+   */
   createProductTabList = tabList => {
     return (
       tabList &&
-      tabList.map(list => {
-        const { text: listItemText, smallCompImages, id } = list;
+      tabList.map((list, index) => {
+        const { text: listItemText, smallCompImage, linkClass, id } = list;
         const { activeTab } = this.state;
         return (
           <div
             key={`modMTabs-${listItemText.text}`}
             className="product-tab-list__item"
-            data-locator=""
+            data-locator={`${getLocator('moduleM_cta_links')}_${index}`}
           >
             <Button
               active={id === activeTab}
               buttonVariation="mini-nav"
-              onClick={() => this.onTabChange(id, smallCompImages)}
+              onClick={() => this.onTabChange(id, smallCompImage, linkClass)}
             >
               {listItemText.text}
             </Button>
@@ -280,11 +327,14 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   *  Creates button tab list data
+   */
   createTabList = tabList =>
     tabList.map((list, index) => Object.assign({}, list, { id: `tablList-${index}` }));
 
   render() {
-    const { className, headerText, promoBanner, divTabs, type, ctaItems } = this.props;
+    const { className, headerText, promoBanner, divTabs, flexbox } = this.props;
     const { productCategoryImageList } = this.state;
 
     return (
@@ -296,6 +346,7 @@ export class ModuleM extends React.PureComponent {
               medium: 8,
               large: 12,
             }}
+            className="header-container"
           >
             {headerText && this.getHeaderText(headerText)}
             {promoBanner && this.getPromoBanner(promoBanner)}
@@ -308,7 +359,9 @@ export class ModuleM extends React.PureComponent {
             }}
             className="product-tab-list"
           >
-            {divTabs && this.createProductTabList(this.createTabList(divTabs))}
+            {divTabs &&
+              divTabs.length > 1 &&
+              this.createProductTabList(this.createTabList(divTabs))}
           </Col>
           <Col
             colSize={{
@@ -317,9 +370,9 @@ export class ModuleM extends React.PureComponent {
               large: 12,
             }}
           >
-            {ctaItems && ctaItems.length > 0
-              ? this.getCategoryImageList(ctaItems)
-              : this.getProductImageList(type, productCategoryImageList)}
+            {isGymboree()
+              ? this.getCategoryImageList(productCategoryImageList)
+              : this.getProductImageList(flexbox, productCategoryImageList)}
           </Col>
         </Row>
       </Grid>
@@ -332,7 +385,7 @@ ModuleM.propTypes = {
   headerText: PropTypes.shape([]),
   promoBanner: PropTypes.shape([]),
   divTabs: PropTypes.shape([]),
-  type: PropTypes.string,
+  flexbox: PropTypes.bool,
   singleCTAButton: PropTypes.shape({}),
   ctaItems: PropTypes.shape({}),
 };
@@ -342,7 +395,7 @@ ModuleM.defaultProps = {
   headerText: [],
   promoBanner: [],
   divTabs: [],
-  type: [],
+  type: 0,
   singleCTAButton: [],
   ctaItems: [],
 };

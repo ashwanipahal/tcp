@@ -35,7 +35,8 @@ const getProductsUserCustomInfo = (generalProductIdsList, products, isPDP) => {
 
       return products.map(product => {
         const { miscInfo, ...otherAttributes } = product;
-        const extraProductInfo = favProductsMap[product.productInfo.generalProductId];
+        const extraProductInfo =
+          favProductsMap[isPDP ? product.colorProductId : product.productInfo.generalProductId];
         return {
           ...otherAttributes,
           miscInfo: {

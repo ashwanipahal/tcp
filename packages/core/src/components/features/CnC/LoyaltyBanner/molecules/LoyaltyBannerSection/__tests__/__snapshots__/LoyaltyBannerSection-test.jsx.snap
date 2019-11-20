@@ -40,14 +40,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={true}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>
@@ -95,14 +88,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={true}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>
@@ -150,14 +136,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={false}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>
@@ -205,14 +184,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={true}
-          isPlcc={true}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>
@@ -260,14 +232,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={false}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>
@@ -315,14 +280,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={true}
-          isPlcc={false}
           isProductDetailView={false}
-          isReviewPage={false}
-          labels={Object {}}
         />
       </div>
     </Styled(BodyCopy)>

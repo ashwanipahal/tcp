@@ -3,7 +3,7 @@
 exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = `
 <div>
   <Styled(FormPageHeading)
-    data-locator=""
+    data-locator="mprcc-header"
     heading="lbl_PLCCForm_rewardsCardHeading"
   />
   <Styled(Row)
@@ -54,6 +54,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         </Styled(BodyCopy)>
         <div
           className="header-image"
+          data-locator="mprcc-tcpgymimage"
         />
         <Styled(BodyCopy)
           className="apply-now-subtext"
@@ -84,7 +85,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         >
           <Styled(Button)
             buttonVariation="fixed-width"
-            data-locator="plcc_apply_btn"
+            data-locator="mprcc-applyCTA"
             fill="BLUE"
             fontSize="fs14"
             fontWeight="semibold"
@@ -95,7 +96,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
           <Styled(Button)
             buttonVariation="fixed-width"
             className="elem-mt-MED"
-            data-locator="plcc_apply_btn"
+            data-locator="mprcc-managecreditcardCTA"
             fill="WHITE"
             fontSize="fs14"
             fontWeight="semibold"
@@ -163,6 +164,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         <Styled(Anchor)
           anchorVariation="primary"
           className="elem-ml-SM"
+          data-locator="mprcc-detailslnk"
           fontSizeVariation="large"
           target="_blank"
           underline={true}
@@ -173,7 +175,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         <Styled(Anchor)
           anchorVariation="primary"
           className="elem-ml-XL"
-          data-locator="plcc_faq"
+          data-locator="mprcc-FAQlnk"
           fontSizeVariation="large"
           target="_blank"
           underline={true}
@@ -184,7 +186,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         <Styled(Anchor)
           anchorVariation="primary"
           className="elem-ml-XL"
-          data-locator="plcc_rewards_terms"
+          data-locator="mprcc-rewardteemlnk"
           fontSizeVariation="large"
           target="_blank"
           underline={true}

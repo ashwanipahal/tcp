@@ -31,6 +31,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="Default Shiping Address"
@@ -55,6 +56,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         customStyle={Object {}}
         dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         noLink={true}
@@ -68,8 +70,8 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
-    fontFamily="primary"
-    fontSize="fs13"
+    fontFamily="secondary"
+    fontSize="fs14"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
@@ -93,6 +95,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="Default Billing Address"
@@ -117,6 +120,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         customStyle={Object {}}
         data-locator="addressbook-makedefault"
         fontSizeVariation="large"
+        justifyContent=""
         lineHeight="10"
         locator=""
         margins={null}
@@ -131,8 +135,8 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
-    fontFamily="primary"
-    fontSize="fs13"
+    fontFamily="secondary"
+    fontSize="fs14"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
@@ -199,6 +203,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="lbl_overview_defaultShipingAddress"
@@ -223,6 +228,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         customStyle={Object {}}
         dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         noLink={true}
@@ -236,8 +242,8 @@ exports[`AddressOverviewTile render empty address component should render correc
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
-    fontFamily="primary"
-    fontSize="fs13"
+    fontFamily="secondary"
+    fontSize="fs14"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
@@ -261,6 +267,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="lbl_overview_defaultBillingAddress"
@@ -285,6 +292,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         customStyle={Object {}}
         data-locator="addressbook-makedefault"
         fontSizeVariation="large"
+        justifyContent=""
         lineHeight="10"
         locator=""
         margins={null}
@@ -299,8 +307,8 @@ exports[`AddressOverviewTile render empty address component should render correc
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
-    fontFamily="primary"
-    fontSize="fs13"
+    fontFamily="secondary"
+    fontSize="fs14"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}

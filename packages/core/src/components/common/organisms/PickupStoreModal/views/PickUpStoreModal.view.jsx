@@ -165,6 +165,7 @@ class PickUpStoreModalView extends React.Component {
     currencyAttributes: PropTypes.shape({}),
     updatePickUpCartItem: PropTypes.func.isRequired,
     initialValuesFromBagPage: PropTypes.shape({}).isRequired,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
@@ -197,6 +198,7 @@ class PickUpStoreModalView extends React.Component {
     currencyAttributes: {
       exchangevalue: 1,
     },
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -431,6 +433,7 @@ class PickUpStoreModalView extends React.Component {
       isItemShipToHome,
       openRestrictedModalForBopis,
       isGetUserStoresLoaded,
+      toastMessage,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -497,10 +500,11 @@ class PickUpStoreModalView extends React.Component {
           initialValues={SkuSelectedValues}
           selectedColor={selectedColor}
           currency={currency}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           className="pickup-sku-selection"
           onCloseClick={this.onCloseClick}
           navigation={navigation}
+          toastMessage={toastMessage}
         />
         <PickupStoreSelectionFormContainer
           isGetUserStoresLoaded={isGetUserStoresLoaded}
@@ -548,7 +552,7 @@ class PickUpStoreModalView extends React.Component {
           PickupSkuFormValues={PickupSkuFormValues}
           initialValuesFromBagPage={initialValuesFromBagPage}
           isItemShipToHome={isItemShipToHome}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           openRestrictedModalForBopis={openRestrictedModalForBopis}
         />
       </>

@@ -8,6 +8,12 @@ export default css`
   background: ${props => props.theme.colorPalette.white};
   z-index: ${props => props.theme.zindex.zDrawer};
 
+  .L2-panel-container {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-right: 50px;
+    }
+  }
+
   .shop-by-size-links {
     padding: 10px 14px 10px;
     ul {
@@ -59,6 +65,14 @@ export default css`
   }
   .l2-image-banner {
     display: none;
+  }
+  .l2-promo-box {
+    display: none;
+  }
+  .l2-image-banner-link {
+    .icon-arrow {
+      display: none;
+    }
   }
   .icon-back {
     position: absolute;
@@ -155,6 +169,9 @@ export default css`
     .l2-nav-category.shop-by-size-category {
       border-right: 0;
     }
+    .l2-nav-category.no-border {
+      border-right: 0;
+    }
     .l2-nav-category-header {
       margin-bottom: 24px;
     }
@@ -186,6 +203,8 @@ export default css`
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
+        display: inline-block;
+        width: auto;
       }
       .nav-bar-item-label:hover {
         width: auto;
@@ -199,6 +218,12 @@ export default css`
       display: block;
       padding: 11px 0 5px 0;
       line-height: 1.11;
+      &.l2-nav-split-nav-link {
+        padding: 13px 0 22px 0;
+      }
+      &.promo-box-link {
+        padding: 12px 0 15px 0;
+      }
     }
     .shop-by-size-links {
       display: flex;
@@ -213,23 +238,59 @@ export default css`
     .l2-image-banner {
       display: block;
       margin-top: 36px;
-    }
-    .l2-image-banner-image {
-      width: 100%;
-      max-width: 210px;
-      height: 100%;
-      max-height: 330px;
+      margin-bottom: 36px;
     }
     .l2-image-banner-link {
       .nav-bar-l1-item-label {
         width: auto;
       }
       .icon-arrow {
+        display: inline-block;
         margin-left: 10px;
         width: 10px;
       }
       span {
         display: inline-block;
+      }
+    }
+    .l2-promo-box-wrapper {
+      display: block;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+    .l2-promo-box {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      max-width: 210px;
+      box-sizing: border-box;
+      height: 220px;
+      padding: 0 5.5%;
+      text-align: left;
+      border-style: solid;
+      border-width: 3px;
+      &.l2-half-promo-box {
+        padding: 0 6%;
+        height: 89px;
+      }
+      &.border-pink {
+        border-color: #ff3db4;
+      }
+      &.border-purple {
+        border-color: #b976cc;
+      }
+      &.border-orange {
+        border-color: #ff6b00;
+      }
+      &.border-blue {
+        border-color: #49a6e0;
+      }
+      &.border-yellow {
+        border-color: #f6d343;
+      }
+      &.border-red {
+        border-color: #ed0505;
       }
     }
     .sizes-range-background {

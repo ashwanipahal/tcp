@@ -14,7 +14,7 @@ describe('ConfirmationViewVanilla', () => {
   it('should render correctly', () => {
     const props1 = {
       orderNumbersByFullfillmentCenter: {
-        fullfillmentCenterMap: [{ center: { shippingFullname: 'ship', orderType: 'BOSS' } }],
+        fullfillmentCenterMap: [{ shippingFullname: 'ship', orderType: 'BOSS' }],
       },
       orderDetails: { date: '', orderNumber: 2345, trackingLink: '/' },
       orderShippingDetails: { address: {}, orderTotal: 23.45, itemsCount: 5 },
@@ -25,7 +25,7 @@ describe('ConfirmationViewVanilla', () => {
   it('should render correctly with venmo payment progress', () => {
     const props1 = {
       orderNumbersByFullfillmentCenter: {
-        fullfillmentCenterMap: [{ center: { shippingFullname: 'ship', orderType: 'BOSS' } }],
+        fullfillmentCenterMap: [{ shippingFullname: 'ship', orderType: 'BOSS' }],
       },
       orderDetails: { date: '', orderNumber: '', trackingLink: '/' },
       orderShippingDetails: { address: {}, orderTotal: 23.45, itemsCount: 5 },
@@ -56,5 +56,16 @@ describe('ConfirmationViewVanilla', () => {
     props.isGuest = false;
     const tree = shallow(<ConfirmationViewVanilla {...props} />);
     expect(tree.find(ConfirmationAccountFormContainer).length).toBe(0);
+  });
+  it('should render correctly without shipping', () => {
+    const props1 = {
+      orderNumbersByFullfillmentCenter: {
+        fullfillmentCenterMap: [{ shippingFullname: '', orderType: 'BOSS' }],
+      },
+      orderDetails: { date: '', orderNumber: 2345, trackingLink: '/' },
+      orderShippingDetails: { address: {}, orderTotal: 23.45, itemsCount: 5 },
+    };
+    const tree = shallow(<ConfirmationViewVanilla {...props1} />);
+    expect(tree).toMatchSnapshot();
   });
 });

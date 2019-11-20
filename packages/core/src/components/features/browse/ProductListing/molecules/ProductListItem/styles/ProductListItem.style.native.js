@@ -60,8 +60,11 @@ const OfferPriceAndBadge3Container = styled.View`
   flex-direction: row;
 `;
 
+const OfferPriceAndBadge3View = styled.View`
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
 const TitleContainer = styled.TouchableOpacity`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   height: 32;
 `;
 
@@ -98,4 +101,5 @@ export {
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 };

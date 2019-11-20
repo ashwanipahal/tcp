@@ -7,11 +7,14 @@ const initialState = fromJS({
   sfl: [],
   errors: false,
   loaded: false,
+  bagLoading: false,
+  isRouting: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
   showConfirmationModal: false,
   isEditingItem: false,
+
   uiFlags: {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
@@ -73,6 +76,12 @@ const returnBagPageReducerExtension = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN:
       return state.set('paypalBtnHidden', action.payload);
+    case BAGPAGE_CONSTANTS.FETCHING_CART_DATA:
+      return state.set('bagLoading', true);
+    case BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE:
+      return state.set('loaded', false);
+    case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ROUTING:
+      return state.set('isRouting', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -94,7 +103,7 @@ const returnBagPageReducer = (state = initialState, action) => {
       return setCartItemsSFL(state, action.payload);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR:
       return setCartItemsSflError(state, action.payload);
-    case BAGPAGE_CONSTANTS.SET_SFL_DATA:
+    case BAGPAGE_CONSTANTS.SET_TRANSLATED_SFL_DATA:
       return state.set('sfl', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL:
       return state.set('openItemDeleteConfirmationModalInfo', { showModal: false });
@@ -103,6 +112,7 @@ const returnBagPageReducer = (state = initialState, action) => {
         ...action.payload,
         showModal: true,
       });
+
     default:
       return returnBagPageReducerExtension(state, action);
   }
@@ -111,9 +121,12 @@ const returnBagPageReducer = (state = initialState, action) => {
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
-      return state.set('loaded', true).set('orderDetails', fromJS(action.payload));
+      return state
+        .set('loaded', true)
+        .set('bagLoading', false)
+        .set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
-      return state.set('errors', fromJS(action.payload));
+      return state.set('bagLoading', false).set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', List(action.payload));
     case 'CART_SUMMARY_SET_ORDER_ID':

@@ -34,8 +34,14 @@ export default css`
     }
   }
 
-  .outfit-button-wrapper {
+  .image-wrapper {
+    position: relative;
+  }
+  .outfit-button-wrapper,
+  .outfit-button-wrapper-desktop {
+    margin-right: auto;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
 
@@ -48,7 +54,46 @@ export default css`
       .outfit-pickup {
         margin-right: 0;
         margin-left: auto;
-        min-width: 79%;
+        min-width: 78%;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      .outfit-pickup {
+        min-width: 213px;
+        width: 50%;
+      }
+    }
+  }
+
+  .outfit-button-wrapper {
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
+
+  .outfit-button-wrapper-desktop {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: flex;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: flex;
+      flex-direction: row-reverse;
+
+      .outfit-pickup:empty ~ .button-wrapper {
+        min-width: 100%;
+      }
+
+      .outfit-pickup:empty {
+        min-width: 0;
+        margin-left: auto;
+      }
+
+      .outfit-pickup:empty ~ .button-wrapper .add-to-bag-button {
+        max-width: 100%;
       }
     }
   }
@@ -70,9 +115,23 @@ export default css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     height: 42px;
 
+    .add-to-bag-button {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+    }
+
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       min-width: 213px;
       width: 50%;
+      margin-bottom: 0;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -132,6 +191,7 @@ export default css`
   }
 
   .outfit-mobile-image {
+    position: relative;
     min-width: 103px;
     min-height: 127px;
   }
@@ -147,6 +207,23 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .tablet-image-section {
       display: none;
+    }
+    .outfit-button-wrapper {
+      display: none;
+    }
+    .outfit-button-wrapper-desktop {
+      display: flex;
+
+      .outfit-pickup:empty {
+        height: 51px;
+      }
+    }
+    .outfit-pickup:empty ~ .button-wrapper {
+      min-width: 100%;
+
+      .add-to-bag-button {
+        min-width: 100%;
+      }
     }
   }
 `;

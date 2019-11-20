@@ -14,6 +14,11 @@ exports[`Shipping Page should render correctly 1`] = `
     addressPhoneNo={null}
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -22,6 +27,10 @@ exports[`Shipping Page should render correctly 1`] = `
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": null,
         "saveToAddressBook": false,
@@ -33,6 +42,7 @@ exports[`Shipping Page should render correctly 1`] = `
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -44,6 +54,7 @@ exports[`Shipping Page should render correctly 1`] = `
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -56,7 +67,11 @@ exports[`Shipping Page should render correctly 1`] = `
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -94,6 +109,11 @@ exports[`Shipping Page should render correctly with component did update and get
     defaultAddressId="34789"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -102,6 +122,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -113,6 +137,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -140,6 +165,7 @@ exports[`Shipping Page should render correctly with component did update and get
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -152,7 +178,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -206,6 +236,11 @@ exports[`Shipping Page should render correctly with component did update and get
     defaultAddressId="123"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -214,6 +249,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -225,6 +264,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -252,6 +292,7 @@ exports[`Shipping Page should render correctly with component did update and get
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -264,7 +305,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}

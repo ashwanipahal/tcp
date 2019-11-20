@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -22,6 +22,7 @@ import {
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -59,14 +60,14 @@ const renderAddToBagContainer = (
   labelsPlpTiles,
   onGoToPDPPage
 ) => {
-  if (renderVariation && !renderPriceOnly) return null;
+  if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
   return (
     <AddToBagContainer>
       <CustomButton
-        paddings="12px 12px 12px 12px"
+        paddings="12px 8px 12px 8px"
         fill="BLUE"
         type="button"
         buttonVariation="variable-width"
@@ -74,9 +75,14 @@ const renderAddToBagContainer = (
         text={buttonLabel}
         onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
+        margin="0 6px 0 0"
       />
     </AddToBagContainer>
   );
+};
+
+const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+  onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
 const ListItem = props => {
@@ -105,9 +111,10 @@ const ListItem = props => {
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const { productInfo, colorsMap, itemInfo } = item;
+  const { productInfo, colorsMap, itemInfo, miscInfo } = item;
+  const { isInDefaultWishlist } = miscInfo;
   const { name, bundleProduct } = productInfo;
-  const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
+  const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
@@ -125,25 +132,31 @@ const ListItem = props => {
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
+        isFavorite={isFavorite}
       />
       <RenderBadge2 text={badge2} />
       {isFavorite && (
-        <BodyCopy
-          color="gray.900"
+        <Anchor
+          fontSizeVariation="medium"
           fontFamily="secondary"
-          fontSize="fs12"
-          text="Edit"
-          textAlign="center"
+          underline
+          anchorVariation="custom"
+          onPress={() =>
+            onEditHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)
+          }
+          dataLocator=""
+          text={labelsPlpTiles.lbl_edit}
+          colorName="gray.900"
         />
       )}
       <RenderPricesSection
         hideFavorite={renderPriceAndBagOnly}
         onFavorite={onFavorite}
-        miscInfo={miscInfo}
+        miscInfo={miscInfoData}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         setLastDeletedItemId={setLastDeletedItemId}
-        isFavorite={isFavorite}
+        isFavorite={isInDefaultWishlist}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
         item={item}
@@ -178,7 +191,9 @@ const ListItem = props => {
         onGoToPDPPage
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
-      {isFavorite && <RenderMoveToWishlist />}
+      {isFavorite && (
+        <RenderMoveToListOrSeeSuggestedList item={item} labelsPlpTiles={labelsPlpTiles} />
+      )}
     </ListContainer>
   );
 };
@@ -201,7 +216,13 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWidth }) => {
+const ImageSection = ({
+  item,
+  selectedColorIndex,
+  onGoToPDPPage,
+  productImageWidth,
+  isFavorite,
+}) => {
   return (
     <ImageSectionContainer>
       <ImageCarousel
@@ -209,6 +230,7 @@ const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWid
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
+        isFavorite={isFavorite}
       />
     </ImageSectionContainer>
   );
@@ -219,10 +241,12 @@ ImageSection.propTypes = {
   selectedColorIndex: PropTypes.number.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
   productImageWidth: PropTypes.number,
+  isFavorite: PropTypes.bool,
 };
 
 ImageSection.defaultProps = {
   productImageWidth: '',
+  isFavorite: false,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -250,7 +274,7 @@ const calculatePriceValue = (price, currencySymbol, currencyExchange, defaultRet
 };
 
 const renderOfferPrice = (productInfo, currencySymbol, currencyExchange) => {
-  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', productInfo.offerPrice || 0);
   const highOfferPrice = get(productInfo, 'priceRange.highOfferPrice', 0);
   const offerPriceValue = calculatePriceValue(
     lowOfferPrice,
@@ -316,7 +340,7 @@ const renderPricePercentageDiscountLabel = value => {
   if (value) {
     return (
       <BodyCopy
-        margin="8px 0 0 0"
+        margin="0 0 0 8px"
         dataLocator="plp_filter_size_range"
         mobileFontFamily="secondary"
         fontSize="fs10"
@@ -331,9 +355,9 @@ const renderPricePercentageDiscountLabel = value => {
 };
 
 const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) => {
-  const lowListPrice = get(productInfo, 'priceRange.lowListPrice', 0);
+  const lowListPrice = get(productInfo, 'priceRange.lowListPrice', productInfo.listPrice || 0);
   const highListPrice = get(productInfo, 'priceRange.highListPrice', 0);
-  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', productInfo.offerPrice || 0);
   const listPriceValue = calculatePriceValue(lowListPrice, currencySymbol, currencyExchange, null);
   const highListPriceValue = calculatePriceValue(
     highListPrice,
@@ -341,7 +365,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
     currencyExchange,
     null
   );
-  if (lowListPrice && lowOfferPrice && lowListPrice > lowOfferPrice) {
+  if (lowListPrice > lowOfferPrice || highListPrice > lowListPrice) {
     return (
       <OfferPriceAndBadge3Container>
         {renderListPriceLabels(listPriceValue)}
@@ -351,7 +375,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
       </OfferPriceAndBadge3Container>
     );
   }
-  return null;
+  return <OfferPriceAndBadge3View />;
 };
 
 const RenderPricesSection = values => {
@@ -484,7 +508,27 @@ const RenderPurchasedQuantity = ({ item }) => {
   );
 };
 
-const RenderMoveToWishlist = () => {
+const onSeeSuggestedHandler = () => {};
+const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
+  const {
+    itemInfo: { availability },
+  } = item;
+  if (availability && availability === 'SOLDOUT') {
+    return (
+      <Anchor
+        fontSizeVariation="large"
+        fontFamily="secondary"
+        underline
+        anchorVariation="custom"
+        onPress={onSeeSuggestedHandler}
+        dataLocator=""
+        text={labelsPlpTiles.lbl_see_suggested_items}
+        colorName="gray.900"
+        justifyContent="flex-start"
+      />
+    );
+  }
+
   return (
     <RowContainer margins="8px 0 0 0">
       <BodyCopy
@@ -497,6 +541,24 @@ const RenderMoveToWishlist = () => {
       <CustomIcon name={ICON_NAME.chevronDown} size="fs14" color="gray.600" margins="0 0 0 12px" />
     </RowContainer>
   );
+};
+
+RenderMoveToListOrSeeSuggestedList.propTypes = {
+  labelsPlpTiles: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    quantityPurchased: PropTypes.string,
+    itemInfo: PropTypes.shape({
+      availability: PropTypes.string,
+    }),
+  }),
+};
+
+RenderMoveToListOrSeeSuggestedList.defaultProps = {
+  item: {
+    itemInfo: {
+      availability: 'OK',
+    },
+  },
 };
 
 RenderPurchasedQuantity.propTypes = {

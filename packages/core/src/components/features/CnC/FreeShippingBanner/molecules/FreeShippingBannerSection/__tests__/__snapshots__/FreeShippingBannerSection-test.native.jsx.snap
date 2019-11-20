@@ -45,6 +45,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         className="details"
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}

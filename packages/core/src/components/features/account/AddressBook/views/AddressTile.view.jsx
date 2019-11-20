@@ -50,7 +50,7 @@ class AddressBookTile extends React.Component {
     e.preventDefault();
     const { address } = this.props;
     utils.routerPush(
-      `/account?id=edit-address&addressId=${address.addressId}`,
+      `/account?id=address-book&subSection=edit-address&addressId=${address.addressId}`,
       `/account/address-book/edit-address/${address.addressId}`
     );
   };
@@ -102,8 +102,9 @@ class AddressBookTile extends React.Component {
                     <Button
                       fontSizeVariation="small"
                       nohover
+                      className="addressTile__makedefaultcheck"
                       type="button"
-                      link
+                      smallLink
                       underline
                       anchorVariation="primary"
                       onClick={this.handleDefaultLinkClick}

@@ -107,15 +107,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -129,6 +120,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -139,6 +131,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -299,7 +292,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -374,7 +367,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -384,9 +376,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -503,15 +497,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
 >
   <Styled(View)>
     <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
-    <Styled(View)>
       <ItemAvailability
         chooseDiff="bopisUnavailable"
         errorMsg=""
@@ -529,6 +514,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -539,6 +525,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -699,7 +686,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -758,39 +745,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
-      onPickUpOpenClick={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "alwaysSearchForBOSS": false,
-                "colorProductId": undefined,
-                "isBopisCtaEnabled": true,
-                "isBossCtaEnabled": false,
-                "isItemShipToHome": true,
-                "openRestrictedModalForBopis": false,
-                "openSkuSelectionForm": false,
-                "orderInfo": Object {
-                  "Fit": "regular",
-                  "Quantity": "1",
-                  "Size": "1",
-                  "color": undefined,
-                  "itemBrand": "TCP",
-                  "orderId": 123,
-                  "orderItemId": undefined,
-                  "orderItemType": "BOPIS",
-                },
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      }
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -800,9 +754,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -918,15 +874,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
 >
   <Styled(View)>
     <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
-    <Styled(View)>
       <ItemAvailability
         chooseDiff="bopisUnavailable"
         errorMsg=""
@@ -944,6 +891,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -954,6 +902,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -1114,7 +1063,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -1173,7 +1122,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -1183,9 +1131,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -1320,15 +1270,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -1342,6 +1283,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -1352,6 +1294,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -1512,7 +1455,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -1587,7 +1530,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -1597,9 +1539,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -1714,15 +1658,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -1736,6 +1671,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -1746,6 +1682,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -1906,7 +1843,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -1965,7 +1902,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         }
       }
       noBopisMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -1975,9 +1911,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -2092,15 +2030,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -2114,6 +2043,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2124,6 +2054,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -2284,7 +2215,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -2344,7 +2275,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -2354,9 +2284,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -2471,15 +2403,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -2493,6 +2416,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2503,6 +2427,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -2663,7 +2588,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -2723,7 +2648,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -2733,9 +2657,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -2850,15 +2776,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -2872,6 +2789,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2882,6 +2800,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3055,7 +2974,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -3184,15 +3103,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3206,6 +3116,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3216,6 +3127,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3376,7 +3288,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -3436,7 +3348,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -3446,9 +3357,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -3563,15 +3476,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3585,6 +3489,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3595,6 +3500,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3768,7 +3674,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -3897,15 +3803,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3919,6 +3816,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3929,6 +3827,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4089,7 +3988,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -4149,7 +4048,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -4159,9 +4057,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -4276,15 +4176,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -4298,6 +4189,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -4308,6 +4200,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4468,7 +4361,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -4528,7 +4421,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -4538,9 +4430,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -4675,15 +4569,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -4697,6 +4582,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -4707,6 +4593,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4867,7 +4754,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -4942,7 +4829,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -4952,9 +4838,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -5089,15 +4977,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -5111,6 +4990,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -5121,6 +5001,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -5281,7 +5162,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -5356,7 +5237,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -5366,9 +5246,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -5503,15 +5385,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -5525,6 +5398,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -5535,6 +5409,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -5695,7 +5570,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />
@@ -5770,7 +5645,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
-      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
       orderId={123}
@@ -5780,9 +5654,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
+            "itemId": "123",
             "itemUnitPrice": 12.345,
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
+            "offerPrice": 38.85,
             "price": 123,
             "qty": "1",
             "size": "1",
@@ -5897,15 +5773,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        bagPage={false}
-        error=""
-        fontSize="fs12"
-        fontWeight="extrabold"
-        showAccordian={true}
-      />
-    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -5919,6 +5786,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -5929,6 +5797,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -6102,7 +5971,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefinedNaN"
+              text="undefined38.85"
               textAlign="left"
               textDecoration={null}
             />

@@ -27,7 +27,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           "shortDescription": "",
         }
       }
-      imageUrls={Array []}
+      imageUrls={null}
       isLoggedIn={false}
       onAddItemToFavorites={null}
       onImageClick={[Function]}
@@ -76,6 +76,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
+      toastMessage={[Function]}
     />
     <Connect(ProductPickupContainer)
       formName="ProductAddToBag-undefined"
@@ -91,11 +92,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
       }
     />
-    <Connect(AddedToBagContainer)
-      navigation={Object {}}
-    />
     <Styled(View)>
       <Connect(LoyaltyBannerContainer)
+        navigation={Object {}}
         pageCategory="isProductDetailView"
       />
     </Styled(View)>
@@ -113,6 +112,24 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
       setShowCompleteTheLook={[Function]}
     />
+    <Styled(View)>
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        variation="moduleO"
+      />
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        isRecentlyViewed={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        portalValue="recently-viewed-products"
+        variation="moduleO"
+      />
+    </Styled(View)>
   </Styled(View)>
 </LazyloadScrollView>
 `;

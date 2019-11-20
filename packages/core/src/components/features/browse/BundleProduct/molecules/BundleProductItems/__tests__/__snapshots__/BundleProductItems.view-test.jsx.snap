@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductItemsVanilla should render correctly 1`] = `
+<StyledComponent
+  addToBagEcom={[Function]}
+  addToFavorites={[Function]}
+  currentBundle={Array []}
+  currentState={Object {}}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-brqgnP",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  && .pdp-qty {
+    padding-top: 4px;
+  }
+  && .select__input {
+    top: 0;
+  }
+  .product-information {
+    width: calc(100% - 30px);
+    max-width: 100%;
+  }
+  && .button-wrapper {
+    position: relative;
+    min-width: 100%;
+  }
+  .outfit-sku .size-error-message {
+    max-width: 90%;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(BundleProductItems)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-brqgnP",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  handleAddToBag={[Function]}
+  isLoggedIn={false}
+  labels={Object {}}
+  navigation={Object {}}
+  plpLabels={Object {}}
+/>
+`;

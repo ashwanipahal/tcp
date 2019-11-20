@@ -204,7 +204,26 @@ describe('Module R Component', () => {
   });
 
   it('should call onProductTabChange', async () => {
-    ModuleRComp.instance().onProductTabChange();
+    const tabItem = {
+      text: {
+        text: 'GIRL',
+      },
+      category: [
+        {
+          key: 'cat_id',
+          val: '47503>47544',
+        },
+      ],
+      singleCTAButton: {
+        url: '/abc',
+        text: 'SHOP ALL',
+        title: 'SHOP ALL',
+        target: '',
+        external: 0,
+        action: '',
+      },
+    };
+    ModuleRComp.instance().onProductTabChange('47503', tabItem);
   });
 
   it('should call getImageGrid', () => {

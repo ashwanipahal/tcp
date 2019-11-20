@@ -1,15 +1,22 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import {
+  setPlccEligible,
+  setPlccPrescreenCode,
+} from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import logger from '../../../../../utils/loggerInstance';
-import selectors, { isGuest } from './Checkout.selector';
+import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
+  updateRTPSData,
+  getServerErrorMessage,
+  acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -17,14 +24,15 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import {
+
+import CHECKOUT_ACTIONS, {
   setOnFileAddressKey,
   setGiftWrap,
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
   setSmsNumberForUpdates,
-  emailSignupStatus,
   getSetCheckoutStage,
+  toggleCheckoutRouting,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -118,7 +126,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   }
 }
 
-export function* updateShippingAddress({ payload }) {
+export function* updateShippingAddress({ payload, after }) {
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -147,6 +155,9 @@ export function* updateShippingAddress({ payload }) {
     },
   });
   yield call(getAddressList);
+  if (after) {
+    after();
+  }
   yield put(setOnFileAddressKey(updateAddressResponse.payload));
 }
 
@@ -186,7 +197,7 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-export function* addAndSetGiftWrappingOptions(payload) {
+export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
@@ -197,7 +208,7 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  } else {
+  } else if (hasSetGiftOptions) {
     try {
       const res = yield call(removeGiftWrappingOption, payload);
       if (res) {
@@ -206,33 +217,6 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  }
-}
-
-export function* subscribeEmailAddress(emailObj, status, field1) {
-  try {
-    const payloadObject = {
-      emailaddr: emailObj.payload,
-      URL: 'email-confirmation',
-      response: `${status}:::false:false`,
-      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
-    };
-
-    if (field1) {
-      payloadObject.field1 = field1;
-    }
-
-    const res = yield call(emailSignupAbstractor.subscribeEmail, payloadObject);
-    yield put(emailSignupStatus({ subscription: res }));
-  } catch (err) {
-    logger.error(err);
-  }
-}
-
-export function* validateAndSubmitEmailSignup(emailAddress, field1) {
-  if (emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
   }
 }
 
@@ -335,4 +319,108 @@ export function* redirectToBilling() {
   } else {
     yield put(getSetCheckoutStage(constants.BILLING_DEFAULT_PARAM));
   }
+}
+
+function* updateUserRTPSData(payload) {
+  const { prescreen, isExpressCheckoutEnabled, navigation } = payload;
+  try {
+    const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
+    yield put(setPlccEligible(res.plccEligible));
+    yield put(setPlccPrescreenCode(res.prescreenCode));
+    if (res.plccEligible) {
+      // offer not yet shown, show it
+      yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
+      if (isMobileApp()) {
+        navigation.navigate('ApplyNow');
+      }
+      yield put(toggleApplyNowModal({ isModalOpen: true }));
+    }
+  } catch (e) {
+    logger.error(e);
+  }
+}
+
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
+  const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
+  const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
+  const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  if (pageName === BILLING && showRTPSOnBilling) {
+    yield call(updateUserRTPSData, {
+      prescreen: true,
+      isExpressCheckoutEnabled: false,
+      navigation,
+    });
+  } else if (
+    showRTPSOnReview &&
+    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    pageName === REVIEW
+  ) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
+  }
+}
+
+export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+  const { BILLING } = constants.CHECKOUT_STAGES;
+  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+};
+
+export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
+  const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+  const billingError = getServerErrorMessage(e, errorsMapping);
+  yield put(
+    CHECKOUT_ACTIONS.setServerErrorCheckout({
+      errorMessage: billingError,
+      component: componentName,
+    })
+  );
+}
+
+export function* submitAcceptOrDeclinePlccData({ payload }) {
+  const preScreenData = yield select(getRtpsPreScreenData);
+  const { preScreenCode } = preScreenData;
+  const accepted = payload;
+  try {
+    yield acceptOrDeclinePreScreenOffer(preScreenCode, accepted);
+  } catch (e) {
+    logger.error(e);
+  }
+}
+export function* getRouteToCheckoutStage({ pageName, ...otherProps }, isExpress, isBagRouting) {
+  let isExpressCheckoutEnabled = isExpress;
+  if (!isExpress) {
+    isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  }
+  const { PICKUP, SHIPPING, REVIEW } = constants.CHECKOUT_STAGES;
+  let requestedStage;
+  const itemsCount = yield select(BagPageSelectors.getTotalItems);
+  if (isExpressCheckoutEnabled && (!isBagRouting || itemsCount > 0)) {
+    requestedStage = REVIEW;
+  } else {
+    const orderHasPickup = yield select(selectors.getIsOrderHasPickup);
+    requestedStage = orderHasPickup ? PICKUP : SHIPPING;
+  }
+  utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], {
+    appRouting: pageName,
+    ...otherProps,
+  });
+  yield put(toggleCheckoutRouting(true));
+  return requestedStage;
+}
+
+export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
+  const checkoutRoutingDone = yield select(selectors.getIfCheckoutRoutingDone);
+  if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
+    yield call(getRouteToCheckoutStage, { pageName, ...otherProps });
+  }
+  return pageName;
+}
+
+export function shouldInvokeReviewCartCall(
+  isExpressCheckoutEnabled,
+  { initialLoad, isPaypalPostBack, pageName, appRouting: isPageRefreshRouting }
+) {
+  const { REVIEW } = constants.CHECKOUT_STAGES;
+  const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
+  return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
 }

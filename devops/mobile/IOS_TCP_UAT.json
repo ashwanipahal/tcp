@@ -51,7 +51,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
-      "value": "https://test6.childrensplace.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_DOMAIN_TCP",
@@ -143,7 +143,15 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
-      "value": "https://test6.gymboree.com"
+      "value": "https://test1.theplace.com/image/upload"
+    },
+    {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
+      "value": "v1/ecom/assets/products/tcp"
+    },
+    {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM",
+      "value": "v1/ecom/assets/products/gym"
     },
     {
       "name": "RWD_APP_API_DOMAIN_GYM",
@@ -292,6 +300,14 @@
     {
       "name": "RWD_APP_TWITTER_CONSUMER_SECRET_GYM",
       "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
+    },
+    {
+      "name": "RWD_APP_HOST_TCP",
+      "value": ".childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_HOST_GYM",
+      "value": ".gymboree.com"
     }
   ],
   "signed": true,
@@ -308,7 +324,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "6a3ae460-49b3-499b-9548-88244e01cffa"
+        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
       ],
       "isSilent": false
     },

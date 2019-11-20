@@ -6,15 +6,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 		set {
 			val
 			key
-		}
+    }
+    errorMessage
 		composites {
 			headLine {
 				text
 				style
 			}
 			buttonList {
-				url
-				text
+				id: url
+				label: text
 				external
 				title
 				action

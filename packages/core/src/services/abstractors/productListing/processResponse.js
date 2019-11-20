@@ -1,6 +1,7 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
@@ -98,7 +99,7 @@ const getQueryString = (keyValuePairs = {}) => {
   return params.join('&');
 };
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const getPlpUrlQueryValues = filtersAndSort => {
+const getPlpUrlQueryValues = (filtersAndSort, location) => {
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
   let urlQueryValues = {};
@@ -133,8 +134,8 @@ const getPlpUrlQueryValues = filtersAndSort => {
 
   urlQueryValues = getQueryString(urlQueryValues);
 
-  let displayPath = window.location.pathname;
-  const searchName = window.location.search;
+  let displayPath = typeof window === 'undefined' ? location.pathname : window.location.pathname;
+  const searchName = typeof window === 'undefined' ? location.search || '' : window.location.search;
   displayPath = `${displayPath}${searchName}`;
   const country = getSiteId();
   let urlPath = displayPath.replace(`/${country}`, '');
@@ -182,6 +183,8 @@ const processResponse = (
     searchTerm,
     sort,
     filterSortView,
+    location,
+    filterMaps = {},
     isLazyLoading,
   }
 ) => {
@@ -192,12 +195,12 @@ const processResponse = (
   // if (this.apiHelper.responseContainsErrors(res)) {
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
-  if (res.body.redirect && window) {
+  if (isClient() && res.body.redirect && typeof window !== 'undefined') {
     window.location.href = res.body.redirect.value;
   }
 
   if (!isMobileApp() && filterSortView && !isLazyLoading) {
-    getPlpUrlQueryValues(filtersAndSort);
+    getPlpUrlQueryValues(filtersAndSort, location);
   }
 
   const pendingPromises = [];
@@ -227,7 +230,7 @@ const processResponse = (
     const productListingFilters = getProductsFilters(state);
     const productListingTotalCount = getTotalProductsCount(state);
     productListingCurrentNavIds = getCurrentListingIds(state);
-    filters = productListingFilters || {};
+    filters = Object.keys(productListingFilters).length ? productListingFilters : filterMaps;
     totalProductsCount = productListingTotalCount || 0;
   }
 
@@ -275,8 +278,7 @@ const processResponse = (
     categoryNameTop,
   };
   if (res.body.response) {
-    // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
-    const isUSStore = true;
+    const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,
@@ -294,7 +296,9 @@ const processResponse = (
   }
 
   try {
-    bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+    if (res.body.banner) {
+      bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+    }
   } catch (error) {
     logger.error(error);
   }

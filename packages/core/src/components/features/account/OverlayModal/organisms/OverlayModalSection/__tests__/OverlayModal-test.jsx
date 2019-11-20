@@ -1,6 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getViewportInfo, isMobileWeb } from '@tcp/core/src/utils';
 import { OverlayModalVanilla } from '../views/OverlayModal';
+
+jest.mock('@tcp/core/src/utils', () => {
+  const originalModule = jest.requireActual('@tcp/core/src/utils');
+  return {
+    ...originalModule,
+    getViewportInfo: jest.fn(),
+    isMobileWeb: jest.fn(),
+    isClient: jest.fn(),
+    getIconPath: jest.fn(),
+  };
+});
 
 describe('OverlayModal', () => {
   let mockedRef = null;
@@ -65,19 +77,52 @@ describe('OverlayModal', () => {
     }
   });
 
-  it('should render correctly', () => {
+  it('should render Overlay correctly', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: false }));
+    isMobileWeb.mockImplementation(() => false);
     const props = {
       component: 'login',
       ModalContent: () => {},
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const mockedEvent = {
       target: {
         closest: jest.fn(),
       },
+      stopImmediatePropagation: jest.fn(),
+    };
+    const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
+    tree.instance().setModalRef();
+    tree.instance().modalRef = mockedRef;
+    tree.instance().handleWindowClick(mockedEvent);
+    expect(mockedcloseOverlay).toBeCalled();
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render Modal correctly', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: true }));
+    isMobileWeb.mockImplementation(() => true);
+    const props = {
+      component: 'login',
+      ModalContent: () => {},
+      variation: 'primary',
+      color: null,
+      openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
+    };
+    const mockedcloseOverlay = jest.fn();
+    const mockedEvent = {
+      target: {
+        closest: jest.fn(),
+      },
+      stopImmediatePropagation: jest.fn(),
     };
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
     tree.instance().setModalRef();
@@ -93,6 +138,9 @@ describe('OverlayModal', () => {
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);

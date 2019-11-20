@@ -4,7 +4,6 @@ import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/PromotionBanner.style';
 import { BodyCopy, Row, Col, RichText } from '../../../atoms';
-import { getBrand } from '../../../../../utils';
 import CONSTANTS from '../../../../features/CnC/Checkout/Checkout.constants';
 
 /**
@@ -16,8 +15,8 @@ import CONSTANTS from '../../../../features/CnC/Checkout/Checkout.constants';
  * @memberof PromotionBanner
  */
 const modifiedBannerText = (label, props) => {
-  const brandName = getBrand();
-  const { bossBanner, labels, tcpSegmentValue } = props;
+  const { bossBanner, labels, tcpSegmentValue, itemBrand } = props;
+  const brandName = itemBrand.toLowerCase();
   const pickupType = bossBanner
     ? CONSTANTS.ORDER_ITEM_TYPE.BOSS.toLowerCase()
     : CONSTANTS.ORDER_ITEM_TYPE.BOPIS.toLowerCase();
@@ -31,7 +30,8 @@ const modifiedBannerText = (label, props) => {
 };
 
 const PromotionBanner = props => {
-  const { labels, fullBleed, className } = props;
+  const { labels, fullBleed, className, isPickupMobilePromotion } = props;
+  const triangleClass = !isPickupMobilePromotion ? 'triangle-left' : 'triangle-top';
   return (
     <div className={className}>
       {fullBleed ? (
@@ -48,6 +48,7 @@ const PromotionBanner = props => {
                 tag="span"
                 fontSize="fs12"
                 textAlign="center"
+                className="addedtobag-bossbanner"
               >
                 <RichText
                   richTextHtml={modifiedBannerText(labels.lbl_fullBleed_banner_boss_text, props)}
@@ -58,11 +59,11 @@ const PromotionBanner = props => {
         </div>
       ) : (
         <div className="banner-wrapper">
-          <div className="triangle-left" />
+          <div className={triangleClass} />
           <div className="promo-wrapper">
-            <BodyCopy fontSize="fs10" fontFamily="primary">
+            <div className="richtextCss">
               <RichText richTextHtml={modifiedBannerText(labels.lbl_banner_boss_text, props)} />
-            </BodyCopy>
+            </div>
           </div>
         </div>
       )}
@@ -74,10 +75,12 @@ PromotionBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
   className: PropTypes.string.isRequired,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBanner.defaultProps = {
   fullBleed: false,
+  isPickupMobilePromotion: false,
 };
 
 export default withStyles(PromotionBanner, styles);

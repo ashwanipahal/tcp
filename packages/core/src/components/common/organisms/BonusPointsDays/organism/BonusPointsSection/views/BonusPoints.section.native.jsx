@@ -152,7 +152,7 @@ const getContent = ({
         <React.Fragment>
           <ApplyAnyDayWrapper>
             <BodyCopy
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               data-locator="msgtextinbold"
@@ -162,7 +162,7 @@ const getContent = ({
           </ApplyAnyDayWrapper>
           <InfoWrapper>
             <BodyCopy
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               data-locator="infomsg"
@@ -174,7 +174,7 @@ const getContent = ({
       ) : (
         <InfoWrapper>
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="regular"
             data-locator="infomsg"

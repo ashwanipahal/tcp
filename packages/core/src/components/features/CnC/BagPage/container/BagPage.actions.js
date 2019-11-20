@@ -161,6 +161,20 @@ const setSflData = payload => {
   };
 };
 
+const setTranslatedSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_TRANSLATED_SFL_DATA,
+  };
+};
+
+const updateSflItem = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.UPDATE_SFL_ITEM,
+  };
+};
+
 const startSflItemDelete = payload => {
   return {
     type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
@@ -210,9 +224,25 @@ const getSetPayPalWebView = payload => {
   };
 };
 
+const setBagPageLoading = () => ({
+  type: BAGPAGE_CONSTANTS.FETCHING_CART_DATA,
+});
 const setIsPaypalBtnHidden = payload => {
   return {
     type: BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN,
+    payload,
+  };
+};
+
+const resetBagLoadedState = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE,
+  };
+};
+
+const setBagPageIsRouting = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SET_BAG_PAGE_ROUTING,
     payload,
   };
 };
@@ -249,5 +279,10 @@ export default {
   setSflItemDeleted,
   resetCartReducer,
   getSetPayPalWebView,
+  setBagPageLoading,
   setIsPaypalBtnHidden,
+  resetBagLoadedState,
+  setTranslatedSflData,
+  setBagPageIsRouting,
+  updateSflItem,
 };

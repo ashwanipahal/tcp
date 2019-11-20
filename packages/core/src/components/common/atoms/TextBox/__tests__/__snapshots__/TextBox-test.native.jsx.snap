@@ -11,12 +11,19 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={false}
         error="food"
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "food",
+            "touched": "foo",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -24,6 +31,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
         others={
           Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -56,12 +64,19 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={true}
         error=""
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -69,6 +84,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         others={
           Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": true,
             "id": "input",
@@ -118,12 +134,19 @@ exports[`Textbox component renders correctly 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
         enableSuccessCheck={false}
         error=""
         id="input"
         keyboardType="default"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
@@ -131,6 +154,7 @@ exports[`Textbox component renders correctly 1`] = `
         others={
           Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -168,6 +192,7 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
         <Styled(TextInput)
           aria-label="input"
           ariaLabel="input"
+          autoCapitalize="sentences"
           className="TextBox__input"
           data-locator="input-field"
           dataLocator="input-field"
@@ -176,6 +201,12 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
           id="input"
           keyboardType="default"
           label="input"
+          meta={
+            Object {
+              "error": "",
+              "touched": "",
+            }
+          }
           onBlur={[Function]}
           onChangeText={[Function]}
           onEndEditing={[Function]}

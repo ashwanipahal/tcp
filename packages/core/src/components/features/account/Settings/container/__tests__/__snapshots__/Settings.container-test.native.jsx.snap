@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsContainer should render correctly 1`] = `
+<SettingsModal
+  isUserLoggedIn={false}
+  labels={Object {}}
+  navigation={[MockFunction]}
+/>
+`;

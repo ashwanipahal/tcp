@@ -20,7 +20,7 @@ class ProductImageWrapper extends React.Component {
     const { onChangeColor, initialValues } = this.props;
     const { Fit, Quantity, Size } = initialValues;
     if (onChangeColor) {
-      onChangeColor(e, Size && Size.name, Fit && Fit.name, Quantity);
+      onChangeColor(e, Size, Fit, Quantity);
     }
   };
 
@@ -40,6 +40,8 @@ class ProductImageWrapper extends React.Component {
       currentProduct,
       currentColorEntry,
       isGiftCard,
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const { colorFitsSizesMap } = currentProduct;
@@ -64,10 +66,12 @@ class ProductImageWrapper extends React.Component {
             isGiftCard={isGiftCard}
             images={images}
             isMobile={isMobile}
-            isZoomEnabled={isZoomEnabled}
+            isZoomEnabled={!keepAlive && isZoomEnabled}
             onCloseClick={this.handleShowHideFullSizeModalClick}
             isFullSizeModalOpen={isFullSizeModalOpen}
             pdpLabels={pdpLabels}
+            keepAlive={keepAlive}
+            outOfStockLabels={outOfStockLabels}
           />
         ) : null}
         {isFullSizeModalOpen &&
@@ -93,6 +97,10 @@ ProductImageWrapper.defaultProps = {
   currentProduct: {},
   currentColorEntry: {},
   initialValues: {},
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 ProductImageWrapper.propTypes = {
@@ -125,6 +133,10 @@ ProductImageWrapper.propTypes = {
   currentColorEntry: PropTypes.shape({}),
   isGiftCard: PropTypes.bool.isRequired,
   initialValues: PropTypes.shape({}),
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 export default ProductImageWrapper;

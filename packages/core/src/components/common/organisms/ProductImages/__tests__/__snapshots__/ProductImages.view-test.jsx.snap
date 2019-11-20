@@ -30,17 +30,20 @@ exports[`ProductImages component should renders correctly 1`] = `
     <div
       className="main-image-container"
     >
-      <Styled(Carousel)
-        carouselConfig={
-          Object {
-            "autoplay": false,
-            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+      <div
+        className="carousel-container"
+      >
+        <Styled(Carousel)
+          carouselConfig={
+            Object {
+              "autoplay": false,
+              "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+              "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            }
           }
-        }
-        inheritedStyles={
-          Array [
-            "
+          inheritedStyles={
+            Array [
+              "
   .slick-next {
     height: 39px;
     right: -20px;
@@ -52,59 +55,63 @@ exports[`ProductImages component should renders correctly 1`] = `
     width: 19px;
   }
   .slick-disabled {
-    display: none !important;
+    pointer-events: none;
+    background-image: url(",
+              "/static/images/right-disable-carousel-carrot.svg",
+              ");
   }
   @media ",
-            [Function],
-            " {
+              [Function],
+              " {
     .slick-dots {
       display: none;
     }
   }
 ",
-          ]
-        }
-        options={
-          Object {
-            "arrows": true,
-            "autoplay": false,
-            "beforeChange": [Function],
-            "dots": true,
-            "dotsClass": "slick-dots",
-            "fade": false,
-            "infinite": false,
-            "responsive": Array [
-              Object {
-                "breakpoint": 1199,
-                "settings": Object {
-                  "arrows": false,
-                },
-              },
-            ],
-            "slidesToShow": 1,
-            "speed": 0,
-            "swipe": true,
+            ]
           }
-        }
-        sliderImageIndex={0}
-      >
-        <Styled(ProductDetailImage)
-          imageName="Girls Uniform Active Shorts"
-          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg"
-          isFullSizeModalOpen={false}
-          isMobile={true}
-          isZoomEnabled={true}
-          zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
-        />
-        <Styled(ProductDetailImage)
-          imageName="Girls Uniform Active Shorts"
-          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg"
-          isFullSizeModalOpen={false}
-          isMobile={true}
-          isZoomEnabled={true}
-          zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
-        />
-      </Styled(Carousel)>
+          options={
+            Object {
+              "arrows": true,
+              "autoplay": false,
+              "beforeChange": [Function],
+              "dots": true,
+              "dotsClass": "slick-dots",
+              "fade": false,
+              "infinite": false,
+              "responsive": Array [
+                Object {
+                  "breakpoint": 1199,
+                  "settings": Object {
+                    "arrows": false,
+                  },
+                },
+              ],
+              "slidesToShow": 1,
+              "speed": 0,
+              "swipe": true,
+            }
+          }
+          sliderImageIndex={0}
+        >
+          <Styled(ProductDetailImage)
+            imageName="Girls Uniform Active Shorts"
+            imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg"
+            isFullSizeModalOpen={false}
+            isMobile={true}
+            isZoomEnabled={true}
+            zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
+          />
+          <Styled(ProductDetailImage)
+            imageName="Girls Uniform Active Shorts"
+            imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg"
+            isFullSizeModalOpen={false}
+            isMobile={true}
+            isZoomEnabled={true}
+            zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
+          />
+        </Styled(Carousel)>
+      </div>
       <div
         className="social-connect-wrapper"
       >

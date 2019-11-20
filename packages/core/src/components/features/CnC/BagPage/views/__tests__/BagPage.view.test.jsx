@@ -40,10 +40,10 @@ describe('Bag page View', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should call removeScrollListener', () => {
+  it('should call componentWillUnmount', () => {
     const component = shallow(<BagPageViewVanilla {...props} />);
-    const spyOpenModal = jest.spyOn(component.instance(), 'removeScrollListener');
-    component.instance().removeScrollListener();
+    const spyOpenModal = jest.spyOn(component.instance(), 'componentWillUnmount');
+    component.instance().componentWillUnmount();
     expect(spyOpenModal).toHaveBeenCalled();
   });
 

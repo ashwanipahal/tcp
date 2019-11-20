@@ -1,18 +1,21 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import PageContainer from '../styles/BundleProduct.style.native';
+import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import BundleProductItems from '../molecules/BundleProductItems';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
-class ProductDetailView extends React.PureComponent {
+class ProductBundle extends React.PureComponent {
   currentColorEntry;
 
   constructor(props) {
@@ -30,13 +33,26 @@ class ProductDetailView extends React.PureComponent {
   render() {
     const {
       currentProduct,
+      currentBundle,
       selectedColorProductId,
       pdpLabels,
       shortDescription,
       itemPartNumber,
       longDescription,
+      plpLabels,
+      navigation,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
+      addToBagErrorId,
+      addToBagError,
+      toastMessage,
     } = this.props;
-    if (JSON.stringify(currentProduct) !== '{}') {
+    if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
       this.currentColorEntry = getMapSliceForColorProductId(
         colorFitsSizesMap,
@@ -51,10 +67,28 @@ class ProductDetailView extends React.PureComponent {
           isFullSet: true,
         });
       }
+      const recommendationAttributes = {
+        variation: 'moduleO',
+        navigation,
+        page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+        partNumber: itemPartNumber,
+        isHeaderAccordion: true,
+      };
       return (
-        <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
+        <ScrollView>
           <PageContainer>
-            <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct />
+            <ImageCarousel
+              isGiftCard={currentProduct.isGiftCard}
+              imageUrls={imageUrls}
+              addToFavorites={addToFavorites}
+              isLoggedIn={isLoggedIn}
+              currentProduct={currentProduct}
+              onImageClick={this.onImageClick}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              currentColorEntry={this.currentColorEntry}
+              isBundleProduct
+            />
             <ProductSummary
               productData={currentProduct}
               selectedColorProductId={selectedColorProductId}
@@ -69,16 +103,38 @@ class ProductDetailView extends React.PureComponent {
               isShowMore={false}
               pdpLabels={pdpLabels}
             />
+            <BundleProductItems
+              currentBundle={currentBundle}
+              plpLabels={plpLabels}
+              navigation={navigation}
+              handleAddToBag={handleAddToBag}
+              addToFavorites={addToFavorites}
+              addToBagEcom={addToBagEcom}
+              currentState={currentState}
+              isLoggedIn={isLoggedIn}
+              addToBagErrorId={addToBagErrorId}
+              addToBagError={addToBagError}
+              toastMessage={toastMessage}
+            />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+              <Recommendations
+                isRecentlyViewed
+                {...recommendationAttributes}
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              />
+            </RecommendationWrapper>
           </PageContainer>
-        </LazyloadScrollView>
+        </ScrollView>
       );
     }
     return getLoading();
   }
 }
 
-ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({}),
+ProductBundle.propTypes = {
+  currentProduct: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
   plpLabels: PropTypes.shape({}),
@@ -86,18 +142,31 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string.isRequired,
+  removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
-ProductDetailView.defaultProps = {
-  currentProduct: {},
+ProductBundle.defaultProps = {
   navigation: {},
   plpLabels: null,
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
 };
 
-export default withStyles(ProductDetailView);
+export default withStyles(ProductBundle);
 
-export { ProductDetailView as ProductDetailViewVanilla };
+export { ProductBundle as ProductBundleVanilla };

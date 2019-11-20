@@ -1,5 +1,6 @@
 export default {
   FORM_NAME: 'checkoutBillingPayment',
+  GUEST_FORM_NAME: 'checkoutBilling',
   EDIT_FORM_NAME: 'checkoutCardEditPayment',
   FETCH_MODULEX_CONTENT: 'FETCH_MODULEX_CONTENT_CREDIT',
   SET_MODULEX_CONTENT: 'SET_MODULEX_CONTENT_CREDIT',
@@ -9,7 +10,7 @@ export default {
     PLACE_CARD: 'PLACE CARD',
     VENMO: 'VENMO',
     GIFT_CARD: 'GiftCard',
-    PAYPAL: 'PayPal',
+    PAYPAL: 'paypal',
   },
   PAYMENT_METHOD_PAY_PAL: 'payPal',
   PAYMENT_METHOD_VENMO: 'venmo',

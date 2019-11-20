@@ -14,7 +14,7 @@ BrandSwitchStack.navigationOptions = {
   showLabel: false,
   tabBarIcon: props => (
     <NavBarIcon
-      iconActive="brand-logo"
+      iconActive="close-icon"
       iconInactive="brand-logo"
       {...props}
       style={{

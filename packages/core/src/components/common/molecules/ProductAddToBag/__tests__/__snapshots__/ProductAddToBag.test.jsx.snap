@@ -11,9 +11,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >
@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kAzzGY",
+                  "componentId": "sc-kgoBCf",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -84,6 +84,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       font-size: ",
                     [Function],
                     "px;
+      color: ",
+                    [Function],
+                    ";
       border-radius: 6px;
       text-align: center;
       width: 54px;
@@ -137,7 +140,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kAzzGY",
+                "styledComponentId": "sc-kgoBCf",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -367,9 +370,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >
@@ -386,7 +389,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kAzzGY",
+                  "componentId": "sc-kgoBCf",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -440,6 +443,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       font-size: ",
                     [Function],
                     "px;
+      color: ",
+                    [Function],
+                    ";
       border-radius: 6px;
       text-align: center;
       width: 54px;
@@ -493,7 +499,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kAzzGY",
+                "styledComponentId": "sc-kgoBCf",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -517,6 +523,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             width={49}
           />
           <Styled(BodyCopy)
+            aria-live="assertive"
             className="size-error"
             color="text.primary"
             component="div"
@@ -526,6 +533,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            role="alert"
             textAlign="left"
           >
             <Styled(Image)

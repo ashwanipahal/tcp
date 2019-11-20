@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Animated } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { isGymboree } from '@tcp/core/src/utils';
+import { isGymboree, getLabelValue } from '@tcp/core/src/utils';
 
 import { Container, TCPIcon, GymIcon, styles } from './AnimatedBrandChangeIcon.style';
 import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
@@ -10,7 +10,7 @@ import icons from '../../../../utils/icons';
 
 const BrandSwitchConfig = {
   MAX_X: 90,
-  AnimationDuration: 500,
+  AnimationDuration: 200,
 };
 
 /**
@@ -126,10 +126,10 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
    *
    * @memberof AnimatedBrandChangeIcon
    */
-  renderTCPBrand = () => {
+  renderTCPBrand = source => {
     const { brandContainer } = styles;
     const { labels } = this.props;
-    const { theChildrensplace = 'The Childrens Place Link' } = labels;
+    const theChildrensplace = getLabelValue(labels, 'theChildrensplace');
     return (
       <Animated.View
         style={[
@@ -146,7 +146,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
           onPress={this.switchToTCP}
           name="tcpBrand"
         >
-          <Image source={icons.tcp.peekABoo} />
+          <Image source={source} />
         </TCPIcon>
       </Animated.View>
     );
@@ -158,10 +158,10 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
    *
    * @memberof AnimatedBrandChangeIcon
    */
-  renderGymboreeBrand = () => {
+  renderGymboreeBrand = source => {
     const { brandContainer } = styles;
     const { labels } = this.props;
-    const { gymboreeLink = 'Gymboree Link' } = labels;
+    const gymboreeLink = getLabelValue(labels, 'gymboreeLink');
     return (
       <Animated.View
         style={[
@@ -178,7 +178,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
           onPress={this.switchToGymboree}
           name="gymboreeBrand"
         >
-          <Image source={icons.gymboree.peekABoo} />
+          <Image source={source} />
         </GymIcon>
       </Animated.View>
     );
@@ -192,8 +192,12 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
    * @memberof AnimatedBrandChangeIcon
    */
   renderFirstBrand = () => {
-    if (isGymboree()) return this.renderGymboreeBrand();
-    return this.renderTCPBrand();
+    if (isGymboree()) {
+      const source = icons.gymboree.peekABooActive;
+      return this.renderGymboreeBrand(source);
+    }
+    const source = icons.tcp.peekABooActive;
+    return this.renderTCPBrand(source);
   };
 
   /**
@@ -204,8 +208,13 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
    * @memberof AnimatedBrandChangeIcon
    */
   renderSecondBrand = () => {
-    if (isGymboree()) return this.renderTCPBrand();
-    return this.renderGymboreeBrand();
+    if (isGymboree()) {
+      const source = icons.tcp.peekABoo;
+
+      return this.renderTCPBrand(source);
+    }
+    const source = icons.gymboree.peekABoo;
+    return this.renderGymboreeBrand(source);
   };
 
   /**

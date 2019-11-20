@@ -29,6 +29,14 @@ class QuickViewModal extends React.Component {
     clearMultipleItemsAddToBagError();
   };
 
+  getHeadingText = () => {
+    const { quickViewLabels, fromBagPage, isLoading } = this.props;
+    if (isLoading) {
+      return ' ';
+    }
+    return fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag;
+  };
+
   handleMultipleItemsAddToBagClick(e) {
     e.preventDefault();
     const productItemsInfo = [];
@@ -86,7 +94,8 @@ class QuickViewModal extends React.Component {
       plpLabels,
       addToBagError,
       addToBagMultipleItemError,
-      currencyExchange,
+      currencyAttributes,
+      toastMessage,
       ...otherProps
     } = this.props;
     this.skuFormRefs = [];
@@ -110,7 +119,7 @@ class QuickViewModal extends React.Component {
             colorFitsSizesMap={
               modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
             }
-            currencyExchange={currencyExchange}
+            currencyAttributes={currencyAttributes}
             plpLabels={plpLabels}
             colorFitSizeDisplayNames={colorFitSizeDisplayNames}
             quickViewLabels={quickViewLabels}
@@ -118,6 +127,7 @@ class QuickViewModal extends React.Component {
             isMultiItemQVModal={isMultiItemQVModal}
             formRef={formRef}
             quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+            toastMessage={toastMessage}
             isQuickView
             marginTopNone
             {...otherProps}
@@ -144,14 +154,7 @@ class QuickViewModal extends React.Component {
   };
 
   render() {
-    const {
-      isModalOpen,
-      productInfo,
-      isMultiItemQVModal,
-      quickViewLabels,
-      fromBagPage,
-      isLoading,
-    } = this.props;
+    const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
 
     const product = productInfo && productInfo.length && productInfo[0].product;
     const currentColorEntry =
@@ -167,7 +170,7 @@ class QuickViewModal extends React.Component {
             dataLocator={getLocator('quick_view_modal')}
             dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
             closeIconDataLocator={getLocator('quick_view_icon_btn')}
-            heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
+            heading={this.getHeadingText()}
             widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
             heightConfig={{ height: '95%' }}
             fixedWidth
@@ -220,12 +223,13 @@ QuickViewModal.propTypes = {
   fromBagPage: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   isLoading: PropTypes.bool.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 QuickViewModal.defaultProps = {
-  currencyExchange: 1,
+  toastMessage: () => {},
 };
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };
