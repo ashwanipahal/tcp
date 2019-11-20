@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
@@ -6,14 +7,17 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 import { navigateToNestedRoute } from '@tcp/core/src/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles';
 import {
   styles,
   PageContainer,
   RowContainer,
   AnchorContainer,
+  RecommendationWrapper,
 } from '../NoResponseSearchDetail.style.native';
 import { BodyCopy, Anchor } from '../../../../common/atoms';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   // eslint-disable-next-line
@@ -69,7 +73,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
   };
 
   render() {
-    const { slpLabels, searchResultSuggestions, labels } = this.props;
+    const { slpLabels, searchResultSuggestions, labels, navigation, pdpLabels } = this.props;
 
     const { showSearchModal } = this.state;
 
@@ -102,86 +106,104 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
     const lblTrySearching = slpLabels.lbl_try_searching && slpLabels.lbl_try_searching.split('(');
 
+    const recommendationAttributes = {
+      variation: 'moduleO',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NULL_SEARCH,
+      isHeaderAccordion: true,
+    };
+
     return (
-      <PageContainer>
-        {this.renderSearchTopSection()}
+      <ScrollView>
+        <PageContainer>
+          {this.renderSearchTopSection()}
 
-        {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion && (
-          <RowContainer>
-            {didYouMeanText(`${slpLabels.lbl_didYouMean} `, false)}
-            <Anchor
-              customStyle={AnchorContainer}
-              onPress={() => this.goToSearchResultsPage(searchResultSuggestionsArg.toString())}
-            >
-              {didYouMeanText(`"${searchResultSuggestionsArg}"`, true)}
-              {didYouMeanText('?', false)}
-            </Anchor>
-          </RowContainer>
-        )}
+          {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion && (
+            <RowContainer>
+              {didYouMeanText(`${slpLabels.lbl_didYouMean} `, false)}
+              <Anchor
+                customStyle={AnchorContainer}
+                onPress={() => this.goToSearchResultsPage(searchResultSuggestionsArg.toString())}
+              >
+                {didYouMeanText(`"${searchResultSuggestionsArg}"`, true)}
+                {didYouMeanText('?', false)}
+              </Anchor>
+            </RowContainer>
+          )}
 
-        <SearchBar
-          showCustomizedSearch
-          openSearchProductPage={this.openSearchProductPage}
-          labels={slpLabels}
-        />
-        {showSearchModal && (
-          <SearchProduct
-            closeSearchModal={this.closeSearchProductPage}
-            goToSearchResultsPage={this.goToSearchResultsPage}
+          <SearchBar
+            showCustomizedSearch
+            openSearchProductPage={this.openSearchProductPage}
+            labels={slpLabels}
           />
-        )}
+          {showSearchModal && (
+            <SearchProduct
+              closeSearchModal={this.closeSearchProductPage}
+              goToSearchResultsPage={this.goToSearchResultsPage}
+            />
+          )}
 
-        <BodyCopy
-          margin="68px 0 0 0"
-          dataLocator="slp_store_name_value"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="black"
-          color="gray.900"
-          text={`${slpLabels.lbl_tips}`}
-        />
-        <BodyCopy
-          margin="6px 0 0 0"
-          dataLocator="slp_store_name_value"
-          fontFamily="secondary"
-          fontSize="fs12"
-          color="gray.1000"
-          text={`${slpLabels.lbl_check_your_spelling}`}
-        />
-        <BodyCopy
-          dataLocator="slp_store_name_value"
-          fontFamily="secondary"
-          fontSize="fs12"
-          color="gray.1000"
-          text={`${slpLabels.lbl_simplified_keywords}`}
-        />
-        {lblTrySearching && (
+          <BodyCopy
+            margin="68px 0 0 0"
+            dataLocator="slp_store_name_value"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="black"
+            color="gray.900"
+            text={`${slpLabels.lbl_tips}`}
+          />
+          <BodyCopy
+            margin="6px 0 0 0"
+            dataLocator="slp_store_name_value"
+            fontFamily="secondary"
+            fontSize="fs12"
+            color="gray.1000"
+            text={`${slpLabels.lbl_check_your_spelling}`}
+          />
           <BodyCopy
             dataLocator="slp_store_name_value"
             fontFamily="secondary"
             fontSize="fs12"
             color="gray.1000"
-            text={`${lblTrySearching[0]}`}
+            text={`${slpLabels.lbl_simplified_keywords}`}
           />
-        )}
-        {lblTrySearching && (
+          {lblTrySearching && (
+            <BodyCopy
+              dataLocator="slp_store_name_value"
+              fontFamily="secondary"
+              fontSize="fs12"
+              color="gray.1000"
+              text={`${lblTrySearching[0]}`}
+            />
+          )}
+          {lblTrySearching && (
+            <BodyCopy
+              dataLocator="slp_store_name_value"
+              fontFamily="secondary"
+              fontSize="fs12"
+              color="gray.1000"
+              text={`(${lblTrySearching[1]}`}
+            />
+          )}
           <BodyCopy
             dataLocator="slp_store_name_value"
             fontFamily="secondary"
             fontSize="fs12"
             color="gray.1000"
-            text={`(${lblTrySearching[1]}`}
+            text={`${slpLabels.lbl_narrow_searches}`}
           />
-        )}
-        <BodyCopy
-          dataLocator="slp_store_name_value"
-          fontFamily="secondary"
-          fontSize="fs12"
-          color="gray.1000"
-          text={`${slpLabels.lbl_narrow_searches}`}
-        />
-        <ProductMatchesLabel />
-      </PageContainer>
+          <ProductMatchesLabel />
+          <RecommendationWrapper>
+            <Recommendations {...recommendationAttributes} />
+            <Recommendations
+              isRecentlyViewed
+              {...recommendationAttributes}
+              headerLabel={pdpLabels.recentlyViewed}
+              portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+            />
+          </RecommendationWrapper>
+        </PageContainer>
+      </ScrollView>
     );
   }
 }
@@ -197,6 +219,7 @@ NoResponseSearchDetailView.propTypes = {
   }),
   navigation: PropTypes.shape({}).isRequired,
   searchResultSuggestions: PropTypes.arrayOf(PropTypes.shape({})),
+  pdpLabels: PropTypes.shape({}),
 };
 
 NoResponseSearchDetailView.defaultProps = {
@@ -209,6 +232,7 @@ NoResponseSearchDetailView.defaultProps = {
     lbl_search_product_matches: '',
   }),
   searchResultSuggestions: [],
+  pdpLabels: {},
 };
 
 const mapStateToProps = state => {
