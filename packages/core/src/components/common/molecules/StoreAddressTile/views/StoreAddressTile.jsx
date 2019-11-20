@@ -83,7 +83,7 @@ class StoreAddressTile extends PureComponent {
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
             as={Anchor}
-            clickData={{ customEvents: ['event80,event96'] }}
+            clickData={{ customEvents: ['event80,event96'], internalCampaignId: 'check' }}
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </ClickTracker>
@@ -285,7 +285,8 @@ class StoreAddressTile extends PureComponent {
               }`}
             </BodyCopy>
           )}
-          <Anchor
+          <ClickTracker
+            as={Anchor}
             fontSizeVariation="medium"
             underline
             url={openStoreDirections(store)}
@@ -293,9 +294,10 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+            clickData={{ customEvents: ['event97'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-          </Anchor>
+          </ClickTracker>
         </div>
       </div>
     );

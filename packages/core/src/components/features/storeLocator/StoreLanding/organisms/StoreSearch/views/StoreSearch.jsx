@@ -46,16 +46,15 @@ export class StoreSearch extends PureComponent {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
-
-    this.setState({ storeSelected: true });
-    showSubmitError(false);
-    loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
     setClickAnalyticsData({
       storeSearchCriteria: place,
       customEvents: ['event89'],
       storeSearchDistance: '4',
     });
     trackClick();
+    this.setState({ storeSelected: true });
+    showSubmitError(false);
+    loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
   };
 
   /**
