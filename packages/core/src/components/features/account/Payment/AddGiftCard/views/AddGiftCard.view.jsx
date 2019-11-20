@@ -38,6 +38,7 @@ class AddGiftCard extends React.PureComponent {
           dataLocator="gift-card-addcardbacklink"
           asPath="/account/payment"
         >
+          <span className="left-arrow"> </span>
           {getLabelValue(labels, 'lbl_common_backLink', 'common')}
         </Anchor>
         <Heading
