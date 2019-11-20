@@ -36,5 +36,6 @@ exports[`Modal Native should render correctly 1`] = `
       </ScrollViewMock>
     </KeyboardAvoidingView>
   </Styled(SafeAreaView)>
+  <Connect(Loader) />
 </Component>
 `;

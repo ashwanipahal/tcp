@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, ScrollView, View, KeyboardAvoidingView, Platform } from 'react-native';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { ModalCustomWrapper } from '../Modal.style.native';
 import ModalNativeHeader from './Modal.native.header';
 
@@ -91,6 +92,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
         </ModalCustomWrapper>
       )}
       {customTransparent && children}
+      <Loader />
     </Modal>
   );
 };
