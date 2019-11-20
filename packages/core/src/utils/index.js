@@ -87,4 +87,5 @@ export {
   getStyliticsRegion,
   calculatePriceValue,
   getProductUrlForDAM,
+  plpRoutingHandling,
 } from './utils';
