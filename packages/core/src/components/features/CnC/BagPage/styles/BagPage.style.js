@@ -169,7 +169,7 @@ export const addedToBagActionsStyles = css`
       display: inline-flex;
       margin-bottom: 7px;
       .paypal-wrapper {
-        min-width: unset;
+        min-width: auto;
       }
       .venmo-button {
         height: 42px;
