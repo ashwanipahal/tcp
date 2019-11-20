@@ -10,7 +10,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -62,7 +61,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -113,7 +111,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -179,7 +176,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -301,7 +297,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",

@@ -3,14 +3,32 @@ import PropTypes from 'prop-types';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import style, { customBreadCrumbStyle } from '../styles/CategoryListing.style';
 import GlobalNavigationMenuDesktopL2 from '../../../ProductListing/molecules/GlobalNavigationMenuDesktopL2/views';
 import FixedBreadCrumbs from '../../../ProductListing/molecules/FixedBreadCrumbs/views';
 import CategoryPromoImages from '../../molecules/CategoryPromoImages';
+import ReadMore from '../../../ProductListing/molecules/ReadMore/views';
 
 class CategoryListing extends PureComponent {
   render() {
-    const { className, navTree, currentNavIds, breadCrumbs, categoryPromoModules } = this.props;
+    const {
+      className,
+      navTree,
+      currentNavIds,
+      breadCrumbs,
+      categoryPromoModules,
+      seoText,
+      labels,
+    } = this.props;
+
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.DEPARTMENT_LANDING,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
 
     return (
       <div className={className}>
@@ -40,6 +58,27 @@ class CategoryListing extends PureComponent {
                 >
                   <CategoryPromoImages categoryPromoImages={categoryPromoModules} />
                 </Col>
+                <Col className="section-wrapper" colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <ReadMore
+                    description={seoText}
+                    labels={labels}
+                    className={`${className} seo-text`}
+                  />
+                </Col>
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <div className="product-detail-section">
+                    <Recommendations {...recommendationAttributes} />
+                  </div>
+                </Col>
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <div className="product-detail-section">
+                    <Recommendations
+                      headerLabel={labels.recentlyViewed}
+                      portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+                      {...recommendationAttributes}
+                    />
+                  </div>
+                </Col>
               </Row>
             </Col>
           </Row>
@@ -52,14 +91,17 @@ class CategoryListing extends PureComponent {
 CategoryListing.propTypes = {
   className: PropTypes.string.isRequired,
   navTree: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
   categoryPromoModules: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape([]),
+  seoText: PropTypes.string.isRequired,
   currentNavIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 CategoryListing.defaultProps = {
   navTree: {},
   categoryPromoModules: {},
+  labels: {},
   currentNavIds: [],
   breadCrumbs: [],
 };
