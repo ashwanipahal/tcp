@@ -16,7 +16,7 @@ exports[`Modal Native should render correctly 1`] = `
       enabled={true}
       keyboardVerticalOffset={64}
     >
-      <ScrollViewMock
+      <Styled(ScrollViewMock)
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={
@@ -33,7 +33,8 @@ exports[`Modal Native should render correctly 1`] = `
           isOverlay={false}
           onRequestClose={[MockFunction]}
         />
-      </ScrollViewMock>
+        <Styled(View) />
+      </Styled(ScrollViewMock)>
     </KeyboardAvoidingView>
   </Styled(SafeAreaView)>
 </Component>
