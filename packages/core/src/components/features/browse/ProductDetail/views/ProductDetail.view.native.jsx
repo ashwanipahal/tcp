@@ -1,8 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { ScrollView as LazyloadScrollView } from 'react-native';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';

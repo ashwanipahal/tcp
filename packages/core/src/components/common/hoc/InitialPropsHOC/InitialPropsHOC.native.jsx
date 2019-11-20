@@ -21,8 +21,8 @@ const InitialPropsHOC = Component => {
       this.refreshOnNextRender = true;
       this.addDidFocusListener();
     }
-    /* eslint-disable-next-line */
-    UNSAFE_componentWillReceiveProps(nextProps) {
+
+    componentWillReceiveProps(nextProps) {
       const { appType } = nextProps;
       const { appType: prevAppType } = this.props;
 

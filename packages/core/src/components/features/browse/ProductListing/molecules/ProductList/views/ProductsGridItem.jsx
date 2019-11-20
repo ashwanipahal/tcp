@@ -92,8 +92,7 @@ class ProductsGridItem extends React.PureComponent {
   // DT-32496
   // When using the back button isInDefaultWishlist gets set to undefined in constructor
   // Need to update the value when we receive the latest props
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const {
       item: {
         miscInfo: { isInDefaultWishlist },
