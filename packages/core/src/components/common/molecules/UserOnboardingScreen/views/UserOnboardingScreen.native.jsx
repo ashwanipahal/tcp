@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import GuestLoginOverview from '@tcp/core/src/components/features/account/common/molecule/GuestLoginModule';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
+
 import { ModalViewWrapper } from '@tcp/core/src/components/features/account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import { BodyCopy, DamImage, Anchor } from '../../../atoms';
 import Carousel from '../../Carousel';
@@ -30,7 +31,7 @@ import config from '../UserOnboardingScreen.config';
 const HERO_CAROUSEL_MODULE_HEIGHT = 317;
 const CAROUSEL_MODULE_WIDTH = getScreenWidth();
 
-const { IMG_DATA } = config;
+const { IMG_DATA, CAROUSEL_OPTIONS } = config;
 
 /* Carousel slide render function for Hero Image Carousel */
 const renderHeroImgCarousel = carouselImg => {
@@ -70,6 +71,7 @@ const renderPromoTextCarousel = carouselPromoText => {
         textAlign="center"
         fontWeight="medium"
         margin="24px 0"
+        color="text.primary"
       />
       {item.descriptions.map(description => {
         return (
@@ -79,6 +81,7 @@ const renderPromoTextCarousel = carouselPromoText => {
             fontFamily="secondary"
             textAlign="center"
             fontWeight="extrabold"
+            color="text.primary"
           />
         );
       })}
@@ -93,9 +96,10 @@ const UserOnboardingScreen = props => {
     startShoppingButtonLabel,
     navigation,
     overviewLabels,
+    isUserLoggedIn,
   } = props;
 
-  const [showMainModal, setShowMainModal] = useState(true);
+  const [showMainModal, setShowMainModal] = useState(false);
 
   useEffect(() => {
     getValueFromAsyncStorage('isUserOnBoardingScreenVisited').then(
@@ -108,21 +112,29 @@ const UserOnboardingScreen = props => {
     setValueInAsyncStorage('isUserOnBoardingScreenVisited', 'true');
   }, []);
 
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      setShowMainModal(false);
+    }
+  }, [isUserLoggedIn]);
+
   return (
-    <ModalNative noHeader horizontalBar isOpen={showMainModal}>
+    <ModalNative noHeader horizontalBar isOpen={showMainModal} animationType="fade">
       <ModalViewWrapper>
         <Container>
           {/* ------ Hero Carousel Image Start */}
           {largeCompImageSimpleCarousel.length > 1 ? (
-            <Carousel
-              height={HERO_CAROUSEL_MODULE_HEIGHT}
-              data={largeCompImageSimpleCarousel}
-              renderItem={renderHeroImgCarousel}
-              width={CAROUSEL_MODULE_WIDTH}
-              carouselConfig={{
-                autoplay: false,
-              }}
-            />
+            <View pointerEvents="none">
+              <Carousel
+                height={HERO_CAROUSEL_MODULE_HEIGHT}
+                data={largeCompImageSimpleCarousel}
+                renderItem={renderHeroImgCarousel}
+                width={CAROUSEL_MODULE_WIDTH}
+                options={{
+                  autoplayInterval: CAROUSEL_OPTIONS.speed,
+                }}
+              />
+            </View>
           ) : (
             <View>{renderHeroImgCarousel({ item: largeCompImageSimpleCarousel[0] })}</View>
           )}
@@ -133,15 +145,15 @@ const UserOnboardingScreen = props => {
               data={textList}
               width={CAROUSEL_MODULE_WIDTH}
               renderItem={renderPromoTextCarousel}
-              carouselConfig={{
-                autoplay: false,
-              }}
               paginationProps={{
                 containerStyle: {
                   paddingVertical: 0,
                   paddingTop: 46,
                   paddingBottom: 24,
                 },
+              }}
+              options={{
+                autoplayInterval: CAROUSEL_OPTIONS.speed,
               }}
               showDots
             />
@@ -152,9 +164,11 @@ const UserOnboardingScreen = props => {
 
           <ButtonsWrapper>
             <GuestLoginOverview
-              isUserLoggedIn={false}
+              hideLogoutText
+              loggedInWrapperStyle="margin:0"
               labels={overviewLabels}
               navigation={navigation}
+              isUserLoggedIn={isUserLoggedIn}
             />
           </ButtonsWrapper>
           <Anchor
@@ -232,6 +246,7 @@ UserOnboardingScreen.defaultProps = {
     },
   ],
   overviewLabels: {},
+  isUserLoggedIn: false,
 };
 
 UserOnboardingScreen.propTypes = {
@@ -240,6 +255,7 @@ UserOnboardingScreen.propTypes = {
   startShoppingButtonLabel: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
   overviewLabels: PropTypes.arrayOf(PropTypes.object),
+  isUserLoggedIn: PropTypes.bool,
 };
 
 export default UserOnboardingScreen;
