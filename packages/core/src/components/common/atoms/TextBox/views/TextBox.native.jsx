@@ -183,7 +183,6 @@ export class TextBox extends React.Component {
           onChangeText={onChangeText}
           meta={meta}
           error={meta.error}
-          validateInput={this.validateInputSuccess()}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>

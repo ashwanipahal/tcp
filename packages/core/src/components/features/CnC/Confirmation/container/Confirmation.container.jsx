@@ -48,6 +48,7 @@ class ConfirmationContainer extends React.Component {
     pageCategory: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
     navigation: PropTypes.shape({}).isRequired,
+    isGymboreeCanadaSite: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -63,6 +64,7 @@ class ConfirmationContainer extends React.Component {
     venmoUserName: '',
     pageCategory: '',
     isVenmoPaymentInProgress: false,
+    isGymboreeCanadaSite: false,
   };
 
   /**
@@ -112,6 +114,7 @@ class ConfirmationContainer extends React.Component {
       isVenmoPaymentInProgress,
       pageCategory,
       navigation,
+      isGymboreeCanadaSite,
     } = this.props;
     return (
       <ConfirmationView
@@ -130,6 +133,7 @@ class ConfirmationContainer extends React.Component {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         pageCategory={pageCategory}
         navigation={navigation}
+        isGymboreeCanadaSite={isGymboreeCanadaSite}
       />
     );
   }
@@ -180,6 +184,7 @@ export const mapStateToProps = state => {
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
     venmoUserName: getVenmoUserName(state),
+    isGymboreeCanadaSite: selectors.isGymboreeCanadaSite(state),
   };
 };
 

@@ -12,6 +12,7 @@ const VenmoButton = styled.TouchableOpacity`
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   background-color: ${props =>
     props.isVenmoBlueButton ? props.theme.colors.VENMO : props.theme.colors.WHITE};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export default VenmoButton;
