@@ -159,7 +159,11 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     className="promo-text-link"
     clickData={
       Object {
-        "internalCampaignId": "promoAnalyticsValue",
+        "customEvents": Array [
+          "event80",
+          "event81",
+        ],
+        "internalCampaignId": "aboveheader_na_na_mpr_120118_mprc",
       }
     }
     external={0}

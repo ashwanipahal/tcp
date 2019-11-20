@@ -173,12 +173,6 @@ export const setPreviewDate = payload => {
     type: GLOBAL_CONSTANTS.SET_PREVIEW_DATE,
   };
 };
-export const setPageReferer = payload => {
-  return {
-    payload,
-    type: GLOBAL_CONSTANTS.SET_PAGE_REFERER,
-  };
-};
 
 export const setSubNavigationData = (payload, name) => ({
   payload,

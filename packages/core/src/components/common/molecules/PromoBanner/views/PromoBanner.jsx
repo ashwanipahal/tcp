@@ -7,7 +7,7 @@ import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
 import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
-// import { promoAnalyticsValue } from '../../../../../../../web/src/components/features/content/Header/config';
+import { promoAnalyticsValue } from '../../../../../constants/analytics';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -78,9 +78,11 @@ const PromoBanner = props => {
           as={Anchor}
           {...navigationUrl}
           className="promo-text-link"
-          clickData={{ internalCampaignId: 'promoAnalyticsValue' }}
+          clickData={{
+            customEvents: ['event80', 'event81'],
+            internalCampaignId: promoAnalyticsValue,
+          }}
         >
-          {/* <Anchor {...navigationUrl} className="promo-text-link"> */}
           {textItems.map(({ text, style }, index) => {
             let promoText;
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
@@ -107,7 +109,6 @@ const PromoBanner = props => {
 
             return promoText;
           })}
-          {/* </Anchor> */}
         </ClickTracker>
       </React.Fragment>
     </BodyCopy>

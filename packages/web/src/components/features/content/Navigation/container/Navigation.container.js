@@ -31,7 +31,6 @@ const mapStateToProps = state => {
     accessibilityLabels:
       (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {},
     isDrawerOpen: state.Header.navigationDrawer && state.Header.navigationDrawer.open,
-    breadCrumbTrail: state.ProductListing.breadCrumbTrail,
   };
 };
 

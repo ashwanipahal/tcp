@@ -21,7 +21,6 @@ const NavBar = props => {
     removeL1Focus,
     accessibilityLabels,
     closeNav,
-    breadCrumbTrail,
   } = props;
 
   return (
@@ -44,10 +43,11 @@ const NavBar = props => {
                 });
               }
             }
+            const topNavigationAnalyticsData = `topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`;
             return (
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
-                breadCrumbTrail={breadCrumbTrail}
+                clickData={topNavigationAnalyticsData}
                 index={index}
                 key={`l1menu_link_${stringId}`}
                 sizesRange={sizesRange}
@@ -61,6 +61,7 @@ const NavBar = props => {
                 // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
                 removeL1Focus={removeL1Focus}
                 {...navL1Item}
+                nav={navigationData}
               >
                 <Drawer
                   id={`l2-drawer-${stringId}`}
@@ -91,6 +92,7 @@ const NavBar = props => {
                     l3Drawer={l3Drawer}
                     accessibilityLabels={accessibilityLabels}
                     closeNav={closeNav}
+                    analyticsData={topNavigationAnalyticsData}
                   />
                 </Drawer>
               </L1NavItem>
@@ -115,7 +117,6 @@ NavBar.propTypes = {
   hideL3Drawer: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
   removeL1Focus: PropTypes.bool.isRequired,
-  breadCrumbTrail: PropTypes.shape([]).isRequired,
 };
 
 NavBar.defaultProps = {

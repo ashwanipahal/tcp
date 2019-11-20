@@ -74,6 +74,15 @@ const updatePayload = (req, payload, Component) => {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }
     }
+    if (req && req.headers) {
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
+    }
   }
 
   return updatedPayload;
@@ -214,11 +223,9 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
-      const pageDataReferer = {};
       // preview check from akamai header
       apiConfig.isPreviewEnv = req.query.preview || '';
       // preview date if any from the query param
-      pageDataReferer.referer = req.headers.referer;
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers
       apiConfig.resHeaders = res.getHeaders();
@@ -247,8 +254,8 @@ class TCPWebApp extends App {
         deviceType: device.type,
         optimizelyHeadersObject,
         originalUrl,
-        pageDataReferer,
       };
+
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
       // This will be called when we need to include the layout call in bootstrap.

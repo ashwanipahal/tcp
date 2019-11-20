@@ -77,18 +77,6 @@ export default function create(store) {
       },
     },
 
-    // searchType: {
-    //   get() {
-    //     return store.getState().pageData.searchType;
-    //   },
-    // },
-
-    externalReferrer: {
-      get() {
-        return store.getState().APIConfig.pageDataReferer;
-      },
-    },
-
     pageType: {
       get() {
         const { pageData } = store.getState();
@@ -211,34 +199,6 @@ export default function create(store) {
           typeCart = 'boss';
         }
         return typeCart;
-      },
-    },
-    campaignId: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'campaignId'], '');
-      },
-    },
-    internalCampaignId: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
-      },
-    },
-    storeSearchCriteria: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchCriteria'], '');
-      },
-    },
-    storeSearchDistance: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchDistance'], '');
       },
     },
     products: {

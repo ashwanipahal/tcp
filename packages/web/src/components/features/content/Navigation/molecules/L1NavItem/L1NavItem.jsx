@@ -84,15 +84,6 @@ class L1NavItem extends React.PureComponent {
     }
   };
 
-  navigationAnalyticsObject = breadCrumbTrail => {
-    const navigationAnalyticsValue =
-      breadCrumbTrail &&
-      breadCrumbTrail.map(element => {
-        return element.displayName.toLowerCase();
-      });
-    return (navigationAnalyticsValue && `topmenu-${navigationAnalyticsValue.join(' ')}`) || '';
-  };
-
   fetchPromoBadge() {
     const {
       categoryContent: { mainCategory },
@@ -110,7 +101,7 @@ class L1NavItem extends React.PureComponent {
       // showOnlyOnApp,
       removeL1Focus,
       hasL2,
-      breadCrumbTrail,
+      clickData,
       ...others
     } = this.props;
 
@@ -121,8 +112,6 @@ class L1NavItem extends React.PureComponent {
       classForHovered = 'is-open';
       this.childRendered = true;
     }
-    const val = this.navigationAnalyticsObject(breadCrumbTrail);
-    console.info(val, '-------val');
 
     // If we receive flag showOnlyOnApp then we add this class to links to hide them
     // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
@@ -155,23 +144,26 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <ClickTracker name="navigation-analytics" clickData={{ internalCampaignId: val }}>
-              <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
-                <div className="nav-bar-l1-content">
-                  <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-                  <span
-                    className={`nav-bar-item-content ${
-                      description ? 'nav-bar-item-sizes-range' : ''
-                    }`}
-                    data-locator={
-                      description ? `sizesrange_label_${index}` : `promo_badge_${index}`
-                    }
-                  >
-                    {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-                  </span>
-                  <span className="icon-arrow" />
-                </div>
-              </Anchor>
+            <ClickTracker
+              as={Anchor}
+              to={url}
+              asPath={asPath}
+              clickData={{
+                pageNavigationText: clickData,
+              }}
+            >
+              <div className="nav-bar-l1-content">
+                <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+                <span
+                  className={`nav-bar-item-content ${
+                    description ? 'nav-bar-item-sizes-range' : ''
+                  }`}
+                  data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+                >
+                  {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                </span>
+                <span className="icon-arrow" />
+              </div>
             </ClickTracker>
             {(hovered || this.childRendered) && children}
             <div
@@ -196,11 +188,12 @@ L1NavItem.propTypes = {
   removeL1Focus: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
   hasL2: PropTypes.number.isRequired,
-  breadCrumbTrail: PropTypes.shape({}).isRequired,
+  clickData: PropTypes.string,
 };
 
 L1NavItem.defaultProps = {
   dataLocator: '',
+  clickData: '',
 };
 
 export { L1NavItem as L1NavItemVanilla };

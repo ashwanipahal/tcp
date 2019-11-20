@@ -14,7 +14,6 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
 import { getLabelValue, isGymboree } from '@tcp/core/src/utils';
-import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/StoreLanding.constants';
@@ -47,11 +46,16 @@ export class StoreSearch extends PureComponent {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
-    trackClick();
-    setClickAnalyticsData({ storeSearchCriteria: place });
+
     this.setState({ storeSelected: true });
     showSubmitError(false);
     loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
+    setClickAnalyticsData({
+      storeSearchCriteria: place,
+      customEvents: ['event89'],
+      storeSearchDistance: '4',
+    });
+    trackClick();
   };
 
   /**
@@ -195,17 +199,8 @@ export class StoreSearch extends PureComponent {
                   enableSuccessCheck={false}
                   onChange={this.onStoreChange}
                 />
-                <ClickTracker
-                  type="submit"
-                  title="search"
-                  className="button-search-store"
-                  as={Button}
-                  clickData={{
-                    customEvents: ['event89'],
-                    storeSearchCriteria: 'storeSearchCriteria',
-                    storeSearchDistance: '4',
-                  }}
-                >
+
+                <Button type="submit" title="search" className="button-search-store">
                   <Image
                     alt="search"
                     className="search-image icon-small"
@@ -214,7 +209,7 @@ export class StoreSearch extends PureComponent {
                     data-locator="search-icon"
                     height="25px"
                   />
-                </ClickTracker>
+                </Button>
               </div>
             </form>
           </Col>
