@@ -60,9 +60,15 @@ const handleRouteComplete = url => {
    */
   const checkSearchPageParam =
     url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
-
+  const gethandleRemoveFilter = localStorage.getItem('handleRemoveFilter');
+  const plpPageCheck = url.match(/\/c\//g);
   if (!checkListingPageParam && !checkSearchPageParam) {
-    window.scrollTo(0, 0);
+    if (document.getElementById('filterWrapper') && gethandleRemoveFilter) {
+      const getFilterHeight = document.getElementById('filterWrapper').offsetHeight;
+      const getFilterOffSet = document.getElementById('filterWrapper').offsetTop;
+      window.scrollTo(0, getFilterOffSet - getFilterHeight);
+      localStorage.removeItem('handleRemoveFilter');
+    } else if (!plpPageCheck) window.scrollTo(0, 0);
   } else {
     localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
     localStorage.removeItem(CLEAR_ALL_PLP_FILTER);
