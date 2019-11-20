@@ -21,7 +21,7 @@ class BundleProductItems extends React.PureComponent {
       handleAddToBag,
       isLoggedIn,
       currencySymbol,
-      currencyExchange,
+      currencyAttributes,
       className,
       outfitLabels,
       isKeepAliveEnabled,
@@ -54,7 +54,7 @@ class BundleProductItems extends React.PureComponent {
                     addToFavorites({ colorProductId: productItem.generalProductId });
                   }}
                   currencySymbol={currencySymbol}
-                  currencyExchange={currencyExchange}
+                  currencyAttributes={currencyAttributes}
                   isBundleProduct
                   isKeepAliveEnabled={isKeepAliveEnabled}
                   outOfStockLabels={outOfStockLabels}
@@ -82,7 +82,7 @@ BundleProductItems.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   className: PropTypes.string,
@@ -97,7 +97,6 @@ BundleProductItems.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
   className: '',

@@ -49,8 +49,8 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-50 {
-    padding-top: 50px;
+  .padding-top-40 {
+    padding-top: 41px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -177,7 +177,7 @@ export default css`
     }
 
     .product-detail-section {
-      display: flex;
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -403,7 +403,7 @@ export default css`
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -421,5 +421,9 @@ export default css`
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

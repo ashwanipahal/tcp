@@ -31,14 +31,37 @@ class AddedToBag extends React.PureComponent {
     }
   }
 
+  renderProductInfo() {
+    const { addedToBagData, labels, quantity } = this.props;
+    if (Array.isArray(addedToBagData)) {
+      return addedToBagData.map(item => {
+        return (
+          <div className="elem-mb-SM">
+            <ProductInformationView
+              data={item}
+              labels={labels}
+              inheritedStyles={productInfoStyles}
+            />
+          </div>
+        );
+      });
+    }
+    return (
+      <ProductInformationView
+        data={addedToBagData}
+        labels={labels}
+        quantity={quantity}
+        inheritedStyles={productInfoStyles}
+      />
+    );
+  }
+
   render() {
     const {
       openState,
       onRequestClose,
-      addedToBagData,
       className,
       labels,
-      quantity,
       handleContinueShopping,
       handleCartCheckout,
       isInternationalShipping,
@@ -64,12 +87,7 @@ class AddedToBag extends React.PureComponent {
       >
         {addedToBagLoaderState && <SpinnerOverlay inheritedStyles={customStyles} />}
         <div className="addedToBagWrapper">
-          <ProductInformationView
-            data={addedToBagData}
-            labels={labels}
-            quantity={quantity}
-            inheritedStyles={productInfoStyles}
-          />
+          {this.renderProductInfo()}
           <AddedToBagViewPoints
             labels={labels}
             className="added-to-bag-points"
