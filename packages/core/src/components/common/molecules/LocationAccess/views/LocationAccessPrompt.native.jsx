@@ -39,6 +39,8 @@ class LocationAccessPrompt extends React.PureComponent {
     });
   };
 
+  requestPermission = () => {};
+
   render() {
     const { isOpenBool } = this.state;
     return (
@@ -81,7 +83,7 @@ class LocationAccessPrompt extends React.PureComponent {
                 fill="BLACK"
                 marginTop="12px"
                 width="320px"
-                // onPress={() => requestCameraPermission()}
+                onPress={() => this.requestPermission()}
               />
 
               <StyledAnchor
