@@ -8,7 +8,6 @@ import { getNavigationData } from '@tcp/core/src/services/abstractors/common/sub
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import setUserGroup from '../../services/abstractors/common/setUserGroup';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
-import countryListAbstractor from '../../services/abstractors/bootstrap/countryList';
 import {
   loadLayoutData,
   loadLabelsData,
@@ -21,8 +20,6 @@ import {
   setCountry,
   setCurrency,
   setLanguage,
-  storeCountriesMap,
-  storeCurrenciesMap,
   getSetTcpSegment,
   setSubNavigationData,
 } from '../actions';
@@ -31,7 +28,7 @@ import { loadFooterData } from '../../components/common/organisms/Footer/contain
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS, { MODULES_CONSTANT } from '../constants';
 import CACHED_KEYS from '../../constants/cache.config';
-import { isMobileApp, getCurrenciesMap, getCountriesMap } from '../../utils';
+import { isMobileApp } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
 import { readCookie, setCookie } from '../../utils/cookie.util';
 
@@ -82,9 +79,11 @@ function* bootstrap(params) {
       if (country) {
         yield put(setCountry(country));
       }
+
       if (currency) {
         yield put(setCurrency({ currency }));
       }
+
       if (language) {
         yield put(setLanguage(language));
       }
@@ -148,12 +147,6 @@ function* bootstrap(params) {
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) {
       yield put(loadNavigationData(result.navigation));
-      // Fetching countries and currencies data
-      const response = yield call(countryListAbstractor.getData);
-      const data = response && response.data.countryList;
-      const countriesMap = getCountriesMap(data);
-      const currenciesMap = getCurrenciesMap(data);
-      yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
     }
     yield put(loadFooterData(result.footer));
   } catch (err) {
