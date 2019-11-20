@@ -61,6 +61,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -161,6 +162,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -255,6 +257,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -397,6 +400,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -497,6 +501,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -591,6 +596,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -732,6 +738,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -783,6 +790,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -836,6 +844,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -936,6 +945,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1001,6 +1011,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1054,6 +1065,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1134,6 +1146,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1242,6 +1255,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1293,6 +1307,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1344,6 +1359,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1397,6 +1413,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1497,6 +1514,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1562,6 +1580,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1615,6 +1634,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1695,6 +1715,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1841,6 +1862,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1941,6 +1963,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2035,6 +2058,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

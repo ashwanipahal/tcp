@@ -24,12 +24,7 @@ import BagPageAnalytics from './BagPageAnalytics.view';
 class BagPageView extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeSection: null,
-      showCondensedHeader: false,
-      showStickyHeaderMob: false,
-      headerError: false,
-    };
+    this.state = BagPageUtils.getDefaultStateValues();
     this.bagPageHeader = null;
     this.bagActionsContainer = null;
     this.bagCondensedHeader = null;
@@ -41,6 +36,9 @@ class BagPageView extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (isClient()) {
+      window.addEventListener('beforeunload', BagPageUtils.onPageUnload);
+    }
     const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
@@ -70,7 +68,10 @@ class BagPageView extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.removeScrollListener();
+    if (isClient()) {
+      window.removeEventListener('scroll', this.scrollEventLister);
+      window.removeEventListener('beforeunload', BagPageUtils.onPageUnload);
+    }
   }
 
   setHeaderErrorState = (state, ...params) => {
@@ -101,10 +102,6 @@ class BagPageView extends React.PureComponent {
     BagPageUtils.bindScrollEvent(this.scrollEventLister);
   };
 
-  removeScrollListener = () => {
-    window.removeEventListener('scroll', this.scrollEventLister);
-  };
-
   handleScroll = sticky => {
     const { bagStickyHeaderInterval } = this.props;
     const condensedBagHeader = this.bagPageHeader;
@@ -131,7 +128,7 @@ class BagPageView extends React.PureComponent {
   handleBagHeaderScroll = sticky => {
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
     if (isClient() && window.pageYOffset > sticky + 30) {
-      this.setState({ showCondensedHeader: true }, () => {
+      this.setState({ showCondensedHeader: true, loadPaypalStickyHeader: true }, () => {
         this.bagCondensedHeader.firstElementChild.style.top = `${condensedPageHeaderHeight.toString()}px`;
       });
     } else {
@@ -338,14 +335,14 @@ class BagPageView extends React.PureComponent {
   render() {
     const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
     const { sflItems, isShowSaveForLaterSwitch, orderBalanceTotal, currencySymbol } = this.props;
-    const { activeSection, showStickyHeaderMob, showCondensedHeader, headerError } = this.state;
+    const { activeSection, showStickyHeaderMob, loadPaypalStickyHeader, headerError } = this.state;
     const { params } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {showCondensedHeader && this.stickyBagCondensedHeader()}
+        {loadPaypalStickyHeader && this.stickyBagCondensedHeader()}
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}

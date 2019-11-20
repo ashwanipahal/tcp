@@ -12,12 +12,22 @@ import {
 } from '../styles/ Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import ModalWrapper from '../molecules/ModalWrapper';
+import AddList from '../molecules/AddList';
+import EditList from '../molecules/EditList';
 
+const ADD_LIST = 'addList';
+const EDIT_LIST = 'editList';
 class FavoritesView extends React.PureComponent {
+  currentPopupName;
+
   brandOptions;
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      isOpenModal: false,
+    };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
       {
@@ -46,6 +56,90 @@ class FavoritesView extends React.PureComponent {
     if (selectBrandType) {
       selectBrandType(data);
     }
+  };
+
+  onAddNewListHandler = data => {
+    console.tron.log('onAddNewListHandler:', data);
+  };
+
+  onEditListHandler = data => {
+    console.tron.log('onEditListHandler:', data);
+  };
+
+  onRemoveListHandler = data => {
+    console.tron.log('onRemoveListHandler:', data);
+  };
+
+  handleEditList = () => {
+    this.currentPopupName = EDIT_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleAddList = () => {
+    this.currentPopupName = ADD_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({
+      isOpenModal: false,
+    });
+  };
+
+  renderModalWrapper = () => {
+    const { labels } = this.props;
+    const { isOpenModal } = this.state;
+    return (
+      <ModalWrapper
+        labels={labels}
+        heading={this.getCurrentPopUpHeading()}
+        modalMargins="0 14px 0 14px"
+        isOpenModal={isOpenModal}
+        onCloseModal={this.onCloseModal}
+      >
+        {this.getCurrentPopUp()}
+      </ModalWrapper>
+    );
+  };
+
+  getCurrentPopUpHeading = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return getLabelValue(labels, 'lbl_fav_create_new_list_heading');
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return null;
+    }
+    return '';
+  };
+
+  getCurrentPopUp = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return (
+        <AddList
+          labels={labels}
+          onHandleSubmit={this.onAddNewListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return (
+        <EditList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+          onRemoveList={this.onRemoveListHandler}
+        />
+      );
+    }
+
+    return null;
   };
 
   renderBrandFilter = () => {
@@ -87,8 +181,6 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  handleEditList = () => {};
-
   render() {
     const {
       activeDisplayName,
@@ -123,9 +215,9 @@ class FavoritesView extends React.PureComponent {
         filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
       }
     }
-
     return (
       <PageContainer>
+        {this.renderModalWrapper()}
         <BodyCopy
           margin="40px 0 0 0"
           dataLocator="fav_lbl_myFavorites"
@@ -150,7 +242,7 @@ class FavoritesView extends React.PureComponent {
         <Anchor
           locator="pdp_write_review_icon"
           accessibilityRole="link"
-          accessibilityLabel="Edit List Settings"
+          accessibilityLabel={getLabelValue(labels, 'lbl_fav_editListSettings')}
           text={getLabelValue(labels, 'lbl_fav_editListSettings')}
           anchorVariation="custom"
           colorName="gray.900"

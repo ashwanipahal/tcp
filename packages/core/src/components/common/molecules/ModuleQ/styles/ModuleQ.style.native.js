@@ -25,6 +25,12 @@ const applyBackgroundClassStyle = props => {
       background-color: #F5F5BE;
     `;
   }
+
+  if (props.bgClass === 'gray-bg') {
+    return `
+      background-color: #f1f0f0;
+    `;
+  }
   return '';
 };
 
