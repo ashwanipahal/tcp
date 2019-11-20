@@ -12,6 +12,8 @@ import SelectWishListDropdown from '../molecules/SelectWishListDropdown';
 import CustomSelect from '../../../../common/molecules/CustomSelect/views';
 import AddList from '../molecules/AddList/views';
 import EditList from '../molecules/EditList/views';
+import ShareList from '../molecules/ShareList/views';
+import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
 
 class FavoritesView extends React.PureComponent {
@@ -25,7 +27,11 @@ class FavoritesView extends React.PureComponent {
   }
 
   shareClickHandler = value => {
-    console.log(value);
+    if (value === 'Email') {
+      this.handleShareList();
+    } else if (value === 'Copy Link') {
+      this.handleCopyLink();
+    }
   };
 
   renderProductList = () => {
@@ -130,6 +136,20 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
+  handleShareList = () => {
+    this.currentPopupName = 'shareList';
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleCopyLink = () => {
+    this.currentPopupName = 'copyLink';
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
   onCloseModal = () => {
     this.setState({
       isOpenModal: false,
@@ -141,6 +161,10 @@ class FavoritesView extends React.PureComponent {
     if (this.currentPopupName === 'addList') {
       return getLabelValue(labels, 'lbl_fav_create_new_list_heading');
     }
+    if (this.currentPopupName === 'shareList' || this.currentPopupName === 'copyLink') {
+      return getLabelValue(labels, 'lbl_fav_share_list_heading');
+    }
+
     return '';
   };
 
@@ -155,6 +179,10 @@ class FavoritesView extends React.PureComponent {
   renderModalWrapper = () => {
     const { labels } = this.props;
     const { isOpenModal } = this.state;
+    const modalHeight =
+      this.currentPopupName === 'shareList'
+        ? { minHeight: '850px', height: '850px', maxHeight: '850px' }
+        : { minHeight: '459px', height: '459px', maxHeight: '459px' };
     return (
       <ModalWrapper
         labels={labels}
@@ -163,7 +191,7 @@ class FavoritesView extends React.PureComponent {
         isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
-        heightConfig={{ minHeight: '459px', height: '459px', maxHeight: '459px' }}
+        heightConfig={modalHeight}
       >
         {this.getCurrentPopUp()}
       </ModalWrapper>
@@ -184,6 +212,24 @@ class FavoritesView extends React.PureComponent {
     if (this.currentPopupName === 'editList') {
       return (
         <EditList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+    if (this.currentPopupName === 'shareList') {
+      return (
+        <ShareList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+    if (this.currentPopupName === 'copyLink') {
+      return (
+        <CopyLink
           labels={labels}
           onHandleSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
