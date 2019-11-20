@@ -37,7 +37,7 @@ const Row = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   ${props =>
-    props.variation === 'primary' ? 'justify-content: center' : 'justify-content: space-between'};
+    props.variation === 'primary' ? 'justify-content: center' : 'justify-content:space-between'};
   align-items: center;
 `;
 
