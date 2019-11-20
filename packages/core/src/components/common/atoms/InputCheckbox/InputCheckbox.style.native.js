@@ -25,7 +25,7 @@ const StyledText = styled.Text`
 `;
 
 const StyledErrorIcon = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
 `;
 
