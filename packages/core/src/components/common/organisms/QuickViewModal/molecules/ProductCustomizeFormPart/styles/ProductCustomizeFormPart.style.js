@@ -88,7 +88,6 @@ const styles = css`
     right: 0px;
     bottom: 0px;
     background-color: ${props.theme.colorPalette.gray[500]};
-    z-index: 1300;
     opacity: 0.25;
     pointer-events: none;
   `}

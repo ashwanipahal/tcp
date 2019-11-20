@@ -35,6 +35,7 @@ export default {
   SET_OPTIMIZELY_FEATURES_LIST: 'SET_OPTIMIZELY_FEATURES_LIST',
   FETCH_PAGE_LAYOUT: 'FETCH_PAGE_LAYOUT',
   SET_SUB_NAVIGATION_DATA: 'SET_SUB_NAVIGATION_DATA',
+  GET_SUB_NAVIGATION_DATA: 'GET_SUB_NAVIGATION_DATA',
 };
 
 export const LABELS = {
@@ -51,7 +52,8 @@ export const SEO_DATA = {
   home: '/home',
   account: '/account',
   bag: '/bag',
-  checkout: '/checkout'
+  checkout: '/checkout',
+  search: '/search',
 };
 
 export const MODULES_CONSTANT = {

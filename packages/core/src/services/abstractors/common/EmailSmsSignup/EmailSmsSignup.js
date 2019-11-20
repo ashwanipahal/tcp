@@ -40,9 +40,9 @@ const Abstractor = {
     const brandGYM = !!(isGymboree() || isTextOptInSecondBrand);
     const brandTCP = !!(!isGymboree() || isTextOptInSecondBrand);
 
-    let subscriptionBrands = brandTCP ? 'tcp' : '';
+    let subscriptionBrands = brandTCP ? 'TCP' : '';
     if (brandGYM) {
-      subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},gym` : 'gym';
+      subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},GYM` : 'GYM';
     }
 
     const body = {
@@ -60,7 +60,7 @@ const Abstractor = {
       webService: endpoints.addSmsSignup,
       body,
       header: {
-        smsbrand: subscriptionBrands,
+        brandSubscribe: subscriptionBrands,
       },
     };
 
