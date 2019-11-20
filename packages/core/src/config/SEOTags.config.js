@@ -10,12 +10,7 @@ const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
-<<<<<<< HEAD
-const TCP_LABEL = "The Children's Place";
-const GYM_LABEL = 'Gymboree';
 const GenericSeoPages = ['Home', 'Checkout', 'Account', 'Bag'];
-=======
->>>>>>> 5e4fc5e4ac9d340128ceccac27c083a516e3f56c
 
 const SEO_CONFIG = {
   canonical: TCP_BASE_URL,
@@ -196,16 +191,8 @@ const getGenericSeoTags = (store, router, categoryKey, path = 'home') => {
   const brandDetails = getBrandDetails();
   const { brandId } = getAPIConfig();
   const brand = brandId.toUpperCase();
-<<<<<<< HEAD
-  const {
-    SEOData
-  } = store.getState();
-  const { pageTitle = '', description = '', canonical = '', keywords } = SEOData[path] || {};
-
-=======
   const { SEOData } = store.getState();
   const { pageTitle = '', description = '', canonicalUrl = '', keywords } = SEOData[path] || {};
->>>>>>> 5e4fc5e4ac9d340128ceccac27c083a516e3f56c
   const openGraph = {
     url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
     title: pageTitle,
