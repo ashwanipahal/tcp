@@ -161,7 +161,7 @@ exports[`GiftServices component renders correctly 1`] = `
   }
 
   .dropdownDivOverFlow {
-    overflow-y: inherit;
+    overflow-y: visible;
     div {
       font-family: ",
           [Function],
