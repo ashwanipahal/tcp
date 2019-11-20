@@ -27,7 +27,14 @@ export const AVAILABILITY = {
 };
 
 const addItemToWishlist = wishlistDetails => {
-  const { wishListId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
+  const {
+    wishListId,
+    skuIdOrProductId,
+    quantity,
+    isProduct,
+    uniqueId,
+    errorMapping,
+  } = wishlistDetails;
   const payload = {
     header: {
       externalId: wishListId,
@@ -61,8 +68,12 @@ const addItemToWishlist = wishlistDetails => {
     })
     .catch(err => {
       logger.error('err', err);
+      const errorMssg = getFormattedError(err, errorMapping);
       return {
-        errorMessage: err && err.errorResponse && err.errorResponse.errorMessage,
+        errorMessage:
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
+          // eslint-disable-next-line no-underscore-dangle
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error),
       };
     });
 };
