@@ -290,7 +290,7 @@ class PickupStoreListItem extends React.Component {
         pageName,
       });
       trackClick();
-    }, 1000);
+    }, 0);
     return onStoreSelect(store.basicInfo.id, isBoss);
   }
 
@@ -330,7 +330,7 @@ class PickupStoreListItem extends React.Component {
         customEvents: ['scAdd,scOpen,event85,event61'],
       });
       trackClick();
-    }, 1000);
+    }, 0);
     return onStoreUpdate(store.basicInfo.id, isBoss);
   }
 

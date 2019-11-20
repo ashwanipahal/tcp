@@ -13,6 +13,11 @@ export default css`
   &.yellow-bg {
     background-image: radial-gradient(circle at 61% 22%, #fff, #f1f4a2);
   }
+
+  &.gray-bg {
+    background-color: #f1f0f0;
+  }
+
   .moduleQ-promo-header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }

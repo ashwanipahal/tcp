@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable max-lines */
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { isClient } from '@tcp/core/src/utils';
@@ -28,7 +29,7 @@ import ProductReviewsContainer from '../../ProductListing/molecules/ProductRevie
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
-class ProductDetailView extends React.Component {
+class ProductDetailView extends PureComponent {
   constructor(props) {
     super(props);
     this.formValues = null;
@@ -81,7 +82,7 @@ class ProductDetailView extends React.Component {
     }
   };
 
-  getProductSummary = () => {
+  getProductSummary = keepAlive => {
     const {
       productDetails,
       productInfo,
@@ -90,6 +91,7 @@ class ProductDetailView extends React.Component {
       currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      outOfStockLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       ...otherProps
@@ -97,7 +99,6 @@ class ProductDetailView extends React.Component {
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const { isGiftCard } = productInfo;
-
     return (
       <div className="product-summary-wrapper">
         <Product
@@ -109,6 +110,8 @@ class ProductDetailView extends React.Component {
           currencyAttributes={currencyAttributes}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
           className="hide-on-mobile"
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
@@ -200,9 +203,11 @@ class ProductDetailView extends React.Component {
       productInfo,
       plpLabels,
       pdpLabels,
+      outOfStockLabels,
       handleAddToBag,
       addToBagError,
       alternateSizes,
+      isKeepAliveEnabled,
       currency,
       currencyAttributes,
       onAddItemToFavorites,
@@ -216,6 +221,8 @@ class ProductDetailView extends React.Component {
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
+    const keepAlive =
+      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -252,7 +259,7 @@ class ProductDetailView extends React.Component {
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
-              <div className="product-summary-mobile-view">{this.getProductSummary()}</div>
+              <div className="product-summary-mobile-view">{this.getProductSummary(keepAlive)}</div>
             ) : null}
           </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
@@ -278,6 +285,8 @@ class ProductDetailView extends React.Component {
               onChangeColor={this.onChangeColor}
               currentColorEntry={currentColorEntry}
               initialValues={this.formValues}
+              keepAlive={keepAlive}
+              outOfStockLabels={outOfStockLabels}
             />
           </Col>
           <Col
@@ -286,7 +295,7 @@ class ProductDetailView extends React.Component {
             colSize={{ small: 6, medium: 4, large: 5 }}
           >
             <div className={isGiftCard ? 'product-summary-desktop-view' : ''}>
-              {this.getProductSummary()}
+              {this.getProductSummary(keepAlive)}
             </div>
             {this.getProductPriceForGiftCard()}
             {currentProduct && (
@@ -304,6 +313,8 @@ class ProductDetailView extends React.Component {
                 isPDP
                 alternateSizes={alternateSizes}
                 sizeChartLinkVisibility={sizeChartLinkVisibility}
+                isKeepAliveEnabled={isKeepAliveEnabled}
+                outOfStockLabels={outOfStockLabels}
               />
             )}
 
@@ -312,6 +323,8 @@ class ProductDetailView extends React.Component {
                 productInfo={productInfo}
                 formName={`ProductAddToBag-${productInfo.generalProductId}`}
                 miscInfo={currentColorEntry.miscInfo}
+                keepAlive={keepAlive}
+                outOfStockLabels={outOfStockLabels}
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
@@ -403,6 +416,10 @@ ProductDetailView.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }).isRequired,
+  isKeepAliveEnabled: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
@@ -423,6 +440,7 @@ ProductDetailView.defaultProps = {
   addToBagError: '',
   isLoggedIn: false,
   alternateSizes: {},
+  isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
 };

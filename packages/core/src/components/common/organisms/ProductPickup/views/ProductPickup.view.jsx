@@ -158,6 +158,10 @@ class ProductPickup extends React.PureComponent {
     onPickupClickAddon: PropTypes.func,
     isOutfitVariant: PropTypes.bool,
     isStoreAndProductBossEligible: PropTypes.bool,
+    keepAlive: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({
+      itemSoldOutMessage: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -210,6 +214,10 @@ class ProductPickup extends React.PureComponent {
     onPickupClickAddon: () => {},
     isOutfitVariant: false,
     isStoreAndProductBossEligible: false,
+    keepAlive: false,
+    outOfStockLabels: {
+      itemSoldOutMessage: '',
+    },
   };
 
   constructor(props) {
@@ -431,6 +439,16 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  renderSoldOutError = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <BodyCopy color="red.500" fontFamily="secondary" fontSize="fs10">
+        {outOfStockLabels.itemSoldOutMessage}
+      </BodyCopy>
+    ) : null;
+  };
+
+  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -440,6 +458,7 @@ class ProductPickup extends React.PureComponent {
       isAnchor,
       sizeUnavailable,
       isOutfitVariant,
+      keepAlive,
     } = this.props;
     const pageName = 'product';
     return (
@@ -449,7 +468,7 @@ class ProductPickup extends React.PureComponent {
             className="button-find-in-store"
             buttonVariation="fixed-width"
             fill="BLACK"
-            disabled={isSubmitting}
+            disabled={keepAlive || isSubmitting}
             onClick={this.handlePickupModalClick}
           >
             {showPickupInfo
@@ -494,6 +513,7 @@ class ProductPickup extends React.PureComponent {
                   <div className="pickup-details">
                     {this.renderPickupTitle()}
                     {showPickupInfo && this.renderPickupInfo()}
+                    {this.renderSoldOutError()}
                   </div>
                 </div>
                 <ClickTracker clickData={{ pageName }}>
@@ -501,7 +521,7 @@ class ProductPickup extends React.PureComponent {
                     className="button-find-in-store"
                     buttonVariation="fixed-width"
                     fill="BLACK"
-                    disabled={isSubmitting}
+                    disabled={keepAlive || isSubmitting}
                     onClick={this.handlePickupModalClick}
                   >
                     {showPickupInfo
@@ -513,7 +533,8 @@ class ProductPickup extends React.PureComponent {
             </div>
           </div>
         ) : (
-          !isOutfitVariant && (
+          !isOutfitVariant &&
+          !keepAlive && (
             <p className="size-unavailable">
               <span className="unavailable-text">{sizeUnavailable}</span>
               <span className="size-find-in-store">

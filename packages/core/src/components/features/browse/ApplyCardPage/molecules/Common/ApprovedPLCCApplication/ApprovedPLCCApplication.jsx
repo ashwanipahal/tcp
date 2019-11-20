@@ -189,17 +189,22 @@ const totalSavingsFooterContainer = (
               small: 12,
             }}
           >
-            <Anchor
-              url={redirectToHome()}
-              fontSizeVariation="large"
+            <Button
+              onClick={() =>
+                redirectToHome(
+                  residualProps.isPLCCModalFlow,
+                  residualProps.closePLCCModal,
+                  resetPLCCResponse
+                )
+              }
               buttonVariation="fixed-width"
-              anchorVariation="button"
+              type="submit"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
               centered
               className="existing_continue_button"
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Anchor>
+            </Button>
           </Col>
         </Row>
       )}
@@ -224,6 +229,7 @@ const ApprovedPLCCApplicationView = ({
   resetPLCCResponse,
   isRtpsFlow,
   togglePLCCModal,
+  closePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   const [couponCodeStatus, changeStatus] = useState('');
@@ -324,6 +330,7 @@ const ApprovedPLCCApplicationView = ({
         {
           togglePLCCModal,
           isPLCCModalFlow,
+          closePLCCModal,
         }
       )}
       <Row fullBleed className="centered">
@@ -360,6 +367,7 @@ ApprovedPLCCApplicationView.propTypes = {
   resetPLCCResponse: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
   togglePLCCModal: PropTypes.func.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApprovedPLCCApplicationView;

@@ -54,7 +54,7 @@ export class Account extends React.PureComponent {
     if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
       this.activePageRef.blur();
       setTimeout(() => {
-        this.activePageRef.focus();
+        this.activePageRef.focus({ preventScroll: true });
       }, 100);
     }
 
@@ -142,6 +142,10 @@ Account.getInitialProps = (reduxProps, pageProps) => {
       },
     },
   };
+};
+
+Account.pageInfo = {
+  pageId: 'Account',
 };
 
 export const mapDispatchToProps = dispatch => {

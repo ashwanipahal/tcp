@@ -8,6 +8,12 @@ export default css`
   background: ${props => props.theme.colorPalette.white};
   z-index: ${props => props.theme.zindex.zDrawer};
 
+  .L2-panel-container {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-right: 50px;
+    }
+  }
+
   .shop-by-size-links {
     padding: 10px 14px 10px;
     ul {

@@ -24,6 +24,10 @@ const StyledTextBox = styled.TextInput`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: 0;
   padding-left: 0;
+  border-bottom-color: ${props =>
+    props.meta.touched && props.meta.error
+      ? props.theme.colorPalette.error
+      : props.theme.colorPalette.gray[600]};
 `;
 
 const StyledLabel = styled.Text`
@@ -44,7 +48,7 @@ const StyledLabel = styled.Text`
 `;
 
 const StyledErrorIcon = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const StyledSuccessCheck = styled.View`

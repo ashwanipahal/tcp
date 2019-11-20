@@ -41,6 +41,7 @@ import {
   isVenmoPaymentAvailable,
   getVenmoUserName,
 } from './CheckoutVenmo.selector';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -360,6 +361,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_payPalLongText',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
+      'lbl_billing_venmoLongText',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -396,6 +398,7 @@ const getBillingLabels = createSelector(
       lbl_billing_payPalLongText: payPalLongText,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
+      lbl_billing_venmoLongText: venmoLongText,
     } = labels;
     return {
       header,
@@ -429,6 +432,7 @@ const getBillingLabels = createSelector(
       continueWithPayPal,
       payPalLongText,
       addCreditCard,
+      venmoLongText,
     };
   }
 );
@@ -477,41 +481,6 @@ const getSmsSignUpLabels = state => {
     smsSignupText,
     privacyPolicy,
     orderUpdates,
-  };
-};
-
-const getEmailSignUpLabels = state => {
-  return {
-    shippingAddressEditError: getLabelValue(
-      state.Labels,
-      'lbl_shipping_addressEditError',
-      'shipping',
-      'checkout'
-    ),
-    emailSignupHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupSubHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupSubHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupSubSubHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupSubSubHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupContact: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupContact',
-      'pickup',
-      'checkout'
-    ),
   };
 };
 
@@ -629,6 +598,9 @@ function getPickupInitialPickupSectionValues(state) {
     ...{ hasAlternatePickup: isPickupAlt(state) },
     ...getPickupAltValues(state),
   };
+  const { emailSignUpTCP: emailSignUp, emailSignUpGYM } = BagPageSelectors.getIfEmailSignUpDone(
+    state
+  );
   return {
     pickUpContact: {
       firstName: pickupValues.firstName || getUserName(state),
@@ -642,6 +614,10 @@ function getPickupInitialPickupSectionValues(state) {
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
+    emailSignUp: {
+      emailSignUp,
+      emailSignUpGYM,
+    },
   };
 }
 
@@ -841,6 +817,21 @@ const getPickupSectionLabels = createSelector(
     return labels;
   }
 );
+
+const getEmailSignUpLabels = state => {
+  const labels = {};
+  const labelKeys = [
+    'lbl_shipping_emailSignUpHeader',
+    'lbl_shipping_emailSignUpSubHeader',
+    'lbl_shipping_childrenPlaceCheckoutTxt',
+    'lbl_shipping_emailSignUpDisclaimer',
+    'lbl_shipping_gymboreePlaceCheckoutTxt',
+  ];
+  labelKeys.forEach(key => {
+    labels[key] = getLabelValue(state.Labels, key, 'shipping', 'checkout');
+  });
+  return labels;
+};
 
 /**
  * @function getShippingSectionLabels

@@ -49,6 +49,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isSoldOut={false}
       loadedProductCount={12}
       onImageChange={[Function]}
+      soldOutLabel=""
       videoUrl=""
     />
     <Styled(Row)
@@ -158,19 +159,8 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     <div
       className="fulfillment-section"
     >
-      <Connect(Component)
-        clickData={
-          Object {
-            "eventName": "cart add",
-            "pageName": "",
-            "pageShortName": "",
-            "products": Array [
-              Object {
-                "id": "undefined",
-              },
-            ],
-          }
-        }
+      <div
+        className="fulfillment-section"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
@@ -180,7 +170,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           fullWidth={true}
           onClick={[Function]}
         />
-      </Connect(Component)>
+      </div>
     </div>
     <div
       className="favorite-move-purchase-section"
