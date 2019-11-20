@@ -7,6 +7,7 @@ import {
   getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
 import { DamImage } from '../../../../../../common/atoms';
+import OutOfStockWaterMarkView from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -39,6 +40,11 @@ class ImageCarousel extends React.PureComponent {
         break;
       }
     }
+  };
+
+  renderOutOfStockOverlay = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
   };
 
   render() {
@@ -93,6 +99,7 @@ class ImageCarousel extends React.PureComponent {
                 width={productImageWidth || imageWidth}
                 resizeMode="contain"
               />
+              {this.renderOutOfStockOverlay()}
             </TouchableOpacity>
           );
         }}
@@ -108,6 +115,10 @@ ImageCarousel.propTypes = {
   productImageWidth: PropTypes.number,
   productImageHeight: PropTypes.number,
   isFavorite: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
@@ -116,6 +127,10 @@ ImageCarousel.defaultProps = {
   productImageWidth: null,
   productImageHeight: null,
   isFavorite: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default ImageCarousel;

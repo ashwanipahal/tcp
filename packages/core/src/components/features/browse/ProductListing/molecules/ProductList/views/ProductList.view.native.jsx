@@ -115,6 +115,11 @@ class ProductList extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  checkKeepAliveItem = keepAliveProduct => {
+    const { isKeepAliveEnabled } = this.props;
+    return isKeepAliveEnabled && keepAliveProduct;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -131,6 +136,7 @@ class ProductList extends React.PureComponent {
       isLoggedIn,
       labelsPlpTiles,
       onrenderItemCountView,
+      outOfStockLabels,
     } = this.props;
     const { item, index } = itemData;
     const { colorsMap, productInfo } = item;
@@ -140,7 +146,9 @@ class ProductList extends React.PureComponent {
     const curentColorEntry = colorsMap && getMapSliceForColorProductId(colorsMap, colorProductId);
     // get product color and price info of default zero index item
     const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
-    const { badge1, badge2 } = currentColorMiscInfo;
+    const { badge1, badge2, keepAlive: keepAliveProduct } = currentColorMiscInfo;
+
+    const keepAlive = this.checkKeepAliveItem(keepAliveProduct);
 
     // get default top badge data
     let topBadge;
@@ -194,6 +202,8 @@ class ProductList extends React.PureComponent {
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   };
@@ -361,6 +371,8 @@ ProductList.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isSearchListing: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -394,6 +406,8 @@ ProductList.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   isSearchListing: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductList, styles);

@@ -51,15 +51,17 @@ const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenCl
   }
 };
 
-const renderAddToBagContainer = (
+const renderAddToBagContainer = ({
   item,
   renderPriceOnly,
   selectedColorIndex,
   onQuickViewOpenClick,
   bundleProduct,
   labelsPlpTiles,
-  onGoToPDPPage
-) => {
+  onGoToPDPPage,
+  keepAlive,
+  outOfStockLabels,
+}) => {
   if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
@@ -72,13 +74,26 @@ const renderAddToBagContainer = (
         type="button"
         buttonVariation="variable-width"
         data-locator=""
-        text={buttonLabel}
+        disableButton={keepAlive}
+        text={keepAlive ? outOfStockLabels.outOfStockCaps : buttonLabel}
         onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
         margin="0 6px 0 0"
       />
     </AddToBagContainer>
   );
+};
+
+renderAddToBagContainer.propTypes = {
+  item: PropTypes.shape({}).isRequired,
+  renderPriceOnly: PropTypes.bool.isRequired,
+  selectedColorIndex: PropTypes.number.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  bundleProduct: PropTypes.bool.isRequired,
+  labelsPlpTiles: PropTypes.shape({}).isRequired,
+  onGoToPDPPage: PropTypes.bool.isRequired,
+  keepAlive: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
 const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
@@ -108,6 +123,8 @@ const ListItem = props => {
     viaModule,
     isLoggedIn,
     labelsPlpTiles,
+    keepAlive,
+    outOfStockLabels,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -133,6 +150,8 @@ const ListItem = props => {
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
         isFavorite={isFavorite}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
       <RenderBadge2 text={badge2} />
       {isFavorite && (
@@ -181,15 +200,17 @@ const ListItem = props => {
           marginTop={12}
         />
       ) : null}
-      {renderAddToBagContainer(
+      {renderAddToBagContainer({
         item,
         renderPriceOnly,
         selectedColorIndex,
         onQuickViewOpenClick,
         bundleProduct,
         labelsPlpTiles,
-        onGoToPDPPage
-      )}
+        onGoToPDPPage,
+        keepAlive,
+        outOfStockLabels,
+      })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
         <RenderMoveToListOrSeeSuggestedList item={item} labelsPlpTiles={labelsPlpTiles} />
@@ -222,6 +243,8 @@ const ImageSection = ({
   onGoToPDPPage,
   productImageWidth,
   isFavorite,
+  keepAlive,
+  outOfStockLabels,
 }) => {
   return (
     <ImageSectionContainer>
@@ -231,6 +254,8 @@ const ImageSection = ({
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
         isFavorite={isFavorite}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     </ImageSectionContainer>
   );
@@ -242,11 +267,19 @@ ImageSection.propTypes = {
   onGoToPDPPage: PropTypes.func.isRequired,
   productImageWidth: PropTypes.number,
   isFavorite: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageSection.defaultProps = {
   productImageWidth: '',
   isFavorite: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -631,6 +664,8 @@ ListItem.propTypes = {
   viaModule: PropTypes.string,
   isLoggedIn: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ListItem.defaultProps = {
@@ -660,6 +695,8 @@ ListItem.defaultProps = {
   viaModule: '',
   isLoggedIn: false,
   labelsPlpTiles: {},
+  keepAlive: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ListItem, styles);
