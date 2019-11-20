@@ -44,9 +44,10 @@ const NavBar = props => {
                 });
               }
             }
-            const topNavigationAnalyticsData = getViewportInfo().isDesktop
-              ? `topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`
-              : `hamburger- ${navL1Item.categoryContent.name.toLowerCase()}`;
+            const topNavigationAnalyticsData =
+              window && getViewportInfo().isDesktop
+                ? `topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`
+                : `hamburger- ${navL1Item.categoryContent.name.toLowerCase()}`;
             return (
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
