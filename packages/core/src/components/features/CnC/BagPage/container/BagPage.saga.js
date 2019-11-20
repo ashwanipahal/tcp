@@ -377,7 +377,6 @@ export function* startPaypalCheckout({ payload }) {
 export function* startPaypalNativeCheckout({ payload }) {
   try {
     const { isBillingPage } = payload;
-    console.log('startPaypalNativeCheckout', isBillingPage);
     yield put(getSetIsPaypalPaymentSettings(null));
     const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
     const fromPage = isBillingPage ? 'OrderBillingView' : 'AjaxOrderItemDisplayView';
