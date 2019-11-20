@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -55,6 +56,7 @@ class ProductsGridItem extends React.PureComponent {
       isAltImgRequested: false,
       isMoveItemOpen: false,
       generalProductId: '',
+      errorProductId: '',
     };
     const {
       onQuickViewOpenClick,
@@ -112,6 +114,8 @@ class ProductsGridItem extends React.PureComponent {
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
   }
 
   getQuickViewInitialValues() {
@@ -170,6 +174,7 @@ class ProductsGridItem extends React.PureComponent {
         colorProductId: selectedColorProductId || generalProductId,
         page: isSearchListing ? 'SLP' : 'PLP',
       });
+      this.setState({ errorProductId: selectedColorProductId || generalProductId });
       if (isClient() && isLoggedIn) {
         this.setState({ isInDefaultWishlist: true });
       } else {
@@ -353,47 +358,83 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
-  renderSubmitButton = itemNotAvailable => {
+  renderAddToBagLabel = (isBundleProduct, keepAlive) => {
+    const {
+      outOfStockLabels,
+      labels: { shopCollection, addToBag },
+    } = this.props;
+    const addToBagLabel = isBundleProduct ? shopCollection : addToBag;
+    return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
+  };
+
+  errorMsgDisplay = () => {
+    const {
+      AddToFavoriteErrorMsg,
+      item: {
+        productInfo: { generalProductId },
+      },
+    } = this.props;
+    const { errorProductId } = this.state;
+
+    return errorProductId === generalProductId && AddToFavoriteErrorMsg ? (
+      <Notification
+        status="error"
+        colSize={{ large: 12, medium: 8, small: 6 }}
+        message={AddToFavoriteErrorMsg}
+      />
+    ) : null;
+  };
+
+  renderSubmitButton = (keepAlive, itemNotAvailable) => {
     const {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard },
+        productInfo: { bundleProduct, isGiftCard, generalProductId },
       },
       removeFavItem,
       isFavoriteView,
       isShowQuickView,
+      AddToFavoriteErrorMsg,
     } = this.props;
+    const { errorProductId } = this.state;
 
+    const fulfilmentSection =
+      AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
     return itemNotAvailable ? (
-      <Button
-        className="remove-favorite"
-        fullWidth
-        buttonVariation="fixed-width"
-        dataLocator={getLocator('remove_favorite_Button')}
-        onClick={() => removeFavItem({ itemId })}
-      >
-        {labels.lbl_fav_removeFavorite}
-      </Button>
+      <div className={fulfilmentSection}>
+        <Button
+          className="remove-favorite"
+          fullWidth
+          buttonVariation="fixed-width"
+          dataLocator={getLocator('remove_favorite_Button')}
+          onClick={() => removeFavItem({ itemId })}
+        >
+          {labels.lbl_fav_removeFavorite}
+        </Button>
+      </div>
     ) : (
-      <Button
-        className="added-to-bag"
-        fullWidth
-        buttonVariation="fixed-width"
-        dataLocator={getLocator('global_addtocart_Button')}
-        onClick={
-          // eslint-disable-next-line no-nested-ternary
-          isGiftCard
-            ? () => {} // TODO Gift Card Quick View Modal
-            : isShowQuickView && !isBundleProduct
-            ? this.handleQuickViewOpenClick
-            : this.handleViewBundleClick
-        }
-        fill={isFavoriteView ? 'BLUE' : ''}
-      >
-        {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
-      </Button>
+      <div className={fulfilmentSection}>
+        <Button
+          className="added-to-bag"
+          fullWidth
+          buttonVariation="fixed-width"
+          dataLocator={getLocator('global_addtocart_Button')}
+          onClick={
+            // eslint-disable-next-line no-nested-ternary
+            isGiftCard
+              ? () => {} // TODO Gift Card Quick View Modal
+              : isShowQuickView && !isBundleProduct
+              ? this.handleQuickViewOpenClick
+              : this.handleViewBundleClick
+          }
+          disabled={keepAlive}
+          fill={isFavoriteView ? 'BLUE' : ''}
+        >
+          {this.renderAddToBagLabel(isBundleProduct, keepAlive)}
+        </Button>
+      </div>
     );
   };
 
@@ -439,7 +480,7 @@ class ProductsGridItem extends React.PureComponent {
           offerPrice: itemOfferPrice,
           long_product_title: longProductTitle,
         },
-        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag, availability } = {},
+        itemInfo: { itemId, quantity, availability } = {},
         quantityPurchased,
         colorsMap,
         imagesByColor,
@@ -455,7 +496,6 @@ class ProductsGridItem extends React.PureComponent {
       //  isEvenElement,
       //  siblingProperties,
       isPLPredesign,
-      isKeepAliveKillSwitch,
       loadedProductCount,
       className,
       sqnNmbr,
@@ -464,6 +504,8 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       viaModule,
       forwardedRef,
+      outOfStockLabels,
+      isKeepAliveEnabled,
     } = this.props;
 
     logger.info(viaModule);
@@ -497,14 +539,14 @@ class ProductsGridItem extends React.PureComponent {
       badge3,
       //  isClearance,
       //  isBossEligible,
-      keepAlive = keepAliveFlag,
+      keepAlive: keepAliveProduct,
     } = currentColorMiscInfo;
     // const miscInfo = {
     //   isBossEligible,
     //   isBopisEligible,
     //   isClearance,
     // };
-    const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
+    const keepAlive = isKeepAliveEnabled && keepAliveProduct;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
     const { listPriceForColor, offerPriceForColor } = this.getPriceForProduct(
       listPrice,
@@ -561,9 +603,9 @@ class ProductsGridItem extends React.PureComponent {
               requestId: unbxdId,
             }}
             isPLPredesign={isPLPredesign}
-            keepAlive={isKeepAlive}
+            keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
-            soldOutLabel={labels.lbl_fav_soldOut}
+            soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
@@ -618,7 +660,9 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          <div className="fulfillment-section">{this.renderSubmitButton(itemNotAvailable)}</div>
+          <div className="fulfillment-section">
+            {this.renderSubmitButton(keepAlive, itemNotAvailable)}
+          </div>
           {!itemNotAvailable && (
             <div className="favorite-move-purchase-section">
               {PurchaseSection(quantity, labels, quantityPurchased)}
@@ -626,6 +670,7 @@ class ProductsGridItem extends React.PureComponent {
             </div>
           )}
           {/* {error && <ErrorMessage error={error} />} */}
+          {this.errorMsgDisplay()}
         </div>
       </li>
     );

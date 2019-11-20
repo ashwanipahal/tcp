@@ -2643,6 +2643,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           }
         >
           <Styled(LoadedProductsCount)
+            isFavoriteView={false}
             showingItemsLabel={Object {}}
             totalProductsCount="34"
           />

@@ -28,9 +28,12 @@ const Product = props => {
     isLoggedIn,
     isShowPriceRangeKillSwitch,
     formValues = {},
-    isKeepAliveProduct,
     isBundleProduct,
+    keepAlive,
+    outOfStockLabels,
     reviewOnTop,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -61,15 +64,12 @@ const Product = props => {
     prices = getPricesWithRange(productInfo, colorProduct.color.name);
   }
 
-  const { miscInfo } = colorProduct;
-
-  const isKeepAlive = miscInfo.keepAlive && isKeepAliveProduct;
-
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
         <ProductBasicInfo
-          keepAlive={isKeepAlive}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
           badge={badge1}
           isGiftCard={isGiftCard}
           productInfo={productInfo}
@@ -84,6 +84,9 @@ const Product = props => {
           isInternationalShipping={isInternationalShipping}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          productMiscInfo={colorProduct}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
@@ -127,14 +130,25 @@ Product.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
-  isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
   reviewOnTop: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 Product.defaultProps = {
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default Product;

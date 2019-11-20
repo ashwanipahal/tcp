@@ -49,6 +49,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isSoldOut={false}
       loadedProductCount={12}
       onImageChange={[Function]}
+      soldOutLabel=""
       videoUrl=""
     />
     <Styled(Row)
@@ -158,14 +159,18 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     <div
       className="fulfillment-section"
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="added-to-bag"
-        dataLocator="global-addtocart-Button"
-        fill=""
-        fullWidth={true}
-        onClick={[Function]}
-      />
+      <div
+        className="fulfillment-section"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="added-to-bag"
+          dataLocator="global-addtocart-Button"
+          fill=""
+          fullWidth={true}
+          onClick={[Function]}
+        />
+      </div>
     </div>
     <div
       className="favorite-move-purchase-section"

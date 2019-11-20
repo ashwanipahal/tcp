@@ -139,14 +139,17 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -291,14 +294,17 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -393,14 +399,17 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={false}
       isPayPalWebViewEnable={false}
+      onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
+      showVenmoSubmit={false}
     />
   </ScrollViewMock>
 </Fragment>
