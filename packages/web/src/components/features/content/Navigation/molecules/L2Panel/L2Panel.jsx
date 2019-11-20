@@ -56,7 +56,7 @@ const renderL3Panel = (
   l3Drawer,
   hideL3Drawer,
   name,
-  subCategories,
+  { url, asPath, subCategories },
   { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }
 ) => {
   return (
@@ -70,6 +70,8 @@ const renderL3Panel = (
         hideL2Nav={hideL2Nav}
         name={name}
         links={subCategories}
+        shopalllink={url}
+        shopallaspath={asPath}
         accessibilityLabels={accessibilityLabels}
         closeNav={closeNav}
       />
@@ -132,39 +134,41 @@ const createLinks = (
             subCategories,
             hasL3,
           } = l2Links;
+          const shopallparams = { url, asPath, subCategories };
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor
-                asPath={asPath}
-                to={url}
-                onClick={e =>
-                  openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                }
-              >
-                <BodyCopy
-                  className="l2-nav-link"
-                  fontFamily="secondary"
-                  fontSize={['fs13', 'fs13', 'fs14']}
-                  lineHeight="lh107"
-                  color="text.primary"
+              <div className="L2-panel-container">
+                <Anchor
+                  asPath={asPath}
+                  to={url}
+                  onClick={e =>
+                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                  }
                 >
-                  {renderLabel(classForRedContent, promoBadge, name)}
-                  {renderPromoBadge(promoBadge, currentIndex)}
-                  {renderArrowIcon(hasSubCategories)}
-                </BodyCopy>
-              </Anchor>
+                  <BodyCopy
+                    className="l2-nav-link"
+                    fontFamily="secondary"
+                    fontSize={['fs13', 'fs13', 'fs14']}
+                    lineHeight="lh107"
+                    color="text.primary"
+                  >
+                    {renderLabel(classForRedContent, promoBadge, name)}
+                    {renderPromoBadge(promoBadge, currentIndex)}
+                    {renderArrowIcon(hasSubCategories)}
+                  </BodyCopy>
+                </Anchor>
+              </div>
               {renderL3Panel(
                 hasSubCategories,
                 currentIndex,
                 l3Drawer,
                 hideL3Drawer,
                 name,
-                subCategories,
+                shopallparams,
                 navHandler
               )}
             </li>

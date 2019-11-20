@@ -68,6 +68,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
