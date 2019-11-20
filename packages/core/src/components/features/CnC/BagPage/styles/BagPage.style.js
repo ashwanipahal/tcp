@@ -10,6 +10,9 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
     }
+    .checkoutBtnTracker {
+      flex: none;
+    }
   }
 
   .cartPageTitleHeader {
