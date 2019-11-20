@@ -21,8 +21,8 @@ const styles = css`
       height: 13px;
     }
     .dropdown-title {
-      font-size: 10px;
-      font-weight: 800;
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
     .customSelectTitle {
       margin-top: 0px;

@@ -115,7 +115,7 @@ export default css`
   }
 
   .dropdownDivOverFlow {
-    overflow-y: inherit;
+    overflow-y: visible;
     div {
       font-family: ${props => props.theme.fonts.secondaryFontFamily};
     }
