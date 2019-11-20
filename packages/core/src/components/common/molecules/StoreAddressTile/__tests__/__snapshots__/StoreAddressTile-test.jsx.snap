@@ -3180,7 +3180,6 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
             "customEvents": Array [
               "event80,event96",
             ],
-            "internalCampaignId": "check",
           }
         }
         fontSizeVariation="medium"
@@ -3950,7 +3949,6 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             "customEvents": Array [
               "event80,event96",
             ],
-            "internalCampaignId": "check",
           }
         }
         fontSizeVariation="medium"
@@ -4721,7 +4719,6 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
             "customEvents": Array [
               "event80,event96",
             ],
-            "internalCampaignId": "check",
           }
         }
         fontSizeVariation="medium"
@@ -5280,7 +5277,6 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             "customEvents": Array [
               "event80,event96",
             ],
-            "internalCampaignId": "check",
           }
         }
         fontSizeVariation="medium"
