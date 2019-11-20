@@ -11,7 +11,7 @@ describe('Carousel component', () => {
     CarouselTest.setState = jest.fn();
   });
 
-  it.skip('renders correctly', () => {
+  it('renders correctly', () => {
     expect(CarouselTest).toMatchSnapshot();
   });
 

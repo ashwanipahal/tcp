@@ -35,12 +35,4 @@ module.exports = {
     blacklistRE: blacklist([/node_modules\/.*\/node_modules\/react-native\/.*/]),
   },
   watchFolders,
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: false,
-      },
-    }),
-  },
 };

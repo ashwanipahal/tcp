@@ -17,8 +17,6 @@ exports[`Help Coupon Modal should call correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <WebView
-    cacheEnabled={true}
-    javaScriptEnabled={true}
     originWhitelist={
       Array [
         "http://*",
@@ -30,7 +28,6 @@ exports[`Help Coupon Modal should call correctly 1`] = `
         "html": undefined,
       }
     }
-    useSharedProcessPool={true}
   />
 </ModalNative>
 `;
