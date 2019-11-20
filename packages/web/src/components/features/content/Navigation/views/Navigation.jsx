@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import { plpRoutingHandling } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
@@ -62,12 +63,10 @@ const handleRouteComplete = url => {
     url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
   const gethandleRemoveFilter = localStorage.getItem('handleRemoveFilter');
   const plpPageCheck = url.match(/\/c\//g);
+  const filterId = document.getElementById('filterWrapper');
   if (!checkListingPageParam && !checkSearchPageParam) {
     if (document.getElementById('filterWrapper') && gethandleRemoveFilter) {
-      const getFilterHeight = document.getElementById('filterWrapper').offsetHeight;
-      const getFilterOffSet = document.getElementById('filterWrapper').offsetTop;
-      window.scrollTo(0, getFilterOffSet - getFilterHeight);
-      localStorage.removeItem('handleRemoveFilter');
+      plpRoutingHandling(filterId);
     } else if (!plpPageCheck) window.scrollTo(0, 0);
   } else {
     localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
