@@ -9,6 +9,11 @@ exports[`Add gift card component should render component correctly if add gift i
     fontSizeVariation="xlarge"
     to="/account?id=payment"
   >
+    <span
+      className="left-arrow"
+    >
+       
+    </span>
     lbl_common_backLink
   </Styled(Anchor)>
   <Styled(HeadingStyle)
@@ -54,6 +59,11 @@ exports[`Add gift card component should render component correctly if add gift i
     fontSizeVariation="xlarge"
     to="/account?id=payment"
   >
+    <span
+      className="left-arrow"
+    >
+       
+    </span>
     lbl_common_backLink
   </Styled(Anchor)>
   <Styled(HeadingStyle)
