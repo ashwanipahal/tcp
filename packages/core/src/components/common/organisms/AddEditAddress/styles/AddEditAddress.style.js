@@ -2,10 +2,6 @@ import { css } from 'styled-components';
 
 const styles = css`
   &.addEditAddress {
-    .select__input {
-      font-size: ${props => props.theme.typography.fontSizes.fs13};
-    }
-
     .CheckBox__text {
       line-height: 26px;
     }

@@ -1097,6 +1097,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                   onClick={this.closeMiniBagMethod}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (

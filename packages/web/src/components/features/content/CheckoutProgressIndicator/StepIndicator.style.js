@@ -29,6 +29,7 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 374px;
       padding: 6px 0 4px;
+      padding-bottom: 20px;
     }
 
     @media ${props => props.theme.mediaQuery.smallOnly} {

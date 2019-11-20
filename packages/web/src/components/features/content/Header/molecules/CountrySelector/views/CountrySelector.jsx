@@ -21,13 +21,21 @@ class CountrySelector extends React.Component {
   }
 
   openModal = () => {
-    const { toggleModal } = this.props;
+    const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
+    if (!countriesMap.length) {
+      this.getCountryListData();
+    }
   };
 
   closeModal = () => {
     const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false });
+  };
+
+  getCountryListData = () => {
+    const { loadCountryListData } = this.props;
+    loadCountryListData();
   };
 
   getSelectedCountry = countryCode => {
@@ -204,6 +212,7 @@ CountrySelector.propTypes = {
   savedCountry: PropTypes.string.isRequired,
   savedCurrency: PropTypes.string.isRequired,
   savedLanguage: PropTypes.string.isRequired,
+  loadCountryListData: PropTypes.func,
   countriesMap: PropTypes.shape({}).isRequired,
   currenciesMap: PropTypes.shape({}).isRequired,
   getModuleXContent: PropTypes.func.isRequired,
@@ -224,6 +233,7 @@ CountrySelector.defaultProps = {
   showInFooter: false,
   handleSubmit: () => {},
   toggleModal: () => {},
+  loadCountryListData: () => {},
   updateCountry: () => {},
   updateLanguage: () => {},
   updateCurrency: () => {},
