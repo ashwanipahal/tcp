@@ -30,7 +30,6 @@ export default function create(store) {
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   const { pageCountCookieKey } = API_CONFIG;
-
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
@@ -202,6 +201,7 @@ export default function create(store) {
         return typeCart;
       },
     },
+
     products: {
       get() {
         return store
