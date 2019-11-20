@@ -165,7 +165,10 @@ const renderAddToBagContainer = (
   outfitProduct,
   plpLabels,
   sizeChartLinkVisibility,
-  addToBagError
+  addToBagError,
+  isBundleProduct,
+  toastMessage
+  // eslint-disable-next-line max-params
 ) => {
   return (
     <ProductAddToBagContainer
@@ -179,6 +182,8 @@ const renderAddToBagContainer = (
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
         onChangeColor(colorIndex, setCurrentColorIndex)
       }
+      isBundleProduct={isBundleProduct}
+      toastMessage={toastMessage}
     />
   );
 };
@@ -207,6 +212,7 @@ const OutfitDetailsView = ({
   addToFavorites,
   isBundleProduct,
   addToBagError,
+  toastMessage,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -360,12 +366,15 @@ const OutfitDetailsView = ({
         outfitProduct,
         plpLabels,
         sizeChartLinkVisibility,
-        addToBagError
+        addToBagError,
+        isBundleProduct,
+        toastMessage
       )}
-      {renderPickUpStore({
-        currentProduct: outfitProduct,
-        selectedColorProductId: colorProductId,
-      })}
+      {!isBundleProduct &&
+        renderPickUpStore({
+          currentProduct: outfitProduct,
+          selectedColorProductId: colorProductId,
+        })}
     </OutfitProductWrapper>
   );
 };
@@ -387,6 +396,7 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
   addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 OutfitDetailsView.defaultProps = {

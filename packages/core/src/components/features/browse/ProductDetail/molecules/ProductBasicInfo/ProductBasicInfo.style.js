@@ -6,6 +6,12 @@ const ProductBasicInfoStyle = css`
     flex-direction: row;
     justify-content: space-between;
   }
+  .fav-icon-wrapper {
+    display: grid;
+  }
+  .favorite-count {
+    text-align: center;
+  }
 `;
 
 export default ProductBasicInfoStyle;

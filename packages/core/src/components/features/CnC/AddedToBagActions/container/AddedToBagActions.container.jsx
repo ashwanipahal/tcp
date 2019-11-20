@@ -9,7 +9,9 @@ import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
-import CHECKOUT_ACTIONS from '../../Checkout/container/Checkout.action';
+import CHECKOUT_ACTIONS, {
+  setVenmoPaymentInProgress,
+} from '../../Checkout/container/Checkout.action';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
 
@@ -18,11 +20,22 @@ export class AddedToBagContainer extends React.Component<Props> {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
+  /**
+   * @description - onCartCheckout method will check for selected checkout method
+   * @param {object} payload - checkout payload for app and web
+   */
+  onCartCheckout = payload => {
+    const { handleCartCheckout, setVenmoInProgress } = this.props;
+    if (payload && !payload.isVenmoProgress) {
+      setVenmoInProgress(false);
+    }
+    handleCartCheckout(payload);
+  };
+
   render() {
     const {
       labels,
       showAddTobag,
-      handleCartCheckout,
       isEditingItem,
       isInternationalShipping,
       isVenmoEnabled,
@@ -57,7 +70,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         labels={labels}
         onClickViewBag={this.onClickViewBag}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        handleCartCheckout={this.onCartCheckout}
         isEditingItem={isEditingItem}
         isInternationalShipping={isInternationalShipping}
         isVenmoEnabled={isVenmoEnabled}
@@ -112,6 +125,7 @@ const mapDispatchToProps = dispatch => {
     handleCartCheckout: payload => {
       dispatch(bagPageActions.startCheckout(payload));
     },
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
     setClickAnalyticsDataCheckout: payload => {
       dispatch(setClickAnalyticsData(payload));
     },

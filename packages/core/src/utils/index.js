@@ -38,6 +38,7 @@ export {
   disableBodyScroll,
   isMobileWeb,
   removeBodyScrollLocks,
+  isAndroidWeb,
 } from './utils.web';
 
 export {
@@ -86,5 +87,4 @@ export {
   getStyliticsRegion,
   calculatePriceValue,
   getProductUrlForDAM,
-  getPriceWithCurrency,
 } from './utils';

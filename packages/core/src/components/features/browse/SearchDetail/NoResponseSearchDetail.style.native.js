@@ -31,4 +31,15 @@ const AnchorContainer = {
   flexDirection: 'row',
 };
 
-export { styles, RowContainer, ColumnContainer, PageContainer, AnchorContainer };
+const RecommendationWrapper = styled.View`
+  margin-left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+export {
+  styles,
+  RowContainer,
+  ColumnContainer,
+  PageContainer,
+  AnchorContainer,
+  RecommendationWrapper,
+};
