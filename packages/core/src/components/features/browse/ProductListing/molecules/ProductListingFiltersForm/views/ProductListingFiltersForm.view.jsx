@@ -337,7 +337,7 @@ class ProductListingFiltersForm extends React.Component {
                     role="option"
                     textAlign="center"
                     tabIndex={0}
-                    fontSize="fs16"
+                    fontSize="fs14"
                     fontFamily="secondary"
                     color="gray.900"
                     outline="none"

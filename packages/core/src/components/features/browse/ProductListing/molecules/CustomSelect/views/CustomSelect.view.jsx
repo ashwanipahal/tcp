@@ -607,7 +607,7 @@ class CustomSelect extends React.Component {
               component="span"
               textAlign="center"
               tabIndex={-1}
-              fontSize="fs13"
+              fontSize="fs14"
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
