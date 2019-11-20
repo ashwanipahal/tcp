@@ -1,4 +1,5 @@
 import endpoints from '@tcp/core/src/services/endpoints';
+import { isMobileApp } from '@tcp/core/src/utils';
 import { executeExternalAPICall } from '../../../handler';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
@@ -8,7 +9,7 @@ function briteVerifyStatusExtraction(emailAddress) {
     webService: {
       method: endpoints.emailVerification.method,
       URI: endpoints.emailVerification.URI,
-      JSONP: true,
+      JSONP: !isMobileApp(),
       reqTimeout: 2000,
     },
     body: {
