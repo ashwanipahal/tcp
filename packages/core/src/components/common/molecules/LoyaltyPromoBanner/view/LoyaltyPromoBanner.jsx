@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, RichText, Row, Col } from '../../../atoms';
 import { readCookie, setCookie } from '../../../../../utils/cookie.util';
+import { loyalityAnalyticsValue } from '../../../../../constants/analytics';
 import withStyles from '../../../hoc/withStyles';
 
 import style from '../LoyaltyPromoBanner.style';
@@ -60,7 +61,7 @@ const LoyaltyPromoBanner = props => {
             dataLocator={dataLocator || `loyalty-promo-banner`}
             clickData={{
               customEvents: ['event80', 'event81'],
-              internalCampaignId: 'lp_s1_banner_na_050519_doubleup',
+              internalCampaignId: loyalityAnalyticsValue,
             }}
           >
             <RichText richTextHtml={richText.text} />

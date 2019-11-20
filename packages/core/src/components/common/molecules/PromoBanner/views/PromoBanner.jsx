@@ -7,6 +7,7 @@ import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
 import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import { promoAnalyticsValue } from '../../../../../constants/analytics';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -54,7 +55,6 @@ const PromoBanner = props => {
     promoBanner: [{ textItems, link }],
     className,
     dataLocatorHeader,
-    promoAnalyticsValue,
     ...otherProps
   } = props;
 
@@ -80,7 +80,7 @@ const PromoBanner = props => {
           className="promo-text-link"
           clickData={{
             customEvents: ['event80', 'event81'],
-            internalCampaignId: promoAnalyticsValue || '',
+            internalCampaignId: promoAnalyticsValue,
           }}
         >
           {textItems.map(({ text, style }, index) => {
@@ -152,13 +152,11 @@ PromoBanner.propTypes = {
       })
     )
   ),
-  promoAnalyticsValue: PropTypes.string,
 };
 
 PromoBanner.defaultProps = {
   headerText: '',
   dataLocatorHeader: '',
-  promoAnalyticsValue: '',
 };
 
 export { PromoBanner as PromoBannerVanilla };
