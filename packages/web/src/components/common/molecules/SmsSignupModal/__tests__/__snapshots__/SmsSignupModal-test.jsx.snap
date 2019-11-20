@@ -268,7 +268,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                 }
                 dataLocator="sms_address_field"
                 enableSuccessCheck={false}
-                id="signupPhoneNumber"
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
@@ -858,7 +858,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                 }
                 dataLocator="sms_address_field"
                 enableSuccessCheck={false}
-                id="signupPhoneNumber"
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}

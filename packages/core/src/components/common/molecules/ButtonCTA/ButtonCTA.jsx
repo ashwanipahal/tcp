@@ -39,10 +39,12 @@ const ButtonCTA = props => {
       asPath={url}
       target={target}
       title={title}
+      role="button"
       dataLocator={dataLocatorCTA || `${dataLocator}-link`}
     >
       <Button
         className={className}
+        tabIndex={-1}
         buttonVariation={ctaVariation}
         dataLocator={dataLocator}
         {...otherProps}

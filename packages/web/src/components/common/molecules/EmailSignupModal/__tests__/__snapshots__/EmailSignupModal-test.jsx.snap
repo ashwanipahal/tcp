@@ -268,7 +268,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                 }
                 dataLocator="email_address_field"
                 enableSuccessCheck={false}
-                id="signup"
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
                 type="text"
@@ -728,7 +728,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                 }
                 dataLocator="email_address_field"
                 enableSuccessCheck={false}
-                id="signup"
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
                 type="text"
@@ -1188,7 +1188,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 }
                 dataLocator="email_address_field"
                 enableSuccessCheck={false}
-                id="signup"
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
                 type="text"
