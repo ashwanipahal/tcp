@@ -53,7 +53,7 @@ const modulesMap = {
   moduleB: ModuleB,
   moduleJ: ModuleJ,
   moduleR: ModuleR,
-  // moduleS: ModuleS,
+  moduleS: ModuleS,
   moduleQ: ModuleQ,
   moduleT: ModuleT,
   moduleE: ModuleE,
