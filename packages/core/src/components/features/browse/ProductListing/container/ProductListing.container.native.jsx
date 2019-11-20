@@ -28,6 +28,7 @@ import {
   updateAppliedFiltersInState,
   getAllProductsSelect,
   getScrollToTopValue,
+  getModalState,
   getTotalProductsCount,
   getIsDataLoading,
   getSelectedFilter,
@@ -112,6 +113,7 @@ class ProductListingContainer extends React.PureComponent {
       labelsLogin,
       plpTopPromos,
       isSearchListing,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
     return (
@@ -143,6 +145,7 @@ class ProductListingContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
+        isKeepModalOpen={isKeepModalOpen}
         {...otherProps}
       />
     );
@@ -188,6 +191,7 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isKeepModalOpen: getModalState(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
@@ -250,6 +254,7 @@ ProductListingContainer.propTypes = {
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
+  isKeepModalOpen: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -274,6 +279,7 @@ ProductListingContainer.defaultProps = {
   labelsLogin: {},
   plpTopPromos: [],
   isSearchListing: false,
+  isKeepModalOpen: false,
 };
 
 export default connect(
