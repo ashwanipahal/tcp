@@ -181,6 +181,8 @@ class SearchDetailContainer extends React.PureComponent {
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
                 labelsLogin={labelsLogin}
+                navigation={navigation}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             ) : (
