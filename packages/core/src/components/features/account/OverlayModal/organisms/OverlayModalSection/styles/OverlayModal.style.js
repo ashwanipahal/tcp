@@ -14,17 +14,14 @@ const StyledModal = css`
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
   z-index: ${props => props.theme.zindex.zDrawer};
   ${props =>
-    props.component !== 'accountDrawer'
-      ? `@media ${props.theme.mediaQuery.smallOnly} {
-    position: fixed;
-    top: 0 !important;
-    height: 100%;
-    width: 100%;
-  }`
+    props.isAccountDrawer
+      ? ''
       : `@media ${props.theme.mediaQuery.smallOnly} {
-          height: 100%;
-          width: 100%;
-      }`}
+      position: fixed;
+      top: 0 !important;
+      height: 100%;
+      width: 100%;
+    }`}
   &:focus, &:active {
     outline: 0;
   }
@@ -33,10 +30,6 @@ const StyledModal = css`
     box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     overflow-y: auto;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      max-height: none !important;
-      height: ${props => (props.component === 'accountDrawer' ? 'auto' : '100%')};
-    }
     margin-top: 8px;
   }
   .condensed-overlay {

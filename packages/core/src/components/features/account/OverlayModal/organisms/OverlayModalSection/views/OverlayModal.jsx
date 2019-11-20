@@ -121,14 +121,7 @@ class OverlayModal extends React.Component {
   };
 
   /* set scroll height in mobile view */
-  setInnerScrollHeight = () => {
-    const modal = document.getElementById('dialogContent');
-    /* istanbul ignore else */
-    if (window && window.innerWidth < 767) {
-      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
-      this.bodyContainer.style.overflow = 'hidden';
-    }
-  };
+  setInnerScrollHeight = () => {};
 
   /**
    * Set Left position of modal triangle
