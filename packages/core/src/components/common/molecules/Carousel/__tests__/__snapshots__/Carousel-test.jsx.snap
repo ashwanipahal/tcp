@@ -3,7 +3,7 @@
 exports[`Carousel component renders correctly 1`] = `
 Carousel {
   "appendDots": [Function],
-  "UNSAFE_componentWillReceiveProps": [Function],
+  "componentWillReceiveProps": [Function],
   "context": undefined,
   "getPlayButton": [Function],
   "getSlider": [Function],

@@ -22,8 +22,7 @@ export class ThemeWrapper extends React.PureComponent {
     updateAppTypeHandler(appType);
   }
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const {
       appType,
@@ -60,7 +59,6 @@ export class ThemeWrapper extends React.PureComponent {
   render() {
     const { children, appType } = this.props;
     const currentTheme = this.getTheme();
-
     return (
       <ThemeProvider theme={currentTheme} appType={appType}>
         <React.Fragment>{children}</React.Fragment>

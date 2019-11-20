@@ -113,8 +113,7 @@ class PaymentView extends React.Component<Props> {
     this.isEdit = false;
   }
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = nextProps => {
     if (!nextProps.deleteModalMountedState)
       this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
   };
