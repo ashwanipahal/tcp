@@ -32,8 +32,107 @@ exports[`Drawer component renders correctly 1`] = `
       onMouseLeave={[Function]}
       textAlign="left"
     >
-      <Styled(Anchor)
-        onClick={[Function]}
+      <Connect(Component)
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  font-family: ",
+                [Function],
+                ";
+  color: inherit;
+
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+
+  .left-arrow {
+    border: solid ",
+                [Function],
+                ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(Anchor)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        clickData={
+          Object {
+            "pageNavigationText": "",
+          }
+        }
       >
         <div
           className="nav-bar-l1-content"
@@ -60,7 +159,7 @@ exports[`Drawer component renders correctly 1`] = `
             className="icon-arrow"
           />
         </div>
-      </Styled(Anchor)>
+      </Connect(Component)>
       <div
         className="undefined l1-overlay "
         onMouseEnter={[Function]}
