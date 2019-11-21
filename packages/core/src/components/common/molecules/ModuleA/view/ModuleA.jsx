@@ -42,26 +42,25 @@ class ModuleA extends React.Component {
     super(props);
 
     this.state = {
-      isRibbonLeftAligned: false,
+      curSlideIndex: 0,
     };
   }
 
-  componentDidMount() {
-    this.setRibbonPosition(0);
-  }
-
-  setRibbonPosition = index => {
+  /* Return className for the ribbon placement */
+  getRibbonClass = () => {
     const { largeCompImageCarousel } = this.props;
-    const [ribbonBanner] = largeCompImageCarousel[index].ribbonBanner;
-    if (ribbonBanner.ribbonPlacement === 'left') {
-      this.setState({ isRibbonLeftAligned: true });
-    } else {
-      this.setState({ isRibbonLeftAligned: false });
-    }
-  };
+    const { curSlideIndex } = this.state;
+    const curCarouselSlide = largeCompImageCarousel[curSlideIndex];
+    let ribbonAlignedClass = '';
 
-  onSlideChange = index => {
-    this.setRibbonPosition(index);
+    if (curCarouselSlide) {
+      const [ribbonBanner] = curCarouselSlide.ribbonBanner;
+      if (ribbonBanner.ribbonPlacement === 'left') {
+        ribbonAlignedClass = 'left-aligned-ribbon';
+      }
+    }
+
+    return ribbonAlignedClass;
   };
 
   render() {
@@ -75,7 +74,7 @@ class ModuleA extends React.Component {
     } = this.props;
 
     const buttonListCtaType = ctaTypes[ctaType];
-    const { isRibbonLeftAligned } = this.state;
+
     const isLinkList = buttonListCtaType === 'linkCTAList';
     const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
 
@@ -104,15 +103,18 @@ class ModuleA extends React.Component {
         className="slick-prev"
       />
     );
+    CAROUSEL_OPTIONS.afterChange = slideIndex => {
+      this.setState({ curSlideIndex: slideIndex });
+    };
     carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
     carouselConfig.pauseIconButtonLabel = pauseIconButton;
     carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <Row
-        className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
-          isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
-        } moduleA`}
+        className={`${className} ${
+          isGymboree() ? 'gymboree-module-a' : ''
+        } ${this.getRibbonClass()} moduleA`}
         fullBleed={fullBleed || { small: true, medium: true, large: false }}
       >
         <Col
