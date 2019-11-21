@@ -27,49 +27,7 @@ exports[`Shipping Form should render correctly 1`] = `
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(RegisteredShippingForm)
-      ServerErrors={Object {}}
-      addressLabels={
-        Object {
-          "addressFormLabels": Object {},
-        }
-      }
-      addressPhoneNo={null}
-      afterAddressUpdate={[Function]}
-      className=""
-      defaultAddressId={null}
-      defaultShipmentId={null}
-      editShipmentDetailsError=""
-      errorMessageRef={
-        Object {
-          "current": null,
-        }
-      }
-      getEmailSignUpLabels={Object {}}
-      handleShipIntClick={[Function]}
-      isAddNewAddress={false}
-      isEditing={false}
-      isGuest={false}
-      isLoading={false}
-      isMobile={false}
-      isOrderUpdateChecked={false}
-      isSaveToAddressBookChecked={false}
-      isUsSite={true}
-      newUserPhoneNo={null}
-      onFileAddressKey={null}
-      orderHasPickUp={false}
-      saveToAddressBook={false}
-      selectedShipmentId={null}
-      setAsDefaultShipping={false}
-      shipmentMethods={null}
-      shippingAddressId={null}
-      shippingLabels={Object {}}
-      showAccordian={true}
-      smsSignUpLabels={Object {}}
-      syncErrors={Object {}}
-      toggleIsEditing={[Function]}
-      userAddresses={Array []}
-    />
+    <Styled(AddressSkelton) />
     <FormSection
       name="smsSignUp"
     >
@@ -168,23 +126,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          formName="checkoutShipping"
-          formSection="address"
-          handleShipIntClick={[Function]}
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -274,47 +216,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "shipmentMethods.shippingMethodId",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          formName="checkoutShipping"
-          formSection="address"
-          handleShipIntClick={[Function]}
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -434,191 +336,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "shipmentMethods.shippingMethodId",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmm",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.firstName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.lastName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.city",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test city",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.zipCode",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.state",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.phoneNumber",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234567890",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          formName="checkoutShipping"
-          formSection="address"
-          handleShipIntClick={[Function]}
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -882,24 +600,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={[MockFunction]}
-          formName="checkoutShipping"
-          formSection="address"
-          handleShipIntClick={[Function]}
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
