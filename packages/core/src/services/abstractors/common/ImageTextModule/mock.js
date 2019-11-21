@@ -87,7 +87,7 @@ export default {
     },
     {
       key: 'headerPosition',
-      val: 'right',
+      val: 'left',
     },
     {
       key: 'expandableTitle',

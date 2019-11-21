@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageTextModule Componenet should match snapshot 1`] = `
+<Styled(Row)
+  fullBleed={
+    Object {
+      "large": true,
+      "medium": false,
+      "small": true,
+    }
+  }
+>
+  <Styled(Col)
+    className="content-wrapper"
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <styled.div>
+      <Styled(BodyCopy)
+        className="headline"
+        color="text.primary"
+        component="div"
+        data-locator="moduleImageText_headerline_text"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs20",
+            "fs20",
+            "fs36",
+          ]
+        }
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <span>
+          Module Headline
+        </span>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="headsubline"
+        color="text.primary"
+        component="div"
+        data-locator="moduleImageText_headersubline_text"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs14",
+            "fs16",
+            "fs26",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <span>
+          Module Subheadline
+        </span>
+      </Styled(BodyCopy)>
+      <Styled(ButtonList)
+        buttonListVariation="stackedCTAList"
+        buttonsData={
+          Array [
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Girl",
+                "title": "Girl",
+                "url": "/girl",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Toddler Girl",
+                "title": "Toddler Girl",
+                "url": "/toddler-girl",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Boy",
+                "title": "Boy",
+                "url": "/boy",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Toddler Boy",
+                "title": "Toddler Boy",
+                "url": "/toddler-boy",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Baby",
+                "title": "Baby",
+                "url": "/baby",
+              },
+            },
+          ]
+        }
+        className="button-list"
+        dataLocatorDivisionImages="moduleImageText_cta_links_"
+        dataLocatorDropDown="moduleImageText_cta_image_"
+        dataLocatorTextCta="moduleB_cta_links_"
+        dropdownLabel="<title>"
+        dualVariation={
+          Object {
+            "displayProps": Object {
+              "large": true,
+              "medium": false,
+              "small": false,
+            },
+            "name": "dropdownButtonCTA",
+          }
+        }
+      />
+    </styled.div>
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <div
+      className=""
+    >
+      <WithTheme(DamImage)
+        data-locator="moduleImageText_image"
+        imgConfigs={
+          Array [
+            "t_mod_img_txt_m",
+            "t_mod_img_txt_t",
+            "t_mod_img_txt_d",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Buy 1 get one free",
+            "title": "Buy 1 get one free",
+            "url": "https://test5.childrensplace.com/image/upload/v1573239143/module-E-test-large-2.jpg",
+          }
+        }
+      />
+    </div>
+  </Styled(Col)>
+</Styled(Row)>
+`;
