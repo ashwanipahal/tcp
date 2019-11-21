@@ -1,17 +1,15 @@
 import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+  getVideoUrl,
+} from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
 import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
-
-const getVideoUrl = url => {
-  if (url) {
-    return url.match(/\.(mp4|webm|WEBM|MP4)$/g);
-  }
-  return false;
-};
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
