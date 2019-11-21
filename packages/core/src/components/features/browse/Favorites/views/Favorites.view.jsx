@@ -26,11 +26,32 @@ class FavoritesView extends React.PureComponent {
     };
   }
 
+  getSharableLink = () => {
+    const { activeWishList, wishlistsSummaries } = this.props;
+    const activeWishListId = activeWishList && activeWishList.id;
+    const currentWishList =
+      wishlistsSummaries &&
+      wishlistsSummaries.length > 0 &&
+      wishlistsSummaries.filter(wishlist => {
+        return wishlist.id === activeWishListId;
+      });
+    return currentWishList[0].shareableLink;
+  };
+
+  handleFacebookShare = () => {
+    const shareUrl = this.getSharableLink();
+    const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+
+    window.open(url);
+  };
+
   shareClickHandler = value => {
     if (value === 'Email') {
       this.handleShareList();
     } else if (value === 'Copy Link') {
       this.handleCopyLink();
+    } else {
+      this.handleFacebookShare();
     }
   };
 
@@ -233,6 +254,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onHandleSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
+          shareableLink={this.getSharableLink()}
         />
       );
     }

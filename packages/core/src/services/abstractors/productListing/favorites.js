@@ -103,7 +103,7 @@ export const getUserWishLists = userName => {
             displayName: wishlist.nameIdentifier,
             isDefault: wishlist.status === 'Default',
             itemsCount: wishlist.itemCount,
-            shareableLink: `${assetHost}/${siteId}/favorites?wishlistId=${
+            shareableLink: `${assetHost}${siteId}/favorites?wishlistId=${
               wishlist.giftListExternalIdentifier
             }&guestAccessKey=${wishlist.guestAccessKey}`,
           };

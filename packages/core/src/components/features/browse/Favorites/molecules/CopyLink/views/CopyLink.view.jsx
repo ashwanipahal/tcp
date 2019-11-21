@@ -34,7 +34,7 @@ class CopyLink extends React.PureComponent {
   }
 
   render() {
-    const { labels, className, onCloseModal } = this.props;
+    const { labels, className, onCloseModal, shareableLink } = this.props;
 
     return (
       <>
@@ -57,7 +57,7 @@ class CopyLink extends React.PureComponent {
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <TextBox
                 input={{
-                  value: 'https://www.xyz',
+                  value: shareableLink,
                   name: 'shareLink',
                 }}
                 id="shareLink"
@@ -110,11 +110,13 @@ CopyLink.propTypes = {
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  shareableLink: PropTypes.string,
 };
 CopyLink.defaultProps = {
   labels: {},
   className: '',
   handleSubmit: () => {},
+  shareableLink: '',
 };
 
 export default CopyLink;
