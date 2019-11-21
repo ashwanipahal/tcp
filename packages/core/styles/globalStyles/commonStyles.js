@@ -188,7 +188,7 @@ export default css`
     max-height: 100%;
     max-width: 100%;
   }
-  .lazyLoadImage.error {
+  .loadImage.error {
     @media ${mediaQuery.smallOnly} {
       height: 200px;
     }
