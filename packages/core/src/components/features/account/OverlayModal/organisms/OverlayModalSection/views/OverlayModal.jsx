@@ -219,7 +219,7 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = '';
+    this.bodyContainer.style.overflow = 'visible';
   };
 
   /**

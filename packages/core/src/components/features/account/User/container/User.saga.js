@@ -21,7 +21,6 @@ import { defaultCountries, defaultCurrencies } from '../../../../../constants/si
 
 // eslint-disable-next-line complexity
 export function* getUserInfoSaga() {
-  yield put(setLoaderState(true));
   try {
     const response = yield call(getProfile, {
       pageId: 'myAccount',
@@ -80,9 +79,7 @@ export function* getUserInfoSaga() {
     if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
-    yield put(setLoaderState(false));
   } catch (err) {
-    yield put(setLoaderState(false));
     yield put(setIsRegisteredUserCallDone());
     logger.error('Error: error in fetching user profile information');
   }

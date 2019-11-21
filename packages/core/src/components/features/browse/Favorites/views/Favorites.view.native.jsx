@@ -29,6 +29,8 @@ import CustomIcon from '../../../../common/atoms/Icon';
 import ModalWrapper from '../molecules/ModalWrapper';
 import AddList from '../molecules/AddList';
 import EditList from '../molecules/EditList';
+import ShareList from '../molecules/ShareList';
+import CopyLink from '../molecules/CopyLink';
 import NoFavoritesFound from '../molecules/NoFavoritesFound/views';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
@@ -47,6 +49,8 @@ const arrowImageStyle = {
 
 const ADD_LIST = 'addList';
 const EDIT_LIST = 'editList';
+const SHARE_LIST_BY_EMAIL = 'shareListByEmail';
+const SHARE_LIST_BY_COPY_LINK = 'shareListByCopyLink';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -101,12 +105,30 @@ class FavoritesView extends React.PureComponent {
     console.tron.log('onEditListHandler:', data);
   };
 
-  onRemoveListHandler = data => {
-    console.tron.log('onRemoveListHandler:', data);
+  onDeleteListHandler = data => {
+    console.tron.log('onDeleteListHandler:', data);
+  };
+
+  onCopyLinkHandler = data => {
+    console.tron.log('onCopyLinkHandler:', data);
   };
 
   handleEditList = () => {
     this.currentPopupName = EDIT_LIST;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleShareListByEmail = () => {
+    this.currentPopupName = SHARE_LIST_BY_EMAIL;
+    this.setState({
+      isOpenModal: true,
+    });
+  };
+
+  handleShareListByCopyLink = () => {
+    this.currentPopupName = SHARE_LIST_BY_COPY_LINK;
     this.setState({
       isOpenModal: true,
     });
@@ -149,6 +171,12 @@ class FavoritesView extends React.PureComponent {
     if (this.currentPopupName === EDIT_LIST) {
       return null;
     }
+    if (this.currentPopupName === SHARE_LIST_BY_EMAIL) {
+      return getLabelValue(labels, 'lbl_fav_share_list_heading');
+    }
+    if (this.currentPopupName === SHARE_LIST_BY_COPY_LINK) {
+      return getLabelValue(labels, 'lbl_fav_share_list_heading');
+    }
     return '';
   };
 
@@ -169,7 +197,26 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onHandleSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
-          onRemoveList={this.onRemoveListHandler}
+          onDeleteList={this.onDeleteListHandler}
+        />
+      );
+    }
+    if (this.currentPopupName === SHARE_LIST_BY_EMAIL) {
+      return (
+        <ShareList
+          labels={labels}
+          onHandleSubmit={this.onEditListHandler}
+          onCloseModal={this.onCloseModal}
+        />
+      );
+    }
+
+    if (this.currentPopupName === SHARE_LIST_BY_COPY_LINK) {
+      return (
+        <CopyLink
+          labels={labels}
+          onCopyLink={this.onCopyLinkHandler}
+          onCloseModal={this.onCloseModal}
         />
       );
     }

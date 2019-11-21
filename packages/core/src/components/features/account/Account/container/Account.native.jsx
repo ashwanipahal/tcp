@@ -134,7 +134,12 @@ export class Account extends React.PureComponent {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = (component, otherProps) => {
+  handleComponentChange = (component, otherProps, isPageNavigation) => {
+    if (isPageNavigation) {
+      const { navigation } = this.props;
+      navigation.navigate(component);
+      return;
+    }
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,

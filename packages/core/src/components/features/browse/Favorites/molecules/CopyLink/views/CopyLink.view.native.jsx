@@ -3,52 +3,52 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Container from '../styles/RemoveList.style.native';
+import Container from '../styles/CopyLink.style.native';
 
-const RemoveList = ({ labels, onRemoveList, margins, onCloseModal }) => {
+const CopyLink = ({ labels, onCopyLink, margins, onCloseModal }) => {
   return (
     <Container margins={margins}>
       <BodyCopy
         margin="0 30px 0 30px"
         dataLocator="fav_brand_title"
         mobileFontFamily="secondary"
-        fontSize="fs22"
+        fontSize="fs14"
         fontWeight="regular"
         color="gray.900"
         textAlign="center"
-        text={getLabelValue(labels, 'lbl_fav_remove_list_msg')}
+        text={getLabelValue(labels, 'lbl_fav_share_list_msg')}
       />
       <Button
         margin="60px 0 0 0"
         fill="BLUE"
         type="submit"
         color="white"
-        onPress={onRemoveList}
-        text={getLabelValue(labels, 'btn_fav_yes_remove')}
+        onPress={onCopyLink}
+        text={getLabelValue(labels, 'lbl_fav_copyLink')}
       />
       <Button
         margin="24px 0 0 0"
         fill="WHITE"
         type="submit"
         onPress={onCloseModal}
-        text={getLabelValue(labels, 'btn_fav_no')}
+        text={getLabelValue(labels, 'btn_fav_cancel')}
       />
     </Container>
   );
 };
 
-RemoveList.propTypes = {
+CopyLink.propTypes = {
   labels: PropTypes.shape({}),
-  onRemoveList: PropTypes.func.isRequired,
+  onCopyLink: PropTypes.func.isRequired,
   margins: PropTypes.string,
   onCloseModal: PropTypes.func,
 };
 
-RemoveList.defaultProps = {
+CopyLink.defaultProps = {
   labels: {},
   margins: null,
   onCloseModal: () => {},
 };
 
-export default RemoveList;
-export { RemoveList as RemoveListVanilla };
+export default CopyLink;
+export { CopyLink as CopyLinkVanilla };
