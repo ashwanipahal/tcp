@@ -46,7 +46,9 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
       link={null}
       textAlign="left"
     >
-      12.00
+      <Connect(PriceCurrency)
+        price={12}
+      />
     </ForwardRef>
     <ForwardRef
       className="merchant-tag"
