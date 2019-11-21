@@ -4,6 +4,7 @@ import {
   setLoaderState,
   setSectionLoaderState,
 } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import { isClient } from '@tcp/core/src/utils';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -17,7 +18,6 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
 import checkoutUtil from '../util/utility';
-import { isClient } from '@tcp/core/src/utils';
 import {
   getCurrentSection,
   updateAnalyticsData,
