@@ -27,7 +27,7 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
@@ -63,7 +63,7 @@ export class BagPageContainer extends React.Component<Props> {
       if (isSfl !== prevIsSfl && isSfl) {
         const headingElem = document.querySelector('.save-for-later-section-heading');
         setTimeout(() => {
-          headingElem.scrollIntoView(true);
+          scrollToParticularElement(headingElem);
         }, 100);
       }
     }
