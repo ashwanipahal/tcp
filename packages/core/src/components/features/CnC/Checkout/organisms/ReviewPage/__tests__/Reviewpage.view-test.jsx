@@ -20,6 +20,7 @@ describe('ReviewPageVanilla component', () => {
       checkoutRoutingDone: false,
       labels: {},
       reviewDidMount: () => {},
+      handleSubmit: () => {},
     };
     const component = shallow(<ReviewPageVanilla {...props} />);
     expect(component).toMatchSnapshot();
