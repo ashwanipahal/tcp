@@ -8,7 +8,7 @@ exports[`Points History List Page View should render Points History Page Correct
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kGXeez",
+        "componentId": "sc-dxgOiQ",
         "isStatic": false,
         "rules": Array [
           "
@@ -42,7 +42,7 @@ exports[`Points History List Page View should render Points History Page Correct
       "displayName": "Styled(PointsHistoryList)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kGXeez",
+      "styledComponentId": "sc-dxgOiQ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
