@@ -7,7 +7,7 @@ import {
   CARTPAGE_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '@tcp/core/src/utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import {
   getPersonalDataState,
