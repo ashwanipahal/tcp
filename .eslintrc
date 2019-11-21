@@ -33,37 +33,10 @@
     "max-lines": ["error", { "max": 420, "skipComments": true, "skipBlankLines": true }],
     "max-len": 0,
     "complexity": ["error", { "max": 10 }],
-    /**
-      Disabled temporarily
     "extra-rules/no-commented-out-code": "error",
-    */
     "react-native/no-raw-text": 0,
     "react/button-has-type": 0,
-    "sonarjs/no-small-switch": 0,
-
-    /* these need to be addressed after the upgrade is merged */
-    "camelcase": 0,
-    "lines-between-class-members": 0,
-    "no-class-assign": 0,
-    "no-global-assign": 0,
-    "no-unused-vars": 0,
-    "no-use-before-define": 0,
-    "no-else-return": 0,
-    "no-undef": 0,
-    "no-plusplus": 0,
-    "no-eval": 0,
-    "object-shorthand": 0,
-    "extra-rules/no-commented-out-code": 0,
-    "import/no-cycle": 0,
-    "import/no-duplicates": 0,
-    "import/order": 0,
-    "import/prefer-default-export": 0,
-    "react/prop-types": 0,
-    "react-native/no-inline-styles": 0,
-    "react/destructuring-assignment": 0,
-    "react/jsx-filename-extension": 0,
-    "react/no-unused-prop-types": 0,
-    "sonarjs/no-all-duplicated-branches": 0
+    "sonarjs/no-small-switch": 0
   },
   "overrides": [
     {

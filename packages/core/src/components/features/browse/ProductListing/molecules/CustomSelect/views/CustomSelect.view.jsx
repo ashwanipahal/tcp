@@ -256,8 +256,7 @@ class CustomSelect extends React.Component {
     this.customSelectCounter = CustomSelect.customSelectCounter + 1;
   }
 
-  /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { expanded, optionsMap } = this.props;
     const { highlightedIndex } = this.state;
     if (nextProps.expanded !== expanded || nextProps.disableExpandStateChanges) {

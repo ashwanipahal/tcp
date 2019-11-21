@@ -11,6 +11,9 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
     }
+    .checkoutBtnTracker {
+      flex: none;
+    }
     .item-closed {
       .elem-mb-MED {
         margin-bottom: 0;
@@ -175,7 +178,7 @@ export const addedToBagActionsStyles = css`
       display: inline-flex;
       margin-bottom: 7px;
       .paypal-wrapper {
-        min-width: unset;
+        min-width: auto;
       }
       .venmo-button {
         height: 42px;

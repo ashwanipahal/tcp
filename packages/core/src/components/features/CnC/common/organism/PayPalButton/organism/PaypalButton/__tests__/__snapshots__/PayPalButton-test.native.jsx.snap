@@ -25,7 +25,6 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
     <WebView
       allowUniversalAccessFromFileURLs={true}
       automaticallyAdjustContentInsets={false}
-      cacheEnabled={true}
       domStorageEnabled={true}
       javaScriptEnabled={true}
       mixedContentMode="always"
@@ -44,7 +43,6 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
       }
       startInLoadingState={true}
       thirdPartyCookiesEnabled={true}
-      useSharedProcessPool={true}
       useWebKit={true}
     />
   </KeyboardAvoidingView>
