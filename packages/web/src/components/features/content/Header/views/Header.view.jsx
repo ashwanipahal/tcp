@@ -106,7 +106,7 @@ class Header extends React.PureComponent {
       <header className={className}>
         <LoyaltyPromoBanner
           richTextList={loyaltyPromoBanner}
-          className="header-promo__container"
+          className="header-promo__container top-promo-bannner"
           cookieID="mprTopHead"
         />
 
