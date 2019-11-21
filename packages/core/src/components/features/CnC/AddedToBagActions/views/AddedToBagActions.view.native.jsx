@@ -132,7 +132,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </ButtonWrapper>
           </ButtonViewWrapper>
         )}
-        {(isNoNEmptyBag || fromAddedToBagModal) && venmoEnable && this.getVenmoPaymentButton()}
+        {isNoNEmptyBag && !fromAddedToBagModal && venmoEnable && this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );

@@ -37,7 +37,6 @@ import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
-
 // constants
 import constants from '../constants';
 

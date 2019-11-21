@@ -131,6 +131,8 @@ class ProductList extends React.PureComponent {
       isLoggedIn,
       labelsPlpTiles,
       onrenderItemCountView,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     const { item, index } = itemData;
     const { colorsMap, productInfo } = item;
@@ -194,6 +196,8 @@ class ProductList extends React.PureComponent {
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   };
@@ -361,6 +365,8 @@ ProductList.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isSearchListing: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -394,6 +400,8 @@ ProductList.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   isSearchListing: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductList, styles);

@@ -98,7 +98,7 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -241,7 +241,7 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -380,7 +380,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -523,7 +523,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -607,7 +607,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -750,7 +750,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -786,7 +786,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -929,7 +929,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1068,7 +1068,7 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1211,7 +1211,7 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

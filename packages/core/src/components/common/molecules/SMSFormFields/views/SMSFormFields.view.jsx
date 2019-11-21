@@ -15,10 +15,13 @@ import { formatPhoneNumber } from '../../../../../utils/formValidation/phoneNumb
 class SMSFormFields extends React.PureComponent {
   static smsFormFieldsConfig = getStandardConfig(['phoneNumber']);
 
-  handleChange = () => {
-    const { dispatch, addressPhoneNo, formName, formSection } = this.props;
+  handleChange = (e, value) => {
+    const { dispatch, addressPhoneNo, formName, formSection, onCheckBoxChange } = this.props;
     if (dispatch) {
       dispatch(change(formName, `${formSection}.phoneNumber`, addressPhoneNo));
+    }
+    if (onCheckBoxChange) {
+      onCheckBoxChange(value);
     }
   };
 
@@ -92,6 +95,7 @@ class SMSFormFields extends React.PureComponent {
 SMSFormFields.propTypes = {
   className: PropTypes.string,
   isOrderUpdateChecked: PropTypes.bool,
+  onCheckBoxChange: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func,
   addressPhoneNo: PropTypes.number,
