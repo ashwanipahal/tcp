@@ -25,7 +25,7 @@ const renderItem = navigate => listProps => {
   const navigateToNextScreen = () => {
     if (url.includes('-outfit')) {
       // Navigate to outfit listing for outfits
-      const categoryIds = url.split('c?cid=');
+      const categoryIds = url && url.split('c?cid=');
       return navigate('OutfitListing', {
         title: name,
         url,

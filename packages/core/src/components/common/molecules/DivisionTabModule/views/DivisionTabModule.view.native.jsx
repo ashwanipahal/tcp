@@ -17,7 +17,7 @@ const onTabChange = (routeUrl, navigation) => {
   const routeName = routeUrl && routeUrl.includes('-outfits') ? 'OutfitListing' : 'ProductListing';
 
   const url = routeUrl && routeUrl.replace('/c/', '/c?cid=');
-  const categoryIds = url.split('cid=');
+  const categoryIds = (url && url.split('cid=')) || [];
   navigation.navigate(routeName, {
     url,
     reset: true,
