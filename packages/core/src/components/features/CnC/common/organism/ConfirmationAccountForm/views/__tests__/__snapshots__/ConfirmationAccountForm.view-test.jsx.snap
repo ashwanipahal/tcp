@@ -560,7 +560,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -683,7 +683,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1311,7 +1311,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1434,7 +1434,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2804,7 +2804,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2927,7 +2927,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4420,7 +4420,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4543,7 +4543,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -5170,7 +5170,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -5293,7 +5293,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

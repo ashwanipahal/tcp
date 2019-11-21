@@ -88,7 +88,7 @@ export default css`
     display: block;
   }
 
-  .pointerEventsNone{
+  .pointerEventsNone {
     pointer-events: none;
   }
 
