@@ -8,7 +8,7 @@ exports[`CardViewSkeleton component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ifAKCX",
+        "componentId": "sc-EHOje",
         "isStatic": false,
         "rules": Array [
           "
@@ -37,7 +37,7 @@ exports[`CardViewSkeleton component should renders correctly 1`] = `
       "displayName": "Styled(CardViewSkeleton)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ifAKCX",
+      "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
