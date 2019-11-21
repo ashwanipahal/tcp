@@ -35,10 +35,7 @@ export class CategoryListingContainer extends PureComponent {
       layouts,
       Modules,
       navigationData,
-      router: {
-        query: { cid },
-        asPath,
-      },
+      router: { asPath },
     } = this.props;
 
     const categoryListingSlots =
@@ -46,7 +43,7 @@ export class CategoryListingContainer extends PureComponent {
 
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);
-    const seoText = getSeoText(navigationData, cid);
+    const seoText = getSeoText(navigationData, getCategoryName(asPath));
     return (
       <Fragment>
         <CategoryListing
