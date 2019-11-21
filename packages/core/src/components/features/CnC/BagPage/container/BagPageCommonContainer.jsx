@@ -27,18 +27,19 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent([needHelpContentId]);
+    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
@@ -48,14 +49,23 @@ export class BagPageContainer extends React.Component<Props> {
 
   componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+      const {
+        isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+        router: prevRouter,
+      } = prevProps;
       const { router, isRegisteredUserCallDone, bagPageIsRouting } = this.props;
       if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && !bagPageIsRouting) {
         this.fetchInitialActions();
       }
+
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
-      if (isSfl) {
-        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+      const prevIsSfl = utils.getObjectValue(prevRouter, undefined, 'query', 'isSfl');
+
+      if (isSfl !== prevIsSfl && isSfl) {
+        const headingElem = document.querySelector('.save-for-later-section-heading');
+        setTimeout(() => {
+          scrollToParticularElement(headingElem);
+        }, 100);
       }
     }
   }
@@ -99,7 +109,6 @@ export class BagPageContainer extends React.Component<Props> {
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
       cartItemSflError,
-      currencySymbol,
       isPayPalWebViewEnable,
       isPickupModalOpen,
       isMobile,
@@ -138,7 +147,6 @@ export class BagPageContainer extends React.Component<Props> {
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
-        currencySymbol={currencySymbol}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
@@ -220,6 +228,10 @@ export const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    placeCashBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
+    ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),

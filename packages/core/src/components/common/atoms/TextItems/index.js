@@ -1,1 +1,1 @@
-export { default } from './TextItems';
+export { default } from './views';
