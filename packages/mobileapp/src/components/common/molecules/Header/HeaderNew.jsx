@@ -40,7 +40,7 @@ const CART_ITEM_COUNTER = 'cartItemsCount';
  * 3. To show the welcome text for guest user
  *     and shoe the name fro register user
  */
-class HeaderNew extends React.PureComponent {
+class HeaderNew extends React.PureComponent<Props> {
   static propTypes = {
     title: PropTypes.string,
     showSearch: PropTypes.bool,

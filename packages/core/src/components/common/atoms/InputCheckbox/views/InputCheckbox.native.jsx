@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
 import { Alert } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
@@ -180,15 +180,15 @@ class InputCheckBox extends React.Component {
           {isError ? (
             <StyledErrorWrapper>
               <StyledErrorIcon>
-                <Image source={errorIcon} width="15px" height="15px" />
+                <Image source={errorIcon} width="16px" height="14px" />
               </StyledErrorIcon>
 
               <BodyCopy
                 className="Checkbox__error"
-                fontWeight="semibold"
+                fontWeight="extrabold"
                 color="error"
                 fontSize="fs12"
-                mobilefontFamily={['secondary']}
+                fontFamily="secondary"
                 text={isError ? error : null}
               />
             </StyledErrorWrapper>
