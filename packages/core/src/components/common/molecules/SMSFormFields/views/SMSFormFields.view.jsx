@@ -95,6 +95,7 @@ class SMSFormFields extends React.PureComponent {
 SMSFormFields.propTypes = {
   className: PropTypes.string,
   isOrderUpdateChecked: PropTypes.bool,
+  onCheckBoxChange: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func,
   addressPhoneNo: PropTypes.number,
