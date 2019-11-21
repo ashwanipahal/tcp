@@ -137,7 +137,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             className="place-rewards-col3"
           >
             <div className="bonusPointsWrapper">
-              <BonusPointsDays isDefaultOpen />
+              <BonusPointsDays isDefaultOpen isPlaceRewardsPage />
             </div>
           </Col>
           <Col

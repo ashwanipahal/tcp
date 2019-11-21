@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.container';
 import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import { FULLY_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { getIconPath, isMobileApp } from '@tcp/core/src/utils';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
@@ -14,25 +12,6 @@ import MiniBagTileSkeleton from '@tcp/core/src/components/features/CnC/CartItemT
 import productTileCss, { miniBagCSS } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartItemTileSkelton.view';
-
-/**
- * This just holds the logic for rendering a UX timer
- * to measure when the cart items appear. It reads the
- * number of cart items and renders the timer if that
- * number is greater than zero.
- */
-function CartItemsUXTimer({ orderItems }) {
-  const [state, setState] = useState(false);
-  useEffect(() => {
-    if (orderItems.size > 0) setState(true);
-  }, [orderItems.size]);
-  return state ? <RenderPerf.Measure name={FULLY_VISIBLE} /> : null;
-}
-
-CartItemsUXTimer.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  orderItems: PropTypes.any.isRequired,
-};
 
 class ProductTileWrapper extends React.PureComponent<props> {
   constructor(props) {
@@ -258,8 +237,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
           {orderItemsView}
-          {/* UX timer */}
-          <CartItemsUXTimer orderItems={orderItems} />
         </>
       );
     }

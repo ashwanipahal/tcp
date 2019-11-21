@@ -28,22 +28,24 @@ const PromoModules = ({ asPath, plpTopPromos }) => {
 
   return isMounted ? (
     <Suspense fallback={null}>
-      {plpTopPromos.map(promo => {
-        const { contentId, moduleName, data: slotData, ...others } = promo;
-        const Module = modules[moduleName];
-        return (
-          Module && (
-            <Module
-              fullBleed
-              key={contentId}
-              data={promo}
-              asPath={asPath}
-              {...slotData}
-              {...others}
-            />
-          )
-        );
-      })}
+      {plpTopPromos &&
+        plpTopPromos.length &&
+        plpTopPromos.map(promo => {
+          const { contentId, moduleName, data: slotData, ...others } = promo;
+          const Module = modules[moduleName];
+          return (
+            Module && (
+              <Module
+                fullBleed
+                key={contentId}
+                data={promo}
+                asPath={asPath}
+                {...slotData}
+                {...others}
+              />
+            )
+          );
+        })}
       {/* UX timer for when the lazy promos above resolve */}
       <RenderPerf.Measure name={PROMOTION_VISIBLE} />
     </Suspense>

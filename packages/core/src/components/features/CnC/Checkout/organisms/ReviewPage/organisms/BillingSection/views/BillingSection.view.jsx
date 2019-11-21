@@ -1,5 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -106,6 +106,11 @@ export class BillingSection extends PureComponent {
     };
   };
 
+  skeletonCondition = () => {
+    const { bagLoading, checkoutRoutingDone } = this.props;
+    return !bagLoading && checkoutRoutingDone;
+  };
+
   render() {
     const {
       className,
@@ -115,6 +120,7 @@ export class BillingSection extends PureComponent {
       venmoPayment,
       venmoPayment: { isVenmoPaymentSelected, venmoSaveToAccountDisplayed, userName },
       bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     const { saveVenmoPayment } = this.state;
     const colProps = this.getColProps();
@@ -152,10 +158,10 @@ export class BillingSection extends PureComponent {
                       {labels.lbl_review_paymentMethod}
                     </BodyCopy>
                     <BodyCopy>
-                      {!bagLoading ? (
+                      {!bagLoading && checkoutRoutingDone ? (
                         <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
                       ) : (
-                        <AddressSkeleton />
+                        <LoaderSkelton width="300px" height="25px" />
                       )}
                     </BodyCopy>
                   </Fragment>
@@ -171,12 +177,11 @@ export class BillingSection extends PureComponent {
                     >
                       {labels.lbl_review_billingAddress}
                     </BodyCopy>
-                    {!bagLoading ? (
+                    {this.skeletonCondition() ? (
                       <Address address={address} className="review-billing-address" />
                     ) : (
                       <>
-                        <LoaderSkelton width="175px" height="40px" />
-                        <AddressSkeleton />
+                        <GenericSkeleton />
                       </>
                     )}
                   </Fragment>
@@ -244,6 +249,7 @@ BillingSection.propTypes = {
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
@@ -267,6 +273,7 @@ BillingSection.defaultProps = {
   },
   saveVenmoPaymentOption: () => {},
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(BillingSection, styles);
