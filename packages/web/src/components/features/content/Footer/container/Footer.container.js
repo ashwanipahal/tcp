@@ -59,7 +59,7 @@ const mapStateToProps = state => {
     isLoggedIn: getUserLoggedInState(state),
     linkConfig: LinkConfig,
     isLocationEnabledForLoggedInUser: isLocationEnabledForLoggedInUser(state),
-    isLocationEnabledForGuest: isLocationEnabledForGuest(state)
+    isLocationEnabledForGuest: isLocationEnabledForGuest(state),
   };
 };
 

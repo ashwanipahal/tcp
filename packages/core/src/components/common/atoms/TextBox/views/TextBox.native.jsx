@@ -44,7 +44,6 @@ export class TextBox extends React.Component {
     successText: PropTypes.string,
     onChangeText: PropTypes.func,
     autoCapitalize: PropTypes.string,
-    bottomBorderColor: PropTypes.string,
   };
 
   static defaultProps = {
@@ -63,7 +62,6 @@ export class TextBox extends React.Component {
     successText: '',
     autoCapitalize: 'sentences',
     onChangeText: () => {},
-    bottomBorderColor: null,
   };
 
   constructor(props) {
@@ -97,12 +95,12 @@ export class TextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="15px" height="15px" />
+              <Image source={errorIcon} width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
             fontFamily="secondary"
-            fontWeight="semibold"
+            fontWeight="extrabold"
             fontSize="fs12"
             text={error}
             color="error"
@@ -151,14 +149,13 @@ export class TextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { error },
+      meta,
       input,
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
       onChangeText,
       autoCapitalize,
-      bottomBorderColor,
     } = this.props;
     return (
       <View>
@@ -181,11 +178,11 @@ export class TextBox extends React.Component {
           keyboardType={keyboardType}
           autoCapitalize={autoCapitalize}
           returnKeyType="next"
-          error={error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
-          bottomBorderColor={bottomBorderColor}
+          meta={meta}
+          error={meta.error}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>

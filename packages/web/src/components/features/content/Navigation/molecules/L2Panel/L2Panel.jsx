@@ -9,6 +9,7 @@ import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
 import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 const MAX_ITEMS_IN_COL = 8;
@@ -57,7 +58,7 @@ const renderL3Panel = (
   hideL3Drawer,
   name,
   { url, asPath, subCategories },
-  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }
+  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav, analyticsData }
 ) => {
   return (
     hasSubCategories && (
@@ -74,6 +75,7 @@ const renderL3Panel = (
         shopallaspath={asPath}
         accessibilityLabels={accessibilityLabels}
         closeNav={closeNav}
+        analyticsData={analyticsData}
       />
     )
   );
@@ -115,6 +117,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   }
 ) => {
   const navHandler = {
@@ -122,6 +125,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   };
   if (links.length) {
     return (
@@ -142,25 +146,31 @@ const createLinks = (
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <div className="L2-panel-container">
-                <Anchor
-                  asPath={asPath}
-                  to={url}
-                  onClick={e =>
-                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                  }
+                <ClickTracker
+                  clickData={{
+                    pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                  }}
                 >
-                  <BodyCopy
-                    className="l2-nav-link"
-                    fontFamily="secondary"
-                    fontSize={['fs13', 'fs13', 'fs14']}
-                    lineHeight="lh107"
-                    color="text.primary"
+                  <Anchor
+                    asPath={asPath}
+                    to={url}
+                    onClick={e =>
+                      openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                    }
                   >
-                    {renderLabel(classForRedContent, promoBadge, name)}
-                    {renderPromoBadge(promoBadge, currentIndex)}
-                    {renderArrowIcon(hasSubCategories)}
-                  </BodyCopy>
-                </Anchor>
+                    <BodyCopy
+                      className="l2-nav-link"
+                      fontFamily="secondary"
+                      fontSize={['fs13', 'fs13', 'fs14']}
+                      lineHeight="lh107"
+                      color="text.primary"
+                    >
+                      {renderLabel(classForRedContent, promoBadge, name)}
+                      {renderPromoBadge(promoBadge, currentIndex)}
+                      {renderArrowIcon(hasSubCategories)}
+                    </BodyCopy>
+                  </Anchor>
+                </ClickTracker>
               </div>
               {renderL3Panel(
                 hasSubCategories,
@@ -230,6 +240,7 @@ const L2Panel = props => {
     l3Drawer,
     accessibilityLabels,
     closeNav,
+    analyticsData,
   } = props;
   const { previousButton } = accessibilityLabels;
   const isShopBySizeCol = isNextColShopBySize(categoryLayout);
@@ -301,6 +312,7 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                               {createLinks(secondCol, 2, categoryIndex, {
                                 openL3Drawer,
@@ -311,6 +323,7 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                             </div>
                           </Col>
@@ -345,6 +358,7 @@ L2Panel.propTypes = {
   closeNav: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
   accessibilityLabels: PropTypes.shape({}).isRequired,
+  analyticsData: PropTypes.string.isRequired,
 };
 
 L2Panel.defaultProps = {
