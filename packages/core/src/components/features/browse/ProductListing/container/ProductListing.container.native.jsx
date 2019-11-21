@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import ProductListing from '../views';
 import {
   getPlpProducts,
@@ -12,7 +13,6 @@ import {
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
-
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -33,6 +33,7 @@ import {
   getIsDataLoading,
   getSelectedFilter,
   getPLPTopPromos,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -199,6 +200,8 @@ function mapStateToProps(state) {
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     selectedFilterValue: getSelectedFilter(state),
     plpTopPromos: getPLPTopPromos(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
