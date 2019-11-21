@@ -21,9 +21,11 @@ class BundleProductItems extends React.PureComponent {
       handleAddToBag,
       isLoggedIn,
       currencySymbol,
-      currencyExchange,
+      currencyAttributes,
       className,
       outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     return (
       <ul className="outfiting-list-container">
@@ -52,8 +54,10 @@ class BundleProductItems extends React.PureComponent {
                     addToFavorites({ colorProductId: productItem.generalProductId });
                   }}
                   currencySymbol={currencySymbol}
-                  currencyExchange={currencyExchange}
+                  currencyAttributes={currencyAttributes}
                   isBundleProduct
+                  isKeepAliveEnabled={isKeepAliveEnabled}
+                  outOfStockLabels={outOfStockLabels}
                 />
               </li>
             );
@@ -78,10 +82,12 @@ BundleProductItems.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   className: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProductItems.defaultProps = {
@@ -91,10 +97,10 @@ BundleProductItems.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
   className: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(BundleProductItems, styles);

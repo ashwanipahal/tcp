@@ -3,7 +3,7 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import Safe from 'react-safe';
 
-import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
+import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 
 // _document is only rendered on the server side and not on the client side
 // Event handlers like onClick can't be added to this file
@@ -12,8 +12,9 @@ import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.con
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 // For SSR perf timing
+import { getAPIConfig } from '@tcp/core/src/utils';
+import langMap from '../config/languageMap';
 import RenderPerf from '../components/common/molecules/RenderPerf';
-
 // External Style Sheet
 const CSSOverride = () => {
   return <link href={process.env.RWD_WEB_CSS_OVERRIDE_URL} rel="stylesheet" />;
@@ -50,8 +51,9 @@ class MyDocument extends Document {
   }
 
   render() {
+    const { language } = getAPIConfig();
     return (
-      <Html lang="en">
+      <Html lang={langMap[language] || 'en'}>
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
@@ -71,8 +73,6 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <div className="dark-overlay" />
-          {/* Performance measure for SSR app render time */}
-          <RenderPerf.Measure name={FULLY_VISIBLE} />
           {/* Set this in SSR for initial page view */}
           <RenderPerf.Mark name={NAVIGATION_START} />
         </body>

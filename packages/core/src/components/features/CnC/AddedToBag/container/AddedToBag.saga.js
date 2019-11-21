@@ -140,8 +140,9 @@ export function* addItemToCartBopis({ payload }) {
   }
 }
 
-export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBack } }) {
+export function* addMultipleItemToCartECOM({ payload }) {
   try {
+    const { callBack, productItemsInfo } = payload;
     const paramsArray = productItemsInfo.map(product => {
       const { productId, skuId: catEntryId } = product.skuInfo;
       const { wishlistItemId, quantity } = product;
@@ -161,6 +162,7 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
         'calculationUsage[]': '-7',
         externalId: wishlistItemId || '',
         productId,
+        product,
       };
     });
 
@@ -174,16 +176,9 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
     console.log(' API has no Error and all the products have been added to bag', res);
 
     // TODO - res and below code is for CnC team to be used for AddedToBag Modal
-    // yield put(
-    //   SetAddedToBagData({
-    //     ...payload,
-    //     ...res,
-    //   })
-    // );
-    // if (!fromMoveToBag) {
-    //   yield put(openAddedToBag());
-    // }
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(SetAddedToBagData([...res]));
+    yield put(openAddedToBag());
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (errorObj) {
     const { error, errorProductId, atbSuccessProducts } = errorObj;
     if (atbSuccessProducts && atbSuccessProducts.length) {

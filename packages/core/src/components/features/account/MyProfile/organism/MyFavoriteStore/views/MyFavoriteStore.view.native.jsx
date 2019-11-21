@@ -11,7 +11,6 @@ import {
 
 const MyFavoriteStore = ({
   labels,
-  defaultStore,
   favStoreName,
   favStoreAddress,
   favStoreState,
@@ -25,7 +24,7 @@ const MyFavoriteStore = ({
     <MyProfileTile
       className={className}
       title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
-      ctaTitle={ctaTitleDefaultStore(labels, defaultStore, isMyPreferences)}
+      ctaTitle={ctaTitleDefaultStore(labels, favStoreName, isMyPreferences)}
       dataLocator="myFavStoreLbl"
     >
       {isMyPreferences && (
@@ -67,7 +66,6 @@ const MyFavoriteStore = ({
 };
 
 MyFavoriteStore.propTypes = {
-  defaultStore: PropTypes.string,
   favStoreName: PropTypes.string,
   favStoreAddress: PropTypes.string,
   favStoreState: PropTypes.string,
@@ -80,7 +78,6 @@ MyFavoriteStore.propTypes = {
 };
 
 MyFavoriteStore.defaultProps = {
-  defaultStore: '',
   favStoreName: '',
   favStoreState: '',
   favStoreCity: '',

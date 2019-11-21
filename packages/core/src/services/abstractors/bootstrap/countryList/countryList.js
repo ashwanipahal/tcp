@@ -8,8 +8,8 @@ import countryListQuery from '../../../handler/graphQL/queries/countryList';
  * Abstractor layer for loading Country List data
  */
 const Abstractor = {
-  getData: () => {
-    const query = gql(countryListQuery.getQuery());
+  getData: country => {
+    const query = gql(countryListQuery.getQuery(country || ''));
     return handler
       .executeGraphQLQuery(query)
       .then(Abstractor.processData)
