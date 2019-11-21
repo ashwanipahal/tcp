@@ -90,7 +90,7 @@ export default css`
   .logoWrapper {
     position: relative;
     margin-top: 8px;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
