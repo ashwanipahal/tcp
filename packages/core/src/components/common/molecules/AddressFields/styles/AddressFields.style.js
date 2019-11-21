@@ -13,6 +13,12 @@ const styles = css`
   }
   .country-selector {
     position: relative;
+    > div {
+      height: auto;
+      > select {
+        margin: 0;
+      }
+    }
   }
   .zip-code {
     @media ${props => props.theme.mediaQuery.smallMax} {
