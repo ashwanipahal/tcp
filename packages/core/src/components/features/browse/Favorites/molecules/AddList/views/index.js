@@ -1,1 +1,1 @@
-export { default } from './AddList.view.native';
+export { default } from './AddList.view';

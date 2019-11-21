@@ -82,6 +82,9 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
             activeCategoryIds={Array []}
             navigationTree={Object {}}
           />
+          <Measure
+            name="page_navigation_visible"
+          />
         </div>
       </Styled(Col)>
       <Styled(Col)
