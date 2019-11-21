@@ -160,6 +160,7 @@ class CheckoutPage extends React.PureComponent {
       initShippingPage,
       shippingMethod,
       pickupDidMount,
+      cartLoading,
       emailSignUpFlags,
     } = this.props;
     const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
@@ -293,6 +294,7 @@ class CheckoutPage extends React.PureComponent {
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            cartLoading={cartLoading}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (

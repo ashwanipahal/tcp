@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
-// import { LazyloadImage } from 'react-native-lazyload-deux';
+import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../../VideoPlayer';
 import withStyles from '../../../hoc/withStyles.native';
@@ -30,8 +30,6 @@ const createURI = properties => {
   const config = swatchConfig || imgConfig || 'w_768';
   const cropVal = crop || '';
   const urlVal = url || '';
-  // const ImageComponent = host ? Image : Image;
-  const ImageComponent = Image;
   const namedTransformation = imgConfig || '';
   const apiConfigObj = getAPIConfig();
 
@@ -69,7 +67,7 @@ const DamImage = props => {
     ...otherProps
   } = props;
 
-  const ImageComponent = host ? Image : Image;
+  const ImageComponent = host ? LazyloadImage : Image;
 
   if (videoData) {
     return <VideoPlayer {...videoData} />;

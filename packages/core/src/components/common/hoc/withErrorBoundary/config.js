@@ -1,8 +1,8 @@
 export const DEFAULT_CLASS_NAME = 'safeComponent-error';
 export const LIFECYCLE_METHODS = [
-  'UNSAFE_componentWillMount',
+  'componentWillMount',
   'componentDidMount',
-  'UNSAFE_componentWillReceiveProps',
+  'componentWillReceiveProps',
   'shouldComponentUpdate',
   'componentWillUpdate',
   'componentDidUpdate',

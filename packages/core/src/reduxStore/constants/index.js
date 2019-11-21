@@ -50,6 +50,9 @@ export const LABELS = {
 export const SEO_DATA = {
   seoData: 'seoData',
   home: '/home',
+  account: '/account',
+  bag: '/bag',
+  checkout: '/checkout',
   search: '/search',
 };
 

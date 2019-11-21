@@ -28,7 +28,7 @@ const AccountOverviewContainer = ({
 
   useEffect(() => {
     fetchCoupons();
-  });
+  }, []);
 
   return (
     <AccountOverviewComponent

@@ -187,6 +187,9 @@ export const mapDispatchToProps = dispatch => {
     updateFromMSG: value => {
       dispatch(setUpdateFromMSG(value));
     },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
   };
 };
 
