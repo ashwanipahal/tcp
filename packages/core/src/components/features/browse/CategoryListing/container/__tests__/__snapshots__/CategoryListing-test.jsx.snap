@@ -82,6 +82,9 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
             activeCategoryIds={Array []}
             navigationTree={Object {}}
           />
+          <Measure
+            name="page_navigation_visible"
+          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -117,6 +120,7 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
             />
           </Styled(Col)>
           <Styled(Col)
+            className="section-wrapper"
             colSize={
               Object {
                 "large": 12,
@@ -126,9 +130,50 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
             }
           >
             <Styled(ReadMore)
-              className=" seo-text seo-text-wrapper"
+              className=" seo-text"
               labels={Object {}}
             />
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                portalValue="recently-viewed-products"
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>
