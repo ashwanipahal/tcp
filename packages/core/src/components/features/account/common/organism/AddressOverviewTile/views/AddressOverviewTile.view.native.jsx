@@ -102,6 +102,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             showCountry={false}
             customStyle={BodyCopyStyle}
             showName={false}
+            showPhone={false}
           />
         ) : (
           <BodyCopy
@@ -148,6 +149,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             showCountry={false}
             customStyle={BodyCopyStyle}
             showName={false}
+            showPhone={false}
           />
         ) : (
           <BodyCopy

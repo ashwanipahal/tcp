@@ -32,134 +32,43 @@ exports[`Drawer component renders correctly 1`] = `
       onMouseLeave={[Function]}
       textAlign="left"
     >
-      <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        clickData={
-          Object {
-            "pageNavigationText": "",
-          }
-        }
+      <Styled(Anchor)
+        onClick={[Function]}
       >
-        <div
-          className="nav-bar-l1-content"
+        <Connect(Component)
+          clickData={
+            Object {
+              "pageNavigationText": "",
+            }
+          }
         >
-          <span
-            className="nav-bar-item-label "
-          />
-          <span
-            className="nav-bar-item-content "
-            data-locator="promo_badge_undefined"
+          <div
+            className="nav-bar-l1-content"
           >
-            <Styled(PromoBadge)
-              data={
-                Array [
-                  Object {
-                    "style": "style1",
-                    "text": "30% off shoes",
-                  },
-                ]
-              }
+            <span
+              className="nav-bar-item-label "
             />
-          </span>
-          <span
-            className="icon-arrow"
-          />
-        </div>
-      </Connect(Component)>
+            <span
+              className="nav-bar-item-content "
+              data-locator="promo_badge_undefined"
+            >
+              <Styled(PromoBadge)
+                data={
+                  Array [
+                    Object {
+                      "style": "style1",
+                      "text": "30% off shoes",
+                    },
+                  ]
+                }
+              />
+            </span>
+            <span
+              className="icon-arrow"
+            />
+          </div>
+        </Connect(Component)>
+      </Styled(Anchor)>
       <div
         className="undefined l1-overlay "
         onMouseEnter={[Function]}

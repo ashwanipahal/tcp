@@ -20,10 +20,11 @@ const getUUID = uuidCookieString => {
 const LoyaltyPromoBanner = props => {
   const {
     className,
+    cookieID,
     richTextList: [{ richText, link }],
     dataLocator,
   } = props;
-  const cookieName = `mprAboveHead_${getUUID('WC_USERACTIVITY_')}`;
+  const cookieName = `${cookieID}_${getUUID('WC_USERACTIVITY_')}`;
   const [bannerClosed, setBannerClosed] = useState(true);
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const LoyaltyPromoBanner = props => {
 
 LoyaltyPromoBanner.propTypes = {
   className: PropTypes.string.isRequired,
+  cookieID: PropTypes.string.isRequired,
   richTextList: PropTypes.arrayOf(PropTypes.object),
   dataLocator: PropTypes.string,
 };

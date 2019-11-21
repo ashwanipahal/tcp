@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
+        "componentId": "sc-chPdSV",
         "isStatic": false,
         "rules": Array [
           "
@@ -85,7 +85,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
         "userplccCardNumber": [Function],
       },
       "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
+      "styledComponentId": "sc-chPdSV",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {

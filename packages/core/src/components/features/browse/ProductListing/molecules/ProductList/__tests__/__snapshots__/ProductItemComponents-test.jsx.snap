@@ -49,7 +49,7 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
       12.00
     </ForwardRef>
     <ForwardRef
-      className="merchant-tag"
+      className="merchant-tag elem-ml-XXXS"
       color="red.500"
       component="span"
       fontFamily="secondary"

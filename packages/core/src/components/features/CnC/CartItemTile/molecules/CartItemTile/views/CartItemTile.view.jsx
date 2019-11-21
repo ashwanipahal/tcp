@@ -324,9 +324,9 @@ class CartItemTile extends PureComponent {
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -1317,6 +1317,7 @@ CartItemTile.propTypes = {
   disableProductRedirect: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);
