@@ -64,8 +64,8 @@ const onCTAHandler = (
   }
 };
 
-const getOOSButtonLabel = (isFavorite, outOfStockLabels) => {
-  return isFavorite ? 'Remove' : outOfStockLabels.outOfStockCaps;
+const getOOSButtonLabel = (isFavorite, outOfStockLabels, labelsPlpTiles) => {
+  return isFavorite ? labelsPlpTiles.lbl_remove : outOfStockLabels.outOfStockCaps;
 };
 
 const renderAddToBagContainer = ({
@@ -96,7 +96,11 @@ const renderAddToBagContainer = ({
         buttonVariation="variable-width"
         data-locator=""
         disableButton={keepAlive && !isFavorite}
-        text={keepAlive ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels) : buttonLabel}
+        text={
+          keepAlive
+            ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels, labelsPlpTiles)
+            : buttonLabel
+        }
         onPress={() =>
           onCTAHandler(
             item,
@@ -132,7 +136,8 @@ const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenC
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
-const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, selectedColorMapData) => {
+const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, colorsMap, selectedColorIndex) => {
+  const selectedColorMapData = colorsMap && colorsMap[selectedColorIndex];
   return (
     (isKeepAliveEnabled && keepAlive) ||
     (selectedColorMapData &&
@@ -182,7 +187,8 @@ const ListItem = props => {
   const itemOutOfStock = isItemOutOfStock(
     isKeepAliveEnabled,
     keepAlive,
-    colorsMap[selectedColorIndex]
+    colorsMap,
+    selectedColorIndex
   );
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
