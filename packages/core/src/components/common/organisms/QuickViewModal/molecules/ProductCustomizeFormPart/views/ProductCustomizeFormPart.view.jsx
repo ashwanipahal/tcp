@@ -11,6 +11,7 @@ import styles, {
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../molecules/ProductAddToBag/views/ProductAddToBag.view';
 import { getSiteId, getLocator, getAPIConfig, getBrand } from '../../../../../../../utils';
 import InputCheckbox from '../../../../../atoms/InputCheckbox';
 import {
@@ -46,6 +47,8 @@ const ProductCustomizeFormPart = props => {
     productInfoFromBag,
     quickViewColorSwatchesCss,
     onCloseClick,
+    alternateSizes,
+    isGiftCard,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -67,6 +70,8 @@ const ProductCustomizeFormPart = props => {
     alt: productInfo.name,
     url: imageUrl,
   };
+
+  const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
   const apiConfigObj = getAPIConfig();
   const { crossDomain } = apiConfigObj;
@@ -161,6 +166,8 @@ const ProductCustomizeFormPart = props => {
               formEnabled={formEnabled}
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
+              alternateSizes={alternateSizes}
+              sizeChartLinkVisibility={sizeChartLinkVisibility}
             />
           </div>
         </div>
@@ -199,6 +206,8 @@ ProductCustomizeFormPart.propTypes = {
   quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func,
+  alternateSizes: PropTypes.shape({}),
+  isGiftCard: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -214,6 +223,8 @@ ProductCustomizeFormPart.defaultProps = {
   imageUrl: '',
   quickViewColorSwatchesCss: '',
   onCloseClick: () => {},
+  alternateSizes: {},
+  isGiftCard: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);
