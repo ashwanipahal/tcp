@@ -35,6 +35,7 @@ import {
   updateAppliedFiltersInState,
   getScrollToTopValue,
   getPDPLabels,
+  getModalState,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -115,6 +116,7 @@ class SearchDetailContainer extends React.PureComponent {
       sortBySelected: true,
       formData,
       scrollToTop: true,
+      isKeepModalOpen: true,
     };
     getProducts(data);
   };
@@ -150,12 +152,13 @@ class SearchDetailContainer extends React.PureComponent {
       labelsLogin,
       navigation,
       pdpLabels,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
 
     return (
       <React.Fragment>
-        {isSearchResultsAvailable ? (
+        {isSearchResultsAvailable || isLoadingMore ? (
           <View>
             {this.searchQuery && products && products.length > 0 ? (
               <SearchDetail
@@ -183,6 +186,7 @@ class SearchDetailContainer extends React.PureComponent {
                 labelsLogin={labelsLogin}
                 navigation={navigation}
                 pdpLabels={pdpLabels}
+                isKeepModalOpen={isKeepModalOpen}
                 {...otherProps}
               />
             ) : (
@@ -257,6 +261,7 @@ function mapStateToProps(state) {
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     pdpLabels: getPDPLabels(state),
+    isKeepModalOpen: getModalState(state),
   };
 }
 
@@ -326,6 +331,7 @@ SearchDetailContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isKeepModalOpen: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -355,6 +361,7 @@ SearchDetailContainer.defaultProps = {
   isLoggedIn: false,
   labelsLogin: {},
   pdpLabels: {},
+  isKeepModalOpen: false,
 };
 
 export default connect(

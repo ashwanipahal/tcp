@@ -329,11 +329,21 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const { onChange, initialValues, handleSubmitOnChange } = this.props;
     // eslint-disable-next-line no-restricted-syntax
     for (const key in initialValues) {
-      if (Object.prototype.hasOwnProperty.call(initialValues, key) && key !== 'sort') {
+      // eslint-disable-next-line no-prototype-builtins
+      if (initialValues.hasOwnProperty(key) && key !== 'sort') {
         onChange(key, []);
       }
     }
     handleSubmitOnChange();
+  };
+
+  handleRemoveAllFiltersForMobile = event => {
+    const facetName = event && event.currentTarget && event.currentTarget.id;
+    if (facetName) {
+      const { onChange, handleSubmitOnChange } = this.props;
+      onChange(facetName, []);
+      handleSubmitOnChange(true);
+    }
   };
 
   renderAppliedFiltersList(appliedFilters, facetName, cssKey) {
@@ -347,15 +357,15 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     }
 
     const containerClassName = cssClassName('applied-filters-list-container ', cssKey);
-
     return filterLength > 0 ? (
       <div key={cssKey} className={containerClassName}>
         <AppliedFiltersList
           onRemoveFilter={this.handleRemoveFilter}
-          removeAllFilters={this.handleRemoveAllFilters}
+          removeAllFilters={this.handleRemoveAllFiltersForMobile}
           appliedFilters={filter}
           className={className}
           labels={labels}
+          id={facetName}
         />
       </div>
     ) : null;
