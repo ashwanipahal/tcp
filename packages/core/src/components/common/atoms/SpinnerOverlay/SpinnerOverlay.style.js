@@ -9,7 +9,7 @@ const styles = css`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${props => props.theme.colors.MODAL_OVERLAY};
+    background-color: rgba(0, 0, 0, 0.42);
     z-index: 1400;
     cursor: pointer;
     align-items: center;

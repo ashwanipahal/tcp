@@ -2,28 +2,12 @@
 
 exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
 <Fragment>
-  <Styled(CnCTemplate)
-    isCheckoutView={true}
-    isConfirmationPage={false}
-    leftSection={[Function]}
-    marginTop={true}
-    orderLedgerAfterView={false}
-    pageCategory="pickup"
-    showLeftSection={true}
-  />
+  <Styled(CheckoutPageEmptyBag) />
 </Fragment>
 `;
 
 exports[`CheckoutPageVanilla component should renders correctly with shipping 1`] = `
 <Fragment>
-  <Styled(CnCTemplate)
-    isCheckoutView={true}
-    isConfirmationPage={false}
-    leftSection={[Function]}
-    marginTop={true}
-    orderLedgerAfterView={false}
-    pageCategory="shipping"
-    showLeftSection={true}
-  />
+  <Styled(CheckoutPageEmptyBag) />
 </Fragment>
 `;

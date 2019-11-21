@@ -310,6 +310,10 @@ function* confirmStartCheckout() {
   return false;
 }
 
+function* renderMobileLoader() {
+  if (isMobileApp()) yield put(setLoaderState(true));
+}
+
 export function* startCartCheckout({
   payload: {
     isEditingItem,
@@ -322,7 +326,7 @@ export function* startCartCheckout({
   } = {},
 } = {}) {
   try {
-    yield put(setLoaderState(true));
+    yield call(renderMobileLoader);
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
@@ -345,12 +349,15 @@ export function* startCartCheckout({
             : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
         )
       );
+      yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
       const oOSModalOpen = yield call(confirmStartCheckout);
       if (!oOSModalOpen) {
         yield call(checkoutCart, false, navigation, closeModal, navigationActions);
       }
     }
     yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
   } catch (e) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
@@ -374,14 +381,18 @@ export function* startPaypalCheckout({ payload }) {
   }
 }
 
-export function* startPaypalNativeCheckout() {
-  yield put(getSetIsPaypalPaymentSettings(null));
-  const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
-  // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
-  const fromPage = 'AjaxOrderItemDisplayView';
-  const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
-  if (res) {
-    yield put(getSetIsPaypalPaymentSettings(res));
+export function* startPaypalNativeCheckout({ payload }) {
+  try {
+    const { isBillingPage } = payload;
+    yield put(getSetIsPaypalPaymentSettings(null));
+    const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+    const fromPage = isBillingPage ? 'OrderBillingView' : 'AjaxOrderItemDisplayView';
+    const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+    if (res) {
+      yield put(getSetIsPaypalPaymentSettings(res));
+    }
+  } catch (e) {
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
