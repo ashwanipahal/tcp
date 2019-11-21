@@ -43,10 +43,6 @@ class SelectWishListDropdown extends React.PureComponent {
     }));
   };
 
-  openEditListModal = () => {
-    console.log('Open Edit List Modal');
-  };
-
   renderMoveItem = () => {
     const {
       wishlistsSummaries,
@@ -55,6 +51,8 @@ class SelectWishListDropdown extends React.PureComponent {
       getActiveWishlist,
       activeWishList,
       defaultWishList,
+      openAddNewList,
+      openEditList,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -96,6 +94,7 @@ class SelectWishListDropdown extends React.PureComponent {
                   createNewWishList={createNewWishList}
                   getActiveWishlist={getActiveWishlist}
                   activeWishListId={activeWishList.id}
+                  openAddNewList={openAddNewList}
                 />
               </div>
             )}
@@ -105,7 +104,7 @@ class SelectWishListDropdown extends React.PureComponent {
               buttonVariation="fixed-width"
               type="button"
               className="edit-setting-btn"
-              onClick={this.openEditListModal}
+              onClick={openEditList}
             >
               {labels.lbl_fav_editListSettings}
             </Button>
@@ -133,6 +132,8 @@ SelectWishListDropdown.propTypes = {
   className: PropTypes.string,
   activeWishList: PropTypes.shape({}),
   defaultWishList: PropTypes.shape([]),
+  openAddNewList: PropTypes.func.isRequired,
+  openEditList: PropTypes.func.isRequired,
 };
 
 SelectWishListDropdown.defaultProps = {
