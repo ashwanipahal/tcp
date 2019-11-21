@@ -12,6 +12,10 @@ import {
 } from '../../../../../utils/utils';
 import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
+const getOdmLoading = state => {
+  return state.Confirmation && state.Confirmation.get('loading');
+};
+
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
 };
@@ -457,6 +461,7 @@ const getLedgerSummaryDataConfirmation = state => {
 };
 
 export default {
+  getOdmLoading,
   getOrderConfirmation,
   getOrderEmailAddress,
   getCurrentSiteId,
