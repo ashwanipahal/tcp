@@ -34,11 +34,12 @@ import {
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent([needHelpContentId]);
+    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
@@ -227,6 +228,10 @@ export const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    placeCashBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
+    ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
