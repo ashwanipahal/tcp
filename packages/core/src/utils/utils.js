@@ -461,6 +461,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
     }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
+    }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
   return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
