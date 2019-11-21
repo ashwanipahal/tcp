@@ -9,7 +9,7 @@ const getMyPrefrenceLabels = labels => {
 
 export class MyPrefrenceContainer extends PureComponent {
   render() {
-    const { labels, handleComponentChange, componentProps, router, navigation } = this.props;
+    const { labels, handleComponentChange, componentProps, router } = this.props;
     const urlParams = router.query || {};
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
 
@@ -19,7 +19,6 @@ export class MyPrefrenceContainer extends PureComponent {
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
         urlParams={urlParams}
-        navigation={navigation}
       />
     );
   }
@@ -28,7 +27,6 @@ export class MyPrefrenceContainer extends PureComponent {
 MyPrefrenceContainer.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
-  navigation: PropTypes.func.isRequired,
   componentProps: PropTypes.shape({}),
   router: PropTypes.shape({
     query: PropTypes.shape({}),

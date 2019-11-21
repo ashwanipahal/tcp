@@ -41,7 +41,6 @@ export class MyFavoriteStoreContainer extends PureComponent {
       favStorePhone,
       isMyPreferences,
       handleComponentChange,
-      navigation
     } = this.props;
     return (
       <MyFavoriteStore
@@ -55,7 +54,6 @@ export class MyFavoriteStoreContainer extends PureComponent {
         favStorePhone={favStorePhone}
         isMyPreferences={isMyPreferences}
         handleComponentChange={handleComponentChange}
-        navigation={navigation}
       />
     );
   }
@@ -87,7 +85,6 @@ MyFavoriteStoreContainer.propTypes = {
   resetMyFavoriteStoreDetails: PropTypes.func.isRequired,
   isMyPreferences: PropTypes.bool,
   handleComponentChange: PropTypes.func.isRequired,
-  navigation: PropTypes.func.isRequired,
 };
 
 export const mapDispatchToProps = dispatch => ({

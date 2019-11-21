@@ -13,10 +13,9 @@ export const MyProfileTile = ({
   children,
   handleComponentChange,
   birthdaySaving,
-  navigation
+  isPageNavigation,
 }) => {
   const isCtaPresent = !!ctaTitle;
-console.info('---->>',navigation)
   const styling = () => {
     if (isCtaPresent) {
       if (birthdaySaving) {
@@ -44,9 +43,7 @@ console.info('---->>',navigation)
           fill="BLUE"
           text={ctaTitle}
           onPress={() => {
-
-              // navigation.navigate('StoreLanding');
-
+            handleComponentChange(ctaLink, null, isPageNavigation);
           }}
         />
       )}
@@ -61,6 +58,7 @@ MyProfileTile.propTypes = {
   children: PropTypes.node.isRequired,
   handleComponentChange: PropTypes.func,
   birthdaySaving: PropTypes.bool,
+  isPageNavigation: PropTypes.bool,
 };
 
 MyProfileTile.defaultProps = {
@@ -69,6 +67,7 @@ MyProfileTile.defaultProps = {
   ctaLink: 'accountOverviewMobile',
   handleComponentChange: () => {},
   birthdaySaving: false,
+  isPageNavigation: false,
 };
 
 export default MyProfileTile;

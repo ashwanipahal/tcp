@@ -11,7 +11,7 @@ import MyPreferenceSubscriptionContainer from '../../MyPreferenceSubscription/co
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { labels, handleComponentChange, componentProps, navigation } = this.props;
+    const { labels, handleComponentChange, componentProps } = this.props;
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -20,7 +20,7 @@ class MyPrefrenceSection extends React.PureComponent {
             programDetailsCta={getLabelValue(labels, 'lbl_prefrence_program_details')}
             termsConditionCta={getLabelValue(labels, 'lbl_prefrence_term_codition')}
           >
-            <MyFavoriteStore isMyPreferences handleComponentChange={handleComponentChange} navigation={navigation} />
+            <MyFavoriteStore isMyPreferences handleComponentChange={handleComponentChange} />
             <SocialContainer
               labels={labels}
               handleComponentChange={handleComponentChange}
@@ -38,7 +38,6 @@ MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
-  navigation: PropTypes.func.isRequired,
 };
 
 MyPrefrenceSection.defaultProps = {
