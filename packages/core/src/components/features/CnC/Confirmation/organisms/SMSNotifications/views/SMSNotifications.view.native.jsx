@@ -3,18 +3,31 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
+import {
+  BodyCopyWithSpacing,
+  ViewWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import RichText from '../../../../../../common/atoms/RichText';
-import styles from '../styles/SMSNotifications.style';
-import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
+import {
+  Styles,
+  BrandWrapper,
+  CheckBoxFieldWrapper,
+  CheckBoxTextWrapper,
+  RichTextContainer,
+  GymboreeCheckBoxTextWrapper,
+  SuccessTextWrapper,
+  SuccessRichTextContainer,
+} from '../styles/SMSNotifications.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import Button from '../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import SMSNOTIFICATION_CONSTANTS from '../SMSNotification.constants';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
+
+const doneIcon = require('@tcp/core/src/assets/done.png');
 
 const getEnableAction = (smsNotificationSuccess, isChecked) => {
   return !smsNotificationSuccess && isChecked;
@@ -25,8 +38,8 @@ const getBrand = (isGymboree, isChildrenPalace) => {
 const renderBrand = ({ saved, labels, handleChange, isGymboreeCheckBoxShow }) => {
   return (
     !saved && (
-      <>
-        <>
+      <BrandWrapper>
+        <CheckBoxFieldWrapper>
           <Field
             name="brandTCP"
             component={InputCheckbox}
@@ -34,7 +47,8 @@ const renderBrand = ({ saved, labels, handleChange, isGymboreeCheckBoxShow }) =>
             enableSuccessCheck={false}
             className="children-place-checkbox"
             onChange={handleChange}
-          >
+          />
+          <CheckBoxTextWrapper>
             <BodyCopy
               fontSize="fs16"
               fontFamily="secondary"
@@ -42,10 +56,11 @@ const renderBrand = ({ saved, labels, handleChange, isGymboreeCheckBoxShow }) =>
               dataLocator="children-place-label"
               text={labels.childrenPlaceLabel}
             />
-          </Field>
-        </>
+          </CheckBoxTextWrapper>
+        </CheckBoxFieldWrapper>
+
         {!isGymboreeCheckBoxShow && (
-          <>
+          <GymboreeCheckBoxTextWrapper>
             <Field
               name="brandGYM"
               component={InputCheckbox}
@@ -53,18 +68,20 @@ const renderBrand = ({ saved, labels, handleChange, isGymboreeCheckBoxShow }) =>
               enableSuccessCheck={false}
               className="gymboree-checkbox"
               onChange={handleChange}
-            >
-              <BodyCopy
+            />
+            <CheckBoxTextWrapper>
+              <BodyCopyWithSpacing
                 fontSize="fs16"
                 fontFamily="secondary"
                 fontWeight="regular"
                 dataLocator="gymboree-label"
                 text={labels.gymboreeLabel}
+                spacingStyles="padding-left-XXS"
               />
-            </Field>
-          </>
+            </CheckBoxTextWrapper>
+          </GymboreeCheckBoxTextWrapper>
         )}
-      </>
+      </BrandWrapper>
     )
   );
 };
@@ -104,89 +121,91 @@ const SMSNotifications = ({
   const isGymboreeCheckBoxShow = isCanada && isTCP;
 
   return (
-    <>
-      <form onSubmit={handleSubmit(formSubmit)}>
-        {smsNotificationError && (
-          <ErrorMessage error={smsNotificationError} className="notification-error" />
-        )}
+    <ViewWithSpacing spacingStyles="margin-top-SM margin-bottom-LRG">
+      {smsNotificationError && <ErrorMessage showAccordian error={smsNotificationError} />}
 
-        {!saved && (
-          <>
+      {!saved && (
+        <>
+          <BodyCopy
+            fontSize="fs16"
+            fontFamily="secondary"
+            className=""
+            dataLocator="join-our-text-alerts"
+            textAlign="center"
+            fontWeight="extrabold"
+            text={labels.textAlertHeading}
+          />
+          <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-LRG">
             <BodyCopy
-              fontSize={['fs16', 'fs16', 'fs18']}
+              fontSize="fs16"
               fontFamily="secondary"
-              className=""
-              dataLocator="join-our-text-alerts"
+              dataLocator="special-promos-new-arrivals"
               textAlign="center"
-              fontWeight="extrabold"
-              text={labels.textAlertHeading}
+              text={labels.promosAndArrivalsHeading}
             />
-            <>
-              <BodyCopy
-                fontSize={['fs16', 'fs16', 'fs18']}
-                fontFamily="secondary"
-                dataLocator="special-promos-new-arrivals"
-                textAlign="center"
-                text={labels.promosAndArrivalsHeading}
-              />
-            </>
-          </>
-        )}
-        {saved && (
-          <>
-            <Image
-              alt={labels.subscribeSuccess}
-              src={getIconPath('icon-done')}
-              title={labels.subscribeSuccess}
-              data-locator="ChkmarkIcon"
-            />
+          </ViewWithSpacing>
+        </>
+      )}
+      {saved && (
+        <BrandWrapper>
+          <Image
+            alt={labels.subscribeSuccess}
+            source={doneIcon}
+            width="25px"
+            height="25px"
+            title={labels.subscribeSuccess}
+            data-locator="ChkmarkIcon"
+          />
+          <SuccessTextWrapper>
             <BodyCopy
-              fontSize={['fs16', 'fs16', 'fs18']}
+              fontSize="fs16"
               fontFamily="secondary"
               dataLocator="join-our-text-alerts"
               textAlign="center"
               fontWeight="extrabold"
               text={labels.subscribeSuccess}
             />
-          </>
-        )}
-        {saved && (
-          <BodyCopy fontSize={['fs14', 'fs14', 'fs16']} fontFamily="secondary">
-            <RichText richTextHtml={subscribeSuccessMsg} dataLocator="success-message" />
-          </BodyCopy>
-        )}
+          </SuccessTextWrapper>
+        </BrandWrapper>
+      )}
+      {saved && (
+        <SuccessRichTextContainer>
+          <RichText source={{ html: subscribeSuccessMsg }} dataLocator="success-message" />
+        </SuccessRichTextContainer>
+      )}
 
-        {renderBrand({ saved, labels, handleChange, isGymboreeCheckBoxShow })}
-        {enableActions && (
-          <Field
-            id="notification-phoneNumber"
-            placeholder={labels.phoneNumber}
-            name="phoneNumber"
-            type="tel"
-            component={TextBox}
-            maxLength={50}
-            dataLocator="phone-number-field"
-            enableSuccessCheck={false}
-            normalize={formatPhoneNumber}
-            onChange={handleChange}
-          />
-        )}
-        {enableActions && (
-          <BodyCopy fontSize="fs14" fontFamily="secondary">
-            <RichText richTextHtml={notificationCarrierMessage} dataLocator="carrier-message" />
-          </BodyCopy>
-        )}
-        {enableActions && (
+      {renderBrand({ saved, labels, handleChange, isGymboreeCheckBoxShow })}
+      {enableActions && (
+        <Field
+          id="notification-phoneNumber"
+          label={labels.phoneNumber}
+          name="phoneNumber"
+          type="tel"
+          component={TextBox}
+          maxLength={50}
+          dataLocator="phone-number-field"
+          enableSuccessCheck={false}
+          onChange={handleChange}
+        />
+      )}
+      {enableActions && (
+        <RichTextContainer>
+          <RichText source={{ html: notificationCarrierMessage }} dataLocator="carrier-message" />
+        </RichTextContainer>
+      )}
+      {enableActions && (
+        <ViewWithSpacing spacingStyles="margin-bottom-LRG">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
             type="submit"
             data-locator="join-now-btn"
             text={labels.joinNow}
+            onPress={handleSubmit(formSubmit)}
           />
-        )}
-      </form>
-    </>
+        </ViewWithSpacing>
+      )}
+    </ViewWithSpacing>
   );
 };
 SMSNotifications.propTypes = {
@@ -220,6 +239,6 @@ export default reduxForm({
   form: SMSNOTIFICATION_CONSTANTS.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(withStyles(SMSNotifications, styles));
+})(withStyles(SMSNotifications, Styles));
 
 export { SMSNotifications as SMSNotificationsVanilla };
