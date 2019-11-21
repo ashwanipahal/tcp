@@ -146,17 +146,17 @@ const createLinks = (
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <div className="L2-panel-container">
-                <ClickTracker
-                  clickData={{
-                    pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
-                  }}
+                <Anchor
+                  asPath={asPath}
+                  to={url}
+                  onClick={e =>
+                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                  }
                 >
-                  <Anchor
-                    asPath={asPath}
-                    to={url}
-                    onClick={e =>
-                      openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                    }
+                  <ClickTracker
+                    clickData={{
+                      pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                    }}
                   >
                     <BodyCopy
                       className="l2-nav-link"
@@ -169,8 +169,8 @@ const createLinks = (
                       {renderPromoBadge(promoBadge, currentIndex)}
                       {renderArrowIcon(hasSubCategories)}
                     </BodyCopy>
-                  </Anchor>
-                </ClickTracker>
+                  </ClickTracker>
+                </Anchor>
               </div>
               {renderL3Panel(
                 hasSubCategories,

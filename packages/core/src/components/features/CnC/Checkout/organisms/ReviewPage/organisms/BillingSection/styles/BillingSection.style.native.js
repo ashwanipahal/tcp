@@ -54,3 +54,11 @@ export const SkeletonWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   width: 200px;
 `;
+
+export const SaveVenmoDetails = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;

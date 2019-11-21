@@ -132,6 +132,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpLabels,
       smsSignUpLabels,
       onPickupSubmit,
+      updateFromMSG,
       loadShipmentMethods,
       isGuest,
       isExpressCheckoutPage,
@@ -208,6 +209,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        updateFromMSG={updateFromMSG}
         verifyAddressAction={verifyAddressAction}
         shippingProps={{
           ...shippingProps,

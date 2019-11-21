@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
+
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
 import RichText from '../../../../../atoms/RichText';
-import RichTextWrapper from '../styles/BonusPoints.view.style.native';
+import { RichTextWrapper, contentHeight } from '../styles/BonusPoints.view.style.native';
 import constants from '../../../BonusPointsDays.constants';
 
 class BonusPointsView extends React.Component {
@@ -105,9 +106,15 @@ class BonusPointsView extends React.Component {
           headingAlign="left"
           headingFontFamily="secondary"
         >
-          <RichTextWrapper>
-            <RichText source={{ html: bonusDetailsData }} dataLocator="bonus-points-details" />
-          </RichTextWrapper>
+          <ScrollView>
+            <RichTextWrapper>
+              <RichText
+                source={{ html: bonusDetailsData }}
+                style={contentHeight}
+                dataLocator="bonus-points-details"
+              />
+            </RichTextWrapper>
+          </ScrollView>
         </Modal>
       </View>
     );

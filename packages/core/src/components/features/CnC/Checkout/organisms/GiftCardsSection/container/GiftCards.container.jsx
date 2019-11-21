@@ -25,7 +25,8 @@ import CHECKOUT_CONSTANTS from '../../../Checkout.constants';
 
 const { getIsPaymentDisabled } = CheckoutSelectors;
 export class GiftCardsContainer extends React.PureComponent<Props> {
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
   }
