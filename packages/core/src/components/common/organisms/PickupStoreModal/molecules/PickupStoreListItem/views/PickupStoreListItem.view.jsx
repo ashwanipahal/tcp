@@ -270,15 +270,25 @@ class PickupStoreListItem extends React.Component {
       pageNameProp,
       setClickAnalyticsData,
       trackClick,
+      isBossSelected,
+      isBopisSelected,
     } = this.props;
     let pageName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
     if (productId) {
       pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
     }
+    // Checking BOSS BOPIS for analytics
+    let customEventsVal = '';
+    if (isBopisSelected) {
+      customEventsVal = 'event132';
+    }
+    if (isBossSelected) {
+      customEventsVal = 'event133';
+    }
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
-      customEvents: ['event132'],
+      customEvents: [customEventsVal],
       pageName,
     });
     trackClick();
@@ -307,18 +317,28 @@ class PickupStoreListItem extends React.Component {
       setClickAnalyticsData,
       trackClick,
       currentProduct,
-      pageNameProp,
+      isBossSelected,
+      isBopisSelected,
     } = this.props;
+
     const isBoss = this.isBossSelected;
     let pageName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
     if (productId) {
-      pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
+      pageName = `product:${productId}:${currentProduct.name.toLowerCase()}`;
+    }
+    // Checking BOSS BOPIS for analytics
+    let customEventsVal = '';
+    if (isBopisSelected) {
+      customEventsVal = 'event132';
+    }
+    if (isBossSelected) {
+      customEventsVal = 'event133';
     }
 
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
-      customEvents: ['event132'],
+      customEvents: [customEventsVal],
       pageName,
     });
     trackClick();

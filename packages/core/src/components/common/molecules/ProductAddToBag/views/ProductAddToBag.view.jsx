@@ -313,6 +313,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     eventName: 'cart add',
                     pageShortName,
                     pageName,
+                    pageType: 'product',
+                    pageSection: 'product',
+                    pageSubSection: 'product',
                     products: [{ id: `${productId}` }],
                   }}
                 >

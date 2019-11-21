@@ -342,6 +342,7 @@ class ProductDetailView extends PureComponent {
             <div className="product-detail-section">
               <ProductDescription
                 productId={itemPartNumber}
+                productInfo={productInfo}
                 isShowMore={false}
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}

@@ -225,6 +225,18 @@ class ProductPickup extends React.PureComponent {
     this.handlePickupModalClick = this.handlePickupModalClick.bind(this);
   }
 
+  getPageName = productInfo => {
+    let pageName = '';
+    const productId = productInfo && productInfo.generalProductId.split('_')[0];
+    const productName = productInfo && productInfo.name.toLowerCase();
+    if (productId) {
+      pageName = `product:${productId}:${productName}`;
+    }
+    return {
+      pageName,
+    };
+  };
+
   /**
    * @method handlePickupModalClick -
    * method is responsible for invoking the method for open pickup modal
@@ -459,22 +471,30 @@ class ProductPickup extends React.PureComponent {
       sizeUnavailable,
       isOutfitVariant,
       keepAlive,
+      productInfo,
     } = this.props;
-    const pageName = 'product';
+    const { pageName } = this.getPageName(productInfo);
     return (
       <React.Fragment>
         {isOutfitVariant && (
-          <Button
-            className="button-find-in-store"
-            buttonVariation="fixed-width"
-            fill="BLACK"
-            disabled={keepAlive || isSubmitting}
-            onClick={this.handlePickupModalClick}
+          <ClickTracker
+            clickData={{
+              customEvents: ['event131'],
+              pageName,
+            }}
           >
-            {showPickupInfo
-              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-              : labels.lbl_Product_pickup_FIND_STORE}
-          </Button>
+            <Button
+              className="button-find-in-store"
+              buttonVariation="fixed-width"
+              fill="BLACK"
+              disabled={keepAlive || isSubmitting}
+              onClick={this.handlePickupModalClick}
+            >
+              {showPickupInfo
+                ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                : labels.lbl_Product_pickup_FIND_STORE}
+            </Button>
+          </ClickTracker>
         )}
         {!isAnchor && !isOutfitVariant ? (
           <div className={`${className} pickup-section-container`}>
@@ -516,7 +536,12 @@ class ProductPickup extends React.PureComponent {
                     {this.renderSoldOutError()}
                   </div>
                 </div>
-                <ClickTracker clickData={{ pageName }}>
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event131'],
+                    pageName,
+                  }}
+                >
                   <Button
                     className="button-find-in-store"
                     buttonVariation="fixed-width"
