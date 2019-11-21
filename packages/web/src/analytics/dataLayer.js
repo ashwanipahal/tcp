@@ -30,7 +30,6 @@ export default function create(store) {
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   const { pageCountCookieKey } = API_CONFIG;
-
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
@@ -42,7 +41,17 @@ export default function create(store) {
     },
     pageName: {
       get() {
-        return `gl:${store.getState().pageData.pageName}`;
+        /* If clickActionAnalyticsData has pageName then this will be used else
+           pageName will used from pageData. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+
+        return `gl:${pageName}`;
       },
     },
 
@@ -50,8 +59,21 @@ export default function create(store) {
 
     pageShortName: {
       get() {
-        const { pageData } = store.getState();
-        return pageData.pageShortName ? pageData.pageShortName : pageData.pageName;
+        /* If clickActionAnalyticsData has pageShortName then this will be used else
+           pageShortName will used from pageData. Also if pageShortName is not available then pageName will
+           be used. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageShortName = clickActionAnalyticsData.pageShortName
+          ? clickActionAnalyticsData.pageShortName
+          : pageData.pageShortName;
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+        return `gl:${pageShortName || pageName}`;
       },
     },
 

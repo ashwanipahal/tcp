@@ -55,6 +55,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       >
         <div
           className="account-info user-points"
+          id="account-info-user-points"
         >
           21 Points
         </div>

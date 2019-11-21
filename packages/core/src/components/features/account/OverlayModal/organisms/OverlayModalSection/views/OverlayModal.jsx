@@ -120,6 +120,16 @@ class OverlayModal extends React.Component {
     return '';
   };
 
+  /* set scroll height in mobile view */
+  setInnerScrollHeight = () => {
+    const modal = document.getElementById('dialogContent');
+    /* istanbul ignore else */
+    if (window && window.innerWidth < 767) {
+      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
+      this.bodyContainer.style.overflow = 'hidden';
+    }
+  };
+
   /**
    * Set Left position of modal triangle
    * @param {*} comp
@@ -144,13 +154,7 @@ class OverlayModal extends React.Component {
       }
       this.body.style.overflow = 'hidden';
     }
-
-    /* istanbul ignore else */
-    /* set scroll height in mobile view */
-    if (window && window.innerWidth < 767) {
-      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
-      this.bodyContainer.style.overflow = 'hidden';
-    }
+    this.setInnerScrollHeight();
     /* istanbul ignore else */
     if (
       !showCondensedHeader &&
@@ -159,17 +163,19 @@ class OverlayModal extends React.Component {
       modalRectBoundingX &&
       modalTriangle
     ) {
-      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
   };
 
+  // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
     const { component, showCondensedHeader } = this.props;
+    const isAccountDrawer = component === 'accountDrawer' || false;
     if (this.isMobile && component !== 'accountDrawer') return;
     let comp = document.getElementById(component);
-    if (component === 'accountDrawer' && showCondensedHeader) {
+    if (isAccountDrawer && showCondensedHeader) {
       comp = document.getElementById('condensedLogin');
     }
     /* istanbul ignore else */
@@ -181,7 +187,14 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.styleModalTriangle({ comp });
+      if (isAccountDrawer) {
+        comp = document.getElementById('account-info-user-points');
+        this.styleModalTriangle({ comp });
+      } else {
+        this.styleModalTriangle({ comp });
+      }
+    } else if (isAccountDrawer) {
+      this.setInnerScrollHeight();
     }
   };
 

@@ -17,7 +17,7 @@ const Product = props => {
     productDetails,
     currencySymbol,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -28,8 +28,12 @@ const Product = props => {
     isLoggedIn,
     isShowPriceRangeKillSwitch,
     formValues = {},
-    isKeepAliveProduct,
     isBundleProduct,
+    keepAlive,
+    outOfStockLabels,
+    reviewOnTop,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -60,49 +64,52 @@ const Product = props => {
     prices = getPricesWithRange(productInfo, colorProduct.color.name);
   }
 
-  const { miscInfo } = colorProduct;
-
-  const isKeepAlive = miscInfo.keepAlive && isKeepAliveProduct;
-
   return (
-    <div>
-      <ProductBasicInfo
-        keepAlive={isKeepAlive}
-        badge={badge1}
-        isGiftCard={isGiftCard}
-        productInfo={productInfo}
-        isShowFavoriteCount
-        currencySymbol={currencySymbol}
-        priceCurrency={priceCurrency}
-        currencyExchange={currencyExchange}
-        isRatingsVisible
-        isCanada={isCanada}
-        isPlcc={isHasPlcc}
-        isBundleProduct={isBundleProduct}
-        isInternationalShipping={isInternationalShipping}
-        onAddItemToFavorites={onAddItemToFavorites}
-        isLoggedIn={isLoggedIn}
-        productMiscInfo={colorProduct}
-      />
-      {!isGiftCard ? (
-        <>
-          <ProductPrice
-            currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
-            currencyExchange={currencyExchange}
-            isItemPartNumberVisible={false}
-            itemPartNumber={colorProduct.colorDisplayId}
-            {...prices}
-            promotionalMessage={promotionalMessage}
-            isCanada={isCanada}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPlcc={isHasPlcc}
-            isInternationalShipping={isInternationalShipping}
-          />
-          <RenderPerf.Measure name={PRICING_VISIBLE} />
-        </>
-      ) : null}
-    </div>
+    <>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
+        <ProductBasicInfo
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
+          badge={badge1}
+          isGiftCard={isGiftCard}
+          productInfo={productInfo}
+          isShowFavoriteCount
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyAttributes={currencyAttributes}
+          isRatingsVisible
+          isCanada={isCanada}
+          isPlcc={isHasPlcc}
+          isBundleProduct={isBundleProduct}
+          isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          productMiscInfo={colorProduct}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        />
+      </div>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyAttributes={currencyAttributes}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
+      </div>
+    </>
   );
 };
 
@@ -114,7 +121,7 @@ Product.propTypes = {
   isCanada: PropTypes.bool.isRequired,
   isHasPlcc: PropTypes.bool.isRequired,
   isGiftCard: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string.isRequired,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   /* We are available to know if is an international shipping */
   isInternationalShipping: PropTypes.bool.isRequired,
@@ -123,13 +130,25 @@ Product.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
-  isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
+  reviewOnTop: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 Product.defaultProps = {
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default Product;

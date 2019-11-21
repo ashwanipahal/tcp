@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  getGrandTotal,
-  getCurrencySymbol,
-} from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import { getGrandTotal } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import {
   openMiniBag,
   closeMiniBag,
@@ -14,6 +11,7 @@ import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/cont
 import { isPlccUser } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { getAddedToBagError } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
+import { getIsMiniBagOpen } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -21,7 +19,6 @@ import {
   getIsCartItemsUpdating,
   getIsCartItemsSFL,
   getCartItemsSflError,
-  getIsMiniBagOpen,
   getMiniBagLoaderState,
 } from './MiniBag.selectors';
 import {
@@ -39,7 +36,6 @@ export class MiniBagContainer extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     userName: PropTypes.string.isRequired,
     subTotal: PropTypes.number.isRequired,
-    currencySymbol: PropTypes.string.isRequired,
     currentPoints: PropTypes.number.isRequired,
     totalRewards: PropTypes.number.isRequired,
     isCartItemsUpdating: PropTypes.bool.isRequired,
@@ -76,7 +72,6 @@ export class MiniBagContainer extends React.PureComponent {
       isOpen,
       userName,
       subTotal,
-      currencySymbol,
       currentPoints,
       totalRewards,
       isCartItemsUpdating,
@@ -101,7 +96,6 @@ export class MiniBagContainer extends React.PureComponent {
         totalItems={totalItems}
         userName={userName}
         subTotal={subTotal}
-        currencySymbol={currencySymbol}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
         isCartItemsUpdating={isCartItemsUpdating}
@@ -125,7 +119,6 @@ const mapStateToProps = state => {
     labels: getLabelsMiniBag(state),
     totalItems: getTotalItemCount(state),
     subTotal: getGrandTotal(state),
-    currencySymbol: getCurrencySymbol(state),
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),

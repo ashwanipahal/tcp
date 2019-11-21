@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
@@ -60,6 +61,42 @@ class BonusPointsView extends React.Component {
     return view === constants.VIEWS.READ && bonusData && bonusData.availableBonusPointDays;
   };
 
+  renderBonusPointsSection = () => {
+    const {
+      bonusData,
+      view,
+      className,
+      labels,
+      getBonusDaysData,
+      orderDetails,
+      showAccordian,
+      isDefaultOpen,
+      ...otherProps
+    } = this.props;
+    return (
+      <>
+        {bonusData ? (
+          view === constants.VIEWS.EDIT && (
+            <div className={className}>
+              <BonusPointsSection
+                labels={labels && labels.global && labels.global.bonusPoints}
+                bonusData={bonusData}
+                toggleBonusPointsModal={this.toggleBonusPointsModal}
+                getBonusDaysData={getBonusDaysData}
+                orderDetails={orderDetails}
+                showAccordian={showAccordian}
+                isDefaultOpen={isDefaultOpen}
+                {...otherProps}
+              />
+            </div>
+          )
+        ) : (
+          <LoaderSkelton width="420px" height="156px" />
+        )}
+      </>
+    );
+  };
+
   render() {
     const {
       labels,
@@ -68,11 +105,8 @@ class BonusPointsView extends React.Component {
       className,
       view,
       isPlcc,
-      getBonusDaysData,
-      orderDetails,
       showAccordian,
       additionalClassNameModal,
-      isDefaultOpen,
       isInternationalShipping,
     } = this.props;
     const { openModalState } = this.state;
@@ -95,19 +129,9 @@ class BonusPointsView extends React.Component {
                 isPlcc={isPlcc}
               />
             )}
-            {view === constants.VIEWS.EDIT && (
-              <div className={className}>
-                <BonusPointsSection
-                  labels={labels && labels.global && labels.global.bonusPoints}
-                  bonusData={bonusData}
-                  toggleBonusPointsModal={this.toggleBonusPointsModal}
-                  getBonusDaysData={getBonusDaysData}
-                  orderDetails={orderDetails}
-                  showAccordian={showAccordian}
-                  isDefaultOpen={isDefaultOpen}
-                />
-              </div>
-            )}
+
+            {this.renderBonusPointsSection()}
+
             <Modal
               isOpen={openModalState}
               onRequestClose={this.toggleBonusPointsModal}

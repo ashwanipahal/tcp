@@ -1,7 +1,8 @@
-import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback, ScrollView, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -67,6 +68,15 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
   return <RowWrapper />;
 };
 
+const getProductsWrapper = (addedToBagData, labels, quantity) => {
+  if (Array.isArray(addedToBagData)) {
+    return addedToBagData.map(item => {
+      return <ProductInformation data={item} labels={labels} />;
+    });
+  }
+  return <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />;
+};
+
 const AddedToBag = ({
   openState,
   onRequestClose,
@@ -75,7 +85,16 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   navigation,
+  addedToBagInterval,
 }) => {
+  useEffect(() => {
+    if (addedToBagInterval > 0 && openState) {
+      setTimeout(() => {
+        onRequestClose();
+      }, addedToBagInterval);
+    }
+  });
+
   return (
     <Modal
       isOpen={openState}
@@ -109,49 +128,48 @@ const AddedToBag = ({
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
           <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            <ScrollView>
-              <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-              <AddedToBagViewPoints labels={labels} />
-              <AddedToBagActions
-                labels={labels}
+            {getProductsWrapper(addedToBagData, labels, quantity)}
+            <AddedToBagViewPoints labels={labels} />
+            <AddedToBagActions
+              labels={labels}
+              navigation={navigation}
+              closeModal={onRequestClose}
+              showAddTobag
+              fromAddedToBagModal
+              hideHeader={hide => {
+                navigation.setParams({ headerMode: hide });
+              }}
+            />
+            <BossBanner labels={labels} />
+            <LoyaltyBannerWrapper>
+              <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
+            </LoyaltyBannerWrapper>
+            <RecommendationWrapper>
+              <Recommendations
                 navigation={navigation}
-                closeModal={onRequestClose}
-                showAddTobag
-                fromAddedToBagModal
-                hideHeader={hide => {
-                  navigation.setParams({ headerMode: hide });
-                }}
+                priceOnly
+                variation="moduleO"
+                page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+                isAddedToBagOpen
               />
-              <BossBanner labels={labels} />
-              <LoyaltyBannerWrapper>
-                <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
-              </LoyaltyBannerWrapper>
-              <RecommendationWrapper>
-                <Recommendations
-                  navigation={navigation}
-                  priceOnly
-                  variation="moduleO"
-                  page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
-                  isAddedToBagOpen
-                />
-              </RecommendationWrapper>
+            </RecommendationWrapper>
 
-              <StyledAnchorWrapper>
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  onPress={handleContinueShopping}
-                  noLink
-                  to=""
-                  dataLocator="addedToBag-continueShopping"
-                  text={labels.continueShopping}
-                />
-              </StyledAnchorWrapper>
-            </ScrollView>
+            <StyledAnchorWrapper>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                onPress={handleContinueShopping}
+                noLink
+                to=""
+                dataLocator="addedToBag-continueShopping"
+                text={labels.continueShopping}
+              />
+            </StyledAnchorWrapper>
           </AddedToBagWrapper>
         </StyledWrapper>
       </StyledBodyWrapper>
+      <Loader />
     </Modal>
   );
 };
@@ -164,6 +182,7 @@ AddedToBag.propTypes = {
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  addedToBagInterval: PropTypes.number.isRequired,
 };
 
 AddedToBag.defaultProps = {

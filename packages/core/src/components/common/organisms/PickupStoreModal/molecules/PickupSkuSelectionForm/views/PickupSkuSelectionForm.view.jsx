@@ -34,11 +34,11 @@ const PickupSkuSelectionForm = props => {
     imageUrl,
     generalProductId,
     navigateToPDP,
-    currencyExchange,
+    currencyAttributes,
   } = props;
   const productPriceProps = {
     currencySymbol: currency,
-    currencyExchange,
+    currencyAttributes,
     isItemPartNumberVisible: false,
     ...prices,
     isCanada,
@@ -156,7 +156,7 @@ PickupSkuSelectionForm.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -184,7 +184,6 @@ PickupSkuSelectionForm.defaultProps = {
   onChangeColor: () => {},
   onChangeSize: () => {},
   currentColorEntry: {},
-  currencyExchange: 1,
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

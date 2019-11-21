@@ -6,12 +6,11 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
-import { isGymboree } from '@tcp/core/src/utils/utils';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
@@ -19,7 +18,6 @@ import {
   acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -34,7 +32,6 @@ import CHECKOUT_ACTIONS, {
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
   setSmsNumberForUpdates,
-  emailSignupStatus,
   getSetCheckoutStage,
   toggleCheckoutRouting,
 } from './Checkout.action';
@@ -106,6 +103,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   if (smsSignUp) {
     transVibesSmsPhoneNo = smsSignUp.phoneNumber;
   }
+  yield put(setLoaderState(true));
   try {
     yield call(
       setShippingMethodAndAddressId,
@@ -115,7 +113,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-
+    yield put(setLoaderState(false));
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
@@ -126,6 +124,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       })
     );
   } catch (err) {
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
@@ -201,7 +200,7 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-export function* addAndSetGiftWrappingOptions(payload) {
+export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
@@ -212,7 +211,7 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  } else {
+  } else if (hasSetGiftOptions) {
     try {
       const res = yield call(removeGiftWrappingOption, payload);
       if (res) {
@@ -221,39 +220,6 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  }
-}
-
-export function* subscribeEmailAddress(emailObj, status, field1) {
-  const { payload } = emailObj;
-  const brandGYM = !!(isGymboree() || payload.isEmailOptInSecondBrand);
-  const brandTCP = !!(!isGymboree() || payload.isEmailOptInSecondBrand);
-
-  try {
-    const payloadObject = {
-      emailaddr: payload,
-      URL: 'email-confirmation',
-      response: `${status}:::false:false`,
-      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
-      brandTCP,
-      brandGYM,
-    };
-
-    if (field1) {
-      payloadObject.field1 = field1;
-    }
-
-    const res = yield call(emailSignupAbstractor.subscribeEmail, payloadObject);
-    yield put(emailSignupStatus({ subscription: res }));
-  } catch (err) {
-    logger.error(err);
-  }
-}
-
-export function* validateAndSubmitEmailSignup(emailAddress, field1) {
-  if (emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
   }
 }
 

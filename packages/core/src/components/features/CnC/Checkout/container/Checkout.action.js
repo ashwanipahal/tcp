@@ -11,18 +11,9 @@ import {
   toggleCountrySelectorModal,
   initIntlCheckoutAction,
   getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 } from './Checkout.action.util';
-
-/**
- * @function initCheckoutAction
- * action creator for type: INIT_CHECKOUT
- */
-export const initCheckoutAction = (router, isPaypalFlow, navigation) => ({
-  type: constants.INIT_CHECKOUT,
-  router,
-  isPaypalFlow,
-  navigation,
-});
 
 export const submitPickupSection = payload => ({
   type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
@@ -39,12 +30,10 @@ export const updateShipmentMethodSelection = payload => ({
   payload,
 });
 
-export function getSetGiftWrapOptionsActn(giftWrapOptions) {
-  return {
-    giftWrapOptions,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
-  };
-}
+export const getSetGiftWrapOptionsActn = giftWrapOptions => ({
+  giftWrapOptions,
+  type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+});
 
 export const getSetPickupValuesActn = pickup => ({
   pickUpContact: pickup,
@@ -485,6 +474,11 @@ export const toggleCheckoutRouting = payload => ({
   type: constants.CHECKOUT_ROUTING_DONE,
 });
 
+export const setUpdateFromMSG = payload => ({
+  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
+  payload,
+});
+
 export default {
   setServerErrorCheckout,
   resetCheckoutReducer,
@@ -495,4 +489,6 @@ export default {
   toggleCountrySelectorModal,
   initIntlCheckoutAction,
   getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 };

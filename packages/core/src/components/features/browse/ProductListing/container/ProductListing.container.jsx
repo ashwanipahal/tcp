@@ -1,11 +1,17 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
+import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
 import {
   openQuickViewWithValues,
   closeQuickViewModal,
@@ -31,6 +37,7 @@ import {
   getPLPTopPromos,
   getPLPGridPromos,
   getPlpHorizontalPromo,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -44,6 +51,7 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 const defaultResolver = mod => mod.default;
@@ -112,11 +120,16 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
+      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
+      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
+      this.makeApiCall();
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
@@ -184,11 +197,20 @@ class ProductListingContainer extends React.PureComponent {
       plpHorizontalPromos,
       router: { asPath: asPathVal },
       isSearchListing,
+      navigation,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
     if (isCLP) {
-      return <CategoryListing />;
+      return (
+        <CategoryListing
+          breadCrumbs={breadCrumbs}
+          currentNavIds={currentNavIds}
+          navTree={navTree}
+        />
+      );
     }
     return !isOutfit ? (
       <ProductListing
@@ -215,12 +237,15 @@ class ProductListingContainer extends React.PureComponent {
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
         currency={currency}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes}
         plpTopPromos={plpTopPromos}
         plpGridPromos={plpGridPromos}
         plpHorizontalPromos={plpHorizontalPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
+        navigation={navigation}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         {...otherProps}
       />
     ) : (
@@ -276,6 +301,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     onSubmit: submitProductListingFiltersForm,
@@ -293,7 +319,9 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     plpGridPromos: getPLPGridPromos(state),
     plpHorizontalPromos: getPlpHorizontalPromo(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
   };
 }
 
@@ -316,6 +344,9 @@ function mapDispatchToProps(dispatch) {
     },
     getStyliticsProductTabListData: payload => {
       dispatch(styliticsProductTabListDataReqforOutfit(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -358,6 +389,8 @@ ProductListingContainer.propTypes = {
   isSearchListing: PropTypes.bool,
   plpGridPromos: PropTypes.shape({}),
   plpHorizontalPromos: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -388,10 +421,23 @@ ProductListingContainer.defaultProps = {
   isSearchListing: false,
   plpGridPromos: {},
   plpHorizontalPromos: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
-export default withIsomorphicRenderer({
+const IsomorphicProductListingContainer = withIsomorphicRenderer({
   WrappedComponent: ProductListingContainer,
   mapStateToProps,
   mapDispatchToProps,
 });
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
+RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+// eslint-disable-next-line no-unused-vars
+const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
+
+export default IsomorphicProductListingContainer;

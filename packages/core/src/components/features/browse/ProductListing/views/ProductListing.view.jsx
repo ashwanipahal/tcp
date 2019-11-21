@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import {
+  CONTROLS_VISIBLE,
+  PAGE_NAVIGATION_VISIBLE,
+  RESULTS_VISIBLE,
+} from '@tcp/core/src/constants/rum.constants';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 // Changes as per RWD-9852. Keeping this for future reference.
@@ -34,6 +40,9 @@ import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
+// Minimum number of product results worth measuring with a UX timer
+const MINIMUM_RESULTS_TO_MEASURE = 3;
+
 const ProductListView = ({
   className,
   productsBlock,
@@ -55,7 +64,7 @@ const ProductListView = ({
   slpLabels,
   onPickUpOpenClick,
   isFilterBy,
-  currencyExchange,
+  currencyAttributes,
   currency,
   isLoadingMore,
   plpTopPromos,
@@ -63,8 +72,21 @@ const ProductListView = ({
   plpHorizontalPromos,
   asPathVal,
   isSearchListing,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
+  // State needed to trigger UX timer once initial product results have rendered
+  const [resultsExist, setResultsExist] = useState(false);
+
+  // Effect needed to set the above state
+  useEffect(() => {
+    const initialProductBlock = productsBlock[0] || [];
+    if (initialProductBlock.length >= MINIMUM_RESULTS_TO_MEASURE && !resultsExist) {
+      setResultsExist(true);
+    }
+  }, [productsBlock.length]);
+
   return (
     <div className={className}>
       <Row>
@@ -81,10 +103,14 @@ const ProductListView = ({
               navigationTree={navTree}
               activeCategoryIds={currentNavIds}
             />
+            {/* UX timer */}
+            <RenderPerf.Measure name={PAGE_NAVIGATION_VISIBLE} />
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-          <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+          {plpTopPromos.length > 0 && (
+            <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+          )}
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               {/*
@@ -98,7 +124,7 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-section">
+            <div className="filter-section" id="filterWrapper">
               <ProductListingFiltersForm
                 filtersMaps={filters}
                 totalProductsCount={totalProductsCount}
@@ -112,6 +138,8 @@ const ProductListView = ({
                 slpLabels={slpLabels}
                 isFilterBy={isFilterBy}
               />
+              {/* UX timer */}
+              <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
@@ -125,13 +153,20 @@ const ProductListView = ({
               productsBlock={productsBlock}
               labels={labels}
               currency={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
               plpGridPromos={plpGridPromos}
               plpHorizontalPromos={plpHorizontalPromos}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
+            {/* UX timer */}
+            {resultsExist && <RenderPerf.Measure name={RESULTS_VISIBLE} />}
+            {/* Skeleton placeholder */}
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
 
@@ -174,14 +209,21 @@ ProductListView.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
-  plpTopPromos: PropTypes.shape({}),
+  plpTopPromos: PropTypes.arrayOf(
+    PropTypes.shape({
+      // Only including the most important property
+      moduleName: PropTypes.string,
+    })
+  ),
   asPathVal: PropTypes.string,
   isSearchListing: PropTypes.bool,
   plpGridPromos: PropTypes.shape({}),
   plpHorizontalPromos: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -203,11 +245,13 @@ ProductListView.defaultProps = {
   isFilterBy: true,
   isLoadingMore: true,
   currency: 'USD',
-  plpTopPromos: {},
+  plpTopPromos: [],
   asPathVal: '',
   isSearchListing: false,
   plpGridPromos: {},
   plpHorizontalPromos: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
