@@ -62,7 +62,8 @@ class CopyLink extends React.PureComponent {
                 }}
                 id="shareLink"
                 dataLocator="shareLinkforFav"
-                ref={this.copyLinkRef}
+                inputRef={this.copyLinkRef}
+                enableSuccessCheck={false}
               />
             </Col>
           </Row>
