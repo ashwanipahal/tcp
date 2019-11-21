@@ -19,6 +19,8 @@ const MyFavoriteStore = ({
   favStorePhone,
   className,
   isMyPreferences,
+  handleComponentChange,
+  navigation
 }) => {
   return (
     <MyProfileTile
@@ -26,6 +28,9 @@ const MyFavoriteStore = ({
       title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
       ctaTitle={ctaTitleDefaultStore(labels, favStoreName, isMyPreferences)}
       dataLocator="myFavStoreLbl"
+      ctaLink="StoreLanding"
+      handleComponentChange={handleComponentChange}
+      navigation={navigation}
     >
       {isMyPreferences && (
         <BodyCopyWithSpacing
@@ -75,6 +80,8 @@ MyFavoriteStore.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string,
   isMyPreferences: PropTypes.bool,
+  handleComponentChange: PropTypes.func.isRequired,
+  navigation: PropTypes.func.isRequired,
 };
 
 MyFavoriteStore.defaultProps = {

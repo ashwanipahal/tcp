@@ -13,9 +13,10 @@ export const MyProfileTile = ({
   children,
   handleComponentChange,
   birthdaySaving,
+  navigation
 }) => {
   const isCtaPresent = !!ctaTitle;
-
+console.info('---->>',navigation)
   const styling = () => {
     if (isCtaPresent) {
       if (birthdaySaving) {
@@ -43,7 +44,9 @@ export const MyProfileTile = ({
           fill="BLUE"
           text={ctaTitle}
           onPress={() => {
-            handleComponentChange(ctaLink);
+
+              // navigation.navigate('StoreLanding');
+
           }}
         />
       )}
