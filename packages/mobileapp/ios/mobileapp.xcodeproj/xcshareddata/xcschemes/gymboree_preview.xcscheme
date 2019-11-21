@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D96E3C2C238588F6007879C7"
-               BuildableName = "Gymboree-Preview.app"
+               BuildableName = "gymboree_preview.app"
                BlueprintName = "gymboree_preview"
                ReferencedContainer = "container:mobileapp.xcodeproj">
             </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D96E3C2C238588F6007879C7"
-            BuildableName = "Gymboree-Preview.app"
+            BuildableName = "gymboree_preview.app"
             BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D96E3C2C238588F6007879C7"
-            BuildableName = "Gymboree-Preview.app"
+            BuildableName = "gymboree_preview.app"
             BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
