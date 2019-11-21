@@ -167,7 +167,10 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
             Object {
               "eventName": "cart add",
               "pageName": "",
+              "pageSection": "product",
               "pageShortName": "",
+              "pageSubSection": "product",
+              "pageType": "product",
               "products": Array [
                 Object {
                   "id": "undefined",
