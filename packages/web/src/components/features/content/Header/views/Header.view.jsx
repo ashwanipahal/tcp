@@ -104,7 +104,11 @@ class Header extends React.PureComponent {
 
     return (
       <header className={className}>
-        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container"
+          cookieID="mprTopHead"
+        />
 
         <HeaderTopNav
           className="header-topnav"
@@ -151,7 +155,11 @@ class Header extends React.PureComponent {
           dataTextPromo={headerPromoTextArea}
           dataHtmlPromo={headerPromoHtmlArea}
         />
-        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container"
+          cookieID="mprAboveHead"
+        />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
