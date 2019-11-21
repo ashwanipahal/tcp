@@ -920,7 +920,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         "small": 6,
       }
     }
-    message="INVLAID CAPTCHA"
+    message="INVALID CAPTCHA"
     status="error"
   />
   <div
