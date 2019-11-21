@@ -52,6 +52,8 @@ class ProductBundle extends React.PureComponent {
       addToBagErrorId,
       addToBagError,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -119,6 +121,8 @@ class ProductBundle extends React.PureComponent {
               addToBagErrorId={addToBagErrorId}
               addToBagError={addToBagError}
               toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
@@ -157,6 +161,8 @@ ProductBundle.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
   toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductBundle.defaultProps = {
@@ -169,6 +175,7 @@ ProductBundle.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductBundle);
