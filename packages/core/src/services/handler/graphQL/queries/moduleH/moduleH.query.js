@@ -14,6 +14,10 @@ const buildQuery = ({ slot, contentId, lang }) => `
           text
           style
         }
+        icon {
+          placement
+          icon
+        }
         link {
           url
           title
