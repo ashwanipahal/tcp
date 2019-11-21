@@ -19,7 +19,6 @@ import QuickViewModal from '../../../../common/organisms/QuickViewModal/containe
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
 import BagPageAnalytics from './BagPageAnalytics.view';
-import config from './config';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -149,6 +148,10 @@ class BagPageView extends React.PureComponent {
     const { sflItems, orderItemsCount } = this.props;
     const hideRec = orderItemsCount === 0 && sflItems.size > 0;
     const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <>
         {!hideRec ? (
@@ -156,7 +159,7 @@ class BagPageView extends React.PureComponent {
             page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
             variations="moduleO"
             inheritedStyles={recommendationStyles}
-            carouselConfigProps={isNoNEmptyBag ? config.CAROUSEL_OPTIONS : undefined}
+            carouselConfigProps={carouselOptions}
           />
         ) : null}
         {this.renderRecommendationsForRecent()}
@@ -167,6 +170,10 @@ class BagPageView extends React.PureComponent {
   renderRecommendationsForRecent = () => {
     const { labels, orderItemsCount } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <div className="recentlyViewed">
         <Recommendations
@@ -175,7 +182,7 @@ class BagPageView extends React.PureComponent {
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
           inheritedStyles={recommendationStyles}
-          carouselConfigProps={isNoNEmptyBag ? config.CAROUSEL_OPTIONS : undefined}
+          carouselConfigProps={carouselOptions}
         />
       </div>
     );

@@ -103,6 +103,14 @@ const BagPagePropTypes = {
   isBagPage: PropTypes.bool,
 };
 
+const CarouselOptions = {
+  CAROUSEL_OPTIONS: {
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  },
+};
+
 export default {
   getElementStickyPosition,
   bindScrollEvent,
@@ -112,4 +120,5 @@ export default {
   getDefaultStateValues,
   onPageUnload,
   BagPagePropTypes,
+  CarouselOptions,
 };
