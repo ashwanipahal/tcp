@@ -227,10 +227,7 @@ DamImage.defaultProps = {
   },
   basePath: 'https://test1.theplace.com/image/upload',
   imgPathSplitter: '/upload',
-  link: {
-    actualUrl: '',
-    className: '',
-  },
+  link: null,
   dataLocator: '',
   dataLocatorLink: '',
   forwardedRef: null,
