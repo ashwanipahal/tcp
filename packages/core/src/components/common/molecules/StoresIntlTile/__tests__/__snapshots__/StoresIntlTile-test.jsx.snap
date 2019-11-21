@@ -687,9 +687,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kpOJdX",
+            "componentId": "sc-dxgOiQ",
             "isStatic": false,
-            "lastClassName": "jByIYk",
+            "lastClassName": "kTThyO",
             "rules": Array [
               "
   ",
@@ -717,7 +717,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kpOJdX",
+          "styledComponentId": "sc-dxgOiQ",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -733,7 +733,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kpOJdX jByIYk"
+        className="sc-dxgOiQ kTThyO"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1508,9 +1508,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kpOJdX",
+            "componentId": "sc-dxgOiQ",
             "isStatic": false,
-            "lastClassName": "jByIYk",
+            "lastClassName": "kTThyO",
             "rules": Array [
               "
   ",
@@ -1538,7 +1538,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kpOJdX",
+          "styledComponentId": "sc-dxgOiQ",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1628,7 +1628,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kpOJdX jByIYk"
+        className="sc-dxgOiQ kTThyO"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1711,7 +1711,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-kpOJdX jByIYk"
+          className="sc-dxgOiQ kTThyO"
         >
           <styled.h3>
             <StyledComponent
@@ -1720,9 +1720,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-kGXeez",
+                    "componentId": "sc-kpOJdX",
                     "isStatic": false,
-                    "lastClassName": "YIGlb",
+                    "lastClassName": "djWrDY",
                     "rules": Array [
                       "
   position: relative;
@@ -1766,7 +1766,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-kGXeez",
+                  "styledComponentId": "sc-kpOJdX",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1776,7 +1776,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-kGXeez YIGlb"
+                className="sc-kpOJdX djWrDY"
               >
                 Test
               </h3>

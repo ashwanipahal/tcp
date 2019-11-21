@@ -4,6 +4,7 @@ import {
   setLoaderState,
   setSectionLoaderState,
 } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import { isClient } from '@tcp/core/src/utils';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -27,27 +28,28 @@ import {
 class CheckoutPage extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.pageServerError = null;
     this.pageServerErrorRef = this.pageServerErrorRef.bind(this);
     this.reviewFormRef = React.createRef();
+    if (isClient()) {
+      const { setCheckoutStage } = props;
+      const currentSection = this.getCurrentCheckoutSection(props);
+      setCheckoutStage(currentSection);
+      if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
+        routerPush('/', '/');
+      }
+    }
   }
 
   componentDidMount() {
     setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
     setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
     setLoaderState(false);
-    const { setCheckoutStage } = this.props;
-    const currentSection = this.getCurrentCheckoutSection();
-    setCheckoutStage(currentSection);
-    if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
-      routerPush('/', '/');
-    }
   }
 
   componentDidUpdate(prevProps) {
     const { checkoutServerError, setCheckoutStage, activeStage } = this.props;
-    const currentSection = this.getCurrentCheckoutSection();
+    const currentSection = this.getCurrentCheckoutSection(this.props);
     if (currentSection !== activeStage) {
       setCheckoutStage(currentSection);
     }
@@ -61,10 +63,15 @@ class CheckoutPage extends React.PureComponent {
     updateAnalyticsData(this.props, prevProps);
   }
 
-  getCurrentCheckoutSection = () => {
-    const { router } = this.props;
+  getCurrentCheckoutSection = props => {
+    const { router } = props;
     const section = router.query.section || router.query.subSection;
     return section || CHECKOUT_STAGES.SHIPPING;
+  };
+
+  getIsRenderConfirmation = () => {
+    const { router } = this.props;
+    return router.query.fromReview || false;
   };
 
   /**
@@ -139,6 +146,7 @@ class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       loadShipmentMethods,
       onPickupSubmit,
+      updateFromMSG,
       orderHasShipping,
       routeToPickupPage,
       updateShippingMethodSelection,
@@ -167,10 +175,10 @@ class CheckoutPage extends React.PureComponent {
     const { clearCheckoutServerError, setClickAnalyticsDataCheckout, cartOrderItems } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
-    const currentSection = this.getCurrentCheckoutSection();
+    const currentSection = this.getCurrentCheckoutSection(this.props);
     const isFormLoad = getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
-
+    const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <div>
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
@@ -196,6 +204,7 @@ class CheckoutPage extends React.PureComponent {
             smsSignUpLabels={smsSignUpLabels}
             orderHasShipping={orderHasShipping}
             onPickupSubmit={onPickupSubmit}
+            updateFromMSG={updateFromMSG}
             navigation={navigation}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */
@@ -295,7 +304,7 @@ class CheckoutPage extends React.PureComponent {
             cartLoading={cartLoading}
           />
         )}
-        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && isRendorConfirmation && (
           <Confirmation
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             pageCategory={currentSection.toLowerCase()}
@@ -327,11 +336,11 @@ class CheckoutPage extends React.PureComponent {
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
-    const currentSection = this.getCurrentCheckoutSection();
-
+    const currentSection = this.getCurrentCheckoutSection(this.props);
+    const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <>
-        {!isBagLoaded || cartOrderItemsCount > 0 ? (
+        {(!isBagLoaded || cartOrderItemsCount > 0) && isRendorConfirmation ? (
           <CnCTemplate
             showLeftSection
             leftSection={this.renderLeftSection}
