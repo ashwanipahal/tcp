@@ -10,8 +10,7 @@ if (process.env.RWD_APPD_ENABLED === 'true') {
       accountAccessKey: process.env.RWD_APPD_ACCOUNT_ACCESS_KEY,
       applicationName: process.env.RWD_APPD_APPLICATION_NAME,
       tierName: process.env.RWD_APPD_TIER_NAME,
-      nodeName: process.env.RWD_APPD_NODE_NAME,
-      libagent: true,
+      nodeName: process.env.HOSTNAME,
     });
   } catch (error) {
     logger.error('Unable to initialize AppDynamics', error);
