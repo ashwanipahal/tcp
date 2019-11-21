@@ -30,6 +30,7 @@ import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import ImageCarousel from '../../ImageCarousel';
 import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
+import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
@@ -37,18 +38,30 @@ const TextProps = {
 
 let renderVariation = false;
 
-const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+const onCTAHandler = (
+  item,
+  selectedColorIndex,
+  onGoToPDPPage,
+  onQuickViewOpenClick,
+  isFavoriteOOS
+) => {
   const { productInfo, colorsMap } = item;
   const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
-  if (bundleProduct) {
+  if (isFavoriteOOS) {
+    console.log('Remove Click Handling');
+  } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
     onQuickViewOpenClick({
       colorProductId,
     });
   }
+};
+
+const getOOSButtonLabel = (isFavorite, outOfStockLabels) => {
+  return isFavorite ? 'Remove' : outOfStockLabels.outOfStockCaps;
 };
 
 const renderAddToBagContainer = ({
@@ -61,11 +74,14 @@ const renderAddToBagContainer = ({
   onGoToPDPPage,
   keepAlive,
   outOfStockLabels,
+  isFavorite,
 }) => {
   if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
+  const isFavoriteOOS = isFavorite && keepAlive;
+
   return (
     <AddToBagContainer>
       <CustomButton
@@ -74,9 +90,11 @@ const renderAddToBagContainer = ({
         type="button"
         buttonVariation="variable-width"
         data-locator=""
-        disableButton={keepAlive}
-        text={keepAlive ? outOfStockLabels.outOfStockCaps : buttonLabel}
-        onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
+        disableButton={keepAlive && !isFavorite}
+        text={keepAlive ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels) : buttonLabel}
+        onPress={() =>
+          onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick, isFavoriteOOS)
+        }
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
         margin="0 6px 0 0"
       />
@@ -94,12 +112,20 @@ renderAddToBagContainer.propTypes = {
   onGoToPDPPage: PropTypes.bool.isRequired,
   keepAlive: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}).isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
+const isItemOutOfStock = (keepAlive, itemInfo) => {
+  return keepAlive || (itemInfo && itemInfo.availability === AVAILABILITY.SOLDOUT);
+};
+
+const checkEditEnabled = (isFavorite, itemOutOfStock) => {
+  return isFavorite && itemOutOfStock;
+};
 const ListItem = props => {
   const {
     item,
@@ -133,6 +159,7 @@ const ListItem = props => {
   const { name, bundleProduct } = productInfo;
   const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
+  const itemOutOfStock = isItemOutOfStock(keepAlive, itemInfo);
 
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
@@ -150,11 +177,11 @@ const ListItem = props => {
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
         isFavorite={isFavorite}
-        keepAlive={keepAlive}
+        keepAlive={itemOutOfStock}
         outOfStockLabels={outOfStockLabels}
       />
       <RenderBadge2 text={badge2} />
-      {isFavorite && (
+      {checkEditEnabled(isFavorite, itemOutOfStock) && (
         <Anchor
           fontSizeVariation="medium"
           fontFamily="secondary"
@@ -208,8 +235,9 @@ const ListItem = props => {
         bundleProduct,
         labelsPlpTiles,
         onGoToPDPPage,
-        keepAlive,
+        keepAlive: itemOutOfStock,
         outOfStockLabels,
+        isFavorite,
       })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (

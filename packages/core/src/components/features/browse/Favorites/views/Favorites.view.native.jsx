@@ -353,6 +353,8 @@ class FavoritesView extends React.PureComponent {
       wishlistsSummaries,
       defaultWishList,
       activeWishList,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
 
     const { selectedWishlist, selectedShareOption } = this.state;
@@ -477,6 +479,8 @@ class FavoritesView extends React.PureComponent {
               filteredId={filteredId}
               renderBrandFilter={this.renderBrandFilter}
               labelsPlpTiles={labelsPlpTiles}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
           </>
         )}
@@ -510,7 +514,9 @@ FavoritesView.propTypes = {
   isDataLoading: PropTypes.bool.isRequired,
   labelsPlpTiles: PropTypes.shape({}).isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
-  defaultWishList: PropTypes.shape([]).isRequired,
+  defaultWishList: PropTypes.shape({}),
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -519,6 +525,8 @@ FavoritesView.defaultProps = {
   labels: {},
   selectedColorProductId: '',
   filteredId: 'ALL',
+  defaultWishList: {},
+  outOfStockLabels: {},
 };
 
 export default FavoritesView;
