@@ -6,6 +6,8 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import ImageTextModule from '@tcp/core/src/components/common/molecules/ImageTextModule';
+import mock from '@tcp/core/src/services/abstractors/common/ImageTextModule/mock';
 import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -123,6 +125,7 @@ const HomePageView = dynamic({
       >
         <PageSlots slots={slots} modules={modules} />
         <ModuleS {...mockS.moduleS.composites} />
+        <ImageTextModule {...mock.composites} set={mock.set} />
         <GetCandid />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
