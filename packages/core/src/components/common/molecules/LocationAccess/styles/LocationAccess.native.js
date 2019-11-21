@@ -4,7 +4,7 @@ import { Image, BodyCopy, Button, Anchor } from '../../../atoms';
 export const Wrapper = styled.View`
   align-items: center;
   background-color: #ffffff;
-  height: 280px;
+  height: 290px;
   width: ${props => props.width};
   padding: 12px;
 `;
@@ -12,7 +12,6 @@ export const Wrapper = styled.View`
 export const Container = styled.View`
   align-items: center;
   justify-content: center;
-  margin-top: 200px;
 `;
 
 export const StyledImage = styled(Image)`
@@ -38,6 +37,7 @@ export const StyledButton = styled(Button)`
 
 export const StyledAnchor = styled(Anchor)`
   ${props => (props.marginTop ? `margin-top: ${props.marginTop}` : ``)};
+  ${props => (props.marginBottom ? `margin-bottom: ${props.marginBottom}` : ``)};
 `;
 
 export const MessageContainer = styled.View`
@@ -45,6 +45,13 @@ export const MessageContainer = styled.View`
   justify-content: center;
   margin-left: 12px;
   margin-right: 12px;
+`;
+
+export const ShadowContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: ${props => props.height}px;
 `;
 
 export default {
@@ -56,4 +63,5 @@ export default {
   StyledButton,
   StyledAnchor,
   MessageContainer,
+  ShadowContainer,
 };
