@@ -67,7 +67,14 @@ const L3Panel = props => {
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
             <li>
-              <Anchor to={shopalllink} data-locator="l3_link_shop_all" asPath={shopallaspath}>
+              <Anchor
+                to={shopalllink}
+                data-locator="l3_link_shop_all"
+                asPath={shopallaspath}
+                onClick={() => {
+                  closeNav();
+                }}
+              >
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
