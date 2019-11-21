@@ -7,6 +7,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
     ctaLink="accountOverviewMobile"
     ctaTitle="Edit personal Info"
     handleComponentChange={[Function]}
+    isPageNavigation={false}
     title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
@@ -37,6 +38,7 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
     ctaLink="accountOverviewMobile"
     ctaTitle="lbl_profile_edit_personal_info"
     handleComponentChange={[Function]}
+    isPageNavigation={false}
     title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay

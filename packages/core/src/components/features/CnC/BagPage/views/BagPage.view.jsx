@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import withRefWrapper from '../../../../common/hoc/withRefWrapper';
 import withHotfix from '../../../../common/hoc/withHotfix';
 
@@ -252,7 +253,7 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, currencySymbol, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -276,7 +277,8 @@ class BagPageView extends React.PureComponent {
                   component="span"
                   className="elem-ml-SM"
                 >
-                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: `}
+                  <PriceCurrency price={orderBalanceTotal} />
                 </BodyCopy>
               </BodyCopy>
             </Col>
@@ -334,7 +336,7 @@ class BagPageView extends React.PureComponent {
 
   render() {
     const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
-    const { sflItems, isShowSaveForLaterSwitch, orderBalanceTotal, currencySymbol } = this.props;
+    const { sflItems, isShowSaveForLaterSwitch, orderBalanceTotal } = this.props;
     const { activeSection, showStickyHeaderMob, loadPaypalStickyHeader, headerError } = this.state;
     const { params } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
@@ -374,7 +376,8 @@ class BagPageView extends React.PureComponent {
                     activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
                   }`}
                 >
-                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: `}
+                  <PriceCurrency price={orderBalanceTotal} />
                 </BodyCopy>
               )}
             </Col>
@@ -441,7 +444,6 @@ BagPageView.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
   isBagPage: PropTypes.bool,
 };

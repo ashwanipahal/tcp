@@ -9,6 +9,7 @@ import {
   getIsRadialInventoryEnabled,
   getIsBossAppEnabled,
 } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { getIsMiniBagOpen } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isMobileApp } from '@tcp/core/src/utils';
 import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
@@ -46,6 +47,7 @@ export const CartItemTileContainer = ({
   productDetail,
   removeCartItem,
   updateCartItem,
+  isMiniBagOpen,
   getProductSKUInfo,
   editableProductInfo,
   pageView,
@@ -96,6 +98,7 @@ export const CartItemTileContainer = ({
     productDetail={productDetail}
     removeCartItem={removeCartItem}
     updateCartItem={updateCartItem}
+    isMiniBagOpen={isMiniBagOpen}
     getProductSKUInfo={getProductSKUInfo}
     editableProductInfo={editableProductInfo}
     pageView={pageView}
@@ -202,8 +205,10 @@ export const mapDispatchToProps = dispatch => {
     removeCartItem: orderItemId => {
       dispatch(removeCartItem(orderItemId));
     },
-    updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-      dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
+    updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen) => {
+      dispatch(
+        updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen })
+      );
     },
     getProductSKUInfo: payload => {
       dispatch(getProductSKUInfo(payload));
@@ -269,6 +274,7 @@ export function mapStateToProps(state) {
     toggleBossBopisError: getCartBossBopisToggleError(state),
     currencyExchange: getCurrencyExchange(state),
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
+    isMiniBagOpen: getIsMiniBagOpen(state),
   };
 }
 
@@ -323,6 +329,7 @@ CartItemTileContainer.propTypes = {
   isBopisEnabledTCP: PropTypes.bool.isRequired,
   isBopisEnabledGYM: PropTypes.bool.isRequired,
   isRadialInventoryEnabled: PropTypes.bool.isRequired,
+  isMiniBagOpen: PropTypes.bool.isRequired,
 };
 
 CartItemTileContainer.defaultProps = {

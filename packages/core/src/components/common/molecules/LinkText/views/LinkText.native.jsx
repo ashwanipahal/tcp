@@ -207,17 +207,17 @@ const LinkText = (props: Props) => {
   }
 
   return headerText.map((item, index) => {
-    const { link, icon, textItems } = item;
+    const { link, icon, textItems } = item || {};
     const textItemsComponents = getTextItems(textItems, icon, useStyle, compProps);
     if (useStyle) {
       return (
-        <Anchor url={link.url} navigation={navigation}>
+        <Anchor url={link && link.url} navigation={navigation}>
           {renderComponentInNewLine ? textItemsComponents : <Text>{textItemsComponents}</Text>}
         </Anchor>
       );
     }
     return (
-      <Anchor key={index.toString()} url={link.url} navigation={navigation}>
+      <Anchor key={index.toString()} url={link && link.url} navigation={navigation}>
         <Component {...compProps} text={textItemsComponents} locator={locator} />
       </Anchor>
     );
