@@ -37,7 +37,9 @@ class CategoryListing extends PureComponent {
         <Grid className={className}>
           <Row fullBleed>
             <Col className="bread-crumb-container" colSize={{ large: 12, medium: 8, small: 6 }}>
-              <FixedBreadCrumbs inheritedStyles={customBreadCrumbStyle} crumbs={breadCrumbs} />
+              {breadCrumbs.length === 1 ? (
+                <FixedBreadCrumbs inheritedStyles={customBreadCrumbStyle} crumbs={breadCrumbs} />
+              ) : null}
             </Col>
           </Row>
           <Row fullBleed>
