@@ -6,6 +6,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { getLoading, getLabelValue } from '@tcp/core/src/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import {
   PageContainer,
   BrandFilterContainer,
@@ -17,6 +18,7 @@ import {
   DropDownWishlistItemContainer,
   SelectedWishlistContainer,
   ItemCountContainer,
+  RecommendationWrapper,
 } from '../styles/Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
@@ -27,6 +29,8 @@ import CustomIcon from '../../../../common/atoms/Icon';
 import ModalWrapper from '../molecules/ModalWrapper';
 import AddList from '../molecules/AddList';
 import EditList from '../molecules/EditList';
+import NoFavoritesFound from '../molecules/NoFavoritesFound/views';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 const dropDownStyle = {
   height: 49,
@@ -363,6 +367,14 @@ class FavoritesView extends React.PureComponent {
         filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
       }
     }
+
+    const recommendationAttributes = {
+      variation: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
+
     return (
       <PageContainer>
         {this.renderModalWrapper()}
@@ -376,84 +388,96 @@ class FavoritesView extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_fav_myFavorites')}
         />
         <LineComp borderWidth="2" marginTop="12" borderColor="black" />
-        <DropDownContainer>
-          <SelectWishListDropdown
-            selectedValue={selectedWishlist}
-            data={wishlistsSummaries}
-            defaultWishList={defaultWishList}
-            onValueChange={itemValue => {
-              this.setState({ selectedWishlist: itemValue }, () =>
-                this.handleWishlistClick(itemValue)
-              );
-            }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-            selectedItemFontWeight="semibold"
-            dropDownItemFontWeight="regular"
-            renderHeader={this.renderHeader}
-            renderFooter={this.renderFooter}
-            renderItems={this.renderWishlistItems}
-            fontSize="fs24"
-            labels={labels}
-            arrowImageStyle={arrowImageStyle}
-            isWishlist
-          />
-        </DropDownContainer>
-        <DropDownContainer>
-          <Anchor
-            locator="pdp_write_review_icon"
-            accessibilityLabel={getLabelValue(labels, 'lbl_fav_editListSettings')}
-            text={getLabelValue(labels, 'lbl_fav_editListSettings')}
-            anchorVariation="custom"
-            colorName="gray.900"
-            fontSizeVariation="normal"
-            onPress={this.handleEditList}
-            centered
-            underline
-          />
-        </DropDownContainer>
 
-        <ShareDropDownContainer>
-          <SelectWishListDropdown
-            selectedValue={selectedShareOption}
-            data={this.getSharingOptions()}
-            onValueChange={itemValue => {
-              this.setState({ selectedShareOption: itemValue }, () =>
-                this.handleShareClick(itemValue)
-              );
-            }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-            selectedItemFontWeight="extrabold"
-            dropDownItemFontWeight="regular"
-            width="100px"
-            labels={labels}
-            isShareOptions
-          />
-        </ShareDropDownContainer>
-        <ProductListing
-          products={filteredItemsList}
-          filters={filtersArray}
-          totalProductsCount={filteredItemsList.length}
-          filtersLength={0}
-          navigation={navigation}
-          onGoToPDPPage={onGoToPDPPage}
-          isFavorite
-          currencySymbol={currencySymbol}
-          labelsFilter={labels}
-          labels={labels}
-          onQuickViewOpenClick={onQuickViewOpenClick}
-          selectedColorProductId={selectedColorProductId}
-          setLastDeletedItemId={setLastDeletedItemId}
-          sortLabels={getSortsList(labels)}
-          onFilterSelection={onFilterSelection}
-          onSortSelection={onSortSelection}
-          filteredId={filteredId}
-          renderBrandFilter={this.renderBrandFilter}
-          labelsPlpTiles={labelsPlpTiles}
-        />
+        {filteredItemsList.length === 0 ? (
+          <>
+            <NoFavoritesFound labels={labels} />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+            </RecommendationWrapper>
+          </>
+        ) : (
+          <>
+            <DropDownContainer>
+              <SelectWishListDropdown
+                selectedValue={selectedWishlist}
+                data={wishlistsSummaries}
+                defaultWishList={defaultWishList}
+                onValueChange={itemValue => {
+                  this.setState({ selectedWishlist: itemValue }, () =>
+                    this.handleWishlistClick(itemValue)
+                  );
+                }}
+                variation="secondary"
+                dropDownStyle={{ ...dropDownStyle }}
+                itemStyle={{ ...itemStyle }}
+                selectedItemFontWeight="semibold"
+                dropDownItemFontWeight="regular"
+                renderHeader={this.renderHeader}
+                renderFooter={this.renderFooter}
+                renderItems={this.renderWishlistItems}
+                fontSize="fs24"
+                labels={labels}
+                arrowImageStyle={arrowImageStyle}
+                isWishlist
+              />
+            </DropDownContainer>
+            <DropDownContainer>
+              <Anchor
+                locator="pdp_write_review_icon"
+                accessibilityLabel={getLabelValue(labels, 'lbl_fav_editListSettings')}
+                text={getLabelValue(labels, 'lbl_fav_editListSettings')}
+                anchorVariation="custom"
+                colorName="gray.900"
+                fontSizeVariation="normal"
+                onPress={this.handleEditList}
+                centered
+                underline
+              />
+            </DropDownContainer>
+
+            <ShareDropDownContainer>
+              <SelectWishListDropdown
+                selectedValue={selectedShareOption}
+                data={this.getSharingOptions()}
+                onValueChange={itemValue => {
+                  this.setState({ selectedShareOption: itemValue }, () =>
+                    this.handleShareClick(itemValue)
+                  );
+                }}
+                variation="secondary"
+                dropDownStyle={{ ...dropDownStyle }}
+                itemStyle={{ ...itemStyle }}
+                selectedItemFontWeight="extrabold"
+                dropDownItemFontWeight="regular"
+                width="100px"
+                labels={labels}
+                isShareOptions
+              />
+            </ShareDropDownContainer>
+            <ProductListing
+              products={filteredItemsList}
+              filters={filtersArray}
+              totalProductsCount={filteredItemsList.length}
+              filtersLength={0}
+              navigation={navigation}
+              onGoToPDPPage={onGoToPDPPage}
+              isFavorite
+              currencySymbol={currencySymbol}
+              labelsFilter={labels}
+              labels={labels}
+              onQuickViewOpenClick={onQuickViewOpenClick}
+              selectedColorProductId={selectedColorProductId}
+              setLastDeletedItemId={setLastDeletedItemId}
+              sortLabels={getSortsList(labels)}
+              onFilterSelection={onFilterSelection}
+              onSortSelection={onSortSelection}
+              filteredId={filteredId}
+              renderBrandFilter={this.renderBrandFilter}
+              labelsPlpTiles={labelsPlpTiles}
+            />
+          </>
+        )}
       </PageContainer>
     );
   }

@@ -106,7 +106,18 @@ export default css`
       margin-top: 0;
     }
   }
-
+  .no-favorite-container {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+  }
+  .no-favorite-container .no-favorite-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .brand-option-list {
       li.is-label {

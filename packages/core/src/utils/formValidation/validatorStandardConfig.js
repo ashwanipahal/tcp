@@ -1,4 +1,4 @@
-/* eslint max-lines: ["error", 500] */
+/* eslint max-lines: ["error", 550] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';

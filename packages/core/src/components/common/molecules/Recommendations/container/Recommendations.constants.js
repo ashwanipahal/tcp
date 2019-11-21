@@ -8,7 +8,7 @@ export const RECOMMENDATIONS_PAGES_MAPPING = {
   HOMEPAGE: 'homepage',
   PLP: 'plp',
   FAVORITES: 'favorites',
-  DEPARTMENT_LANDING: 'dlp',
+  DEPARTMENT_LANDING: '', // TODO
   CHECKOUT: 'checkout',
   OUTFIT: 'outfit',
   NO_PAGE_FOUND: '404_page',

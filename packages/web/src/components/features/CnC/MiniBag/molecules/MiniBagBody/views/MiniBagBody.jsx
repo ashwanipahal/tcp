@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -49,13 +49,20 @@ class MiniBagBody extends React.PureComponent {
     return (
       <Anchor
         fontSizeVariation="medium"
+        noLink
         underline
         anchorVariation="primary"
-        asPath={CHECKOUT_ROUTES.bagPage.asPath}
-        to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
-        onClick={() => closeMiniBag()}
+        onClick={e => {
+          const timestamp = Date.now();
+          e.preventDefault();
+          routerPush(
+            `${CHECKOUT_ROUTES.bagPage.to}?isSfl=${timestamp}`,
+            `${CHECKOUT_ROUTES.bagPage.to}`
+          );
+          closeMiniBag();
+        }}
       >
         {`${labels.viewSfl} (${savedforLaterQty})`}
       </Anchor>
