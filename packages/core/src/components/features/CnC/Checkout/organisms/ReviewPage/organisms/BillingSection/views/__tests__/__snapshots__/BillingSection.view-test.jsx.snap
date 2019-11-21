@@ -555,7 +555,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-dnqmqq",
+              "componentId": "sc-gZMcBi",
               "isStatic": false,
               "rules": Array [
                 "
@@ -698,7 +698,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-dnqmqq",
+            "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
