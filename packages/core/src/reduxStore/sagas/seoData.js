@@ -9,7 +9,8 @@ import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api
 function* fetchPageSEOData(action) {
   const { payload: { page } = {} } = action;
   const seoDataSelector = state => {
-    const pageData = state[SEO_DATA_REDUCER_KEY] && state[SEO_DATA_REDUCER_KEY][page];
+    const seoDataKey = page.split('/')[1]; // I used Split() here because it is also using in reducer to create seo key
+    const pageData = state[SEO_DATA_REDUCER_KEY] && state[SEO_DATA_REDUCER_KEY][seoDataKey];
     return pageData || false;
   };
   const isSEODataExist = yield select(seoDataSelector);

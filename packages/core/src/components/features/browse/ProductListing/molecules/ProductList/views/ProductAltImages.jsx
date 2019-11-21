@@ -243,11 +243,12 @@ class ProductAltImages extends React.PureComponent {
       analyticsData,
       className,
     } = this.props;
+    const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
     const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
       alt: productName,
-      url: imageUrls[0],
+      url: imageUrls[currentIndex],
     };
     return imageUrls.length < 2 ? (
       <figure
