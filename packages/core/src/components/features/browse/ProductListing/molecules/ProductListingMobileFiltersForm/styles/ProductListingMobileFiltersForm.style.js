@@ -152,7 +152,7 @@ export default css`
     width: 98%;
     position: relative;
     border: 0;
-    padding-top: 16px;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding-bottom: 0;
     margin: auto;
 
@@ -208,12 +208,11 @@ export default css`
   li.item-common {
     height: 23px;
     min-width: 140px;
-    max-width: 140px;
+    width: 45%;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-right: auto;
     border-radius: 6px;
     border: 1px solid ${props => props.theme.colorPalette.gray[900]};
-    width: auto;
     display: inline-table;
 
     .sort-item-list,
@@ -235,7 +234,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      width: 120px;
+      width: 31%;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       .item-select {
@@ -286,7 +285,7 @@ export default css`
 
     li.item-common {
       border: 0;
-      padding: 0 0 0 8px;
+      padding: 0 0 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
       background-color: ${props => props.theme.colorPalette.white};
       background-position: left;
       min-width: 100%;

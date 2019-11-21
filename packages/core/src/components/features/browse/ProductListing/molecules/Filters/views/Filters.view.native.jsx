@@ -81,6 +81,22 @@ class Filters extends React.PureComponent {
     return <ItemSeparatorStyle />;
   };
 
+  onItemPress = (isFavorite, item, index) => {
+    if (isFavorite) {
+      this.onSingleSelectFilter(item, index);
+    } else {
+      this.onSelectFilter(item);
+    }
+    this.onApplyFilter();
+  };
+
+  onColorItemPress = (isLoadingMore, item) => {
+    if (!isLoadingMore) {
+      this.onSelectFilter(item);
+      this.onApplyFilter();
+    }
+  };
+
   /**
    * @function onSelectFilter
    * This method is called on tap of an item in filter list
@@ -124,12 +140,7 @@ class Filters extends React.PureComponent {
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
         text={displayName}
         onPress={() => {
-          if (isFavorite) {
-            this.onSingleSelectFilter(item, index);
-          } else {
-            this.onSelectFilter(item);
-          }
-          this.onApplyFilter();
+          this.onItemPress(isFavorite, item, index);
         }}
         selected={selectedState}
         data-locator=""
@@ -153,10 +164,7 @@ class Filters extends React.PureComponent {
         uri={imageUrl}
         selected={isSelected}
         onPress={() => {
-          if (!isLoadingMore) {
-            this.onSelectFilter(item);
-            this.onApplyFilter();
-          }
+          this.onColorItemPress(isLoadingMore, item);
         }}
         name={name}
       />

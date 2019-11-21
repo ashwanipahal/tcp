@@ -314,9 +314,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     );
   };
 
+  getFilterName = (initialValues, fieldName, filterId) => {
+    return initialValues[fieldName].filter(entryId => entryId !== filterId);
+  };
+
   handleRemoveFilter = (fieldName, filterId) => {
     const { onChange, initialValues, handleSubmitOnChange } = this.props;
-    onChange(fieldName, initialValues[fieldName].filter(entryId => entryId !== filterId));
+    const selectedFilterName = this.getFilterName(initialValues, fieldName, filterId);
+    onChange(fieldName, selectedFilterName);
     handleSubmitOnChange(true);
   };
 
@@ -334,7 +339,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   renderAppliedFiltersList(appliedFilters, facetName, cssKey) {
     const { labels, className } = this.props;
     const filterLength =
-      (appliedFilters && appliedFilters[facetName] && appliedFilters[facetName].length) || 0;
+      appliedFilters && appliedFilters[facetName] && appliedFilters[facetName].length;
     const filter = [];
 
     if (filterLength > 0) {
@@ -368,7 +373,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const accordionItems = [];
     const { show } = this.state;
     const appliedFilterComponent = [];
-    filterKeys.map(key => {
+    filterKeys.forEach(key => {
       if (this.isUnbxdFacetKey(key)) {
         const appliedFilter = {
           [key]: initialValues[key]
