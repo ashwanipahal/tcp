@@ -438,9 +438,12 @@ class ProductsGridItem extends React.PureComponent {
         <ClickTracker
           clickData={{
             eventName: 'cart add',
+            pageType: 'product',
+            pageSection: 'product',
+            pageSubSection: 'product',
             pageShortName,
             pageName,
-            products: [{ id: `${generalProductId}` }],
+            products: [{ id: `${productId}` }],
           }}
         >
           <Button
