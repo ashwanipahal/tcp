@@ -3,36 +3,30 @@ import PropTypes from 'prop-types';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
-import { getCategoryIds, getImagesGrids, getSeoText } from '../utils/utility';
+import { getCategoryIds, getImagesGrids, getSeoText, getCategoryName } from '../utils/utility';
 import { getLabels } from './CategoryListing.selectors';
 
 export class CategoryListingContainer extends PureComponent {
   static getInitialProps = async ({ props }) => {
     const {
       getLayout,
-      router: {
-        query: { cid },
-      },
+      router: { asPath },
     } = props;
 
-    await getLayout(cid);
+    await getLayout(getCategoryName(asPath));
   };
 
   componentDidUpdate(prevProps) {
     const {
       getLayout,
-      router: {
-        query: { cid },
-      },
+      router: { asPath },
     } = this.props;
 
     const {
-      router: {
-        query: { cid: preCid },
-      },
+      router: { asPath: prevAsPath },
     } = prevProps;
-    if (preCid !== cid) {
-      getLayout(cid);
+    if (getCategoryName(prevAsPath) !== getCategoryName(asPath)) {
+      getLayout(getCategoryName(asPath));
     }
   }
 
@@ -43,9 +37,13 @@ export class CategoryListingContainer extends PureComponent {
       navigationData,
       router: {
         query: { cid },
+        asPath,
       },
     } = this.props;
-    const categoryListingSlots = (layouts[cid] && layouts[cid].slots) || [];
+
+    const categoryListingSlots =
+      (layouts[getCategoryName(asPath)] && layouts[getCategoryName(asPath)].slots) || [];
+
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);
     const seoText = getSeoText(navigationData, cid);
