@@ -40,114 +40,116 @@ const MyRewards = ({
 
   return (
     <div className={className}>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            small: 6,
-            large: 12,
-            medium: 8,
-          }}
-        >
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            className="my-rewards-heading"
-            data-locator="my-rewards-heading"
+      <div className="handleTablet">
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
           >
-            {heading}
-          </BodyCopy>
-        </Col>
-        <Col
-          colSize={{
-            small: 6,
-            large: 12,
-            medium: 8,
-          }}
-          ignoreGutter={{
-            small: true,
-            medium: true,
-            large: true,
-          }}
-        >
-          {isFetching && <MyRewardsSkeleton />}
-          {!isFetching &&
-            (coupons.size > 0 ? (
-              <BodyCopy component="div" className="rewards-container elem-mb-XXL">
-                {coupons.map(coupon => {
-                  return (
-                    <DetailedCouponTile
-                      key={coupon.id}
-                      labels={commonLabels}
-                      coupon={coupon}
-                      onViewCouponDetails={onViewCouponDetails}
-                      onApplyCouponToBagFromList={onApplyCouponToBagFromList}
-                      onRemove={onRemove}
-                      handleErrorCoupon={handleErrorCoupon}
-                      isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
-                      isMobile={isMobile}
-                      view={view}
-                      className="elem-mb-LRG"
-                    />
-                  );
-                })}
-              </BodyCopy>
-            ) : (
-              <>
-                {view === 'all' ? (
-                  <EmptyWalletRewards labels={labels} />
-                ) : (
-                  <EmptyRewards labels={labels} />
-                )}
-              </>
-            ))}
-        </Col>
-        {showLink && (
-          <>
-            <Col
-              colSize={{
-                small: 3,
-                large: 6,
-                medium: 4,
-              }}
-              className="textRight"
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              className="my-rewards-heading"
+              data-locator="my-rewards-heading"
             >
-              <Anchor
-                fontSizeVariation="medium"
-                underline
-                noLink
-                href="https://www.childrensplace.com/us/content/myplace-rewards-page"
-                anchorVariation="primary"
-                dataLocator="my-rewards-program-details"
-                className="elem-mr-SM"
-                target="_blank"
+              {heading}
+            </BodyCopy>
+          </Col>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
+            ignoreGutter={{
+              small: true,
+              medium: true,
+              large: true,
+            }}
+          >
+            {isFetching && <MyRewardsSkeleton />}
+            {!isFetching &&
+              (coupons.size > 0 ? (
+                <BodyCopy component="div" className="rewards-container elem-mb-XXL">
+                  {coupons.map(coupon => {
+                    return (
+                      <DetailedCouponTile
+                        key={coupon.id}
+                        labels={commonLabels}
+                        coupon={coupon}
+                        onViewCouponDetails={onViewCouponDetails}
+                        onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+                        onRemove={onRemove}
+                        handleErrorCoupon={handleErrorCoupon}
+                        isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
+                        isMobile={isMobile}
+                        view={view}
+                        className="elem-mb-LRG"
+                      />
+                    );
+                  })}
+                </BodyCopy>
+              ) : (
+                <>
+                  {view === 'all' ? (
+                    <EmptyWalletRewards labels={labels} />
+                  ) : (
+                    <EmptyRewards labels={labels} />
+                  )}
+                </>
+              ))}
+          </Col>
+          {showLink && (
+            <>
+              <Col
+                colSize={{
+                  small: 3,
+                  large: 6,
+                  medium: 4,
+                }}
+                className="textRight"
               >
-                {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
-              </Anchor>
-            </Col>
-            <Col
-              colSize={{
-                small: 3,
-                large: 6,
-                medium: 4,
-              }}
-            >
-              <Anchor
-                fontSizeVariation="medium"
-                underline
-                noLink
-                href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-                anchorVariation="primary"
-                dataLocator="my-rewards-tnc"
-                className="elem-ml-SM"
-                target="_self"
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  noLink
+                  href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+                  anchorVariation="primary"
+                  dataLocator="my-rewards-program-details"
+                  className="elem-mr-SM"
+                  target="_blank"
+                >
+                  {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
+                </Anchor>
+              </Col>
+              <Col
+                colSize={{
+                  small: 3,
+                  large: 6,
+                  medium: 4,
+                }}
               >
-                {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
-              </Anchor>
-            </Col>
-          </>
-        )}
-      </Row>
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  noLink
+                  href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+                  anchorVariation="primary"
+                  dataLocator="my-rewards-tnc"
+                  className="elem-ml-SM"
+                  target="_self"
+                >
+                  {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
+                </Anchor>
+              </Col>
+            </>
+          )}
+        </Row>
+      </div>
     </div>
   );
 };

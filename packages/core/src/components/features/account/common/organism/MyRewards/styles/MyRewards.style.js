@@ -22,6 +22,12 @@ const styles = css`
     }
   }
 
+  .handleTablet {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+  }
+
   .no-rewards-msg {
     text-align: center;
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
