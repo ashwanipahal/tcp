@@ -286,7 +286,7 @@ export default class ShippingPage extends React.PureComponent {
     const { userAddresses } = this.props;
     if (userAddresses && userAddresses.size > 0) {
       const selectedAddress = userAddresses.find(address => address.primary === 'true');
-      return selectedAddress && selectedAddress.addressId;
+      return (selectedAddress && selectedAddress.addressId) || userAddresses.get(0).addressId;
     }
     return null;
   };
