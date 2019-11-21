@@ -9,8 +9,8 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import ReadMoreWrapper from '@tcp/core/src/components/features/browse/ProductListing/molecules/ReadMoreWrapper/views';
-import mockReadMoreWrapper from '@tcp/core/src/services/abstractors/common/ReadMoreWrapper/mock';
+import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
+import mockSeoCopy from '@tcp/core/src/services/abstractors/common/SeoCopy/mock';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -125,8 +125,8 @@ const HomePageView = dynamic({
       >
         <PageSlots slots={slots} modules={modules} />
         <ModuleS {...mockS.moduleS.composites} />
-        <ReadMoreWrapper {...mockReadMoreWrapper.ReadMoreWrapper.composites} />
         <GetCandid />
+        <SeoCopy {...mockSeoCopy} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
