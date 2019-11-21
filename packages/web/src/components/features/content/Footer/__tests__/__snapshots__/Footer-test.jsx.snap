@@ -2,7 +2,7 @@
 
 exports[`Footer component Footer component renders correctly with props 1`] = `
 <footer
-  className="footer-class"
+  className="footer-class footer-global"
 >
   <Styled(Row)
     className="footer-candidate-wrapper"
@@ -137,7 +137,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 `;
 
 exports[`Footer component Footer component renders correctly without props 1`] = `
-<footer>
+<footer
+  className="undefined footer-global"
+>
   <Styled(Row)
     className="footer-candidate-wrapper"
     fullBleed={true}
