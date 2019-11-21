@@ -257,9 +257,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     color: ",
               [Function],
               ";
-    font-size: ",
-              [Function],
-              ";
     margin: 0;
     margin-bottom: ",
               [Function],
@@ -271,6 +268,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     width: 100%;
+
+    ",
+              [Function],
+              ";
 
     ",
               [Function],
@@ -430,9 +431,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     color: ",
               [Function],
               ";
-    font-size: ",
-              [Function],
-              ";
     margin: 0;
     margin-bottom: ",
               [Function],
@@ -444,6 +442,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     width: 100%;
+
+    ",
+              [Function],
+              ";
 
     ",
               [Function],

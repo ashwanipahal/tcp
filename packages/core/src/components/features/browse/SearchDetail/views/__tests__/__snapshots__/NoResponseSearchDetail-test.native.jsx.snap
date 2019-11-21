@@ -79,13 +79,13 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     <Styled(View)>
       <Connect(Recommendations)
         isHeaderAccordion={true}
-        page="null_search"
+        page=""
         variation="moduleO"
       />
       <Connect(Recommendations)
         isHeaderAccordion={true}
         isRecentlyViewed={true}
-        page="null_search"
+        page=""
         portalValue="recently-viewed-products"
         variation="moduleO"
       />

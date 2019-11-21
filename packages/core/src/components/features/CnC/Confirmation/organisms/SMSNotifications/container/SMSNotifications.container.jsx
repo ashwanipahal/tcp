@@ -6,6 +6,7 @@ import SMSNotificationSelectors from './SMSNotifications.selectors';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 import { smsNotification, resetNotificationErr } from '../../../container/Confirmation.actions';
 import { isCanada, isTCP } from '../../../../../../../utils';
+import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
 
 /**
  * @function SMSNotificationFormContainer
@@ -25,6 +26,9 @@ export class SMSNotificationFormContainer extends React.Component {
     subscribeSuccessMsg: PropTypes.string,
     smsNotificationSuccess: PropTypes.bool,
     smsNotificationError: PropTypes.string,
+    fetchContent: PropTypes.func.isRequired,
+    notificationMsgContentId: PropTypes.string,
+    subscribeSuccessMsgContentId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -34,6 +38,8 @@ export class SMSNotificationFormContainer extends React.Component {
     subscribeSuccessMsg: null,
     smsNotificationSuccess: false,
     smsNotificationError: null,
+    notificationMsgContentId: null,
+    subscribeSuccessMsgContentId: null,
   };
 
   /**
@@ -42,7 +48,10 @@ export class SMSNotificationFormContainer extends React.Component {
    * and adds didFocus listener to the view which is called every time view is displayed
    *
    */
-  componentDidMount() {}
+  componentDidMount() {
+    const { notificationMsgContentId, fetchContent, subscribeSuccessMsgContentId } = this.props;
+    fetchContent([notificationMsgContentId, subscribeSuccessMsgContentId]);
+  }
 
   /**
    * renders wrapped component
@@ -89,6 +98,9 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
     },
+    fetchContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
   };
 };
 
@@ -102,6 +114,8 @@ const mapStateToProps = state => {
     isChildrenPalace: SMSNotificationSelectors.getChildrenPalaceKey(state),
     isGymboree: SMSNotificationSelectors.getGymboreeKey(state),
     subscribeSuccessMsg: SMSNotificationSelectors.getSubscribeSuccessMsgRichTextSelector(state),
+    notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
+    subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
   };
 };
 

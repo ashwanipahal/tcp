@@ -1,1 +1,1 @@
-export { default } from './ModalWrapper.view.native';
+export { default } from './ModalWrapper.view';
