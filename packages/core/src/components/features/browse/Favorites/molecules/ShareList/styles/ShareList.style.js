@@ -6,4 +6,9 @@ export default css`
     min-height: 200px;
     border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   }
+  .share-list-form {
+    && .subject-field input {
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+    }
+  }
 `;

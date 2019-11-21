@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -22,11 +23,25 @@ import ModalWrapper from '../molecules/ModalWrapper';
 class FavoritesView extends React.PureComponent {
   currentPopupName;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpenModal: false,
-    };
+  state = {
+    isOpenModal: false,
+  };
+
+  static getDerivedStateFromProps(props) {
+    const { wishlistShareStatus } = props;
+    if (wishlistShareStatus === true) {
+      return {
+        isOpenModal: false,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { wishlistShareStatus, setListShareSuccess } = prevProps;
+    if (wishlistShareStatus === true) {
+      setListShareSuccess(false);
+    }
   }
 
   getSharableLink = () => {
@@ -200,6 +215,17 @@ class FavoritesView extends React.PureComponent {
     console.log('onEditListHandler:', data);
   };
 
+  onShareListSubmit = data => {
+    const { sendWishListEmail } = this.props;
+    const payload = {
+      shareToEmailAddresses: data.toEmail,
+      shareFromEmailAddresses: data.fromEmail,
+      shareSubject: data.subject,
+      shareMessage: data.message,
+    };
+    sendWishListEmail(payload);
+  };
+
   renderModalWrapper = () => {
     const { labels } = this.props;
     const { isOpenModal } = this.state;
@@ -223,7 +249,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels } = this.props;
+    const { labels, userEmail } = this.props;
     if (this.currentPopupName === 'addList') {
       return (
         <AddList
@@ -246,8 +272,12 @@ class FavoritesView extends React.PureComponent {
       return (
         <ShareList
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onSubmit={this.onShareListSubmit}
           onCloseModal={this.onCloseModal}
+          initialValues={{
+            subject: getLabelValue(labels, 'lbl_fav_subject_default'),
+            fromEmail: userEmail,
+          }}
         />
       );
     }
@@ -255,7 +285,7 @@ class FavoritesView extends React.PureComponent {
       return (
         <CopyLink
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onHandloneSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
           shareableLink={this.getSharableLink()}
         />
@@ -447,6 +477,10 @@ FavoritesView.propTypes = {
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
   defaultWishList: PropTypes.shape({}),
+  userEmail: PropTypes.string.isRequired,
+  sendWishListEmail: PropTypes.func.isRequired,
+  wishlistShareStatus: PropTypes.bool,
+  setListShareSuccess: PropTypes.func,
 };
 
 FavoritesView.defaultProps = {
@@ -456,6 +490,8 @@ FavoritesView.defaultProps = {
   outOfStockLabels: {},
   slpLabels: {},
   defaultWishList: {},
+  wishlistShareStatus: false,
+  setListShareSuccess: () => {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
