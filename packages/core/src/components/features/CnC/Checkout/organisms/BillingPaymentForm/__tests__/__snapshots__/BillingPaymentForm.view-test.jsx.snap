@@ -1045,7 +1045,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-cSHVUG",
+                "componentId": "sc-chPdSV",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1188,7 +1188,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-cSHVUG",
+              "styledComponentId": "sc-chPdSV",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1675,7 +1675,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-cSHVUG",
+                "componentId": "sc-chPdSV",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1818,7 +1818,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-cSHVUG",
+              "styledComponentId": "sc-chPdSV",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
