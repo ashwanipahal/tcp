@@ -44,9 +44,6 @@ const style = css`
   .content-wrapper {
     position: relative;
     text-align: center;
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      padding: 0 15px;
-    }
   }
   .img-txt-top {
     margin-bottom: 16px;
