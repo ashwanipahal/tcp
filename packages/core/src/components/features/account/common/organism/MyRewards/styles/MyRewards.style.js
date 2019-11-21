@@ -14,9 +14,6 @@ const styles = css`
           ? props.theme.spacing.ELEM_SPACING.XL
           : props.theme.spacing.ELEM_SPACING.XXXL};
     }
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-bottom: ${props =>
         props.view === 'all'
