@@ -10,6 +10,7 @@ describe('BundleProductItemsVanilla', () => {
     modalMargins: null,
     children: null,
     onCloseModal: null,
+    noscroll: true,
   };
 
   beforeEach(() => {

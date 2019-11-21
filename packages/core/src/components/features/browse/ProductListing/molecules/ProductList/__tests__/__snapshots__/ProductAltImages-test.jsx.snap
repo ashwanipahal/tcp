@@ -30,6 +30,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
     unbxdparam_sku={1}
   >
     <WithTheme(DamImage)
+      className="loadImage"
       dataLocator="global-productimg-imagelink"
       imgData={
         Object {

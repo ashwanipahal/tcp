@@ -30,12 +30,10 @@ export const updateShipmentMethodSelection = payload => ({
   payload,
 });
 
-export function getSetGiftWrapOptionsActn(giftWrapOptions) {
-  return {
-    giftWrapOptions,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
-  };
-}
+export const getSetGiftWrapOptionsActn = giftWrapOptions => ({
+  giftWrapOptions,
+  type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+});
 
 export const getSetPickupValuesActn = pickup => ({
   pickUpContact: pickup,
@@ -474,6 +472,11 @@ export const resetAddGiftCardSuccess = payload => {
 export const toggleCheckoutRouting = payload => ({
   payload,
   type: constants.CHECKOUT_ROUTING_DONE,
+});
+
+export const setUpdateFromMSG = payload => ({
+  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
+  payload,
 });
 
 export default {

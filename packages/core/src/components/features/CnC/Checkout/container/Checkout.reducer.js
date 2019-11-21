@@ -43,6 +43,7 @@ const initialState = fromJS({
   uiFlags: {
     stage: CheckoutConstants.CHECKOUT_STAGES.SHIPPING,
     routingDone: false,
+    orderUpdateViaMsg: false,
     stageChangeCount: 0,
     isGiftOptionsEnabled: true,
     isPLCCPaymentEnabled: false,
@@ -109,6 +110,8 @@ function paypalReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'routingDone'], action.payload);
     case CheckoutConstants.CHECKOUT_VALUES_SET_GIFTWRAP:
       return checkout.setIn(['values', 'giftWrap'], action.payload);
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG:
+      return checkout.setIn(['values', 'orderUpdateViaMsg'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }

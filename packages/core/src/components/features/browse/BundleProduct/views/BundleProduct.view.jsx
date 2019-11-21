@@ -250,12 +250,12 @@ class BundleProduct extends React.PureComponent {
                 >
                   {this.getProductSummary(currentColorEntry)}
                   {this.getProductDescription()}
-                  {this.getRecommendations()}
                 </Col>
               </Row>
               {this.getBundleProductsList()}
             </Col>
           </Row>
+          {this.getRecommendations()}
         </div>
       );
     }

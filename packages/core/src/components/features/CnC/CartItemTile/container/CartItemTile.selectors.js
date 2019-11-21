@@ -15,6 +15,10 @@ export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
 };
 
+export const getIsMiniBagOpen = state => {
+  return state.Header.miniBag;
+};
+
 export const getCartOrderId = state => {
   return getCartOrderDetails(state).get('orderId');
 };

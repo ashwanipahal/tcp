@@ -78,6 +78,7 @@ export class BonusPointsDays extends React.Component {
       additionalClassNameModal,
       isDefaultOpen,
       isInternationalShipping,
+      ...otherProps
     } = this.props;
     return (
       !isCanada() &&
@@ -95,6 +96,7 @@ export class BonusPointsDays extends React.Component {
           isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
           isInternationalShipping={isInternationalShipping}
+          {...otherProps}
         />
       )
     );
