@@ -3,40 +3,23 @@ import { css } from 'styled-components';
 export default css`
   .title {
     text-align: center;
-    padding-bottom: 14px;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    color: ${props => props.theme.colorPalette.gray[900]};
+    margin-bottom: 14px;
   }
 
   &.seo-text {
-    padding-bottom: 24px;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding: 24px 14px 0px 14px;
     @media ${props => props.theme.mediaQuery.medium} {
-      padding-bottom: 35px;
-      padding-left: 19px;
-      padding-right: 15px;
+      padding: 24px 15px 0px 19px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      padding-bottom: 24px;
-      padding-left: 40px;
-      padding-right: 40px;
+      padding: 24px 40px 0px 50px;
     }
   }
 
   .body-copy {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     text-align: left;
-
-    p {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-
-    a {
-      color: ${props => props.theme.colorPalette.gray[900]};
-    }
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .read-more-state {

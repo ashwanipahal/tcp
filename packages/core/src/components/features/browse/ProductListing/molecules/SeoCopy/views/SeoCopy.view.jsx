@@ -5,6 +5,8 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import style from '../SeoCopy.style';
+import { Heading } from '../../../../../../common/atoms';
+import Espot from '../../../../../../common/molecules/Espot';
 
 class SeoCopy extends React.PureComponent {
   constructor(props) {
@@ -32,9 +34,9 @@ class SeoCopy extends React.PureComponent {
         tabIndex="0"
       >
         {copyTitle && (
-          <div className="title" data-locator={getLocator('seo_title')}>
+          <Heading component="h5" variant="h5" className="title" dataLocator="seo_title">
             {copyTitle}
-          </div>
+          </Heading>
         )}
         <BodyCopy
           className="body-copy"
@@ -44,9 +46,10 @@ class SeoCopy extends React.PureComponent {
           fontFamily="secondary"
           fontWeight="regular"
           textAlign="center"
-          dangerouslySetInnerHTML={{ __html: copyBody }}
           data-locator={getLocator('seo_body')}
-        />
+        >
+          <Espot richTextHtml={copyBody} />
+        </BodyCopy>
         {copyBody && copyBody.includes('read-more-target') && (
           <label htmlFor="seo-text" className="read-more-trigger">
             <input
