@@ -107,7 +107,7 @@ class CreateAccounPage extends React.Component {
             initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-            tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
+            tooltipContent={<PasswordRequirement labels={labels.password} />}
             formErrorMessage={formErrorMessage}
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}
