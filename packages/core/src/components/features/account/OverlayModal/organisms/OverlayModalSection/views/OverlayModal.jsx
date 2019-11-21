@@ -136,7 +136,7 @@ class OverlayModal extends React.Component {
    */
 
   // eslint-disable-next-line complexity
-  styleModalTriangle = ({ comp }) => {
+  styleModalTriangle = comp => {
     const { showCondensedHeader, component } = this.props;
     if (this.isMobile && component !== 'accountDrawer') return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
@@ -170,15 +170,15 @@ class OverlayModal extends React.Component {
   };
 
   modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
-    if (isAccountDrawer) {
+    if (isAccountDrawer && document.getElementById('account-info-user-points')) {
       const compAccount = document.getElementById('account-info-user-points');
       if (compAccount) {
-        this.styleModalTriangle({ compAccount });
+        this.styleModalTriangle(compAccount);
       } else {
-        this.styleModalTriangle({ comp });
+        this.styleModalTriangle(comp);
       }
     } else {
-      this.styleModalTriangle({ comp });
+      this.styleModalTriangle(comp);
     }
   };
 
