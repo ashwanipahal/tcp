@@ -383,12 +383,18 @@ class FavoritesView extends React.PureComponent {
             {this.renderModalWrapper()}
           </>
         ) : (
-          <>
+          <Row fullBleed>
             <NoFavoritesFound labels={labels} />
-            <div>
-              <Recommendations {...recommendationAttributes} />
-            </div>
-          </>
+            <Col
+              hideCol={{ small: true, medium: true }}
+              colSize={{ small: 6, medium: 8, large: 12 }}
+              className="recommendation"
+            >
+              <div>
+                <Recommendations {...recommendationAttributes} />
+              </div>
+            </Col>
+          </Row>
         )}
       </div>
     );
