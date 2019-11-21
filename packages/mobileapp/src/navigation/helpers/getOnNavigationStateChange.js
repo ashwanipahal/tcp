@@ -2,7 +2,7 @@ import { TRACK_PAGE_VIEW, TRACK_CLICK } from '@tcp/core/src/analytics';
 import { getActiveRouteName } from './getActiveRouteName';
 /*eslint-disable */
 
-export function getOnNavigationStateChange(store) {
+export function getOnNavigationStateChange({ store, context }) {
   return {
     onNavigationStateChange: (prevState, currentState, action) => {
       const currentScreen = getActiveRouteName(currentState);
@@ -14,6 +14,7 @@ export function getOnNavigationStateChange(store) {
           payload: {
             previousScreen: prevScreen,
             currentScreen,
+            context,
             // appState: store.getState(),
             navState: currentState,
           },

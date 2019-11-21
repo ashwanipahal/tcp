@@ -1,8 +1,8 @@
 /* eslint-disable  */
 import { createMiddleware } from 'redux-beacon';
 import logger from '@redux-beacon/logger';
-import { eventMapping } from '../../analytics/eventMapping';
-import { trackingTarget } from '../../analytics/trackingTarget';
+import { eventMapping } from '../../context/analytics/eventMapping';
+import { trackingTarget } from '../../context/analytics/trackingTarget';
 import {
   ACPCore,
   ACPLifecycle,

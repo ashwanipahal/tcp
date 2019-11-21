@@ -161,6 +161,7 @@ export class App extends React.PureComponent {
 
   render() {
     const { appType, context } = this.props;
+    const { device, platform, location } = context;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
@@ -172,7 +173,10 @@ export class App extends React.PureComponent {
           )}
 
           <AppNavigator
-            {...getOnNavigationStateChange(this.store)}
+            {...getOnNavigationStateChange({
+              store: this.store,
+              context: { device, platform, location },
+            })}
             ref={navigatorRef => {
               NavigationService.setTopLevelNavigator(navigatorRef);
             }}
