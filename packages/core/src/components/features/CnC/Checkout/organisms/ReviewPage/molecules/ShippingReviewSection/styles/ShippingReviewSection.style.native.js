@@ -18,4 +18,15 @@ const AddressTitle = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export default { ShippingReviewContainer, AddressSection, AddressTitle, TitlePlusEditSection };
+const SkeletonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 200px;
+`;
+
+export default {
+  ShippingReviewContainer,
+  AddressSection,
+  AddressTitle,
+  TitlePlusEditSection,
+  SkeletonWrapper,
+};

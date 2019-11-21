@@ -5,6 +5,7 @@ import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import GiftCardsContainer from '../../../../GiftCardsSection';
 
 /* istanbul ignore next */
@@ -19,6 +20,7 @@ import {
   CVVInfo,
   PaymentMethodWrapper,
   PaymentMethodImage,
+  SkeletonWrapper,
 } from '../styles/BillingSection.style.native';
 
 import getCvvInfo from '../../../../../molecules/CVVInfo';
@@ -74,6 +76,7 @@ export const BillingSection = ({
   cvvCodeRichText,
   isBillingVisited,
   isPaymentDisabled,
+  bagLoading,
 }) => {
   return (
     <Fragment>
@@ -93,41 +96,51 @@ export const BillingSection = ({
           />
         </EditLink>
       </Heading>
-      {!isPaymentDisabled && (
-        <PaymentMethodWrapper>
-          <PaymentMethodImage>
-            {card && (
-              <PaymentMethod>
-                <SubHeading>
-                  <BodyCopy
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    color="gray.900"
-                    mobileFontFamily="secondary"
-                    text={labels.lbl_review_paymentMethod}
-                  />
-                </SubHeading>
+      {!bagLoading ? (
+        <>
+          {!isPaymentDisabled && (
+            <PaymentMethodWrapper>
+              <PaymentMethodImage>
+                {card && (
+                  <PaymentMethod>
+                    <SubHeading>
+                      <BodyCopy
+                        fontSize="fs16"
+                        fontWeight="semibold"
+                        color="gray.900"
+                        mobileFontFamily="secondary"
+                        text={labels.lbl_review_paymentMethod}
+                      />
+                    </SubHeading>
 
-                <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
-              </PaymentMethod>
-            )}
-            {address && (
-              <BillingAddress>
-                <SubHeading>
-                  <BodyCopy
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    color="gray.900"
-                    mobileFontFamily="secondary"
-                    text={labels.lbl_review_billingAddress}
-                  />
-                </SubHeading>
-                <Address address={address} fontSize="fs16" regularName />
-              </BillingAddress>
-            )}
-          </PaymentMethodImage>
-          {getCvvField({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited })}
-        </PaymentMethodWrapper>
+                    <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                  </PaymentMethod>
+                )}
+                {address && (
+                  <BillingAddress>
+                    <SubHeading>
+                      <BodyCopy
+                        fontSize="fs16"
+                        fontWeight="semibold"
+                        color="gray.900"
+                        mobileFontFamily="secondary"
+                        text={labels.lbl_review_billingAddress}
+                      />
+                    </SubHeading>
+                    <Address address={address} fontSize="fs16" regularName />
+                  </BillingAddress>
+                )}
+              </PaymentMethodImage>
+              {getCvvField({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited })}
+            </PaymentMethodWrapper>
+          )}
+        </>
+      ) : (
+        <>
+          <SkeletonWrapper>
+            <GenericSkeleton />
+          </SkeletonWrapper>
+        </>
       )}
       <GiftCardsContainer isFromReview />
     </Fragment>
@@ -149,6 +162,7 @@ BillingSection.propTypes = {
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 BillingSection.defaultProps = {

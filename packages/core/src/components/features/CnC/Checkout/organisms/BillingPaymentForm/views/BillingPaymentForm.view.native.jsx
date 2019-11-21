@@ -2,7 +2,7 @@
 /* eslint-disable complexity */
 import React from 'react';
 import { FormSection, reduxForm, change, Field } from 'redux-form';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view.native';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -35,6 +35,7 @@ import {
   PayPalTextContainer,
   PaymentMethodMainWrapper,
   PaymentMethodImage,
+  SkeletonWrapper,
 } from '../styles/BillingPaymentForm.style.native';
 
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -109,7 +110,9 @@ export class BillingPaymentForm extends React.PureComponent {
         editMode={editMode}
       />
     ) : (
-      <AddressSkeleton />
+      <SkeletonWrapper>
+        <GenericSkeleton />
+      </SkeletonWrapper>
     );
   };
 
@@ -428,7 +431,9 @@ export class BillingPaymentForm extends React.PureComponent {
             ) : (
               <>
                 <CCskeleton />
-                <AddressSkeleton />
+                <SkeletonWrapper>
+                  <GenericSkeleton />
+                </SkeletonWrapper>
               </>
             )}
           </PaymentMethodMainWrapper>

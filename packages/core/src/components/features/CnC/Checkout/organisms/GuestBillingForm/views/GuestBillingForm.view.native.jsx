@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection, reduxForm, change } from 'redux-form';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import AddNewCCForm from '../../AddNewCCForm';
@@ -9,13 +10,16 @@ import cvvInfo from '../../../molecules/CVVInfo';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
-import { PaymentMethodHeader, PayPalTextContainer } from '../styles/GuestBillingForm.styles.native';
+import {
+  PaymentMethodHeader,
+  PayPalTextContainer,
+  SkeletonWrapper,
+} from '../styles/GuestBillingForm.styles.native';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import { getExpirationRequiredFlag } from '../../../util/utility';
-import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view.native';
 
 /**
  * @class GuestBillingForm
@@ -222,7 +226,9 @@ class GuestBillingForm extends React.Component {
                     formName="checkoutBilling"
                   />
                 ) : (
-                  <AddressSkeleton />
+                  <SkeletonWrapper>
+                    <GenericSkeleton />
+                  </SkeletonWrapper>
                 )}
               </>
             ) : null}
