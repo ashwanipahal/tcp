@@ -1024,6 +1024,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */,
+				4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */,
 				1668AB12231EA3EA00F75A14 /* ART.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -1511,6 +1513,14 @@
 				{
 					ProductGroup = 1668AB13231EA3EA00F75A14 /* Products */;
 					ProjectRef = 1668AB12231EA3EA00F75A14 /* ART.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C0F20102348001100FCCD03 /* Products */;
+					ProjectRef = 4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C0F200B2347FFFF00FCCD03 /* Products */;
+					ProjectRef = 4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;

@@ -1,26 +1,25 @@
-import Reactotron, {
-  asyncStorage,
-  openInEditor,
-  networking,
-  trackGlobalErrors,
-} from 'reactotron-react-native';
+import Reactotron, { asyncStorage, openInEditor, networking } from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
+import { AsyncStorage } from '@react-native-community/async-storage';
+import sagaPlugin from 'reactotron-redux-saga';
+import { name } from '../../app.json';
 
-// eslint-disable-next-line
-let ReactotronConfig = null;
+Reactotron.setAsyncStorageHandler(AsyncStorage);
+Reactotron.configure({
+  name,
+});
+Reactotron.useReactNative();
+Reactotron.use(asyncStorage());
+Reactotron.use(reactotronRedux());
+Reactotron.use(networking());
+Reactotron.use(openInEditor());
+Reactotron.use(sagaPlugin());
+
 if (__DEV__) {
-  ReactotronConfig = Reactotron.configure({ name: 'TCP' })
-    .use(networking())
-    .use(reactotronRedux())
-    .use(asyncStorage())
-    .use(openInEditor())
-    .use(trackGlobalErrors())
-    .useReactNative()
-    .connect();
-
-  // This will not block normal console.log. This can be use like console.tron.log('tcp')
-  console.tron = ReactotronConfig;
-  ReactotronConfig.clear();
+  Reactotron.connect();
+  Reactotron.clear();
 }
 
-export default ReactotronConfig;
+console.tron = Reactotron;
+
+export default Reactotron;

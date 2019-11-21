@@ -77,7 +77,9 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
+    "redux-beacon": "^2.1.0",
     "redux-cache": "^0.3.0",
+    "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.4",
     "redux-ignore": "^1.2.5",
     "redux-persist": "^6.0.0",
@@ -100,7 +102,8 @@
     "react-test-renderer": "16.9.0",
     "reactotron-core-client": "^2.8.3",
     "reactotron-react-native": "^3.6.5",
-    "reactotron-redux": "^3.1.1"
+    "reactotron-redux": "^3.1.1",
+    "reactotron-redux-saga": "^4.2.2"
   },
   "jest": {
     "preset": "react-native"
