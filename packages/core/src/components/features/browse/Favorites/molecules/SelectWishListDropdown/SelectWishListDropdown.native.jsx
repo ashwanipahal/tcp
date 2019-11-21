@@ -48,7 +48,8 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderHeader: PropTypes.func,
     renderFooter: PropTypes.func,
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-    defaultWishList: PropTypes.shape({}),
+    defaultWishList: PropTypes.shape([]),
+    activeWishList: PropTypes.shape({}),
     renderItems: PropTypes.func,
   };
 
@@ -69,7 +70,8 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderHeader: null,
     renderFooter: null,
     labels: {},
-    defaultWishList: {},
+    defaultWishList: [],
+    activeWishList: {},
     renderItems: null,
   };
 
@@ -121,6 +123,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       flatListTop: 0,
       flatListHeight: 0,
     };
+    this.showDefaultHeartIcon = false;
   }
 
   componentDidMount() {
@@ -271,8 +274,16 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       renderHeader,
       renderFooter,
       renderItems,
+      defaultWishList,
+      activeWishList,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
+
+    if (isWishlist) {
+      const defaultListId = defaultWishList && defaultWishList.length && defaultWishList[0].id;
+      this.showDefaultHeartIcon = activeWishList && activeWishList.id === defaultListId;
+    }
+
     return (
       <View style={dropDownStyle}>
         <Row
@@ -292,7 +303,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
               fontWeight={selectedItemFontWeight}
               text={selectedLabelState}
             />
-            {isWishlist && (
+            {this.showDefaultHeartIcon && (
               <CustomIcon
                 margins="0 0 0 8px"
                 iconFontName={ICON_FONT_CLASS.Icomoon}
