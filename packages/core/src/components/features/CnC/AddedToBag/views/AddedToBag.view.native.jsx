@@ -88,7 +88,7 @@ const AddedToBag = ({
   addedToBagInterval,
 }) => {
   useEffect(() => {
-    if (addedToBagInterval > 0) {
+    if (addedToBagInterval > 0 && openState) {
       setTimeout(() => {
         onRequestClose();
       }, addedToBagInterval);
