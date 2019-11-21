@@ -145,6 +145,7 @@ export class BillingSection extends PureComponent {
       cvvCodeRichText,
       isBillingVisited,
       isPaymentDisabled,
+      bagLoading,
       venmoPayment: { isVenmoPaymentSelected },
     } = this.props;
     return (
