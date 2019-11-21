@@ -13,7 +13,7 @@ const yTranslate = Platform.OS === 'android' ? 70 : 35;
  * @class AppSplash
  * @extends {React.PureComponent<Props>}
  */
-class AppSplash extends React.PureComponent<Props> {
+class AppSplash extends React.PureComponent {
   constructor(props) {
     super(props);
     this.transformAnimatedValue = new Animated.Value(0);
