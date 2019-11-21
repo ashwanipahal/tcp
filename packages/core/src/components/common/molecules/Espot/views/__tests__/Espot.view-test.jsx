@@ -18,7 +18,7 @@ describe('Espot component', () => {
   });
 
   it('onClickHandler instance should call togglePlccModal prop if action is plccModal', () => {
-    component.instance().onClickHandler('plccModal');
+    component.instance().onClickHandler('', '_modal', 'plccModal');
     expect(togglePlccModalSpy).toBeCalled();
   });
 });

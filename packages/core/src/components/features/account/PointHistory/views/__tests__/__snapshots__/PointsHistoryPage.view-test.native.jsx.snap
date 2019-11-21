@@ -16,24 +16,8 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     <Styled(View)
       dataLocator="points_history_rte"
     >
-      <RichText
-        actionHandler={[Function]}
-        domStorageEnabled={false}
-        isApplyDeviceHeight={false}
-        isNativeView={false}
-        javaScriptEnabled={false}
-        scrollEnabled={false}
-        source={
-          Object {
-            "html": "",
-          }
-        }
-        style={
-          Object {
-            "minHeight": 600,
-          }
-        }
-        thirdPartyCookiesEnabled={false}
+      <Connect(withNavigation(Espot))
+        richTextHtml=""
       />
     </Styled(View)>
     <Styled(View)>
