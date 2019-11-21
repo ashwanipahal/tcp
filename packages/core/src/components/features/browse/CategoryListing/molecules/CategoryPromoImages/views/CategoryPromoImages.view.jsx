@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import useImageLoadedState from '@tcp/web/src/hooks/useImageLoadedState';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { BodyCopy, Anchor, DamImage } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CategoryPromoImages.style';
 import config from '../config';
 
-const ImageComponent = ({ image, link, className, titleClass, linkClass, imgDataConfig }) => {
+const ImageComponent = ({
+  image,
+  link,
+  className,
+  titleClass,
+  linkClass,
+  imgDataConfig,
+  imgRef,
+}) => {
   return (
     <div className={`${className} image-tile-desktop`}>
       <Anchor>
         <DamImage
+          forwardedRef={imgRef}
           imgConfigs={imgDataConfig}
           imgData={image}
           link={{
@@ -42,6 +54,21 @@ const ImageComponent = ({ image, link, className, titleClass, linkClass, imgData
     </div>
   );
 };
+
+/**
+ * Specialized variation to use for the category promo image that needs
+ * a UX timer for performance tracking
+ */
+function HeroImageComponent(props) {
+  const imgRef = useRef();
+  const imageLoaded = useImageLoadedState(imgRef);
+  return (
+    <>
+      <ImageComponent {...props} imgRef={imgRef} />
+      {imageLoaded && <RenderPerf.Measure name={HERO_VISIBLE} />}
+    </>
+  );
+}
 
 const CategoryPromoImages = ({ className, categoryPromoImages }) => {
   const combinedCategoryImages = [];
@@ -126,7 +153,7 @@ const CategoryPromoImages = ({ className, categoryPromoImages }) => {
             {categoryPromoImages[contentId].imageGrid.map(imageGrid => {
               const { image, link } = imageGrid;
               return (
-                <ImageComponent
+                <HeroImageComponent
                   titleClass="image-title-fullBleed"
                   linkClass="image-link-fullBleed"
                   className="image-tile-full-bleed"
@@ -164,6 +191,11 @@ ImageComponent.propTypes = {
   image: PropTypes.shape({}).isRequired,
   link: PropTypes.shape({}).isRequired,
   imgDataConfig: PropTypes.shape([]).isRequired,
+  imgRef: PropTypes.shape({ current: PropTypes.any }),
+};
+
+ImageComponent.defaultProps = {
+  imgRef: null,
 };
 
 export default withStyles(CategoryPromoImages, styles);
