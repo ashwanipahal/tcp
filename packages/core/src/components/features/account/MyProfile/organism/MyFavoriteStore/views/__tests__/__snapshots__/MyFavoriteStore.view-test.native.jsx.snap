@@ -4,10 +4,11 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
+  ctaLink="StoreLanding"
   ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
+  isPageNavigation={true}
   title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
@@ -66,10 +67,11 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
+  ctaLink="StoreLanding"
   ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
+  isPageNavigation={true}
   title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
@@ -128,10 +130,11 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
+  ctaLink="StoreLanding"
   ctaTitle="lbl_common_edit"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
+  isPageNavigation={true}
   title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
