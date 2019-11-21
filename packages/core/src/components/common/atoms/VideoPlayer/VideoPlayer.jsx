@@ -42,6 +42,7 @@ class VideoPlayer extends React.Component {
               return true;
             }}
             className="video-js"
+            data-setup='{"fluid": true}'
           >
             <track
               src="/static/captions/captions_en.vtt"
