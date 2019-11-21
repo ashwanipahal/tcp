@@ -30,6 +30,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img4_d",
           ]
         }
+        imgRef={null}
         key="Category 1"
         link={
           Object {
@@ -65,6 +66,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img4_d",
           ]
         }
+        imgRef={null}
         key="Category 2"
         link={
           Object {
@@ -100,6 +102,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img4_d",
           ]
         }
+        imgRef={null}
         key=""
         link={
           Object {
@@ -135,6 +138,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img4_d",
           ]
         }
+        imgRef={null}
         key="Category 4"
         link={
           Object {
@@ -174,6 +178,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img6_d",
           ]
         }
+        imgRef={null}
         link={
           Object {
             "__typename": "Link",
@@ -208,6 +213,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img6_d",
           ]
         }
+        imgRef={null}
         link={
           Object {
             "__typename": "Link",
@@ -242,6 +248,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img6_d",
           ]
         }
+        imgRef={null}
         link={
           Object {
             "__typename": "Link",
@@ -276,6 +283,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             "t_clp_img6_d",
           ]
         }
+        imgRef={null}
         link={
           Object {
             "__typename": "Link",
@@ -294,7 +302,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
     <div
       className="image-variant-wrapper"
     >
-      <ImageComponent
+      <HeroImageComponent
         className="image-tile-full-bleed"
         image={
           Object {
@@ -328,7 +336,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
         linkClass="image-link-fullBleed"
         titleClass="image-title-fullBleed"
       />
-      <ImageComponent
+      <HeroImageComponent
         className="image-tile-full-bleed"
         image={
           Object {
@@ -362,7 +370,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
         linkClass="image-link-fullBleed"
         titleClass="image-title-fullBleed"
       />
-      <ImageComponent
+      <HeroImageComponent
         className="image-tile-full-bleed"
         image={
           Object {
@@ -396,7 +404,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
         linkClass="image-link-fullBleed"
         titleClass="image-title-fullBleed"
       />
-      <ImageComponent
+      <HeroImageComponent
         className="image-tile-full-bleed"
         image={
           Object {
@@ -455,6 +463,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -489,6 +498,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -523,6 +533,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -557,6 +568,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -591,6 +603,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -625,6 +638,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -659,6 +673,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -693,6 +708,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -727,6 +743,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -761,6 +778,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -795,6 +813,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
@@ -829,6 +848,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           "t_clp_img2_d",
         ]
       }
+      imgRef={null}
       link={
         Object {
           "__typename": "Link",
