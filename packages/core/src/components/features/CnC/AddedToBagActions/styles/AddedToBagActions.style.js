@@ -48,6 +48,7 @@ const ctaStyle = css`
   }
   .paypal-wrapper {
     width: 100%;
+    z-index: 0;
     @media ${props => props.theme.mediaQuery.large} {
       min-width: 220px;
     }

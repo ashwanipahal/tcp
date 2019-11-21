@@ -123,6 +123,7 @@ const getContent = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  isPlaceRewardsPage,
 }) => {
   let allUsed = false;
   let valueOfbonusDayAvailableToday = 0;
@@ -182,6 +183,7 @@ const getContent = ({
             orderDetails={orderDetails}
             bonusDayAvailableToday={valueOfbonusDayAvailableToday}
             className="availability-msg"
+            isPlaceRewardsPage={isPlaceRewardsPage}
           />
         </Col>
       </Row>
@@ -210,8 +212,10 @@ const BonusPointsSection = ({
   orderDetails,
   isDefaultOpen,
   showAccordian,
+  ...otherProps
 }) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
+  const { isPlaceRewardsPage } = otherProps;
   const header = getHeader({ labels });
   const body = getContent({
     labels,
@@ -221,7 +225,9 @@ const BonusPointsSection = ({
     enableApplyCta,
     getBonusDaysData,
     orderDetails,
+    isPlaceRewardsPage,
   });
+
   return (
     <div className={className}>
       <Col
@@ -277,6 +283,7 @@ getContent.propTypes = {
   enableApplyCta: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 getContent.defaultProps = {
@@ -293,6 +300,7 @@ getContent.defaultProps = {
   enableApplyCta: false,
   getBonusDaysData: () => {},
   orderDetails: {},
+  isPlaceRewardsPage: false,
 };
 
 getHeader.propTypes = {
