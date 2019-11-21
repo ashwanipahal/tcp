@@ -11,6 +11,7 @@ describe('Shipping Form', () => {
       smsSignUpLabels: {},
       isGuest: false,
       ServerErrors: {},
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -24,6 +25,7 @@ describe('Shipping Form', () => {
       isGuest: true,
       orderHasPickUp: false,
       isUsSite: false,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -54,6 +56,7 @@ describe('Shipping Form', () => {
       shipmentMethods: [{}],
       defaultShipmentId: '90113',
       isMobile: true,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -92,6 +95,7 @@ describe('Shipping Form', () => {
       isSaveToAddressBookChecked: false,
       isAddNewAddress: false,
       defaultAddressId: null,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -138,6 +142,7 @@ describe('Shipping Form', () => {
       isSaveToAddressBookChecked: false,
       isAddNewAddress: false,
       defaultAddressId: '1234',
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({

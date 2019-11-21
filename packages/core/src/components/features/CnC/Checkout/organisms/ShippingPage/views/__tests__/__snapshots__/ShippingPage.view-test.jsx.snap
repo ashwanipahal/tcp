@@ -14,6 +14,11 @@ exports[`Shipping Page should render correctly 1`] = `
     addressPhoneNo={null}
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -22,6 +27,10 @@ exports[`Shipping Page should render correctly 1`] = `
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": null,
         "saveToAddressBook": false,
@@ -100,6 +109,11 @@ exports[`Shipping Page should render correctly with component did update and get
     defaultAddressId="34789"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -108,6 +122,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -218,6 +236,11 @@ exports[`Shipping Page should render correctly with component did update and get
     defaultAddressId="123"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -226,6 +249,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,

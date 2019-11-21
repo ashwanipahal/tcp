@@ -163,7 +163,14 @@ const renderCarousel = (largeCompImageCarousel, navigation, position, ignoreLazy
           overlap
         />
       ) : (
-        <View>{renderView({ item: largeCompImageCarousel[0] }, navigation, position)}</View>
+        <View>
+          {renderView(
+            { item: largeCompImageCarousel[0] },
+            navigation,
+            position,
+            ignoreLazyLoadImage
+          )}
+        </View>
       )}
     </ContainerView>
   );

@@ -249,11 +249,12 @@ export const CreateWishList = props => {
   const {
     labels,
     wishlistsSummaries,
-    createNewWishList,
+    // createNewWishList,
     createNewWishListMoveItem,
     itemId,
     getActiveWishlist,
     activeWishListId,
+    openAddNewList,
   } = props;
   return (
     <div className="create-wish-list-section">
@@ -280,7 +281,7 @@ export const CreateWishList = props => {
         ))}
       </ul>
       <Button
-        onClick={createNewWishList}
+        onClick={openAddNewList}
         buttonVariation="fixed-width"
         fill="BLACK"
         data-locator="create-new-wish-list"
@@ -380,7 +381,8 @@ ProductSKUInfo.defaultProps = {
 CreateWishList.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   wishlistsSummaries: PropTypes.arrayOf({}).isRequired,
-  createNewWishList: PropTypes.func.isRequired,
+  // createNewWishList: PropTypes.func.isRequired,
+  openAddNewList: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
   getActiveWishlist: PropTypes.func,
