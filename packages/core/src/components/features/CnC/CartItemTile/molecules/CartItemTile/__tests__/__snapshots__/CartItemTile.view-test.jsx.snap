@@ -412,7 +412,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -853,7 +853,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -1307,7 +1307,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -1744,7 +1744,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -2181,7 +2181,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -2618,7 +2618,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -3081,7 +3081,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -3532,7 +3532,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -3995,7 +3995,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -4446,7 +4446,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -4897,7 +4897,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -5351,7 +5351,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -5805,7 +5805,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -6259,7 +6259,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -6739,7 +6739,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="padding-top-15 padding-bottom-20 parent-"
+        className="padding-top-30 padding-bottom-20 parent-"
         fullBleed={true}
       >
         <Styled(Col)
@@ -6848,8 +6848,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .edit-button {
     padding-left: 10px;
   }
-  .padding-top-15 {
-    padding-top: 15px;
+  .padding-top-30 {
+    padding-top: 30px;
   }
   .padding-top-40 {
     padding-top: 41px;
@@ -6861,6 +6861,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ",
+          [Function],
+          " {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -6888,6 +6894,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -7055,6 +7062,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -7167,7 +7176,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           " {
       .save-for-later-label {
-        left: 7px;
+        left: 3px;
       }
     }
 
@@ -7397,8 +7406,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .edit-button {
     padding-left: 10px;
   }
-  .padding-top-15 {
-    padding-top: 15px;
+  .padding-top-30 {
+    padding-top: 30px;
   }
   .padding-top-40 {
     padding-top: 41px;
@@ -7410,6 +7419,12 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ",
+          [Function],
+          " {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -7437,6 +7452,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -7604,6 +7620,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -7716,7 +7734,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           " {
       .save-for-later-label {
-        left: 7px;
+        left: 3px;
       }
     }
 
