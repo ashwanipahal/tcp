@@ -4431,33 +4431,33 @@ app-root-dir@^1.0.2:
   resolved "https://registry.yarnpkg.com/app-root-dir/-/app-root-dir-1.0.2.tgz#38187ec2dea7577fff033ffcb12172692ff6e118"
   integrity sha1-OBh+wt6nV3//Az/8sSFyaS/24Rg=
 
-"appdynamics-libagent@https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-libagent-node.tgz":
-  version "4.5.19"
-  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-libagent-node.tgz#6c7d9da8deedd48cd7ee89527fa6631b50b8c2f9"
+"appdynamics-libagent@https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-libagent-node.tgz":
+  version "4.5.18"
+  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-libagent-node.tgz#b8632e9cebedb85dce788cac83fc4a2465242c9f"
   optionalDependencies:
     request "2.88.0"
 
-"appdynamics-native@https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-native-node.tgz":
-  version "4.5.19"
-  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-native-node.tgz#b826e087d879a0cc50594650c2bfa26a65636c48"
+"appdynamics-native@https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-native-node.tgz":
+  version "4.5.18"
+  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-native-node.tgz#f8877b428f11fb70ebca97fafd5ba9a41d4360be"
 
-"appdynamics-protobuf@https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-protobuf-node.tgz":
-  version "4.5.19"
-  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-protobuf-node.tgz#14caf2b1262d28e7d04980f0200a25a442a009df"
+"appdynamics-protobuf@https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-protobuf-node.tgz":
+  version "4.5.18"
+  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-protobuf-node.tgz#6e7f90875362a939a405779904a57c1e2f96c326"
 
-"appdynamics-zmq@https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-zmq-node.tgz":
-  version "4.5.19"
-  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-zmq-node.tgz#3c6d87a061dad4a460e77ffc8f1450e2ff578b3b"
+"appdynamics-zmq@https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-zmq-node.tgz":
+  version "4.5.18"
+  resolved "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-zmq-node.tgz#81ebbb13c0201449832ec80120b392cac85ebd7d"
 
-appdynamics@4.5.20:
-  version "4.5.20"
-  resolved "https://registry.yarnpkg.com/appdynamics/-/appdynamics-4.5.20.tgz#00e3bba61cb704bd93a6ed10b8f2c7770174c022"
-  integrity sha512-/SEBSBBdKZzXJweHQ+RjWQB26dQOMBbhACXvqNnF8bldPx6aWh1V6RJiemnXVGi7rGClS0o/eOjoVtiSGhL3eQ==
+appdynamics@4.5.18:
+  version "4.5.18"
+  resolved "https://registry.yarnpkg.com/appdynamics/-/appdynamics-4.5.18.tgz#beff11166d13e7c95b0885262753e319dbe04181"
+  integrity sha512-eC8HCZFXcNO5ftQqsuwg3c/i7A5xDLpgaEyTFV0+SpWpLjDQpYcrB+7r9wUv91PpJQ1DiKUwsCsYwzHsbVZ1XA==
   dependencies:
-    appdynamics-libagent "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-libagent-node.tgz"
-    appdynamics-native "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-native-node.tgz"
-    appdynamics-protobuf "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-protobuf-node.tgz"
-    appdynamics-zmq "https://cdn.appdynamics.com/packages/nodejs/4.5.20.0/appdynamics-zmq-node.tgz"
+    appdynamics-libagent "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-libagent-node.tgz"
+    appdynamics-native "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-native-node.tgz"
+    appdynamics-protobuf "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-protobuf-node.tgz"
+    appdynamics-zmq "https://cdn.appdynamics.com/packages/nodejs/4.5.18.0/appdynamics-zmq-node.tgz"
     cls-hooked "^4.2.2"
     log4js "0.6.38"
     set-immediate "0.1.1"
