@@ -5,25 +5,13 @@ export default {
   composites: {
     headLine: [
       {
-        text: 'SHORTS FOR',
-        style: 'style1',
-      },
-      {
-        text: ' EVERY-YEAR',
+        text: 'Module Headline',
         style: 'style1',
       },
     ],
     subHeadLine: [
       {
-        text: 'So many prints ',
-        style: 'style1',
-      },
-      {
-        text: ', length and details',
-        style: 'style1',
-      },
-      {
-        text: 'to climp and play in..',
+        text: 'Module Subheadline',
         style: 'style1',
       },
     ],
@@ -81,14 +69,9 @@ export default {
     ],
     mediaWrapper: [
       {
-        url: 'http://image1.sm/url',
+        url: 'https://test5.childrensplace.com/image/upload/v1573239143/module-E-test-large-2.jpg',
         alt: 'Buy 1 get one free',
         title: 'Buy 1 get one free',
-        crop_d: 'c_crop...',
-        crop_t: 'c_crop...',
-        crop_m: 'c_crop...',
-        url_m: '',
-        url_t: '',
       },
     ],
   },
@@ -104,11 +87,11 @@ export default {
     },
     {
       key: 'headerPosition',
-      val: 'left|right',
+      val: 'right',
     },
     {
       key: 'expandableTitle',
-      val: 'Shop Cat',
+      val: '<title>',
     },
   ],
 };

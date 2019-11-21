@@ -12,7 +12,7 @@ export const ctaTypeProps = {
       name: 'dropdownButtonCTA',
       displayProps: {
         small: false,
-        medium: true,
+        medium: false,
         large: true,
       },
     },
@@ -22,7 +22,7 @@ export const ctaTypeProps = {
       name: 'dropdownButtonCTA',
       displayProps: {
         small: false,
-        medium: true,
+        medium: false,
         large: true,
       },
     },
@@ -30,5 +30,5 @@ export const ctaTypeProps = {
 };
 
 export default {
-  crops: ['t_mod_img_txt_m', 't_mod_img_txt_m', 't_mod_img_txt_m'],
+  crops: ['t_mod_img_txt_m', 't_mod_img_txt_t', 't_mod_img_txt_d'],
 };

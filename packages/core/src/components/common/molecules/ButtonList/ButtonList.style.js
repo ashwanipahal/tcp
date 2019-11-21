@@ -133,8 +133,13 @@ export default css`
   .stacked-cta-wrapper-class {
     font-size: 13px;
   }
-
-  &.hide-on-small-viewport {
+  &.additional-button-list {
+    display: none;
+  }
+  &.is-mobile-visible {
+    display: block;
+  }
+  .is-mobile-hidden {
     display: none;
   }
 
@@ -232,7 +237,7 @@ export default css`
       width: 62px;
     }
 
-    &.hide-on-small-viewport {
+    &.is-tablet-visible {
       display: block;
     }
 
@@ -289,8 +294,11 @@ export default css`
     &.wrapped-button-text .scroll-button {
       margin: 0 15px;
     }
+    &.is-desktop-visible {
+      display: block;
+    }
 
-    &.is-tablet-hidden {
+    &.is-desktop-hidden {
       display: none;
     }
   }

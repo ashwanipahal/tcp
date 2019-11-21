@@ -112,11 +112,40 @@ const renderAdditionalButtonList = (variation, properties, display) => {
   const { buttonListComponent } = buttonListConfig;
 
   let displayClass = '';
-  if (display.large && display.medium && !display.small) {
-    displayClass = 'additional-button-list hide-on-small-viewport';
+  if (display.small) {
+    displayClass += 'additional-button-list is-mobile-visible ';
+  }
+  if (display.medium) {
+    displayClass += 'additional-button-list is-tablet-visible ';
+  }
+  if (display.large) {
+    displayClass += 'additional-button-list is-desktop-visible ';
   }
 
   return buttonListComponent(properties, displayClass);
+};
+
+/**
+ * This function will be used to hide the default button rendered when dual variation is passed.
+ * * @param {*} dualVariation variation object
+ */
+
+const getButtonHideClass = dualVariation => {
+  let hideOnDesktopClassname = '';
+  if (dualVariation && dualVariation.name) {
+    const { displayProps } = dualVariation;
+    const { small, medium, large } = displayProps;
+    if (small) {
+      hideOnDesktopClassname += 'is-mobile-hidden ';
+    }
+    if (medium) {
+      hideOnDesktopClassname += 'is-tablet-hidden ';
+    }
+    if (large) {
+      hideOnDesktopClassname += 'is-desktop-hidden ';
+    }
+  }
+  return hideOnDesktopClassname;
 };
 
 /**
@@ -146,10 +175,7 @@ const ButtonList = props => {
     dataLocator = dataLocatorDivisionImages;
   }
 
-  let hideOnDesktopClassname = '';
-  if (dualVariation && dualVariation.name) {
-    hideOnDesktopClassname = 'is-tablet-hidden';
-  }
+  const hideOnDesktopClassname = getButtonHideClass(dualVariation);
 
   return (
     <React.Fragment>

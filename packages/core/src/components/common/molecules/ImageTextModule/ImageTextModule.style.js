@@ -1,21 +1,19 @@
 import styled, { css } from 'styled-components';
 
-const ImgWrapper = styled.div`
-  position: relative;
-  max-height: 350px;
+const BgWrapper = styled.div`
+  background-color: ${props => props.bgColor};
+  height: 350px;
   @media ${props => props.theme.mediaQuery.medium} {
-    max-height: 689px;
-  }
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    padding: 0 15px;
+    height: 689px;
   }
   @media ${props => props.theme.mediaQuery.large} {
-    max-height: 576px;
+    height: 576px;
   }
   @media ${props => props.theme.mediaQuery.xlarge} {
-    max-height: 689px;
+    height: 689px;
   }
 `;
+
 const ContentContainer = styled.div`
   @media ${props => props.theme.mediaQuery.large} {
     position: absolute;
@@ -23,16 +21,6 @@ const ContentContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 483px;
-  }
-`;
-
-const style = css`
-  .content-wrapper {
-    position: relative;
-    text-align: center;
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      padding: 0 15px;
-    }
   }
   .headline,
   .headsubline {
@@ -44,12 +32,34 @@ const style = css`
       margin-bottom: 24px;
     }
   }
+  .headsubline {
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 450px;
+    }
+  }
 `;
 
-export { ImgWrapper, ContentContainer, style };
+const style = css`
+  margin-bottom: 120px;
+  .content-wrapper {
+    position: relative;
+    text-align: center;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding: 0 15px;
+    }
+  }
+  .img-txt-top {
+    margin-bottom: 16px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+export { ContentContainer, BgWrapper, style };
 
 export default {
-  ImgWrapper,
   ContentContainer,
+  BgWrapper,
   style,
 };
