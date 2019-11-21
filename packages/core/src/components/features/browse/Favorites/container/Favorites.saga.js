@@ -2,6 +2,7 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelperUtil from '@tcp/core/src/services/abstractors/productListing/ProductDetail.util';
 import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import getErrorList from '@tcp/core/src/components/features/CnC/BagPage/container/Errors.selector';
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import {
   setWishlistState,
@@ -59,6 +60,8 @@ export function* addItemsToWishlist({ payload }) {
   const { colorProductId, page } = payload;
   const state = yield select();
   const isGuest = !getUserLoggedInState(state);
+  const errorMapping = getErrorList(state);
+
   try {
     yield put(setAddToFavoriteErrorState({}));
     if (isGuest) {
@@ -70,6 +73,7 @@ export function* addItemsToWishlist({ payload }) {
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,
+        errorMapping,
       });
 
       if (res && res.errorMessage) {
