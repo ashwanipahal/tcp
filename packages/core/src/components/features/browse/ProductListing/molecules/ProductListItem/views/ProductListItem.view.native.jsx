@@ -43,14 +43,18 @@ const onCTAHandler = (
   selectedColorIndex,
   onGoToPDPPage,
   onQuickViewOpenClick,
-  isFavoriteOOS
+  isFavoriteOOS,
+  setLastDeletedItemId
 ) => {
   const { productInfo, colorsMap } = item;
   const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
   if (isFavoriteOOS) {
-    console.log('Remove Click Handling');
+    const {
+      itemInfo: { itemId },
+    } = item;
+    setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
@@ -75,6 +79,7 @@ const renderAddToBagContainer = ({
   keepAlive,
   outOfStockLabels,
   isFavorite,
+  setLastDeletedItemId,
 }) => {
   if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
@@ -93,7 +98,14 @@ const renderAddToBagContainer = ({
         disableButton={keepAlive && !isFavorite}
         text={keepAlive ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels) : buttonLabel}
         onPress={() =>
-          onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick, isFavoriteOOS)
+          onCTAHandler(
+            item,
+            selectedColorIndex,
+            onGoToPDPPage,
+            onQuickViewOpenClick,
+            isFavoriteOOS,
+            setLastDeletedItemId
+          )
         }
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
         margin="0 6px 0 0"
@@ -113,19 +125,26 @@ renderAddToBagContainer.propTypes = {
   keepAlive: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}).isRequired,
   isFavorite: PropTypes.bool.isRequired,
+  setLastDeletedItemId: PropTypes.func.isRequired,
 };
 
 const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
-const isItemOutOfStock = (keepAlive, itemInfo) => {
-  return keepAlive || (itemInfo && itemInfo.availability === AVAILABILITY.SOLDOUT);
+const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, selectedColorMapData) => {
+  return (
+    (isKeepAliveEnabled && keepAlive) ||
+    (selectedColorMapData &&
+      selectedColorMapData.itemInfo &&
+      selectedColorMapData.itemInfo.availability === AVAILABILITY.SOLDOUT)
+  );
 };
 
 const checkEditEnabled = (isFavorite, itemOutOfStock) => {
-  return isFavorite && itemOutOfStock;
+  return isFavorite && !itemOutOfStock;
 };
+
 const ListItem = props => {
   const {
     item,
@@ -149,7 +168,7 @@ const ListItem = props => {
     viaModule,
     isLoggedIn,
     labelsPlpTiles,
-    keepAlive,
+    isKeepAliveEnabled,
     outOfStockLabels,
   } = props;
   logger.info(viaModule);
@@ -159,8 +178,12 @@ const ListItem = props => {
   const { name, bundleProduct } = productInfo;
   const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
-  const itemOutOfStock = isItemOutOfStock(keepAlive, itemInfo);
-
+  const { keepAlive } = miscInfoData;
+  const itemOutOfStock = isItemOutOfStock(
+    isKeepAliveEnabled,
+    keepAlive,
+    colorsMap[selectedColorIndex]
+  );
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
@@ -238,6 +261,7 @@ const ListItem = props => {
         keepAlive: itemOutOfStock,
         outOfStockLabels,
         isFavorite,
+        setLastDeletedItemId,
       })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
@@ -692,7 +716,7 @@ ListItem.propTypes = {
   viaModule: PropTypes.string,
   isLoggedIn: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
-  keepAlive: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
 };
 
@@ -723,7 +747,7 @@ ListItem.defaultProps = {
   viaModule: '',
   isLoggedIn: false,
   labelsPlpTiles: {},
-  keepAlive: false,
+  isKeepAliveEnabled: false,
   outOfStockLabels: {},
 };
 

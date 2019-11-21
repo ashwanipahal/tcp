@@ -115,11 +115,6 @@ class ProductList extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
-  checkKeepAliveItem = keepAliveProduct => {
-    const { isKeepAliveEnabled } = this.props;
-    return isKeepAliveEnabled && keepAliveProduct;
-  };
-
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -136,6 +131,7 @@ class ProductList extends React.PureComponent {
       isLoggedIn,
       labelsPlpTiles,
       onrenderItemCountView,
+      isKeepAliveEnabled,
       outOfStockLabels,
     } = this.props;
     const { item, index } = itemData;
@@ -146,9 +142,7 @@ class ProductList extends React.PureComponent {
     const curentColorEntry = colorsMap && getMapSliceForColorProductId(colorsMap, colorProductId);
     // get product color and price info of default zero index item
     const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
-    const { badge1, badge2, keepAlive: keepAliveProduct } = currentColorMiscInfo;
-
-    const keepAlive = this.checkKeepAliveItem(keepAliveProduct);
+    const { badge1, badge2 } = currentColorMiscInfo;
 
     // get default top badge data
     let topBadge;
@@ -202,7 +196,7 @@ class ProductList extends React.PureComponent {
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
-        keepAlive={keepAlive}
+        isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
       />
     );
