@@ -6,6 +6,7 @@ import {
   BtnWrapper,
   StyledTouchableOpacity,
   StyledView,
+  PlaceRewardsPageStyledView,
 } from '../styles/BonusPointsAvailability.view.style.native';
 
 const colorPalette = createThemeColorPalette();
@@ -23,18 +24,26 @@ const BonusPointsAvailability = ({
   getBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
+  isPlaceRewardsPage,
 }) => {
   return (
     <BtnWrapper>
       {bonusPoints &&
         bonusPoints.map((item, index) => {
-          const Component = item.disabled ? StyledView : StyledTouchableOpacity;
-          const componentProps = item.disabled
-            ? {}
-            : {
-                onPress: () =>
-                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday),
-              };
+          let Component = StyledTouchableOpacity;
+          if (isPlaceRewardsPage) {
+            Component = PlaceRewardsPageStyledView;
+          }
+          if (item.disabled) {
+            Component = StyledView;
+          }
+          const componentProps =
+            item.disabled || isPlaceRewardsPage
+              ? {}
+              : {
+                  onPress: () =>
+                    applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday),
+                };
           return (
             <Component {...componentProps} key={item.id} index={index}>
               <BodyCopy
@@ -58,6 +67,7 @@ BonusPointsAvailability.propTypes = {
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   bonusDayAvailableToday: PropTypes.bool,
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
@@ -65,6 +75,7 @@ BonusPointsAvailability.defaultProps = {
   getBonusDaysData: () => {},
   orderDetails: {},
   bonusDayAvailableToday: false,
+  isPlaceRewardsPage: false,
 };
 
 export default BonusPointsAvailability;
