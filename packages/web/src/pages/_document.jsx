@@ -3,7 +3,7 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import Safe from 'react-safe';
 
-import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
+import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 
 // _document is only rendered on the server side and not on the client side
 // Event handlers like onClick can't be added to this file
@@ -73,8 +73,6 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <div className="dark-overlay" />
-          {/* Performance measure for SSR app render time */}
-          <RenderPerf.Measure name={FULLY_VISIBLE} />
           {/* Set this in SSR for initial page view */}
           <RenderPerf.Mark name={NAVIGATION_START} />
         </body>
