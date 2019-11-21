@@ -28,18 +28,12 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
-import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
+// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
-import HeaderPromo from '../../../../common/molecules/HeaderPromo';
-import {
-  HeaderPromoContainer,
-  TextComponent,
-  TextInputComponent,
-  ButtonComponent,
-} from '../HomePage.style';
+import { TextComponent, TextInputComponent, ButtonComponent } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -162,18 +156,14 @@ class HomePageView extends React.PureComponent<Props> {
       slots,
       navigation,
       screenProps: { apiConfig },
-      headerPromo,
       loyaltyPromoBanner,
     } = this.props;
     const { value } = this.state;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <ModuleS {...mockS.moduleS.composites} />
+        {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations
           navigation={navigation}

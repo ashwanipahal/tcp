@@ -47,6 +47,13 @@ export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
 
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
+
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
  *  side and client side hydration should be the same. If this is needed use ServerToClientRenderPatch.jsx.
@@ -453,6 +460,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
   ) {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
+    }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
     }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
@@ -1024,6 +1034,26 @@ export const canUseDOM = () => {
 
 export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter(item => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[0].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
 };
 
 /**

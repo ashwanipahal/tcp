@@ -17,6 +17,7 @@ const getPromotionalText = props => {
     color: ${color};
     font-family: ${typography.fonts.secondary};
     font-size: ${fontSize ? typography.fontSizes[fontSize] : typography.fontSizes.fs9};
+    font-weight: ${props.theme.fonts.fontWeight.black}
     `;
 };
 

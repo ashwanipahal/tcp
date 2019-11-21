@@ -70,7 +70,8 @@ const styles = css`
     @media ${props.theme.mediaQuery.medium} {
       padding:${props.theme.spacing.ELEM_SPACING.SM} 0;
       border: 1px solid ${props.theme.colors.BORDER.NORMAL};
-      margin-bottom: ${props.theme.spacing.ELEM_SPACING.MED};
+      margin-bottom: ${props.theme.spacing.ELEM_SPACING.XS};
+      margin-top: ${props.theme.spacing.ELEM_SPACING.XS};
     }
   `
         : `

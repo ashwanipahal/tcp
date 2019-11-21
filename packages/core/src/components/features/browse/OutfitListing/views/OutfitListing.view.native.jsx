@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Image, Anchor, Skeleton } from '../../../../common/atoms';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Container, Separator, AnchorStyle } from '../OutfitListing.style.native';
+import PromoModules from '../../../../common/organisms/PromoModules';
 
 class OutfitListing extends React.PureComponent {
   /**
@@ -74,6 +75,8 @@ class OutfitListing extends React.PureComponent {
       outfitDetails,
       outfitDetails: { isFetchingDataForOutfit },
       asPath,
+      plpTopPromos,
+      navigation,
     } = this.props;
     const outfits = (outfitDetails && outfitDetails[asPath]) || [];
 
@@ -85,13 +88,16 @@ class OutfitListing extends React.PureComponent {
         </ScrollView>
       );
     return (
-      <Container
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        data={outfits}
-        ItemSeparatorComponent={this.itemSeparator}
-        contentContainerStyle={flatlistContentContainerStyle}
-      />
+      <ScrollView>
+        <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />
+        <Container
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          data={outfits}
+          ItemSeparatorComponent={this.itemSeparator}
+          contentContainerStyle={flatlistContentContainerStyle}
+        />
+      </ScrollView>
     );
   }
 }
@@ -101,6 +107,7 @@ OutfitListing.propTypes = {
   asPath: PropTypes.string,
   labels: PropTypes.instanceOf(Object),
   navigation: PropTypes.instanceOf(Object),
+  plpTopPromos: PropTypes.instanceOf(Object),
 };
 
 OutfitListing.defaultProps = {
@@ -108,6 +115,7 @@ OutfitListing.defaultProps = {
   asPath: '',
   labels: {},
   navigation: null,
+  plpTopPromos: null,
 };
 
 export default OutfitListing;

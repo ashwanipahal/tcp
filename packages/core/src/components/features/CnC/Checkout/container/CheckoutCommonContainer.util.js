@@ -16,6 +16,7 @@ import CHECKOUT_ACTIONS, {
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
   getSetIsBillingVisitedActn,
+  setUpdateFromMSG,
 } from './Checkout.action';
 import selectors, {
   isGuest as isGuestUser,
@@ -46,6 +47,7 @@ import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
 import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
+import SMSNotificationSelectors from '../../Confirmation/organisms/SMSNotifications/container/SMSNotifications.selectors';
 import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 const {
@@ -182,6 +184,12 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    updateFromMSG: value => {
+      dispatch(setUpdateFromMSG(value));
+    },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
   };
 };
 
@@ -201,7 +209,7 @@ export const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
-
+    emailSignUpFlags: BagPageSelector.getIfEmailSignUpDone(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -283,6 +291,8 @@ export const mapStateToProps = state => {
     isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     pageData: getPageData(state),
+    notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
+    subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
   };
@@ -296,6 +306,8 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   } = props;
   fetchNeedHelpContent([
     needHelpContentId,
@@ -303,5 +315,7 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   ]);
 };

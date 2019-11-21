@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kgoBCf",
+                  "componentId": "sc-kGXeez",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -84,6 +84,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       font-size: ",
                     [Function],
                     "px;
+      color: ",
+                    [Function],
+                    ";
       border-radius: 6px;
       text-align: center;
       width: 54px;
@@ -137,7 +140,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kgoBCf",
+                "styledComponentId": "sc-kGXeez",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -386,7 +389,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kgoBCf",
+                  "componentId": "sc-kGXeez",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -440,6 +443,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       font-size: ",
                     [Function],
                     "px;
+      color: ",
+                    [Function],
+                    ";
       border-radius: 6px;
       text-align: center;
       width: 54px;
@@ -493,7 +499,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kgoBCf",
+                "styledComponentId": "sc-kGXeez",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

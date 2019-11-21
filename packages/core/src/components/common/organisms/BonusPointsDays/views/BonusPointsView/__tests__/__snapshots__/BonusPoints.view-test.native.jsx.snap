@@ -31,22 +31,29 @@ exports[`BonusPointsView should render correctly 1`] = `
     isOverlay={false}
     onRequestClose={[Function]}
   >
-    <Styled(View)>
-      <RichText
-        actionHandler={[Function]}
-        dataLocator="bonus-points-details"
-        domStorageEnabled={false}
-        isApplyDeviceHeight={false}
-        isNativeView={false}
-        javaScriptEnabled={false}
-        source={
-          Object {
-            "html": "hello",
+    <ScrollViewMock>
+      <Styled(View)>
+        <RichText
+          actionHandler={[Function]}
+          dataLocator="bonus-points-details"
+          domStorageEnabled={false}
+          isApplyDeviceHeight={false}
+          isNativeView={false}
+          javaScriptEnabled={false}
+          source={
+            Object {
+              "html": "hello",
+            }
           }
-        }
-        thirdPartyCookiesEnabled={false}
-      />
-    </Styled(View)>
+          style={
+            Object {
+              "minHeight": 600,
+            }
+          }
+          thirdPartyCookiesEnabled={false}
+        />
+      </Styled(View)>
+    </ScrollViewMock>
   </ModalNative>
 </View>
 `;

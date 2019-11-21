@@ -89,7 +89,12 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             }}
           >
             {defaultShippingAddress && defaultShippingAddress.length ? (
-              <Address address={defaultShippingAddress[0]} showCountry={false} />
+              <Address
+                address={defaultShippingAddress[0]}
+                showPhone={false}
+                showName={false}
+                showCountry={false}
+              />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
                 {getLabelValue(labels, 'lbl_overview_addressNotAdded')}
@@ -151,7 +156,12 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             }}
           >
             {defaultBillingAddress && defaultBillingAddress.length ? (
-              <Address address={defaultBillingAddress[0]} showCountry={false} />
+              <Address
+                address={defaultBillingAddress[0]}
+                showPhone={false}
+                showName={false}
+                showCountry={false}
+              />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
                 {getLabelValue(labels, 'lbl_overview_addressNotAdded')}

@@ -324,9 +324,9 @@ class CartItemTile extends PureComponent {
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -509,7 +509,7 @@ class CartItemTile extends PureComponent {
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
-    const topPaddingClass = isBagPageSflSection ? 'padding-top-50' : 'padding-top-15';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
     return (
       <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -1097,6 +1097,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                   onClick={this.closeMiniBagMethod}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1316,6 +1317,7 @@ CartItemTile.propTypes = {
   disableProductRedirect: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

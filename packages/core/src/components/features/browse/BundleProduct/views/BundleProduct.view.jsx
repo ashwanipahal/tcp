@@ -75,7 +75,7 @@ class BundleProduct extends React.PureComponent {
       productDetails,
       pdpLabels,
       currency,
-      currencyExchange,
+      currencyAttributes,
       ...otherProps
     } = this.props;
     const selectedColorProductId = currentColorEntry.colorProductId;
@@ -89,7 +89,7 @@ class BundleProduct extends React.PureComponent {
               isGiftCard={currentProduct.isGiftCard}
               selectedColorProductId={selectedColorProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isBundleProduct
               {...otherProps}
             />
@@ -118,6 +118,8 @@ class BundleProduct extends React.PureComponent {
       addToBagError,
       isKeepAliveEnabled,
       outOfStockLabels,
+      currencyAttributes,
+      currency,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -135,6 +137,8 @@ class BundleProduct extends React.PureComponent {
             addToBagError={addToBagError}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            currencySymbol={currency}
+            currencyAttributes={currencyAttributes}
             className="bundle-products-list"
           />
         </Col>
@@ -246,12 +250,12 @@ class BundleProduct extends React.PureComponent {
                 >
                   {this.getProductSummary(currentColorEntry)}
                   {this.getProductDescription()}
-                  {this.getRecommendations()}
                 </Col>
               </Row>
               {this.getBundleProductsList()}
             </Col>
           </Row>
+          {this.getRecommendations()}
         </div>
       );
     }
@@ -270,7 +274,7 @@ BundleProduct.propTypes = {
   currentProduct: PropTypes.shape({}).isRequired,
   productDetails: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   plpLabels: PropTypes.shape({}),
   currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleAddToBag: PropTypes.func.isRequired,
@@ -294,7 +298,6 @@ BundleProduct.defaultProps = {
   breadCrumbs: [],
   productDetails: {},
   currency: 'USD',
-  currencyExchange: '',
   plpLabels: {},
   isLoggedIn: false,
   addToBagErrorId: '',

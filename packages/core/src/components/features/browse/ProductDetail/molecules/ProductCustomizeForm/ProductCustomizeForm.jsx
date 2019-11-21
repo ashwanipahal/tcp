@@ -276,6 +276,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                   component="div"
                   fontFamily="secondary"
                   fontWeight="regular"
+                  role="alert"
+                  aria-live="assertive"
                 >
                   <Image
                     alt="Error"

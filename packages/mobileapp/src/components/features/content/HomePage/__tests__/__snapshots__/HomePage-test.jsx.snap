@@ -8,9 +8,6 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
-  <Styled(View)>
-    <HeaderPromo />
-  </Styled(View)>
   <LoyaltyPromoBanner
     richTextList={
       Array [
@@ -46,65 +43,6 @@ exports[`HomePageView should render correctly 1`] = `
     navigation={
       Object {
         "getParam": [Function],
-      }
-    }
-  />
-  <ModuleS
-    headerText={
-      Array [
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "Girls",
-            "title": "Girls",
-            "url": "/c/girls-clothes",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_black",
-              "text": "Home Run Ready!",
-            },
-            Object {
-              "style": "medium_text_black",
-              "text": "Lets Play.",
-            },
-          ],
-        },
-      ]
-    }
-    linkedImage={
-      Array [
-        Object {
-          "image": Object {
-            "alt": "Image Alt text attribute value",
-            "title": "Image Title attribute value",
-            "url": "http://image1.sm/url",
-          },
-          "video": Object {
-            "autoplay": true,
-            "controls": true,
-            "inline": true,
-            "loop": true,
-            "muted": true,
-            "title": "Video Title attribute value",
-            "url": "https://test1.theplace.com/video/upload/v1572869480/sample_mp4.mp4",
-          },
-        },
-      ]
-    }
-    moduleWidth="half"
-    singleCTAButton={
-      Object {
-        "target": "",
-        "text": "SHOP OPENING DAY",
-        "title": "SHOP OPENING DAY",
-        "url": "/c/girls-clothes",
       }
     }
   />

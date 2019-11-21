@@ -68,8 +68,9 @@ describe('Checkout Selectors', () => {
   it('#getSmsNumberForOrderUpdates', () => {
     const state = {
       form: FormState,
+      Checkout: fromJS({}),
     };
-    expect(CHECKOUT_SELECTORS.getSmsNumberForOrderUpdates(state)).toEqual(2012345678);
+    expect(CHECKOUT_SELECTORS.getSmsNumberForOrderUpdates(state)).toEqual(undefined);
   });
   it('#getCurrentPickupFormNumber', () => {
     const state = {
@@ -137,6 +138,9 @@ describe('Checkout Selectors', () => {
           },
         },
       }),
+      CartPageReducer: fromJS({
+        orderDetails: { emailSignUpTCP: true },
+      }),
       User: fromJS({
         personalData: {
           userId: '320503',
@@ -171,6 +175,10 @@ describe('Checkout Selectors', () => {
       },
       hasAlternatePickup: false,
       pickUpAlternate: {},
+      emailSignUp: {
+        emailSignUp: true,
+        emailSignUpGYM: undefined,
+      },
     });
   });
   it('#getShippingAddress', () => {

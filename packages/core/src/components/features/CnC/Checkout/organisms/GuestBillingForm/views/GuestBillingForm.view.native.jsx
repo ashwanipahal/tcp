@@ -46,6 +46,8 @@ class GuestBillingForm extends React.Component {
     paymentMethodId: PropTypes.string,
     isPayPalEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.func,
+    isVenmoEnabled: PropTypes.bool,
+    venmoError: PropTypes.string,
   };
 
   static defaultProps = {
@@ -66,6 +68,8 @@ class GuestBillingForm extends React.Component {
     paymentMethodId: null,
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
+    isVenmoEnabled: false,
+    venmoError: '',
   };
 
   /**
@@ -81,6 +85,28 @@ class GuestBillingForm extends React.Component {
       dispatch(change('checkoutBilling', 'cardType', cardType));
     }
   }
+
+  /**
+   * @description - renderVenmoText method renders text for venmo
+   */
+  renderVenmoText = () => {
+    const { paymentMethodId, labels } = this.props;
+    if (paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO) {
+      return (
+        <PayPalTextContainer>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs16"
+            spacingStyles="margin-bottom-MED"
+            color="gray.900"
+            dataLocator="venmoBillingText"
+            text={labels.venmoLongText}
+          />
+        </PayPalTextContainer>
+      );
+    }
+    return null;
+  };
 
   /**
    * @function render
@@ -112,6 +138,8 @@ class GuestBillingForm extends React.Component {
       getPayPalSettings,
       isPayPalEnabled,
       isPayPalWebViewEnable,
+      isVenmoEnabled,
+      venmoError,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -162,6 +190,7 @@ class GuestBillingForm extends React.Component {
                 />
               </PayPalTextContainer>
             ) : null}
+            {isVenmoEnabled && this.renderVenmoText()}
             {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
               <>
                 <AddNewCCForm
@@ -207,6 +236,10 @@ class GuestBillingForm extends React.Component {
           getPayPalSettings={getPayPalSettings}
           showPayPalButton={isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL}
           isPayPalWebViewEnable={isPayPalWebViewEnable}
+          showVenmoSubmit={paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit(onSubmit)}
+          venmoError={venmoError}
         />
       </>
     );
@@ -220,6 +253,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: 'checkoutBilling', // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(GuestBillingForm);
 export { GuestBillingForm as GuestBillingFormVanilla };
