@@ -39,6 +39,13 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const getVideoUrl = url => {
+  if (url) {
+    return url.match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
@@ -1138,6 +1145,7 @@ export const validateDiffInDaysNotification = (
 };
 
 export default {
+  getVideoUrl,
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,

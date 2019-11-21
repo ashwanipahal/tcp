@@ -6,6 +6,13 @@ import Anchor from '../../Anchor';
 import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
 
+const getVideoUrl = url => {
+  if (url) {
+    return url.match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
+};
+
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
   let { basePath } = props;
@@ -49,8 +56,13 @@ const getBreakpointImgUrl = (type, props) => {
 
   const brandId = brandName && brandName.toUpperCase();
   const apiConfigObj = getAPIConfig();
-  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  let assetHost = apiConfigObj[`assetHost${brandId}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+
+  const isVideoUrl = getVideoUrl(imgPath);
+  if (isVideoUrl) {
+    assetHost = assetHost.replace('/image/', '/video/');
+  }
 
   return isProductImage
     ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
@@ -87,11 +99,27 @@ const RenderImage = forwardRef((imgProps, ref) => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
     ...other
   } = imgProps;
 
-  const { alt } = imgData;
-  return (
+  const { alt, url } = imgData;
+
+  let isVideoUrl = null;
+  let videoDataOptions = {};
+
+  if (url && isProductImage) {
+    isVideoUrl = getVideoUrl(url);
+    if (isVideoUrl) {
+      videoDataOptions = {
+        autoplay: false,
+        url: getBreakpointImgUrl('xs', imgProps),
+      };
+    }
+  }
+  return isVideoUrl ? (
+    <RenderVideo video={videoDataOptions} />
+  ) : (
     <picture>
       <source
         media={`(min-width: ${breakpoints.values.lg}px)`}
@@ -141,6 +169,7 @@ const DamImage = props => {
     itemBrand,
     showPlaceHolder,
     videoData,
+    isProductImage,
     ...other
   } = props;
 
@@ -158,6 +187,7 @@ const DamImage = props => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
     ...other,
   };
 
@@ -197,13 +227,17 @@ DamImage.defaultProps = {
   },
   basePath: 'https://test1.theplace.com/image/upload',
   imgPathSplitter: '/upload',
-  link: null,
+  link: {
+    actualUrl: '',
+    className: '',
+  },
   dataLocator: '',
   dataLocatorLink: '',
   forwardedRef: null,
   itemBrand: '',
   showPlaceHolder: true,
   videoData: null,
+  isProductImage: false,
 };
 
 DamImage.propTypes = {
@@ -250,10 +284,13 @@ DamImage.propTypes = {
     target: PropTypes.string,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
+    actualUrl: PropTypes.string,
+    className: PropTypes.string,
   }),
   forwardedRef: PropTypes.shape({ current: PropTypes.any }),
   itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
+  isProductImage: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

@@ -186,6 +186,9 @@ export default css`
     width: 100%;
     display: inline-block;
   }
+  .full-height {
+    height: 100%;
+  }
   .img-placeholder {
     width: 100%;
     height: 100%;
