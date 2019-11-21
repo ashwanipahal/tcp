@@ -78,12 +78,6 @@ exports[`AddedToBagActions native component AddedToBagActions renders correctly 
       </Styled(TouchableOpacity)>
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-      onSuccess={[Function]}
-    />
-  </Styled(View)>
   <Connect(AddedToBagContainer) />
 </Styled(View)>
 `;
