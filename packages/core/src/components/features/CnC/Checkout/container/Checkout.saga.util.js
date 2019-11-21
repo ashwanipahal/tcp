@@ -42,6 +42,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -423,4 +424,20 @@ export function shouldInvokeReviewCartCall(
   const { REVIEW } = constants.CHECKOUT_STAGES;
   const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
   return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
+}
+
+export function* redirectFromExpress() {
+  yield put(toggleCheckoutRouting(true));
+  yield put(setIsExpressEligible(false));
+  const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
+  if (isOrderHasPickup) {
+    if (!isMobileApp()) {
+      return utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
+    }
+    return yield put(getSetCheckoutStage(constants.PICKUP_DEFAULT_PARAM));
+  }
+  if (!isMobileApp()) {
+    return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  }
+  return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
 }
