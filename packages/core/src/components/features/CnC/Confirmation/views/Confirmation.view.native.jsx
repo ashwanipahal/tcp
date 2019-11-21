@@ -11,6 +11,7 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
+import SMSNotifications from '../organisms/SMSNotifications';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -76,6 +77,7 @@ const ConfirmationView = ({
             text="SMS SIGN UP"
           />
         </SMSWrapper>
+        <SMSNotifications />
         <ThankYouComponent
           emailAddress={emailAddress}
           isOrderPending={isOrderPending}
