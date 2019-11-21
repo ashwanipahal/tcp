@@ -53,7 +53,9 @@ exports[`MyRewards should render correctly 1`] = `
       <Connect(PointsHistoryContainer) />
     </Styled(View)>
     <Styled(View)>
-      <BonusPointsDaysSection />
+      <BonusPointsDaysSection
+        isPlaceRewardsPage={true}
+      />
     </Styled(View)>
     <Styled(View)>
       <Connect(EarnExtraPointsTileContainer) />
