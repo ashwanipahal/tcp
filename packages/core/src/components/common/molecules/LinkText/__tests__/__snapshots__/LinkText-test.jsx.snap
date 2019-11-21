@@ -27,7 +27,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      <TextItems
+      <Styled(TextItems)
         textItems={
           Array [
             Object {

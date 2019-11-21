@@ -38,7 +38,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          <TextItems />
+          <Styled(TextItems) />
         </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
@@ -76,7 +76,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          <TextItems />
+          <Styled(TextItems) />
         </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
@@ -239,7 +239,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            <TextItems />
+            <Styled(TextItems) />
           </Styled(BodyCopy)>
         </Connect(Component)>
       </span>
