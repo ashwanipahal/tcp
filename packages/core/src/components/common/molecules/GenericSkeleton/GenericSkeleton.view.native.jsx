@@ -1,7 +1,7 @@
 import React from 'react';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import AddressViewWrapper from '../styles/Address.style.native';
+import AddressViewWrapper from '../Address/styles/Address.style.native';
 
 const AddressSkelton = () => {
   return (

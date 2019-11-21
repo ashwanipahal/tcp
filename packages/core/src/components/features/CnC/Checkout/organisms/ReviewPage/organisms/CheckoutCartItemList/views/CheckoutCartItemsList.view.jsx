@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -52,6 +53,7 @@ class CheckoutCartItemsList extends Component {
     showAccordian: PropTypes.bool,
     disableProductRedirect: PropTypes.bool,
     bagLoading: PropTypes.bool,
+    checkoutRoutingDone: PropTypes.bool,
   };
 
   /**
@@ -367,13 +369,21 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels, showAccordian, bagLoading } = this.props;
+    const {
+      itemsCount,
+      className,
+      bagPageLabels,
+      showAccordian,
+      bagLoading,
+      checkoutRoutingDone,
+    } = this.props;
     const header = (
       <BodyCopy
         fontWeight="semibold"
         fontSize="fs16"
         fontFamily="secondary"
         className="checkout-cart-list-heading"
+        checkoutRoutingDone
       >
         {`${bagPageLabels.bagHeading} (${itemsCount}):`}
       </BodyCopy>
@@ -400,7 +410,20 @@ class CheckoutCartItemsList extends Component {
         </Col>
         <div className={showAccordian ? 'hide-in-medium-down' : ''}>
           {header}
-          {!bagLoading ? this.renderItems() : <AddressSkeleton />}
+          {!bagLoading && checkoutRoutingDone ? (
+            this.renderItems()
+          ) : (
+            <>
+              <Row>
+                <Col colSize={{ large: 2, medium: 1, small: 1 }}>
+                  <LoaderSkelton width="100px" height="100px" />
+                </Col>
+                <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+                  <GenericSkeleton />
+                </Col>
+              </Row>
+            </>
+          )}
         </div>
       </div>
     );
@@ -413,6 +436,7 @@ CheckoutCartItemsList.defaultProps = {
   showAccordian: true,
   disableProductRedirect: false, // Disable Product Redirect
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

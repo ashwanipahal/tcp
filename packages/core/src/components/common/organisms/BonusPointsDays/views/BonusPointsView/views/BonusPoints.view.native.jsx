@@ -60,6 +60,7 @@ class BonusPointsView extends React.Component {
       orderDetails,
       isBagPage,
       showAccordian,
+      ...otherProps
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -84,6 +85,7 @@ class BonusPointsView extends React.Component {
             isBagPage={isBagPage}
             bagBonusLabels={labels.checkout.bagBonusPoints}
             showAccordian={showAccordian}
+            {...otherProps}
           />
         )}
         <Modal
