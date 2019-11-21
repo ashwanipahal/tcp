@@ -9,8 +9,8 @@ import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   componentDidMount() {
-    const { startPaypalNativeCheckoutAction } = this.props;
-    if (isMobileApp()) startPaypalNativeCheckoutAction();
+    const { startPaypalNativeCheckoutAction, isBillingPage } = this.props;
+    if (isMobileApp()) startPaypalNativeCheckoutAction(isBillingPage);
   }
 
   componentWillUnmount() {
@@ -107,14 +107,14 @@ export const mapDispatchToProps = dispatch => {
     startPaypalCheckout: payload => {
       dispatch(bagPageActions.startPaypalCheckout(payload));
     },
-    startPaypalNativeCheckoutAction: () => {
-      dispatch(bagPageActions.startPaypalNativeCheckout());
+    startPaypalNativeCheckoutAction: isBillingPage => {
+      dispatch(bagPageActions.startPaypalNativeCheckout({ isBillingPage }));
     },
     paypalAuthorizationHandle: payload => {
       dispatch(bagPageActions.paypalAuthorization(payload));
     },
-    clearPaypalSettings: () => {
-      dispatch(bagPageActions.startPaypalNativeCheckout());
+    clearPaypalSettings: isBillingPage => {
+      dispatch(bagPageActions.startPaypalNativeCheckout({ isBillingPage }));
     },
     payPalWebViewHandle: payload => {
       dispatch(bagPageActions.getSetPayPalWebView(payload));

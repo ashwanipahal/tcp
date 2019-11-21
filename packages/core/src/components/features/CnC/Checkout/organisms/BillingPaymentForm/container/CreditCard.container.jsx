@@ -97,6 +97,12 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       : this.getSelectedPaymentMethod();
   };
 
+  setBillingInitialValues = () => {
+    const { billingData } = this.props;
+    const cardType = billingData && billingData.billing && billingData.billing.cardType;
+    return this.isBillingIfoPresent() && cardType !== 'paypal';
+  };
+
   /**
    * @function getInitialValues
    * @description returns the initial values for the billing form
@@ -125,7 +131,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let zipCode;
     let country;
     let address;
-    if (this.isBillingIfoPresent()) {
+    if (this.setBillingInitialValues()) {
       ({
         address = {
           onFileAddressKey: billingOnFileAddressKey,

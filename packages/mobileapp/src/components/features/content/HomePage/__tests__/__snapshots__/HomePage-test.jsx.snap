@@ -8,9 +8,6 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
-  <Styled(View)>
-    <HeaderPromo />
-  </Styled(View)>
   <LoyaltyPromoBanner
     richTextList={
       Array [

@@ -267,6 +267,7 @@ class ProductAltImages extends React.PureComponent {
           inheritedStyles={imageAnchorInheritedStyles}
         >
           <DamImage
+            className="loadImage"
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
@@ -303,6 +304,7 @@ class ProductAltImages extends React.PureComponent {
           inheritedStyles={imageAnchorInheritedStyles}
         >
           <DamImage
+            className="loadImage"
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
