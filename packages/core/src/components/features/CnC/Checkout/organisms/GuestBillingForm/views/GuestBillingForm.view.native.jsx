@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection, reduxForm, change } from 'redux-form';
@@ -115,6 +114,21 @@ class GuestBillingForm extends React.Component {
     return null;
   };
 
+  renderPayPalTextContainer = (isPayPalEnabled, paymentMethodId, labels) => {
+    return isPayPalEnabled && paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
+      <PayPalTextContainer>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          spacingStyles="margin-bottom-MED"
+          color="gray.900"
+          dataLocator="paymentMethodLbl"
+          text={labels.payPalLongText}
+        />
+      </PayPalTextContainer>
+    ) : null;
+  };
+
   /**
    * @function render
    * @description render method to be called of component
@@ -186,18 +200,7 @@ class GuestBillingForm extends React.Component {
                 dispatch={dispatch}
               />
             </FormSection>
-            {isPayPalEnabled && paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
-              <PayPalTextContainer>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  spacingStyles="margin-bottom-MED"
-                  color="gray.900"
-                  dataLocator="paymentMethodLbl"
-                  text={labels.payPalLongText}
-                />
-              </PayPalTextContainer>
-            ) : null}
+            {this.renderPayPalTextContainer(isPayPalEnabled, paymentMethodId, labels)}
             {isVenmoEnabled && this.renderVenmoText()}
             {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
               <>

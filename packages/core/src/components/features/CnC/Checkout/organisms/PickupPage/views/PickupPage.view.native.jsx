@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
@@ -12,14 +11,13 @@ import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getNextCTAText from './PickupPage.view.utils';
+import { getNextCTAText, renderSmsUpdatedEnabled } from './PickupPage.view.utils';
 
 import {
   FormStyle,
   Container,
   PickupContainer,
   PickUpForm,
-  SmsSignUpForm,
   EmailSignupForm,
   PickUpAlternateForm,
   PickupError,
@@ -287,22 +285,12 @@ class PickUpFormPart extends React.Component {
                       </FormSection>
                     </PickUpForm>
                   )}
-                  {isSmsUpdatesEnabled && (
-                    <SmsSignUpForm>
-                      <FormSection name="smsSignUp">
-                        <SMSFormFields
-                          isOrderUpdateChecked={isOrderUpdateChecked}
-                          formName="checkoutPickup"
-                          formSection="smsSignUp"
-                          altInitValue={currentPhoneNumber}
-                          labels={smsSignUpLabels}
-                          showDefaultCheckbox={false}
-                          variation="secondary"
-                          dispatch={dispatch}
-                          addressPhoneNo={currentPhoneNumber}
-                        />
-                      </FormSection>
-                    </SmsSignUpForm>
+                  {renderSmsUpdatedEnabled(
+                    isSmsUpdatesEnabled,
+                    isOrderUpdateChecked,
+                    currentPhoneNumber,
+                    smsSignUpLabels,
+                    dispatch
                   )}
                   {isGuest && !isUsSite && (
                     <EmailSignupForm>

@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -133,6 +132,37 @@ class GiftCards extends React.PureComponent {
     );
   }
 
+  renderApplyGiftCards = (
+    appliedGiftCards,
+    handleRemoveGiftCard,
+    labels,
+    giftCardErrors,
+    toastMessage,
+    isExpressCheckout,
+    isFromReview
+  ) => {
+    return (
+      appliedGiftCards &&
+      appliedGiftCards.size > 0 &&
+      appliedGiftCards.map(cardData => {
+        return (
+          <GiftCardBody>
+            <GiftCardTileView
+              cardData={cardData}
+              handleRemoveGiftCard={handleRemoveGiftCard}
+              labels={labels}
+              isGiftCardApplied
+              giftCardErrors={giftCardErrors}
+              toastMessage={toastMessage}
+              isExpressCheckout={isExpressCheckout}
+              isFromReview={isFromReview}
+            />
+          </GiftCardBody>
+        );
+      })
+    );
+  };
+
   renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
     return (
       <>
@@ -236,24 +266,15 @@ class GiftCards extends React.PureComponent {
 
           {this.renderNoApplied(labels, isFromReview, appliedGiftCards)}
 
-          {appliedGiftCards &&
-            appliedGiftCards.size > 0 &&
-            appliedGiftCards.map(cardData => {
-              return (
-                <GiftCardBody>
-                  <GiftCardTileView
-                    cardData={cardData}
-                    handleRemoveGiftCard={handleRemoveGiftCard}
-                    labels={labels}
-                    isGiftCardApplied
-                    giftCardErrors={giftCardErrors}
-                    toastMessage={toastMessage}
-                    isExpressCheckout={isExpressCheckout}
-                    isFromReview={isFromReview}
-                  />
-                </GiftCardBody>
-              );
-            })}
+          {this.renderApplyGiftCards(
+            appliedGiftCards,
+            handleRemoveGiftCard,
+            labels,
+            giftCardErrors,
+            toastMessage,
+            isExpressCheckout,
+            isFromReview
+          )}
 
           {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 

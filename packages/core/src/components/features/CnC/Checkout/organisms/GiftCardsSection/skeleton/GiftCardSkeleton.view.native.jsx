@@ -6,10 +6,6 @@ import {
   PricePointsWrapper,
   PriceSubText,
   PriceSubValue,
-  // PriceSubText2,
-  // PriceSubValue2,
-  // PriceSubText3,
-  // PriceSubValue3,
 } from './GiftcardSkeleton.style.native';
 
 const GiftCardSkeleton = () => {

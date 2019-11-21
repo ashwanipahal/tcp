@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-/* eslint-disable complexity */
 import React from 'react';
 import { FormSection, reduxForm, change, Field } from 'redux-form';
 import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
@@ -9,7 +7,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import constants from '../container/CreditCard.constants';
 import getCvvInfo from '../../../molecules/CVVInfo';
 import AddNewCCForm from '../../AddNewCCForm';
-import CheckoutBillingAddress from '../../CheckoutBillingAddress';
+
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import { propTypes, defaultProps, onCCDropUpdateChange } from './BillingPaymentForm.view.util';
 import {
@@ -43,6 +41,7 @@ import {
   getCardDetailsMethod,
   getDefaultPayment,
   getBillingAddressWrapper,
+  getCheckoutBillingAddress,
 } from './BillingPaymentForm.view.native.util';
 import CardEditFrom from './CardEditForm.view.native';
 import {
@@ -66,55 +65,6 @@ export class BillingPaymentForm extends React.PureComponent {
     this.state = { addNewCCState: false, editMode: false, editModeSubmissionError: '' };
     this.ediCardErrorRef = React.createRef();
   }
-
-  /**
-   * @function getCheckoutBillingAddress
-   * @description returns the checkout billing address form
-   */
-  getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const {
-      bagLoading,
-      isSameAsShippingChecked,
-      isEditFormSameAsShippingChecked = false,
-    } = this.props;
-    const { selectedOnFileAddressId, userAddresses, labels, cardList, isGuest } = this.props;
-    const { orderHasShipping, addressLabels, editFormSelectedOnFileAddressId } = this.props;
-    const { dispatch, shippingAddress, billingData } = this.props;
-    const { addNewCCState } = this.state;
-    const creditCardList = getCreditCardList({ cardList });
-    const formType = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
-    let addressId = editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId;
-    if (!editFormSelectedOnFileAddressId && editMode) {
-      addressId = '';
-    }
-    return !bagLoading ? (
-      <CheckoutBillingAddress
-        isGuest={isGuest}
-        orderHasShipping={orderHasShipping}
-        addressLabels={addressLabels}
-        dispatch={dispatch}
-        shippingAddress={shippingAddress}
-        isSameAsShippingChecked={
-          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
-        }
-        labels={labels}
-        billingData={billingData}
-        userAddresses={userAddresses}
-        selectedOnFileAddressId={addressId}
-        formName={formType}
-        addNewCCState={
-          addNewCCState ||
-          (!creditCardList && !orderHasShipping) ||
-          (creditCardList && creditCardList.size === 0)
-        }
-        editMode={editMode}
-      />
-    ) : (
-      <SkeletonWrapper>
-        <GenericSkeleton />
-      </SkeletonWrapper>
-    );
-  };
 
   /**
    * @function getAddNewCCForm
@@ -269,7 +219,7 @@ export class BillingPaymentForm extends React.PureComponent {
             {...{ selectedCard, unsetFormEditState, getAddNewCCForm }}
             {...{ onEditCardFocus, dispatch, labels, updateCardDetail, editModeSubmissionError }}
             key="cardEditForm"
-            addressForm={this.getCheckoutBillingAddress}
+            addressForm={getCheckoutBillingAddress(this)}
             errorMessageRef={this.ediCardErrorRef}
             {...{ getDefaultPayment, toastMessage }}
           />
@@ -287,7 +237,7 @@ export class BillingPaymentForm extends React.PureComponent {
           creditCardList.size > 0 &&
           this.getCCDropDown({ labels, creditCardList, onFileCardKey, dispatch })}
         {this.getAddNewCCForm()}
-        {this.getCheckoutBillingAddress()}
+        {getCheckoutBillingAddress(this)()}
       </>
     );
   };
