@@ -52,7 +52,7 @@ const getLayoutConfig = set => {
 
 const getImageColumn = (mediaWrapper, layoutConfig) => {
   const { bgType, color, headerPosition } = layoutConfig;
-  const marginClass = headerPosition === 'right' ? 'img-txt-top' : '';
+  const marginClass = headerPosition === 'right' ? 'img-bootom-margin' : '';
   if (bgType === 'image') {
     return (
       <Col colSize={{ small: 6, medium: 8, large: 6 }}>
@@ -91,7 +91,8 @@ const getHeaderColumn = (headLine, subHeadLine, ctaItems, layoutConfig) => {
   const buttonListCtaType = getButtonListVariation(layoutConfig.ctaType);
   const buttonListProps = getButtonListVariationProps(layoutConfig.ctaType);
   const dualVariation = ctaItems && ctaItems.length < 3 ? null : buttonListProps.dualVariation;
-  const { expandableTitle } = layoutConfig;
+  const { expandableTitle, headerPosition } = layoutConfig;
+  const marginClass = headerPosition === 'left' ? 'header-bootom-margin' : '';
   return (
     <Col colSize={{ small: 6, medium: 8, large: 6 }} className="content-wrapper">
       <ContentContainer>
@@ -128,7 +129,7 @@ const getHeaderColumn = (headLine, subHeadLine, ctaItems, layoutConfig) => {
         ) : null}
         {ctaItems ? (
           <ButtonList
-            className="button-list"
+            className={`button-list ${marginClass}`}
             buttonsData={ctaItems}
             buttonListVariation={buttonListCtaType}
             dualVariation={dualVariation}

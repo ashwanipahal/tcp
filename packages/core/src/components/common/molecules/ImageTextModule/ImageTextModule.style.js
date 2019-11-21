@@ -45,7 +45,13 @@ const style = css`
     position: relative;
     text-align: center;
   }
-  .img-txt-top {
+  .img-bootom-margin {
+    margin-bottom: 16px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 0;
+    }
+  }
+  .header-bootom-margin {
     margin-bottom: 16px;
     @media ${props => props.theme.mediaQuery.large} {
       margin-bottom: 0;
