@@ -7,6 +7,7 @@ import {
   setFavoriteStoreActn,
   getFavoriteStoreActn,
 } from './StoreLanding.actions';
+import { setClickAnalyticsData, trackClick } from '../../../../../analytics/actions';
 import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
@@ -133,6 +134,8 @@ StoreLanding.propTypes = {
   fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   searchDone: PropTypes.bool.isRequired,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {
@@ -146,6 +149,8 @@ const mapDispatchToProps = dispatch => ({
   setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
   getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
   fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
+  setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClick: payload => dispatch(trackClick(payload)),
 });
 
 /* istanbul ignore next  */

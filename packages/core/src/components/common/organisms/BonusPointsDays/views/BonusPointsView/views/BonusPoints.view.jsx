@@ -71,6 +71,7 @@ class BonusPointsView extends React.Component {
       orderDetails,
       showAccordian,
       isDefaultOpen,
+      ...otherProps
     } = this.props;
     return (
       <>
@@ -85,6 +86,7 @@ class BonusPointsView extends React.Component {
                 orderDetails={orderDetails}
                 showAccordian={showAccordian}
                 isDefaultOpen={isDefaultOpen}
+                {...otherProps}
               />
             </div>
           )
