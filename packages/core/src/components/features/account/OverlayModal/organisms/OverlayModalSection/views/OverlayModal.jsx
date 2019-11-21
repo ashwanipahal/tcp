@@ -200,7 +200,7 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.modalTrianglePositioning(comp, isAccountDrawer);
+      this.modalTrianglePositioning({ comp, isAccountDrawer });
     } else if (isAccountDrawer) {
       this.setInnerScrollHeight();
     }
