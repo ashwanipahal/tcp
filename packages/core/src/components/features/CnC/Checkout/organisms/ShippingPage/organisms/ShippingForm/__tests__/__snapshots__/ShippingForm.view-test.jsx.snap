@@ -9,7 +9,7 @@ exports[`Shipping Form should render correctly 1`] = `
   />
   <[object Object] />
   <Styled(BodyCopy)
-    className="elem-mb-XS elem-mt-MED font-size-26 hide-on-desktop hide-on-tablet"
+    className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
     component="p"
     data-locator="shipping-details"
@@ -110,7 +110,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XS elem-mt-MED font-size-26 hide-on-desktop hide-on-tablet"
+    className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
     component="p"
     data-locator="shipping-details"
@@ -202,7 +202,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XS elem-mt-MED font-size-26 hide-on-desktop hide-on-tablet"
+    className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
     component="p"
     data-locator="shipping-details"
@@ -324,7 +324,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XS elem-mt-MED font-size-26 hide-on-desktop hide-on-tablet"
+    className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
     component="p"
     data-locator="shipping-details"
@@ -590,7 +590,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XS elem-mt-MED font-size-26 hide-on-desktop hide-on-tablet"
+    className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
     component="p"
     data-locator="shipping-details"
