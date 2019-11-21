@@ -80,16 +80,16 @@ exports[`L3 Panel component renders correctly 1`] = `
           </Styled(Anchor)>
         </li>
         <li>
-          <Connect(Component)
-            clickData={
-              Object {
-                "pageNavigationText": "undefined-testing",
-              }
-            }
+          <Styled(Anchor)
+            dataLocator="l3_link_0"
+            onClick={[Function]}
           >
-            <Styled(Anchor)
-              dataLocator="l3_link_0"
-              onClick={[Function]}
+            <Connect(Component)
+              clickData={
+                Object {
+                  "pageNavigationText": "undefined-testing",
+                }
+              }
             >
               <Styled(BodyCopy)
                 className="l2-nav-link"
@@ -115,8 +115,8 @@ exports[`L3 Panel component renders correctly 1`] = `
                   Spring Dressy
                 </span>
               </Styled(BodyCopy)>
-            </Styled(Anchor)>
-          </Connect(Component)>
+            </Connect(Component)>
+          </Styled(Anchor)>
         </li>
       </ul>
     </Styled(Row)>
