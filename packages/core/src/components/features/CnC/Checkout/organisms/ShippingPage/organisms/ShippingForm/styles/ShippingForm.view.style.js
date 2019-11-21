@@ -28,7 +28,7 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .font-size-26 {
-    font-size: 26px;
+    font-size: ${props => props.theme.typography.fontSizes.fs26};
   }
 `;
 
