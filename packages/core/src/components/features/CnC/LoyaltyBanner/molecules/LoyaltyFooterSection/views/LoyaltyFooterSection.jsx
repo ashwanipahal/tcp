@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
@@ -15,6 +16,7 @@ const openModalApplyNowModal = (openApplyNowModal, step = 1) => {
 };
 
 const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
+  const pageData = 'shopping bag';
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -27,7 +29,17 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
       }}
       underline
     >
-      {text}
+      <ClickTracker
+        clickData={{
+          pageType: pageData,
+          pageSection: pageData,
+          pageSubSection: pageData,
+          pageName: `gl:${pageData}`,
+          customEvents: ['event116'],
+        }}
+      >
+        {text}
+      </ClickTracker>
     </Anchor>
   );
 };
@@ -45,7 +57,14 @@ const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
         closeAddedToBagModal();
       }}
     >
-      {text}
+      <ClickTracker
+        clickData={{
+          pageName: 'gl:shopping bag',
+          customEvents: ['event117'],
+        }}
+      >
+        {text}
+      </ClickTracker>
     </Anchor>
   );
 };
