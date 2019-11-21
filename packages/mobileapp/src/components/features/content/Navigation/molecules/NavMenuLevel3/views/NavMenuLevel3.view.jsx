@@ -23,6 +23,16 @@ const renderItem = navigate => listProps => {
   const { name } = categoryContent;
 
   const navigateToNextScreen = () => {
+    if (url.includes('-outfit')) {
+      // Navigate to outfit listing for outfits
+      const categoryIds = url && url.split('c?cid=');
+      return navigate('OutfitListing', {
+        title: name,
+        url,
+        outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
+      });
+    }
+
     return navigate('ProductListing', {
       url,
       title: name,

@@ -203,7 +203,7 @@ const style = css`
   min-height: 32px;
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
-
+  background: ${props => props.theme.colorPalette.white};
   ${props =>
     props.width
       ? `

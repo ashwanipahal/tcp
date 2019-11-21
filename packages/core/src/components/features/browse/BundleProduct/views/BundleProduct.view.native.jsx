@@ -1,13 +1,12 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { ScrollView as LazyloadScrollView } from 'react-native';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
+import { getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
@@ -53,6 +52,8 @@ class ProductBundle extends React.PureComponent {
       addToBagErrorId,
       addToBagError,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -78,6 +79,9 @@ class ProductBundle extends React.PureComponent {
       };
       return (
         <ScrollView>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
           <PageContainer>
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
@@ -117,6 +121,8 @@ class ProductBundle extends React.PureComponent {
               addToBagErrorId={addToBagErrorId}
               addToBagError={addToBagError}
               toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
@@ -155,6 +161,8 @@ ProductBundle.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
   toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductBundle.defaultProps = {
@@ -167,6 +175,7 @@ ProductBundle.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductBundle);

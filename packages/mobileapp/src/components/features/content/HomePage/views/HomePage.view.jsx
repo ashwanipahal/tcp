@@ -1,12 +1,7 @@
-// @flow
 import React from 'react';
-import { ScrollView, Linking, View } from 'react-native';
-// import { Box, Text } from '@fabulas/astly';
-// import {LazyloadScrollView} from 'react-native-lazyload-deux';
-import { Button } from '@tcp/core/src/components/common/atoms';
-
+import { Linking, View } from 'react-native';
 import queryString from 'query-string';
-
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -38,13 +33,7 @@ import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
-import HeaderPromo from '../../../../common/molecules/HeaderPromo';
-import {
-  HeaderPromoContainer,
-  TextComponent,
-  TextInputComponent,
-  ButtonComponent,
-} from '../HomePage.style';
+import { TextComponent, TextInputComponent, ButtonComponent } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -65,8 +54,7 @@ const modulesMap = {
   moduleG: ModuleG,
 };
 
-const buttonMargin = { margin: 30 };
-class HomePageView extends React.PureComponent {
+class HomePageView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.submitDate = this.submitDate.bind(this);
@@ -75,6 +63,7 @@ class HomePageView extends React.PureComponent {
       value: '',
     };
   }
+
   componentDidMount() {
     this.loadBootstrapData();
 
@@ -114,7 +103,7 @@ class HomePageView extends React.PureComponent {
   };
 
   handleOpenURL = event => {
-    // this.navigate(event.url);
+    this.navigate(event.url);
   };
 
   renderGlobalModal = navigation => {
@@ -167,15 +156,11 @@ class HomePageView extends React.PureComponent {
       slots,
       navigation,
       screenProps: { apiConfig },
-      headerPromo,
       loyaltyPromoBanner,
     } = this.props;
     const { value } = this.state;
     return (
-      <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
@@ -206,7 +191,7 @@ class HomePageView extends React.PureComponent {
           </>
         ) : null}
         {this.renderGlobalModal(navigation)}
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }

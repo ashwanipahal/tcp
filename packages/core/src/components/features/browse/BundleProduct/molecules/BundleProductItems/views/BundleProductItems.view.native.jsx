@@ -23,6 +23,8 @@ class BundleProductItems extends React.PureComponent {
       addToBagErrorId,
       addToBagError,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     const productItem = item.products;
     return (
@@ -42,6 +44,8 @@ class BundleProductItems extends React.PureComponent {
           addToFavorites({ colorProductId: productItem.generalProductId });
         }}
         isBundleProduct
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   };
@@ -78,12 +82,15 @@ BundleProductItems.propTypes = {
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
   toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProductItems.defaultProps = {
   labels: {},
   addToBagError: '',
   addToBagErrorId: '',
+  outOfStockLabels: {},
 };
 
 export default BundleProductItems;

@@ -5,6 +5,7 @@ import { getIconPath, toTimeString, getLabelValue, getLocator } from '@tcp/core/
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
+import ClickTracker from '../../../../../../common/atoms/ClickTracker';
 
 const getStoreHours = store => {
   const hours = store && store.hours;
@@ -36,12 +37,14 @@ const StoreLocatorLink = ({ className, labels, store }) => {
 
   return (
     <React.Fragment>
-      <Anchor
+      <ClickTracker
+        as={Anchor}
         dataLocator={getLocator('store_drawerlink')}
         fontSizeVariation="small"
         anchorVariation="primary"
         to="/store-locator"
         className={className}
+        clickData={{ customEvents: ['event80'] }}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>
           <div className="storelocatorlink__img">
@@ -90,7 +93,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
             </BodyCopy>
           )}
         </div>
-      </Anchor>
+      </ClickTracker>
     </React.Fragment>
   );
 };

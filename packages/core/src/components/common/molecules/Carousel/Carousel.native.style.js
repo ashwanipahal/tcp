@@ -17,6 +17,7 @@ export const Touchable = styled.TouchableOpacity`
 
 export const TouchableView = styled.TouchableOpacity`
   align-items: center;
+  width: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Icon = styled.Image`

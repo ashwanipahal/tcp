@@ -84,7 +84,7 @@ const StyledModal = css`
     @media ${props => props.theme.mediaQuery.medium} {
       position: fixed;
       top: 52px;
-      right: 81px;
+      right: 74px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {

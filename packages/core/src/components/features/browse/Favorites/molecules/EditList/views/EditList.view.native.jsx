@@ -16,7 +16,7 @@ import { Container, RowContainer } from '../styles/EditList.style.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import RemoveList from '../../RemoveList';
+import DeleteList from '../../DeleteList';
 
 class EditList extends React.PureComponent {
   constructor(props) {
@@ -35,7 +35,7 @@ class EditList extends React.PureComponent {
     })();
   };
 
-  onRemoveListHandler = () => {
+  onDeleteListHandler = () => {
     this.setState({
       isShowRemoveModal: true,
     });
@@ -47,10 +47,10 @@ class EditList extends React.PureComponent {
     });
   };
 
-  renderRemoveListPopup = () => {
-    const { labels, onRemoveList } = this.props;
+  renderDeleteListPopup = () => {
+    const { labels, onDeleteList } = this.props;
     return (
-      <RemoveList labels={labels} onRemoveList={onRemoveList} onCloseModal={this.onRemoveCancel} />
+      <DeleteList labels={labels} onDeleteList={onDeleteList} onCloseModal={this.onRemoveCancel} />
     );
   };
 
@@ -58,7 +58,7 @@ class EditList extends React.PureComponent {
     const { labels, margins, onCloseModal } = this.props;
     const { isShowRemoveModal } = this.state;
     if (isShowRemoveModal) {
-      return this.renderRemoveListPopup();
+      return this.renderDeleteListPopup();
     }
     return (
       <Container margins={margins}>
@@ -124,7 +124,7 @@ class EditList extends React.PureComponent {
           anchorVariation="custom"
           colorName="gray.900"
           fontSizeVariation="large"
-          onPress={this.onRemoveListHandler}
+          onPress={this.onDeleteListHandler}
           centered
           underline
           margins="22px 0 0 0"
@@ -140,7 +140,7 @@ EditList.propTypes = {
   margins: PropTypes.string,
   onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func,
-  onRemoveList: PropTypes.func,
+  onDeleteList: PropTypes.func,
 };
 
 EditList.defaultProps = {
@@ -148,7 +148,7 @@ EditList.defaultProps = {
   handleSubmit: () => {},
   margins: null,
   onCloseModal: () => {},
-  onRemoveList: () => {},
+  onDeleteList: () => {},
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));

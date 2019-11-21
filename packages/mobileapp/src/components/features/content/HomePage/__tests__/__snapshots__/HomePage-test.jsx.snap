@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<ScrollViewMock
+<LazyloadScrollView
+  horizontal={false}
   name="lazyload-home"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
 >
-  <Styled(View)>
-    <HeaderPromo />
-  </Styled(View)>
   <LoyaltyPromoBanner
     richTextList={
       Array [
@@ -83,5 +84,5 @@ exports[`HomePageView should render correctly 1`] = `
       }
     />
   </View>
-</ScrollViewMock>
+</LazyloadScrollView>
 `;

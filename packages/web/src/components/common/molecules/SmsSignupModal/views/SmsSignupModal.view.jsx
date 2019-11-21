@@ -194,7 +194,7 @@ class SmsSignupModal extends React.PureComponent {
                       <Field
                         placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signupPhoneNumber"
-                        id="signupPhoneNumber"
+                        id="modal_signupPhoneNumber"
                         type="text"
                         component={TextBox}
                         maxLength={50}

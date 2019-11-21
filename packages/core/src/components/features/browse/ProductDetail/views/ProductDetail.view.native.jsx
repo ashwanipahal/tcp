@@ -1,8 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { ScrollView as LazyloadScrollView } from 'react-native';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
@@ -96,8 +95,8 @@ class ProductDetailView extends React.PureComponent {
     return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
-  renderFulfilmentSection = () => {
-    const { currentProduct } = this.props;
+  renderFulfilmentSection = keepAlive => {
+    const { currentProduct, outOfStockLabels } = this.props;
     const { currentColorEntry } = this.state;
     return (
       currentProduct &&
@@ -106,6 +105,8 @@ class ProductDetailView extends React.PureComponent {
           productInfo={currentProduct}
           formName={`ProductAddToBag-${currentProduct.generalProductId}`}
           miscInfo={currentColorEntry.miscInfo}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
         />
       )
     );
@@ -139,6 +140,8 @@ class ProductDetailView extends React.PureComponent {
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     const {
       currentColorEntry,
@@ -165,6 +168,7 @@ class ProductDetailView extends React.PureComponent {
       partNumber: itemPartNumber,
       isHeaderAccordion: true,
     };
+    const keepAlive = isKeepAliveEnabled && currentColorEntry.miscInfo.keepAlive;
 
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
@@ -179,6 +183,8 @@ class ProductDetailView extends React.PureComponent {
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             currentColorEntry={currentColorEntry}
+            keepAlive={keepAlive}
+            outOfStockLabels={outOfStockLabels}
           />
           <ProductSummary
             productData={currentProduct}
@@ -198,6 +204,8 @@ class ProductDetailView extends React.PureComponent {
             isGiftCard={currentProduct.isGiftCard}
             showCompleteTheLook={showCompleteTheLook}
             pdpLabels={pdpLabels}
+            keepAlive={keepAlive}
+            outOfStockLabels={outOfStockLabels}
           />
 
           <ProductAddToBagContainer
@@ -213,9 +221,11 @@ class ProductDetailView extends React.PureComponent {
             alternateSizes={alternateSizes}
             navigation={navigation}
             toastMessage={toastMessage}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
-          {this.renderFulfilmentSection()}
+          {this.renderFulfilmentSection(keepAlive)}
           {this.renderCarousel(imageUrls)}
           <LoyaltyBannerView>
             <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
@@ -282,6 +292,8 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   toastMessage: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
@@ -311,6 +323,8 @@ ProductDetailView.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   toastMessage: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductDetailView);
