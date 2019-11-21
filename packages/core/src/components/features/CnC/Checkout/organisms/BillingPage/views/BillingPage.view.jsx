@@ -81,9 +81,9 @@ class BillingPage extends React.PureComponent {
       bagLoading,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
@@ -109,6 +109,7 @@ class BillingPage extends React.PureComponent {
               isVenmoEnabled={isVenmoEnabled}
               pageCategory={pageCategory}
               bagLoading={bagLoading}
+              checkoutRoutingDone={checkoutRoutingDone}
             />
           </div>
         ) : (
@@ -128,6 +129,7 @@ class BillingPage extends React.PureComponent {
             isVenmoEnabled={isVenmoEnabled}
             pageCategory={pageCategory}
             bagLoading={bagLoading}
+            checkoutRoutingDone={checkoutRoutingDone}
           />
         )}
       </div>
