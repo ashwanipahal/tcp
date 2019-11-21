@@ -6,6 +6,7 @@ import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetai
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
@@ -76,6 +77,9 @@ class ProductBundle extends React.PureComponent {
       };
       return (
         <ScrollView>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
           <PageContainer>
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
