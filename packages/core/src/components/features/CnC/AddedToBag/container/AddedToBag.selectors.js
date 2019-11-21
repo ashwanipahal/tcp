@@ -118,7 +118,7 @@ const getOrderItemsDetails = state => {
 };
 
 export const getAddedToBagInterval = state => {
-  return state.session.siteDetails.ADDED_TO_BAG_MODAL_INTERVAL || 0;
+  return parseInt(state.session.siteDetails.ADDED_TO_BAG_MODAL_INTERVAL, 10) || 0;
 };
 
 export const getPointsSummary = (getOrderPointsSummary, lastAddedToBag) => {
