@@ -6,6 +6,7 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -102,6 +103,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   if (smsSignUp) {
     transVibesSmsPhoneNo = smsSignUp.phoneNumber;
   }
+  yield put(setLoaderState(true));
   try {
     yield call(
       setShippingMethodAndAddressId,
@@ -111,7 +113,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-
+    yield put(setLoaderState(false));
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
@@ -122,6 +124,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       })
     );
   } catch (err) {
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }

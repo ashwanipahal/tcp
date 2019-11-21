@@ -28,6 +28,10 @@ const styles = css`
     top: 27px;
     width: 8px;
     height: 8px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 12px;
+      height: 12px;
+    }
     border-radius: 100%;
     background: ${props => applyBrandSpecificColor(props)};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);

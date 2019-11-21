@@ -88,7 +88,7 @@ class OutfitListing extends React.PureComponent {
         </ScrollView>
       );
     return (
-      <>
+      <ScrollView>
         <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />
         <Container
           renderItem={this.renderItem}
@@ -97,7 +97,7 @@ class OutfitListing extends React.PureComponent {
           ItemSeparatorComponent={this.itemSeparator}
           contentContainerStyle={flatlistContentContainerStyle}
         />
-      </>
+      </ScrollView>
     );
   }
 }

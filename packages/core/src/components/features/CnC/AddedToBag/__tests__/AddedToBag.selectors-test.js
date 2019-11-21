@@ -7,6 +7,7 @@ import {
   getPointsSummary,
   getAddedToPickupError,
   getMultipleItemsAddedToBagError,
+  getAddedToBagInterval,
 } from '../container/AddedToBag.selectors';
 
 describe('#Added to bag Selectors', () => {
@@ -98,5 +99,20 @@ describe('#Added to bag Selectors', () => {
       totalItems: '5',
       userPoints: '3',
     });
+  });
+});
+
+describe('#Added to Bag Interval Selectors', () => {
+  const sessionState = {
+    siteDetails: {
+      SFL_MAX_COUNT: '200',
+      IS_SAVE_FOR_LATER_ENABLED: true,
+    },
+  };
+  const state = {
+    session: sessionState,
+  };
+  it('#getAddedToBagInterval should return Interval', () => {
+    expect(getAddedToBagInterval(state)).toEqual(0);
   });
 });

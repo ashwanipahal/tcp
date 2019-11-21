@@ -88,6 +88,10 @@ export default css`
     display: block;
   }
 
+  .pointerEventsNone{
+    pointer-events: none;
+  }
+
   .visually-hidden {
     position: absolute;
     white-space: nowrap;
@@ -188,21 +192,7 @@ export default css`
     max-height: 100%;
     max-width: 100%;
   }
-  .lazyLoadImage.error {
-    @media ${mediaQuery.smallOnly} {
-      height: 200px;
-    }
-    @media ${mediaQuery.medium} and ${mediaQuery.mediumMax} {
-      height: 230px;
-    }
-    @media ${mediaQuery.medium} and ${mediaQuery.mediumMax}  and (orientation: landscape) {
-      height: 340px;
-    }
 
-    height: 320px;
-    background: ${props => props.theme.colorPalette.gray[500]};
-    display: block;
-  }
   .capFirstLetter {
     text-transform: capitalize;
   }
