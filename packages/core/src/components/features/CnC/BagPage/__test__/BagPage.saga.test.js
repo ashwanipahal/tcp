@@ -149,6 +149,7 @@ describe('startCartCheckout Saga', () => {
     generator.next();
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(false, {}).value;
+    generator.next();
     takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(
       call(checkoutCart, false, undefined, undefined, undefined)
