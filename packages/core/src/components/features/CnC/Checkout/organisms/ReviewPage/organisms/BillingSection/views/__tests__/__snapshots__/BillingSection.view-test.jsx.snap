@@ -28,7 +28,7 @@ exports[`BillingSection should render correctly for empty state 1`] = `
         link={null}
         textAlign="left"
       >
-        undefined
+        undefined 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -101,7 +101,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         link={null}
         textAlign="left"
       >
-        Billing
+        Billing 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -215,7 +215,7 @@ exports[`BillingSection should render correctly without card & address details o
         link={null}
         textAlign="left"
       >
-        Billing
+        Billing 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -288,7 +288,7 @@ exports[`BillingSection should render correctly without card & address details o
         link={null}
         textAlign="left"
       >
-        Billing
+        Billing 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -361,7 +361,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         link={null}
         textAlign="left"
       >
-        Billing
+        Billing 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -459,7 +459,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
         link={null}
         textAlign="left"
       >
-        Billing
+        Billing 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -531,7 +531,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -674,7 +674,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

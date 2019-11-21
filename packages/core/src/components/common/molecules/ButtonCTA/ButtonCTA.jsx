@@ -57,7 +57,6 @@ const ButtonCTA = props => {
     >
       <BodyCopyButtonStyled
         className={`${className || ''} cta-button-text`}
-        tabIndex={-1}
         component="span"
         buttonVariation={ctaVariation}
         dataLocator={dataLocator}

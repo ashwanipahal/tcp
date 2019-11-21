@@ -14,7 +14,6 @@ exports[`Button CTA component renders correctly 1`] = `
     buttonVariation="fixed-width"
     className="dropdown-items cta-button-text"
     component="span"
-    tabIndex={-1}
   >
     text
   </Styled(BodyCopy)>
