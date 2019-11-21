@@ -99,7 +99,6 @@ export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
  *
  */
 export function* removeCartItem({ payload }) {
-  yield put(setLoaderState(true));
   const { itemId, pageView } = payload;
   if (pageView === 'myBag') {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
