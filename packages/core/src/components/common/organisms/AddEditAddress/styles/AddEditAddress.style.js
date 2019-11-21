@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 
 const styles = css`
   &.addEditAddress {
-    .select__input {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    .CheckBox__text {
+      line-height: 26px;
     }
 
     .select__label {
@@ -27,6 +27,13 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .addressBook__addNewCtaContainer {
       text-align: left;
+    }
+  }
+
+  .zipField {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 0;
     }
   }
 

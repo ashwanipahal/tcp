@@ -4,6 +4,7 @@ import { reset } from 'redux-form';
 import { Map } from 'immutable';
 
 import PropTypes from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { addAddressReq, updateAddressReq, resetState } from './AddEditAddress.actions';
 
 import { getAddressList } from '../../../../features/account/AddressBook/container/AddressBook.actions';
@@ -12,6 +13,8 @@ import {
   getAddressResponse,
   getUserEmail,
   getAddEditAddressLabels,
+  getAddEditErrorMessage,
+  getshowNotification,
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
@@ -37,6 +40,9 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     currentForm: PropTypes.string,
     setModalHeading: PropTypes.func,
     verificationResult: PropTypes.string,
+    toastMessage: PropTypes.func.isRequired,
+    addEditAddressErrorMsg: PropTypes.string,
+    showNotification: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -57,6 +63,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     currentForm: '',
     setModalHeading: () => {},
     verificationResult: '',
+    addEditAddressErrorMsg: '',
   };
 
   constructor(props) {
@@ -64,14 +71,25 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     this.initialValues = null;
   }
 
-  componentDidUpdate() {
-    const { addressResponse, getAddressListAction, onCancel, resetFormState } = this.props;
+  componentDidUpdate(prevProps) {
+    const {
+      addressResponse,
+      getAddressListAction,
+      onCancel,
+      resetFormState,
+      addEditAddressErrorMsg,
+      toastMessage,
+      showNotification,
+    } = this.props;
     const isSuccess =
       addressResponse && Map.isMap(addressResponse) && addressResponse.get('addressId');
     if (isSuccess) {
       getAddressListAction();
       onCancel();
       resetFormState();
+    }
+    if (!prevProps.showNotification && showNotification) {
+      toastMessage(addEditAddressErrorMsg);
     }
   }
 
@@ -218,6 +236,9 @@ export const mapDispatchToProps = dispatch => {
     resetAddressState: () => {
       dispatch(resetState());
     },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
+    },
   };
 };
 
@@ -228,6 +249,8 @@ const mapStateToProps = state => {
     addressList: getAddressListState(state),
     labels: getAddEditAddressLabels(state),
     verificationResult: getVerificationResult(state),
+    showNotification: getshowNotification(state),
+    addEditAddressErrorMsg: getAddEditErrorMessage(state),
   };
 };
 

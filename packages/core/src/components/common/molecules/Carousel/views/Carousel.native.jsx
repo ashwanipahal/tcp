@@ -1,12 +1,14 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
-import { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components/native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
 import config from '../Carousel.config.native';
+import CustomIcon from '../../../atoms/Icon';
+import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 
 import {
   ControlsWrapper,
@@ -55,6 +57,7 @@ type Props = {
   buttonPosition: String,
   autoplay?: Boolean,
   hasParallaxImages?: Boolean,
+  iconBottomMargin?: String,
 };
 
 type State = {
@@ -78,8 +81,9 @@ const { playIconHeight, playIconWidth } = { ...config.CAROUSEL_APP_CONFIG };
 class SnapCarousel extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
+    const { autoplay } = props;
     this.state = {
-      autoplay: props.autoplay,
+      autoplay,
       activeSlide: 0,
     };
     this.getPlayButton = this.getPlayButton.bind(this);
@@ -215,9 +219,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
   /**
    * @function getBottomView This function return the Play Or Pause Button.
    */
-  getBottomView(carouselConfig, showDots) {
+  getBottomView(carouselConfig, showDots, iconBottomMargin) {
     return (
-      <PaginationWrapper>
+      <PaginationWrapper iconBottomMargin={iconBottomMargin}>
         {carouselConfig.autoplay && (
           <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
         )}
@@ -262,9 +266,44 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     onSnapToItem(index);
   };
 
-  updateRef(ref, name) {
-    this[ref] = name;
-  }
+  getSliderWidth = width => {
+    const { sliderWidth } = this.props;
+
+    return sliderWidth || width;
+  };
+
+  getItemWidth = width => {
+    const { itemWidth } = this.props;
+
+    return itemWidth || width;
+  };
+
+  /**
+   * @function This function render custom icons
+   * also update component state.
+   */
+
+  renderIcon = iconName => {
+    return <CustomIcon name={iconName} size="fs19" color="gray.900" />;
+  };
+
+  /**
+   * @function This function check which icon need to be draw
+   */
+  getIcon = (useLeftArrowIcon, useRightArrowIcon, imageSource) => {
+    if (useLeftArrowIcon) {
+      return this.renderIcon(ICON_NAME.chevronLeft);
+    }
+    if (useRightArrowIcon) {
+      return this.renderIcon(ICON_NAME.chevronRight);
+    }
+
+    if (imageSource) {
+      return <Icon source={imageSource} />;
+    }
+
+    return null;
+  };
 
   /**
    * @function play function enable autoplay for carousel
@@ -293,6 +332,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     this.setState({ autoplay: !autoplay });
   }
 
+  updateRef(ref, name) {
+    this[ref] = name;
+  }
+
   render() {
     const {
       carouselConfig,
@@ -310,6 +353,12 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       darkArrow,
       options,
       hasParallaxImages,
+      loop,
+      activeSlideAlignment,
+      iconBottomMargin,
+      inactiveSlideOpacity,
+      isUseLeftArrowIcon,
+      isUseRightArrowIcon,
     } = this.props;
 
     if (!data) {
@@ -336,14 +385,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               testID={getLocator('global_promobanner_right_arrow')}
               onPress={() => this.manageSlide('next')}
             >
-              <Icon source={iconTypeNext} />
+              {this.getIcon(isUseLeftArrowIcon, false, iconTypeNext)}
             </TouchableView>
             <Carousel
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}
-              sliderWidth={carouselWidth}
-              itemWidth={carouselWidth}
+              sliderWidth={this.getSliderWidth(carouselWidth)}
+              itemWidth={this.getItemWidth(carouselWidth)}
               sliderHeight={height}
               itemHeight={height}
               slideStyle={slideStyle}
@@ -351,7 +400,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               autoplayInterval={autoplayInterval}
               ref={this.carouselRef}
               hasParallaxImages={hasParallaxImages}
+              loop={loop}
+              inactiveSlideOpacity={inactiveSlideOpacity}
               {...settings}
+              activeSlideAlignment={activeSlideAlignment}
             />
             <TouchableView
               accessibilityRole="button"
@@ -359,7 +411,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               testID={getLocator('global_promobanner_left_arrowRight')}
               onPress={() => this.manageSlide('prev')}
             >
-              <Icon source={iconTypePre} />
+              {this.getIcon(false, isUseRightArrowIcon, iconTypePre)}
             </TouchableView>
           </Container>
           {data.length > 1 && showDots ? this.getPagination() : null}
@@ -376,8 +428,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           onSnapToItem={this.onSnapToItemHandler}
           data={data}
           renderItem={renderItem}
-          sliderWidth={width}
-          itemWidth={hasParallaxImages ? carouselWidth : width}
+          sliderWidth={this.getSliderWidth(width)}
+          itemWidth={
+            hasParallaxImages ? this.getItemWidth(carouselWidth) : this.getItemWidth(width)
+          }
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}
@@ -385,14 +439,16 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           vertical={vertical}
           autoplayInterval={autoplayInterval}
           hasParallaxImages={hasParallaxImages}
+          activeSlideAlignment={activeSlideAlignment}
+          inactiveSlideOpacity={inactiveSlideOpacity}
           {...settings}
         />
 
         {data.length > 1 && (
           <View>
             {showDots && overlap
-              ? this.getOverlapComponent(carouselConfig, buttonPosition)
-              : this.getBottomView(carouselConfig, showDots)}
+              ? this.getOverlapComponent(carouselConfig, buttonPosition, iconBottomMargin)
+              : this.getBottomView(carouselConfig, showDots, iconBottomMargin)}
           </View>
         )}
       </View>
@@ -421,6 +477,14 @@ SnapCarousel.defaultProps = {
   width: null,
   height: null,
   options: {},
+  loop: false,
+  sliderWidth: 0,
+  itemWidth: 0,
+  activeSlideAlignment: 'center',
+  iconBottomMargin: null,
+  inactiveSlideOpacity: 0.7,
+  isUseLeftArrowIcon: false,
+  isUseRightArrowIcon: false,
 };
 
 SnapCarousel.propTypes = {
@@ -443,7 +507,15 @@ SnapCarousel.propTypes = {
   autoplay: PropTypes.bool,
   paginationProps: PropTypes.shape({}),
   hasParallaxImages: PropTypes.bool,
+  iconBottomMargin: PropTypes.string,
   options: PropTypes.shape({}),
+  loop: PropTypes.bool,
+  sliderWidth: PropTypes.number,
+  itemWidth: PropTypes.number,
+  activeSlideAlignment: PropTypes.string,
+  inactiveSlideOpacity: PropTypes.number,
+  isUseLeftArrowIcon: PropTypes.bool,
+  isUseRightArrowIcon: PropTypes.bool,
 };
 
 export default withTheme(SnapCarousel);

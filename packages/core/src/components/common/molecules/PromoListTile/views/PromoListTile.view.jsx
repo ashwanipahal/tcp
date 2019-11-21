@@ -63,7 +63,13 @@ export class PromoListTile extends React.PureComponent {
           </BodyCopy>
           {tileData.buttonList && (
             <BodyCopy textAlign="center" className="tile-anchor">
-              <Anchor underline noLink to={tileData.buttonList[0].url} data-locator="privacyLnk">
+              <Anchor
+                underline
+                noLink
+                to={tileData.buttonList[0].url}
+                fontSizeVariation="large"
+                data-locator="privacyLnk"
+              >
                 {tileData.buttonList[0].text}
               </Anchor>
             </BodyCopy>

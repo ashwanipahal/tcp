@@ -2,12 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
+import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
 
 class NoResponseSearchDetailView extends React.PureComponent {
@@ -23,14 +26,13 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
-  redirectToSearchPage = searchText => {
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-  };
-
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch, slpLabels } = this.props;
+    const { startSearch, slpLabels, searchResults } = this.props;
     const searchText = this.searchInput.current.value;
+
+    const showMatchBox = this.getMatchBoxStatus(searchResults);
+
     this.setState({ showProduct: Boolean(searchText.length) }, () => {
       const payload = {
         slpLabels,
@@ -38,13 +40,57 @@ class NoResponseSearchDetailView extends React.PureComponent {
       };
       startSearch(payload);
     });
+
+    if (searchText.length > 3 && !showMatchBox) {
+      this.setState({ showProduct: false });
+    }
   };
 
   getSearchResults = e => {
     e.preventDefault();
     const searchText = this.searchInput.current.value;
     if (searchText) {
-      this.redirectToSearchPage(searchText);
+      this.redirectToSuggestedUrl(searchText);
+    }
+  };
+
+  startInitiateSearch = () => {
+    let searchText = this.searchInput.current.value;
+    if (searchText) {
+      searchText = searchText.toLowerCase();
+      this.redirectToSuggestedUrl(searchText);
+    }
+  };
+
+  initiateSearchBySubmit = e => {
+    e.preventDefault();
+    this.startInitiateSearch();
+  };
+
+  getMatchBoxStatus = searchResults => {
+    return (
+      (searchResults &&
+        searchResults.autosuggestList &&
+        searchResults.autosuggestList[0].suggestions &&
+        searchResults.autosuggestList[0].suggestions.length > 0) ||
+      (searchResults &&
+        searchResults.autosuggestProducts &&
+        searchResults.autosuggestProducts.length > 0)
+    );
+  };
+
+  setDataInLocalStorage = (searchText, url) => {
+    updateLocalStorageData(searchText, url);
+  };
+
+  redirectToSuggestedUrl = (searchText, url) => {
+    if (searchText) {
+      this.setDataInLocalStorage(searchText, url);
+      if (url) {
+        routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+      } else {
+        routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+      }
     }
   };
 
@@ -54,8 +100,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
       slpLabels,
       searchedText,
       searchResultSuggestions,
-      labels,
       searchResults,
+      pdpLabels,
     } = this.props;
 
     const { showProduct } = this.state;
@@ -65,14 +111,12 @@ class NoResponseSearchDetailView extends React.PureComponent {
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
         : slpLabels.lbl_no_suggestion;
 
-    const ProductMatchesLabel = () => {
-      return (
-        <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-          {getLabelValue(labels, 'lbl_search_product_matches')}
-        </BodyCopy>
-      );
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NULL_SEARCH,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
     };
-
     return (
       <div className={className}>
         <Row className="search-by-keywords-container">
@@ -112,14 +156,19 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 fontWeight="semibold"
                 textAlign="center"
               >
-                {slpLabels.lbl_didYouMean}
+                {`${slpLabels.lbl_didYouMean} "`}
                 <Anchor
-                  asPath={`/search/${searchResultSuggestionsArg}`}
-                  to={`/search?searchQuery=${searchResultSuggestionsArg}`}
+                  noLink
                   className="suggestion-label"
+                  to={`/${getSiteId()}/search/${searchResultSuggestionsArg}`}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
+                  }}
                 >
-                  {` "${searchResultSuggestionsArg}" ?`}
+                  {`${searchResultSuggestionsArg}`}
                 </Anchor>
+                {`"?`}
               </BodyCopy>
             </Col>
           </Row>
@@ -132,13 +181,16 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
               className="empty-search-inputBox-container"
             >
-              <input
-                className="empty-search-input"
-                maxLength="150"
-                placeholder={slpLabels.lbl_looking_for}
-                onChange={this.changeSearchText}
-                ref={this.searchInput}
-              />
+              <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
+                <input
+                  className="empty-search-input"
+                  maxLength="150"
+                  placeholder={slpLabels.lbl_looking_for}
+                  onChange={this.changeSearchText}
+                  ref={this.searchInput}
+                />
+              </form>
+
               <Image
                 alt="search"
                 className="empty-search-image icon-small"
@@ -160,7 +212,10 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   <div className="matchLinkBox">
                     {searchResults &&
                       searchResults.autosuggestList &&
+                      searchResults.autosuggestList.length > 0 &&
                       searchResults.autosuggestList.map(item => {
+                        const isCategory =
+                          item.heading === getLabelValue(slpLabels, 'lbl_category_matches');
                         return (
                           <div>
                             {item && item.suggestions.length > 0 && (
@@ -173,14 +228,32 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                 {item &&
                                   item.suggestions &&
                                   item.suggestions.map(itemData => {
+                                    const itemUrl = isCategory
+                                      ? itemData.url.replace(/'/g, '')
+                                      : undefined;
                                     return (
                                       <BodyCopy
                                         component="li"
                                         fontFamily="secondary"
                                         fontSize="fs14"
-                                        className="linkName"
+                                        key={item.id}
+                                        className="empty-search-linkName"
                                       >
-                                        {itemData.text}
+                                        <Anchor
+                                          className="suggestion-label"
+                                          to={
+                                            isCategory ? `${itemUrl}` : `/search/${itemData.text}`
+                                          }
+                                          onClick={e => {
+                                            e.preventDefault();
+                                            this.redirectToSuggestedUrl(
+                                              `${itemData.text}`,
+                                              itemUrl
+                                            );
+                                          }}
+                                        >
+                                          {itemData.text}
+                                        </Anchor>
                                       </BodyCopy>
                                     );
                                   })}
@@ -189,28 +262,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
                           </div>
                         );
                       })}
-                  </div>
-                  <div className="matchProductBox">
-                    <ProductMatchesLabel />
-                    <BodyCopy className="matchProductBody" lineHeight="39" component="div">
-                      <ul>
-                        {searchResults &&
-                          searchResults.autosuggestProducts &&
-                          searchResults.autosuggestProducts.map(item => {
-                            return (
-                              <BodyCopy
-                                component="li"
-                                fontFamily="secondary"
-                                fontSize="fs14"
-                                key={item.uniqueId}
-                                className="productBox"
-                              >
-                                {item.name}
-                              </BodyCopy>
-                            );
-                          })}
-                      </ul>
-                    </BodyCopy>
                   </div>
                 </div>
               )}
@@ -268,6 +319,24 @@ class NoResponseSearchDetailView extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className={`${className} product-description-list`}>
+              <Recommendations {...recommendationAttributes} />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="product-detail-section">
+              <Recommendations
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+                {...recommendationAttributes}
+              />
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -294,6 +363,7 @@ NoResponseSearchDetailView.propTypes = {
     lbl_search_looking_for: PropTypes.string,
     lbl_search_product_matches: PropTypes.string,
   }),
+  pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 NoResponseSearchDetailView.defaultProps = {
@@ -312,6 +382,7 @@ NoResponseSearchDetailView.defaultProps = {
     lbl_search_looking_for: '',
     lbl_search_product_matches: '',
   }),
+  pdpLabels: {},
 };
 
 const mapStateToProps = state => {

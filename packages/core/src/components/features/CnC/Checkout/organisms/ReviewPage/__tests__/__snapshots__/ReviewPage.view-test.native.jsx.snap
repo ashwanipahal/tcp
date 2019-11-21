@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewPageVanilla component should renders correctly props not present 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="review"
+    navigation={null}
+  />
+  <ScrollViewMock>
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay />
+      <Connect(BillingSectionContainer)
+        isExpressCheckout={false}
+        onEdit={[Function]}
+      />
+    </Styled(View)>
+    <Connect(CheckoutCartItemList) />
+    <CnCCommonTemplate
+      footerBody={
+        <ForwardRef>
+          <ForwardRef
+            accessibilityText=""
+            dataLocator=""
+            fontSize="fs12"
+            margin={null}
+            mobilefontFamily={
+              Array [
+                "secondary",
+              ]
+            }
+            numberOfLines={null}
+            textDecoration={null}
+          />
+          <ForwardRef />
+          <ForwardRef
+            accessibilityText=""
+            dataLocator=""
+            fontSize="fs12"
+            margin={null}
+            mobilefontFamily={
+              Array [
+                "secondary",
+              ]
+            }
+            numberOfLines={null}
+            textDecoration={null}
+          />
+          <ForwardRef />
+        </ForwardRef>
+      }
+      getPayPalSettings={Object {}}
+      isConfirmationPage={false}
+      isPayPalWebViewEnable={false}
+      isReviewPage={true}
+      onBackLinkPress={[Function]}
+      onVenmoSubmit={[Function]}
+      pageCategory="review"
+      routeToPage=""
+      showAccordian={true}
+      showPayPalButton={false}
+      showVenmoSubmit={false}
+    />
+  </ScrollViewMock>
+</Fragment>
+`;

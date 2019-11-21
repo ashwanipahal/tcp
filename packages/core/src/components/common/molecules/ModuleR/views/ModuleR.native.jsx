@@ -2,9 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Anchor } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { Button, Anchor, Skeleton } from '../../../atoms';
+import { getLocator, getProductUrlForDAM } from '../../../../../utils';
 import { LAZYLOAD_HOST_NAME } from '../../../../../utils/utils.app';
+import moduleRConfig from '../moduleR.config';
 
 import {
   Container,
@@ -60,12 +61,7 @@ class ModuleR extends React.PureComponent {
         {selectedProductList.map(productItem => {
           // check if productItem is not a PromoBanner component. Else render the promon banner
           if (productItem.uniqueId) {
-            const {
-              uniqueId,
-              imageUrl: [imageUrl],
-              productItemIndex,
-              product_name: productName,
-            } = productItem;
+            const { uniqueId, productItemIndex, product_name: productName } = productItem;
 
             return (
               <ImageItemWrapper
@@ -88,9 +84,11 @@ class ModuleR extends React.PureComponent {
                   <StyledImage
                     alt={productName}
                     host={LAZYLOAD_HOST_NAME.HOME}
-                    url={imageUrl}
+                    url={getProductUrlForDAM(uniqueId)}
                     height={PRODUCT_IMAGE_HEIGHT}
                     width={PRODUCT_IMAGE_WIDTH}
+                    imgConfig={moduleRConfig.IMG_DATA.productImgConfig[0]}
+                    isProductImage
                   />
                 </Anchor>
               </ImageItemWrapper>
@@ -109,7 +107,6 @@ class ModuleR extends React.PureComponent {
     return currentSingleCTAButton ? (
       <ButtonContainer>
         <Button
-          buttonVariation="variable-width"
           width="225px"
           text={currentSingleCTAButton.text}
           url={currentSingleCTAButton.url}
@@ -118,6 +115,14 @@ class ModuleR extends React.PureComponent {
       </ButtonContainer>
     ) : null;
   }
+
+  getDataStatus = (productTabList, selectedCategoryId) => {
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
+    }
+    return dataStatus;
+  };
 
   render() {
     const {
@@ -149,6 +154,7 @@ class ModuleR extends React.PureComponent {
         selectedProductList = selectedProductList.slice(0, 9);
       }
     }
+    const dataStatus = this.getDataStatus(productTabList, selectedCategoryId);
 
     return (
       <Container>
@@ -169,7 +175,13 @@ class ModuleR extends React.PureComponent {
           tabItems={divTabs}
           navigation={navigation}
         />
-
+        {dataStatus ? (
+          <Skeleton
+            row={3}
+            col={3}
+            rowProps={{ justifyContent: 'space-around', marginTop: '10px', marginBottom: '10px' }}
+          />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Container>

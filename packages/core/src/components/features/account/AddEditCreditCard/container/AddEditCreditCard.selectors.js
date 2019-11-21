@@ -11,7 +11,7 @@ export const getAddEditCreditCardResponse = state => {
 
 export const getAddEditCreditCardSuccess = createSelector(
   getAddEditCreditCardResponse,
-  resp => resp && resp.get('response')
+  resp => resp && resp.get('success')
 );
 
 export const getAddEditCreditCardError = createSelector(
@@ -25,6 +25,9 @@ export const getCardNumber = state => {
 };
 
 export const getCreditCardId = (state, props) => {
+  if (props.isEdit && props.selectedCard) {
+    return props.selectedCard.creditCardId || false;
+  }
   return (props.router && props.router.query && props.router.query.creditCardId) || false;
 };
 
@@ -32,7 +35,7 @@ export const getCreditCardById = createSelector(
   [getCreditDebitCards, getCreditCardId],
   (creditCardList, creditCardId) => {
     return creditCardId
-      ? creditCardList.find(card => card.creditCardId.toString() === creditCardId)
+      ? creditCardList.find(card => card.creditCardId.toString() === creditCardId.toString())
       : null;
   }
 );

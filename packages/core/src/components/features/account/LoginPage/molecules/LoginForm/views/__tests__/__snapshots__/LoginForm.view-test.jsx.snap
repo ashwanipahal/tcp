@@ -29,7 +29,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bZQynM",
+              "componentId": "sc-gzVnrw",
               "isStatic": false,
               "rules": Array [
                 "
@@ -172,7 +172,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bZQynM",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -184,7 +184,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
@@ -195,7 +195,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-kGXeez",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +250,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-kGXeez",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -267,7 +267,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
@@ -290,7 +290,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -365,6 +365,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -399,6 +402,9 @@ exports[`LoginForm component should renders correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                   ";
 ",
@@ -407,7 +413,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -417,14 +423,36 @@ exports[`LoginForm component should renders correctly 1`] = `
           dataLocator="login-remembermecb"
           name="rememberMe"
         >
-          <span
+          <Styled(BodyCopy)
             className="remember-me-text"
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
           >
             lbl_login_rememberMe
-          </span>
-          <span>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
             lbl_login_rememberMeHelpText
-          </span>
+          </Styled(BodyCopy)>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -464,9 +492,9 @@ exports[`LoginForm component should renders correctly 1`] = `
         lbl_login_loginCTA
       </Styled(Button)>
       <Styled(Anchor)
-        anchorVariation="secondary"
+        anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -474,6 +502,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;
 
@@ -523,7 +552,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bZQynM",
+              "componentId": "sc-gzVnrw",
               "isStatic": false,
               "rules": Array [
                 "
@@ -666,7 +695,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bZQynM",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -678,7 +707,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
@@ -689,7 +718,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-kGXeez",
               "isStatic": false,
               "rules": Array [
                 "
@@ -744,7 +773,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-kGXeez",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -762,7 +791,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
@@ -785,7 +814,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -860,6 +889,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -894,6 +926,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                   ";
 ",
@@ -902,7 +937,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -912,14 +947,36 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           dataLocator="login-remembermecb"
           name="rememberMe"
         >
-          <span
+          <Styled(BodyCopy)
             className="remember-me-text"
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
           >
             lbl_login_rememberMe
-          </span>
-          <span>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
             lbl_login_rememberMeHelpText
-          </span>
+          </Styled(BodyCopy)>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -959,9 +1016,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         lbl_login_loginCTA
       </Styled(Button)>
       <Styled(Anchor)
-        anchorVariation="secondary"
+        anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -969,5 +1026,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;

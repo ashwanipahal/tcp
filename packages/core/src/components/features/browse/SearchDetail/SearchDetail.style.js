@@ -53,6 +53,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .empty-searched-label {
+      display: block;
+    }
     .search-product-tile:nth-child(2n) {
       padding-right: 0;
     }
@@ -130,6 +133,7 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+      position: relative;
     }
     .searched-label {
       padding-bottom: 0;
@@ -167,27 +171,37 @@ export default css`
   .item-title {
     width: 100%;
   }
+
+  .empty-search-inputBox-col {
+    position: relative;
+    width: initial;
+  }
+
   .empty-search-inputBox-container {
     position: relative;
     width: 240px;
     height: 40px;
   }
+
   .empty-search-input {
     position: absolute;
     width: 240px;
     height: 40px;
     padding-left: 20px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-radius: 20px;
     background-color: ${props => props.theme.colorPalette.gray[300]};
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
+    box-sizing: border-box;
   }
+
   .empty-search-image {
     position: absolute;
     float: none;
     top: calc(0% - -12px);
     width: 20px;
     height: 20px;
-    right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .suggestion-label {
@@ -201,13 +215,68 @@ export default css`
   .empty-searched-label {
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
-  .empty-search-inputBox-col {
-    width: 240px;
-  }
+
   .empty-search-tips-title {
     margin-bottom: 8px;
   }
   .suggestionHide {
     display: none;
+  }
+
+  .matchBox {
+    width: 245px;
+    display: table-cell;
+    border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    border-top: 0px;
+    box-sizing: border-box;
+    z-index: ${props => props.theme.zindex.zLoader};
+    position: absolute;
+    background-color: ${props => props.theme.colors.WHITE};
+    overflow-y: auto;
+    margin: 40px 10px 0 10px;
+  }
+
+  .boxHead {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .matchLinkBox .matchLinkBoxHead,
+  .matchProductBox .matchProductHead {
+    height: 52px;
+    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+    line-height: 52px;
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .matchProductBox .matchProductBody {
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  }
+
+  .matchProductBox .matchProductBody ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  li.linkName {
+    height: 40px;
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 8px 14px;
+  }
+
+  li.productBox {
+    width: 24%;
+    height: 81px;
+    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
+    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+  }
+  .autosuggest-image {
+    height: 80px;
+    width: 80px;
+  }
+  .empty-search-linkName {
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 5px 14px;
   }
 `;

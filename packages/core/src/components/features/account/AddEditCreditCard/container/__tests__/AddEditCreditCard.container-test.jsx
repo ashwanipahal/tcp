@@ -8,12 +8,14 @@ describe('AddEditCreditCardContainer', () => {
   let addCreditCardActionSpy;
   let editCreditCardActionSpy;
   let showSuccessNotificationSpy;
+  let resetErrorNotificationSpy;
 
   beforeEach(() => {
     getAddressListActionSpy = jest.fn();
     addCreditCardActionSpy = jest.fn();
     editCreditCardActionSpy = jest.fn();
     showSuccessNotificationSpy = jest.fn();
+    resetErrorNotificationSpy = jest.fn();
   });
 
   it('should render null if addressList is not defined', () => {
@@ -123,5 +125,25 @@ describe('AddEditCreditCardContainer', () => {
 
     component.instance().onCreditCardFormSubmit({});
     expect(editCreditCardActionSpy.mock.calls).toHaveLength(1);
+  });
+
+  it('resetErrorNotification should be called on unmount', () => {
+    const props = {
+      getAddressListAction: getAddressListActionSpy,
+      addCreditCardAction: addCreditCardActionSpy,
+      editCreditCardAction: editCreditCardActionSpy,
+      showSuccessNotification: showSuccessNotificationSpy,
+      resetErrorNotification: resetErrorNotificationSpy,
+      addressList: List([
+        {
+          addressId: '12345',
+          primary: 'true',
+        },
+      ]),
+    };
+
+    const component = shallow(<AddEditCreditCard {...props} />);
+    component.unmount();
+    expect(resetErrorNotificationSpy).toHaveBeenCalled();
   });
 });

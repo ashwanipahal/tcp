@@ -13,7 +13,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bZQynM",
+        "componentId": "sc-bwzfXH",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bZQynM",
+      "styledComponentId": "sc-bwzfXH",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iRbamj",
+              "componentId": "sc-cJSrbW",
               "isStatic": false,
               "rules": Array [
                 "
@@ -136,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ",
@@ -157,15 +157,18 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 22px;
+    font-size: ",
+                [Function],
+                ";
     line-height: normal;
     letter-spacing: 2px;
 
     @media ",
                 [Function],
                 " {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -187,6 +190,9 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
   .medium_text_black {
+    color: ",
+                [Function],
+                ";
     font-family: ",
                 [Function],
                 ";
@@ -197,6 +203,34 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     letter-spacing: -0.5px;
+    margin-bottom: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+
+  .large_text_black {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ",
                 [Function],
                 ";
@@ -233,6 +267,128 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module G Heading styles */
+  .medium_text_regular {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    text-align: center;
+    color: ",
+                [Function],
+                ";
+  }
+
+  /* Module S Heading styles */
+  .small_text_white_medium {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    @media ",
+                [Function],
+                " {
+      letter-spacing: normal;
+    }
+    @media ",
+                [Function],
+                " {
+      display: inline;
+    }
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    color: ",
+                [Function],
+                ";
+    text-align: center;
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  .spaced_text_regular_black {
+    display: block;
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: normal;
+    text-align: center;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -247,10 +403,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-ckVGcZ",
+              "sc-eHgmQL",
             ],
             "render": [Function],
-            "styledComponentId": "sc-iRbamj",
+            "styledComponentId": "sc-cJSrbW",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -264,14 +420,14 @@ exports[`ModuleK component renders correctly 1`] = `
       className="moduleK__carousal"
       colSize={
         Object {
-          "large": 8,
+          "large": 10,
           "medium": 8,
           "small": 6,
         }
       }
       offsetLeft={
         Object {
-          "large": 2,
+          "large": 1,
           "medium": 0,
           "small": 0,
         }
@@ -294,7 +450,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gPEVay",
+              "componentId": "sc-kgAjT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -460,9 +616,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: ",
-                [Function],
-                ";
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -475,76 +629,62 @@ exports[`ModuleK component renders correctly 1`] = `
   .slick-dots ul {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .slick-dots li {
     position: relative;
     display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0;
-    width: 10px;
-    height: 10px;
-    button,
-    button:before {
-      margin: 0;
+    margin: 0 2px;
+    width: 6px;
+    height: 6px;
+    button {
+      font-size: 0;
+      line-height: 0;
+      width: 6px;
+      height: 6px;
+      display: block;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+      background: transparent;
       padding: 0;
-      width: 7px;
-      height: 7px;
+
+      &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: ",
+                [Function],
+                ";
+      }
     }
-  }
-
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    pointer-events: none;
-    background: transparent;
-  }
-
-  .slick-dots li button:before {
-    font-family: Arial;
-    font-size: 6px;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    opacity: 0.25;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   li.slick-active {
-    width: 11px;
-    height: 11px;
-    background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
-    button,
-    button:before {
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    button {
       width: 10px;
       height: 10px;
+      &:before {
+        width: 10px;
+        height: 10px;
+        background: ",
+                [Function],
+                ";
+        border: 1px solid ",
+                [Function],
+                ";
+      }
     }
-  }
-
-  .slick-dots li.slick-active button:before {
-    opacity: 0.75;
-    color: black;
-  }
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
   }
 
   .tcp_carousel__play_pause_button {
@@ -581,17 +721,17 @@ exports[`ModuleK component renders correctly 1`] = `
 ",
                 "
   .slick-arrow {
-    top: 44%;
+    top: 50%;
   }
   .slick-next {
-    height: 52px;
+    height: 54px;
     right: -68px;
-    width: 15px;
+    width: 20px;
   }
   .slick-prev {
-    height: 52px;
+    height: 54px;
     left: -68px;
-    width: 15px;
+    width: 20px;
   }
   .slick-dots {
     bottom: -20px;
@@ -601,10 +741,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-fjdhpX",
+              "sc-dxgOiQ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-gPEVay",
+            "styledComponentId": "sc-kgAjT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -639,8 +779,9 @@ exports[`ModuleK component renders correctly 1`] = `
                 },
               },
             ],
-            "speed": 1000,
+            "speed": 200,
             "swipe": true,
+            "swipeToSlide": true,
           }
         }
       >
@@ -676,13 +817,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
@@ -750,11 +892,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >
@@ -807,13 +957,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
@@ -881,11 +1032,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >

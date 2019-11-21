@@ -70,6 +70,12 @@ export const getDetailsContent = state => {
   );
   return detailsContent && detailsContent.richText;
 };
+export const getDetailsContentZymboorie = state => {
+  const detailsContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === BagPageSelector.getGiftServicesContentGymId(state)
+  );
+  return detailsContent && detailsContent.richText;
+};
 export const getInitialGiftWrapOptions = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'checkout', 'giftWrap']);
 };

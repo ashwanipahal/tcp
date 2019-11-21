@@ -13,6 +13,7 @@ export default css`
       border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       .content-wrapper {
         padding-bottom: 24px;
+        width: 100%
       }
     }
   }
@@ -30,14 +31,18 @@ export default css`
     min-height: 42px;
 
     &.candidate_a_form_button {
+      width: 100%;
       ${props =>
         props.theme.gridDimensions.gridBreakPointsKeys.map(key =>
           ['small', 'medium'].includes(key)
             ? `
           @media ${props.theme.mediaQuery[`${key}Only`]} {
-            margin-top: 8px;
+            padding: 0;
+            margin-top: 10px;
           }`
-            : ``
+            : `
+            padding: 0;
+            margin-top: 10px;`
         )}
     }
   }
@@ -72,8 +77,21 @@ export default css`
   }
 
   .footer_top__signup_form {
+    margin-bottom: 24px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 16px;
+    }
+
     label {
       margin-bottom: 10px;
+    }
+    .footer_top__signup_form_row{
+      align-items: normal;
+    }
+
+    .CheckBox__text {
+      margin-top: 6px;
+      font-size: 14px;
     }
   }
 
@@ -126,6 +144,11 @@ export default css`
       .social-media-label {
          margin-right: 0;
       }
+    }
+  }
+  .refer_a_frient_last_colm{
+    @media ${props => props.theme.mediaQuery.mediumOnly}{
+      margin-left: 4%;
     }
   }
 
@@ -189,7 +212,6 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-
     .hide-in-medium-up {
       display: none;
     }
@@ -264,6 +286,14 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+
+    .candidate_a_inline_container_button .refer_a_friend_button{
+      width: 165px;
+      padding: 0px;
+        @media ${props => props.theme.mediaQuery.smallMax} {
+          width: 192px;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -281,5 +311,5 @@ export default css`
     .hide-in-medium-down {
       display: none;
     }
-  }
+}
 `;

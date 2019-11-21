@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
+import { trackPageView, setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 
 import {
   submitEmailSignup,
@@ -24,23 +25,19 @@ export const mapDispatchToProps = dispatch => {
     closeModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: false }));
     },
-    /* Validate function for redux-form */
-    asyncValidate: (values, reduxFormDispatch, props) => {
-      const {
-        formViewConfig: { validationErrorLabel },
-      } = props;
+    validateSignupEmail: email => {
+      return emailSignupAbstractor.verifyEmail(email);
+    },
+    trackSubscriptionSuccess: () => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event15', 'event80'],
+          pageName: 'content:email confirmation',
+          pageShortName: 'content:email confirmation',
+        })
+      );
 
-      return values.signup
-        ? emailSignupAbstractor.verifyEmail(values.signup).then(result => {
-            if (result.error) {
-              const error = { signup: validationErrorLabel };
-              // eslint-disable-next-line prefer-promise-reject-errors
-              return Promise.reject({ ...error, _error: error });
-            }
-
-            return result;
-          })
-        : Promise.resolve();
+      dispatch(trackPageView());
     },
   };
 };

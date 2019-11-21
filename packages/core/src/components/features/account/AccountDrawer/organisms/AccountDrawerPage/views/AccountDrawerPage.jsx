@@ -8,23 +8,32 @@ import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
 import MyOffersCoupons from '../../../../common/organism/MyOffersCoupons';
 import { isCanada } from '../../../../../../../utils';
+import OrderNotification from '../../../../OrderNotification';
 
 const AccountDrawerPage = props => {
   const { className, plccUser, userName, closedOverlay, labels, globalLabels } = props;
   const isCA = isCanada();
   return (
     <div className={className}>
+      <OrderNotification closedOverlay={closedOverlay} />
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
-          <RewardsPoints />
-          <ExtraPointsTeaser plccUser={plccUser} labels={labels} globalLabels={globalLabels} />
+          <div className="elem-pl-MED elem-pr-MED">
+            <RewardsPoints />
+          </div>
+          <ExtraPointsTeaser
+            plccUser={plccUser}
+            labels={labels}
+            closedOverlay={closedOverlay}
+            globalLabels={globalLabels}
+          />
         </>
       )}
       <div className="accountDrawer_coupons">
         <MyOffersCoupons closedOverlay={closedOverlay} />
       </div>
-      <AccountDrawerBottomLinks />
+      <AccountDrawerBottomLinks closedOverlay={closedOverlay} />
     </div>
   );
 };

@@ -1,18 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Address from '../../Address';
 
-// @flow
-
-type Props = {
-  className: string,
-  value?: string,
-  name?: string,
-  showInput: boolean,
-  address: object,
-  onChange?: () => void,
-  isSelected: ?boolean,
-  inputProps?: object,
-};
 const AddressOption = ({
   className,
   value,
@@ -22,7 +11,8 @@ const AddressOption = ({
   onChange,
   isSelected,
   inputProps,
-}: Props) => {
+  fontWeight,
+}) => {
   if (showInput) {
     return (
       <label className={className} htmlFor={value}>
@@ -36,15 +26,27 @@ const AddressOption = ({
           className="elem-mr-MED"
           {...inputProps}
         />
-        <Address address={address} showPhone={false} showCountry={false} />
+        <Address address={address} fontWeight={fontWeight} showPhone={false} showCountry={false} />
       </label>
     );
   }
   return (
     <div className={className}>
-      <Address address={address} showPhone={false} showCountry={false} />
+      <Address address={address} fontWeight={fontWeight} showPhone={false} showCountry={false} />
     </div>
   );
+};
+
+AddressOption.propTypes = {
+  className: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  name: PropTypes.string,
+  showInput: PropTypes.bool.isRequired,
+  address: PropTypes.shape({}).isRequired,
+  onChange: PropTypes.func,
+  isSelected: PropTypes.bool.isRequired,
+  inputProps: PropTypes.shape({}),
+  fontWeight: PropTypes.string,
 };
 
 AddressOption.defaultProps = {
@@ -52,6 +54,7 @@ AddressOption.defaultProps = {
   name: '',
   onChange: () => {},
   inputProps: {},
+  fontWeight: '',
 };
 
 export default AddressOption;

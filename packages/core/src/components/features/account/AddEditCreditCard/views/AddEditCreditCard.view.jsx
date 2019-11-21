@@ -18,7 +18,7 @@ export const AddEditCreditCard = ({
   backToAddressBookClick,
   verifyAddressAction,
   initialValues,
-  onFileAddresskey,
+  onFileAddressKey,
   pageBackLink,
   pageBackPath,
   pageheading,
@@ -58,6 +58,7 @@ export const AddEditCreditCard = ({
       <FormPageHeading
         heading={pageHeading(pageheading)}
         data-locator="payment-addcreditordebitcardheader"
+        className="myAccountRightView"
       />
       {globalErrorMessage && showNotification && (
         <Notification
@@ -89,6 +90,7 @@ export const AddEditCreditCard = ({
             showCreditCardFields={showCreditCardFields}
             addressFormLabels={addressFormLabels}
             formErrorMessage={formErrorMessage}
+            onFileAddressKey={onFileAddressKey}
             {...otherProps}
           />
         </div>
@@ -100,6 +102,7 @@ export const AddEditCreditCard = ({
           initialValues={initialValues}
           addressFormLabels={addressFormLabels}
           formErrorMessage={formErrorMessage}
+          onFileAddressKey={onFileAddressKey}
           {...otherProps}
         />
       )}
@@ -119,7 +122,7 @@ AddEditCreditCard.propTypes = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: PropTypes.shape({}),
-  onFileAddresskey: PropTypes.string,
+  onFileAddressKey: PropTypes.string,
   pageBackLink: PropTypes.string,
   pageBackPath: PropTypes.string,
   pageheading: PropTypes.string,
@@ -137,7 +140,7 @@ AddEditCreditCard.defaultProps = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: {},
-  onFileAddresskey: '',
+  onFileAddressKey: '',
   mailingAddress: false,
   pageBackLink: null,
   pageBackPath: null,

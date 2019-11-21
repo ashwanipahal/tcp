@@ -7,6 +7,7 @@ exports[`CustomImage component should renders CustomImage correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
         "imageSource": "",
+        "width": "",
       },
       "attrs": Array [],
       "displayName": "Styled(CustomImage)",
@@ -31,5 +32,6 @@ exports[`CustomImage component should renders CustomImage correctly 1`] = `
   }
   forwardedRef={null}
   imageSource=""
+  width=""
 />
 `;

@@ -6,5 +6,6 @@ exports[`Modal Close Icon renders correctly with props 1`] = `
   className="modal-close-button alignTop alignRight"
   data-locator="close"
   onClick={[Function]}
+  tabIndex="0"
 />
 `;

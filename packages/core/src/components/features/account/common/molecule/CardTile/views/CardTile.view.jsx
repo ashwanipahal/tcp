@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -23,22 +24,7 @@ import {
   loading,
 } from './CardTile.utils';
 import Button from '../../../../../../common/atoms/Button';
-// @flow
-type Props = {
-  card: object,
-  className: string,
-  labels: object,
-  setDefaultPaymentMethod: Function,
-  setDeleteModalMountState: Function,
-  setSelectedGiftCard: Function,
-  change: any,
-  handleSubmit: any,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  showNotificationCaptcha: any,
-  form: any,
-  dispatch: Function,
-};
+
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
@@ -106,6 +92,7 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
+    const { creditCardId } = card;
     const cardNum = `${getLabelValue(
       labels,
       'lbl_payment_cardNum',
@@ -120,6 +107,7 @@ class CardTile extends React.Component<Props> {
       <React.Fragment>
         <BodyCopy
           component="span"
+          id={creditCardId}
           fontSize="fs14"
           fontFamily="secondary"
           fontWeight="bold"
@@ -186,10 +174,10 @@ class CardTile extends React.Component<Props> {
         {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
-            buttonVariation="variable-width"
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
+            buttonVariation="variable-width"
           >
             {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
@@ -251,8 +239,9 @@ class CardTile extends React.Component<Props> {
           <Anchor
             fontSizeVariation="large"
             underline
-            to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
-            asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
+            aria-describedby={creditCardId}
+            to={`/account?id=payment&subSection=edit-credit-card&creditCardId=${creditCardId}`}
+            asPath={`/account/payment/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
@@ -264,6 +253,7 @@ class CardTile extends React.Component<Props> {
           className="cardTile__anchor"
           fontSizeVariation="large"
           underline
+          aria-describedby={creditCardId}
           to="/#"
           anchorVariation="primary"
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}
@@ -287,7 +277,7 @@ class CardTile extends React.Component<Props> {
         <img
           className="cardTile__img"
           data-locator={card.ccBrand}
-          alt={card.ccType}
+          alt={card.ccBrand || card.ccType}
           src={cardIcon}
         />
       </div>
@@ -311,7 +301,7 @@ class CardTile extends React.Component<Props> {
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
-            message="INVLAID CAPTCHA"
+            message="INVALID CAPTCHA"
           />
         )}
         <div className="cardTile">
@@ -335,7 +325,6 @@ class CardTile extends React.Component<Props> {
                   {cardName}
                 </BodyCopy>
                 {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-                {isCreditCard ? getAddressDetails({ card }) : null}
               </div>
             </Col>
             <Col
@@ -352,6 +341,7 @@ class CardTile extends React.Component<Props> {
             </Col>
           </Row>
         </div>
+        {isCreditCard && <div>{getAddressDetails({ card })}</div>}
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
             <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
@@ -386,6 +376,22 @@ class CardTile extends React.Component<Props> {
   }
 }
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
+
+CardTile.propTypes = {
+  card: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedGiftCard: PropTypes.func.isRequired,
+  change: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  showNotificationCaptcha: PropTypes.string.isRequired,
+  form: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default reduxForm({ destroyOnUnmount: false, enableReinitialize: true, ...validateMethod })(
   withStyles(CardTile, styles)

@@ -20,7 +20,7 @@ describe('CreditCardForm component', () => {
           primary: 'true',
         },
       ]),
-      onFileAddresskey: '12345',
+      onFileAddressKey: '12345',
       initialValues: {},
       expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
       expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
@@ -121,24 +121,11 @@ describe('CreditCardForm component', () => {
     });
 
     it('#showAddressDropdown should return true if mailingAddress and addressList contain more than 1 address', () => {
-      expect(component.instance().showAddressDropdown(true, [{}, {}])).toBeTruthy();
+      expect(component.instance().showAddressDropdown([{}, {}])).toBeTruthy();
     });
 
     it('#showAddressDropdown should return false if mailingAddress is false and addressList is not present', () => {
       expect(component.instance().showAddressDropdown(false)).toBeFalsy();
-    });
-
-    it('#toggleModal should toggle addAddressMount to true if mailingAddress is not present', () => {
-      component.setProps({
-        mailingAddress: false,
-      });
-      component.instance().toggleModal();
-      expect(component.state('addAddressMount')).toBeTruthy();
-    });
-
-    it('#toggleModal should toggle showAddressForm to false if mailingAddress is present', () => {
-      component.instance().toggleModal();
-      expect(component.state('showAddressForm')).toBeFalsy();
     });
   });
 });

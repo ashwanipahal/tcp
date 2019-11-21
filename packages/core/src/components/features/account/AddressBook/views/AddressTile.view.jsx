@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
+import Button from '../../../../common/atoms/Button';
 import Address from '../../../../common/molecules/Address';
 import styles from '../styles/AddressTile.style';
 import Badge from '../../../../common/atoms/Badge';
@@ -10,18 +12,7 @@ import utils from '../../../../../utils';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 
-// @flow
-
-type Props = {
-  address: Object,
-  labels: Object,
-  className: string,
-  onDefaultShippingAddressClick(address: {}): Object,
-  setSelectedAddress: Function,
-  setDeleteModalMountState: Function,
-};
-
-class AddressBookTile extends React.Component<Props> {
+class AddressBookTile extends React.Component {
   handleDefaultLinkClick = event => {
     const { onDefaultShippingAddressClick, address } = this.props;
     event.preventDefault();
@@ -59,13 +50,14 @@ class AddressBookTile extends React.Component<Props> {
     e.preventDefault();
     const { address } = this.props;
     utils.routerPush(
-      `/account?id=edit-address&addressId=${address.addressId}`,
+      `/account?id=address-book&subSection=edit-address&addressId=${address.addressId}`,
       `/account/address-book/edit-address/${address.addressId}`
     );
   };
 
   render() {
     const { address, labels, className } = this.props;
+    const { addressId } = address;
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
@@ -107,17 +99,21 @@ class AddressBookTile extends React.Component<Props> {
                 )}
                 {address.primary !== 'true' && (
                   <div className="textRight">
-                    <Anchor
+                    <Button
                       fontSizeVariation="small"
+                      nohover
+                      className="addressTile__makedefaultcheck"
+                      type="button"
+                      smallLink
                       underline
                       anchorVariation="primary"
-                      handleLinkClick={this.handleDefaultLinkClick}
+                      onClick={this.handleDefaultLinkClick}
                       noLink
                       to=""
                       dataLocator="addressbook-makedefault"
                     >
                       {getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
-                    </Anchor>
+                    </Button>
                   </div>
                 )}
               </div>
@@ -125,20 +121,24 @@ class AddressBookTile extends React.Component<Props> {
           </Row>
         </div>
         <div className="addressTile__row">
-          <Anchor
+          <Button
             fontSizeVariation="large"
+            nohover
+            type="button"
+            link
             underline
-            to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
             {getLabelValue(labels, 'lbl_common_edit', 'common')}
-          </Anchor>
+          </Button>
           <Anchor
             fontSizeVariation="large"
             underline
             to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
@@ -150,6 +150,15 @@ class AddressBookTile extends React.Component<Props> {
     );
   }
 }
+
+AddressBookTile.propTypes = {
+  address: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedAddress: PropTypes.func.isRequired,
+};
 
 export default withStyles(AddressBookTile, styles);
 export { AddressBookTile as AddressBookTileVanilla };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { LogOutViewVanilla } from '../LogOut.view';
-import Anchor from '../../../../../common/atoms/Anchor';
+import Button from '../../../../../common/atoms/Button';
 
 describe('LogOutView Page', () => {
   it('should render correctly', () => {
@@ -23,7 +23,7 @@ describe('LogOutView Page', () => {
       labels: {},
     };
     const component = shallow(<LogOutViewVanilla {...props} />);
-    component.find(Anchor).simulate('click', { preventDefault: jest.fn() });
+    component.find(Button).simulate('click', { preventDefault: jest.fn() });
     expect(mocktriggerLogout).toHaveBeenCalled();
   });
 });

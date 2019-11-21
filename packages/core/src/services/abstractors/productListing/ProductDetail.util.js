@@ -1,12 +1,19 @@
 import { parseBoolean, isBopisProduct, isBossProduct } from './productParser';
 import { extractExtraImages } from './productListing.utils';
 import { extractAttributeValue, extractPrioritizedBadge } from '../../../utils/badge.util';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 import processHelpers from './processHelpers';
 
 const getIsGiftCard = (isGiftCard, baseProduct) => {
   return isGiftCard ? 'Gift Card' : baseProduct.product_name;
 };
+
+const isGiftCardItem = product =>
+  !!(
+    product &&
+    product.style_partno &&
+    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+  );
 
 /* DTN-5579 BE  will be sending the list of badges to be excluded in any category
 and we are checking if the particular category should show/hide a badge */
@@ -58,7 +65,7 @@ const breadCrumbFactory = state => {
   // const navList = storeState.globalComponents.header.navigationTree;
   // const previousPageUrl = document && document.referrer;
   // const previousPagePathName = seoURLExtactor(previousPageUrl);
-  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  const plpBreadCrumb = state.ProductListing.breadCrumbTrail;
   let breadCrumbs;
   if (plpBreadCrumb) {
     breadCrumbs = plpBreadCrumb;
@@ -81,35 +88,28 @@ const getSwatchImgPath = (id, excludeExtension) => {
   }`;
 };
 
-const getProductImgPath = (id, excludeExtension) => {
-  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+const getProductImagePath = (id, excludeExtension) => {
+  const imageName = (id && id.split('_')) || [];
+  const imagePath = imageName[0];
 
   return {
-    125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
+    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
   };
 };
 
 const getImgPath = (id, excludeExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
-    productImages: getProductImgPath(id, excludeExtension),
+    productImages: getProductImagePath(id, excludeExtension),
   };
 };
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -198,10 +198,13 @@ const getCategoryEntity = (categoryColorId, breadCrumbs) => {
   return categoryColorId && processHelpers.parseCategoryEntity(categoryColorId, breadCrumbs);
 };
 
+const getImagePathAttr = isGiftCard => (isGiftCard ? 'prodpartno' : 'imagename');
+
 const getImagesByColor = (itemColor, colorName, getImgPathFunc, isGiftCard, imagesByColor) => {
+  const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
   return {
     ...extractExtraImages(
-      `${itemColor.imagename}#${colorName}`,
+      `${itemColor[imageNameAttr]}#${colorName}`,
       itemColor.alt_img,
       getImgPathFunc,
       false,
@@ -239,7 +242,8 @@ const getColorfitsSizesMap = ({
 }) => {
   let imagesByColor = images;
   const itemColorMap = productVariants.map(itemColor => {
-    const { productImages, colorSwatch } = getImgPath(itemColor.imagename);
+    const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
+    const { productImages, colorSwatch } = getImgPath(itemColor[imageNameAttr]);
     const colorName = getProductColorName(isGiftCard, itemColor);
     const familyName = getFamilyName(isGiftCard, itemColor);
     const categoryColorId = getCategoryColorId(itemColor);
@@ -263,6 +267,7 @@ const getColorfitsSizesMap = ({
         name: colorName,
         imagePath: isGiftCard ? productImages[125] : colorSwatch,
         family: familyName,
+        swatchImage: itemColor.swatchimage,
         // Family name can be different from color name, quickViewStoreView using family name to find the initial value of Quick View Form
       },
       pdpUrl: getPdpUrl(isBundleProduct, itemColor),
@@ -276,8 +281,9 @@ const getColorfitsSizesMap = ({
       hasFits: hasFit,
       miscInfo: {
         isBopisEligible:
-          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) && !getIsGiftCard(itemColor),
-        isBossEligible: isBossProduct(bossDisabledFlags) && !getIsGiftCard(itemColor),
+          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) &&
+          !isGiftCardItem(itemColor),
+        isBossEligible: isBossProduct(bossDisabledFlags) && !isGiftCardItem(itemColor),
         badge1: isBundleProduct
           ? extractPrioritizedBadge(itemColor, productAttributes, '', excludeBage)
           : extractPrioritizedBadge(getFirstVariant(itemColor), productAttributes, '', excludeBage),
@@ -343,6 +349,29 @@ const getCategoryId = (breadCrumbs, baseProduct, categoryPath) => {
   return breadCrumbs && breadCrumbs.length && breadCrumbs[0].categoryId
     ? parseCategoryId(baseProduct.categoryPath2_catMap, breadCrumbs)
     : categoryPath;
+};
+
+const getCategoryValue = baseProduct => {
+  let categoryId = 'global';
+  const {
+    categoryPath3_catMap: categoryPath3CatMap,
+    categoryPath2_catMap: categoryPath2CatMap,
+  } = baseProduct;
+  try {
+    if (categoryPath3CatMap) {
+      const [, catPath2, catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
+      categoryId = [catPath2, catPath3].join('|');
+    } else if (categoryPath2CatMap) {
+      categoryId = categoryPath2CatMap[0]
+        .split('|')[0]
+        .split('>')
+        .join('|');
+    }
+  } catch (err) {
+    categoryId = 'global';
+  }
+
+  return categoryId;
 };
 
 const getBaseProduct = product => {
@@ -414,7 +443,7 @@ const processHelperUtil = {
   breadCrumbFactory,
   routingInfoStoreView,
   getSwatchImgPath,
-  getProductImgPath,
+  getProductImagePath,
   getImgPath,
   convertMultipleSizeSkusToAlternatives,
   sumBy,
@@ -449,5 +478,6 @@ const processHelperUtil = {
   setDefault,
   getDefaultColorAlternateSizes,
   getIsAdditionalStyles,
+  getCategoryValue,
 };
 export default processHelperUtil;

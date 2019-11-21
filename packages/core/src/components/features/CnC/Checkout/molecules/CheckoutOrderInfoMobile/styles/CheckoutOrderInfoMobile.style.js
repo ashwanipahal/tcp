@@ -10,6 +10,8 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.smallMax} {
     .order-summary {
+      margin-left: -14px;
+      margin-right: -14px;
       padding: 0;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }

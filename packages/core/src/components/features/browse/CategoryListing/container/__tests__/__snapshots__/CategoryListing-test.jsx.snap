@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container should render CLP Correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Grid)
+    className=""
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="bread-crumb-container"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 0,
+            "small": 0,
+          }
+        }
+        hideCol={
+          Object {
+            "medium": true,
+            "small": true,
+          }
+        }
+      >
+        <div
+          className="sidebar"
+        >
+          <Styled(GlobalNavigationMenuDesktopL2)
+            activeCategoryIds={Array []}
+            navigationTree={Object {}}
+          />
+          <Measure
+            name="page_navigation_visible"
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "large": true,
+                "medium": true,
+                "small": true,
+              }
+            }
+          >
+            <Styled(CategoryPromoImages)
+              categoryPromoImages={Object {}}
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="section-wrapper"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Styled(ReadMore)
+              className=" seo-text"
+              labels={Object {}}
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                portalValue="recently-viewed-products"
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</div>
+`;

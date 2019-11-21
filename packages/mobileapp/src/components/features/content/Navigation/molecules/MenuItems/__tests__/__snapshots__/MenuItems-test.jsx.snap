@@ -67,7 +67,7 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
       alt="alt"
       source={
         Object {
-          "testUri": "../../../../core/src/assets/carrot-large-right.png",
+          "testUri": "../../../../core/src/assets/smallright.png",
         }
       }
     />
@@ -117,7 +117,7 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
       alt="alt"
       source={
         Object {
-          "testUri": "../../../../core/src/assets/carrot-large-right.png",
+          "testUri": "../../../../core/src/assets/smallright.png",
         }
       }
     />

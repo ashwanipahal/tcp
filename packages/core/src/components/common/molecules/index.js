@@ -15,6 +15,10 @@ import ImageGrid from './ImageGrid';
 import StoreAddressTile from './StoreAddressTile';
 import StoreHours from './StoreHours';
 import StoreLocations from './StoreLocations';
+import StoreSelector from './StoreSelector';
+import StoresIntlTile from './StoresIntlTile';
+import StoresCountryTile from './StoresCountryTile';
+import PriceCurrency from './PriceCurrency';
 
 export {
   AccordionHeader,
@@ -34,4 +38,8 @@ export {
   StoreAddressTile,
   StoreHours,
   StoreLocations,
+  StoreSelector,
+  StoresIntlTile,
+  StoresCountryTile,
+  PriceCurrency,
 };

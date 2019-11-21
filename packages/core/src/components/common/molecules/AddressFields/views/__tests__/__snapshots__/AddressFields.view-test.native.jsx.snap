@@ -8,6 +8,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -48,6 +49,7 @@ exports[`AddressFields component should render correctly 1`] = `
     }
     dataLocator="addnewaddress-firstname"
     id="firstName"
+    label="firstName"
     maxLength={50}
     name="firstName"
     type="text"
@@ -58,6 +60,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -98,6 +101,7 @@ exports[`AddressFields component should render correctly 1`] = `
     }
     dataLocator="addnewaddress-lastname"
     id="lastName"
+    label="lastName"
     name="lastName"
   />
   <Field
@@ -110,6 +114,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     }
     dataLocator="addnewaddress-addressl1"
+    headerTitle="addressLine1"
     id="addressLine1"
     initialValue=""
     name="addressLine1"
@@ -121,6 +126,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -161,6 +167,7 @@ exports[`AddressFields component should render correctly 1`] = `
     }
     dataLocator="addnewaddress-addressl2"
     id="addressLine2"
+    label="addressLine2"
     name="addressLine2"
   />
   <Field
@@ -169,6 +176,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -209,52 +217,18 @@ exports[`AddressFields component should render correctly 1`] = `
     }
     dataLocator="addnewaddress-city"
     id="city"
+    label="city"
     name="city"
   />
   <Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        heading="stateLbl"
+        id="state"
+        name="state"
+        onValueChange={[Function]}
+        options={
           Array [
             Object {
               "displayName": "AL",
@@ -568,87 +542,16 @@ exports[`AddressFields component should render correctly 1`] = `
             },
           ]
         }
-        dataLocator="addnewaddress-city"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Select"
-        variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="state"
-          label=""
-          name="state"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
-    <Styled(View) />
-    <Styled(View)
-      zipCode={true}
-    >
+    <Styled(View)>
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -690,53 +593,20 @@ exports[`AddressFields component should render correctly 1`] = `
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
         keyboardType="numeric"
+        label="zipCode"
         maxLength={5}
         name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
   <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "bounces": true,
-          "data": Array [],
-          "dropDownStyle": null,
-          "itemStyle": null,
-          "onValueChange": null,
-          "selectedValue": null,
-          "variation": "primary",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(DropDown)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  height: ",
-            [Function],
-            "px;
-  ",
-            [Function],
-            ";
-  background-color: ",
-            [Function],
-            ";
-  width: 100%;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    data={
+    component={[Function]}
+    disabled={false}
+    heading="country"
+    id="country"
+    name="country"
+    onValueChange={[Function]}
+    options={
       Array [
         Object {
           "displayName": "United States",
@@ -748,26 +618,6 @@ exports[`AddressFields component should render correctly 1`] = `
         },
       ]
     }
-    dataLocator="addnewaddress-country"
-    disabled={false}
-    dropDownStyle={
-      Object {
-        "border": 1,
-        "height": 41,
-      }
-    }
-    id="country"
-    itemStyle={
-      Object {
-        "color": "black",
-        "height": 41,
-        "paddingLeft": 6,
-      }
-    }
-    name="country"
-    onValueChange={[Function]}
-    selectedValue="United States"
-    variation="secondary"
   />
   <Styled(View)>
     <Field
@@ -776,6 +626,7 @@ exports[`AddressFields component should render correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -817,6 +668,7 @@ exports[`AddressFields component should render correctly 1`] = `
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
       keyboardType="numeric"
+      label="phoneNumber"
       name="phoneNumber"
       type="tel"
     />
@@ -827,6 +679,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -868,7 +721,7 @@ exports[`AddressFields component should render correctly 1`] = `
     dataLocator="email-address-field"
     enableSuccessCheck={false}
     id="address.emailAddress"
-    label="Email (For Order Updates)"
+    label="emailForOrderUpdates"
     name="emailAddress"
   />
 </View>
@@ -882,6 +735,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -922,6 +776,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-firstname"
     id="firstName"
+    label="firstName"
     maxLength={50}
     name="firstName"
     type="text"
@@ -932,6 +787,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -972,6 +828,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-lastname"
     id="lastName"
+    label="lastName"
     name="lastName"
   />
   <Field
@@ -984,6 +841,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     }
     dataLocator="addnewaddress-addressl1"
+    headerTitle="addressLine1"
     id="addressLine1"
     initialValue=""
     name="addressLine1"
@@ -995,6 +853,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1035,6 +894,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-addressl2"
     id="addressLine2"
+    label="addressLine2"
     name="addressLine2"
   />
   <Field
@@ -1043,6 +903,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1083,52 +944,18 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-city"
     id="city"
+    label="city"
     name="city"
   />
   <Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        heading="stateLbl"
+        id="state"
+        name="state"
+        onValueChange={[Function]}
+        options={
           Array [
             Object {
               "displayName": "AL",
@@ -1442,87 +1269,16 @@ exports[`AddressFields component should render correctly without phoneNumber and
             },
           ]
         }
-        dataLocator="addnewaddress-city"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Select"
-        variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="state"
-          label=""
-          name="state"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
-    <Styled(View) />
-    <Styled(View)
-      zipCode={true}
-    >
+    <Styled(View)>
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1564,53 +1320,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
         keyboardType="numeric"
+        label="zipCode"
         maxLength={5}
         name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
   <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "bounces": true,
-          "data": Array [],
-          "dropDownStyle": null,
-          "itemStyle": null,
-          "onValueChange": null,
-          "selectedValue": null,
-          "variation": "primary",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(DropDown)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  height: ",
-            [Function],
-            "px;
-  ",
-            [Function],
-            ";
-  background-color: ",
-            [Function],
-            ";
-  width: 100%;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    data={
+    component={[Function]}
+    disabled={false}
+    heading="country"
+    id="country"
+    name="country"
+    onValueChange={[Function]}
+    options={
       Array [
         Object {
           "displayName": "United States",
@@ -1622,26 +1345,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         },
       ]
     }
-    dataLocator="addnewaddress-country"
-    disabled={false}
-    dropDownStyle={
-      Object {
-        "border": 1,
-        "height": 41,
-      }
-    }
-    id="country"
-    itemStyle={
-      Object {
-        "color": "black",
-        "height": 41,
-        "paddingLeft": 6,
-      }
-    }
-    name="country"
-    onValueChange={[Function]}
-    selectedValue="United States"
-    variation="secondary"
   />
   <Styled(View)>
     <Field
@@ -1650,6 +1353,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1691,6 +1395,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
       keyboardType="numeric"
+      label="phoneNumber"
       name="phoneNumber"
       type="tel"
     />
@@ -1701,6 +1406,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1742,7 +1448,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     dataLocator="email-address-field"
     enableSuccessCheck={false}
     id="address.emailAddress"
-    label="Email (For Order Updates)"
+    label="emailForOrderUpdates"
     name="emailAddress"
   />
 </View>
@@ -1756,6 +1462,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1796,6 +1503,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-firstname"
     id="firstName"
+    label="firstName"
     maxLength={50}
     name="firstName"
     type="text"
@@ -1806,6 +1514,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1846,6 +1555,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-lastname"
     id="lastName"
+    label="lastName"
     name="lastName"
   />
   <Field
@@ -1858,6 +1568,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     }
     dataLocator="addnewaddress-addressl1"
+    headerTitle="addressLine1"
     id="addressLine1"
     initialValue=""
     name="addressLine1"
@@ -1869,6 +1580,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1909,6 +1621,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-addressl2"
     id="addressLine2"
+    label="addressLine2"
     name="addressLine2"
   />
   <Field
@@ -1917,6 +1630,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1957,52 +1671,18 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-city"
     id="city"
+    label="city"
     name="city"
   />
   <Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        heading="stateLbl"
+        id="state"
+        name="state"
+        onValueChange={[Function]}
+        options={
           Array [
             Object {
               "displayName": "AL",
@@ -2316,87 +1996,16 @@ exports[`AddressFields component should render correctly without phoneNumber and
             },
           ]
         }
-        dataLocator="addnewaddress-city"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Select"
-        variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="state"
-          label=""
-          name="state"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
-    <Styled(View) />
-    <Styled(View)
-      zipCode={true}
-    >
+    <Styled(View)>
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2438,53 +2047,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
         keyboardType="numeric"
+        label="zipCode"
         maxLength={5}
         name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
   <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "bounces": true,
-          "data": Array [],
-          "dropDownStyle": null,
-          "itemStyle": null,
-          "onValueChange": null,
-          "selectedValue": null,
-          "variation": "primary",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(DropDown)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  height: ",
-            [Function],
-            "px;
-  ",
-            [Function],
-            ";
-  background-color: ",
-            [Function],
-            ";
-  width: 100%;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    data={
+    component={[Function]}
+    disabled={false}
+    heading="country"
+    id="country"
+    name="country"
+    onValueChange={[Function]}
+    options={
       Array [
         Object {
           "displayName": "United States",
@@ -2496,26 +2072,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         },
       ]
     }
-    dataLocator="addnewaddress-country"
-    disabled={false}
-    dropDownStyle={
-      Object {
-        "border": 1,
-        "height": 41,
-      }
-    }
-    id="country"
-    itemStyle={
-      Object {
-        "color": "black",
-        "height": 41,
-        "paddingLeft": 6,
-      }
-    }
-    name="country"
-    onValueChange={[Function]}
-    selectedValue="United States"
-    variation="secondary"
   />
   <Styled(View)>
     <Field
@@ -2524,6 +2080,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -2565,6 +2122,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
       keyboardType="numeric"
+      label="phoneNumber"
       name="phoneNumber"
       type="tel"
     />
@@ -2575,6 +2133,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2616,7 +2175,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     dataLocator="email-address-field"
     enableSuccessCheck={false}
     id="address.emailAddress"
-    label="Email (For Order Updates)"
+    label="emailForOrderUpdates"
     name="emailAddress"
   />
 </View>
@@ -2630,6 +2189,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2670,6 +2230,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-firstname"
     id="firstName"
+    label="firstName"
     maxLength={50}
     name="firstName"
     type="text"
@@ -2680,6 +2241,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2720,6 +2282,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-lastname"
     id="lastName"
+    label="lastName"
     name="lastName"
   />
   <Field
@@ -2732,6 +2295,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     }
     dataLocator="addnewaddress-addressl1"
+    headerTitle="addressLine1"
     id="addressLine1"
     initialValue=""
     name="addressLine1"
@@ -2743,6 +2307,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2783,6 +2348,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-addressl2"
     id="addressLine2"
+    label="addressLine2"
     name="addressLine2"
   />
   <Field
@@ -2791,6 +2357,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2831,52 +2398,18 @@ exports[`AddressFields component should render correctly without phoneNumber and
     }
     dataLocator="addnewaddress-city"
     id="city"
+    label="city"
     name="city"
   />
   <Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        heading="province"
+        id="state"
+        name="state"
+        onValueChange={[Function]}
+        options={
           Array [
             Object {
               "displayName": "BC",
@@ -2945,87 +2478,16 @@ exports[`AddressFields component should render correctly without phoneNumber and
             },
           ]
         }
-        dataLocator="addnewaddress-city"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Select"
-        variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="state"
-          label=""
-          name="state"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
-    <Styled(View) />
-    <Styled(View)
-      zipCode={true}
-    >
+    <Styled(View)>
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -3067,53 +2529,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
         keyboardType="numeric"
+        label="postalCode"
         maxLength={6}
         name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
   <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "bounces": true,
-          "data": Array [],
-          "dropDownStyle": null,
-          "itemStyle": null,
-          "onValueChange": null,
-          "selectedValue": null,
-          "variation": "primary",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(DropDown)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  height: ",
-            [Function],
-            "px;
-  ",
-            [Function],
-            ";
-  background-color: ",
-            [Function],
-            ";
-  width: 100%;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    data={
+    component={[Function]}
+    disabled={false}
+    heading="country"
+    id="country"
+    name="country"
+    onValueChange={[Function]}
+    options={
       Array [
         Object {
           "displayName": "United States",
@@ -3125,26 +2554,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         },
       ]
     }
-    dataLocator="addnewaddress-country"
-    disabled={false}
-    dropDownStyle={
-      Object {
-        "border": 1,
-        "height": 41,
-      }
-    }
-    id="country"
-    itemStyle={
-      Object {
-        "color": "black",
-        "height": 41,
-        "paddingLeft": 6,
-      }
-    }
-    name="country"
-    onValueChange={[Function]}
-    selectedValue="Canada"
-    variation="secondary"
   />
   <Styled(View)>
     <Field
@@ -3153,6 +2562,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -3194,6 +2604,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
       keyboardType="numeric"
+      label="phoneNumber"
       name="phoneNumber"
       type="tel"
     />
@@ -3204,6 +2615,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -3245,7 +2657,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     dataLocator="email-address-field"
     enableSuccessCheck={false}
     id="address.emailAddress"
-    label="Email (For Order Updates)"
+    label="emailForOrderUpdates"
     name="emailAddress"
   />
 </View>

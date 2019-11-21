@@ -15,7 +15,7 @@ export const getAddressLocationInfo = async address => {
   return requireNamedOnlineModule('google.maps').then(() => {
     // eslint-disable-next-line no-undef
     const geocoder = new google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       geocoder.geocode({ address }, async (results, status) => {
         if (status === 'OK') {
           const country = results[0].address_components.find(component => {
@@ -34,7 +34,7 @@ export const getAddressLocationInfo = async address => {
           });
           resolve(storeDataObject);
         } else {
-          reject(status);
+          resolve({});
         }
       });
     });

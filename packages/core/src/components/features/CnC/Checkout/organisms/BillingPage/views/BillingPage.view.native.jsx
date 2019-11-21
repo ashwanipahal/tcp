@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import GiftCardsContainer from '../../GiftCardsSection';
-import style from '../styles/BillingPage.style.native';
+import style, { BillingPageContainer } from '../styles/BillingPage.style.native';
 import GuestBillingForm from '../../GuestBillingForm';
 import BillingPaymentForm from '../../BillingPaymentForm';
 
@@ -24,6 +24,7 @@ class BillingPage extends React.PureComponent {
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     navigation: PropTypes.shape({}).isRequired,
     submitBilling: PropTypes.func.isRequired,
+    billingDidMount: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     labels: PropTypes.shape({}).isRequired,
@@ -33,6 +34,10 @@ class BillingPage extends React.PureComponent {
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
+    setCheckoutStage: PropTypes.func.isRequired,
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoEnabled: PropTypes.bool,
+    isPayPalWebViewEnable: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -43,7 +48,15 @@ class BillingPage extends React.PureComponent {
     billingData: null,
     userAddresses: null,
     creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
+    isVenmoEnabled: false,
+    isPayPalWebViewEnable: false,
   };
+
+  componentDidMount() {
+    const { billingDidMount } = this.props;
+    billingDidMount(true);
+  }
 
   /**
    * @function render
@@ -63,19 +76,30 @@ class BillingPage extends React.PureComponent {
       billingData,
       userAddresses,
       creditFieldLabels,
+      setCheckoutStage,
+      isVenmoPaymentInProgress,
+      isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
+      isPayPalWebViewEnable,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
-
     return (
-      <>
-        <CheckoutProgressIndicator
-          activeStage="billing"
-          navigation={navigation}
-          availableStages={availableStages}
-        />
-        <ScrollView>
-          <Container>
+      <BillingPageContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
+        {!isPayPalWebViewEnable && (
+          <CheckoutProgressIndicator
+            activeStage="billing"
+            navigation={navigation}
+            availableStages={availableStages}
+            setCheckoutStage={setCheckoutStage}
+          />
+        )}
+        <ScrollView
+          ref={scrollView => {
+            this.scrollView = scrollView;
+          }}
+          disableScrollViewPanResponder={!isPayPalWebViewEnable}
+        >
+          <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />
             <GiftCardsContainer />
             {isGuest ? (
@@ -93,6 +117,10 @@ class BillingPage extends React.PureComponent {
                 navigation={navigation}
                 btnText={nextSubmitText}
                 creditFieldLabels={creditFieldLabels}
+                setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             ) : (
               <BillingPaymentForm
@@ -110,11 +138,16 @@ class BillingPage extends React.PureComponent {
                 userAddresses={userAddresses}
                 navigation={navigation}
                 creditFieldLabels={creditFieldLabels}
+                scrollView={this.scrollView}
+                setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             )}
           </Container>
         </ScrollView>
-      </>
+      </BillingPageContainer>
     );
   }
 }

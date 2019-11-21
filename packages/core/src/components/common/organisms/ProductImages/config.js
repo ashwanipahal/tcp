@@ -6,7 +6,7 @@ export default {
     arrows: true,
     fade: false,
     speed: 0,
-    dots: false,
+    dots: true,
     dotsClass: 'slick-dots',
     swipe: true,
     slidesToShow: 1,
@@ -15,7 +15,6 @@ export default {
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
-          dots: true,
           arrows: false,
         },
       },

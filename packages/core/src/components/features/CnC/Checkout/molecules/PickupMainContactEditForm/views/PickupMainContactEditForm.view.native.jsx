@@ -8,14 +8,14 @@ import ContactFormFields from '../../ContactFormFields';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import Modal from '../../../../../../common/molecules/Modal';
 import Button from '../../../../../../common/atoms/Button';
 import {
   Style,
-  ModalContainer,
   PickupEditHeader,
   EditAnchor,
+  ButtonWrapper,
 } from '../styles/PickupMainContactEditForm.style.native';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
@@ -26,16 +26,20 @@ class PickupMainContactEditForm extends React.Component {
     onEditModeChange(false, pickUpContact);
   };
 
-  SaveButton = () => {
-    const { labels, handleSubmit } = this.props;
+  saveAndCancelButton = () => {
+    const { labels, handleSubmit, handleExitEditModeClick } = this.props;
     return (
-      <Button
-        fill="BLUE"
-        color="white"
-        buttonVariation="variable-width"
-        text={labels.btnSaveUpdate}
-        onPress={handleSubmit(this.pickupEditSubmit)}
-      />
+      <>
+        <Button
+          fill="BLUE"
+          color="white"
+          text={labels.btnSaveUpdate}
+          onPress={handleSubmit(this.pickupEditSubmit)}
+        />
+        <ButtonWrapper>
+          <Button text={labels.btnCancel} onPress={handleSubmit(handleExitEditModeClick)} />
+        </ButtonWrapper>
+      </>
     );
   };
 
@@ -46,7 +50,7 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   renderSectionTitle = () => {
-    const { labels } = this.props;
+    const { labels, isEditing } = this.props;
     return (
       <PickupEditHeader>
         <BodyCopy
@@ -56,52 +60,53 @@ class PickupMainContactEditForm extends React.Component {
           color="gray.900"
           text={labels.pickupContactText}
         />
-        <EditAnchor>
-          <Anchor
-            underline
-            anchorVariation="primary"
-            fontSize="fs12"
-            noLink
-            href="#"
-            target="_blank"
-            text={labels.anchorEdit}
-            onPress={this.handleEnterEditModeClick}
-            color="gray.900"
-          />
-        </EditAnchor>
+        {!isEditing && (
+          <EditAnchor>
+            <Anchor
+              underline
+              anchorVariation="primary"
+              fontSize="fs12"
+              noLink
+              href="#"
+              target="_blank"
+              text={labels.anchorEdit}
+              onPress={this.handleEnterEditModeClick}
+              color="gray.900"
+            />
+          </EditAnchor>
+        )}
       </PickupEditHeader>
     );
   };
 
   render() {
-    const { isMobile, formData, isEditing, labels, isReset, handleExitEditModeClick } = this.props;
-    const headerIconStyle = { position: 'absolute', top: -2, left: -50 };
+    const {
+      formData,
+      isEditing,
+      labels,
+      isReset,
+      errorMessageRef,
+      editModeSubmissionError,
+    } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
     }
     return (
-      <View>
+      <View ref={errorMessageRef}>
         {this.renderSectionTitle()}
         {!isEditing && <PickUpContactDisplay formData={formData} />}
-        {isEditing && isMobile && (
-          <Modal
-            isOpen={isEditing}
-            onRequestClose={handleExitEditModeClick}
-            heading={labels.titleEditPickup}
-            horizontalBar={false}
-            headingAlign="center"
-            fullWidth
-            headerStyle={headerIconStyle}
-            iconType="arrow"
-            headingFontWeight="semibold"
-            fontSize="fs12"
-          >
-            <ModalContainer>
-              <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
-              {this.SaveButton()}
-            </ModalContainer>
-          </Modal>
+        {isEditing && (
+          <>
+            <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
+            {editModeSubmissionError ? (
+              <ErrorMessage
+                error={editModeSubmissionError}
+                backgroundColor={props => props.theme.colors.WHITE}
+              />
+            ) : null}
+            {this.saveAndCancelButton()}
+          </>
         )}
       </View>
     );
@@ -111,6 +116,8 @@ class PickupMainContactEditForm extends React.Component {
 PickupMainContactEditForm.propTypes = {
   isEditing: PropTypes.bool.isRequired,
   onEditModeChange: PropTypes.func.isRequired,
+  editModeSubmissionError: PropTypes.string.isRequired,
+  errorMessageRef: PropTypes.shape({}).isRequired,
   ...reduxFormPropTypes,
 };
 

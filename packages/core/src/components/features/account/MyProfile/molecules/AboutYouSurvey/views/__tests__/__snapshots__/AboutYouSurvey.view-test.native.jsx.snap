@@ -112,7 +112,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -126,6 +126,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -133,6 +134,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         theme={Object {}}
         type="button"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -251,7 +253,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -265,6 +267,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -272,6 +275,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         theme={Object {}}
         type="button"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

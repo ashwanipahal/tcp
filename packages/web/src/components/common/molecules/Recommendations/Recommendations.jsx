@@ -7,7 +7,9 @@ import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import config from './config';
+import constant from './Recommendations.constant';
 import style from './Recommendations.style';
 
 /**
@@ -33,10 +35,29 @@ const RecommendationComponentVariation = dynamic(
   { ssr: false }
 );
 
+const { RECOMMENDATION } = constant;
+
 class Recommendations extends Component {
   componentDidMount() {
-    const { loadRecommendations } = this.props;
-    window.addEventListener('load', loadRecommendations);
+    const {
+      loadRecommendations,
+      page,
+      portalValue,
+      partNumber,
+      categoryName,
+      reduxKey,
+    } = this.props;
+    const action = {
+      reduxKey,
+      page: page || 'homepageTest',
+      ...(partNumber && { itemPartNumber: partNumber }),
+      ...(portalValue && { mboxName: portalValue }),
+      ...(categoryName && { categoryName }),
+    };
+    if (window.adobe && window.adobe.target) {
+      return loadRecommendations(action);
+    }
+    return window.addEventListener('load', loadRecommendations(action));
   }
 
   componentWillUnmount() {
@@ -52,6 +73,9 @@ class Recommendations extends Component {
       onPickUpOpenClick,
       labels,
       priceOnly,
+      currency,
+      currencyAttributes,
+      onQuickViewOpenClick,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -68,16 +92,20 @@ class Recommendations extends Component {
           isPerfectBlock
           productsBlock={product}
           onPickUpOpenClick={onPickUpOpenClick}
+          onQuickViewOpenClick={onQuickViewOpenClick}
           className={`${className} product-list ${priceOnlyClass}`}
           labels={labels}
           sequenceNumber={index + 1}
           variation={variation}
+          currencySymbol={currency}
+          currencyExchange={currencyAttributes.exchangevalue}
+          viaModule={RECOMMENDATION}
         />
       );
     });
   }
 
-  renderRecommendationVariation(variation) {
+  renderRecommendationView(variation) {
     const {
       moduleOHeaderLabel,
       modulePHeaderLabel,
@@ -87,12 +115,15 @@ class Recommendations extends Component {
       ctaText,
       ctaTitle,
       ctaUrl,
+      carouselConfigProps,
+      headerAlignment,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
-    const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
-
+    const headerLabel =
+      variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
+    const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
     return (
       products &&
       products.length > 0 && (
@@ -100,12 +131,12 @@ class Recommendations extends Component {
           <Heading
             variant="h4"
             className={`recommendations-header ${priceOnlyClass}`}
-            textAlign="center"
+            textAlign={headerAlignment || 'center'}
             dataLocator={params.dataLocator}
           >
             {headerLabel}
           </Heading>
-          <Row fullBleed>
+          <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
                 small: 6,
@@ -121,7 +152,7 @@ class Recommendations extends Component {
               {products.length >= 4 ? (
                 <Carousel
                   className={`${variation}-variation`}
-                  options={config.CAROUSEL_OPTIONS}
+                  options={carouselProps}
                   inheritedStyles={Carousel}
                   carouselConfig={{
                     variation: 'big-arrows',
@@ -164,24 +195,43 @@ class Recommendations extends Component {
   }
 
   render() {
-    const { className, variations } = this.props;
+    const {
+      className,
+      variations,
+      accessibility: { previousButton, nextIconButton } = {},
+    } = this.props;
 
     config.CAROUSEL_OPTIONS.prevArrow = (
-      <button type="button" data-locator="moduleO_left_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={previousButton}
+        data-locator="moduleO_left_arrow"
+        className="slick-prev"
+      />
     );
     config.CAROUSEL_OPTIONS.nextArrow = (
-      <button type="button" data-locator="moduleO_right_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={nextIconButton}
+        data-locator="moduleO_right_arrow"
+        className="slick-prev"
+      />
     );
 
     const variation = variations.split(',');
 
-    return variation.map(value => {
-      return (
-        <section className={`${className} recommendations-tile`}>
-          {this.renderRecommendationVariation(value)}
-        </section>
-      );
-    });
+    return (
+      <div>
+        {variation.map(value => {
+          return (
+            <section className={`${className} recommendations-tile`}>
+              {this.renderRecommendationView(value)}
+            </section>
+          );
+        })}
+        <QuickViewModal />
+      </div>
+    );
   }
 }
 
@@ -200,15 +250,40 @@ Recommendations.propTypes = {
   ctaTitle: PropTypes.string,
   ctaUrl: PropTypes.string,
   variations: PropTypes.string,
+  currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  page: PropTypes.string,
+  portalValue: PropTypes.string,
+  carouselConfigProps: PropTypes.shape({}),
+  partNumber: PropTypes.string,
+  categoryName: PropTypes.string,
+  headerAlignment: PropTypes.string,
+  reduxKey: PropTypes.string.isRequired,
+  accessibility: PropTypes.shape({
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
+  }),
 };
 
 Recommendations.defaultProps = {
+  accessibility: {},
   priceOnly: false,
   showButton: false,
   ctaText: '',
   ctaTitle: '',
   ctaUrl: '',
   variations: '',
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  page: '',
+  portalValue: '',
+  carouselConfigProps: null,
+  partNumber: '',
+  categoryName: '',
+  headerAlignment: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

@@ -1,7 +1,7 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
-import { getFormSKUValue } from '../../../../../utils/utils';
 import ProductAddToBag from '../views/ProductAddToBag.view';
 
 /**
@@ -15,53 +15,79 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     super(props);
     const { currentProduct, selectedColorProductId } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
-
+    this.displayATBErrorMessage = this.displayATBErrorMessage.bind(this);
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
       selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
       selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
       selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
       isErrorMessageDisplayed: false,
+      isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
+      keepAlive: this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { currentProduct, selectedColorProductId } = nextProps;
-    const { currentProduct: prevCurrentProduct } = this.props;
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { currentProduct, selectedColorProductId, productInfoFromBag } = nextProps;
+    const {
+      currentProduct: prevCurrentProduct,
+      selectedColorProductId: prevSelectedColorProductId,
+      productInfoFromBag: prevProductInfoFromBag,
+    } = this.props;
 
-    if (currentProduct && currentProduct !== prevCurrentProduct) {
+    if (
+      (currentProduct && currentProduct !== prevCurrentProduct) ||
+      selectedColorProductId !== prevSelectedColorProductId
+    ) {
       // update selected color once map is received from api
-      this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
+      this.setState(
+        this.getStateValuesFromProps(currentProduct, selectedColorProductId, nextProps)
+      );
+    }
+    if (productInfoFromBag && productInfoFromBag !== prevProductInfoFromBag) {
+      this.setState({
+        selectedColor: { name: productInfoFromBag.selectedColor },
+        selectedFit: { name: productInfoFromBag.selectedFit },
+        selectedSize: { name: productInfoFromBag.selectedSize },
+        selectedQuantity: productInfoFromBag.selectedQty,
+      });
     }
   }
 
-  getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
-    const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
+  getStateValuesFromProps = (currentProduct, selectedColorProductId, nextProps) => {
+    this.initialValuesForm = this.getInitialValues(
+      currentProduct,
+      selectedColorProductId,
+      nextProps
+    );
     return {
-      selectedColor: initialValues && initialValues.color,
-      selectedFit: initialValues && initialValues.Fit,
-      selectedSize: initialValues && initialValues.Size,
-      selectedQuantity: initialValues && initialValues.Quantity,
-      persistSelectedFit: initialValues && initialValues.Fit,
+      selectedColor: this.initialValuesForm && this.initialValuesForm.color,
+      selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
+      selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
+      selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
+      persistSelectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
     };
   };
 
   /**
    * @function getDefaultColor
-   * @returns default color at 0 index in color array
+   * @returns default color at 0 index in color array.
    *
    * @memberof ProductAddToBagContainer
    */
-  getInitialValues = (currentProduct, selectedColorProductId) => {
+  getInitialValues = (currentProduct, selectedColorProductId, nextProps) => {
     const { colorFitsSizesMap } = currentProduct;
-    return colorFitsSizesMap && this.defaultSizesSet(currentProduct, selectedColorProductId);
+    return (
+      colorFitsSizesMap && this.defaultSizesSet(currentProduct, selectedColorProductId, nextProps)
+    );
   };
 
-  defaultSizesSet = (currentProduct, selectedColorProductId) => {
+  defaultSizesSet = (currentProduct, selectedColorProductId, nextProps) => {
     if (currentProduct) {
-      return this.getInitialAddToBagFormValues(currentProduct, selectedColorProductId);
+      return this.getInitialAddToBagFormValues(currentProduct, selectedColorProductId, nextProps);
     }
 
     return null;
@@ -85,9 +111,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     );
   };
 
-  getDefaultSizeForProduct = colorFitsSizesMap => {
-    const { initialFormValues } = this.props;
-    const firstSizeName = colorFitsSizesMap[0].fits[0].sizes[0].sizeName;
+  getDefaultSizeForProduct = (colorFitsSizesMap, initialFormValues) => {
+    const firstSizeName = colorFitsSizesMap[0]
+      ? colorFitsSizesMap[0].fits[0].sizes[0].sizeName
+      : '';
 
     if (initialFormValues) {
       return initialFormValues.Size;
@@ -107,20 +134,32 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return firstSizeName;
   };
 
-  getInitialAddToBagFormValues = (currentProduct, selectedColorProductId) => {
-    const colorFitsSizesMapEntry =
-      currentProduct &&
-      this.getMapSliceForColorProductId(
-        currentProduct.colorFitsSizesMap,
-        currentProduct.generalProductId,
-        selectedColorProductId
-      );
+  getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
+    const colorFitsSizesMapEntry = currentProduct
+      ? this.getMapSliceForColorProductId(
+          currentProduct.colorFitsSizesMap,
+          currentProduct.generalProductId,
+          selectedColorProductId
+        )
+      : {};
+    this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
+    let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
-    const { initialFormValues } = this.props;
+    const { fromBagPage } = this.props;
+
+    if (fromBagPage) {
+      const { productInfoFromBag } = this.props;
+      initialFormValues = {
+        color: productInfoFromBag.selectedColor,
+        Size: productInfoFromBag.selectedSize,
+        Fit: productInfoFromBag.selectedFit,
+        Quantity: productInfoFromBag.selectedQty,
+      };
+    }
 
     return {
       color: {
-        name: colorFitsSizesMapEntry.color.name,
+        name: colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name,
       },
       Fit: colorFitsSizesMapEntry.hasFits
         ? {
@@ -132,7 +171,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       Size: {
         name: currentProduct.isGiftCard
           ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
-          : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
+          : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap, initialFormValues),
       },
       Quantity: !initialFormValues ? 1 : initialFormValues.Quantity,
     };
@@ -162,6 +201,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: true,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
@@ -173,23 +213,37 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: false,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
     }
   };
 
-  colorChange = e => {
-    const { selectedSize } = this.state;
-    const { onChangeColor } = this.props;
+  colorChange = (e, colorIndex) => {
+    const { selectedSize, selectedFit, selectedQuantity } = this.state;
+    const {
+      onChangeColor,
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const selectedColor = this.getSelectedColorData(colorFitsSizesMap, e);
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
+      isATBErrorMessageDisplayed: false,
+      fitChanged: selectedSize.name === '',
+      keepAlive: selectedColor && selectedColor[0] && selectedColor[0].miscInfo.keepAlive,
     });
     // props for any custom action to call
     if (onChangeColor) {
-      onChangeColor(e);
+      onChangeColor(
+        e,
+        selectedSize && selectedSize.name,
+        selectedFit && selectedFit.name,
+        selectedQuantity,
+        colorIndex
+      );
     }
   };
 
@@ -216,7 +270,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   getSizeOptions = (colorItem, selectedFit?) => {
     const { fits } = colorItem;
     let sizeOptions = [];
-    if (colorItem) {
+    if (colorItem && fits && fits.length) {
       fits.forEach(fit => {
         if (selectedFit) {
           if (fit.fitName === selectedFit.name) {
@@ -224,6 +278,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
               displayName: size.sizeName,
               id: size.sizeName,
               maxAvailable: size.maxAvailable,
+              disabled: size.maxAvailable <= 0,
             }));
           }
         } else {
@@ -232,6 +287,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             displayName: size.sizeName,
             id: size.sizeName,
             maxAvailable: size.maxAvailable,
+            disabled: size.maxAvailable <= 0,
           }));
         }
       });
@@ -294,6 +350,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
   };
 
+  displayATBErrorMessage = displayError => {
+    this.setState({
+      isATBErrorMessageDisplayed: displayError,
+    });
+  };
+
   /**
    * @function getQuantityList
    * @returns quantity list with labels and values to render dropdown
@@ -308,14 +370,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }));
   };
 
-  getSelectedColorData = (colorFitsSizesMap, selectedColor) => {
+  getSelectedColorData = (colorFitsSizesMap, selectedColor = {}) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
         const {
           color: { name },
         } = colorItem;
-        return selectedColor && selectedColor.name === name;
+        return (selectedColor.name || selectedColor) === name;
       })
     );
   };
@@ -336,53 +398,39 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   sizeChange = e => {
-    const { selectedFit } = this.state;
+    const { selectedColor, selectedFit, selectedQuantity } = this.state;
+    const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
       fitChanged: false,
+      isATBErrorMessageDisplayed: false,
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
     }
-  };
-
-  addToBagAction = () => {
-    const { selectedSize, selectedFit, selectedColor, selectedQuantity } = this.state;
-    const {
-      currentProduct: { colorFitsSizesMap },
-      handleFormSubmit,
-    } = this.props;
-    const colors = colorFitsSizesMap.filter(item => item.color.name === selectedColor.name);
-    let fitList = [];
-    const color = colors && colors.length > 0 && colors[0];
-    if (color.hasFits && selectedFit) {
-      fitList = color.fits.filter(fit => fit.fitName === selectedFit.name);
-    } else {
-      fitList = color.fits;
+    if (onChangeSize) {
+      onChangeSize(
+        selectedColor && selectedColor.name,
+        e,
+        selectedFit && selectedFit.name,
+        selectedQuantity
+      );
     }
-
-    const isSizeAvaiable =
-      (selectedSize &&
-        fitList &&
-        fitList.length > 0 &&
-        fitList[0].sizes.filter(size => size.sizeName === selectedSize.name).length > 0) ||
-      false;
-    this.displayErrorMessage(!isSizeAvaiable);
-    handleFormSubmit(
-      getFormSKUValue({
-        color: selectedColor,
-        Size: selectedSize,
-        Quantity: selectedQuantity,
-        Fit: selectedFit,
-      })
-    );
   };
 
   quantityChange = (selectedQuantity, form) => {
     this.setState({ selectedQuantity });
     const { dispatch } = this.props;
     dispatch(change(form, 'Quantity', selectedQuantity));
+  };
+
+  setPreSelectedValuesForProduct = productInfoFromBag => {
+    const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
+    this.initialValuesForm.Fit = selectedFit;
+    this.initialValuesForm.Quantity = selectedQty || 1;
+    this.initialValuesForm.Size = selectedSize;
+    this.initialValuesForm.color = selectedColor;
   };
 
   /**
@@ -394,16 +442,33 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
-      currentProduct: { colorFitsSizesMap },
+      currentProduct: { colorFitsSizesMap, colorFitSizeDisplayNames, isGiftCard },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
-      addToBagEcom,
-      addToBagError,
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      showColorChips = true,
       fromBagPage,
+      productInfoFromBag,
+      customSubmitButtonStyle,
+      colorFitsSizesMap: favColorFitsSizesMap,
+      isOutfitPage,
+      formRef,
+      formEnabled,
+      quickViewColorSwatchesCss,
+      isPDP,
+      isDisableZeroInventoryEntries,
+      alternateSizes,
+      sizeChartLinkVisibility,
+      navigation,
+      isPickup,
+      onCloseClick,
+      isBundleProduct,
+      outOfStockLabels,
+      isKeepAliveEnabled,
+      ...otherProps
     } = this.props;
     const {
       selectedColor,
@@ -411,16 +476,25 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedSize,
       fitChanged,
       isErrorMessageDisplayed,
+      isATBErrorMessageDisplayed,
       selectedQuantity,
+      keepAlive,
     } = this.state;
+    if (fromBagPage) {
+      this.setPreSelectedValuesForProduct(productInfoFromBag);
+    }
+
+    const productColorFitsSizesMap = colorFitsSizesMap || favColorFitsSizesMap;
+
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
-        colorList={colorFitsSizesMap}
-        fitList={this.getFitOptions(colorFitsSizesMap, selectedColor)}
-        sizeList={this.getSizeList(colorFitsSizesMap)}
+        {...otherProps}
+        colorList={productColorFitsSizesMap}
+        fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
+        sizeList={this.getSizeList(productColorFitsSizesMap)}
         selectSize={this.sizeChange}
         selectFit={this.fitChange}
         selectColor={this.colorChange}
@@ -431,21 +505,38 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         plpLabels={plpLabels}
         fitChanged={fitChanged}
         isErrorMessageDisplayed={isErrorMessageDisplayed}
+        isATBErrorMessageDisplayed={isATBErrorMessageDisplayed}
         initialValues={initialValues}
         displayErrorMessage={this.displayErrorMessage}
+        displayATBErrorMessage={this.displayATBErrorMessage}
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
-        addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
         handleFormSubmit={handleFormSubmit}
         errorOnHandleSubmit={errorOnHandleSubmit}
-        addToBagEcom={addToBagEcom}
-        addToBagError={addToBagError}
         currentProduct={currentProduct}
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        showColorChips={showColorChips}
         fromBagPage={fromBagPage}
+        inheritedStyles={customSubmitButtonStyle}
+        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+        isGiftCard={isGiftCard}
+        isOutfitPage={isOutfitPage}
+        ref={formRef}
+        formEnabled={formEnabled}
+        quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+        isPDP={isPDP}
+        isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+        alternateSizes={alternateSizes}
+        sizeChartLinkVisibility={sizeChartLinkVisibility}
+        navigation={navigation}
+        isPickup={isPickup}
+        onCloseClick={onCloseClick}
+        isBundleProduct={isBundleProduct}
+        keepAlive={isKeepAliveEnabled && keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }

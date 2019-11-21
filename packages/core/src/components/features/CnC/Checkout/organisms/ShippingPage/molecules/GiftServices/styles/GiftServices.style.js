@@ -47,17 +47,25 @@ export default css`
   .giftServicesField {
     display: inline-block;
     width: 142px;
+    .CheckBox__text {
+      padding-top: 4px;
+    }
   }
 
   .dropdownliBottomBorder {
-    height: 71px;
+    min-height: 77px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
   }
   .price {
     float: right;
-    margin-right: 5px;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .longDesc {
     font-size: ${props => props.theme.typography.fontSizes.fs12};
@@ -65,15 +73,16 @@ export default css`
   .giftServicesDetailsLink {
     text-decoration: underline;
     cursor: pointer;
-    padding-top: 3px;
+    padding-top: 7px;
   }
 
   .phone-field-wrapper {
     width: auto;
     margin-left: -12px;
-    padding-right: 15px;
+    padding-right: 0;
     display: flex;
     align-self: center;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 
   .tcp-radio-button {
@@ -106,6 +115,7 @@ export default css`
   }
 
   .dropdownDivOverFlow {
+    overflow-y: visible;
     div {
       font-family: ${props => props.theme.fonts.secondaryFontFamily};
     }
@@ -140,6 +150,10 @@ export default css`
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+
+  .CheckBox__input {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

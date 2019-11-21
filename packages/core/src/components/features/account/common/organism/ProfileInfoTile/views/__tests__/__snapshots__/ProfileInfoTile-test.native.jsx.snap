@@ -8,6 +8,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text=""
@@ -39,7 +40,9 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           customStyle={Object {}}
           dataLocator="personalInfo-overview-edit"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text=""
@@ -52,14 +55,10 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
       margin={null}
-      mobilefontFamily={
-        Array [
-          "secondary",
-        ]
-      }
       numberOfLines={null}
       text=" B100000012222"
       textDecoration={null}
@@ -70,14 +69,10 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
       margin={null}
-      mobilefontFamily={
-        Array [
-          "secondary",
-        ]
-      }
       numberOfLines={null}
       text=""
       textDecoration={null}
@@ -86,6 +81,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
       margin={null}
@@ -125,7 +121,9 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           customStyle={Object {}}
           dataLocator="mailingAddress-overview-edit"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text=""
@@ -144,7 +142,6 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           "zipCode": "12345",
         }
       }
-      customStyle={Object {}}
       fontSize="fs14"
       regularName={false}
       showCountry={false}
@@ -179,7 +176,9 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           customStyle={Object {}}
           dataLocator="password-overview-edit"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text=""
@@ -204,7 +203,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -217,12 +216,14 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

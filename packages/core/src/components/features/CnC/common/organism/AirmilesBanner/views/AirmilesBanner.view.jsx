@@ -9,8 +9,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import { getLocator } from '../../../../../../../utils';
 import AirmilesToolTip from './AirmilesToolTip.view';
 import styles from '../styles/AirmilesBanner.style';
-
-// @flow
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class AirmilesBanner extends React.PureComponent<Props> {
   state = {
@@ -19,26 +18,30 @@ class AirmilesBanner extends React.PureComponent<Props> {
     isValidPromoField: false,
   };
 
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     const { airmilesBannerData } = this.props;
+    /* istanbul ignore else */
     if (airmilesBannerData && !!airmilesBannerData.collectorNumber) {
       this.setState({ expanded: false, isValidPromoField: true });
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { airmilesBannerData } = this.props;
     const {
       promoField,
       syncErrorObj: { syncError },
     } = nextProps;
     const isValidPromoField = this.checkIsValidPromoField(promoField, syncError);
+    /* istanbul ignore else */
     if (!airmilesBannerData.collectorNumber) {
       this.setState({
         isValidPromoField,
       });
     }
-
+    /* istanbul ignore else */
     if (isValidPromoField) {
       const { onAddAirmilesBanner } = this.props;
 
@@ -74,6 +77,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
   handleSubmit = () => {
     const { onAddAirmilesBanner } = this.props;
     const { touched } = this.state;
+    /* istanbul ignore else */
     if (touched) {
       this.toggleTouched();
     }
@@ -188,20 +192,7 @@ AirmilesBanner.defaultProps = {
   handleSubmit: () => {},
 };
 
-const validateMethod = createValidateMethod({
-  rules: {
-    promoId: {
-      number: true,
-      exactLength: 11,
-    },
-  },
-  messages: ({ labels }) => ({
-    promoId: {
-      exactLength: labels.exactLength,
-      number: labels.collectorOnlyNumber,
-    },
-  }),
-});
+const validateMethod = createValidateMethod(getStandardConfig(['promoId']));
 
 export default reduxForm({
   form: 'AirmilesBanner',

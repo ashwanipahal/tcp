@@ -8,9 +8,9 @@ import {
 import AddressVerificationComponent from '../views/AddressVerification.view';
 import { resetVerifyAddress } from './AddressVerification.actions';
 
-export const mapStateToProps = state => {
+export const mapStateToProps = (state, ownProps) => {
   return {
-    userAddress: getUserAddress(state),
+    userAddress: ownProps.shippingAddress || getUserAddress(state),
     suggestedAddress: getSuggestedAddress(state),
     verificationResult: getVerificationResult(state),
     labels: getVerifyAddressLabels(state),

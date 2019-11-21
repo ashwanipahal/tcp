@@ -148,6 +148,10 @@ ${props =>
         : ''};
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ${props => props.theme.colorPalette.black};
+  }
+
   .input-subtitle {
     display: ${props => (props.hideSubtitleOnMobile ? 'none' : 'block')};
     @media ${props => props.theme.mediaQuery.medium} {

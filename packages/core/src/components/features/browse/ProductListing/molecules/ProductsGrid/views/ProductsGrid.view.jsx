@@ -29,25 +29,41 @@ class ProductsGrid extends React.Component {
   static propTypes = {
     isLoadingMore: PropTypes.bool,
     productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
-    getMoreProducts: PropTypes.bool,
+    getMoreProducts: PropTypes.func.isRequired,
     onPickUpOpenClick: PropTypes.func,
     onQuickViewOpenClick: PropTypes.func,
     isGridView: PropTypes.bool,
     className: PropTypes.string,
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
+    currency: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}).isRequired,
+    onAddItemToFavorites: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool,
+    isSearchListing: PropTypes.bool,
+    // showQuickViewForProductId: PropTypes.string,
+    getProducts: PropTypes.func,
+    asPathVal: PropTypes.string,
+    AddToFavoriteErrorMsg: PropTypes.string,
+    removeAddToFavoritesErrorMsg: PropTypes.func,
   };
 
   static defaultProps = {
     isLoadingMore: false,
     productsBlock: [],
-    getMoreProducts: false,
     onPickUpOpenClick: null,
     onQuickViewOpenClick: null,
     isGridView: false,
     className: '',
     labels: '',
     productTileVariation: '',
+    currency: 'USD',
+    isLoggedIn: false,
+    isSearchListing: false,
+    getProducts: () => {},
+    asPathVal: '',
+    AddToFavoriteErrorMsg: '',
+    removeAddToFavoritesErrorMsg: () => {},
   };
 
   constructor(props, context) {
@@ -63,14 +79,14 @@ class ProductsGrid extends React.Component {
       this.containerDivRef = ref;
     };
     this.handleLoadNextPage = this.handleLoadNextPage.bind(this);
+    this.loadEnable = false;
   }
 
-  componentWillMount() {
-    if (isClient()) {
-      document.addEventListener('scroll', this.handleLoadNextPage, true);
-      document.addEventListener('mousewheel', this.handleLoadNextPage, true);
-      document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
-    }
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleLoadNextPage, true);
+    document.addEventListener('mousewheel', this.handleLoadNextPage, true);
+    document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
+    this.loadEnable = false;
   }
 
   componentDidUpdate() {
@@ -119,13 +135,16 @@ class ProductsGrid extends React.Component {
 
   handleLoadNextPage() {
     const { isLoadingMore, productsBlock, getMoreProducts } = this.props;
-    if (!isLoadingMore && this.containerDivRef && productsBlock.length) {
-      const offsetY =
-        findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
+    const offsetY =
+      findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
+    if (this.loadEnable && !isLoadingMore && this.containerDivRef && productsBlock.length) {
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+        this.loadEnable = false;
         getMoreProducts();
       }
+    } else if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET < offsetY) {
+      this.loadEnable = true;
     }
   }
 
@@ -139,10 +158,21 @@ class ProductsGrid extends React.Component {
       onPickUpOpenClick,
       onQuickViewOpenClick,
       productTileVariation,
+      currency,
+      currencyAttributes,
+      onAddItemToFavorites,
+      isLoggedIn,
+      isSearchListing,
+      // showQuickViewForProductId,
+      getProducts,
+      asPathVal,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
 
     const containerClassName = `${className} main-section-container `;
+
     return (
       <main className={containerClassName}>
         <section
@@ -168,6 +198,16 @@ class ProductsGrid extends React.Component {
                         labels={labels}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
+                        currency={currency}
+                        currencyAttributes={currencyAttributes}
+                        isLoggedIn={isLoggedIn}
+                        onAddItemToFavorites={onAddItemToFavorites}
+                        // showQuickViewForProductId={showQuickViewForProductId}
+                        isSearchListing={isSearchListing}
+                        getProducts={getProducts}
+                        asPathVal={asPathVal}
+                        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                         {...otherProps}
                       />
                     );

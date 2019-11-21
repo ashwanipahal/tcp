@@ -9,6 +9,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -59,6 +60,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -108,6 +110,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -172,6 +175,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -214,53 +218,28 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       id="phoneNumber"
       label="lbl_profile_personal_info_phoneNumber"
       name="phoneNumber"
+      normalize={[Function]}
       type="tel"
     />
   </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-MED"
+    text="lbl_profile_personal_info_birthday"
+    textDecoration={null}
+  />
   <Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        name="userBirthMonth"
+        options={
           Array [
             Object {
               "displayName": "Month",
@@ -268,122 +247,14 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             },
           ]
         }
-        dataLocator="addnewaddress-country"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        heading="lbl_profile_personal_info_birthday"
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Month"
-        variation="secondary"
+        placeholder="lbl_profile_personal_info_month"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="userBirthMonth"
-          name="userBirthMonth"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
-    <Styled(View)
-      zipCode={true}
-    >
+    <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "bounces": true,
-              "data": Array [],
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        data={
+        component={[Function]}
+        name="userBirthYear"
+        options={
           Array [
             Object {
               "displayName": "Year",
@@ -391,72 +262,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             },
           ]
         }
-        dataLocator="editPersonalInfo-userBirthYear"
-        dropDownStyle={
-          Object {
-            "border": 1,
-            "height": 41,
-          }
-        }
-        itemStyle={
-          Object {
-            "color": "black",
-            "height": 41,
-            "paddingLeft": 6,
-          }
-        }
-        onValueChange={[Function]}
-        selectedValue="Year"
-        variation="secondary"
-      />
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "ariaLabel": "input",
-              "dataLocator": "input-field",
-              "enableSuccessCheck": false,
-              "id": "input",
-              "keyboardType": "default",
-              "label": "input",
-              "marginBottom": true,
-              "meta": Object {
-                "error": "",
-                "touched": "",
-              },
-              "onChangeText": [Function],
-              "secureTextEntry": false,
-              "showErrorIcon": true,
-              "showSuccessCheck": false,
-              "successText": "",
-              "type": "text",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(TextBox)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        id="userBirthYear"
-        name="userBirthYear"
-        title=""
-        type="hidden"
+        placeholder="lbl_profile_personal_info_year"
       />
     </Styled(View)>
   </Styled(View)>
@@ -490,6 +296,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -538,7 +345,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -551,6 +358,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       locator=""
       navigation={Object {}}
       onPress={null}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -558,12 +366,13 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -576,12 +385,14 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       locator=""
       navigation={Object {}}
       onPress={null}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_profile_personal_info_cancelCta"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

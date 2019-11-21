@@ -172,8 +172,17 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   });
 
   it('should set fit list', () => {
-    const fits = [];
-    const color = { name: 'WHITE', hasFits: true, fits };
+    const fits = [
+      {
+        displayName: 'regular',
+        id: 'regular',
+      },
+      {
+        displayName: 'plus',
+        id: 'plus',
+      },
+    ];
+    const color = { name: 'TIDAL', hasFits: true, fits };
     const currentProduct = {
       colorFitsSizesMap: [
         {
@@ -190,7 +199,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     const sizes = [];
     const fit = { sizes };
     const fits = [fit];
-    const color = { name: 'WHITE', hasFits: true, fits };
+    const color = { name: 'TIDAL', hasFits: true, fits };
     const currentProduct = {
       colorFitsSizesMap: [
         {
@@ -200,7 +209,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     };
     wrapper.setProps(currentProduct);
     wrapper.instance().setState({ selectedColor: color, selectedFit: fit });
-    expect(wrapper.props().sizeList).toEqual(false);
+    expect(wrapper.props().sizeList).toEqual([]);
   });
 
   it('should call getInitialValues', () => {

@@ -1,8 +1,10 @@
 export const HEADER_REDUCER_KEY = 'Header';
 export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
+export const SEO_DATA_REDUCER_KEY = 'SEOData';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
+export const SUB_NAVIGATION_REDUCER_KEY = 'SubNavigation';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
@@ -12,6 +14,10 @@ export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
 export const SOCIAL_REDUCER_KEY = 'Social';
+export const RECENT_SEARCH_REDUCER_KEY = 'RecentSearches';
+export const BUNDLEPRODUCT_REDUCER_KEY = 'BundleProduct';
+export const BUNDLEPRODUCT_ACTION_PATTERN = '@@Bundle--';
+
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
 // Login Page Reducer
@@ -40,6 +46,7 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+export const SOCIAL_ACTION_PATTERN = '@@Social-';
 
 // search listing page reducer
 export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
@@ -156,6 +163,7 @@ export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 // plcc card Page Reducer
 export const APPLY_PLCC_REDUCER_KEY = 'ApplyCardPage';
 export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
+
 // optimizely features reducer
 export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 
@@ -204,6 +212,19 @@ export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
 // User Order History
 export const ORDERS_REDUCER_KEY = 'Orders';
 export const ORDERS_ACTION_PATTERN = '@@Orders-';
+// Store List Reducer
+export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
+export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
+
+// Category List Reducer
+export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
+export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
+
+// My Profile reducer
+export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
+export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';
+
+export const ANALYTICS_DATA_KEY = 'AnalyticsDataKey';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -227,6 +248,7 @@ export const REDUCER_ACTION_MAPPING = {
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
   [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN,
   [PRODUCT_DETAIL_REDUCER_KEY]: PRODUCT_DETAIL_ACTION_PATTERN,
+  [PRODUCT_PICKUP_REDUCER_KEY]: PRODUCT_PICKUP_ACTION_PATTERN,
   [GET_CANDID_REDUCER_KEY]: GET_CANDID_ACTION_PATTERN,
   [MY_PROFILE_REDUCER_KEY]: MY_PROFILE_ACTION_PATTERN,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
@@ -242,4 +264,9 @@ export const REDUCER_ACTION_MAPPING = {
   [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
   [STORES_INTL_REDUCER_KEY]: STORES_INTL_ACTION_PATTERN,
   [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
+  [STORE_LIST_REDUCER_KEY]: STORE_LIST_ACTION_PATTERN,
+  [MY_PREFERENCE_REDUCER_KEY]: MY_PREFERENCE_ACTION_PATTERN,
+  [BUNDLEPRODUCT_REDUCER_KEY]: BUNDLEPRODUCT_ACTION_PATTERN,
+  [COUPON_REDUCER_KEY]: COUPON_ACTION_PATTERN,
+  [SOCIAL_REDUCER_KEY]: SOCIAL_ACTION_PATTERN,
 };

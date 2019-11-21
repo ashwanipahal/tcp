@@ -58,7 +58,6 @@ class ModuleK extends React.PureComponent {
           <WrapperView width={getScreenWidth()}>
             <Button
               width="225px"
-              buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
               testID={`moduleK_button_set_${slideIndex}`}
               url={singleCTAButton.url}
@@ -83,7 +82,7 @@ class ModuleK extends React.PureComponent {
             <LinkText
               headerText={headerText}
               navigation={navigation}
-              fontSize="fs36"
+              fontSize="fs32"
               fontWeight="black"
               color="text.primary"
               fontFamily="primary"

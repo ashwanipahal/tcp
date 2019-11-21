@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThankYouTitleDisplayVanilla should render correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-XS margin-bottom-XS margin-left-MED margin-right-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      fontSize="fs36"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-SM margin-left-LRG margin-right-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      text={
+        <ForwardRef
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs18"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text="undefined abcd@test.com undefined"
+          textAlign="center"
+          textDecoration={null}
+        />
+      }
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with isShowBopisMessage msg 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-XS margin-bottom-XS margin-left-MED margin-right-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      fontSize="fs36"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-SM margin-left-LRG margin-right-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      text={
+        <ForwardRef
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs18"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text="undefined undefinedundefined abc@test.com"
+          textAlign="center"
+          textDecoration={null}
+        />
+      }
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with isShowShippingMessage msg 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-XS margin-bottom-XS margin-left-MED margin-right-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      fontSize="fs36"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-SM margin-left-LRG margin-right-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      text={
+        <ForwardRef
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs18"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text="undefined undefinedundefined abc@test.com"
+          textAlign="center"
+          textDecoration={null}
+        />
+      }
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with showbopis msg 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-XS margin-bottom-XS margin-left-MED margin-right-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      fontSize="fs36"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-SM margin-left-LRG margin-right-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      text={
+        <ForwardRef
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs18"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text="undefined falseundefined abcd@test.com"
+          textAlign="center"
+          textDecoration={null}
+        />
+      }
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;

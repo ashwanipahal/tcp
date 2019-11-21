@@ -2,19 +2,24 @@
 
 exports[`RichText should render correctly 1`] = `
 <WebView
+  actionHandler={[Function]}
+  cacheEnabled={true}
   domStorageEnabled={false}
+  isApplyDeviceHeight={false}
+  isNativeView={false}
   javaScriptEnabled={false}
   originWhitelist={
     Array [
       "*",
     ]
   }
-  source=""
+  source="<div><p>Hello <b>World</b></p><br /><img source=\\"/\\" /></div>"
   style={
     Object {
       "backgroundColor": "transparent",
     }
   }
   thirdPartyCookiesEnabled={false}
+  useSharedProcessPool={true}
 />
 `;

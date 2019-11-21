@@ -1,5 +1,5 @@
-const buildQuery = ({ slot, contentId }) => `
-  ${slot}: moduleById(id: "${contentId}") {
+const buildQuery = ({ slot, contentId, lang }) => `
+  ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
 
     contentId
     name
@@ -8,6 +8,7 @@ const buildQuery = ({ slot, contentId }) => `
       val
       key
     }
+    errorMessage
     composites {
       headerText {
         textItems {
@@ -38,8 +39,8 @@ const buildQuery = ({ slot, contentId }) => `
         text {
           text
         }
-        category {
-          cat_id
+        stylistic {
+          styl_id
         }
         singleCTAButton {
           url

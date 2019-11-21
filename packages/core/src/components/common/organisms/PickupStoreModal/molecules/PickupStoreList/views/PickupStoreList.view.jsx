@@ -3,7 +3,8 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import InputCheckbox from '../../../../../atoms/InputCheckbox';
+import StoreListItemSkeleton from '../../../atoms/StoreListItemSkeleton';
+import StyledInputCheckbox from '../styles';
 
 const PickupStoreList = props => {
   const {
@@ -29,18 +30,22 @@ const PickupStoreList = props => {
     derivedStoresList,
     addItemToCartInPickup,
     onPickupRadioBtnToggle,
+    onStoreUpdate,
+    isSearching,
+    isUserCartStoreLoaded,
   } = props;
-
+  const InputCheckBoxComponent = StyledInputCheckbox;
   return (
     <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-        <InputCheckbox
+        <InputCheckBoxComponent
           checkBoxLabel
           execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
+          isPickUpStoreView
         >
           {BOPIS_FILTER_LABEL}
-        </InputCheckbox>
+        </InputCheckBoxComponent>
       )}
       {derivedStoresList.map(store => (
         <PickupStoreListItem
@@ -67,8 +72,10 @@ const PickupStoreList = props => {
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
           onPickupRadioBtnToggle={onPickupRadioBtnToggle}
+          onStoreUpdate={onStoreUpdate}
         />
       ))}
+      {isSearching || !isUserCartStoreLoaded ? <StoreListItemSkeleton col={20} /> : null}
     </>
   );
 };
@@ -98,6 +105,7 @@ PickupStoreList.propTypes = {
    * receive one parameter, the id of the clicked store.
    */
   onStoreSelect: PropTypes.func.isRequired,
+  onStoreUpdate: PropTypes.func.isRequired,
   handleShowAvailableChange: PropTypes.func.isRequired,
   addItemToCartInPickup: PropTypes.func.isRequired,
 
@@ -124,6 +132,7 @@ PickupStoreList.propTypes = {
 
   /** checks if the cart having both same store for BOPIS and BOSS */
   sameStore: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
   /** store id that was selected */
   selectedStoreId: PropTypes.number.isRequired,
 
@@ -139,6 +148,7 @@ PickupStoreList.propTypes = {
   isBopisCtaEnabled: PropTypes.bool.isRequired,
   isBossCtaEnabled: PropTypes.bool.isRequired,
   defaultStoreName: PropTypes.string,
+  isUserCartStoreLoaded: PropTypes.bool.isRequired,
 };
 
 PickupStoreList.defaultProps = {

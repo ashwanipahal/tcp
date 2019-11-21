@@ -26,10 +26,17 @@ const CancelWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
+const IconContainer = styled.View`
+  position: absolute;
+  right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  top: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
 export {
   HideShowField,
   CurrentPasswordWrapper,
   NewPasswordWrapper,
   ConfirmPasswordWrapper,
   CancelWrapper,
+  IconContainer,
 };

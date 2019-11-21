@@ -4,6 +4,7 @@ exports[`Anchor Native should render correctly 1`] = `
 <Styled(TouchableOpacity)
   accessibilityLabel="click Me"
   accessibilityRole="link"
+  justifyContent=""
   onPress={[Function]}
   style={Object {}}
 >
@@ -11,6 +12,7 @@ exports[`Anchor Native should render correctly 1`] = `
     anchorVariation=""
     colorName={null}
     internal={true}
+    margins={null}
     name="Anchor"
     navigation={
       Object {

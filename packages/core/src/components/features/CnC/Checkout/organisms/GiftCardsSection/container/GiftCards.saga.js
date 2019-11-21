@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, put, select, delay } from 'redux-saga/effects';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
@@ -15,24 +15,41 @@ import {
   addGiftCardSuccess,
   resetAddGiftCard,
   setIsLoadingShippingMethods,
+  getSetIsBillingVisitedActn,
 } from '../../../container/Checkout.action';
+import checkoutSelectors from '../../../container/Checkout.selector';
+import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
     yield put(resetGiftCardError());
-    const res = yield call(addGiftCardPaymentToOrder, payload);
+    const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(addGiftCardPaymentToOrder, payload, errorMappings);
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       const errorObject = {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
+    } else {
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: false,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
     }
-
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(setGiftCardError(err));
+    const errorObject = {
+      [payload.creditCardId]: err,
+    };
+    yield put(setGiftCardError(errorObject));
+    yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+    yield put(resetGiftCardError());
   }
 }
 
@@ -41,8 +58,20 @@ export function* removeGiftCardFromOrder(payloadData) {
     const { payload } = payloadData;
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
+    const isPaymentDisabled = yield select(checkoutSelectors.getIsPaymentDisabled);
+    if (isPaymentDisabled) {
+      yield put(getSetIsBillingVisitedActn(false));
+    }
     yield call(removeGiftCard, payload, labels);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        isRecalculateTaxes: true,
+        excludeCartItems: false,
+        recalcRewards: true,
+        isCheckoutFlow: true,
+        translation: false,
+      })
+    );
   } catch (err) {
     console.log(err);
   }
@@ -56,7 +85,15 @@ export function* addGiftCardFromBilling(payloadData) {
     if (response && response.success) {
       yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardSuccess());
-      yield put(BAG_PAGE_ACTIONS.getCartData());
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: false,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
     }
     if (response.errorMessage) {
       const resErr = response.errorMessage[Object.keys(response.errorMessage)[0]];

@@ -11,19 +11,18 @@ describe('LoginPage saga', () => {
       const payload = {};
       loginGen = loginSaga({ payload });
       loginGen.next();
+      loginGen.next();
     });
 
     it('should dispatch getUserInfo action for success resposnse', () => {
-      loginGen.next({
-        success: true,
-      });
+      loginGen.next({ success: true });
+      expect(loginGen.next().value).toEqual(put(getUserInfo()));
       loginGen.next();
       loginGen.next();
-      const putDescriptor = loginGen.next().value;
-      expect(putDescriptor).toEqual(put(getUserInfo()));
     });
 
     it('should dispatch setLoginInfo action for API error', () => {
+      loginGen.next();
       const putDescriptor = loginGen.next({
         success: false,
       }).value;
@@ -38,7 +37,8 @@ describe('LoginPage saga', () => {
 
     it('should dispatch setLoginInfo for error response', () => {
       const error = new Error();
-      const putDescriptor = loginGen.throw(error).value;
+      loginGen.throw(error);
+      const putDescriptor = loginGen.next(error).value;
       expect(putDescriptor).toEqual(
         put(
           setLoginInfo({

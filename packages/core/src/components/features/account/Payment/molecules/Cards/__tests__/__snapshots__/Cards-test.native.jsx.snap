@@ -27,18 +27,22 @@ exports[`CardList Component should render correctly 1`] = `
 >
   <Styled(Text) />
   <Styled(View)>
-    <Styled(View)>
-      <Styled(Image)
-        source=""
-      />
-    </Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height={46}
+      host=""
+      resizeMode="contain"
+      source=""
+      url=""
+      width={69}
+    />
     <Styled(Text) />
   </Styled(View)>
   <Styled(Text) />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -51,12 +55,14 @@ exports[`CardList Component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </View>
@@ -117,7 +123,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -130,12 +136,14 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <ReduxForm

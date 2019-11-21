@@ -30,6 +30,12 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_venmo_banner: venmoBannerText,
     lbl_pickup_nextToBilling: nextToBilling,
+    lbl_pickup_editFormSubmitError: editFormSubmitError,
+    lbl_shipping_emailSignUpHeader: emailSignUpHeader,
+    lbl_shipping_emailSignUpSubHeader: emailSignUpSubHeader,
+    lbl_shipping_childrenPlaceCheckoutTxt: childrenPlaceCheckoutTxt,
+    lbl_shipping_emailSignUpDisclaimer: emailSignUpDisclaimer,
+    lbl_shipping_gymboreePlaceCheckoutTxt: gymboreePlaceCheckoutTxt,
   } = state.Labels.global && state.Labels.checkout.pickup;
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
@@ -63,6 +69,12 @@ const getPickUpContactFormLabels = state => {
     venmoBannerText,
     reviewText,
     nextToBilling,
+    editFormSubmitError,
+    emailSignUpHeader,
+    emailSignUpSubHeader,
+    childrenPlaceCheckoutTxt,
+    emailSignUpDisclaimer,
+    gymboreePlaceCheckoutTxt,
   };
 };
 
@@ -78,6 +90,7 @@ const getGiftServicesFormData = state => {
     catEntryId: selector(state, 'optionId'),
     hasGiftWrapping: selector(state, 'hasGiftWrapping'),
     GiftMsg: selector(state, 'message'),
+    brand: selector(state, 'brand'),
   };
 };
 
@@ -85,9 +98,15 @@ const getPaypalPaymentSettings = state => {
   return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
 };
 
+const getExpressReviewShippingSectionId = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'expressReviewShippingSection');
+};
+
 export {
   getPickUpContactFormLabels,
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 };

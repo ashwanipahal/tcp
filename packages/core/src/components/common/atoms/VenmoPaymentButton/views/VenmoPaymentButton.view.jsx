@@ -8,6 +8,7 @@ import logger from '../../../../../utils/loggerInstance';
 import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 import BodyCopy from '../../BodyCopy';
+import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
 
 let venmoInstance = null;
 
@@ -17,11 +18,8 @@ export class VenmoPaymentButton extends Component {
     this.venmoButtonRef = null;
     this.state = {
       hasVenmoError: true,
+      venmoErrorMessage: null,
     };
-  }
-
-  componentWillMount() {
-    this.fetchVenmoClientToken();
   }
 
   /**
@@ -61,6 +59,14 @@ export class VenmoPaymentButton extends Component {
     if (this.venmoButtonRef) {
       this.venmoButtonRef.disable = flag;
     }
+  };
+
+  renderServerError = () => {
+    const { hasVenmoError, venmoErrorMessage } = this.state;
+    if (!hasVenmoError) {
+      return null;
+    }
+    return <ErrorMessage error={venmoErrorMessage} className="error_box minibag-error" />;
   };
 
   /**
@@ -140,6 +146,7 @@ export class VenmoPaymentButton extends Component {
    */
   handleVenmoError = ({ code, message, name }) => {
     const { setVenmoData, onVenmoPaymentButtonError } = this.props;
+    this.setState({ venmoErrorMessage: message });
     const errorData = { nonce: '', error: { code, message, name } };
     if (code !== constants.VENMO_CANCELED) {
       setVenmoData(errorData);
@@ -149,7 +156,11 @@ export class VenmoPaymentButton extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    const { mode, authorizationKey, isNonceNotExpired } = this.props;
+    const { mode, authorizationKey, isNonceNotExpired, isGuest } = this.props;
+    if (prevProps.isGuest !== isGuest) {
+      // Condition for bag page reload on registered user, and user logging in from bag page
+      this.fetchVenmoClientToken();
+    }
     if (
       mode === modes.CLIENT_TOKEN &&
       (prevProps.authorizationKey !== authorizationKey ||
@@ -168,6 +179,7 @@ export class VenmoPaymentButton extends Component {
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
+    this.fetchVenmoClientToken();
     if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
@@ -221,10 +233,12 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { venmoData, mode, enabled, className, continueWithText } = this.props;
+    const { venmoData, mode, enabled, className, continueWithText, isVenmoBlueButton } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
-    const venmoIcon = getIconPath('venmo-logo-blue');
+    const venmoIcon = isVenmoBlueButton
+      ? getIconPath('venmo-button')
+      : getIconPath('venmo-logo-blue');
     return (
       <div className={className}>
         {enabled &&
@@ -253,6 +267,7 @@ export class VenmoPaymentButton extends Component {
               </button>
             </div>
           )}
+        {this.renderServerError()}
       </div>
     );
   }
@@ -289,6 +304,7 @@ VenmoPaymentButton.propTypes = {
   continueWithText: string,
   isGuest: bool.isRequired,
   orderId: string.isRequired,
+  isVenmoBlueButton: bool, // Venmo Blue Background CTA as per venmo guidelines
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -307,6 +323,7 @@ VenmoPaymentButton.defaultProps = {
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
   continueWithText: '',
+  isVenmoBlueButton: false,
 };
 
 export default withStyles(VenmoPaymentButton, styles);

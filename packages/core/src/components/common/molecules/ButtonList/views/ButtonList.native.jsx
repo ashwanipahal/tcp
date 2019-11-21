@@ -36,7 +36,6 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, showFullWidth, locator, buttonVariation) => {
   const { button } = item;
-
   return (
     <Button
       locator={locator}
@@ -84,7 +83,7 @@ const renderOddButtonGrid = (ctxButton, navigation, locator, color) => {
 /**
  * This function is used to render a single button in scroll Button view .
  */
-const renderItemScrollCTAList = (item, navigation, locator, color) => {
+const renderItemScrollCTAList = (item, navigation, locator, color, buttonVariation) => {
   const {
     item: { button },
   } = item;
@@ -95,7 +94,7 @@ const renderItemScrollCTAList = (item, navigation, locator, color) => {
         locator={locator}
         accessibilityRole="button"
         accessibilityLabel={button.text}
-        buttonVariation="cautionary-button"
+        buttonVariation={buttonVariation || 'variable-width'}
         color={color}
         text={button.text}
         url={button.url}
@@ -108,7 +107,7 @@ const renderItemScrollCTAList = (item, navigation, locator, color) => {
 /**
  * This function is used to generate Scroll ButtonList view .
  */
-const renderScrollCTAList = (ctxButton, navigation, locator, color) => {
+const renderScrollCTAList = (ctxButton, navigation, locator, color, buttonVariation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -117,7 +116,9 @@ const renderScrollCTAList = (ctxButton, navigation, locator, color) => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={item => renderItemScrollCTAList(item, navigation, locator, color)}
+      renderItem={item =>
+        renderItemScrollCTAList(item, navigation, locator, color, buttonVariation)
+      }
     />
   );
 };
@@ -258,7 +259,9 @@ const ButtonList = ({
 
   if (buttonListVariation === 'scrollCTAList') {
     return (
-      <ContainerView>{renderScrollCTAList(buttonsData, navigation, locator, color)}</ContainerView>
+      <ContainerView>
+        {renderScrollCTAList(buttonsData, navigation, locator, color, buttonVariation)}
+      </ContainerView>
     );
   }
 

@@ -151,7 +151,6 @@ export class CouponCard extends React.Component<Props> {
       <CustomButton
         fill="DARK"
         type="submit"
-        buttonVariation="variable-width"
         data-locator=""
         text={coupon.labelStatus}
         disableButton={isFetching}
@@ -170,7 +169,6 @@ export class CouponCard extends React.Component<Props> {
       <CustomButton
         fill="WHITE"
         type="submit"
-        buttonVariation="variable-width"
         data-locator=""
         text={coupon.labelStatus}
         disableButton={isFetching}

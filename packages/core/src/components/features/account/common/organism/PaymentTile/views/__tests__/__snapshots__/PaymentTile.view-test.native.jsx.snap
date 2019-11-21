@@ -8,6 +8,7 @@ exports[`PaymentTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_paymentHeading"
@@ -81,7 +82,7 @@ exports[`PaymentTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -94,12 +95,14 @@ exports[`PaymentTile component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_view_payments"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

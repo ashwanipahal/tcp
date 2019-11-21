@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
@@ -16,14 +17,15 @@ import Notification from '../../../../common/molecules/Notification';
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class DeleteAddressModal extends React.Component<Props> {
+class DeleteAddressModal extends React.Component {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
    * @return {[Function]} function called
    */
   onClose = () => {
-    const { setDeleteModalMountState } = this.props;
+    const { setDeleteModalMountState, clearNotificationError } = this.props;
+    clearNotificationError();
     setDeleteModalMountState({ state: false });
   };
 
@@ -112,6 +114,7 @@ class DeleteAddressModal extends React.Component<Props> {
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
+
   render() {
     const { className, data, openState, showUpdatedNotificationOnModal, labels } = this.props;
     const { heading } = data;
@@ -140,6 +143,17 @@ class DeleteAddressModal extends React.Component<Props> {
     );
   }
 }
+
+DeleteAddressModal.propTypes = {
+  data: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDeleteAddress: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  openState: PropTypes.bool.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  clearNotificationError: PropTypes.func.isRequired,
+};
 
 export default withStyles(DeleteAddressModal, styles);
 export { DeleteAddressModal as DeleteAddressModalVanilla };

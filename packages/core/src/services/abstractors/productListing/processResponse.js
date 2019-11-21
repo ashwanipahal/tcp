@@ -1,5 +1,7 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
@@ -7,6 +9,13 @@ import {
   getTotalProductsCount,
   getCurrentListingIds,
 } from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
+
+const clearAll = {
+  CLEAR_ALL_SEARCH_FILTER: 'CLEAR_ALL_SEARCH_FILTER',
+  CLEAR_ALL_PLP_FILTER: 'CLEAR_ALL_PLP_FILTER',
+};
+
+const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 
 const getAvailableL3List = facets => {
   return facets && facets.multilevel && facets.multilevel.bucket;
@@ -90,7 +99,7 @@ const getQueryString = (keyValuePairs = {}) => {
   return params.join('&');
 };
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const getPlpUrlQueryValues = filtersAndSort => {
+const getPlpUrlQueryValues = (filtersAndSort, location) => {
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
   let urlQueryValues = {};
@@ -125,8 +134,8 @@ const getPlpUrlQueryValues = filtersAndSort => {
 
   urlQueryValues = getQueryString(urlQueryValues);
 
-  let displayPath = window.location.pathname;
-  const searchName = window.location.search;
+  let displayPath = typeof window === 'undefined' ? location.pathname : window.location.pathname;
+  const searchName = typeof window === 'undefined' ? location.search || '' : window.location.search;
   displayPath = `${displayPath}${searchName}`;
   const country = getSiteId();
   let urlPath = displayPath.replace(`/${country}`, '');
@@ -144,9 +153,13 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = `${urlPath}${routeURL}`;
 
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
-  if (routeURL.includes('search') && routeURL !== `/search/${urlPathCID}`) {
+  if (routeURL.includes('search')) {
+    if (localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) === null)
+      localStorage.setItem(CLEAR_ALL_SEARCH_FILTER, true);
     routerPush(`/search?searchQuery=${urlPathCID}`, routeURL, { shallow: true });
-  } else if (routeURL.includes('/c/') && routeURL !== `/c/${urlPathCID}`) {
+  } else if (routeURL.includes('/c/')) {
+    if (localStorage.getItem(CLEAR_ALL_PLP_FILTER) === null)
+      localStorage.setItem(CLEAR_ALL_PLP_FILTER, true);
     routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
   }
   return true;
@@ -170,6 +183,9 @@ const processResponse = (
     searchTerm,
     sort,
     filterSortView,
+    location,
+    filterMaps = {},
+    isLazyLoading,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -179,12 +195,12 @@ const processResponse = (
   // if (this.apiHelper.responseContainsErrors(res)) {
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
-  if (res.body.redirect && window) {
+  if (isClient() && res.body.redirect && typeof window !== 'undefined') {
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp() && filterSortView) {
-    getPlpUrlQueryValues(filtersAndSort);
+  if (!isMobileApp() && filterSortView && !isLazyLoading) {
+    getPlpUrlQueryValues(filtersAndSort, location);
   }
 
   const pendingPromises = [];
@@ -214,7 +230,7 @@ const processResponse = (
     const productListingFilters = getProductsFilters(state);
     const productListingTotalCount = getTotalProductsCount(state);
     productListingCurrentNavIds = getCurrentListingIds(state);
-    filters = productListingFilters || {};
+    filters = Object.keys(productListingFilters).length ? productListingFilters : filterMaps;
     totalProductsCount = productListingTotalCount || 0;
   }
 
@@ -223,6 +239,7 @@ const processResponse = (
   // TODO - fix this - this.setUnbxdId(unbxdId);
   let entityCategory;
   let categoryNameTop = '';
+  let bannerInfo = {};
   // Taking the first product in plp to get the categoryID to be sent to adobe
   if (processHelpers.hasProductsInResponse(res.body.response)) {
     const firstProduct = res.body.response.products[0];
@@ -261,8 +278,7 @@ const processResponse = (
     categoryNameTop,
   };
   if (res.body.response) {
-    // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
-    const isUSStore = true;
+    const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,
@@ -278,8 +294,16 @@ const processResponse = (
       })
     );
   }
+
+  try {
+    if (res.body.banner) {
+      bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+    }
+  } catch (error) {
+    logger.error(error);
+  }
   return Promise.all(pendingPromises).then(() => {
-    return response;
+    return { ...response, bannerInfo };
   });
 };
 

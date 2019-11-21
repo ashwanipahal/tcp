@@ -14,10 +14,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               accessibilityText=""
               data-locator="msgtextinbold"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
@@ -29,10 +29,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               accessibilityText=""
               data-locator="infomsg"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
@@ -54,6 +54,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
             Object {
@@ -78,7 +79,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
+          justifyContent=""
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -159,10 +162,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               accessibilityText=""
               data-locator="msgtextinbold"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
@@ -174,10 +177,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               accessibilityText=""
               data-locator="infomsg"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
@@ -209,6 +212,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
             Object {
@@ -233,7 +237,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
+          justifyContent=""
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -314,10 +320,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               accessibilityText=""
               data-locator="msgtextinbold"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
@@ -329,10 +335,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               accessibilityText=""
               data-locator="infomsg"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
@@ -364,6 +370,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
             Object {
@@ -388,7 +395,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
+          justifyContent=""
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -469,10 +478,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               accessibilityText=""
               data-locator="msgtextinbold"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
@@ -484,10 +493,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               accessibilityText=""
               data-locator="infomsg"
               dataLocator=""
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               margin={null}
-              mobileFontFamily="secondary"
               numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
@@ -519,6 +528,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
             Object {
@@ -543,7 +553,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
+          justifyContent=""
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -623,10 +635,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             accessibilityText=""
             data-locator="infomsg"
             dataLocator=""
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="regular"
             margin={null}
-            mobileFontFamily="secondary"
             numberOfLines={null}
             text="lbl_bonusPoints_myRewardsUsedAll"
             textAlign="center"
@@ -647,6 +659,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
             Object {
@@ -671,7 +684,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
+          justifyContent=""
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}

@@ -101,6 +101,7 @@ class AddNewCCForm extends React.PureComponent {
               name="saveToAccount"
               className="elem-mb-LRG elem-mt-LRG"
               onChange={this.onSaveToAccountChange}
+              dataLocator="saveCardChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.saveToAccount}
@@ -116,6 +117,7 @@ class AddNewCCForm extends React.PureComponent {
               name="defaultPayment"
               className="elem-mb-LRG"
               disabled={!cardList && !isSaveToAccountChecked}
+              dataLocator="defaultPaymentChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.defaultPayment}

@@ -5,9 +5,10 @@ import { StyledText } from '../../../../../styles/globalStyles/StyledText.style'
 import { BUTTON_VARIATION } from '.';
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margin, paddings } = props;
   return {
     ...(margin && { margin }),
+    ...(paddings && { padding: paddings }),
   };
 };
 
@@ -24,14 +25,22 @@ const getShape = props => {
 };
 
 const getMobileAppFilterButtonViewStyle = props => {
-  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
+  const {
+    theme,
+    selected,
+    buttonVariation,
+    bottomBorderOnly,
+    textAlignLeft,
+    lightGrayColor,
+  } = props;
   const { colorPalette, spacing } = theme;
   const bgColor = selected ? colorPalette.gray[900] : 'transparent';
-  const borderColor = colorPalette.gray[900];
+  const borderColor = lightGrayColor ? colorPalette.gray[1500] : colorPalette.gray[900];
   const padding = spacing.ELEM_SPACING.XXS;
 
   if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
     return `
+      ${textAlignLeft ? `justify-content: flex-start` : `justify-content: center`};
       min-width: 80px;
       border: 1px solid ${borderColor};
       padding: ${padding};
@@ -39,8 +48,40 @@ const getMobileAppFilterButtonViewStyle = props => {
       align-self: center;
       background-color: ${bgColor};
       border-radius: 6px;
-      justify-content: center;
       align-items: center;
+      ${
+        bottomBorderOnly
+          ? `
+          border-top-width: 0;
+          border-left-width: 0;
+          border-right-width: 0;
+          border-radius: 0;
+          `
+          : ''
+      };
+    `;
+  }
+  return `
+  null
+  `;
+};
+
+const getMobileAppSelectFieldViewStyle = props => {
+  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
+  const { colorPalette } = theme;
+  const bgColor = selected ? colorPalette.gray[900] : 'transparent';
+  const borderColor = colorPalette.gray[900];
+
+  if (buttonVariation === BUTTON_VARIATION.mobileAppSelect) {
+    return `
+      width: 100%;
+      border: 1px solid ${borderColor};
+      background-color: ${bgColor};
+      align-items: flex-end;
+      justify-content: space-between;
+      min-height: 40px;
+      height: 40px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       ${
         bottomBorderOnly
           ? `
@@ -58,7 +99,7 @@ const getMobileAppFilterButtonViewStyle = props => {
 };
 
 const getMobileAppFilterButtonTextStyle = props => {
-  const { theme, selected, buttonVariation } = props;
+  const { theme, selected, buttonVariation, withNoLineHeight } = props;
   const { colorPalette, typography } = theme;
   const { fontSizes, fontWeights, fonts } = typography;
   let fontColor = colorPalette.gray[1100];
@@ -71,7 +112,10 @@ const getMobileAppFilterButtonTextStyle = props => {
     fontWeight = fontWeights.black;
     letterSpacing = '0.71px';
   }
-  if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
+  if (
+    buttonVariation === BUTTON_VARIATION.mobileAppFilter ||
+    buttonVariation === BUTTON_VARIATION.mobileAppSelect
+  ) {
     return `
       letter-spacing: ${letterSpacing};
       font-size: ${fontSizes.fs10};
@@ -80,7 +124,7 @@ const getMobileAppFilterButtonTextStyle = props => {
       color: ${fontColor};
       text-transform: none;
       padding: 0px;
-      line-height: 12px;
+      ${!withNoLineHeight ? `line-height: 12px` : ''}
     `;
   }
   return `
@@ -145,26 +189,40 @@ const TouchableOpacityComponent = styled.TouchableOpacity`
 const IconContainer = styled.View`
   position: absolute;
   right: 14px;
+  ${props =>
+    props.buttonVariation === BUTTON_VARIATION.mobileAppSelect
+      ? `
+    right: 0;
+    bottom: 6px;
+  `
+      : ''};
 `;
 
 const style = css`
   justify-content: center;
-  min-height: 42px;
+  min-height: 32px;
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
-  background: ${props => props.theme.colorPalette.white};
+
+  ${props =>
+    props.width
+      ? `
+      width: ${props.width};
+   `
+      : ''};
   ${props => getShape(props)};
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
    width: ${props.width};
    height: ${props.height};
+   background: ${props.theme.colorPalette.gray[300]}
    `
       : ''};
   ${props =>
     props.fill === 'BLUE'
-      ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
-          props.theme.colorPalette.blue[700]
+      ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+          props.theme.colorPalette.blue.C900
         }; `
       : ''};
   ${props =>
@@ -208,6 +266,7 @@ const style = css`
 
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
+  ${getMobileAppSelectFieldViewStyle};
 `;
 
 const CustomStyleText = styled(StyledText)`
@@ -218,14 +277,13 @@ const CustomStyleText = styled(StyledText)`
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  color: ${props => props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 20px;
+  color: ${props => props.color || props.theme.colorPalette.gray[800]};
+  padding: 11px 20px;
 
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      width: 100%;
-      padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+      padding: ${props.paddings};
   `
       : ''};
 
@@ -237,6 +295,7 @@ const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary'
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
+   font-weight: ${props.theme.typography.fontWeights.extrabold};
    `
       : ''};
 

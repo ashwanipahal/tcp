@@ -22,12 +22,17 @@ class CheckoutOrderInfo extends React.PureComponent {
       isVenmoPaymentInProgress,
       venmoPayment,
       labels,
+      fullPageInfo,
+      pageCategory,
     } = this.props;
     return (
       <div className={className}>
         {isConfirmationPage ? (
           <>
-            <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+            <OrderLedgerContainer
+              isConfirmationPage={isConfirmationPage}
+              pageCategory={pageCategory}
+            />
             {isVenmoPaymentInProgress && venmoPayment && (
               <section className="venmo-payment-method-wrapper">
                 <BodyCopy
@@ -42,11 +47,6 @@ class CheckoutOrderInfo extends React.PureComponent {
                 <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
               </section>
             )}
-            <Row fullBleed className="placeholder ">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>LOYALTY BANNER</div>
-              </Col>
-            </Row>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <PersonalizedCoupons />
@@ -58,8 +58,10 @@ class CheckoutOrderInfo extends React.PureComponent {
             <CouponAndPromos
               showAccordian={showAccordian}
               additionalClassNameModal="coupon-modal-mob"
+              idPrefix="mobile"
+              fullPageInfo={fullPageInfo}
             />
-            <OrderLedgerContainer showAccordian={showAccordian} />
+            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
             {!isGuest && (
               <BonusPointsDays
                 showAccordian={showAccordian}
@@ -80,12 +82,14 @@ CheckoutOrderInfo.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
+  fullPageInfo: PropTypes.bool,
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoPayment: PropTypes.shape({
     userName: PropTypes.string,
     ccBrand: PropTypes.string,
     ccType: PropTypes.string,
   }),
+  pageCategory: PropTypes.string,
   labels: PropTypes.shape({
     paidWithVenmo: PropTypes.string,
   }),
@@ -94,6 +98,8 @@ CheckoutOrderInfo.propTypes = {
 CheckoutOrderInfo.defaultProps = {
   isConfirmationPage: false,
   isVenmoPaymentInProgress: false,
+  fullPageInfo: false,
+  pageCategory: '',
   venmoPayment: {
     userName: '',
     ccBrand: VenmoConstants.VENMO,

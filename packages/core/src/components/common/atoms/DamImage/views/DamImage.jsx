@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
+import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
   let { basePath } = props;
   let imgPath;
-
+  const propImageConfig = [];
   /* eslint-disable camelcase */
   const { crop_m, crop_t, crop_d, url } = imgData;
-  imgConfigs[0] = crop_m || imgConfigs[0];
-  imgConfigs[1] = crop_t || imgConfigs[1];
-  imgConfigs[2] = crop_d || imgConfigs[2];
+  propImageConfig[0] = crop_m || imgConfigs[0];
+  propImageConfig[1] = crop_t || imgConfigs[1];
+  propImageConfig[2] = crop_d || imgConfigs[2];
   /* eslint-enable camelcase */
 
   if (/^http/.test(url)) {
@@ -25,11 +26,11 @@ const getImgData = props => {
     imgPath = url;
   }
   imgPath = imgPath && imgPath.replace(/^\//, '');
-  return { basePath, imgPath, imgConfigs };
+  return { basePath, imgPath, imgConfigs: propImageConfig };
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints } = props;
+  const { breakpoints, isProductImage, itemBrand } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -40,10 +41,42 @@ const getBreakpointImgUrl = (type, props) => {
   if (imgConfigs[breakpointTypeIndex]) {
     config = imgConfigs[breakpointTypeIndex];
   }
-  return `${basePath}/${config}/${imgPath}`;
+
+  let brandName = getBrand();
+  if (itemBrand) {
+    brandName = itemBrand;
+  }
+
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+
+  return isProductImage
+    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
+    : `${basePath}/${config}/${imgPath}`;
 };
 
-const renderImage = imgProps => {
+const RenderVideo = videoProps => {
+  const { video, image } = videoProps;
+  const { autoplay, controls, url: src } = video;
+
+  const options = {
+    autoplay,
+    controls,
+    sources: [
+      {
+        src,
+        type: 'video/mp4',
+      },
+    ],
+    image,
+  };
+
+  return <VideoPlayer {...options} />;
+};
+
+const RenderImage = forwardRef((imgProps, ref) => {
   const {
     breakpoints,
     imgConfigs,
@@ -52,11 +85,12 @@ const renderImage = imgProps => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
+    showPlaceHolder,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
-
   return (
     <picture>
       <source
@@ -70,13 +104,28 @@ const renderImage = imgProps => {
       />
 
       {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <LazyLoadImage
+          forwardedRef={ref}
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+          showPlaceHolder={showPlaceHolder}
+        />
       ) : (
-        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <img
+          onError={e => {
+            e.target.onerror = null;
+            e.target.classList.add('error');
+          }}
+          ref={ref}
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+        />
       )}
     </picture>
   );
-};
+});
 
 const DamImage = props => {
   const {
@@ -88,8 +137,16 @@ const DamImage = props => {
     lazyLoad,
     link,
     dataLocator,
+    forwardedRef,
+    itemBrand,
+    showPlaceHolder,
+    videoData,
     ...other
   } = props;
+
+  if (videoData) {
+    return <RenderVideo video={videoData} image={imgData} />;
+  }
 
   const imgProps = {
     breakpoints,
@@ -99,11 +156,13 @@ const DamImage = props => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
+    showPlaceHolder,
     ...other,
   };
 
   if (!link) {
-    return renderImage(imgProps);
+    return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
 
   const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
@@ -115,14 +174,14 @@ const DamImage = props => {
 
   return (
     <Anchor
-      className={ctaClassName}
+      className={`${ctaClassName} ${showPlaceHolder ? 'full-width' : ''}`}
       to={to}
       asPath={ctaUrl}
       target={target}
       title={title}
-      dataLocator="image-link"
+      dataLocator={`${dataLocator}_image-link`}
     >
-      {renderImage(imgProps)}
+      <RenderImage {...imgProps} ref={forwardedRef} />
     </Anchor>
   );
 };
@@ -141,6 +200,10 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
+  forwardedRef: null,
+  itemBrand: '',
+  showPlaceHolder: true,
+  videoData: null,
 };
 
 DamImage.propTypes = {
@@ -173,6 +236,10 @@ DamImage.propTypes = {
     crop_t: PropTypes.string,
     crop_m: PropTypes.string,
   }),
+  videoData: PropTypes.shape({
+    video: PropTypes.shape({}),
+    image: PropTypes.shape({}),
+  }),
 
   /* String which will be used to split the URL */
   imgPathSplitter: PropTypes.string,
@@ -184,6 +251,9 @@ DamImage.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
   }),
+  forwardedRef: PropTypes.shape({ current: PropTypes.any }),
+  itemBrand: PropTypes.string,
+  showPlaceHolder: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

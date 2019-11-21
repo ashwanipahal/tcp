@@ -16,21 +16,26 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     }
     data-locator="pdp_quantity"
     disableButton={false}
+    disabled={false}
     fill=""
     fullWidth=""
     iconColor="gray.800"
     iconName="chevron-down"
     iconSize="fs12"
+    lightGrayColor={false}
     locator=""
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={true}
     text={null}
+    textAlignLeft={false}
     theme={Object {}}
     type="button"
     url=""
+    withNoLineHeight={false}
   />
   <Component
     animationType="slide"
@@ -77,9 +82,20 @@ exports[`NativeDropDown native should render correctly should match snapshot for
   width={null}
 >
   <Picker
+    itemStyle={
+      Object {
+        "height": 41,
+        "padding": 0,
+      }
+    }
     mode="dialog"
     onValueChange={[Function]}
     selectedValue={null}
+    style={
+      Object {
+        "height": 41,
+      }
+    }
   >
     <PickerItem
       label="Test"

@@ -4,6 +4,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import DamImage from '../../../../../../common/atoms/DamImage';
 
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
@@ -13,10 +14,11 @@ type Props = {
   data: Object,
   labels: any,
   quantity: String,
+  inheritedStyles: Object,
 };
-const ProductInformation = ({ data, labels, quantity }: Props) => {
+const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) => {
   return (
-    <ProductInformationStyle>
+    <ProductInformationStyle inheritedStyles={inheritedStyles}>
       <Row tagName="ul" className="product">
         <Col
           tagName="li"
@@ -24,11 +26,20 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
           className="product-logo"
           colSize={{ small: 2, medium: 2, large: 3 }}
         >
-          <Image
+          {/* <Image
             alt="Product"
             className="product-image"
             src={data.skuInfo.imageUrl}
             data-locator="addedtobag-productimage"
+          /> */}
+          <DamImage
+            imgData={{
+              alt: 'Product',
+              url: data.skuInfo.imageUrl,
+            }}
+            className="product-image"
+            data-locator="addedtobag-productimage"
+            isProductImage
           />
           {!data.isGiftCard && (
             <Image
@@ -111,7 +122,7 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
                 dataLocator="addedtobag-productsize"
               >
                 {`${data.skuInfo.size} `}
-                {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
+                {!data.skuInfo.fit ? ' ' : data.skuInfo.fit}
               </BodyCopy>
             </Col>
           </Row>

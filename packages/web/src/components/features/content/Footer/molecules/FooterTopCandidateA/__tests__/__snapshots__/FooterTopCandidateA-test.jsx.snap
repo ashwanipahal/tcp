@@ -23,7 +23,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className="heading_text email-sign-up"
         color="text.primary"
-        component="div"
+        component="h2"
         dataLocator="email_promo_text"
         fontFamily="primary"
         fontSize="fs15"
@@ -33,17 +33,13 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <TextItems />
+        <Styled(TextItems) />
       </Styled(BodyCopy)>
       <ReduxForm
-        asyncBlurFields={
-          Array [
-            "signup",
-          ]
-        }
-        asyncValidate={[Function]}
         dataLocators={
           Object {
+            "checkBox_gym": "check_box_gym_opt_in",
+            "checkBox_tcp": "check_box_tcp_opt_in",
             "errorDataLocator": "email_error_message",
             "inputField": "enter_email_text_field",
             "submitButton": "email_submit_btn",
@@ -57,14 +53,17 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         getFormState={[Function]}
         initialValues={
           Object {
+            "isEmailOptInSecondBrand": false,
             "signup": "",
           }
         }
         keepDirtyOnReinitialize={false}
         labels={
           Object {
+            "lbl_SignUp_gymSignUpLabel": "",
             "lbl_SignUp_placeholderText": "",
             "lbl_SignUp_submitButtonLabel": "",
+            "lbl_SignUp_tcpSignUpLabel": "",
             "lbl_SignUp_termsTextLabel": "",
             "lbl_SignUp_validationErrorLabel": "",
           }
@@ -73,6 +72,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
+        secondFieldName="isEmailOptInSecondBrand"
         shouldAsyncValidate={[Function]}
         shouldError={[Function]}
         shouldValidate={[Function]}
@@ -82,6 +82,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}
+        validateForm={[Function]}
       />
       <Styled(BodyCopy)
         className={null}
@@ -129,7 +130,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className="heading_text sms_sign_up"
         color="text.primary"
-        component="div"
+        component="h2"
         dataLocator="sms_promo_text"
         fontFamily="primary"
         fontSize="fs15"
@@ -139,17 +140,13 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <TextItems />
+        <Styled(TextItems) />
       </Styled(BodyCopy)>
       <ReduxForm
-        asyncBlurFields={
-          Array [
-            "footerTopSmsSignup",
-          ]
-        }
-        asyncValidate={[Function]}
         dataLocators={
           Object {
+            "checkBox_gym": "sms_gym_opt_in",
+            "checkBox_tcp": "sms_tcp_opt_in",
             "errorDataLocator": "sms_error_message",
             "inputField": "sms_field",
             "submitButton": "sms_submit_btn",
@@ -169,6 +166,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         initialValues={
           Object {
             "footerTopSmsSignup": "",
+            "isTextOptInSecondBrand": false,
           }
         }
         keepDirtyOnReinitialize={false}
@@ -184,6 +182,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
+        secondFieldName="isTextOptInSecondBrand"
         shouldAsyncValidate={[Function]}
         shouldError={[Function]}
         shouldValidate={[Function]}
@@ -193,6 +192,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}
+        validateForm={[Function]}
       />
       <Styled(BodyCopy)
         className={null}
@@ -258,7 +258,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             <Styled(BodyCopy)
               className="heading_text refer-a-friend"
               color="text.primary"
-              component="div"
+              component="h2"
               fontFamily="primary"
               fontSize="fs15"
               fontWeight="black"
@@ -267,7 +267,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               link={null}
               textAlign="left"
             >
-              <TextItems />
+              <Styled(TextItems) />
             </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
@@ -285,8 +285,133 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(Button)
+            <Connect(Component)
+              as={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  border: none;
+  border-radius: 0;
+  background: none;
+  position: relative;
+  cursor: ",
+                      [Function],
+                      ";
+  opacity: ",
+                      [Function],
+                      ";
+  text-transform: uppercase;
+  min-height: 42px;
+  letter-spacing: 0.93px;
+  font-size: ",
+                      [Function],
+                      ";
+  color: ",
+                      [Function],
+                      "
+  ",
+                      [Function],
+                      "
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  &:focus {
+    background: ",
+                      [Function],
+                      ";
+  }
+  &:hover:not[disabled] {
+    background: ",
+                      [Function],
+                      ";
+  }
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      "
+
+  @media ",
+                      [Function],
+                      " {
+    ",
+                      [Function],
+                      ";
+    ",
+                      [Function],
+                      ";
+  }
+  ",
+                      [Function],
+                      "
+
+  ",
+                      [Function],
+                      "
+      ",
+                      [Function],
+                      ";
+      ",
+                      [Function],
+                      ";
+
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(Button)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
               buttonVariation="variable-width"
+              className="refer_a_friend_button"
+              clickData={
+                Object {
+                  "customEvents": Array [
+                    "event22",
+                    "event80",
+                  ],
+                  "pageName": "content:email confirmation",
+                  "pageShortName": "content:referafriend  confirmation",
+                }
+              }
               data-locator="global_referfriend"
               id="extole_zone_global_footer"
             />

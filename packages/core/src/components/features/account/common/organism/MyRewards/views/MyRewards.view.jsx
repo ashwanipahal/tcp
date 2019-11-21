@@ -11,6 +11,7 @@ import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import EmptyWalletRewards from '../../../molecule/EmptyWalletRewards';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import MyRewardsSkeleton from '../skeleton/MyRewardsSkeleton.view';
 
 const MyRewards = ({
   labels,
@@ -25,6 +26,7 @@ const MyRewards = ({
   isMobile,
   view,
   showLink,
+  isFetching,
 }) => {
   const heading =
     view === 'all'
@@ -68,69 +70,82 @@ const MyRewards = ({
             large: true,
           }}
         >
-          {coupons.size > 0 ? (
-            <BodyCopy component="div" className="rewards-container elem-mb-XXL">
-              {coupons.map(coupon => {
-                return (
-                  <DetailedCouponTile
-                    key={coupon.id}
-                    labels={commonLabels}
-                    coupon={coupon}
-                    onViewCouponDetails={onViewCouponDetails}
-                    onApplyCouponToBagFromList={onApplyCouponToBagFromList}
-                    onRemove={onRemove}
-                    handleErrorCoupon={handleErrorCoupon}
-                    isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
-                    isMobile={isMobile}
-                    view={view}
-                    className="elem-mb-LRG"
-                  />
-                );
-              })}
-            </BodyCopy>
-          ) : (
-            <>
-              {view === 'all' ? (
-                <EmptyWalletRewards labels={labels} />
-              ) : (
-                <EmptyRewards labels={labels} />
-              )}
-            </>
-          )}
+          {isFetching && <MyRewardsSkeleton />}
+          {!isFetching &&
+            (coupons.size > 0 ? (
+              <BodyCopy component="div" className="rewards-container elem-mb-XXL">
+                {coupons.map(coupon => {
+                  return (
+                    <DetailedCouponTile
+                      key={coupon.id}
+                      labels={commonLabels}
+                      coupon={coupon}
+                      onViewCouponDetails={onViewCouponDetails}
+                      onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+                      onRemove={onRemove}
+                      handleErrorCoupon={handleErrorCoupon}
+                      isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
+                      isMobile={isMobile}
+                      view={view}
+                      className="elem-mb-LRG"
+                    />
+                  );
+                })}
+              </BodyCopy>
+            ) : (
+              <>
+                {view === 'all' ? (
+                  <EmptyWalletRewards labels={labels} />
+                ) : (
+                  <EmptyRewards labels={labels} />
+                )}
+              </>
+            ))}
         </Col>
         {showLink && (
-          <Col
-            colSize={{
-              small: 6,
-              large: 12,
-              medium: 8,
-            }}
-            className="anchor-wrapper"
-          >
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              noLink
-              href="https://www.childrensplace.com/us/content/myplace-rewards-page"
-              anchorVariation="primary"
-              dataLocator="my-rewards-program-details"
-              target="_blank"
+          <>
+            <Col
+              colSize={{
+                small: 3,
+                large: 6,
+                medium: 4,
+              }}
+              className="textRight"
             >
-              {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
-            </Anchor>
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              noLink
-              href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-              anchorVariation="primary"
-              dataLocator="my-rewards-tnc"
-              className="elem-ml-XXL"
-              target="_self"
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+                anchorVariation="primary"
+                dataLocator="my-rewards-program-details"
+                className="elem-mr-SM"
+                target="_blank"
+              >
+                {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
+              </Anchor>
+            </Col>
+            <Col
+              colSize={{
+                small: 3,
+                large: 6,
+                medium: 4,
+              }}
             >
-              {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
-            </Anchor>
-          </Col>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+                anchorVariation="primary"
+                dataLocator="my-rewards-tnc"
+                className="elem-ml-SM"
+                target="_self"
+              >
+                {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
+              </Anchor>
+            </Col>
+          </>
         )}
       </Row>
     </div>
@@ -150,6 +165,7 @@ MyRewards.propTypes = {
   isMobile: PropTypes.bool,
   view: PropTypes.string,
   showLink: PropTypes.bool,
+  isFetching: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -173,6 +189,7 @@ MyRewards.defaultProps = {
   isMobile: true,
   view: '',
   showLink: false,
+  isFetching: false,
 };
 
 export default withStyles(MyRewards, styles);

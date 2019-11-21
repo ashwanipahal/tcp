@@ -26,15 +26,27 @@ class NativeDropDown extends React.PureComponent {
     super(props);
     const { selectedValue } = props;
     this.state = { showPicker: false, tempValue: selectedValue, isAndroidPlatform: isAndroid() };
+    this.valueToDisplayMap = this.getValueToDisplayNameMap(props.data);
   }
-
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { selectedValue } = nextProps;
     const { tempValue } = this.state;
     if (selectedValue && selectedValue !== tempValue) {
       this.setState({ tempValue: selectedValue });
     }
   }
+
+  getValueToDisplayNameMap = options => {
+    return options.reduce((optionsMap, current) => {
+      return {
+        ...optionsMap,
+        ...{
+          [current.id]: current.displayName,
+        },
+      };
+    }, {});
+  };
 
   /**
    * @function setPickerState
@@ -83,16 +95,34 @@ class NativeDropDown extends React.PureComponent {
 
   render() {
     const { tempValue, showPicker, isAndroidPlatform } = this.state;
-    const { selectedValue, data, bottomBorderOnly, width, androidPickerStyle } = this.props;
+    const {
+      selectedValue,
+      data,
+      bottomBorderOnly,
+      width,
+      androidPickerStyle,
+      buttonVariation,
+      disabled,
+      textAlignLeft,
+      lightGrayColor,
+    } = this.props;
+    const selectedLabel = this.valueToDisplayMap[selectedValue] || selectedValue;
     const itemList = data.map(item => {
       const label = (item.displayName && item.displayName.toString()) || item.displayName;
       return <Picker.Item label={label} value={item.id} />;
     });
 
+    const pickerStyle = { height: 41 };
+    const pickerItemStyle = { height: 41, padding: 0 };
     if (isAndroidPlatform) {
       return (
         <AndroidPickerView width={width} androidPickerStyle={androidPickerStyle}>
-          <Picker selectedValue={tempValue} onValueChange={this.changeValue}>
+          <Picker
+            style={pickerStyle}
+            itemStyle={pickerItemStyle}
+            selectedValue={tempValue}
+            onValueChange={this.changeValue}
+          >
             {itemList}
           </Picker>
         </AndroidPickerView>
@@ -102,16 +132,19 @@ class NativeDropDown extends React.PureComponent {
     return (
       <View>
         <Button
-          buttonVariation="mobileApp-filter"
+          buttonVariation={buttonVariation}
           type="button"
           data-locator="pdp_quantity"
-          text={selectedValue}
+          text={selectedLabel}
           onPress={() => {
             this.setPickerState(true);
           }}
           showIcon
           bottomBorderOnly={bottomBorderOnly}
           customTextStyle={iOSPickerButtonStyle}
+          disabled={disabled}
+          textAlignLeft={textAlignLeft}
+          lightGrayColor={lightGrayColor}
         />
         <Modal visible={showPicker} transparent animationType="slide">
           <SafeAreaViewStyle>
@@ -154,6 +187,10 @@ NativeDropDown.propTypes = {
   bottomBorderOnly: PropTypes.bool,
   width: PropTypes.string,
   androidPickerStyle: ViewPropTypes.style,
+  buttonVariation: PropTypes.string,
+  disabled: PropTypes.bool,
+  textAlignLeft: PropTypes.bool,
+  lightGrayColor: PropTypes.bool,
 };
 
 NativeDropDown.defaultProps = {
@@ -163,6 +200,10 @@ NativeDropDown.defaultProps = {
   bottomBorderOnly: true,
   width: null,
   androidPickerStyle: null,
+  buttonVariation: 'mobileApp-filter',
+  disabled: false,
+  textAlignLeft: false,
+  lightGrayColor: false,
 };
 
 export default NativeDropDown;

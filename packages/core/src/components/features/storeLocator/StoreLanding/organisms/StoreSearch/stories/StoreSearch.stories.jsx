@@ -10,6 +10,7 @@ storiesOf('StoreSearch', module)
     <StoreSearchView
       searchIcon="/static/images/search-icon.svg"
       markerIcon="/static/images/marker-icon.svg"
+      selectStoreType={e => console.log(e)}
       labels={mockLabels}
     />
   ))
@@ -18,6 +19,7 @@ storiesOf('StoreSearch', module)
       searchIcon="/static/images/search-icon.svg"
       markerIcon="/static/images/marker-icon.svg"
       gymSelected
+      selectStoreType={e => console.log(e)}
       labels={mockLabels}
     />
   ))
@@ -29,6 +31,7 @@ storiesOf('StoreSearch', module)
         <StoreSearchView
           searchIcon="/static/images/search-icon.svg"
           markerIcon="/static/images/marker-icon.svg"
+          selectStoreType={e => console.log(e)}
           labels={mockLabels}
         />
       </ThemeProvider>

@@ -2,6 +2,9 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import ConfirmationAccountFormContainer from '@tcp/core/src/components/features/CnC/common/organism/ConfirmationAccountForm';
+import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
@@ -13,12 +16,75 @@ import {
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
   CouponAndPromosWrapper,
-  BannerWrapper,
-  CouponsWrapper,
+  PayPalButtonContainer,
+  CnContainer,
+  CnContent,
 } from '../styles/CnCTemplate.style.native';
-import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
-
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
+import PayPalButton from '../../PayPalButton';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
+
+const getPaymentButton = params => {
+  const {
+    btnText,
+    onPress,
+    backLinkText,
+    onBackLinkPress,
+    footerBody,
+    navigation,
+    getPayPalSettings,
+    isPayPalWebViewEnable,
+    showPayPalButton,
+    showVenmoSubmit,
+    onVenmoSubmit,
+  } = params;
+  return (
+    <ButtonWrapper
+      showPayPalButton={showPayPalButton}
+      isPayPalWebViewEnable={isPayPalWebViewEnable}
+    >
+      {showPayPalButton && (
+        <PayPalButtonContainer>
+          <PayPalButton
+            getPayPalSettings={getPayPalSettings}
+            navigation={navigation}
+            isBillingPage
+            fullWidth
+            setVenmoState={() => {}}
+            closeModal={() => {}}
+          />
+        </PayPalButtonContainer>
+      )}
+      {showVenmoSubmit && <VenmoPaymentButton onSuccess={onVenmoSubmit} isVenmoBlueButton />}
+      {!showPayPalButton && !showVenmoSubmit && (
+        <CheckoutButton onPress={onPress}>
+          <BodyCopy
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs13"
+            text={btnText}
+            dataLocator="reviewBtn"
+          />
+        </CheckoutButton>
+      )}
+      {footerBody}
+      {!isPayPalWebViewEnable && !!backLinkText && (
+        <TouchableOpacity
+          accessibilityRole="link"
+          onPress={onBackLinkPress}
+          dataLocator="returnToLink"
+        >
+          <BackLinkWrapperWrapper>
+            <BackIcon />
+            <BackLinkText>{backLinkText}</BackLinkText>
+          </BackLinkWrapperWrapper>
+        </TouchableOpacity>
+      )}
+    </ButtonWrapper>
+  );
+};
 
 const CnCCommonTemplate = ({
   btnText,
@@ -29,87 +95,66 @@ const CnCCommonTemplate = ({
   isGuest,
   showAccordian,
   isConfirmationPage,
+  pageCategory,
+  navigation,
+  getPayPalSettings,
+  isPayPalWebViewEnable,
+  showPayPalButton,
+  showVenmoSubmit,
+  onVenmoSubmit,
 }) => {
   return (
-    <>
+    <CnContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
       {!isConfirmationPage ? (
-        <>
-          <CouponAndPromosWrapper>
-            <CouponAndPromos isCheckout />
-          </CouponAndPromosWrapper>
-          <View>
-            <OrderLedgerContainer showAccordian={showAccordian} />
-          </View>
-          {!isGuest && (
+        <CnContent isPayPalWebViewEnable={isPayPalWebViewEnable}>
+          {!isPayPalWebViewEnable && (
+            <>
+              <CouponAndPromosWrapper>
+                <CouponAndPromos isCheckout navigation={navigation} />
+              </CouponAndPromosWrapper>
+              <View>
+                <OrderLedgerContainer
+                  showAccordian={showAccordian}
+                  pageCategory={pageCategory}
+                  navigation={navigation}
+                />
+              </View>
+            </>
+          )}
+          {!isPayPalWebViewEnable && !isGuest && (
             <BonusPointsWrapper>
               <BonusPointsDays />
             </BonusPointsWrapper>
           )}
-          <ButtonWrapper>
-            <CheckoutButton onPress={onPress}>
-              <BodyCopy
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs13"
-                text={btnText}
-              />
-            </CheckoutButton>
-            {footerBody}
-            {!!backLinkText && (
-              <TouchableOpacity accessibilityRole="link" onPress={onBackLinkPress}>
-                <BackLinkWrapperWrapper>
-                  <BackIcon />
-                  <BackLinkText>{backLinkText}</BackLinkText>
-                </BackLinkWrapperWrapper>
-              </TouchableOpacity>
-            )}
-          </ButtonWrapper>
-        </>
+          {getPaymentButton({
+            btnText,
+            onPress,
+            backLinkText,
+            onBackLinkPress,
+            footerBody,
+            getPayPalSettings,
+            showPayPalButton,
+            showVenmoSubmit,
+            onVenmoSubmit,
+          })}
+        </CnContent>
       ) : (
         <View>
-          <OrderLedgerContainer />
-          <BannerWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="LOYALTY BANNER"
-            />
-          </BannerWrapper>
-          {isGuest && (
-            <BannerWrapper>
-              <BodyCopyWithSpacing
-                textAlign="center"
-                fontSize="fs16"
-                mobileFontFamily="secondary"
-                spacingStyles="margin-top-LRG margin-bottom-LRG"
-                text="ACCOUNT FORM"
-              />
-            </BannerWrapper>
-          )}
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
+          <OrderLedgerContainer
+            isConfirmationPage={isConfirmationPage}
+            pageCategory={pageCategory}
+            showAccordian
+          />
+          {isGuest && <ConfirmationAccountFormContainer />}
+          <PersonalizedCoupons />
+          <Recommendations
+            navigation={navigation}
+            variation="moduleO"
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+          />
         </View>
       )}
-    </>
+    </CnContainer>
   );
 };
 CnCCommonTemplate.propTypes = {
@@ -122,10 +167,22 @@ CnCCommonTemplate.propTypes = {
   isGuest: PropTypes.func.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
+  pageCategory: PropTypes.shape({}),
+  getPayPalSettings: PropTypes.shape({}),
+  isPayPalWebViewEnable: PropTypes.bool,
+  showPayPalButton: PropTypes.bool,
+  showVenmoSubmit: PropTypes.bool,
+  onVenmoSubmit: PropTypes.func,
 };
 
 CnCCommonTemplate.defaultProps = {
   isConfirmationPage: false,
+  pageCategory: {},
+  getPayPalSettings: {},
+  isPayPalWebViewEnable: false,
+  showPayPalButton: false,
+  showVenmoSubmit: false,
+  onVenmoSubmit: () => {},
 };
 
 export default CnCCommonTemplate;

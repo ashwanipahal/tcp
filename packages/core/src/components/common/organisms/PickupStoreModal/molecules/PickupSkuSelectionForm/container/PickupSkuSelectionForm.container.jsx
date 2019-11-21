@@ -20,6 +20,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
   constructor(props) {
     super(props);
     const { currentProduct, initialValues } = this.props;
+    this.formValues = initialValues;
     this.colorFitsSizesMap = currentProduct && currentProduct.colorFitsSizesMap;
     const generalProductId =
       currentProduct && getMapSliceForColor(this.colorFitsSizesMap, initialValues.color);
@@ -33,7 +34,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
     };
   }
 
-  onChangeColor = e => {
+  onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     this.generalProductId =
       this.colorFitsSizesMap && getMapSliceForColor(this.colorFitsSizesMap, e);
     this.generalProductId = this.generalProductId && this.generalProductId.colorDisplayId;
@@ -41,6 +42,21 @@ class PickupSkuSelectionFormContainer extends React.Component {
       currentColorEntry: getMapSliceForColor(this.colorFitsSizesMap, e),
       selectedColor: e,
     });
+
+    this.formValues = {
+      ...this.formValues,
+      Fit: selectedFit,
+      Size: selectedSize,
+      color: e,
+      Quantity: selectedQuantity,
+    };
+  };
+
+  onChangeSize = e => {
+    this.formValues = {
+      ...this.formValues,
+      Size: e,
+    };
   };
 
   navigateToPDP = () => {
@@ -50,8 +66,8 @@ class PickupSkuSelectionFormContainer extends React.Component {
 
   render() {
     const {
-      colorFitSizeDisplayNames,
       initialValues,
+      colorFitSizeDisplayNames,
       isCanada,
       isPlcc,
       currencySymbol,
@@ -66,6 +82,8 @@ class PickupSkuSelectionFormContainer extends React.Component {
       isPickUpWarningModal,
       currentProduct,
       prices,
+      currencyAttributes,
+      toastMessage,
     } = this.props;
     const { currentColorEntry, selectedColor } = this.state;
 
@@ -95,16 +113,21 @@ class PickupSkuSelectionFormContainer extends React.Component {
         imagePath={imageUrl}
         listPrice={listPrice}
         offerPrice={offerPrice}
+        currencyAttributes={currencyAttributes}
       />
     ) : (
       <PickupSkuSelectionForm
+        {...this.props}
         selectedColor={selectedColor}
         generalProductId={this.generalProductId}
         navigateToPDP={this.navigateToPDP}
         onChangeColor={this.onChangeColor}
+        onChangeSize={this.onChangeSize}
         imageUrl={imageUrl}
         currentColorEntry={currentColorEntry}
-        {...this.props}
+        currencyAttributes={currencyAttributes}
+        initialValues={this.formValues}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -147,6 +170,7 @@ PickupSkuSelectionFormContainer.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -174,6 +198,7 @@ PickupSkuSelectionFormContainer.propTypes = {
   isPickUpWarningModal: PropTypes.bool,
 
   onCloseClick: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 PickupSkuSelectionFormContainer.defaultProps = {
@@ -190,6 +215,7 @@ PickupSkuSelectionFormContainer.defaultProps = {
   onEditSku: false,
   isPickUpWarningModal: false,
   onCloseClick: () => {},
+  toastMessage: () => {},
 };
 
 export default withStyles(PickupSkuSelectionFormContainer, styles);

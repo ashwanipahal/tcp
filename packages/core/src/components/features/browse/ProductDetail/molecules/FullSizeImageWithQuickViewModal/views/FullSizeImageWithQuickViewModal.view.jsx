@@ -1,13 +1,24 @@
 import React from 'react';
+import { fromJS } from 'immutable';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles, { customHeaderStyle } from '../styles/FullSizeImageWithQuickViewModal.style';
 import Modal from '../../../../../../common/molecules/Modal';
 import ProductImages from '../../../../../../common/organisms/ProductImages';
 import { getLocator } from '../../../../../../../utils';
+import ProductColorChipsSelector from '../../../../../../common/molecules/ProductColorChipSelector';
+import FullSizeImageWithQuickViewConstant from './FullSizeImageWithQuickViewModal.constants';
 
 const FullSizeImageWithQuickViewModal = props => {
-  const { isMobile, onCloseClick, name, isThumbnailListVisible, images } = props;
+  const { isMobile, onCloseClick, name, isThumbnailListVisible, images, colorChipSelector } = props;
+  const { selectColor } = colorChipSelector;
+
+  let { colorList } = colorChipSelector;
+  colorList = fromJS(colorList);
   return (
     <Modal
       isOpen
@@ -24,6 +35,27 @@ const FullSizeImageWithQuickViewModal = props => {
       inheritedStyles={customHeaderStyle}
     >
       <div className="overlay-content">
+        {!isMobile && (
+          <form noValidate>
+            <Row>
+              <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+                <div className="select-value-wrapper">
+                  {colorList && colorList.size > 0 && (
+                    <div className="color-selector">
+                      <Field
+                        id="colorSwatchModal"
+                        name="colorSwatchModal"
+                        component={ProductColorChipsSelector}
+                        colorFitsSizesMap={colorList}
+                        onChange={selectColor}
+                      />
+                    </div>
+                  )}
+                </div>
+              </Col>
+            </Row>
+          </form>
+        )}
         <ProductImages
           productName={name}
           isMobile={isMobile}
@@ -56,12 +88,30 @@ FullSizeImageWithQuickViewModal.propTypes = {
   isThumbnailListVisible: PropTypes.bool,
   isMobile: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  colorChipSelector: PropTypes.objectOf(
+    PropTypes.shape({
+      colorList: PropTypes.array,
+      selectColor: PropTypes.func,
+    })
+  ),
 };
 
 FullSizeImageWithQuickViewModal.defaultProps = {
   isMobile: true,
   isThumbnailListVisible: true,
+  colorChipSelector: {},
 };
 
-export default withStyles(FullSizeImageWithQuickViewModal, styles);
+export default compose(
+  connect((state, props) => {
+    const formName =
+      props.customFormName || FullSizeImageWithQuickViewConstant.FULL_SIZE_QUICK_VIEW_FORM;
+    return {
+      form: formName,
+      enableReinitialize: true,
+    };
+  }),
+  reduxForm()
+)(withStyles(FullSizeImageWithQuickViewModal, styles));
+
 export { FullSizeImageWithQuickViewModal as FullSizeImageWithQuickViewModalVanilla };

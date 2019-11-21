@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import CheckoutSelectors, {
+  isGuest,
+  isExpressCheckout,
+} from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import { getCardList } from '../../../../../account/Payment/container/Payment.actions';
 import {
   getGiftCards,
@@ -20,13 +23,15 @@ import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container
 import { getFormValidationErrorMessages } from '../../../../../account/Account/container/Account.selectors';
 import CHECKOUT_CONSTANTS from '../../../Checkout.constants';
 
+const { getIsPaymentDisabled } = CheckoutSelectors;
 export class GiftCardsContainer extends React.PureComponent<Props> {
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       handleSetOrderBalanceTotal,
       itemOrderGrandTotal,
@@ -36,7 +41,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getCardListAction,
       resetAddGiftCardAction,
     } = this.props;
-    handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
+
+    if (prevProps && prevProps.itemsGiftCardTotal !== itemsGiftCardTotal) {
+      handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
+    }
+
     if (addGiftCardResponse === 'success') {
       hideAddGiftCard();
       getCardListAction();
@@ -92,6 +101,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getAddGiftCardError,
       isRecapchaEnabled,
       isLoading,
+      isExpressCheckoutUser,
+      isFromReview,
+      isPaymentDisabled,
+      isGuestUser,
+      isFetching,
     } = this.props;
 
     let availableGiftCards = [];
@@ -126,6 +140,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isRecapchaEnabled={isRecapchaEnabled}
         isLoading={isLoading}
         onClearError={this.onClearError}
+        isExpressCheckout={isExpressCheckoutUser}
+        isFromReview={isFromReview}
+        isPaymentDisabled={isPaymentDisabled}
+        isFetching={isFetching}
       />
     );
   }
@@ -184,6 +202,9 @@ const mapStateToProps = state => {
     isRecapchaEnabled: GiftCardSelector.getIsRecapchaEnabled(state),
     addGiftCardResponse: GiftCardSelector.getAddGiftCardResponse(state),
     isLoading: GiftCardSelector.getIsLoading(state),
+    isExpressCheckoutUser: isExpressCheckout(state),
+    isPaymentDisabled: getIsPaymentDisabled(state),
+    isGuestUser: isGuest(state),
   };
 };
 

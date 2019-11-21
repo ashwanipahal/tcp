@@ -1,13 +1,15 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import CustomButton from '../../../../../../common/atoms/Button';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
-import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ForgotPasswordContainer from '../../../../ForgotPassword';
+import ResetPassword from '../../../../ResetPassword';
 import {
   FormStyle,
   FormStyleView,
@@ -20,8 +22,35 @@ class LoginSection extends PureComponent<Props> {
     super(props);
     this.state = {
       resetPassword: false,
+      newPassword: false,
     };
+    this.queryParams = {};
   }
+
+  componentDidUpdate() {
+    const { newPassword } = this.state;
+    if (!newPassword) this.navigateToResetPassword();
+  }
+
+  navigateToResetPassword = () => {
+    const { navigation } = this.props;
+    if (navigation && navigation.state) {
+      const {
+        state: { params },
+      } = navigation;
+      if (params) {
+        const { component, logonPasswordOld, em } = params;
+        if (component && component === 'change-password') {
+          this.showNewPassword();
+          this.queryParams = {
+            logonPasswordOld,
+            em,
+          };
+          navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
+        }
+      }
+    }
+  };
 
   toggleCheckoutModal = () => {
     const { showCheckoutModal } = this.props;
@@ -33,6 +62,14 @@ class LoginSection extends PureComponent<Props> {
     this.setState({
       resetPassword: !resetPassword,
     });
+  };
+
+  showNewPassword = () => {
+    const { newPassword, resetPassword } = this.state;
+    this.setState({
+      newPassword: !newPassword,
+    });
+    if (resetPassword) this.showForgotPassword(); // if user is on forgot password then dismiss it
   };
 
   render() {
@@ -57,17 +94,24 @@ class LoginSection extends PureComponent<Props> {
       showLogin,
       setEmailid,
       getTouchStatus,
+      userplccCardNumber,
+      userplccCardId,
+      updateHeader,
+      toastMessage,
+      resetChangePasswordState,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { resetPassword, newPassword } = this.state;
+
     return (
       <View>
-        {!resetPassword && (
+        {!resetPassword && !newPassword && (
           <Fragment>
             <LoginTopSection
               showForgotPasswordForm={this.showForgotPassword}
               variation={variation}
               labels={labels}
+              updateHeader={updateHeader}
             />
             <LoginForm
               getTouchStatus={getTouchStatus}
@@ -83,12 +127,14 @@ class LoginSection extends PureComponent<Props> {
               variation={variation}
               navigation={navigation}
               handleContinueAsGuest={handleContinueAsGuest}
+              userplccCardNumber={userplccCardNumber}
+              userplccCardId={userplccCardId}
             />
           </Fragment>
         )}
 
         {resetPassword && (
-          <ForgotPasswordView
+          <ForgotPasswordContainer
             SubmitForgot={SubmitForgot}
             loginInfo={loginInfo}
             getUserInfo={getUserInfo}
@@ -100,18 +146,42 @@ class LoginSection extends PureComponent<Props> {
             resetLoginState={resetLoginState}
             successFullResetEmail={successFullResetEmail}
             showLogin={showLogin}
+            updateHeader={updateHeader}
+            toastMessage={toastMessage}
+          />
+        )}
+
+        {newPassword && (
+          <ResetPassword
+            labels={labels.password}
+            queryParams={this.queryParams}
+            showLogin={showLogin}
+            showNewPassword={this.showNewPassword}
+            updateHeader={updateHeader}
+            resetChangePasswordState={resetChangePasswordState}
           />
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}</Text>
-            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}</Text>
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs12"
+              color="gray.900"
+              text={getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}
+            />
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs12"
+              color="gray.900"
+              text={getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}
+            />
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.text.secondary}
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
             onPress={this.toggleCheckoutModal}
@@ -127,6 +197,8 @@ LoginSection.propTypes = {
   labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginSection.defaultProps = {
@@ -139,6 +211,9 @@ LoginSection.defaultProps = {
       lbl_login_createAccountHelp_2: 'start earning points!',
     },
   },
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 export default withStyles(LoginSection, FormStyle);
+export { LoginSection as LoginSectionVanilla };

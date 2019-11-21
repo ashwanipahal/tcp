@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CustomSelect from '@tcp/core/src/components/common/molecules/CustomSelect';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import style, { customSelectStyles } from '../styles/StoreSelector.style';
 
 const StoreSelectDropDown = withStyles(CustomSelect, customSelectStyles);
@@ -24,6 +24,7 @@ const StoreSelector = ({
   defaultSelectText,
   titleText,
   selectionCallback,
+  dataLocator,
 }) => {
   return (
     <div className={className}>
@@ -32,7 +33,9 @@ const StoreSelector = ({
       </div>
       <div className="store-selector">
         <div className="store-selector-title">
-          <h4 className="store-selector-title__text">{titleText}</h4>
+          <h4 className="store-selector-title__text" data-locator={getLocator(dataLocator)}>
+            {titleText}
+          </h4>
         </div>
         <div className="store-selector__dropdown">
           <StoreSelectDropDown
@@ -62,12 +65,14 @@ StoreSelector.propTypes = {
   defaultSelectText: PropTypes.string,
   titleText: PropTypes.string.isRequired,
   selectionCallback: PropTypes.func.isRequired,
+  dataLocator: PropTypes.string,
 };
 
 StoreSelector.defaultProps = {
   children: null,
   defaultSelectText: '',
   selectedLocation: null,
+  dataLocator: '',
 };
 
 export default withStyles(StoreSelector, style);

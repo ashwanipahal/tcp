@@ -60,11 +60,15 @@ const internalEndpoints = {
   },
   myPreferencesPage: {
     link: '/account?id=my-preference',
-    path: '/account//my-preference',
+    path: '/account/my-preference',
   },
   myOrderPage: {
     link: '/account?id=orders',
     path: '/account/orders',
+  },
+  trackOrder: {
+    link: '/track-order?id=orders&subSection=order-details',
+    path: '/track-order',
   },
 };
 

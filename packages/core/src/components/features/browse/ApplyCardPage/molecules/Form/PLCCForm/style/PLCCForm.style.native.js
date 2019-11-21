@@ -69,12 +69,18 @@ export const PersonalInformationContainerView = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  height: 40px;
+  height: 55px;
 `;
 
 export const DateContainerView = styled.View`
   width: 32%;
   padding-right: 15px;
+`;
+
+export const DropDownContainer = styled.View`
+  width: 85px;
+  height: 70px;
+  margin-top: -5px;
 `;
 
 export const ScrollViewContainer = styled.ScrollView`
@@ -90,9 +96,8 @@ export const CheckBoxContainerView = styled.View`
 `;
 
 export const CheckBoxImage = styled.View`
-  width: 40px;
-  height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  width: 80%;
 `;
 
 export const CheckMessageView = styled.View`
@@ -127,6 +132,7 @@ export const PreScreenCodeContainer = styled.View`
   width: 100%;
   flex-direction: row;
   margin-top: -20px;
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const ParentMessageContainer = styled.View`
@@ -148,9 +154,14 @@ export const FieldContainer = styled.View`
 `;
 
 export const SSNContainer = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const AddressLine1Container = styled.View`
+  margin-top: -23px;
+  margin-bottom: 20px;
 `;
 
 export default {
@@ -176,4 +187,6 @@ export default {
   MiddleNameContainer,
   FieldContainer,
   SSNContainer,
+  AddressLine1Container,
+  DropDownContainer,
 };

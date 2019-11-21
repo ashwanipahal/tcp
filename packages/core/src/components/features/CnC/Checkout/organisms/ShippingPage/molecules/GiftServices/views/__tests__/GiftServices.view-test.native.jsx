@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import GiftServices from '../GiftServices.view.native';
+import { GiftServicesVanilla } from '../GiftServices.view.native';
 
 describe('GiftServices component', () => {
   it('should renders correctly props not present', () => {
@@ -12,7 +12,7 @@ describe('GiftServices component', () => {
       giftWrapOptions: '{}',
       initialValues: {},
     };
-    const component = shallow(<GiftServices {...props} />);
+    const component = shallow(<GiftServicesVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
   it('should renders correctly props not present', () => {
@@ -23,7 +23,7 @@ describe('GiftServices component', () => {
       giftWrapOptions: '{}',
       initialValues: {},
     };
-    const component = shallow(<GiftServices {...props} />);
+    const component = shallow(<GiftServicesVanilla {...props} />);
     component.find(Anchor).simulate('press', { preventDefault: jest.fn() });
     expect(component).toMatchSnapshot();
   });

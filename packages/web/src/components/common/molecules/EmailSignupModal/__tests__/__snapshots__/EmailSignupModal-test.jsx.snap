@@ -21,8 +21,8 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -34,7 +34,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -73,6 +73,12 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   "t_emailSignUp_img_d",
                 ]
               }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
+              }
             />
           </Styled(Col)>
           <Styled(Col)
@@ -110,7 +116,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
+                      "componentId": "sc-iwsKbI",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -253,7 +259,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
+                    "styledComponentId": "sc-iwsKbI",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -261,12 +267,153 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   }
                 }
                 dataLocator="email_address_field"
-                id="signup"
+                enableSuccessCheck={false}
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
+              />
+              <Field
+                className="email-signup-second-brand"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-fjdhpX",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  display: block;
+  align-items: ",
+                        [Function],
+                        ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                        "25px",
+                        ";
+    width: ",
+                        "25px",
+                        ";
+    margin: 0;
+    margin-right: ",
+                        [Function],
+                        ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                        [Function],
+                        ";
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                        [Function],
+                        ";
+    font-size: ",
+                        [Function],
+                        "px;
+    width: ",
+                        [Function],
+                        ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                        [Function],
+                        "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                        [Function],
+                        ";
+  }
+
+  & .disabled {
+    opacity: ",
+                        [Function],
+                        ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                        [Function],
+                        ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                        [Function],
+                        ";
+    width: ",
+                        [Function],
+                        ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(InputCheckbox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-fjdhpX",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="email_gym_opt"
+                id="emailSignupSecondBrand"
+                name="emailSignupSecondBrand"
+                type="checkbox"
               />
               <Styled(BodyCopy)
                 className="terms-label"
@@ -298,11 +445,10 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -335,8 +481,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -348,7 +494,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -387,6 +533,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   "t_emailSignUp_img_d",
                 ]
               }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
+              }
             />
           </Styled(Col)>
           <Styled(Col)
@@ -424,7 +576,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
+                      "componentId": "sc-iwsKbI",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -567,7 +719,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
+                    "styledComponentId": "sc-iwsKbI",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -575,12 +727,153 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   }
                 }
                 dataLocator="email_address_field"
-                id="signup"
+                enableSuccessCheck={false}
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
+              />
+              <Field
+                className="email-signup-second-brand"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-fjdhpX",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  display: block;
+  align-items: ",
+                        [Function],
+                        ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                        "25px",
+                        ";
+    width: ",
+                        "25px",
+                        ";
+    margin: 0;
+    margin-right: ",
+                        [Function],
+                        ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                        [Function],
+                        ";
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                        [Function],
+                        ";
+    font-size: ",
+                        [Function],
+                        "px;
+    width: ",
+                        [Function],
+                        ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                        [Function],
+                        "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                        [Function],
+                        ";
+  }
+
+  & .disabled {
+    opacity: ",
+                        [Function],
+                        ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                        [Function],
+                        ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                        [Function],
+                        ";
+    width: ",
+                        [Function],
+                        ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(InputCheckbox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-fjdhpX",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="email_gym_opt"
+                id="emailSignupSecondBrand"
+                name="emailSignupSecondBrand"
+                type="checkbox"
               />
               <Styled(BodyCopy)
                 className="terms-label"
@@ -612,11 +905,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -649,8 +941,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -662,7 +954,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -701,6 +993,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   "t_emailSignUp_img_d",
                 ]
               }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
+              }
             />
           </Styled(Col)>
           <Styled(Col)
@@ -738,7 +1036,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
+                      "componentId": "sc-iwsKbI",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -881,7 +1179,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
+                    "styledComponentId": "sc-iwsKbI",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -889,12 +1187,153 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   }
                 }
                 dataLocator="email_address_field"
-                id="signup"
+                enableSuccessCheck={false}
+                id="modal_signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
+              />
+              <Field
+                className="email-signup-second-brand"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-fjdhpX",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  display: block;
+  align-items: ",
+                        [Function],
+                        ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                        "25px",
+                        ";
+    width: ",
+                        "25px",
+                        ";
+    margin: 0;
+    margin-right: ",
+                        [Function],
+                        ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                        [Function],
+                        ";
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                        [Function],
+                        ";
+    font-size: ",
+                        [Function],
+                        "px;
+    width: ",
+                        [Function],
+                        ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                        [Function],
+                        "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                        [Function],
+                        ";
+  }
+
+  & .disabled {
+    opacity: ",
+                        [Function],
+                        ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                        [Function],
+                        ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                        [Function],
+                        ";
+    width: ",
+                        [Function],
+                        ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(InputCheckbox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-fjdhpX",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="email_gym_opt"
+                id="emailSignupSecondBrand"
+                name="emailSignupSecondBrand"
+                type="checkbox"
               />
               <Styled(BodyCopy)
                 className="terms-label"
@@ -926,11 +1365,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>

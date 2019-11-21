@@ -6,17 +6,16 @@ exports[`ButtonList component renders correctly 1`] = `
     className=" button-list-wrapper link-button-list-wrapper "
   >
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
           "ctaVariation": "category-links-dark",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -37,20 +36,19 @@ exports[`ButtonList component renders correctly 1`] = `
         }
       }
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
           "ctaVariation": "category-links-dark",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -62,29 +60,28 @@ exports[`ButtonList component renders correctly 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
           "ctaVariation": "category-links-dark",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -96,29 +93,28 @@ exports[`ButtonList component renders correctly 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
           "ctaVariation": "category-links-dark",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -130,84 +126,16 @@ exports[`ButtonList component renders correctly 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ButtonCTA
-      className="link-button-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "link-button",
-          "ctaVariation": "category-links-dark",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_4"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ButtonCTA
-      className="link-button-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "link-button",
-          "ctaVariation": "category-links-dark",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_5"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
     />
   </div>
 </Fragment>
@@ -216,20 +144,19 @@ exports[`ButtonList component renders correctly 1`] = `
 exports[`ButtonList component renders correctly for Dual Variation 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text is-tablet-hidden"
+    className=" button-list-wrapper stacked-button-list-wrapper  is-tablet-hidden"
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -251,20 +178,19 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -276,30 +202,29 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -311,30 +236,29 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -346,87 +270,17 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleB_cta_links_4"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleB_cta_links_5"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
     />
   </div>
   <Styled(DropDownButton)
@@ -434,11 +288,10 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       Array [
         Object {
           "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
           "image": Object {
             "alt": "Girl",
@@ -451,87 +304,50 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
         },
         Object {
           "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
           "image": Object {
-            "alt": "Toddler Girl alt",
+            "alt": "Girl",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Toddler Girl title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
           },
         },
         Object {
           "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
           "image": Object {
-            "alt": "Boy",
+            "alt": "Girl",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Boy",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
           },
         },
         Object {
           "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
           "image": Object {
-            "alt": "Toddler Boy alt",
+            "alt": "Girl",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Tod Boy title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-          "image": Object {
-            "alt": "Baby Alt",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Baby title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-          "image": Object {
-            "alt": "Baby Alt",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Baby title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
           },
         },
       ]
@@ -546,19 +362,18 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
 exports[`ButtonList component renders correctly for image cta List 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text "
+    className=" button-list-wrapper scroll-button-list-wrapper   "
   >
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -578,19 +393,19 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
         }
       }
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
+      video={null}
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -601,28 +416,28 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
+      video={null}
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -633,28 +448,28 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
+      video={null}
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -665,80 +480,17 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ImageTextCTA
-      className="scroll-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "image-cta",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_image_4"
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ImageTextCTA
-      className="scroll-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "image-cta",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_image_5"
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
+      video={null}
     />
   </div>
 </Fragment>
@@ -747,20 +499,19 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
 exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text "
+    className=" button-list-wrapper scroll-button-list-wrapper   "
   >
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
           "ctaVariation": "variable-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -781,20 +532,19 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
         }
       }
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
           "ctaVariation": "variable-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -806,29 +556,28 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
           "ctaVariation": "variable-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -840,29 +589,28 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
           "ctaVariation": "variable-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -874,84 +622,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ButtonCTA
-      className="scroll-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "scroll-button",
-          "ctaVariation": "variable-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_4"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ButtonCTA
-      className="scroll-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "scroll-button",
-          "ctaVariation": "variable-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_5"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
     />
   </div>
 </Fragment>
@@ -960,20 +640,19 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 exports[`ButtonList component renders correctly with props for stacked CTA buttons 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text "
+    className=" button-list-wrapper stacked-button-list-wrapper  "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -995,20 +674,19 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -1020,30 +698,29 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -1055,30 +732,29 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -1090,87 +766,17 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_4"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="moduleN_cta_links_5"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
     />
   </div>
 </Fragment>
@@ -1179,20 +785,19 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 exports[`ButtonList component renders correctly without props 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text "
+    className=" button-list-wrapper stacked-button-list-wrapper  "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/girl",
+            "target": "_blank",
+            "text": "GIRL",
+            "title": "GIRL",
+            "url": "/c/girls-clothing",
           },
         }
       }
@@ -1214,20 +819,19 @@ exports[`ButtonList component renders correctly without props 1`] = `
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Girl"
+      uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/toddler-girl",
+            "target": "_blank",
+            "text": "BOY",
+            "title": "BOY",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothes",
           },
         }
       }
@@ -1239,30 +843,29 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Girl alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Toddler Girl title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Toddler_Girl"
+      uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/boy",
+            "target": "_blank",
+            "text": "TODDLER BOY",
+            "title": "TODDLER BOY",
+            "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
           },
         }
       }
@@ -1274,30 +877,29 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Boy",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Boy",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Boy"
+      uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
           "ctaVariation": "fixed-width",
           "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Tod Boy",
-            "url": "/toddler-boy2",
+            "target": "_blank",
+            "text": "TODDLER GIRL",
+            "title": "TODDLER GIRL",
+            "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
           },
         }
       }
@@ -1309,87 +911,17 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fontWeight="extrabold"
       image={
         Object {
-          "alt": "Toddler Boy alt",
+          "alt": "Girl",
           "crop_d": "",
           "crop_m": "",
           "crop_t": "",
-          "title": "Tod Boy title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          "title": "Girl",
+          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
       noCurveMobile={true}
       textAlign="center"
-      uniqueKey="Tod_Boy"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="4"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Baby"
-    />
-    <ButtonCTA
-      className="stacked-cta-wrapper-class"
-      ctaInfo={
-        Object {
-          "className": "stacked-button",
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
-          },
-        }
-      }
-      dataLocator="5"
-      dataLocatorCTA=""
-      fill=""
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="extrabold"
-      image={
-        Object {
-          "alt": "Baby Alt",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Baby title",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        }
-      }
-      noCurveMobile={true}
-      textAlign="center"
-      uniqueKey="Alt"
+      uniqueKey="TODDLER_GIRL"
     />
   </div>
 </Fragment>

@@ -45,4 +45,75 @@ const renderAddGiftCardProps = {
   isLoading: PropTypes.bool.isRequired,
 };
 
-export { propTypes, defaultProps, renderAddGiftCardProps };
+const renderGiftCardTileProps = {
+  propTypes: {
+    isGiftCardApplied: PropTypes.bool,
+    handleRemoveGiftCard: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    giftCardErrors: PropTypes.shape({}),
+    isExpressCheckout: PropTypes.bool,
+    isFromReview: PropTypes.bool,
+    applyExistingGiftCardToOrder: PropTypes.func.isRequired,
+    orderBalanceTotal: PropTypes.number,
+  },
+  defaultProps: {
+    isGiftCardApplied: false,
+    giftCardErrors: {},
+    orderBalanceTotal: 0,
+    isFromReview: false,
+    isExpressCheckout: false,
+  },
+};
+
+const renderAppliedGiftCardsProps = {
+  propTypes: {
+    appliedGiftCards: PropTypes.shape({}),
+    handleRemoveGiftCard: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    giftCardErrors: PropTypes.shape({}),
+    isExpressCheckout: PropTypes.bool,
+    isFromReview: PropTypes.bool,
+  },
+  defaultProps: {
+    appliedGiftCards: {},
+    giftCardErrors: {},
+    isFromReview: false,
+    isExpressCheckout: false,
+  },
+};
+
+/**
+ * @function GiftCardSectionHeading
+ * @description returns heading of gift cards
+ *
+ */
+const GiftCardSectionHeading = (
+  giftCardList,
+  labels,
+  isFromReview,
+  isExpressCheckout,
+  getHeading,
+  isGiftCardApplied = false
+) => {
+  let heading;
+  if (isFromReview) {
+    if (isGiftCardApplied) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+    if (isExpressCheckout && !isGiftCardApplied && giftCardList && giftCardList.size > 0) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+  } else if (giftCardList && giftCardList.size > 0) {
+    heading = getHeading(labels, isGiftCardApplied);
+  }
+  return heading;
+};
+
+export {
+  propTypes,
+  defaultProps,
+  renderAddGiftCardProps,
+  renderGiftCardTileProps,
+  renderAppliedGiftCardsProps,
+  GiftCardSectionHeading,
+};

@@ -1,19 +1,55 @@
 import { css } from 'styled-components';
 
 export default css`
+  background-color: ${props => props.theme.colorPalette.red['400']};
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding: 16px 0;
+    padding-top: 32px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 30px;
-      padding-bottom: 25px;
     }
   }
 
-  background-color: #f53d3d;
+  .button-list-wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 0px;
+    }
+  }
+
+  .text_normal {
+    margin-top: 0px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -14px;
+    }
+  }
+
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    color: ${props =>
+      props.theme.isGymboree &&
+      props.ctaType === 'stackedCTAButtons' &&
+      props.theme.colorPalette.red['300']};
+  }
+
+  .dropdown-button {
+    margin-top: 32px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 48px;
+    }
+  }
 
   h3.link-text {
     margin: 0;
@@ -22,6 +58,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
       margin-bottom: 0;
+    }
+  }
+
+  .percentage_inline_promo {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-left: 10px;
     }
   }
 
@@ -41,13 +83,28 @@ export default css`
     }
   }
 
+  .ModuleN-heading {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline-block;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .heading-wrapper {
       text-align: center;
+      display: ${props => (props.halfWidth ? 'block' : 'flex')};
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0px;
+      padding-top: 24px;
     }
     .heading,
     .moduleN__promo-banner {
-      display: inline-block;
+      display: block;
+      margin-bottom: 0px;
     }
+  }
+  .ModuleN_Button .link-button-wrapper-class {
+    border-bottom-color: ${props => props.theme.colorPalette.white};
   }
 `;

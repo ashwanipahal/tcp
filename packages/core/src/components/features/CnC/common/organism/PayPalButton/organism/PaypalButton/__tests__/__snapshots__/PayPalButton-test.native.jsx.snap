@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 42,
+      "overflow": "hidden",
+      "position": "relative",
+      "top": 0,
+      "width": 150,
+    }
+  }
+>
+  <KeyboardAvoidingView
+    behavior="padding"
+    enabled={true}
+    keyboardVerticalOffset={0}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <WebView
+      allowUniversalAccessFromFileURLs={true}
+      automaticallyAdjustContentInsets={false}
+      cacheEnabled={true}
+      domStorageEnabled={true}
+      javaScriptEnabled={true}
+      mixedContentMode="always"
+      onMessage={[Function]}
+      originWhitelist={
+        Array [
+          "*",
+        ]
+      }
+      scalesPageToFit={false}
+      scrollEnabled={true}
+      source={
+        Object {
+          "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox&paypalColor=white",
+        }
+      }
+      startInLoadingState={true}
+      thirdPartyCookiesEnabled={true}
+      useSharedProcessPool={true}
+      useWebKit={true}
+    />
+  </KeyboardAvoidingView>
+</View>
+`;

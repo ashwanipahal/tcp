@@ -7,21 +7,41 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
   <div
     className="gift-wrapping-container"
   >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      dataLocator="gift-wrapping-title"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
+    <div
+      className="header"
     >
-      title
-    </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="gift-wrapping-title"
+        color="gray.900"
+        component="p"
+        dataLocator="gift-wrapping-title"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        title
+      </Styled(BodyCopy)>
+      <div
+        className="editAnchor"
+      >
+        <Styled(Anchor)
+          anchorVariation="secondary"
+          className="anchorStyle"
+          color="gray.900"
+          dataLocator="review-giftservice-edit-anchor"
+          fontFamily="secondary"
+          fontSize="fs12"
+          onClick={[Function]}
+          underline={true}
+        >
+          edit
+        </Styled(Anchor)>
+      </div>
+    </div>
     <Styled(BodyCopy)
       className={null}
       color="gray.900"
@@ -48,19 +68,23 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
   <div
     className="gift-wrapping-container"
   >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      dataLocator="gift-wrapping-title"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
+    <div
+      className="header"
+    >
+      <Styled(BodyCopy)
+        className="gift-wrapping-title"
+        color="gray.900"
+        component="p"
+        dataLocator="gift-wrapping-title"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </div>
     <Styled(BodyCopy)
       className={null}
       color="gray.900"
@@ -74,6 +98,51 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
       link={null}
       textAlign="left"
     />
+  </div>
+</div>
+`;
+
+exports[`GiftWrappingDisplay component should renders correctly props with expresscheckout 1`] = `
+<div
+  className=""
+>
+  <div
+    className="gift-wrapping-container"
+  >
+    <div
+      className="header"
+    >
+      <Styled(BodyCopy)
+        className="gift-wrapping-title"
+        color="gray.900"
+        component="p"
+        dataLocator="gift-wrapping-title"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        title
+      </Styled(BodyCopy)>
+    </div>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="gift-wrapping-name"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Free
+    </Styled(BodyCopy)>
   </div>
 </div>
 `;

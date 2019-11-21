@@ -44,23 +44,31 @@ export const ProfileInfoActions = ({
             text={getLabelValue(labels, 'lbl_profile_Enhance_Experience')}
             fontSize="fs16"
             fontWeight="semibold"
+            fontFamily="secondary"
             spacingStyles="margin-bottom-MED"
           />
           {profileCompletion === '100' ? (
             <>
               <BodyCopy
                 fontSize="fs16"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_profile_profileCompletionExclamation')}
               />
               <BodyCopy
                 fontSize="fs16"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_profile_profileCompletionMessage')}
               />
-              <BodyCopy fontSize="fs16" text={getLabelValue(labels, 'lbl_profile_getMorePoints')} />
+              <BodyCopy
+                fontSize="fs16"
+                fontFamily="secondary"
+                text={getLabelValue(labels, 'lbl_profile_getMorePoints')}
+              />
             </>
           ) : (
             <BodyCopy
               fontSize="fs16"
+              fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_profile_profileInCompleteMessage')}
             />
           )}
@@ -94,7 +102,7 @@ export const ProfileInfoActions = ({
           activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountPersonalInformationModal')}
         />
         <ProfileInfoActionTile
           activityId="aboutYourself"

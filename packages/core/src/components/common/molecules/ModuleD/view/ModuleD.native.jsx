@@ -1,15 +1,21 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
-import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import { getLocator, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
-import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
+import {
+  ButtonWrapper,
+  Tile,
+  Wrapper,
+  HeaderContainer,
+  ListContainer,
+} from '../ModuleD.style.native';
 import LinkText from '../../LinkText';
 import config from '../config';
 
-const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
+const imageSize = 164;
 const keyExtractor = (_, index) => index.toString();
 
 /**
@@ -19,13 +25,19 @@ const keyExtractor = (_, index) => index.toString();
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module D single element item.
  */
-const renderItem = (item, navigation) => {
+const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   const {
-    item: { image, link },
+    item: { image, link, video },
     index,
   } = item;
 
   const anchorEnable = true;
+  const videoData = video &&
+    video.url && {
+      videoWidth: imageSize,
+      videoHeight: imageSize,
+      ...video,
+    };
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
@@ -35,10 +47,11 @@ const renderItem = (item, navigation) => {
           url={image.url}
           crop={image.crop_m}
           height={imageSize}
+          videoData={videoData}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
           imgConfig={config.IMG_DATA_2.imgConfig[0]}
-          host={LAZYLOAD_HOST_NAME.HOME}
+          host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
         />
       </Anchor>
 
@@ -70,46 +83,56 @@ const renderItem = (item, navigation) => {
  * @prop {object} navigation: Naviation object.
  */
 
-const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
+const ModuleD = ({
+  smallCompImage,
+  headerText,
+  promoBanner,
+  singleCTAButton,
+  navigation,
+  ignoreLazyLoadImage,
+}) => {
   return (
     <Wrapper>
-      {headerText && (
-        <LinkText
-          headerText={headerText}
-          navigation={navigation}
-          fontFamily="primary"
-          fontSize="fs36"
-          letterSpacing="ls167"
-          textAlign="center"
-          color="text.primary"
-          fontWeight="extrabold"
-          type="heading"
-          testID={getLocator('moduleD_headerlink')}
-        />
-      )}
-      {promoBanner && (
-        <PromoBanner
-          promoBanner={promoBanner}
-          testID={getLocator('moduleD_promobanner')}
-          navigation={navigation}
-        />
-      )}
+      <HeaderContainer>
+        {headerText && (
+          <LinkText
+            headerText={headerText}
+            navigation={navigation}
+            fontFamily="primary"
+            fontSize="fs32"
+            letterSpacing="ls167"
+            textAlign="center"
+            color="text.primary"
+            fontWeight="black"
+            type="heading"
+            testID={getLocator('moduleD_headerlink')}
+          />
+        )}
+        {promoBanner && (
+          <PromoBanner
+            promoBanner={promoBanner}
+            testID={getLocator('moduleD_promobanner')}
+            navigation={navigation}
+          />
+        )}
+      </HeaderContainer>
 
-      {smallCompImage && (
-        <FlatList
-          numColumns={2}
-          data={smallCompImage}
-          keyExtractor={keyExtractor}
-          renderItem={item => renderItem(item, navigation)}
-        />
-      )}
+      <ListContainer>
+        {smallCompImage && (
+          <FlatList
+            numColumns={2}
+            data={smallCompImage}
+            keyExtractor={keyExtractor}
+            renderItem={item => renderItem(item, navigation, ignoreLazyLoadImage)}
+          />
+        )}
+      </ListContainer>
 
       {singleCTAButton && (
         <ButtonWrapper>
           <Button
             width="225px"
             accessibilityLabel={singleCTAButton.title}
-            buttonVariation="variable-width"
             text={singleCTAButton.text}
             testID={getLocator('moduleD_button')}
             url={singleCTAButton.url}
@@ -124,6 +147,7 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
 ModuleD.defaultProps = {
   promoBanner: [],
   singleCTAButton: {},
+  ignoreLazyLoadImage: false,
 };
 
 ModuleD.propTypes = {
@@ -147,6 +171,7 @@ ModuleD.propTypes = {
   ).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
+  ignoreLazyLoadImage: PropTypes.bool,
 };
 
 export default ModuleD;

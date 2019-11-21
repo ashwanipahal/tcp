@@ -113,9 +113,48 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -123,7 +162,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -134,6 +175,8 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "1400": "#90939b",
           "1500": "#c3c3c3",
           "1600": "#979797",
+          "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -170,8 +213,10 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -397,6 +442,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -414,9 +460,11 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -539,6 +587,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -551,9 +600,20 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -573,9 +633,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -586,7 +646,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -601,7 +661,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -614,9 +674,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -628,6 +688,10 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -686,6 +750,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -738,9 +803,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -748,7 +852,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -759,6 +865,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "1400": "#90939b",
           "1500": "#c3c3c3",
           "1600": "#979797",
+          "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -795,8 +903,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -1022,6 +1132,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -1039,9 +1150,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -1164,6 +1277,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -1176,9 +1290,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -1198,9 +1323,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -1211,7 +1336,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -1226,7 +1351,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -1239,9 +1364,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -1253,6 +1378,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -1311,6 +1440,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -1449,9 +1579,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "xlarge": "1440px",
         },
         "colorPalette": Object {
+          "BUTTON": Object {
+            "BLACK": Object {
+              "ALT_FOCUS": "#ffffff",
+              "ALT_HOVER": "#ffffff",
+              "BORDER": "#1a1a1a",
+              "FOCUS": "#595959",
+              "HOVER": "#595959",
+              "NORMAL": "#1a1a1a",
+              "TEXT": "#ffffff",
+            },
+            "BLUE": Object {
+              "ALT_FOCUS": "#1f4862",
+              "ALT_HOVER": "#1f4862",
+              "BORDER": "#2e6a91",
+              "FOCUS": "#1f4862",
+              "HOVER": "#1f4862",
+              "NORMAL": "#2e6a91",
+              "TEXT": "#fff",
+            },
+            "RED": Object {
+              "ALT_FOCUS": "#e19999",
+              "ALT_HOVER": "#e19999",
+              "BORDER": "#c84747",
+              "FOCUS": "#e19999",
+              "HOVER": "#f3d7d7",
+              "NORMAL": "#ffffff",
+              "TEXT": "#c84747",
+            },
+            "WHITE": Object {
+              "ALT_FOCUS": "#e2ecf3",
+              "ALT_HOVER": "#f2f9fe",
+              "BORDER": "#9B9B9B",
+              "FOCUS": "#d8d8d8",
+              "HOVER": "#f3f3f3",
+              "NORMAL": "#ffffff",
+              "TEXT": "#595959",
+            },
+          },
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
+            "1000": "#439ad4",
             "300": "#93c5ea",
             "50": "#edf5fb",
             "500": "#4b9fdd",
@@ -1459,7 +1628,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "700": "#3c7fb0",
             "800": "#254f6e",
             "900": "#162f42",
+            "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -1470,6 +1641,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "1400": "#90939b",
             "1500": "#c3c3c3",
             "1600": "#979797",
+            "1700": "#333333",
+            "1800": "#f1f0f0",
             "300": "#f3f3f3",
             "400": "#4a4a4a",
             "500": "#d8d8d8",
@@ -1506,8 +1679,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "100": "#f3d7d7",
             "200": "#f3d7d7",
             "300": "#c84747",
+            "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
+            "700": "#3f3356",
           },
           "secondary": Object {
             "dark": "#c84747",
@@ -1733,6 +1908,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontWeight": Object {
             "black": "900",
             "bold": "700",
+            "extrabold": "800",
             "light": "300",
             "medium": "500",
             "normal": "400",
@@ -1750,9 +1926,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "tight": 1.07,
           },
           "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+          "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
           "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
           "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
           "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+          "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
           "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
           "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
         },
@@ -1875,6 +2053,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fs25": "25px",
             "fs26": "26px",
             "fs28": "28px",
+            "fs30": "30px",
             "fs32": "32px",
             "fs36": "36px",
             "fs38": "38px",
@@ -1887,9 +2066,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
+            "medium": "500",
             "regular": "400",
             "semibold": "600",
+          },
+          "fontWeightsNames": Object {
+            "black": "Black",
+            "bold": "Bold",
+            "extrabold": "ExtraBold",
+            "medium": "Medium",
+            "regular": "Regular",
+            "semiBold": "SemiBold",
+            "semibold": "SemiBold",
           },
           "fonts": Object {
             "primary": "Montserrat",
@@ -1909,9 +2099,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "h2": Object {
             "fontFamily": "primary",
             "fontSize": Array [
-              "fs36",
-              "fs36",
-              "fs52",
+              "fs32",
+              "fs32",
+              "fs48",
             ],
             "fontWeight": "black",
             "letterSpacing": "normal",
@@ -1922,7 +2112,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs38",
+              "fs36",
             ],
             "fontWeight": "black",
             "letterSpacing": Array [
@@ -1937,7 +2127,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs36",
+              "fs32",
             ],
             "fontWeight": "semibold",
             "letterSpacing": Array [
@@ -1950,9 +2140,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "h5": Object {
             "fontFamily": "primary",
             "fontSize": Array [
+              "fs14",
               "fs16",
-              "fs16",
-              "fs28",
+              "fs20",
             ],
             "fontWeight": "normal",
             "letterSpacing": "normal",
@@ -1964,6 +2154,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontWeight": "semibold",
             "letterSpacing": "normal",
             "lineHeight": "normal",
+          },
+          "iosFonts": Object {
+            "primary": "Montserrat",
+            "secondary": "Nunito",
           },
           "letterSpacings": Object {
             "ls071": "0.71px",
@@ -2022,6 +2216,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "zDrawer": 1200,
           "zEnlargedImage": 100,
           "zGoogleAutosuggest": 100000,
+          "zIndexQuickView": 10000,
           "zLoader": 1000,
           "zModal": 1300,
           "zModule": 200,
@@ -2074,9 +2269,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "xlarge": "1440px",
           },
           "colorPalette": Object {
+            "BUTTON": Object {
+              "BLACK": Object {
+                "ALT_FOCUS": "#ffffff",
+                "ALT_HOVER": "#ffffff",
+                "BORDER": "#1a1a1a",
+                "FOCUS": "#595959",
+                "HOVER": "#595959",
+                "NORMAL": "#1a1a1a",
+                "TEXT": "#ffffff",
+              },
+              "BLUE": Object {
+                "ALT_FOCUS": "#1f4862",
+                "ALT_HOVER": "#1f4862",
+                "BORDER": "#2e6a91",
+                "FOCUS": "#1f4862",
+                "HOVER": "#1f4862",
+                "NORMAL": "#2e6a91",
+                "TEXT": "#fff",
+              },
+              "RED": Object {
+                "ALT_FOCUS": "#e19999",
+                "ALT_HOVER": "#e19999",
+                "BORDER": "#c84747",
+                "FOCUS": "#e19999",
+                "HOVER": "#f3d7d7",
+                "NORMAL": "#ffffff",
+                "TEXT": "#c84747",
+              },
+              "WHITE": Object {
+                "ALT_FOCUS": "#e2ecf3",
+                "ALT_HOVER": "#f2f9fe",
+                "BORDER": "#9B9B9B",
+                "FOCUS": "#d8d8d8",
+                "HOVER": "#f3f3f3",
+                "NORMAL": "#ffffff",
+                "TEXT": "#595959",
+              },
+            },
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
+              "1000": "#439ad4",
               "300": "#93c5ea",
               "50": "#edf5fb",
               "500": "#4b9fdd",
@@ -2084,7 +2318,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "700": "#3c7fb0",
               "800": "#254f6e",
               "900": "#162f42",
+              "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -2095,6 +2331,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "1400": "#90939b",
               "1500": "#c3c3c3",
               "1600": "#979797",
+              "1700": "#333333",
+              "1800": "#f1f0f0",
               "300": "#f3f3f3",
               "400": "#4a4a4a",
               "500": "#d8d8d8",
@@ -2131,8 +2369,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "100": "#f3d7d7",
               "200": "#f3d7d7",
               "300": "#c84747",
+              "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
+              "700": "#3f3356",
             },
             "secondary": Object {
               "dark": "#c84747",
@@ -2358,6 +2598,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontWeight": Object {
               "black": "900",
               "bold": "700",
+              "extrabold": "800",
               "light": "300",
               "medium": "500",
               "normal": "400",
@@ -2375,9 +2616,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "tight": 1.07,
             },
             "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+            "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
             "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
             "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
             "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+            "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
             "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
             "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
           },
@@ -2500,6 +2743,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fs25": "25px",
               "fs26": "26px",
               "fs28": "28px",
+              "fs30": "30px",
               "fs32": "32px",
               "fs36": "36px",
               "fs38": "38px",
@@ -2512,9 +2756,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
+              "medium": "500",
               "regular": "400",
               "semibold": "600",
+            },
+            "fontWeightsNames": Object {
+              "black": "Black",
+              "bold": "Bold",
+              "extrabold": "ExtraBold",
+              "medium": "Medium",
+              "regular": "Regular",
+              "semiBold": "SemiBold",
+              "semibold": "SemiBold",
             },
             "fonts": Object {
               "primary": "Montserrat",
@@ -2534,9 +2789,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "h2": Object {
               "fontFamily": "primary",
               "fontSize": Array [
-                "fs36",
-                "fs36",
-                "fs52",
+                "fs32",
+                "fs32",
+                "fs48",
               ],
               "fontWeight": "black",
               "letterSpacing": "normal",
@@ -2547,7 +2802,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs38",
+                "fs36",
               ],
               "fontWeight": "black",
               "letterSpacing": Array [
@@ -2562,7 +2817,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs36",
+                "fs32",
               ],
               "fontWeight": "semibold",
               "letterSpacing": Array [
@@ -2575,9 +2830,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "h5": Object {
               "fontFamily": "primary",
               "fontSize": Array [
+                "fs14",
                 "fs16",
-                "fs16",
-                "fs28",
+                "fs20",
               ],
               "fontWeight": "normal",
               "letterSpacing": "normal",
@@ -2589,6 +2844,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontWeight": "semibold",
               "letterSpacing": "normal",
               "lineHeight": "normal",
+            },
+            "iosFonts": Object {
+              "primary": "Montserrat",
+              "secondary": "Nunito",
             },
             "letterSpacings": Object {
               "ls071": "0.71px",
@@ -2647,6 +2906,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "zDrawer": 1200,
             "zEnlargedImage": 100,
             "zGoogleAutosuggest": 100000,
+            "zIndexQuickView": 10000,
             "zLoader": 1000,
             "zModal": 1300,
             "zModule": 200,
@@ -2727,9 +2987,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "xlarge": "1440px",
               },
               "colorPalette": Object {
+                "BUTTON": Object {
+                  "BLACK": Object {
+                    "ALT_FOCUS": "#ffffff",
+                    "ALT_HOVER": "#ffffff",
+                    "BORDER": "#1a1a1a",
+                    "FOCUS": "#595959",
+                    "HOVER": "#595959",
+                    "NORMAL": "#1a1a1a",
+                    "TEXT": "#ffffff",
+                  },
+                  "BLUE": Object {
+                    "ALT_FOCUS": "#1f4862",
+                    "ALT_HOVER": "#1f4862",
+                    "BORDER": "#2e6a91",
+                    "FOCUS": "#1f4862",
+                    "HOVER": "#1f4862",
+                    "NORMAL": "#2e6a91",
+                    "TEXT": "#fff",
+                  },
+                  "RED": Object {
+                    "ALT_FOCUS": "#e19999",
+                    "ALT_HOVER": "#e19999",
+                    "BORDER": "#c84747",
+                    "FOCUS": "#e19999",
+                    "HOVER": "#f3d7d7",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#c84747",
+                  },
+                  "WHITE": Object {
+                    "ALT_FOCUS": "#e2ecf3",
+                    "ALT_HOVER": "#f2f9fe",
+                    "BORDER": "#9B9B9B",
+                    "FOCUS": "#d8d8d8",
+                    "HOVER": "#f3f3f3",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#595959",
+                  },
+                },
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
+                  "1000": "#439ad4",
                   "300": "#93c5ea",
                   "50": "#edf5fb",
                   "500": "#4b9fdd",
@@ -2737,7 +3036,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "700": "#3c7fb0",
                   "800": "#254f6e",
                   "900": "#162f42",
+                  "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -2748,6 +3049,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "1400": "#90939b",
                   "1500": "#c3c3c3",
                   "1600": "#979797",
+                  "1700": "#333333",
+                  "1800": "#f1f0f0",
                   "300": "#f3f3f3",
                   "400": "#4a4a4a",
                   "500": "#d8d8d8",
@@ -2784,8 +3087,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "100": "#f3d7d7",
                   "200": "#f3d7d7",
                   "300": "#c84747",
+                  "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
+                  "700": "#3f3356",
                 },
                 "secondary": Object {
                   "dark": "#c84747",
@@ -3011,6 +3316,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "fontWeight": Object {
                   "black": "900",
                   "bold": "700",
+                  "extrabold": "800",
                   "light": "300",
                   "medium": "500",
                   "normal": "400",
@@ -3028,9 +3334,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "tight": 1.07,
                 },
                 "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                 "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                 "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                 "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                 "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                 "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
               },
@@ -3153,6 +3461,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fs25": "25px",
                   "fs26": "26px",
                   "fs28": "28px",
+                  "fs30": "30px",
                   "fs32": "32px",
                   "fs36": "36px",
                   "fs38": "38px",
@@ -3165,9 +3474,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
+                  "medium": "500",
                   "regular": "400",
                   "semibold": "600",
+                },
+                "fontWeightsNames": Object {
+                  "black": "Black",
+                  "bold": "Bold",
+                  "extrabold": "ExtraBold",
+                  "medium": "Medium",
+                  "regular": "Regular",
+                  "semiBold": "SemiBold",
+                  "semibold": "SemiBold",
                 },
                 "fonts": Object {
                   "primary": "Montserrat",
@@ -3187,9 +3507,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "h2": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
-                    "fs36",
-                    "fs36",
-                    "fs52",
+                    "fs32",
+                    "fs32",
+                    "fs48",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": "normal",
@@ -3200,7 +3520,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs38",
+                    "fs36",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": Array [
@@ -3215,7 +3535,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs36",
+                    "fs32",
                   ],
                   "fontWeight": "semibold",
                   "letterSpacing": Array [
@@ -3228,9 +3548,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "h5": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
+                    "fs14",
                     "fs16",
-                    "fs16",
-                    "fs28",
+                    "fs20",
                   ],
                   "fontWeight": "normal",
                   "letterSpacing": "normal",
@@ -3242,6 +3562,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontWeight": "semibold",
                   "letterSpacing": "normal",
                   "lineHeight": "normal",
+                },
+                "iosFonts": Object {
+                  "primary": "Montserrat",
+                  "secondary": "Nunito",
                 },
                 "letterSpacings": Object {
                   "ls071": "0.71px",
@@ -3300,6 +3624,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "zDrawer": 1200,
                 "zEnlargedImage": 100,
                 "zGoogleAutosuggest": 100000,
+                "zIndexQuickView": 10000,
                 "zLoader": 1000,
                 "zModal": 1300,
                 "zModule": 200,
@@ -3352,7 +3677,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -3368,12 +3693,28 @@ exports[`StoreHours component should render component with timing data 1`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: ",
+                    [Function],
+                    ";
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -3381,7 +3722,16 @@ exports[`StoreHours component should render component with timing data 1`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 ",
                     ";
@@ -3487,9 +3837,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "xlarge": "1440px",
                 },
                 "colorPalette": Object {
+                  "BUTTON": Object {
+                    "BLACK": Object {
+                      "ALT_FOCUS": "#ffffff",
+                      "ALT_HOVER": "#ffffff",
+                      "BORDER": "#1a1a1a",
+                      "FOCUS": "#595959",
+                      "HOVER": "#595959",
+                      "NORMAL": "#1a1a1a",
+                      "TEXT": "#ffffff",
+                    },
+                    "BLUE": Object {
+                      "ALT_FOCUS": "#1f4862",
+                      "ALT_HOVER": "#1f4862",
+                      "BORDER": "#2e6a91",
+                      "FOCUS": "#1f4862",
+                      "HOVER": "#1f4862",
+                      "NORMAL": "#2e6a91",
+                      "TEXT": "#fff",
+                    },
+                    "RED": Object {
+                      "ALT_FOCUS": "#e19999",
+                      "ALT_HOVER": "#e19999",
+                      "BORDER": "#c84747",
+                      "FOCUS": "#e19999",
+                      "HOVER": "#f3d7d7",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#c84747",
+                    },
+                    "WHITE": Object {
+                      "ALT_FOCUS": "#e2ecf3",
+                      "ALT_HOVER": "#f2f9fe",
+                      "BORDER": "#9B9B9B",
+                      "FOCUS": "#d8d8d8",
+                      "HOVER": "#f3f3f3",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#595959",
+                    },
+                  },
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
+                    "1000": "#439ad4",
                     "300": "#93c5ea",
                     "50": "#edf5fb",
                     "500": "#4b9fdd",
@@ -3497,7 +3886,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "700": "#3c7fb0",
                     "800": "#254f6e",
                     "900": "#162f42",
+                    "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -3508,6 +3899,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "1400": "#90939b",
                     "1500": "#c3c3c3",
                     "1600": "#979797",
+                    "1700": "#333333",
+                    "1800": "#f1f0f0",
                     "300": "#f3f3f3",
                     "400": "#4a4a4a",
                     "500": "#d8d8d8",
@@ -3544,8 +3937,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "100": "#f3d7d7",
                     "200": "#f3d7d7",
                     "300": "#c84747",
+                    "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
+                    "700": "#3f3356",
                   },
                   "secondary": Object {
                     "dark": "#c84747",
@@ -3771,6 +4166,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontWeight": Object {
                     "black": "900",
                     "bold": "700",
+                    "extrabold": "800",
                     "light": "300",
                     "medium": "500",
                     "normal": "400",
@@ -3788,9 +4184,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "tight": 1.07,
                   },
                   "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                  "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                   "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                   "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                   "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                  "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                   "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                   "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                 },
@@ -3913,6 +4311,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fs25": "25px",
                     "fs26": "26px",
                     "fs28": "28px",
+                    "fs30": "30px",
                     "fs32": "32px",
                     "fs36": "36px",
                     "fs38": "38px",
@@ -3925,9 +4324,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
+                    "medium": "500",
                     "regular": "400",
                     "semibold": "600",
+                  },
+                  "fontWeightsNames": Object {
+                    "black": "Black",
+                    "bold": "Bold",
+                    "extrabold": "ExtraBold",
+                    "medium": "Medium",
+                    "regular": "Regular",
+                    "semiBold": "SemiBold",
+                    "semibold": "SemiBold",
                   },
                   "fonts": Object {
                     "primary": "Montserrat",
@@ -3947,9 +4357,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "h2": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
-                      "fs36",
-                      "fs36",
-                      "fs52",
+                      "fs32",
+                      "fs32",
+                      "fs48",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": "normal",
@@ -3960,7 +4370,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs38",
+                      "fs36",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": Array [
@@ -3975,7 +4385,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs36",
+                      "fs32",
                     ],
                     "fontWeight": "semibold",
                     "letterSpacing": Array [
@@ -3988,9 +4398,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "h5": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
+                      "fs14",
                       "fs16",
-                      "fs16",
-                      "fs28",
+                      "fs20",
                     ],
                     "fontWeight": "normal",
                     "letterSpacing": "normal",
@@ -4002,6 +4412,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontWeight": "semibold",
                     "letterSpacing": "normal",
                     "lineHeight": "normal",
+                  },
+                  "iosFonts": Object {
+                    "primary": "Montserrat",
+                    "secondary": "Nunito",
                   },
                   "letterSpacings": Object {
                     "ls071": "0.71px",
@@ -4060,6 +4474,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "zDrawer": 1200,
                   "zEnlargedImage": 100,
                   "zGoogleAutosuggest": 100000,
+                  "zIndexQuickView": 10000,
                   "zLoader": 1000,
                   "zModal": 1300,
                   "zModule": 200,
@@ -4104,7 +4519,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -4115,6 +4530,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
@@ -4139,9 +4555,48 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "xlarge": "1440px",
                   },
                   "colorPalette": Object {
+                    "BUTTON": Object {
+                      "BLACK": Object {
+                        "ALT_FOCUS": "#ffffff",
+                        "ALT_HOVER": "#ffffff",
+                        "BORDER": "#1a1a1a",
+                        "FOCUS": "#595959",
+                        "HOVER": "#595959",
+                        "NORMAL": "#1a1a1a",
+                        "TEXT": "#ffffff",
+                      },
+                      "BLUE": Object {
+                        "ALT_FOCUS": "#1f4862",
+                        "ALT_HOVER": "#1f4862",
+                        "BORDER": "#2e6a91",
+                        "FOCUS": "#1f4862",
+                        "HOVER": "#1f4862",
+                        "NORMAL": "#2e6a91",
+                        "TEXT": "#fff",
+                      },
+                      "RED": Object {
+                        "ALT_FOCUS": "#e19999",
+                        "ALT_HOVER": "#e19999",
+                        "BORDER": "#c84747",
+                        "FOCUS": "#e19999",
+                        "HOVER": "#f3d7d7",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#c84747",
+                      },
+                      "WHITE": Object {
+                        "ALT_FOCUS": "#e2ecf3",
+                        "ALT_HOVER": "#f2f9fe",
+                        "BORDER": "#9B9B9B",
+                        "FOCUS": "#d8d8d8",
+                        "HOVER": "#f3f3f3",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#595959",
+                      },
+                    },
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
+                      "1000": "#439ad4",
                       "300": "#93c5ea",
                       "50": "#edf5fb",
                       "500": "#4b9fdd",
@@ -4149,7 +4604,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "700": "#3c7fb0",
                       "800": "#254f6e",
                       "900": "#162f42",
+                      "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -4160,6 +4617,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "1400": "#90939b",
                       "1500": "#c3c3c3",
                       "1600": "#979797",
+                      "1700": "#333333",
+                      "1800": "#f1f0f0",
                       "300": "#f3f3f3",
                       "400": "#4a4a4a",
                       "500": "#d8d8d8",
@@ -4196,8 +4655,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "100": "#f3d7d7",
                       "200": "#f3d7d7",
                       "300": "#c84747",
+                      "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
+                      "700": "#3f3356",
                     },
                     "secondary": Object {
                       "dark": "#c84747",
@@ -4423,6 +4884,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontWeight": Object {
                       "black": "900",
                       "bold": "700",
+                      "extrabold": "800",
                       "light": "300",
                       "medium": "500",
                       "normal": "400",
@@ -4440,9 +4902,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "tight": 1.07,
                     },
                     "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                    "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                     "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                     "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                     "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                    "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                     "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                     "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                   },
@@ -4565,6 +5029,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fs25": "25px",
                       "fs26": "26px",
                       "fs28": "28px",
+                      "fs30": "30px",
                       "fs32": "32px",
                       "fs36": "36px",
                       "fs38": "38px",
@@ -4577,9 +5042,20 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
+                      "medium": "500",
                       "regular": "400",
                       "semibold": "600",
+                    },
+                    "fontWeightsNames": Object {
+                      "black": "Black",
+                      "bold": "Bold",
+                      "extrabold": "ExtraBold",
+                      "medium": "Medium",
+                      "regular": "Regular",
+                      "semiBold": "SemiBold",
+                      "semibold": "SemiBold",
                     },
                     "fonts": Object {
                       "primary": "Montserrat",
@@ -4599,9 +5075,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "h2": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
-                        "fs36",
-                        "fs36",
-                        "fs52",
+                        "fs32",
+                        "fs32",
+                        "fs48",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": "normal",
@@ -4612,7 +5088,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs38",
+                        "fs36",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": Array [
@@ -4627,7 +5103,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs36",
+                        "fs32",
                       ],
                       "fontWeight": "semibold",
                       "letterSpacing": Array [
@@ -4640,9 +5116,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "h5": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
+                        "fs14",
                         "fs16",
-                        "fs16",
-                        "fs28",
+                        "fs20",
                       ],
                       "fontWeight": "normal",
                       "letterSpacing": "normal",
@@ -4654,6 +5130,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontWeight": "semibold",
                       "letterSpacing": "normal",
                       "lineHeight": "normal",
+                    },
+                    "iosFonts": Object {
+                      "primary": "Montserrat",
+                      "secondary": "Nunito",
                     },
                     "letterSpacings": Object {
                       "ls071": "0.71px",
@@ -4712,6 +5192,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "zDrawer": 1200,
                     "zEnlargedImage": 100,
                     "zGoogleAutosuggest": 100000,
+                    "zIndexQuickView": 10000,
                     "zLoader": 1000,
                     "zModal": 1300,
                     "zModule": 200,
@@ -4722,12 +5203,13 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
               >
                 <button
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"
@@ -4891,9 +5373,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -4901,7 +5422,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -4912,6 +5435,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "1400": "#90939b",
           "1500": "#c3c3c3",
           "1600": "#979797",
+          "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -4948,8 +5473,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -5175,6 +5702,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -5192,9 +5720,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -5317,6 +5847,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -5329,9 +5860,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -5351,9 +5893,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -5364,7 +5906,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -5379,7 +5921,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -5392,9 +5934,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -5406,6 +5948,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -5464,6 +6010,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -5606,9 +6153,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "xlarge": "1440px",
         },
         "colorPalette": Object {
+          "BUTTON": Object {
+            "BLACK": Object {
+              "ALT_FOCUS": "#ffffff",
+              "ALT_HOVER": "#ffffff",
+              "BORDER": "#1a1a1a",
+              "FOCUS": "#595959",
+              "HOVER": "#595959",
+              "NORMAL": "#1a1a1a",
+              "TEXT": "#ffffff",
+            },
+            "BLUE": Object {
+              "ALT_FOCUS": "#1f4862",
+              "ALT_HOVER": "#1f4862",
+              "BORDER": "#2e6a91",
+              "FOCUS": "#1f4862",
+              "HOVER": "#1f4862",
+              "NORMAL": "#2e6a91",
+              "TEXT": "#fff",
+            },
+            "RED": Object {
+              "ALT_FOCUS": "#e19999",
+              "ALT_HOVER": "#e19999",
+              "BORDER": "#c84747",
+              "FOCUS": "#e19999",
+              "HOVER": "#f3d7d7",
+              "NORMAL": "#ffffff",
+              "TEXT": "#c84747",
+            },
+            "WHITE": Object {
+              "ALT_FOCUS": "#e2ecf3",
+              "ALT_HOVER": "#f2f9fe",
+              "BORDER": "#9B9B9B",
+              "FOCUS": "#d8d8d8",
+              "HOVER": "#f3f3f3",
+              "NORMAL": "#ffffff",
+              "TEXT": "#595959",
+            },
+          },
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
+            "1000": "#439ad4",
             "300": "#93c5ea",
             "50": "#edf5fb",
             "500": "#4b9fdd",
@@ -5616,7 +6202,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "700": "#3c7fb0",
             "800": "#254f6e",
             "900": "#162f42",
+            "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -5627,6 +6215,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "1400": "#90939b",
             "1500": "#c3c3c3",
             "1600": "#979797",
+            "1700": "#333333",
+            "1800": "#f1f0f0",
             "300": "#f3f3f3",
             "400": "#4a4a4a",
             "500": "#d8d8d8",
@@ -5663,8 +6253,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "100": "#f3d7d7",
             "200": "#f3d7d7",
             "300": "#c84747",
+            "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
+            "700": "#3f3356",
           },
           "secondary": Object {
             "dark": "#c84747",
@@ -5890,6 +6482,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontWeight": Object {
             "black": "900",
             "bold": "700",
+            "extrabold": "800",
             "light": "300",
             "medium": "500",
             "normal": "400",
@@ -5907,9 +6500,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "tight": 1.07,
           },
           "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+          "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
           "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
           "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
           "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+          "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
           "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
           "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
         },
@@ -6032,6 +6627,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fs25": "25px",
             "fs26": "26px",
             "fs28": "28px",
+            "fs30": "30px",
             "fs32": "32px",
             "fs36": "36px",
             "fs38": "38px",
@@ -6044,9 +6640,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
+            "medium": "500",
             "regular": "400",
             "semibold": "600",
+          },
+          "fontWeightsNames": Object {
+            "black": "Black",
+            "bold": "Bold",
+            "extrabold": "ExtraBold",
+            "medium": "Medium",
+            "regular": "Regular",
+            "semiBold": "SemiBold",
+            "semibold": "SemiBold",
           },
           "fonts": Object {
             "primary": "Montserrat",
@@ -6066,9 +6673,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "h2": Object {
             "fontFamily": "primary",
             "fontSize": Array [
-              "fs36",
-              "fs36",
-              "fs52",
+              "fs32",
+              "fs32",
+              "fs48",
             ],
             "fontWeight": "black",
             "letterSpacing": "normal",
@@ -6079,7 +6686,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs38",
+              "fs36",
             ],
             "fontWeight": "black",
             "letterSpacing": Array [
@@ -6094,7 +6701,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs36",
+              "fs32",
             ],
             "fontWeight": "semibold",
             "letterSpacing": Array [
@@ -6107,9 +6714,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "h5": Object {
             "fontFamily": "primary",
             "fontSize": Array [
+              "fs14",
               "fs16",
-              "fs16",
-              "fs28",
+              "fs20",
             ],
             "fontWeight": "normal",
             "letterSpacing": "normal",
@@ -6121,6 +6728,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontWeight": "semibold",
             "letterSpacing": "normal",
             "lineHeight": "normal",
+          },
+          "iosFonts": Object {
+            "primary": "Montserrat",
+            "secondary": "Nunito",
           },
           "letterSpacings": Object {
             "ls071": "0.71px",
@@ -6179,6 +6790,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "zDrawer": 1200,
           "zEnlargedImage": 100,
           "zGoogleAutosuggest": 100000,
+          "zIndexQuickView": 10000,
           "zLoader": 1000,
           "zModal": 1300,
           "zModule": 200,
@@ -6234,9 +6846,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "xlarge": "1440px",
           },
           "colorPalette": Object {
+            "BUTTON": Object {
+              "BLACK": Object {
+                "ALT_FOCUS": "#ffffff",
+                "ALT_HOVER": "#ffffff",
+                "BORDER": "#1a1a1a",
+                "FOCUS": "#595959",
+                "HOVER": "#595959",
+                "NORMAL": "#1a1a1a",
+                "TEXT": "#ffffff",
+              },
+              "BLUE": Object {
+                "ALT_FOCUS": "#1f4862",
+                "ALT_HOVER": "#1f4862",
+                "BORDER": "#2e6a91",
+                "FOCUS": "#1f4862",
+                "HOVER": "#1f4862",
+                "NORMAL": "#2e6a91",
+                "TEXT": "#fff",
+              },
+              "RED": Object {
+                "ALT_FOCUS": "#e19999",
+                "ALT_HOVER": "#e19999",
+                "BORDER": "#c84747",
+                "FOCUS": "#e19999",
+                "HOVER": "#f3d7d7",
+                "NORMAL": "#ffffff",
+                "TEXT": "#c84747",
+              },
+              "WHITE": Object {
+                "ALT_FOCUS": "#e2ecf3",
+                "ALT_HOVER": "#f2f9fe",
+                "BORDER": "#9B9B9B",
+                "FOCUS": "#d8d8d8",
+                "HOVER": "#f3f3f3",
+                "NORMAL": "#ffffff",
+                "TEXT": "#595959",
+              },
+            },
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
+              "1000": "#439ad4",
               "300": "#93c5ea",
               "50": "#edf5fb",
               "500": "#4b9fdd",
@@ -6244,7 +6895,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "700": "#3c7fb0",
               "800": "#254f6e",
               "900": "#162f42",
+              "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -6255,6 +6908,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "1400": "#90939b",
               "1500": "#c3c3c3",
               "1600": "#979797",
+              "1700": "#333333",
+              "1800": "#f1f0f0",
               "300": "#f3f3f3",
               "400": "#4a4a4a",
               "500": "#d8d8d8",
@@ -6291,8 +6946,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "100": "#f3d7d7",
               "200": "#f3d7d7",
               "300": "#c84747",
+              "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
+              "700": "#3f3356",
             },
             "secondary": Object {
               "dark": "#c84747",
@@ -6518,6 +7175,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontWeight": Object {
               "black": "900",
               "bold": "700",
+              "extrabold": "800",
               "light": "300",
               "medium": "500",
               "normal": "400",
@@ -6535,9 +7193,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "tight": 1.07,
             },
             "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+            "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
             "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
             "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
             "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+            "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
             "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
             "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
           },
@@ -6660,6 +7320,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fs25": "25px",
               "fs26": "26px",
               "fs28": "28px",
+              "fs30": "30px",
               "fs32": "32px",
               "fs36": "36px",
               "fs38": "38px",
@@ -6672,9 +7333,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
+              "medium": "500",
               "regular": "400",
               "semibold": "600",
+            },
+            "fontWeightsNames": Object {
+              "black": "Black",
+              "bold": "Bold",
+              "extrabold": "ExtraBold",
+              "medium": "Medium",
+              "regular": "Regular",
+              "semiBold": "SemiBold",
+              "semibold": "SemiBold",
             },
             "fonts": Object {
               "primary": "Montserrat",
@@ -6694,9 +7366,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "h2": Object {
               "fontFamily": "primary",
               "fontSize": Array [
-                "fs36",
-                "fs36",
-                "fs52",
+                "fs32",
+                "fs32",
+                "fs48",
               ],
               "fontWeight": "black",
               "letterSpacing": "normal",
@@ -6707,7 +7379,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs38",
+                "fs36",
               ],
               "fontWeight": "black",
               "letterSpacing": Array [
@@ -6722,7 +7394,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs36",
+                "fs32",
               ],
               "fontWeight": "semibold",
               "letterSpacing": Array [
@@ -6735,9 +7407,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "h5": Object {
               "fontFamily": "primary",
               "fontSize": Array [
+                "fs14",
                 "fs16",
-                "fs16",
-                "fs28",
+                "fs20",
               ],
               "fontWeight": "normal",
               "letterSpacing": "normal",
@@ -6749,6 +7421,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontWeight": "semibold",
               "letterSpacing": "normal",
               "lineHeight": "normal",
+            },
+            "iosFonts": Object {
+              "primary": "Montserrat",
+              "secondary": "Nunito",
             },
             "letterSpacings": Object {
               "ls071": "0.71px",
@@ -6807,6 +7483,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "zDrawer": 1200,
             "zEnlargedImage": 100,
             "zGoogleAutosuggest": 100000,
+            "zIndexQuickView": 10000,
             "zLoader": 1000,
             "zModal": 1300,
             "zModule": 200,
@@ -6875,9 +7552,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "xlarge": "1440px",
               },
               "colorPalette": Object {
+                "BUTTON": Object {
+                  "BLACK": Object {
+                    "ALT_FOCUS": "#ffffff",
+                    "ALT_HOVER": "#ffffff",
+                    "BORDER": "#1a1a1a",
+                    "FOCUS": "#595959",
+                    "HOVER": "#595959",
+                    "NORMAL": "#1a1a1a",
+                    "TEXT": "#ffffff",
+                  },
+                  "BLUE": Object {
+                    "ALT_FOCUS": "#1f4862",
+                    "ALT_HOVER": "#1f4862",
+                    "BORDER": "#2e6a91",
+                    "FOCUS": "#1f4862",
+                    "HOVER": "#1f4862",
+                    "NORMAL": "#2e6a91",
+                    "TEXT": "#fff",
+                  },
+                  "RED": Object {
+                    "ALT_FOCUS": "#e19999",
+                    "ALT_HOVER": "#e19999",
+                    "BORDER": "#c84747",
+                    "FOCUS": "#e19999",
+                    "HOVER": "#f3d7d7",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#c84747",
+                  },
+                  "WHITE": Object {
+                    "ALT_FOCUS": "#e2ecf3",
+                    "ALT_HOVER": "#f2f9fe",
+                    "BORDER": "#9B9B9B",
+                    "FOCUS": "#d8d8d8",
+                    "HOVER": "#f3f3f3",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#595959",
+                  },
+                },
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
+                  "1000": "#439ad4",
                   "300": "#93c5ea",
                   "50": "#edf5fb",
                   "500": "#4b9fdd",
@@ -6885,7 +7601,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "700": "#3c7fb0",
                   "800": "#254f6e",
                   "900": "#162f42",
+                  "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -6896,6 +7614,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "1400": "#90939b",
                   "1500": "#c3c3c3",
                   "1600": "#979797",
+                  "1700": "#333333",
+                  "1800": "#f1f0f0",
                   "300": "#f3f3f3",
                   "400": "#4a4a4a",
                   "500": "#d8d8d8",
@@ -6932,8 +7652,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "100": "#f3d7d7",
                   "200": "#f3d7d7",
                   "300": "#c84747",
+                  "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
+                  "700": "#3f3356",
                 },
                 "secondary": Object {
                   "dark": "#c84747",
@@ -7159,6 +7881,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "fontWeight": Object {
                   "black": "900",
                   "bold": "700",
+                  "extrabold": "800",
                   "light": "300",
                   "medium": "500",
                   "normal": "400",
@@ -7176,9 +7899,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "tight": 1.07,
                 },
                 "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                 "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                 "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                 "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                 "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                 "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
               },
@@ -7301,6 +8026,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fs25": "25px",
                   "fs26": "26px",
                   "fs28": "28px",
+                  "fs30": "30px",
                   "fs32": "32px",
                   "fs36": "36px",
                   "fs38": "38px",
@@ -7313,9 +8039,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
+                  "medium": "500",
                   "regular": "400",
                   "semibold": "600",
+                },
+                "fontWeightsNames": Object {
+                  "black": "Black",
+                  "bold": "Bold",
+                  "extrabold": "ExtraBold",
+                  "medium": "Medium",
+                  "regular": "Regular",
+                  "semiBold": "SemiBold",
+                  "semibold": "SemiBold",
                 },
                 "fonts": Object {
                   "primary": "Montserrat",
@@ -7335,9 +8072,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "h2": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
-                    "fs36",
-                    "fs36",
-                    "fs52",
+                    "fs32",
+                    "fs32",
+                    "fs48",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": "normal",
@@ -7348,7 +8085,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs38",
+                    "fs36",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": Array [
@@ -7363,7 +8100,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs36",
+                    "fs32",
                   ],
                   "fontWeight": "semibold",
                   "letterSpacing": Array [
@@ -7376,9 +8113,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "h5": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
+                    "fs14",
                     "fs16",
-                    "fs16",
-                    "fs28",
+                    "fs20",
                   ],
                   "fontWeight": "normal",
                   "letterSpacing": "normal",
@@ -7390,6 +8127,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontWeight": "semibold",
                   "letterSpacing": "normal",
                   "lineHeight": "normal",
+                },
+                "iosFonts": Object {
+                  "primary": "Montserrat",
+                  "secondary": "Nunito",
                 },
                 "letterSpacings": Object {
                   "ls071": "0.71px",
@@ -7448,6 +8189,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "zDrawer": 1200,
                 "zEnlargedImage": 100,
                 "zGoogleAutosuggest": 100000,
+                "zIndexQuickView": 10000,
                 "zLoader": 1000,
                 "zModal": 1300,
                 "zModule": 200,
@@ -7488,7 +8230,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -7504,12 +8246,28 @@ exports[`StoreHours component should render component with timing data 2`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: ",
+                    [Function],
+                    ";
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -7517,7 +8275,16 @@ exports[`StoreHours component should render component with timing data 2`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 ",
                     ";
@@ -7623,9 +8390,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "xlarge": "1440px",
                 },
                 "colorPalette": Object {
+                  "BUTTON": Object {
+                    "BLACK": Object {
+                      "ALT_FOCUS": "#ffffff",
+                      "ALT_HOVER": "#ffffff",
+                      "BORDER": "#1a1a1a",
+                      "FOCUS": "#595959",
+                      "HOVER": "#595959",
+                      "NORMAL": "#1a1a1a",
+                      "TEXT": "#ffffff",
+                    },
+                    "BLUE": Object {
+                      "ALT_FOCUS": "#1f4862",
+                      "ALT_HOVER": "#1f4862",
+                      "BORDER": "#2e6a91",
+                      "FOCUS": "#1f4862",
+                      "HOVER": "#1f4862",
+                      "NORMAL": "#2e6a91",
+                      "TEXT": "#fff",
+                    },
+                    "RED": Object {
+                      "ALT_FOCUS": "#e19999",
+                      "ALT_HOVER": "#e19999",
+                      "BORDER": "#c84747",
+                      "FOCUS": "#e19999",
+                      "HOVER": "#f3d7d7",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#c84747",
+                    },
+                    "WHITE": Object {
+                      "ALT_FOCUS": "#e2ecf3",
+                      "ALT_HOVER": "#f2f9fe",
+                      "BORDER": "#9B9B9B",
+                      "FOCUS": "#d8d8d8",
+                      "HOVER": "#f3f3f3",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#595959",
+                    },
+                  },
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
+                    "1000": "#439ad4",
                     "300": "#93c5ea",
                     "50": "#edf5fb",
                     "500": "#4b9fdd",
@@ -7633,7 +8439,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "700": "#3c7fb0",
                     "800": "#254f6e",
                     "900": "#162f42",
+                    "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -7644,6 +8452,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "1400": "#90939b",
                     "1500": "#c3c3c3",
                     "1600": "#979797",
+                    "1700": "#333333",
+                    "1800": "#f1f0f0",
                     "300": "#f3f3f3",
                     "400": "#4a4a4a",
                     "500": "#d8d8d8",
@@ -7680,8 +8490,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "100": "#f3d7d7",
                     "200": "#f3d7d7",
                     "300": "#c84747",
+                    "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
+                    "700": "#3f3356",
                   },
                   "secondary": Object {
                     "dark": "#c84747",
@@ -7907,6 +8719,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontWeight": Object {
                     "black": "900",
                     "bold": "700",
+                    "extrabold": "800",
                     "light": "300",
                     "medium": "500",
                     "normal": "400",
@@ -7924,9 +8737,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "tight": 1.07,
                   },
                   "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                  "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                   "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                   "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                   "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                  "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                   "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                   "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                 },
@@ -8049,6 +8864,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fs25": "25px",
                     "fs26": "26px",
                     "fs28": "28px",
+                    "fs30": "30px",
                     "fs32": "32px",
                     "fs36": "36px",
                     "fs38": "38px",
@@ -8061,9 +8877,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
+                    "medium": "500",
                     "regular": "400",
                     "semibold": "600",
+                  },
+                  "fontWeightsNames": Object {
+                    "black": "Black",
+                    "bold": "Bold",
+                    "extrabold": "ExtraBold",
+                    "medium": "Medium",
+                    "regular": "Regular",
+                    "semiBold": "SemiBold",
+                    "semibold": "SemiBold",
                   },
                   "fonts": Object {
                     "primary": "Montserrat",
@@ -8083,9 +8910,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "h2": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
-                      "fs36",
-                      "fs36",
-                      "fs52",
+                      "fs32",
+                      "fs32",
+                      "fs48",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": "normal",
@@ -8096,7 +8923,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs38",
+                      "fs36",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": Array [
@@ -8111,7 +8938,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs36",
+                      "fs32",
                     ],
                     "fontWeight": "semibold",
                     "letterSpacing": Array [
@@ -8124,9 +8951,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "h5": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
+                      "fs14",
                       "fs16",
-                      "fs16",
-                      "fs28",
+                      "fs20",
                     ],
                     "fontWeight": "normal",
                     "letterSpacing": "normal",
@@ -8138,6 +8965,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontWeight": "semibold",
                     "letterSpacing": "normal",
                     "lineHeight": "normal",
+                  },
+                  "iosFonts": Object {
+                    "primary": "Montserrat",
+                    "secondary": "Nunito",
                   },
                   "letterSpacings": Object {
                     "ls071": "0.71px",
@@ -8196,6 +9027,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "zDrawer": 1200,
                   "zEnlargedImage": 100,
                   "zGoogleAutosuggest": 100000,
+                  "zIndexQuickView": 10000,
                   "zLoader": 1000,
                   "zModal": 1300,
                   "zModule": 200,
@@ -8228,7 +9060,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -8239,6 +9071,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
@@ -8263,9 +9096,48 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "xlarge": "1440px",
                   },
                   "colorPalette": Object {
+                    "BUTTON": Object {
+                      "BLACK": Object {
+                        "ALT_FOCUS": "#ffffff",
+                        "ALT_HOVER": "#ffffff",
+                        "BORDER": "#1a1a1a",
+                        "FOCUS": "#595959",
+                        "HOVER": "#595959",
+                        "NORMAL": "#1a1a1a",
+                        "TEXT": "#ffffff",
+                      },
+                      "BLUE": Object {
+                        "ALT_FOCUS": "#1f4862",
+                        "ALT_HOVER": "#1f4862",
+                        "BORDER": "#2e6a91",
+                        "FOCUS": "#1f4862",
+                        "HOVER": "#1f4862",
+                        "NORMAL": "#2e6a91",
+                        "TEXT": "#fff",
+                      },
+                      "RED": Object {
+                        "ALT_FOCUS": "#e19999",
+                        "ALT_HOVER": "#e19999",
+                        "BORDER": "#c84747",
+                        "FOCUS": "#e19999",
+                        "HOVER": "#f3d7d7",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#c84747",
+                      },
+                      "WHITE": Object {
+                        "ALT_FOCUS": "#e2ecf3",
+                        "ALT_HOVER": "#f2f9fe",
+                        "BORDER": "#9B9B9B",
+                        "FOCUS": "#d8d8d8",
+                        "HOVER": "#f3f3f3",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#595959",
+                      },
+                    },
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
+                      "1000": "#439ad4",
                       "300": "#93c5ea",
                       "50": "#edf5fb",
                       "500": "#4b9fdd",
@@ -8273,7 +9145,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "700": "#3c7fb0",
                       "800": "#254f6e",
                       "900": "#162f42",
+                      "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -8284,6 +9158,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "1400": "#90939b",
                       "1500": "#c3c3c3",
                       "1600": "#979797",
+                      "1700": "#333333",
+                      "1800": "#f1f0f0",
                       "300": "#f3f3f3",
                       "400": "#4a4a4a",
                       "500": "#d8d8d8",
@@ -8320,8 +9196,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "100": "#f3d7d7",
                       "200": "#f3d7d7",
                       "300": "#c84747",
+                      "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
+                      "700": "#3f3356",
                     },
                     "secondary": Object {
                       "dark": "#c84747",
@@ -8547,6 +9425,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontWeight": Object {
                       "black": "900",
                       "bold": "700",
+                      "extrabold": "800",
                       "light": "300",
                       "medium": "500",
                       "normal": "400",
@@ -8564,9 +9443,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "tight": 1.07,
                     },
                     "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                    "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                     "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                     "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                     "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                    "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                     "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                     "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                   },
@@ -8689,6 +9570,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fs25": "25px",
                       "fs26": "26px",
                       "fs28": "28px",
+                      "fs30": "30px",
                       "fs32": "32px",
                       "fs36": "36px",
                       "fs38": "38px",
@@ -8701,9 +9583,20 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
+                      "medium": "500",
                       "regular": "400",
                       "semibold": "600",
+                    },
+                    "fontWeightsNames": Object {
+                      "black": "Black",
+                      "bold": "Bold",
+                      "extrabold": "ExtraBold",
+                      "medium": "Medium",
+                      "regular": "Regular",
+                      "semiBold": "SemiBold",
+                      "semibold": "SemiBold",
                     },
                     "fonts": Object {
                       "primary": "Montserrat",
@@ -8723,9 +9616,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "h2": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
-                        "fs36",
-                        "fs36",
-                        "fs52",
+                        "fs32",
+                        "fs32",
+                        "fs48",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": "normal",
@@ -8736,7 +9629,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs38",
+                        "fs36",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": Array [
@@ -8751,7 +9644,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs36",
+                        "fs32",
                       ],
                       "fontWeight": "semibold",
                       "letterSpacing": Array [
@@ -8764,9 +9657,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "h5": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
+                        "fs14",
                         "fs16",
-                        "fs16",
-                        "fs28",
+                        "fs20",
                       ],
                       "fontWeight": "normal",
                       "letterSpacing": "normal",
@@ -8778,6 +9671,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontWeight": "semibold",
                       "letterSpacing": "normal",
                       "lineHeight": "normal",
+                    },
+                    "iosFonts": Object {
+                      "primary": "Montserrat",
+                      "secondary": "Nunito",
                     },
                     "letterSpacings": Object {
                       "ls071": "0.71px",
@@ -8836,6 +9733,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "zDrawer": 1200,
                     "zEnlargedImage": 100,
                     "zGoogleAutosuggest": 100000,
+                    "zIndexQuickView": 10000,
                     "zLoader": 1000,
                     "zModal": 1300,
                     "zModule": 200,
@@ -8846,12 +9744,13 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
               >
                 <button
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"

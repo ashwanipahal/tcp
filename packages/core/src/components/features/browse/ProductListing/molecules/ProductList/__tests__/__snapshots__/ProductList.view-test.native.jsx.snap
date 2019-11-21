@@ -5,8 +5,17 @@ exports[`ProductList component should renders correctly 1`] = `
   <FlatList
     ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
+    columnWrapperStyle={
+      Object {
+        "justifyContent": "space-between",
+      }
+    }
     data={
       Array [
+        Object {
+          "productInfo": "",
+        },
+        undefined,
         Object {
           "productInfo": "",
         },
@@ -15,27 +24,43 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={
       Object {
+        "AddToFavoriteErrorMsg": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
+        "isFavorite": false,
+        "isKeepAliveEnabled": false,
+        "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
+        "isSearchListing": false,
+        "labelsLogin": Object {
+          "logIn": "",
+        },
+        "labelsPlpTiles": Object {},
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],
+        "onGoToPDPPage": [MockFunction],
+        "onLoadMoreProducts": [MockFunction],
         "onPickUpOpenClick": [MockFunction],
         "onProductCardHover": [MockFunction],
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
+        "onRenderHeader": [MockFunction],
+        "outOfStockLabels": Object {},
         "products": Array [
           Object {
             "productInfo": "",
           },
         ],
+        "removeAddToFavoritesErrorMsg": [Function],
+        "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
         "siblingProperties": "",
+        "title": "",
         "unbxdId": "",
       }
     }

@@ -4,11 +4,14 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
 <Fragment>
   <div
     className=""
+    role="alert"
   >
-    <Styled(Image)
-      src="/static/images/alert-triangle.png"
+    <div
+      aria-disabled="true"
+      className="warning-icon"
     />
     <Styled(BodyCopy)
+      aria-live="assertive"
       className={null}
       color="error"
       component="span"
@@ -18,6 +21,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
+      role="alert"
       textAlign="left"
     >
       This is test error.

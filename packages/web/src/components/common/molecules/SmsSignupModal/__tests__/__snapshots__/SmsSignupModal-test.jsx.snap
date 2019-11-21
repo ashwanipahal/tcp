@@ -21,8 +21,8 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -34,7 +34,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -73,6 +73,12 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   "t_smsSignUp_img_d",
                 ]
               }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
+              }
             />
           </Styled(Col)>
           <Styled(Col)
@@ -110,7 +116,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
+                      "componentId": "sc-iwsKbI",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -253,7 +259,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
+                    "styledComponentId": "sc-iwsKbI",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -261,13 +267,154 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   }
                 }
                 dataLocator="sms_address_field"
-                id="signupPhoneNumber"
+                enableSuccessCheck={false}
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
+              />
+              <Field
+                className="phone-signup-second-brand"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-fjdhpX",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  display: block;
+  align-items: ",
+                        [Function],
+                        ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                        "25px",
+                        ";
+    width: ",
+                        "25px",
+                        ";
+    margin: 0;
+    margin-right: ",
+                        [Function],
+                        ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                        [Function],
+                        ";
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                        [Function],
+                        ";
+    font-size: ",
+                        [Function],
+                        "px;
+    width: ",
+                        [Function],
+                        ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                        [Function],
+                        "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                        [Function],
+                        ";
+  }
+
+  & .disabled {
+    opacity: ",
+                        [Function],
+                        ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                        [Function],
+                        ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                        [Function],
+                        ";
+    width: ",
+                        [Function],
+                        ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(InputCheckbox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-fjdhpX",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="sms_gym_opt"
+                id="optPhoneSignupSecondBrand"
+                name="optPhoneSignupSecondBrand"
+                type="checkbox"
               />
               <Styled(BodyCopy)
                 className="terms-label"
@@ -299,11 +446,9 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -336,8 +481,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -349,12 +494,15 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
-    <Styled(Grid)>
+    <Styled(Grid)
+      className="full-height"
+    >
       <Styled(Row)
+        className="full-height"
         fullBleed={true}
       >
         <Styled(Col)
@@ -382,9 +530,16 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 "t_smsSignUp_img_d",
               ]
             }
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
+            }
           />
         </Styled(Col)>
         <Styled(Col)
+          className="sms-signup-content"
           colSize={
             Object {
               "large": 8,
@@ -416,15 +571,16 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 }
               }
             >
-              <Styled(Button)
-                buttonVariation="fixed-width"
-                className="shop-button"
-                dataLocator="shop_now_btn"
-                fill="BLUE"
-                fullWidth={true}
-                onClick={[Function]}
-                type="submit"
-              />
+              <Styled(Anchor)>
+                <Styled(Button)
+                  buttonVariation="fixed-width"
+                  className="shop-button"
+                  dataLocator="shop_now_btn"
+                  fill="BLUE"
+                  fullWidth={true}
+                  type="submit"
+                />
+              </Styled(Anchor)>
             </Styled(Col)>
           </Styled(Row)>
         </Styled(Col)>
@@ -455,8 +611,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "645px",
+        "maxHeight": "645px",
         "minHeight": "500px",
       }
     }
@@ -468,7 +624,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -507,6 +663,12 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   "t_smsSignUp_img_d",
                 ]
               }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
+              }
             />
           </Styled(Col)>
           <Styled(Col)
@@ -544,7 +706,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
+                      "componentId": "sc-iwsKbI",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -687,7 +849,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
+                    "styledComponentId": "sc-iwsKbI",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -695,13 +857,154 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   }
                 }
                 dataLocator="sms_address_field"
-                id="signupPhoneNumber"
+                enableSuccessCheck={false}
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
+              />
+              <Field
+                className="phone-signup-second-brand"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-fjdhpX",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  display: block;
+  align-items: ",
+                        [Function],
+                        ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                        "25px",
+                        ";
+    width: ",
+                        "25px",
+                        ";
+    margin: 0;
+    margin-right: ",
+                        [Function],
+                        ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                        [Function],
+                        ";
+    border: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                        [Function],
+                        ";
+    font-size: ",
+                        [Function],
+                        "px;
+    width: ",
+                        [Function],
+                        ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                        [Function],
+                        "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                        [Function],
+                        ";
+  }
+
+  & .disabled {
+    opacity: ",
+                        [Function],
+                        ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                        [Function],
+                        ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                        [Function],
+                        ";
+    width: ",
+                        [Function],
+                        ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(InputCheckbox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-fjdhpX",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="sms_gym_opt"
+                id="optPhoneSignupSecondBrand"
+                name="optPhoneSignupSecondBrand"
+                type="checkbox"
               />
               <Styled(BodyCopy)
                 className="terms-label"
@@ -733,11 +1036,9 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>

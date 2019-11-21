@@ -6,9 +6,8 @@ const InputFieldPhoneNumber = styled.View`
 `;
 
 const StateZipCodeContainer = styled.View`
-  flex: 1;
   flex-direction: row;
-  height: 72px;
+  justify-content: space-between;
 `;
 
 const CountryContainer = styled.View`

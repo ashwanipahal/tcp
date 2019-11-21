@@ -21,6 +21,11 @@ class CreateAccount extends React.Component<Props> {
     onAlreadyHaveAnAccountClick: PropTypes.func,
     onRequestClose: PropTypes.func,
     showLogin: PropTypes.func.isRequired,
+    userplccCardNumber: PropTypes.string,
+    userplccCardId: PropTypes.string,
+    toastMessage: PropTypes.func,
+    passwordLabels: PropTypes.shape({}).isRequired,
+    updateHeader: PropTypes.func,
   };
 
   static defaultProps = {
@@ -33,6 +38,10 @@ class CreateAccount extends React.Component<Props> {
     error: {},
     onAlreadyHaveAnAccountClick: () => {},
     onRequestClose: () => {},
+    userplccCardNumber: '',
+    userplccCardId: '',
+    toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
@@ -61,6 +70,11 @@ class CreateAccount extends React.Component<Props> {
       onAlreadyHaveAnAccountClick,
       onRequestClose,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
+      toastMessage,
+      passwordLabels,
+      updateHeader,
     } = this.props;
     const { resetPassword } = this.state;
     return (
@@ -78,6 +92,10 @@ class CreateAccount extends React.Component<Props> {
             onRequestClose={onRequestClose}
             showForgotPasswordForm={this.showForgotPasswordForm}
             showLogin={showLogin}
+            userplccCardNumber={userplccCardNumber}
+            userplccCardId={userplccCardId}
+            toastMessage={toastMessage}
+            passwordLabels={passwordLabels}
           />
         )}
         {resetPassword && (
@@ -85,6 +103,7 @@ class CreateAccount extends React.Component<Props> {
             showForgotPasswordForm={this.showForgotPasswordForm}
             labels={labels}
             showLogin={showLogin}
+            updateHeader={updateHeader}
           />
         )}
       </View>

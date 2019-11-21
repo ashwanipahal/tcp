@@ -4,10 +4,109 @@ import { shallow } from 'enzyme';
 import { ProductCustomizeFormPartVanilla } from '../views/ProductCustomizeFormPart.view';
 
 describe('ProductCustomizeFormPart component', () => {
+  const defaultBadge = 'ONLINE EXCLUSIVE';
   it('should renders correctly', () => {
     const props = {
       quickViewLabels: {},
       className: '',
+      currentColorEntry: {
+        color: {
+          name: 'SMOKEB10',
+          imagePath:
+            'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_1137.jpg',
+          family: 'GRAY',
+        },
+        pdpUrl: '/p/2100606_1137',
+        colorProductId: '1118006',
+        colorDisplayId: '2100606_1137',
+
+        imageName: '2100606_1137',
+        favoritedCount: 991,
+        maxAvailable: 5435,
+        maxAvailableBoss: 0,
+        hasFits: false,
+        miscInfo: {
+          isBopisEligible: false,
+          isBossEligible: false,
+          badge1: {
+            matchBadge: false,
+            defaultBadge,
+          },
+          badge2: '25% OFF',
+          keepAlive: false,
+        },
+        fits: [
+          {
+            fitNameVal: '',
+            isDefault: true,
+            maxAvailable: 1.7976931348623157e308,
+            sizes: [
+              {
+                sizeName: 'XS (4)',
+                skuId: '1118990',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 218,
+                variantId: '00191755242934',
+                variantNo: '2100606001',
+                position: 0,
+              },
+              {
+                sizeName: 'S (5/6)',
+                skuId: '1119730',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 1065,
+                variantId: '00191755242941',
+                variantNo: '2100606002',
+                position: 1,
+              },
+              {
+                sizeName: 'M (7/8)',
+                skuId: '1118372',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 1730,
+                variantId: '00191755242958',
+                variantNo: '2100606003',
+                position: 2,
+              },
+              {
+                sizeName: 'L (10/12)',
+                skuId: '1118586',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 1417,
+                variantId: '00191755242965',
+                variantNo: '2100606004',
+                position: 3,
+              },
+              {
+                sizeName: 'XL (14)',
+                skuId: '1118690',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 630,
+                variantId: '00191755242972',
+                variantNo: '2100606005',
+                position: 4,
+              },
+              {
+                sizeName: 'XXL (16)',
+                skuId: '1118793',
+                listPrice: 24.95,
+                offerPrice: 18.71,
+                maxAvailable: 375,
+                variantId: '00191755242989',
+                variantNo: '2100606006',
+                position: 5,
+              },
+            ],
+          },
+        ],
+        listPrice: 24.95,
+        offerPrice: 18.71,
+      },
       productInfo: {
         ratingsProductId: '2100606',
         generalProductId: '2100606_IV',
@@ -105,7 +204,7 @@ describe('ProductCustomizeFormPart component', () => {
               isBossEligible: false,
               badge1: {
                 matchBadge: false,
-                defaultBadge: 'ONLINE EXCLUSIVE',
+                defaultBadge,
               },
               badge2: '25% OFF',
               keepAlive: false,
@@ -230,7 +329,7 @@ describe('ProductCustomizeFormPart component', () => {
             isBossEligible: false,
             badge1: {
               matchBadge: false,
-              defaultBadge: 'ONLINE EXCLUSIVE',
+              defaultBadge,
             },
             badge2: '25% OFF',
             keepAlive: false,

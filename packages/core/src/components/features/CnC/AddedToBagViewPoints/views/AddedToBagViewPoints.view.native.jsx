@@ -10,13 +10,15 @@ import {
 type Props = {
   pointsSummary: Object,
   labels: Object,
+  currencySymbol: String,
+  isUserLoggedIn: boolean,
 };
 
 const getModifiedString = (labels, totalItems) => {
   return `${labels.bagSubTotal.replace('#items', `${totalItems}`)}`;
 };
 
-const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
+const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol, isUserLoggedIn }: Props) => {
   const {
     itemPrice,
     itemPoints,
@@ -29,14 +31,18 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
     <ViewPointsWrapper>
       <DefaultView>
         <BodyCopy fontFamily="secondary" fontSize="fs13" text={labels.price} />
-        <BodyCopy fontFamily="secondary" fontSize="fs13" text={`$${itemPrice || 0}`} />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={`${currencySymbol}${itemPrice || 0}`}
+        />
       </DefaultView>
       <DefaultView>
         <BodyCopy
           fontWeight="extrabold"
           fontFamily="secondary"
           fontSize="fs13"
-          text={labels.pointsYouCanEarn}
+          text={isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn}
         />
         <BodyCopy
           color="orange.500"
@@ -53,7 +59,11 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
           fontSize="fs13"
           text={getModifiedString(labels, totalItems || 0)}
         />
-        <BodyCopy fontFamily="secondary" fontSize="fs13" text={`$${bagSubTotal || 0}`} />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={`${currencySymbol}${bagSubTotal || 0}`}
+        />
       </DefaultView>
       <DefaultView>
         <BodyCopy

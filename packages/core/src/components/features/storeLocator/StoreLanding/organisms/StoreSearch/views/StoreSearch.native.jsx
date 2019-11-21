@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import superagent from 'superagent';
-import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
 import { isGymboree } from '@tcp/core/src/utils/index.native';
 import { getAPIConfig, getLabelValue } from '@tcp/core/src/utils';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import {
   StyledContainer,
   StyledStoreLocator,
@@ -21,6 +20,8 @@ import {
   StyledSearch,
   StyledCheckBoxBodyCopy,
 } from '../styles/StoreSearch.style.native';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/StoreLanding.constants';
 
 const MarkerIcon = require('@tcp/core/src/assets/icon-marker.png');
@@ -37,18 +38,20 @@ class StoreSearch extends Component {
 
   locationRef = null;
 
-  handleLocationSelection = ({ geometry }) => {
-    const { loadStoresByCoordinates, submitting } = this.props;
+  handleLocationSelection = (data, inputValue) => {
+    const { geometry } = data;
+    const { loadStoresByCoordinates, submitting, dispatch } = this.props;
     if (!geometry || submitting) {
       return;
     }
     const {
       location: { lat, lng },
     } = geometry;
+    dispatch(change('StoreSearch', 'storeAddressLocator', inputValue));
     loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
-  renderStoreTypes = ({ name, dataLocator, storeLabel } = {}) => {
+  renderStoreTypes = ({ name, dataLocator, storeLabel, checked } = {}) => {
     return (
       <StyledCheckbox>
         <Field
@@ -56,6 +59,7 @@ class StoreSearch extends Component {
           component={InputCheckbox}
           dataLocator={dataLocator}
           enableSuccessCheck={false}
+          isChecked={checked}
           onChange={(...args) => this.onSelectStore(args)}
         />
         <StyledCheckBoxBodyCopy>
@@ -125,7 +129,6 @@ class StoreSearch extends Component {
 
   render() {
     const { labels, error, selectedCountry, toggleMap, mapView, getLocationStores } = this.props;
-
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound
       ? getLabelValue(labels, 'lbl_storelanding_errorLabel')
@@ -186,22 +189,17 @@ class StoreSearch extends Component {
               component={GooglePlacesInput}
               dataLocator="storeAddressLocator"
               componentRestrictions={{ ...{ country: [selectedCountry] } }}
-              onChange={this.handleChange}
-              onValueChange={this.handleLocationSelection}
+              onValueChange={(data, inputValue) => {
+                this.handleLocationSelection(data, inputValue);
+              }}
               refs={instance => {
                 this.locationRef = instance;
               }}
               clearButtonMode="never"
+              errorMessage={errorMessage}
               onSubmitEditing={inputSearch => this.onSearch(inputSearch)}
+              name="storeAddressLocator"
             />
-            {errorMessage && (
-              <ErrorMessage
-                isShowingMessage={errorMessage}
-                errorId="storeSearch_geoLocation"
-                error={errorMessage}
-                withoutErrorDataAttribute
-              />
-            )}
           </>
         </StyledAutoComplete>
         <StyleStoreOptionList>
@@ -235,6 +233,7 @@ StoreSearch.propTypes = {
   mapView: PropTypes.bool,
   selectStoreType: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
@@ -242,11 +241,15 @@ StoreSearch.defaultProps = {
   selectedCountry: 'US',
   submitting: false,
   mapView: false,
+  dispatch: () => {},
 };
+
+const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));
 
 export default reduxForm({
   form: 'StoreSearch',
   enableReinitialize: true,
+  ...validateMethod,
 })(StoreSearch);
 
 export { StoreSearch as StoreSearchVanilla };

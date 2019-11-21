@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, FlatList } from 'react-native';
-import CustomImage from '../../../atoms/CustomImage';
+import { TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
+import { DamImage } from '../../../../../../common/atoms';
+import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
+
+const win = Dimensions.get('window');
+const paddingAroundImage = 24;
+const numberOfColumn = 2;
+const imageWidth = win.width / numberOfColumn - paddingAroundImage;
+const imageHeight = '205px';
 
 class ImageCarousel extends React.PureComponent {
   constructor(props) {
@@ -35,18 +42,31 @@ class ImageCarousel extends React.PureComponent {
     }
   };
 
+  renderOutOfStockOverlay = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} /> : null;
+  };
+
   render() {
-    const { item, selectedColorIndex, onGoToPDPPage } = this.props;
+    const {
+      item,
+      selectedColorIndex,
+      onGoToPDPPage,
+      productImageWidth,
+      productImageHeight,
+      isFavorite,
+    } = this.props;
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
-    const { pdpUrl } = productInfo;
+    const pdpUrl = productInfo ? productInfo.pdpUrl : item.pdpUrl;
     const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
-    const { colorProductId } = colorsMap[selectedColorIndex];
+    const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
     const imageUrls = getImagesToDisplay({
       imagesByColor,
       curentColorEntry,
       isAbTestActive: true,
+      isFavoriteView: isFavorite,
     });
     return (
       <FlatList
@@ -66,12 +86,20 @@ class ImageCarousel extends React.PureComponent {
           const { index } = imgSource;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
             >
-              <CustomImage imageSource={imgSource.item} productInfo={productInfo} />
+              <DamImage
+                key={index.toString()}
+                url={imgSource.item}
+                isProductImage
+                height={productImageHeight || imageHeight}
+                width={productImageWidth || imageWidth}
+                resizeMode="contain"
+              />
+              {this.renderOutOfStockOverlay()}
             </TouchableOpacity>
           );
         }}
@@ -84,11 +112,25 @@ ImageCarousel.propTypes = {
   item: PropTypes.shape({}),
   selectedColorIndex: PropTypes.number,
   onGoToPDPPage: PropTypes.func.isRequired,
+  productImageWidth: PropTypes.number,
+  productImageHeight: PropTypes.number,
+  isFavorite: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
+  productImageWidth: null,
+  productImageHeight: null,
+  isFavorite: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default ImageCarousel;

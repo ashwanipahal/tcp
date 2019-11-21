@@ -2,10 +2,16 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
-  addToBagAction={null}
   colorList={Array []}
-  currentProduct={null}
+  currentProduct={
+    Object {
+      "generalProductId": "",
+    }
+  }
   fitList={Array []}
+  fromBagPage={true}
+  handleFormSubmit={null}
+  isBundleProduct={false}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
@@ -16,6 +22,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedSize={null}
   showAddToBagCTA={true}
   sizeList={Array []}
+  toastMessage={[Function]}
 >
   <Field
     component={
@@ -26,61 +33,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "data": Array [],
           "error": null,
           "input": null,
+          "isDisableZeroInventoryEntries": true,
+          "isGiftCard": false,
           "itemNameKey": "",
           "itemValue": "",
-          "keyExtractor": null,
-          "locators": null,
-          "renderColorItem": false,
-          "selectColor": null,
-          "selectItem": null,
-          "selectedColor": "",
-          "selectedItem": null,
-          "separatorWidth": 8,
-        },
-        "attrs": Array [],
-        "displayName": "Styled(ProductVariantSelector)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  margin-bottom: 33px;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    componentWidth={30}
-    data={Array []}
-    id="color"
-    locators={
-      Object {
-        "key": "pdp_color_label",
-        "value": "pdp_color_value",
-      }
-    }
-    name="color"
-    renderColorItem={true}
-    selectedColor={null}
-    separatorWidth={16}
-  />
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "componentWidth": 80,
-          "data": Array [],
-          "error": null,
-          "input": null,
-          "itemNameKey": "",
-          "itemValue": "",
+          "keepAlive": false,
           "keyExtractor": null,
           "locators": null,
           "renderColorItem": false,
@@ -122,68 +79,90 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     name="Fit"
     selectedItem=""
   />
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "componentWidth": 80,
-          "data": Array [],
-          "error": null,
-          "input": null,
-          "itemNameKey": "",
-          "itemValue": "",
-          "keyExtractor": null,
-          "locators": null,
-          "renderColorItem": false,
-          "selectColor": null,
-          "selectItem": null,
-          "selectedColor": "",
-          "selectedItem": null,
-          "separatorWidth": 8,
-        },
-        "attrs": Array [],
-        "displayName": "Styled(ProductVariantSelector)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "componentWidth": 80,
+            "data": Array [],
+            "error": null,
+            "input": null,
+            "isDisableZeroInventoryEntries": true,
+            "isGiftCard": false,
+            "itemNameKey": "",
+            "itemValue": "",
+            "keepAlive": false,
+            "keyExtractor": null,
+            "locators": null,
+            "renderColorItem": false,
+            "selectColor": null,
+            "selectItem": null,
+            "selectedColor": "",
+            "selectedItem": null,
+            "separatorWidth": 8,
+          },
+          "attrs": Array [],
+          "displayName": "Styled(ProductVariantSelector)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
     ",
-            "
+              "
   margin-bottom: 33px;
 ",
-            ";
+              ";
   ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
       }
-    }
-    data={Array []}
-    error=""
-    id="size"
-    itemNameKey="displayName"
-    itemValue=""
-    locators={
+      data={Array []}
+      id="size"
+      itemNameKey="displayName"
+      itemValue=""
+      locators={
+        Object {
+          "key": "pdp_size_label",
+          "value": "pdp_size_value",
+        }
+      }
+      name="Size"
+      selectedItem=""
+    />
+  </Styled(View)>
+  <Connect(ProductPickupContainer)
+    formName="ProductAddToBag-"
+    isAnchor={true}
+    miscInfo={null}
+    productInfo={
       Object {
-        "key": "pdp_size_label",
-        "value": "pdp_size_value",
+        "generalProductId": "",
       }
     }
-    name="Size"
-    selectedItem=""
+    sizeUnavailable=""
   />
-  <Styled(View)>
+  <Styled(View)
+    margins="16px 0 16px 0"
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       fontWeight="black"
       margin={null}
-      mobileFontFamily="secondary"
       numberOfLines={null}
       text="undefined: "
       textDecoration={null}
@@ -193,16 +172,17 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       data={Array []}
       heading="undefined: "
       id="quantity"
+      lightGrayColor={true}
       name="Quantity"
       onValueChange={[Function]}
       selectedValue={1}
+      textAlignLeft={true}
     />
   </Styled(View)>
-  <ErrorDisplay />
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}
@@ -219,12 +199,14 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     margin="16px 0 0 0"
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
     text=""
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </View>
 `;

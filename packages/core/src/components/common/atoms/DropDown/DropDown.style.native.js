@@ -45,6 +45,7 @@ const OverLayView = styled.View`
   flex-direction: row;
   border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   border-top-width: 1px;
+  margin-top: -1px;
 `;
 
 const DropDownItemContainer = styled.TouchableHighlight.attrs({
@@ -74,11 +75,28 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
+
 const SelectedLabelView = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+const SHADOW = `
+  shadow-opacity: 0.15;
+  shadow-radius: 2px;
+  shadow-color: ${props => props.theme.colorPalette.black};
+  shadow-offset: 0px 4px;
+  elevation: 2;
+`;
+
+const FlatListWrapper = styled.View`
+  ${SHADOW}
+  width: ${props => props.width};
+  height: ${props => props.height};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
 export {
@@ -91,5 +109,6 @@ export {
   FlatList,
   StyledLabel,
   SelectedLabelView,
+  FlatListWrapper,
   HeaderItemContainer,
 };

@@ -70,7 +70,6 @@ export class CouponForm extends React.PureComponent<Props, State> {
               type="submit"
               external
               onPress={handleSubmit}
-              buttonVariation="variable-width"
               style={ApplyButton}
               text={labels.submitButtonLabel}
               disabled={isFetching}

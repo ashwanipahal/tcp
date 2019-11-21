@@ -1,9 +1,20 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
+const getAdditionalStyle = props => {
+  const { margins, paddings, modalHeadingMargin, childrenMargins } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(paddings && { padding: paddings }),
+    ...(modalHeadingMargin && { margin: modalHeadingMargin }),
+    ...(childrenMargins && { margin: childrenMargins }),
+  };
+};
+
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  ${props =>
+    !props.rightAlignCrossIcon ? `margin-right: ${props.theme.spacing.ELEM_SPACING.XS}` : ''};
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
@@ -18,7 +29,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
       : ``}
 `;
 
-const ModalCustomWrapper = styled.View`
+const ModalCustomWrapper = styled.SafeAreaView`
   ${props =>
     props.transparentModal === 'transparent-captcha'
       ? `
@@ -28,7 +39,7 @@ const ModalCustomWrapper = styled.View`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-const ModalHeading = styled.Text`
+const ModalHeading = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
   ${props =>
@@ -36,7 +47,8 @@ const ModalHeading = styled.Text`
       ? `
       position: relative;
   `
-      : ``}
+      : ``};
+  ${getAdditionalStyle};
 `;
 
 const LineWrapper = styled.View`
@@ -45,9 +57,7 @@ const LineWrapper = styled.View`
 `;
 
 const RowWrapper = styled.View`
-  margin: ${Platform.OS === 'ios'
-      ? props => props.theme.spacing.ELEM_SPACING.XXXL
-      : props => props.theme.spacing.ELEM_SPACING.MED}
+  margin: ${Platform.OS === 'ios' ? '0' : props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   flex-direction: row;
@@ -64,6 +74,12 @@ const RowWrapper = styled.View`
       margin: 14px 14px 0 14px
       `
       : ``}
+  ${props =>
+    props.customHeaderMargin
+      ? `
+      margin: ${props.customHeaderMargin}
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`
@@ -77,6 +93,21 @@ const ImageWrapper = styled.View`
       : ``}
 `;
 
+const Heading = styled.View`
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+const ViewContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+const ScrollView = styled.ScrollView`
+  ${getAdditionalStyle};
+`;
+
+const ChildrenContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+
 export {
   StyledCrossImage,
   ImageWrapper,
@@ -85,4 +116,8 @@ export {
   LineWrapper,
   RowWrapper,
   ModalCustomWrapper,
+  Heading,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
 };

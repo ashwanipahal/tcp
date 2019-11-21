@@ -10,11 +10,11 @@ const styles = css`
   .right-sec {
     margin-bottom: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.LRG : 0)};
+      margin-top: ${props => (props.marginTop ? '78px' : 0)};
       margin-bottom: 0;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.XS : 0)};
       margin-bottom: 0;
     }
   }
@@ -31,6 +31,17 @@ const styles = css`
     padding: 10px 0;
     margin-bottom: 5px;
     text-align: center;
+  }
+
+  .checkout-page-error {
+    span {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+  }
+
+  .recommendationsWrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 `;
 

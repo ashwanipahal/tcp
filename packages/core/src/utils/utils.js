@@ -1,4 +1,7 @@
 /* eslint-disable max-lines */
+
+import moment from 'moment';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -7,6 +10,7 @@ import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
 import { ROUTE_PATH } from '../config/route.config';
+import constants from '../components/features/account/OrderDetails/OrderDetails.constants';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -42,6 +46,13 @@ export const isMobileApp = () => {
 export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
+
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
 
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
@@ -102,6 +113,11 @@ export const isTCP = () => {
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
+};
+
+export const isUsOnly = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.us;
 };
 
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
@@ -411,8 +427,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -444,6 +460,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
   ) {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
+    }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
     }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
@@ -685,7 +704,442 @@ export const flattenArray = arr => {
   }, []);
 };
 
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = {
+    weekday: 'short',
+  },
+  monthOption = {
+    month: 'short',
+  }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
+  };
+};
+
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+export function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
+/**
+ * Function to add number of days to a date
+ * @param {Date} date The date object
+ * @param {number} days The number of days to be added
+ * @returns {Date} The future date
+ */
+export const addDays = (date, days) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+/**
+ * Check if
+ * @param {Date} date1 The date one object
+ * @param {Date} date2 The date two object
+ */
+export const isPastStoreHours = (date1, date2) => {
+  const date1HH = date1.getHours();
+  const date2HH = date2.getHours();
+  if (date2HH > date1HH) {
+    return true;
+  }
+
+  if (date2HH === date1HH) {
+    const date1MM = date1.getMinutes();
+    const date2MM = date2.getMinutes();
+    if (date2MM > date1MM) {
+      return true;
+    }
+    return false;
+  }
+
+  return false;
+};
+
+/**
+ * Function to parse the store timing in correct format
+ * @param {String} dateString Non UTC Format Date
+ */
+export const parseUTCDate = dateString => {
+  const dateParams = dateString.replace(/ UTC/, '').split(/[\s-:]/);
+  dateParams[1] = (parseInt(dateParams[1], 10) - 1).toString();
+
+  return new Date(Date.UTC(...dateParams));
+};
+
+/**
+ * Function to get the stores hours based on the current date
+ * @param {Array} intervals The store hours array
+ * @param {Date} currentDate The current date to be checked against
+ */
+export const getCurrentStoreHours = (intervals = [], currentDate) => {
+  let selectedInterval = intervals.filter(hour => {
+    const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+    const parsedDate = new Date(parseUTCDate(toInterval));
+    return (
+      parsedDate.getDate() === currentDate.getDate() &&
+      parsedDate.getMonth() === currentDate.getMonth() &&
+      parsedDate.getFullYear() === currentDate.getFullYear()
+    );
+  });
+  // Fallback for Date and month not matching.
+  // We check day and year instead.
+  if (!selectedInterval.length) {
+    selectedInterval = intervals.filter(hour => {
+      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+      const parsedDate = new Date(parseUTCDate(toInterval));
+      return (
+        parsedDate.getDay() === currentDate.getDay() &&
+        parsedDate.getFullYear() === currentDate.getFullYear()
+      );
+    });
+  }
+  return selectedInterval;
+};
+
+/**
+ * Function to get the store opening or open until hours data
+ * @param {object} hours The hours object of the store
+ * @param {object} labels The store locator labels
+ * @param {object} currentDate The date to be compared with
+ * @returns {string} The time when the store next opens or time it is open till
+ */
+export const getStoreHours = (
+  hours = {
+    regularHours: [],
+    holidayHours: [],
+    regularAndHolidayHours: [],
+  },
+  labels = {},
+  currentDate
+) => {
+  const { regularHours, holidayHours, regularAndHolidayHours } = hours;
+  const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
+  const selectedInterval = getCurrentStoreHours(intervals, currentDate);
+  try {
+    const openUntilLabel = getLabelValue(labels, 'lbl_storelanding_openInterval');
+    const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
+    const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
+    if (!isPastStoreHours(selectedDateToHour, currentDate)) {
+      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+    }
+    const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
+    // Handle the other scenarion
+    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+  } catch (err) {
+    // Show empty incase no data found.
+    return '';
+  }
+};
+/**
+ * @summary this is meant to generate a new UID on each API call
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns generated traceId of User or else not-found string value
+
+ */
+export const generateTraceId = () => {
+  const apiConfigObj = getAPIConfig();
+  let prefix;
+
+  // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
+  if (isMobileApp()) {
+    prefix = 'MOBILE';
+  } else if (isClient()) {
+    prefix = 'CLIENT';
+  } else {
+    prefix = 'NODE';
+  }
+  const timeStamp = `${Date.now()}`;
+
+  // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
+  if (apiConfigObj.traceIdCount > 10000) {
+    apiConfigObj.traceIdCount = 0;
+  }
+
+  const traceIdCount = apiConfigObj.traceIdCount + 1;
+  const traceId = `${prefix}_${traceIdCount}_${timeStamp}`;
+  return traceId || 'not-found';
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
+export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
+  let label;
+  let message;
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_IN_PROCESS:
+    case constants.STATUS_CONSTANTS.ORDER_RECEIVED:
+    case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
+      label = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
+      message = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
+        : getLabelValue(ordersLabels, 'lbl_orders_processing');
+      break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+  return { label, message };
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getOrderGroupLabelAndMessage = orderProps => {
+  let label;
+  let message;
+  const {
+    status,
+    shippedDate,
+    pickedUpDate,
+    ordersLabels,
+    isBopisOrder,
+    pickUpExpirationDate,
+  } = orderProps;
+
+  // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
+    case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
+      message =
+        shippedDate === constants.STATUS_CONSTANTS.NA
+          ? shippedDate
+          : moment(shippedDate).format('LL');
+      break;
+    case constants.STATUS_CONSTANTS.ORDER_CANCELED:
+    case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
+      label = '';
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderCancelMessage');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_RECEIVED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_orderInProcess');
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
+      message = moment(pickUpExpirationDate).format('LL');
+      break;
+
+    case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
+    case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
+      message = moment(pickedUpDate).format('LL');
+      break;
+    default:
+      ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+      break;
+  }
+
+  return { label, message };
+};
+
+/**
+  this is a temporary fix only for DEMO to change
+  WCS store image path to DAM image for Gymboree
+  MUST BE REVERTED
+ */
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
+};
+
+/**
+ * The insertIntoString() method changes the content of a string by removing a range of
+ * characters and/or adding new characters.
+ * @param {String} string base string to work on
+ * @param {number} start Index at which to start changing the string.
+ * @param {number} delCount An integer indicating the number of old chars to remove.
+ * @param {string} newSubStr The String that is spliced in.
+ * @return {string} A new string with the spliced substring.
+ */
+export const insertIntoString = (string, idx, rem, str) => {
+  return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
+};
+
+export const getStyliticsUserName = () => {
+  const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsUserNameTCP;
+  }
+  return styliticsUserNameGYM;
+};
+
+export const getStyliticsRegion = () => {
+  const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsRegionTCP;
+  }
+  return styliticsRegionGYM;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
+export const getProductUrlForDAM = uniqueId => {
+  return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter(item => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[0].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
+};
+
+/**
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
+ */
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
+/**
+ * @description - This method calculate Price based on the given value
+ */
+export const calculatePriceValue = (
+  price,
+  currencySymbol = '$',
+  currencyExchangeValue = 1,
+  defaultReturn = 0
+) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchangeValue).toFixed(2)}`;
+  }
+  return priceValue;
+};
+export const orderStatusMapperForNotification = {
+  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING]: 'lbl_global_yourOrderIsProcessing',
+  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_orders_statusOrderShipped',
+  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_orders_statusOrderPartiallyShipped',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_orders_statusItemsReadyForPickup',
+  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
+  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
+  [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
+  /* Status added for BOSS */
+  [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
+};
+
+/**
+ * @function getOrderStatusForNotification
+ * @summary
+ * @param {String} status -
+ * @return orderStatus
+ */
+export const getOrderStatusForNotification = status => {
+  const orderStatus =
+    orderStatusMapperForNotification[status] ||
+    orderStatusMapperForNotification[status.toLowerCase()] ||
+    status;
+
+  return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
+};
+
+/**
+ * @function validateDiffInDaysNotification
+ * @summary
+ * @param {Date}  orderDateParam
+ * @return true if date false between limit range
+ */
+export const validateDiffInDaysNotification = (
+  orderDateParam,
+  limitOfDaysToDisplayNotification
+) => {
+  let orderDate = orderDateParam;
+  orderDate = moment(orderDate, 'MMM DD, YYYY');
+  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+    return true;
+  }
+  return false;
+};
+
 export default {
+  getOrderStatusForNotification,
+  validateDiffInDaysNotification,
   getPromotionalMessage,
   getIconPath,
   getFlagIconPath,
@@ -717,4 +1171,17 @@ export default {
   getDateInformation,
   buildStorePageUrlSuffix,
   extractFloat,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
+  readCookieMobileApp,
+  changeImageURLToDOM,
+  generateTraceId,
+  insertIntoString,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  canUseDOM,
+  getLabelsBasedOnPattern,
+  calculatePriceValue,
+  getProductUrlForDAM,
 };

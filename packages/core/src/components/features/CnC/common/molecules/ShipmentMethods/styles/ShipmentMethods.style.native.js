@@ -20,6 +20,7 @@ const italicStyle = {
 
 const ShipmentMethodsWrapper = styled.View`
   display: flex;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 export { ShippingMsgWrapper, FieldWrapper, italicStyle, ShipmentMethodsWrapper };

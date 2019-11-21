@@ -79,4 +79,32 @@ export default {
 
   /* This is AB test for Pickup CTA */
   // isPLPShowPickupCTA: PropTypes.bool,
+
+  /* This will be used to get the name of where this component has been called */
+  viaModule: PropTypes.string,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
+};
+
+export const productGridDefaultProps = {
+  //  isBopisEnabled: false,
+  onPickUpOpenClick: () => {},
+  onQuickBopisOpenClick: () => {},
+  onAddItemToFavorites: () => {},
+  isInternationalShipping: false,
+  isPLPredesign: true,
+  siblingProperties: false,
+  isShowVideoOnPlp: false,
+  isMatchingFamily: false,
+  isKeepAliveKillSwitch: false,
+  loadedProductCount: 1,
+  // isPLPShowPickupCTA: true,
+  currencyExchange: {
+    exchangevalue: 0,
+  },
+  viaModule: '',
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };

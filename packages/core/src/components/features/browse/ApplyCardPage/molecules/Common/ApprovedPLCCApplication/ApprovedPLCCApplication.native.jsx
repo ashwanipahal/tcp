@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { TouchableOpacity, Clipboard } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button, RichText } from '../../../../../../common/atoms';
 import {
@@ -37,6 +38,15 @@ const fetchTotalSavingOnOrder = (plccData = {}, approvedPLCCData = {}) => {
 };
 
 /**
+ * @function - copyToClipboard
+ *
+ * @param {*} couponCode - text data.
+ */
+const copyToClipboard = async couponCode => {
+  await Clipboard.setString(couponCode);
+};
+
+/**
  * @const getCouponBody
  *
  * @param - labels
@@ -70,16 +80,22 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
         marginLeft="60px"
         text={approvedPLCCData && approvedPLCCData.couponCode}
       />
-      <CopyToClipBoardWrapper
-        color="gray.900"
-        fontFamily="secondary"
-        fontWeight="regular"
-        fontSize="fs18"
-        textAlign="center"
-        text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
-        paddingTop="16px"
-        paddingBottom="24px"
-      />
+      <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
+        onPress={() => copyToClipboard(approvedPLCCData.couponCode)}
+      >
+        <CopyToClipBoardWrapper
+          color="gray.900"
+          fontFamily="secondary"
+          fontWeight="regular"
+          fontSize="fs18"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
+          paddingTop="16px"
+          paddingBottom="24px"
+        />
+      </TouchableOpacity>
       <ImageContainer>
         <StyledImage source={couponImage} width="158px" height="125px" />
       </ImageContainer>
@@ -104,7 +120,15 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
  * @description - showcases user already holds a plcc card.
  */
 
-const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal) => {
+const footerBottom = (
+  plccData,
+  labels,
+  approvedPLCCData,
+  bagItems,
+  navigation,
+  togglePLCCModal,
+  isRtpsFlow
+) => {
   const totalSavings = fetchTotalSavingOnOrder(plccData, approvedPLCCData);
   return (
     <React.Fragment>
@@ -124,29 +148,33 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
             type="submit"
             fontWeight="regular"
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             onPress={() => {
-              toggleModal();
-              navigation.navigate('bag');
+              togglePLCCModal({ isPLCCModalOpen: false, status: null });
+              if (!isRtpsFlow) {
+                navigation.navigate('bag');
+              } else {
+                navigation.goBack();
+              }
             }}
             width="100%"
           />
         </ButtonWrapper>
       ) : null}
-      <CheckoutButtonWrapper>
-        <Button
-          fill={bagItems ? 'WHITE' : 'BLUE'}
-          type="submit"
-          color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
-          text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-          width="100%"
-        />
-      </CheckoutButtonWrapper>
+      {!isRtpsFlow && (
+        <CheckoutButtonWrapper>
+          <Button
+            fill={bagItems ? 'WHITE' : 'BLUE'}
+            type="submit"
+            color={bagItems ? 'black' : 'white'}
+            text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+            width="100%"
+          />
+        </CheckoutButtonWrapper>
+      )}
       <BottomContainer>
         <StyledBodyCopy
           fontSize="fs10"
@@ -181,7 +209,8 @@ const ApprovedPLCCApplicationView = ({
   approvedPLCCData,
   isGuest,
   navigation,
-  toggleModal,
+  togglePLCCModal,
+  isRtpsFlow,
 }) => {
   const viewRef = useRef(null);
   const [bagItems, setBagItems] = useState(0);
@@ -230,7 +259,15 @@ const ApprovedPLCCApplicationView = ({
         )}
       </ShippingInfoWrapper>
       {getCouponBody(plccData, labels, approvedPLCCData)}
-      {footerBottom(plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal)}
+      {footerBottom(
+        plccData,
+        labels,
+        approvedPLCCData,
+        bagItems,
+        navigation,
+        togglePLCCModal,
+        isRtpsFlow
+      )}
     </ScrollViewContainer>
   );
 };
@@ -241,7 +278,12 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   navigation: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+};
+
+ApprovedPLCCApplicationView.defaultProps = {
+  isRtpsFlow: false,
 };
 
 export default ApprovedPLCCApplicationView;

@@ -7,8 +7,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -23,6 +22,78 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       name="shipmentMethods"
     >
       <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -44,11 +115,13 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="none"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -77,6 +150,78 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
               },
             ]
           }
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": null,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "isPLCCEnabled",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           formName="checkoutBillingPayment"
           labels={
             Object {
@@ -104,6 +249,113 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           selectedOnFileCardKey=""
         />
       </Styled(View)>
+      <Memo()
+        addressForm={[Function]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        editModeSubmissionError=""
+        errorMessageRef={
+          Object {
+            "current": null,
+          }
+        }
+        getAddNewCCForm={[Function]}
+        getDefaultPayment={[Function]}
+        key="cardEditForm"
+        labels={
+          Object {
+            "creditCardEnd": "ending in ",
+            "cvvCode": "CVV Code",
+            "edit": "Edit",
+            "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+            "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+            "lbl_billing_billingAddress": "Billing Address",
+            "lbl_billing_cardDetailsTitle": "Card Details",
+            "lbl_billing_creditCard": "Credit Card",
+            "lbl_billing_default": "Default",
+            "lbl_billing_defaultPayment": "Set as default payment method",
+            "lbl_billing_default_card": "DEFAULT",
+            "lbl_billing_paypal": "Pay Pal",
+            "lbl_billing_select": "SELECT",
+            "lbl_billing_selectCardTitle": "SELECT CARD",
+            "lbl_billing_selectFromCard": "Select from card on file",
+            "lbl_billing_venmo": "Venmo",
+            "paymentMethod": "Payment Method",
+          }
+        }
+        onEditCardFocus={[Function]}
+        unsetFormEditState={[Function]}
+      />
     </Styled(View)>
     <AddNewCCForm
       addNewCCState={true}
@@ -115,14 +367,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover={null}
+          popover={
+            <RichText
+              actionHandler={[Function]}
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source={null}
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >
@@ -140,9 +402,84 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           />
         </ReactTooltip>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={false}
       labels={
         Object {
@@ -165,10 +502,98 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           "paymentMethod": "Payment Method",
         }
       }
+      selectedCard={
+        Object {
+          "accountNo": "************3743",
+          "addressDetails": Object {
+            "addressLine1": "Dorney Park Road",
+            "addressLine2": "",
+            "city": "Allentown",
+            "country": "US",
+          },
+          "ccBrand": "PLACE CARD",
+          "ccType": "PLACE CARD1",
+          "creditCardId": 82596,
+          "defaultInd": false,
+        }
+      }
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      editMode={false}
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -203,10 +628,17 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -218,8 +650,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -234,6 +665,78 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -264,14 +767,24 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover={null}
+          popover={
+            <RichText
+              actionHandler={[Function]}
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source={null}
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >
@@ -289,9 +802,84 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           />
         </ReactTooltip>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={false}
       labels={
         Object {
@@ -314,10 +902,84 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "paymentMethod": "Payment Method",
         }
       }
+      selectedCard=""
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      editMode={false}
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -352,10 +1014,17 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -367,8 +1036,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -408,10 +1076,17 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -423,8 +1098,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -439,7 +1113,30 @@ exports[`ButtonList component renders correctly without props 1`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
-        dispatch={[MockFunction]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -461,11 +1158,13 @@ exports[`ButtonList component renders correctly without props 1`] = `
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="auto"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -494,7 +1193,30 @@ exports[`ButtonList component renders correctly without props 1`] = `
               },
             ]
           }
-          dispatch={[MockFunction]}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           formName="checkoutBillingPayment"
           labels={
             Object {
@@ -531,9 +1253,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
+            margins={null}
             noLink={true}
-            onPress={null}
+            onPress={[Function]}
             target=""
             text="Edit"
             underline={true}
@@ -545,8 +1269,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="billing-payment-method"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -557,24 +1280,26 @@ exports[`ButtonList component renders correctly without props 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <CardImage
-          card={
-            Object {
-              "accountNo": "************3743",
-              "addressDetails": Object {
-                "addressLine1": "Dorney Park Road",
-                "addressLine2": "",
-                "city": "Allentown",
-                "country": "US",
-              },
-              "ccBrand": "PLACE CARD",
-              "ccType": "PLACE CARD1",
-              "creditCardId": 82596,
-              "defaultInd": false,
+        <Styled(View)>
+          <CardImage
+            card={
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              }
             }
-          }
-          cardNumber="ending in 3743"
-        />
+            cardNumber="ending in 3743"
+          />
+        </Styled(View)>
         <Styled(View)>
           <Field
             component={
@@ -582,6 +1307,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -625,7 +1351,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "height": 72,
               }
             }
-            dataLocator="payment-cvv"
+            dataLocator="cvvTxtBox"
             id="cvvCode"
             label="CVV Code"
             name="cvvCode"
@@ -634,14 +1360,24 @@ exports[`ButtonList component renders correctly without props 1`] = `
           <Styled(View)>
             <ReactTooltip
               backgroundColor="#fff"
-              height={96}
+              height={350}
               onClose={[Function]}
               onOpen={[Function]}
               overlayColor="rgba(250, 250, 250, 0.80)"
               pointerColor="#fff"
-              popover={null}
+              popover={
+                <RichText
+                  actionHandler={[Function]}
+                  domStorageEnabled={false}
+                  isApplyDeviceHeight={false}
+                  isNativeView={true}
+                  javaScriptEnabled={false}
+                  source={null}
+                  thirdPartyCookiesEnabled={false}
+                />
+              }
               toggleOnPress={true}
-              width={240}
+              width={350}
               withOverlay={false}
               withPointer={true}
             >
@@ -661,7 +1397,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Styled(View) />
       <Styled(View)>
         <Styled(Card)
           card={
@@ -680,7 +1415,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             }
           }
           cardNumber=""
-          dataLocatorPrefix="billing-payment-card-detail"
+          dataLocator="selectedCardDetail"
           isDefault={false}
           selectedValue=""
           showAddress={true}
@@ -691,10 +1426,17 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -706,8 +1448,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -722,7 +1463,46 @@ exports[`ButtonList component renders correctly without props 2`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
-        dispatch={[MockFunction]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -744,11 +1524,13 @@ exports[`ButtonList component renders correctly without props 2`] = `
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="auto"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -777,7 +1559,46 @@ exports[`ButtonList component renders correctly without props 2`] = `
               },
             ]
           }
-          dispatch={[MockFunction]}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           formName="checkoutBillingPayment"
           labels={
             Object {
@@ -814,9 +1635,11 @@ exports[`ButtonList component renders correctly without props 2`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
+            margins={null}
             noLink={true}
-            onPress={null}
+            onPress={[Function]}
             target=""
             text="Edit"
             underline={true}
@@ -828,8 +1651,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="billing-payment-method"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -840,24 +1662,26 @@ exports[`ButtonList component renders correctly without props 2`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <CardImage
-          card={
-            Object {
-              "accountNo": "************3743",
-              "addressDetails": Object {
-                "addressLine1": "Dorney Park Road",
-                "addressLine2": "",
-                "city": "Allentown",
-                "country": "US",
-              },
-              "ccBrand": "PLACE CARD",
-              "ccType": "PLACE CARD1",
-              "creditCardId": 82596,
-              "defaultInd": false,
+        <Styled(View)>
+          <CardImage
+            card={
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              }
             }
-          }
-          cardNumber="ending in 3743"
-        />
+            cardNumber="ending in 3743"
+          />
+        </Styled(View)>
         <Styled(View)>
           <Field
             component={
@@ -865,6 +1689,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -908,7 +1733,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "height": 72,
               }
             }
-            dataLocator="payment-cvv"
+            dataLocator="cvvTxtBox"
             id="cvvCode"
             label="CVV Code"
             name="cvvCode"
@@ -917,14 +1742,24 @@ exports[`ButtonList component renders correctly without props 2`] = `
           <Styled(View)>
             <ReactTooltip
               backgroundColor="#fff"
-              height={96}
+              height={350}
               onClose={[Function]}
               onOpen={[Function]}
               overlayColor="rgba(250, 250, 250, 0.80)"
               pointerColor="#fff"
-              popover={null}
+              popover={
+                <RichText
+                  actionHandler={[Function]}
+                  domStorageEnabled={false}
+                  isApplyDeviceHeight={false}
+                  isNativeView={true}
+                  javaScriptEnabled={false}
+                  source={null}
+                  thirdPartyCookiesEnabled={false}
+                />
+              }
               toggleOnPress={true}
-              width={240}
+              width={350}
               withOverlay={false}
               withPointer={true}
             >
@@ -944,7 +1779,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Styled(View) />
       <Styled(View)>
         <Styled(Card)
           card={
@@ -963,7 +1797,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             }
           }
           cardNumber=""
-          dataLocatorPrefix="billing-payment-card-detail"
+          dataLocator="selectedCardDetail"
           isDefault={false}
           selectedValue=""
           showAddress={true}
@@ -974,10 +1808,601 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
+  />
+</Fragment>
+`;
+
+exports[`ButtonList component renders correctly without props with editmode 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="paymentMethodLbl"
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED"
+        text="Payment Method"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <FormSection
+      name="shipmentMethods"
+    >
+      <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        formName="checkoutBillingPayment"
+        paymentMethods={
+          Array [
+            Object {
+              "displayName": undefined,
+              "id": "creditCard",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "payPal",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "venmo",
+            },
+          ]
+        }
+        selectedPaymentId="creditCard"
+      />
+    </FormSection>
+    <Styled(View)>
+      <Styled(View)
+        pointerEvents="none"
+      >
+        <Styled(View)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator="cardDropDownLbl"
+            fontSize="fs10"
+            fontWeight="extrabold"
+            margin={null}
+            mobileFontFamily="primary"
+            numberOfLines={null}
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(CreditCardDropDown)
+          addNewCC={[Function]}
+          addNewCCState={false}
+          creditCardList={
+            Immutable.List [
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              },
+            ]
+          }
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": null,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "isPLCCEnabled",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutBillingPayment"
+          labels={
+            Object {
+              "creditCardEnd": "ending in ",
+              "cvvCode": "CVV Code",
+              "edit": "Edit",
+              "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+              "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+              "lbl_billing_billingAddress": "Billing Address",
+              "lbl_billing_cardDetailsTitle": "Card Details",
+              "lbl_billing_creditCard": "Credit Card",
+              "lbl_billing_default": "Default",
+              "lbl_billing_defaultPayment": "Set as default payment method",
+              "lbl_billing_default_card": "DEFAULT",
+              "lbl_billing_paypal": "Pay Pal",
+              "lbl_billing_select": "SELECT",
+              "lbl_billing_selectCardTitle": "SELECT CARD",
+              "lbl_billing_selectFromCard": "Select from card on file",
+              "lbl_billing_venmo": "Venmo",
+              "paymentMethod": "Payment Method",
+            }
+          }
+          onChange={[Function]}
+          onFileCardKey={82596}
+          selectedOnFileCardKey={82596}
+        />
+      </Styled(View)>
+      <Styled(View) />
+      <Memo()
+        addressForm={[Function]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        editModeSubmissionError=""
+        errorMessageRef={
+          Object {
+            "current": null,
+          }
+        }
+        getAddNewCCForm={[Function]}
+        getDefaultPayment={[Function]}
+        key="cardEditForm"
+        labels={
+          Object {
+            "creditCardEnd": "ending in ",
+            "cvvCode": "CVV Code",
+            "edit": "Edit",
+            "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+            "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+            "lbl_billing_billingAddress": "Billing Address",
+            "lbl_billing_cardDetailsTitle": "Card Details",
+            "lbl_billing_creditCard": "Credit Card",
+            "lbl_billing_default": "Default",
+            "lbl_billing_defaultPayment": "Set as default payment method",
+            "lbl_billing_default_card": "DEFAULT",
+            "lbl_billing_paypal": "Pay Pal",
+            "lbl_billing_select": "SELECT",
+            "lbl_billing_selectCardTitle": "SELECT CARD",
+            "lbl_billing_selectFromCard": "Select from card on file",
+            "lbl_billing_venmo": "Venmo",
+            "paymentMethod": "Payment Method",
+          }
+        }
+        onEditCardFocus={[Function]}
+        selectedCard={
+          Object {
+            "accountNo": "************3743",
+            "addressDetails": Object {
+              "addressLine1": "Dorney Park Road",
+              "addressLine2": "",
+              "city": "Allentown",
+              "country": "US",
+            },
+            "ccBrand": "PLACE CARD",
+            "ccType": "PLACE CARD1",
+            "creditCardId": 82596,
+            "defaultInd": false,
+          }
+        }
+        unsetFormEditState={[Function]}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <CnCCommonTemplate
+    backLinkText=""
+    btnText=""
+    getPayPalSettings={Object {}}
+    isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
+    onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
+    routeToPage=""
+    showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -987,10 +2412,17 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { BillingPaymentForm } from '../views/BillingPaymentForm.view';
+import { onAddNewCreditCardClick } from '../views/BillingPaymentForm.util';
 
 const card = [
   {
@@ -72,6 +73,7 @@ describe('ButtonList component', () => {
   });
   it('renders correctly without props with payPal', () => {
     props.paymentMethodId = 'payPal';
+    props.isPayPalEnabled = true;
     const component = shallow(<BillingPaymentForm {...props} />);
     expect(component).toMatchSnapshot();
   });
@@ -140,11 +142,14 @@ describe('ButtonList component', () => {
           cvvCode: 'Enter correct code',
         },
       },
+      dispatch: jest.fn(),
+      change: jest.fn(),
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
   it('renders correctly if  no cards present ', () => {
     const props2 = {
       className: '',
@@ -162,20 +167,23 @@ describe('ButtonList component', () => {
       nextSubmitText: '',
       syncErrorsObj: {
         syncError: {
-          cvvCode: 'Enter correct code',
+          cvvCode: 'Correct code',
         },
       },
+      dispatch: jest.fn(),
+      change: jest.fn(),
+      isPayPalEnabled: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
   it('renders correctly with method onAddNewCreditCardClick', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
-    instance.onAddNewCreditCardClick();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+    onAddNewCreditCardClick(instance);
+    expect(component.state('addNewCCState')).toBe(true);
   });
   it('renders correctly with method getCreditCardDropDown', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
@@ -191,5 +199,11 @@ describe('ButtonList component', () => {
     const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
     instance.onCCDropDownChange();
     expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+  });
+  it('renders correctly with venmoError', () => {
+    props.paymentMethodId = 'venmo';
+    const error = 'Authentication Error';
+    const component = shallow(<BillingPaymentForm {...props} venmoError={error} />);
+    expect(component).toMatchSnapshot();
   });
 });

@@ -13,7 +13,7 @@ const getMyPlaceRewards = (airMiles, myPlaceNumber, labels) => {
       fontSize="fs16"
       fontFamily="secondary"
     >
-      {isCanada() && airMiles && `${getLabelValue(labels, 'lbl_profile_air_miles} ${airMiles')}`}
+      {isCanada() && airMiles && `${getLabelValue(labels, 'lbl_profile_air_miles')} ${airMiles}`}
       {!isCanada() &&
         myPlaceNumber &&
         `${getLabelValue(labels, 'lbl_profile_my_place_rewards_info')} ${myPlaceNumber}`}

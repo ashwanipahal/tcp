@@ -10,6 +10,13 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
   >
     <BadgeItem
       className="top-badge-container"
+      customFontSize={
+        Array [
+          "fs10",
+          "fs12",
+          "fs14",
+        ]
+      }
       customFontWeight=""
       haveSpace={true}
       isShowBadges={true}
@@ -39,8 +46,10 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isMobile={false}
       isPLPredesign={false}
       isShowVideoOnPlp={false}
+      isSoldOut={false}
       loadedProductCount={12}
       onImageChange={[Function]}
+      soldOutLabel=""
       videoUrl=""
     />
     <Styled(Row)
@@ -50,14 +59,12 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
-            "medium": 6,
-            "small": 4,
+            "small": 12,
           }
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="extended-sizes-text"
           color="text.primary"
           component="p"
           dataLocator="global-Extended-sizes-text"
@@ -79,6 +86,25 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
+            "large": 10,
+            "medium": 6,
+            "small": 4,
+          }
+        }
+      >
+        <ProductPricesSection
+          bundleProduct={false}
+          currencySymbol="$"
+          hidePrefixListPrice={true}
+          listPrice={0}
+          merchantTag=""
+          offerPrice={0}
+          priceRange={Object {}}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
             "large": 2,
             "medium": 2,
             "small": 2,
@@ -91,13 +117,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
-    <ProductPricesSection
-      currencySymbol="$"
-      hidePrefixListPrice={true}
-      listPrice={NaN}
-      merchantTag=""
-      offerPrice={NaN}
-    />
     <ProductTitle
       analyticsData={
         Object {
@@ -121,8 +140,16 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
-      isMobile={false}
-      isPLPredesign={false}
+      isMobile={
+        Object {
+          "isMobile": false,
+        }
+      }
+      isPLPredesign={
+        Object {
+          "isPLPredesign": false,
+        }
+      }
       maxVisibleItems={5}
       onChipClick={[Function]}
       selectedColorId=""
@@ -132,14 +159,22 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     <div
       className="fulfillment-section"
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="added-to-bag"
-        dataLocator="global-addtocart-Button"
-        fullWidth={true}
-        onClick={[Function]}
-      />
+      <div
+        className="fulfillment-section"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="added-to-bag"
+          dataLocator="global-addtocart-Button"
+          fill=""
+          fullWidth={true}
+          onClick={[Function]}
+        />
+      </div>
     </div>
+    <div
+      className="favorite-move-purchase-section"
+    />
   </div>
 </li>
 `;

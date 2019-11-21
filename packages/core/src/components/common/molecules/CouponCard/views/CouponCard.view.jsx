@@ -4,7 +4,6 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
-import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
 import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
 
@@ -49,8 +48,9 @@ class CouponCard extends React.Component<Props> {
             data-locator="coupon_header_applied"
             className="couponCard__header_expired"
             component="p"
-            fontSize="fs12"
-            fontFamily="secondary"
+            fontSize="fs10"
+            fontFamily="primary"
+            fontWeight="black"
           >
             {getLabelValue(commonLabels, 'lbl_my_rewards_applied', 'placeRewards')}
           </BodyCopy>
@@ -72,6 +72,7 @@ class CouponCard extends React.Component<Props> {
         data-locator={`coupon_${coupon.status}_apply_cartCta`}
         fullWidth="true"
         disabled={isFetching}
+        aria-labelledby={coupon.id}
       >
         {coupon.labelStatus}
       </Button>
@@ -90,6 +91,7 @@ class CouponCard extends React.Component<Props> {
         type="submit"
         data-locator={`coupon_${coupon.status}_remove_cartCta`}
         fullWidth="true"
+        aria-labelledby={coupon.id}
       >
         {coupon.labelStatus}
       </Button>
@@ -125,10 +127,9 @@ class CouponCard extends React.Component<Props> {
   };
 
   RenderButtons = coupon => {
-    const { isCarouselView } = this.props;
     return (
-      <div className={!isCarouselView ? 'couponCard__col' : ''}>
-        {coupon.status === 'available' && this.RenderApplyButton()}
+      <div className="couponCard__col">
+        {coupon.status === 'available' && coupon.isStarted && this.RenderApplyButton()}
         {coupon.status === 'applied' && this.RenderRemoveButton()}
       </div>
     );
@@ -169,14 +170,16 @@ class CouponCard extends React.Component<Props> {
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
-                  <BodyCopy component="div" color="text.primary">
+                  <BodyCopy className="elem-pr-SM" component="div" color="text.primary">
                     <BodyCopy
                       component="p"
                       fontSize="fs12"
                       lineHeight="lh115"
                       fontWeight="black"
                       fontFamily="secondary"
+                      className="couponTitle"
                       data-locator={`coupon_${coupon.status}_couponNameLbl`}
+                      id={coupon.id}
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
@@ -187,18 +190,20 @@ class CouponCard extends React.Component<Props> {
                     {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
                       this.RenderValidText(coupon)}
                   </BodyCopy>
-                  <Anchor
+                  <Button
                     dataLocator={`coupon_${coupon.status}_cartDetailsLink`}
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"
-                    fontSize="fs10"
-                    to="/#"
+                    nohover
+                    type="button"
+                    link
                     onClick={this.handleDefaultLinkClick}
                     className="cartDetailsLink"
+                    aria-labelledby={coupon.id}
                   >
                     {labels.DETAILS_BUTTON_TEXT}
-                  </Anchor>
+                  </Button>
                 </div>
                 {this.RenderButtons(coupon)}
               </div>

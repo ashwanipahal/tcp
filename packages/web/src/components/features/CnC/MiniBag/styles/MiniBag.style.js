@@ -27,7 +27,7 @@ export const modalStyles = css`
       display: block;
     }
   }
-  .alignTop.alignTop {
+  .alignTop {
     /* stylelint-disable-line */
     top: 28px;
   }
@@ -42,6 +42,11 @@ const styles = css`
   }
   .edit-button {
     min-height: unset;
+  }
+`;
+export const customStyles = css`
+  .spinner-overlay {
+    position: absolute;
   }
 `;
 

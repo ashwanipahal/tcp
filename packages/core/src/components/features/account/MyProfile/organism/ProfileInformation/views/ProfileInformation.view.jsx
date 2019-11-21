@@ -14,12 +14,18 @@ import ChangePasswordInfo from '../../ChangePasswordInfo/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 import AboutYouInfo from '../../AboutYouInfo';
 import MyFavoriteStore from '../../MyFavoriteStore';
+import { getUrlParameter } from '../../../../../../../utils';
 
 class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
-    const url = new URL(window.location.href);
-    const isSurvey = url.searchParams.get('survey');
+    this.state = {
+      mountSurveyModal: false,
+    };
+  }
+
+  componentDidMount() {
+    const isSurvey = getUrlParameter('survey');
     if (isSurvey) {
       this.state = {
         mountSurveyModal: true,
@@ -275,3 +281,4 @@ ProfileInformation.defaultProps = {
 };
 
 export default withStyles(ProfileInformation, styles);
+export { ProfileInformation as ProfileInformationvanilla };

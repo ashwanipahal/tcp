@@ -4,6 +4,7 @@ exports[`Toast render should render correctly 1`] = `
 <ToastView
   errorMessage="errormessage"
   positionValue={1}
+  shouldShowSafeArea={true}
   toastMessageReset={[MockFunction]}
 />
 `;

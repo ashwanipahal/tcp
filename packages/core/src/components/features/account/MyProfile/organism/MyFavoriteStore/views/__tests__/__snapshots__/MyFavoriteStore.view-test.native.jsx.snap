@@ -4,10 +4,11 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
+  ctaLink="StoreLanding"
   ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
+  isPageNavigation={true}
   title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
@@ -66,19 +67,59 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
-  ctaTitle=""
+  ctaLink="StoreLanding"
+  ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
-  title=""
+  isPageNavigation={true}
+  title="lbl_common_myFavoriteStore"
 >
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    text="store"
+    textDecoration={null}
+  />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
-    spacingStyles="margin-bottom-LRG"
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=", "
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=" "
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text=""
     textDecoration={null}
   />
@@ -89,11 +130,12 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
 <MyProfileTile
   birthdaySaving={false}
   className=""
-  ctaLink="accountOverviewMobile"
-  ctaTitle=""
+  ctaLink="StoreLanding"
+  ctaTitle="lbl_common_edit"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
-  title=""
+  isPageNavigation={true}
+  title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
     accessibilityText=""
@@ -102,7 +144,17 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-XXL"
-    text=""
+    text="lbl_common_accessBuyOnline"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    text="store"
     textDecoration={null}
   />
   <Styled(Styled(BodyCopy))
@@ -111,7 +163,36 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
-    spacingStyles="margin-bottom-LRG"
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=", "
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=" "
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text=""
     textDecoration={null}
   />

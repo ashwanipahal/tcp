@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 500] */
 import { API_METHODS, PRODUCTS_URI, SAVE_FOR_LATER } from './api.constants';
 
 const endpoints = {
@@ -98,7 +99,6 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/logout',
   },
-
   getPointsHistory: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getMyPointHistory',
@@ -168,6 +168,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   getProductsByOutfits: {
     method: 'GET',
@@ -192,6 +193,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
@@ -208,6 +210,14 @@ const endpoints = {
   removeCouponOrPromo: {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
+  },
+  getContactPreferences: {
+    method: 'GET',
+    URI: 'v2/account/preferences',
+  },
+  setContactPreferences: {
+    method: 'PUT',
+    URI: 'v2/account/preferences',
   },
   getAllOffers: {
     method: API_METHODS.GET,
@@ -274,7 +284,6 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
-  // STORE LOCATORS
   getFavoriteStore: {
     method: 'GET',
     URI: 'v2/store/getFavouriteStoreLocation',
@@ -287,12 +296,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/store/addFavouriteStoreLocation',
   },
-
   getSocialAccountsInfo: {
     method: 'GET',
     URI: 'v2/account/preferences/socialNew',
   },
-
   saveSocialAccountsInfo: {
     method: 'PUT',
     URI: 'v2/account/preferences/socialNew',
@@ -316,10 +323,6 @@ const endpoints = {
   addSflItem: {
     method: 'POST',
     URI: SAVE_FOR_LATER,
-  },
-  getMyFavoriteStore: {
-    method: API_METHODS.GET,
-    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
   },
   getStoreandProductInventoryInfo: {
     method: 'GET',
@@ -368,6 +371,74 @@ const endpoints = {
   addOrUpdateWishlist: {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
+  },
+  getTwitterAuthToken: {
+    method: 'GET',
+    URI: 'v2/twitter/requestToken',
+  },
+  getTwitterAccessToken: {
+    method: 'GET',
+    URI: 'v2/twitter/accessToken',
+  },
+  getListofWishList: {
+    method: 'GET',
+    URI: 'v2/wishlist/getListOfWishlist',
+  },
+  getWishListbyId: {
+    method: 'GET',
+    URI: 'v2/wishlist/getWishListbyId',
+  },
+  createWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/createWishListForUser',
+  },
+  moveWishListItem: {
+    method: 'PUT',
+    URI: 'v2/wishlist/moveItemToWishList',
+  },
+  deleteWishListForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteWishListForUser',
+  },
+  editWishList: {
+    method: 'PUT',
+    URI: 'v2/wishlist/updateWishListForUser',
+  },
+  deleteWishListItemForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteItemFromWishList',
+  },
+  shareWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/shareWishListForUser',
+  },
+  getStoreLocationByCountry: {
+    method: 'GET',
+    URI: 'v2/store/getStoreLocationByCountry',
+  },
+  startExpressCheckout: {
+    method: 'POST',
+    URI: 'v2/checkout/expressCheckout',
+  },
+  getInstagramAccessToken: {
+    method: 'GET',
+    URI: 'v2/instagram/accessToken',
+  },
+  userGroup: {
+    method: 'PUT',
+    URI: 'v2/account/userGroup',
+  },
+  updateRTPSdata: {
+    method: 'POST',
+    URI: 'v2/ads_dms/constructOLPS',
+  },
+  prescreenApplication: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processPreScreenAcceptance',
+  },
+  processPreScreenOffer: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processMadeOffer',
   },
 };
 export default endpoints;

@@ -1,12 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import Address from '../../../../../../../../common/molecules/Address';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import ShippingMethodDisplay from '../../ShippingMethodDisplay';
 import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import style from '../styles/ShippingReviewSection.style.native';
+import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 const { ShippingReviewContainer, AddressSection, AddressTitle, TitlePlusEditSection } = style;
 
@@ -19,11 +21,18 @@ export class ShippingReviewSection extends React.PureComponent {
       giftWrappingDisplayName,
       labels,
       onEdit,
+      isExpressCheckout,
+      shipmentMethods,
+      formName,
+      formSection,
+      dispatch,
+      expressReviewShippingSectionId,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
       lbl_review_sectionAnchor: edit,
       lbl_review_sectionShippingAddressTitle: addressTitle,
+      lbl_review_sectionShippingMethodTitle: shippingMethodTitle,
     } = labels;
     return (
       <>
@@ -41,38 +50,60 @@ export class ShippingReviewSection extends React.PureComponent {
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 color="gray.900"
                 fontWeight="extrabold"
                 text={addressTitle}
               />
             </AddressTitle>
             <AddressSection>
-              <Address address={shippingAddress.address} regularName />
+              {!!shippingAddress.address && (
+                <Address address={shippingAddress.address} regularName />
+              )}
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 color="gray.900"
                 fontWeight="regular"
                 text={shippingAddress.emailAddress}
               />
-              <BodyCopy
-                fontSize="fs16"
-                dataLocator=""
-                mobileFontFamily="secondary"
-                color="gray.900"
-                fontWeight="regular"
-                text={shippingAddress.phoneNumber}
-              />
+              {!!shippingAddress.phoneNumber && (
+                <BodyCopy
+                  fontSize="fs16"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  color="gray.900"
+                  fontWeight="regular"
+                  text={formatPhoneNumber(shippingAddress.phoneNumber)}
+                />
+              )}
             </AddressSection>
           </View>
           <View>
-            {shippingMethod && (
+            {!isExpressCheckout && shippingMethod && (
               <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
             )}
+            {isExpressCheckout && shippingMethod && (
+              <ShipmentMethods
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={formSection}
+                selectedShipmentId={
+                  expressReviewShippingSectionId && expressReviewShippingSectionId.shippingMethodId
+                }
+                shipmentHeader={shippingMethodTitle}
+                dispatch={dispatch}
+              />
+            )}
             {isGiftOptionsEnabled && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              <GiftWrappingDisplay
+                labels={labels}
+                displayName={giftWrappingDisplayName}
+                onEdit={onEdit}
+                editTitle={edit}
+                isExpressCheckout={isExpressCheckout}
+              />
             )}
           </View>
         </ShippingReviewContainer>
@@ -94,6 +125,12 @@ ShippingReviewSection.propTypes = {
     isDefault: PropTypes.bool,
   }).isRequired,
   onEdit: PropTypes.func.isRequired,
+  isExpressCheckout: PropTypes.bool.isRequired,
+  shipmentMethods: PropTypes.shape({}).isRequired,
+  formName: PropTypes.string.isRequired,
+  formSection: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  expressReviewShippingSectionId: PropTypes.func.isRequired,
 };
 
 ShippingReviewSection.defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Heading from '../../../../common/atoms/Heading';
 import EmptyCard from '../../common/molecule/EmptyCard/views/EmptyCard.view';
@@ -8,23 +9,6 @@ import styles from '../styles/CardList.style';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import { CardView } from './Card.view';
-
-// @flow
-
-type Props = {
-  labels: object,
-  creditCardList: Array<object>,
-  className: string,
-  setDefaultPaymentMethod: Function,
-  setDeleteModalMountState: Function,
-  deleteModalMountedState: false,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  showNotification: boolean,
-  setSelectedCard: string,
-  addCreditCard: () => {},
-  editCreditCard: () => {},
-};
 
 const CreditCardList = ({
   labels,
@@ -39,7 +23,7 @@ const CreditCardList = ({
   setSelectedCard,
   addCreditCard,
   editCreditCard,
-}: Props) => {
+}) => {
   return (
     <div className={className}>
       <Heading
@@ -92,5 +76,25 @@ const CreditCardList = ({
   );
 };
 
+CreditCardList.defaultProps = {
+  deleteModalMountedState: false,
+  addCreditCard: null,
+  editCreditCard: null,
+};
+
+CreditCardList.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  creditCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  className: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  deleteModalMountedState: PropTypes.bool,
+  onDeleteCard: PropTypes.func.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  setSelectedCard: PropTypes.string.isRequired,
+  addCreditCard: PropTypes.func,
+  editCreditCard: PropTypes.func,
+};
 export default withStyles(CreditCardList, styles);
 export { CreditCardList as CreditCardListVanilla };

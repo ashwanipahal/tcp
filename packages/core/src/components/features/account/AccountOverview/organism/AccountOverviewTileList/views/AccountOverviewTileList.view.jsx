@@ -4,11 +4,13 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import AddressOverviewTile from '../../../../common/organism/AddressOverviewTile';
 import PaymentOverviewTile from '../../../../common/organism/PaymentOverviewTile';
+import MyPlaceRewardsCreditCardTile from '../../../../common/organism/MyPlaceRewardsCreditCard';
 import ProfileInfoTile from '../../../../common/organism/ProfileInfoTile';
 import MyPlaceRewardsOverviewTile from '../../../../common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '../../../../common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '../../../../common/organism/EarnExtraPointsOverview';
 import OrdersTile from '../../../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../../../common/organism/MyPreferencesTile';
 
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountOverviewTileList.style';
@@ -22,6 +24,8 @@ const componentMap = {
   myPlaceRewardsOverviewTile: MyPlaceRewardsOverviewTile,
   myWalletTile: MyWalletTile,
   ordersTile: OrdersTile,
+  myPreferencesTile: MyPreferencesTile,
+  myPlaceRewardsCreditCardTile: MyPlaceRewardsCreditCardTile,
 };
 
 export const COMPONENTS_US = [
@@ -30,8 +34,10 @@ export const COMPONENTS_US = [
   'earnExtraPointsOverview',
   'paymentOverviewTile',
   'myPlaceRewardsOverviewTile',
+  'myPlaceRewardsCreditCardTile',
   'myWalletTile',
   'ordersTile',
+  'myPreferencesTile',
 ];
 export const COMPONENTS_CA = [
   'profileInfoTile',
@@ -39,6 +45,7 @@ export const COMPONENTS_CA = [
   'paymentOverviewTile',
   'myWalletTile',
   'ordersTile',
+  'myPreferencesTile',
 ];
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {

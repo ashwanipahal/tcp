@@ -4,6 +4,7 @@ exports[`Store Detail Page should not render StoreDetail 1`] = `
 <Styled(StoreDetail)
   className="storedetailinfo"
   dialStoreNumber={[Function]}
+  fetchRichContent={[Function]}
   openMoreStores={[Function]}
   openStoreDetails={[Function]}
   openStoreDirections={[Function]}
@@ -21,6 +22,7 @@ exports[`Store Detail Page should render StoreDetail 1`] = `
 <Styled(StoreDetail)
   className="storedetailinfo"
   dialStoreNumber={[Function]}
+  fetchRichContent={[Function]}
   labels={
     Object {
       "StoreLocator": Object {

@@ -10,23 +10,17 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductSizeSelector.style';
 
-const getSizesOptionsMap = (
-  sizesMap,
-  isShowZeroInventoryEntries,
-  isDisableZeroInventoryEntries,
-  isRenderChips
-) => {
+const getSizesOptionsMap = (sizesMap, isDisableZeroInventoryEntries, isRenderChips, keepAlive) => {
   if (isRenderChips) {
     return sizesMap.map(sizeEntry => ({
       value: sizeEntry.get('displayName'),
       title: sizeEntry.get('displayName'),
       content: <span>{sizeEntry.get('displayName')}</span>,
-      disabled: isDisableZeroInventoryEntries && sizeEntry.get('maxAvailable') <= 0,
+      disabled: (isDisableZeroInventoryEntries && sizeEntry.get('maxAvailable') <= 0) || keepAlive,
     }));
   }
   return null;
@@ -52,6 +46,7 @@ class ProductSizeSelector extends React.PureComponent<Props> {
     isDisableZeroInventoryEntries: PropTypes.bool,
 
     title: PropTypes.string,
+    keepAlive: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -59,6 +54,7 @@ class ProductSizeSelector extends React.PureComponent<Props> {
     isDisableZeroInventoryEntries: true,
     isShowZeroInventoryEntries: true,
     isRenderChips: true,
+    keepAlive: false,
   };
 
   render() {
@@ -68,28 +64,21 @@ class ProductSizeSelector extends React.PureComponent<Props> {
       isShowZeroInventoryEntries,
       isDisableZeroInventoryEntries,
       className,
+      keepAlive,
       ...otherProps
     } = this.props;
 
     const optionsMap =
       sizesMap &&
-      getSizesOptionsMap(
-        sizesMap,
-        isShowZeroInventoryEntries,
-        isDisableZeroInventoryEntries,
-        isRenderChips
-      );
+      getSizesOptionsMap(sizesMap, isDisableZeroInventoryEntries, isRenderChips, keepAlive);
 
     return (
       sizesMap && (
-        <>
-          <LabeledRadioButtonGroup
-            className={`${className} size-and-fit-detail`}
-            optionsMap={optionsMap}
-            {...otherProps}
-          />
-          <RenderPerf.Measure name="render_product_sizes" />
-        </>
+        <LabeledRadioButtonGroup
+          className={`${className} size-and-fit-detail`}
+          optionsMap={optionsMap}
+          {...otherProps}
+        />
       )
     );
   }

@@ -4,15 +4,20 @@ const styles = css`
   .my-rewards-heading {
     text-align: ${props => (props.view === 'all' ? 'left' : 'center')};
     margin-bottom: ${props =>
-        props.view === 'all'
-          ? props.theme.spacing.ELEM_SPACING.MED
-          : props.theme.spacing.ELEM_SPACING.XL}
-      ${props => props.theme.spacing.ELEM_SPACING.XL};
+      props.view === 'all'
+        ? props.theme.spacing.ELEM_SPACING.MED
+        : props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props =>
         props.view === 'all'
-          ? props.theme.spacing.ELEM_SPACING.MED
+          ? props.theme.spacing.ELEM_SPACING.XL
           : props.theme.spacing.ELEM_SPACING.XXXL};
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: ${props =>
+        props.view === 'all'
+          ? props.theme.spacing.ELEM_SPACING.XL
+          : props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 
@@ -39,14 +44,12 @@ const styles = css`
     }
   }
 
-  .anchor-wrapper {
-    text-align: center;
-  }
-
   .rewards-container {
     display: grid;
     grid-template-columns: 100%;
     grid-row-gap: 24px;
+    grid-auto-rows: minmax(345px, auto);
+    align-items: stretch;
 
     @media ${props => props.theme.mediaQuery.medium} {
       grid-template-columns: repeat(2, calc(50% - 15px));

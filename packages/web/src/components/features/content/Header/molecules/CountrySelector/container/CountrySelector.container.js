@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
+import { getCountryListData } from '@tcp/core/src/reduxStore/actions';
 import {
-  getCountryListData,
   getModuleXContent,
   submitCountrySelection,
   toggleCountrySelectorModal,

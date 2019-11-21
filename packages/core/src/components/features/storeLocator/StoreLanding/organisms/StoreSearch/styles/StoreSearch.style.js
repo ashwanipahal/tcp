@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  padding: 24px 14px;
+  padding: 24px 12px;
   background-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[50]
@@ -15,10 +15,15 @@ export default css`
     position: relative;
   }
 
-  .TextBox__input {
-    background-color: transparent;
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding-bottom: 2px;
+  .store-locator-field {
+    .TextBox__input {
+      background-color: transparent;
+      width: 90%;
+      padding-right: 10%;
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding-bottom: 2px;
+      }
     }
   }
 
@@ -39,7 +44,7 @@ export default css`
   .button-search-store {
     position: absolute;
     right: -4px;
-    bottom: 10px;
+    top: 6px;
   }
 
   .currentLocationWrapper {
@@ -95,7 +100,7 @@ export default css`
     }
 
     .storeLinks {
-      padding: 0 10px;
+      padding: 0 5px;
       border-right: 1px solid;
     }
 

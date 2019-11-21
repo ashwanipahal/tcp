@@ -24,6 +24,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         checked={false}
         data-locator="moreaboutyou-radiooption-0"
         disabled={false}
+        disabledWithAlert={false}
         index={0}
         labelStyle={Object {}}
         labelWrapStyle={Object {}}
@@ -47,6 +48,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         checked={false}
         data-locator="moreaboutyou-radiooption-1"
         disabled={false}
+        disabledWithAlert={false}
         index={1}
         labelStyle={Object {}}
         labelWrapStyle={Object {}}
@@ -70,6 +72,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         checked={true}
         data-locator="moreaboutyou-radiooption-2"
         disabled={false}
+        disabledWithAlert={false}
         index={2}
         labelStyle={Object {}}
         labelWrapStyle={Object {}}
@@ -93,6 +96,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         checked={false}
         data-locator="moreaboutyou-radiooption-3"
         disabled={false}
+        disabledWithAlert={false}
         index={3}
         labelStyle={Object {}}
         labelWrapStyle={Object {}}
@@ -181,7 +185,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -196,18 +200,20 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="SAVE"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -221,12 +227,14 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[MockFunction]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_profile_personal_info_cancelCta"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

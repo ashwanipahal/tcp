@@ -86,7 +86,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         color="orange.800"
         className="elem-mr-XS"
       >
@@ -96,7 +96,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         className="elem-mr-XS"
         color="primary.main"
       >
@@ -106,7 +106,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         color="pink.500"
       >
         {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}
@@ -123,6 +123,7 @@ const getContent = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  isPlaceRewardsPage,
 }) => {
   let allUsed = false;
   let valueOfbonusDayAvailableToday = 0;
@@ -182,6 +183,7 @@ const getContent = ({
             orderDetails={orderDetails}
             bonusDayAvailableToday={valueOfbonusDayAvailableToday}
             className="availability-msg"
+            isPlaceRewardsPage={isPlaceRewardsPage}
           />
         </Col>
       </Row>
@@ -208,9 +210,12 @@ const BonusPointsSection = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  isDefaultOpen,
   showAccordian,
+  ...otherProps
 }) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
+  const { isPlaceRewardsPage } = otherProps;
   const header = getHeader({ labels });
   const body = getContent({
     labels,
@@ -220,7 +225,9 @@ const BonusPointsSection = ({
     enableApplyCta,
     getBonusDaysData,
     orderDetails,
+    isPlaceRewardsPage,
   });
+
   return (
     <div className={className}>
       <Col
@@ -229,20 +236,18 @@ const BonusPointsSection = ({
           medium: 8,
           small: 6,
         }}
-        ignoreGutter={{ small: true, medium: true }}
-        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        ignoreGutter={{ small: true }}
       >
         <CollapsibleContainer
           className={className}
           header={header}
           body={body}
+          defaultOpen={isDefaultOpen}
           iconLocator="arrowicon"
+          isDefaultView={!showAccordian}
+          showHeaderAlways
         />
       </Col>
-      <div className={showAccordian ? 'hide-in-medium-down' : ''}>
-        {header}
-        {body}
-      </div>
     </div>
   );
 };
@@ -253,6 +258,7 @@ BonusPointsSection.propTypes = {
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
   enableApplyCta: PropTypes.bool,
+  isDefaultOpen: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   showAccordian: PropTypes.bool.isRequired,
@@ -266,6 +272,7 @@ BonusPointsSection.defaultProps = {
   enableApplyCta: false,
   getBonusDaysData: () => {},
   orderDetails: {},
+  isDefaultOpen: false,
 };
 
 getContent.propTypes = {
@@ -276,6 +283,7 @@ getContent.propTypes = {
   enableApplyCta: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 getContent.defaultProps = {
@@ -292,6 +300,7 @@ getContent.defaultProps = {
   enableApplyCta: false,
   getBonusDaysData: () => {},
   orderDetails: {},
+  isPlaceRewardsPage: false,
 };
 
 getHeader.propTypes = {

@@ -18,6 +18,7 @@ jest.mock('../../../../utils', () => ({
   isClient: jest.fn(),
   isMobileApp: jest.fn(),
   routerPush: jest.fn(),
+  isCanada: jest.fn(),
 }));
 
 describe('product Listing', () => {
@@ -97,7 +98,6 @@ describe('product Listing', () => {
         {}
       )
       .then(res => {
-        // console.log(formattedData);
         expect(JSON.stringify(res)).toEqual(formattedData);
       });
   });

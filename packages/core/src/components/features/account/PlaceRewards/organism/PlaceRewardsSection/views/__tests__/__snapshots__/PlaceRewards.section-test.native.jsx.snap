@@ -12,6 +12,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -25,11 +26,12 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
-        fontWeight="extrabold"
+        fontWeight="bold"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_common_point_balance"
         textDecoration={null}
       />
       <Connect(RewardsPointsContainer) />
@@ -39,8 +41,9 @@ exports[`MyRewards should render correctly 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           dataLocator=""
+          fontFamily="secondary"
           fontSize="fs16"
-          fontWeight="extrabold"
+          fontWeight="bold"
           margin={null}
           numberOfLines={null}
           text="lbl_my_rewards_points_history"
@@ -50,7 +53,9 @@ exports[`MyRewards should render correctly 1`] = `
       <Connect(PointsHistoryContainer) />
     </Styled(View)>
     <Styled(View)>
-      <BonusPointsDaysSection />
+      <BonusPointsDaysSection
+        isPlaceRewardsPage={true}
+      />
     </Styled(View)>
     <Styled(View)>
       <Connect(EarnExtraPointsTileContainer) />

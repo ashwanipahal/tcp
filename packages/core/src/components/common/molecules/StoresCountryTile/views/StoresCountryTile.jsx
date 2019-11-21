@@ -7,7 +7,7 @@ import {
 } from '@tcp/core/src/components/common/molecules/StoreLocations';
 import { CountryName } from '@tcp/core/src/components/common/molecules/StoresIntlTile/styles/StoresIntlTile.style';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
-import { getViewportInfo, isClient } from '@tcp/core/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
 import style from '../styles/StoresCountryTile.style';
 
@@ -28,13 +28,14 @@ class StoresCountryTile extends PureComponent {
   }
 
   getAddressTile(store) {
-    const { labels, titleClickCb } = this.props;
+    const { labels, titleClickCb, dataLocatorKey } = this.props;
     return (
       <LocationTile
         labels={labels}
         store={store}
         locatorGetDirections=""
         titleClickCb={() => titleClickCb(store)}
+        dataLocatorKey={dataLocatorKey}
       />
     );
   }
@@ -57,23 +58,36 @@ class StoresCountryTile extends PureComponent {
   }
 
   render() {
-    const { children, className, title } = this.props;
-    if (isClient() && (getViewportInfo().isMobile || getViewportInfo().isTablet)) {
-      return (
-        <CollapsibleLocations
-          header={this.getCollapsibleHeader()}
-          body={this.getCollapsibleContent()}
-          className={className}
-          iconClose="plus-icon"
-          iconOpen="minus-icon"
-        />
-      );
-    }
+    const {
+      children,
+      className,
+      title,
+      isDefaultOpen,
+      dataLocatorKey,
+      onToggleCallback,
+    } = this.props;
     return (
-      <div className={className}>
-        <CountryName>{title}</CountryName>
-        {this.getAddressTiles()}
+      <div className={className} id={`scroll-${title}`}>
         {children}
+        <div className="storemodule__lg">
+          <CountryName data-locator={getLocator(`store_${dataLocatorKey}statelabel`)}>
+            {title}
+          </CountryName>
+          {this.getAddressTiles()}
+        </div>
+        <div className="storemodule__sm">
+          <CollapsibleLocations
+            header={this.getCollapsibleHeader()}
+            body={this.getCollapsibleContent()}
+            className={className}
+            iconClose="plus-icon"
+            iconOpen="minus-icon"
+            defaultOpen={isDefaultOpen}
+            onToggleCallback={onToggleCallback}
+            showHeaderAlways
+            isAccordionTablet
+          />
+        </div>
       </div>
     );
   }
@@ -86,11 +100,17 @@ StoresCountryTile.propTypes = {
   stores: PropTypes.arrayOf(propTypes.store),
   labels: PropTypes.shape({}).isRequired,
   titleClickCb: PropTypes.func.isRequired,
+  isDefaultOpen: PropTypes.bool,
+  dataLocatorKey: PropTypes.string,
+  onToggleCallback: PropTypes.func,
 };
 
 StoresCountryTile.defaultProps = {
   children: null,
   stores: [],
+  isDefaultOpen: false,
+  dataLocatorKey: '',
+  onToggleCallback: null,
 };
 
 export default withStyles(StoresCountryTile, style);

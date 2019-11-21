@@ -41,7 +41,7 @@ const ctaRedirect = activeActivity => {
         path: internalEndpoints.editProfileInformationPage.path,
       };
     case 'orders':
-      return { to: internalEndpoints.orderPage.link, path: internalEndpoints.orderPage.path };
+      return { to: internalEndpoints.myOrderPage.link, path: internalEndpoints.myOrderPage.path };
     default:
       return { to: internalEndpoints.profilePage.link, path: internalEndpoints.profilePage.path };
   }

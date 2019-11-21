@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, change, reduxForm } from 'redux-form';
 import CustomSelect from '@tcp/core/src/components/common/molecules/CustomSelect';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/GiftServices.style';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
@@ -11,29 +13,62 @@ import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../../../common/atoms/Image';
-import { isGymboree, getIconPath, getLocator } from '../../../../../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view';
+import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 
 class GiftServices extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { isGiftServicesChecked, initialValues } = this.props;
+    const { isGiftServicesChecked, initialValues, cartOrderItems } = this.props;
+    const productsData = [];
+    if (cartOrderItems) {
+      cartOrderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        const {
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+          productInfo: { skuId, upc, productPartNumber },
+        } = productDetail;
 
+        const prodData = {
+          color,
+          id: itemId,
+          name,
+          price: offerPrice,
+          extPrice: offerPrice,
+          sflExtPrice: offerPrice,
+          listPrice,
+          partNumber: productPartNumber,
+          size,
+          upc,
+          sku: skuId.toString(),
+        };
+        productsData.push(prodData);
+        return prodData;
+      });
+    }
     this.state = {
       detailStatus: false,
-      isGymboreeBrand: isGymboree(),
       isChecked: isGiftServicesChecked,
       message: initialValues.message,
+      orderItems: productsData,
     };
   }
 
   handleChange = () => {
-    const { isChecked } = this.state;
-    const { dispatch } = this.props;
+    const { isChecked, orderItems } = this.state;
+    const { dispatch, setClickAnalyticsDataGC } = this.props;
     this.setState({
       isChecked: !isChecked,
       message: '',
     });
+
+    setClickAnalyticsDataGC({
+      customEvents: ['event10'],
+      eventName: 'select gift option',
+      products: orderItems,
+    });
+    /* istanbul ignore else */
     if (!isChecked && dispatch) {
       dispatch(change('GiftServices', `message`, ''));
       dispatch(change('GiftServices', `optionId`, 'standard'));
@@ -48,14 +83,16 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = (giftWrapOptions, labels) => {
+    const { SelectedBrand } = this.props;
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
-    const { isGymboreeBrand } = this.state;
-    const brand = isGymboreeBrand ? 'GYM' : 'TCP';
+
     return (
       getServicesOptionsMap &&
       getServicesOptionsMap
-        .filter(servicesMap => servicesMap.itemBrand === brand || servicesMap.itemBrand === 'ALL')
+        .filter(
+          servicesMap => servicesMap.itemBrand === SelectedBrand || servicesMap.itemBrand === 'ALL'
+        )
         .map(servicesMap => {
           return {
             title: (
@@ -91,16 +128,9 @@ class GiftServices extends React.PureComponent {
     );
   };
 
-  handleToggle = (e, isGymboreeBrand) => {
-    this.setState({ isGymboreeBrand });
-    const { dispatch } = this.props;
-    if (dispatch) {
-      dispatch(change('GiftServices', `brand`, isGymboreeBrand ? 'GYM' : 'TCP'));
-    }
-  };
-
   giftServiceChanged = (e, value) => {
     const { dispatch } = this.props;
+    /* istanbul ignore else */
     if (dispatch) {
       dispatch(change('GiftServices', `optionId`, value));
     }
@@ -112,13 +142,14 @@ class GiftServices extends React.PureComponent {
       const defaultOption = options.find(o => o.value === 'standard');
       return defaultOption && defaultOption.title;
     }
-    return selectedOption && selectedOption.title;
+    return selectedOption.title;
   };
 
   render() {
-    const { className, labels, giftWrapOptions } = this.props;
+    const { className, labels, giftWrapOptions, handleToggle, SelectedBrand } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
-    const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
+    const { detailStatus, isChecked, message } = this.state;
+
     const maxLength = max => value => {
       let v;
       const result = value.length > max;
@@ -134,23 +165,25 @@ class GiftServices extends React.PureComponent {
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="checkbox-header">
-                <Field
-                  name="hasGiftWrapping"
-                  component={InputCheckbox}
-                  dataLocator="hide-show-checkbox"
-                  enableSuccessCheck={false}
-                  onChange={this.handleChange}
-                  className="giftServicesField"
-                >
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="extrabold"
-                    className="elem-mb-XXS"
+                <ClickTracker name="Gift_Services">
+                  <Field
+                    name="hasGiftWrapping"
+                    component={InputCheckbox}
+                    dataLocator={getLocator('gift_service')}
+                    enableSuccessCheck={false}
+                    onChange={this.handleChange}
+                    className="giftServicesField"
                   >
-                    {labels.giftServices}
-                  </BodyCopy>
-                </Field>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="extrabold"
+                      className="elem-mb-XXS"
+                    >
+                      {labels.giftServices}
+                    </BodyCopy>
+                  </Field>
+                </ClickTracker>
 
                 <BodyCopy
                   fontSize="fs12"
@@ -159,6 +192,7 @@ class GiftServices extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   onClick={this.toggleDetailsModal}
+                  dataLocator={getLocator('gift_service')}
                 >
                   {labels.details}
                 </BodyCopy>
@@ -171,6 +205,7 @@ class GiftServices extends React.PureComponent {
             fontSize="fs16"
             fontWeight="regular"
             textAlign="left"
+            dataLocator={getLocator('addMessage_txt')}
           >
             {labels.addAGift}
           </BodyCopy>
@@ -205,19 +240,21 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key={GIFT_SERVICES_CONSTANTS.TCP}
+                    selectedValue={GIFT_SERVICES_CONSTANTS.TCP}
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === isGymboree()}
-                    onChange={e => this.handleToggle(e, isGymboree())}
                     disabled={false}
+                    aria-label={GIFT_SERVICES_CONSTANTS.TCP}
                     className="tcp-radio-button"
+                    onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
+                    checked={SelectedBrand === GIFT_SERVICES_CONSTANTS.TCP}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
                         alt="Brand"
                         className="brand-image"
                         src={getIconPath('header__brand-tab--tcp')}
-                        data-locator={getLocator('header__brand-tab--tcp')}
+                        data-locator={getLocator('logo_TCP')}
                       />
                     </BodyCopy>
                   </Field>
@@ -241,18 +278,20 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key={GIFT_SERVICES_CONSTANTS.GYM}
+                    selectedValue={GIFT_SERVICES_CONSTANTS.GYM}
+                    aria-label={GIFT_SERVICES_CONSTANTS.GYM}
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === !isGymboree()}
-                    onChange={e => this.handleToggle(e, !isGymboree())}
                     disabled={false}
+                    onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
+                    checked={SelectedBrand === GIFT_SERVICES_CONSTANTS.GYM}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
                         alt="Brand"
                         className="brand-image"
                         src={getIconPath('header__brand-tab-gymboree')}
-                        data-locator={getLocator('header__brand-tab--gymboree')}
+                        data-locator={getLocator('logo_gymboree')}
                       />
                     </BodyCopy>
                   </Field>
@@ -279,7 +318,7 @@ class GiftServices extends React.PureComponent {
                           );
                         }}
                         options={giftServicesList}
-                        dataLocator="addnewaddress-state"
+                        dataLocator={getLocator('giftService_list')}
                         clickHandler={this.giftServiceChanged}
                       />
                     </div>
@@ -333,6 +372,8 @@ class GiftServices extends React.PureComponent {
               });
             }}
             heading={labels.giftServices}
+            brand={SelectedBrand}
+            dataLocator={getLocator('details_modal')}
           />
         </div>
       </form>
@@ -347,6 +388,10 @@ GiftServices.propTypes = {
   dispatch: PropTypes.func,
   giftWrapOptions: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}),
+  handleToggle: PropTypes.func.isRequired,
+  SelectedBrand: PropTypes.string.isRequired,
+  setClickAnalyticsDataGC: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 GiftServices.defaultProps = {

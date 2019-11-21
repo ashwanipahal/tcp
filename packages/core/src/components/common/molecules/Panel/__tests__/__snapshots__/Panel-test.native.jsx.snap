@@ -31,9 +31,10 @@ exports[`Panel component should render correctly 1`] = `
         }
         height={6}
         host=""
+        resizeMode="contain"
         source={
           Object {
-            "testUri": "../../../src/assets/images/carrot-small-down-gray.png",
+            "testUri": "../../../src/assets/images/carrot-down.png",
           }
         }
         url=""

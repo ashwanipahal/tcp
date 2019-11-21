@@ -1,9 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { getSiteId } from '../../../../utils';
-import { executeUnbxdAPICall } from '../../../handler';
+import { getSiteId, isGymboree } from '../../../../utils';
+import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
+import endpoints from '../../../endpoints';
 
 const RecommendationsAbstractor = {
   isUSStore: getSiteId() === 'us',
@@ -25,36 +26,7 @@ const RecommendationsAbstractor = {
   // event listener callback that sets recommendations and clears itself
   getRecs: resolve => event => {
     const { recs, title } = RecommendationsAbstractor.formatResponseRecommendation(event);
-
-    const recommendations = recs
-      .filter(rec => rec.availability === 'In Stock')
-      .map(rec => ({
-        generalProductId: rec.id.replace(/_(US|CA)$/, ''),
-        pdpUrl: rec.pdpURL,
-        department: rec.department,
-        name: rec.name,
-        imagePath: rec.imagePath,
-      }));
-
-    return resolve(
-      RecommendationsAbstractor.getProductsPrices(
-        recommendations.map(recommendation => recommendation.generalProductId)
-      ).then(prices => {
-        return {
-          products: recommendations
-            .filter(recommendation => {
-              return typeof prices[recommendation.generalProductId] !== 'undefined';
-            })
-            .map(recommendation => {
-              return {
-                ...recommendation,
-                ...prices[recommendation.generalProductId],
-              };
-            }),
-          mainTitle: title,
-        };
-      })
-    );
+    return resolve(RecommendationsAbstractor.parseProductResponse(recs, title));
   },
   getMcmId: () => {
     let mcmid;
@@ -67,6 +39,37 @@ const RecommendationsAbstractor = {
 
     return mcmid;
   },
+
+  parseProductResponse: (products, title) => {
+    const recommendations = products
+      .filter(product => product.availability === 'In Stock')
+      .map(product => ({
+        generalProductId: product.id.replace(/_(US|CA)$/, ''),
+        pdpUrl: product.pdpURL,
+        department: product.department,
+        name: product.name,
+        imagePath: product.imagePath,
+      }));
+
+    return RecommendationsAbstractor.getProductsPrices(
+      recommendations.map(recommendation => recommendation.generalProductId)
+    ).then(prices => {
+      return {
+        products: recommendations
+          .filter(recommendation => {
+            return typeof prices[recommendation.generalProductId] !== 'undefined';
+          })
+          .map(recommendation => {
+            return {
+              ...recommendation,
+              ...prices[recommendation.generalProductId],
+            };
+          }),
+        mainTitle: title,
+      };
+    });
+  },
+
   getData: ({
     itemPartNumber,
     page,
@@ -86,6 +89,7 @@ const RecommendationsAbstractor = {
             'entity.id': itemPartNumber ? `${itemPartNumber}_${siteId.toUpperCase()}` : '',
             'entity.categoryId': categoryName || '',
             pageType: page || '',
+            site: isGymboree() ? 'GYM' : 'TCP',
             ...otherMboxProps,
           },
           success: offer => {
@@ -105,7 +109,39 @@ const RecommendationsAbstractor = {
       }
     });
   },
+  getAppData: ({ pageType, categoryName, partNumber, mbox = 'target-global-mbox' }) => {
+    const ADOBE_CLIENT = isGymboree() ? 'gym' : 'tcp';
+    const ADOBE_RECOMMENDATIONS_URL = `https://tcp.tt.omtrdc.net/rest/v1/mbox?client=${ADOBE_CLIENT}`;
+    const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
+    const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
+    const region = getSiteId(); // TODO use `CA` for Canada
+    const requestLocation = {
+      impressionId: ADOBE_RECOMMENDATIONS_IMPRESSION_ID,
+      host: ADOBE_RECOMMENDATIONS_HOST,
+    };
 
+    return executeExternalAPICall({
+      webService: {
+        method: 'POST',
+        URI: ADOBE_RECOMMENDATIONS_URL,
+      },
+      body: {
+        marketingCloudVisitorId: '',
+        mbox,
+        requestLocation,
+        mboxParameters: {
+          'entity.categoryId': categoryName || '',
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '',
+          pageType,
+          region,
+        },
+      },
+    }).then(result => {
+      return RecommendationsAbstractor.parseProductResponse(
+        result.body ? JSON.parse(result.body.content) : []
+      );
+    });
+  },
   handleValidationError: e => {
     logger.error(e);
   },
@@ -158,14 +194,9 @@ const RecommendationsAbstractor = {
       body: {
         id: productIds.join(','),
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
+          'productimage,alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
       },
-      webService: {
-        method: 'GET',
-        URI: 'products',
-        unbxd: true,
-        unbxdCustom: true,
-      },
+      webService: endpoints.getProductDetails,
     };
 
     return executeUnbxdAPICall(payload)

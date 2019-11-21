@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Image, FlatList } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import {
+  PageContainer,
   StyleProductDescription,
   StyleLongDescription,
   ImageStyleWrapper,
+  ItemStyleWrapper,
 } from '../ProductDescription.native.style';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -49,11 +51,11 @@ class ProductDetailDescription extends React.PureComponent {
   };
 
   render() {
-    const { longDescription, shortDescription, pdpLabels } = this.props;
-    const { ProductDescription, ClaimMessage } = pdpLabels;
+    const { longDescription, shortDescription, pdpLabels, itemPartNumber, margins } = this.props;
+    const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isAccordionOpen } = this.state;
     return (
-      <View>
+      <PageContainer margins={margins}>
         <StyleProductDescription onPress={this.handleAccordionToggle}>
           <BodyCopy
             fontFamily="secondary"
@@ -94,10 +96,19 @@ class ProductDetailDescription extends React.PureComponent {
               spacingStyles="padding-top-LRG"
               fontFamily="secondary"
               fontSize="fs14"
+              fontWeight="regular"
             />
+            <ItemStyleWrapper>
+              <BodyCopy
+                text={`${PartNumber} ${itemPartNumber}`}
+                fontFamily="secondary"
+                fontWeight="regular"
+                fontSize="fs10"
+              />
+            </ItemStyleWrapper>
           </>
         ) : null}
-      </View>
+      </PageContainer>
     );
   }
 }
@@ -106,12 +117,16 @@ ProductDetailDescription.propTypes = {
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  margins: PropTypes.string,
 };
 
 ProductDetailDescription.defaultProps = {
   longDescription: '',
   pdpLabels: {},
   shortDescription: '',
+  itemPartNumber: '',
+  margins: null,
 };
 
 export default ProductDetailDescription;

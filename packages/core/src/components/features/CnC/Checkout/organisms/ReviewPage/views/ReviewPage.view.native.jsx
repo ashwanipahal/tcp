@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { reduxForm, change, FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -11,8 +12,12 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import BillingSection from '../organisms/BillingSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const { Container, FooterTextContainer, FooterLink } = style;
+const formName = 'expressReviewPage';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -21,7 +26,57 @@ class ReviewPage extends React.PureComponent {
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
     availableStages: PropTypes.func.isRequired,
+    reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
+    setCheckoutStage: PropTypes.func.isRequired,
+    isPaymentDisabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    handleSubmit: PropTypes.func.isRequired,
+    shipmentMethods: PropTypes.func.isRequired,
+    selectedShipmentId: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    isPaymentDisabled: false,
+    isExpressCheckout: false,
+  };
+
+  componentDidMount() {
+    const { reviewDidMount } = this.props;
+    reviewDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
+    const { isPaymentDisabled, dispatch } = this.props;
+    if (prevPaymentDisabled !== isPaymentDisabled) {
+      dispatch(change(formName, 'cvvCode', null));
+    }
+  }
+
+  /**
+   * @function reviewFormSubmit
+   * @description returns form submit data
+   *
+   */
+  reviewFormSubmit = data => {
+    const { submitReview, isExpressCheckout, navigation } = this.props;
+    const { cvvCode } = data;
+
+    if (isExpressCheckout && cvvCode) {
+      const formDataSubmission = {
+        formData: {
+          billing: {
+            cvv: cvvCode,
+          },
+        },
+        navigation,
+      };
+      submitReview(formDataSubmission);
+    } else {
+      submitReview({ navigation });
+    }
   };
 
   renderFooter = () => {
@@ -48,10 +103,15 @@ class ReviewPage extends React.PureComponent {
     const {
       navigation,
       labels,
-      submitReview,
       availableStages,
       orderHasShipping,
       orderHasPickUp,
+      setCheckoutStage,
+      handleSubmit,
+      isExpressCheckout,
+      shipmentMethods,
+      dispatch,
+      selectedShipmentId,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -61,6 +121,7 @@ class ReviewPage extends React.PureComponent {
           activeStage="review"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -68,36 +129,47 @@ class ReviewPage extends React.PureComponent {
             {!!orderHasPickUp && (
               <PickUpReviewSectionContainer
                 onEdit={() => {
-                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+                  setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
+                isExpressCheckout={isExpressCheckout}
               />
             )}
+
             {!!orderHasShipping && (
-              <ShippingReviewSection
-                onEdit={() => {
-                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
-                }}
-              />
+              <FormSection name="expressReviewShippingSection">
+                <ShippingReviewSection
+                  onEdit={() => {
+                    setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
+                  }}
+                  isExpressCheckout={isExpressCheckout}
+                  shipmentMethods={shipmentMethods}
+                  dispatch={dispatch}
+                  formName={formName}
+                  formSection="expressReviewShippingSection"
+                  selectedShipmentId={selectedShipmentId}
+                />
+              </FormSection>
             )}
 
             <BillingSection
               onEdit={() => {
-                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+                setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
+              isExpressCheckout={isExpressCheckout}
             />
-            <CheckoutCartItemList />
           </Container>
+          <CheckoutCartItemList />
           <CnCTemplate
+            isReviewPage
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
-            onPress={() => submitReview({ navigation })}
+            onPress={handleSubmit(this.reviewFormSubmit)}
             backLinkText={backLinkBilling}
-            onBackLinkPress={() =>
-              navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING)
-            }
+            onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
             showAccordian
+            pageCategory="review"
           />
         </ScrollView>
       </>
@@ -105,6 +177,15 @@ class ReviewPage extends React.PureComponent {
   }
 }
 
-export default ReviewPage;
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
+});
+
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+})(ReviewPage);
 
 export { ReviewPage as ReviewPageVanilla };

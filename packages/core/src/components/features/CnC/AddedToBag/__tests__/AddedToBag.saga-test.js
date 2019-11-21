@@ -1,13 +1,25 @@
 import { put, takeLatest } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
-import { addToCartEcom, addItemToCartBopis, AddedToBagSaga } from '../container/AddedToBag.saga';
+import {
+  addToCartEcom,
+  addItemToCartBopis,
+  AddedToBagSaga,
+  addMultipleItemToCartECOM,
+} from '../container/AddedToBag.saga';
 import {
   SetAddedToBagData,
   openAddedToBag,
   AddToPickupError,
+  AddToCartMultipleItemError,
 } from '../container/AddedToBag.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+
+jest.mock('../util/utility', () => {
+  return {
+    makeBrandToggling: () => false,
+  };
+});
 
 describe('Added to bag saga', () => {
   it('should dispatch addToCartEcomGen action for success resposnse', () => {
@@ -19,6 +31,8 @@ describe('Added to bag saga', () => {
       wishlistItemId: '333',
     };
     const addToCartEcomGen = addToCartEcom({ payload });
+    addToCartEcomGen.next();
+    addToCartEcomGen.next();
     addToCartEcomGen.next();
     addToCartEcomGen.next();
 
@@ -65,6 +79,7 @@ describe('Added to bag saga', () => {
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
 
     const response = {
       orderItemId: '1111',
@@ -73,7 +88,8 @@ describe('Added to bag saga', () => {
       ...payload.productInfo,
       ...response,
     };
-    const putDescriptor = addItemToCartBopisGen.next(response).value;
+    addItemToCartBopisGen.next(response);
+    const putDescriptor = addItemToCartBopisGen.next().value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
     const err = {
       ...response,
@@ -88,6 +104,45 @@ describe('Added to bag saga', () => {
     addItemToCartBopisGen1.next();
     addItemToCartBopisGen1.throw(err);
     expect(addItemToCartBopisGen1.next().value).toEqual(put(AddToPickupError('ERROR')));
+  });
+
+  it('should dispatch AddToCartMultipleItemError In Error', () => {
+    const payload = {
+      productItemsInfo: [
+        {
+          storeLocId: '345',
+          isBoss: true,
+          quantity: '1',
+          skuInfo: { skuId: 'skuId', variantId: 'variantId', variantNo: 'variantNo' },
+        },
+      ],
+    };
+    const err = {
+      error: { errorResponse: { errorMessage: 'Error' } },
+      errorProductId: 1,
+      atbSuccessProducts: [],
+    }; // [] with zero length
+    const atbError = { errMsg: 'Error', errorProductId: 1 };
+    const addMultipleItemToCartECOMGenError = addMultipleItemToCartECOM({ payload });
+    addMultipleItemToCartECOMGenError.next();
+    addMultipleItemToCartECOMGenError.throw(err);
+    expect(addMultipleItemToCartECOMGenError.next().value).toEqual(
+      put(AddToCartMultipleItemError(atbError))
+    );
+
+    const errorObj = {
+      error: { errorResponse: { errorMessage: 'Error' } },
+      errorProductId: 1,
+      atbSuccessProducts: [1],
+    }; // [] with 1 length
+    const atbErrorSecondProduct = { errMsg: 'Error', errorProductId: 1 };
+    const addMultipleItemToCartECOMGenSecondError = addMultipleItemToCartECOM({ payload });
+    addMultipleItemToCartECOMGenSecondError.next();
+    addMultipleItemToCartECOMGenSecondError.throw(errorObj);
+    addMultipleItemToCartECOMGenSecondError.next();
+    expect(addMultipleItemToCartECOMGenSecondError.next().value).toEqual(
+      put(AddToCartMultipleItemError(atbErrorSecondProduct))
+    );
   });
 
   describe('CardListSaga', () => {

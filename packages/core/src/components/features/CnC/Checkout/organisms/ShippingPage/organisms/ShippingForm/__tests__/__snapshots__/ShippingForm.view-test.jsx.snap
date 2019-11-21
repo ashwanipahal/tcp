@@ -3,8 +3,9 @@
 exports[`Shipping Form should render correctly 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
+  <[object Object] />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -17,47 +18,16 @@ exports[`Shipping Form should render correctly 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
-    <Styled(RegisteredShippingForm)
-      addressLabels={
-        Object {
-          "addressFormLabels": Object {},
-        }
-      }
-      addressPhoneNo={null}
-      className=""
-      defaultAddressId={null}
-      defaultShipmentId={null}
-      isAddNewAddress={false}
-      isEditing={false}
-      isGuest={false}
-      isMobile={false}
-      isOrderUpdateChecked={false}
-      isSaveToAddressBookChecked={false}
-      isUsSite={true}
-      modalState={false}
-      modalType={null}
-      newUserPhoneNo={null}
-      onFileAddressKey={null}
-      orderHasPickUp={false}
-      saveToAddressBook={false}
-      selectedShipmentId={null}
-      setAsDefaultShipping={false}
-      shipmentMethods={null}
-      shippingAddressId={null}
-      shippingLabels={Object {}}
-      showAccordian={true}
-      smsSignUpLabels={Object {}}
-      syncErrors={Object {}}
-      toggleAddEditModal={[Function]}
-      toggleIsEditing={[Function]}
-      userAddresses={Array []}
-    />
+    <Styled(AddressSkelton) />
     <FormSection
       name="smsSignUp"
     >
@@ -94,7 +64,7 @@ exports[`Shipping Form should render correctly 1`] = `
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={null}
             />
           </div>
@@ -122,10 +92,9 @@ exports[`Shipping Form should render correctly 1`] = `
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
-      disableNext={false}
+      backLinkText="lbl_shipping_backLinkText"
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -134,7 +103,7 @@ exports[`Shipping Form should render correctly 1`] = `
 exports[`Shipping Form should render correctly with logged in user 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -148,222 +117,21 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          formName="checkoutShipping"
-          formSection="address"
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          />
-        </div>
-      </div>
-    </FormSection>
+    <Styled(AddressSkelton) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="emailSignUp"
+      labels={Object {}}
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -386,7 +154,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={null}
             />
           </div>
@@ -414,10 +182,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
-      disableNext={false}
+      backLinkText="lbl_shipping_backLinkText"
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -426,7 +193,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
 exports[`Shipping Form should render correctly with logged in user having addresses 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -440,390 +207,21 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhhhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmmmmmmm",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.firstName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.lastName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.city",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test city",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.zipCode",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.state",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.phoneNumber",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234567890",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "shipmentMethods.shippingMethodId",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          formName="checkoutShipping"
-          formSection="address"
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          />
-        </div>
-      </div>
-    </FormSection>
+    <Styled(AddressSkelton) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="emailSignUp"
+      labels={Object {}}
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -846,7 +244,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {
@@ -874,114 +272,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhhhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmmmmmmm",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.firstName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.lastName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.city",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test city",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.zipCode",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.state",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.phoneNumber",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234567890",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
                       "field": "shipmentMethods.shippingMethodId",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -993,42 +283,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -1048,10 +302,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
-      disableNext={false}
+      backLinkText="lbl_shipping_backLinkText"
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -1060,7 +313,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
 exports[`Shipping Form should render correctly with logged in user having addresses with isAddressModalEmptied false 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1074,421 +327,21 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={true}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "shipmentMethods.shippingMethodId",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmm",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.firstName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.lastName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.city",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test city",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.zipCode",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.state",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.phoneNumber",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234567890",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "form": "checkoutShipping",
-                      "sections": Array [
-                        "address",
-                      ],
-                    },
-                    "type": "@@redux-form/RESET_SECTION",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          formName="checkoutShipping"
-          formSection="address"
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          />
-        </div>
-      </div>
-    </FormSection>
+    <Styled(AddressSkelton) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="emailSignUp"
+      labels={Object {}}
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -1511,7 +364,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {
@@ -1551,18 +404,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
                       "field": "address.addressLine1",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -1668,27 +509,8 @@ exports[`Shipping Form should render correctly with logged in user having addres
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "form": "checkoutShipping",
-                      "sections": Array [
-                        "address",
-                      ],
-                    },
-                    "type": "@@redux-form/RESET_SECTION",
-                  },
-                ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -1744,10 +566,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
-      disableNext={true}
+      backLinkText="lbl_shipping_backLinkText"
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -1756,7 +577,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
 exports[`Shipping Form should render correctly with logged in user having addresses with modalType add and state true 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1770,261 +591,21 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
-    <div
-      className="address-form"
-    >
-      <FormSection
-        name="address"
-      >
-        <Styled(AddressFields)
-          addressFormLabels={Object {}}
-          addressPhoneNo={null}
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "form": "checkoutShipping",
-                      "sections": Array [
-                        "address",
-                      ],
-                    },
-                    "type": "@@redux-form/RESET_SECTION",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          formName="checkoutShipping"
-          formSection="address"
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
-    </div>
-    <FormSection
-      name="emailSignUp"
-    >
-      <div
-        className="email-signup-container"
-      >
-        <Field
-          className="email-signup"
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
-                "isStatic": false,
-                "rules": Array [
-                  "
-  ",
-                  "
-  display: block;
-  align-items: ",
-                  [Function],
-                  ";
-
-  & .CheckBox__input {
-    flex: 0 0 auto;
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: ",
-                  "25px",
-                  ";
-    width: ",
-                  "25px",
-                  ";
-    margin: 0;
-    margin-right: ",
-                  [Function],
-                  ";
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  & .CheckBox__input:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                  [Function],
-                  ";
-    border: 1px solid ",
-                  [Function],
-                  ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                  [Function],
-                  ";
-    font-size: ",
-                  [Function],
-                  "px;
-    width: ",
-                  [Function],
-                  ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 45px);
-    display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                  [Function],
-                  ";
-  }
-
-  & .disabled {
-    opacity: ",
-                  [Function],
-                  ";
-  }
-
-  & .Checkbox__error {
-    display: flex;
-    flex-direction: row;
-    padding-left: ",
-                  [Function],
-                  ";
-  }
-  & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: ",
-                  [Function],
-                  ";
-    width: ",
-                  [Function],
-                  ";
-    margin-right: 4px;
-    margin-top: 2px;
-  }
-",
-                  ";
-",
-                ],
-              },
-              "displayName": "Styled(InputCheckbox)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-        </Field>
-        <div
-          className="email-signup-text"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="pickup-email-signUp-sub-heading-text"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            dataLocator="shipping-email-signUp-contact-anchor"
-            fontSizeVariation="small"
-            href="#"
-            noLink={true}
-            noUnderline={true}
-            target="_blank"
-          />
-        </div>
-      </div>
-    </FormSection>
+    <Styled(AddressSkelton) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="emailSignUp"
+      labels={Object {}}
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -2047,7 +628,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {},
@@ -2067,45 +648,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
         }
       >
         <Connect(GiftServicesContainer)
-          dispatch={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "form": "checkoutShipping",
-                      "sections": Array [
-                        "address",
-                      ],
-                    },
-                    "type": "@@redux-form/RESET_SECTION",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
+          dispatch={[MockFunction]}
           formName="checkoutShipping"
           formSection="giftServices"
           showDefaultCheckbox={false}
@@ -2118,10 +661,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
-      disableNext={false}
+      backLinkText="lbl_shipping_backLinkText"
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>

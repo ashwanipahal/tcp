@@ -4,13 +4,25 @@ import ExecutionEnvironment from 'exenv';
 import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import ProductImages from '../../../../../../common/organisms/ProductImages';
 import FullSizeImageWithQuickViewModal from '../../FullSizeImageWithQuickViewModal/views/FullSizeImageWithQuickViewModal.view';
+import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 
 class ProductImageWrapper extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isFullSizeModalOpen: false };
+    this.state = {
+      isFullSizeModalOpen: false,
+    };
     this.handleShowHideFullSizeModalClick = this.handleShowHideFullSizeModalClick.bind(this);
   }
+
+  colorChange = e => {
+    // const { selectedSize } = this.state;
+    const { onChangeColor, initialValues } = this.props;
+    const { Fit, Quantity, Size } = initialValues;
+    if (onChangeColor) {
+      onChangeColor(e, Size, Fit, Quantity);
+    }
+  };
 
   handleShowHideFullSizeModalClick(e) {
     e.preventDefault();
@@ -19,8 +31,30 @@ class ProductImageWrapper extends React.Component {
   }
 
   render() {
-    const { productName, images, isZoomEnabled, isThumbnailListVisible, pdpLabels } = this.props;
+    const {
+      productName,
+      images,
+      isZoomEnabled,
+      isThumbnailListVisible,
+      pdpLabels,
+      currentProduct,
+      currentColorEntry,
+      isGiftCard,
+      keepAlive,
+      outOfStockLabels,
+    } = this.props;
     const { isFullSizeModalOpen } = this.state;
+    const { colorFitsSizesMap } = currentProduct;
+    const colorChipSelector = {
+      colorList: colorFitsSizesMap,
+      selectColor: this.colorChange,
+    };
+    const initialValuesForm = {
+      colorSwatchModal: {
+        name: currentColorEntry && currentColorEntry.color && currentColorEntry.color.name,
+      },
+    };
+
     const isMobile =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
     return (
@@ -28,13 +62,16 @@ class ProductImageWrapper extends React.Component {
         {images.length > 0 ? (
           <ProductImages
             productName={productName}
-            isThumbnailListVisible={isThumbnailListVisible}
+            isThumbnailListVisible={isThumbnailListVisible && !isGiftCard}
+            isGiftCard={isGiftCard}
             images={images}
             isMobile={isMobile}
-            isZoomEnabled={isZoomEnabled}
+            isZoomEnabled={!keepAlive && isZoomEnabled}
             onCloseClick={this.handleShowHideFullSizeModalClick}
             isFullSizeModalOpen={isFullSizeModalOpen}
             pdpLabels={pdpLabels}
+            keepAlive={keepAlive}
+            outOfStockLabels={outOfStockLabels}
           />
         ) : null}
         {isFullSizeModalOpen &&
@@ -46,6 +83,8 @@ class ProductImageWrapper extends React.Component {
               name={productName}
               isThumbnailListVisible
               isFullSizeModalOpen={isFullSizeModalOpen}
+              colorChipSelector={colorChipSelector}
+              initialValues={initialValuesForm}
             />
           ))}
       </React.Fragment>
@@ -53,7 +92,16 @@ class ProductImageWrapper extends React.Component {
   }
 }
 
-ProductImageWrapper.defaultProps = {};
+ProductImageWrapper.defaultProps = {
+  onChangeColor: () => {},
+  currentProduct: {},
+  currentColorEntry: {},
+  initialValues: {},
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
+};
 
 ProductImageWrapper.propTypes = {
   /** Product's Name (global product, not by color, size, fit or some clasification) */
@@ -80,6 +128,15 @@ ProductImageWrapper.propTypes = {
   /** Flags if the zoom should be enabled */
   isZoomEnabled: PropTypes.bool.isRequired,
   isThumbnailListVisible: PropTypes.bool.isRequired,
+  onChangeColor: PropTypes.func,
+  currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE,
+  currentColorEntry: PropTypes.shape({}),
+  isGiftCard: PropTypes.bool.isRequired,
+  initialValues: PropTypes.shape({}),
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 export default ProductImageWrapper;

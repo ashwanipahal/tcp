@@ -1,13 +1,6 @@
 import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 
-export const getCountryListData = payload => {
-  return {
-    payload,
-    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA,
-  };
-};
-
 export const getModuleXContent = payload => {
   return {
     payload,
@@ -60,20 +53,6 @@ export const updateSelectedCurrency = currency => {
   };
 };
 
-export const storeCountriesMap = payload => {
-  return {
-    payload,
-    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_COUNTRIES_MAP,
-  };
-};
-
-export const storeCurrenciesMap = payload => {
-  return {
-    payload,
-    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_CURRENCIES_MAP,
-  };
-};
-
 export const udpateSiteId = siteId => {
   return {
     siteId,
@@ -82,15 +61,12 @@ export const udpateSiteId = siteId => {
 };
 
 export default {
-  getCountryListData,
   getModuleXContent,
   submitCountrySelection,
   toggleCountrySelectorModal,
   updateSelectedCountry,
   updateSelectedLanguage,
   updateSelectedCurrency,
-  storeCountriesMap,
-  storeCurrenciesMap,
   setModuleXContent,
   udpateSiteId,
 };

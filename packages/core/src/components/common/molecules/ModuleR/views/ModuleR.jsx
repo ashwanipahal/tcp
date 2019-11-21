@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import { Anchor, Button, Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, viewport } from '../../../../../utils';
-import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
+import { getLocator, viewport, getProductUrlForDAM } from '../../../../../utils';
+import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
+import moduleRConfig from '../moduleR.config';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -23,7 +24,7 @@ class ModuleR extends React.PureComponent {
 
     this.state = {
       selectedCategoryId: null,
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -33,7 +34,7 @@ class ModuleR extends React.PureComponent {
   onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
-      currentTabItem: tabItem,
+      currentTabItem: [tabItem],
     });
   };
 
@@ -95,13 +96,7 @@ class ModuleR extends React.PureComponent {
       <Row className="image-items-container">
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
-            const {
-              pdpUrl,
-              pdpAsPath,
-              uniqueId,
-              imageUrl: [imageUrl],
-              product_name: productName,
-            } = productItem;
+            const { pdpUrl, pdpAsPath, uniqueId, product_name: productName } = productItem;
             return (
               <ImageGridCol
                 key={uniqueId}
@@ -113,13 +108,18 @@ class ModuleR extends React.PureComponent {
                   medium: 2,
                   large: 2,
                 }}
+                ignoreNthRule
               >
                 <Anchor
                   to={pdpUrl}
                   asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <Image alt={productName} src={imageUrl} />
+                  <DamImage
+                    imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
+                    imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
+                    isProductImage
+                  />
                 </Anchor>
               </ImageGridCol>
             );
@@ -129,6 +129,7 @@ class ModuleR extends React.PureComponent {
               key={index.toString()}
               className="image-item-wrapper"
               colSize={{ small: 2, medium: 4, large: 4 }}
+              ignoreNthRule
             >
               {productItem}
             </Col>
@@ -139,7 +140,11 @@ class ModuleR extends React.PureComponent {
   };
 
   getCurrentCTAButton() {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>
@@ -175,6 +180,10 @@ class ModuleR extends React.PureComponent {
     if (selectedProductList.length) {
       selectedProductList = this.getSelectedProductList(selectedProductList);
     }
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
+    }
 
     return (
       <Grid className={`${className} moduleR`}>
@@ -197,6 +206,9 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
+        {dataStatus ? (
+          <StyledSkeleton col={18} colSize={{ small: 2, medium: 2, large: 2 }} removeLastMargin />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>

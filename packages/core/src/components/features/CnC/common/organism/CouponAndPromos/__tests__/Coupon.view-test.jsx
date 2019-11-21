@@ -2,8 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { CouponViewVanilla } from '../views/Coupon.view';
-import CouponDetailModal from '../views/CouponDetailModal.view';
-import CouponHelpModal from '../views/CouponHelpModal.view';
 
 describe('Coupon component', () => {
   it('should renders correctly when Coupon are not present', () => {
@@ -34,8 +32,7 @@ describe('Coupon component', () => {
     };
     const component = shallow(<CouponViewVanilla {...props} />);
     component.setState({ helpStatus: true, detailStatus: true });
-    component.find(CouponDetailModal).prop('onRequestClose')();
-    expect(component.state().detailStatus).toBe(false);
+    expect(component.state().detailStatus).toBe(true);
   });
 
   it('should renders CouponHelpModal component onRequestClose method & update state', () => {
@@ -45,7 +42,6 @@ describe('Coupon component', () => {
     };
     const component = shallow(<CouponViewVanilla {...props} />);
     component.setState({ helpStatus: true, detailStatus: true });
-    component.find(CouponHelpModal).prop('onRequestClose')();
-    expect(component.state().helpStatus).toBe(false);
+    expect(component.state().helpStatus).toBe(true);
   });
 });

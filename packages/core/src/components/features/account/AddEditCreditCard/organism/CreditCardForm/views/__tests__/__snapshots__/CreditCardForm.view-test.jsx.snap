@@ -73,8 +73,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
     }
     mailingAddress={false}
-    onFileAddressKey=""
-    onFileAddresskey="12345"
+    onFileAddressKey="12345"
     showCreditCardFields={true}
     showCvv={false}
     showUserName={true}
@@ -90,6 +89,36 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   >
     lbl_payment_billingAddress
   </Styled(Heading)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator="payment-billingaddressLbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_payment_ccAdressSelect
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
@@ -112,7 +141,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         options={
           Immutable.List [
             Object {
-              "content": <Address
+              "content": <ForwardRef
                 address={
                   Object {
                     "addressId": "12345",
@@ -121,13 +150,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                     "primary": "true",
                   }
                 }
-                className=""
-                dataLocatorPrefix=""
-                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
-                showDefault={true}
-                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",
@@ -146,10 +170,10 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             },
           ]
         }
-        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addressContainer"
       colSize={
         Object {
           "large": 6,
@@ -157,24 +181,24 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "small": 6,
         }
       }
-    />
-  </Styled(Row)>
-  <div
-    className="elem-mb-XL"
-  >
-    <FormSection
-      name="address"
     >
-      <Styled(AddressFields)
-        formName="addEditCreditCard"
-        formSection="address"
-        labels={Object {}}
-        showDefaultCheckbox={false}
-        showPhoneNumber={false}
-        showUserName={true}
+      <Styled(Address)
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        dataLocatorPrefix="payment"
+        showCountry={false}
+        showPhone={false}
+        singleLineAddress={true}
       />
-    </FormSection>
-  </div>
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     className="CreditCardForm__ctaContainer"
     fullBleed={true}
@@ -323,6 +347,36 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     lbl_payment_billingAddress
   </Styled(Heading)>
   <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator="payment-billingaddressLbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_payment_ccAdressSelect
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
   >
@@ -344,7 +398,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         options={
           Immutable.List [
             Object {
-              "content": <Address
+              "content": <ForwardRef
                 address={
                   Object {
                     "addressId": "12345",
@@ -353,13 +407,8 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                     "primary": "true",
                   }
                 }
-                className=""
-                dataLocatorPrefix=""
-                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
-                showDefault={true}
-                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",
@@ -378,10 +427,10 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             },
           ]
         }
-        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addressContainer"
       colSize={
         Object {
           "large": 6,

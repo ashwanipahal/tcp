@@ -17,6 +17,8 @@ type Props = {
   onPress?: Function,
   accessibilityLabel?: string,
   colorName?: string,
+  margins?: string,
+  justifyContent?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -34,6 +36,7 @@ const Anchor = ({
   locator,
   onPress,
   accessibilityLabel,
+  justifyContent,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
@@ -67,6 +70,7 @@ const Anchor = ({
         onPress={onPress || openUrl}
         accessibilityLabel={accessibilityLabel || text}
         style={customStyle}
+        justifyContent={justifyContent}
         {...setTestId(getLocator(locator))}
       >
         <StyledText anchorVariation={anchorVariation} {...otherProps}>
@@ -89,6 +93,8 @@ Anchor.defaultProps = {
   onPress: null,
   accessibilityLabel: '',
   colorName: null,
+  margins: null,
+  justifyContent: '',
 };
 
 export default withStyles(Anchor, AnchorStyles);

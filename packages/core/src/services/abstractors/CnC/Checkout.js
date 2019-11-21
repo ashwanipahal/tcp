@@ -1,21 +1,18 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getCurrentOrderFormatter, flatCurrencyToCents } from './CartItemTile';
+import { flatCurrencyToCents } from './CartItemTile';
 import {
   responseContainsErrors,
   ServiceResponseError,
   getFormattedError,
+  getFormattedErrorFromResponse,
 } from '../../../utils/errorMessage.util';
 import { getAPIConfig, capitalize, toTimeString } from '../../../utils';
 import { parseDate } from '../../../utils/parseDate';
 import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
-
-const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
 const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -58,6 +55,59 @@ export const getGiftWrappingOptions = () => {
   // });
 };
 
+export const getShippingMethodServerError = (errorBody, errorsMapping) => {
+  let errMsg = false;
+  if (
+    errorBody &&
+    errorBody.updateShippingMethodSelectionResponse &&
+    errorBody.updateShippingMethodSelectionResponse.errors &&
+    errorBody.updateShippingMethodSelectionResponse.errors.length
+  ) {
+    const { errorKey } = errorBody.updateShippingMethodSelectionResponse.errors[0];
+    const errorList = [
+      {
+        errorKey,
+      },
+    ];
+    errMsg = getFormattedErrorFromResponse(
+      { response: { body: errorBody } },
+      errorsMapping,
+      errorList
+    );
+  }
+  return errMsg;
+};
+
+export const getServerErrorMessage = (error, errorsMapping) => {
+  let errorMsg;
+  const errorBody = error.response && error.response.body;
+  errorMsg = getShippingMethodServerError(errorBody, errorsMapping);
+  if (errorBody && errorBody.errors) {
+    errorMsg = getFormattedError(error, errorsMapping);
+  } else if (error.errorResponse && error.errorResponse.errors) {
+    const errorList = [
+      {
+        errorCode: error.errorResponse.errors[0].errorCode,
+        errorKey: error.errorResponse.errors[0].errorKey,
+        errorMessage: error.errorResponse.errors[0].errorMessage,
+      },
+    ];
+    errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
+  } else if (typeof error.errorCode !== 'undefined') {
+    const errorList = [
+      {
+        errorCode: error.errorCode,
+      },
+    ];
+    errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
+  }
+  if (!errorMsg || typeof errorMsg.errorMessages === 'undefined') {
+    return errorsMapping.DEFAULT;
+  }
+  // eslint-disable-next-line
+  return errorMsg.errorMessages._error;
+};
+
 export const addPickupPerson = args => {
   const apiConfig = getAPIConfig();
   const payload = {
@@ -92,58 +142,6 @@ export const addPickupPerson = args => {
     .catch(err => {
       logger.error(err);
     });
-};
-
-export const getCurrentOrderAndCouponsDetails = (
-  orderId,
-  calcsEnabled,
-  excludeCartItems,
-  imageGenerator,
-  recalcRewards,
-  isLoggedIn
-) => {
-  // isLoggedIn = false;
-  const payload = {
-    header: {
-      orderId,
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo', // If this value is not set then you will get partial order information
-      // DT-33656 Perfomance -addCheckout/ getOrderDetails - Avoid Store Locator aggregation
-      // locStore: 'True', // this flag is so that mulesoft can run other services on their side to get BOPIS store info per item
-      // 'X-Cookie': this.apiHelper.configOptions.cookie,
-      langId: -1,
-      source: isLoggedIn ? 'login' : '',
-      calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
-      recalculate: !!recalcRewards,
-    },
-    webService: endpoints.fullDetails,
-  };
-
-  return executeStatefulAPICall(payload).then(res => {
-    // if (this.apiHelper.responseContainsErrors(res)) {
-    //   throw new ServiceResponseError(res);
-    // }
-
-    // If recalculate is true in the header of the request and the response is success,
-    // Set the time when the recalculated order points have been updated.
-    // if(res.req && res.req.header && res.req.header.recalculate) {
-    //   setBrierleyOrderPointsTimeCache();
-    // }
-
-    const orderDetailsResponse =
-      res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
-
-    return {
-      coupons: res.body.coupons,
-      orderDetails: getCurrentOrderFormatter(
-        orderDetailsResponse,
-        excludeCartItems,
-        imageGenerator
-      ),
-    };
-  });
-  // .catch(err => {
-  //   // throw this.apiHelper.getFormattedError(err);
-  // });
 };
 
 const shippingMethodResponseHandler = res => {
@@ -199,7 +197,7 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2,
       throw getFormattedError(err, labels);
     });
 };
-export function addGiftWrappingOption(payload) {
+export function addGiftWrappingOption(payload, errorsMapping) {
   const payloadArgs = {
     webService: endpoints.addGiftOptions,
     body: {
@@ -210,9 +208,13 @@ export function addGiftWrappingOption(payload) {
       brand: payload.brand,
     },
   };
-  return executeStatefulAPICall(payloadArgs).then(res => {
-    return res;
-  });
+  return executeStatefulAPICall(payloadArgs)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw getFormattedError(err, errorsMapping);
+    });
 }
 export function removeGiftWrappingOption() {
   const payloadArgs = {
@@ -228,30 +230,6 @@ export function removeGiftWrappingOption() {
     return res;
   });
 }
-export function briteVerifyStatusExtraction(emailAddress) {
-  return new Promise(resolve => {
-    superagent
-      .get('https://bpi.briteverify.com/emails.json')
-      .query({
-        apikey: BV_API_KEY,
-        address: emailAddress,
-      })
-      .use(
-        jsonp({
-          timeout: 2000,
-        })
-      )
-      .then(response => {
-        const result = response.body;
-        resolve(`${result.status}::false:false`);
-      })
-      .catch(() => {
-        // call to briteverify validation failed
-        /** assume email address is OK -- this validation is a nicety */
-        resolve('no_response::false:false');
-      });
-  });
-}
 function extractRtpsEligibleAndCode(apiResponse) {
   const response = apiResponse.body.processOLPSResponse;
   const prescreenResponse = (response && response.response) || {};
@@ -265,8 +243,7 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo,
-  labels
+  transVibesSmsPhoneNo
 ) {
   const payload = {
     body: {
@@ -282,7 +259,14 @@ export function setShippingMethodAndAddressId(
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      if (responseContainsErrors(res)) {
+      const resBody = res && res.body;
+      if (
+        responseContainsErrors(res) ||
+        (resBody &&
+          resBody.updateShippingMethodSelectionResponse &&
+          resBody.updateShippingMethodSelectionResponse.errors &&
+          resBody.updateShippingMethodSelectionResponse.errors.length)
+      ) {
         throw new ServiceResponseError(res);
       } else {
         const rtpsData = extractRtpsEligibleAndCode(res);
@@ -295,11 +279,12 @@ export function setShippingMethodAndAddressId(
       }
     })
     .catch(err => {
-      throw getFormattedError(err, labels);
+      // throw getFormattedError(err, labels);
+      throw err;
     });
 }
 
-export function addGiftCardPaymentToOrder(args) {
+export function addGiftCardPaymentToOrder(args, errorsMapping) {
   const { billingAddressId, orderGrandTotal } = args;
   const { cardNumber, cardPin, balance, saveToAccount, nickName, creditCardId } = args;
   const paymentInstruction = {
@@ -347,7 +332,7 @@ export function addGiftCardPaymentToOrder(args) {
       }
     })
     .catch(err => {
-      return err;
+      throw getServerErrorMessage(err, errorsMapping);
     });
 }
 
@@ -371,20 +356,23 @@ export function removeGiftCard(paymentId, labels) {
       throw getFormattedError(err, labels);
     });
 }
-export function addPaymentToOrder({
-  billingAddressId = '',
-  orderGrandTotal = '',
-  cardType,
-  cardNumber = '',
-  monthExpire = '',
-  yearExpire = '',
-  setAsDefault,
-  saveToAccount,
-  nickName,
-  onFileCardId = '',
-  cvv = '',
-  venmoDetails = null,
-}) {
+export function addPaymentToOrder(
+  {
+    billingAddressId = '',
+    orderGrandTotal = '',
+    cardType,
+    cardNumber = '',
+    monthExpire = '',
+    yearExpire = '',
+    setAsDefault,
+    saveToAccount,
+    nickName,
+    onFileCardId = '',
+    cvv = '',
+    venmoDetails = null,
+  },
+  errorsMapping
+) {
   let venmoInstruction = {};
   if (venmoDetails) {
     const { userId, saveVenmoTokenIntoProfile } = venmoDetails;
@@ -444,11 +432,11 @@ export function addPaymentToOrder({
       };
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 
-export function updatePaymentOnOrder(args) {
+export function updatePaymentOnOrder(args, errorsMapping) {
   const payload = {
     header: {
       savePayment: args.saveToAccount ? 'true' : 'false',
@@ -472,12 +460,16 @@ export function updatePaymentOnOrder(args) {
     },
     webService: endpoints.updatePaymentInstruction,
   };
-  return executeStatefulAPICall(payload).then(res => {
-    if (responseContainsErrors(res)) {
-      throw new ServiceResponseError(res);
-    }
-    return { paymentId: res.body.paymentInstruction[0].piId };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return { paymentId: res.body.paymentInstruction[0].piId };
+    })
+    .catch(err => {
+      throw getFormattedError(err, errorsMapping);
+    });
 }
 
 const getStateTax = orderSummary => {
@@ -538,7 +530,7 @@ function parseStoreOpeningAndClosingTimes(store) {
 const getCouponTotal = orderDetails => {
   let total = 0;
   if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
-    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+    orderDetails.OrderLevelPromos.explicit.forEach(item => {
       Object.keys(item).forEach(promoCode => {
         total += Math.abs(flatCurrencyToCents(item[promoCode].price));
       });
@@ -594,6 +586,7 @@ const getOrderConfirmationDetails = ({
       valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
       subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
       grandTotal: orderSummary.grandTotal,
+      totalOrderSavings: flatCurrencyToCents(orderSummary.orderTotalSaving || 0),
     },
 
     isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
@@ -830,7 +823,13 @@ const handleSubmitOrderResponse = res => {
   return orderConfirmationDetails;
 };
 
-export function submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData = {}) {
+export function submitOrder(
+  orderId,
+  smsOrderInfo,
+  currentLanguage,
+  venmoPayloadData = {},
+  errorsMapping
+) {
   const payload = {
     body: {
       orderId: orderId || '.',
@@ -849,7 +848,7 @@ export function submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayload
   })
     .then(handleSubmitOrderResponse)
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 
@@ -1035,11 +1034,134 @@ export function getInternationCheckoutSettings() {
     });
 }
 
+export function startExpressCheckout(verifyPrescreen, source = null) {
+  const payload = {
+    header: {
+      prescreen: verifyPrescreen,
+      source,
+    },
+    webService: endpoints.startExpressCheckout,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        orderId: res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function updateRTPSData(prescreen, isExpressCheckout) {
+  let fromPage = 'normal';
+  if (isExpressCheckout) {
+    fromPage = 'expressCheckout';
+  }
+  const payload = {
+    body: {
+      prescreen,
+      fromPage,
+    },
+    webService: endpoints.updateRTPSdata,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        success: true,
+        plccEligible: rtpsData.plccEligible,
+        prescreenCode: rtpsData.prescreenCode,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
+  const payload = {
+    body: {
+      preScreenId: preScreenCode,
+      madeOffer: accepted ? 'true' : 'false',
+    },
+    webService: endpoints.processPreScreenOffer,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return res.body;
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function subscribeSmsNotification(payload, errorsMapping) {
+  const { ACQUISITION_ID } = getAPIConfig();
+  const { brandTCP, brandGYM } = payload;
+
+  let subscriptionBrands = brandTCP ? 'TCP' : '';
+  if (brandGYM) {
+    subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},GYM` : 'GYM';
+  }
+
+  const body = {
+    acquisition_id: ACQUISITION_ID,
+    mobile_phone: {
+      mdn: payload.phoneNumber.replace(/\D/g, ''),
+    },
+    custom_fields: {
+      src_cd: '1',
+      sub_src_cd: 'sms_footer',
+    },
+  };
+
+  const reqObj = {
+    webService: endpoints.addSmsSignup,
+    body,
+    header: {
+      brandSubscribe: subscriptionBrands,
+    },
+  };
+  return executeStatefulAPICall(reqObj)
+    .then(resp => {
+      if (responseContainsErrors(resp)) {
+        throw new ServiceResponseError(resp);
+      }
+      return resp.body;
+    })
+    .catch(err => {
+      const statusCode = err.status;
+      let message;
+
+      switch (statusCode) {
+        case 422:
+          message = 'VIDES_ERRRO_2';
+          break;
+        case 409:
+          message = 'VIDES_ERRRO_1';
+          break;
+        default:
+          message = 'VIDES_ERRRO_2';
+          break;
+      }
+
+      const error = { response: { body: { errors: [{ errorMessageKey: message }] } } };
+      throw getServerErrorMessage(error, errorsMapping);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
-  getCurrentOrderAndCouponsDetails,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
   addGiftCardPaymentToOrder,
@@ -1052,4 +1174,5 @@ export default {
   requestPersonalizedCoupons,
   addGiftCard,
   getInternationCheckoutSettings,
+  subscribeSmsNotification,
 };

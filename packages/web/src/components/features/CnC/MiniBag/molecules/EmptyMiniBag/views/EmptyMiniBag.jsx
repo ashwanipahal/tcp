@@ -3,6 +3,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { routerPush } from '../../../../../../../../../core/src/utils';
 import styles from '../styles/EmptyMiniBag.style';
 
 // @flow
@@ -12,8 +13,19 @@ type Props = {
   className: string,
   userName: any,
   onLinkClick: Function,
+  closeMiniBag: Function,
+  isRememberedUser: Boolean,
+  isUserLoggedIn: Boolean,
 };
-const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
+const MiniBagHeader = ({
+  labels,
+  className,
+  userName,
+  onLinkClick,
+  closeMiniBag,
+  isRememberedUser,
+  isUserLoggedIn,
+}: Props) => {
   const createAccount = 'createAccount';
   const login = 'login';
   return (
@@ -22,7 +34,7 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
         <BodyCopy
           component="span"
           fontSize="fs18"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           textAlign="left"
           fontFamily="secondary"
           color="gray.800"
@@ -32,17 +44,22 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
       </div>
       <div className="continue-shopping">
         <Anchor
-          fontSizeVariation="medium"
+          className="continueShoppingText"
           underline
           anchorVariation="primary"
-          noLink
-          to=""
-          dataLocator="addedToBag-continueShopping"
+          onClick={e => {
+            e.preventDefault();
+            closeMiniBag();
+            routerPush('/home', '/home');
+          }}
+          dataLocator="emptyMiniBag-continueShopping"
         >
-          {labels.continueShopping}
+          <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
+            {labels.continueShopping}
+          </BodyCopy>
         </Anchor>
       </div>
-      {!userName ? (
+      {!userName || !isUserLoggedIn ? (
         <>
           <div className="continue-shopping">
             <Button className="logIn" onClick={e => onLinkClick({ e, componentId: login })}>
@@ -57,30 +74,34 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
               </BodyCopy>
             </Button>
           </div>
-          <div className="createAccountWrapper">
-            <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
-              {labels.dontHaveAccount}
-            </BodyCopy>
-            <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
-              {labels.createOne}
-            </BodyCopy>
-          </div>
-          <div className="continue-shopping">
-            <Button
-              className="createAccount"
-              onClick={e => onLinkClick({ e, componentId: createAccount })}
-            >
-              <BodyCopy
-                component="span"
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs14"
-              >
-                {labels.createAccount}
-              </BodyCopy>
-            </Button>
-          </div>
+          {!isRememberedUser && (
+            <>
+              <div className="createAccountWrapper">
+                <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
+                  {labels.dontHaveAccount}
+                </BodyCopy>
+                <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
+                  {labels.createOne}
+                </BodyCopy>
+              </div>
+              <div className="continue-shopping">
+                <Button
+                  className="createAccount"
+                  onClick={e => onLinkClick({ e, componentId: createAccount })}
+                >
+                  <BodyCopy
+                    component="span"
+                    color="white"
+                    fontWeight="extrabold"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                  >
+                    {labels.createAccount}
+                  </BodyCopy>
+                </Button>
+              </div>
+            </>
+          )}
         </>
       ) : (
         ``

@@ -11,7 +11,7 @@ const getContainerStyle = props => {
   const { theme } = props;
   const { colorPalette, spacing } = theme;
   return `
-    border: 1px solid ${colorPalette.gray[1600]};
+    border-color: ${colorPalette.gray[1600]};
     padding-top: ${spacing.ELEM_SPACING.MED};
     padding-bottom: ${spacing.ELEM_SPACING.MED};
   `;
@@ -118,6 +118,15 @@ const Container = styled.View`
   ${getContainerStyle}
 `;
 
+const UnavailableLink = styled.View`
+  flex-direction: row;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-color: ${props => props.theme.colorPalette.gray[500]};
+`;
+
 const styles = css``;
 
 export {
@@ -131,4 +140,5 @@ export {
   PromotionESpotLeftArrow,
   PromotionESpot,
   PromotionESpotTextContainer,
+  UnavailableLink,
 };

@@ -100,6 +100,7 @@ Image.defaultProps = {
   srcset: '',
   sizes: '',
   placeholderSrc: '',
+  // TODO: Update this so that ref is not a prop. Use forwardRef() for this.
   ref: () => {},
   url: '',
   link: null,

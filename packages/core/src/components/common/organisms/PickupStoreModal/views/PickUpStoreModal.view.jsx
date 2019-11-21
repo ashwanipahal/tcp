@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable no-underscore-dangle */
 /**
  * @module PickUpStoreModal
@@ -14,9 +15,11 @@ import {
   CART_BOPIS_STORE_LIST,
   COLOR_FIT_SIZE_DISPLAY_NAME,
 } from '../PickUpStoreModal.proptypes';
+import { clearAddToPickupErrorState } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import {
   getSkuId,
   getVariantId,
+  getVariantNo,
   getMapSliceForColor,
   getIconImageForColor,
   getMapSliceForSize,
@@ -37,7 +40,7 @@ const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
 );
 
 // eslint-disable-next-line no-unused-vars
-const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
+// const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
 class PickUpStoreModalView extends React.Component {
   static propTypes = {
@@ -77,7 +80,6 @@ class PickUpStoreModalView extends React.Component {
 
     // determines if step one needs to be opened
     openSkuSelectionForm: PropTypes.bool,
-
     maxAllowedStoresInCart: PropTypes.number.isRequired,
 
     /**
@@ -89,6 +91,8 @@ class PickUpStoreModalView extends React.Component {
      */
     addItemToCartInPickup: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}),
+    alwaysSearchForBOSS: PropTypes.bool.isRequired,
+    openRestrictedModalForBopis: PropTypes.bool.isRequired,
 
     /**
      * Function to call when the item has been successfully added to, or updated
@@ -99,7 +103,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** callback for closing this modal */
     closePickupModal: PropTypes.func.isRequired,
-
     onColorChange: PropTypes.func.isRequired,
 
     /**
@@ -118,7 +121,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** submit method for BopisCartStoresInventoryForm */
     onSearchInCurrentCartStoresSubmit: PropTypes.func.isRequired,
-
     currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
     /** an optional identifier to be passed to addItemToCartInPickup */
@@ -126,6 +128,7 @@ class PickUpStoreModalView extends React.Component {
     requestorKey: PropTypes.string,
     pickupModalHeading: PropTypes.string.isRequired,
     isCanada: PropTypes.bool.isRequired,
+    isGetUserStoresLoaded: PropTypes.bool.isRequired,
     isPlcc: PropTypes.bool,
     /* The session currency symbol */
     currencySymbol: PropTypes.string,
@@ -138,6 +141,7 @@ class PickUpStoreModalView extends React.Component {
     isBossCtaEnabled: PropTypes.bool,
     isBopisCtaEnabled: PropTypes.bool,
     updateCartItemStore: PropTypes.bool,
+    isItemShipToHome: PropTypes.bool,
     autoSkipStep1: PropTypes.bool,
     showDefaultSizeMsg: PropTypes.bool,
     isRadialInventoryEnabled: PropTypes.number,
@@ -158,6 +162,10 @@ class PickUpStoreModalView extends React.Component {
     }).isRequired,
     className: PropTypes.string,
     currency: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}),
+    updatePickUpCartItem: PropTypes.func.isRequired,
+    initialValuesFromBagPage: PropTypes.shape({}).isRequired,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
@@ -186,6 +194,11 @@ class PickUpStoreModalView extends React.Component {
     addToBagError: '',
     className: '',
     currency: 'USD',
+    isItemShipToHome: false,
+    currencyAttributes: {
+      exchangevalue: 1,
+    },
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -205,7 +218,7 @@ class PickUpStoreModalView extends React.Component {
     };
     this.skuId = null;
     this.quantity = null;
-
+    this.callOnlyStoreSearchAPI = false;
     this.handleSearchAreaStoresSubmit = this.handleSearchAreaStoresSubmit.bind(this);
     this.handleSearchInCurrentCartStoresSubmit = this.handleSearchInCurrentCartStoresSubmit.bind(
       this
@@ -216,6 +229,7 @@ class PickUpStoreModalView extends React.Component {
 
   onCloseClick() {
     const { closePickupModal } = this.props;
+    clearAddToPickupErrorState();
     closePickupModal({
       isModalOpen: false,
     });
@@ -286,20 +300,30 @@ class PickUpStoreModalView extends React.Component {
   /** Handle click of Edit button on Step 2 - which will switch to Step 1 */
   handleEditSkuDetails(e) {
     e.preventDefault();
+    this.callOnlyStoreSearchAPI = false; // when changing from step 2 to 1, this is to ensure getUserBopisStore is called every time we click on search on step-1
     this.setState(oldState => ({ isSkuResolved: !oldState.isSkuResolved }));
   }
 
   deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount) {
     const { SkuSelectedValues } = this.state;
-    const { getUserCartStoresAndSearch } = this.props;
+    const {
+      getUserCartStoresAndSearch,
+      alwaysSearchForBOSS,
+      onSearchAreaStoresSubmit,
+      defaultStore,
+    } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
     const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
-    const { distance } = formData;
+    const variantNo = getVariantNo(colorFitsSizesMap, color, Fit, Size);
+    let distance;
+    if (formData) {
+      ({ distance } = formData);
+    }
     this.skuId = skuId;
     this.quantity = quantity;
-    getUserCartStoresAndSearch({
+    const apiPayload = {
       skuId,
       quantity,
       distance,
@@ -307,7 +331,18 @@ class PickUpStoreModalView extends React.Component {
       variantId,
       cartItemsCount,
       country,
-    });
+      defaultStore,
+      variantNo,
+    };
+    if (this.callOnlyStoreSearchAPI) {
+      onSearchAreaStoresSubmit(apiPayload);
+    } else {
+      this.callOnlyStoreSearchAPI = true;
+      getUserCartStoresAndSearch({
+        apiPayload,
+        alwaysSearchForBOSS,
+      });
+    }
   }
 
   handleSearchAreaStoresSubmit(locationPromise, colorFitsSizesMap, formData) {
@@ -388,10 +423,17 @@ class PickUpStoreModalView extends React.Component {
       storeSearchError,
       onClearSearchFormError,
       addItemToCartInPickup,
+      updatePickUpCartItem,
       currency,
+      currencyAttributes,
       PickupSkuFormValues,
       addToBagError,
       navigation,
+      initialValuesFromBagPage,
+      isItemShipToHome,
+      openRestrictedModalForBopis,
+      isGetUserStoresLoaded,
+      toastMessage,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -458,11 +500,14 @@ class PickUpStoreModalView extends React.Component {
           initialValues={SkuSelectedValues}
           selectedColor={selectedColor}
           currency={currency}
+          currencyAttributes={currencyAttributes}
           className="pickup-sku-selection"
           onCloseClick={this.onCloseClick}
           navigation={navigation}
+          toastMessage={toastMessage}
         />
         <PickupStoreSelectionFormContainer
+          isGetUserStoresLoaded={isGetUserStoresLoaded}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           maxAllowedStoresInCart={maxAllowedStoresInCart}
           colorFitsSizesMap={colorFitsSizesMap}
@@ -479,6 +524,7 @@ class PickUpStoreModalView extends React.Component {
           name={name}
           offerPrice={prices.offerPrice}
           onAddItemToCart={addItemToCartInPickup}
+          onUpdatePickUpItem={updatePickUpCartItem}
           onCloseClick={this.onCloseClick}
           onSubmit={this.handleSearchAreaStoresSubmit}
           promotionalMessage={currentProduct.promotionalMessage}
@@ -504,6 +550,10 @@ class PickUpStoreModalView extends React.Component {
           onClearSearchFormError={onClearSearchFormError}
           isSkuResolved={isSkuResolved}
           PickupSkuFormValues={PickupSkuFormValues}
+          initialValuesFromBagPage={initialValuesFromBagPage}
+          isItemShipToHome={isItemShipToHome}
+          currencyAttributes={currencyAttributes}
+          openRestrictedModalForBopis={openRestrictedModalForBopis}
         />
       </>
     );

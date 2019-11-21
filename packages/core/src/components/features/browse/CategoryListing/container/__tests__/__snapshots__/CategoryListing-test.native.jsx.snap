@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container should render CLP Correctly 1`] = `
+<Styled(View)>
+  <View>
+    <Text>
+      Heading
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Promo Banner
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Category List Panel
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Recommendations
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Get Candid Section
+    </Text>
+  </View>
+  <View>
+    <Text>
+      SEO Section
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Ratings and Review
+    </Text>
+  </View>
+</Styled(View)>
+`;

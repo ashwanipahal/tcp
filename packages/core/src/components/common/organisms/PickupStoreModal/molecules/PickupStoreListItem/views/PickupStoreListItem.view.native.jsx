@@ -8,6 +8,7 @@ import PickupRadioBtn from '@tcp/core/src/components/common/organisms/PickupStor
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import { getDateInformation, parseBoolean } from '@tcp/core/src/utils/badge.util';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { formatPhnNumber } from '@tcp/core/src/utils/index.native';
 import {
   STORE_DETAILS_LABELS,
   ITEM_AVAILABILITY_MESSAGES,
@@ -39,7 +40,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
   const addressLine1 = capitalize(address.addressLine1);
   const city = capitalize(address.city);
   const { CLOSED_TODAY, CLOSING_TODAY, CLOSING_TOMORROW, CLOSED_TOMORROW } = STORE_DETAILS_LABELS;
-
+  const phoneNum = formatPhnNumber(basicInfo.phone);
   return (
     <TooltipContentWrapper>
       <BodyCopy
@@ -65,7 +66,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
         fontFamily="secondary"
         color="text.secondary"
         fontSize="fs12"
-        text={`${basicInfo.phone} \n`}
+        text={`${phoneNum} \n`}
       />
       {storeClosingTimeToday ? (
         <BodyCopy
@@ -126,7 +127,7 @@ const displayStoreDetailsAnchor = (
   );
   return (
     <TooltipWrapper>
-      <ReactTooltip withOverlay={false} popover={tooltipContent} width={227} height={170}>
+      <ReactTooltip withOverlay={false} popover={tooltipContent} width={230} height={170}>
         {StoreDetailsAnchor}
       </ReactTooltip>
     </TooltipWrapper>
@@ -267,11 +268,14 @@ class PickupStoreListItem extends React.Component {
     onPickupRadioBtnToggle: PropTypes.func.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     buttonLabel: PropTypes.string.isRequired,
+    onStoreUpdate: PropTypes.func.isRequired,
+    updateCartItemStore: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
+    this.handleStoreUpdate = this.handleStoreUpdate.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
   }
 
@@ -312,6 +316,18 @@ class PickupStoreListItem extends React.Component {
   }
 
   /**
+   *
+   * @method handleStoreUpdate
+   * @description this method handles store update
+   * @memberof PickupStoreListItem
+   */
+  handleStoreUpdate() {
+    const { onStoreUpdate, store } = this.props;
+    const isBoss = this.isBossSelected;
+    return onStoreUpdate(store.basicInfo.id, isBoss);
+  }
+
+  /**
    * @method handlePickupRadioBtn
    * @description this method sets the pickup mode for store
    */
@@ -322,13 +338,13 @@ class PickupStoreListItem extends React.Component {
   }
 
   displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
-    const { isBossSelected, isBopisSelected } = this.props;
+    const { isBossSelected, isBopisSelected, updateCartItemStore } = this.props;
     return showBopisCTA || showBossCTA ? (
       <PickupCTAWrapper>
         <Button
           buttonVariation="fixed-width"
-          onPress={this.handleStoreSelect}
-          fill="BLACK"
+          onPress={updateCartItemStore ? this.handleStoreUpdate : this.handleStoreSelect}
+          fill="BLUE"
           disableButton={!isBossSelected && !isBopisSelected}
           text={buttonLabel}
         />

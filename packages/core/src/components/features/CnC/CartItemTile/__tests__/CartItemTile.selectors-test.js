@@ -14,6 +14,8 @@ import {
   getIsCartItemsUpdating,
   getProductSkuId,
   getCartItemsSflError,
+  getCartToggleError,
+  getPdpUrl,
 } from '../container/CartItemTile.selectors';
 
 describe('#CartItemTile selector', () => {
@@ -63,6 +65,19 @@ describe('#CartItemTile selector', () => {
       },
     });
     expect(getProductSkuId(productState)).toEqual(productState.getIn(['productInfo', 'skuId']));
+  });
+
+  it('#getPdpUrl should return product sku id', () => {
+    const productState = fromJS({
+      productInfo: {
+        color: {
+          name: 'red',
+        },
+        skuId: '1234',
+        pdpUrl: '',
+      },
+    });
+    expect(getPdpUrl(productState)).toEqual(productState.getIn(['productInfo', 'pdpUrl']));
   });
 
   it('#getProductFit should return product fit', () => {
@@ -172,7 +187,7 @@ describe('#CartItemTile selector', () => {
             lbl_cartTile_productBrandAlt: 'Brand',
             lbl_cartTile_productImageAlt: 'Product',
             lbl_cartTile_update: 'update',
-            lbl_cartTile_remove: 'removeEdit',
+            lbl_cartTile_remove: 'minibag',
             lbl_cartTile_bopis: 'bopis',
             lbl_cartTile_boss: 'boss',
             lbl_cartTile_noRushPickup: 'boss',
@@ -206,53 +221,22 @@ describe('#CartItemTile selector', () => {
         },
       },
     };
-    expect(getLabelsCartItemTile(productState)).toEqual({
-      at: undefined,
-      bopisLabel: 'bopis',
-      bopisPickUp: 'pickup',
-      bossLabel: 'boss',
-      bossPickUp: 'boss',
-      by: 'lbl_cartTile_by',
-      cancel: 'Cancel',
-      chooseDiff: 'minibag',
-      color: 'Color',
-      deleteItem: 'delete',
-      design: 'Design',
-      ecomShipping: 'ecom',
-      edit: 'Edit',
-      errorSize: 'minibag',
-      extra: 'extra',
-      fit: 'Fit',
-      itemDeleted: 'lbl_msg_itemDeleteSuccess',
-      itemSoldOut: 'minibag',
-      itemUnavailable: 'minibag',
-      moveToBagLink: 'moveToBagLink',
-      off: 'off',
-      phone: undefined,
-      pickup: undefined,
-      points: 'Points',
-      price: 'Price',
-      problemWithOrder: 'minibag',
-      productBandAlt: 'Brand',
-      productImageAlt: 'Product',
-      qty: 'Qty',
-      removeEdit: 'removeEdit',
-      removeError: 'remove',
-      removeSoldOut: 'minibag',
-      removeSoldoutHeader: 'minibag',
-      saveForLater: 'Save For Later',
-      saveForLaterLink: 'saveForLaterLink',
-      sflDeleteSuccess: 'sflDeleteSuccess',
-      sflMaxLimitError: 'sflMaxLimitError',
-      sflSuccess: 'sflSuccess',
-      shipping: undefined,
-      size: 'Size',
-      soldOut: 'minibag',
-      today: undefined,
-      tomorrow: undefined,
-      update: 'update',
-      updateUnavailable: 'minibag',
-      value: 'Value',
+    expect(getLabelsCartItemTile(productState).bopisLabel).toEqual('bopis');
+    expect(getLabelsCartItemTile(productState).problemWithOrder).toEqual('minibag');
+    expect(getLabelsCartItemTile(productState).sflSuccess).toEqual('sflSuccess');
+  });
+
+  it('#getCartToggleError', () => {
+    const CartItemTileReducer = fromJS({
+      toggleError: {
+        error: {
+          errorMessage: 'ERROR',
+        },
+      },
     });
+
+    expect(getCartToggleError({ CartItemTileReducer }).getIn(['error', 'errorMessage'])).toBe(
+      'ERROR'
+    );
   });
 });

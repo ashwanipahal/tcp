@@ -27,7 +27,7 @@ const CardNumberField = ({
       type="tel"
       onFocus={onCardFocus}
       component={CreditCardNumber}
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       cardTypeImgUrl={cardTypeImgUrl}
       isPLCCEnabled={isPLCCEnabled}
       cardType={cardType}
@@ -88,10 +88,11 @@ export const CreditCardFields = ({
           <Col {...expMonthProps}>
             <Field
               placeholder={creditFieldLabels.expMonth}
+              title={creditFieldLabels.expMonth}
               name="expMonth"
               id="expMonth"
               component={Select}
-              dataLocator="payment-expmonthdd"
+              dataLocator="expMonthDropDown"
               options={expMonthOptionsMap}
               className="field"
               enableSuccessCheck={false}
@@ -100,10 +101,11 @@ export const CreditCardFields = ({
           <Col {...expYearProps} className="exp-year-field">
             <Field
               placeholder={creditFieldLabels.expYear}
+              title={creditFieldLabels.expYear}
               name="expYear"
               id="expYear"
               component={Select}
-              dataLocator="payment-expyeardd"
+              dataLocator="expYearDropDown"
               options={expYearOptionsMap}
               className="field"
               enableSuccessCheck={false}
@@ -115,10 +117,12 @@ export const CreditCardFields = ({
                 placeholder={creditFieldLabels.cvvCode}
                 name="cvvCode"
                 id="cvvCode"
+                type="tel"
                 component={TextBox}
-                dataLocator="payment-cvv"
+                dataLocator="cvvTxtBox"
                 maxLength="4"
                 enableSuccessCheck={false}
+                autoComplete="off"
               />
               <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
               <span className="cvv-icon">{cvvInfo}</span>

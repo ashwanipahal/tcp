@@ -1,4 +1,4 @@
-const logger = require('@tcp/core/src/utils/loggerInstance');
+const { trackError } = require('./errorReporter.util');
 
 const DEFAULT_CACHE_TIME = 7200;
 const DEFAULT_CACHE_EXP_MODIFIER = 'EX';
@@ -29,21 +29,22 @@ const setDataInRedis = ({
 };
 
 const redisConnectCallback = () => {
-  logger.info('Successfully connected to Redis(Elasticache)');
-  // TODO - Raygun Success handling here
+  console.log(`Redis(Elasticache) CONNECTED`);
 };
 
 const redisErrorCallback = err => {
-  logger.info('Redis client NOT connected', err);
+  trackError({
+    error: err,
+    errorTags: ['Redis Connection'],
+  });
   global.redisClient.quit();
-  // TODO - Raygun Error handling here
 };
 
 const connectRedis = config => {
   // NOTE: This is a server side file only.
   // Incase redis needs to be implemented in mobile app, then a common object needs to be defined and used
   try {
-    logger.info(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
+    console.log(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
     global.redisClient = config.REDIS_CLIENT.createClient(config.REDIS_PORT, config.REDIS_HOST);
 
     global.redisClient.on('error', err => {
@@ -54,7 +55,11 @@ const connectRedis = config => {
       redisConnectCallback();
     });
   } catch (e) {
-    logger.error('Redis Error - Caught in catch', e);
+    trackError({
+      error: e,
+      errorTags: ['Redis Catch'],
+    });
+    console.log(`Redis(Elasticache) CATCH ERROR: ${e.toString()}`);
   }
 };
 

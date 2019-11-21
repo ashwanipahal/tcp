@@ -89,10 +89,10 @@ const ConfirmationItemTitleDisplay = ({ center, labels, className }) => {
       <div className={className}>
         {(orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS ||
           orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOPIS) && (
-          <Image src={pickupIcon} alt="Pickup" />
+          <Image src={pickupIcon} alt="Pickup" width="30px" height="37px" />
         )}
         {(orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.ECOM || shippingFullname) && (
-          <Image src={shippingIcon} alt="Shipping" />
+          <Image src={shippingIcon} alt="Shipping" width="40px" height="37px" />
         )}
         <div className="confirmation-fullfillment-type">
           <div>
@@ -114,7 +114,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels, className }) => {
           <div className="confirmation-fullfillment-details">
             {storeName && (
               <ReactTooltip fontFamily="secondary" message={infoMsg} aligned="right">
-                <Image height="15" width="15" src={getIconPath('info-icon')} />
+                <Image height="20" width="20" src={getIconPath('info-icon')} />
               </ReactTooltip>
             )}
           </div>

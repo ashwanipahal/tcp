@@ -17,17 +17,20 @@ export const Heading = styled.Text`
 
 export const Wrapper = styled.View`
   display: flex;
-  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Tile = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  ${props =>
-    props.tileIndex % 2 === 0
-      ? `margin-right: ${props.theme.spacing.ELEM_SPACING.XS}`
-      : `margin-left: ${props.theme.spacing.ELEM_SPACING.XS}`};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  ${props => (props.tileIndex % 2 === 0 ? `margin-right: 14px ` : `margin-left: 5px`)};
+`;
+
+export const HeaderContainer = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const ListContainer = styled.View`
+  align-items: center;
 `;
 
 export default {
@@ -35,4 +38,6 @@ export default {
   Heading,
   Wrapper,
   Tile,
+  HeaderContainer,
+  ListContainer,
 };

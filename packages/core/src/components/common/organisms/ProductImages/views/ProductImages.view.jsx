@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor } from '../../../atoms';
+import { Anchor, BodyCopy, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
-
 import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageModal/views/FullSizeImageModal.view';
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
 import { getIconPath, getLocator } from '../../../../../utils';
 import SocialConnect from './SocialConnect.view';
+import OutOfStockWaterMarkView from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
 
 // function to return Thumbnails list to show on PDP and full size page
 const getThumbnailList = (
@@ -53,6 +53,7 @@ class ProductImages extends React.Component {
      * images (default behavior)
      */
     isShowBigSizeImages: PropTypes.bool,
+    isGiftCard: PropTypes.bool,
 
     /** Flags if the zoom should be enabled */
     isZoomEnabled: PropTypes.bool.isRequired,
@@ -63,6 +64,10 @@ class ProductImages extends React.Component {
     onCloseClick: PropTypes.func.isRequired,
     isFullSizeModalOpen: PropTypes.bool,
     isMobile: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({
+      outOfStockCaps: PropTypes.string,
+    }),
+    keepAlive: PropTypes.bool,
   };
 
   state = {
@@ -79,6 +84,14 @@ class ProductImages extends React.Component {
     this.setState({ currentImageIndex: imageIndex });
   };
 
+  getImageWrapperCss = () => {
+    const { isFullSizeForTab, isMobile } = this.props;
+    return [
+      'main-image-container-wrap',
+      isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
+    ].join(' ');
+  };
+
   render() {
     const {
       productName,
@@ -88,17 +101,20 @@ class ProductImages extends React.Component {
       isFullSizeVisible,
       className,
       isThumbnailListVisible,
-      isFullSizeForTab,
       onCloseClick,
       isFullSizeModalOpen,
       isMobile,
       pdpLabels,
+      isGiftCard,
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
       imageUrl: image.iconSizeImageUrl,
       imageName: productName,
     }));
+
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
 
     const { CAROUSEL_OPTIONS } = config;
@@ -113,14 +129,9 @@ class ProductImages extends React.Component {
           currentImageIndex,
           this.handleThumbnailClick
         )}
-        <div
-          className={[
-            'main-image-container-wrap',
-            isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
-          ].join(' ')}
-        >
+        <div className={this.getImageWrapperCss()}>
           <div className="main-image-container">
-            {
+            <div className="carousel-container">
               <Carousel
                 options={config.CAROUSEL_OPTIONS}
                 inheritedStyles={carousalStyle}
@@ -139,7 +150,7 @@ class ProductImages extends React.Component {
                         imageUrl={image && image[imageSizePropertyName]}
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
-                        isZoomEnabled={isZoomEnabled}
+                        isZoomEnabled={!isGiftCard && isZoomEnabled}
                         onOpenSimpleFullSize={onCloseClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}
@@ -147,9 +158,15 @@ class ProductImages extends React.Component {
                     );
                   })}
               </Carousel>
-            }
+              {keepAlive && (
+                <OutOfStockWaterMarkView
+                  label={outOfStockLabels.outOfStockCaps}
+                  fontSizes={['fs16', 'fs16', 'fs48']}
+                />
+              )}
+            </div>
             <div className="social-connect-wrapper">
-              {isFullSizeVisible && (
+              {isFullSizeVisible && !isGiftCard && (
                 <span className="fullSize-image-label">
                   <Anchor
                     className="resize-text"
@@ -157,7 +174,15 @@ class ProductImages extends React.Component {
                     onClick={onCloseClick}
                     dataLocator={getLocator('pdp_full_size_btn')}
                   >
-                    {pdpLabels.fullSize}
+                    <Image
+                      alt={pdpLabels.fullSize}
+                      className="icon-expand"
+                      src={getIconPath('icon-expand')}
+                      height="25px"
+                    />
+                    <BodyCopy fontFamily="secondary" fontSize="fs10">
+                      {pdpLabels.fullSize}
+                    </BodyCopy>
                   </Anchor>
                 </span>
               )}
@@ -192,6 +217,11 @@ ProductImages.defaultProps = {
   isFullSizeVisible: true,
   isFullSizeModalOpen: false,
   isMobile: true,
+  isGiftCard: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
+  keepAlive: false,
 };
 
 export default withStyles(ProductImages, styles);

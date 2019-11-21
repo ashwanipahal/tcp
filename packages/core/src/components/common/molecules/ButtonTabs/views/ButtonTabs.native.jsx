@@ -1,18 +1,17 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import getActiveStatus from '../utils';
 import { Wrapper, Button, ButtonWrapper } from '../ButtonTabs.style.native';
 
 function ButtonTabs(props) {
-  const { tabs, selectedTabId, onTabChange } = props;
-
+  const { tabs, selectedTabId, onTabChange, wrappedButtonTabs } = props;
   return (
-    <Wrapper>
+    <Wrapper wrappedButtonTabs={wrappedButtonTabs}>
       {tabs.map(({ label, id }, index) => (
         <ButtonWrapper key={id} noRightBorder={index === tabs.length - 1}>
           <Button
-            active={id === selectedTabId}
+            active={getActiveStatus(id, selectedTabId)}
             text={label}
             buttonVariation="mini-nav"
             onPress={() => onTabChange(id)}
@@ -27,6 +26,7 @@ ButtonTabs.defaultProps = {
   tabs: [],
   selectedTabId: '',
   onTabChange: () => {},
+  wrappedButtonTabs: false,
 };
 
 ButtonTabs.propTypes = {
@@ -37,6 +37,7 @@ ButtonTabs.propTypes = {
     })
   ),
   onTabChange: PropTypes.func,
+  wrappedButtonTabs: PropTypes.bool,
 };
 
 export default ButtonTabs;

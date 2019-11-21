@@ -2,38 +2,102 @@
 
 exports[`GiftCardModalInfo Component should render correctly 1`] = `
 <div>
-  <Styled(BodyStyle)
+  <Styled(BodyCopy)
     bodySize="seven"
     className="deleteCardModal__modalTitle"
+    color="text.primary"
+    component="p"
     data-locator="deletegcmodalheadinng"
     fontFamily="secondaryFontFamily"
+    fontSize={12}
     fontWeight="bold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(Row)
+    className="elem-mt-XS card-details-mobile"
+    fullBleed={true}
   >
-    abc
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    className="deleteCardModal__desc"
-  >
-     
-    <Styled(Image)
-      className="deleteCardModal__img"
-      data-locator="deletegcmodalicon"
-      src="/static/images/TCP-gift.svg"
-    />
-    <Styled(BodyStyle)
-      bodySize="three"
-      className="deleteCardModal__cardInfo layout-pb-LRG"
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 8,
+          "small": 2,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+        }
+      }
     >
-      <Styled(BodyStyle)
-        className="deleteCardModal__card"
-        data-locator="deletegcmodalcardendingtext"
-        fontFamily="secondaryFontFamily"
-        fontWeight="bold"
-        tag="span"
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="deletecreditmodalcardicon"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
       >
-        111
-      </Styled(BodyStyle)>
-    </Styled(BodyStyle)>
-  </Styled(BodyStyle)>
+        <Styled(Image)
+          className="deleteCardModal__img"
+          data-locator="deletegcmodalicon"
+          src="/static/images/TCP-gift.svg"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 5,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "medium": 3,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="cardName-spacing-tablet"
+            color="text.primary"
+            component="p"
+            data-locator="deletecreditmodacardendingtxt"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            111
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
 </div>
 `;

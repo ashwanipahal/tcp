@@ -36,7 +36,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-bottom-MED"
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -49,6 +50,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -64,6 +67,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -106,6 +111,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -118,6 +124,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -133,6 +141,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -178,7 +188,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-bottom-MED"
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -191,6 +202,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -206,6 +219,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -248,6 +263,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -260,6 +276,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -275,6 +293,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -320,7 +340,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-bottom-MED"
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -333,6 +354,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -348,6 +371,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -390,6 +415,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -402,6 +428,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={100}
@@ -417,6 +445,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={100}
@@ -439,6 +469,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -446,6 +477,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -488,7 +520,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-bottom-MED"
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -501,6 +534,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -516,6 +551,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
         orderBalanceTotal={0}
@@ -558,6 +595,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
       textDecoration={null}
     />
     <Styled(View)>
@@ -570,6 +608,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={100}
@@ -585,6 +625,205 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="error"
+        dataLocator=""
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED"
+        text="Duplicate"
+        textDecoration={null}
+      />
+      <ReduxForm
+        addGiftCardError="Duplicate"
+        destroyOnUnmount={true}
+        enableReinitialize={true}
+        forceUnregisterOnUnmount={false}
+        form="AddGiftCardMobileForm"
+        formErrorMessage=""
+        getFormState={[Function]}
+        isLoading={false}
+        isRecapchaEnabled={false}
+        isRow={true}
+        keepDirtyOnReinitialize={false}
+        labels={Object {}}
+        persistentSubmitErrors={false}
+        pure={true}
+        saveToAccountEnabled={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+        validate={[Function]}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with getDerivedStateFromProps  1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={false}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        text="undefined "
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-SM"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      text="undefined"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
         orderBalanceTotal={100}

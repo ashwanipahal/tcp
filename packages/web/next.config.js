@@ -1,9 +1,17 @@
 // This will only read from system vars and ./.env
 require('dotenv').config();
 const withTM = require('next-transpile-modules');
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const withSourceMaps = require('@zeit/next-source-maps');
+const nextBuildId = require('next-build-id');
 const path = require('path');
 
-module.exports = withTM({
+const isProductionBuild = process.env.NODE_ENV === 'production';
+const isSourceMapsEnabled = process.env.SOURCE_MAPS_ENABLED === 'true';
+const isAnalyzeBundles = process.env.ANALYZE_BUNDLES === 'true';
+
+let buildConfig = withTM({
+  generateBuildId: () => process.env.RWD_WEB_BUILD_ID || nextBuildId({ dir: __dirname }),
   transpileModules: ['@tcp', '../core/+/*.+.js'],
   useFileSystemPublicRoutes: false,
   // This is to supply build-time environment vars to both server and client files:
@@ -39,6 +47,49 @@ module.exports = withTM({
       __dirname: false,
     };
 
+    /**
+     * Polyfills added as per
+     * https://nextjs.org/docs#browser-support
+     * https://github.com/zeit/next.js/tree/canary/examples/with-polyfills
+     */
+    const originalEntry = newConfig.entry;
+    newConfig.entry = async () => {
+      const entries = await originalEntry();
+      if (entries['main.js'] && !entries['main.js'].includes('./utils/polyfills.js')) {
+        entries['main.js'].unshift('./utils/polyfills.js');
+      }
+      return entries;
+    };
+
     return newConfig;
   },
 });
+
+if (isProductionBuild && isSourceMapsEnabled) {
+  buildConfig = withSourceMaps(buildConfig);
+}
+
+if (isAnalyzeBundles) {
+  const BUNDLE_ANALYZER_PATH = './bundle-sizes/bundles';
+  const analyzerCommonOptions = {
+    analyzerMode: 'static',
+    openAnalyzer: false,
+  };
+  buildConfig = withBundleAnalyzer({
+    analyzeServer: true,
+    analyzeBrowser: true,
+    bundleAnalyzerConfig: {
+      server: {
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/server.html`,
+      },
+      browser: {
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/client.html`,
+      },
+    },
+    ...buildConfig,
+  });
+}
+
+module.exports = buildConfig;

@@ -29,6 +29,11 @@ import {
 } from './ProductListing.selectors';
 import { PRODUCTS_PER_LOAD, routingInfoStoreView } from './ProductListing.constants';
 
+/* calculate the total number of products based on the categoriesset to display to customer i.e Phantom categories */
+function getTotalProductsCount(updatedAvailableL3) {
+  return updatedAvailableL3.reduce((total, { count }) => total + count, 0);
+}
+
 export default class ProductsOperator {
   constructor() {
     this.resetBucketingConfig();
@@ -56,7 +61,7 @@ export default class ProductsOperator {
   getImgPath(id, excludeExtension) {
     return {
       colorSwatch: this.getSwatchImgPath(id, excludeExtension),
-      productImages: this.getProductImgPath(id, excludeExtension),
+      productImages: this.getProductImagePath(id, excludeExtension),
     };
   }
 
@@ -104,6 +109,18 @@ export default class ProductsOperator {
       900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
         excludeExtension ? '' : '.jpg'
       }`,
+    };
+  };
+
+  getProductImagePath = (id, excludeExtension) => {
+    const imageName = (id && id.split('_')) || [];
+    const imagePath = imageName[0];
+
+    return {
+      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     };
   };
 
@@ -333,7 +350,7 @@ export default class ProductsOperator {
     );
   }
 
-  getProductsListingForUrlLocation(state, location = window.location, sortParam, sortBySelected) {
+  getProductsListingForUrlLocation(state, location, sortParam, sortBySelected) {
     const match =
       matchPath(location.pathname, { path: PAGES.PRODUCT_LISTING_PAGE }) ||
       matchPath(location.pathname, { path: PAGES.SEARCH_PAGE });
@@ -436,11 +453,12 @@ export default class ProductsOperator {
     filtersAndSort,
     pageNumber,
     // TODO - fix this for mobile APP - location needs to be defined
-    location = window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
+    location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
     startProductCount,
     numberOfProducts,
     categoryPathMap,
     catNameL3,
+    isLazyLoading,
   }) => {
     const isSearchPage = this.isPageSearch(location);
     const searchTerm = location.pathname.substr(11);
@@ -499,6 +517,7 @@ export default class ProductsOperator {
       shouldApplyUnbxdLogic: this.checkUnbxdLogic(isSearchPage),
       hasShortImage,
       categoryNameList,
+      isLazyLoading,
     };
   };
 
@@ -508,6 +527,9 @@ export default class ProductsOperator {
       this.bucketingConfig
     );
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
+    if (this.bucketingConfig.availableL3.length) {
+      res.totalProductsCount = getTotalProductsCount(this.bucketingConfig.availableL3);
+    }
   };
 
   getProductsListingMoreProducts(state, location) {
@@ -517,9 +539,9 @@ export default class ProductsOperator {
       return null; // nothing more to load
     }
 
-    const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+    const { appliedFiltersIds } = state.ProductListing;
     // TODO - take the fallback from sort array once sort functionality is merged
-    const sort = (state.ProductListing && state.ProductListing.get('appliedSortId')) || '';
+    const sort = (state.ProductListing && state.ProductListing.appliedSortId) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
     return this.getProductsListingInfo({
@@ -527,6 +549,7 @@ export default class ProductsOperator {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
   }
 
@@ -546,7 +569,7 @@ export default class ProductsOperator {
       if (!this.bucketingConfig.L3Left.length) {
         return null; // nothing more to load
       }
-      const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+      const { appliedFiltersIds } = state.ProductListing;
 
       const categoryNameList = [...this.bucketingConfig.currL2NameList];
       // Pushing the first L3 available in L3left variable
@@ -561,10 +584,11 @@ export default class ProductsOperator {
         filtersAndSort: appliedFiltersAndSort,
         pageNumber: false,
         // location: routingInfoStoreView.getHistory(this.store.getState()).location,
-        location: window.location,
+        location,
         startProductCount: this.bucketingConfig.start,
         numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
         categoryPathMap,
+        isLazyLoading: true,
       });
     }
     return this.getProductsListingMoreProducts(state, location);

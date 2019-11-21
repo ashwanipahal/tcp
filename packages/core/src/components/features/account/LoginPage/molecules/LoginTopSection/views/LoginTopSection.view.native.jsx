@@ -15,6 +15,7 @@ import {
   ImageWrapper,
   FavtHeading,
   FavtSubHeading,
+  WelcomeBackWrapper,
 } from '../LoginTopSection.style.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
@@ -29,8 +30,13 @@ const showForgotPassword = props => {
 };
 
 const LoginTopSection = props => {
-  const { labels, variation } = props;
+  const { labels, variation, updateHeader } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
+
+  if (variation === 'checkout' && updateHeader) {
+    updateHeader(); // hide the header and rule line
+  }
+
   return (
     <View {...props}>
       {!(variation === 'favorites' || variation === 'checkout') && (
@@ -43,12 +49,14 @@ const LoginTopSection = props => {
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
+            fontFamily="secondary"
             text={getLabelValue(labels, 'lbl_login_subDescription_heading_1', 'login')}
           />
 
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
+            fontFamily="secondary"
             text={getLabelValue(labels, 'lbl_login_Description_heading_2', 'login')}
           />
           <ResetPassword>
@@ -65,6 +73,7 @@ const LoginTopSection = props => {
             <BodyCopy
               component="span"
               fontSize="fs12"
+              fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_login_Description_heading_3', 'login')}
             />
           </ResetPassword>
@@ -82,7 +91,7 @@ const LoginTopSection = props => {
               text={getLabelValue(labels, 'lbl_login_favorites_modal_heading', 'login')}
               fontSize="fs16"
               fontWeight="black"
-              mobilefontFamily={['secondary']}
+              fontFamily="secondary"
               textAlign="center"
             />
           </FavtHeading>
@@ -90,37 +99,37 @@ const LoginTopSection = props => {
             <BodyCopy
               component="span"
               fontSize="fs12"
-              mobilefontFamily={['secondary']}
+              fontFamily="secondary"
               textAlign="center"
               text={getLabelValue(labels, 'lbl_login_favorites_modal_heading_1', 'login')}
             />
           </FavtSubHeading>
         </>
       )}
-
       {variation === 'checkout' && (
         <>
-          <BodyCopy
-            fontSize="fs28"
-            fontWeight="black"
-            mobilefontFamily={['primary']}
-            textAlign="center"
-            text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
-          />
+          <WelcomeBackWrapper>
+            <BodyCopy
+              fontSize="fs28"
+              fontWeight="black"
+              fontFamily="secondary"
+              textAlign="center"
+              text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
+            />
+          </WelcomeBackWrapper>
 
           <BodyCopy
-            component="span"
             fontSize="fs18"
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
+            fontWeight="regular"
             textAlign="center"
             text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
           />
 
           <BodyCopy
-            component="span"
             fontSize="fs18"
             fontWeight="black"
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
             textAlign="center"
             text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
           />
@@ -140,6 +149,7 @@ LoginTopSection.propTypes = {
       lbl_login_subDescription: PropTypes.string,
     },
   }),
+  updateHeader: PropTypes.func.isRequired,
 };
 
 LoginTopSection.defaultProps = {

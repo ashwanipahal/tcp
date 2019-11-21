@@ -56,8 +56,12 @@ const generateSessionId = apiConfig => {
  */
 const getRequestParams = (apiConfig, reqObj) => {
   const { domain, catalogId, storeId, langId, isMobile } = apiConfig;
-  const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
+  let deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
+  if (isMobileApp()) {
+    deviceType = 'App';
+  }
   const requestUrl = `${domain}${reqObj.webService.URI}`;
+
   const reqHeaders = {
     langId,
     storeId,
@@ -69,6 +73,7 @@ const getRequestParams = (apiConfig, reqObj) => {
     'tcp-trace-request-id': generateTraceId(apiConfig),
     'tcp-trace-session-id': generateSessionId(apiConfig),
   };
+
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
     reqHeaders.Cookie = apiConfig.cookie;

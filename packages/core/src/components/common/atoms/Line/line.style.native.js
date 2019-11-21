@@ -8,11 +8,21 @@ import { getColor } from '@tcp/core/styles/themes/utils';
  */
 
 const getLineStyle = props => {
-  const { marginTop, marginBottom, borderWidth, borderColor, theme } = props;
+  const {
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    borderWidth,
+    borderColor,
+    theme,
+  } = props;
   const { colorPalette } = theme;
   return `
   margin-top: ${marginTop};
   margin-bottom: ${marginBottom};
+  margin-left: ${marginLeft};
+  margin-right: ${marginRight};
   border-width: ${borderWidth};
   border-color: ${getColor(colorPalette, borderColor) || colorPalette.blue[700]};
   `;

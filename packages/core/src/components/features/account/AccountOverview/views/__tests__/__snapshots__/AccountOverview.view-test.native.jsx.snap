@@ -8,236 +8,39 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
   }
 >
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs14"
-      margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
+  <GuestLoginOverview
+    labels={
+      Object {
+        "foo": "foo",
       }
-      numberOfLines={null}
-      text="lbl_overview_logout_heading_Text_1"
-      textAlign="center"
-      textDecoration={null}
-    />
-    <Styled(BodyCopy)
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs14"
-      margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
+    }
+    navigation={
+      Object {
+        "state": Object {
+          "params": Object {
+            "component": "change-password",
+            "em": "coiIGBav4RrUU3tqv8eAB9uZEtUbuUU8bU0hqGLhydw=",
+            "logonPasswordOld": "CI+20YL2b3kMcnvCrlg8nTxw==",
+          },
+        },
       }
-      numberOfLines={null}
-      text="lbl_overview_logout_heading_Text_2"
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
-      buttonVariation="variable-width"
-      className="classBtn"
-      color="#575757"
-      customStyle={Object {}}
-      customTextStyle={null}
-      data-locator=""
-      disableButton={false}
-      fill=""
-      fullWidth=""
-      iconColor="gray.800"
-      iconName="chevron-down"
-      iconSize="fs12"
-      id="createAccount"
-      locator=""
-      navigation={Object {}}
-      onPress={[Function]}
-      selected={false}
-      selectedIcon="chevron-up"
-      showIcon={false}
-      text="lbl_overview_join_text"
-      theme={Object {}}
-      type="submit"
-      url=""
-      width="150px"
-    />
-    <Styled(CustomButton)
-      active={false}
-      buttonVariation="variable-width"
-      className="classBtn"
-      color=""
-      customStyle={Object {}}
-      customTextStyle={null}
-      data-locator=""
-      disableButton={false}
-      fill="BLUE"
-      fullWidth=""
-      iconColor="gray.800"
-      iconName="chevron-down"
-      iconSize="fs12"
-      id="login"
-      locator=""
-      navigation={Object {}}
-      onPress={[Function]}
-      selected={false}
-      selectedIcon="chevron-up"
-      showIcon={false}
-      text="lbl_overview_login_text"
-      theme={Object {}}
-      type="submit"
-      url=""
-      width="150px"
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      color="gray.900"
-      dataLocator=""
-      fontSize="fs13"
-      fontWeight="semibold"
-      margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
-      }
-      numberOfLines={null}
-      onPress={[Function]}
-      text="lbl_overview_myFavoritesHeading"
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Styled(View)>
-      <Styled(ImageComp)
-        alt=""
-        height={18}
-        host=""
-        source={
-          Object {
-            "testUri": "../../../src/assets/images/filled-heart.png",
-          }
-        }
-        url=""
-        width={20}
-      />
-    </Styled(View)>
-  </Styled(View)>
+    }
+  />
   <Styled(View) />
-  <Styled(TouchableOpacity)
-    onPress={[Function]}
+  <View
+    style={
+      Object {
+        "height": 100,
+        "paddingTop": 15,
+      }
+    }
   >
-    <Styled(View)>
-      <Styled(View)>
-        <Styled(Styled(ImageComp))
-          alt=""
-          height={30}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/tcp-cc.png",
-            }
-          }
-          url=""
-          width={47}
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          color="gray.900"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          margin={null}
-          numberOfLines={null}
-          textAlign="center"
-          textDecoration={null}
-        />
-      </Styled(View)>
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(ImageComp)
-        alt=""
-        height={10}
-        host=""
-        source={
-          Object {
-            "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
-          }
-        }
-        url=""
-        width={7}
-      />
-    </Styled(View)>
-  </Styled(TouchableOpacity)>
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_manage_creditCard"
-  />
-  <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_purchase_giftCards"
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_refer_friend"
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_trackYourOrder"
-  />
-  <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_app_settings"
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_help"
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_messages"
-  />
-  <Styled(View) />
-  <Connect(TrackOrderContainer)
-    handleToggle={[Function]}
-  />
-  <Styled(View) />
+    <LegalLinks
+      links={Array []}
+    />
+  </View>
+  <Styled(Text)>
+    lbl_overview_copyrightTxt
+  </Styled(Text)>
 </View>
 `;

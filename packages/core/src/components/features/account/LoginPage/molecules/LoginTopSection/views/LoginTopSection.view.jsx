@@ -23,22 +23,35 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
       <React.Fragment>
         {variation === 'checkout' && (
           <>
-            <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
+            <BodyCopy
+              fontSize={['fs28', 'fs28', 'fs36']}
+              fontWeight="black"
+              fontFamily="primary"
+              textAlign="center"
+              className="checkout_modal_heading_margin"
+            >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             </BodyCopy>
 
-            <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
+            <BodyCopy
+              className="checkout_modal_heading_2"
+              component="span"
+              fontSize="fs18"
+              fontFamily="secondary"
+              textAlign="center"
+            >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
             </BodyCopy>
             <BodyCopy
               component="span"
               fontSize="fs18"
-              fontWeight="black"
+              fontWeight="bold"
               fontFamily="secondary"
               textAlign="center"
             >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
             </BodyCopy>
+            <BodyCopy component="div" className="elem-pt-XS elem-pb-SM checkout-border" />
           </>
         )}
 
@@ -75,7 +88,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
       {!isCanada && !(variation === 'favorites' || variation === 'checkout') && (
-        <BodyCopy component="div" textAlign="center" className="bordered">
+        <BodyCopy component="div" textAlign="center" className="bordered elem-ml-XXL  elem-mr-XXL">
           <ImageComp
             src={getIconPath('my-place-rewards')}
             className="logo elem-mb-LRG"
@@ -85,7 +98,10 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
       )}
       {!(variation === 'favorites' || variation === 'checkout') && (
         <>
-          <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
+          <BodyCopy
+            component="div"
+            className="bordered elem-pt-MED elem-ml-XXL  elem-mr-XXL  elem-pb-LRG"
+          >
             <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
               {getLabelValue(labels, 'lbl_login_heading', 'login')}
             </BodyCopy>

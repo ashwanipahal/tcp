@@ -21,7 +21,7 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   />
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     customTextStyle={null}
@@ -34,12 +34,14 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
     locator=""
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
     text="Test CTA"
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </Styled(View)>
 `;

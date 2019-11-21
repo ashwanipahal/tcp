@@ -27,7 +27,7 @@ describe('#Added to bag Selectors', () => {
 
   const session = {
     siteDetails: {
-      isRecapchaEnabled: true,
+      GIFT_CARD_RECAPTCHA_ENABLED: true,
     },
   };
   const state = {

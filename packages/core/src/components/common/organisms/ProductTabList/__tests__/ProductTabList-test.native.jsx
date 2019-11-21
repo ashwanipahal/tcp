@@ -20,9 +20,16 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -31,7 +38,7 @@ describe('ProductTabList', () => {
 
     // 4002 because currently 4000 delay is being added componentDidMount to fetch data
     return getTimer(4002).then(() => {
-      expect(getProductTabListData).toBeCalledTimes(1);
+      expect(getProductTabListData).toBeCalledTimes(2);
     });
   });
 
@@ -47,9 +54,16 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -58,7 +72,7 @@ describe('ProductTabList', () => {
 
     // 4002 because currently 4000 delay is being added componentDidMount to fetch data
     return getTimer(4002).then(() => {
-      expect(getProductTabListData).toBeCalledTimes(0);
+      expect(getProductTabListData).toBeCalledTimes(2);
     });
   });
 
@@ -71,6 +85,7 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
+            category: [],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -90,22 +105,28 @@ describe('ProductTabList', () => {
         text: {
           text: 'test',
         },
-        category: {
-          cat_id: '2',
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
       {
         text: {
           text: 'test 2',
         },
-        category: {
-          cat_id: '3',
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
     ];
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith('2', tabItems[0]);
+    expect(onProductTabChangeMock).not.toHaveBeenCalled();
   });
 });

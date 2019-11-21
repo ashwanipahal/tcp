@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const ModalStyle = css`
-  .TCPModal__Overlay {
+  &.TCPModal__Overlay {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -21,12 +21,12 @@ const ModalStyle = css`
     overflow-y: auto;
     height: 100%;
     width: ${props => (props.fixedWidth ? '100%' : '')};
-    width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
       min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
       width: ${props => (props.widthConfig ? props.widthConfig.medium : '')};
+      max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
@@ -34,20 +34,25 @@ const ModalStyle = css`
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
+
+    ${props =>
+      props.standardHeight
+        ? `@media ${props.theme.mediaQuery.medium} {
+      max-height:90%
+    } `
+        : ''}
   }
   .Modal_Heading {
+    font-family: ${props => props.theme.typography.fonts.secondary};
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;
     height: 20px;
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.bold};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
-  }
-  .alignTop {
-    top: 25px;
   }
   .Modal-Header {
     ${props =>

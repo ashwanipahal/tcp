@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
 import { applyCoupon, removeCoupon, setError } from './Coupon.actions';
 import {
   getCouponFetchingState,
@@ -33,7 +35,10 @@ export class CouponContainer extends React.PureComponent {
       showAccordian,
       isCarouselView,
       closedOverlay,
+      idPrefix,
       additionalClassNameModal,
+      openApplyNowModal,
+      navigation,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
@@ -51,6 +56,9 @@ export class CouponContainer extends React.PureComponent {
             handleErrorCoupon={handleErrorCoupon}
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
+            idPrefix={idPrefix}
+            openApplyNowModal={openApplyNowModal}
+            navigation={navigation}
           />
         )}
 
@@ -94,18 +102,25 @@ CouponContainer.propTypes = {
   handleErrorCoupon: PropTypes.func.isRequired,
   isCarouselView: PropTypes.bool,
   closedOverlay: PropTypes.func,
+  idPrefix: PropTypes.string,
+  openApplyNowModal: PropTypes.func,
+  navigation: PropTypes.shape({}),
 };
 
 CouponContainer.defaultProps = {
   closedOverlay: () => {},
   isCarouselView: false,
+  idPrefix: '',
+  navigation: null,
+  openApplyNowModal: () => {},
 };
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   handleApplyCouponFromList: coupon => {
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
+          fullPageInfo,
           formData: { couponCode: coupon.id },
           formPromise: { resolve, reject },
           coupon,
@@ -115,19 +130,33 @@ export const mapDispatchToProps = dispatch => ({
   },
   handleRemoveCoupon: coupon => {
     return new Promise((resolve, reject) => {
-      dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
+      dispatch(
+        removeCoupon({
+          coupon,
+          fullPageInfo,
+          formPromise: { resolve, reject },
+        })
+      );
     });
   },
   handleApplyCoupon: (formData, _, props) =>
     new Promise((resolve, reject) => {
       dispatch(
-        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
+        applyCoupon({
+          formData,
+          fullPageInfo,
+          source: props && props.source,
+          formPromise: { resolve, reject },
+        })
       );
     }),
   handleErrorCoupon: coupon => {
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));
     }, 5000);
+  },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
   },
 });
 

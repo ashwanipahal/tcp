@@ -1,6 +1,17 @@
 import styled from 'styled-components/native';
 import { isAndroid } from '@tcp/core/src/utils/utils.app';
 
+const setBackground = props => {
+  if (props.theme.isGymboree) {
+    return `
+    background-color: ${props.theme.colorPalette.orange[900]};
+    `;
+  }
+  return `
+  background-color: ${props.theme.colorPalette.blue[800]};
+  `;
+};
+
 const getAdditionalStyle = props => {
   const { theme, showSearch } = props;
   const headerHeight = showSearch
@@ -12,6 +23,21 @@ const getAdditionalStyle = props => {
   };
 };
 
+const cartItemsWidth = cartItems => {
+  let width = '';
+  switch (cartItems.toString().length) {
+    case 2:
+      width = '25px';
+      break;
+    case 3:
+      width = '30px';
+      break;
+    default:
+      width = '20px';
+  }
+  return width;
+};
+
 const getSafeAreaStyle = props => {
   const { theme } = props;
   return `
@@ -21,7 +47,7 @@ const getSafeAreaStyle = props => {
   `;
 };
 
-export const SafeAreaViewStyle = styled.SafeAreaView`
+export const SafeAreaViewStyle = styled.View`
   ${getSafeAreaStyle}
   ${getAdditionalStyle}
 `;
@@ -41,10 +67,10 @@ export const HeaderContainer = styled.View`
 `;
 
 export const CartCountContainer = styled.View`
-  background-color: ${props => props.theme.colorPalette.primary.dark};
-  width: 22px;
+  ${setBackground}
+  width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 22px;
-  border-radius: 11;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -54,10 +80,15 @@ export const CartCountContainer = styled.View`
 `;
 
 export const CartIconView = styled.Image`
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
-
+export const ArrowBackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
 export const Touchable = styled.TouchableOpacity`
   flex-direction: row;
   height: 36;

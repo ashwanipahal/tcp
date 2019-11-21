@@ -10,6 +10,8 @@ describe('Shipping Form', () => {
       shippingLabels: {},
       smsSignUpLabels: {},
       isGuest: false,
+      ServerErrors: {},
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -23,6 +25,7 @@ describe('Shipping Form', () => {
       isGuest: true,
       orderHasPickUp: false,
       isUsSite: false,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -53,6 +56,7 @@ describe('Shipping Form', () => {
       shipmentMethods: [{}],
       defaultShipmentId: '90113',
       isMobile: true,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -91,6 +95,7 @@ describe('Shipping Form', () => {
       isSaveToAddressBookChecked: false,
       isAddNewAddress: false,
       defaultAddressId: null,
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -106,10 +111,6 @@ describe('Shipping Form', () => {
     });
     tree.instance().toggleIsEditing();
     expect(tree.state('isEditing')).toBe(true);
-    const e = { preventDefault: jest.fn() };
-    tree.instance().toggleAddEditModal({ type: 'add', e });
-    expect(tree.state('modalType')).toBe('add');
-    expect(tree.state('modalState')).toBe(true);
 
     expect(tree).toMatchSnapshot();
   });
@@ -141,6 +142,7 @@ describe('Shipping Form', () => {
       isSaveToAddressBookChecked: false,
       isAddNewAddress: false,
       defaultAddressId: '1234',
+      getEmailSignUpLabels: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -148,10 +150,6 @@ describe('Shipping Form', () => {
       modalType: 'add',
       isEditing: false,
     });
-    const e = { preventDefault: jest.fn() };
-    tree.instance().toggleAddEditModal({ type: 'add', e });
-    expect(tree.state('modalType')).toBe('add');
-    expect(tree.state('modalState')).toBe(false);
 
     expect(tree).toMatchSnapshot();
   });

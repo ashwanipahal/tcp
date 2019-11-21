@@ -10,14 +10,18 @@ import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { formatPhoneNumber } from '../../../../../utils/formValidation/phoneNumber';
 
 class SMSFormFields extends React.PureComponent {
   static smsFormFieldsConfig = getStandardConfig(['phoneNumber']);
 
-  handleChange = () => {
-    const { dispatch, addressPhoneNo, formName, formSection } = this.props;
+  handleChange = (e, value) => {
+    const { dispatch, addressPhoneNo, formName, formSection, onCheckBoxChange } = this.props;
     if (dispatch) {
       dispatch(change(formName, `${formSection}.phoneNumber`, addressPhoneNo));
+    }
+    if (onCheckBoxChange) {
+      onCheckBoxChange(value);
     }
   };
 
@@ -33,11 +37,13 @@ class SMSFormFields extends React.PureComponent {
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
               onChange={this.handleChange}
+              className="send-order-update"
             >
               <BodyCopy
                 fontSize={['fs14', 'fs16', 'fs16']}
                 fontFamily="secondary"
                 fontWeight="regular"
+                dataLocator="orderUpdate-chk"
               >
                 {labels.orderUpdates}
               </BodyCopy>
@@ -57,6 +63,7 @@ class SMSFormFields extends React.PureComponent {
                 dataLocator="phone-number-field"
                 enableSuccessCheck={false}
                 className="phone-field"
+                normalize={formatPhoneNumber}
               />
             </Col>
             <Row fullBleed>
@@ -88,6 +95,7 @@ class SMSFormFields extends React.PureComponent {
 SMSFormFields.propTypes = {
   className: PropTypes.string,
   isOrderUpdateChecked: PropTypes.bool,
+  onCheckBoxChange: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func,
   addressPhoneNo: PropTypes.number,

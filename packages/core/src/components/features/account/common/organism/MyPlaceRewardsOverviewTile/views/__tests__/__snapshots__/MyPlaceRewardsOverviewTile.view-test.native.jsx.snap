@@ -8,6 +8,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -17,7 +18,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginLeft={0}
+    marginRight={0}
+    marginTop={24}
   />
   <View>
     <Styled(BodyCopy)
@@ -32,23 +35,29 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textDecoration={null}
     />
     <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel="lbl_overview_myPlaceRewardsShopNow"
-        accessibilityRole="link"
-        anchorVariation="button"
-        borderColor="black"
-        borderWidth="1"
-        buttonVariation="variable-width"
-        centered={true}
-        colorName={null}
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
         customStyle={Object {}}
-        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
-        fill="WHITE"
-        fullWidth={true}
+        customTextStyle={null}
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
         locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_overview_myPlaceRewardsShopNow"
-        visible={false}
+        theme={Object {}}
+        url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </View>
@@ -56,12 +65,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginLeft={0}
+    marginRight={0}
+    marginTop={24}
   />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -74,12 +85,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -93,6 +106,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -102,7 +116,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginLeft={0}
+    marginRight={0}
+    marginTop={24}
   />
   <Styled(View)>
     <View>
@@ -110,6 +126,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         accessibilityText=""
         data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
         margin={null}
@@ -139,7 +156,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginLeft={0}
+    marginRight={0}
+    marginTop={24}
   />
   <Connect(BonusPointsDays)
     labels={
@@ -152,7 +171,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -165,12 +184,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

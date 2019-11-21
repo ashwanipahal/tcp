@@ -41,41 +41,55 @@ class ProductVariantSelector extends React.PureComponent {
     }
   }
 
-  renderColor = ({ item }) => {
+  renderColor = ({ item, index }) => {
     const {
-      color: { imagePath, name },
+      color: { name, swatchImage },
     } = item;
-    const { selectedColor, selectColor } = this.props;
+    const { selectedColor, selectColor, isGiftCard } = this.props;
     const isSelected = (selectedColor && name === selectedColor.name) || false;
     const borderWidth = 2;
-    const componentSize = 30;
-    const imageSize = isSelected ? componentSize - borderWidth : componentSize;
+    const componentWidth = isGiftCard ? 103 : 30;
+    const componentHeight = isGiftCard ? 128 : 30;
+    const imageWidth = isSelected ? componentWidth - borderWidth : componentWidth;
+    const imageHeight = isSelected ? componentHeight - borderWidth : componentHeight;
+
+    const swatchImageUrl = swatchImage && swatchImage.split('_');
+    const imageUrl =
+      swatchImageUrl && `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
+
     return (
       <LinkImageIcon
-        uri={imagePath}
+        uri={imageUrl}
         selected={isSelected}
         onPress={() => {
           const value = {
             name,
           };
           this.handleItemChange(value);
-          selectColor(name);
+          selectColor(name, index);
         }}
-        width={componentSize}
-        height={componentSize}
-        borderRadius={15}
+        width={componentWidth}
+        height={componentHeight}
+        borderRadius={!isGiftCard ? 15 : 0}
         borderWidth={borderWidth}
-        imageWidth={imageSize}
-        imageHeight={imageSize}
+        imageWidth={imageWidth}
+        imageHeight={imageHeight}
       />
     );
   };
 
   renderGridItem = ({ item }) => {
-    const { selectedItem, selectItem, itemNameKey } = this.props;
+    const {
+      selectedItem,
+      selectItem,
+      itemNameKey,
+      isDisableZeroInventoryEntries,
+      keepAlive,
+    } = this.props;
     const itemValue = item[itemNameKey];
     const isSelected = (selectedItem && item[itemNameKey] === selectedItem) || false;
     const { disabled } = item;
+    const isDisabled = isDisableZeroInventoryEntries ? disabled : false;
 
     return (
       <Button
@@ -88,10 +102,11 @@ class ProductVariantSelector extends React.PureComponent {
           this.handleItemChange(value);
           selectItem(item[itemNameKey]);
         }}
-        selected={!disabled && isSelected}
+        selected={!isDisabled && !keepAlive && isSelected}
         data-locator=""
         accessibilityLabel={itemValue}
-        disableButton={disabled}
+        disableButton={isDisabled || keepAlive}
+        withNoLineHeight
       />
     );
   };
@@ -131,7 +146,7 @@ class ProductVariantSelector extends React.PureComponent {
           <BodyCopy
             fontWeight="black"
             color="gray.900"
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs14"
             text={titleValue.toUpperCase()}
             dataLocator={key}
@@ -179,6 +194,9 @@ ProductVariantSelector.propTypes = {
   locators: PropTypes.instanceOf(Object),
   input: PropTypes.instanceOf(Object),
   renderColorItem: PropTypes.bool,
+  isGiftCard: PropTypes.bool,
+  isDisableZeroInventoryEntries: PropTypes.bool,
+  keepAlive: PropTypes.bool,
 };
 
 ProductVariantSelector.defaultProps = {
@@ -196,6 +214,9 @@ ProductVariantSelector.defaultProps = {
   selectedColor: '',
   selectColor: null,
   renderColorItem: false,
+  isGiftCard: false,
+  isDisableZeroInventoryEntries: true,
+  keepAlive: false,
 };
 
 /* export class with styles */

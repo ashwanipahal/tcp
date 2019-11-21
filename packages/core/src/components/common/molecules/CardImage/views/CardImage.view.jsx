@@ -23,12 +23,7 @@ const CardImage = ({ card, cardNumber }) => {
     <>
       <div className={`cardImage-wrapper ${cardTopMargin}`}>
         <div className="cardImage-img-wrapper">
-          <img
-            className="cardImage-img"
-            data-locator={card.ccBrand}
-            alt={card.ccType}
-            src={cardIcon}
-          />
+          <img className="cardImage-img" data-locator="cardLogo" alt={card.ccType} src={cardIcon} />
         </div>
         <BodyCopy component="p" fontFamily="secondary" className="cardImage-card-number">
           {cardNumber}

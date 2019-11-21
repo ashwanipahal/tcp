@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.View`
   margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  border-bottom-width: 1px;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
 const SectionOne = styled.View`
@@ -13,7 +15,7 @@ const SectionTwo = styled.View`
 `;
 
 const SectionThree = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const TitlePlusContainer = styled.View`

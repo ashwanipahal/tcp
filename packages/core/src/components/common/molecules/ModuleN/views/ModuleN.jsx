@@ -7,13 +7,34 @@ import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import { Row, Col } from '../../../atoms';
-import config from '../config';
+import { ctaTypeProps, config } from '../config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const { ctaTypes } = config;
 
+const getButtonListVariationProps = ctaType => {
+  const buttonTypeProps = {
+    ...ctaTypeProps,
+  };
+  return buttonTypeProps[ctaType];
+};
+
+const getMappedPromoBanner = promoBanner => {
+  const promoTexts = promoBanner ? promoBanner[0] : { textItems: [] };
+  return promoTexts.textItems.map(item => {
+    return { ...promoTexts, textItems: [item] };
+  });
+};
+
 const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType } = props;
+  const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
+
+  const buttonListProps = getButtonListVariationProps(ctaType);
+  let dualVariation = null;
+  if (ctaType === 'stackedCTAButtonsExpandable' || ctaType === 'CTAButtonCarouselExpandable') {
+    dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
+  }
+  const mappedPromoBanner = getMappedPromoBanner(promoBanner);
 
   return (
     <Row
@@ -22,6 +43,7 @@ const ModuleN = props => {
       data-locator={getLocator('moduleN_promobanner_img')}
     >
       <Col
+        className="moduleN-innerContent"
         colSize={{
           small: 6,
           medium: 8,
@@ -40,22 +62,35 @@ const ModuleN = props => {
               dataLocator={getLocator('moduleN_header_text')}
             />
           )}
-          {promoBanner && (
+          {mappedPromoBanner && mappedPromoBanner[0] && (
             <PromoBanner
-              promoBanner={promoBanner}
+              promoBanner={[mappedPromoBanner[0]]}
               className="moduleN__promo-banner"
               color="white"
               data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList
-          buttonListVariation={ctaTypes[ctaType]}
-          buttonsData={ctaItems}
-          fill="RED"
-          dataLocatorDivisionImages={getLocator('moduleN_image')}
-          dataLocatorTextCta={getLocator('moduleN_cta_links')}
-        />
+        {mappedPromoBanner && mappedPromoBanner[1] && (
+          <PromoBanner
+            promoBanner={[mappedPromoBanner[1]]}
+            className="moduleN__promo-banner"
+            color="white"
+            data-locator={getLocator('moduleN_promobanner_text')}
+          />
+        )}
+        <div className="ModuleN_Button">
+          <ButtonList
+            buttonListVariation={ctaTypes[ctaType]}
+            buttonsData={ctaItems}
+            fill="RED"
+            dataLocatorDivisionImages={getLocator('moduleN_image')}
+            dataLocatorDropDown={getLocator('moduleN_dropdown')}
+            dropdownLabel={expandableTitle}
+            dataLocatorTextCta={getLocator('moduleN_cta_links')}
+            dualVariation={dualVariation}
+          />
+        </div>
       </Col>
     </Row>
   );
@@ -67,6 +102,7 @@ ModuleN.defaultProps = {
   headerText: [],
   promoBanner: [],
   ctaType: 'stackedCTAButtons',
+  expandableTitle: '',
 };
 
 ModuleN.propTypes = {
@@ -75,6 +111,7 @@ ModuleN.propTypes = {
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   ctaType: PropTypes.string,
+  expandableTitle: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);

@@ -11,19 +11,25 @@ exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla corr
   selected={false}
   width={10}
 >
-  <Styled(Image)
-    accessibilityLabel="image"
+  <Styled(Styled(DamImage))
+    accessibilityLabel="image "
     accessibilityRole="image"
+    alt=""
     borderRadius={6}
     borderWidth={1}
+    checkBrand=""
+    crop=""
     height={10}
+    host=""
+    imgConfig=""
+    isProductImage={true}
+    itemBrand=""
     resizeMode="contain"
     selected={false}
-    source={
-      Object {
-        "uri": "",
-      }
-    }
+    source=""
+    swatchConfig="w_50,h_50,c_thumb,g_auto:0"
+    url=""
+    videoData={null}
     width={10}
   />
 </Styled(TouchableOpacity)>

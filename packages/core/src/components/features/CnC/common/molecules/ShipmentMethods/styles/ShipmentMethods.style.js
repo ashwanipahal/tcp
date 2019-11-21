@@ -21,6 +21,11 @@ const styles = css`
       font-style: italic;
     }
   }
+  .estimated-shipping-size {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding: 4px 0px;
+    }
+  }
 `;
 
 export default styles;

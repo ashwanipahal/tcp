@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -15,19 +16,8 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getIconPath } from '../../../../../../../utils';
-
-// @flow
-type Props = {
-  isMakeDefaultDisabled: string,
-  handleSubmit: string,
-  labels: string,
-  hideShowPwd: boolean,
-  confirmHideShowPwd: boolean,
-  onAlreadyHaveAnAccountClick: any,
-  className: string,
-  tooltipContent: any,
-};
+import { getIconPath, isCanada } from '../../../../../../../utils';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -39,14 +29,21 @@ let CreateAccountForm = ({
   onAlreadyHaveAnAccountClick,
   className,
   tooltipContent,
-}: Props) => {
+  userplccCardNumber,
+  userplccCardId,
+}) => {
+  const getPlccLbl = getLabelValue(
+    labels,
+    'lbl_createAccount_plcc_checkbox_Text',
+    'registration'
+  ).replace('#number', `${userplccCardNumber}`);
   return (
     <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="First Name"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_firstName', 'registration')}
               name="firstName"
               id="firstName"
               component={TextBox}
@@ -56,7 +53,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Last Name"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_lastName', 'registration')}
               name="lastName"
               id="lastName"
               component={TextBox}
@@ -66,7 +63,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Phone Number"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_phoneNumber', 'registration')}
               name="phoneNumber"
               id="phoneNumber"
               type="tel"
@@ -74,11 +71,16 @@ let CreateAccountForm = ({
               maxLength={50}
               dataLocator="phone-number-field"
               enableSuccessCheck={false}
+              normalize={formatPhoneNumber}
             />
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Zip Code"
+              placeholder={
+                isCanada()
+                  ? getLabelValue(labels, 'lbl_addEditAddress_postalCode', 'addEditAddress')
+                  : getLabelValue(labels, 'lbl_createAccount_zipCode', 'registration')
+              }
               name="noCountryZip"
               id="noCountryZip"
               component={TextBox}
@@ -88,7 +90,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Email Address"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_emailAddress', 'registration')}
               name="emailAddress"
               id="emailAddress"
               component={TextBox}
@@ -98,7 +100,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Confirm Email Address"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_confirmEmail', 'registration')}
               name="confirmEmailAddress"
               id="confirmEmailAddress"
               component={TextBox}
@@ -108,7 +110,7 @@ let CreateAccountForm = ({
           </Col>
           <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Password"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_password', 'registration')}
               name="password"
               id="password"
               type={hideShowPwd ? 'text' : 'password'}
@@ -142,7 +144,11 @@ let CreateAccountForm = ({
           </Col>
           <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Confirm Password"
+              placeholder={getLabelValue(
+                labels,
+                'lbl_createAccount_confirmPassword',
+                'registration'
+              )}
               name="confirmPassword"
               id="confirmPassword"
               type={confirmHideShowPwd ? 'text' : 'password'}
@@ -169,20 +175,24 @@ let CreateAccountForm = ({
               </Col>
             </span>
           </Col>
-
-          {/* CHECKBOXES */}
-          {/* TODO: Uncomment when PLCC reg is available
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
-            <Field
-              name="myPlace"
-              component={InputCheckbox}
-              dataLocator="my-place-checkbox"
-              disabled={isMakeDefaultDisabled}
+          {userplccCardNumber && userplccCardId && (
+            <Col
+              className="plcc_checkbox elem-pb-MED"
+              ignoreGutter={{ small: true }}
+              colSize={{ small: 6 }}
             >
-              {getLabelValue(labels,'lbl_createAccount_saveRewards','registration')}
-            </Field>
-          </Col>
-          */}
+              <Field
+                name="plcc_checkbox"
+                component={InputCheckbox}
+                dataLocator="plcc_checkbox"
+                alignCheckbox="top"
+              >
+                <BodyCopy fontFamily="secondary" fontSize="fs10">
+                  <RichText richTextHtml={getPlccLbl} />
+                </BodyCopy>
+              </Field>
+            </Col>
+          )}
           <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
@@ -245,7 +255,11 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
+            <Anchor
+              fontSizeVariation="large"
+              className="already-account"
+              onClick={onAlreadyHaveAnAccountClick}
+            >
               {getLabelValue(labels, 'lbl_createAccount_alreadyAccount', 'registration')}
             </Anchor>
           </Col>
@@ -274,6 +288,19 @@ CreateAccountForm = reduxForm({
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);
+
+CreateAccountForm.propTypes = {
+  isMakeDefaultDisabled: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  labels: PropTypes.string.isRequired,
+  hideShowPwd: PropTypes.bool.isRequired,
+  confirmHideShowPwd: PropTypes.bool.isRequired,
+  onAlreadyHaveAnAccountClick: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  tooltipContent: PropTypes.string.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
+};
 
 export default withStyles(CreateAccountForm, Styles);
 export { CreateAccountForm as CreateAccountFormVanilla };

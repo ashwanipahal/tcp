@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
+<View>
+  <Styled(View)>
+    <Connect(ModuleQ)
+      divTabs={Array []}
+      hideTabs={true}
+      hostLazyLoad="lazyload-pdp"
+      isRelatedOutfit={true}
+      navigation={Object {}}
+      showRelatedOutfitHeader={[Function]}
+    />
+  </Styled(View)>
+</View>
+`;

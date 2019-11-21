@@ -5,6 +5,7 @@ import { getViewportInfo } from '@tcp/core/src/utils';
 import { getModuleXContent } from './StoresInternational.actions';
 import StoresInternational from './views/StoresInternational';
 import { getContent, getModuleXContentId } from './StoresInternational.selectors';
+import { getLabels } from '../../StoreList/container/StoreList.selectors';
 import STORE_INTL_CONSTANTS from './StoresInternational.constants';
 
 export class StoresInternationalContainer extends Component {
@@ -73,6 +74,7 @@ StoresInternationalContainer.propTypes = {
   getModuleX: PropTypes.func.isRequired,
   content: PropTypes.string.isRequired,
   contentId: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 StoresInternationalContainer.defaultProps = {
@@ -83,6 +85,7 @@ export const mapStateToProps = state => {
   return {
     content: getContent(state),
     contentId: getModuleXContentId(state),
+    labels: getLabels(state),
   };
 };
 

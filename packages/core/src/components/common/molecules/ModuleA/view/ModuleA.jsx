@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-
+import useImageLoadedState from '@tcp/web/src/hooks/useImageLoadedState';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Carousel, LinkText, style } from '../ModuleA.style';
 import { Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
@@ -14,31 +16,51 @@ const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
 
+/**
+ * This component is used for the initial slide only,
+ * so that the load timing of the image within can be
+ * measured with the Performance API.
+ */
+function FirstCarouselSlide(props) {
+  const imageRef = useRef();
+  const imageLoaded = useImageLoadedState(imageRef);
+  return (
+    <>
+      <DamImage forwardedRef={imageRef} {...props} />
+      {imageLoaded && <RenderPerf.Measure name={HERO_VISIBLE} />}
+    </>
+  );
+}
+
+// Helper for determining when FirstCarouselSlide should be rendered
+function getSlideComponent(slideIndex) {
+  return slideIndex === 0 ? FirstCarouselSlide : DamImage;
+}
+
 class ModuleA extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isRibbonLeftAligned: false,
+      curSlideIndex: 0,
     };
   }
 
-  componentDidMount() {
-    this.setRibbonPosition(0);
-  }
-
-  setRibbonPosition = index => {
+  /* Return className for the ribbon placement */
+  getRibbonClass = () => {
     const { largeCompImageCarousel } = this.props;
-    const [ribbonBanner] = largeCompImageCarousel[index].ribbonBanner;
-    if (ribbonBanner.ribbonPlacement === 'left') {
-      this.setState({ isRibbonLeftAligned: true });
-    } else {
-      this.setState({ isRibbonLeftAligned: false });
-    }
-  };
+    const { curSlideIndex } = this.state;
+    const curCarouselSlide = largeCompImageCarousel[curSlideIndex];
+    let ribbonAlignedClass = '';
 
-  onSlideChange = index => {
-    this.setRibbonPosition(index);
+    if (curCarouselSlide) {
+      const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
+      if (ribbonBanner.ribbonPlacement === 'left') {
+        ribbonAlignedClass = 'left-aligned-ribbon';
+      }
+    }
+
+    return ribbonAlignedClass;
   };
 
   render() {
@@ -47,11 +69,12 @@ class ModuleA extends React.Component {
       ctaItems,
       ctaType,
       className,
-      accessibility: { playIconButton, pauseIconButton } = {},
+      accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
+      fullBleed,
     } = this.props;
 
     const buttonListCtaType = ctaTypes[ctaType];
-    const { isRibbonLeftAligned } = this.state;
+
     const isLinkList = buttonListCtaType === 'linkCTAList';
     const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
 
@@ -65,21 +88,34 @@ class ModuleA extends React.Component {
     };
 
     CAROUSEL_OPTIONS.prevArrow = (
-      <button type="button" data-locator="moduleA_left_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={previousButton}
+        data-locator="moduleA_left_arrow"
+        className="slick-prev"
+      />
     );
     CAROUSEL_OPTIONS.nextArrow = (
-      <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={nextIconButton}
+        data-locator="moduleA_right_arrow"
+        className="slick-prev"
+      />
     );
+    CAROUSEL_OPTIONS.afterChange = slideIndex => {
+      this.setState({ curSlideIndex: slideIndex });
+    };
     carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
     carouselConfig.pauseIconButtonLabel = pauseIconButton;
     carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <Row
-        className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
-          isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
-        } moduleA`}
-        fullBleed={{ small: true, medium: true, large: false }}
+        className={`${className} ${
+          isGymboree() ? 'gymboree-module-a' : ''
+        } ${this.getRibbonClass()} moduleA`}
+        fullBleed={fullBleed || { small: true, medium: true, large: false }}
       >
         <Col
           colSize={{
@@ -98,9 +134,11 @@ class ModuleA extends React.Component {
                   ribbonBanner,
                 } = item;
                 const imageConfig = isGymboree() ? IMG_DATA_GYM.crops : IMG_DATA_TCP.crops;
+                // Use a special component for the first slide (for performance measurement)
+                const SlideComponent = getSlideComponent(i);
                 return (
                   <div key={i.toString()} className="banner-slide">
-                    <DamImage
+                    <SlideComponent
                       imgData={linkedImage.image}
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
@@ -160,12 +198,15 @@ class ModuleA extends React.Component {
 
 ModuleA.defaultProps = {
   accessibility: {},
+  fullBleed: false,
 };
 
 ModuleA.propTypes = {
   accessibility: PropTypes.shape({
     playIconButton: PropTypes.string,
     pauseIconButton: PropTypes.string,
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
   }),
   className: PropTypes.string.isRequired,
   largeCompImageCarousel: PropTypes.arrayOf(
@@ -184,6 +225,7 @@ ModuleA.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
+  fullBleed: PropTypes.bool,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

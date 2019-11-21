@@ -1,5 +1,8 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">4sDykUpVqqTSYHFuk4Nn7AEqiEiRY93AVL1Si</string>
     <string name="app_name">My Place</string>
     <string name="splash_name">My Place</string>
-    <string name="facebook_app_id">512065309359521</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="facebook_app_id">312738492865420</string>
 </resources>

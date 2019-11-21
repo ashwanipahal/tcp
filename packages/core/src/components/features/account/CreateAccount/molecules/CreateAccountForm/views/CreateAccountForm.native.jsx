@@ -3,7 +3,11 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import ImageComp from '@tcp/core/src/components/common/atoms/Image';
+import IconInfoLogo from '@tcp/core/src/assets/info-icon.png';
 import TextBox from '../../../../../../common/atoms/TextBox';
+import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Styles,
@@ -13,6 +17,7 @@ import {
   PasswordWrapper,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
+  IconContainer,
 } from '../styles/CreateAccountForm.style.native';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -20,20 +25,9 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 class CreateAccountForm extends PureComponent<Props> {
-  onSaveMyPlaceRewards = value => {
-    console.log('onSaveMyPlaceRewards: ', value);
-  };
-
-  onUseTouchID = value => {
-    console.log('onUseTouchID: ', value);
-  };
-
-  onUseFaceID = value => {
-    console.log('onUseFaceID: ', value);
-  };
-
   showLoginSection = () => {
     const { showLogin } = this.props;
     showLogin();
@@ -49,7 +43,15 @@ class CreateAccountForm extends PureComponent<Props> {
       onConfirmPwdHideShowClick,
       confirmHideShowPwd,
       getTouchStatus,
+      userplccCardNumber,
+      userplccCardId,
+      passwordLabels,
     } = this.props;
+    const getPlccLbl = getLabelValue(
+      labels,
+      'lbl_createAccount_plcc_checkbox_Text',
+      'registration'
+    ).replace('#number', `${userplccCardNumber}`);
     return (
       <View {...this.props}>
         <ParentView>
@@ -76,6 +78,7 @@ class CreateAccountForm extends PureComponent<Props> {
             type="text"
             component={TextBox}
             dataLocator="phoneNumber"
+            normalize={formatPhoneNumber}
           />
           <Field
             label={getLabelValue(labels, 'lbl_createAccount_zipCode', 'registration')}
@@ -89,7 +92,9 @@ class CreateAccountForm extends PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_createAccount_emailAddress', 'registration')}
             name="emailAddress"
             id="emailAddress"
+            autoCapitalize="none"
             type="text"
+            keyboardType="email-address"
             component={TextBox}
             dataLocator="emailAddress"
           />
@@ -97,7 +102,9 @@ class CreateAccountForm extends PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_createAccount_confirmEmail', 'registration')}
             name="confirmEmailAddress"
             id="confirmEmailAddress"
+            autoCapitalize="none"
             type="text"
+            keyboardType="email-address"
             component={TextBox}
             dataLocator="confirmEmailAddress"
           />
@@ -112,6 +119,17 @@ class CreateAccountForm extends PureComponent<Props> {
               secureTextEntry={!hideShowPwd}
             />
 
+            <IconContainer>
+              <ReactTooltip
+                withOverlay={false}
+                popover={<PasswordRequirement labels={passwordLabels} />}
+                height={200}
+                width={300}
+                textAlign="left"
+              >
+                <ImageComp source={IconInfoLogo} height={12} width={12} />
+              </ReactTooltip>
+            </IconContainer>
             <ConfirmHideShowField>
               <Field
                 name="hide-show-pwd"
@@ -156,6 +174,19 @@ class CreateAccountForm extends PureComponent<Props> {
           </ConfirmPasswordWrapper>
 
           {/* CHECKBOXES */}
+
+          {!!(userplccCardNumber && userplccCardId) && (
+            <Field
+              inputVariation="inputVariation-1"
+              name="plcc_checkbox"
+              component={InputCheckbox}
+              dataLocator="plcc_checkbox"
+              disabled={false}
+              rightText={getPlccLbl}
+              marginTop={13}
+            />
+          )}
+
           <Field
             inputVariation="inputVariation-1"
             name="iAgree"
@@ -164,16 +195,15 @@ class CreateAccountForm extends PureComponent<Props> {
             disabled={false}
             rightText={`${getLabelValue(
               labels,
-              'lbl_createAccount_termsConditions',
+              'lbl_createAccount_termsConditions_app',
               'registration'
-            )} ${getLabelValue(labels, 'lbl_createAccount_termsConditions_1', 'registration')}`}
+            )} ${getLabelValue(labels, 'lbl_createAccount_termsConditions_1_app', 'registration')}`}
             marginTop={13}
           />
           <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           <ButtonWrapper>
             <CustomButton
               text={getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
-              buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
             />
@@ -223,6 +253,8 @@ CreateAccountForm.propTypes = {
   onConfirmPwdHideShowClick: PropTypes.func,
   onRequestClose: PropTypes.func,
   confirmHideShowPwd: PropTypes.bool,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 CreateAccountForm.defaultProps = {
@@ -245,6 +277,8 @@ CreateAccountForm.defaultProps = {
   onConfirmPwdHideShowClick: () => {},
   onRequestClose: () => {},
   confirmHideShowPwd: false,
+  userplccCardId: '',
+  userplccCardNumber: '',
 };
 
 export default reduxForm({

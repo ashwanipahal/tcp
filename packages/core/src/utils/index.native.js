@@ -15,11 +15,17 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  isIOS,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
   setTestId,
   validateColor,
   getTranslatedMomentDate,
+  getTranslateDateInformation,
+  readCookieMobileApp,
+  createGoogleMapUrl,
+  mapHandler,
+  formatPhnNumber,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -50,6 +56,18 @@ export {
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
+  generateTraceId,
+  parseBoolean,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  canUseDOM,
+  calculatePriceValue,
+  getProductUrlForDAM,
 } from './utils';
+
+export { getLoading } from './JsxUtils.app';

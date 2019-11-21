@@ -9,6 +9,7 @@ import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
 import EARNEXTRAPOINTS_CONSTANTS from '../EarnExtraPointsTile.constants';
+import EarnExtraPointsTileSkeleton from '../skeleton/EarnExtraPointsTileSkeleton.view';
 
 const onViewActivityDetails = () => {
   return routerPush(internalEndpoints.extraPointsPage.link, internalEndpoints.extraPointsPage.path);
@@ -18,7 +19,7 @@ const onViewActivityDetails = () => {
  * @function EarnExtraPointsTile The EarnExtraPointsTile component will provide Carousel with tiles data
  */
 
-const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview }) => {
+const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview, isFetching }) => {
   if (waysToEarn && waysToEarn.length > EARNEXTRAPOINTS_CONSTANTS.MAX_TILE_COUNT) {
     carouselConfig.dots = false;
   }
@@ -26,7 +27,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview 
   return (
     <div className={className}>
       {!isAccountOverview && (
-        <Row>
+        <Row fullBleed>
           <Col colSize={{ large: 10, medium: 6, small: 4 }}>
             <BodyCopy
               component="div"
@@ -57,29 +58,33 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview 
         textAlign="center"
         className={isAccountOverview ? 'onAccountOverview' : 'earnExtraPointsWrapper'}
       >
-        <Carousel
-          options={carouselConfig}
-          carouselConfig={{
-            customArrowLeft: getIconPath('smallright'),
-            customArrowRight: getIconPath('smallright'),
-            arrow: 'small',
-            type: 'light',
-          }}
-          carouselTheme="dark"
-          className={className}
-        >
-          {waysToEarn &&
-            waysToEarn.map((item, index) => {
-              return (
-                <DetailedEarnExtraPointsTile
-                  key={index.toString()}
-                  waysToEarnRow={item}
-                  onViewActivityDetails={onViewActivityDetails}
-                  labels={labels}
-                />
-              );
-            })}
-        </Carousel>
+        {isFetching ? (
+          <EarnExtraPointsTileSkeleton />
+        ) : (
+          <Carousel
+            options={carouselConfig}
+            carouselConfig={{
+              customArrowLeft: getIconPath('smallright'),
+              customArrowRight: getIconPath('smallright'),
+              arrow: 'small',
+              type: 'light',
+            }}
+            carouselTheme="dark"
+            className={className}
+          >
+            {waysToEarn &&
+              waysToEarn.map((item, index) => {
+                return (
+                  <DetailedEarnExtraPointsTile
+                    key={index.toString()}
+                    waysToEarnRow={item}
+                    onViewActivityDetails={onViewActivityDetails}
+                    labels={labels}
+                  />
+                );
+              })}
+          </Carousel>
+        )}
       </BodyCopy>
     </div>
   );
@@ -93,6 +98,7 @@ EarnExtraPointsTile.propTypes = {
     lbl_common_viewAll: PropTypes.string,
   }),
   isAccountOverview: PropTypes.bool,
+  isFetching: PropTypes.bool,
 };
 
 EarnExtraPointsTile.defaultProps = {
@@ -103,6 +109,7 @@ EarnExtraPointsTile.defaultProps = {
     lbl_common_viewAll: '',
   },
   isAccountOverview: false,
+  isFetching: false,
 };
 
 export default withStyles(EarnExtraPointsTile, styles);

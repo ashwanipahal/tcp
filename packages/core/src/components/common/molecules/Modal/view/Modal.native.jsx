@@ -1,24 +1,13 @@
 import React from 'react';
+import { Modal, KeyboardAvoidingView, Platform } from 'react-native';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import {
-  Modal,
-  StatusBar,
-  SafeAreaView,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
-import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
-import {
-  StyledCrossImage,
-  StyledTouchableOpacity,
-  ModalHeading,
-  LineWrapper,
-  RowWrapper,
-  ImageWrapper,
   ModalCustomWrapper,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
 } from '../Modal.style.native';
-import BodyCopy from '../../../atoms/BodyCopy';
+import ModalNativeHeader from './Modal.native.header';
 
 // How To use this react native modal
 // import this component in your file.
@@ -34,55 +23,11 @@ type Props = {
   inheritedStyles?: String,
 };
 
-const closeIcon = require('../../../../../assets/close.png');
-const arrowIcon = require('../../../../../assets/carrot-large-left.png');
-
-type CloseIconProps = {
-  onRequestClose: Function,
-  headerStyle: Object,
-  iconType: String,
-  isOverlay: Boolean,
-  stickyCloseIcon: Boolean,
-};
-
-const getCloseIcon = ({
-  stickyCloseIcon,
-  onRequestClose,
-  headerStyle,
-  iconType,
-  isOverlay,
-}: CloseIconProps) => {
-  return (
-    <ImageWrapper stickyCloseIcon={stickyCloseIcon} style={headerStyle}>
-      <StyledTouchableOpacity
-        onPress={onRequestClose}
-        accessibilityRole="button"
-        accessibilityLabel="close"
-        isOverlay={isOverlay}
-      >
-        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
-      </StyledTouchableOpacity>
-    </ImageWrapper>
-  );
-};
-
-const geLine = (horizontalBar, borderColor) => {
-  return (
-    <>
-      {horizontalBar ? (
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
-        </LineWrapper>
-      ) : null}
-    </>
-  );
-};
-
 const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
   const {
     heading,
     onRequestClose,
-    animationType,
+    animationType = 'slide',
     headingAlign,
     headingFontFamily,
     headerStyle,
@@ -95,6 +40,13 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     transparentModal,
     horizontalBar = true,
     borderColor = 'black',
+    rightAlignCrossIcon,
+    noscroll,
+    customHeaderMargin,
+    modalHeadingMargin,
+    margins,
+    paddings,
+    childrenMargins,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
@@ -103,53 +55,58 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     keyboardVerticalOffset = 64;
   }
 
+  let Component = ScrollView;
+  if (noscroll) {
+    Component = ViewContainer;
+  }
+
   return (
-    <SafeAreaView>
-      <Modal
-        transparent={customTransparent || false}
-        visible={isOpen}
-        animationType={animationType}
-        onRequestClose={onRequestClose}
-      >
-        {!customTransparent && (
-          <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
-            <ToastContainer />
-            <StatusBar hidden />
-            <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-              {heading && (
-                <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                  <BodyCopy
-                    mobileFontFamily={headingFontFamily || 'primary'}
-                    fontWeight={headingFontWeight || 'extrabold'}
-                    textAlign={headingAlign}
-                    fontSize={fontSize || 'fs16'}
-                    text={heading}
-                  />
-                </ModalHeading>
-              )}
-              {getCloseIcon({
-                onRequestClose,
-                headerStyle,
-                iconType,
-                isOverlay,
-                stickyCloseIcon,
-              })}
-            </RowWrapper>
-            {geLine(horizontalBar, borderColor)}
-            <KeyboardAvoidingView
-              behavior={behavior}
-              keyboardVerticalOffset={keyboardVerticalOffset}
-              enabled
+    <Modal
+      transparent={customTransparent || false}
+      visible={isOpen}
+      animationType={animationType}
+      onRequestClose={onRequestClose}
+    >
+      {!customTransparent && (
+        <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
+          <KeyboardAvoidingView
+            behavior={behavior}
+            keyboardVerticalOffset={keyboardVerticalOffset}
+            enabled
+          >
+            <Component
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              stickyHeaderIndices={[0]}
+              margins={margins}
+              paddings={paddings}
             >
-              <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-                {children}
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </ModalCustomWrapper>
-        )}
-        {customTransparent && children}
-      </Modal>
-    </SafeAreaView>
+              <ModalNativeHeader
+                heading={heading}
+                onRequestClose={onRequestClose}
+                headingAlign={headingAlign}
+                headingFontFamily={headingFontFamily}
+                headerStyle={headerStyle}
+                headingFontWeight={headingFontWeight}
+                fontSize={fontSize}
+                iconType={iconType}
+                fullWidth={fullWidth}
+                stickyCloseIcon={stickyCloseIcon}
+                horizontalBar={horizontalBar}
+                borderColor={borderColor}
+                rightAlignCrossIcon={rightAlignCrossIcon}
+                customHeaderMargin={customHeaderMargin}
+                modalHeadingMargin={modalHeadingMargin}
+              />
+
+              <ChildrenContainer childrenMargins={childrenMargins}>{children}</ChildrenContainer>
+            </Component>
+          </KeyboardAvoidingView>
+        </ModalCustomWrapper>
+      )}
+      {customTransparent && children}
+      <Loader />
+    </Modal>
   );
 };
 

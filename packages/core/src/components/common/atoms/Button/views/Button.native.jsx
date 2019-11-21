@@ -13,10 +13,18 @@ import {
 import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const IconComp = values => {
-  const { showIcon, iconName, selectedIcon, iconColor, iconSize, selected } = values;
+  const {
+    showIcon,
+    iconName,
+    selectedIcon,
+    iconColor,
+    iconSize,
+    selected,
+    buttonVariation,
+  } = values;
   if (showIcon) {
     return (
-      <IconContainer>
+      <IconContainer buttonVariation={buttonVariation}>
         <CustomIcon name={selected ? selectedIcon : iconName} size={iconSize} color={iconColor} />
       </IconContainer>
     );
@@ -39,6 +47,8 @@ const CustomButton = props => {
     active,
     selected,
     customTextStyle,
+    paddings,
+    withNoLineHeight,
     ...otherProps
   } = props;
   const textValue = text || '';
@@ -51,7 +61,6 @@ const CustomButton = props => {
       navigateToPage(cmsValidatedUrl, navigation);
     }
   };
-
   return (
     <TouchableOpacityComponent
       accessibilityRole="button"
@@ -70,6 +79,8 @@ const CustomButton = props => {
         active={active}
         selected={selected}
         style={customTextStyle}
+        paddings={paddings}
+        withNoLineHeight={withNoLineHeight}
       >
         {textValue}
       </CustomStyleText>
@@ -98,7 +109,9 @@ CustomButton.propTypes = {
   iconName: PropTypes.string,
   iconColor: PropTypes.string,
   iconSize: PropTypes.string,
+  withNoLineHeight: PropTypes.bool,
   customTextStyle: PropTypes.shape({}),
+  paddings: PropTypes.string,
 };
 
 CustomButton.defaultProps = {
@@ -122,6 +135,8 @@ CustomButton.defaultProps = {
   showIcon: false,
   selectedIcon: ICON_NAME.chevronUp,
   customTextStyle: null,
+  paddings: '12px 32px 12px 32px',
+  withNoLineHeight: false,
 };
 
 export default withStyles(CustomButton, style);

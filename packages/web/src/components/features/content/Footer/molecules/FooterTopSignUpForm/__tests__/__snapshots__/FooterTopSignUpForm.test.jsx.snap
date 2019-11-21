@@ -6,6 +6,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
 >
   <Styled(Grid)>
     <Styled(Row)
+      className="footer_top__signup_form_row"
       fullBleed={true}
     >
       <Styled(Col)
@@ -29,7 +30,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -172,7 +173,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -180,10 +181,9 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
             }
           }
           dataLocator="enter_email_text_field"
+          enableSuccessCheck={false}
           id="signup"
           name="signup"
-          onBlur={[Function]}
-          onKeyPress={[Function]}
           placeholder="Enter email address"
           type="text"
         />
@@ -207,12 +207,172 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
           buttonVariation="fixed-width"
           className="candidate_a_form_button"
           data-locator="email_submit_btn"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
+          disabled={false}
+          type="submit"
         >
           Submit
         </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="footer_top__signup_form_row"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 12,
+            "small": 12,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": false,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-jTzLTM",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                  [Function],
+                  "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-jTzLTM",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator=""
+          id=""
+          name=""
+          type="checkbox"
+        />
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Grid)>

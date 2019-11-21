@@ -7,6 +7,8 @@ const ROUTE_NAMES = {
   PRODUCT_DETAIL_PAGE: 'ProductDetail',
   SEARCH_RESULTS_PAGE: 'SearchDetail',
   CONFIRMATION: 'Confirmation',
+  OUTFIT_LISTING: 'OutfitListing',
+  BUNDLE_DETAIL: 'BundleDetail',
 };
 
 export default ROUTE_NAMES;

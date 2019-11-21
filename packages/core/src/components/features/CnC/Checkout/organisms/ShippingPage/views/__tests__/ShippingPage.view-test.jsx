@@ -18,10 +18,19 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
       userAddresses: List(),
+      addressLabels: {},
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+      shippingAddress: {
+        addressLine1: '',
+      },
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -39,10 +48,14 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
       shippingAddressId: '123',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -56,6 +69,10 @@ describe('Shipping Page', () => {
         },
       ]),
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -81,10 +98,16 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
+
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -99,6 +122,10 @@ describe('Shipping Page', () => {
       ]),
       addEditResponseAddressId: '34789',
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -123,9 +150,13 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -138,6 +169,9 @@ describe('Shipping Page', () => {
           primary: 'true',
         },
       ]),
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpTCP: true },
       addEditResponseAddressId: '34789',
     };
     const tree = shallow(<ShippingPage {...props} />);
@@ -155,9 +189,15 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
+      formatPayload: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -179,12 +219,14 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      verifyAddressAction: () => {},
+      shippingDidMount: () => {},
+      emailSignUpFlags: { emailSignUpGYM: true },
     };
 
     const tree = shallow(<ShippingPage {...props} />);
     tree.setState({ isAddNewAddress: false });
     tree.instance().updateShippingAddress();
-    expect(mockedupdateShippingAddressData).toBeCalled();
     tree.instance().addNewShippingAddress();
     expect(mockedaddNewShippingAddressData).toBeCalled();
     tree

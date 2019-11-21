@@ -20,7 +20,7 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-kgoBCf",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -50,14 +50,14 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "displayName": "Styled(CreditCardNumber)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-kgoBCf",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
           }
-          dataLocator="payment-cardtextfield"
+          dataLocator="cardNbrTxtBox"
           enableSuccessCheck={false}
           id="cardNumber"
           isPLCCEnabled={true}
@@ -89,7 +89,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-kgoBCf",
             "isStatic": false,
             "rules": Array [
               "
@@ -119,14 +119,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(CreditCardNumber)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-kgoBCf",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -164,7 +164,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-kgoBCf",
             "isStatic": false,
             "rules": Array [
               "
@@ -194,14 +194,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(CreditCardNumber)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-kgoBCf",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -228,7 +228,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-dnqmqq",
+            "componentId": "sc-gqjmRU",
             "isStatic": false,
             "rules": Array [
               "
@@ -257,9 +257,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     color: ",
               [Function],
               ";
-    font-size: ",
-              [Function],
-              ";
     margin: 0;
     margin-bottom: ",
               [Function],
@@ -271,6 +268,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     width: 100%;
+
+    ",
+              [Function],
+              ";
 
     ",
               [Function],
@@ -317,14 +318,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(SelectBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-dnqmqq",
+          "styledComponentId": "sc-gqjmRU",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expmonthdd"
+      dataLocator="expMonthDropDown"
       enableSuccessCheck={false}
       id="expMonth"
       name="expMonth"
@@ -381,6 +382,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         ]
       }
       placeholder=""
+      title=""
     />
   </Styled(Col)>
   <Styled(Col)
@@ -400,7 +402,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-dnqmqq",
+            "componentId": "sc-gqjmRU",
             "isStatic": false,
             "rules": Array [
               "
@@ -429,9 +431,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     color: ",
               [Function],
               ";
-    font-size: ",
-              [Function],
-              ";
     margin: 0;
     margin-bottom: ",
               [Function],
@@ -443,6 +442,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     width: 100%;
+
+    ",
+              [Function],
+              ";
 
     ",
               [Function],
@@ -489,14 +492,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(SelectBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-dnqmqq",
+          "styledComponentId": "sc-gqjmRU",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expyeardd"
+      dataLocator="expYearDropDown"
       enableSuccessCheck={false}
       id="expYear"
       name="expYear"
@@ -549,6 +552,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         ]
       }
       placeholder=""
+      title=""
     />
   </Styled(Col)>
   <Styled(Col)
@@ -562,12 +566,13 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     }
   >
     <Field
+      autoComplete="off"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gzVnrw",
+            "componentId": "sc-iwsKbI",
             "isStatic": false,
             "rules": Array [
               "
@@ -710,19 +715,20 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(TextBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gzVnrw",
+          "styledComponentId": "sc-iwsKbI",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cvv"
+      dataLocator="cvvTxtBox"
       enableSuccessCheck={false}
       id="cvvCode"
       maxLength="4"
       name="cvvCode"
       placeholder=""
+      type="tel"
     />
     <Field
       component={
@@ -730,7 +736,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gzVnrw",
+            "componentId": "sc-iwsKbI",
             "isStatic": false,
             "rules": Array [
               "
@@ -873,7 +879,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(TextBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gzVnrw",
+          "styledComponentId": "sc-iwsKbI",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],

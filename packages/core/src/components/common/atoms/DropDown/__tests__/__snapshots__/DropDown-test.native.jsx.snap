@@ -10,6 +10,7 @@ exports[`DropDown Test should render correctly 1`] = `
     foo
   </Styled(Text)>
   <Styled(TouchableOpacity)
+    arrowImageStyle={null}
     bounces={true}
     data={
       Array [
@@ -19,8 +20,10 @@ exports[`DropDown Test should render correctly 1`] = `
         },
       ]
     }
+    dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
+    isAnimateList={true}
     itemStyle={
       Object {
         "color": "foo",
@@ -28,7 +31,9 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     onPress={[Function]}
     onValueChange={[MockFunction]}
+    openDropdownOnLoad={false}
     pointerEvents="auto"
+    selectedItemFontWeight="semibold"
     selectedValue="foo"
     variation="primary"
   >
@@ -53,6 +58,7 @@ exports[`DropDown Test should render correctly 1`] = `
           "testUri": "../../../../core/src/assets/carrot-small-down.png",
         }
       }
+      style={null}
     />
   </Styled(TouchableOpacity)>
   <Component
@@ -81,7 +87,12 @@ exports[`DropDown Test should render correctly 1`] = `
             "width": 0,
           }
         }
-      />
+      >
+        <Styled(View)
+          height={0}
+          width={0}
+        />
+      </Styled(View)>
     </TouchableOpacity>
   </Component>
 </View>
@@ -97,6 +108,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     foo
   </Styled(Text)>
   <Styled(TouchableOpacity)
+    arrowImageStyle={null}
     bounces={true}
     data={
       Array [
@@ -106,8 +118,10 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         },
       ]
     }
+    dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
+    isAnimateList={true}
     itemStyle={
       Object {
         "color": "foo",
@@ -115,7 +129,9 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     onPress={[Function]}
     onValueChange={[MockFunction]}
+    openDropdownOnLoad={false}
     pointerEvents="auto"
+    selectedItemFontWeight="semibold"
     selectedValue="foo"
     variation="primary"
   >
@@ -140,6 +156,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           "testUri": "../../../../core/src/assets/carrot-small-up.png",
         }
       }
+      style={null}
     />
   </Styled(TouchableOpacity)>
   <Component
@@ -169,25 +186,30 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
         }
       >
-        <Styled(FlatList)
-          ItemSeparatorComponent={[Function]}
-          bounces={true}
-          data={
-            Array [
-              Object {
-                "label": "foo",
-                "value": "foo",
-              },
-            ]
-          }
-          keyExtractor={[Function]}
-          renderItem={[Function]}
-          style={
-            Object {
-              "height": 0,
+        <Styled(View)
+          height={0}
+          width={0}
+        >
+          <Styled(FlatList)
+            ItemSeparatorComponent={[Function]}
+            bounces={true}
+            data={
+              Array [
+                Object {
+                  "label": "foo",
+                  "value": "foo",
+                },
+              ]
             }
-          }
-        />
+            keyExtractor={[Function]}
+            renderItem={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          />
+        </Styled(View)>
       </Styled(View)>
     </TouchableOpacity>
   </Component>

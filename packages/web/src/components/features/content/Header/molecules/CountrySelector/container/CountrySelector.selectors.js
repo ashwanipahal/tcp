@@ -9,15 +9,18 @@ export const getCountrySelectorState = state => {
 };
 
 export const getCountriesMap = state => {
-  return getCountrySelectorState(state).get('countriesMap');
+  const { siteOptions } = state[SESSIONCONFIG_REDUCER_KEY];
+  return siteOptions && siteOptions.countriesMap;
 };
 
 export const getCurrenciesMap = state => {
-  return getCountrySelectorState(state).get('currenciesMap');
+  const { siteOptions } = state[SESSIONCONFIG_REDUCER_KEY];
+  return siteOptions && siteOptions.currenciesMap;
 };
 
 export const getSitesTable = state => {
-  return getCountrySelectorState(state).get('sitesTable');
+  const { siteOptions } = state[SESSIONCONFIG_REDUCER_KEY];
+  return siteOptions && siteOptions.sitesTable;
 };
 
 export const getCurrentCountry = state => {
@@ -45,15 +48,15 @@ export const getSiteId = state => {
 };
 
 export const getOldCountry = state => {
-  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country']);
+  return state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
 };
 
 export const getOldCurrency = state => {
-  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'currency']);
+  return state[SESSIONCONFIG_REDUCER_KEY].siteDetails.currency;
 };
 
 export const getOldLanguage = state => {
-  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language']);
+  return state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language;
 };
 
 export const getLabels = state => {

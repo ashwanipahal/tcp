@@ -12,16 +12,23 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(1);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should NOT call dispatch function if product list category data is  available ', () => {
@@ -36,15 +43,22 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+              {
+                key: 'cat_id',
+                val: '123',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
-    expect(getProductTabListData).toBeCalledTimes(0);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should NOT call dispatch function if category data is not available ', () => {
@@ -56,13 +70,14 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
+            category: [],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(0);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should provide selected tab item on tab selection ', () => {
@@ -72,22 +87,28 @@ describe('ProductTabList', () => {
         text: {
           text: 'test',
         },
-        category: {
-          cat_id: '2',
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
       {
         text: {
           text: 'test 2',
         },
-        category: {
-          cat_id: '3',
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
     ];
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith('2', tabItems[0]);
+    expect(onProductTabChangeMock).not.toHaveBeenCalled();
   });
 });

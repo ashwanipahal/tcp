@@ -1,14 +1,19 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
-
-/**
- * @function initCheckoutAction
- * action creator for type: INIT_CHECKOUT
- */
-export const initCheckoutAction = () => ({
-  type: constants.INIT_CHECKOUT,
-});
+import {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  setIsRTPSFlow,
+  submitAcceptOrDeclinePlccOffer,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
+} from './Checkout.action.util';
 
 export const submitPickupSection = payload => ({
   type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
@@ -25,19 +30,15 @@ export const updateShipmentMethodSelection = payload => ({
   payload,
 });
 
-export function getSetGiftWrapOptionsActn(giftWrapOptions) {
-  return {
-    giftWrapOptions,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
-  };
-}
+export const getSetGiftWrapOptionsActn = giftWrapOptions => ({
+  giftWrapOptions,
+  type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+});
 
-export function getSetPickupValuesActn(pickup) {
-  return {
-    pickUpContact: pickup,
-    type: 'CHECKOUT_VALUES_SET_PICKUP',
-  };
-}
+export const getSetPickupValuesActn = pickup => ({
+  pickUpContact: pickup,
+  type: 'CHECKOUT_VALUES_SET_PICKUP',
+});
 
 export function getSetPickupAltValuesActn(pickup) {
   return {
@@ -80,6 +81,7 @@ export function getSetEstimatedAirMilesActn(estimatedAirMiles) {
     type: 'CART_SUMMARY_SET_ESTIMATED_AIRMILES',
   };
 }
+
 export function setShippingTotal(shippingTotal) {
   return {
     shippingTotal,
@@ -276,20 +278,17 @@ export const emailSignupStatus = payload => {
   };
 };
 
-export const routeToPickupPage = () => {
-  return {
-    type: constants.ROUTE_TO_PICKUP_PAGE,
-  };
-};
-
-// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+export const routeToPickupPage = () => ({
+  type: constants.ROUTE_TO_PICKUP_PAGE,
+});
 
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
-export const updateShippingAddress = payload => {
+export const updateShippingAddress = (payload, after) => {
   return {
     type: constants.UPDATE_SHIPPING_ADDRESS,
     payload,
+    after,
   };
 };
 export function getSetIsBillingVisitedActn(isBillingVisited) {
@@ -306,19 +305,12 @@ export function submitBillingSection(payload) {
   };
 }
 
-export const setGiftCardError = payload => {
-  return {
-    type: constants.SET_GIFTCARD_ERROR,
-    payload,
-  };
-};
+export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
-export const addNewShippingAddress = payload => {
-  return {
-    type: constants.ADD_NEW_SHIPPING_ADDRESS,
-    payload,
-  };
-};
+export const addNewShippingAddress = payload => ({
+  type: constants.ADD_NEW_SHIPPING_ADDRESS,
+  payload,
+});
 
 export const setOnFileAddressKey = payload => {
   // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
@@ -330,6 +322,13 @@ export const setOnFileAddressKey = payload => {
 export const resetGiftCardError = () => {
   return {
     type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setShippingLoadingState = isLoading => {
+  return {
+    type: constants.CHECKOUT_VALUES_SET_SHIPPING_LOADING,
+    isLoading,
   };
 };
 
@@ -410,6 +409,13 @@ export const setVenmoData = payload => {
   };
 };
 
+export const submitVerifiedAddressData = payload => {
+  return {
+    type: constants.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
 export const addGiftCardSuccess = payload => {
   return {
     type: constants.ADD_GIFT_CARD_SUCCESS,
@@ -462,43 +468,27 @@ export const resetAddGiftCardSuccess = payload => {
     payload,
   };
 };
-/**
- * @function initIntlCheckoutAction
- *  @param { object } payload
- * action creator for type: INIT_INTL_CHECKOUT
- */
-export const initIntlCheckoutAction = payload => ({
-  type: constants.INIT_INTL_CHECKOUT,
+
+export const toggleCheckoutRouting = payload => ({
+  payload,
+  type: constants.CHECKOUT_ROUTING_DONE,
+});
+
+export const setUpdateFromMSG = payload => ({
+  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
   payload,
 });
-/**
- * @function getSetIntlUrl
- *  @param { object } internationalUrl
- * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
- */
-export const getSetIntlUrl = internationalUrl => {
-  return {
-    internationalUrl,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
-  };
-};
-/**
- * @function updateCardData
- *  @param { object } payload
- * action creator for type: UPDATE_CARD_DATA
- */
-export const updateCardData = payload => {
-  return {
-    payload,
-    type: constants.UPDATE_CARD_DATA,
-  };
-};
-/**
- * @function resetCheckoutReducer
- * action creator for type: RESET_CHECKOUT_REDUCER
- */
-export const resetCheckoutReducer = () => {
-  return {
-    type: constants.RESET_CHECKOUT_REDUCER,
-  };
+
+export default {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  submitAcceptOrDeclinePlccOffer,
+  setIsRTPSFlow,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 };

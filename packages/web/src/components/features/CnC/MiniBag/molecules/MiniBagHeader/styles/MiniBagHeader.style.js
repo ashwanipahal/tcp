@@ -45,7 +45,6 @@ export default css`
       text-overflow: ellipsis;
       width: 90px;
       text-align: right;
-      padding-right: 32px;
       cursor: pointer;
     }
   }
@@ -66,7 +65,6 @@ export default css`
     margin-right: 16px;
   }
   .pointsRewards {
-    color: ${props => props.theme.colorPalette.orange['800']};
     padding-left: 6px;
     white-space: nowrap;
     width: auto;

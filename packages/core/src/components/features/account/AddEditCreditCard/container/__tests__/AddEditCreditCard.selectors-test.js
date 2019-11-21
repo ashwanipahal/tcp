@@ -18,14 +18,16 @@ describe('AddEditCreditCard selectors', () => {
   it('getAddEditCreditCardSuccess should return response if available', () => {
     const state = {
       [ADDEDITCREDITCARD_REDUCER_KEY]: fromJS({
-        response: {
-          creditCardId: '12345',
+        success: {
+          response: {
+            creditCardId: '12345',
+          },
         },
       }),
     };
 
     expect(getAddEditCreditCardSuccess(state)).toEqual(
-      state[ADDEDITCREDITCARD_REDUCER_KEY].get('response')
+      state[ADDEDITCREDITCARD_REDUCER_KEY].get('success')
     );
   });
 

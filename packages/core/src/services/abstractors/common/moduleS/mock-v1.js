@@ -30,24 +30,42 @@ export default {
           },
         },
       ],
+      // linkedImage: [
+      //   {
+      //     image: {
+      //       url:
+      //         'https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png',
+      //       alt: 'Pool',
+      //       title: 'Pool',
+      //       crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
+      //       crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
+      //       crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
+      //       url_m: '',
+      //       url_t: '',
+      //     },
+      //     link: {
+      //       url: '/c/boys-clothes',
+      //       text: 'Pool',
+      //       title: 'Pool',
+      //       target: '',
+      //     },
+      //   },
+      // ],
       linkedImage: [
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
-            alt: 'Pool',
-            title: 'Pool',
-            crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
-            crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
-            url_m: '',
-            url_t: '',
+          video: {
+            url: 'https://test1.theplace.com/video/upload/v1572869480/sample_mp4.mp4',
+            title: 'Video Title attribute value',
+            autoplay: true,
+            controls: true,
+            loop: true,
+            muted: true,
+            inline: true,
           },
-          link: {
-            url: '/c/boys-clothes',
-            text: 'Pool',
-            title: 'Pool',
-            target: '',
+          image: {
+            url: 'http://image1.sm/url',
+            alt: 'Image Alt text attribute value',
+            title: 'Image Title attribute value',
           },
         },
       ],

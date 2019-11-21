@@ -10,7 +10,7 @@ const Heading = ({ children, className, component, variant, dataLocator }) => {
   componentVariant = componentVariant === 'listMenu' ? 'li' : componentVariant;
   const Component = component || componentVariant;
   return (
-    <Component className={className} data-locator={dataLocator}>
+    <Component tabIndex="-1" className={className} data-locator={dataLocator}>
       {children}
     </Component>
   );

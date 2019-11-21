@@ -17,7 +17,6 @@ import {
 class LoginView extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       setEmailid: '',
       getTouchStatus: false,
@@ -35,7 +34,7 @@ class LoginView extends React.PureComponent {
         password: credentials.password,
       };
       this.setState({ setEmailid: credentials.username });
-      if (credentials) {
+      if (credentials.username && credentials.password) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
             touchIDCheck().then(touchIdResp => {
@@ -52,13 +51,13 @@ class LoginView extends React.PureComponent {
   onSubmitHandler = formdata => {
     const { onSubmit } = this.props;
     resetTouchPassword();
-    setUserLoginDetails(formdata.emailAddress, formdata.password);
-
     onSubmit(formdata);
-
     isSupportedTouch().then(biometryType => {
-      if (biometryType && (formdata.userTouchId || formdata.useFaceID)) {
+      if (biometryType && (formdata.useTouchID || formdata.useFaceID)) {
+        setUserLoginDetails(formdata.emailAddress, formdata.password);
         touchIDCheck();
+      } else {
+        setUserLoginDetails(formdata.emailAddress, '');
       }
     });
   };
@@ -82,6 +81,11 @@ class LoginView extends React.PureComponent {
       loginError,
       showCheckoutModal,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
+      updateHeader,
+      toastMessage,
+      resetChangePasswordState,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -107,6 +111,11 @@ class LoginView extends React.PureComponent {
           handleContinueAsGuest={handleContinueAsGuest}
           showCheckoutModal={showCheckoutModal}
           showLogin={showLogin}
+          userplccCardNumber={userplccCardNumber}
+          userplccCardId={userplccCardId}
+          updateHeader={updateHeader}
+          toastMessage={toastMessage}
+          resetChangePasswordState={resetChangePasswordState}
         />
       </ScrollViewStyle>
     );
@@ -131,6 +140,11 @@ LoginView.propTypes = {
   loginError: PropTypes.bool.isRequired,
   showCheckoutModal: PropTypes.func,
   showLogin: PropTypes.func,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
+  updateHeader: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
+  resetChangePasswordState: PropTypes.func,
 };
 
 LoginView.defaultProps = {
@@ -138,6 +152,10 @@ LoginView.defaultProps = {
   navigation: {},
   showCheckoutModal: () => {},
   showLogin: () => {},
+  userplccCardNumber: '',
+  userplccCardId: '',
+  toastMessage: () => {},
+  resetChangePasswordState: () => {},
 };
 
 export default LoginView;

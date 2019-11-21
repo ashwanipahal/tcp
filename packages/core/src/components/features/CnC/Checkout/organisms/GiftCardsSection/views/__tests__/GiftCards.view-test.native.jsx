@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { GiftCardsVanilla } from '../GiftCards.view.native';
+import { GiftCardSectionHeading } from '../GiftCards.view.utils';
 
 const appliedGiftCardList = [
   {
@@ -25,6 +26,7 @@ describe('GiftCardsVanilla', () => {
     giftCardList: new List(appliedGiftCardList),
     getAddGiftCardError: '',
     enableAddGiftCard: false,
+    isExpressCheckout: true,
   };
 
   it('should render gift card tile', () => {
@@ -45,6 +47,45 @@ describe('GiftCardsVanilla', () => {
     props.enableAddGiftCard = true;
     props.getAddGiftCardError = 'Duplicate';
     const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+  it('renders correctly with method getHeading', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    const instance = component.instance();
+    const spyGetHeading = jest.spyOn(instance, 'getHeading');
+    instance.getHeading({ appliedGiftCards: 'applied' }, true);
+    expect(spyGetHeading).toHaveBeenCalled();
+  });
+  it('renders correctly with method checkAddNew with review form', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    const instance = component.instance();
+    const spyCheckAddNew = jest.spyOn(instance, 'checkAddNew');
+    instance.checkAddNew(true, true, true);
+    expect(spyCheckAddNew).toHaveBeenCalled();
+  });
+  it('renders correctly with method checkAddNew without review form', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    const instance = component.instance();
+    const spyCheckAddNew = jest.spyOn(instance, 'checkAddNew');
+    instance.checkAddNew(false, true, true);
+    expect(spyCheckAddNew).toHaveBeenCalled();
+  });
+
+  it('renders correctly with method GiftCardSectionHeading', () => {
+    const getHeading = () => 'Applied';
+    const giftCardSectionHeading = GiftCardSectionHeading(
+      {},
+      { labels: { appliedGiftCards: 'Applied' } },
+      true,
+      true,
+      getHeading,
+      true
+    );
+    expect(giftCardSectionHeading).toMatch('Applied');
+  });
+  it('should render gift card tile with getDerivedStateFromProps ', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    component.setState({ orderBalanceTotal: 200 });
     expect(component).toMatchSnapshot();
   });
 });

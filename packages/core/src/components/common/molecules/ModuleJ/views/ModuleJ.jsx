@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, DamImage, Image, Row } from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
-import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath, getLocator } from '../../../../../utils';
-import config from '../moduleJ.config';
+import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
+import { getIconPath, getLocator, getProductUrlForDAM } from '../../../../../utils';
+import moduleJConfig from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {
@@ -15,16 +15,20 @@ class ModuleJ extends React.PureComponent {
 
     this.state = {
       currentCatId: '',
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
   onTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
 
   getCurrentCtaButton = () => {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>
@@ -86,11 +90,18 @@ class ModuleJ extends React.PureComponent {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
     const { currentCatId } = this.state;
     const promoMediaLinkedList = mediaLinkedList || [];
-    const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
-    const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
+    const { image: promoImage1, link: promoLink1, video: promoVideo1 } =
+      promoMediaLinkedList[0] || {};
+    const { image: promoImage2, link: promoLink2, video: promoVideo2 } =
+      promoMediaLinkedList[1] || {};
+    const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = moduleJConfig;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
+    const iconPath = getIconPath('carousel-big-carrot');
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[currentCatId];
+    }
 
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
@@ -116,13 +127,11 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
-                imgData={{
-                  alt: promoImage1.alt,
-                  url: promoImage1.url,
-                }}
+                imgConfigs={IMG_DATA.promoImgConfig}
+                imgData={promoImage1}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
                 link={promoLink1}
+                videoData={promoVideo1}
               />
             </Col>
             <Col
@@ -138,11 +147,13 @@ class ModuleJ extends React.PureComponent {
             >
               {this.getHeaderText()}
               {this.getPromoBanner()}
-              <ProductTabList
-                onProductTabChange={this.onTabChange}
-                tabItems={divTabs}
-                dataLocator={getLocator('moduleJ_cta_link')}
-              />
+              <div className="product-tab-list">
+                <ProductTabList
+                  onProductTabChange={this.onTabChange}
+                  tabItems={divTabs}
+                  dataLocator={getLocator('moduleJ_cta_link')}
+                />
+              </div>
             </Col>
             <Col
               className="promo-image-right"
@@ -154,10 +165,11 @@ class ModuleJ extends React.PureComponent {
             >
               <DamImage
                 className="promo-img"
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 link={promoLink2}
+                videoData={promoVideo2}
               />
             </Col>
           </Row>
@@ -194,7 +206,7 @@ class ModuleJ extends React.PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row className="product-image">
           <Col
             className="moduleJ__carousel-wrapper"
             colSize={{
@@ -213,17 +225,25 @@ class ModuleJ extends React.PureComponent {
               large: 1,
             }}
           >
+            {dataStatus ? (
+              <StyledSkeleton
+                col={6}
+                colSize={{ small: 2, medium: 2, large: 2 }}
+                showArrows
+                removeLastMargin
+              />
+            ) : null}
             {data ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
                   autoplay: false,
                   variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
+                  customArrowLeft: iconPath,
+                  customArrowRight: iconPath,
                 }}
               >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+                {data.map(({ uniqueId, pdpUrl, pdpAsPath, product_name: productName }, index) => {
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -232,7 +252,12 @@ class ModuleJ extends React.PureComponent {
                         asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
-                        <Image alt={productName} src={imageUrl[0]} />
+                        {/* <Image alt={productName} src={imageUrl[0]} /> */}
+                        <DamImage
+                          imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
+                          imgConfigs={moduleJConfig.IMG_DATA.productImgConfig}
+                          isProductImage
+                        />
                       </Anchor>
                     </div>
                   );
@@ -241,7 +266,6 @@ class ModuleJ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-
         {this.getCurrentCtaButton()}
       </Grid>
     );

@@ -5,6 +5,8 @@ import { ProductSummaryVanilla } from '../views/ProductSummary.view.native';
 describe('ProductSummaryVanilla', () => {
   let component;
   const props = {
+    isBundleProduct: false,
+    showCompleteTheLook: true,
     productData: {
       ratingsProductId: '2101089',
       generalProductId: '2101089_142',
@@ -185,14 +187,10 @@ describe('ProductSummaryVanilla', () => {
   });
 
   it('should return styled BodyCopy component value one', () => {
-    expect(component.find('Styled(BodyCopy)')).toHaveLength(6);
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(4);
   });
 
   it('should return styled PromotionalMessage component value one', () => {
     expect(component.find('Styled(PromotionalMessage)')).toHaveLength(1);
-  });
-
-  it('should return styled Anchor component value one', () => {
-    expect(component.find('Styled(Anchor)')).toHaveLength(1);
   });
 });

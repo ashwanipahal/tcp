@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import CouponSkeleton from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/skeleton/CouponSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Col from '../../../../../../common/atoms/Col';
@@ -9,7 +12,8 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
-import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
+
+// import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
@@ -59,6 +63,7 @@ class CouponView extends React.PureComponent<Props> {
     helpStatus,
     selectedCoupon,
     additionalClassName,
+    idPrefix,
   }) => {
     return (
       <div className={className}>
@@ -69,6 +74,7 @@ class CouponView extends React.PureComponent<Props> {
           labels={labels}
           onNeedHelpTextClick={this.toggleNeedHelpModal}
           additionalClassNameModal={additionalClassName}
+          idPrefix={idPrefix}
         />
         <div className="coupon_list">
           {appliedCouponList && appliedCouponList.size > 0 && (
@@ -85,7 +91,7 @@ class CouponView extends React.PureComponent<Props> {
               additionalClassNameModal={additionalClassName}
             />
           )}
-          {availableCouponList && (
+          {availableCouponList && availableCouponList.size > 0 ? (
             <CouponListSection
               labels={labels}
               isFetching={isFetching}
@@ -100,7 +106,16 @@ class CouponView extends React.PureComponent<Props> {
               handleErrorCoupon={handleErrorCoupon}
               additionalClassNameModal={additionalClassName}
             />
+          ) : (
+            <CouponSkeleton
+              className
+              heading={labels.AVAILABLE_REWARDS_HEADING}
+              couponList={availableCouponList}
+              labels={labels}
+            />
           )}
+          {/* UX timer for coupons list visibility */}
+          <RenderPerf.Measure name={PROMOTION_VISIBLE} />
           <CouponDetailModal
             labels={labels}
             openState={detailStatus}
@@ -126,7 +141,8 @@ class CouponView extends React.PureComponent<Props> {
             additionalClassNameModal={additionalClassName}
           />
         </div>
-        <ApplyNowModal />
+
+        {/* <ApplyNowModal /> */}
       </div>
     );
   };
@@ -144,6 +160,7 @@ class CouponView extends React.PureComponent<Props> {
       handleErrorCoupon,
       showAccordian,
       additionalClassNameModal,
+      idPrefix,
     } = this.props;
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     const header = this.getHeader({ labels });
@@ -162,6 +179,7 @@ class CouponView extends React.PureComponent<Props> {
         helpStatus,
         selectedCoupon,
         additionalClassName,
+        idPrefix,
       });
     const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
@@ -172,8 +190,7 @@ class CouponView extends React.PureComponent<Props> {
             medium: 8,
             small: 6,
           }}
-          ignoreGutter={{ small: true, medium: true }}
-          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+          ignoreGutter={{ small: true }}
         >
           <CollapsibleContainer
             className={`${className} ${showAccordian ? 'couponsWrapperAccordian' : ''}`}
@@ -181,11 +198,9 @@ class CouponView extends React.PureComponent<Props> {
             body={body(additionalClassNameModal)}
             iconLocator="arrowicon"
             defaultOpen={defaultOpen}
+            isDefaultView={!showAccordian}
           />
         </Col>
-        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
-          {body(`${additionalClassNameModal}_1`)}
-        </div>
       </div>
     );
   }

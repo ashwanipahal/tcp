@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -10,6 +12,7 @@ import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import styles from '../styles/CheckoutCartItemsList.style';
 import CheckoutConstants from '../../../../../Checkout.constants';
+import CollapsibleContainer from '../../../../../../../../common/molecules/CollapsibleContainer';
 
 /**
  *
@@ -47,6 +50,10 @@ class CheckoutCartItemsList extends Component {
     bagPageLabels: PropTypes.shape({}),
     className: PropTypes.string.isRequired,
     gettingSortedItemList: PropTypes.func.isRequired,
+    showAccordian: PropTypes.bool,
+    disableProductRedirect: PropTypes.bool,
+    bagLoading: PropTypes.bool,
+    checkoutRoutingDone: PropTypes.bool,
   };
 
   /**
@@ -57,11 +64,17 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels } = this.props;
+    const { labels, currencySymbol, disableProductRedirect } = this.props;
     const showOnReviewPage = false;
     return (
       <div className="cart-item-tile-container">
-        <CartItemTile productDetail={item} labels={labels} showOnReviewPage={showOnReviewPage} />
+        <CartItemTile
+          productDetail={item}
+          labels={labels}
+          showOnReviewPage={showOnReviewPage}
+          currencySymbol={currencySymbol}
+          disableProductRedirect={disableProductRedirect}
+        />
       </div>
     );
   };
@@ -85,66 +98,30 @@ class CheckoutCartItemsList extends Component {
         </BodyCopy>
         {deliveryItem.storeAddress && (
           <>
-            <BodyCopy
-              component="div"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
               {addressLine1}
             </BodyCopy>
             {addressLine2 && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
                 {addressLine2}
               </BodyCopy>
             )}
-            <BodyCopy
-              component="div"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
               {`${city},${state}${zipCode}`}
             </BodyCopy>
             {storeTodayOpenRange && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
-                {`${today}${storeTodayOpenRange}`}
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${today}: ${storeTodayOpenRange}`}
               </BodyCopy>
             )}
             {storeTomorrowOpenRange && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
-                {`${tomorrow}${storeTomorrowOpenRange}`}
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${tomorrow}: ${storeTomorrowOpenRange}`}
               </BodyCopy>
             )}
             {storePhoneNumber && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
-                {`${phone}${storePhoneNumber}`}
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${phone}: ${storePhoneNumber}`}
               </BodyCopy>
             )}
           </>
@@ -176,7 +153,6 @@ class CheckoutCartItemsList extends Component {
                   fontWeight="extrabold"
                   fontSize="fs16"
                   fontFamily="secondary"
-                  className="title-list-product"
                 >
                   {labels.pickup}
                 </BodyCopy>
@@ -214,7 +190,7 @@ class CheckoutCartItemsList extends Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs10"
               fontFamily="secondary"
               className="store-date-container"
             >
@@ -393,22 +369,62 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels } = this.props;
+    const {
+      itemsCount,
+      className,
+      bagPageLabels,
+      showAccordian,
+      bagLoading,
+      checkoutRoutingDone,
+    } = this.props;
+    const header = (
+      <BodyCopy
+        fontWeight="semibold"
+        fontSize="fs16"
+        fontFamily="secondary"
+        className="checkout-cart-list-heading"
+        checkoutRoutingDone
+      >
+        {`${bagPageLabels.bagHeading} (${itemsCount}):`}
+      </BodyCopy>
+    );
+
     return (
       <div className={className}>
-        <Row tagName="header" className="checkout-cart-list">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy
-              fontWeight="semibold"
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="checkout-cart-list-heading"
-            >
-              {`${bagPageLabels.bagHeading} (${itemsCount})`}
-            </BodyCopy>
-            {this.renderItems()}
-          </Col>
-        </Row>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+          ignoreGutter={{ small: true, medium: true }}
+          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        >
+          <CollapsibleContainer
+            className={`${className} ${showAccordian ? 'reviewMyBagAccordian' : ''}`}
+            header={header}
+            body={this.renderItems()}
+            iconLocator="arrowicon"
+            defaultOpen
+          />
+        </Col>
+        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
+          {header}
+          {!bagLoading && checkoutRoutingDone ? (
+            this.renderItems()
+          ) : (
+            <>
+              <Row>
+                <Col colSize={{ large: 2, medium: 1, small: 1 }}>
+                  <LoaderSkelton width="100px" height="100px" />
+                </Col>
+                <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+                  <GenericSkeleton />
+                </Col>
+              </Row>
+            </>
+          )}
+        </div>
       </div>
     );
   }
@@ -417,6 +433,10 @@ class CheckoutCartItemsList extends Component {
 CheckoutCartItemsList.defaultProps = {
   labels: {},
   bagPageLabels: {},
+  showAccordian: true,
+  disableProductRedirect: false, // Disable Product Redirect
+  bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

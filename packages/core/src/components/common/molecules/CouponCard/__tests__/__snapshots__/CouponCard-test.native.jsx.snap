@@ -5,6 +5,8 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
   <ErrorMessage
     bagPage={false}
     error=""
+    fontSize=""
+    fontWeight=""
   />
   <Styled(View)>
     <Styled(View)>
@@ -68,7 +70,9 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
                 dataLocator=""
                 fontFamily="secondary"
                 fontSizeVariation="small"
+                justifyContent=""
                 locator=""
+                margins={null}
                 noLink={true}
                 onPress={[Function]}
                 text=""
@@ -81,7 +85,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
           <Styled(View)>
             <Styled(CustomButton)
               active={false}
-              buttonVariation="variable-width"
+              buttonVariation="fixed-width"
               color=""
               customStyle={Object {}}
               customTextStyle={null}
@@ -95,6 +99,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               locator=""
               navigation={Object {}}
               onPress={[Function]}
+              paddings="12px 32px 12px 32px"
               selected={false}
               selectedIcon="chevron-up"
               showIcon={false}
@@ -102,6 +107,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
         </Styled(View)>

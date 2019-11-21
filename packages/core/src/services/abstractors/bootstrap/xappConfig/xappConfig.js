@@ -10,10 +10,16 @@ import { getDataFromRedis, setDataInRedis } from '../../../../utils/redis.util';
  * Abstractor layer for loading data from API for Labels related components
  */
 const Abstractor = {
-  getData: async module => {
-    const xappData = await Abstractor.getDataFromCache();
+  getData: async (module, brand) => {
+    let xappData;
+    try {
+      xappData = await Abstractor.getDataFromCache(brand);
+    } catch (e) {
+      logger.error(e);
+    }
     if (xappData) {
       try {
+        logger.info(`XAPP | REDIS CACHE HIT`);
         const jsonXappData = JSON.parse(xappData);
         jsonXappData.IS_DATA_FROM_REDIS = true;
         return jsonXappData;
@@ -23,7 +29,7 @@ const Abstractor = {
     }
     const apiConfig = getAPIConfig();
     const data = {
-      brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
+      brand: (brand && brand.brandIdCMS) || (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
       channel: defaultChannel,
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
     };
@@ -31,15 +37,15 @@ const Abstractor = {
       .fetchModuleDataFromGraphQL({ name: module, data })
       .then(response => response.data)
       .then(Abstractor.processData)
-      .then(Abstractor.setDataInCache);
+      .then(processedData => Abstractor.setDataInCache(processedData, brand));
   },
-  setDataInCache: data => {
+  setDataInCache: (data, brand) => {
     const {
       CACHE_EXP_MODIFIER,
       CACHE_EXP_TIME,
       CACHE_IDENTIFIER: cacheKey,
     } = DEFAULT_XAPP_CONFIG_TTL;
-    const CACHE_IDENTIFIER = getCacheKeyForRedis(cacheKey);
+    const CACHE_IDENTIFIER = getCacheKeyForRedis(Abstractor.createCacheKey(cacheKey, brand));
     if (!isMobileApp()) {
       setDataInRedis({
         data,
@@ -50,12 +56,12 @@ const Abstractor = {
     }
     return data;
   },
-  getDataFromCache: () => {
+  getDataFromCache: brand => {
     if (isMobileApp()) {
       return null;
     }
     const { CACHE_IDENTIFIER } = DEFAULT_XAPP_CONFIG_TTL;
-    const cacheKey = getCacheKeyForRedis(CACHE_IDENTIFIER);
+    const cacheKey = getCacheKeyForRedis(Abstractor.createCacheKey(CACHE_IDENTIFIER, brand));
     return getDataFromRedis(cacheKey);
   },
   getMock: () => {
@@ -69,5 +75,6 @@ const Abstractor = {
     xappConfig.IS_DATA_FROM_REDIS = false;
     return xappConfig;
   },
+  createCacheKey: (cacheKey, brand) => `${cacheKey}${brand ? brand.brandIdCMS : ''}`,
 };
 export default Abstractor;

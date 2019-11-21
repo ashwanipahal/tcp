@@ -16,9 +16,11 @@ describe('SearchDetailVanilla', () => {
     lastLoadedPageNumber: 0,
     submitProductListingFiltersForm: jest.fn(),
     getProducts: jest.fn(),
-    navigation: {},
     sortLabels: {},
     slpLabels: { lbl_searched_for: '' },
+    navigation: {
+      getParam: () => 'Pant',
+    },
   };
 
   beforeEach(() => {

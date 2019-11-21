@@ -179,7 +179,6 @@ export class AboutYouSurvey extends React.Component {
           <ActionsWrapper>
             <Button
               onPress={() => this.updateSurvey(question1Stage !== Constants.Stage.Saved)}
-              buttonVariation="variable-width"
               type="button"
               fill="BLUE"
               disabled={this.submitDisabled}

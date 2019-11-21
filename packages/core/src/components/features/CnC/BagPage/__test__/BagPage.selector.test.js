@@ -33,14 +33,19 @@ describe('#Added to bag Selectors', () => {
     },
     sfl: [],
     openItemDeleteConfirmationModalInfo: true,
+    uiFlags: {
+      isPayPalWebViewEnable: false,
+    },
+    isPayPalEnabled: false,
+    loaded: false,
   });
 
-  const sessionState = fromJS({
+  const sessionState = {
     siteDetails: {
       SFL_MAX_COUNT: '200',
       BAG_CONDENSE_HEADER_INTERVAL: 3000,
     },
-  });
+  };
 
   const state = {
     Labels: BagPageState,
@@ -50,9 +55,9 @@ describe('#Added to bag Selectors', () => {
 
   it('#getAddedToBagData should return itemInfo', () => {
     expect(BAGPAGE_SELECTORS.getBagPageLabels(state)).toEqual({
-      addedToBag: 'AddedToBag',
+      addedToBag: 'lbl_header_addedToBag',
       bagHeading: 'bagHeading',
-      checkout: 'Checkout',
+      checkout: 'lbl_cta_checkout',
       guestUserMsg: 'guestUserMsg',
       helperMsg: 'helperMsg',
       loggedInMsg: 'loggedInMsg',
@@ -108,6 +113,11 @@ describe('#Added to bag Selectors', () => {
   it('#checkoutIfItemIsUnqualified', () => {
     expect(BAGPAGE_SELECTORS.checkoutIfItemIsUnqualified(state, 123)).toEqual(false);
   });
+
+  it('#getIsPayPalEnabled', () => {
+    expect(BAGPAGE_SELECTORS.getIsPayPalEnabled(state)).toEqual(false);
+  });
+
   it('#getCurrentDeleteSelectedItemInfo', () => {
     expect(BAGPAGE_SELECTORS.getCurrentDeleteSelectedItemInfo(state)).toEqual(true);
   });
@@ -121,7 +131,14 @@ describe('#Added to bag Selectors', () => {
   });
   it('#getBagStickyHeaderInterval should return interval', () => {
     expect(BAGPAGE_SELECTORS.getBagStickyHeaderInterval(state)).toEqual(
-      sessionState.getIn(['siteDetails', 'BAG_CONDENSE_HEADER_INTERVAL'])
+      sessionState.siteDetails.BAG_CONDENSE_HEADER_INTERVAL
     );
+  });
+
+  it('#getPayPalWebViewStatus should return paypalView enable status', () => {
+    expect(BAGPAGE_SELECTORS.getPayPalWebViewStatus(state)).toEqual(false);
+  });
+  it('#getCartLoadedState', () => {
+    expect(BAGPAGE_SELECTORS.getCartLoadedState(state)).toEqual(false);
   });
 });

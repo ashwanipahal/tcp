@@ -48,12 +48,14 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
         color="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
       {couponsCount > 0 && (
         <CouponWrapper>
           <View>
             <BodyCopy
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="semibold"
               data-locator={walletDataLocator}
@@ -96,7 +98,6 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
       <ButtonWrapperStyle>
         <Button
           text={myWalletCTA}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => navigateToNestedRoute(navigation, 'WalletStack', 'walletPage')}
         />

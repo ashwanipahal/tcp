@@ -2,8 +2,15 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .left-arrow {
+    border: solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
   @media ${props => props.theme.mediaQuery.medium} {
-    border-top: 1px solid ${props => props.theme.colors.BLACK};
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .footer-body-container {
@@ -26,6 +33,9 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
       width: auto;
       flex-direction: row;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      ${props => (props.showPayPalButton ? 'flex-direction: column-reverse' : null)};
     }
 
     .back-space {
@@ -50,12 +60,12 @@ const styles = css`
       height: 18px;
     }
     .footer-button {
-      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      background-color: ${props => props.theme.colorPalette.blue.C900};
       color: ${props => props.theme.colors.WHITE};
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       font-weight: ${props => props.theme.typography.fontWeights.fontWeights};
       &:hover {
-        background: ${props => props.theme.colors.PRIMARY.BLUE};
+        background: ${props => props.theme.colorPalette.blue.C900};
         display: inline-block;
       }
     }
@@ -79,6 +89,18 @@ const styles = css`
     }
     .footer-venmo-button {
       display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .footer-paypal-button {
+      position: relative;
+      width: 450px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 192px;
+      }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
         width: 100%;

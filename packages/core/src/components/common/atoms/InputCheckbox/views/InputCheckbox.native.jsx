@@ -1,4 +1,4 @@
-import React, { Fragment } from 'React';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
@@ -29,6 +29,7 @@ class InputCheckBox extends React.Component {
     execOnChangeByDefault: PropTypes.bool,
     children: PropTypes.string,
     inputVariation: PropTypes.string,
+    textMargin: PropTypes.string,
   };
 
   static defaultProps = {
@@ -45,6 +46,7 @@ class InputCheckBox extends React.Component {
     inputVariation: 'inputVariation',
     checkBoxLabel: false,
     children: null,
+    textMargin: null,
   };
 
   constructor(props) {
@@ -93,7 +95,7 @@ class InputCheckBox extends React.Component {
   }
 
   renderRight() {
-    const { rightText, fontSize } = this.props;
+    const { rightText, fontSize, textMargin } = this.props;
     const astlyBag = {
       navigate(node) {
         const { tagName, properties } = node;
@@ -108,12 +110,13 @@ class InputCheckBox extends React.Component {
 
     return (
       <RenderTree
-        tree={`<div><p>${rightText}</p></div>`}
+        tree={`<span>${rightText}</span>`}
         tools={astlyBag}
         componentMap={{
           ...ComponentMap,
           span: props => (
             <BodyCopy
+              margin={textMargin}
               mobileFontFamily="secondary"
               fontSize={fontSize || 'fs12'}
               text={props.children}
@@ -123,6 +126,7 @@ class InputCheckBox extends React.Component {
           a: props => {
             return (
               <BodyCopy
+                margin={textMargin}
                 mobileFontFamily="secondary"
                 fontSize={fontSize || 'fs12'}
                 text={props.children}
@@ -176,15 +180,15 @@ class InputCheckBox extends React.Component {
           {isError ? (
             <StyledErrorWrapper>
               <StyledErrorIcon>
-                <Image source={errorIcon} width="15px" height="15px" />
+                <Image source={errorIcon} width="16px" height="14px" />
               </StyledErrorIcon>
 
               <BodyCopy
                 className="Checkbox__error"
-                fontWeight="semibold"
+                fontWeight="extrabold"
                 color="error"
                 fontSize="fs12"
-                mobilefontFamily={['secondary']}
+                fontFamily="secondary"
                 text={isError ? error : null}
               />
             </StyledErrorWrapper>

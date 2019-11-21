@@ -4,7 +4,6 @@ const styles = css`
   border: 1px solid
     ${props =>
       props.coupon.error ? props.theme.colorPalette.red[500] : props.theme.colorPalette.gray[500]};
-  height: 100%;
   position: relative;
   width: 100%;
   .notification {
@@ -16,13 +15,13 @@ const styles = css`
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    box-sizing: border-box;
+    display: grid;
+    min-height: 302px;
   }
 
+  .coupon {
+    margin: 0 auto 8px;
+  }
   .overlap {
     z-index: 9;
   }
@@ -56,9 +55,11 @@ const styles = css`
   }
 
   .top-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-self: flex-start;
+  }
+
+  .bottom-content {
+    align-self: flex-end;
   }
 
   .coupon-desc {
@@ -73,6 +74,10 @@ const styles = css`
     svg {
       width: 100%;
     }
+  }
+  .applybag-btn {
+    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

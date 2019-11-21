@@ -17,6 +17,8 @@ import {
   getDefaultStore,
   getProfileInfoTileData,
   getChildren,
+  getIsRegisteredUserCallDone,
+  getUserInfoFetchingState,
 } from '../User.selectors';
 import { USER_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -45,6 +47,8 @@ describe('#User selector', () => {
       answers: [[''], ['']],
     },
     children: [{ childId: '12345' }],
+    isRegisteredUserCallDone: true,
+    isFetching: true,
   };
   const state = {
     [USER_REDUCER_KEY]: fromJS(stateObject),
@@ -150,7 +154,15 @@ describe('#User selector', () => {
     expect(getProfileInfoTileData(state).firstName).toBe('first');
   });
 
+  it('#getIsRegisteredUserCallDone should return user email', () => {
+    expect(getIsRegisteredUserCallDone(state)).toBe(stateObject.isRegisteredUserCallDone);
+  });
+
   it('#getChildren should return childrens', () => {
     expect(getChildren(state).getIn(['0', 'childId'])).toBe('12345');
+  });
+
+  it('#getUserInfoFetchingState should return isFetching', () => {
+    expect(getUserInfoFetchingState(state)).toBe(stateObject.isFetching);
   });
 });

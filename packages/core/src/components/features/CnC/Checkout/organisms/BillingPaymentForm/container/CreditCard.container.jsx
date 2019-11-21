@@ -6,7 +6,9 @@ import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
-import { updateCardData } from '../../../container/Checkout.action';
+import * as sessionSelectors from '../../../../../../../reduxStore/selectors/session.selectors';
+import CheckoutActions from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @class GiftCardsContainer
@@ -74,6 +76,17 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   /**
+   * @function getSelectedPaymentMethod
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getSelectedPaymentMethod = () => {
+    const { billingData } = this.props;
+    return billingData.paymentMethod === constants.ACCEPTED_CREDIT_CARDS.PAYPAL
+      ? constants.PAYMENT_METHOD_PAY_PAL
+      : constants.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
+  /**
    * @function getPaymentMethodId
    * @description returns the initial payment method selected during billing page load.
    */
@@ -81,7 +94,13 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     const { isVenmoPaymentInProgress } = this.props;
     return isVenmoPaymentInProgress
       ? constants.PAYMENT_METHOD_VENMO
-      : constants.PAYMENT_METHOD_CREDIT_CARD;
+      : this.getSelectedPaymentMethod();
+  };
+
+  setBillingInitialValues = () => {
+    const { billingData } = this.props;
+    const cardType = billingData && billingData.billing && billingData.billing.cardType;
+    return this.isBillingIfoPresent() && cardType !== 'paypal';
   };
 
   /**
@@ -112,9 +131,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let zipCode;
     let country;
     let address;
-    if (this.isBillingIfoPresent()) {
+    if (this.setBillingInitialValues()) {
       ({
-        address: {
+        address = {
           onFileAddressKey: billingOnFileAddressKey,
           onFileAddressId: billingOnFileAddressId,
           firstName,
@@ -310,8 +329,17 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       navigation,
       creditFieldLabels,
       updateCardDetail,
+      isPayPalEnabled,
       isVenmoEnabled,
       editFormCardType,
+      isPLCCEnabled,
+      scrollView,
+      toastMessage,
+      setCheckoutStage,
+      pageCategory,
+      getPayPalSettings,
+      isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -345,7 +373,16 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         creditFieldLabels={creditFieldLabels}
         updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
+        isPayPalEnabled={isPayPalEnabled}
         isVenmoEnabled={isVenmoEnabled}
+        isPLCCEnabled={isPLCCEnabled}
+        scrollView={scrollView}
+        toastMessage={toastMessage}
+        setCheckoutStage={setCheckoutStage}
+        pageCategory={pageCategory}
+        getPayPalSettings={getPayPalSettings}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -368,14 +405,20 @@ const mapStateToProps = (state, ownProps) => {
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
     editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isPayPalEnabled: sessionSelectors.getIsPayPalEnabled(state),
+    isPLCCEnabled: CreditCardSelector.getIsPLCCEnabled(state),
     isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
-      dispatch(updateCardData(payload));
+      dispatch(CheckoutActions.updateCardData(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

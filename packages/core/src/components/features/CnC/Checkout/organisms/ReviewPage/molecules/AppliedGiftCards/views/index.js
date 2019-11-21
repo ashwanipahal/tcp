@@ -1,1 +1,1 @@
-export { default } from './AppliedGiftCards.view';
+export { default } from './AppliedGiftCards.view.native';

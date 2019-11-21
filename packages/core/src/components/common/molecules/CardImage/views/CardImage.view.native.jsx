@@ -12,7 +12,7 @@ const CardImage = ({ card, cardNumber }) => {
   return (
     <Container>
       <ImageWrapper>
-        <Image source={cardIcon} width="47" height="30" />
+        <Image source={cardIcon} width="47" height="30" dataLocator="cardLogo" />
       </ImageWrapper>
       <BodyCopy fontSize="fs16" mobileFontFamily="secondary" text={cardNumber} />
     </Container>

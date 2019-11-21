@@ -1,0 +1,566 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SMSNotificationsVanilla should render correctly 1`] = `
+<div
+  className=" notification-width elem-mt-XL elem-mb-XL"
+>
+  <form>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className=""
+          color="text.primary"
+          component="p"
+          dataLocator="join-our-text-alerts"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs18",
+            ]
+          }
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="center"
+        />
+        <div
+          className="elem-mt-MED elem-mb-LRG"
+        >
+          <Styled(BodyCopy)
+            className=""
+            color="text.primary"
+            component="p"
+            dataLocator="special-promos-new-arrivals"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs16",
+                "fs18",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+            "medium": 0.5,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+            "medium": 0.5,
+          }
+        }
+      >
+        <div
+          className="brandWrapper elem-mt-MED"
+        >
+          <div
+            className="childrenPlace"
+          >
+            <Field
+              className="children-place-checkbox"
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gqjmRU",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  display: block;
+  align-items: ",
+                      [Function],
+                      ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                      "25px",
+                      ";
+    width: ",
+                      "25px",
+                      ";
+    margin: 0;
+    margin-right: ",
+                      [Function],
+                      ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                      [Function],
+                      ";
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                      [Function],
+                      ";
+    font-size: ",
+                      [Function],
+                      "px;
+    width: ",
+                      [Function],
+                      ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                      [Function],
+                      "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                      [Function],
+                      ";
+  }
+
+  & .disabled {
+    opacity: ",
+                      [Function],
+                      ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                      [Function],
+                      ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                      [Function],
+                      ";
+    width: ",
+                      [Function],
+                      ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(InputCheckbox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-gqjmRU",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="children-place-checkbox"
+              enableSuccessCheck={false}
+              name="brandTCP"
+              onChange={[Function]}
+            >
+              <Styled(BodyCopy)
+                className={null}
+                color="text.primary"
+                component="p"
+                dataLocator="children-place-label"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              />
+            </Field>
+          </div>
+          <div
+            className="gymboree"
+          >
+            <Field
+              className="gymboree-checkbox"
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gqjmRU",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  display: block;
+  align-items: ",
+                      [Function],
+                      ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                      "25px",
+                      ";
+    width: ",
+                      "25px",
+                      ";
+    margin: 0;
+    margin-right: ",
+                      [Function],
+                      ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                      [Function],
+                      ";
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                      [Function],
+                      ";
+    font-size: ",
+                      [Function],
+                      "px;
+    width: ",
+                      [Function],
+                      ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                      [Function],
+                      "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                      [Function],
+                      ";
+  }
+
+  & .disabled {
+    opacity: ",
+                      [Function],
+                      ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                      [Function],
+                      ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                      [Function],
+                      ";
+    width: ",
+                      [Function],
+                      ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(InputCheckbox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-gqjmRU",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="gymboree-checkbox"
+              enableSuccessCheck={false}
+              name="brandGYM"
+              onChange={[Function]}
+            >
+              <Styled(BodyCopy)
+                className={null}
+                color="text.primary"
+                component="p"
+                dataLocator="gymboree-label"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              />
+            </Field>
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;
+
+exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
+<div
+  className=" notification-width elem-mt-XL elem-mb-XL"
+>
+  <form>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3.5,
+            "medium": 0.5,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+            "medium": 0.5,
+          }
+        }
+      >
+        <Styled(ErrorMessage)
+          className="notification-error"
+          error="test"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3.5,
+            "medium": 0.5,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+            "medium": 0.5,
+          }
+        }
+      >
+        <div
+          className="successWrapper"
+        >
+          <Styled(Image)
+            className="activity-complete-icon"
+            data-locator="ChkmarkIcon"
+            src="/static/images/done.png"
+          />
+          <Styled(BodyCopy)
+            className="elem-ml-XS"
+            color="text.primary"
+            component="p"
+            dataLocator="join-our-text-alerts"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs16",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3.5,
+            "medium": 0.5,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+            "medium": 0.5,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="elem-mt-XS elem-mb-LRG"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs14",
+              "fs14",
+              "fs16",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(RichText)
+            dataLocator="success-message"
+            richTextHtml=""
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;

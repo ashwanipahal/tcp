@@ -94,8 +94,10 @@ const StoreStaticMap = props => {
   };
 
   useEffect(() => {
-    fireResizeEvent();
-    resizeMapOnClientWidth();
+    if (!isMobileApp()) {
+      fireResizeEvent();
+      resizeMapOnClientWidth();
+    }
   });
   const centeredStore =
     storesList && storesList.find(store => store.basicInfo.id === centeredStoreId);

@@ -43,7 +43,6 @@ const BagConfirmationModal = ({
             type="submit"
             color="white"
             onPress={closeCheckoutConfirmationModal}
-            buttonVariation="variable-width"
             text={backToBag}
           />
         </ButtonWrapper>
@@ -53,7 +52,6 @@ const BagConfirmationModal = ({
             type="submit"
             color="white"
             onPress={removeUnqualifiedItemsAndCheckout}
-            buttonVariation="variable-width"
             text={continueCheckout}
           />
         </ButtonWrapper>

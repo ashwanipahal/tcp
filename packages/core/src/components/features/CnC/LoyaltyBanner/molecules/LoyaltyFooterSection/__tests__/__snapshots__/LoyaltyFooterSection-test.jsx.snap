@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyFooterSection View Component is not ProductDetailView should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  />
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      CreateAccountAction
+    </Styled(Anchor)>
+    <span
+      className="space-between"
+    />
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      loginAction
+    </Styled(Anchor)>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGuest should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      ApplyNowAction
+    </Styled(Anchor)>
+    <span
+      className="space-between"
+    />
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      LearnMoreAction
+    </Styled(Anchor)>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <span
+      className="space-between"
+    />
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

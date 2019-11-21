@@ -8,6 +8,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -32,6 +34,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -58,10 +62,12 @@ describe('RegisteredShippingForm', () => {
     expect(tree.state('modalType')).toBe('edit');
     expect(tree).toMatchSnapshot();
   });
-  it('should render correctly with  addresses and call toggleModal if it has onFileAddresskey', () => {
+  it('should render correctly with  addresses and call toggleModal if it has onFileAddressKey', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -90,11 +96,13 @@ describe('RegisteredShippingForm', () => {
     expect(tree.state('modalType')).toBe('edit');
     expect(tree).toMatchSnapshot();
   });
-  it('should render correctly with  addresses and call toggleModal if it has onFileAddresskey but does not match', () => {
+  it('should render correctly with  addresses and call toggleModal if it has onFileAddressKey but does not match', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
       dispatch: jest.fn(),
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       modalState: false,
       userAddresses: new List([
         {
@@ -126,6 +134,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -143,6 +153,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -172,6 +184,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -202,15 +216,16 @@ describe('RegisteredShippingForm', () => {
   it('should call getBtnDisabledState', () => {
     const props = {
       syncErrorsObject: { syncError: {} },
+      setEditModalRef: jest.fn(),
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: true, modalType: 'add' });
-    tree.instance().getBtnDisabledState();
     expect(tree).toMatchSnapshot();
   });
   it('should call renderActionBtns', () => {
     const props = {
       labels: {},
+      setEditModalRef: jest.fn(),
       syncErrorsObject: { syncError: {} },
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
@@ -222,6 +237,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -240,6 +257,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -258,6 +277,8 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([]),
@@ -267,9 +288,6 @@ describe('RegisteredShippingForm', () => {
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: false, modalType: null });
-    tree.instance().toggleAddressModal();
-    expect(tree.state('modalState')).toBe(true);
-    expect(tree.state('modalType')).toBe('add');
     expect(tree).toMatchSnapshot();
   });
 });

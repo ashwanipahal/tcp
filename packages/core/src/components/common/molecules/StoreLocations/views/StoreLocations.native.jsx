@@ -9,7 +9,6 @@ const StoreLocations = ({ children, labels, openMoreStores }) => (
     <Button
       type="button"
       onPress={openMoreStores}
-      buttonVariation="variable-width"
       text={getLabelValue(labels, 'lbl_storedetails_seemorestores_btn')}
     />
     {children}

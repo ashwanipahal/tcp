@@ -30,7 +30,7 @@ import {
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
 
-const bagIcon = require('../../../../../../../assets/bag-white.png');
+const bagIcon = require('../../../../../../../assets/white-bag.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
@@ -47,7 +47,6 @@ export class DetailedCouponTile extends React.Component {
       lbl_common_couponTypeReward: PropTypes.string,
       lbl_common_couponTypeSaving: PropTypes.string,
     }),
-    isDisabled: PropTypes.bool,
     onApplyCouponToBagFromList: PropTypes.func,
     onRemove: PropTypes.func,
     onViewCouponDetails: PropTypes.func,
@@ -55,7 +54,6 @@ export class DetailedCouponTile extends React.Component {
   };
 
   static defaultProps = {
-    isDisabled: false,
     onApplyCouponToBagFromList: () => {},
     onRemove: () => {},
     onViewCouponDetails: () => {},
@@ -171,8 +169,7 @@ export class DetailedCouponTile extends React.Component {
   };
 
   render() {
-    const { coupon, labels, isDisabled } = this.props;
-    const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
+    const { coupon, labels } = this.props;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
@@ -215,6 +212,7 @@ export class DetailedCouponTile extends React.Component {
             <TileDesc>
               <View>
                 <BodyCopy
+                  fontFamily="secondary"
                   data-locator="accountoverview-myplacerewatdstile-rewarduseby"
                   text={`${
                     isPlaceCash
@@ -223,6 +221,7 @@ export class DetailedCouponTile extends React.Component {
                   }`}
                 />
                 <BodyCopy
+                  fontFamily="secondary"
                   text={
                     isPlaceCash
                       ? `${coupon.effectiveDate} - ${coupon.expirationDate}`
@@ -246,8 +245,6 @@ export class DetailedCouponTile extends React.Component {
             <ButtonWrapper>
               <CustomButton
                 text={getLabelValue(labels, 'lbl_coupon_viewPrint')}
-                buttonVariation="variable-width"
-                fill="WHITE"
                 onPress={() => {
                   this.handleViewCouponDetails();
                 }}
@@ -258,8 +255,6 @@ export class DetailedCouponTile extends React.Component {
             {!coupon.applyAlert && coupon.status === COUPON_STATUS.APPLIED ? (
               <CustomButton
                 text={getLabelValue(labels, 'lbl_coupon_removeFromBag')}
-                buttonVariation="variable-width"
-                fill="WHITE"
                 onPress={() => {
                   this.handleRemove();
                 }}
@@ -267,8 +262,7 @@ export class DetailedCouponTile extends React.Component {
             ) : (
               <CustomButton
                 text={addToBagCTALabel}
-                buttonVariation="variable-width"
-                disabled={isApplyButtonDisabled}
+                disableButton={!coupon.isStarted}
                 fill="BLUE"
                 color={colorPallete.white}
                 onPress={() => {

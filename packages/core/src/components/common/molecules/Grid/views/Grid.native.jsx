@@ -70,6 +70,7 @@ const Grid = ({
     ItemSeparatorComponent={() => ItemSeparatorComponent(separatorWidth)}
     scrollEnabled={false}
     keyExtractor={keyExtractor || gridKeyExtractor}
+    listKey={(_, index) => `grid-${index}`}
     renderItem={({ item, index }) => renderGridItem(item, index, renderItem, separatorWidth, name)}
     {...otherProps}
   />

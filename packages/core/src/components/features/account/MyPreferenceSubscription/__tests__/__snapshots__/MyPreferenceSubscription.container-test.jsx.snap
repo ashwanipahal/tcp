@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPrefrenceSubscribeText container should render MyPrefrenceSubscribeText component 1`] = `
+<Fragment>
+  <MyPrefrence
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
+    initialValues={
+      Object {
+        "tcpWebSubscribe": undefined,
+      }
+    }
+    isGymAppSubscribe={false}
+    isGymSubscribe={false}
+    isTcpAppSubscribe={false}
+    isTcpSubscribe={false}
+    labels={
+      Object {
+        "accountOverview": Object {},
+      }
+    }
+    onSubscribe={[Function]}
+    onUnsubscribe={[Function]}
+    urlParams={Object {}}
+  />
+</Fragment>
+`;

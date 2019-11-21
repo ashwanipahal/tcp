@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import style from '../styles/ErrorMessage.style';
-import { getIconPath } from '../../../../../../../utils';
-
-const alertTriangleIcon = getIconPath('alert-triangle');
 
 class ErrorMessage extends React.PureComponent {
   render() {
@@ -14,14 +11,16 @@ class ErrorMessage extends React.PureComponent {
     return (
       <>
         {error && (
-          <div className={className}>
-            <Image src={alertTriangleIcon} />
+          <div className={className} role="alert">
+            <div className="warning-icon" aria-disabled="true" />
             <BodyCopy
               component="span"
               color="error"
               fontFamily="secondary"
               fontWeight={fontWeight}
               fontSize={fontSize}
+              aria-live="assertive"
+              role="alert"
             >
               {error}
             </BodyCopy>

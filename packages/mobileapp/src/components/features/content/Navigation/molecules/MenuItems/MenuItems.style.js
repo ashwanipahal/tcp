@@ -30,10 +30,12 @@ export const PromoContainer = styled.View`
 `;
 
 export const ArrowIcon = styled.Image`
-  width: 10px;
+  width: 6px;
   height: 10px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  /* stylelint-disable-next-line */
+  tint-color: ${props => props.theme.colorPalette.gray[600]};
 `;
 
 export const ItemView = styled.View`

@@ -1,39 +1,32 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import Checkout from '@tcp/core/src/components/features/CnC/Checkout';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header/CheckoutHeader';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const CheckoutStack = createStackNavigator(
   {
     CheckoutPickup: {
       screen: Checkout,
-      params: {
-        routeTo: 'PickupPage',
-      },
     },
     CheckoutShipping: {
       screen: Checkout,
-      params: {
-        routeTo: 'ShippingPage',
-      },
     },
     CheckoutBilling: {
       screen: Checkout,
-      params: {
-        routeTo: 'BillingPage',
-      },
     },
     CheckoutReview: {
       screen: Checkout,
-      params: {
-        routeTo: 'ReviewPage',
-      },
     },
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

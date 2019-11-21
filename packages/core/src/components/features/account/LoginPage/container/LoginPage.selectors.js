@@ -16,6 +16,10 @@ export const checkoutModalOpenState = state => {
   return state.LoginPageReducer.get('checkoutModalMountedState');
 };
 
+export const checkoutModalComponentType = state => {
+  return state.LoginPageReducer.get('componentType');
+};
+
 export const getUserLoggedInState = createSelector(
   getLoginState,
   loginState => loginState && loginState.get('isLoggedin')
@@ -23,6 +27,9 @@ export const getUserLoggedInState = createSelector(
 
 export const getLabels = state => state.Labels.global;
 
+export const getLoadingState = state => {
+  return state[LOGINPAGE_REDUCER_KEY].get('isLoading');
+};
 export const getLoginLabels = createSelector(
   getLabels,
   labels => labels && labels.login

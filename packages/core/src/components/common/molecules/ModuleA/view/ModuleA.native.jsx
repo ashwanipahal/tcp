@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
@@ -72,7 +72,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   );
 };
 
-const renderView = (item, navigation, position) => {
+const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   let PromoBannerComponent;
   let HeaderComponent;
   let HeaderConfig = {};
@@ -100,7 +100,7 @@ const renderView = (item, navigation, position) => {
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
-        host={LAZYLOAD_HOST_NAME.HOME}
+        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
         crop={image.crop_m}
         imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
       />
@@ -111,7 +111,7 @@ const renderView = (item, navigation, position) => {
               {...HeaderConfig}
               type="heading"
               fontFamily="primary"
-              fontSize="fs36"
+              fontSize="fs32"
               fontWeight="black"
               navigation={navigation}
               headerText={headerText}
@@ -136,7 +136,13 @@ const renderView = (item, navigation, position) => {
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, position) => {
+const renderCarousel = (
+  largeCompImageCarousel,
+  navigation,
+  position,
+  ignoreLazyLoadImage,
+  setCurCarouselIndex
+) => {
   let config = {};
   if (isGymboree()) {
     config = {
@@ -154,16 +160,24 @@ const renderCarousel = (largeCompImageCarousel, navigation, position) => {
         <Carousel
           {...config}
           data={largeCompImageCarousel}
-          renderItem={item => renderView(item, navigation, position)}
+          renderItem={item => renderView(item, navigation, position, ignoreLazyLoadImage)}
           width={MODULE_WIDTH}
           carouselConfig={{
             autoplay: true,
           }}
+          onSnapToItem={index => setCurCarouselIndex(index)}
           showDots
           overlap
         />
       ) : (
-        <View>{renderView({ item: largeCompImageCarousel[0] }, navigation, position)}</View>
+        <View>
+          {renderView(
+            { item: largeCompImageCarousel[0] },
+            navigation,
+            position,
+            ignoreLazyLoadImage
+          )}
+        </View>
       )}
     </ContainerView>
   );
@@ -186,6 +200,27 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
   );
 };
 
+/* Returns the position of the ribbon in current slide. */
+const getRibbonPosition = (largeCompImageCarousel, curSlideIndex) => {
+  const curCarouselSlide = largeCompImageCarousel && largeCompImageCarousel[curSlideIndex];
+  let ribbonPosition = 'left';
+
+  if (curCarouselSlide) {
+    const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
+    const { ribbonPlacement } = ribbonBanner;
+
+    /*
+      Need to refactor the code. Currently if you set 'left' the ribbon is being aligned to
+      right and vice versa.
+    */
+    if (ribbonPlacement === 'left') {
+      ribbonPosition = 'right';
+    }
+  }
+
+  return ribbonPosition;
+};
+
 /**
  * @param {object} props : Props for Module A multi type of banner list, button list, header text.
  * @desc This is Module A global component. It has capability to display
@@ -195,41 +230,44 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
  */
 
 const ModuleA = (props: Props) => {
-  const {
-    navigation,
-    largeCompImageCarousel,
-    ctaItems,
-    set: [set = {}],
-  } = props;
-  const ctaType = ctaTypes[set.val];
+  const { navigation, largeCompImageCarousel, ctaItems, ctaType, ignoreLazyLoadImage } = props;
+  const ctaTypeValue = ctaTypes[ctaType];
+  const [curCarouselSlideIndex, setCurCarouselIndex] = useState(0);
+  const ribbonPosition = getRibbonPosition(largeCompImageCarousel, curCarouselSlideIndex);
 
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'left')}
+      {renderCarousel(
+        largeCompImageCarousel,
+        navigation,
+        ribbonPosition,
+        ignoreLazyLoadImage,
+        setCurCarouselIndex
+      )}
 
-      {ctaType === 'imageCTAList' && (
+      {ctaTypeValue === ctaTypes.divImageCTACarouse && (
         <DivImageCTAContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'moduleA_cta_links', 'black')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'moduleA_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaTypeValue === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
           <Border background="gray" />
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaTypeValue === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
       )}
 
-      {ctaType === 'linkCTAList' && (
+      {ctaTypeValue === ctaTypes.linkList && (
         <ButtonLinksContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'link_cta_list', 'gray')}
         </ButtonLinksContainer>
       )}
     </Container>

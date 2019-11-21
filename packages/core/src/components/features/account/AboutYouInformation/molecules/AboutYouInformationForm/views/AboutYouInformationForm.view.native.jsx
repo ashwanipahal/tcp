@@ -126,7 +126,6 @@ export class AboutYouInformationForm extends React.PureComponent {
           <ActionsWrapper>
             <Button
               fill="BLUE"
-              buttonVariation="variable-width"
               data-locator="moreaboutyou-savebtn"
               disabled={pristine}
               onPress={this.onUpdate}
@@ -135,7 +134,6 @@ export class AboutYouInformationForm extends React.PureComponent {
           </ActionsWrapper>
           <ActionsWrapper>
             <Button
-              buttonVariation="variable-width"
               data-locator="moreaboutyou-cancelbtn"
               text={getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
               onPress={onClose}

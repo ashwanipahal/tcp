@@ -19,8 +19,9 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
         <CouponInfo>
           <TitleWrapper>
             <BodyCopy
-              fontSize="fs12"
-              fontWeight="semibold"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="black"
               title={coupon.title}
               data-locator="accountoverview-myplacerewatdstile-rewardvalue"
               text={coupon.title}

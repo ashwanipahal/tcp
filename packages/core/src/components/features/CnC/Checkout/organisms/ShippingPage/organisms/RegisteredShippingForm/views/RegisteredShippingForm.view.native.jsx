@@ -1,27 +1,33 @@
 import React from 'react';
-import { Field, change, FormSection, resetSection } from 'redux-form';
+import { View } from 'react-native';
+import { Field, change, FormSection } from 'redux-form';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
 import Button from '../../../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
+import ErrorMessage from '../../../../../../../../common/atoms/ErrorDisplay';
 import { getLabelValue } from '../../../../../../../../../utils';
-import AddEditShippingAddress from '../../../../../molecules/AddEditShippingAddressModal';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import {
   AddressFieldsWrapper,
   SaveToAccountWrapper,
   MarginBottom,
   AddressViewWrapper,
+  EditFromSeparator,
+  ErrorMessageWrapper,
 } from '../styles/RegisteredShippingForm.view.style.native';
 import {
   onSaveBtnClick,
-  getFieldsValidation,
   getDefaultShippingDisabledState,
   nativeDefaultPropTypes,
   nativePropTypes,
 } from './RegisteredShippingForm.util';
+import AddEditShippingAddress from './RegisteredShippingForm.view.native.util';
 
+const saveToAddressBookConst = 'saveToAddressBook';
+const addressPhoneNumber = 'address.phoneNumber';
+const defaultShippingConst = 'defaultShipping';
 const dropDownStyle = {
   height: 30,
   borderBottomWidth: 1,
@@ -48,28 +54,29 @@ class RegisteredShippingForm extends React.Component {
   componentDidMount() {
     const { newUserPhoneNo, dispatch, formName, userAddresses } = this.props;
     if (userAddresses && userAddresses.size === 0) {
-      dispatch(change(formName, 'address.phoneNumber', newUserPhoneNo));
-      dispatch(change(formName, 'saveToAddressBook', true));
-      dispatch(change(formName, 'defaultShipping', true));
+      dispatch(change(formName, addressPhoneNumber, newUserPhoneNo));
+      dispatch(change(formName, saveToAddressBookConst, true));
+      dispatch(change(formName, defaultShippingConst, true));
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { defaultAddressId, dispatch, formName } = this.props;
+    const { defaultAddressId, dispatch, formName, setEditModalRef } = this.props;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     const { modalState, modalType } = this.state;
     if (defaultAddressId && defaultAddressId !== prevDefaultAddressId && modalState) {
-      if (modalType === 'add') {
-        this.toggleAddressModal();
-      } else if (modalType === 'edit') {
-        this.toggleModal({ type: 'edit' });
+      if (modalType === 'edit') {
+        this.toggleModal({ type: 'edit', open: false });
       }
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
+    }
+    if (modalState) {
+      setEditModalRef(this.editModalRef);
     }
   }
 
   getAddressOptions = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, labels } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
@@ -86,7 +93,7 @@ class RegisteredShippingForm extends React.Component {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: '+Add New Address',
+      label: getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout'),
       content: '',
       primary: false,
     });
@@ -96,12 +103,15 @@ class RegisteredShippingForm extends React.Component {
 
   getSelectedAddress = () => {
     const { dispatch, formName, onFileAddressKey, userAddresses } = this.props;
+    const { modalState, modalType } = this.state;
     const defaultAddress = onFileAddressKey
       ? userAddresses && userAddresses.find(add => add.addressId === onFileAddressKey)
       : userAddresses && userAddresses.find(add => add.primary);
-    dispatch(
-      change(formName, 'onFileAddressKey', (defaultAddress && defaultAddress.addressId) || '')
-    );
+    if (!onFileAddressKey && !(modalState && modalType === 'add')) {
+      dispatch(
+        change(formName, 'onFileAddressKey', (defaultAddress && defaultAddress.addressId) || '')
+      );
+    }
     return defaultAddress;
   };
 
@@ -119,7 +129,7 @@ class RegisteredShippingForm extends React.Component {
       if (!address) {
         address = userAddresses.get(0);
       }
-      this.toggleModal({ type: 'edit' });
+      this.toggleModal({ type: 'edit', open: true });
       const isDefaultAddress = address.primary === 'true';
       dispatch(change(formName, 'address.addressLine1', address.addressLine1));
       dispatch(change(formName, 'address.addressLine2', address.addressLine[1]));
@@ -128,37 +138,51 @@ class RegisteredShippingForm extends React.Component {
       dispatch(change(formName, 'address.city', address.city));
       dispatch(change(formName, 'address.zipCode', address.zipCode));
       dispatch(change(formName, 'address.state', address.state));
-      dispatch(change(formName, 'address.phoneNumber', address.phone1));
-      dispatch(change(formName, 'defaultShipping', isDefaultAddress));
+      dispatch(change(formName, addressPhoneNumber, address.phone1));
+      dispatch(change(formName, defaultShippingConst, isDefaultAddress));
     }
   };
 
-  toggleAddressModal = () => {
-    const { dispatch, formName } = this.props;
-    dispatch(resetSection(formName, 'address'));
-    dispatch(change(formName, 'saveToAddressBook', true));
-    dispatch(change(formName, 'defaultShipping', false));
-    this.toggleModal({ type: 'add' });
-  };
-
-  toggleModal = ({ type }) => {
-    const { modalState } = this.state;
-    this.setState({ modalState: !modalState, modalType: type });
+  toggleModal = ({ type, open }) => {
+    const { setEditState } = this.props;
+    this.setState({ modalState: open, modalType: type });
+    // type: edit/add address form flag
+    setEditState(open, type);
   };
 
   onAddressDropDownChange = itemValue => {
     const { dispatch, formName } = this.props;
     dispatch(change(formName, 'onFileAddressKey', itemValue));
+    if (!itemValue) {
+      const fields = [
+        { field: saveToAddressBookConst, val: true },
+        { field: defaultShippingConst, val: false },
+        { field: 'address.addressLine1', val: '' },
+        { field: 'address.addressLine2', val: '' },
+        { field: 'address.firstName', val: '' },
+        { field: 'address.lastName', val: '' },
+        { field: 'address.city', val: '' },
+        { field: 'address.zipCode', val: '' },
+        { field: 'address.state', val: '' },
+        { field: addressPhoneNumber, val: '' },
+      ];
+      fields.forEach(({ field, val }) => {
+        dispatch(change(formName, field, val));
+      });
+      this.toggleModal({ type: 'add', open: true });
+    } else {
+      this.toggleModal({ open: false });
+    }
   };
 
   onSaveToAccountChange = value => {
     const { isSaveToAddressBookChecked, formName, dispatch, userAddresses } = this.props;
     /* istanbul ignore next */
     if (dispatch) {
-      dispatch(change(formName, 'saveToAddressBook', !isSaveToAddressBookChecked));
+      dispatch(change(formName, saveToAddressBookConst, !isSaveToAddressBookChecked));
       /* istanbul ignore next */
       if ((userAddresses && userAddresses.size === 0) || !value) {
-        dispatch(change(formName, 'defaultShipping', value));
+        dispatch(change(formName, defaultShippingConst, value));
       }
     }
   };
@@ -199,7 +223,7 @@ class RegisteredShippingForm extends React.Component {
               )}
               showDefaultCheckbox={false}
               component={InputCheckbox}
-              name="saveToAddressBook"
+              name={saveToAddressBookConst}
               onChange={this.onSaveToAccountChange}
               isChecked={isSaveToAddressBookChecked}
             />
@@ -210,7 +234,7 @@ class RegisteredShippingForm extends React.Component {
             <Field
               showDefaultCheckbox={false}
               component={InputCheckbox}
-              name="defaultShipping"
+              name={defaultShippingConst}
               disabled={defaultShippingDisabled}
               rightText={getLabelValue(
                 labels,
@@ -238,22 +262,20 @@ class RegisteredShippingForm extends React.Component {
     });
   };
 
-  getBtnDisabledState = () => {
-    let disabledState = false;
-    const { syncErrorsObject } = this.props;
-    const { modalState } = this.state;
-    if (modalState) {
-      disabledState = getFieldsValidation({ syncErrorsObject });
-    }
-
-    return disabledState;
-  };
-
   renderActionButtons = () => {
-    const { labels } = this.props;
+    const { labels, editShipmentDetailsError } = this.props;
     const { modalType } = this.state;
     return (
-      <>
+      <View
+        ref={errorBtnRef => {
+          this.editModalRef = errorBtnRef;
+        }}
+      >
+        {editShipmentDetailsError ? (
+          <ErrorMessageWrapper>
+            <ErrorMessage error={editShipmentDetailsError} />
+          </ErrorMessageWrapper>
+        ) : null}
         <MarginBottom>
           <Button
             fill="BLUE"
@@ -262,7 +284,6 @@ class RegisteredShippingForm extends React.Component {
             data-locator="edit-shipping-cancel-btn"
             onPress={this.saveBtnClickHandler}
             text={getLabelValue(labels, 'lbl_shipping_selectShipAdd', 'shipping', 'checkout')}
-            disableButton={this.getBtnDisabledState()}
           />
         </MarginBottom>
         <Button
@@ -270,74 +291,82 @@ class RegisteredShippingForm extends React.Component {
           type="button"
           buttonVariation="fixed-width"
           data-locator="edit-shipping-save-btn"
-          onPress={() => this.toggleModal({ type: modalType })}
+          onPress={() => this.toggleModal({ type: modalType, open: false })}
           text={getLabelValue(labels, 'lbl_shipping_cancelCaps', 'shipping', 'checkout')}
         />
-      </>
+      </View>
     );
   };
 
   renderAddressForm = () => {
-    const defaultAddress = this.getSelectedAddress();
     const { labels, onFileAddressKey } = this.props;
+    const { modalState, modalType } = this.state;
+    const editModalState = modalState && modalType === 'edit';
+    const defaultAddress = this.getSelectedAddress();
     return (
       <>
-        <Field
-          selectListTitle="Select from address book"
-          name="onFileAddressKey"
-          id="onFileAddressKey"
-          component={AddressDropdown}
-          dataLocator="shipping-address"
-          data={this.getAddressOptions()}
-          labels={{ common: { lbl_common_tapClose: 'close' } }}
-          dropDownStyle={{ ...dropDownStyle }}
-          itemStyle={{ ...itemStyle }}
-          toggleModal={this.toggleAddressModal}
-          onValueChange={itemValue => {
-            this.onAddressDropDownChange(itemValue);
-          }}
-          variation="secondary"
-          showButton={false}
-          selectedValue={onFileAddressKey}
-        />
+        <View {...{ pointerEvents: editModalState ? 'none' : 'auto' }}>
+          <Field
+            selectListTitle="Select from address book"
+            name="onFileAddressKey"
+            id="onFileAddressKey"
+            component={AddressDropdown}
+            dataLocator="shipping-address"
+            data={this.getAddressOptions()}
+            labels={{ common: { lbl_common_tapClose: 'close' } }}
+            dropDownStyle={{ ...dropDownStyle }}
+            itemStyle={{ ...itemStyle }}
+            onValueChange={itemValue => {
+              this.onAddressDropDownChange(itemValue);
+            }}
+            addAddress={() => {
+              this.onAddressDropDownChange('');
+            }}
+            variation="secondary"
+            selectedValue={onFileAddressKey}
+          />
+        </View>
 
-        <AddressViewWrapper>
-          <Address
-            address={defaultAddress}
-            showCountry={false}
-            showPhone={false}
-            showName
-            dataLocatorPrefix="address"
-            customStyle={CustomAddress}
-            className="elem-mb-SM"
+        {!modalState && (
+          <AddressViewWrapper>
+            <Address
+              address={defaultAddress}
+              showCountry={false}
+              showPhone={false}
+              showName
+              dataLocatorPrefix="address"
+              customStyle={CustomAddress}
+              className="elem-mb-SM"
+            />
+            <Anchor
+              underline
+              anchorVariation="primary"
+              fontSizeVariation="small"
+              noLink
+              href="#"
+              target="_blank"
+              dataLocator="shipping-edit-contact-anchor"
+              text={getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
+              onPress={this.onEditClick}
+            />
+          </AddressViewWrapper>
+        )}
+        {editModalState && (
+          <AddEditShippingAddress
+            {...{ modalState, modalType, labels }}
+            addressFields={this.renderAddressFields}
+            defaultOptions={this.renderDefaultOptions}
+            actionButtons={this.renderActionButtons}
           />
-          <Anchor
-            underline
-            anchorVariation="primary"
-            fontSizeVariation="small"
-            noLink
-            href="#"
-            target="_blank"
-            dataLocator="shipping-edit-contact-anchor"
-            text={getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
-            onPress={this.onEditClick}
-          />
-        </AddressViewWrapper>
+        )}
+        {editModalState && <EditFromSeparator />}
       </>
     );
   };
 
   renderAddressFields = () => {
-    const {
-      addressFormLabels,
-      dispatch,
-      addressPhoneNo,
-      loadShipmentMethods,
-      isGuest,
-      address,
-      userAddresses,
-      onFileAddressKey,
-    } = this.props;
+    const { loadShipmentMethods, isGuest, address, userAddresses, onFileAddressKey } = this.props;
+    const { addressFormLabels, dispatch, addressPhoneNo } = this.props;
     const { modalState, modalType } = this.state;
     let editedAddress = null;
     let addressLine1 = null;
@@ -371,24 +400,15 @@ class RegisteredShippingForm extends React.Component {
 
   render() {
     const { modalState, modalType } = this.state;
-    const { labels, userAddresses } = this.props;
+    const { userAddresses } = this.props;
+    const userAddressesPresent = userAddresses && userAddresses.size > 0;
+    const isAddModal = modalType === 'add' && modalState;
+    const isEditModal = modalType === 'edit' && modalState;
     return (
       <>
-        {userAddresses && userAddresses.size > 0
-          ? this.renderAddressForm()
-          : this.renderAddressFields()}
-        {!modalState && this.renderDefaultOptions()}
-        {modalState && (
-          <AddEditShippingAddress
-            modalState={modalState}
-            addressFields={this.renderAddressFields}
-            defaultOptions={this.renderDefaultOptions}
-            modalType={modalType}
-            toggleAddEditModal={this.toggleModal}
-            actionButtons={this.renderActionButtons}
-            labels={labels}
-          />
-        )}
+        {userAddressesPresent && this.renderAddressForm()}
+        {(!userAddressesPresent || isAddModal) && this.renderAddressFields()}
+        {!isEditModal && this.renderDefaultOptions()}
       </>
     );
   }

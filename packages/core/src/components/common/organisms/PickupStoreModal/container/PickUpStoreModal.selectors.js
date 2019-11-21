@@ -5,6 +5,7 @@ import {
   FORM_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { getCartItemCount } from '../../../../../utils/cookie.util';
+import { isMobileApp } from '../../../../../utils';
 
 const getColorSizeFitName = (type, values) => {
   let displayName = values && values.get(type);
@@ -35,7 +36,7 @@ export const getStoresOnCart = state => {
 };
 
 export const getDefaultStore = state => {
-  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].defaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('defaultStore')) || null;
 };
 
 export const getInitialValues = (state, generalProductId) => {
@@ -53,7 +54,7 @@ export const getCurrentProduct = state => {
 };
 
 export const getGeoDefaultStore = state => {
-  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].geoDefaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('geoDefaultStore')) || null;
 };
 
 // NOTE: used for store locator to populate store geo-location search
@@ -69,7 +70,8 @@ export const getOrderConfirmation = state => {
 };
 
 export const getItemsCount = () => {
-  return getCartItemCount();
+  return isMobileApp() ? 1 : getCartItemCount();
+  // TODO - CnC team to provide a selector for getting cart item count in mobile app.
 };
 
 export const getUserIsPlcc = state => {
@@ -104,4 +106,55 @@ export const getOpenSkuSelectionForm = state => {
 
 export const getStoreSearchError = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
+};
+
+export const getIsGetUserStoresLoaded = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isGetUserStoresLoaded')
+  );
+};
+
+export const getIsPickupModalOpenFromBagPage = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('fromBagPage');
+};
+
+export const getUpdateCartItemStore = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('updateCartItemStore')
+  );
+};
+
+export const getIsItemShipToHome = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isItemShipToHome');
+};
+
+export const getAlwaysSearchForBOSS = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('alwaysSearchForBOSS')
+  );
+};
+
+export const openRestrictedModalForBopis = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] &&
+    state[PICKUP_MODAL_REDUCER_KEY].get('openRestrictedModalForBopis')
+  );
+};
+
+export const isStoreSearching = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isSearching');
+};
+
+export const getInitialValuesFromBagPage = state => {
+  const pickUpModalReducer =
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');
+  return {
+    Quantity: pickUpModalReducer && pickUpModalReducer.get('Quantity'),
+    color: pickUpModalReducer && pickUpModalReducer.get('color'),
+    Size: pickUpModalReducer && pickUpModalReducer.get('Size'),
+    Fit: pickUpModalReducer && pickUpModalReducer.get('Fit'),
+    orderItemType: pickUpModalReducer && pickUpModalReducer.get('orderItemType'),
+    orderId: pickUpModalReducer && pickUpModalReducer.get('orderId'),
+    orderItemId: pickUpModalReducer && pickUpModalReducer.get('orderItemId'),
+  };
 };

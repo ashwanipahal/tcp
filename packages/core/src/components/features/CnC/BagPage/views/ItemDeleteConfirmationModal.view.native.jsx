@@ -73,7 +73,6 @@ const ItemDeleteConfirmationModal = ({
                   type="submit"
                   color="white"
                   onPress={moveToSfl}
-                  buttonVariation="variable-width"
                   text={modalButtonSFL}
                 />
               </ButtonWrapper>
@@ -84,7 +83,6 @@ const ItemDeleteConfirmationModal = ({
                   color="gray"
                   fontWeight="extrabold"
                   onPress={confirmRemoveCartItem}
-                  buttonVariation="variable-width"
                   text={modalButtonConfirmDelete}
                 />
               </ButtonWrapper>

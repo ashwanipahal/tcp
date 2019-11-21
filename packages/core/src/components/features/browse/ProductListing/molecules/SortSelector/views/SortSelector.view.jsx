@@ -20,6 +20,7 @@ class SortSelector extends React.PureComponent<Props> {
       expanded,
       hideTitle,
       isSortOpenModal,
+      defaultPlaceholder,
     } = this.props;
 
     return (
@@ -28,7 +29,7 @@ class SortSelector extends React.PureComponent<Props> {
         component={CustomSelect}
         optionsMap={sortSelectOptions}
         title={hideTitle ? '' : 'Sort By: '}
-        placeholder={hideTitle ? '' : 'Sort'}
+        placeholder={hideTitle ? '' : defaultPlaceholder || 'Sort'}
         allowMultipleSelections={false}
         className={className}
         onChange={onChange}

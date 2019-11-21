@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
 import { InstagramLoginComponent } from './InstagramLogin';
+import TwitterLoginComponent from './twitterLoginComponent';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -14,6 +15,7 @@ import getLinkedSocialAccountLabel from '../utils';
 const loginComponents = {
   Facebook: FacebookLogin,
   Instagram: InstagramLoginComponent,
+  Twitter: TwitterLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -25,10 +27,12 @@ class Socialview extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
+    urlParams: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
+    urlParams: {},
   };
 
   constructor() {
@@ -38,13 +42,15 @@ class Socialview extends React.PureComponent {
   }
 
   renderSocialLogins = (Component, saveSocialAcc) => {
-    const { socialLoad, pointModalClose } = this.props;
+    const { socialLoad, urlParams, pointModalClose } = this.props;
+
     return (
       <Component
         socialLoad={socialLoad}
         saveSocialAcc={saveSocialAcc}
         loginStatus={this.socialAccounts}
         pointModalClose={pointModalClose}
+        urlParams={urlParams}
       />
     );
   };
@@ -172,14 +178,14 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook' || prop === 'instagram') {
+      if (prop === 'facebook' || prop === 'instagram' || prop === 'twitter') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
           hasUserId: accounts[prop].userId,
         });
       }
-      if (prop === 'pointsAwarded') {
+      if (prop === 'pointsAwarded' && accounts[prop] !== null) {
         this.pointsInformation = {
           activity: accounts[prop].activity,
           id: accounts[prop].id,
@@ -197,6 +203,7 @@ class Socialview extends React.PureComponent {
 
   viewAll = () => {
     routerPush('/account?id=extra-points', '/account/extra-points');
+    this.onClose();
   };
 
   render() {
@@ -209,9 +216,15 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <p className="social-accounts__subTitle" data-locator="mypreference-socialaccountheader">
+          <BodyCopy
+            fontSize="fs16"
+            fontFamily="secondary"
+            component="p"
+            className="social-accounts__subTitle"
+            data-locator="mypreference-socialaccountheader"
+          >
             {labels.lbl_prefrence_social_text}
-          </p>
+          </BodyCopy>
           <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
         </section>
       </React.Fragment>

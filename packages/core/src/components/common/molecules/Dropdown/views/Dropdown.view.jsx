@@ -20,7 +20,8 @@ class Dropdown extends React.PureComponent {
 
   componentDidMount() {
     this.dropDown = document.querySelector('.drop_down');
-    window.addEventListener('click', this.closeDropdownIfClickOutside);
+    window.addEventListener('focusin', this.closeDropdownIfFocusOutside);
+    window.addEventListener('click', this.closeDropdownIfFocusOutside);
     const { options, active } = this.props;
     this.calNavState(options, {
       component: active,
@@ -38,11 +39,12 @@ class Dropdown extends React.PureComponent {
 
   componentWillUnmount() {
     if (window) {
-      window.removeEventListener('click', this.closeDropdownIfClickOutside);
+      window.removeEventListener('focusin', this.closeDropdownIfFocusOutside);
+      window.removeEventListener('click', this.closeDropdownIfFocusOutside);
     }
   }
 
-  closeDropdownIfClickOutside = e => {
+  closeDropdownIfFocusOutside = e => {
     const { dropDownExpand } = this.state;
     if (dropDownExpand && !this.dropDown.contains(e.target)) {
       this.toggleHandler();
@@ -94,49 +96,51 @@ class Dropdown extends React.PureComponent {
     return (
       <BodyCopy
         component="div"
-        role="button"
+        role="link"
         textAlign="center"
         tabIndex={-1}
         onClick={e => this.onClickHandler(e, subSection)}
         fontWeight="extrabold"
         fontSize="fs14"
       >
-        <Anchor asPath={subSection.url} className="dropdownAnchorColor" to={subSection.href}>
-          <li
-            key={subSection.id}
-            className={`dropDownLists ${
-              activeComponent === subSection.component ? 'dropdownActiveClass' : ''
-            }`}
-          >
+        <li
+          key={subSection.id}
+          className={`dropDownLists ${
+            activeComponent === subSection.component ? 'dropdownActiveClass' : ''
+          }`}
+        >
+          <Anchor asPath={subSection.url} className="dropdownAnchorColor" to={subSection.href}>
             {this.getDisplayName(subSection.displayName)}
-          </li>
-        </Anchor>
+          </Anchor>
+        </li>
       </BodyCopy>
     );
   };
 
   itemLists = (nav, activeComponent) => {
     return (
-      <BodyCopy
-        component="div"
-        role="button"
-        textAlign="center"
-        onClick={e => this.onClickHandler(e, nav)}
-        tabIndex={-1}
-        fontWeight="extrabold"
-        fontSize="fs14"
+      <li
+        key={nav.id}
+        role="option"
+        tabIndex={0}
+        className={`dropDownLists ${
+          activeComponent === nav.component ? 'dropdownActiveClass' : ''
+        }`}
+        aria-selected={activeComponent === nav.component}
       >
-        <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
-          <li
-            key={nav.id}
-            className={`dropDownLists ${
-              activeComponent === nav.component ? 'dropdownActiveClass' : ''
-            }`}
-          >
+        <BodyCopy
+          component="div"
+          role="link"
+          textAlign="center"
+          fontWeight="extrabold"
+          fontSize="fs14"
+          onClick={e => this.onClickHandler(e, nav)}
+        >
+          <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href} tabIndex={-1}>
             {this.getDisplayName(nav.displayName)}
-          </li>
-        </Anchor>
-      </BodyCopy>
+          </Anchor>
+        </BodyCopy>
+      </li>
     );
   };
 
@@ -154,20 +158,33 @@ class Dropdown extends React.PureComponent {
           fontSize="fs14"
           textAlign="center"
           fontWeight="extrabold"
+          aria-haspopup="listbox"
+          aria-expanded={!!dropDownExpand}
+          tabIndex={0}
         >
           <BodyCopy
             component="div"
             fontFamily="secondary"
             fontWeight="extrabold"
-            className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
+            className={`customSelectArrow ${dropDownExpand ? 'up' : 'down'}`}
           />
           {this.getDisplayName(navState.displayName)}
         </BodyCopy>
         {dropDownExpand && (
           <BodyCopy component="div" className="dropdownUpperDiv">
-            <ul className="dropdownUlBorder dropDownSelect">
+            <ul className="dropdownUlBorder dropDownSelect" tabIndex={-1} role="listbox">
               {options.map(nav => this.itemLists(nav, navState.component))}
             </ul>
+            <Anchor
+              noLink
+              aria-label="Close Dropdown"
+              handleLinkClick={e => {
+                e.preventDefault();
+                this.toggleHandler();
+              }}
+            >
+              close
+            </Anchor>
           </BodyCopy>
         )}
       </BodyCopy>

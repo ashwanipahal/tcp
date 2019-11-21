@@ -12,6 +12,7 @@ import {
   constants as VenmoConstants,
 } from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { setVenmoPaymentOptionSave } from '../../../../../container/Checkout.action';
+import { getCVVCodeRichTextSelector } from '../../../../BillingPage/container/BillingPage.selectors';
 
 /**
  * @class BillingSectionContainer
@@ -24,6 +25,8 @@ class BillingSectionContainer extends PureComponent {
     card: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     saveVenmoPaymentOption: PropTypes.func,
+    cvvCodeInfoContentId: PropTypes.string,
+    getCVVCodeInfo: PropTypes.func,
   };
 
   static defaultProps = {
@@ -32,6 +35,8 @@ class BillingSectionContainer extends PureComponent {
     card: null,
     labels: {},
     saveVenmoPaymentOption: () => {},
+    cvvCodeInfoContentId: () => {},
+    getCVVCodeInfo: null,
   };
 
   /**
@@ -61,17 +66,18 @@ export const mapStateToProps = state => {
     isVenmoNonceNotExpired,
     isVenmoPaymentInProgress,
     getVenmoData,
+    getIsBillingVisited,
+    getIsPaymentDisabled,
   } = checkoutSelectors;
   const venmoClientTokenData = getVenmoClientTokenData(state);
   const { venmoPaymentTokenAvailable } = venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
   const enabled = getIsVenmoEnabled(state);
   const isNonceNotExpired = isVenmoNonceNotExpired(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   const isGuest = isGuestUser(state);
-  const venmoData = getVenmoData();
+  const venmoData = getVenmoData(state);
   const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
-
   const venmoPayment = {
     ccBrand: VenmoConstants.VENMO,
     ccType: VenmoConstants.VENMO,
@@ -79,7 +85,6 @@ export const mapStateToProps = state => {
     venmoSaveToAccountDisplayed: !isGuest && mode === modes.CLIENT_TOKEN,
     isVenmoPaymentSelected: enabled && venmoPaymentInProgress && isNonceNotExpired,
   };
-
   return {
     appliedGiftCards: giftCardSelectors.getAppliedGiftCards(state),
     card: billingSectionSelectors.getBillingCardDetails(state),
@@ -87,6 +92,9 @@ export const mapStateToProps = state => {
     address,
     isGuest,
     venmoPayment,
+    cvvCodeRichText: getCVVCodeRichTextSelector(state),
+    isBillingVisited: getIsBillingVisited(state),
+    isPaymentDisabled: getIsPaymentDisabled(state),
   };
 };
 

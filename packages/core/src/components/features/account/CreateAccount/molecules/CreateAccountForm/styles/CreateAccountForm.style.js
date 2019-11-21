@@ -4,6 +4,10 @@ const Styles = css`
   .remember-me-text {
     display: block;
   }
+  .already-account {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    color: ${props => props.theme.colorPalette.gray[900]};
+  }
   .i-agree-checkbox {
     padding-top: 10px;
   }

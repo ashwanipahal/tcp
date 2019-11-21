@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
-import { BodyCopy, Button } from '../../../../common/atoms';
+import { BodyCopy, Button, Anchor } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
-import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
 import utility from '../../Checkout/util/utility';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 
@@ -40,6 +39,8 @@ const EmptyBagPage = ({
   bagLabels,
   isBagPageSflSection,
   showPlccApplyNow = true,
+  onLinkClick,
+  openModalApplyNowModal,
 }) => {
   return (
     <div className={className}>
@@ -56,16 +57,34 @@ const EmptyBagPage = ({
           >
             {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
           </BodyCopy>
-          {showPlccApplyNow ? <ApplyNowModal /> : null}
+          {showPlccApplyNow ? (
+            <Anchor
+              fontSizeVariation="medium"
+              anchorVariation="primary"
+              noLink
+              handleLinkClick={e => {
+                e.preventDefault();
+                openModalApplyNowModal({ isModalOpen: true });
+              }}
+              underline
+            >
+              {bagLabels.applyNow}
+            </Anchor>
+          ) : null}
           <div className="element-spacing">
             <Button
               data-locator={getLocator(
                 isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
               )}
               className="CTA-button"
-              onClick={() => {
-                const page = !isUserLoggedIn ? CHECKOUT_ROUTES.login : CHECKOUT_ROUTES.home;
-                utility.routeToPage(page);
+              onClick={e => {
+                if (!isUserLoggedIn) {
+                  const login = 'login';
+                  onLinkClick({ e, componentId: login });
+                } else {
+                  const page = CHECKOUT_ROUTES.home;
+                  utility.routeToPage(page);
+                }
               }}
             >
               <BodyCopy
@@ -107,6 +126,8 @@ EmptyBagPage.propTypes = {
   bagLabels: PropTypes.bool.isRequired,
   showPlccApplyNow: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  onLinkClick: PropTypes.func.isRequired,
+  openModalApplyNowModal: PropTypes.func.isRequired,
 };
 
 EmptyBagPage.defaultProps = {

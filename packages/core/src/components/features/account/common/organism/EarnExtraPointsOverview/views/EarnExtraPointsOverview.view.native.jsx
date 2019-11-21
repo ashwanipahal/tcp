@@ -21,11 +21,13 @@ export const EarnExtraPointsOverview = ({ labels, handleComponentChange }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       <BodyCopy
         className="elem-mb-LRG"
         fontSize="fs14"
+        fontFamily="secondary"
         fontWeight="semibold"
         data-locator="getCloserToReward"
         text={getLabelValue(labels, 'lbl_earnExtraPoints_getReward')}

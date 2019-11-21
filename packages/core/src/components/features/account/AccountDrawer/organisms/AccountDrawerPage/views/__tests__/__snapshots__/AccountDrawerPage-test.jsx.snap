@@ -4,10 +4,15 @@ exports[`AccountDrawerPage should render correctly 1`] = `
 <div
   className=""
 >
+  <Connect(OrderNotification) />
   <Styled(AccountDrawerHeading)
     userName=""
   />
-  <Connect(RewardsPointsContainer) />
+  <div
+    className="elem-pl-MED elem-pr-MED"
+  >
+    <Connect(RewardsPointsContainer) />
+  </div>
   <Styled(ExtraPointsTeaser)
     globalLabels={Object {}}
     labels={Object {}}
@@ -26,10 +31,15 @@ exports[`should not render RewardsPoints should renders correctly when addresses
 <div
   className=""
 >
+  <Connect(OrderNotification) />
   <Styled(AccountDrawerHeading)
     userName=""
   />
-  <Connect(RewardsPointsContainer) />
+  <div
+    className="elem-pl-MED elem-pr-MED"
+  >
+    <Connect(RewardsPointsContainer) />
+  </div>
   <Styled(ExtraPointsTeaser)
     globalLabels={Object {}}
     labels={Object {}}

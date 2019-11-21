@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Skeleton Native Componenet should match snapshot 1`] = `
+<View>
+  <Styled(View)
+    key="0"
+    rowProps={Object {}}
+  >
+    <Styled(View)
+      colProps={Object {}}
+      height={150}
+      key="0"
+      otherprops={Object {}}
+      width={100}
+    />
+    <Styled(View)
+      colProps={Object {}}
+      height={150}
+      key="1"
+      otherprops={Object {}}
+      width={100}
+    />
+    <Styled(View)
+      colProps={Object {}}
+      height={150}
+      key="2"
+      otherprops={Object {}}
+      width={100}
+    />
+  </Styled(View)>
+</View>
+`;

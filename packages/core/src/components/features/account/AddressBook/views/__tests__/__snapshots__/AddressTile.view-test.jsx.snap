@@ -17,7 +17,7 @@ exports[`AddressTile component should renders correctly 1`] = `
           }
         }
       >
-        <Address
+        <Styled(Address)
           address={
             Object {
               "addressLine": Array [
@@ -32,14 +32,8 @@ exports[`AddressTile component should renders correctly 1`] = `
               "primary": "true",
             }
           }
-          className=""
           dataLocatorPrefix="addressbook"
           fontWeight="extrabold"
-          isDefault={false}
-          showCountry={true}
-          showDefault={true}
-          showName={true}
-          showPhone={true}
         />
       </Styled(Col)>
       <Styled(Col)
@@ -67,16 +61,18 @@ exports[`AddressTile component should renders correctly 1`] = `
   <div
     className="addressTile__row"
   >
-    <Styled(Anchor)
+    <Styled(Button)
       anchorVariation="primary"
       dataLocator="addressbook-edit"
       fontSizeVariation="large"
+      link={true}
+      nohover={true}
       onClick={[Function]}
-      to="/#"
+      type="button"
       underline={true}
     >
       lbl_common_edit
-    </Styled(Anchor)>
+    </Styled(Button)>
     <Styled(Anchor)
       anchorVariation="primary"
       dataLocator="addressbook-deletelink"

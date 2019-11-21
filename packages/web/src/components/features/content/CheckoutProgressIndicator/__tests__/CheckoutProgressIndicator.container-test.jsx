@@ -18,6 +18,7 @@ jest.mock('../../../../../../../core/src/utils', () => ({
   getObjectValue: jest.fn(),
   getIconPath: jest.fn(),
   isCanada: jest.fn(),
+  isClient: jest.fn(),
 }));
 
 describe('CheckoutProgressIndicatorContainer', () => {

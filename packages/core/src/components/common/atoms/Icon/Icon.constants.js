@@ -30,4 +30,8 @@ export const ICON_NAME = {
   iconShare: 'icon-share',
   search: 'mag-glass',
   qrcode: 'scan',
+  large: 'large',
+  filledHeart: 'filled-heart',
+  starFilled: 'star-filled',
+  heart: 'heart',
 };

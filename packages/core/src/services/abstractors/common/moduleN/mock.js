@@ -1,162 +1,17 @@
-const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
+// const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 const divImageUrl =
-  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
+  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
 
 export default {
   moduleN: {
-    contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
+    contentId: '728f4e9b-b1ee-4b83-addc-399caae17239',
     name: 'moduleN',
     type: 'module',
-    composites: {
-      bgColor: '#f53d3d',
-      headerText: [
-        {
-          textItems: [
-            {
-              text: 'ALL CLEARANCE',
-              color: 'color2',
-              style: 'style12',
-            },
-          ],
-          link: {
-            url: 'plpUrl',
-            title: '',
-            target: '',
-          },
-        },
-      ],
-      promoBanner: [
-        {
-          link: {
-            url: '/c/',
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-            class: '',
-          },
-          textItems: [
-            {
-              text: '60-70 % OFF',
-              style: 'percentage_wrapped_large',
-            },
-            {
-              text: 'No Exclusions',
-              style: 'text_normal',
-            },
-          ],
-        },
-      ],
-      ctaItems: [
-        {
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            alt: 'Girl',
-            title: 'Girl',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/girl',
-            text: 'Girl',
-            title: 'Girl',
-            target: '',
-            external: 0,
-          },
-        },
-        {
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            alt: 'Toddler Girl alt',
-            title: 'Toddler Girl title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/toddler-girl',
-            text: 'Toddler Girl',
-            title: 'Toddler Girl',
-            target: '',
-            external: 0,
-          },
-        },
-        {
-          image: {
-            url: divImageUrl,
-            alt: 'Boy',
-            title: 'Boy',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/boy',
-            text: 'Boy',
-            title: 'Boy',
-            target: '',
-            external: 0,
-          },
-        },
-        {
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            alt: 'Toddler Boy alt',
-            title: 'Tod Boy title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/toddler-boy2',
-            text: 'Toddler Boy',
-            title: 'Tod Boy',
-            target: '',
-            external: 0,
-          },
-        },
-        {
-          image: {
-            url: divImageUrl,
-            alt: 'Baby Alt',
-            title: 'Baby title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/toddler-boy',
-            text: 'Baby',
-            title: 'Baby',
-            target: '',
-            external: 0,
-          },
-        },
-        {
-          image: {
-            url: divImageUrl,
-            alt: 'Baby Alt',
-            title: 'Baby title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/toddler-boy',
-            text: 'Alt',
-            title: 'Alt',
-            target: '',
-            external: 0,
-          },
-        },
-      ],
-    },
-    submodules: {},
     set: [
+      {
+        val: '',
+        key: 'moduleClassName',
+      },
       {
         val: 'full',
         key: 'moduleWidth',
@@ -166,9 +21,114 @@ export default {
         key: 'bgClass',
       },
       {
+        val: 'stackedCTAButtons',
         key: 'ctaType',
-        val: ctaTypes[0],
       },
     ],
+    composites: {
+      ctaType: 'stackedCTAButtonsExpandable',
+      expandableTitle: 'Shop',
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'Must-See Markdowns',
+              style: 'white_large_text_half',
+            },
+          ],
+          icon: {
+            placement: '',
+            icon: '',
+          },
+          link: {
+            url:
+              'https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance',
+            title: 'ALL CLEARANCE',
+            target: '_blank',
+          },
+        },
+      ],
+      promoBanner: [
+        {
+          link: {
+            url:
+              'https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance',
+            title: '60-70 % OFF',
+          },
+          textItems: [
+            {
+              text: '60-70 % OFF',
+              style: 'percentage_inline_promo_half',
+            },
+          ],
+        },
+      ],
+      ctaItems: [
+        {
+          button: {
+            url: '/c/girls-clothing',
+            text: 'GIRL',
+            target: '_blank',
+            title: 'GIRL',
+          },
+          image: {
+            url: divImageUrl,
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+        },
+        {
+          button: {
+            url: 'https://test6.childrensplace.com/us/c/baby-clothes',
+            text: 'BOY',
+            target: '_blank',
+            title: 'BOY',
+          },
+          image: {
+            url: divImageUrl,
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+        },
+        {
+          button: {
+            url: 'https://test6.childrensplace.com/us/c/toddler-boy-clothes',
+            text: 'TODDLER BOY',
+            target: '_blank',
+            title: 'TODDLER BOY',
+          },
+          image: {
+            url: divImageUrl,
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+        },
+        {
+          button: {
+            url: 'https://test6.childrensplace.com/us/c/toddler-girl-clothes',
+            text: 'TODDLER GIRL',
+            target: '_blank',
+            title: 'TODDLER GIRL',
+          },
+          image: {
+            url: divImageUrl,
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+        },
+      ],
+    },
   },
 };

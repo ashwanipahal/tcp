@@ -65,6 +65,14 @@ export function getVariantId(colorFitsSizesMap, color, fit, size) {
 }
 
 /**
+ * @return the variant no selected by the user.
+ */
+export function getVariantNo(colorFitsSizesMap, color, fit, size) {
+  const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
+  return currentSizeEntry && currentSizeEntry.variantNo;
+}
+
+/**
  * Returns the list and offer prices corresponding to the sku with the given color, fit and size.
  */
 export function getPrices(productInfo, color, fit, size) {
@@ -106,10 +114,15 @@ export function getPricesWithRange(productInfo, color, fit, size, isSelectedSize
  * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
  */
 export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) {
-  const selectedProduct = colorFitsSizesMap.find(
-    entry => entry.colorProductId === colorProductId || entry.colorDisplayId === colorProductId
+  const selectedProduct =
+    colorFitsSizesMap &&
+    colorFitsSizesMap.find(
+      entry => entry.colorProductId === colorProductId || entry.colorDisplayId === colorProductId
+    );
+  return (
+    selectedProduct ||
+    (colorFitsSizesMap && colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null)
   );
-  return selectedProduct || (colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null);
 }
 
 /**
@@ -144,6 +157,9 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
   return firstSizeName;
 }
 
+const getIsColorOnModelLegible = curentColorEntry =>
+  curentColorEntry && curentColorEntry.miscInfo && curentColorEntry.miscInfo.hasOnModelAltImages;
+
 /**
  * @summary This function will return an array of image paths to display
  * @param {Object} args
@@ -153,15 +169,16 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
  * @param {Object} args.isFullSet - If true it will return all data from imagesByColor for given selection
  */
 export const getImagesToDisplay = args => {
-  const { imagesByColor, curentColorEntry, isAbTestActive, isFullSet } = args;
+  const { imagesByColor, curentColorEntry, isAbTestActive, isFullSet, isFavoriteView } = args;
   let images = [];
 
   try {
     // See DTN-155 for image suffex value definitions
     const mainAndAltImages = isEmpty(imagesByColor)
       ? null
-      : imagesByColor[curentColorEntry.color.name].extraImages;
-    const isColorOnModelLegible = curentColorEntry.miscInfo.hasOnModelAltImages;
+      : imagesByColor[isFavoriteView ? Object.keys(imagesByColor)[0] : curentColorEntry.color.name]
+          .extraImages;
+    const isColorOnModelLegible = getIsColorOnModelLegible(curentColorEntry);
     const regularAltImages = mainAndAltImages
       ? mainAndAltImages.filter(imgs => !imgs.isOnModalImage)
       : null;
@@ -213,11 +230,7 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
 };
 
 export const getFormattedLoyaltyText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
+  return text.replace(/\s+/g, ' ').trim();
 };
 
 export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
@@ -275,7 +288,7 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
   const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableBossProducts = selectedSKuProductInfo
       ? selectedSKuProductInfo.maxAvailableBoss
@@ -287,9 +300,19 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
 };
 
 export const getProductListToPath = str => {
+  const bundlePath = str.indexOf('/b/') !== -1;
+  if (bundlePath) {
+    return `/b?bid=${str.split('/b/')[1]}`;
+  }
   return `/p?pid=${str.split('/p/')[1]}`;
 };
 
 export const getProductListToPathInMobileApp = str => {
-  return `${str.split('/p/')[1]}`;
+  let searchPath = str;
+  if (str && str.indexOf('/p/') !== -1) {
+    searchPath = `${str.split('/p/')[1]}`;
+  } else if (str && str.indexOf('/b/') !== -1) {
+    searchPath = `${str.split('/b/')[1]}`;
+  }
+  return searchPath;
 };

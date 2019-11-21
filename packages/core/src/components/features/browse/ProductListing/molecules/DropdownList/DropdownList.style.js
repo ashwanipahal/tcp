@@ -25,7 +25,7 @@ export default css`
   .item-list-wrapper {
     max-height: 430px;
     text-align: center;
-    max-width: 590px;
+    max-width: 605px;
 
     @media ${props => props.theme.mediaQuery.large} {
       max-height: 500px;

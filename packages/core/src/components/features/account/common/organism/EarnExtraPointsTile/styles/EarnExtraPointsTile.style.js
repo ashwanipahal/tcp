@@ -15,7 +15,7 @@ const styles = css`
   }
   .slick-dots {
     position: initial;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .slick-disabled {
     opacity: 0.5;
@@ -23,17 +23,13 @@ const styles = css`
   }
   .onAccountOverview {
     max-width: 285px;
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin: 0 auto;
 
     @media ${props => props.theme.mediaQuery.large} {
-      max-width: 336px;
-      margin-left: 0;
-      margin-right: 0;
+      max-width: 300px;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       max-width: 318px;
-      margin-left: 0;
-      margin-right: 0;
     }
   }
 `;

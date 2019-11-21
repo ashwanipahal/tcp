@@ -17,7 +17,6 @@ export const Touchable = styled.TouchableOpacity`
 
 export const TouchableView = styled.TouchableOpacity`
   align-items: center;
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Icon = styled.Image`
@@ -60,6 +59,7 @@ export const PlayPauseButtonView = styled.View`
 export const PaginationWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
+  bottom: ${props => (props.iconBottomMargin ? props.iconBottomMargin : '1px')};
 `;
 
 export default {

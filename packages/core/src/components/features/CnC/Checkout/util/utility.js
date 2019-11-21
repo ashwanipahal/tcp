@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getLabelValue } from '@tcp/core/src/utils';
+import queryString from 'query-string';
+import { routerPush, isMobileApp } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -25,21 +26,34 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { isMobileApp, routerPush } from '../../../../../utils';
-import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
+import { getLocalStorage } from '../../../../../utils/localStorageManagement';
+import CheckoutConstants from '../Checkout.constants';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
-const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
-  // let recalcVal = recalcRewards;
-  // if(recalcOrderPointsInterval && !recalcRewards) {
-  //   const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
-  //   const currentTime = ((new Date()).getTime());
-  //   if(!orderPointsTimeStamp || (orderPointsTimeStamp && ((currentTime - orderPointsTimeStamp) > recalcOrderPointsInterval))) {
-  //     recalcVal = true;
-  //   }
-  // }
-  return false;
+/**
+ * getOrderPointsRecalcFlag
+ * @param {boolean} recalcRewards - current recalculate rewards value for the request
+ * @param {number} recalcOrderPointsInterval - XAPPConfig configuration value for timeout for recalc flag
+ * the entire function will be dependent on this flag being set from backend
+ * @description this method takes recalculate flag and the XappConfigValue configuration
+ * in case recalcRewards is false and caching interval is configured, it changes it to true in these cases:
+ * if time of last recalcRewards true request is not cached in localStorage
+ * if the time elapsed since last recalcRewards true request is more than the set threshold
+ * after recalcRewards flag is modified, if it is true, cache the time when the true request is sent
+ * @returns {boolean} recalcVal to be passed in the getOrderDetails or cart API header
+ */
+const getOrderPointsRecalcFlag = (recalcRewards, recalcOrderPointsInterval) => {
+  let recalcVal = recalcRewards;
+  if (recalcOrderPointsInterval && !recalcRewards) {
+    const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
+    const currentTime = new Date().getTime();
+    if (!orderPointsTimeStamp || currentTime - orderPointsTimeStamp > recalcOrderPointsInterval) {
+      recalcVal = true;
+    }
+  }
+  return recalcVal;
 };
 
 const updateCartInfo = (cartInfo, isUpdateCartItems) => {
@@ -108,25 +122,31 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
-  const result = [
-    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
-    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
-  ];
-  /* istanbul ignore else */
+const getAvailableStages = cartItems => {
+  const { PICKUP, SHIPPING, BILLING, REVIEW } = CheckoutConstants.CHECKOUT_STAGES;
+  const stages = [BILLING, REVIEW];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+    stages.unshift(SHIPPING);
   }
   /* istanbul ignore else */
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+    stages.unshift(PICKUP);
   }
-  return result;
+  return stages;
 };
 
-const routeToPage = (dataObj, ...others) => {
-  const { to, asPath } = dataObj;
-  routerPush(to, asPath, ...others);
+const routeToPage = (dataObj, queryParams, ...others) => {
+  const { asPath } = dataObj;
+  let { to } = dataObj;
+  if (queryParams) {
+    if (to.indexOf('?') !== -1) {
+      to += '&';
+    }
+    to += `${queryString.stringify(queryParams)}`;
+  }
+  if (!isMobileApp()) {
+    routerPush(to, asPath, ...others);
+  }
 };
 
 function getCreditCardType({ cardNumber = '', cardType } = {}) {
@@ -155,13 +175,94 @@ function getCreditCardType({ cardNumber = '', cardType } = {}) {
   return null;
 }
 
-function redirectToBilling(navigation) {
-  if (!isMobileApp()) {
-    routeToPage(CHECKOUT_ROUTES.billingPage);
-  } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+export const getSelectedCard = ({ creditCardList, onFileCardKey }) => {
+  return creditCardList.find(card => card.creditCardId === +onFileCardKey);
+};
+
+export const getCreditCardList = ({ cardList }) =>
+  cardList &&
+  cardList.size > 0 &&
+  cardList.filter(
+    card =>
+      card.ccType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.GIFT_CARD &&
+      card.ccType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.VENMO
+  );
+
+export const getExpirationRequiredFlag = ({ cardType }) => {
+  return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
+};
+
+export const getPayPalFlag = navigation => {
+  if (navigation && navigation.state) {
+    const {
+      state: { params },
+    } = navigation;
+    if (params) {
+      const { isPayPalFlow } = params;
+      return isPayPalFlow;
+    }
   }
-}
+  return false;
+};
+
+const handleReviewFormSubmit = (scope, data) => {
+  const {
+    submitReview,
+    pickUpContactPerson,
+    pickUpContactAlternate,
+    isExpressCheckout,
+  } = scope.props;
+  const { firstName, lastName, hasAlternatePickup, emailAddress } = data.pickUpAlternateExpress;
+  const { cvvCode } = data;
+  const pickupContactData =
+    typeof pickUpContactPerson.firstName !== 'undefined'
+      ? pickUpContactPerson
+      : pickUpContactAlternate.pickUpContact;
+
+  if (isExpressCheckout) {
+    const formDataSubmission = {
+      formData: {
+        hasAlternatePickup,
+        pickUpAlternate: {
+          emailAddress,
+          firstName,
+          lastName,
+        },
+        pickUpContact: {
+          firstName: pickupContactData.firstName,
+          lastName: pickupContactData.lastName,
+          phoneNumber: pickupContactData.phoneNumber,
+          emailAddress: pickupContactData.emailAddress,
+        },
+        billing: {
+          cvv: cvvCode,
+        },
+      },
+    };
+    submitReview(formDataSubmission);
+  } else {
+    submitReview({});
+  }
+};
+
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? `${prefix}.` : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+export const scrollToFirstError = errors => {
+  const errorEl = document.querySelector(
+    Object.keys(flattenObject(errors))
+      .map(fieldName => `[name="${fieldName}"]`)
+      .join(',')
+  );
+  if (errorEl && errorEl.focus) {
+    errorEl.focus(); // this scrolls without visible scroll
+  }
+};
 
 export default {
   getOrderPointsRecalcFlag,
@@ -171,6 +272,6 @@ export default {
   getAvailableStages,
   routeToPage,
   getCreditCardType,
-  redirectToBilling,
   isOrderHasShipping,
+  handleReviewFormSubmit,
 };

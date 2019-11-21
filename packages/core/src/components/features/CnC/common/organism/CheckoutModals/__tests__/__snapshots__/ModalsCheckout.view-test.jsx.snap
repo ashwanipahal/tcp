@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalsCheckoutVanilla should render correctly 1`] = `
+<Fragment>
+  <Styled(BagConfirmationModal)
+    labels={Object {}}
+  />
+  <Styled(ItemDeleteConfirmationModal)
+    bagPageServerError={null}
+    confirmRemoveCartItem={[Function]}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`ModalsCheckoutVanilla should render correctly with modalEditingItem 1`] = `
+<Fragment>
+  <Styled(BagConfirmationModal)
+    labels={
+      Object {
+        "confirmationText": undefined,
+      }
+    }
+    removeUnqualifiedItemsAndCheckout={[Function]}
+  />
+  <Styled(ItemDeleteConfirmationModal)
+    bagPageServerError={null}
+    confirmRemoveCartItem={[Function]}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;

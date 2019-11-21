@@ -6,7 +6,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
     <Styled(CustomButton)
       accessibilityLabel="Clear"
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -21,6 +21,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -29,11 +30,12 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       type="submit"
       url=""
       width="48%"
+      withNoLineHeight={false}
     />
     <Styled(CustomButton)
       accessibilityLabel="Apply"
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -48,6 +50,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -56,6 +59,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       type="submit"
       url=""
       width="48%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

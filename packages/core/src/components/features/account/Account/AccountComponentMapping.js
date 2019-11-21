@@ -17,7 +17,9 @@ import PointHistoryPage from '../PointHistory';
 import EarnPoints from '../ExtraPoints';
 import PointsClaimPage from '../PointsClaim';
 import Orders from '../Orders';
+import FavoritesContainer from '../../browse/Favorites/container/Favorites.container';
 import OrderDetails from '../OrderDetails';
+import MyPlaceRewardsCreditCardContainer from '../MyPlaceRewardsCreditCard';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -41,7 +43,9 @@ const AccountComponentMapping = {
   'extra-points': EarnPoints,
   'points-claim': PointsClaimPage,
   orders: Orders,
+  favorites: FavoritesContainer,
   'order-details': OrderDetails,
+  rewardsCreditCard: MyPlaceRewardsCreditCardContainer,
 };
 
 export default AccountComponentMapping;

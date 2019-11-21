@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
@@ -35,7 +35,14 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTAButton }) => {
+const ModuleD = ({
+  className,
+  headerText,
+  promoBanner,
+  smallCompImage,
+  singleCTAButton,
+  fullBleed,
+}) => {
   let colSize;
   let imgDataConfig;
   const checkPromo = promoBanner && promoBanner.length;
@@ -71,7 +78,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
           data-locator={getLocator('moduleD_promobanner')}
         />
       )}
-      <Row centered>
+      <Row centered fullBleed={fullBleed} className="moduleD__image-container-section">
         {smallCompImage &&
           smallCompImage.map((item, index) => {
             return (
@@ -88,6 +95,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
                       dataLocator={`${getLocator('moduleD_image')}${index + 1}`}
                       imgConfigs={imgDataConfig}
                       imgData={item.image}
+                      videoData={item.video}
                       link={{
                         className: 'moduleD_textlink',
                         ...item.link,
@@ -99,7 +107,8 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
                       withCaret
                       centered
                       className="moduleD_textlink"
-                      to={item.link.url}
+                      to={configureInternalNavigationFromCMSUrl(item.link.url)}
+                      asPath={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
                       dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}
@@ -113,7 +122,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
           })}
       </Row>
       {singleCTAButton && (
-        <Row centered>
+        <Row centered fullBleed={fullBleed}>
           <Button
             buttonVariation="fixed-width"
             className="moduleD_button"
@@ -131,6 +140,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
 ModuleD.defaultProps = {
   promoBanner: [],
   singleCTAButton: {},
+  fullBleed: false,
 };
 
 ModuleD.propTypes = {
@@ -154,6 +164,7 @@ ModuleD.propTypes = {
     })
   ).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
+  fullBleed: PropTypes.bool,
 };
 
 export default withStyles(errorBoundary(ModuleD), style);

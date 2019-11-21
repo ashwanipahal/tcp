@@ -6,7 +6,7 @@ import labels from '../AccountDrawer.labels';
 import {
   openOverlayModal,
   closeOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 import { getUserFullName, isPlccUser } from '../../User/container/User.selectors';
 import { getGlobalLabels } from '../../Account/container/Account.selectors';
 

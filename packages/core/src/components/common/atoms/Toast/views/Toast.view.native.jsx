@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, SafeAreaView } from 'react-native';
-import Toast from 'react-native-easy-toast';
+import { SafeAreaView } from 'react-native';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
 import { DEFAULT_TOAST_ERROR_MESSAGE_TTL } from '../../../../../config/site.config';
+import Toast from './Toast.native';
 
 /**
  * @param {object} props : Props for FPO
@@ -28,10 +28,12 @@ class ToastView extends React.PureComponent {
     errorMessage: PropTypes.string.isRequired,
     toastMessageReset: PropTypes.bool.isRequired,
     positionValue: PropTypes.number,
+    shouldShowSafeArea: PropTypes.bool,
   };
 
   static defaultProps = {
     positionValue: 0,
+    shouldShowSafeArea: true,
   };
 
   constructor() {
@@ -43,12 +45,12 @@ class ToastView extends React.PureComponent {
     const { errorMessage, toastMessageReset } = this.props;
     if (errorMessage) {
       this.toastRef.current.show(
-        <View>
+        <SafeAreaView>
           <ToastWrapper>
             <ToastText>{errorMessage}</ToastText>
-            <ToastCross>X</ToastCross>
+            <ToastCross onPress={this.cancelToast}>X</ToastCross>
           </ToastWrapper>
-        </View>,
+        </SafeAreaView>,
         500,
         () => {
           toastMessageReset();
@@ -57,21 +59,32 @@ class ToastView extends React.PureComponent {
     }
   }
 
-  render() {
+  cancelToast = () => {
+    this.toastRef.current.closeImmediately();
+  };
+
+  toast = () => {
     const { positionValue } = this.props;
     return (
-      <SafeAreaView style={styles.Container}>
-        <Toast
-          ref={this.toastRef}
-          style={styles.ToastStyle}
-          position="top"
-          positionValue={positionValue}
-          fadeInDuration={750}
-          fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
-          opacity={1}
-          textStyle={{ color: colors.WHITE }}
-        />
-      </SafeAreaView>
+      <Toast
+        ref={this.toastRef}
+        style={styles.ToastStyle}
+        position="top"
+        positionValue={positionValue}
+        fadeInDuration={750}
+        fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
+        opacity={1}
+        textStyle={{ color: colors.WHITE }}
+      />
+    );
+  };
+
+  render() {
+    const { shouldShowSafeArea } = this.props;
+    return shouldShowSafeArea ? (
+      <SafeAreaView style={styles.Container}>{this.toast()}</SafeAreaView>
+    ) : (
+      this.toast()
     );
   }
 }

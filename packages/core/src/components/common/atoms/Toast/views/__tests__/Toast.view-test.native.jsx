@@ -26,4 +26,11 @@ describe('Toast msg view render', () => {
     });
     expect(component).toMatchSnapshot();
   });
+
+  it('test toast with without safearea', () => {
+    component.setProps({
+      shouldShowSafeArea: false,
+    });
+    expect(component).toMatchSnapshot();
+  });
 });

@@ -24,7 +24,7 @@ export const PointsClaimTopSection = ({ className, labels, onBack }) => {
         </Anchor>
       </BodyCopy>
       <FormPageHeading
-        className="elem-mb-XL"
+        className="elem-mb-XL myAccountRightView"
         heading={getLabelValue(labels, 'lbl_points_claim_heading', 'myPlaceRewards')}
         data-locator="historyPointsLbl"
       />

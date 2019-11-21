@@ -36,9 +36,9 @@ const getFontSizeStyle = props => {
 };
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margins } = props;
   return {
-    ...(margin && { margin }),
+    ...(margins && { margin: margins }),
   };
 };
 

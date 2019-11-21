@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
+import { trackPageView, setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 
 import {
   submitSmsSignup,
@@ -19,17 +20,20 @@ export const mapDispatchToProps = dispatch => {
     closeModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: false }));
     },
-    asyncValidate: (values, reduxFormDispatch, props) => {
-      const { signupPhoneNumber } = values;
-      if (signupPhoneNumber.length && !validatePhoneNumber(signupPhoneNumber)) {
-        const {
-          formViewConfig: { validationErrorLabel },
-        } = props;
-        const error = { signupPhoneNumber: validationErrorLabel };
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject({ ...error, _error: error });
-      }
-      return Promise.resolve();
+    validateSignupSmsPhoneNumber: phoneNumber => {
+      return validatePhoneNumber(phoneNumber) ? Promise.resolve({}) : Promise.reject();
+    },
+
+    trackSubscriptionSuccess: () => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event15', 'event80'],
+          pageName: 'content:email confirmation',
+          pageShortName: 'content:sms confirmation',
+        })
+      );
+
+      dispatch(trackPageView({}));
     },
   };
 };

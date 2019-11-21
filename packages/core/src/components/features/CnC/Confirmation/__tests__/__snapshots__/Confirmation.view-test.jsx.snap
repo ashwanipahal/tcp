@@ -23,6 +23,21 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -51,18 +66,22 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
             },
           ]
         }
+        isBossInList={
+          Object {
+            "orderType": "BOSS",
+            "shippingFullname": "ship",
+          }
+        }
         isGuest={true}
         isOrderPending={false}
-        isShowBopisMessage={true}
+        isShowBopisMessage={false}
         isShowShippingMessage={true}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
               Object {
-                "center": Object {
-                  "orderType": "BOSS",
-                  "shippingFullname": "ship",
-                },
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
               },
             ],
           }
@@ -84,11 +103,17 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -104,11 +129,6 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={false}
-    venmoPayment={Object {}}
-  />
 </div>
 `;
 
@@ -135,6 +155,21 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -151,25 +186,27 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         fullfillmentCenterData={
           Array [
             Object {
-              "center": Object {
-                "orderType": "BOSS",
-                "shippingFullname": "ship",
-              },
+              "orderType": "BOSS",
+              "shippingFullname": "ship",
             },
           ]
         }
+        isBossInList={
+          Object {
+            "orderType": "BOSS",
+            "shippingFullname": "ship",
+          }
+        }
         isGuest={true}
         isOrderPending={false}
-        isShowBopisMessage={true}
+        isShowBopisMessage={false}
         isShowShippingMessage={false}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
               Object {
-                "center": Object {
-                  "orderType": "BOSS",
-                  "shippingFullname": "ship",
-                },
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
               },
             ],
           }
@@ -194,11 +231,24 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -214,18 +264,6 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
-  />
 </div>
 `;
 
@@ -252,6 +290,21 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -311,11 +364,24 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -331,17 +397,137 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
+</div>
+`;
+
+exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    className="placeholder sms-sign-up"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        SMS SIGN UP
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
+    className="thank-you-component"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ThankYouComponent)
+        fullfillmentCenterData={
+          Array [
+            Object {
+              "encryptedEmailAddress": "",
+              "isGuest": true,
+              "orderDate": "",
+              "orderLink": "/",
+              "orderNumber": 2345,
+              "orderTotal": 23.45,
+              "orderType": "ECOM",
+              "productsCount": 5,
+              "shippingFullname": undefined,
+            },
+          ]
+        }
+        isBossInList={
+          Object {
+            "orderType": "BOSS",
+            "shippingFullname": "",
+          }
+        }
+        isGuest={true}
+        isOrderPending={false}
+        isShowBopisMessage={true}
+        isShowShippingMessage={true}
+        orderNumbersByFullfillmentCenter={
+          Object {
+            "fullfillmentCenterMap": Array [
+              Object {
+                "orderType": "BOSS",
+                "shippingFullname": "",
+              },
+            ],
+          }
+        }
+        updateOrderDetailsData={null}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="placeholder loyalty-banner"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
   />
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
 </div>
 `;

@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { isMobileApp } from '@tcp/core/src/utils';
+
 import { routerPush } from '../../../../../utils';
 import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
@@ -11,13 +14,19 @@ import {
   getConfirmHideShowPwd,
   getLabels,
   getErrorMessage,
+  getPasswordLabels,
+  getLoadingState,
 } from './CreateAccount.selectors';
-import { getUserLoggedInState } from '../../User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getplccCardId,
+  getplccCardNumber,
+} from '../../User/container/User.selectors';
 import { API_CONFIG } from '../../../../../services/config';
 import {
   closeOverlayModal,
   openOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
@@ -41,6 +50,12 @@ export class CreateAccountContainer extends React.Component {
     setLoginModalMountState: PropTypes.bool.isRequired,
     showLogin: PropTypes.func.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    userplccCardNumber: PropTypes.string.isRequired,
+    userplccCardId: PropTypes.string.isRequired,
+    toastMessage: PropTypes.func,
+    passwordLabels: PropTypes.shape({}).isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    updateHeader: PropTypes.func,
   };
 
   static defaultProps = {
@@ -48,7 +63,7 @@ export class CreateAccountContainer extends React.Component {
     createAccountAction: noop,
     hideShowPwd: false,
     confirmHideShowPwd: false,
-    error: {},
+    error: '',
     openOverlay: noop,
     onRequestClose: noop,
     isIAgreeChecked: false,
@@ -57,12 +72,14 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: noop,
     isUserLoggedIn: false,
     navigation: {},
+    toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(({ isMobileApp, navigateToNestedRoute }) => {
+      .then(({ navigateToNestedRoute }) => {
         this.hasMobileApp = isMobileApp;
         this.hasNavigateToNestedRoute = navigateToNestedRoute;
       })
@@ -89,8 +106,8 @@ export class CreateAccountContainer extends React.Component {
   }
 
   onAlreadyHaveAnAccountClick = e => {
-    const { openOverlay, setLoginModalMountState } = this.props;
     e.preventDefault();
+    const { openOverlay, setLoginModalMountState } = this.props;
     if (setLoginModalMountState) {
       setLoginModalMountState({
         component: 'login',
@@ -125,6 +142,12 @@ export class CreateAccountContainer extends React.Component {
       showLogin,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
+      toastMessage,
+      passwordLabels,
+      isLoading,
+      updateHeader,
     } = this.props;
     return (
       <CreateAccountView
@@ -141,6 +164,12 @@ export class CreateAccountContainer extends React.Component {
         showLogin={showLogin}
         isUserLoggedIn={isUserLoggedIn}
         formErrorMessage={formErrorMessage}
+        userplccCardNumber={userplccCardNumber}
+        userplccCardId={userplccCardId}
+        toastMessage={toastMessage}
+        passwordLabels={passwordLabels}
+        isLoading={isLoading}
+        updateHeader={updateHeader}
       />
     );
   }
@@ -152,9 +181,13 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    userplccCardNumber: getplccCardNumber(state),
+    userplccCardId: getplccCardId(state),
     error: getErrorMessage(state),
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    passwordLabels: getPasswordLabels(state),
+    isLoading: getLoadingState(state),
   };
 };
 
@@ -171,6 +204,9 @@ export const mapDispatchToProps = dispatch => {
     },
     resetAccountError: () => {
       dispatch(resetCreateAccountErr());
+    },
+    toastMessage: error => {
+      dispatch(toastMessageInfo(error));
     },
   };
 };

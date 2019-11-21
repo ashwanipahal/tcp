@@ -6,11 +6,12 @@ import handler from '../../../handler';
  * Abstractor layer for loading data from API for Layout
  */
 const LayoutAbstractor = {
+  slotModuleMap: {},
   /**
    * This function loads data from graphQL service
    * @param {Object} params Object containing {page, brand, country, channel}
    */
-  getLayoutData: async ({ page, brand, country, channel }) => {
+  getLayoutData: async ({ page, brand, country, channel, pageName }) => {
     logger.info(`Executing Layout Query for ${page}: `);
     logger.debug(
       'Executing Layout Query with params: ',
@@ -27,10 +28,11 @@ const LayoutAbstractor = {
           brand,
           country,
           channel,
+          pageName,
         },
       })
       .then(response => {
-        const result = response.data[page];
+        const result = response.data[pageName || page];
         logger.info('Layout Query Executed Successfully');
         logger.debug('Layout Query Result: ', result);
         return result;
@@ -55,37 +57,75 @@ const LayoutAbstractor = {
    * Asynchronous function to get modules data from service for layouts
    * @param {Object} data Response object for layout query
    */
-  getModulesFromLayout: async data => {
-    const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
+  getModulesFromLayout: async (data, language, page) => {
+    logger.info('module received language ', language);
+    // Adding Module 2 columns mock
+    const layoutResponse = data.items;
+
+    const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse, language);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
-      return LayoutAbstractor.processModuleData(response.data);
+      return LayoutAbstractor.processModuleData(response.data, page);
     });
   },
   /**
    * Processes data to create an array of content IDs with slot information
    * @param {*} items
    */
-  collateModuleObject: items => {
+  collateModuleObject: (items, language) => {
     const moduleIds = [];
     items.forEach(({ layout: { slots } }) => {
-      slots.forEach(slot =>
-        moduleIds.push({
-          name: slot.moduleName,
-          data: {
-            contentId: slot.contentId,
-            slot: slot.name,
-          },
-        })
-      );
+      slots.forEach(slot => {
+        LayoutAbstractor.slotModuleMap[slot.name] = slot;
+        if (slot.contentId) {
+          const contentIds = slot.contentId.split(',');
+          if (contentIds.length > 1) {
+            const moduleNames = slot.value.split(',');
+            contentIds.forEach((contentId, index) => {
+              const moduleName = moduleNames[index];
+              moduleIds.push({
+                name: moduleName,
+                data: {
+                  contentId,
+                  slot: `${slot.name}_${index}`,
+                  lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
+                },
+              });
+            });
+          } else {
+            moduleIds.push({
+              name: slot.moduleName,
+              data: {
+                contentId: slot.contentId,
+                slot: slot.name,
+                lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
+              },
+            });
+          }
+        }
+      });
     });
     return moduleIds;
   },
-  processModuleData: moduleData => {
+  checkForErrors: (data, slotKey, page) => {
+    const { errorMessage } = data;
+    if (errorMessage) {
+      const { moduleName, contentId } = LayoutAbstractor.slotModuleMap[slotKey];
+      logger.error(
+        `Error occurred on page ${page} in module ${moduleName} {contentId: ${contentId}}-> ${errorMessage}`
+      );
+    }
+  },
+  processModuleData: (moduleData, page) => {
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
-      const { set = [] } = moduleData[slotKey];
+      LayoutAbstractor.checkForErrors(moduleData[slotKey], slotKey, page);
+      let { set } = moduleData[slotKey];
+      if (!set) {
+        set = [];
+      }
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
+        moduleName: moduleData[slotKey].name,
         set,
       };
       set.forEach(({ key, val }) => {

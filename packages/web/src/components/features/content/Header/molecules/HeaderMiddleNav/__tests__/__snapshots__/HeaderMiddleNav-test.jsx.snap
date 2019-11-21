@@ -13,13 +13,14 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -43,7 +44,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -55,10 +56,12 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -88,43 +91,33 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="leftLink"
-          fontSizeVariation="large"
-          href="#"
-          id="createAccount"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Create Account
-        </Styled(Anchor)>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="large"
-          href="#"
-          id="login"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Login
-        </Styled(Anchor)>
         <Connect(Styled(SearchBar))
-          className="rightLink"
+          className="headerSearchBox"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
+        />
+        <GuestUserInfo
+          createAccount="createAccount"
+          isDrawer={false}
+          isRememberedUser={false}
+          login="login"
+          onLinkClick={[Function]}
+          triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="small"
+          aria-label="undefined undefined item"
+          className=""
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
@@ -137,6 +130,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -146,6 +140,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0
@@ -176,7 +171,10 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
+        onLinkClick={[Function]}
         openNavigationDrawer={false}
+        triggerLoginCreateAccount={true}
+        userNameClick={true}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -199,13 +197,14 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -229,7 +228,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -241,10 +240,12 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -274,43 +275,33 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="leftLink"
-          fontSizeVariation="large"
-          href="#"
-          id="createAccount"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Create Account
-        </Styled(Anchor)>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="large"
-          href="#"
-          id="login"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Login
-        </Styled(Anchor)>
         <Connect(Styled(SearchBar))
-          className="rightLink"
+          className="headerSearchBox"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
+        />
+        <GuestUserInfo
+          createAccount="createAccount"
+          isDrawer={false}
+          isRememberedUser={false}
+          login="login"
+          onLinkClick={[Function]}
+          triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="small"
+          aria-label="undefined undefined item"
+          className=""
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
@@ -323,6 +314,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -332,6 +324,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0
@@ -362,7 +355,10 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
+        onLinkClick={[Function]}
         openNavigationDrawer={false}
+        triggerLoginCreateAccount={true}
+        userNameClick={true}
       />
     </Styled(Col)>
   </Styled(Row)>

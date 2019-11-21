@@ -11,18 +11,39 @@ exports[`CheckoutHeaderVanilla should render CheckoutProgressIndicatorVanilla se
       className="checkout-progress-bar "
     >
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         isComplete={true}
         name="Pickup"
         onClick={[Function]}
         stage="pickup"
       />
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         isComplete={true}
         name="Shipping"
         onClick={[Function]}
         stage="shipping"
       />
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         isComplete={true}
         name="Billing"
         onClick={[Function]}
@@ -44,15 +65,36 @@ exports[`CheckoutHeaderVanilla should render CheckoutProgressIndicatorVanilla se
       className="checkout-progress-bar "
     >
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         isActive={true}
         key="pickup"
         name="Pickup"
       />
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         key="shipping"
         name="Shipping"
       />
       <Styled(StepIndicator)
+        availableStages={
+          Array [
+            "pickup",
+            "shipping",
+            "billing",
+          ]
+        }
         key="billing"
         name="Billing"
       />

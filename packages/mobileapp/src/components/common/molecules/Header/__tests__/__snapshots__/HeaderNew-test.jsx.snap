@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
-<Styled(SafeAreaView)
+<Styled(View)
   showSearch={false}
 >
+  <Connect(ToastContainer) />
   <Styled(View)>
     <Styled(View)
       data-locator="global_headerpanel"
@@ -16,16 +17,12 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
           activeOpacity={0.2}
           onPress={[Function]}
         >
-          <Styled(CustomIcon)
-            color="gray.600"
-            dataLocator=""
-            iconFontName="FontAwesome"
-            isButton={false}
-            isDisabled={false}
-            margin={null}
-            name="chevron-left"
-            onPress={[Function]}
-            size="fs20"
+          <Styled(Image)
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/carrot-large-left.png",
+              }
+            }
           />
         </TouchableOpacity>
       </Styled(View)>
@@ -56,9 +53,9 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               data-locator="obal_headerpanelbagicon"
               dataLocator=""
               fontSize="fs10"
+              fontWeight="extrabold"
               margin={null}
               numberOfLines={null}
-              text={0}
               textDecoration={null}
             />
           </Styled(View)>
@@ -66,5 +63,5 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
       </Styled(View)>
     </Styled(View)>
   </Styled(View)>
-</Styled(SafeAreaView)>
+</Styled(View)>
 `;

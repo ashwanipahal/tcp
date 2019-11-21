@@ -2,6 +2,10 @@ import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 
+export const getLoadingState = state => {
+  return state.CreateAccountReducer.get('isLoading');
+};
+
 export const getIAgree = state => {
   const selector = formValueSelector('CreateAccountForm');
   return selector(state, 'iAgree');
@@ -24,6 +28,11 @@ export const getError = state => {
 export const getLabels = state => {
   return state.Labels.global;
 };
+
+export const getPasswordLabels = createSelector(
+  getLabels,
+  labels => labels && labels.password
+);
 
 export const getCreateAccountLabels = createSelector(
   getLabels,

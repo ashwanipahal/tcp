@@ -6,6 +6,7 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
 >
   <Connect(OrderLedgerContainer)
     isConfirmationPage={true}
+    pageCategory=""
   />
   <section
     className="venmo-payment-method-wrapper"
@@ -36,24 +37,6 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
     />
   </section>
   <Styled(Row)
-    className="placeholder "
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <div>
-        LOYALTY BANNER
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
     fullBleed={true}
   >
     <Styled(Col)
@@ -77,9 +60,12 @@ exports[`CheckoutFooterVanilla component should renders correctly for non confir
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={false}
   />
   <Connect(OrderLedgerContainer)
+    pageCategory=""
     showAccordian={false}
   />
   <Connect(BonusPointsDays)
@@ -97,9 +83,12 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={false}
   />
   <Connect(OrderLedgerContainer)
+    pageCategory=""
     showAccordian={false}
   />
   <Connect(BonusPointsDays)
@@ -117,9 +106,12 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={true}
   />
   <Connect(OrderLedgerContainer)
+    pageCategory=""
     showAccordian={true}
   />
   <Connect(BonusPointsDays)

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, Col, Row, TextItems, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import SocialMediaLinks from '../SocialMediaLinks';
 
 /* TODO move to component itself */
@@ -17,6 +18,7 @@ const FooterTopCandidateB = props => {
     openSmsSignUpModal,
     emailSignup,
     smsSignup,
+    isNavigationFooter,
   } = props;
 
   return (
@@ -80,16 +82,29 @@ const FooterTopCandidateB = props => {
             small: true,
           }}
         >
-          <span id="extole_zone_global_footer" title={referAFriend.title}>
-            <Button
+          <span
+            id={
+              isNavigationFooter
+                ? 'extole_zone_global_navigation_footer'
+                : 'extole_zone_global_footer'
+            }
+            title={referAFriend.title}
+          >
+            <ClickTracker
+              as={Button}
               customStyle="shadow-button"
               data-locator={getLocator('refer_friend')}
               className="candidate-b_buttons"
+              clickData={{
+                customEvents: ['event22', 'event80'],
+                pageShortName: 'content:referafriend  confirmation',
+                pageName: 'content:email confirmation',
+              }}
             >
               <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
                 <TextItems textItems={referAFriend.textItems} />
               </BodyCopy>
-            </Button>
+            </ClickTracker>
           </span>
         </Col>
         <Col
@@ -138,6 +153,7 @@ FooterTopCandidateB.propTypes = {
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
   openSmsSignUpModal: PropTypes.func,
+  isNavigationFooter: PropTypes.bool,
 };
 
 FooterTopCandidateB.defaultProps = {
@@ -151,6 +167,7 @@ FooterTopCandidateB.defaultProps = {
   referenceID: '',
   openEmailSignUpModal: () => {},
   openSmsSignUpModal: () => {},
+  isNavigationFooter: false,
 };
 
 export default withStyles(FooterTopCandidateB, style);

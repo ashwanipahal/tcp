@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly to match snapshot 1`] = `
+<Fragment>
+  <Connect(Component)
+    name="welcome_message"
+  >
+    <Styled(BodyCopy)
+      className="account-info-section"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      id="accountDrawer"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      onClick={[Function]}
+      tabIndex="0"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="account-info user-name"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        role="button"
+        textAlign="left"
+      >
+        Hi, vijayendrakumar...
+      </Styled(BodyCopy)>
+      <Styled(Image)
+        alt="user"
+        className="account-info carrot-down-icon"
+        height="6px"
+        src="/static/images/carrot-small-down.png"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <div
+          className="account-info user-points"
+          id="account-info-user-points"
+        >
+          21 Points
+        </div>
+        <span
+          className="account-info user-rewards rightLink"
+        >
+          $5.51 Rewards
+        </span>
+      </Styled(BodyCopy)>
+      <Styled(Image)
+        alt="user"
+        className="usericon"
+        onClick={[Function]}
+        src="/static/images/user-icon.png"
+      />
+    </Styled(BodyCopy)>
+  </Connect(Component)>
+</Fragment>
+`;

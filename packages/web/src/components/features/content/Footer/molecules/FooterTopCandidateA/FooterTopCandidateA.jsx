@@ -13,6 +13,7 @@ import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { getLocator } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 import SocialMediaLinks from '../SocialMediaLinks';
 /* TODO move to component itself */
@@ -21,21 +22,23 @@ import style from '../../Footer.style';
 import FooterTopSignUpForm from '../FooterTopSignUpForm';
 
 const emailSignupFieldName = 'signup';
+const emailSignupSecondBrand = 'isEmailOptInSecondBrand';
 const FooterTopEmailSignUpForm = reduxForm({
   form: 'FooterTopEmailSignUpForm', // a unique identifier for this form
   initialValues: {
     [emailSignupFieldName]: '',
+    [emailSignupSecondBrand]: false,
   },
-  asyncBlurFields: [emailSignupFieldName],
 })(FooterTopSignUpForm);
 
 const smsSignupFieldName = 'footerTopSmsSignup';
+const textSignupSecondBrand = 'isTextOptInSecondBrand';
 const FooterTopSmsSignUpForm = reduxForm({
   form: 'FooterTopSmsSignUpForm', // a unique identifier for this form
   initialValues: {
     [smsSignupFieldName]: '',
+    [textSignupSecondBrand]: false,
   },
-  asyncBlurFields: [smsSignupFieldName],
 })(FooterTopSignUpForm);
 
 class FooterTopCandidateA extends React.PureComponent {
@@ -48,14 +51,15 @@ class FooterTopCandidateA extends React.PureComponent {
       socialMediaLinks,
       referAFriendButtonLabels,
       referAFriend,
-      emailSignUpAsyncValidate,
-      smsSignUpAsyncValidate,
+      validateSignupEmail,
+      validateSignupSmsPhoneNumber,
       submitEmailSubscription,
       submitSmsSubscription,
       emailSubscription,
       smsSubscription,
       openEmailSignUpModal,
       openSmsSignUpModal,
+      isNavigationFooter,
     } = this.props;
 
     return (
@@ -74,7 +78,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text email-sign-up"
@@ -84,7 +88,7 @@ class FooterTopCandidateA extends React.PureComponent {
             </BodyCopy>
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
-              asyncValidate={emailSignUpAsyncValidate}
+              validateForm={validateSignupEmail}
               onFormSubmit={submitEmailSubscription}
               subscription={emailSubscription}
               openSuccessModal={openEmailSignUpModal}
@@ -92,8 +96,11 @@ class FooterTopCandidateA extends React.PureComponent {
                 submitButton: 'email_submit_btn',
                 inputField: 'enter_email_text_field',
                 errorDataLocator: 'email_error_message',
+                checkBox_gym: 'check_box_gym_opt_in',
+                checkBox_tcp: 'check_box_tcp_opt_in',
               }}
               fieldName={emailSignupFieldName}
+              secondFieldName={emailSignupSecondBrand}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
@@ -119,7 +126,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text sms_sign_up"
@@ -133,7 +140,7 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldProps={{
                 normalize: formatPhoneNumber,
               }}
-              asyncValidate={smsSignUpAsyncValidate}
+              validateForm={validateSignupSmsPhoneNumber}
               onFormSubmit={submitSmsSubscription}
               subscription={smsSubscription}
               openSuccessModal={openSmsSignUpModal}
@@ -141,7 +148,10 @@ class FooterTopCandidateA extends React.PureComponent {
                 submitButton: 'sms_submit_btn',
                 inputField: 'sms_field',
                 errorDataLocator: 'sms_error_message',
+                checkBox_gym: 'sms_gym_opt_in',
+                checkBox_tcp: 'sms_tcp_opt_in',
               }}
+              secondFieldName={textSignupSecondBrand}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
@@ -178,7 +188,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   }}
                 >
                   <BodyCopy
-                    component="div"
+                    component="h2"
                     fontWeight="black"
                     fontSize="fs15"
                     className="heading_text refer-a-friend"
@@ -197,13 +207,24 @@ class FooterTopCandidateA extends React.PureComponent {
                   }}
                   className="candidate_a_inline_container_button col-md-half-width"
                 >
-                  <Button
-                    id="extole_zone_global_footer"
+                  <ClickTracker
+                    as={Button}
+                    id={
+                      isNavigationFooter
+                        ? 'extole_zone_global_navigation_footer'
+                        : 'extole_zone_global_footer'
+                    }
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
+                    className="refer_a_friend_button"
+                    clickData={{
+                      customEvents: ['event22', 'event80'],
+                      pageShortName: 'content:referafriend  confirmation',
+                      pageName: 'content:email confirmation',
+                    }}
                   >
                     {referAFriendButtonLabels.text}
-                  </Button>
+                  </ClickTracker>
                 </Col>
               </Row>
               <div className="divider hide-in-medium-down" />
@@ -264,6 +285,8 @@ FooterTopCandidateA.propTypes = {
     lbl_SignUp_validationErrorLabel: PropTypes.string,
     lbl_SignUp_termsTextLabel: PropTypes.string,
     lbl_SignUp_submitButtonLabel: PropTypes.string,
+    lbl_SignUp_gymSignUpLabel: PropTypes.string,
+    lbl_SignUp_tcpSignUpLabel: PropTypes.string,
   }),
   smsSignupLabels: PropTypes.shape({
     lbl_SignUp_placeholderText: PropTypes.string,
@@ -287,14 +310,15 @@ FooterTopCandidateA.propTypes = {
   }),
   showError: PropTypes.bool,
   isEmailValid: PropTypes.bool,
-  emailSignUpAsyncValidate: PropTypes.func,
-  smsSignUpAsyncValidate: PropTypes.func,
+  validateSignupEmail: PropTypes.func,
+  validateSignupSmsPhoneNumber: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
   submitSmsSubscription: PropTypes.func,
   openEmailSignUpModal: PropTypes.func,
   openSmsSignUpModal: PropTypes.func,
   emailSubscription: PropTypes.shape({}),
   smsSubscription: PropTypes.shape({}),
+  isNavigationFooter: PropTypes.bool,
 };
 
 FooterTopCandidateA.defaultProps = {
@@ -315,6 +339,8 @@ FooterTopCandidateA.defaultProps = {
     lbl_SignUp_validationErrorLabel: '',
     lbl_SignUp_termsTextLabel: '',
     lbl_SignUp_submitButtonLabel: '',
+    lbl_SignUp_gymSignUpLabel: '',
+    lbl_SignUp_tcpSignUpLabel: '',
   },
   smsSignupLabels: {
     lbl_SignUp_placeholderText: '',
@@ -328,14 +354,15 @@ FooterTopCandidateA.defaultProps = {
   },
   showError: false,
   isEmailValid: false,
-  emailSignUpAsyncValidate: () => Promise.resolve(),
-  smsSignUpAsyncValidate: () => {},
+  validateSignupEmail: () => Promise.resolve(),
+  validateSignupSmsPhoneNumber: () => Promise.resolve(),
   submitEmailSubscription: () => {},
   submitSmsSubscription: () => {},
   openEmailSignUpModal: () => {},
   openSmsSignUpModal: () => {},
   emailSubscription: {},
   smsSubscription: {},
+  isNavigationFooter: false,
 };
 
 export default withStyles(FooterTopCandidateA, style);

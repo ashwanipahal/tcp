@@ -7,7 +7,9 @@ exports[`CreditCardDropDown component renders correctly with props 1`] = `
   data={
     Array [
       Object {
-        "content": <ForwardRef>
+        "content": <ForwardRef
+          dataLocator="cardDetailCardDropDown"
+        >
           <ForwardRef
             card={
               Object {
@@ -42,7 +44,9 @@ exports[`CreditCardDropDown component renders correctly with props 1`] = `
         "useCustomContent": true,
       },
       Object {
-        "content": <ForwardRef>
+        "content": <ForwardRef
+          dataLocator="cardDetailCardDropDown"
+        >
           <ForwardRef
             card={
               Object {
@@ -78,12 +82,14 @@ exports[`CreditCardDropDown component renders correctly with props 1`] = `
       },
       Object {
         "content": "",
+        "dataLocator": "addCreditCardBtn",
         "id": "",
         "label": undefined,
         "primary": false,
       },
     ]
   }
+  dataLocator="selectCardDrpDown"
   disableBtn={false}
   dropDownStyle={
     Object {
@@ -121,12 +127,14 @@ exports[`CreditCardDropDown component renders correctly with toggleAddNewMode 1`
     Array [
       Object {
         "content": "",
+        "dataLocator": "addCreditCardBtn",
         "id": "",
         "label": undefined,
         "primary": false,
       },
     ]
   }
+  dataLocator="selectCardDrpDown"
   disableBtn={true}
   dropDownStyle={
     Object {
@@ -164,12 +172,14 @@ exports[`CreditCardDropDown component renders correctly without props 1`] = `
     Array [
       Object {
         "content": "",
+        "dataLocator": "addCreditCardBtn",
         "id": "",
         "label": undefined,
         "primary": false,
       },
     ]
   }
+  dataLocator="selectCardDrpDown"
   disableBtn={true}
   dropDownStyle={
     Object {

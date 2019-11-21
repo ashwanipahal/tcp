@@ -35,9 +35,8 @@ const initServerErrorReporter = (envId, raygunApiKey) => {
   logger.error(message);
 };
 
-const initWebClientErrorReporter = (envId, raygunApiKey, channelId) => {
-  // eslint-disable-next-line global-require
-  Promise.all([require('raygun4js')]).then(([rg4js]) => {
+const initWebClientErrorReporter = (envId, raygunApiKey, channelId, rg4js) => {
+  if (rg4js && typeof rg4js === 'function') {
     rg4js('enableCrashReporting', true);
     rg4js('apiKey', raygunApiKey);
     rg4js('setVersion', envId);
@@ -45,11 +44,11 @@ const initWebClientErrorReporter = (envId, raygunApiKey, channelId) => {
     setRaygunInstance(rg4js);
     const message = `Initializing  ErrorReporter Raygun on Web Client: release = ${envId} - channelId = ${channelId}`;
     logger.error(message);
-  });
+  }
 };
 
 const initErrorReporter = config => {
-  const { envId, raygunApiKey, channelId, isServer: isNodeServer, isDevelopment } = config;
+  const { envId, raygunApiKey, channelId, isServer: isNodeServer, isDevelopment, rg4js } = config;
   if (isDevelopment || !raygunApiKey) {
     return null;
   }
@@ -59,7 +58,7 @@ const initErrorReporter = config => {
   if (isNodeServer) {
     initServerErrorReporter(envId, raygunApiKey);
   } else if (!isNodeServer) {
-    initWebClientErrorReporter(envId, raygunApiKey, channelId);
+    initWebClientErrorReporter(envId, raygunApiKey, channelId, rg4js);
   }
   return getRaygunInstance();
 };
@@ -70,15 +69,19 @@ const trackError = errorArgs => {
   }
 
   const { error } = errorArgs;
-  let { tags, extraData } = errorArgs;
+  let { errorTags, extraData } = errorArgs;
 
-  tags = tags || {};
+  errorTags = errorTags || [];
+
   extraData = extraData || {};
 
   if (isServer()) {
-    getRaygunInstance().send(error, { ...extraData, ...tags }, () => {}, {}, ['node-server-error']);
+    getRaygunInstance().send(error, { ...extraData }, () => {}, {}, [
+      'node-server-error',
+      ...errorTags,
+    ]);
   } else {
-    getRaygunInstance()('send', { error, customData: { ...extraData, ...tags } });
+    getRaygunInstance()('send', { error, tags: errorTags, customData: { ...extraData } });
   }
 };
 

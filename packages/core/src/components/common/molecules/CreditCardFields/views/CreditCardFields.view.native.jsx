@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
@@ -17,10 +16,11 @@ import {
   CardTextboxStyle,
   CvvCode,
   CvvTextboxStyle,
-  HiddenExpiryWrapper,
   CVVInfo,
   StyledImageWrapper,
+  StyledLabel,
 } from '../styles/CreditCardFields.styles.native';
+import Select from '../../../atoms/Select';
 
 /**
  *
@@ -47,7 +47,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
     }
   }
 
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     if (Platform.OS === 'ios') {
       CardIOUtilities.preload();
     }
@@ -95,18 +96,10 @@ export class CreditCardFields extends React.PureComponent<Props> {
       cvvInfo,
       showCvv,
       cameraIcon,
+      onCardFocus,
+      isExpirationRequired,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
-    const dropDownStyle = {
-      height: 40,
-      border: 1,
-      width: 100,
-      marginRight: 15,
-    };
-    const itemStyle = {
-      height: 40,
-      width: 100,
-    };
 
     return (
       <PaymentContainer>
@@ -117,7 +110,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             id="cardNumber"
             keyboardType="numeric"
             component={CreditCardNumber}
-            dataLocator="payment-cardtextfield"
+            dataLocator="cardNbrTxtBox"
             cardTypeImgUrl={cardTypeImgUrl}
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
@@ -127,6 +120,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             creditCard={creditCard}
             customStyle={CardTextboxStyle}
             cameraIcon={cameraIcon}
+            onCardFocus={onCardFocus}
           />
           {cameraIcon && cardType == null && (
             <StyledImageWrapper onPress={this.scanCard}>
@@ -139,78 +133,52 @@ export class CreditCardFields extends React.PureComponent<Props> {
             </StyledImageWrapper>
           )}
         </CardContainer>
-        <ExpiryContainer showCvv={showCvv}>
-          <ExpiryMonth>
-            <Field
-              heading={creditFieldLabels.expMonth}
-              component={DropDown}
-              name="expMonth"
-              data={expMonthOptionsMap}
-              dataLocator="addEditCreditCard-expMonth"
-              onValueChange={itemValue => {
-                this.setState({ selectedMonth: itemValue });
-                updateExpiryDate(itemValue, selectedYear);
-              }}
-              variation="secondary"
-              selectedValue={selectedMonth || creditFieldLabels.expMonth}
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-            />
-            <HiddenExpiryWrapper>
+        {isExpirationRequired && (
+          <ExpiryContainer showCvv={showCvv}>
+            <ExpiryMonth>
               <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
+                heading={creditFieldLabels.expMonth}
+                component={Select}
                 name="expMonth"
-                id="expMonth"
+                options={expMonthOptionsMap}
+                dataLocator="expMonthDropDown"
+                onValueChange={itemValue => {
+                  this.setState({ selectedMonth: itemValue });
+                  updateExpiryDate(itemValue, selectedYear);
+                }}
               />
-            </HiddenExpiryWrapper>
-          </ExpiryMonth>
-          <ExpiryYear>
-            <Field
-              heading={creditFieldLabels.expYear}
-              component={DropDown}
-              name="expYear"
-              data={expYearOptionsMap}
-              dataLocator="addEditCreditCard-expYear"
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              onValueChange={itemValue => {
-                this.setState({ selectedYear: itemValue });
-                updateExpiryDate(selectedMonth, itemValue);
-              }}
-              selectedValue={selectedYear || creditFieldLabels.expYear}
-            />
-            <HiddenExpiryWrapper>
+            </ExpiryMonth>
+            <ExpiryYear>
               <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
+                heading={creditFieldLabels.expYear}
+                component={Select}
                 name="expYear"
-                id="expYear"
+                options={expYearOptionsMap}
+                onValueChange={itemValue => {
+                  this.setState({ selectedYear: itemValue });
+                  updateExpiryDate(selectedMonth, itemValue);
+                }}
               />
-            </HiddenExpiryWrapper>
-          </ExpiryYear>
-          {showCvv && (
-            <CvvCode>
-              <Field
-                label={creditFieldLabels.cvvCode}
-                name="cvvCode"
-                id="cvvCode"
-                keyboardType="numeric"
-                type="text"
-                component={TextBox}
-                dataLocator="payment-cvv"
-                customStyle={CvvTextboxStyle}
-              />
-              <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
-              <CVVInfo>{cvvInfo}</CVVInfo>
-            </CvvCode>
-          )}
-        </ExpiryContainer>
+            </ExpiryYear>
+            {showCvv && (
+              <CvvCode>
+                <StyledLabel>{creditFieldLabels.cvvCode}</StyledLabel>
+                <Field
+                  label=""
+                  name="cvvCode"
+                  id="cvvCode"
+                  keyboardType="numeric"
+                  type="text"
+                  component={TextBox}
+                  dataLocator="cvvTxtBox"
+                  customStyle={CvvTextboxStyle}
+                />
+                <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
+                <CVVInfo>{cvvInfo}</CVVInfo>
+              </CvvCode>
+            )}
+          </ExpiryContainer>
+        )}
       </PaymentContainer>
     );
   }
@@ -225,6 +193,8 @@ CreditCardFields.propTypes = {
   selectedCard: PropTypes.shape({}),
   showCvv: PropTypes.bool,
   cameraIcon: PropTypes.bool,
+  onCardFocus: PropTypes.func,
+  isExpirationRequired: PropTypes.bool,
 };
 
 CreditCardFields.defaultProps = {
@@ -242,6 +212,8 @@ CreditCardFields.defaultProps = {
   selectedCard: null,
   showCvv: true,
   cameraIcon: false,
+  onCardFocus: () => {},
+  isExpirationRequired: true,
 };
 
 export default CreditCardFields;

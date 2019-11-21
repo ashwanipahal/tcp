@@ -1,3 +1,22 @@
+const logger = require('@tcp/core/src/utils/loggerInstance');
+
+if (process.env.RWD_APPD_ENABLED === 'true') {
+  try {
+    require('appdynamics').profile({
+      controllerHostName: process.env.RWD_APPD_CONTROLLER_HOST_NAME,
+      controllerPort: 443,
+      controllerSslEnabled: true,
+      accountName: process.env.RWD_APPD_ACCOUNT_NAME,
+      accountAccessKey: process.env.RWD_APPD_ACCOUNT_ACCESS_KEY,
+      applicationName: process.env.RWD_APPD_APPLICATION_NAME,
+      tierName: process.env.RWD_APPD_TIER_NAME,
+      nodeName: process.env.HOSTNAME,
+    });
+  } catch (error) {
+    logger.error('Unable to initialize AppDynamics', error);
+  }
+}
+
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
@@ -9,7 +28,6 @@ const {
   preRouteSlugs,
 } = require('@tcp/core/src/config/route.config');
 const redis = require('async-redis');
-const logger = require('@tcp/core/src/utils/loggerInstance');
 
 const {
   settingHelmetConfig,
@@ -19,6 +37,7 @@ const {
   setEnvConfig,
   HEALTH_CHECK_PATH,
   ERROR_REDIRECT_STATUS,
+  CACHE_CLEAR_PATH,
 } = require('./config/server.config');
 const {
   initErrorReporter,
@@ -26,16 +45,27 @@ const {
 } = require('@tcp/core/src/utils/errorReporter.util');
 const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
 
-const { connectRedis } = require('@tcp/core/src/utils/redis.util');
+const {
+  connectRedis,
+  getDataFromRedis,
+  setDataInRedis,
+} = require('@tcp/core/src/utils/redis.util');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
+const isLocalEnv = process.env.RWD_WEB_ENV_ID === 'LOCAL';
 const port = process.env.RWD_WEB_PORT || 3000;
 
 const app = next({ dev, dir: './src' });
 
+const xrayEnabled = process.env.XRAY_ENABLED === 'true';
+
 const server = express();
 
+if (xrayEnabled) {
+  var AWSXRay = require('aws-xray-sdk');
+  server.use(AWSXRay.express.openSegment(process.env.XRAY_ENVIRONMENT));
+}
 const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
@@ -47,7 +77,9 @@ const setErrorReporter = () => {
     raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
     isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
   };
-  initErrorReporter(config);
+  if (process.env.IS_ERROR_REPORTING_NODE_ACTIVE) {
+    initErrorReporter(config);
+  }
   const expressMiddleWare = getExpressMiddleware();
   if (expressMiddleWare) {
     server.use(expressMiddleWare);
@@ -78,19 +110,24 @@ const setSiteDetails = (req, res) => {
   res.locals.language = getLanguageByDomain(req.hostname);
 };
 
-// TODO - To be picked from env config file when Gym build process is done....
 const setBrandId = (req, res) => {
-  const { hostname } = req;
-  let brandId = 'tcp';
-  const reqUrl = hostname.split('.');
-  for (let i = 0; i < reqUrl.length - 1; i++) {
-    if (reqUrl[i].toLowerCase() === 'gymboree') {
-      brandId = 'gym';
-      break;
+  if (isLocalEnv) {
+    const { hostname } = req;
+    let brandId = 'tcp';
+    const reqUrl = hostname.split('.');
+    for (let i = 0; i < reqUrl.length - 1; i++) {
+      if (reqUrl[i].toLowerCase() === 'gymboree') {
+        brandId = 'gym';
+        break;
+      }
     }
+    res.locals.brandId = brandId;
+    return null;
   }
-  res.locals.brandId = brandId;
+  res.locals.brandId = process.env.RWD_WEB_BRANDID;
 };
+
+setErrorReporter();
 
 connectRedis({
   REDIS_CLIENT: redis,
@@ -100,10 +137,9 @@ connectRedis({
 
 const setHostname = (req, res) => {
   const { hostname } = req;
+  logger.info('hostname: ', hostname);
   res.locals.hostname = hostname;
 };
-
-setErrorReporter();
 
 const redirectToErrorPage = (req, res) => {
   // TODO - To handle all this in Akamai redirect ?
@@ -116,6 +152,59 @@ const redirectToErrorPage = (req, res) => {
 const redirectToHomePage = (req, res) => {
   const errorPageRoute = '/' + siteIds.us + ROUTE_PATH.home;
   res.redirect(ERROR_REDIRECT_STATUS, errorPageRoute);
+};
+
+/**
+ * Function to get the cache key for the requested path
+ * @param {object} req The request object
+ */
+const getCacheKey = req => {
+  return `${req.path}`;
+};
+/**
+ * Function to cache a requested path
+ * @param {object} req The request object
+ * @param {object} res The response object
+ * @param {object} app The express/next app instance
+ * @param {string} resolver The route resolver
+ * @param {object} params The route params
+ * NOTE: To be used when page level cache is needed from redis, currently its done by akamai
+ */
+const renderAndCache = async (app, req, res, resolver, params) => {
+  // Key it the request path
+  const key = getCacheKey(req);
+
+  try {
+    const cachedKey = await getDataFromRedis(key);
+    if (cachedKey) {
+      logger.info(`ROUTE CACHE HIT: ${key}`);
+      res.setHeader('x-cache', 'CACHE HIT');
+      const data = JSON.parse(cachedKey);
+      res.send(data.html);
+      return;
+    }
+    const html = await app.renderToHTML(req, res, resolver, params);
+    // Something is wrong with the request, let's skip the cache
+    if (res.statusCode !== 200) {
+      res.send(html);
+      return;
+    }
+    // TBD: The route paths that should not be cached.
+    await setDataInRedis({
+      data: { html },
+      CACHE_IDENTIFIER: key,
+    });
+    logger.info(`ROUTE CACHE MISS: ${key}`);
+    res.setHeader('x-cache', 'CACHE MISS');
+    res.send(html);
+  } catch (err) {
+    if (!key.match(/error/)) {
+      logger.error(err);
+      redirectToErrorPage(req, res);
+    } else {
+      app.render(req, res, resolver, params);
+    }
+  }
 };
 
 app.prepare().then(() => {
@@ -133,7 +222,10 @@ app.prepare().then(() => {
       setBrandId(req, res);
       setHostname(req, res);
       // Handling routes without params
-      if (!route.params) return app.render(req, res, route.resolver, req.query);
+      if (!route.params) {
+        app.render(req, res, route.resolver, req.query);
+        return;
+      }
 
       // Handling routes with params
       const params = route.params.reduce((componentParam, paramKey) => {
@@ -141,7 +233,7 @@ app.prepare().then(() => {
         componentParam[paramKey] = req.params[paramKey];
         return componentParam;
       }, {});
-      return app.render(req, res, route.resolver, params);
+      app.render(req, res, route.resolver, params);
     });
   });
 
@@ -149,6 +241,27 @@ app.prepare().then(() => {
     res.send({
       success: true,
     });
+  });
+  // Clear redis cache
+  server.get(CACHE_CLEAR_PATH, async (req, res) => {
+    if (global.redisClient) {
+      global.redisClient
+        .flushdb()
+        .then(() => {
+          res.send({
+            success: true,
+          });
+        })
+        .catch(err => {
+          res.send({
+            success: false,
+          });
+        });
+    } else {
+      res.send({
+        success: false,
+      });
+    }
   });
 
   server.get('/', redirectToHomePage);
@@ -160,6 +273,9 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
+  if (xrayEnabled) {
+    server.use(AWSXRay.express.closeSegment());
+  }
   server.listen(port, err => {
     if (err) throw err;
     logger.info(`> Ready on http://localhost:${port}`);

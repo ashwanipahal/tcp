@@ -2,7 +2,9 @@
 
 exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
 <View>
-  <Styled(Text)>
+  <Styled(Text)
+    noTopPadding={false}
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator="Page_Heading_link_header"
@@ -18,6 +20,8 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
     borderColor="black"
     borderWidth={1}
     marginBottom={28}
+    marginLeft={0}
+    marginRight={0}
     marginTop={0}
   />
   <Styled(View)>
@@ -28,7 +32,9 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text=""
       underline={true}
@@ -42,7 +48,9 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
+        margins={null}
         noLink={true}
         onPress={[Function]}
         text=""
@@ -56,7 +64,9 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
 
 exports[`PageHeadingWithLinks native View should render correctly 1`] = `
 <View>
-  <Styled(Text)>
+  <Styled(Text)
+    noTopPadding={false}
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator="Page_Heading_link_header"
@@ -72,6 +82,8 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
     borderColor="black"
     borderWidth={1}
     marginBottom={28}
+    marginLeft={0}
+    marginRight={0}
     marginTop={0}
   />
   <Styled(View)>
@@ -82,7 +94,9 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text="test"
       underline={true}
@@ -96,7 +110,9 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
+        margins={null}
         noLink={true}
         onPress={[Function]}
         text="test"

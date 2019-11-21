@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackToTop component BackToTop component renders correctly 1`] = `
+<button
+  className=" scrollToTopBtn scrollToTopBtn--hide"
+  onClick={[Function]}
+>
+  <span
+    className="scrollToTop__arrowBtn"
+  />
+</button>
+`;

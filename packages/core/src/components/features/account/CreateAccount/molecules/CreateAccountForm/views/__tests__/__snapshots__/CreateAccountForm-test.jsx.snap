@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
+        "componentId": "sc-kGXeez",
         "isStatic": false,
         "rules": Array [
           "
@@ -19,6 +19,14 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "
   .remember-me-text {
     display: block;
+  }
+  .already-account {
+    font-size: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
   }
   .i-agree-checkbox {
     padding-top: 10px;
@@ -64,8 +72,20 @@ exports[`CreateAccountForm should render correctly 1`] = `
       },
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
+      "propTypes": Object {
+        "className": [Function],
+        "confirmHideShowPwd": [Function],
+        "handleSubmit": [Function],
+        "hideShowPwd": [Function],
+        "isMakeDefaultDisabled": [Function],
+        "labels": [Function],
+        "onAlreadyHaveAnAccountClick": [Function],
+        "tooltipContent": [Function],
+        "userplccCardId": [Function],
+        "userplccCardNumber": [Function],
+      },
       "render": [Function],
-      "styledComponentId": "sc-VigVT",
+      "styledComponentId": "sc-kGXeez",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {
@@ -88,6 +108,18 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "validate": [Function],
         },
         "displayName": "ReduxForm",
+        "propTypes": Object {
+          "className": [Function],
+          "confirmHideShowPwd": [Function],
+          "handleSubmit": [Function],
+          "hideShowPwd": [Function],
+          "isMakeDefaultDisabled": [Function],
+          "labels": [Function],
+          "onAlreadyHaveAnAccountClick": [Function],
+          "tooltipContent": [Function],
+          "userplccCardId": [Function],
+          "userplccCardNumber": [Function],
+        },
         "render": [Function],
       },
       "toString": [Function],

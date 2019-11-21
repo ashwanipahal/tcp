@@ -285,6 +285,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            mobileRightText={false}
             textAlign="left"
           />
         </Styled(Col)>

@@ -1,0 +1,1449 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
+<Styled(Grid)
+  className=" moduleM"
+>
+  <Styled(Row)
+    className="topview"
+    fullBleed={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      className="header-container"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="promo-header-wrapper"
+      >
+        <Styled(LinkText)
+          className="promo-header"
+          component="div"
+          dataLocator="moduleM_header_text"
+          headerText={
+            Array [
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "ALL CLEARANCE",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_black",
+                    "text": "YOUR UNIFORM PLACE",
+                  },
+                ],
+              },
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "Give Their School Outfits A Head-To-Toe Refresh",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_subpromo",
+                    "text": "Give Their School Outfits A Head-To-Toe Refresh",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <Styled(PromoBanner)
+        className="promoBanner"
+        dataLocator="moduleM_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "__typename": "PromoBanner",
+              "link": Object {
+                "__typename": "Link",
+                "asPath": "/c/kids-holiday-dress-up-all",
+                "title": "",
+                "to": "/c?cid=kids-holiday-dress-up-all",
+                "url": "/c/kids-holiday-dress-up-all",
+              },
+              "textItems": Array [
+                Object {
+                  "__typename": "StyledText",
+                  "style": "small_white_text_semibold",
+                  "text": "ALL UNIFORMS",
+                },
+                Object {
+                  "__typename": "StyledText",
+                  "style": "extra_large_white_text_black",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="product-tab-list"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_0"
+        key="modMTabs-GIRL"
+      >
+        <Styled(Button)
+          active={true}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          GIRL
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_1"
+        key="modMTabs-TODDLER GIRL"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          TODDLER GIRL
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_2"
+        key="modMTabs-BOY"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          BOY
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_3"
+        key="modMTabs-TODDLER BOY"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          TODDLER BOY
+        </Styled(Button)>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="image-items-container__flex"
+      >
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_0"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_1"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Toddler Girl alt",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Toddler Girl title",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Skorts",
+                  "title": "Skorts",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Skorts
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_2"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Boy",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Boy",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Sweaters",
+                  "title": "Sweaters",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Sweaters
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_3"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Toddler Boy alt",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Toddler Boy title",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Shorts",
+                  "title": "Shorts",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Shorts
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_4"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Baby",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Baby",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Polos",
+                  "title": "Polos",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Polos
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_5"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_6"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="image-items-container__flex--item"
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            dataLocator="moduleM_image_7"
+            to="/c/"
+          >
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
+            />
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </div>
+        <div
+          className="moduleM__shopAllBtnWrapper"
+        >
+          <Styled(Anchor)
+            asPath="/c/baby-clothes"
+            className="moduleM__shopAllBtn"
+            dataLocator="moduleM_cta_btn"
+            to="/c/baby-clothes"
+          >
+            SHOP ALL
+          </Styled(Anchor)>
+        </div>
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`ModuleM component ModuleM component renders correctly with props 1`] = `
+<Styled(Grid)
+  className=" moduleM"
+>
+  <Styled(Row)
+    className="topview"
+    fullBleed={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      className="header-container"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="promo-header-wrapper"
+      >
+        <Styled(LinkText)
+          className="promo-header"
+          component="div"
+          dataLocator="moduleM_header_text"
+          headerText={
+            Array [
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "ALL CLEARANCE",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_black",
+                    "text": "YOUR UNIFORM PLACE",
+                  },
+                ],
+              },
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "Give Their School Outfits A Head-To-Toe Refresh",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_subpromo",
+                    "text": "Give Their School Outfits A Head-To-Toe Refresh",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <Styled(PromoBanner)
+        className="promoBanner"
+        dataLocator="moduleM_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "__typename": "PromoBanner",
+              "link": Object {
+                "__typename": "Link",
+                "asPath": "/c/kids-holiday-dress-up-all",
+                "title": "",
+                "to": "/c?cid=kids-holiday-dress-up-all",
+                "url": "/c/kids-holiday-dress-up-all",
+              },
+              "textItems": Array [
+                Object {
+                  "__typename": "StyledText",
+                  "style": "small_white_text_semibold",
+                  "text": "ALL UNIFORMS",
+                },
+                Object {
+                  "__typename": "StyledText",
+                  "style": "extra_large_white_text_black",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="product-tab-list"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_0"
+        key="modMTabs-GIRL"
+      >
+        <Styled(Button)
+          active={true}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          GIRL
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_1"
+        key="modMTabs-TODDLER GIRL"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          TODDLER GIRL
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_2"
+        key="modMTabs-BOY"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          BOY
+        </Styled(Button)>
+      </div>
+      <div
+        className="product-tab-list__item"
+        data-locator="moduleM_cta_links_3"
+        key="modMTabs-TODDLER BOY"
+      >
+        <Styled(Button)
+          active={false}
+          buttonVariation="mini-nav"
+          onClick={[Function]}
+        >
+          TODDLER BOY
+        </Styled(Button)>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        className="image-items-container"
+        noLastMargin={true}
+      >
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_0"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_1"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Toddler Girl alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Girl title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Skorts",
+                    "title": "Skorts",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Skorts
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_2"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Boy",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Boy",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Sweaters",
+                    "title": "Sweaters",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Sweaters
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_3"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Toddler Boy alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Boy title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Shorts",
+                    "title": "Shorts",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Shorts
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_4"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Baby",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Baby",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Polos",
+                    "title": "Polos",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Polos
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_5"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_6"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
+        >
+          <Styled(Anchor)
+            asPath="/c/"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_7"
+            to="/c/"
+          >
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
+            <Styled(BodyCopy)
+              className="moduleM__productName"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Dresses
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          className="moduleM__gridButton"
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          isNotInlineBlock={true}
+          length={8}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+        >
+          <Styled(Anchor)
+            asPath="/c/baby-clothes"
+            className="moduleM__shopAllBtn"
+            dataLocator="moduleM_cta_btn"
+            title="SHOP ALL"
+            to="/c/baby-clothes"
+          >
+            SHOP ALL
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;

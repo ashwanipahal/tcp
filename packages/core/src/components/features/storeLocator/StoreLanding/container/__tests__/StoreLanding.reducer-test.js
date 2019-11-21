@@ -36,5 +36,6 @@ describe('StoreLocatorReducer', () => {
     };
     const storeSuggestedStore = StoreLocatorReducer(state, action);
     expect(storeSuggestedStore.get('suggestedStores')).toBe(suggestedStores);
+    expect(storeSuggestedStore.get('searchDone')).toBe(true);
   });
 });

@@ -4,20 +4,20 @@ export default css`
   background-color: ${props => props.theme.colors.WHITE};
 
   .header-topnav__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
-    padding: 0 14px;
     position: relative;
+    width: 100%;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0 15px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 15px 15px 0 6px;
-    }
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      padding-left: 25%;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0 15px;
+      margin: 0;
     }
   }
 
@@ -41,10 +41,28 @@ export default css`
       padding-top: 0;
       text-align: center;
     }
+    a {
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding: 8px 32px 8px 0;
+      }
+    }
+    img {
+      @media ${props => props.theme.mediaQuery.medium} {
+        width: 85px;
+        height: auto;
+      }
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: auto;
+      }
+    }
   }
 
   .header-topnav__promo-area {
     text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: 12px;
+    }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
@@ -63,12 +81,15 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
     }
+    .return-bag-link {
+      font-size: 16px;
+    }
   }
 
   .exitFromCheckout {
     position: absolute;
     top: 16px;
-    left: 20px;
+    left: -7px;
     border: none;
     background: transparent;
 
@@ -79,15 +100,27 @@ export default css`
 
   .checkout-mobile-header {
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 4px;
+    margin-left: 0;
+    width: 100%;
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    }
   }
 
   .non-checkout-pages & {
     display: none;
+  }
+  .checkout-mobile-header-font {
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs24};
+    }
   }
 `;

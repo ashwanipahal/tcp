@@ -33,8 +33,8 @@ const width = getScreenWidth() - 150;
 const keyExtractor = (_, index) => index.toString();
 
 /**
- * @function renderItem : Render method for Flatlist.
- * @desc This method is rendering Module L items.
+ * @function  renderItem : Render method for Flatlist.
+ * @desc  This method is rendering Module L items.
  *
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module L single element item.
@@ -42,9 +42,15 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color: { color: tileBgColor } = {} },
+    item: { image, link, video, color: { color: tileBgColor } = {} },
     index,
   } = item;
+
+  const videoData = video && {
+    ...video,
+    videoWidth: 103,
+    videoHeight: 128,
+  };
 
   return (
     <Anchor
@@ -55,31 +61,37 @@ const renderItem = (item, navigation) => {
       <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
         <DamImage
           url={image.url}
-          height={127}
+          width={103}
+          height={128}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
           imgConfig={config.IMG_DATA.crops[0]}
           alt={image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
+          videoData={videoData}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>
             <BodyCopy
               fontSize="fs20"
-              color="black"
+              color="gray.900"
               letterSpacing="ls222"
               text={image.alt}
+              fontfamily="primary"
+              fontWeight="semibold"
               testID={`${getLocator('moduleL_title')}${index + 1}`}
             />
           </BodyCopyContainer>
           <LinkContainer>
             <Anchor
-              fontSizeVariation="xlarge"
+              fontSizeVariation="large"
               text={link.text}
               visible={anchorIcon}
               url={link.url}
               navigation={navigation}
               testID={`${getLocator('moduleL_link')}${index + 1}`}
+              anchorVariation="custom"
+              color="gray.900"
             />
           </LinkContainer>
         </MessageContainer>
@@ -104,10 +116,10 @@ const ModuleL = ({ headerText, imageGrid, navigation, promoBanner }) => {
           navigation={navigation}
           type="heading"
           fontFamily="primary"
-          fontSize="fs36"
+          fontSize="fs32"
           letterSpacing="ls167"
           textAlign="center"
-          color="text.primary"
+          color="gray.900"
           fontWeight="black"
           testID={getLocator('moduleL_header_text')}
         />

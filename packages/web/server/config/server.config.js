@@ -20,6 +20,7 @@ const envIds = {
   prod: 'prod',
 };
 const HEALTH_CHECK_PATH = '/healthcheck';
+const CACHE_CLEAR_PATH = '/clear-redis-cache';
 const ERROR_REDIRECT_STATUS = 302;
 const BRAND_CONFIG = brandIds.tcp;
 const ENV_CONFIG = envIds.local;
@@ -78,4 +79,5 @@ module.exports = {
   setEnvConfig,
   HEALTH_CHECK_PATH,
   ERROR_REDIRECT_STATUS,
+  CACHE_CLEAR_PATH,
 };

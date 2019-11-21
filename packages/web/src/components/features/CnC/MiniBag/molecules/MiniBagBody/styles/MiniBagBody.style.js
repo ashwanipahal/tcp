@@ -10,6 +10,9 @@ export default css`
     height: calc(100% - 120px);
     overflow-y: auto;
     flex-grow: 1;
+    .tile-header {
+      padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    }
   }
   .mainWrapper {
     text-align: center;
@@ -19,6 +22,26 @@ export default css`
     padding-left: 0;
     margin: 0;
     width: 100%;
+
+    .delete-msg {
+      border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
+      text-align: left;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      background: ${props => props.theme.colors.WHITE};
+      display: flex;
+      align-items: center;
+      margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-top: 0;
+      .tick-icon {
+        height: 23px;
+        width: 23px;
+        margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+    }
+
+    .information-header {
+      width: 100%;
+    }
   }
 
   .minibag-viewbag {
@@ -33,6 +56,7 @@ export default css`
     display: flex;
     align-items: center;
     margin: 12px;
+    margin-top: 0px;
     .tick-icon-image {
       position: relative;
       top: 1px;

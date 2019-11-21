@@ -1,6 +1,7 @@
+/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Button, BodyCopy } from '../../../atoms';
+import { Row, Button, BodyCopy, Col } from '../../../atoms';
 import { PromoBanner } from '../..';
 import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
@@ -80,12 +81,12 @@ const ModuleK = props => {
           colSize={{
             small: 6,
             medium: 8,
-            large: 8,
+            large: 10,
           }}
           offsetLeft={{
             small: 0,
             medium: 0,
-            large: 2,
+            large: 1,
           }}
           className="moduleK__carousal"
         >
@@ -113,7 +114,8 @@ const ModuleK = props => {
                     dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
                     dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                     promo={checkPromo}
-                    imgConfigs={IMG_DATA.imgConfig}
+                    imageConfig={IMG_DATA.imgConfig}
+                    imageMaxWidth="270px"
                   />
                   <Col
                     colSize={{
@@ -121,6 +123,12 @@ const ModuleK = props => {
                       medium: 2,
                       large: 3,
                     }}
+                    ignoreGutter={{
+                      small: true,
+                      medium: true,
+                      large: true,
+                    }}
+                    className="moduleK__button"
                   >
                     {singleCTAButton && (
                       <Button

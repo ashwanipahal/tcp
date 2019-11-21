@@ -50,7 +50,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -153,6 +153,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -172,7 +178,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -225,7 +231,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -328,6 +334,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -347,7 +359,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -400,7 +412,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -503,6 +515,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -522,7 +540,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -575,7 +593,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -678,6 +696,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -697,7 +721,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -774,7 +798,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -849,6 +873,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -883,6 +910,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -891,7 +921,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -941,7 +971,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1016,6 +1046,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1050,6 +1083,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -1058,7 +1094,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1108,7 +1144,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1183,6 +1219,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1217,6 +1256,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -1225,7 +1267,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1275,7 +1317,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1350,6 +1392,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1384,6 +1429,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -1392,7 +1440,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1442,7 +1490,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1517,6 +1565,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1551,6 +1602,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -1559,7 +1613,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

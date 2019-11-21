@@ -44,6 +44,7 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
               <BodyCopy
                 fontSize="fs13"
                 component="span"
+                fontFamily="secondary"
                 textAlign="center"
                 text={getLabelValue(labels, 'lbl_createAccount_createA', 'registration')}
               />
@@ -52,12 +53,14 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 component="span"
                 textAlign="center"
                 color="gray.1000"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_myPlaceRewards', 'registration')}
               />
               <BodyCopy
                 fontSize="fs13"
                 component="span"
                 textAlign="center"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_earnPoints', 'registration')}
               />
             </HeadingTextWrapper>
@@ -67,6 +70,7 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 textAlign="center"
                 color="gray.800"
                 fontWeight="black"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_spendPoint', 'registration')}
               />
               <BodyCopy
@@ -74,6 +78,7 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_pointReward', 'registration')}
               />
             </PointsWrapper>
@@ -81,12 +86,14 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}
               />
 
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
+                fontFamily="secondary"
                 text={getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}
               />
               <Anchor

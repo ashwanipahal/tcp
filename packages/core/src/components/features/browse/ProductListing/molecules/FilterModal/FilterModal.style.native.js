@@ -3,8 +3,6 @@ import { Platform } from 'react-native';
 
 const Container = styled.View`
   width: 100%;
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const SafeAreaViewStyle = styled.SafeAreaView`

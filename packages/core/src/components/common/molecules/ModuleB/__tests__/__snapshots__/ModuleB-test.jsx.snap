@@ -8,8 +8,8 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 12,
+          "medium": 8,
           "small": 6,
         }
       }
@@ -129,8 +129,8 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 12,
+          "medium": 8,
           "small": 6,
         }
       }
@@ -291,7 +291,13 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
-        imageConfig="t_mod_B_img_overlay_m"
+        imgConfigs={
+          Array [
+            "t_mod_B_img_overlay_m",
+            "t_mod_B_img_overlay_t",
+            "t_mod_B_img_overlay_d",
+          ]
+        }
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -411,7 +417,13 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
-        imageConfig="t_mod_B_img_overlay_m"
+        imgConfigs={
+          Array [
+            "t_mod_B_img_overlay_m",
+            "t_mod_B_img_overlay_t",
+            "t_mod_B_img_overlay_d",
+          ]
+        }
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -613,7 +625,13 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
-        imageConfig="t_mod_B_img_overlay_m"
+        imgConfigs={
+          Array [
+            "t_mod_B_img_overlay_m",
+            "t_mod_B_img_overlay_t",
+            "t_mod_B_img_overlay_d",
+          ]
+        }
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -733,7 +751,13 @@ exports[`ModuleB component should render banner top variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
-        imageConfig="t_mod_B_img_overlay_m"
+        imgConfigs={
+          Array [
+            "t_mod_B_img_overlay_m",
+            "t_mod_B_img_overlay_t",
+            "t_mod_B_img_overlay_d",
+          ]
+        }
         imgData={
           Object {
             "alt": "Graphic Tees",

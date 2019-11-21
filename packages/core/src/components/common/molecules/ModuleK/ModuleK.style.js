@@ -3,17 +3,17 @@ import { Carousel, LinkText, ImageGrid } from '..';
 
 const StyledCarousal = styled(Carousel)`
   .slick-arrow {
-    top: 44%;
+    top: 50%;
   }
   .slick-next {
-    height: 52px;
+    height: 54px;
     right: -68px;
-    width: 15px;
+    width: 20px;
   }
   .slick-prev {
-    height: 52px;
+    height: 54px;
     left: -68px;
-    width: 15px;
+    width: 20px;
   }
   .slick-dots {
     bottom: -20px;
@@ -27,21 +27,32 @@ const StyledLinkText = styled(LinkText)`
   }
 `;
 const StyledImageGrid = styled(ImageGrid)`
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
 `;
 
 const StyledModuleK = css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
+  .moduleK__button {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 225px;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      width: 161px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 210px;
+    }
+  }
+
   .moduleK__promoBanner,
   .moduleK__header {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-right: 0;
   }
-  .carousal-cta {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
+
   .tcp_carousel_wrapper {
     position: relative;
   }
@@ -53,9 +64,12 @@ const StyledModuleK = css`
     }
   }
   .image-col {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    img {
+      width: 100%;
+    }
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-bottom: 0px;
     }
   }
 `;

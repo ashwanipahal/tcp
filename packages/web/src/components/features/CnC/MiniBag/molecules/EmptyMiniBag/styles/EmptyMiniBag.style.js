@@ -10,7 +10,7 @@ export default css`
   }
   .logIn {
     &:hover {
-      background: ${props => props.theme.colors.PRIMARY.BLUE};
+      background: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
     }
     height: 51px;
     width: 210px;
@@ -21,10 +21,17 @@ export default css`
   }
   .createAccount {
     &:hover {
-      background: ${props => props.theme.colors.PRIMARY.DARK};
+      background: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].HOVER};
     }
     background-color: ${props => props.theme.colors.PRIMARY.DARK};
     height: 51px;
     width: 210px;
+  }
+
+  .continueShoppingText {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 `;

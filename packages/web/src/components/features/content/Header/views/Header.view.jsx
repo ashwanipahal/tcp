@@ -3,10 +3,14 @@ import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
-import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
+import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
 
@@ -72,12 +76,18 @@ class Header extends React.PureComponent {
       className,
       brandTabs,
       promoMessageWrapper,
-      headerPromoArea,
+      headerPromoTextArea,
+      headerPromoHtmlArea,
       navigationDrawer,
       openNavigationDrawer,
       closeNavigationDrawer,
+      isUserPlcc,
+      isRememberedUser,
       userName,
+      userPoints,
+      userRewards,
       openOverlay,
+      isOpenOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
       cartItemCount,
@@ -86,10 +96,20 @@ class Header extends React.PureComponent {
       totalItems,
       favStore,
       isPickupModalOpen,
+      loyaltyPromoBanner,
+      setClickAnalyticsData,
     } = this.props;
     const { showCondensedHeader } = this.state;
+    const { accessibility: { skipNavigation } = {} } = labels;
+
     return (
       <header className={className}>
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container"
+          cookieID="mprTopHead"
+        />
+
         <HeaderTopNav
           className="header-topnav"
           brandTabs={brandTabs}
@@ -100,25 +120,46 @@ class Header extends React.PureComponent {
           store={favStore}
         />
 
+        <Anchor href="#overlayWrapper" noLink className="skip-main">
+          {skipNavigation}
+        </Anchor>
+
         <HeaderMiddleNav
           openNavigationDrawer={openNavigationDrawer}
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
+          isUserPlcc={isUserPlcc}
+          isRememberedUser={isRememberedUser}
           userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           openOverlay={openOverlay}
+          isOpenOverlay={isOpenOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
           openMiniBagDispatch={openMiniBagDispatch}
           store={favStore}
           labels={labels}
+          setClickAnalyticsData={setClickAnalyticsData}
         />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
-          dataPromo={headerPromoArea}
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
         />
-        <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
+        <HeaderPromo
+          className="header__promo-area--desktop"
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
+        />
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container"
+          cookieID="mprAboveHead"
+        />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -126,6 +167,8 @@ class Header extends React.PureComponent {
             closeNavigationDrawer={closeNavigationDrawer}
             navigationDrawer={navigationDrawer}
             userName={userName}
+            userPoints={userPoints}
+            userRewards={userRewards}
             openOverlay={openOverlay}
             isLoggedIn={isLoggedIn}
             cartItemCount={cartItemCount}
@@ -134,9 +177,9 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
+        <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
   }
@@ -144,14 +187,20 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoTextArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoHtmlArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  isUserPlcc: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
@@ -169,6 +218,8 @@ Header.propTypes = {
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
@@ -192,6 +243,7 @@ Header.defaultProps = {
     features: {},
   },
   isPickupModalOpen: false,
+  isRememberedUser: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

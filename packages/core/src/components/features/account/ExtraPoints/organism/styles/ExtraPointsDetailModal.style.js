@@ -4,7 +4,9 @@ const CouponDetailModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     margin: 0 60px;
   }
-
+  .earnPointsModal_title {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
   .imageSizeSingle {
     width: 70px;
     height: 80px;
@@ -15,8 +17,13 @@ const CouponDetailModalStyle = css`
   }
 
   .buttonWrapper {
-    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    }
   }
 
   .earnExtraPointsTileImage {
@@ -31,6 +38,7 @@ const CouponDetailModalStyle = css`
   }
   .ProductReview {
     background-image: url('/static/images/review.png');
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .FacebookLink {
     background-image: url('/static/images/facebook.png');
@@ -46,12 +54,16 @@ const CouponDetailModalStyle = css`
   }
   .AddMailingAddress {
     background-image: url('/static/images/mailingAddress.png');
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .AddFavoriteStore {
     background-image: url('/static/images/store.png');
   }
   .AddShopperType {
     background-image: url('/static/images/survey.png');
+  }
+  .AddBirthDate {
+    background-image: url('/static/images/birthday.png');
   }
 
   .FeedbackSurvey {

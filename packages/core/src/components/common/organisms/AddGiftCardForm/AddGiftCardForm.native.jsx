@@ -8,7 +8,6 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../atoms/TextBox';
 import CustomButton from '../../atoms/Button';
 import {
-  ErrorWrapper,
   SaveButtonWrapper,
   CancelButtonWrapper,
   MessageWrapper,
@@ -117,7 +116,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const { labels, toggleModal, addGiftCardResponse, isRow } = this.props;
+    const { labels, toggleModal, isRow, saveToAccountEnabled } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -126,17 +125,6 @@ class AddGiftCardForm extends React.PureComponent {
         keyboardShouldPersistTaps="handled"
       >
         <View>
-          {addGiftCardResponse && (
-            <ErrorWrapper>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="semibold"
-                fontSize="fs12"
-                color="error"
-                text={addGiftCardResponse}
-              />
-            </ErrorWrapper>
-          )}
           <Field
             label={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
             name="giftCardNumber"
@@ -155,6 +143,7 @@ class AddGiftCardForm extends React.PureComponent {
             dataLocator="gift-card-pinnumberfield"
             onChange={this.handleChange}
             keyboardType="numeric"
+            autoComplete="off"
           />
 
           <View>
@@ -184,6 +173,7 @@ class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
+                fontWeight="black"
                 text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
               />
               <MessageTextWrapper>
@@ -198,14 +188,13 @@ class AddGiftCardForm extends React.PureComponent {
             </MessageWrapper>
           )}
 
-          {isRow && this.renderSaveToAccount()}
+          {isRow && saveToAccountEnabled && this.renderSaveToAccount()}
           {isRow && (
             <FooterButtonsWrapper>
               <CustomButton
                 color="black"
                 text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                 data-locator="gift-card-cancelbtn"
-                buttonVariation="variable-width"
                 onPress={toggleModal}
                 width="150px"
               />
@@ -213,7 +202,6 @@ class AddGiftCardForm extends React.PureComponent {
                 color="white"
                 fill="BLUE"
                 text={getLabelValue(labels, 'lbl_payment_addCard')}
-                buttonVariation="variable-width"
                 data-locator="gift-card-addcardbtn"
                 width="164px"
                 onPress={this.handleAddGiftCardClick}
@@ -228,7 +216,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="white"
                   fill="BLUE"
                   text={getLabelValue(labels, 'lbl_payment_addCard')}
-                  buttonVariation="variable-width"
                   data-locator="gift-card-addcardbtn"
                   onPress={this.handleAddGiftCardClick}
                 />
@@ -239,7 +226,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="black"
                   text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                   data-locator="gift-card-cancelbtn"
-                  buttonVariation="variable-width"
                   onPress={toggleModal}
                 />
               </CancelButtonWrapper>
@@ -266,12 +252,12 @@ AddGiftCardForm.propTypes = {
       lbl_payment_cancelCard: PropTypes.string,
     }),
   }),
-  addGiftCardResponse: PropTypes.string,
   change: PropTypes.func,
   addGiftCardError: PropTypes.string,
   onClearError: PropTypes.func,
   isRow: PropTypes.bool,
   isRecapchaEnabled: PropTypes.bool,
+  saveToAccountEnabled: PropTypes.bool,
 };
 
 AddGiftCardForm.defaultProps = {
@@ -288,12 +274,12 @@ AddGiftCardForm.defaultProps = {
       lbl_payment_cancelCard: '',
     },
   },
-  addGiftCardResponse: null,
   change: () => {},
   addGiftCardError: null,
   onClearError: () => {},
   isRow: false,
   isRecapchaEnabled: true,
+  saveToAccountEnabled: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));

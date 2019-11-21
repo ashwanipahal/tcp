@@ -2,12 +2,14 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-top: 10px;
-  font-size: 12px;
   .text-value {
     text-align: right;
   }
   .row-padding {
     padding-bottom: 9px;
+  }
+  .bag-points {
+    padding-bottom: 0;
   }
   .divided-line {
     height: 1px;
@@ -18,6 +20,7 @@ const styles = css`
   .promo-color {
     color: ${props => props.theme.colors.PROMO.YELLOW};
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

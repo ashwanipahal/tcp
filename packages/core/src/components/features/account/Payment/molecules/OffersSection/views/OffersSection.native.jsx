@@ -1,40 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  ParentContainerStyle,
-  WrapperStyle,
-  ImgWrapper,
-  ImageStyle,
-  RichTextStyle,
-} from '../OffersSection.style.native';
-import RichText from '../../../../../../common/atoms/RichText';
+import { ParentContainerStyle } from '../OffersSection.style.native';
 
-// @flow
-type Props = {
-  labels: Object,
-};
-
-const OffersSection = (props: Props) => {
-  const { labels } = props;
-  return (
-    <View {...props}>
-      <WrapperStyle>
-        <ImgWrapper>
-          <ImageStyle
-            // eslint-disable-next-line global-require
-            source={require('../../../../../../../../../mobileapp/src/assets/images/card-smile.png')}
-          />
-        </ImgWrapper>
-        <RichTextStyle>
-          <RichText
-            source={{ html: getLabelValue(labels, 'lbl_payment_offersMessageMobile', 'paymentGC') }}
-          />
-        </RichTextStyle>
-      </WrapperStyle>
-    </View>
-  );
+const OffersSection = ({ labels, ...otherProps }) => (
+  <View {...otherProps}>
+    <Espot richTextHtml={labels.ACC_PAYMNET_BANNER_LABEL} />
+  </View>
+);
+OffersSection.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(OffersSection, ParentContainerStyle);

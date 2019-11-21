@@ -26,6 +26,9 @@ const styles = css`
   .phone-field {
     left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   }
+  .send-order-update {
+    display: flex;
+  }
 `;
 
 export default styles;

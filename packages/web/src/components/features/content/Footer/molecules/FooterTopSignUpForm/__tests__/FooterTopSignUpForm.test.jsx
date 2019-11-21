@@ -23,11 +23,13 @@ describe('FooterTopSignUpFormVanilla component', () => {
 
   it('Should verify onSubmit called in on submit button click', () => {
     const submitFunction = jest.fn();
+    const validateForm = jest.fn().mockResolvedValue({ success: true });
 
     const component = shallow(
       <FooterTopSignUpFormVanilla
         theme={themeMock}
         onFormSubmit={submitFunction}
+        validateForm={validateForm}
         handleSubmit={reduxFormHandleSubmitMock}
         dataLocators={{
           submitButton: submitButtonLocator,
@@ -35,46 +37,12 @@ describe('FooterTopSignUpFormVanilla component', () => {
         }}
       />
     );
-    component.find(`[data-locator="${submitButtonLocator}"]`).simulate('click');
-    expect(submitFunction).toHaveBeenCalledTimes(1);
-  });
+    component.find(`.footer_top__signup_form`).simulate('submit');
+    component.setProps({ submitSucceeded: true, subscription: { success: true } });
 
-  it('Should verify onSubmit called in on submit enter keypress event.keyCode', () => {
-    const submitFunction = jest.fn();
-
-    const component = shallow(
-      <FooterTopSignUpFormVanilla
-        fieldName={fieldName}
-        theme={themeMock}
-        onFormSubmit={submitFunction}
-        handleSubmit={reduxFormHandleSubmitMock}
-        dataLocators={{
-          submitButton: submitButtonLocator,
-          inputField: fieldName,
-        }}
-      />
-    );
-    component.find(`#${fieldName}`).simulate('keypress', { keyCode: 13, preventDefault: () => {} });
-    expect(submitFunction).toHaveBeenCalledTimes(1);
-  });
-
-  it('Should verify onSubmit called in on submit enter keypress event.which', () => {
-    const submitFunction = jest.fn();
-
-    const component = shallow(
-      <FooterTopSignUpFormVanilla
-        fieldName={fieldName}
-        theme={themeMock}
-        onFormSubmit={submitFunction}
-        handleSubmit={reduxFormHandleSubmitMock}
-        dataLocators={{
-          submitButton: submitButtonLocator,
-          inputField: fieldName,
-        }}
-      />
-    );
-    component.find(`#${fieldName}`).simulate('keypress', { which: 13, preventDefault: () => {} });
-    expect(submitFunction).toHaveBeenCalledTimes(1);
+    return Promise.resolve(component).then(() => {
+      expect(submitFunction).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('Should verify to open modal after form submission', () => {
@@ -96,7 +64,7 @@ describe('FooterTopSignUpFormVanilla component', () => {
         }}
       />
     );
-    component.find(`#${fieldName}`).simulate('keypress', { which: 13, preventDefault: () => {} });
+
     component.setProps({ submitSucceeded: true, subscription: { success: true } });
     expect(openModalMock).toHaveBeenCalledTimes(1);
     expect(reduxFormReset).toHaveBeenCalledTimes(1);

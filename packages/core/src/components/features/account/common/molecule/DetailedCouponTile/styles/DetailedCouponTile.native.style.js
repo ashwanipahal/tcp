@@ -85,7 +85,7 @@ const ButtonWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 const TitleWrapper = styled.View`
-  min-height: 58px;
+  min-height: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const SpaceWrapper = styled.View`

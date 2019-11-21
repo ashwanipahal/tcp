@@ -109,7 +109,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
       if (!response) {
         throw new Error('Response has errors!');
       }
-      // Iterate throughthe full response and grab only the data we require
+      // Iterate through the full response and grab only the data we require
       // filter out product list from the API response
       const productsList = response.products
         .filter(item => 'catgroup_id' in item)

@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPart/styles/ProductCustomizeFormPart.style';
@@ -23,6 +23,7 @@ import {
   ProductDetailSummary,
   OfferPriceAndBadge3Container,
 } from '../styles/PickupSkuSelectionForm.style.native';
+import { getProductListToPathInMobileApp } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 const PickupSkuSelectionForm = props => {
   const onGoToPDPPage = (pdpUrl, selectedColorProductId) => {
@@ -31,7 +32,7 @@ const PickupSkuSelectionForm = props => {
     onCloseClick();
     navigation.navigate('ProductDetail', {
       title,
-      pdpUrl,
+      pdpUrl: getProductListToPathInMobileApp(pdpUrl),
       selectedColorProductId,
       reset: true,
     });
@@ -45,7 +46,9 @@ const PickupSkuSelectionForm = props => {
     currentColorEntry,
     imageUrl,
     onChangeColor,
+    onChangeSize,
     generalProductId,
+    toastMessage,
   } = props;
 
   const badge2 = prices && prices.badge2;
@@ -55,12 +58,18 @@ const PickupSkuSelectionForm = props => {
 
   const listPrice = prices && prices.listPrice;
   const offerPrice = prices && prices.offerPrice;
-
+  const listPriceStyle = { lineHeight: 20 };
   return (
     <PickUpSkUSectionContainer>
       <ProductSummaryContainer>
         <ImageWrapper>
-          <Image resizeMode="contain" height="202px" width="164px" url={imageUrl} />
+          <DamImage
+            resizeMode="contain"
+            height="202px"
+            width="164px"
+            url={imageUrl}
+            isProductImage
+          />
         </ImageWrapper>
         <ProductDetailSummary>
           <BodyCopyWithSpacing
@@ -90,6 +99,7 @@ const PickupSkuSelectionForm = props => {
                 fontWeight="regular"
                 color="gray.800"
                 text={`${currencyPrefix}${listPrice}`}
+                style={listPriceStyle}
               />
             ) : null}
             {badge2 ? (
@@ -101,6 +111,7 @@ const PickupSkuSelectionForm = props => {
                 fontWeight="regular"
                 color="red.500"
                 text={badge2}
+                style={listPriceStyle}
               />
             ) : null}
           </OfferPriceAndBadge3Container>
@@ -123,12 +134,16 @@ const PickupSkuSelectionForm = props => {
 
       <ProductAddToBagContainer
         onChangeColor={onChangeColor}
+        onChangeSize={onChangeSize}
         plpLabels={SKU_DETAILS}
         currentProduct={currentProduct}
         customFormName={PRODUCT_SKU_SELECTION_FORM}
         selectedColorProductId={generalProductId}
         initialFormValues={initialValues}
         showAddToBagCTA={false}
+        toastMessage={toastMessage}
+        isDisableZeroInventoryEntries={false}
+        isPickup
       />
     </PickUpSkUSectionContainer>
   );
@@ -164,8 +179,10 @@ PickupSkuSelectionForm.propTypes = {
   onCloseClick: PropTypes.func,
   navigation: PropTypes.func,
   onChangeColor: PropTypes.func,
+  onChangeSize: PropTypes.func,
   currentColorEntry: PropTypes.shape({}),
   imageUrl: PropTypes.string.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 PickupSkuSelectionForm.defaultProps = {
@@ -173,8 +190,10 @@ PickupSkuSelectionForm.defaultProps = {
   currency: 'USD',
   onCloseClick: () => {},
   onChangeColor: null,
+  onChangeSize: () => {},
   currentColorEntry: {},
   generalProductId: '',
+  toastMessage: () => {},
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

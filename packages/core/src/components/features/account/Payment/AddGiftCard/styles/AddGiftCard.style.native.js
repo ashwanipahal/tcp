@@ -12,7 +12,7 @@ const SaveButtonWrapper = styled.View`
 `;
 
 const CancelButtonWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

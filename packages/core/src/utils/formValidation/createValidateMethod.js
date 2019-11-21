@@ -298,8 +298,8 @@ export function getErrorMessageLabels(errors, props) {
   Object.keys(errors).forEach(key => {
     // check error message is on props, if not get from hard coded error object
     errors[key] = props.formErrorMessage
-      ? props.formErrorMessage[errors[key]]
-      : formErrorCMSMessage[errors[key]];
+      ? `${props.formErrorMessage['lbl_err_prefix']} ${props.formErrorMessage[errors[key]]}`
+      : `${formErrorCMSMessage['lbl_err_prefix']} ${formErrorCMSMessage[errors[key]]}`;
   });
   return errors;
 }

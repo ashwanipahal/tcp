@@ -1,6 +1,11 @@
 /* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
+import {
+  disableBodyScroll as disableBodyScrollLib,
+  enableBodyScroll as enableBodyScrollLib,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -9,6 +14,7 @@ import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
+import googleMapConstants from '../constants/googleMap.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -25,8 +31,20 @@ const MONTH_SHORT_FORMAT = {
   DEC: 'Dec',
 };
 
+const FIXED_HEADER = {
+  LG_HEADER: 70,
+  SM_HEADER: 60,
+};
+
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
+};
+
+export const getUrlParameter = name => {
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp(`[\\?&]${replacedName}=([^&#]*)`);
+  const results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
 export const importGraphQLQueriesDynamically = query => {
@@ -129,6 +147,10 @@ export const createUrlSearchParams = (query = {}) => {
   return queryParams.join('&');
 };
 
+export function getHostName() {
+  return window.location.hostname;
+}
+
 export const buildUrl = options => {
   if (typeof options === 'object') {
     const { pathname, query } = options;
@@ -212,26 +234,6 @@ export const getViewportInfo = () => {
 };
 
 /**
- * Enable Body Scroll
- */
-export const enableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'auto';
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'hidden';
-  }
-};
-
-/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -282,17 +284,24 @@ export const scrollTopElement = elem => {
   }
 };
 
+/**
+ * 2019-11-05: Hotfix PR needed to address issue with this
+ * array of countries increasing in size with each call
+ * (up to over 400k items in some pages).
+ *
+ * @TODO RCA is re-rendering of the App component itself.
+ * Need to fix that. This is just a symptom.
+ */
 export const getCountriesMap = data => {
-  const countries = defaultCountries;
-  data.map(value =>
-    countries.push(
+  return [
+    ...defaultCountries,
+    ...data.map(value =>
       Object.assign({}, value.country, {
         siteId: 'us',
         currencyId: value.currency.id,
       })
-    )
-  );
-  return countries;
+    ),
+  ];
 };
 
 export const getCurrenciesMap = data => {
@@ -309,16 +318,27 @@ export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   }
 };
 
-export const languageRedirect = (newLanguage, oldLanguage) => {
-  if (newLanguage && newLanguage !== oldLanguage) {
-    const { protocol, host, pathname } = window.location;
-    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
-      const href = `${protocol}//fr.${host}${pathname}`;
-      window.location = href;
-    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
-      const href = `${protocol}//es.${host}${pathname}`;
-      window.location = href;
-    }
+export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+  const { protocol, host } = window.location;
+  const baseDomain = host.replace(`${oldLanguage}.`, '');
+  let hostURL = '';
+  if (newLanguage !== oldLanguage && newCountry === oldCountry) {
+    hostURL = `${protocol}//${newLanguage}.`;
+  }
+
+  /*
+   As per production implementation, if the country and language both get changed at the same time, the language will not append in the URL.
+   By default, the English language will entertain.
+  */
+  if (newCountry !== oldCountry || newLanguage === 'en') {
+    hostURL = `${protocol}//`;
+  }
+
+  if (hostURL && !(newLanguage === oldLanguage && newCountry === oldCountry)) {
+    window.location = `${hostURL}${baseDomain}${getAsPathWithSlug(
+      ROUTE_PATH.home,
+      newSiteId || getSiteId()
+    )}`;
   }
 };
 
@@ -335,23 +355,38 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
-  const country = siteId && siteId.toUpperCase();
+
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKeyTCP =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
+  const unbxdApiKeyGYM =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
+    assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
+    assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
-    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_TCP`]
     }`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_GYM`]
+    }`,
+    unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
+    previewEnvId: processEnv.RWD_WEB_PREVIEW_ENV,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -359,11 +394,18 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
+    isErrorReportingNodeActive: processEnv.IS_ERROR_REPORTING_NODE_ACTIVE,
+    isErrorReportingBrowserActive: processEnv.IS_ERROR_REPORTING_BROWSER_ACTIVE,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    paypalStaticUrl: processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
+    styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
+    styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -429,7 +471,12 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
+  const basicConfig = getAPIInfoFromEnv(
+    apiSiteInfo,
+    processEnv,
+    countryConfig && countryConfig.countryKey,
+    language
+  );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
@@ -442,6 +489,7 @@ export const createAPIConfig = resLocals => {
     country,
     currency,
     language,
+    hostname,
   };
 };
 
@@ -503,43 +551,112 @@ export const fetchStoreIdFromUrlPath = url => {
   return pathSplit[pathSplit.length - 1];
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
+export const scrollToParticularElement = element => {
+  const fixedHeaderOffset = getViewportInfo().isDesktop
+    ? FIXED_HEADER.LG_HEADER
+    : FIXED_HEADER.SM_HEADER;
+  if (isClient()) {
+    const elementPositionFromTop = element.getBoundingClientRect().top;
+    const calculatedOffset = elementPositionFromTop - fixedHeaderOffset;
+    window.scrollTo({
+      top: calculatedOffset,
+      behavior: 'smooth',
+    });
+  }
+};
+
+export const getDirections = address => {
+  const { addressLine1, city, state, zipCode } = address;
+  return window.open(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  );
+};
+
+/**
+ * To Identify whether the device is ios for web.
+ */
+
+export const isiOSWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+
+export const isAndroidWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android/.test(userAgent)) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+export const isMobileWeb = () => {
+  return isiOSWeb() || isAndroidWeb();
+};
+
+/**
+ * This function will remove all the body scroll locks.
+ */
+export const removeBodyScrollLocks = () => {
+  if (isiOSWeb() && isClient()) {
+    clearAllBodyScrollLocks();
+  }
+};
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isiOSWeb() && targetElem) {
+      enableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
   }
 };
 
 /**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
+ * Disable Body Scroll
  */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = {
-    weekday: 'short',
-  },
-  monthOption = {
-    month: 'short',
+export const disableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isiOSWeb() && targetElem) {
+      disableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
   }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-    year: currentDate.getFullYear(),
-  };
+};
+
+export const constructToPath = url => {
+  let toPath = url;
+  if (url) {
+    if (url.indexOf('/outfit/') !== -1) {
+      const outfitParams = url && url.split('/');
+      toPath =
+        outfitParams &&
+        outfitParams.length > 1 &&
+        `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+          outfitParams[outfitParams.length - 1]
+        }`;
+    } else if (url.indexOf('/c/') !== -1) {
+      toPath = url.replace('/c/', '/c?cid=');
+    } else if (url.indexOf('/p/') !== -1) {
+      toPath = url.replace('/p/', '/p?pid=');
+    }
+  }
+  return toPath;
 };
 
 export default {
@@ -566,6 +683,11 @@ export default {
   viewport,
   fetchStoreIdFromUrlPath,
   canUseDOM,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
+  scrollToParticularElement,
+  getDirections,
+  isMobileWeb,
+  removeBodyScrollLocks,
+  enableBodyScroll,
+  disableBodyScroll,
+  isAndroidWeb,
 };

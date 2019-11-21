@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Notification from '../../../../../../common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/CreateAccounPage.style';
+import styles, { customSpinnerStyle } from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
@@ -22,6 +23,9 @@ class CreateAccounPage extends React.Component {
     showForgotPasswordForm: PropTypes.func,
     isUserLoggedIn: PropTypes.bool.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    userplccCardNumber: PropTypes.string.isRequired,
+    userplccCardId: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -43,6 +47,16 @@ class CreateAccounPage extends React.Component {
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, error } = this.props;
+    const container = document.getElementById('dialogContent');
+
+    // Scrolling up to see the success end error message
+    if (((!prevProps.isUserLoggedIn && isUserLoggedIn) || error) && container) {
+      container.scrollTo(0, 0);
+    }
+  }
+
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
     createAccountAction(payload);
@@ -60,6 +74,9 @@ class CreateAccounPage extends React.Component {
       showForgotPasswordForm,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
+      isLoading,
     } = this.props;
     return (
       <div className={className}>
@@ -100,9 +117,12 @@ class CreateAccounPage extends React.Component {
             initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-            tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
+            tooltipContent={<PasswordRequirement labels={labels.password} />}
             formErrorMessage={formErrorMessage}
+            userplccCardNumber={userplccCardNumber}
+            userplccCardId={userplccCardId}
           />
+          {isLoading && <SpinnerOverlay inheritedStyles={customSpinnerStyle} />}
         </div>
       </div>
     );

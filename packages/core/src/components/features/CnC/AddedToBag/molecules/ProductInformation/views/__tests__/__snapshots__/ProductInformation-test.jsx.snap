@@ -18,10 +18,16 @@ exports[`BossBannerView component renders correctly 1`] = `
       key="productDetails"
       tagName="li"
     >
-      <Styled(Image)
-        alt="Product"
+      <WithTheme(DamImage)
         className="product-image"
         data-locator="addedtobag-productimage"
+        imgData={
+          Object {
+            "alt": "Product",
+            "url": undefined,
+          }
+        }
+        isProductImage={true}
       />
       <Styled(Image)
         alt="Brand"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getBonusDays, fetchModuleX, applyBonusDays } from './BonusPointsDays.actions';
 import {
   getLabels,
@@ -31,6 +32,8 @@ export class BonusPointsDays extends React.Component {
     showAccordian: PropTypes.bool,
     isBagPage: PropTypes.bool,
     additionalClassNameModal: PropTypes.string.isRequired,
+    isDefaultOpen: PropTypes.bool,
+    isInternationalShipping: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -47,6 +50,8 @@ export class BonusPointsDays extends React.Component {
     orderId: '',
     showAccordian: true,
     isBagPage: false,
+    isDefaultOpen: false,
+    isInternationalShipping: false,
   };
 
   componentDidMount() {
@@ -71,6 +76,9 @@ export class BonusPointsDays extends React.Component {
       showAccordian,
       isBagPage,
       additionalClassNameModal,
+      isDefaultOpen,
+      isInternationalShipping,
+      ...otherProps
     } = this.props;
     return (
       !isCanada() &&
@@ -85,7 +93,10 @@ export class BonusPointsDays extends React.Component {
           orderDetails={orderId}
           showAccordian={showAccordian}
           isBagPage={isBagPage}
+          isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
+          isInternationalShipping={isInternationalShipping}
+          {...otherProps}
         />
       )
     );
@@ -101,6 +112,7 @@ export const mapStateToProps = state => {
     isBonusPointsEnabled: getBonusPointsSwitch(state),
     isPlcc: isPlccUser(state),
     orderId: getCartOrderId(state),
+    isInternationalShipping: getIsInternationalShipping(state),
   };
 };
 

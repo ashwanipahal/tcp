@@ -14,7 +14,7 @@ export function getOnNavigationStateChange(store) {
           payload: {
             previousScreen: prevScreen,
             currentScreen,
-            appState: store.getState(),
+            // appState: store.getState(),
             navState: currentState,
           },
         });

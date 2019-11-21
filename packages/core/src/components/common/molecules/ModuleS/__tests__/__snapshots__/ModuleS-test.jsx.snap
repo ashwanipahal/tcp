@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleS Componenet should match snapshot 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <WithOutRibbonView
+      headerText={
+        Array [
+          Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Girlss",
+              "title": "Girlss",
+              "url": "/c/girls-clothess2",
+            },
+            "textItems": Array [
+              Object {
+                "style": "medium_text_regular",
+                "text": "Home Run Ready!1",
+              },
+              Object {
+                "style": "medium_text_black",
+                "text": "Lets Play.",
+              },
+            ],
+          },
+        ]
+      }
+      linkedImage={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "Pool",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_610",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_305",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+              "title": "Pool",
+              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png",
+              "url_m": "",
+              "url_t": "",
+            },
+            "link": Object {
+              "target": "",
+              "text": "Pool",
+              "title": "Pool",
+              "url": "/c/boys-clothess",
+            },
+          },
+        ]
+      }
+      moduleWidth="half"
+      ribbonBanner={null}
+      singleCTAButton={
+        Object {
+          "target": "",
+          "text": "SHOP OPENINGG DAY",
+          "title": "SHOP OPENINNG DAY",
+          "url": "/c/girls-clothess",
+        }
+      }
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

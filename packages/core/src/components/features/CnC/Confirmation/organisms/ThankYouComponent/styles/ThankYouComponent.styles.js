@@ -8,7 +8,7 @@ const styles = css`
     width: 86%;
     margin: 0 auto;
     @media ${props => props.theme.mediaQuery.large} {
-      width: 84%;
+      width: 91%;
     }
   }
   .confirmation-fullfillment-center {

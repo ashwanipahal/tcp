@@ -19,7 +19,10 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <RichText
+        actionHandler={[Function]}
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -46,6 +49,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -54,6 +58,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       type="submit"
       url=""
       width="90%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -74,7 +79,9 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       paddingRight="28px"
       text="lbl_PLCCForm_details"
@@ -105,7 +112,10 @@ exports[`ApplicationInProgress component should renders correctly while having n
   <Styled(View)>
     <Styled(View)>
       <RichText
+        actionHandler={[Function]}
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -132,6 +142,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -140,6 +151,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       type="submit"
       url=""
       width="90%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -160,7 +172,9 @@ exports[`ApplicationInProgress component should renders correctly while having n
       colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       paddingRight="28px"
       text="lbl_PLCCForm_details"

@@ -1,10 +1,12 @@
-const buildQuery = ({ type, brand, country, channel }) => `
+const buildQuery = ({ type, brand, country, channel, lang }) => `
   footer: globalModule(
-    type: "${type}"
-    brand: "${brand}"
-    country: "${country}"
-    channel: "${channel}"
+    type: "${type}",
+    brand: "${brand}",
+    country: "${country}",
+    channel: "${channel}",
+    lang: "${lang}"
   ) {
+    errorMessage
     submodules {
       footerTop {
         composites {

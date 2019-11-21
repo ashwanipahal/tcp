@@ -35,6 +35,8 @@ export const TileHeader = styled.div`
         background: none;
         cursor: pointer;
         outline: inherit;
+        text-transform: capitalize;
+        text-align: left;
       }
     }
   }
@@ -53,7 +55,6 @@ export const TileFooter = styled.div`
 `;
 
 export const TileBody = styled.div`
-  flex: 1;
   .address-wrapper {
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: ${props => (props.variation === 'listing' ? 'flex' : 'block')};
@@ -81,6 +82,9 @@ export const TileBody = styled.div`
       flex: none;
     }
   }
+  .address-meta__nodisplay {
+    display: none;
+  }
 `;
 
 export const FavStore = styled.div`
@@ -103,6 +107,11 @@ export default css`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
+  &.address-tile__selectedStore {
+    border: solid 1px ${props => props.theme.colorPalette.gray[500]};
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+  }
+
   .brand-store {
     display: flex;
     align-items: center;
@@ -121,6 +130,7 @@ export default css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     margin-right: ${props =>
       props.variation === 'listing' ? props.theme.spacing.ELEM_SPACING.XL : 0};
+    text-transform: capitalize;
   }
 
   .listing-header {
@@ -133,6 +143,9 @@ export default css`
       }
       span {
         margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+      &__one {
+        text-transform: capitalize;
       }
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {

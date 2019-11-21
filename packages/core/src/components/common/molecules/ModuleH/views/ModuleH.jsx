@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import { Col, DamImage, Row } from '../../../atoms';
@@ -30,9 +29,11 @@ class ModuleH extends React.PureComponent {
       className,
       divCTALinks,
       headerText,
+      moduleWidth,
       accessibility: { playIconButton, pauseIconButton } = {},
     } = this.props;
-    const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT, IMG_DATA } = config;
+    const { CAROUSEL_OPTIONS, getColSize, FULL_BLEED, OFFSET_LEFT, IMG_DATA } = config;
+    const COL_SIZE = getColSize(moduleWidth);
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
     };
@@ -56,6 +57,7 @@ class ModuleH extends React.PureComponent {
         <Col colSize={COL_SIZE}>
           <Carousel
             options={CAROUSEL_OPTIONS}
+            className="moduleH_carousel"
             carouselConfig={{
               autoplay: true,
               dataLocatorPlay: getLocator('moduleH_play_button'),
@@ -72,6 +74,7 @@ class ModuleH extends React.PureComponent {
                   key={index.toString()}
                   imgConfigs={IMG_DATA.imgConfig}
                   imgData={item.image}
+                  videoData={item.video}
                 />
               );
             })}
@@ -84,6 +87,7 @@ class ModuleH extends React.PureComponent {
 
 ModuleH.defaultProps = {
   accessibility: {},
+  moduleWidth: 'full',
 };
 
 ModuleH.propTypes = {
@@ -105,6 +109,7 @@ ModuleH.propTypes = {
       styled: PropTypes.object,
     })
   ).isRequired,
+  moduleWidth: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleH), style);

@@ -1,19 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CardList } from './CardList.view';
-
-// @flow
-
-type Props = {
-  labels: object,
-  setDeleteModalMountState: Function,
-  cardList: Array<object>,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  showNotification: boolean,
-  showNotificationCaptcha: boolean,
-  setSelectedCard: string,
-  setDefaultPaymentMethod: Function,
-};
 
 export const CardView = ({
   labels,
@@ -25,7 +12,7 @@ export const CardView = ({
   showNotificationCaptcha,
   setSelectedCard,
   setDefaultPaymentMethod,
-}: Props) => {
+}) => {
   return (
     <React.Fragment>
       <CardList
@@ -43,4 +30,15 @@ export const CardView = ({
   );
 };
 
+CardView.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  setSelectedCard: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+};
 export default CardView;

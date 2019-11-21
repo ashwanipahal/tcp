@@ -20,3 +20,31 @@ export const setCurrentStoreInfo = payload => ({
   type: constants.SET_CURRENT_STORE,
   payload,
 });
+
+export function setModuleXContent(payload) {
+  return {
+    payload,
+    type: constants.SET_MODULEX_CONTENT,
+  };
+}
+
+export function getModuleXContent(payload) {
+  return {
+    payload,
+    type: constants.GET_MODULEX_CONTENT,
+  };
+}
+
+export function getDistance(payload) {
+  return {
+    payload,
+    type: constants.GET_DISTANCE,
+  };
+}
+
+export function setDistance(payload) {
+  return {
+    payload,
+    type: constants.SET_DISTANCE,
+  };
+}

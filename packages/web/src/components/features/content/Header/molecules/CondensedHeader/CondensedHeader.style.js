@@ -81,6 +81,7 @@ export default css`
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
+    max-width: 1010px;
 
     .nav-bar-l1-item {
       color: ${props => props.theme.colorPalette.gray[900]};
@@ -116,6 +117,9 @@ export default css`
 
     .l1-overlay.is-open {
       top: 70px;
+      height: 100vh;
+      left: -21.5%;
+      width: 145%;
     }
 
     .nav-bar-item-label {
@@ -169,7 +173,6 @@ export default css`
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     line-height: 28px;
     text-overflow: ellipsis;
-    width: 70px;
     white-space: nowrap;
   }
 
@@ -201,8 +204,8 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       position: fixed;
       top: 70px;
-      left: -50%;
-      width: 200%;
+      left: 0%;
+      width: 100%;
       z-index: ${props => props.theme.zindex.zEnlargedImage};
       height: 1px;
       background-color: ${props => props.theme.colorPalette.gray[300]};

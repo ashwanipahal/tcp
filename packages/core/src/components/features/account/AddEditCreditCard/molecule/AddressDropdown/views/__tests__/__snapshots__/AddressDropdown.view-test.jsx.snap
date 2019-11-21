@@ -5,6 +5,12 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   activeValue=""
   clickHandler={[Function]}
   customSelectClassName=""
+  dataLocatorObj={
+    Object {
+      "dropDownList": "drop-down-list",
+      "heading": "drop-down-heading",
+    }
+  }
   options={
     Array [
       Object {},

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyOrderTile should render correctly 1`] = `
+<Styled(BodyCopy)
+  className="elem-mb-XXL"
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      shop now
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+  <Styled(BodyCopy)
+    className="elem-mt-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="shop-now-btn"
+      color="GRAY"
+      data-locator="orders-shop-now-btn"
+      fill="WHITE"
+      onClick={[Function]}
+    >
+      msg
+    </Styled(Button)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

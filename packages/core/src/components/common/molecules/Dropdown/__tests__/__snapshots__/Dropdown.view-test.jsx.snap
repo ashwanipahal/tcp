@@ -14,6 +14,8 @@ exports[`Dropdown component should renders componentDidUpdate  correctly 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
+    aria-expanded={false}
+    aria-haspopup="listbox"
     className="customSelectTitle"
     color="text.primary"
     component="div"
@@ -24,10 +26,11 @@ exports[`Dropdown component should renders componentDidUpdate  correctly 1`] = `
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex={0}
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -56,6 +59,8 @@ exports[`Dropdown component should renders componentDidUpdate with option length
   textAlign="left"
 >
   <Styled(BodyCopy)
+    aria-expanded={false}
+    aria-haspopup="listbox"
     className="customSelectTitle"
     color="text.primary"
     component="div"
@@ -66,10 +71,11 @@ exports[`Dropdown component should renders componentDidUpdate with option length
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex={0}
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -98,6 +104,8 @@ exports[`Dropdown component should renders correctly 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
+    aria-expanded={false}
+    aria-haspopup="listbox"
     className="customSelectTitle"
     color="text.primary"
     component="div"
@@ -108,10 +116,11 @@ exports[`Dropdown component should renders correctly 1`] = `
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex={0}
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -140,6 +149,8 @@ exports[`Dropdown component should renders correctly when optional fields are no
   textAlign="left"
 >
   <Styled(BodyCopy)
+    aria-expanded={false}
+    aria-haspopup="listbox"
     className="customSelectTitle"
     color="text.primary"
     component="div"
@@ -150,10 +161,11 @@ exports[`Dropdown component should renders correctly when optional fields are no
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex={0}
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"

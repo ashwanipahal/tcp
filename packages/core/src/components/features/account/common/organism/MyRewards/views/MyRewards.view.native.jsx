@@ -5,7 +5,6 @@ import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
@@ -19,6 +18,7 @@ import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view.native';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import MyRewardsSkeleton from '../skeleton/MyRewardsSkeleton.view.native';
 
 /**
  * Module height and width.
@@ -64,6 +64,25 @@ class MyRewards extends PureComponent {
     );
   };
 
+  renderCarousel = ({ coupons, navigation, labels }) => {
+    return coupons.size > 0 ? (
+      <View>
+        <Carousel
+          data={coupons.toArray()}
+          renderItem={this.renderView}
+          height={MODULE_HEIGHT}
+          width={MODULE_WIDTH}
+          variation="show-arrow"
+          showDots
+          darkArrow
+          autoplay={false}
+        />
+      </View>
+    ) : (
+      <EmptyRewards navigation={navigation} labels={labels} />
+    );
+  };
+
   render() {
     const {
       labels,
@@ -72,6 +91,7 @@ class MyRewards extends PureComponent {
       coupons,
       couponsLabels,
       selectedCoupon,
+      isFetching,
       ...otherProps
     } = this.props;
     const heading = `${getLabelValue(labels, 'lbl_my_rewards_heading', 'placeRewards')} (${
@@ -80,7 +100,6 @@ class MyRewards extends PureComponent {
     const isSelected = selectedCoupon !== null;
     return (
       <View>
-        <ToastContainer />
         {selectedCoupon && (
           <CouponDetailModal
             labels={couponsLabels}
@@ -94,29 +113,16 @@ class MyRewards extends PureComponent {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="semibold"
               className="my-rewards-heading"
               data-locator="my-rewards-heading"
               text={heading}
             />
           </CouponHeading>
         </ViewWithSpacing>
-        {coupons.size > 0 ? (
-          <View>
-            <Carousel
-              data={coupons.toArray()}
-              renderItem={this.renderView}
-              height={MODULE_HEIGHT}
-              width={MODULE_WIDTH}
-              variation="show-arrow"
-              showDots
-              darkArrow
-              autoplay={false}
-            />
-          </View>
-        ) : (
-          <EmptyRewards navigation={navigation} labels={labels} />
-        )}
+        {isFetching && <MyRewardsSkeleton />}
+        {!isFetching && this.renderCarousel({ coupons, navigation, labels })}
+
         {showLink && (
           <StyledAnchorWrapper>
             <Anchor
@@ -162,6 +168,7 @@ MyRewards.propTypes = {
   selectedCoupon: PropTypes.shape({}),
   couponsLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}),
+  isFetching: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -183,6 +190,7 @@ MyRewards.defaultProps = {
   selectedCoupon: {},
   couponsLabels: {},
   navigation: {},
+  isFetching: false,
 };
 
 export default MyRewards;

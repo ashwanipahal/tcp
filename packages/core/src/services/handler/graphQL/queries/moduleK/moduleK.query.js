@@ -1,8 +1,9 @@
-const buildQuery = ({ slot, contentId }) => `
-  ${slot}: moduleById(id: "${contentId}") {
+const buildQuery = ({ slot, contentId, lang }) => `
+  ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
     contentId
     name
     type
+    errorMessage
     composites {
       masonryGrid {
         promoBanner {
@@ -44,6 +45,10 @@ const buildQuery = ({ slot, contentId }) => `
         textItems {
           text
           style
+        }
+        icon {
+          placement
+          icon
         }
         link {
           url

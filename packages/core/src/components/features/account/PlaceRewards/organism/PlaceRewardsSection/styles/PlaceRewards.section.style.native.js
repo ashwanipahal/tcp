@@ -19,7 +19,7 @@ const StyledView = styled.View`
 `;
 
 const StyledViewLargeMargin = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
 export { ParentContainer, StyledHeading, UnderlineStyle, StyledView, StyledViewLargeMargin };

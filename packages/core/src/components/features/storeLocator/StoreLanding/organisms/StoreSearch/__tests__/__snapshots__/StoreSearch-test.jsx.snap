@@ -59,6 +59,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             enableSuccessCheck={false}
             id="storeAddressLocator"
             name="storeAddressLocator"
+            onChange={[Function]}
             onPlaceSelected={[Function]}
             placeholder="lbl_storelanding_storeSearchPlaceholder"
             title="lbl_storelanding_storeSearchPlaceholder"
@@ -95,6 +96,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
         >
           <li
             className="storeOptions"
+            key="gymboreeStoreOption"
           >
             <Field
               checked={false}
@@ -103,7 +105,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-fjdhpX",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -178,6 +180,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -212,6 +217,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                       ";
 ",
@@ -220,7 +228,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-fjdhpX",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -256,6 +264,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
           </li>
           <li
             className="storeOptions"
+            key="outletOption"
           >
             <Field
               checked={false}
@@ -264,7 +273,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-fjdhpX",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -339,6 +348,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -373,6 +385,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                       ";
 ",
@@ -381,7 +396,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-fjdhpX",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -432,9 +447,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             key="lbl_storelanding_allUSCAStores"
           >
             <Styled(Anchor)
-              asPath=""
+              asPath="/stores"
               className=""
-              to=""
+              to="/stores"
             >
               lbl_storelanding_allUSCAStores
             </Styled(Anchor)>

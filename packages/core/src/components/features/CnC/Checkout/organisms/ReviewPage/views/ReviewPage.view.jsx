@@ -1,41 +1,97 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormSection, reduxForm, change } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
-import utility from '../../../util/utility';
+import utility, { scrollToFirstError } from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import ContactFormFields from '../../../molecules/ContactFormFields';
+
+const formName = 'expressReviewPage';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     labels: PropTypes.shape({}).isRequired,
-    submitReview: PropTypes.func.isRequired,
+    reviewDidMount: PropTypes.func.isRequired,
+    reviewFormSubmit: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
     setVenmoShippingState: PropTypes.func,
     setVenmoPickupState: PropTypes.func,
     showAccordian: PropTypes.bool,
     isGuest: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    shipmentMethods: PropTypes.shape({}).isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    pickUpContactPerson: PropTypes.shape({}).isRequired,
+    pickUpContactAlternate: PropTypes.shape({}).isRequired,
+    ServerErrors: PropTypes.node.isRequired,
+    isPaymentDisabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+    pageCategory: PropTypes.string,
+    checkoutServerError: PropTypes.shape({}).isRequired,
+    clearCheckoutServerError: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool,
+    cartLoading: PropTypes.func,
   };
 
   static defaultProps = {
     setVenmoShippingState: () => {},
     setVenmoPickupState: () => {},
     showAccordian: true,
+    isExpressCheckout: false,
+    isPaymentDisabled: false,
+    pageCategory: '',
+    bagLoading: false,
+    cartLoading: () => {},
   };
 
+  constructor(props) {
+    super(props);
+    const { cartLoading } = props;
+    if (cartLoading) cartLoading();
+  }
+
   componentDidMount() {
-    const { setVenmoShippingState, setVenmoPickupState } = this.props;
+    const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
     setVenmoShippingState(true);
     setVenmoPickupState(true);
+    reviewDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      isPaymentDisabled: prevPaymentDisabled,
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+    } = prevProps;
+    const { isPaymentDisabled, dispatch, reviewDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      reviewDidMount();
+    }
+    if (prevPaymentDisabled !== isPaymentDisabled) {
+      dispatch(change(formName, 'cvvCode', null));
+    }
+  }
+
+  componentWillUnmount() {
+    const { clearCheckoutServerError, checkoutServerError } = this.props;
+
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
   }
 
   handleDefaultLinkClick = e => {
@@ -48,9 +104,16 @@ class ReviewPage extends React.PureComponent {
       labels,
       orderHasPickUp,
       orderHasShipping,
-      submitReview,
       isGuest,
       showAccordian,
+      isExpressCheckout,
+      shipmentMethods,
+      handleSubmit,
+      ServerErrors,
+      pageCategory,
+      reviewFormSubmit,
+      checkoutRoutingDone,
+      bagLoading,
     } = this.props;
     const {
       header,
@@ -64,30 +127,59 @@ class ReviewPage extends React.PureComponent {
       ariaLabelSubmitOrderButton,
     } = labels;
 
+    const expressReviewShippingSection = 'expressReviewShippingSection';
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
-      <div className={className}>
+      <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
-        {!!orderHasPickUp && (
+        {ServerErrors && <ServerErrors />}
+        {(!!orderHasPickUp || !checkoutRoutingDone) && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer
+              isExpressCheckout={isExpressCheckout}
               onEdit={() => {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
+              bagLoading={bagLoading}
+              checkoutRoutingDone={checkoutRoutingDone}
             />
           </div>
         )}
-        {!!orderHasShipping && (
-          <div className="review-shipping">
-            <ShippingReviewSection
-              onEdit={() => {
-                utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-              }}
-            />
-          </div>
-        )}
-        <BillingSection />
-        <CheckoutCartItemList />
-        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+        <FormSection name={expressReviewShippingSection}>
+          {(!!orderHasShipping || !checkoutRoutingDone) && (
+            <div className="review-shipping">
+              <ShippingReviewSection
+                isExpressCheckout={isExpressCheckout}
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={expressReviewShippingSection}
+                onEdit={() => {
+                  utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+                }}
+                bagLoading={bagLoading}
+                checkoutRoutingDone={checkoutRoutingDone}
+              />
+            </div>
+          )}
+        </FormSection>
+        <BillingSection
+          isExpressCheckout={isExpressCheckout}
+          bagLoading={bagLoading}
+          checkoutRoutingDone={checkoutRoutingDone}
+        />
+        <CheckoutCartItemList
+          disableProductRedirect
+          bagLoading={bagLoading}
+          checkoutRoutingDone={checkoutRoutingDone}
+        />
+        <CheckoutOrderInfo
+          showAccordian={showAccordian}
+          isGuest={isGuest}
+          fullPageInfo
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}
@@ -95,7 +187,6 @@ class ReviewPage extends React.PureComponent {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.billingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={backLinkBilling}
-          nextHandler={submitReview}
           footerBody={[
             applyConditionPreText,
             <Anchor
@@ -117,10 +208,20 @@ class ReviewPage extends React.PureComponent {
             </Anchor>,
           ]}
         />
-      </div>
+      </form>
     );
   }
 }
 
-export default withStyles(ReviewPage, styles);
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
+});
+
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+  onSubmitFail: errors => scrollToFirstError(errors),
+})(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };

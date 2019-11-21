@@ -10,6 +10,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
     onClick={[MockFunction]}
     onStartShouldSetResponder={[Function]}
     pointerEvents="auto"
+    textMargin={null}
     val=""
   >
     <Styled(View)>
@@ -44,7 +45,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
           "navigate": [Function],
         }
       }
-      tree="<div><p>checkbox</p></div>"
+      tree="<span>checkbox</span>"
     />
   </Styled(View)>
 </Fragment>
@@ -60,6 +61,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
     onClick={[MockFunction]}
     onStartShouldSetResponder={[Function]}
     pointerEvents="auto"
+    textMargin={null}
     val=""
   >
     <Styled(View)>
@@ -94,7 +96,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
           "navigate": [Function],
         }
       }
-      tree="<div><p>checkbox</p></div>"
+      tree="<span>checkbox</span>"
     />
   </Styled(View)>
 </Fragment>

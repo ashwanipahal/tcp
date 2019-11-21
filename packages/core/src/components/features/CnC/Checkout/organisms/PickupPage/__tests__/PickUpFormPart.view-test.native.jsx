@@ -9,6 +9,8 @@ describe('PickUpFormPart component', () => {
       initialValues: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       className: '',
       isSmsUpdatesEnabled: false,
       isGuest: false,
@@ -21,6 +23,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.instance().SaveAndCancelButton();
@@ -30,6 +33,8 @@ describe('PickUpFormPart component', () => {
   it('should renders correctly props  present ', () => {
     const props = {
       initialValues: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
       className: '',
@@ -44,6 +49,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.setState({ isEditing: true });
@@ -54,6 +60,8 @@ describe('PickUpFormPart component', () => {
   it(' should renders correctly props with state update ', () => {
     const props = {
       initialValues: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
       className: '',
@@ -68,6 +76,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.find(Anchor).simulate('press', { preventDefault: jest.fn() });

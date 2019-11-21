@@ -52,7 +52,7 @@ describe('AddEditCreditCardContainer', () => {
     const component = shallow(<AddEditCreditCard {...props} />);
 
     const initialValuesProp = component.prop('initialValues');
-    expect(initialValuesProp.onFileAddressKey).toEqual('11111');
+    expect(initialValuesProp.onFileAddressKey).toEqual('12345');
   });
 
   it('onCreditCardFormSubmit should call addCreditCardAction with payload if creditCard is not passed', () => {

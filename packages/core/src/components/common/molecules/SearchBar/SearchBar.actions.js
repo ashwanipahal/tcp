@@ -7,3 +7,7 @@ export const getSearchResult = payload => {
 export const setSearchResult = payload => {
   return { type: HEADER_MIDDLE_CONSTANTS.SET_SEARCH, payload };
 };
+
+export const setShowMoreProductFlag = payload => {
+  return { type: HEADER_MIDDLE_CONSTANTS.SET_SHOW_MORE_PRODUCT_FLAG, payload };
+};

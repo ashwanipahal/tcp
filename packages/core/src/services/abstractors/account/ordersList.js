@@ -83,6 +83,7 @@ export const getOrderHistory = (siteId, currentSiteId) => {
           orderDate: getTranslatedDate(order.orderDate),
           orderNumber: order.orderNumber,
           orderStatus: getOrderStatus(order.orderStatus),
+          status: order.orderStatus,
           currencySymbol: order.orderTotal.replace(/[0-9]|\.|,/gi, ''),
           orderTotal: order.orderTotal.replace(/[0-9]|\.|,/gi, '') + extractFloat(order.orderTotal),
           orderTracking: order.orderTrackingNumber,
@@ -107,6 +108,17 @@ export const getOrderHistory = (siteId, currentSiteId) => {
 };
 
 /**
+ * @function errorHandler function to handle all the server side errors.
+ * @param {object} err - error object in case server side data send server side validation errors.
+ * @returns {object} error object with appropirate error message
+ */
+const errorHandler = err => {
+  if (err && err.errorResponse && err.errorResponse.errorMessage) {
+    throw new Error(err.errorResponse.errorMessage);
+  }
+  throw new Error('genericError');
+};
+/**
  * @function getOrderInfoByOrderId
  * @summary
  * @param {type} paramName -
@@ -119,7 +131,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
   const payload = {
     header: {
       orderId: updatedPayload.orderId,
-      emailId: updatedPayload.email,
+      emailId: updatedPayload.emailAddress,
     },
     webService: endpoints.orderLookUp,
   };
@@ -174,7 +186,10 @@ export const getOrderInfoByOrderId = updatedPayload => {
           quantityOOS: 0, // no support from backend
           itemBrand: item.brand ? item.brand : '',
         },
-        trackingInfo: item.shipmentAndStatusInfo ? item.shipmentAndStatusInfo : [],
+        trackingInfo:
+          item.shipmentAndStatusInfo.length > 0
+            ? item.shipmentAndStatusInfo
+            : [{ status: orderDetails.orderStatus }],
         isShippedItem: parseInt(item.quantity, 10) === parseInt(item.quantityShipped, 10),
       }));
 
@@ -217,6 +232,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
               trackingUrl: sanitizeEntity(shipment.trackingUrl),
               shippedDate: shipment.shipDate,
               status: OrderShippedKey,
+              orderStatus: OrderShippedKey.toLowerCase(),
               items,
             };
           }
@@ -269,9 +285,11 @@ export const getOrderInfoByOrderId = updatedPayload => {
                     quantity,
                   },
                   productInfo: item.productInfo,
+                  trackingInfo: item.trackingInfo,
                 };
               }),
               status: 'order received',
+              orderStatus: 'order received',
               trackingNumber: aTrackingItem.trackingNumber || null,
               trackingUrl: sanitizeEntity(aTrackingItem.trackingUrl) || null,
             };
@@ -295,6 +313,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
             ...item.itemInfo,
             linePrice: extractFloat(item.paidUnitPrice) * item.itemInfo.quantityCanceled,
           },
+          trackingInfo: item.trackingInfo,
         }));
 
       const outOfStockItems = []; // cartItems.filter((item) => item.itemInfo.quantityOOS);
@@ -306,6 +325,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
           res.body.orderLookupResponse.orderSummary.requestedDeliveryBy.replace('T', ' '),
         pickedUpDate: (orderDetails.dateShipped || '').replace('T', ' '),
         shippedDate: (orderDetails.dateShipped || '').replace('T', ' '),
+        orderStatus: orderDetails.orderStatus ? orderDetails.orderStatus.toLowerCase() : '',
         status:
           orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOSS
             ? orderDetails.orderStatus
@@ -413,11 +433,22 @@ export const getOrderInfoByOrderId = updatedPayload => {
         };
       }
 
-      return orderDetailsReturn;
+      const trackingNumber =
+        res && res.body && res.body.orderLookupResponse
+          ? res.body.orderLookupResponse.orderDetails.tracking
+          : null;
+      return {
+        trackOrderInfo: {
+          success: true,
+          trackingNumber: trackingNumber === 'N/A' ? null : trackingNumber,
+          orderId: res.body.orderLookupResponse.orderDetails.orderId,
+          encryptedEmailAddress: encodeURIComponent(res.body.orderLookupResponse.encryptedEmailId),
+          pointsEarned: res.body.orderLookupResponse.pointsEarned,
+        },
+        orderDetailsReturn,
+      };
     })
-    .catch(err => {
-      throw err;
-    });
+    .catch(errorHandler);
 };
 
 export default { getOrderHistory };

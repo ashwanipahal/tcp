@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
-import utils from '../../../../../utils';
+import accountPageNameMapping from '../AccountPageNameMapping';
+import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import RouteTracker from '../../../../../../../web/src/components/common/atoms/RouteTracker';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -17,10 +19,18 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * @param {router} router Router object to get the query key
  */
 
+const excludeRouteMapping = ['/TrackOrder'];
+
+const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
   constructor(props) {
     super(props);
-    const activeComponent = utils.getObjectValue(props.router, 'account-overview', 'query', 'id');
+    const activeComponent = utils.getObjectValue(
+      props.router,
+      DEFAULT_ACTIVE_COMPONENT,
+      'query',
+      'id'
+    );
     this.state = {
       componentToLoad:
         utils.getObjectValue(props.router, undefined, 'query', 'subSection') || activeComponent,
@@ -35,15 +45,35 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
+    const { isUserLoggedIn, router } = this.props;
+
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
+      routerPush('/home?target=login', '/home/login');
+    }
+
+    if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
+      this.activePageRef.blur();
+      setTimeout(() => {
+        this.activePageRef.focus({ preventScroll: true });
+      }, 100);
+    }
+
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
   }
 
+  /**
+   * Set the wrapper ref
+   */
+  setPageRef = ref => {
+    this.activePageRef = ref;
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
       nextProps.router,
-      'account-overview',
+      DEFAULT_ACTIVE_COMPONENT,
       'query',
       'id'
     );
@@ -76,14 +106,19 @@ export class Account extends React.PureComponent {
     // _app.jsx itself.
     if (typeof labels === 'object' && isUserLoggedIn !== null) {
       return (
-        <MyAccountLayout
-          mainContent={AccountComponentMapping[componentToLoad]}
-          active={activeComponent}
-          activeSubComponent={componentToLoad}
-          navData={navData}
-          router={router}
-          labels={labels}
-        />
+        <>
+          <MyAccountLayout
+            mainContent={AccountComponentMapping[componentToLoad]}
+            active={activeComponent}
+            activeSubComponent={componentToLoad}
+            navData={navData}
+            router={router}
+            labels={labels}
+            pageContentRef={this.setPageRef}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+          {process.env.ANALYTICS && <RouteTracker />}
+        </>
       );
     }
 
@@ -92,6 +127,26 @@ export class Account extends React.PureComponent {
 }
 
 Account.getInitActions = () => initActions;
+
+Account.getInitialProps = (reduxProps, pageProps) => {
+  const componentToLoad = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: accountPageNameMapping[componentToLoad]
+          ? accountPageNameMapping[componentToLoad].pageName
+          : '',
+        pageSection: 'myplace',
+        loadAnalyticsOnload: false,
+      },
+    },
+  };
+};
+
+Account.pageInfo = {
+  pageId: 'Account',
+};
 
 export const mapDispatchToProps = dispatch => {
   return {

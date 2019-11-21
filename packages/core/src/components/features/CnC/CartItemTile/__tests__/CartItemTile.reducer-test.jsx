@@ -19,6 +19,19 @@ describe('AddGiftCard Reducer', () => {
     },
   };
 
+  const setToggleCartItemError = {
+    type: CARTPAGE_CONSTANTS.SET_TOGGLE_CART_ITEM_ERROR,
+    payload: {
+      error: {
+        errorMessage: 'ERROR',
+      },
+    },
+  };
+
+  const clearToggleCartItemError = {
+    type: CARTPAGE_CONSTANTS.CLEAR_TOGGLE_CART_ITEM_ERROR,
+  };
+
   it('GET_PRODUCT_SKU_INFO_SUCCESS', () => {
     const newState = CartItemTile(initialState, {
       ...getProductSkuInfoSuccess,
@@ -29,9 +42,24 @@ describe('AddGiftCard Reducer', () => {
     );
   });
 
+  it('SET_TOGGLE_CART_ITEM_ERROR', () => {
+    const newState = CartItemTile(initialState, {
+      ...setToggleCartItemError,
+    });
+
+    expect(newState.getIn(['toggleError', 'error', 'errorMessage'])).toEqual('ERROR');
+  });
+
+  it('CLEAR_TOGGLE_CART_ITEM_ERROR', () => {
+    const newState = CartItemTile(initialState, {
+      ...clearToggleCartItemError,
+    });
+
+    expect(newState.get('toggleError')).toBeFalsy();
+  });
+
   it('DEFAULT', () => {
     const newState = CartItemTile(initialState, {});
-
     expect(newState).toEqual(initialState);
   });
 });

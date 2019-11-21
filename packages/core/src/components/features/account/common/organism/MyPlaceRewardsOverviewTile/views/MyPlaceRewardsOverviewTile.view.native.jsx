@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import BonusPointsDays from '@tcp/core/src/components/common/organisms/BonusPointsDays';
@@ -13,7 +12,7 @@ import {
   UnderlineStyle,
   PlaceRewardsTileContainer,
   ButtonWrapperStyle,
-  ShopAnchor,
+  ShopNowWrapper,
   CouponListWrapper,
   CouponWrapper,
 } from '../styles/MyPlaceRewardsOverviewTile.style.native';
@@ -54,6 +53,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}
           color="black"
+          fontWeight="black"
         />
 
         <LineComp {...UnderlineStyle} />
@@ -64,6 +64,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
               <BodyCopy
                 fontSize="fs14"
                 fontWeight="semibold"
+                fontFamily="secondary"
                 data-locator={rewardDataLocator}
                 text={walletOverviewInfo}
               />
@@ -87,22 +88,12 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
               text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsDesc')}
               color="black"
             />
-            <ShopAnchor>
-              <Anchor
-                anchorVariation="button"
-                buttonVariation="variable-width"
-                fullWidth
-                centered
-                fill="WHITE"
-                dataLocator="accountoverview-myplacerewardstile-startshopbtn"
-                accessibilityRole="link"
-                accessibilityLabel={getLabelValue(labels, 'lbl_overview_myPlaceRewardsShopNow')}
+            <ShopNowWrapper>
+              <CustomButton
                 text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsShopNow')}
-                borderWidth="1"
-                borderColor="black"
                 onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
               />
-            </ShopAnchor>
+            </ShopNowWrapper>
           </View>
         )}
 
@@ -113,7 +104,6 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
         <ButtonWrapperStyle>
           <CustomButton
             text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCTA')}
-            buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('myPlaceRewardsMobile')}
           />

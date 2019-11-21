@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 import { getIconPath } from '../../../../../../core/src/utils';
 
-const checkoutwhitedot = getIconPath('checkout-white-dot');
 const checkouttick = getIconPath('checkout-tick');
 
 export default css`
@@ -13,30 +12,34 @@ export default css`
 
   .checkout-progress-bar {
     margin: 0 auto;
-    padding: 0;
     overflow: hidden;
     width: 100%;
     position: relative;
-    padding-top: 6px;
+    padding: 6px 0 18px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
       margin: 0px auto;
       width: 500px;
-      padding: 18px 0 14px;
+      padding: 18px 0 20px;
       left: auto;
       position: relative;
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 374px;
+      padding: 6px 0 4px;
+      padding-bottom: 20px;
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 8px;
     }
 
     &.pickup-shipping {
-      padding: 8px 0;
       @media ${props => props.theme.mediaQuery.large} {
         padding: 18px 0 14px;
-        width: 880px;
+        width: 528px;
       }
 
       li {
@@ -55,10 +58,9 @@ export default css`
     color: ${props => props.theme.colors.TEXT.DARK};
 
     &:before {
-      width: 14px;
-      height: 14px;
+      width: 24px;
+      height: 24px;
       content: '';
-      background-color: ${props => props.theme.colors.PRIMARY.GRAY};
       display: block;
       text-align: center;
       margin: 0 auto 7px;
@@ -72,11 +74,15 @@ export default css`
       height: 2px;
       content: '';
       position: absolute;
-      background-color: ${props => props.theme.colors.PRIMARY.GRAY};
-      top: 7px;
+      background-color: ${props => props.theme.colors.TEXT.DARKERGRAY};
+      top: 10px;
       right: calc(50% + 12px);
       left: calc(-50% + 12px);
       z-index: 1;
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        right: calc(50% + 10px);
+        left: calc(-50% + 10px);
+      }
     }
 
     &:first-child:after {
@@ -86,6 +92,10 @@ export default css`
     button,
     span {
       text-transform: none;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
+      }
     }
 
     button {
@@ -107,11 +117,16 @@ export default css`
       content: '';
       background: url(${checkouttick});
       background-color: ${props => props.theme.colors.WHITE};
-      height: 14px;
-      width: 14px;
+      height: 25px;
+      width: 25px;
       position: inherit;
       display: block;
       z-index: 1;
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        width: 22px;
+        height: 22px;
+        background-position: center;
+      }
     }
 
     .white-background {
@@ -133,20 +148,42 @@ export default css`
       padding: 1px;
       content: '';
       background-color: ${props => props.theme.colors.WHITE};
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        background-position: center;
+        padding: 0;
+        margin-bottom: 6px;
+      }
     }
 
     .white-dot {
-      background: url(${checkoutwhitedot});
       background-color: ${props => props.theme.colors.WHITE};
+      border: 2px solid ${props => props.theme.colors.BLACK};
+      border-radius: 50%;
       display: block;
-      height: 17px;
-      width: 17px;
+      height: 22px;
+      width: 22px;
       position: absolute;
-      left: 43%;
+      left: ${props => (props.availableStages.length > 3 ? '35%' : '40%')};
       top: -1px;
       @media ${props => props.theme.mediaQuery.large} {
         left: 50%;
         transform: translateX(-50%);
+      }
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: 18px;
+        width: 18px;
+        left: ${props => (props.availableStages.length > 3 ? '37%' : '41%')};
+      }
+    }
+  }
+
+  .pending {
+    &:before {
+      background-color: ${props => props.theme.colors.WHITE};
+      border: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: 20px;
+        width: 20px;
       }
     }
   }

@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextBox, DamImage, Anchor } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isGymboree } from '@tcp/core/src/utils/utils';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
 
@@ -13,70 +15,66 @@ import smsSignupModalStyle from '../SmsSignupModal.style';
 import config from '../Config';
 
 class SmsSignupModal extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      validationStarted: false,
-    };
-  }
-
   componentDidUpdate({ subscription: oldSubscription }) {
-    const { subscription } = this.props;
+    const { subscription, trackSubscriptionSuccess } = this.props;
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
         this.formSubmitPromise.reject();
       } else {
         this.formSubmitPromise.resolve();
+        trackSubscriptionSuccess();
       }
       this.formSubmitPromise = null;
     }
 
-    if (
-      this.modalContentRef &&
-      subscription.success !== oldSubscription.success &&
-      subscription.success
-    ) {
-      this.modalContentRef.focus();
+    if (subscription.success !== oldSubscription.success && subscription.success) {
+      if (this.modalContentRef) {
+        this.modalContentRef.focus();
+      }
+      trackSubscriptionSuccess();
     }
   }
-
-  onSignUpInputKeyPress = e => {
-    if (e.keyCode === 13 || e.which === 13) {
-      e.preventDefault();
-      this.submitForm();
-    }
-  };
-
-  onInputBlur = () => {
-    this.setState({
-      validationStarted: true,
-    });
-  };
 
   setModalContentRef = node => {
     this.modalContentRef = node;
   };
 
-  /**
-   * Expect redux-form handleSubmit function on props. This can be called to manually and
-   * redux-form handleSubmit function has been used to submit form.
-   * More information, read redux-form doc handleSubmit prop.
-   */
-  submitForm = () => {
-    const { handleSubmit, submitSmsSubscription, clearSmsSignupForm } = this.props;
-    handleSubmit(values => {
-      return new Promise((resolve, reject) => {
-        clearSmsSignupForm();
-        this.formSubmitPromise = { resolve, reject };
-        submitSmsSubscription(values.signupPhoneNumber);
-      }).catch(() => {
-        const {
-          formViewConfig: { validationErrorLabel },
-        } = this.props;
-        const error = { signupPhoneNumber: validationErrorLabel };
-        throw new SubmissionError({ ...error, _error: error });
+  submitForm = formObj => {
+    const {
+      submitSmsSubscription,
+      clearSmsSignupForm,
+      validateSignupSmsPhoneNumber,
+      formViewConfig: { validationErrorLabel },
+    } = this.props;
+    const { signupPhoneNumber, optPhoneSignupSecondBrand } = formObj;
+    return validateSignupSmsPhoneNumber(signupPhoneNumber)
+      .then(subscription => {
+        if (subscription.error) {
+          return Promise.reject();
+        }
+        /*
+         Faking this because redux-form `submitting` based on promise resolve
+       and we will resolve formSubmitPromise only when the state has success flag on
+       componentDidUpdate.
+       */
+        return new Promise((resolve, reject) => {
+          clearSmsSignupForm();
+          this.formSubmitPromise = { resolve, reject };
+          submitSmsSubscription({
+            footerTopSmsSignup: signupPhoneNumber,
+            isTextOptInSecondBrand: optPhoneSignupSecondBrand,
+          });
+        });
+      })
+      .catch(() => {
+        const error = {
+          signupPhoneNumber: validationErrorLabel,
+        };
+        throw new SubmissionError({
+          ...error,
+          _error: error,
+        });
       });
-    })();
   };
 
   closeModal = () => {
@@ -84,9 +82,6 @@ class SmsSignupModal extends React.PureComponent {
     closeModal();
     reset();
     clearSmsSignupForm();
-    this.setState({
-      validationStarted: false,
-    });
   };
 
   render() {
@@ -97,14 +92,10 @@ class SmsSignupModal extends React.PureComponent {
       subscription,
       submitting,
       pristine,
-      invalid,
-      asyncValidating,
-      submitSucceeded,
+      handleSubmit,
     } = this.props;
-    const { validationStarted = false } = this.state;
-
     const { IMG_DATA } = config;
-
+    const isGym = isGymboree();
     return (
       <Fragment>
         <Modal
@@ -115,8 +106,8 @@ class SmsSignupModal extends React.PureComponent {
           overlayClassName="TCPModal__Overlay"
           onRequestClose={this.closeModal}
           noPadding
-          widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
-          heightConfig={{ minHeight: '500px', height: '560px', maxHeight: '560px' }}
+          widthConfig={{ small: '100%', medium: '458px', large: '851px' }}
+          heightConfig={{ minHeight: '500px', height: '645px', maxHeight: '645px' }}
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
           }
@@ -130,8 +121,8 @@ class SmsSignupModal extends React.PureComponent {
           }}
         >
           {subscription.success ? (
-            <Grid>
-              <Row fullBleed>
+            <Grid className="full-height">
+              <Row fullBleed className="full-height">
                 <Col
                   isNotInlineBlock
                   colSize={{ small: 4, medium: 4, large: 4 }}
@@ -139,33 +130,44 @@ class SmsSignupModal extends React.PureComponent {
                   className="img-wrapper"
                 >
                   <DamImage
-                    alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    imgData={{
+                      url: formViewConfig.lbl_SignUp_imageSrc,
+                      alt: formViewConfig.lbl_SignUp_imageAlt,
+                    }}
                   />
                 </Col>
-                <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
+                <Col
+                  colSize={{ small: 6, medium: 8, large: 8 }}
+                  ignoreGutter={{ large: true }}
+                  className="sms-signup-content"
+                >
                   <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="sms" />
                   <Row className="button-wrapper" fullBleed>
                     <Col colSize={{ small: 4, medium: 4, large: 4 }} className="button-container">
-                      <Button
-                        fullWidth
-                        buttonVariation="fixed-width"
-                        fill="BLUE"
-                        type="submit"
-                        className="shop-button"
-                        onClick={this.closeModal}
-                        dataLocator="shop_now_btn"
+                      <Anchor
+                        to={formViewConfig.lbl_SignUp_shopNowBtnUrl}
+                        asPath={formViewConfig.lbl_SignUp_shopNowBtnUrl}
+                        target={formViewConfig.lbl_SignUp_shopNowBtnUrlTarget}
                       >
-                        {formViewConfig.lbl_SignUp_shopNowLabel}
-                      </Button>
+                        <Button
+                          fullWidth
+                          buttonVariation="fixed-width"
+                          fill="BLUE"
+                          type="submit"
+                          className="shop-button"
+                          dataLocator="shop_now_btn"
+                        >
+                          {formViewConfig.lbl_SignUp_shopNowLabel}
+                        </Button>
+                      </Anchor>
                     </Col>
                   </Row>
                 </Col>
               </Row>
             </Grid>
           ) : (
-            <form onSubmit={this.onFormSubmit}>
+            <form onSubmit={handleSubmit(this.submitForm)}>
               <Grid>
                 <Row fullBleed={{ large: true }} className="wrapper">
                   <Col
@@ -175,9 +177,11 @@ class SmsSignupModal extends React.PureComponent {
                     className="img-wrapper"
                   >
                     <DamImage
-                      alt={formViewConfig.imageAltText}
                       imgConfigs={IMG_DATA.imgConfig}
-                      imgData={formViewConfig.lbl_SignUp_imageSrc}
+                      imgData={{
+                        url: formViewConfig.lbl_SignUp_imageSrc,
+                        alt: formViewConfig.lbl_SignUp_imageAlt,
+                      }}
                     />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
@@ -190,15 +194,28 @@ class SmsSignupModal extends React.PureComponent {
                       <Field
                         placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signupPhoneNumber"
-                        id="signupPhoneNumber"
+                        id="modal_signupPhoneNumber"
                         type="text"
-                        onBlur={this.onInputBlur}
-                        onKeyPress={this.onSignUpInputKeyPress}
                         component={TextBox}
                         maxLength={50}
                         dataLocator="sms_address_field"
                         normalize={formatPhoneNumber}
+                        enableSuccessCheck={false}
                       />
+
+                      <Field
+                        name="optPhoneSignupSecondBrand"
+                        id="optPhoneSignupSecondBrand"
+                        className="phone-signup-second-brand"
+                        component={InputCheckbox}
+                        dataLocator={isGym ? 'sms_tcp_opt' : 'sms_gym_opt'}
+                        type="checkbox"
+                      >
+                        {isGym
+                          ? formViewConfig.lbl_SignUp_tcpSignUpLabel
+                          : formViewConfig.lbl_SignUp_gymSignUpLabel}
+                      </Field>
+
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.lbl_SignUp_termsTextLabel}
                       </BodyCopy>
@@ -206,21 +223,13 @@ class SmsSignupModal extends React.PureComponent {
                     <Row className="button-wrapper-form" fullBleed>
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
-                          disabled={
-                            pristine ||
-                            !validationStarted ||
-                            asyncValidating ||
-                            invalid ||
-                            submitSucceeded ||
-                            submitting
-                          }
+                          disabled={pristine || submitting}
                           fullWidth
                           buttonVariation="fixed-width"
                           fill="BLUE"
-                          type="button"
+                          type="submit"
                           className="join-button"
                           dataLocator="join_now_btn"
-                          onClick={this.submitForm}
                         >
                           {formViewConfig.lbl_SignUp_joinButtonLabel}
                         </Button>
@@ -245,10 +254,9 @@ SmsSignupModal.propTypes = {
   clearSmsSignupForm: PropTypes.func,
   subscription: PropTypes.shape({}),
   submitSmsSubscription: PropTypes.func,
+  validateSignupSmsPhoneNumber: PropTypes.func,
+  trackSubscriptionSuccess: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
-  invalid: PropTypes.bool.isRequired,
-  asyncValidating: PropTypes.oneOf(PropTypes.bool, PropTypes.string).isRequired,
-  submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   isModalOpen: PropTypes.bool,
   closeModal: PropTypes.func,
@@ -262,6 +270,8 @@ SmsSignupModal.defaultProps = {
   subscription: {},
   isModalOpen: false,
   submitSmsSubscription: () => {},
+  trackSubscriptionSuccess: () => {},
+  validateSignupSmsPhoneNumber: () => Promise.resolve({}),
   clearSmsSignupForm: () => {},
   closeModal: () => {},
   reset: () => {},
@@ -274,7 +284,6 @@ export default withStyles(
     initialValues: {
       signupPhoneNumber: '',
     },
-    asyncBlurFields: ['signupPhoneNumber'],
   })(SmsSignupModal),
   smsSignupModalStyle
 );

@@ -153,6 +153,17 @@ class ProductDetailDescription extends React.PureComponent {
                 </BodyCopy>
               </div>
             )}
+            {!descAvail && (
+              <BodyCopy
+                className="part-number-section"
+                fontSize="fs10"
+                fontFamily="secondary"
+                data-locator={getLocator('pdp_product_part_number')}
+              >
+                {PartNumber}
+                {productId}
+              </BodyCopy>
+            )}
           </div>
         )}
       </div>

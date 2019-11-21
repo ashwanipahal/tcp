@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationItemDisplayVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XXS"
+    text="hey"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    text={Object {}}
+    textAlign="center"
+    textDecoration={null}
+  />
+</Styled(View)>
+`;
+
+exports[`ConfirmationItemDisplayVanilla should render correctly with bold font false 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XXS"
+    text="hey"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="regular"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    text={Object {}}
+    textAlign="center"
+    textDecoration={null}
+  />
+</Styled(View)>
+`;
+
+exports[`ConfirmationItemDisplayVanilla should render correctly with bold isLink true 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XXS"
+    text="hey"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Component />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -4,8 +4,14 @@ export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
+  position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -14,6 +20,13 @@ export default css`
       display: inline-flex;
     }
   }
+
+  span.was-price {
+    margin-left: 5px;
+    color: ${props => props.theme.colorPalette.gray[800]};
+    text-decoration: line-through;
+  }
+
   .padding-left-6 {
     padding-left: 6px;
   }
@@ -35,6 +48,9 @@ export default css`
   }
   .padding-top-15 {
     padding-top: 15px;
+  }
+  .padding-top-40 {
+    padding-top: 41px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -58,10 +74,14 @@ export default css`
     display: flex;
     justify-content: flex-start;
     padding-left: 15px;
+    z-index: 1;
+    outline: none;
   }
   .imageWrapper {
     position: relative;
-    width: 100px;
+    img {
+      max-height: 100px;
+    }
   }
   .logoWrapper {
     position: relative;
@@ -85,6 +105,9 @@ export default css`
     width: 10px;
     height: 10px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   .crossDeleteIconBag {
@@ -93,6 +116,13 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    z-index: 2;
+    img {
+      display: block;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -144,6 +174,30 @@ export default css`
       display: flex;
       flex-wrap: wrap;
       width: fit-content;
+    }
+
+    .product-detail-section {
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
+      align-items: center;
+      flex-wrap: wrap;
+      > span {
+        padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      }
+    }
+
+    .product-detail {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .responsive-edit-css {
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
   }
 
@@ -202,18 +256,22 @@ export default css`
         span:not(.list-price) {
           font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
         }
+        span.was-price {
+          font-size: ${props => props.theme.typography.fontSizes.fs12};
+        }
         /* stylelint-enable */
       }
 
       .responsive-edit-css {
         text-decoration: underline;
-        padding-top: 4px;
+        padding-top: 0px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
-        padding-left: 15px;
-        left: 155px;
-        bottom: 4px;
+      }
+
+      .sflActions {
+        padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
       }
 
       /* stylelint-disable */
@@ -235,15 +293,15 @@ export default css`
       .save-for-later-label {
         margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
+        position: absolute;
+        left: 10px;
+        margin-top: 0;
       }
       .color-map-size-fit {
         display: inline-grid;
       }
       .responsive-edit-css {
         text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 50%;
         cursor: pointer;
       }
       .bag-product-detail-wrapper {
@@ -260,14 +318,25 @@ export default css`
       }
     }
 
+    @media ${props => props.theme.mediaQuery.mobile} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      .save-for-later-label {
+        left: 7px;
+      }
+    }
+
     .price-label {
       margin-left: 122px;
     }
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
@@ -294,13 +363,23 @@ export default css`
 
   .parent- {
     padding-bottom: 0px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      float: right;
-      cursor: pointer;
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
   .parent-myBag {
+    .save-for-later-label {
+      display: flex;
+      align-items: center;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: 0px;
     }
@@ -320,11 +399,31 @@ export default css`
     }
   }
   .heartIcon {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .sflActions {
-    text-decoration: underline;
-    cursor: pointer;
+
+  .size-and-item-container {
+    display: flex;
   }
+  .product-detail-review-page {
+    display: inline-block;
+  }
+
+  .toggle-error {
+    display: flex;
+    align-items: center;
+    background: ${props => props.theme.colorPalette.white};
+
+    img {
+      padding-top: 0px;
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      padding-left: 0;
+      padding-bottom: 1px;
+    }
+  }
+  .dam-image-review-page {
+    width: 55px;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

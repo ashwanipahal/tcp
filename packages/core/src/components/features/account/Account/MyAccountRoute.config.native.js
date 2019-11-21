@@ -25,6 +25,11 @@ const navDataMobile = [
     value: 'earnExtraPointsPageMobile',
   },
   {
+    id: 'orders',
+    label: 'ORDERS',
+    value: 'myOrdersPageMobile',
+  },
+  {
     id: 'profileInformation',
     label: 'PROFILE INFORMATION',
     value: 'profileInformationMobile',
@@ -48,6 +53,11 @@ const navDataMobile = [
     id: 'myPlaceRewardsCC',
     label: 'MY PLACE REWARDS CREDIT CARD',
     value: 'myPlaceRewardsCCPageMobile',
+  },
+  {
+    id: 'myFavorite',
+    label: 'My Favorite',
+    value: 'myFavoritePageMobile',
   },
 ];
 

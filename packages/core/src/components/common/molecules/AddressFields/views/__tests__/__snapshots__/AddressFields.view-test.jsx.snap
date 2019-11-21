@@ -791,9 +791,6 @@ exports[`AddressFields component should render correctly 1`] = `
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -805,6 +802,10 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -1407,9 +1408,6 @@ exports[`AddressFields component should render correctly 1`] = `
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -1421,6 +1419,10 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -1767,6 +1769,9 @@ exports[`AddressFields component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1800,6 +1805,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2616,9 +2624,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -2630,6 +2635,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -3232,9 +3241,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -3246,6 +3252,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -4113,9 +4123,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4127,6 +4134,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -4729,9 +4740,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4743,6 +4751,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -5610,9 +5622,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5624,6 +5633,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -5977,9 +5990,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     color: ",
                 [Function],
                 ";
-    font-size: ",
-                [Function],
-                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5991,6 +6001,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -6248,6 +6262,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.phoneNumber"
         name="phoneNumber"
+        normalize={[Function]}
         type="tel"
       />
     </Styled(Col)>

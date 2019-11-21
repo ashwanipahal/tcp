@@ -146,10 +146,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -161,7 +158,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_edit"
         underline={true}
@@ -175,7 +174,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -241,7 +242,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text="lbl_common_makeDefault"
       to="/#"
@@ -327,10 +330,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -342,7 +342,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_edit"
         underline={true}
@@ -356,7 +358,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -477,7 +481,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -490,12 +494,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -506,7 +512,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -632,7 +640,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -645,12 +653,14 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -661,7 +671,9 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -727,7 +739,9 @@ exports[`CardTile should render correctly with master card 1`] = `
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text="lbl_common_makeDefault"
       to="/#"
@@ -813,10 +827,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -828,7 +839,9 @@ exports[`CardTile should render correctly with master card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_edit"
         underline={true}
@@ -842,7 +855,9 @@ exports[`CardTile should render correctly with master card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -968,7 +983,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -981,12 +996,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -997,7 +1014,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -1063,7 +1082,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text="lbl_common_makeDefault"
       to="/#"
@@ -1137,10 +1158,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -1152,7 +1170,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_edit"
         underline={true}
@@ -1166,7 +1186,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -1297,7 +1319,9 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         customStyle={Object {}}
         dataLocator="payment-venmodeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}
@@ -1363,7 +1387,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={[Function]}
       text="lbl_common_makeDefault"
       to="/#"
@@ -1449,10 +1475,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -1464,7 +1487,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_edit"
         underline={true}
@@ -1478,7 +1503,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_common_delete"
         underline={true}

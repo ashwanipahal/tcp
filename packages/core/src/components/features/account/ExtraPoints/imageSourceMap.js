@@ -7,6 +7,7 @@ const SMSOptInImage = require('@tcp/core/src/assets/sms.png');
 const AddMailingAddressImage = require('@tcp/core/src/assets/mailingAddress.png');
 const AddFavoriteStoreImage = require('@tcp/core/src/assets/store.png');
 const AddShopperTypeImage = require('@tcp/core/src/assets/survey.png');
+const AddBirthDateImage = require('@tcp/core/src/assets/birthday.png');
 
 /**
  * @sourceMap - sourceMap object for images path
@@ -22,6 +23,7 @@ const sourceMap = {
   AddMailingAddress: AddMailingAddressImage,
   AddFavoriteStore: AddFavoriteStoreImage,
   AddShopperType: AddShopperTypeImage,
+  AddBirthDate: AddBirthDateImage,
 };
 
 export default sourceMap;

@@ -32,26 +32,25 @@ const LedgerStyle = css`
     }
   }
 
+  .balance-total-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy5}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    line-height: ${props => props.theme.fonts.lineHeight.normal};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    }
+  }
+
   .order-ledger-header {
     text-align: left;
   }
 
-  @media ${props => props.theme.mediaQuery.medium} {
-    .hide-in-large-up {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
-  }
-
   @media ${props => props.theme.mediaQuery.smallMax} {
-    .hide-in-medium-down {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
+    background-color: ${props => props.theme.colors.WHITE};
   }
 
   .orderLedgerAccordian {
@@ -64,6 +63,64 @@ const LedgerStyle = css`
       top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
+  }
+
+  .review-submit-container {
+    display: flex;
+    flex-direction: column;
+    margin: 35px ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+    .review-submit-button {
+      flex: 1;
+    }
+
+    .submit-disclaimer {
+      font-family: ${props => props.theme.typography.fonts.secondary};
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
+      color: ${props => props.theme.colorPalette.gray[800]};
+      text-align: center;
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+        margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+        margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    .submit-disclaimer-link {
+      display: inline-block;
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    }
+  }
+
+  &.order-confirmation {
+    .order-ledger-header {
+      display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+        border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+        padding: 14px 14px;
+      }
+    }
+  }
+
+  .orderLedgerLoyalty {
+    ${props =>
+      props.pageCategory === 'confirmation'
+        ? `
+        @media ${props.theme.mediaQuery.medium} {
+          display: none;
+        }
+        @media ${props.theme.mediaQuery.large} {
+          display: none;
+        }
+        `
+        : ''}
   }
 `;
 

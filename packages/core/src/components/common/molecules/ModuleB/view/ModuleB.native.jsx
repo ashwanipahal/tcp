@@ -77,8 +77,8 @@ const renderHeaderAndBanner = (item, navigation) => {
 };
 
 /**
- * @function renderImageComponent
- * renders image component with header and banner
+ * @function renderMediaComponent
+ * renders Media component with header and banner
  * handles bannerPosition - top/bottom/overlay
  * display header and banner as overlay over image if bannerPosition is overlay
  *
@@ -86,10 +86,10 @@ const renderHeaderAndBanner = (item, navigation) => {
  * @param {*} navigation
  * @returns
  */
-const renderImageComponent = (item, navigation) => {
+const renderMediaComponent = (item, navigation) => {
   const {
     item: {
-      linkedImage: [{ image, link }],
+      linkedImage: [{ image, link, video }],
     },
     bannerPosition,
   } = item;
@@ -99,6 +99,14 @@ const renderImageComponent = (item, navigation) => {
     bannerPosition === bannerPositionTypes.overlay
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
+
+  const videoData = video &&
+    video.url && {
+      videoWidth: MODULE_WIDTH,
+      videoHeight: moduleHeight,
+      ...video,
+    };
+
   return (
     <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
@@ -107,6 +115,7 @@ const renderImageComponent = (item, navigation) => {
       <Anchor url={link.url} navigation={navigation}>
         <DamImage
           width={MODULE_WIDTH}
+          videoData={videoData}
           height={moduleHeight}
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
@@ -131,7 +140,7 @@ const renderImageComponent = (item, navigation) => {
  *  @ctaType are four types : 'imageCTAList' ,'stackedCTAList','scrollCTAList','linkCTAList'.
  *  @naviagtion is used to navigate the page.
  */
-const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
+const renderButtonList = (ctaType, navigation, ctaItems, locator, color, buttonVariation) => {
   return (
     <ButtonList
       buttonListVariation={ctaType}
@@ -139,6 +148,7 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
       buttonsData={ctaItems}
       locator={locator}
       color={color}
+      buttonVariation={buttonVariation}
     />
   );
 };
@@ -162,26 +172,33 @@ const ModuleB = (props: Props) => {
 
   return largeCompImage ? (
     <Container>
-      {renderImageComponent(
+      {renderMediaComponent(
         { item: largeCompImage[0], bannerPosition: bannerPositionInterpreted },
         navigation
       )}
 
-      {ctaType === 'imageCTAList' && (
+      {ctaType === ctaTypes.divImageCTACarousel && (
         <DivImageCTAContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'moduleB_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaType === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
+          {renderButtonList(
+            ctaType,
+            navigation,
+            ctaItems,
+            'stacked_cta_list',
+            'black',
+            'variable-width'
+          )}
           <Border background="gray" />
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaType === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>

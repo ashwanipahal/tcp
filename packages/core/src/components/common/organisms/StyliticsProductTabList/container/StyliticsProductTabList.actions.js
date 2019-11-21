@@ -7,6 +7,13 @@ export const styliticsProductTabListDataReq = (payload = {}) => {
   };
 };
 
+export const styliticsProductTabListDataReqforOutfit = (payload = {}) => {
+  return {
+    type: constants.STYLITICS_PRODUCT_TAB_LIST_REQ_OUTFIT,
+    payload,
+  };
+};
+
 export const styliticsProductTabListDataSuccess = (payload = {}) => {
   return {
     type: constants.STYLITICS_PRODUCT_TAB_LIST_SUCCESS,
@@ -21,8 +28,16 @@ export const styliticsProductTabListDataFail = (payload = {}) => {
   };
 };
 
+export const isFetchingDataForOutfit = (payload = false) => {
+  return {
+    type: constants.IS_FETCHING_DATA_FOR_OUTFIT,
+    payload,
+  };
+};
+
 export default {
   styliticsProductTabListDataReq,
+  styliticsProductTabListDataReqforOutfit,
   styliticsProductTabListDataSuccess,
   styliticsProductTabListDataFail,
 };

@@ -1,15 +1,17 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../handler';
 
 import endpoints from '../../endpoints';
-import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
+import utils, { bindAllClassMethodsToThis, isMobileApp, isCanada } from '../../../utils';
 import processHelpers from './processHelpers';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 import processResponse from './processResponse';
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -112,6 +114,89 @@ class ProductsDynamicAbstractor {
     return isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory;
   };
 
+  getLengths = state => {
+    if (!state.SearchListingPage) {
+      return 0;
+    }
+    const loadedProductsPageData =
+      state.SearchListingPage &&
+      state.SearchListingPage.loadedProductsPages.map(a => {
+        return a.length;
+      });
+
+    return (
+      loadedProductsPageData &&
+      loadedProductsPageData.length > 0 &&
+      loadedProductsPageData.reduce((a, b) => a + b, 0)
+    );
+  };
+
+  getTotalProductsCount = state => {
+    return state.SearchListingPage ? state.SearchListingPage.totalProductsCount : 0;
+  };
+
+  isMoreProductsApiCalled = (isSearch, pageNumber, state) => {
+    if (isSearch && pageNumber >= 2) {
+      const loadedProductsPagesLength = this.getLengths(state);
+      const totalProductsCount = this.getTotalProductsCount(state);
+      if (isSearch && totalProductsCount <= loadedProductsPagesLength) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  /**
+   * @function parsedModuleData Parses the module and layout data
+   * @param {Object} promoCombination Promotion Data to be parsed
+   * @return {Object} layout and module parsed data
+   */
+  // eslint-disable-next-line no-unused-vars
+  parsedModuleData = async promoCombination => {
+    const moduleObjects = [];
+    const slotsObject = {};
+    let modules = {};
+    try {
+      const { language } = getAPIConfig();
+      Object.keys(promoCombination.val).forEach(slotType => {
+        promoCombination.val[slotType].forEach(slot => {
+          if (slot.val.cid) {
+            const moduleData = {
+              name: slot.sub,
+              moduleName: slot.val.sub,
+              contentId: slot.val.cid,
+            };
+            moduleObjects.push({
+              name: moduleData.moduleName,
+              data: {
+                contentId: moduleData.contentId,
+                slot: moduleData.name,
+                lang: language !== 'en' ? language : '',
+              },
+            });
+            if (!Array.isArray(slotsObject[slotType])) {
+              slotsObject[slotType] = [];
+            }
+            slotsObject[slotType].push(moduleData);
+          }
+        });
+      });
+      modules = await this.moduleResolver(moduleObjects);
+    } catch (err) {
+      this.handleValidationError(err);
+    }
+    return {
+      modules,
+      layout: slotsObject,
+    };
+  };
+
+  moduleResolver = async moduleObjects => {
+    const response = await layoutAbstractor.getModulesData(moduleObjects);
+    return layoutAbstractor.processModuleData(response.data);
+  };
+
+  // eslint-disable-next-line complexity
   getProducts = (reqObj, state) => {
     const {
       seoKeywordOrCategoryIdOrSearchTerm,
@@ -131,8 +216,10 @@ class ProductsDynamicAbstractor {
       extraParams,
       shouldApplyUnbxdLogic,
       hasShortImage,
+      location,
+      filterMaps,
+      isLazyLoading,
     } = reqObj;
-
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
     const { sort = null } = filtersAndSort;
     const facetsPayload = this.extractFilters(filtersAndSort);
@@ -143,6 +230,13 @@ class ProductsDynamicAbstractor {
     // We will be sending the start to getCategoryListingPage function in the bucketing scenario and we need to send that in UNBXD api.
     // Falsy check has not been placed as i need to send start 0 in L2 call in case of bucketing sequence.
     const start = getStart(startProductCount, pageNumber); // In UNBXD start is from zero but seo paging starts with 1
+
+    const isMoreProductsApiCalled = this.isMoreProductsApiCalled(isSearch, pageNumber, state);
+
+    if (!isMoreProductsApiCalled) {
+      return false;
+    }
+
     const payload = {
       body: {
         ...facetsPayload,
@@ -155,11 +249,10 @@ class ProductsDynamicAbstractor {
         'facet.multiselect': true,
         selectedfacet: true,
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price, high_offer_price, low_list_price, high_list_price',
+          'alt_img,style_partno,giftcard,swatchimage,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price, high_offer_price, low_list_price, high_list_price',
       },
       webService: this.getPlpOrSlpEndpoint(isSearch),
     };
-
     if (!isSearch) {
       payload.body.pagetype = 'boolean';
       if (categoryId) {
@@ -202,7 +295,10 @@ class ProductsDynamicAbstractor {
           isOutfitPage,
           searchTerm,
           sort,
+          location,
           filterSortView: Object.keys(filtersAndSort).length > 0,
+          filterMaps,
+          isLazyLoading,
         })
       )
       .catch(err => {

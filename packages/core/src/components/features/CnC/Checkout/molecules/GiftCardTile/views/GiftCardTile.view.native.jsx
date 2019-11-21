@@ -21,6 +21,8 @@ export default class GiftCardTile extends React.PureComponent {
     giftCardErrors: PropTypes.shape({}),
     orderBalanceTotal: PropTypes.number,
     toastMessage: PropTypes.func.isRequired,
+    isFromReview: PropTypes.bool,
+    isExpressCheckout: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,6 +31,8 @@ export default class GiftCardTile extends React.PureComponent {
     labels: {},
     giftCardErrors: {},
     orderBalanceTotal: 0,
+    isFromReview: false,
+    isExpressCheckout: false,
   };
 
   componentDidUpdate() {
@@ -37,6 +41,11 @@ export default class GiftCardTile extends React.PureComponent {
       toastMessage(giftCardErrors[Object.keys(giftCardErrors)[0]]);
     }
   }
+
+  showRemoveCtas = () => {
+    const { isFromReview, isExpressCheckout } = this.props;
+    return !isFromReview || isExpressCheckout;
+  };
 
   renderApplyRemoveBtn() {
     const {
@@ -51,9 +60,7 @@ export default class GiftCardTile extends React.PureComponent {
     if (isGiftCardApplied) {
       return (
         <CustomButton
-          fill="WHITE"
           type="submit"
-          buttonVariation="variable-width"
           data-locator=""
           text={getLabelValue(labels, 'lbl_giftcard_removeBtn')}
           onPress={() => {
@@ -67,7 +74,6 @@ export default class GiftCardTile extends React.PureComponent {
       <CustomButton
         fill="DARK"
         type="submit"
-        buttonVariation="variable-width"
         data-locator=""
         text={getLabelValue(labels, 'lbl_giftcard_applyBtn')}
         disableButton={!orderBalanceTotal}
@@ -90,7 +96,7 @@ export default class GiftCardTile extends React.PureComponent {
         .get('remainingBalance')
         .toFixed(2)}`;
     }
-
+    const showCtas = this.showRemoveCtas();
     return (
       <>
         <GiftBox>
@@ -109,7 +115,7 @@ export default class GiftCardTile extends React.PureComponent {
                 />
               </GiftBoxText>
             </GiftCardCal>
-            <GiftCardCal>{this.renderApplyRemoveBtn()}</GiftCardCal>
+            {showCtas && <GiftCardCal>{this.renderApplyRemoveBtn()}</GiftCardCal>}
           </GiftCardRow>
         </GiftBox>
       </>

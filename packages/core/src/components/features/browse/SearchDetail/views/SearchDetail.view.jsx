@@ -1,13 +1,33 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getSiteId } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
-import { Row, Col } from '../../../../common/atoms';
+import { Anchor, Row, Col, PLPSkeleton } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
+import { routerPush } from '../../../../../utils/index';
+
+const setDataInLocalStorage = (searchText, url) => {
+  updateLocalStorageData(searchText, url);
+};
+
+const redirectToSuggestedUrl = (searchText, url) => {
+  if (searchText) {
+    setDataInLocalStorage(searchText, url);
+    if (url) {
+      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+    } else {
+      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    }
+  }
+};
 
 const SearchListingView = ({
   className,
@@ -25,10 +45,49 @@ const SearchListingView = ({
   initialValues,
   labelsFilter,
   onSubmit,
+  currency,
+  currencyAttributes,
+  onAddItemToFavorites,
+  isLoggedIn,
+  isLoadingMore,
+  isSearchListing,
+  searchResultSuggestions,
+  asPathVal,
   ...otherProps
 }) => {
+  const searchResultSuggestionsArg =
+    searchResultSuggestions && searchResultSuggestions.length
+      ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
+      : slpLabels.lbl_no_suggestion;
   return (
     <div className={className}>
+      {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion && (
+        <Row className="empty-search-result-suggestion">
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <BodyCopy
+              fontSize={['fs16', 'fs32', 'fs32']}
+              component="div"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              textAlign="center"
+            >
+              {`${slpLabels.lbl_didYouMean} "`}
+              <Anchor
+                noLink
+                className="suggestion-label"
+                to={`/${getSiteId()}/search/${searchResultSuggestionsArg}`}
+                onClick={e => {
+                  e.preventDefault();
+                  redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
+                }}
+              >
+                {`${searchResultSuggestionsArg}`}
+              </Anchor>
+              {`"?`}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           {searchedText && (
@@ -55,6 +114,7 @@ const SearchListingView = ({
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductListingFiltersForm
+            isFilterBy={isFiltersAvailable(filters)}
             filtersMaps={filters}
             totalProductsCount={totalProductsCount}
             initialValues={initialValues}
@@ -86,11 +146,21 @@ const SearchListingView = ({
               products={products}
               labels={labels}
               productTileVariation="search-product-tile"
+              currencyExchange={currencyAttributes.exchangevalue}
+              currency={currency}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
               {...otherProps}
             />
           ) : null}
+          {isLoadingMore ? <PLPSkeleton col={20} /> : null}
         </Col>
       </Row>
+      <QuickViewModal />
     </div>
   );
 };
@@ -114,6 +184,18 @@ SearchListingView.propTypes = {
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
+  isLoadingMore: PropTypes.bool,
+  isSearchListing: PropTypes.bool,
+  asPathVal: PropTypes.string,
+  searchResultSuggestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      suggestion: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 SearchListingView.defaultProps = {
@@ -129,6 +211,15 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
+  isLoggedIn: false,
+  isLoadingMore: false,
+  isSearchListing: true,
+  asPathVal: '',
+  searchResultSuggestions: [],
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

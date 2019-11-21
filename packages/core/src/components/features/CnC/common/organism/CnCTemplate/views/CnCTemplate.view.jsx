@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -11,6 +14,7 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
+import BAG_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 const getBagActions = ({ BagActions }) => {
   return BagActions && <BagActions />;
@@ -28,6 +32,19 @@ const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   );
 };
 
+const getRecommendationSection = isConfirmationPage => {
+  return (
+    isConfirmationPage && (
+      <div className="recommendationsWrapper">
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+          variations="moduleO"
+        />
+      </div>
+    )
+  );
+};
+
 const CnCTemplate = ({
   leftSection: LeftSection,
   bagActions: BagActions,
@@ -37,10 +54,11 @@ const CnCTemplate = ({
   isGuest,
   isCheckoutView,
   showAccordian,
-  isNonEmptySFL,
   isConfirmationPage,
+  orderLedgerAfterView,
+  pageCategory,
 }) => {
-  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
+  const isSmallLeftSection = showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
@@ -51,7 +69,7 @@ const CnCTemplate = ({
             medium: isSmallLeftSection ? 5 : 8,
             large: isSmallLeftSection ? 8 : 12,
           }}
-          className="left-sec"
+          className="left-sec "
         >
           <LeftSection />
         </Col>
@@ -60,30 +78,44 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {isConfirmationPage ? (
+            {
               <>
-                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
-                <Row fullBleed>
-                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <PersonalizedCoupons />
-                  </Col>
-                </Row>
+                {isConfirmationPage ? (
+                  <>
+                    <OrderLedgerContainer
+                      isConfirmationPage={isConfirmationPage}
+                      pageCategory="confirmation"
+                    />
+                    <Row fullBleed>
+                      <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                        <PersonalizedCoupons />
+                      </Col>
+                    </Row>
+                  </>
+                ) : (
+                  <>
+                    <OrderLedgerContainer
+                      orderLedgerAfterView={getBagActions({ BagActions }) || orderLedgerAfterView}
+                      pageCategory={pageCategory}
+                    />
+
+                    {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                    {pageCategory === BAG_CONSTANTS.BAG_PAGE && <PlaceCashBanner />}
+                    <AirmilesBanner />
+                    <CouponAndPromos
+                      fullPageInfo={!isCheckoutView || orderLedgerAfterView}
+                      showAccordian={showAccordian}
+                      additionalClassNameModal="coupon-modal-web"
+                      idPrefix="desktop"
+                    />
+                  </>
+                )}
               </>
-            ) : (
-              <>
-                <OrderLedgerContainer />
-                {getBagActions({ BagActions })}
-                {getBonusPointsDaysSection({ isGuest, showAccordian })}
-                <AirmilesBanner />
-                <CouponAndPromos
-                  showAccordian={showAccordian}
-                  additionalClassNameModal="coupon-modal-web"
-                />
-              </>
-            )}
+            }
           </Col>
         )}
       </Row>
+      {getRecommendationSection(isConfirmationPage)}
     </section>
   );
 };
@@ -93,13 +125,14 @@ CnCTemplate.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
-  isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
+  pageCategory: PropTypes.string,
 };
 
 CnCTemplate.defaultProps = {
@@ -107,9 +140,9 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
-  isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
+  pageCategory: '',
 };
 
 export default withStyles(CnCTemplate, styles);

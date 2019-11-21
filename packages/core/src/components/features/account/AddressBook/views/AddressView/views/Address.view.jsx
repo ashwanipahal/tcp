@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
-import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -13,25 +13,10 @@ import EmptyAddressListComponent from '../../EmptyAddressList.view';
 import DeleteAddressModal from '../../DeleteAddressModal.view';
 import Notification from '../../../../../../common/molecules/Notification';
 import utils from '../../../../../../../utils';
-
-// @flow
-
-type Props = {
-  addresses: List<{}>,
-  labels: {
-    addNewAddressCTA: string,
-  },
-  className: string,
-  onDefaultShippingAddressClick: Object,
-  showUpdatedNotification: any,
-  showUpdatedNotificationOnModal: any,
-  onDeleteAddress: Function,
-  deleteModalMountedState: false,
-  setDeleteModalMountState: Function,
-};
+import AddressListComponentSkeleton from '../../../skeleton/AddressListComponentSkeleton.view';
 
 export class AddressView extends React.PureComponent<Props> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedAddress: {},
@@ -60,6 +45,8 @@ export class AddressView extends React.PureComponent<Props> {
       deleteModalMountedState,
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
+      isFetching,
+      clearNotificationError,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -76,7 +63,7 @@ export class AddressView extends React.PureComponent<Props> {
             <Heading
               fontFamily="secondaryFontFamily"
               HeadingLarge="six"
-              tag="h4"
+              tag="h2"
               className="addressBook__separator"
             >
               {getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook')}
@@ -115,8 +102,10 @@ export class AddressView extends React.PureComponent<Props> {
             }
           />
         )}
-        {addresses.size > 0 && (
+        {isFetching && <AddressListComponentSkeleton />}
+        {!isFetching && addresses.size > 0 && (
           <AddressListComponent
+            clearNotificationError={clearNotificationError}
             addresses={addresses}
             labels={labels}
             deleteModalMountedState={deleteModalMountedState}
@@ -126,6 +115,7 @@ export class AddressView extends React.PureComponent<Props> {
           />
         )}
         <DeleteAddressModal
+          clearNotificationError={clearNotificationError}
           openState={deleteModalMountedState}
           data={{
             heading: getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_HEADING', 'addressBook'),
@@ -150,5 +140,22 @@ export class AddressView extends React.PureComponent<Props> {
     );
   }
 }
+AddressView.defaultProps = {
+  deleteModalMountedState: false,
+  isFetching: false,
+};
+
+AddressView.propTypes = {
+  addresses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  showUpdatedNotification: PropTypes.string.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  onDeleteAddress: PropTypes.func.isRequired,
+  deleteModalMountedState: PropTypes.bool,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
+};
 export default withStyles(AddressView, styles);
 export { AddressView as AddressViewVanilla };

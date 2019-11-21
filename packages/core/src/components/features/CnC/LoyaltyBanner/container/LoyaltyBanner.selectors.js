@@ -1,0 +1,246 @@
+import { createSelector } from 'reselect';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
+import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
+
+const getThresholdValue = state => {
+  return state.session && state.session.siteDetails.PLCC_MARKETING_BAG_TOTAL_CUT_OFF;
+};
+
+const cartOrderDetails = createSelector(
+  getCartOrderDetails,
+  cartOrderDetailsObj => {
+    const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
+    const subTotal = cartOrderDetailsObj.get('subTotal');
+    const subTotalWithDiscounts = cartOrderDetailsObj.get('subTotalWithDiscounts');
+    const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
+    const earnedReward = cartOrderDetailsObj.get('earnedReward');
+    const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');
+    return {
+      estimatedRewards,
+      subTotal,
+      subTotalWithDiscounts,
+      cartTotalAfterPLCCDiscount,
+      earnedReward,
+      pointsToNextReward,
+    };
+  }
+);
+
+const confirmationDetails = createSelector(
+  ConfirmationSelectors.getConfirmationSummary,
+  ({
+    estimatedRewards,
+    subTotal,
+    subTotalWithDiscounts,
+    cartTotalAfterPLCCDiscount,
+    earnedReward,
+    pointsToNextReward,
+  }) => {
+    return {
+      estimatedRewards,
+      subTotal,
+      subTotalWithDiscounts,
+      cartTotalAfterPLCCDiscount,
+      earnedReward,
+      pointsToNextReward,
+    };
+  }
+);
+
+const getFooterLabels = (state, pageCategory, isGuest, isPlcc) => {
+  let userType = '';
+  if (isGuest) {
+    userType = 'guest';
+  } else if (!isPlcc) {
+    userType = 'mpr';
+  } else {
+    userType = 'plcc';
+  }
+  const MAPPINGPAGETYPE = {
+    isAddedToBagPage: 'added2bag',
+    bagPage: 'bag',
+    review: 'review',
+    confirmation: 'confirmation',
+    isProductDetailView: 'pdp',
+  };
+  const currentPage = MAPPINGPAGETYPE[pageCategory] || 'bag';
+  const labelKeys = [
+    `lbl_banner_${currentPage}_${userType}_link1_text`,
+    `lbl_banner_${currentPage}_${userType}_link1_action`,
+    `lbl_banner_${currentPage}_${userType}_link1_prefix`,
+    `lbl_banner_${currentPage}_${userType}_link2_text`,
+    `lbl_banner_${currentPage}_${userType}_link2_action`,
+    `lbl_banner_${currentPage}_${userType}_link2_prefix`,
+  ];
+  const labels = [
+    'link1Text',
+    'link1Action',
+    'link1Prefix',
+    'link2Text',
+    'link2Action',
+    'link2Prefix',
+  ];
+  const finalValue = {};
+  labelKeys.forEach((key, index) => {
+    const revievedKey = getLabelValue(state.Labels, key, 'loyalityBanner', 'global');
+    finalValue[labels[index]] = revievedKey === key ? '' : revievedKey;
+  });
+  return finalValue;
+};
+
+export const getLoyaltyBannerLabels = state => {
+  const {
+    global: {
+      loyalityBanner: {
+        lbl_loyaltyBanner_currentSubtotal: currentSubtotal,
+        lbl_loyaltyBanner_estimatedSubtotal: estimatedSubtotal,
+        lbl_loyaltyBanner_applyNow: applyNow,
+        lbl_loyaltyBanner_learnMore: learnMore,
+        lbl_loyaltyBanner_logIn: logIn,
+        lbl_loyaltyBanner_createMyPlaceRewardsAccount: createMyPlaceRewardsAccount,
+
+        lbl_loyaltyBanner_sectionSymbol: sectionSymbol,
+        lbl_loyaltyBanner_asteriskSymbol: asteriskSymbol,
+
+        lbl_banner_added2bag_guest_points_label1: added2bagGuestPointsHeading,
+        lbl_banner_added2bag_guest_points_label2: added2bagGuestPointsSubHeading,
+        lbl_banner_added2bag_guest_rewards_label1: added2bagGuestRewardsHeading,
+        lbl_banner_added2bag_guest_rewards_label2: added2bagGuestRewardsSubHeading,
+        lbl_banner_added2bag_mpr_points_label1: added2bagMprPointsHeading,
+        lbl_banner_added2bag_mpr_points_label2: added2bagMprPointsSubHeading,
+        lbl_banner_added2bag_mpr_points_label3: added2bagMprPointsDescription,
+        lbl_banner_added2bag_mpr_rewards_label1: added2bagMprRewardsHeading,
+        lbl_banner_added2bag_mpr_rewards_label2: added2bagMprRewardsSubHeading,
+        lbl_banner_added2bag_mpr_rewards_label3: added2bagMprRewardsDescription,
+        lbl_banner_added2bag_plcc_points_label1: added2bagPlccPointsHeading,
+        lbl_banner_added2bag_plcc_points_label2: added2bagPlccPointsDescription,
+        lbl_banner_added2bag_plcc_rewards_label1: added2bagPlccRewardsHeading,
+        lbl_banner_added2bag_plcc_rewards_label2: added2bagPlccRewardsDescription,
+
+        lbl_banner_bag_guest_points_label1: bagGuestPointsHeading,
+        lbl_banner_bag_guest_points_label2: bagGuestPointsSubHeading,
+        lbl_banner_bag_guest_points_label3: bagGuestPointsDescription,
+        lbl_banner_bag_guest_rewards_label1: bagGuestRewardsHeading,
+        lbl_banner_bag_guest_rewards_label2: bagGuestRewardsSubHeading,
+        lbl_banner_bag_guest_rewards_label3: bagGuestRewardsDescription,
+        lbl_banner_bag_mpr_points_label1: bagMprPointsHeading,
+        lbl_banner_bag_mpr_points_label2: bagMprPointsSubHeading,
+        lbl_banner_bag_mpr_points_label3: bagMprPointsDescription,
+        lbl_banner_bag_mpr_rewards_label1: bagMprRewardsHeading,
+        lbl_banner_bag_mpr_rewards_label2: bagMprRewardsSubHeading,
+        lbl_banner_bag_mpr_rewards_label3: bagMprRewardsDescription,
+        lbl_banner_bag_plcc_points_label1: bagPlccPointsHeading,
+        lbl_banner_bag_plcc_points_label2: bagPlccPointsDescription,
+        lbl_banner_bag_plcc_points_label3: bagPlccPointsRemaining,
+        lbl_banner_bag_plcc_rewards_label1: bagPlccRewardsHeading,
+        lbl_banner_bag_plcc_rewards_label2: bagPlccRewardsSubHeading,
+
+        lbl_banner_review_guest_points_label1: reviewGuestPointsHeading,
+        lbl_banner_review_guest_points_label2: reviewGuestPointsSubHeading,
+        lbl_banner_review_guest_rewards_label1: reviewGuestRewardsHeading,
+        lbl_banner_review_guest_rewards_label2: reviewGuestRewardsSubHeading,
+        lbl_banner_review_mpr_points_label1: reviewMprPointsHeading,
+        lbl_banner_review_mpr_rewards_label1: reviewMprRewardsHeading,
+        lbl_banner_review_plcc_points_label1: reviewPlccPointsHeading,
+        lbl_banner_review_plcc_points_label2: reviewPlccPointsDescription,
+        lbl_banner_review_plcc_points_label3: reviewPlccPointsRemaining,
+        lbl_banner_review_plcc_rewards_label1: reviewPlccRewardsHeading,
+        lbl_banner_review_plcc_rewards_label2: reviewPlccRewardsDescription,
+
+        lbl_banner_confirmation_guest_points_label1: confirmationGuestPointsHeading,
+        lbl_banner_confirmation_guest_rewards_label1: confirmationGuestRewardsHeading,
+        lbl_banner_confirmation_guest_rewards_label2: confirmationGuestRewardsSubHeading,
+        lbl_banner_confirmation_mpr_points_label1: confirmationMprPointsHeading,
+        lbl_banner_confirmation_mpr_points_label2: confirmationMprPointsRemaining,
+        lbl_banner_confirmation_mpr_rewards_label1: confirmationMprRewardsHeading,
+        lbl_banner_confirmation_plcc_points_label1: confirmationPlccPointsHeading,
+        lbl_banner_confirmation_plcc_points_label2: confirmationPlccPointsRemaining,
+        lbl_banner_confirmation_plcc_rewards_label1: confirmationPlccRewardsHeading,
+
+        lbl_banner_pdp_guest_rewards_label1: pdpGuestRewardsHeading,
+        lbl_banner_pdp_guest_rewards_label2: pdpGuestRewardsSubHeading,
+        lbl_banner_pdp_mpr_rewards_label1: pdpMprRewardsHeading,
+        lbl_banner_pdp_mpr_rewards_label3: pdpMprRewardsDescription,
+        lbl_banner_pdp_plcc_rewards_label1: pdpPlccRewardsHeading,
+        lbl_banner_pdp_plcc_rewards_label2: pdpPlccRewardsDescription,
+      } = {},
+    } = {},
+  } = state.Labels;
+
+  return {
+    currentSubtotal,
+    estimatedSubtotal,
+    applyNow,
+    learnMore,
+    logIn,
+    createMyPlaceRewardsAccount,
+
+    sectionSymbol,
+    asteriskSymbol,
+
+    added2bagGuestPointsHeading,
+    added2bagGuestPointsSubHeading,
+    added2bagGuestRewardsHeading,
+    added2bagGuestRewardsSubHeading,
+    added2bagMprPointsHeading,
+    added2bagMprPointsSubHeading,
+    added2bagMprPointsDescription,
+    added2bagMprRewardsHeading,
+    added2bagMprRewardsSubHeading,
+    added2bagMprRewardsDescription,
+    added2bagPlccPointsHeading,
+    added2bagPlccPointsDescription,
+    added2bagPlccRewardsHeading,
+    added2bagPlccRewardsDescription,
+
+    bagGuestPointsHeading,
+    bagGuestPointsSubHeading,
+    bagGuestPointsDescription,
+    bagGuestRewardsHeading,
+    bagGuestRewardsSubHeading,
+    bagGuestRewardsDescription,
+    bagMprPointsHeading,
+    bagMprPointsSubHeading,
+    bagMprPointsDescription,
+    bagMprRewardsHeading,
+    bagMprRewardsSubHeading,
+    bagMprRewardsDescription,
+    bagPlccPointsHeading,
+    bagPlccPointsDescription,
+    bagPlccPointsRemaining,
+    bagPlccRewardsHeading,
+    bagPlccRewardsSubHeading,
+
+    reviewGuestPointsHeading,
+    reviewGuestPointsSubHeading,
+    reviewGuestRewardsHeading,
+    reviewGuestRewardsSubHeading,
+    reviewMprPointsHeading,
+    reviewMprRewardsHeading,
+    reviewPlccPointsHeading,
+    reviewPlccPointsDescription,
+    reviewPlccPointsRemaining,
+    reviewPlccRewardsHeading,
+    reviewPlccRewardsDescription,
+
+    confirmationGuestPointsHeading,
+    confirmationGuestRewardsHeading,
+    confirmationGuestRewardsSubHeading,
+    confirmationMprPointsHeading,
+    confirmationMprPointsRemaining,
+    confirmationMprRewardsHeading,
+    confirmationPlccPointsHeading,
+    confirmationPlccPointsRemaining,
+    confirmationPlccRewardsHeading,
+
+    pdpGuestRewardsHeading,
+    pdpGuestRewardsSubHeading,
+    pdpMprRewardsHeading,
+    pdpMprRewardsDescription,
+    pdpPlccRewardsHeading,
+    pdpPlccRewardsDescription,
+  };
+};
+
+export { getThresholdValue, cartOrderDetails, confirmationDetails, getFooterLabels };

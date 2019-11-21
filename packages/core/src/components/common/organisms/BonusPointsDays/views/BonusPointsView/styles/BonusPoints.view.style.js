@@ -12,6 +12,8 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
       ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-left: -14px;
+      margin-right: -14px;
       padding-top: 0px;
       padding-bottom: 0px;
       .collapsible-header {
@@ -21,7 +23,7 @@ const styles = css`
         top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
       .item-opened {
-        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
       }
     }
   }
@@ -31,6 +33,9 @@ const styles = css`
       max-width: 600px;
       min-height: 608px;
     }
+  }
+  .bordered-top {
+    border-top: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   }
 `;
 

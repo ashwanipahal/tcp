@@ -7,11 +7,18 @@ import {
   getLoadedProductsCount,
   getLabelsProductListing,
 } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.selectors';
+import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import RecommendationsView from '../Recommendations';
 
 const mapStateToProps = (state, ownProps) => {
+  const { page, portalValue } = ownProps;
+  const reduxKey = `${page}_${portalValue || 'global'}_products`;
   return {
-    products: getProducts(state),
+    products: getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
@@ -23,14 +30,20 @@ const mapStateToProps = (state, ownProps) => {
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
     loadedProductCount: getLoadedProductsCount(state),
     labels: getLabelsProductListing(state),
+    currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
+    reduxKey,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadRecommendations: () => dispatch(fetchRecommendationsData()),
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 };

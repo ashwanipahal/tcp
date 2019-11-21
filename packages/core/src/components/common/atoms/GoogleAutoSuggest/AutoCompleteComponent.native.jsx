@@ -43,12 +43,13 @@ export class GooglePlacesInput extends PureComponent {
   onBlur = () => {
     setTimeout(() => {
       // Need to add setTimeout as blur is calling first and then request to get detailed response
+      // Value set to 1000ms to handle all auto complete scenarios
       this.setState({
         active: false,
         touched: true,
         listViewDisplayed: false,
       });
-    }, 0);
+    }, 1000);
   };
 
   onPress = (data, details = null) => {
@@ -129,8 +130,8 @@ export class GooglePlacesInput extends PureComponent {
         />
         {touched && !active && error ? (
           <StyledErrorWrapper>
-            <ViewWithSpacing spacingStyles="margin-right-XXXS">
-              <Image source={errorIcon} width="15px" height="15px" />
+            <ViewWithSpacing spacingStyles="margin-right-XS">
+              <Image source={errorIcon} width="16px" height="14px" />
             </ViewWithSpacing>
             <BodyCopy
               mobilefontFamily={['secondary']}
@@ -157,7 +158,10 @@ GooglePlacesInput.propTypes = {
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
   input: PropTypes.shape({}),
-  meta: PropTypes.shape({}),
+  meta: PropTypes.shape({
+    touched: PropTypes.string,
+    error: PropTypes.string,
+  }),
   initialValue: PropTypes.string,
   clearButtonMode: PropTypes.string,
 };

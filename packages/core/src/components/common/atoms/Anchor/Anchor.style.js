@@ -1,3 +1,4 @@
+import { getIconPath } from '@tcp/core/src/utils';
 import { css } from 'styled-components';
 import buttonStyles from '../Button/Button.style';
 
@@ -87,8 +88,8 @@ const AnchorStyles = css`
     props.withCaret
       ? `
       &:after {
-        content: "›";
-        margin-left: 5px;
+        content:url(${getIconPath('smallright')});
+        margin-left: 8px;
       }
     `
       : ''};

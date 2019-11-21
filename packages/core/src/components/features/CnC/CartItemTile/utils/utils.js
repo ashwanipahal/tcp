@@ -1,3 +1,6 @@
+import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
+import CONSTANTS from '../../Checkout/Checkout.constants';
+
 const getModifiedString = (labels, store, orderItemType, bossStartDate, bossEndDate) => {
   let modifiedString = '';
   if (orderItemType === 'BOPIS') {
@@ -17,6 +20,53 @@ const getModifiedString = (labels, store, orderItemType, bossStartDate, bossEndD
     modifiedString = str;
   }
   return modifiedString;
+};
+
+export const filterBopisProducts = orderItems => {
+  return orderItems
+    .filter(
+      item =>
+        !!item.miscInfo.store && item.productInfo.orderType === CONSTANTS.ORDER_ITEM_TYPE.BOPIS
+    )
+    .map(item => ({
+      storeId: item.miscInfo.storeId.substring(2),
+      variantNo: item.productInfo.variantNo,
+      itemPartNumber: item.productInfo.itemPartNumber,
+    }));
+};
+
+/**
+ * @method currencyConversion This method calculates the price for the product based on the exchange rate for different countries
+ * @param {float} price value on which calculation needs to be done
+ * @param {object} exchangeRate object having current exchange rate available
+ */
+export const currencyConversion = (price, exchangeRate) => {
+  const { exchangevalue, merchantMargin, roundMethod } = exchangeRate;
+  let newPrice = price * exchangevalue * merchantMargin;
+  newPrice = roundMethod ? parseFloat(newPrice.toFixed(roundMethod)) : newPrice;
+  return newPrice;
+};
+
+export const updateBopisInventory = (orderItems, bopisItemsInventory) => {
+  return orderItems.map(item => {
+    const bopisItem =
+      bopisItemsInventory &&
+      bopisItemsInventory.find(bopItem => item.productInfo.variantNo === bopItem.variantNo);
+    let patchedItem = { ...item };
+    if (bopisItem) {
+      patchedItem = {
+        ...item,
+        miscInfo: {
+          ...item.miscInfo,
+          availability:
+            bopisItem.quantity > 0
+              ? CARTPAGE_CONSTANTS.AVAILABILITY.OK
+              : CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE,
+        },
+      };
+    }
+    return patchedItem;
+  });
 };
 
 export default getModifiedString;

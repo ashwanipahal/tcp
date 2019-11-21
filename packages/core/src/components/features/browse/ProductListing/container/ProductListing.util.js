@@ -12,8 +12,8 @@ export const getRequiredCategoryData = data => {
   return {
     categoryId: data.categoryContent.id,
     title: data.categoryContent.name,
-    // seoTitle: data.seoTitle,
-    // seoDesc: data.seoDesc,
+    seoTitle: data.categoryContent.seoTitle,
+    seoMetaDesc: data.categoryContent.seoMetaDesc,
     longDescription: data.categoryContent.longDescription,
     url: data.url,
     // productCount: data.productCount,
@@ -173,8 +173,7 @@ export const isSearch = () => {
 export const matchValue = (isSearchPage, location) => {
   const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
   const params = isSearchPage ? '/search/' : categoryParam;
-  const pathname = isMobileApp() ? location : window.location.pathname;
-  return matchPath(pathname, params);
+  return matchPath(location, params);
 };
 
 export const getCategoryKey = (isSearchPage, match) => {
@@ -239,7 +238,7 @@ export const getBreadCrumb = categoryNameList => {
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
 function getIsShowCategoryGrouping(state) {
-  const isL2Category = state.ProductListing.get('breadCrumbTrail').length === 2;
+  const isL2Category = state.ProductListing.breadCrumbTrail.length === 2;
   // const isNotAppliedSort = !state.productListing.appliedSortId;
   const isNotAppliedSort = !null;
   const appliedFilters = state.ProductListing.appliedFiltersIds;
@@ -264,8 +263,7 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
 
       // push: If we should group and we hit a new category name push on array
       // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
-      const shouldGroup =
-        state.ProductListing.get('breadCrumbTrail') && getIsShowCategoryGrouping(state);
+      const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
       if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
         productsAndTitleBlock.push(categoryName);
         lastCategoryName = categoryName;

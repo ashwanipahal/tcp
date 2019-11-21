@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Skeleton Componenet should match snapshot 1`] = `
+<Styled(Row)
+  className="skeleton skeleton-row"
+>
+  <Styled(Col)
+    className="skeleton-col"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="0"
+    removeLastMargin={false}
+  />
+  <Styled(Col)
+    className="skeleton-col"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="1"
+    removeLastMargin={false}
+  />
+  <Styled(Col)
+    className="skeleton-col"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="2"
+    removeLastMargin={false}
+  />
+</Styled(Row)>
+`;

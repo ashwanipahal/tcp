@@ -55,7 +55,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             className="couponCard__col"
           >
             <Styled(BodyCopy)
-              className={null}
+              className="elem-pr-SM"
               color="text.primary"
               component="div"
               fontFamily="primary"
@@ -67,13 +67,14 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
               textAlign="left"
             >
               <Styled(BodyCopy)
-                className={null}
+                className="couponTitle"
                 color="text.primary"
                 component="p"
                 data-locator="coupon_available_couponNameLbl"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="black"
+                id="Y00105578"
                 letterSpacing="normal"
                 lineHeight="lh115"
                 link={null}
@@ -97,14 +98,16 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 Use by 8/10/19
               </Styled(BodyCopy)>
             </Styled(BodyCopy)>
-            <Styled(Anchor)
+            <Styled(Button)
               anchorVariation="primary"
+              aria-labelledby="Y00105578"
               className="cartDetailsLink"
               dataLocator="coupon_available_cartDetailsLink"
-              fontSize="fs10"
               fontSizeVariation="small"
+              link={true}
+              nohover={true}
               onClick={[Function]}
-              to="/#"
+              type="button"
               underline={true}
             />
           </div>
@@ -112,6 +115,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             className="couponCard__col"
           >
             <Styled(Button)
+              aria-labelledby="Y00105578"
               buttonVariation="variable-width"
               className="coupon__button_black"
               data-locator="coupon_available_apply_cartCta"

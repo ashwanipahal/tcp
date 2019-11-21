@@ -21,7 +21,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -62,7 +64,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -92,18 +96,12 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -145,7 +143,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}
@@ -176,7 +176,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -217,7 +219,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -247,18 +251,12 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -300,7 +298,9 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       text="View List"
       underline={true}
@@ -331,7 +331,9 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -372,7 +374,9 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -402,18 +406,12 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -455,7 +453,9 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}
@@ -486,7 +486,9 @@ exports[`StoreSearch component component renders correctly with proper elements 
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -527,7 +529,9 @@ exports[`StoreSearch component component renders correctly with proper elements 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -557,18 +561,12 @@ exports[`StoreSearch component component renders correctly with proper elements 
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -610,7 +608,9 @@ exports[`StoreSearch component component renders correctly with proper elements 
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}

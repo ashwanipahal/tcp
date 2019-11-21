@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
 import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductImages.style';
 
 class SocialConnect extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
-
     isFacebookEnabled: PropTypes.bool,
-
     isPinterestEnabled: PropTypes.bool,
-
     isTwitterEnabled: PropTypes.bool,
   };
 
@@ -51,53 +49,59 @@ class SocialConnect extends React.PureComponent {
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
         {isTwitterEnabled && (
-          <Anchor
-            url="http://instagram.com/childrensplace"
-            target="_blank"
-            onClick={this.handleTwitterShare}
-            className="icon-twitter"
-            title="Twitter"
-          >
-            <Image
-              alt="twitter"
-              className="twitter"
-              src={getIconPath('twitter-icon')}
-              data-locator="twitter-icon"
-            />
-          </Anchor>
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}>
+            <Anchor
+              url="http://twitter.com/childrensplace"
+              target="_blank"
+              onClick={this.handleTwitterShare}
+              className="icon-twitter"
+              title="Twitter"
+            >
+              <Image
+                alt="twitter"
+                className="twitter"
+                src={getIconPath('twitter-icon')}
+                data-locator="twitter-icon"
+              />
+            </Anchor>
+          </ClickTracker>
         )}
 
         {isFacebookEnabled && (
-          <Anchor
-            url="https://www.facebook.com/childrensplace"
-            target="_blank"
-            onClick={this.handleFacebookShare}
-            className="icon-facebook"
-            title="Facebook"
-          >
-            <Image
-              alt="Facebook"
-              className="facebook"
-              src={getIconPath('facebook-icon')}
-              data-locator="facebook-icon"
-            />
-          </Anchor>
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'facebook' }}>
+            <Anchor
+              url="https://www.facebook.com/childrensplace"
+              target="_blank"
+              onClick={this.handleFacebookShare}
+              className="icon-facebook"
+              title="Facebook"
+            >
+              <Image
+                alt="Facebook"
+                className="facebook"
+                src={getIconPath('facebook-icon')}
+                data-locator="facebook-icon"
+              />
+            </Anchor>
+          </ClickTracker>
         )}
         {isPinterestEnabled && (
-          <Anchor
-            url="http://www.pinterest.com/childrensplace"
-            target="_blank"
-            onClick={this.handlePinterestShare}
-            className="icon-pinterest"
-            title="Pinterest"
-          >
-            <Image
-              alt="pinterest"
-              className="pinterest"
-              src={getIconPath('pinterest-icon')}
-              data-locator="pinterest-icon"
-            />
-          </Anchor>
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'pinterest' }}>
+            <Anchor
+              url="http://www.pinterest.com/childrensplace"
+              target="_blank"
+              onClick={this.handlePinterestShare}
+              className="icon-pinterest"
+              title="Pinterest"
+            >
+              <Image
+                alt="pinterest"
+                className="pinterest"
+                src={getIconPath('pinterest-icon')}
+                data-locator="pinterest-icon"
+              />
+            </Anchor>
+          </ClickTracker>
         )}
       </span>
     );

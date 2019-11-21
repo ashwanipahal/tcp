@@ -49,11 +49,11 @@ export const TrackOrderView = ({
   showNotification,
   onChangeForm,
   handleToggle,
-  setModalMountState,
+  onRequestClose,
 }) => {
   return (
     <TrackOrderViewNative>
-      <TrackOrderTopSection labels={labels} />
+      <TrackOrderTopSection labels={labels} onRequestClose={onRequestClose} />
       {errorMessage ? (
         <Notification
           status={showNotification}
@@ -64,11 +64,7 @@ export const TrackOrderView = ({
         </Notification>
       ) : null}
       <TrackOrderForm labels={labels} handleSubmit={onSubmit} onChangeForm={onChangeForm} />
-      <TrackOrderBottomSection
-        labels={labels}
-        toggleModal={handleToggle}
-        setModalMountState={setModalMountState}
-      />
+      <TrackOrderBottomSection labels={labels} toggleModal={handleToggle} />
     </TrackOrderViewNative>
   );
 };
@@ -80,9 +76,9 @@ TrackOrderView.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleToggle: PropTypes.func.isRequired,
-  setModalMountState: PropTypes.func.isRequired,
   showNotification: PropTypes.string.isRequired,
   onChangeForm: PropTypes.func.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 export default TrackOrderView;

@@ -7,7 +7,56 @@ exports[`CnC template should render correctly 1`] = `
   <[object Object] />
   <Styled(Row)>
     <Styled(Col)
-      className="left-sec"
+      className="left-sec "
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 5,
+          "small": 6,
+        }
+      }
+    >
+      <[object Object] />
+    </Styled(Col)>
+    <Styled(Col)
+      className="right-sec "
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(OrderLedgerContainer)
+        orderLedgerAfterView={<UNDEFINED />}
+        pageCategory=""
+      />
+      <Connect(BonusPointsDays)
+        additionalClassNameModal="bonus-modal-web"
+        enableApplyCta={true}
+        showAccordian={true}
+      />
+      <Connect(AirmilesBannerContainer) />
+      <Connect(CouponContainer)
+        additionalClassNameModal="coupon-modal-web"
+        fullPageInfo={true}
+        idPrefix="desktop"
+        showAccordian={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</section>
+`;
+
+exports[`CnC template should render correctly with guest 1`] = `
+<section
+  className="Cnc"
+>
+  <[object Object] />
+  <Styled(Row)>
+    <Styled(Col)
+      className="left-sec "
       colSize={
         Object {
           "large": 8,
@@ -28,14 +77,34 @@ exports[`CnC template should render correctly 1`] = `
         }
       }
     >
-      <Connect(OrderLedgerContainer) />
-      <[object Object] />
-      <Connect(AirmilesBannerContainer) />
-      <Connect(CouponContainer)
-        additionalClassNameModal="coupon-modal-web"
-        showAccordian={true}
+      <Connect(OrderLedgerContainer)
+        isConfirmationPage={true}
+        pageCategory="confirmation"
       />
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Connect(Styled(PersonalizedCoupons)) />
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
+  <div
+    className="recommendationsWrapper"
+  >
+    <Connect(Styled(Recommendations))
+      page="checkout"
+      variations="moduleO"
+    />
+  </div>
 </section>
 `;

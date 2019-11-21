@@ -9,7 +9,6 @@ const styles = css`
       justify-content: space-between;
     }
   }
-
   .itemInfo_details_items {
     display: flex;
     flex-flow: row;
@@ -24,6 +23,11 @@ const styles = css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.large} {
       margin-left: 0;
+    }
+  }
+  .item-preview-details {
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 115px;
     }
   }
 `;

@@ -19,6 +19,7 @@ class PickUpAlternateFormPart extends React.Component {
       showNoteOnToggle,
       isAlternateUpdateChecked,
       labels,
+      isExpressCheckout,
     } = this.props;
     return (
       <div className={className} dataLocator="alternate-div">
@@ -58,6 +59,7 @@ class PickUpAlternateFormPart extends React.Component {
             showEmailAddress
             isCondensed={isCondensed}
             labels={labels}
+            isExpressCheckout={isExpressCheckout}
           />
         )}
       </div>
@@ -71,11 +73,13 @@ PickUpAlternateFormPart.propTypes = {
   isCondensed: PropTypes.bool,
   showNoteOnToggle: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  isExpressCheckout: PropTypes.bool,
 };
 PickUpAlternateFormPart.defaultProps = {
   isCondensed: false,
   showNoteOnToggle: false,
   isAlternateUpdateChecked: false,
+  isExpressCheckout: false,
 };
 
 export default withStyles(PickUpAlternateFormPart, styles);

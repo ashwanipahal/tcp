@@ -1,7 +1,5 @@
 export {
   default,
-  enableBodyScroll,
-  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -32,8 +30,15 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
+  canUseDOM,
+  getUrlParameter,
+  scrollToParticularElement,
+  getDirections,
+  enableBodyScroll,
+  disableBodyScroll,
+  isMobileWeb,
+  removeBodyScrollLocks,
+  isAndroidWeb,
 } from './utils.web';
 
 export {
@@ -49,6 +54,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  isUsOnly,
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
@@ -72,4 +78,14 @@ export {
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
+  generateTraceId,
+  readCookieMobileApp,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  calculatePriceValue,
+  getProductUrlForDAM,
+  plpRoutingHandling,
 } from './utils';

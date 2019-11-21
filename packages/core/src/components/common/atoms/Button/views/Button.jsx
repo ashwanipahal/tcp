@@ -36,6 +36,13 @@ const Button = ({
   ...otherProps
 }) => {
   if (!cta) {
+    /* Using this label in CSS to fake the width of hover style category-link-button.
+       It allows to stop flickering of the button on hover.
+    */
+    let categoryLinkLabel = '';
+    if (buttonVariation === 'category-links-dark') {
+      categoryLinkLabel = children;
+    }
     return (
       <button
         disabled={disabled}
@@ -44,6 +51,7 @@ const Button = ({
         type={type}
         fullWidth={fullWidth}
         data-locator={dataLocator}
+        data-category-link-label={categoryLinkLabel}
         {...otherProps}
       >
         {children}
@@ -97,7 +105,7 @@ Button.defaultProps = {
   type: 'button',
   customStyle: '',
   uniqueKey: '',
-  noCurve: true,
+  noCurve: false,
   cta: null,
   active: false,
 };

@@ -3,6 +3,8 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
+import CookieManager from 'react-native-cookies';
+import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -10,6 +12,7 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
@@ -19,6 +22,7 @@ let gymAPIConfig = null;
 export const LAZYLOAD_HOST_NAME = {
   HOME: 'lazyload-home',
   PLP: 'lazyload-plp',
+  PDP: 'lazyload-pdp',
   ACCOUNT: 'lazyload-account',
   WALLET: 'lazyload-wallet',
 };
@@ -47,7 +51,24 @@ export const importGraphQLClientDynamically = module => {
     }
   });
 };
+export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'promoList':
+      resolve(require('../services/handler/graphQL/queries/promoList'));
+      break;
+    case 'AccountNavigation':
+      resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
+      break;
+    case 'subNavigation':
+      resolve(require('../services/handler/graphQL/queries/subNavigation'));
+      break;
+    default:
+      reject();
+      break;
+  }
+};
 
+// eslint-disable-next-line complexity
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
@@ -58,6 +79,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
+      break;
+    case 'moduleM':
+      resolve(require('../services/handler/graphQL/queries/moduleM'));
       break;
     case 'moduleN':
       resolve(require('../services/handler/graphQL/queries/moduleN'));
@@ -77,9 +101,24 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
-    default:
-      reject();
+    case 'moduleT':
+      resolve(require('../services/handler/graphQL/queries/moduleT'));
       break;
+    case 'moduleG':
+      resolve(require('../services/handler/graphQL/queries/moduleG'));
+      break;
+    case 'moduleE':
+      resolve(require('../services/handler/graphQL/queries/moduleE'));
+      break;
+    case 'categoryPromo':
+      resolve(require('../services/handler/graphQL/queries/categoryPromo'));
+      break;
+    default:
+      importOtherGraphQLQueries({
+        query,
+        resolve,
+        reject,
+      });
   }
 };
 
@@ -118,6 +157,15 @@ export const importGraphQLQueriesDynamically = query => {
       case 'xappConfig':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
+        break;
+      case 'divisionTabs':
+        resolve(require('../services/handler/graphQL/queries/divisionTabs'));
+        break;
+      case 'outfitCarousel':
+        resolve(require('../services/handler/graphQL/queries/outfitCarousel'));
+        break;
+      case 'moduleJeans':
+        resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
       default:
         importMoreGraphQLQueries({
@@ -181,6 +229,9 @@ const getLandingPage = url => {
   if (url.includes(URL_PATTERN.CATEGORY_LANDING)) {
     return URL_PATTERN.CATEGORY_LANDING;
   }
+  if (url.includes(URL_PATTERN.OUTFIT_DETAILS)) {
+    return URL_PATTERN.OUTFIT_DETAILS;
+  }
   return null;
 };
 
@@ -189,20 +240,26 @@ const getLandingPage = url => {
  * @param {function} navigation
  * Returns navigation to the parsed URL based on  the url param
  */
-export const navigateToPage = (url, navigation) => {
+export const navigateToPage = (url, navigation, extraParams = {}) => {
   const { URL_PATTERN } = config;
   const { navigate } = navigation;
-  const category = getLandingPage(url);
-  const text = url.split('/');
+  const urlValue = url || '';
+  const category = getLandingPage(urlValue);
+  const text = urlValue.split('/');
   const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
+
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductLanding', {
-        product: titleSplitValue,
+
+      return navigate('ProductDetail', {
+        pdpUrl: url,
+        title: titleSplitValue,
+        reset: true,
+        ...extraParams,
       });
 
     case URL_PATTERN.CATEGORY_LANDING:
@@ -213,7 +270,18 @@ export const navigateToPage = (url, navigation) => {
         url,
         title: titleSplitValue,
         reset: true,
+        ...extraParams,
       });
+    case URL_PATTERN.OUTFIT_DETAILS: {
+      const outfitIdPart = (url && url.split('/outfit/')) || [];
+      const outfitIds = (outfitIdPart[1] && outfitIdPart[1].split('/')) || [];
+      return navigation.navigate('OutfitDetail', {
+        title: 'COMPLETE THE LOOK',
+        outfitId: outfitIds[0],
+        vendorColorProductIdsList: outfitIds[1],
+        reset: true,
+      });
+    }
     default:
       return null;
   }
@@ -281,7 +349,7 @@ export const cropImageUrl = (url, crop, namedTransformation) => {
     }
   } else {
     // Image path transformation in case of relative image URL
-    URL = `${basePath}/${namedTransformation}/url`;
+    URL = `${basePath}/${namedTransformation}/${url}`;
   }
 
   return URL;
@@ -319,7 +387,7 @@ export const setValueInAsyncStorage = async (key, value) => {
 };
 
 export const validateExternalUrl = url => {
-  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  const isExternal = url && (url.indexOf('http') || url.indexOf('https') !== true);
   if (isExternal === true) {
     return true;
   }
@@ -345,6 +413,10 @@ export const resetNavigationStack = navigation => {
   );
 };
 
+const getRegion = (configVal, country) => {
+  return configVal && country;
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -362,21 +434,47 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKeyTCP = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_TCP`];
+  const unbxdApiKeyGYM = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_GYM`];
+  const recommendationsAPI =
+    envConfig[`RWD_APP_RECOMMENDATIONS_API_${country}_EN_${appTypeSuffix}`];
+
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
     MELISSA_KEY: envConfig[`RWD_APP_MELISSA_KEY_${appTypeSuffix}`] || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
-    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
+    assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
+    assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`],
+    productAssetPathGYM: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
-    unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`]}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
-    }`,
+    unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: envConfig.RWD_APP_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
+    previewEnvId: envConfig[`RWD_APP_PREVIEW_ENV_${appTypeSuffix}`],
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
+    RAYGUN_API_KEY: envConfig[`RWD_APP_RAYGUN_API_KEY_${appTypeSuffix}`],
+    RWD_APP_VERSION: envConfig.RWD_APP_VERSION,
+    isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    paypalEnv: envConfig[`RWD_APP_PAYPAL_ENV_${appTypeSuffix}`],
+    paypalStaticUrl: envConfig[`RWD_APP_PAYPAL_STATIC_DOMAIN_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
+    TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
+    TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
+    RECOMMENDATIONS_API: recommendationsAPI,
+    styliticsUserNameTCP: envConfig.RWD_APP_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: envConfig.RWD_APP_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
+    styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
+    host: envConfig[`RWD_APP_HOST_${appTypeSuffix}`],
   };
 };
 
@@ -429,6 +527,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     isMobile: false,
     cookie: null,
     catalogId,
+    language: '',
   };
 };
 
@@ -496,6 +595,7 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+export const isIOS = () => Platform.OS === 'ios';
 
 /**
  * getPixelRatio
@@ -598,3 +698,94 @@ export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month
     year: currentDate.format(year),
   };
 };
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = key => {
+  const apiConfigObj = getAPIConfig();
+  return new Promise((resolve, reject) => {
+    CookieManager.get(apiConfigObj.domain)
+      .then(response => {
+        const keyValue = key ? response[key] : response;
+        return resolve(keyValue);
+      })
+      .catch(e => reject(e));
+  });
+};
+
+/**
+ * @function createGoogleMapUrl - returns map apps url.
+ * @param {String} lat - lattitude
+ * @param {String} long - longitude
+ */
+export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
+  return Platform.select({
+    ios: `maps:${lat},${long}?q=${label}`,
+    android: `geo:${lat},long?q=${label}`,
+  });
+};
+
+/**
+ * @function mapHandler - checks if map application is present in phone, opens app,
+ * otherwise opens the map in mobile browser.
+ * @param {Object} store - store info
+ */
+export const mapHandler = store => {
+  const {
+    basicInfo: { address, coordinates },
+  } = store;
+  const { addressLine1, city, state, zipCode } = address;
+  const { lat, long } = coordinates;
+  const mapLabel = `${addressLine1}, ${city}, ${state}`;
+  const url = createGoogleMapUrl(lat, long, mapLabel);
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) {
+      return Linking.openURL(url);
+    }
+    const browserUrl = `${
+      googleMapConstants.OPEN_STORE_DIR_WEB
+    }${addressLine1}, ${city}, ${state}, ${zipCode}`;
+    return Linking.openURL(browserUrl);
+  });
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (date, language) => {
+  // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
+  // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
+  // To fix this, need to add fallback package for Intl
+  return getTranslatedMomentDate(date, language, {
+    day: 'ddd',
+    month: 'MMM',
+    date: 'D',
+    year: 'YYYY',
+  });
+};
+
+export const onBack = navigation => {
+  const goBackRoute = get(navigation, 'state.params.backTo', false);
+  const isReset = get(navigation, 'state.params.reset', false);
+  if (isReset) {
+    navigation.pop();
+  } else if (goBackRoute) {
+    navigation.navigate(goBackRoute);
+  } else {
+    navigation.goBack(null);
+  }
+};
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');

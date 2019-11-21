@@ -7,6 +7,7 @@ import {
   setFavoriteStoreActn,
   getFavoriteStoreActn,
 } from './StoreLanding.actions';
+import { setClickAnalyticsData, trackClick } from '../../../../../analytics/actions';
 import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
@@ -20,10 +21,12 @@ export class StoreLanding extends PureComponent {
       basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    window.open(
-      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
-    );
+    return `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`;
   }
+
+  state = {
+    geoLocationEnabled: false,
+  };
 
   componentDidMount() {
     this.getFavoriteStoreInititator();
@@ -55,13 +58,22 @@ export class StoreLanding extends PureComponent {
             Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
             INITIAL_STORE_LIMIT
           );
+          this.setState({
+            geoLocationEnabled: true,
+          });
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
+          this.setState({
+            geoLocationEnabled: false,
+          });
         }
       );
     } else {
       this.initiateGetFavoriteStoreRequest();
+      this.setState({
+        geoLocationEnabled: false,
+      });
     }
   };
 
@@ -80,9 +92,9 @@ export class StoreLanding extends PureComponent {
    */
   loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
     const { fetchStoresByCoordinates } = this.props;
-    coordinatesPromise.then(({ lat, lng }) =>
-      fetchStoresByCoordinates({ coordinates: { lat, lng }, maxItems, radius })
-    );
+    coordinatesPromise.then(coordinates => {
+      fetchStoresByCoordinates({ coordinates, maxItems, radius });
+    });
     return false;
   };
 
@@ -95,7 +107,7 @@ export class StoreLanding extends PureComponent {
   };
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, searchDone } = this.props;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -108,6 +120,8 @@ export class StoreLanding extends PureComponent {
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
+        searchDone={searchDone}
+        {...this.state}
       />
     );
   }
@@ -119,6 +133,9 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  searchDone: PropTypes.bool.isRequired,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {
@@ -132,6 +149,8 @@ const mapDispatchToProps = dispatch => ({
   setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
   getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
   fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
+  setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClick: payload => dispatch(trackClick(payload)),
 });
 
 /* istanbul ignore next  */
@@ -139,7 +158,10 @@ const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
   suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  isStoreSearched:
+    state.StoreLocatorReducer && state.StoreLocatorReducer.get('storeSuggestionCompleted'),
   favoriteStore: state.User && state.User.get('defaultStore'),
+  searchDone: state.StoreLocatorReducer && state.StoreLocatorReducer.get('searchDone'),
 });
 
 export default connect(

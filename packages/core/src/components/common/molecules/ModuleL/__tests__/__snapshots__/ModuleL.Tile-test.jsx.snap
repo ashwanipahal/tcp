@@ -69,7 +69,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           }
           fontWeight={
             Array [
-              "regular",
+              "semibold",
               "semibold",
             ]
           }
@@ -84,6 +84,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
           className="moduleL__tile-link"
           dataLocator="moduleL_link_NaN"
+          fontSizeVariation="large"
           target=""
           title="Shop Unicorns & Friends"
           to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"

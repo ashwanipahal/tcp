@@ -1,9 +1,9 @@
 import { FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -26,7 +26,8 @@ const getCategoryMap = (catPath, l1) => {
 const isGiftCard = product =>
   !!(
     product &&
-    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+    ((product.style_partno && product.style_partno.toLowerCase() === 'giftcardbundle') ||
+      product.giftcard === '1')
   );
 
 const getProductByColorId = (products, colorDetails) => {
@@ -126,6 +127,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagUSStore',
         matchingFamily: 'TCPMatchingFamilyUSStore',
         keepAlive: 'TCPOutOfStockFlagUSStore',
+        bundleChecklist: 'TCPKitUSStore',
+        bundleGrouping: 'TCPGroupingUSStore',
       }
     : {
         merchant: 'TCPMerchantTagCanadaStore',
@@ -142,6 +145,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagCAStore',
         matchingFamily: 'TCPMatchingFamilyCAStore',
         keepAlive: 'TCPOutOfStockFlagCanadaStore',
+        bundleChecklist: 'TCPKitCanadaStore',
+        bundleGrouping: 'TCPGroupingCanadaStore',
       };
 };
 const indexBasedOnShopByColor = (

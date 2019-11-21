@@ -1,4 +1,4 @@
-/* eslint max-lines: ["error", 500] */
+/* eslint max-lines: ["error", 600] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -6,8 +6,16 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  message: {
+    maxLength: 'lbl_err_name_maxlength',
+  },
   gender: {
     required: 'lbl_err_gender_required',
+  },
+  subject: {
+    nonEmpty: 'lbl_err_name_nonempty',
+    name: 'lbl_err_name_name',
+    maxLength: 'lbl_err_name_maxlength',
   },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
@@ -23,6 +31,11 @@ export const formValidationMessages = {
     minLength: validStreetAddress,
     maxLength: 'lbl_err_addressline1_maxlength',
   },
+  storeAddressLocator: {
+    required: 'lbl_storelanding_validErrorLabel',
+    address: 'lbl_storelanding_invalidAddressError',
+    minLength: 'lbl_storelanding_validErrorLabel',
+  },
   addressLine2: {
     address: 'lbl_err_addressline2_address',
     maxLength: validStreetAddress,
@@ -36,9 +49,15 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    required: 'lbl_err_userbirthdaymonth_required',
+    userBirthday: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
+    userBirthday: 'lbl_err_userbirthdayyear_required',
+  },
+  childBirthMonth: {
+    required: 'lbl_err_userbirthdaymonth_required',
+  },
+  childBirthYear: {
     required: 'lbl_err_userbirthdayyear_required',
   },
   state: {
@@ -187,9 +206,23 @@ export const formValidationMessages = {
   orderDate: {
     required: 'lbl_err_order_date_required',
   },
+  promoId: 'lbl_err_airmilesaccountnumber',
+  listName: {
+    nonEmpty: 'lbl_fav_list_name_nonempty',
+    name: 'lbl_fav_list_name',
+    maxLength: 'lbl_fav_list_name_maxlength',
+  },
 };
 
 export const formValidationRules = {
+  subject: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+  },
+  message: {
+    maxLength: 200,
+  },
   gender: {
     required: true,
   },
@@ -206,6 +239,11 @@ export const formValidationRules = {
     address: true,
     minLength: 5,
     maxLength: 30,
+  },
+  storeAddressLocator: {
+    required: true,
+    address: true,
+    minLength: 3,
   },
   addressLine2: {
     address: true,
@@ -226,9 +264,19 @@ export const formValidationRules = {
   },
 
   userBirthMonth: {
-    required: true,
+    userBirthday: {
+      linkedProps: ['values'],
+    },
   },
   userBirthYear: {
+    userBirthday: {
+      linkedProps: ['values'],
+    },
+  },
+  childBirthMonth: {
+    required: true,
+  },
+  childBirthYear: {
     required: true,
   },
   firstName: {
@@ -369,11 +417,11 @@ export const formValidationRules = {
     required: true,
     cvvNumber: true,
     cvvLengthThree: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
     // amex validation, validates length === 4 only if type is amex, otherwise it passes validation
     cvvLengthFour: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
   },
   phoneNumberWithAlt: {
@@ -410,6 +458,16 @@ export const formValidationRules = {
     required: true,
   },
   transactionDate: {
+    required: true,
+  },
+  promoId: {
+    number: true,
+    exactLength: 11,
+  },
+  listName: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
     required: true,
   },
 };

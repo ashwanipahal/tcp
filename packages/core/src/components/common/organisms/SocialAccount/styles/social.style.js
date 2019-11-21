@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 const socialStyle = css`
   .social-accounts__infoList {
     display: flex;
-    padding: 15px 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
   }
   .Facebook-icon--enable {
     width: 62px;
@@ -22,6 +22,18 @@ const socialStyle = css`
     height: 55px;
     background: url('/static/images/instagram-fade@2x.png') no-repeat;
   }
+
+  .Twitter-icon--enable {
+    width: 62px;
+    height: 55px;
+    background: url('/static/images/twitter@2x.png') no-repeat;
+  }
+  .Twitter-icon--disable {
+    width: 62px;
+    height: 55px;
+    background: url('/static/images/twitter-fade@2x.png') no-repeat;
+  }
+
   .Facebook-icon--disable {
     width: 62px;
     height: 55px;

@@ -9,7 +9,7 @@ export const BadgeView = styled.View`
 export const DefaultBadgeView = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[800]};
   margin-bottom: ${props => (props.noMargin ? 0 : props.theme.spacing.ELEM_SPACING.XS)};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
   border: 1px solid ${props => props.theme.colorPalette.gray[800]};
   border-top-left-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -18,7 +18,7 @@ export const DefaultBadgeView = styled.View`
 
 export const PrimaryBadgeView = styled.View`
   margin-bottom: ${props => (props.noMargin ? 0 : props.theme.spacing.ELEM_SPACING.XS)};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
   border: 1px solid;
   border-top-left-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};

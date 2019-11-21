@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, BodyCopy } from '../../../atoms';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
 import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import { promoAnalyticsValue } from '../../../../../constants/analytics';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -28,6 +30,15 @@ const renderCurrencyUpVariation = (style, text) => {
   );
 };
 
+const isPencentageTab = style => {
+  return (
+    style === 'percentage_wrapped_extra_large' ||
+    style === 'percentage_wrapped_large' ||
+    style === 'percentage_all_wrapped_normal' ||
+    style === 'percentage_all_wrapped_normal_tab' ||
+    style === 'percentage_wrapped_nav'
+  );
+};
 /**
  * This component produces a Promo Text banner
  * Expects textItems array consisting of objects in below format
@@ -63,16 +74,19 @@ const PromoBanner = props => {
             headerText={headerText}
           />
         )}
-        <Anchor {...navigationUrl} className="promo-text-link">
+        <ClickTracker
+          as={Anchor}
+          {...navigationUrl}
+          className="promo-text-link"
+          clickData={{
+            customEvents: ['event80', 'event81'],
+            internalCampaignId: promoAnalyticsValue,
+          }}
+        >
           {textItems.map(({ text, style }, index) => {
             let promoText;
-
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-            if (
-              style === 'percentage_wrapped_extra_large' ||
-              style === 'percentage_wrapped_large' ||
-              style === 'percentage_all_wrapped_normal'
-            ) {
+            if (isPencentageTab(style)) {
               const percentageTexts = text.split(' ');
               promoText = (
                 <div className={`promo-text ${style}`}>
@@ -95,7 +109,7 @@ const PromoBanner = props => {
 
             return promoText;
           })}
-        </Anchor>
+        </ClickTracker>
       </React.Fragment>
     </BodyCopy>
   );

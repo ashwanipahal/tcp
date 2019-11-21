@@ -18,7 +18,7 @@ import { canUseDOM } from '../../../../../utils/utils.web';
 export const bindEvent = () => {
   if (canUseDOM()) {
     window.onload = () => {
-      const urlSplitArr = window.location.href.split('#access_token=');
+      const urlSplitArr = window.location.href.split('code=');
       const parentTextField = window.opener.document.getElementById('instagram-token');
       // urlSplitArr[1] should contain the access token,
       // set this value on the parent window input field

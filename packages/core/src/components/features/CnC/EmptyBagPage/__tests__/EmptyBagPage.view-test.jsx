@@ -63,7 +63,7 @@ describe('EmptyBagPage component with false', () => {
 describe('EmptyBagPage component click simulation', () => {
   it('should renders correctly with click', () => {
     const props = {
-      isUserLoggedIn: false,
+      isUserLoggedIn: true,
       className: '',
       bagLabels: {
         guestUserMsg: '',

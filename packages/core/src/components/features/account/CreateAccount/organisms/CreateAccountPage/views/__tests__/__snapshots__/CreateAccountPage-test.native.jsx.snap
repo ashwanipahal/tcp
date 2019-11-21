@@ -16,6 +16,9 @@ exports[`Create Account Page should render correctly 1`] = `
   onRequestClose={[Function]}
   showForgotPasswordForm={[Function]}
   showsVerticalScrollIndicator={false}
+  toastMessage={[Function]}
+  userplccCardId=""
+  userplccCardNumber=""
 >
   <View>
     <Styled(CreateAccountTopSection)
@@ -27,24 +30,6 @@ exports[`Create Account Page should render correctly 1`] = `
       }
       showForgotPasswordForm={[Function]}
     />
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="error"
-        dataLocator=""
-        fontSize="fs12"
-        fontWeight="semibold"
-        margin={null}
-        mobileFontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-        numberOfLines={null}
-        text={Object {}}
-        textDecoration={null}
-      />
-    </Styled(View)>
     <ReduxForm
       confirmHideShowPwd={false}
       destroyOnUnmount={true}
@@ -76,6 +61,8 @@ exports[`Create Account Page should render correctly 1`] = `
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
+      userplccCardId=""
+      userplccCardNumber=""
       validate={[Function]}
     />
   </View>

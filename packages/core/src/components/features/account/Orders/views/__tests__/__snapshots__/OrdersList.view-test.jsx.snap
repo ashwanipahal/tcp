@@ -3,7 +3,7 @@
 exports[`OrdersList View component should renders correctly 1`] = `
 <Fragment>
   <Styled(FormPageHeading)
-    className="elem-mb-XL"
+    className="elem-mb-XL myAccountRightView"
     data-locator="OrdersListPageLbl"
     heading="lbl_orders_heading"
   />

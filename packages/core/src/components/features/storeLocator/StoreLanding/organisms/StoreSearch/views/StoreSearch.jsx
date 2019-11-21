@@ -12,9 +12,10 @@ import {
 import PropTypes from 'prop-types';
 import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
 import { getLabelValue, isGymboree } from '@tcp/core/src/utils';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/StoreLanding.constants';
 import styles from '../styles/StoreSearch.style';
 
@@ -22,9 +23,9 @@ const { INITIAL_STORE_LIMIT } = constants;
 
 export class StoreSearch extends PureComponent {
   state = {
-    errorNotFound: null,
     gymSelected: isGymboree(),
     outletSelected: false,
+    storeSelected: false,
   };
 
   /**
@@ -33,12 +34,25 @@ export class StoreSearch extends PureComponent {
    * @param {object} geometry - The geometry details of the selected location
    * @param {object} location - The location details of the selected location
    */
-  handleLocationSelection = ({ geometry, location }) => {
-    const { loadStoresByCoordinates, submitting } = this.props;
+  handleLocationSelection = ({ geometry, location }, place) => {
+    const {
+      loadStoresByCoordinates,
+      submitting,
+      showSubmitError,
+      setClickAnalyticsData,
+      trackClick,
+    } = this.props;
     if ((!geometry && !location) || submitting) {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
+    setClickAnalyticsData({
+      storeSearchCriteria: place,
+      customEvents: ['event89'],
+    });
+    trackClick();
+    this.setState({ storeSelected: true });
+    showSubmitError(false);
     loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
   };
 
@@ -47,16 +61,18 @@ export class StoreSearch extends PureComponent {
    * @param {object} formData - form input data
    */
   onSubmit = formData => {
-    const { submitting, loadStoresByCoordinates } = this.props;
-    if (!submitting) {
-      this.setState({ errorNotFound: null });
-      return loadStoresByCoordinates(
-        getAddressLocationInfo(formData.storeAddressLocator).catch(() =>
-          this.setState({ errorNotFound: true })
-        ),
-        INITIAL_STORE_LIMIT
-      );
+    const { storeSelected } = this.state;
+    const { submitting, loadStoresByCoordinates, showSubmitError } = this.props;
+    if (!submitting && storeSelected) {
+      let res;
+      try {
+        res = getAddressLocationInfo(formData.storeAddressLocator);
+      } catch (err) {
+        res = {};
+      }
+      return loadStoresByCoordinates(res, INITIAL_STORE_LIMIT);
     }
+    showSubmitError(true);
     return false;
   };
 
@@ -94,11 +110,15 @@ export class StoreSearch extends PureComponent {
     return true;
   };
 
+  onStoreChange = () => {
+    const { storeSelected } = this.state;
+    if (storeSelected) this.setState({ storeSelected: false });
+  };
+
   render() {
     const {
       className,
       selectedCountry,
-      error,
       handleSubmit,
       labels,
       searchIcon,
@@ -107,10 +127,7 @@ export class StoreSearch extends PureComponent {
       mapView,
       getLocationStores,
     } = this.props;
-    const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const errorMessage = errorNotFound
-      ? getLabelValue(labels, 'lbl_storelanding_errorLabel')
-      : error;
+    const { gymSelected, outletSelected } = this.state;
 
     const viewMapListLabel = mapView
       ? getLabelValue(labels, 'lbl_storelanding_viewList')
@@ -133,8 +150,8 @@ export class StoreSearch extends PureComponent {
 
     const linksConfig = [
       {
-        asPath: '',
-        to: '',
+        asPath: '/stores',
+        to: '/stores',
         label: getLabelValue(labels, 'lbl_storelanding_allUSCAStores'),
       },
       {
@@ -178,7 +195,9 @@ export class StoreSearch extends PureComponent {
                   dataLocator="storeAddressLocator"
                   className="store-locator-field"
                   enableSuccessCheck={false}
+                  onChange={this.onStoreChange}
                 />
+
                 <Button type="submit" title="search" className="button-search-store">
                   <Image
                     alt="search"
@@ -190,21 +209,13 @@ export class StoreSearch extends PureComponent {
                   />
                 </Button>
               </div>
-              {errorMessage && (
-                <ErrorMessage
-                  isShowingMessage={errorMessage}
-                  errorId="storeSearch_geoLocation"
-                  error={errorMessage}
-                  withoutErrorDataAttribute
-                />
-              )}
             </form>
           </Col>
           <Col colSize={{ large: 12, medium: 4, small: 6 }}>
             <div className="searchFormBody">
               <ul className="storeOptionList">
                 {storeOptionsConfig.map(({ name, dataLocator, storeLabel, checked }) => (
-                  <li className="storeOptions">
+                  <li className="storeOptions" key={name}>
                     <Field
                       name={name}
                       component={InputCheckBox}
@@ -250,7 +261,6 @@ StoreSearch.propTypes = {
   loadStoresByCoordinates: PropTypes.func.isRequired,
   selectStoreType: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
-  error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
@@ -258,17 +268,26 @@ StoreSearch.propTypes = {
   toggleMap: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
+  showSubmitError: PropTypes.func,
+  setClickAnalyticsData: PropTypes.func,
+  trackClick: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
   mapView: false,
+  showSubmitError: () => false,
+  setClickAnalyticsData: () => null,
+  trackClick: () => null,
 };
 
+const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));
+
 export default reduxForm({
-  form: 'StoreSearch',
+  form: 'StoreSearchForm',
   enableReinitialize: true,
+  ...validateMethod,
 })(withStyles(StoreSearch, styles));
 
 export { StoreSearch as StoreViewVanilla };

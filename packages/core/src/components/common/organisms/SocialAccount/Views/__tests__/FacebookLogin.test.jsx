@@ -9,6 +9,10 @@ describe('Facebook login', () => {
     elem: {
       isConnected: true,
       socialAccount: 'Facebook',
+      urlParams: {
+        socialAccount: 'facebook',
+        id: 'my-preference',
+      },
     },
     saveAccountInfo: {},
   };

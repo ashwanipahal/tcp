@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const deleteCardModalStyle = css`
-  @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .deleteCardModal__card {
       display: block;
@@ -145,6 +142,24 @@ const deleteCardModalStyle = css`
     height: 56px;
     border: 1px solid ${props => props.theme.colorPalette.gray[500]};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  .deleteCreditCard {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    }
+  }
+  .cardName-spacing-tablet {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+  .card-details-mobile {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: 0;
+    }
   }
 `;
 

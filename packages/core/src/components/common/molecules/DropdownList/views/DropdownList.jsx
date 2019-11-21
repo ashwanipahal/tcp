@@ -5,17 +5,18 @@ import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 const itemLists = (item, activeValue, clickHandler) => {
+  const isDisabledClass = item.disabled ? ' dropdown--disabled' : '';
   return (
     <li
       key={item.value}
       tabIndex={-1}
       className={`dropdownliBottomBorder ${
         activeValue === item.value ? 'dropdownActiveClass' : ''
-      }`}
+      }${isDisabledClass}`}
     >
       <BodyCopy
         component="div"
-        role="button"
+        role="link"
         key={item.value}
         onClick={e => clickHandler(e, item.value, item.title)}
         onKeyPress={e => clickHandler(e, item.value, item.title)}
@@ -30,13 +31,17 @@ const itemLists = (item, activeValue, clickHandler) => {
   );
 };
 
-const DropdownList = ({ className, optionsMap, clickHandler, activeValue }) => {
+const DropdownList = ({ className, optionsMap, clickHandler, activeValue, dataLocatorObj }) => {
+  const { dropDownList } = dataLocatorObj;
   const nthChild = optionsMap.find(itemValue => itemValue.value === '');
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className={`${nthChild ? 'dropDownListwrapper' : ''}`}>
         <BodyCopy component="div" className="dropdownDivOverFlow">
-          <ul className={`${nthChild ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}>
+          <ul
+            className={`${nthChild ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}
+            data-locator={dropDownList}
+          >
             {optionsMap.map(item => itemLists(item, activeValue, clickHandler))}
           </ul>
         </BodyCopy>
@@ -50,11 +55,15 @@ DropdownList.propTypes = {
   clickHandler: PropTypes.func.isRequired,
   optionsMap: PropTypes.shape({}).isRequired,
   activeValue: PropTypes.string,
+  dataLocatorObj: PropTypes.shape({}),
 };
 
 DropdownList.defaultProps = {
   activeValue: '',
   className: '',
+  dataLocatorObj: {
+    dropDownList: 'drop-down-list',
+  },
 };
 
 export default withStyles(DropdownList, styles);

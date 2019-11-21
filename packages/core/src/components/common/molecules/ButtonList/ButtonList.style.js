@@ -9,16 +9,19 @@ export default css`
     flex-grow: 1;
     width: 50%;
 
+    .cta-button-text,
     button {
       width: 100%;
     }
   }
 
   .stacked-button:nth-of-type(even) {
+    .cta-button-text,
     button {
       border-left-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
+      .cta-button-text,
       button {
         border-left-width: 1px;
       }
@@ -26,10 +29,12 @@ export default css`
   }
 
   .stacked-button:nth-of-type(n + 3) {
+    .cta-button-text,
     button {
       border-top-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
+      .cta-button-text,
       button {
         border-top-width: 1px;
       }
@@ -46,16 +51,15 @@ export default css`
     flex-wrap: nowrap;
   }
   .link-button-wrapper-class {
-    border-bottom-color: ${props => props.theme.colorPalette.white};
     white-space: nowrap;
     letter-spacing: 0.3px;
     margin: 0 8px;
     &:hover {
-      border-bottom-color: ${props => props.theme.colorPalette.white};
+      border-bottom-color: ${props => props.theme.colorPalette.primary.main};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 16px;
+      margin: 0 21px;
     }
   }
 
@@ -149,6 +153,7 @@ export default css`
       }
     }
 
+    .stacked-button .cta-button-text,
     .stacked-button button {
       width: 140px;
       white-space: nowrap;
@@ -161,7 +166,8 @@ export default css`
       white-space: normal;
     }
 
-    .scroll-button button {
+    .scroll-button button,
+    .scroll-button .cta-button-text {
       width: 140px;
       white-space: nowrap;
     }
@@ -222,6 +228,7 @@ export default css`
     &.wrapped-button-text .stacked-button,
     &.wrapped-button-text .scroll-button {
       margin: 0 8px;
+      .cta-button-text,
       button {
         white-space: normal;
         width: 110px;
@@ -254,12 +261,18 @@ export default css`
     .stacked-button {
       flex-grow: 0;
       width: auto;
+      .cta-button-text,
       button {
         width: 210px;
       }
     }
     .scroll-button {
       width: auto;
+    }
+
+    .stacked-button:last-child,
+    .scroll-button:last-child {
+      margin-right: 0;
     }
 
     &.stacked-button-list-wrapper,
@@ -271,10 +284,12 @@ export default css`
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;
+      color: ${props => props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
     }
 
     &.stacked-button-list-wrapper .stacked-button,
     &.scroll-button-list-wrapper .scroll-button {
+      .cta-button-text,
       button {
         width: 210px;
       }

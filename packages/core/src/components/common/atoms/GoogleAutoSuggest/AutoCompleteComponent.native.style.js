@@ -16,9 +16,11 @@ const StyledLabel = styled.Text`
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
   margin-bottom: ${props => (props.isFocused ? props.theme.spacing.ELEM_SPACING.XXS : '0')};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
 
 const Container = styled.View`
+  position: relative;
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;

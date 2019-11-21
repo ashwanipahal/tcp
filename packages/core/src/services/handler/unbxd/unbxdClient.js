@@ -2,7 +2,7 @@
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
-import { isClient, isMobileApp } from '../../../utils';
+import { isClient, isMobileApp, getBrand } from '../../../utils';
 
 const modifyUnbxdUrl = unboxKey => {
   const temp = unboxKey.split('/');
@@ -17,13 +17,27 @@ const modifyUnbxdUrl = unboxKey => {
  */
 const getRequestParams = (apiConfig, reqObj) => {
   const {
-    webService: { URI, unbxdCustom },
+    webService: { URI, unbxdCustom, authHeaderRequired },
   } = reqObj;
+  let { brand } = reqObj;
+  let reqHeaders;
+  if (!brand) {
+    const brandID = getBrand();
+    brand = brandID && brandID.toUpperCase();
+  }
+  const brandUnboxKey = apiConfig[`unboxKey${brand}`];
+  const unboxKey = unbxdCustom ? modifyUnbxdUrl(brandUnboxKey) : brandUnboxKey;
+  const unbxdKey = apiConfig[`unbxd${brand}`];
+  const requestUrl = `${unbxdKey}/${unboxKey}/${URI}`;
+  const unbxdAPIKey = apiConfig[`unbxdApiKey${brand}`];
 
-  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
-  const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
-
-  const reqHeaders = {};
+  if (authHeaderRequired) {
+    reqHeaders = {
+      Authorization: unbxdAPIKey,
+    };
+  } else {
+    reqHeaders = {};
+  }
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
     reqHeaders.Cookie = apiConfig.cookie;
@@ -55,7 +69,8 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
 
   // make the api call
   if (requestType === 'get') {
-    const unbxdUID = !isMobileApp() ? readCookie('unbxd.userId', document && document.cookie) : '';
+    const unbxdUID =
+      !isMobileApp() && isClient() ? readCookie('unbxd.userId', document && document.cookie) : '';
     if (isClient() && unbxdUID) {
       // eslint-disable-next-line
       reqObj.body.uid = unbxdUID;
@@ -81,7 +96,7 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
       })
       .catch(err => {
         // eslint-disable-next-line prefer-promise-reject-errors
-        reject({ err, reqObj });
+        reject({ err, reqObj, reqHeaders });
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

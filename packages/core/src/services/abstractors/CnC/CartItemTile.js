@@ -1,10 +1,8 @@
 /* eslint-disable max-lines */
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
-
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
+
 import {
   parseBoolean,
   extractPrioritizedBadge,
@@ -16,7 +14,13 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
-import { isCanada } from '../../../utils';
+import { isCanada as isCASite } from '../../../utils';
+import { parseStoreOpeningAndClosingTimes } from '../../../utils/parseStoreHours';
+import CARTITEMTILE_CONSTANTS from '../../../components/features/CnC/CartItemTile/CartItemTile.constants';
+import { UPDATE_ITEM_IN_CART } from '../../config';
+import { setLocalStorage } from '../../../utils/localStorageManagement';
+
+const RES_NULL_ERROR = 'res body is null';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -25,10 +29,7 @@ export const ORDER_ITEM_TYPE = {
 };
 
 export const AVAILABILITY = {
-  OK: 'OK',
-  SOLDOUT: 'SOLDOUT',
-  UNAVAILABLE: 'UNAVAILABLE',
-  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+  ...CARTITEMTILE_CONSTANTS.AVAILABILITY,
 };
 
 export const COUPON_STATUS = {
@@ -83,8 +84,25 @@ const getCouponType = promotionType => {
   }
 };
 
-export const getProductSkuInfoByUnbxd = item => {
+export const getProductSkuInfoByUnbxd = () => {
   // calling unbxd API logic is written in CartItemTile.saga.js, needs to move it in this abstractor, as of now getting result from saga and formatting it here.
+};
+
+export const getSwatchImgPath = (id, excludeExtension) => {
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
+  return `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`;
+};
+
+export const getProductImgPath = (id, excludeExtension) => {
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
+  return {
+    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+  };
 };
 
 export const imageGenerator = (id, excludeExtension) => {
@@ -94,17 +112,8 @@ export const imageGenerator = (id, excludeExtension) => {
   };
 };
 
-export const getSwatchImgPath = (id, excludeExtension) => {
-  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
-};
-
-export const getProductImgPath = (id, excludeExtension) => {
-  return {
-    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
-    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
-    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
-    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
-  };
+const setBrierleyOrderPointsTimeCache = () => {
+  setLocalStorage({ key: 'orderPointsTimeStamp', value: new Date().getTime() });
 };
 
 // NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
@@ -120,19 +129,19 @@ export function getPromotionType(promotionType) {
 }
 
 export const removeItem = orderItemId => {
-  let orderItems = [];
+  const orderItems = [];
   if (typeof orderItemId === 'string') {
     orderItems.push({
       orderItemId,
       quantity: '0',
     });
   } else {
-    for (let value of orderItemId.values()) {
+    orderItemId.forEach(value => {
       orderItems.push({
         orderItemId: value,
         quantity: '0',
       });
-    }
+    });
   }
   const payload = {
     body: {
@@ -141,42 +150,101 @@ export const removeItem = orderItemId => {
     webService: endpoints.updateMultiSelectItemsToRemove,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return {
-      orderId: res && res.body.orderId,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res && !res.body) {
+        throw new Error(RES_NULL_ERROR);
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return {
+        orderId: res && res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
-export const updateItem = payloadData => {
+const defaultUpdateItemPayload = payloadData => {
   const { itemId, skuId, quantity, itemPartNumber, variantNo } = payloadData;
+  return {
+    orderItem: [
+      {
+        orderItemId: itemId,
+        xitem_catEntryId: skuId,
+        quantity: quantity.toString(),
+        itemPartNumber,
+        variantNo,
+      },
+    ],
+  };
+};
+
+/**
+ *
+ * @method pickUpItemUpdatePayload
+ * @description this method handles payload formation for pickupitem
+ * @param {*} payloadData
+ * @returns
+ */
+const pickUpItemUpdatePayload = payloadData => {
+  const { apiPayload } = payloadData;
+  return {
+    x_calculationUsage: UPDATE_ITEM_IN_CART.X_CALCULATION_USAGE,
+    x_isUpdateDescription: UPDATE_ITEM_IN_CART.X_UPDATE_DESCRIPTION,
+    ...apiPayload,
+  };
+};
+
+/**
+ *
+ * @method payloadFormationForUpdateItem
+ * @description this method handles payload formation for update item call for all types of item.
+ * @param {*} payloadData
+ * @returns
+ */
+const payloadFormationForUpdateItem = payloadData => {
+  const { updateActionType } = payloadData;
+  switch (updateActionType) {
+    case 'UpdatePickUpItem':
+      return pickUpItemUpdatePayload(payloadData);
+    default:
+      return defaultUpdateItemPayload(payloadData);
+  }
+};
+
+/**
+ *
+ * @method updateItem
+ * @description this method call updateItem API call for all types of item.
+ * @param {*} payloadData
+ * @returns
+ */
+export const updateItem = (payloadData, errorMapping) => {
+  const updatePayloadData = payloadFormationForUpdateItem(payloadData);
+  const { callback } = payloadData;
   const payload = {
     body: {
-      orderItem: [
-        {
-          orderItemId: itemId,
-          xitem_catEntryId: skuId,
-          quantity: quantity.toString(),
-          itemPartNumber,
-          variantNo,
-        },
-      ],
+      ...updatePayloadData,
     },
     webService: endpoints.updateOrderItem,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-    }
-    return {
-      orderItemId: res.body.orderItem[0].orderItemId,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      if (callback) {
+        callback();
+      }
+      return {
+        orderItemId: res.body.orderItem[0].orderItemId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err, errorMapping);
+    });
 };
 
 /**
@@ -187,7 +255,7 @@ export const updateItem = payloadData => {
  */
 export const constructCouponStructure = cpnArray => {
   const now = new Date();
-  const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+  const oneDay = 24 * 60 * 60 * 1000;
   const expirationThreshold = 7;
   const coupons = [];
   cpnArray.forEach(itm => {
@@ -221,20 +289,155 @@ export const constructCouponStructure = cpnArray => {
   return coupons;
 };
 
-export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems, isCanada) => {
+export const flatCurrencyToCents = (currency = 0) => {
+  try {
+    return parseFloat(parseFloat(currency.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).toFixed(2));
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
+export const capitalize = string => {
+  return string.replace(/\b\w/g, l => l.toUpperCase());
+};
+
+export const sanitizeEntity = string => {
+  return string && typeof string === 'string'
+    ? string
+        .replace(/&amp;/gi, '&')
+        .replace(/&quot;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&acute;/gi, '"')
+        .replace(/&prime;/gi, '"')
+        .replace(/&bdquo;/gi, '"')
+        .replace(/&ldquot;/gi, '"')
+        .replace(/\\u0027/gi, "'")
+        .replace(/&lsquot;/gi, '"')
+        .replace(/%20/gi, ' ')
+    : string;
+};
+
+const deriveBossInventoryMismatch = item => {
+  // RAD-88/86 qty - requested quantity,inventoryAvailBOSS - available quantity at FFMC
+  return item.qty > item.inventoryAvailBOSS;
+};
+
+export const deriveBossEligiblity = (item, orderDetailsResponse) => {
+  return !(
+    parseBoolean(item.productInfo.itemTcpBossProductDisabled) ||
+    parseBoolean(item.productInfo.itemTcpBossCategoryDisabled) ||
+    orderDetailsResponse.bossIntlField
+  );
+};
+
+const checkIfUSOrder = currencyCode => currencyCode === 'USD';
+
+const getIsSoldOut = ({ productInfo, isUsOrder }) => {
+  const { articleOOSUS, articleOOSCA } = productInfo;
+  return (isUsOrder && articleOOSUS) || (!isUsOrder && articleOOSCA);
+};
+
+const getIsProductOK = ({ orderItemType, stLocId, bopisIntlField }) => {
+  return orderItemType === ORDER_ITEM_TYPE.BOPIS && stLocId && !parseBoolean(bopisIntlField);
+};
+
+const getIsProductUnavailble = ({ bossIntlField, isStoreBOSSEligible }) =>
+  parseBoolean(bossIntlField) || !isStoreBOSSEligible;
+
+const getAvailablityIfIsRadialInv = ({ item, orderDetails }) => {
+  const isProductBossEligible = deriveBossEligiblity(item, orderDetails); // product ineligibility added as part of RAD-88, not present earlier in production
+
+  if (item.inventoryAvailBOSS <= 0) {
+    return AVAILABILITY.UNAVAILABLE;
+  }
+  if (deriveBossInventoryMismatch(item)) {
+    return AVAILABILITY.REQ_QTY_UNAVAILABLE;
+  }
+  if (!isProductBossEligible) {
+    return AVAILABILITY.BOSSINELIGIBLE;
+  }
+
+  return AVAILABILITY.OK;
+};
+
+const getDefaultAvailability = ({ item }) => {
+  if (item.inventoryAvail > 0) {
+    return AVAILABILITY.OK;
+  }
+  return AVAILABILITY.UNAVAILABLE;
+};
+
+export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEnabled) => {
+  const isUsOrder = checkIfUSOrder(orderDetails.currencyCode);
+  const { bopisIntlField, bossIntlField } = orderDetails;
+  const { productInfo, stLocId, orderItemType } = item;
+  if (getIsSoldOut({ productInfo, isUsOrder })) {
+    return AVAILABILITY.SOLDOUT;
+    // replaced "BOPIS" with a config variable
+  }
+  if (getIsProductOK({ orderItemType, stLocId, bopisIntlField })) {
+    return AVAILABILITY.OK;
+  }
+  if (item.orderItemType === ORDER_ITEM_TYPE.BOSS && item.stLocId) {
+    const isStoreBOSSEligible = store
+      ? parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible)
+      : true;
+    /**
+     * Adding new check to return status unavailable in case of:
+     * 1. international order - exisiting
+     * 2. boss store ineligible - exisiting
+     * 3. boss item inventory zero - added with RAD-88/RAD-86
+     * 4. boss item inventory mismatch(requested qty > avail qty) - added with RAD-88/RAD-86
+     * 5. boss product ineligible -  added with RAD-88/RAD-86
+     * returning respective updated Error copies(RAD-86)
+     */
+    if (getIsProductUnavailble({ bossIntlField, isStoreBOSSEligible })) {
+      return AVAILABILITY.UNAVAILABLE;
+    }
+    if (isRadialInvEnabled) {
+      return getAvailablityIfIsRadialInv({ item, orderDetails });
+    }
+    return getDefaultAvailability({ item });
+  }
+  if (item.qty > item.inventoryAvail) {
+    return AVAILABILITY.UNAVAILABLE;
+  }
+  if (item.inventoryAvail > 0) {
+    // inventory check for BOSS and ECOM
+    return AVAILABILITY.OK;
+  }
+  return AVAILABILITY.UNAVAILABLE;
+};
+
+/* eslint-disable complexity, max-statements */
+export const getCurrentOrderFormatter = (
+  orderDetailsResponseObj,
+  excludeCartItems,
+  isCanada,
+  isRadialInvEnabled
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
+  const orderDetailsResponse = orderDetailsResponseObj;
   const EMPTY_OBJECT = Object.create(null);
   let pickUpContact = {};
   let pickUpAlternative = {};
+  let isPickupOrder = false;
+  let isShippingOrder = false;
   // replaced "BOPIS" with a config variable
   // Check if order is of pickup type instead of just BOPIS
-  const pickupOrder =
-    orderDetailsResponse.mixOrderDetails &&
-    orderDetailsResponse.mixOrderDetails.data &&
-    orderDetailsResponse.mixOrderDetails.data.find(
-      store => store.orderType === 'BOPIS' || store.orderType === 'BOSS'
-    );
+  const mixOrderData =
+    orderDetailsResponse.mixOrderDetails && orderDetailsResponse.mixOrderDetails.data;
+  let isBossOrder =
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOSS);
+  let isBopisOrder =
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOPIS);
+
+  const pickupOrder = isBopisOrder || isBossOrder;
+  isBopisOrder = !!isBopisOrder;
+  isBossOrder = !!isBossOrder;
   // show pickup address for both BOSS and BOPIS
   if (pickupOrder) {
+    isPickupOrder = true;
     const address = pickupOrder.shippingAddressDetails || {};
     pickUpContact = {
       firstName: address.firstName,
@@ -258,6 +461,9 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
       // replaced "ECOM" with a config variable
       element => element.orderType === 'ECOM'
     );
+    if (orderShippingElement) {
+      isShippingOrder = true;
+    }
     if (orderShippingElement && orderShippingElement.shippingAddressDetails) {
       const orderShippingInfo = orderShippingElement.shippingAddressDetails;
       if (orderShippingInfo.addressId) {
@@ -301,15 +507,19 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
 
   let stateTax = -1;
   if (orderDetailsResponse.salesTax && orderDetailsResponse.salesTax.salesTax) {
-    for (const country in orderDetailsResponse.salesTax.salesTax) {
-      for (const state in orderDetailsResponse.salesTax.salesTax[country]) {
-        if (stateTax === -1) {
-          stateTax = 0;
-        }
+    Object.entries(orderDetailsResponse.salesTax.salesTax).forEach(([country, states]) => {
+      if (country) {
+        Object.entries(states).forEach(([state, stateTaxValue]) => {
+          if (state) {
+            if (stateTax === -1) {
+              stateTax = 0;
+            }
 
-        stateTax += orderDetailsResponse.salesTax.salesTax[country][state];
+            stateTax += stateTaxValue;
+          }
+        });
       }
-    }
+    });
   }
   // When brierley fails, backend returns -1 in these fields
   if (orderDetailsResponse.pointsToNextReward === -1) {
@@ -320,8 +530,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   }
 
   const usersOrder = {
+    emailSignUpTCP: !!orderDetailsResponse.mixOrderDetails.marketingPromoBox,
+    emailSignUpGYM: !!orderDetailsResponse.mixOrderDetails.marketingPromoBoxGYM,
+    isShippingOrder,
+    isPickupOrder,
+    isBossOrder,
+    isBopisOrder,
     orderId: orderDetailsResponse.parentOrderId,
-    totalItems: excludeCartItems ? null : 0,
+    totalItems: excludeCartItems ? orderDetailsResponse.cartCount : 0,
     appliedGiftCards: [],
     giftWrappingTotal: 0,
     savingsTotal: Math.abs(flatCurrencyToCents(orderDetailsResponse.orderDiscountAmount) || 0),
@@ -337,7 +553,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     estimatedRewards:
       orderDetailsResponse.userPoints && Math.round(orderDetailsResponse.userPoints),
     estimatedAirMiles: 0, // NOT IN SERVICE RESPONSE - - - Math.round(orderDetailsResponse.airMiles || 0),
-    rewardsToBeEarned: parseInt(orderDetailsResponse.valueOfEarnedPcCoupons) || 0, // FIXME: this should have been part of another namespace, however it had to be done.
+    rewardsToBeEarned: parseInt(orderDetailsResponse.valueOfEarnedPcCoupons, 10) || 0, // FIXME: this should have been part of another namespace, however it had to be done.
     earnedReward: orderDetailsResponse.earnedReward || '',
     pointsToNextReward: orderDetailsResponse.pointsToNextReward || 0,
     totalOrderSavings: flatCurrencyToCents(orderDetailsResponse.orderTotalSaving || 0),
@@ -361,11 +577,11 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   }
 
   if (orderDetailsResponse.orderLevelPromos && orderDetailsResponse.orderLevelPromos.explicit) {
-    for (const item of orderDetailsResponse.orderLevelPromos.explicit) {
-      for (const promoCode in item) {
+    orderDetailsResponse.orderLevelPromos.explicit.forEach(item => {
+      Object.keys(item).forEach(promoCode => {
         usersOrder.couponsTotal += Math.abs(flatCurrencyToCents(item[promoCode].price));
-      }
-    }
+      });
+    });
   }
 
   usersOrder.savingsTotal -= usersOrder.couponsTotal;
@@ -376,7 +592,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     usersOrder.savingsTotal = 0;
   }
   if (orderDetailsResponse.giftCardDetails) {
-    for (const giftCard of orderDetailsResponse.giftCardDetails) {
+    Object.values(orderDetailsResponse.giftCardDetails).forEach(giftCard => {
       usersOrder.appliedGiftCards.push({
         id: giftCard.piId,
         onFileCardId: giftCard.creditCardId.toString(),
@@ -384,7 +600,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
         endingNumbers: giftCard.giftCardNumber.substr(-4),
         remainingBalance: giftCard.remainingBalance,
       });
-    }
+    });
   }
 
   // DT-32443
@@ -393,7 +609,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   // If mixOrderPaymentDetails is empty we should not save billing details and show error message
   const { mixOrderPaymentDetails } = orderDetailsResponse;
   if (mixOrderPaymentDetails && mixOrderPaymentDetails.length > 0) {
-    for (const payment of orderDetailsResponse.paymentsList) {
+    Object.values(orderDetailsResponse.paymentsList).forEach(payment => {
       if (payment.cardType !== 'GC') {
         // CC or PayPal
         const billingAddress = payment.billingAddressDetails;
@@ -435,8 +651,8 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             cardNumber: payment.maskedCardNumber,
             cardType:
               payment.cardType === 'PayPal' ? 'paypal' : (payment.cardType || '').toUpperCase(),
-            expMonth: parseInt(payment.cardExpirationMonth),
-            expYear: parseInt(payment.cardExpirationYear),
+            expMonth: parseInt(payment.cardExpirationMonth, 10),
+            expYear: parseInt(payment.cardExpirationYear, 10),
             cvv: '',
             isExpirationRequired:
               payment.cardType !== 'PLACE CARD' && payment.cardType !== 'PayPal',
@@ -444,7 +660,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           },
         };
       }
-    }
+    });
   }
 
   if (
@@ -452,7 +668,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     orderDetailsResponse.mixOrderDetails &&
     orderDetailsResponse.mixOrderDetails.data
   ) {
-    for (const store of orderDetailsResponse.mixOrderDetails.data) {
+    Object.values(orderDetailsResponse.mixOrderDetails.data).forEach(store => {
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
           stLocId: store.shippingAddressDetails.stLocId || '',
@@ -483,10 +699,11 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           isStoreBOSSEligible: parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible),
         });
       }
-    }
+    });
   }
 
-  for (const item of orderDetailsResponse.orderItems) {
+  Object.values(orderDetailsResponse.orderItems).forEach(itemValue => {
+    const item = itemValue;
     const sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
     // When brierley fails, backend returns -1
     if (item.itemPoints === -1) {
@@ -495,26 +712,27 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     // making pickup page visible for BOSS items as well
     // replaced "BOPIS" and "BOSS" with a config variable
     const store =
-      (item.orderItemType === 'BOPIS' || item.orderItemType === 'BOSS') &&
+      (item.orderItemType === ORDER_ITEM_TYPE.BOPIS ||
+        item.orderItemType === ORDER_ITEM_TYPE.BOSS) &&
       item.stLocId &&
       orderDetailsResponse.mixOrderDetails &&
       orderDetailsResponse.mixOrderDetails.data
         ? orderDetailsResponse.mixOrderDetails.data.find(
-            store =>
-              store.shippingAddressDetails.stLocId === item.stLocId &&
-              store.orderType === item.orderItemType
+            storeData =>
+              storeData.shippingAddressDetails.stLocId === item.stLocId &&
+              storeData.orderType === item.orderItemType
           )
         : null;
 
     if (!item.giftOptions) {
-      usersOrder.totalItems += parseInt(item.qty);
+      usersOrder.totalItems += parseInt(item.qty, 10);
 
-      /* let {
-todayOpeningTime,
-todayClosingTime,
-tomorrowOpeningTime,
-tomorrowClosingTime
-} = parseStoreOpeningAndClosingTimes(store);*/
+      const {
+        todayOpeningTime,
+        todayClosingTime,
+        tomorrowOpeningTime,
+        tomorrowClosingTime,
+      } = parseStoreOpeningAndClosingTimes(store);
 
       const isGiftCard = item.giftItem;
       usersOrder.orderItems.push({
@@ -535,42 +753,50 @@ tomorrowClosingTime
             name: item.productInfo.productColor
               ? item.productInfo.productColor
               : item.productInfo.productName,
-            // imagePath: imageGenerator(item.productInfo.productThumbnail).colorSwatch
           },
           isGiftCard,
           colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : EMPTY_OBJECT,
           // added to read type of order for the item
           orderType: item.orderItemType,
-          itemBrand: item.itemBrand,
+          itemBrand: item.itemBrand || 'TCP',
         },
         itemInfo: {
-          quantity: parseInt(item.qty),
+          quantity: parseInt(item.qty, 10),
           itemId: item.orderItemId.toString(),
-          itemPoints: item.itemPoints || item.itemPoints === 0 ? parseInt(item.itemPoints) : null,
+          itemPoints:
+            item.itemPoints || item.itemPoints === 0 ? parseInt(item.itemPoints, 10) : null,
           // This code is misleading - itemPrice and itemDstPrice are not equal to list price/offer price
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
+
           listPrice: flatCurrencyToCents(item.itemPrice),
-          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
-          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
-          salePrice: isCanada
+          // eslint-disable-next-line no-nested-ternary
+          salePrice: isGiftCard
+            ? flatCurrencyToCents(item.itemUnitPrice)
+            : isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
             : flatCurrencyToCents(item.productInfo.offerPrice),
         },
         miscInfo: {
-          // clearanceItem: this.apiHelper.configOptions.isUSStore ? item.productInfo.itemTCPProductIndUSStore === 'Clearance' : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
-          isOnlineOnly: true
-            ? Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))
-            : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)),
+          clearanceItem: !isCASite()
+            ? item.productInfo.itemTCPProductIndUSStore === 'Clearance'
+            : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
+          isOnlineOnly: !isCASite()
+            ? Boolean(parseInt(item.productInfo.webOnlyFlagUSStore, 10))
+            : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore, 10)),
           isBopisEligible: !parseBoolean(orderDetailsResponse.bopisIntlField),
           isBossEligible: deriveBossEligiblity(item, orderDetailsResponse),
           badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
+          isInventoryAvailBOSS: item.inventoryAvailBOSS > 0,
           // onlineInventoryAvailable: item.inventoryAvail,
 
           // TODO: cleanup structure
           store: store ? capitalize(store.shippingAddressDetails.storeName) : null,
+          isStoreBOSSEligible: store
+            ? parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible)
+            : false,
           // replaced "BOPIS" with a config variable
           // show storeId for both BOSS and BOPIS
           storeId: store && item.stLocId ? item.stLocId : null,
@@ -585,10 +811,15 @@ tomorrowClosingTime
             : null,
           // making store details visible for both BOSS and BOPIS
           storePhoneNumber: store ? (store.shippingAddressDetails.phone1 || '').trim() : null,
-          // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
-          // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
+          storeTodayOpenRange: store ? `${todayOpeningTime} -  ${todayClosingTime}` : null,
+          storeTomorrowOpenRange: store ? `${tomorrowOpeningTime} - ${tomorrowClosingTime}` : null,
 
-          availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(
+            orderDetailsResponse,
+            item,
+            store,
+            isRadialInvEnabled
+          ),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -605,25 +836,24 @@ tomorrowClosingTime
         },
       });
     }
-  }
+  });
   if (orderDetailsResponse.giftWrapItem && orderDetailsResponse.giftWrapItem.length) {
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
       message: orderDetailsResponse.giftWrapItem[0].giftOptionsMessage || '',
-      brand: '',
+      brand: orderDetailsResponse.giftWrapItem[0].itemBrand || '',
     };
     usersOrder.giftWrappingTotal = flatCurrencyToCents(
       orderDetailsResponse.giftWrapItem[0].totalPrice
     );
     usersOrder.subTotal -= usersOrder.giftWrappingTotal;
   }
-  usersOrder.uiFlags = {
-    // isPaypalEnabled: parseBoolean(orderDetailsResponse.payPalAllowed || orderDetailsResponse.isPayPalAllowed)
-  };
+  usersOrder.uiFlags = {};
   usersOrder.cartTotalAfterPLCCDiscount =
     orderDetailsResponse && orderDetailsResponse.cartTotalAfterPLCCDiscount;
   return usersOrder;
 };
+/* eslint-enable complexity, max-statements */
 
 export const getOrderDetailsData = () => {
   const payload = {
@@ -638,19 +868,18 @@ export const getOrderDetailsData = () => {
 
   return executeStatefulAPICall(payload).then(res => {
     if (!res.body) {
-      throw new Error('res body is null');
+      throw new Error(RES_NULL_ERROR);
       // TODO - Set API Helper to filter if error exists in response
     }
 
     const orderDetailsResponse = res.body;
-
     return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, isCASite()),
     };
   });
 };
 
-export const getProductInfoForTranslationData = query => {
+export const getProductInfoForTranslationData = (query, brand) => {
   return executeUnbxdAPICall({
     body: {
       rows: 20,
@@ -666,22 +895,25 @@ export const getProductInfoForTranslationData = query => {
         'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
+    brand,
   });
 };
-
+// TODO enable excludeCartItems when we exclude cart items
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  // excludeCartItems,
   recalcRewards,
-  isCanada,
   isCheckoutFlow,
+  isRadialInvEnabled,
+  isLoggedIn,
 }) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      // pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      pageName: 'fullOrderInfo',
       langId: -1,
-      source: '',
+      source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
       recalculate: !!recalcRewards,
     },
@@ -689,10 +921,12 @@ export const getCartData = ({
 
   return executeStatefulAPICall(payload).then(res => {
     if (!res.body) {
-      throw new Error('res body is null');
+      throw new Error(RES_NULL_ERROR);
       // TODO - Set API Helper to filter if error exists in response
     }
-
+    if (res.req && res.req.header && res.req.header.recalculate) {
+      setBrierleyOrderPointsTimeCache();
+    }
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
     const coupons = isCheckoutFlow
@@ -702,21 +936,14 @@ export const getCartData = ({
         constructCouponStructure(res.body.coupons.offers);
     return {
       coupons,
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
+      orderDetails: getCurrentOrderFormatter(
+        orderDetailsResponse,
+        false,
+        isCASite(),
+        isRadialInvEnabled
+      ),
     };
   });
-};
-
-export const flatCurrencyToCents = (currency = 0) => {
-  try {
-    return parseFloat(parseFloat(currency.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).toFixed(2));
-  } catch (e) {
-    throw new Error(e);
-  }
-};
-
-export const capitalize = string => {
-  return string.replace(/\b\w/g, l => l.toUpperCase());
 };
 
 export const toTimeString = est => {
@@ -732,68 +959,11 @@ export const toTimeString = est => {
   return `${hh}:${mm}${ampm}`;
 };
 
-export const sanitizeEntity = string => {
-  return string && typeof string === 'string'
-    ? string
-        .replace(/&amp;/gi, '&')
-        .replace(/&quot;/gi, '"')
-        .replace(/&ldquo;/gi, '"')
-        .replace(/&acute;/gi, '"')
-        .replace(/&prime;/gi, '"')
-        .replace(/&bdquo;/gi, '"')
-        .replace(/&ldquot;/gi, '"')
-        .replace(/\\u0027/gi, "'")
-        .replace(/&lsquot;/gi, '"')
-        .replace(/%20/gi, ' ')
-    : string;
-};
-
-export const deriveBossEligiblity = (item, orderDetailsResponse) => {
-  return !(
-    parseBoolean(item.productInfo.itemTcpBossProductDisabled) ||
-    parseBoolean(item.productInfo.itemTcpBossCategoryDisabled) ||
-    orderDetailsResponse.bossIntlField
-  );
-};
-
-export const deriveItemAvailability = (orderDetails, item, store) => {
-  const isUsOrder = orderDetails.currencyCode === 'USD';
-  const isCaOrder = orderDetails.currencyCode !== 'USD';
-  const isStoreBOSSEligible = true;
-  if (
-    (isUsOrder && item.productInfo.articleOOSUS) ||
-    (isCaOrder && item.productInfo.articleOOSCA)
-  ) {
-    return AVAILABILITY.SOLDOUT;
-  } else if (
-    item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
-    item.stLocId &&
-    !parseBoolean(orderDetails.bopisIntlField)
-  ) {
-    return AVAILABILITY.OK;
-  } else if (
-    item.orderItemType === ORDER_ITEM_TYPE.BOSS &&
-    item.stLocId &&
-    (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
-  ) {
-    /**
-     * Adding new check to return status unavailable
-     * in case of boss store ineligible or boss international order
-     */
-    return AVAILABILITY.UNAVAILABLE;
-  } else if (item.inventoryAvail > 0) {
-    // inventory check for BOSS and ECOM
-    return AVAILABILITY.OK;
-  } else {
-    return AVAILABILITY.UNAVAILABLE;
-  }
-};
-
 export const getUnqualifiedItems = () => {
-  let payload = {
+  const payload = {
     webService: endpoints.getUnqualifiedItems,
   };
-  const isCanadaSite = isCanada();
+  const isCanadaSite = isCASite();
 
   return executeStatefulAPICall(payload)
     .then((res = { body: {} }) => {
@@ -809,14 +979,14 @@ export const getUnqualifiedItems = () => {
       }));
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw err;
     });
 };
 
 export const startPaypalCheckoutAPI = (orderId, fromPage) => {
-  let payload = {
+  const payload = {
     header: {
-      orderId: orderId,
+      orderId,
       callingPage: fromPage,
       requestType: 'REST',
     },
@@ -846,9 +1016,9 @@ export const paypalAuthorizationAPI = (
   centinelPayload,
   centinelOrderId
 ) => {
-  let payload = {
+  const payload = {
     header: {
-      tcpOrderId: tcpOrderId,
+      tcpOrderId,
       callingPage: centinelRequestPage,
       PaRes: centinelPayload,
       MD: centinelOrderId,

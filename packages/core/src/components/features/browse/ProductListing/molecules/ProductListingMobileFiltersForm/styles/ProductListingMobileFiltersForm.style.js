@@ -1,6 +1,22 @@
 import { css } from 'styled-components';
 
 export default css`
+  *:focus {
+    outline: 0;
+  }
+  .list-item {
+    background: white;
+    border-top: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+    &:last-child {
+      border-bottom: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+    }
+    .accordion {
+      background: white;
+      &.inactive {
+        font-weight: bold;
+      }
+    }
+  }
   .item-common {
     margin-bottom: 8px;
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -71,7 +87,7 @@ export default css`
     background: url('/static/images/carrot-small-up.png') no-repeat;
     background-position: 95% 18px;
     background-color: #eeeeee;
-    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
 
     &.open-filter-button-expanded {
       background: url('/static/images/carrot-small-down.png') no-repeat;
@@ -95,7 +111,7 @@ export default css`
     width: 98%;
     position: relative;
     border: 0;
-    padding-top: 6px;
+    padding-top: 16px;
     padding-bottom: 0;
     margin: auto;
 
@@ -161,6 +177,7 @@ export default css`
 export const customModalCss = css`
   div.TCPModal__InnerContent {
     background: none;
+    z-index: ${props => props.theme.zindex.zOverlay};
   }
   button.close-modal {
     display: none;

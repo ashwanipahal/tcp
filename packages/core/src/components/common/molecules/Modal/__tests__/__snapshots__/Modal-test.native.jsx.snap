@@ -1,74 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal Native should render correctly 1`] = `
-<SafeAreaView>
-  <Component
-    hardwareAccelerated={false}
-    onRequestClose={[MockFunction]}
-    transparent={false}
-    visible={true}
+<Component
+  animationType="slide"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  transparent={false}
+  visible={true}
+>
+  <Styled(SafeAreaView)
+    inheritedStyles=""
   >
-    <Styled(View)
-      inheritedStyles=""
+    <KeyboardAvoidingView
+      behavior="padding"
+      enabled={true}
+      keyboardVerticalOffset={64}
     >
-      <Connect(ToastContainer) />
-      <StatusBar
-        animated={false}
-        hidden={true}
-        showHideTransition="fade"
-      />
-      <Styled(View)
-        isOverlay={false}
+      <Styled(ScrollViewMock)
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={
+          Array [
+            0,
+          ]
+        }
       >
-        <Styled(Text)>
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator=""
-            fontSize="fs16"
-            fontWeight="extrabold"
-            margin={null}
-            mobileFontFamily="primary"
-            numberOfLines={null}
-            text="Modal Heading"
-            textDecoration={null}
-          />
-        </Styled(Text)>
-        <Styled(View)>
-          <Styled(TouchableOpacity)
-            accessibilityLabel="close"
-            accessibilityRole="button"
-            isOverlay={false}
-            onPress={[MockFunction]}
-          >
-            <Styled(Image)
-              source={
-                Object {
-                  "testUri": "../../../../core/src/assets/close.png",
-                }
-              }
-            />
-          </Styled(TouchableOpacity)>
-        </Styled(View)>
-      </Styled(View)>
-      <Styled(View)>
-        <Styled(LineComp)
+        <ModalHeaderNative
           borderColor="black"
-          borderWidth={2}
-          marginBottom={0}
-          marginTop={5}
+          heading="Modal Heading"
+          horizontalBar={true}
+          inheritedStyles=""
+          isOverlay={false}
+          onRequestClose={[MockFunction]}
         />
-      </Styled(View)>
-      <KeyboardAvoidingView
-        behavior="padding"
-        enabled={true}
-        keyboardVerticalOffset={64}
-      >
-        <ScrollViewMock
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        />
-      </KeyboardAvoidingView>
-    </Styled(View)>
-  </Component>
-</SafeAreaView>
+        <Styled(View) />
+      </Styled(ScrollViewMock)>
+    </KeyboardAvoidingView>
+  </Styled(SafeAreaView)>
+  <Connect(Loader) />
+</Component>
 `;

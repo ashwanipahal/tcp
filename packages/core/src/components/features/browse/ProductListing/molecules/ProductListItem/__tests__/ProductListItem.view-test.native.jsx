@@ -5,6 +5,7 @@ import { ListItemVanilla } from '../views/ProductListItem.view.native';
 describe('ProductListItem component', () => {
   let component;
   const props = {
+    isFavorite: true,
     item: {
       colorsMap: [
         {
@@ -19,6 +20,15 @@ describe('ProductListItem component', () => {
       ],
       productInfo: {
         name: 'tcp',
+        pdpUrl: '',
+      },
+      miscInfo: {
+        isInDefaultWishlist: '',
+      },
+      quantityPurchased: 1,
+      itemInfo: {
+        availability: 'OK',
+        quantity: 1,
       },
     },
     badge1: '',
@@ -27,8 +37,16 @@ describe('ProductListItem component', () => {
     listPriceForColor: 10,
     offerPriceForColor: 12,
     loyaltyPromotionMessage: '',
-    onAddToBag: () => {},
-    onFavorite: () => {},
+    onAddToBag: jest.fn(),
+    onFavorite: jest.fn(),
+    onGoToPDPPage: jest.fn(),
+    onQuickViewOpenClick: jest.fn(),
+    setLastDeletedItemId: jest.fn(),
+    fullWidth: false,
+    renderPriceAndBagOnly: false,
+    renderPriceOnly: false,
+    productImageWidth: false,
+    isDataLoading: false,
   };
   beforeEach(() => {
     component = shallow(<ListItemVanilla {...props} />);
@@ -46,10 +64,6 @@ describe('ProductListItem component', () => {
     expect(component.find('Styled(View)')).toHaveLength(2);
   });
 
-  it('should return Styled(ColorSwitch) component value one', () => {
-    expect(component.find('Styled(ColorSwitch)')).toHaveLength(1);
-  });
-
   it('should return RenderPricesSection component value one', () => {
     expect(component.find('RenderPricesSection')).toHaveLength(1);
   });
@@ -60,5 +74,25 @@ describe('ProductListItem component', () => {
 
   it('should return RenderBadge2 component value one', () => {
     expect(component.find('RenderBadge2')).toHaveLength(1);
+  });
+
+  it('should return ImageSection component value one', () => {
+    expect(component.find('ImageSection')).toHaveLength(1);
+  });
+
+  it('should return RenderColorSwitch component value one', () => {
+    expect(component.find('RenderColorSwitch')).toHaveLength(1);
+  });
+
+  it('should return RenderSizeFit component value one', () => {
+    expect(component.find('RenderSizeFit')).toHaveLength(1);
+  });
+
+  it('should return RenderPurchasedQuantity component value one', () => {
+    expect(component.find('RenderPurchasedQuantity')).toHaveLength(1);
+  });
+
+  it('should return RenderMoveToListOrSeeSuggestedList component value one', () => {
+    expect(component.find('RenderMoveToListOrSeeSuggestedList')).toHaveLength(1);
   });
 });

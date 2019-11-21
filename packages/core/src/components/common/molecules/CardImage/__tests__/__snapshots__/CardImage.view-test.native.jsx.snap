@@ -5,6 +5,7 @@ exports[`CardImageVanilla component renders correctly without props 1`] = `
   <Styled(View)>
     <Styled(ImageComp)
       alt=""
+      dataLocator="cardLogo"
       height="30"
       host=""
       source={

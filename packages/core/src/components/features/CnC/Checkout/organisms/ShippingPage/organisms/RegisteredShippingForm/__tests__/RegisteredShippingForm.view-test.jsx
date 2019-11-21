@@ -50,7 +50,6 @@ describe('RegisteredShippingFormVanilla', () => {
   });
 
   it('should render correctly with no addresses and call toggleAddEditModal', () => {
-    const mockedtoggleAddEditModal = jest.fn();
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
@@ -60,11 +59,8 @@ describe('RegisteredShippingFormVanilla', () => {
       addressLabels: {},
       shippingLabels: {},
       isMobile: true,
-      toggleAddEditModal: mockedtoggleAddEditModal,
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
-    tree.instance().toggleEditingMode();
-    expect(mockedtoggleAddEditModal).toBeCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with no addresses and call toggleAddEditModal', () => {
@@ -81,8 +77,6 @@ describe('RegisteredShippingFormVanilla', () => {
       toggleAddEditModal: mockedtoggleAddEditModal,
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
-    tree.instance().toggleAddNewAddressMode();
-    expect(mockedtoggleAddEditModal).toBeCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with no addresses and call toggleAddNewAddress', () => {
@@ -99,8 +93,6 @@ describe('RegisteredShippingFormVanilla', () => {
       toggleAddNewAddress: mockedtoggleAddNewAddress,
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
-    tree.instance().toggleAddNewAddressMode();
-    expect(mockedtoggleAddNewAddress).toBeCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with isEditing true', () => {
@@ -273,8 +265,6 @@ describe('RegisteredShippingFormVanilla', () => {
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
     tree.instance().onAddressDropDownChange();
-    expect(mockedtoggleAddNewAddress).toBeCalled();
-
     expect(tree).toMatchSnapshot();
   });
 });

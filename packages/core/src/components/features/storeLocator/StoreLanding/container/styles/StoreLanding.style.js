@@ -1,6 +1,12 @@
 import { css } from 'styled-components';
 
 export default css`
+  &__backlink {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+
   .favoriteStore__heading {
     font-size: 16px;
     color: ${props => props.theme.colors.TEXT.DARK};
@@ -13,11 +19,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .store__list:nth-child(even) {
-      margin-right: 0;
-    }
-
-    .storeView__List {
+    .storeView__ListAndMap {
       flex-direction: row-reverse;
     }
 
@@ -52,12 +54,19 @@ export default css`
 
   .favoriteStore__container {
     width: 100%;
-    margin: 0;
+    margin: 0 0 20px;
+
+    .address-tile {
+      border-bottom: 0;
+    }
   }
 
   .google-map {
     img {
       width: 100%;
     }
+  }
+  .storeview__error {
+    width: 100%;
   }
 `;

@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0-${APP_ENV}</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -27,14 +27,32 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb512065309359521</string>
+				<string>fb2346328792295830</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gym</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CodePushDeploymentKey</key>
+	<string>enfFTGfxEG6PdxtDQyNGYQ-df_wSndUfGGN9V</string>
 	<key>FacebookAppID</key>
-	<string>512065309359521</string>
+	<string>2346328792295830</string>
 	<key>FacebookDisplayName</key>
 	<string>My Place</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -63,10 +81,15 @@
 	<string>This app would like to access your camera to attach pictures with your product review.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>icomoon.ttf</string>
 		<string>FontAwesome.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat.ttf</string>
@@ -75,6 +98,10 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-Bold</string>
+		<string>Montserrat-Medium</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>GymboreeLaunchScreen</string>

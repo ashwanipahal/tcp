@@ -22,4 +22,25 @@ const ColumnContainer = styled.View`
   flex-direction: column;
 `;
 
-export { styles, RowContainer, ColumnContainer };
+const PageContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  align-items: center;
+`;
+
+const AnchorContainer = {
+  flexDirection: 'row',
+};
+
+const RecommendationWrapper = styled.View`
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 100%;
+`;
+
+export {
+  styles,
+  RowContainer,
+  ColumnContainer,
+  PageContainer,
+  AnchorContainer,
+  RecommendationWrapper,
+};

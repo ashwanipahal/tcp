@@ -5,7 +5,6 @@ import React from 'react';
 import { Text, FlatList, Image, View, Picker } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import endpoints from '../../../../../service/endpoint';
 
 class ProductTile extends React.Component {
@@ -93,7 +92,6 @@ class ProductTile extends React.Component {
 
           <Button
             fullWidth
-            buttonVariation="variable-width"
             text="Add to Bag"
             onPress={() =>
               addToBagEcom(item, quantity, brand, {
@@ -136,7 +134,6 @@ class ProductTile extends React.Component {
           />
           <Button
             fullWidth
-            buttonVariation="variable-width"
             text="Add to BOPIS"
             onPress={() =>
               addToBagBossBopis(item, false, quantity, storeId, brand, {
@@ -148,9 +145,6 @@ class ProductTile extends React.Component {
             }
           />
           <Text>productId: {item.productId}</Text>
-        </View>
-        <View>
-          <AddedToBagContainer navigation={navigation} />
         </View>
       </ProductListingPageStyle>
     );

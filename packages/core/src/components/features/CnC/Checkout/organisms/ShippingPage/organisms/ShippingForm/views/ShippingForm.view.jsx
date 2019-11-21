@@ -1,31 +1,31 @@
 import React from 'react';
-import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
+import { FormSection, reduxForm, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { Row, Col } from '../../../../../../../../common/atoms';
-
-import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
-import Anchor from '../../../../../../../../common/atoms/Anchor';
+import EmailSignUpCheckBox from '../../../../../molecules/EmailSignUpCheckBox';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
+import GenericSkeleton from '../../../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 const formName = 'checkoutShipping';
 
 class ShippingForm extends React.Component {
   static changeAddressFields(nextProps) {
-    const { onFileAddressKey, dispatch, userAddresses, isMobile, shippingAddress } = nextProps;
+    const { onFileAddressKey, dispatch, userAddresses, shippingAddress } = nextProps;
     let address = {};
     let isDefaultAddress = false;
     if (userAddresses && userAddresses.size > 0) {
@@ -47,23 +47,24 @@ class ShippingForm extends React.Component {
     dispatch(change(formName, 'address.state', address.state));
     dispatch(change(formName, 'address.phoneNumber', address.phone1));
     dispatch(change(formName, 'defaultShipping', isDefaultAddress));
-    if (!isMobile) {
-      return { isEditingMode: true };
-    }
-    return { isEditingMobileMode: true };
+    return { isEditingMode: true };
   }
 
   constructor(props) {
     super(props);
     this.state = {
       isEditing: false,
-      modalType: null,
-      modalState: false,
       isEditingMode: false,
-      isEditingMobileMode: false,
+      editShipmentDetailsError: '',
     };
     this.isAddressModalEmptied = false;
     this.addNewAddressEnabled = false;
+    this.editShippingErrorRef = React.createRef();
+  }
+
+  shouldComponentUpdate() {
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
   }
 
   componentDidUpdate(prevProps) {
@@ -76,21 +77,13 @@ class ShippingForm extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const {
-      isEditing,
-      modalType,
-      modalState,
-      isEditingMode,
-      isEditingMobileMode,
-      shippingAddress,
-    } = prevState;
+    const { isEditing, isEditingMode, shippingAddress } = prevState;
     const { onFileAddressKey, userAddresses } = nextProps;
     if (
-      (isEditing || (modalType === 'edit' && modalState)) &&
+      isEditing &&
       onFileAddressKey &&
       ((userAddresses && userAddresses.size > 0) || shippingAddress) &&
-      !isEditingMode &&
-      !isEditingMobileMode
+      !isEditingMode
     ) {
       return ShippingForm.changeAddressFields(nextProps);
     }
@@ -99,12 +92,7 @@ class ShippingForm extends React.Component {
 
   checkPropsOnUpdation = prevProps => {
     const { dispatch, isAddNewAddress } = this.props;
-    const { modalType, modalState } = this.state;
-    if (
-      ((modalType === 'add' && modalState) || isAddNewAddress) &&
-      !this.isAddressModalEmptied &&
-      !this.addNewAddressEnabled
-    ) {
+    if (isAddNewAddress && !this.isAddressModalEmptied && !this.addNewAddressEnabled) {
       dispatch(resetSection(formName, 'address'));
       if (!this.isAddressModalEmptied) {
         this.isAddressModalEmptied = true;
@@ -118,17 +106,17 @@ class ShippingForm extends React.Component {
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
+  closeEditingMode = () => {
+    this.setState({ isEditing: false });
+  };
+
   checkPropsOnMoreUpdation = prevProps => {
-    const { dispatch, defaultAddressId, isMobile } = this.props;
+    const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
-    if (defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
-      if (isMobile) {
-        this.toggleAddEditModal({ type: 'add' });
-      } else {
-        dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-        this.setState({ isEditing: false });
-      }
+    if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
+      dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
+      this.closeEditingMode();
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -137,8 +125,7 @@ class ShippingForm extends React.Component {
 
   toggleAddressState = () => {
     const { isAddNewAddress } = this.props;
-    const { modalState } = this.state;
-    if (!modalState && this.isAddressModalEmptied) {
+    if (this.isAddressModalEmptied) {
       this.isAddressModalEmptied = false;
     }
     if (!isAddNewAddress && this.addNewAddressEnabled) {
@@ -148,83 +135,86 @@ class ShippingForm extends React.Component {
 
   toggleIsEditing = () => {
     const { isEditing } = this.state;
-    this.setState({ isEditing: !isEditing });
-  };
-
-  toggleAddEditModal = ({ type, e }) => {
-    if (e) e.preventDefault();
-    const { defaultAddressId, dispatch } = this.props;
-    const { modalState, isEditingMobileMode } = this.state;
-    this.setState({ modalType: type, modalState: !modalState });
-    if (modalState && type === 'add') {
-      dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-    }
-    if (isEditingMobileMode) {
-      this.setState({ isEditingMobileMode: !isEditingMobileMode });
-    }
+    this.setState({ isEditing: !isEditing, editShipmentDetailsError: '' });
   };
 
   renderEmailSignUp = () => {
-    const { orderHasPickUp, isGuest, isUsSite, labels } = this.props;
+    const { orderHasPickUp, isGuest, isUsSite, emailSignUpLabels, emailSignUpFlags } = this.props;
     return (
       !orderHasPickUp &&
       isGuest &&
       !isUsSite && (
-        <FormSection name="emailSignUp">
-          <div className="email-signup-container">
-            <Field
-              dataLocator="signUp-checkbox-field"
-              name="sendEmailSignup"
-              component={InputCheckbox}
-              className="email-signup"
-            >
-              <BodyCopy
-                dataLocator="pickup-email-signUp-heading-lbl"
-                fontSize="fs16"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-            </Field>
-            <div className="email-signup-text">
-              <BodyCopy
-                dataLocator="pickup-email-signUp-sub-heading-text"
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
-              <Anchor
-                noUnderline
-                anchorVariation="primary"
-                fontSizeVariation="small"
-                noLink
-                href="#"
-                target="_blank"
-                dataLocator="shipping-email-signUp-contact-anchor"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
-              </Anchor>
-            </div>
-          </div>
-        </FormSection>
+        <EmailSignUpCheckBox
+          labels={emailSignUpLabels}
+          fieldName="emailSignUp"
+          bottomSeparator
+          emailSignUpFlags={emailSignUpFlags}
+        />
       )
     );
+  };
+
+  handleSubmit = e => {
+    const { handleSubmit, emailSignUpLabels } = this.props;
+    const { isEditing } = this.state;
+
+    if (isEditing) {
+      e.preventDefault();
+      this.setState({
+        editShipmentDetailsError: emailSignUpLabels.shippingAddressEditError,
+      });
+      return this.editShippingErrorRef.current.scrollIntoView(false);
+    }
+    return handleSubmit(e);
+  };
+
+  renderGiftServices = () => {
+    const { isGiftServicesChecked, dispatch } = this.props;
+    return (
+      <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+        <GiftServices
+          showDefaultCheckbox={false}
+          formName={formName}
+          formSection="giftServices"
+          variation="secondary"
+          isGiftServicesChecked={isGiftServicesChecked}
+          dispatch={dispatch}
+        />
+      </Col>
+    );
+  };
+
+  renderShippingErrors = () => {
+    const { ServerErrors } = this.props;
+    if (!ServerErrors) {
+      return null;
+    }
+    return <ServerErrors />;
+  };
+
+  /**
+   * @function handleShipIntClick
+   * function to open country selector popup on shipping page
+   */
+  handleShipIntClick = e => {
+    const { toggleCountrySelector } = this.props;
+    e.preventDefault();
+    toggleCountrySelector({ isModalOpen: true });
+  };
+
+  getClassName = () => {
+    const { userAddresses, shippingAddress } = this.props;
+    return (userAddresses && userAddresses.size !== 0) || shippingAddress
+      ? 'hide-on-desktop hide-on-tablet'
+      : '';
   };
 
   render() {
     const {
       addressLabels: { addressFormLabels },
-      handleSubmit,
       className,
       dispatch,
       isOrderUpdateChecked,
-      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -235,7 +225,6 @@ class ShippingForm extends React.Component {
       routeToPickupPage,
       isSaveToAddressBookChecked,
       isUsSite,
-      userAddresses,
       shippingAddressId,
       toggleAddNewAddress,
       isAddNewAddress,
@@ -248,8 +237,13 @@ class ShippingForm extends React.Component {
       isVenmoPaymentInProgress,
       isVenmoShippingDisplayed,
       showAccordian,
+      isMobile,
+      pageCategory,
+      isLoadingShippingMethods,
+      checkoutRoutingDone,
+      bagLoading,
     } = this.props;
-    const { isEditing, modalType, modalState } = this.state;
+    const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
       isVenmoPaymentInProgress && !isVenmoShippingDisplayed
         ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
@@ -259,56 +253,67 @@ class ShippingForm extends React.Component {
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
+        {this.renderShippingErrors()}
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
           fontWeight="regular"
           data-locator="shipping-details"
-          className={`elem-mb-XS elem-mt-MED ${
-            (userAddresses && userAddresses.size !== 0) || shippingAddress
-              ? 'hide-on-desktop hide-on-tablet'
-              : ''
-          }`}
+          className={`elem-mb-XS elem-mt-MED ${this.getClassName()}`}
         >
           {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
         </BodyCopy>
-        <form name={formName} className={className} onSubmit={handleSubmit} isEditing={isEditing}>
-          {!isGuest && (
-            <RegisteredShippingForm
-              {...this.props}
-              isEditing={isEditing}
-              toggleIsEditing={this.toggleIsEditing}
-              dispatch={dispatch}
-              isAddNewAddress={isAddNewAddress}
-              toggleAddNewAddress={toggleAddNewAddress}
-              isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-              modalType={modalType}
-              modalState={modalState}
-              toggleAddEditModal={this.toggleAddEditModal}
-              shippingAddressId={shippingAddressId}
-              updateShippingAddress={updateShippingAddress}
-              addNewShippingAddress={addNewShippingAddress}
-              shippingAddress={shippingAddress}
-              labels={labels}
-              setDefaultAddressId={setDefaultAddressId}
-              syncErrorsObject={syncErrorsObject}
-            />
-          )}
-          {isGuest && (
-            <div className="address-form">
-              <FormSection name="address">
-                <AddressFields
-                  addressFormLabels={addressFormLabels}
-                  showDefaultCheckbox={false}
-                  formName={formName}
-                  formSection="address"
-                  variation="secondary"
+        <form
+          name={formName}
+          className={className}
+          onSubmit={this.handleSubmit}
+          isEditing={isEditing}
+        >
+          {!bagLoading && checkoutRoutingDone ? (
+            <>
+              {!isGuest && (
+                <RegisteredShippingForm
+                  {...this.props}
+                  isEditing={isEditing}
+                  isMobile={isMobile}
+                  toggleIsEditing={this.toggleIsEditing}
                   dispatch={dispatch}
-                  addressPhoneNo={addressPhoneNo}
-                  loadShipmentMethods={loadShipmentMethods}
+                  isAddNewAddress={isAddNewAddress}
+                  toggleAddNewAddress={toggleAddNewAddress}
+                  isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                  shippingAddressId={shippingAddressId}
+                  updateShippingAddress={updateShippingAddress}
+                  addNewShippingAddress={addNewShippingAddress}
+                  shippingAddress={shippingAddress}
+                  labels={labels}
+                  afterAddressUpdate={this.closeEditingMode}
+                  setDefaultAddressId={setDefaultAddressId}
+                  syncErrorsObject={syncErrorsObject}
+                  errorMessageRef={this.editShippingErrorRef}
+                  editShipmentDetailsError={editShipmentDetailsError}
+                  handleShipIntClick={this.handleShipIntClick}
                 />
-              </FormSection>
-            </div>
+              )}
+              {isGuest && (
+                <div className="address-form">
+                  <FormSection name="address">
+                    <AddressFields
+                      addressFormLabels={addressFormLabels}
+                      showDefaultCheckbox={false}
+                      formName={formName}
+                      formSection="address"
+                      variation="secondary"
+                      dispatch={dispatch}
+                      addressPhoneNo={addressPhoneNo}
+                      loadShipmentMethods={loadShipmentMethods}
+                      handleShipIntClick={this.handleShipIntClick}
+                    />
+                  </FormSection>
+                </div>
+              )}
+            </>
+          ) : (
+            <GenericSkeleton />
           )}
           {!orderHasPickUp && isUsSite && (
             <FormSection name="smsSignUp">
@@ -342,22 +347,19 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
+                    checkoutRoutingDone={checkoutRoutingDone}
                   />
                 </div>
               </FormSection>
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <GiftServices
-                showDefaultCheckbox={false}
-                formName={formName}
-                formSection="giftServices"
-                variation="secondary"
-                isGiftServicesChecked={isGiftServicesChecked}
-                dispatch={dispatch}
-              />
-            </Col>
+            {this.renderGiftServices()}
           </Row>
-          <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+          <CheckoutOrderInfo
+            showAccordian={showAccordian}
+            isGuest={isGuest}
+            pageCategory={pageCategory}
+          />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
@@ -368,7 +370,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
-            disableNext={isEditing}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>
@@ -389,5 +391,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

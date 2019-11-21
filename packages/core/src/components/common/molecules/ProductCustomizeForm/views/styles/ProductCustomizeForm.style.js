@@ -56,6 +56,7 @@ const styles = css`
   }
 
   .color-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     .dropdownDivOverFlow {
       display: inline-block;

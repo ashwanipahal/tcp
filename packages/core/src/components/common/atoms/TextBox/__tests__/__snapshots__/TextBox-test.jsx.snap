@@ -3,6 +3,7 @@
 exports[`Textbox component renders correctly 1`] = `
 <label
   className="asdfasdf input-fields-wrapper textbox_validation_success"
+  htmlFor="abcd"
 >
   <input
     aria-describedby="textbox__error__undefined"

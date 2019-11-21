@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
@@ -12,7 +13,8 @@ const getHeader = (labels, ledgerSummaryData) => {
   return (
     <div className="elem-mb-SM order-ledger-header">
       <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal &&
+          orderBalanceTotal.toFixed(2)})`}
       </BodyCopy>
     </div>
   );
@@ -25,39 +27,51 @@ const OrderLedger = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
+  orderLedgerAfterView,
+  pageCategory,
+  bagLoading,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = OrderLedgerUtils.getBody(className, summaryData, labels);
+  const body = OrderLedgerUtils.getBody(
+    className,
+    summaryData,
+    labels,
+    pageCategory,
+    orderLedgerAfterView,
+    bagLoading
+  );
+
   return (
-    <div className={`${className} elem-mb-MED`}>
+    <div className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}>
       <Col
         colSize={{
           large: 12,
           medium: 8,
           small: 6,
         }}
-        ignoreGutter={{ small: true, medium: true }}
-        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        ignoreGutter={{ small: true }}
       >
         <CollapsibleContainer
-          className={`${''} ${showAccordian ? 'orderLedgerAccordian' : ''}`}
+          className={`${showAccordian ? 'orderLedgerAccordian' : ''}`}
           header={header}
           body={body}
           iconLocator="arrowicon"
           defaultOpen={false}
+          isDefaultView={!showAccordian}
+          showHeaderAlways={isConfirmationPage}
         />
       </Col>
-      <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
     </div>
   );
 };
 
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
+  bagLoading: PropTypes.bool,
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
     grandTotal: PropTypes.number,
@@ -72,6 +86,8 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  pageCategory: PropTypes.string,
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
   confirmationPageLedgerSummaryData: PropTypes.shape({
@@ -85,6 +101,7 @@ OrderLedger.propTypes = {
     giftCardsTotal: PropTypes.number,
     currencySymbol: PropTypes.string.isRequired,
     orderBalanceTotal: PropTypes.number,
+    totalOrderSavings: PropTypes.number,
   }),
 };
 
@@ -93,6 +110,8 @@ OrderLedger.defaultProps = {
   labels: {},
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
+  pageCategory: '',
+  bagLoading: false,
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

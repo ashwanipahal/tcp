@@ -17,6 +17,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -97,6 +98,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -131,6 +135,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -155,6 +162,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -192,6 +200,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -272,6 +281,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -306,6 +318,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -330,6 +345,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -527,6 +543,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         id=".phoneNumber"
         maxLength={50}
         name="phoneNumber"
+        normalize={[Function]}
         type="tel"
       />
     </Styled(Col)>
@@ -577,6 +594,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -657,6 +675,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -691,6 +712,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                 ";
 ",
@@ -715,6 +739,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -912,6 +937,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         id=".phoneNumber"
         maxLength={50}
         name="phoneNumber"
+        normalize={[Function]}
         type="tel"
       />
     </Styled(Col)>

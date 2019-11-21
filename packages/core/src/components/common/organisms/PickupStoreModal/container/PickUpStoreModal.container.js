@@ -3,6 +3,7 @@ import {
   PRODUCT_ADD_TO_BAG,
   PRODUCT_SKU_SELECTION_FORM,
 } from '@tcp/core/src/constants/reducer.constants';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
 import * as sessionSelectors from '../../../../../reduxStore/selectors/session.selectors';
@@ -16,8 +17,12 @@ import {
   getUserCartStores,
 } from './PickUpStoreModal.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
-import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -35,6 +40,12 @@ export const mapDispatchToProps = dispatch => {
     },
     addItemToCartInPickup: payload => {
       dispatch(addItemToCartBopis(payload));
+    },
+    updatePickUpCartItem: payload => {
+      dispatch(updateCartItem(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };
@@ -64,7 +75,13 @@ const mapStateToProps = (state, ownProps) => {
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
   const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
-
+  const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
+  const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
+  const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
+  const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
+  const alwaysSearchForBOSS = PickupSelectors.getAlwaysSearchForBOSS(state);
+  const openRestrictedModalForBopis = PickupSelectors.openRestrictedModalForBopis(state);
+  const isGetUserStoresLoaded = PickupSelectors.getIsGetUserStoresLoaded(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -74,7 +91,7 @@ const mapStateToProps = (state, ownProps) => {
     cartBopisStoresList: PickupSelectors.getStoresOnCart(state),
     distancesMap,
     isShowExtendedSizesNotification: false,
-    initialValues: itemValues.formValues,
+    initialValues: fromBagPage ? initialValuesFromBagPage : itemValues.formValues,
     showDefaultSizeMsg: itemValues.showDefaultSizeMsg,
     isPickupStoreUpdating: false,
     requestorKey: '',
@@ -84,6 +101,8 @@ const mapStateToProps = (state, ownProps) => {
     isBossCtaEnabled,
     isPickUpWarningModal,
     openSkuSelectionForm,
+    alwaysSearchForBOSS,
+    openRestrictedModalForBopis,
     isCanada: isCanada(),
     addToBagError: getAddedToPickupError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
@@ -99,7 +118,12 @@ const mapStateToProps = (state, ownProps) => {
     currentProduct,
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
     navigation,
+    updateCartItemStore,
+    initialValuesFromBagPage,
+    isItemShipToHome,
+    isGetUserStoresLoaded,
   };
 };
 

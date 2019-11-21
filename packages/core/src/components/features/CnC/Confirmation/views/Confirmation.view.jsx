@@ -8,39 +8,15 @@ import CheckoutOrderInfo from '../../Checkout/molecules/CheckoutOrderInfoMobile'
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
-import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIfNotShippingFullName
- * @description return boolean value if shippingFullname is present .
- */
-const checkIfShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
-  return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
-    center => !!center.shippingFullname
-  );
-};
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIfNotShippingFullName
- * @description return boolean value if shippingFullname is not present .
- */
-const checkIfNotShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
-  return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
-    center => !center.shippingFullname
-  );
-};
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIffullfillmentCenterMap
- * @description return boolean value if fullfillmentCenterMap is present .
- */
-const checkIffullfillmentCenterMap = orderNumbersByFullfillmentCenter => {
-  return orderNumbersByFullfillmentCenter && orderNumbersByFullfillmentCenter.fullfillmentCenterMap;
-};
+import LoyaltyBanner from '../../LoyaltyBanner';
+import {
+  checkIfShippingFullName,
+  checkIfNotShippingFullName,
+  checkIffullfillmentCenterMap,
+} from './Confirmation.util';
+import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import SMSNotifications from '../organisms/SMSNotifications';
 
 const renderAccountForm = isGuest => {
   return (
@@ -52,6 +28,15 @@ const renderAccountForm = isGuest => {
       </Row>
     )
   );
+};
+
+const renderSMSNotification = (labels, isGymboreeCanadaSite) => {
+  return !isGymboreeCanadaSite ? (
+    <Row fullBleed className="smsNotification">
+      <Col colSize={{ small: 6, medium: 8, large: 12 }} />
+      <SMSNotifications labels={labels} />
+    </Row>
+  ) : null;
 };
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
@@ -72,6 +57,8 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
   venmoUserName,
+  pageCategory,
+  isGymboreeCanadaSite,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
   let venmoPayment = {};
@@ -123,6 +110,8 @@ const ConfirmationView = ({
           <div>SMS SIGN UP</div>
         </Col>
       </Row>
+      {renderSMSNotification(labels, isGymboreeCanadaSite)}
+
       <Row fullBleed className="thank-you-component">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ThankYouComponent
@@ -148,16 +137,17 @@ const ConfirmationView = ({
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>LOYALTY BANNER</div>
+          {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
-      {renderAccountForm(isGuest)}
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         venmoPayment={venmoPayment}
         labels={labels}
+        pageCategory={pageCategory}
       />
+      {renderAccountForm(isGuest)}
     </div>
   );
 };
@@ -191,6 +181,8 @@ ConfirmationView.propTypes = {
   orderShippingDetails: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoUserName: PropTypes.string,
+  pageCategory: PropTypes.string,
+  isGymboreeCanadaSite: PropTypes.bool,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -201,6 +193,9 @@ ConfirmationView.defaultProps = {
   orderShippingDetails: null,
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
+  pageCategory: '',
+  isGymboreeCanadaSite: false,
 };
+
 export default withStyles(ConfirmationView, styles);
 export { ConfirmationView as ConfirmationViewVanilla };

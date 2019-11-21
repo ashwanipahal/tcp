@@ -14,10 +14,12 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
       >
         <Styled(Image)
           alt="menu"
+          aria-label="menu"
           className="hamburger-menu"
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/grey-menu.svg"
           tabIndex="0"
         />
@@ -29,20 +31,14 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         imgSrc="/static/images/tcp-logo.svg"
       />
       <div
-        className="condensed-navigation"
-      >
-        <Connect(Styled(Navigation))
-          closeNavigationDrawer={true}
-          openNavigationDrawer={false}
-        />
-      </div>
-      <div
         className="condensed-header-icons"
       >
         <Connect(Styled(SearchBar))
           className="rightLink search-icon"
           fromCondensedHeader={true}
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
@@ -63,6 +59,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         </Styled(Anchor)>
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="cart 0 item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -77,6 +74,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             src="/static/images/bag-icon-blue.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -86,6 +84,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0

@@ -17,6 +17,7 @@ exports[`Add gift card component should render component correctly 1`] = `
   shouldError={[Function]}
   shouldValidate={[Function]}
   shouldWarn={[Function]}
+  showNotification={false}
   submitAsSideEffect={false}
   toggleModal={[Function]}
   touchOnBlur={true}

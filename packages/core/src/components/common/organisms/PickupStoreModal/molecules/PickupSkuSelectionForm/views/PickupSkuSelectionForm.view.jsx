@@ -6,7 +6,7 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Row, BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, {
@@ -29,13 +29,16 @@ const PickupSkuSelectionForm = props => {
     isHasPlcc,
     className,
     onChangeColor,
+    onChangeSize,
     currentColorEntry,
     imageUrl,
     generalProductId,
     navigateToPDP,
+    currencyAttributes,
   } = props;
   const productPriceProps = {
     currencySymbol: currency,
+    currencyAttributes,
     isItemPartNumberVisible: false,
     ...prices,
     isCanada,
@@ -47,7 +50,7 @@ const PickupSkuSelectionForm = props => {
 
   const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
 
-  const pdpToPath = getProductListToPath(currentColorPdpUrl);
+  const pdpToPath = currentColorPdpUrl && getProductListToPath(currentColorPdpUrl);
 
   const getProductDetailContainer = () => {
     return (
@@ -68,12 +71,17 @@ const PickupSkuSelectionForm = props => {
     );
   };
 
+  const imgData = {
+    alt: 'Error',
+    url: imageUrl,
+  };
+
   return (
     <Row className={className}>
       <div className="product-customize-form-container">
         <div className="image-title-wrapper">
           <div className="image-wrapper">
-            <Image alt="Error" src={imageUrl} />
+            <DamImage imgData={imgData} isProductImage />
           </div>
           <div className="product-details-card-container-separate">
             <BodyCopy
@@ -102,12 +110,16 @@ const PickupSkuSelectionForm = props => {
 
           <ProductAddToBagContainer
             onChangeColor={onChangeColor}
+            onChangeSize={onChangeSize}
             plpLabels={SKU_DETAILS}
             currentProduct={currentProduct}
             customFormName={PRODUCT_SKU_SELECTION_FORM}
             selectedColorProductId={generalProductId}
             initialFormValues={initialValues}
             showAddToBagCTA={false}
+            renderReceiveProps
+            isDisableZeroInventoryEntries={false}
+            isPickup
           />
         </div>
       </div>
@@ -144,6 +156,7 @@ PickupSkuSelectionForm.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -157,6 +170,7 @@ PickupSkuSelectionForm.propTypes = {
   generalProductId: PropTypes.string.isRequired,
 
   onChangeColor: PropTypes.func,
+  onChangeSize: PropTypes.func,
   currentColorEntry: PropTypes.shape({}),
   imageUrl: PropTypes.string.isRequired,
   navigateToPDP: PropTypes.func.isRequired,
@@ -168,6 +182,7 @@ PickupSkuSelectionForm.defaultProps = {
   isHasPlcc: false,
   className: '',
   onChangeColor: () => {},
+  onChangeSize: () => {},
   currentColorEntry: {},
 };
 

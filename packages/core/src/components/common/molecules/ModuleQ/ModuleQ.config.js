@@ -10,7 +10,8 @@ export default {
     centerMode: true,
     centerPadding: '0px',
     fade: false,
-    speed: 500,
+    speed: 200,
+    swipeToSlide: true,
     dots: true,
     swipe: true,
     infinite: true,
@@ -45,7 +46,7 @@ export default {
       LOOP_CLONES_PER_SIDE: 2,
       INACTIVE_SLIDE_SCALE: 0.75,
       INACTIVE_SLIDE_OPACITY: 0.6,
-      ITEM_WIDTH: 230,
+      ITEM_WIDTH: 240,
     },
   },
   IMG_DATA: {

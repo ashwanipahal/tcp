@@ -81,6 +81,14 @@ export default {
   moduleJ_cta_link: 'moduleJ_cta_links_',
   moduleJ_cta_btn: 'moduleJ_cta_btn',
 
+  // Module G
+  moduleG_header_text: 'moduleG_header_text',
+  moduleG_promobanner_text: 'moduleG_promobanner_text',
+  moduleG_image: 'moduleG_image_',
+  moduleG_cta_link: 'moduleG_cta_links_',
+  moduleG_add_to_bag_btn: 'moduleG_add_to_bag_btn',
+  moduleG_shop_all_link: 'moduleG_shop_all_link',
+
   // Module Q
   moduleQ_header_text: 'moduleQ_header_text',
   moduleQ_promobanner_text: 'moduleQ_promobanner_text',
@@ -95,6 +103,35 @@ export default {
   moduleR_product_image: 'moduleR_product_image_',
   moduleR_cta_link: 'moduleR_cta_links_',
   moduleR_cta_btn: 'moduleR_cta_btn',
+
+  // Module T
+  moduleT_header_text: 'moduleT_header_text',
+  moduleT_promobanner_text: 'moduleT_promobanner_text',
+  moduleT_promobanner_img: 'moduleT_promobanner_img_',
+  moduleT_cta_links: 'moduleT_cta_links_',
+  moduleT_cta_image: 'moduleT_cta_image_',
+
+  // Module E
+  moduleE_eyebrowImage_img: 'moduleE_eyebrowImage_img_',
+  moduleE_eyebrow_text: 'moduleE_eyebrow_text',
+  moduleE_header_text: 'moduleE_header_text',
+  moduleE_promo_text: 'moduleE_promo_text',
+  moduleE_promobanner_text: 'moduleE_promobanner_text',
+  moduleE_carousel_img: 'moduleE_carousel_img_',
+  moduleE_carousel_cta: 'moduleE_carousel_cta_',
+  moduleE_small_image: 'moduleE_small_image_',
+  moduleE_small_img_header_text: 'moduleE_small_img_header_text_',
+  moduleE_small_img_cta: 'moduleE_small_img_cta_',
+  moduleE_small_img: 'moduleE_small_img_',
+  moduleE_promo_area_img: 'moduleE_promo_area_img',
+  moduleE_promo_area_img_cta: 'moduleE_promo_area_img_cta',
+  moduleE_cta_image: 'moduleE_cta_image_',
+  moduleE_cta_links: 'moduleE_cta_links_',
+  moduleE_dropdown: 'moduleE_shop_now_dropdown',
+  moduleE_carousel_image_img: 'moduleE_carousel_image_img_',
+  moduleE_carousel_image_link_cta: 'moduleE_carousel_image_link_cta_',
+  moduleE_carousel_image_button_cta: 'moduleE_carousel_image_button_cta_',
+  moduleE_carousel_image_link: 'moduleE_carousel_image_link_',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
@@ -204,6 +241,12 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // SEO text
+  seo_title: 'seo_title',
+  seo_body: 'seo_body',
+  seo_readmore: 'seo_readmore',
+  seo_readless: 'seo_readless',
 
   // PLP Review Ratings
   plp_rating_review: 'plp_rating_review_text',
@@ -357,4 +400,27 @@ export default {
   store_USCanadagymboreetstorelabel: 'store_USCanadagymboreetstorelabel',
   store_USCanadastatelabel: 'store_USCanadastatelabel',
   store_USCanadastateaccordion: 'store_USCanadastateaccordion',
+
+  // gift services
+  gift_service: 'gift-service',
+  giftservice_detailslnk: 'giftservice-detailslnk',
+  addMessage_txt: 'addMessage-txt',
+  logo_TCP: 'logo-TCP',
+  logo_gymboree: 'logo-gymboree',
+  giftService_list: 'giftService-list',
+  details_modal: 'details-modal',
+
+  // favorite list
+  fav_brand_title: 'Brand',
+  fav_brand_tcp_lbl: 'The Childrens Place',
+  fav_brand_gym_lbl: 'Gymboree',
+  fav_lbl_myFavorites: 'My Favorites',
+  fav_lbl_editListSettings: 'Edit List Settings',
+
+  // module M
+  moduleM_header_text: 'moduleM_header_text',
+  moduleM_promobanner_text: 'moduleM_promobanner_text',
+  moduleM_image: 'moduleM_image',
+  moduleM_cta_btn: 'moduleM_cta_btn',
+  moduleM_cta_links: 'moduleM_cta_links',
 };

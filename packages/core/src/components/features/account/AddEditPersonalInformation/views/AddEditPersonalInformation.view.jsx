@@ -34,7 +34,7 @@ export const AddEditPersonalInformation = ({
       </BodyCopy>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_profile_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
         dataLocator="pi-profileinformationheading"
       />
       <AddEditPersonalInformationForm
