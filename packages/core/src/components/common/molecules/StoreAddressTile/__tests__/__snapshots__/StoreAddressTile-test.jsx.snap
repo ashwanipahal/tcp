@@ -2777,6 +2777,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
               "customEvents": Array [
                 "event97",
               ],
+              "pageName": "storelocator:",
             }
           }
           fontSizeVariation="medium"
@@ -3180,6 +3181,12 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
             "customEvents": Array [
               "event80,event96",
             ],
+            "eVar28": "outfit:2625899",
+            "eVar65": "companyinfo:companyinfo",
+            "pageName": "companyinfo:companyinfo",
+            "pageSection": "companyInfo",
+            "pageSubSection": "companyInfo",
+            "pageType": "companyInfo",
           }
         }
         fontSizeVariation="medium"
@@ -3194,135 +3201,24 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       </Connect(Component)>
     </div>
     <div>
-      <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+      <Styled(Button)
         buttonVariation="fixed-width"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event67",
-            ],
-          }
-        }
         data-locator="set-favorite-store"
         onClick={[Function]}
         type="button"
       >
-        SET AS FAVORITE
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
     </div>
   </styled.div>
 </div>
@@ -3513,6 +3409,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
               "customEvents": Array [
                 "event97",
               ],
+              "pageName": "storelocator:",
             }
           }
           fontSizeVariation="medium"
@@ -3949,6 +3846,12 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             "customEvents": Array [
               "event80,event96",
             ],
+            "eVar28": "outfit:2625899",
+            "eVar65": "companyinfo:companyinfo",
+            "pageName": "companyinfo:companyinfo",
+            "pageSection": "companyInfo",
+            "pageSubSection": "companyInfo",
+            "pageType": "companyInfo",
           }
         }
         fontSizeVariation="medium"
@@ -3963,135 +3866,24 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       </Connect(Component)>
     </div>
     <div>
-      <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+      <Styled(Button)
         buttonVariation="fixed-width"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event67",
-            ],
-          }
-        }
         data-locator="set-favorite-store"
         onClick={[Function]}
         type="button"
       >
-        SET AS FAVORITE
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
     </div>
   </styled.div>
 </div>
@@ -4283,6 +4075,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
               "customEvents": Array [
                 "event97",
               ],
+              "pageName": "storelocator:",
             }
           }
           fontSizeVariation="medium"
@@ -4719,6 +4512,12 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
             "customEvents": Array [
               "event80,event96",
             ],
+            "eVar28": "outfit:2625899",
+            "eVar65": "companyinfo:companyinfo",
+            "pageName": "companyinfo:companyinfo",
+            "pageSection": "companyInfo",
+            "pageSubSection": "companyInfo",
+            "pageType": "companyInfo",
           }
         }
         fontSizeVariation="medium"
@@ -4932,6 +4731,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
               "customEvents": Array [
                 "event97",
               ],
+              "pageName": "storelocator:",
             }
           }
           fontSizeVariation="medium"
@@ -5277,6 +5077,12 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             "customEvents": Array [
               "event80,event96",
             ],
+            "eVar28": "outfit:2625899",
+            "eVar65": "companyinfo:companyinfo",
+            "pageName": "companyinfo:companyinfo",
+            "pageSection": "companyInfo",
+            "pageSubSection": "companyInfo",
+            "pageType": "companyInfo",
           }
         }
         fontSizeVariation="medium"
@@ -5291,135 +5097,24 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       </Connect(Component)>
     </div>
     <div>
-      <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+      <Styled(Button)
         buttonVariation="fixed-width"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event67",
-            ],
-          }
-        }
         data-locator="set-favorite-store"
         onClick={[Function]}
         type="button"
       >
-        SET AS FAVORITE
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
     </div>
   </styled.div>
 </div>

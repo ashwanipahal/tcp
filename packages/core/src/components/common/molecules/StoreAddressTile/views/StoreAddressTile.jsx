@@ -69,6 +69,8 @@ class StoreAddressTile extends PureComponent {
       store,
       openStoreDetails,
     } = this.props;
+    const pageData = 'companyinfo:companyinfo';
+    const pageVal = 'companyInfo';
     return (
       <Fragment>
         <div>
@@ -83,7 +85,15 @@ class StoreAddressTile extends PureComponent {
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
             as={Anchor}
-            clickData={{ customEvents: ['event80,event96'] }}
+            clickData={{
+              customEvents: ['event80,event96'],
+              pageType: pageVal,
+              pageSection: pageVal,
+              pageSubSection: pageVal,
+              pageName: pageData,
+              eVar65: pageData,
+              eVar28: 'outfit:2625899',
+            }}
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </ClickTracker>
@@ -91,16 +101,16 @@ class StoreAddressTile extends PureComponent {
         <div>
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <ClickTracker
-              as={Button}
-              clickData={{ customEvents: ['event67'] }}
+            <Button
               onClick={() => setFavoriteStore(store)}
               buttonVariation="fixed-width"
               type="button"
               data-locator={locatorSetFavStore}
             >
-              {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
-            </ClickTracker>
+              <ClickTracker clickData={{ customEvents: ['event67'] }}>
+                {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+              </ClickTracker>
+            </Button>
           )}
         </div>
       </Fragment>
@@ -294,7 +304,7 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-            clickData={{ customEvents: ['event97'] }}
+            clickData={{ customEvents: ['event97'], pageName: 'storelocator:' }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </ClickTracker>
