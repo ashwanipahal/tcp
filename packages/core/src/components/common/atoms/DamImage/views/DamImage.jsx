@@ -1,14 +1,12 @@
 import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import dynamic from 'next/dynamic';
+import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
-import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
-import {
-  configureInternalNavigationFromCMSUrl,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../utils';
+
+const VideoPlayer = dynamic(() => import('../../VideoPlayer'));
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;

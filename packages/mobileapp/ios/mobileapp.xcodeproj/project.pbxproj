@@ -468,6 +468,99 @@
 		D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
+		D96E3BB5238587A6007879C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
+		D96E3BB7238587A6007879C7 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F750453237F5267008AC8FA /* libRCTVideo.a */; };
+		D96E3BB8238587A6007879C7 /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		D96E3BB9238587A6007879C7 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
+		D96E3BBA238587A6007879C7 /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
+		D96E3BBB238587A6007879C7 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
+		D96E3BBC238587A6007879C7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		D96E3BBD238587A6007879C7 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D96E3BBE238587A6007879C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		D96E3BBF238587A6007879C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		D96E3BC0238587A6007879C7 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
+		D96E3BC1238587A6007879C7 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
+		D96E3BC2238587A6007879C7 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
+		D96E3BC3238587A6007879C7 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
+		D96E3BC4238587A6007879C7 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		D96E3BC5238587A6007879C7 /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
+		D96E3BC6238587A6007879C7 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		D96E3BC7238587A6007879C7 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		D96E3BC8238587A6007879C7 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
+		D96E3BC9238587A6007879C7 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
+		D96E3BCA238587A6007879C7 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
+		D96E3BCB238587A6007879C7 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
+		D96E3BCC238587A6007879C7 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
+		D96E3BCD238587A6007879C7 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
+		D96E3BCE238587A6007879C7 /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B31492B436BA4064AC5AF57E /* libRNCookieManagerIOS.a */; };
+		D96E3BCF238587A6007879C7 /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67770E78A8FC4687B1501BAA /* libRNPrint.a */; };
+		D96E3BD0238587A6007879C7 /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5713CC2B55449EB928CCC0D /* libRNViewShot.a */; };
+		D96E3BD1238587A6007879C7 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D4E1E6A5B146E0B1EE4742 /* libRCTFBSDK.a */; };
+		D96E3BD2238587A6007879C7 /* libRNCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A134EC073204EB9988F9374 /* libRNCardIO.a */; };
+		D96E3BD3238587A6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F52D7A2B6C72466D88A9E035 /* libRNCheckNotificationPermission.a */; };
+		D96E3BD4238587A6007879C7 /* Pods_mobileapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46843E8DB92D345C028C38C8 /* Pods_mobileapp.framework */; };
+		D96E3BD6238587A6007879C7 /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
+		D96E3BD7238587A6007879C7 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
+		D96E3BD8238587A6007879C7 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
+		D96E3BD9238587A6007879C7 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		D96E3BDA238587A6007879C7 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
+		D96E3BDB238587A6007879C7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
+		D96E3BDC238587A6007879C7 /* mobileapp_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */; };
+		D96E3BDD238587A6007879C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		D96E3BDE238587A6007879C7 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		D96E3BDF238587A6007879C7 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		D96E3BE0238587A6007879C7 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
+		D96E3BE1238587A6007879C7 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
+		D96E3BE2238587A6007879C7 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
+		D96E3BE3238587A6007879C7 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		D96E3BE4238587A6007879C7 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		D96E3BE5238587A6007879C7 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		D96E3BE6238587A6007879C7 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		D96E3C2F238588F6007879C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
+		D96E3C31238588F6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		D96E3C32238588F6007879C7 /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		D96E3C33238588F6007879C7 /* libRNCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7B6B4323436BAD00919C39 /* libRNCardIO.a */; };
+		D96E3C34238588F6007879C7 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		D96E3C35238588F6007879C7 /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		D96E3C36238588F6007879C7 /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		D96E3C37238588F6007879C7 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
+		D96E3C38238588F6007879C7 /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1769C46231008FF001C4FAA /* libRNCookieManagerIOS.a */; };
+		D96E3C39238588F6007879C7 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
+		D96E3C3A238588F6007879C7 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
+		D96E3C3B238588F6007879C7 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
+		D96E3C3C238588F6007879C7 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
+		D96E3C3D238588F6007879C7 /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
+		D96E3C3E238588F6007879C7 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8487902222F3D6B800A0494D /* libRNCAsyncStorage.a */; };
+		D96E3C3F238588F6007879C7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		D96E3C40238588F6007879C7 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D96E3C41238588F6007879C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		D96E3C42238588F6007879C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		D96E3C43238588F6007879C7 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
+		D96E3C44238588F6007879C7 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
+		D96E3C45238588F6007879C7 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
+		D96E3C46238588F6007879C7 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
+		D96E3C47238588F6007879C7 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		D96E3C48238588F6007879C7 /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
+		D96E3C49238588F6007879C7 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		D96E3C4A238588F6007879C7 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		D96E3C4B238588F6007879C7 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
+		D96E3C4C238588F6007879C7 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
+		D96E3C4D238588F6007879C7 /* Pods_gymboree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B347AC7697A5D30331471E /* Pods_gymboree.framework */; };
+		D96E3C4F238588F6007879C7 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
+		D96E3C50238588F6007879C7 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		D96E3C51238588F6007879C7 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
+		D96E3C52238588F6007879C7 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		D96E3C53238588F6007879C7 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
+		D96E3C54238588F6007879C7 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		D96E3C55238588F6007879C7 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		D96E3C56238588F6007879C7 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		D96E3C57238588F6007879C7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
+		D96E3C58238588F6007879C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		D96E3C59238588F6007879C7 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
+		D96E3C5A238588F6007879C7 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		D96E3C5B238588F6007879C7 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
+		D96E3C5C238588F6007879C7 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		D96E3C5D238588F6007879C7 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
 		DDA607A2D8AC62AB21457F1C /* Pods_gymboree_uat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CE1FE024F15DCC61F8F638 /* Pods_gymboree_uat.framework */; };
 		DF7E9579DCFF4C7DB2EF058C /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
 		E08921EB3FDB451CBC515DF6 /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F52D7A2B6C72466D88A9E035 /* libRNCheckNotificationPermission.a */; };
@@ -1035,6 +1128,10 @@
 		D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		D94ECAB222D70C2600D9D051 /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
 		D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		D96E3BED238587A6007879C7 /* My Place Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Place Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96E3C2B238587A6007879C7 /* mobileapp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "mobileapp copy-Info.plist"; path = "/Users/prasingh39/Documents/TCP/packages/mobileapp/ios/mobileapp copy-Info.plist"; sourceTree = "<absolute>"; };
+		D96E3C64238588F6007879C7 /* Gymboree-Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gymboree-Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96E3C65238588F7007879C7 /* gymboree copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "gymboree copy-Info.plist"; path = "/Users/prasingh39/Documents/TCP/packages/mobileapp/ios/gymboree copy-Info.plist"; sourceTree = "<absolute>"; };
 		DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
 		E50346409AA74BB4CC564E50 /* Pods-mobileapp_dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_dev.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp_dev/Pods-mobileapp_dev.debug.xcconfig"; sourceTree = "<group>"; };
 		E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mobileapp_prod-Info.plist"; sourceTree = "<group>"; };
@@ -1448,6 +1545,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E3BB6238587A6007879C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BB7238587A6007879C7 /* libRCTVideo.a in Frameworks */,
+				D96E3BB8238587A6007879C7 /* libRNTwitterSignIn.a in Frameworks */,
+				D96E3BB9238587A6007879C7 /* libART.a in Frameworks */,
+				D96E3BBA238587A6007879C7 /* libRNCNetInfo.a in Frameworks */,
+				D96E3BBB238587A6007879C7 /* libRNVectorIcons.a in Frameworks */,
+				D96E3BBC238587A6007879C7 /* JavaScriptCore.framework in Frameworks */,
+				D96E3BBD238587A6007879C7 /* libRCTBlob.a in Frameworks */,
+				D96E3BBE238587A6007879C7 /* libRCTAnimation.a in Frameworks */,
+				D96E3BBF238587A6007879C7 /* libReact.a in Frameworks */,
+				D96E3BC0238587A6007879C7 /* libRCTActionSheet.a in Frameworks */,
+				D96E3BC1238587A6007879C7 /* libRCTGeolocation.a in Frameworks */,
+				D96E3BC2238587A6007879C7 /* libRCTImage.a in Frameworks */,
+				D96E3BC3238587A6007879C7 /* libRCTLinking.a in Frameworks */,
+				D96E3BC4238587A6007879C7 /* libRCTNetwork.a in Frameworks */,
+				D96E3BC5238587A6007879C7 /* libRCTSettings.a in Frameworks */,
+				D96E3BC6238587A6007879C7 /* libRCTText.a in Frameworks */,
+				D96E3BC7238587A6007879C7 /* libRCTVibration.a in Frameworks */,
+				D96E3BC8238587A6007879C7 /* libRCTWebSocket.a in Frameworks */,
+				D96E3BC9238587A6007879C7 /* libRNGestureHandler.a in Frameworks */,
+				D96E3BCA238587A6007879C7 /* libRNCAsyncStorage.a in Frameworks */,
+				D96E3BCB238587A6007879C7 /* libRNKeychain.a in Frameworks */,
+				D96E3BCC238587A6007879C7 /* libTouchID.a in Frameworks */,
+				D96E3BCD238587A6007879C7 /* libReactNativeConfig.a in Frameworks */,
+				D96E3BCE238587A6007879C7 /* libRNCookieManagerIOS.a in Frameworks */,
+				D96E3BCF238587A6007879C7 /* libRNPrint.a in Frameworks */,
+				D96E3BD0238587A6007879C7 /* libRNViewShot.a in Frameworks */,
+				D96E3BD1238587A6007879C7 /* libRCTFBSDK.a in Frameworks */,
+				D96E3BD2238587A6007879C7 /* libRNCardIO.a in Frameworks */,
+				D96E3BD3238587A6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */,
+				D96E3BD4238587A6007879C7 /* Pods_mobileapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C30238588F6007879C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C31238588F6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */,
+				D96E3C32238588F6007879C7 /* libRNTwitterSignIn.a in Frameworks */,
+				D96E3C33238588F6007879C7 /* libRNCardIO.a in Frameworks */,
+				D96E3C34238588F6007879C7 /* libRCTFBSDK.a in Frameworks */,
+				D96E3C35238588F6007879C7 /* libRNPrint.a in Frameworks */,
+				D96E3C36238588F6007879C7 /* libRNViewShot.a in Frameworks */,
+				D96E3C37238588F6007879C7 /* libART.a in Frameworks */,
+				D96E3C38238588F6007879C7 /* libRNCookieManagerIOS.a in Frameworks */,
+				D96E3C39238588F6007879C7 /* libReactNativeConfig.a in Frameworks */,
+				D96E3C3A238588F6007879C7 /* libRNVectorIcons.a in Frameworks */,
+				D96E3C3B238588F6007879C7 /* libRNKeychain.a in Frameworks */,
+				D96E3C3C238588F6007879C7 /* libTouchID.a in Frameworks */,
+				D96E3C3D238588F6007879C7 /* libRNCNetInfo.a in Frameworks */,
+				D96E3C3E238588F6007879C7 /* libRNCAsyncStorage.a in Frameworks */,
+				D96E3C3F238588F6007879C7 /* JavaScriptCore.framework in Frameworks */,
+				D96E3C40238588F6007879C7 /* libRCTBlob.a in Frameworks */,
+				D96E3C41238588F6007879C7 /* libRCTAnimation.a in Frameworks */,
+				D96E3C42238588F6007879C7 /* libReact.a in Frameworks */,
+				D96E3C43238588F6007879C7 /* libRCTActionSheet.a in Frameworks */,
+				D96E3C44238588F6007879C7 /* libRCTGeolocation.a in Frameworks */,
+				D96E3C45238588F6007879C7 /* libRCTImage.a in Frameworks */,
+				D96E3C46238588F6007879C7 /* libRCTLinking.a in Frameworks */,
+				D96E3C47238588F6007879C7 /* libRCTNetwork.a in Frameworks */,
+				D96E3C48238588F6007879C7 /* libRCTSettings.a in Frameworks */,
+				D96E3C49238588F6007879C7 /* libRCTText.a in Frameworks */,
+				D96E3C4A238588F6007879C7 /* libRCTVibration.a in Frameworks */,
+				D96E3C4B238588F6007879C7 /* libRCTWebSocket.a in Frameworks */,
+				D96E3C4C238588F6007879C7 /* libRNGestureHandler.a in Frameworks */,
+				D96E3C4D238588F6007879C7 /* Pods_gymboree.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1779,6 +1949,8 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8BBF590722C0F18E003678A7 /* Recovered References */,
 				6D3F846AAD028AB8228B2259 /* Pods */,
+				D96E3C2B238587A6007879C7 /* mobileapp copy-Info.plist */,
+				D96E3C65238588F7007879C7 /* gymboree copy-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1801,6 +1973,8 @@
 				84677B36230BCECC001F5301 /* gymboree_int.app */,
 				84677B63230BCF01001F5301 /* gymboree_uat.app */,
 				84677B90230BCF37001F5301 /* gymboree_prod.app */,
+				D96E3BED238587A6007879C7 /* My Place Preview.app */,
+				D96E3C64238588F6007879C7 /* Gymboree-Preview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2178,6 +2352,48 @@
 			productReference = 8480857222D9B52500D7D25B /* gymboree.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D96E3BB2238587A6007879C7 /* mobileapp_preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96E3BEA238587A6007879C7 /* Build configuration list for PBXNativeTarget "mobileapp_preview" */;
+			buildPhases = (
+				D96E3BB3238587A6007879C7 /* [CP] Check Pods Manifest.lock */,
+				D96E3BB4238587A6007879C7 /* Sources */,
+				D96E3BB6238587A6007879C7 /* Frameworks */,
+				D96E3BD5238587A6007879C7 /* Resources */,
+				D96E3BE7238587A6007879C7 /* Bundle React Native code and images */,
+				D96E3BE8238587A6007879C7 /* [CP] Embed Pods Frameworks */,
+				D96E3BE9238587A6007879C7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mobileapp_preview;
+			productName = "Hello World";
+			productReference = D96E3BED238587A6007879C7 /* My Place Preview.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D96E3C2C238588F6007879C7 /* gymboree_preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96E3C61238588F6007879C7 /* Build configuration list for PBXNativeTarget "gymboree_preview" */;
+			buildPhases = (
+				D96E3C2D238588F6007879C7 /* [CP] Check Pods Manifest.lock */,
+				D96E3C2E238588F6007879C7 /* Sources */,
+				D96E3C30238588F6007879C7 /* Frameworks */,
+				D96E3C4E238588F6007879C7 /* Resources */,
+				D96E3C5E238588F6007879C7 /* Bundle React Native code and images */,
+				D96E3C5F238588F6007879C7 /* [CP] Embed Pods Frameworks */,
+				D96E3C60238588F6007879C7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gymboree_preview;
+			productName = "Hello World";
+			productReference = D96E3C64238588F6007879C7 /* Gymboree-Preview.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2237,6 +2453,13 @@
 						ProvisioningStyle = Manual;
 					};
 					8480855122D9B52500D7D25B = {
+						DevelopmentTeam = 9N3QW4M4N3;
+						ProvisioningStyle = Manual;
+					};
+					D96E3BB2238587A6007879C7 = {
+						ProvisioningStyle = Automatic;
+					};
+					D96E3C2C238588F6007879C7 = {
 						DevelopmentTeam = 9N3QW4M4N3;
 						ProvisioningStyle = Manual;
 					};
@@ -2383,6 +2606,8 @@
 				00E356ED1AD99517003FC87E /* mobileappTests */,
 				2D02E47A1E0B4A5D006451C7 /* mobileapp-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* mobileapp-tvOSTests */,
+				D96E3BB2238587A6007879C7 /* mobileapp_preview */,
+				D96E3C2C238588F6007879C7 /* gymboree_preview */,
 			);
 		};
 /* End PBXProject section */
@@ -3061,6 +3286,52 @@
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,
 				368BE6502373D921001B33E2 /* Montserrat-Medium.ttf in Resources */,
 				3656A5882337836800EF9714 /* icomoon.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3BD5238587A6007879C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BD6238587A6007879C7 /* gymboree_prod-Info.plist in Resources */,
+				D96E3BD7238587A6007879C7 /* icomoon.ttf in Resources */,
+				D96E3BD8238587A6007879C7 /* Montserrat-SemiBold.ttf in Resources */,
+				D96E3BD9238587A6007879C7 /* Nunito-Bold.ttf in Resources */,
+				D96E3BDA238587A6007879C7 /* Montserrat-Black.ttf in Resources */,
+				D96E3BDB238587A6007879C7 /* Nunito-SemiBold.ttf in Resources */,
+				D96E3BDC238587A6007879C7 /* mobileapp_prod-Info.plist in Resources */,
+				D96E3BDD238587A6007879C7 /* Images.xcassets in Resources */,
+				D96E3BDE238587A6007879C7 /* Montserrat-ExtraBold.ttf in Resources */,
+				D96E3BDF238587A6007879C7 /* FontAwesome.ttf in Resources */,
+				D96E3BE0238587A6007879C7 /* Montserrat.ttf in Resources */,
+				D96E3BE1238587A6007879C7 /* TCPLaunchScreen.xib in Resources */,
+				D96E3BE2238587A6007879C7 /* Nunito-Black.ttf in Resources */,
+				D96E3BE3238587A6007879C7 /* Montserrat-Bold.ttf in Resources */,
+				D96E3BE4238587A6007879C7 /* Nunito.ttf in Resources */,
+				D96E3BE5238587A6007879C7 /* Montserrat-Medium.ttf in Resources */,
+				D96E3BE6238587A6007879C7 /* Nunito-ExtraBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C4E238588F6007879C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C4F238588F6007879C7 /* GymboreeLaunchScreen.xib in Resources */,
+				D96E3C50238588F6007879C7 /* Montserrat-ExtraBold.ttf in Resources */,
+				D96E3C51238588F6007879C7 /* Montserrat-SemiBold.ttf in Resources */,
+				D96E3C52238588F6007879C7 /* Nunito.ttf in Resources */,
+				D96E3C53238588F6007879C7 /* Montserrat-Black.ttf in Resources */,
+				D96E3C54238588F6007879C7 /* FontAwesome.ttf in Resources */,
+				D96E3C55238588F6007879C7 /* Nunito-Bold.ttf in Resources */,
+				D96E3C56238588F6007879C7 /* Nunito-ExtraBold.ttf in Resources */,
+				D96E3C57238588F6007879C7 /* Nunito-SemiBold.ttf in Resources */,
+				D96E3C58238588F6007879C7 /* Images.xcassets in Resources */,
+				D96E3C59238588F6007879C7 /* Montserrat.ttf in Resources */,
+				D96E3C5A238588F6007879C7 /* Montserrat-Bold.ttf in Resources */,
+				D96E3C5B238588F6007879C7 /* Nunito-Black.ttf in Resources */,
+				D96E3C5C238588F6007879C7 /* Montserrat-Medium.ttf in Resources */,
+				D96E3C5D238588F6007879C7 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3855,6 +4126,174 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree_dev/Pods-gymboree_dev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D96E3BB3238587A6007879C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D96E3BE7238587A6007879C7 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		D96E3BE8238587A6007879C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mobileapp/Pods-mobileapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobileapp/Pods-mobileapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D96E3BE9238587A6007879C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mobileapp/Pods-mobileapp-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobileapp/Pods-mobileapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D96E3C2D238588F6007879C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gymboree-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D96E3C5E238588F6007879C7 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		D96E3C5F238588F6007879C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gymboree/Pods-gymboree-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree/Pods-gymboree-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D96E3C60238588F6007879C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gymboree/Pods-gymboree-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree/Pods-gymboree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DA51C00FBA6957E27BD70868 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4046,6 +4485,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8424F1F622DC64A90090ECF1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3BB4238587A6007879C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BB5238587A6007879C7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C2E238588F6007879C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C2F238588F6007879C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5693,6 +6148,223 @@
 			};
 			name = Release;
 		};
+		D96E3BEB238587A6007879C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9350FB68B6B846ED40FF28E9 /* Pods-mobileapp.debug.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = tcp;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "mobileapp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_NAME = "My Place Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		D96E3BEC238587A6007879C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DBB47810F93B78DF5A4B7E2 /* Pods-mobileapp.release.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = tcp;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "mobileapp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_NAME = "My Place Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D96E3C62238588F6007879C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19D2DC9852FF624045811AE3 /* Pods-gymboree.debug.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = gymboree;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "gymboree copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_NAME = "Gymboree-Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		D96E3C63238588F6007879C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA0F90C61826F1A0D653F119 /* Pods-gymboree.release.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = gymboree;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "gymboree copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_NAME = "Gymboree-Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -5818,6 +6490,24 @@
 			buildConfigurations = (
 				8480857022D9B52500D7D25B /* Debug */,
 				8480857122D9B52500D7D25B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96E3BEA238587A6007879C7 /* Build configuration list for PBXNativeTarget "mobileapp_preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96E3BEB238587A6007879C7 /* Debug */,
+				D96E3BEC238587A6007879C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96E3C61238588F6007879C7 /* Build configuration list for PBXNativeTarget "gymboree_preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96E3C62238588F6007879C7 /* Debug */,
+				D96E3C63238588F6007879C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

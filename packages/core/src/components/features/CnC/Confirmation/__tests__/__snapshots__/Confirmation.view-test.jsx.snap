@@ -23,6 +23,21 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -138,6 +153,21 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         SMS SIGN UP
       </div>
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
   </Styled(Row)>
   <Styled(Row)
     className="thank-you-component"
@@ -260,6 +290,21 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -376,6 +421,21 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
         SMS SIGN UP
       </div>
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
   </Styled(Row)>
   <Styled(Row)
     className="thank-you-component"
