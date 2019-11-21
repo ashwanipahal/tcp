@@ -15,6 +15,13 @@ import signupWrapperStyle from '../EmailSignupModal.style';
 import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fieldValue: true,
+    };
+  }
+
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription, trackSubscriptionSuccess } = this.props;
     if (subscription.success !== oldSubscription.success && subscription.success) {
@@ -73,6 +80,11 @@ class EmailSignupModal extends React.PureComponent {
       });
   };
 
+  fieldChange = element => {
+    const fieldValue = !element.currentTarget.value.trim();
+    this.setState({ fieldValue });
+  };
+
   render() {
     const {
       isModalOpen,
@@ -85,6 +97,7 @@ class EmailSignupModal extends React.PureComponent {
     } = this.props;
     const { IMG_DATA } = config;
     const isGym = isGymboree();
+    const { fieldValue } = this.state;
     return (
       <Fragment>
         <Modal
@@ -185,6 +198,7 @@ class EmailSignupModal extends React.PureComponent {
                         maxLength={50}
                         dataLocator="email_address_field"
                         enableSuccessCheck={false}
+                        onChange={this.fieldChange}
                       />
 
                       <Field
@@ -208,7 +222,7 @@ class EmailSignupModal extends React.PureComponent {
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
                           fullWidth
-                          disabled={pristine || submitting}
+                          disabled={fieldValue || pristine || submitting}
                           buttonVariation="fixed-width"
                           fill="BLUE"
                           type="submit"
