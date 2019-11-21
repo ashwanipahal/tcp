@@ -1,9 +1,9 @@
 import React from 'react';
-import { Image } from '..';
-import errorBoundary from '../../hoc/withErrorBoundary';
-import withStyles from '../../hoc/withStyles';
-import { getIconPath } from '../../../../utils';
-import textItemStyle from './TextItems.style';
+import { Image } from '../..';
+import errorBoundary from '../../../hoc/withErrorBoundary';
+import withStyles from '../../../hoc/withStyles';
+import { getIconPath } from '../../../../../utils';
+import textItemStyle from '../TextItems.style';
 
 const getIcon = icon => icon && <Image src={getIconPath(icon)} className="header-icon" />;
 
