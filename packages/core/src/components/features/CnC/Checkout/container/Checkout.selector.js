@@ -584,10 +584,9 @@ export const getSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
-const getSmsNumberForOrderUpdates = createSelector(
-  getSmsSignUpFields,
-  smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
-);
+const getSmsNumberForOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']) ||
+  state.Checkout.getIn(['values', 'orderUpdateViaMsg']);
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);

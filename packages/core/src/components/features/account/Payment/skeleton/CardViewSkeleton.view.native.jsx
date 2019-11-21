@@ -13,7 +13,7 @@ import {
 } from '../styles/CardViewSkeleton.style.native';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
-import AddressSkelton from '../../../../common/molecules/Address/skeleton/AddressSkeleton.view.native';
+import AddressSkelton from '../../../../common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 
 const CardViewSkeleton = ({ labels }) => {
   return (
