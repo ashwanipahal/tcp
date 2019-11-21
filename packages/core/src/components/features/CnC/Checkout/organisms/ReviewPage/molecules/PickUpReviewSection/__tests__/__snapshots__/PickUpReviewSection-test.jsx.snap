@@ -60,9 +60,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         }
       }
     >
-      <Styled(AddressSkelton)
-        variation="secondary"
-      />
+      <Styled(AddressSkelton) />
     </Styled(Col)>
   </Styled(Row)>
 </div>

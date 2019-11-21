@@ -398,9 +398,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
       >
         Billing Address
       </Styled(BodyCopy)>
-      <Styled(AddressSkelton)
-        variation="secondary"
-      />
+      <Styled(AddressSkelton) />
     </Styled(Col)>
     <Styled(Col)
       colSize={

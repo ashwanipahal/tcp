@@ -27,9 +27,7 @@ exports[`Shipping Form should render correctly 1`] = `
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(AddressSkelton)
-      variation="secondary"
-    />
+    <Styled(AddressSkelton) />
     <FormSection
       name="smsSignUp"
     >
@@ -128,9 +126,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(AddressSkelton)
-      variation="secondary"
-    />
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -220,9 +216,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(AddressSkelton)
-      variation="secondary"
-    />
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -342,9 +336,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(AddressSkelton)
-      variation="secondary"
-    />
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"
@@ -608,9 +600,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     name="checkoutShipping"
     onSubmit={[Function]}
   >
-    <Styled(AddressSkelton)
-      variation="secondary"
-    />
+    <Styled(AddressSkelton) />
     <Styled(EmailSignUpCheckBox)
       bottomSeparator={true}
       fieldName="emailSignUp"

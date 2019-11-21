@@ -15,8 +15,6 @@ exports[`Shipping Page should render correctly 1`] = `
     link={null}
     textAlign="left"
   />
-  <Styled(AddressSkelton)
-    variation="secondary"
-  />
+  <Styled(AddressSkelton) />
 </Fragment>
 `;
