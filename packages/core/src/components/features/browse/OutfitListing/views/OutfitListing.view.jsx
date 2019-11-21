@@ -62,9 +62,7 @@ const OutfitListingView = forwardRef(
               </div>
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-              <Row fullBleed>
-                <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
-              </Row>
+              <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
                 {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
