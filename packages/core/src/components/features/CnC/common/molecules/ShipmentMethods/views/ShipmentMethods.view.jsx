@@ -7,7 +7,7 @@ import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/ShipmentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 const ShipmentMethods = ({
   shipmentMethods,
@@ -78,7 +78,7 @@ const ShipmentMethods = ({
           )}
         </Row>
       ) : (
-        <AddressSkeleton variation="secondary" />
+        <GenericSkeleton />
       )}
     </>
   );

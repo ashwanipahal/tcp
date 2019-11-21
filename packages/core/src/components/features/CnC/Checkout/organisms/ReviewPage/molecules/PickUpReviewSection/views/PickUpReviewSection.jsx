@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection } from 'redux-form';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../../../common/atoms/Row';
@@ -222,7 +222,7 @@ export class PickUpReviewSection extends React.PureComponent {
                 <LoaderSkelton width="100px" height="100px" />
               </Col>
               <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                <AddressSkeleton variation="secondary" />
+                <GenericSkeleton />
               </Col>
             </Row>
           </>

@@ -1,5 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -181,7 +181,7 @@ export class BillingSection extends PureComponent {
                       <Address address={address} className="review-billing-address" />
                     ) : (
                       <>
-                        <AddressSkeleton variation="secondary" />
+                        <GenericSkeleton />
                       </>
                     )}
                   </Fragment>

@@ -19,7 +19,7 @@ import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
-import AddressSkeleton from '../../../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 const formName = 'checkoutShipping';
 
@@ -313,7 +313,7 @@ class ShippingForm extends React.Component {
               )}
             </>
           ) : (
-            <AddressSkeleton variation="secondary" />
+            <GenericSkeleton />
           )}
           {!orderHasPickUp && isUsSite && (
             <FormSection name="smsSignUp">

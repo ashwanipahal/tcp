@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -419,7 +419,7 @@ class CheckoutCartItemsList extends Component {
                   <LoaderSkelton width="100px" height="100px" />
                 </Col>
                 <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-                  <AddressSkeleton variation="secondary" />
+                  <GenericSkeleton />
                 </Col>
               </Row>
             </>

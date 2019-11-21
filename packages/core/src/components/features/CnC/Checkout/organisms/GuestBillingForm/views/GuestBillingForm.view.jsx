@@ -16,7 +16,7 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import BillingPayPalButton from '../../BillingPayPalButton';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
-import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -179,7 +179,7 @@ class GuestBillingForm extends React.Component {
                       formName="checkoutBilling"
                     />
                   ) : (
-                    <AddressSkeleton variation="secondary" />
+                    <GenericSkeleton />
                   )}
                 </>
               ) : null}

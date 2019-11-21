@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
@@ -109,7 +109,7 @@ export class ShippingReviewSection extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          <AddressSkeleton variation="secondary" />
+          <GenericSkeleton />
         )}
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
