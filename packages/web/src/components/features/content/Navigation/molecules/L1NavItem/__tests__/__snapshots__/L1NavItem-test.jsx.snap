@@ -35,31 +35,39 @@ exports[`Drawer component renders correctly 1`] = `
       <Styled(Anchor)
         onClick={[Function]}
       >
-        <div
-          className="nav-bar-l1-content"
+        <Connect(Component)
+          clickData={
+            Object {
+              "pageNavigationText": "",
+            }
+          }
         >
-          <span
-            className="nav-bar-item-label "
-          />
-          <span
-            className="nav-bar-item-content "
-            data-locator="promo_badge_undefined"
+          <div
+            className="nav-bar-l1-content"
           >
-            <Styled(PromoBadge)
-              data={
-                Array [
-                  Object {
-                    "style": "style1",
-                    "text": "30% off shoes",
-                  },
-                ]
-              }
+            <span
+              className="nav-bar-item-label "
             />
-          </span>
-          <span
-            className="icon-arrow"
-          />
-        </div>
+            <span
+              className="nav-bar-item-content "
+              data-locator="promo_badge_undefined"
+            >
+              <Styled(PromoBadge)
+                data={
+                  Array [
+                    Object {
+                      "style": "style1",
+                      "text": "30% off shoes",
+                    },
+                  ]
+                }
+              />
+            </span>
+            <span
+              className="icon-arrow"
+            />
+          </div>
+        </Connect(Component)>
       </Styled(Anchor)>
       <div
         className="undefined l1-overlay "

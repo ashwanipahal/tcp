@@ -1,13 +1,10 @@
 import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
+import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
-import {
-  configureInternalNavigationFromCMSUrl,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -60,6 +57,25 @@ const getBreakpointImgUrl = (type, props) => {
     : `${basePath}/${config}/${imgPath}`;
 };
 
+const RenderVideo = videoProps => {
+  const { video, image } = videoProps;
+  const { autoplay, controls, url: src } = video;
+
+  const options = {
+    autoplay,
+    controls,
+    sources: [
+      {
+        src,
+        type: 'video/mp4',
+      },
+    ],
+    image,
+  };
+
+  return <VideoPlayer {...options} />;
+};
+
 const RenderImage = forwardRef((imgProps, ref) => {
   const {
     breakpoints,
@@ -87,14 +103,18 @@ const RenderImage = forwardRef((imgProps, ref) => {
         data-srcset={getBreakpointImgUrl('sm', imgProps)}
       />
 
-      <LazyLoadImage
-        className="lazyLoadImage"
-        forwardedRef={ref}
-        src={getBreakpointImgUrl('xs', imgProps)}
-        alt={alt}
-        {...other}
-        showPlaceHolder={showPlaceHolder}
-      />
+      {lazyLoad ? (
+        <LazyLoadImage
+          className="lazyLoadImage"
+          forwardedRef={ref}
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+          showPlaceHolder={showPlaceHolder}
+        />
+      ) : (
+        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+      )}
     </picture>
   );
 });
@@ -112,8 +132,13 @@ const DamImage = props => {
     forwardedRef,
     itemBrand,
     showPlaceHolder,
+    videoData,
     ...other
   } = props;
+
+  if (videoData) {
+    return <RenderVideo video={videoData} image={imgData} />;
+  }
 
   const imgProps = {
     breakpoints,
@@ -170,6 +195,7 @@ DamImage.defaultProps = {
   forwardedRef: null,
   itemBrand: '',
   showPlaceHolder: true,
+  videoData: null,
 };
 
 DamImage.propTypes = {
@@ -201,6 +227,10 @@ DamImage.propTypes = {
     crop_d: PropTypes.string,
     crop_t: PropTypes.string,
     crop_m: PropTypes.string,
+  }),
+  videoData: PropTypes.shape({
+    video: PropTypes.shape({}),
+    image: PropTypes.shape({}),
   }),
 
   /* String which will be used to split the URL */

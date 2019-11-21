@@ -28,17 +28,16 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
         }
       }
     >
-      <Styled(Anchor)
-        anchorVariation="button"
+      <Styled(Button)
         buttonVariation="fixed-width"
         centered={true}
         className="existing_continue_button"
         fill="BLUE"
-        fontSizeVariation="large"
-        url="/home"
+        onClick={[Function]}
+        type="submit"
       >
         continue
-      </Styled(Anchor)>
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </styled.div>

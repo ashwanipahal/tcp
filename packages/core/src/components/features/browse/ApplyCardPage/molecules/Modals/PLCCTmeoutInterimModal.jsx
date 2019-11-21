@@ -26,6 +26,12 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
       lbl_PLCCTimeoutModal_continueApplication: PropTypes.string.isRequired,
       lbl_PLCCTimeoutModal_interimText: PropTypes.string.isRequired,
     }).isRequired,
+    isRtpsFlow: PropTypes.bool,
+    closePLCCModal: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    isRtpsFlow: false,
   };
 
   constructor(props) {
@@ -71,6 +77,8 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
       handleFormReset,
       isTimedOutModalActive,
       unregisterIdleVerfication,
+      closePLCCModal,
+      isRtpsFlow,
     } = this.props;
     const { currentTime } = this.state;
     let modalBody;
@@ -169,6 +177,8 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
           handleFormReset={handleFormReset}
           bagItems={bagItems}
           unregisterIdleVerfication={unregisterIdleVerfication}
+          isRtpsFlow={isRtpsFlow}
+          closePLCCModal={closePLCCModal}
         />
       );
     }

@@ -28,7 +28,7 @@ describe('MyFavoriteStore Component', () => {
   });
   it('should renders correctly when isMyPreferences is present', () => {
     const prop = {
-      defaultStore: '19012',
+      favStoreName: 'store',
       isMyPreferences: true,
     };
     const tree = shallow(<MyFavoriteStore {...prop} />);
@@ -37,7 +37,7 @@ describe('MyFavoriteStore Component', () => {
 
   it('should renders correctly when isMyPreferences is false', () => {
     const prop = {
-      defaultStore: '78622',
+      favStoreName: 'store',
       isMyPreferences: false,
     };
     const tree = shallow(<MyFavoriteStore {...prop} />);

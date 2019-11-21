@@ -5,6 +5,8 @@ import OutfitListing from '../views/index';
 import getLabels from './OutfitListing.selectors';
 import { getStyliticsProductTabListSelector } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.selector';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
+import { getPlpProducts } from '../../ProductListing/container/ProductListing.actions';
+import { getPLPTopPromos } from '../../ProductListing/container/ProductListing.selectors';
 
 class OutfitListingContainer extends React.PureComponent {
   static getInitialProps = async ({ props }) => {
@@ -12,6 +14,27 @@ class OutfitListingContainer extends React.PureComponent {
     const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
     await getStyliticsProductTabListData({ categoryId, count: 20 });
   };
+
+  componentDidMount() {
+    const { navigation, getProducts } = this.props;
+    // This is needed only for mobile app since the product listing container doesnt have a role here
+    if (navigation) {
+      const newNavigationUrl = navigation.getParam('url');
+      getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+    }
+  }
+
+  componentDidUpdate({ navigation: oldNavigation }) {
+    const { getProducts, navigation } = this.props;
+    // This is needed only for mobile app since the product listing container doesnt have a role here
+    if (navigation) {
+      const oldNavigationUrl = oldNavigation.getParam('url');
+      const newNavigationUrl = navigation.getParam('url');
+      if (oldNavigationUrl !== newNavigationUrl) {
+        getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+      }
+    }
+  }
 
   render() {
     const {
@@ -24,8 +47,8 @@ class OutfitListingContainer extends React.PureComponent {
       longDescription,
       categoryId,
       navigation,
-      plpTopPromos,
       asPathVal,
+      plpTopPromos,
     } = this.props;
 
     const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
@@ -53,6 +76,7 @@ const mapStateToProps = state => {
     labels: getLabels(state),
     styliticsProductTabList: getStyliticsProductTabListSelector(state),
     deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    plpTopPromos: getPLPTopPromos(state),
   };
 };
 
@@ -60,6 +84,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getStyliticsProductTabListData: payload => {
       dispatch(styliticsProductTabListDataReqforOutfit(payload));
+    },
+    getProducts: payload => {
+      dispatch(getPlpProducts(payload));
     },
   };
 };
@@ -74,8 +101,9 @@ OutfitListingContainer.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   navigation: PropTypes.instanceOf(Object),
-  plpTopPromos: PropTypes.shape({}),
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   asPathVal: PropTypes.string,
+  getProducts: PropTypes.func,
 };
 
 OutfitListingContainer.defaultProps = {
@@ -86,8 +114,9 @@ OutfitListingContainer.defaultProps = {
   longDescription: '',
   categoryId: '',
   navigation: null,
-  plpTopPromos: {},
+  plpTopPromos: [],
   asPathVal: '',
+  getProducts: null,
 };
 
 export default withIsomorphicRenderer({

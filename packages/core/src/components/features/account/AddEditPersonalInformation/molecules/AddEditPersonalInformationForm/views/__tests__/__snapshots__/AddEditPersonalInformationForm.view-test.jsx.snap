@@ -30,7 +30,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -173,7 +173,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -203,7 +203,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -346,7 +346,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -384,7 +384,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -527,7 +527,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -571,7 +571,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -714,7 +714,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -791,7 +791,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -820,9 +820,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -834,6 +831,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -880,7 +881,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -911,7 +912,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -940,9 +941,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -954,6 +952,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -1000,7 +1002,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1062,7 +1064,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1185,7 +1187,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1289,7 +1291,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1432,7 +1434,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1462,7 +1464,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1605,7 +1607,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1643,7 +1645,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1786,7 +1788,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1830,7 +1832,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1973,7 +1975,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2050,7 +2052,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2079,9 +2081,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2093,6 +2092,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2139,7 +2142,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2169,7 +2172,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2198,9 +2201,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2212,6 +2212,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2258,7 +2262,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2319,7 +2323,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2442,7 +2446,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

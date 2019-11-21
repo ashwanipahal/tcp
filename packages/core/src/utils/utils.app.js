@@ -59,6 +59,9 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
     case 'AccountNavigation':
       resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
       break;
+    case 'subNavigation':
+      resolve(require('../services/handler/graphQL/queries/subNavigation'));
+      break;
     default:
       reject();
       break;
@@ -226,6 +229,9 @@ const getLandingPage = url => {
   if (url.includes(URL_PATTERN.CATEGORY_LANDING)) {
     return URL_PATTERN.CATEGORY_LANDING;
   }
+  if (url.includes(URL_PATTERN.OUTFIT_DETAILS)) {
+    return URL_PATTERN.OUTFIT_DETAILS;
+  }
   return null;
 };
 
@@ -265,6 +271,16 @@ export const navigateToPage = (url, navigation, extraParams = {}) => {
         reset: true,
         ...extraParams,
       });
+    case URL_PATTERN.OUTFIT_DETAILS: {
+      const outfitIdPart = (url && url.split('/outfit/')) || [];
+      const outfitIds = (outfitIdPart[1] && outfitIdPart[1].split('/')) || [];
+      return navigation.navigate('OutfitDetail', {
+        title: 'COMPLETE THE LOOK',
+        outfitId: outfitIds[0],
+        vendorColorProductIdsList: outfitIds[1],
+        reset: true,
+      });
+    }
     default:
       return null;
   }

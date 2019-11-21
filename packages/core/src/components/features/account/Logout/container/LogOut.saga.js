@@ -6,7 +6,10 @@ import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.act
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
-import { resetWalletAppState, clearCouponTTL } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
+import {
+  resetWalletAppState,
+  clearCouponTTL,
+} from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
 

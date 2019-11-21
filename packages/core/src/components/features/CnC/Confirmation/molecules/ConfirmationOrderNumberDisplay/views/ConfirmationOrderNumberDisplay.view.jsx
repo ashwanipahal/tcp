@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getDateInformation } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import CONFIRMATION_CONSTANTS from '../../../Confirmation.constants';
-import { getDateInformation, isCanada, isUsOnly } from '../../../../../../../utils';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -10,11 +11,6 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import internalEndpoints from '../../../../../account/common/internalEndpoints';
 
 const { orderPage, trackOrder } = internalEndpoints;
-
-const getOrderTotal = (currencySymbol, price) => {
-  return `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) ||
-    0}`;
-};
 
 /**
  * @function ConfirmationOrderNumberDisplay
@@ -98,7 +94,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            {getOrderTotal(labels.currencySign, orderTotal)}
+            <PriceCurrency price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

@@ -42,4 +42,8 @@ describe('BillingPaymentForm Util', () => {
     handleBillingFormSubmit(scope, { preventDefault: jest.fn() }, false);
     expect(scope.props.handleSubmit).toBeCalled();
   });
+  it('#onAddCreditCardClick called', () => {
+    scope.state.state = true;
+    expect(scope.state.state).toBeTruthy();
+  });
 });

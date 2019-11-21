@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const getAdditionalStyle = props => {
   const { margins } = props;
@@ -7,17 +7,15 @@ const getAdditionalStyle = props => {
   };
 };
 
-const PageContainer = styled.View`
+const Container = styled.View`
   justify-content: center;
-`;
-
-const BrandFilterContainer = styled.View`
-  position: absolute;
   ${getAdditionalStyle};
 `;
 
 const RowContainer = styled.View`
   flex-direction: row;
-  ${getAdditionalStyle}
+  align-items: center;
+  ${getAdditionalStyle};
 `;
-export { PageContainer, BrandFilterContainer, RowContainer };
+
+export { Container, RowContainer };

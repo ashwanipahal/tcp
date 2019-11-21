@@ -79,7 +79,10 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
@@ -173,7 +176,10 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
@@ -285,7 +291,10 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"

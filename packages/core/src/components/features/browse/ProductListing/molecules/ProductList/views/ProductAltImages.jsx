@@ -11,6 +11,7 @@ import { getProductListToPath } from '../utils/productsCommonUtils';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
 import { Anchor, DamImage } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 class ProductAltImages extends React.PureComponent {
   static propTypes = {
@@ -30,6 +31,7 @@ class ProductAltImages extends React.PureComponent {
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
+    keepAlive: PropTypes.bool.isRequired,
     isSoldOut: PropTypes.bool,
     soldOutLabel: PropTypes.string,
   };
@@ -228,8 +230,8 @@ class ProductAltImages extends React.PureComponent {
   }
 
   renderSoldOutSection = () => {
-    const { isSoldOut, soldOutLabel } = this.props;
-    return isSoldOut ? <div className="sold-out-section">{soldOutLabel}</div> : null;
+    const { isSoldOut, keepAlive, soldOutLabel } = this.props;
+    return isSoldOut || keepAlive ? <OutOfStockWaterMark label={soldOutLabel} /> : null;
   };
 
   renderImageContent() {
@@ -241,11 +243,12 @@ class ProductAltImages extends React.PureComponent {
       analyticsData,
       className,
     } = this.props;
+    const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
     const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
       alt: productName,
-      url: imageUrls[0],
+      url: imageUrls[currentIndex],
     };
     return imageUrls.length < 2 ? (
       <figure
@@ -269,8 +272,8 @@ class ProductAltImages extends React.PureComponent {
             isProductImage
             lazyLoad={false}
           />
+          {this.renderSoldOutSection()}
         </Anchor>
-        {this.renderSoldOutSection()}
       </figure>
     ) : (
       <figure
@@ -305,6 +308,7 @@ class ProductAltImages extends React.PureComponent {
             isProductImage
             lazyLoad={false}
           />
+          {this.renderSoldOutSection()}
         </Anchor>
         <button
           data-locator={getLocator('global_imagecursors_arrows')}
@@ -314,7 +318,6 @@ class ProductAltImages extends React.PureComponent {
         >
           next
         </button>
-        {this.renderSoldOutSection()}
       </figure>
     );
   }

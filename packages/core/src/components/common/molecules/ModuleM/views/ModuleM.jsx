@@ -116,7 +116,7 @@ export class ModuleM extends React.PureComponent {
       <Row className="image-items-container" noLastMargin>
         {selectedProductList &&
           selectedProductList.map((productItem, index) => {
-            const { image, link } = productItem;
+            const { image, link, video } = productItem;
             /**
              * Calculate each row first element and last element and apply margin left and right respectively.
              */
@@ -143,13 +143,15 @@ export class ModuleM extends React.PureComponent {
                 <Anchor
                   to={link.url}
                   asPath={link.url}
-                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                  dataLocator={`${getLocator('moduleM_image')}_${index}`}
+                  className="moduleM__productContainer"
                 >
                   <div ref={this.gridImageRef} className="moduleM__productImage">
                     <DamImage
                       imgConfigs={config.IMG_DATA.productImgConfig}
                       imgData={image}
-                      link={link}
+                      link={{ ...link, className: 'moduleM__productContainer' }}
+                      videoData={video}
                     />
                   </div>
                   <BodyCopy
@@ -179,7 +181,7 @@ export class ModuleM extends React.PureComponent {
               to={singleCTAButton.url}
               asPath={singleCTAButton.url}
               title={singleCTAButton.text}
-              dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+              dataLocator={`${getLocator('moduleM_cta_btn')}`}
               className="moduleM__shopAllBtn"
             >
               {singleCTAButton.text}
@@ -205,7 +207,7 @@ export class ModuleM extends React.PureComponent {
                 <Anchor
                   to={link.url}
                   asPath={link.url}
-                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                  dataLocator={`${getLocator('moduleM_image')}_${index}`}
                 >
                   <DamImage
                     imgConfigs={config.IMG_DATA.productImgConfig}
@@ -231,7 +233,7 @@ export class ModuleM extends React.PureComponent {
               to={singleCTAButton.url}
               asPath={singleCTAButton.url}
               title={singleCTAButton.tex}
-              dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+              dataLocator={`${getLocator('moduleM_cta_btn')}`}
               className="moduleM__shopAllBtn"
             >
               {singleCTAButton.text}
@@ -258,7 +260,7 @@ export class ModuleM extends React.PureComponent {
                   <Anchor
                     to={link.url}
                     asPath={link.url}
-                    dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                    dataLocator={`${getLocator('moduleM_image')}_${index}`}
                   >
                     <DamImage
                       imgConfigs={config.IMG_DATA.productImgConfig}
@@ -303,14 +305,14 @@ export class ModuleM extends React.PureComponent {
   createProductTabList = tabList => {
     return (
       tabList &&
-      tabList.map(list => {
+      tabList.map((list, index) => {
         const { text: listItemText, smallCompImage, linkClass, id } = list;
         const { activeTab } = this.state;
         return (
           <div
             key={`modMTabs-${listItemText.text}`}
             className="product-tab-list__item"
-            data-locator=""
+            data-locator={`${getLocator('moduleM_cta_links')}_${index}`}
           >
             <Button
               active={id === activeTab}

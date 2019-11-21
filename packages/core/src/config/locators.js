@@ -419,4 +419,11 @@ export default {
   fav_brand_gym_lbl: 'Gymboree',
   fav_lbl_myFavorites: 'My Favorites',
   fav_lbl_editListSettings: 'Edit List Settings',
+
+  // module M
+  moduleM_header_text: 'moduleM_header_text',
+  moduleM_promobanner_text: 'moduleM_promobanner_text',
+  moduleM_image: 'moduleM_image',
+  moduleM_cta_btn: 'moduleM_cta_btn',
+  moduleM_cta_links: 'moduleM_cta_links',
 };
