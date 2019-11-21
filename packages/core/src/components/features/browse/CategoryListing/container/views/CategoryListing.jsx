@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import { PAGE_NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -48,6 +50,8 @@ class CategoryListing extends PureComponent {
                   navigationTree={navTree}
                   activeCategoryIds={currentNavIds}
                 />
+                {/* UX timer */}
+                <RenderPerf.Measure name={PAGE_NAVIGATION_VISIBLE} />
               </div>
             </Col>
             <Col colSize={{ large: 10, medium: 8, small: 6 }}>

@@ -52,7 +52,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <PointsHistory {...otherProps} />
         </StyledView>
         <StyledView>
-          <BonusPointsDays />
+          <BonusPointsDays isPlaceRewardsPage />
         </StyledView>
         <StyledViewLargeMargin>
           <EarnExtraPointsTileContainer {...otherProps} />
