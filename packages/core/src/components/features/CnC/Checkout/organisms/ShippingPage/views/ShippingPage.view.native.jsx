@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
-import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
@@ -11,50 +10,13 @@ import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/Chec
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import ModalNative from '../../../../../../common/molecules/Modal';
-import { getAddressInitialValues } from './ShippingPage.view.utils';
+import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
+import { getAddressInitialValues, isShowVenmoBanner, propsTypes } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
-  static propTypes = {
-    addressLabels: PropTypes.shape({}).isRequired,
-    isOrderUpdateChecked: PropTypes.bool,
-    isSubmitting: PropTypes.bool.isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    smsSignUpLabels: PropTypes.shape({}).isRequired,
-    address: PropTypes.shape({}),
-    selectedShipmentId: PropTypes.string,
-    addressPhoneNumber: PropTypes.number,
-    emailSignUpLabels: PropTypes.shape({}).isRequired,
-    isGuest: PropTypes.bool,
-    isUsSite: PropTypes.bool,
-    orderHasPickUp: PropTypes.bool,
-    shipmentMethods: PropTypes.shape([]),
-    defaultShipmentId: PropTypes.number,
-    cartOrderItemsCount: PropTypes.number.isRequired,
-    loadShipmentMethods: PropTypes.func.isRequired,
-    shippingDidMount: PropTypes.func.isRequired,
-    formatPayload: PropTypes.func.isRequired,
-    verifyAddressAction: PropTypes.func.isRequired,
-    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
-    navigation: PropTypes.shape({}).isRequired,
-    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    availableStages: PropTypes.shape([]).isRequired,
-    isGiftServicesChecked: PropTypes.bool,
-    userAddresses: PropTypes.shape([]),
-    onFileAddressKey: PropTypes.string,
-    isSaveToAddressBookChecked: PropTypes.bool,
-    setAsDefaultShipping: PropTypes.bool,
-    saveToAddressBook: PropTypes.bool,
-    updateShippingAddressData: PropTypes.func,
-    addNewShippingAddressData: PropTypes.func,
-    updateShippingMethodSelection: PropTypes.func.isRequired,
-    syncErrors: PropTypes.shape({}),
-    newUserPhoneNo: PropTypes.string,
-    hasSetGiftOptions: PropTypes.bool,
-    setCheckoutStage: PropTypes.func.isRequired,
-    bagLoading: PropTypes.bool.isRequired,
-  };
+  static propTypes = propsTypes;
 
   static defaultProps = {
     isOrderUpdateChecked: false,
@@ -77,6 +39,12 @@ export default class ShippingPage extends React.Component {
     addNewShippingAddressData: () => {},
     syncErrors: {},
     newUserPhoneNo: null,
+    isVenmoPaymentInProgress: false,
+    isVenmoShippingDisplayed: true,
+    setVenmoPickupState: () => {},
+    venmoBannerLabel: {
+      venmoBannerText: '',
+    },
   };
 
   constructor(props) {
@@ -149,7 +117,13 @@ export default class ShippingPage extends React.Component {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses, formatPayload, hasSetGiftOptions } = this.props;
+    const {
+      isGuest,
+      userAddresses,
+      formatPayload,
+      setVenmoPickupState,
+      hasSetGiftOptions,
+    } = this.props;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && onFileAddressKey) {
       shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
@@ -160,6 +134,7 @@ export default class ShippingPage extends React.Component {
         shipAddress.addressLine2 = addressLine2;
       }
     }
+    setVenmoPickupState(true);
     const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -292,11 +267,15 @@ export default class ShippingPage extends React.Component {
       newUserPhoneNo,
       setCheckoutStage,
       formatPayload,
+      venmoBannerLabel,
+      isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       bagLoading,
     } = this.props;
 
+    const { CHECKOUT_STAGES } = CONSTANTS;
     const { defaultAddressId, showAddressVerification } = this.state;
     let { submitData } = this;
     if (this.isAddressUpdating) {
@@ -336,8 +315,14 @@ export default class ShippingPage extends React.Component {
                 activeStage="shipping"
                 navigation={navigation}
                 setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoShippingDisplayed={isVenmoShippingDisplayed}
+                scrollView={this.scrollView}
                 availableStages={availableStages}
               />
+              {isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING, this.props) && (
+                <VenmoBanner labels={venmoBannerLabel} />
+              )}
               <ScrollView
                 keyboardShouldPersistTaps="handled"
                 ref={scrollView => {

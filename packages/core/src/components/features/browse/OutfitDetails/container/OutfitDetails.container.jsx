@@ -119,7 +119,7 @@ class OutfitDetailsContainer extends React.PureComponent {
           isPlcc={isPlcc}
           isInternationalShipping={isInternationalShipping}
           currencySymbol={priceCurrency}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}

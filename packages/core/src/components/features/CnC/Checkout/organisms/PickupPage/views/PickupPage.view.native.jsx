@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
@@ -11,6 +12,7 @@ import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getNextCTAText from './PickupPage.view.utils';
 
 import {
   FormStyle,
@@ -36,6 +38,8 @@ import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
+import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
 import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 const formName = 'checkoutPickup';
@@ -151,6 +155,25 @@ class PickUpFormPart extends React.Component {
     });
   };
 
+  /**
+   * This function is to validate if we need to show venmo banner or not.
+   * Only if user comes on pickup or shipping page, but not on coming back from navigation
+   * @params {string} currentSection - current checkout section name
+   */
+  isShowVenmoBanner = currentSection => {
+    const {
+      isVenmoPaymentInProgress,
+      isVenmoPickupDisplayed,
+      isVenmoShippingDisplayed,
+    } = this.props;
+    const { CHECKOUT_STAGES } = CONSTANTS;
+    return (
+      isVenmoPaymentInProgress &&
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
+    );
+  };
+
   updatePickupForm() {
     const { pickupInitialValues, dispatch } = this.props;
     const { pickUpContact } = this.state;
@@ -206,6 +229,9 @@ class PickUpFormPart extends React.Component {
               availableStages={availableStages}
               setCheckoutStage={setCheckoutStage}
             />
+            {this.isShowVenmoBanner(CONSTANTS.CHECKOUT_STAGES.PICKUP) && (
+              <VenmoBanner labels={pickUpLabels} />
+            )}
             <ScrollView
               ref={ref => {
                 this.scrollView = ref;
@@ -348,7 +374,7 @@ class PickUpFormPart extends React.Component {
               </Container>
               <CnCTemplate
                 navigation={navigation}
-                btnText={pickUpLabels.nextToBilling}
+                btnText={getNextCTAText(this.props)}
                 routeToPage="ShippingPage"
                 isGuest={isGuest}
                 onPress={handleSubmit(this.pickupSubmit)}
@@ -383,6 +409,9 @@ PickUpFormPart.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  isVenmoPickupDisplayed: PropTypes.bool,
+  isVenmoShippingDisplayed: PropTypes.bool,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
   bagLoading: PropTypes.number.isRequired,
@@ -396,6 +425,9 @@ PickUpFormPart.defaultProps = {
   isAlternateUpdateChecked: false,
   pickupError: '',
   currentPhoneNumber: '',
+  isVenmoPaymentInProgress: false,
+  isVenmoPickupDisplayed: true,
+  isVenmoShippingDisplayed: true,
 };
 
 const validateMethod = createValidateMethod({

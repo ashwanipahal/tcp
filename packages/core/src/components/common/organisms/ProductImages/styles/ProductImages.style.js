@@ -41,6 +41,11 @@ export default css`
     position: relative;
   }
 
+  .carousel-container {
+    position: relative;
+    width: 100%;
+  }
+
   .facebook,
   .pinterest,
   .twitter {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { getProductDetails, clearBundleState } from './BundleProduct.actions';
 import BundleProduct from '../views';
 import {
@@ -38,6 +39,8 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 
 export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -114,6 +117,9 @@ export class ProductBundleContainer extends React.PureComponent {
       breadCrumbs,
       productDetails,
       outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      toastMessage,
     } = this.props;
     return (
       <BundleProduct
@@ -127,7 +133,7 @@ export class ProductBundleContainer extends React.PureComponent {
         itemPartNumber={itemPartNumber}
         longDescription={longDescription}
         currency={currency}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes.exchangevalue}
         currentBundle={currentBundle}
         handleAddToBag={this.handleAddToBag}
         addToBagEcom={addToBagEcom}
@@ -142,6 +148,9 @@ export class ProductBundleContainer extends React.PureComponent {
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         breadCrumbs={breadCrumbs}
         productDetails={productDetails}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -172,6 +181,8 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     breadCrumbs: getBreadCrumbs(state),
     outfitLabels: getOutfitLabels(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -194,6 +205,9 @@ function mapDispatchToProps(dispatch) {
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 }
@@ -226,6 +240,9 @@ ProductBundleContainer.propTypes = {
   formValues: PropTypes.shape({}).isRequired,
   outfitLabels: PropTypes.shape({}),
   clearBundleDetails: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func.isRequired,
 };
 
 ProductBundleContainer.defaultProps = {
@@ -252,6 +269,8 @@ ProductBundleContainer.defaultProps = {
   breadCrumbs: [],
   productDetails: [],
   clearBundleDetails: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

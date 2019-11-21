@@ -15,6 +15,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   maxWidth="724px"
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={false}
   standardHeight={true}
 >

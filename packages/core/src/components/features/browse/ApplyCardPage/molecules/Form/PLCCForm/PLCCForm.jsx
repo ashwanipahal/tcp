@@ -312,7 +312,9 @@ class PLCCForm extends React.PureComponent {
                   <BodyCopy
                     fontFamily="secondary"
                     component="div"
-                    onClick={() => (isRtpsFlow ? closePLCCModal() : backToHome)}
+                    onClick={() =>
+                      isRtpsFlow || isPLCCModalFlow ? closePLCCModal() : backToHome()
+                    }
                     textAlign="center"
                     tabIndex="0"
                   >
@@ -335,6 +337,8 @@ class PLCCForm extends React.PureComponent {
             time={120}
             isTimedOutModalActive={isTimedOutModalActive}
             handleFormReset={this.handleFormReset}
+            isRtpsFlow={isRtpsFlow}
+            closePLCCModal={closePLCCModal}
           />
         ) : null}
       </StyledPLCCFormWrapper>

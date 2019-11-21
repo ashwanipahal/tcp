@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection, reduxForm, change } from 'redux-form';
@@ -48,6 +49,8 @@ class GuestBillingForm extends React.Component {
     isPayPalEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.func,
     bagLoading: PropTypes.bool.isRequired,
+    isVenmoEnabled: PropTypes.bool,
+    venmoError: PropTypes.string,
   };
 
   static defaultProps = {
@@ -68,6 +71,8 @@ class GuestBillingForm extends React.Component {
     paymentMethodId: null,
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
+    isVenmoEnabled: false,
+    venmoError: '',
   };
 
   /**
@@ -83,6 +88,28 @@ class GuestBillingForm extends React.Component {
       dispatch(change('checkoutBilling', 'cardType', cardType));
     }
   }
+
+  /**
+   * @description - renderVenmoText method renders text for venmo
+   */
+  renderVenmoText = () => {
+    const { paymentMethodId, labels } = this.props;
+    if (paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO) {
+      return (
+        <PayPalTextContainer>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs16"
+            spacingStyles="margin-bottom-MED"
+            color="gray.900"
+            dataLocator="venmoBillingText"
+            text={labels.venmoLongText}
+          />
+        </PayPalTextContainer>
+      );
+    }
+    return null;
+  };
 
   /**
    * @function render
@@ -115,6 +142,8 @@ class GuestBillingForm extends React.Component {
       isPayPalEnabled,
       isPayPalWebViewEnable,
       bagLoading,
+      isVenmoEnabled,
+      venmoError,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -165,6 +194,7 @@ class GuestBillingForm extends React.Component {
                 />
               </PayPalTextContainer>
             ) : null}
+            {isVenmoEnabled && this.renderVenmoText()}
             {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
               <>
                 <AddNewCCForm
@@ -214,6 +244,10 @@ class GuestBillingForm extends React.Component {
           getPayPalSettings={getPayPalSettings}
           showPayPalButton={isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL}
           isPayPalWebViewEnable={isPayPalWebViewEnable}
+          showVenmoSubmit={paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit(onSubmit)}
+          venmoError={venmoError}
         />
       </>
     );

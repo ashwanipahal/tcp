@@ -11,6 +11,7 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
+        className="bread-crumb-container"
         colSize={
           Object {
             "large": 12,
@@ -19,18 +20,41 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           }
         }
       >
-        Heading
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
+        <Styled(FixedBreadCrumbs)
+          crumbs={Array []}
+          inheritedStyles={
+            Array [
+              "
+  .breadcrum-last-item {
+    font-size: ",
+              [Function],
+              ";
+    font-weight: ",
+              [Function],
+              ";
+  }
+  @media ",
+              [Function],
+              " {
+    .breadcrum-last-item {
+      font-size: ",
+              [Function],
+              ";
+    }
+  }
+  @media ",
+              [Function],
+              " {
+    .breadcrum-last-item {
+      font-size: ",
+              [Function],
+              ";
+    }
+  }
+",
+            ]
           }
-        }
-      >
-        Promo Banner
+        />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -39,9 +63,9 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 3,
-            "medium": 8,
-            "small": 6,
+            "large": 2,
+            "medium": 0,
+            "small": 0,
           }
         }
         hideCol={
@@ -51,12 +75,22 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           }
         }
       >
-        Left Panel
+        <div
+          className="sidebar"
+        >
+          <Styled(GlobalNavigationMenuDesktopL2)
+            activeCategoryIds={Array []}
+            navigationTree={Object {}}
+          />
+          <Measure
+            name="page_navigation_visible"
+          />
+        </div>
       </Styled(Col)>
       <Styled(Col)
         colSize={
           Object {
-            "large": 3,
+            "large": 10,
             "medium": 8,
             "small": 6,
           }
@@ -68,13 +102,37 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           <Styled(Col)
             colSize={
               Object {
-                "large": 8,
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "large": true,
+                "medium": true,
+                "small": true,
+              }
+            }
+          >
+            <Styled(CategoryPromoImages)
+              categoryPromoImages={Object {}}
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="section-wrapper"
+            colSize={
+              Object {
+                "large": 12,
                 "medium": 8,
                 "small": 6,
               }
             }
           >
-            Category List Panel
+            <Styled(ReadMore)
+              className=" seo-text"
+              labels={Object {}}
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -85,7 +143,16 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
               }
             }
           >
-            Recommendations
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -96,29 +163,17 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
               }
             }
           >
-            Get Candid Section
-          </Styled(Col)>
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 12,
-                "medium": 8,
-                "small": 6,
-              }
-            }
-          >
-            SEO Section
-          </Styled(Col)>
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 12,
-                "medium": 8,
-                "small": 6,
-              }
-            }
-          >
-            Ratings and Review
+            <div
+              className="product-detail-section"
+            >
+              <Connect(Styled(Recommendations))
+                headerAlignment="left"
+                page=""
+                portalValue="recently-viewed-products"
+                showLoyaltyPromotionMessage={false}
+                variations="moduleO"
+              />
+            </div>
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>
