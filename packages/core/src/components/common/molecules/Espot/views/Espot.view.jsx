@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import { richTextRoute } from '@tcp/core/src/utils';
 
 class Espot extends PureComponent {
   onClickHandler = action => {
@@ -23,7 +24,7 @@ class Espot extends PureComponent {
         break;
 
       default:
-        break;
+        richTextRoute(action);
     }
   };
 
