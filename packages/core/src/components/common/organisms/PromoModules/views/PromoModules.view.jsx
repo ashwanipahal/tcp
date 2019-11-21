@@ -33,7 +33,14 @@ const PromoModules = ({ asPath, plpTopPromos }) => {
         const Module = modules[moduleName];
         return (
           Module && (
-            <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
+            <Module
+              fullBleed
+              key={contentId}
+              data={promo}
+              asPath={asPath}
+              {...slotData}
+              {...others}
+            />
           )
         );
       })}

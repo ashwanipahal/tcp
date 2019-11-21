@@ -14,7 +14,8 @@ import {
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
-import { validateAndSubmitEmailSignup, callPickupSubmitMethod } from './Checkout.saga.util';
+import { callPickupSubmitMethod } from './Checkout.saga.util';
+import { validateAndSubmitEmailSignup } from './CheckoutExtended.saga.util';
 import {
   getAppliedCouponListState,
   isCouponApplied,
@@ -348,9 +349,16 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
     const isCaSite = yield call(isCanada);
     const isGuestUser = yield select(isGuest);
+    const { tcpProducts, gymProducts } = yield select(BagPageSelectors.getProductsTypes);
     /* istanbul ignore else */
     if (isGuestUser && !isCaSite && email) {
-      yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+      yield call(
+        validateAndSubmitEmailSignup,
+        email,
+        'us_guest_checkout',
+        tcpProducts.length > 0,
+        gymProducts.length > 0
+      );
     }
     const isCouponAppliedInOrder = yield select(isCouponApplied);
     // const vendorId =

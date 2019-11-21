@@ -9,7 +9,6 @@ exports[`AddressFields component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -62,7 +61,6 @@ exports[`AddressFields component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -129,7 +127,6 @@ exports[`AddressFields component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -180,7 +177,6 @@ exports[`AddressFields component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -556,7 +552,6 @@ exports[`AddressFields component should render correctly 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -632,7 +627,6 @@ exports[`AddressFields component should render correctly 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -686,7 +680,6 @@ exports[`AddressFields component should render correctly 1`] = `
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -743,7 +736,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -796,7 +788,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -863,7 +854,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -914,7 +904,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1290,7 +1279,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1366,7 +1354,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1420,7 +1407,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1477,7 +1463,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1530,7 +1515,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1597,7 +1581,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1648,7 +1631,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2024,7 +2006,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2100,7 +2081,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -2154,7 +2134,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2211,7 +2190,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2264,7 +2242,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2331,7 +2308,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2382,7 +2358,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2513,7 +2488,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2589,7 +2563,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
-            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -2643,7 +2616,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
           "autoCapitalize": "sentences",
-          "bottomBorderColor": null,
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",

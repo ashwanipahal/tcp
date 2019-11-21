@@ -37,7 +37,6 @@ import {
   addRegisteredUserAddress,
   routeToPickupPage,
   addAndSetGiftWrappingOptions,
-  validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
@@ -50,6 +49,7 @@ import {
   makeUpdateRTPSCall,
   shouldInvokeReviewCartCall,
 } from './Checkout.saga.util';
+import { submitEmailSignup } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -100,6 +100,7 @@ function* submitPickupSection({ payload }) {
     const formData = { ...payload };
     const { navigation } = payload;
     yield put(setLoaderState(true));
+    yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
     yield put(setLoaderState(false));
 
@@ -572,7 +573,7 @@ function* initIntlCheckout() {
 
 function* submitShipping({
   isEmailSignUpAllowed,
-  emailSignup,
+  emailSignUp = {},
   emailAddress,
   isGuestUser,
   address,
@@ -584,6 +585,7 @@ function* submitShipping({
   smsInfo,
   hasSetGiftOptions,
 }) {
+  const { emailSignUp: emailSignUpTCP, emailSignUpGYM } = emailSignUp;
   const giftServicesFormData = yield select(getGiftServicesFormData);
   yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
@@ -593,7 +595,9 @@ function* submitShipping({
     // remove old gift wrap option (if any)
     // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
     // sign up to receive mail newsletter
-    isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
+    isEmailSignUpAllowed &&
+      (emailSignUpTCP || emailSignUpGYM) &&
+      submitEmailSignup(emailAddress, { emailSignUpTCP, emailSignUpGYM }),
   ];
   let addOrEditAddressRes;
   if (isGuestUser) {

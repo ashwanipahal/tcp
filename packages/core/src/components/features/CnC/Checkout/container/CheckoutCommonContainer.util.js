@@ -183,6 +183,9 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
   };
 };
 
@@ -202,7 +205,7 @@ export const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
-
+    emailSignUpFlags: BagPageSelector.getIfEmailSignUpDone(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
