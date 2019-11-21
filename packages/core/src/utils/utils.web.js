@@ -7,7 +7,6 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import externalEndpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
@@ -666,13 +665,10 @@ export const constructToPath = url => {
  * Routes to an endpoint from rich text link click
  * @param {string} action - data target
  */
-export const richTextRoute = action => {
-  switch (action) {
-    case 'submit-points-claim':
+export const richTextRoute = link => {
+  switch (link) {
+    case '/pointsClaimForm':
       routerPush(internalEndpoints.pointsClaimPage.link, internalEndpoints.pointsClaimPage.path);
-      break;
-    case 'contact-customer-service':
-      routerPush(externalEndpoints.customerService);
       break;
     default:
       break;
