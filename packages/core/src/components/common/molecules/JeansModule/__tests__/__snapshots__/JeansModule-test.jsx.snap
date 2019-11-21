@@ -7,7 +7,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
   <div
     className="title-section"
   >
-    <ForwardRef
+    <ForwardRef(Styled(BodyCopy))
       className={null}
       color="white"
       component="p"
@@ -20,9 +20,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
       textAlign="center"
     >
       Your Denim Place
-    </ForwardRef>
+    </ForwardRef(Styled(BodyCopy))>
   </div>
-  <ForwardRef
+  <ForwardRef(Styled(Carousel))
     carouselConfig={
       Object {
         "autoplay": false,
@@ -69,7 +69,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
     <div
       className="jeans-carousel"
     >
-      <ForwardRef
+      <ForwardRef(Styled(Anchor))
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -84,7 +84,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             }
           }
         />
-        <ForwardRef
+        <ForwardRef(Styled(BodyCopy))
           className="image-text"
           color="text.primary"
           component="p"
@@ -97,14 +97,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
           textAlign="left"
         >
           Fashion
-        </ForwardRef>
+        </ForwardRef(Styled(BodyCopy))>
         <div
           className="overlapping-section"
         >
           <div
             className="text-container"
           >
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="text-header"
               color="text.primary"
               component="p"
@@ -117,8 +117,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Text Item 1
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="text-subheader"
               color="text.primary"
               component="p"
@@ -131,15 +131,15 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Text Item 1
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -152,16 +152,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 1
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -174,16 +174,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 2
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -196,16 +196,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 3
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -218,16 +218,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 4
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -240,14 +240,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 5
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
-            <ForwardRef
+            <ForwardRef(Styled(Image))
               className="style1 plus-icon"
               src="/static/images/plus.png"
             />
           </div>
-          <ForwardRef
+          <ForwardRef(Styled(Anchor))
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
@@ -256,14 +256,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
             to="/node/pdp"
           >
             SHOP NOW
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </div>
-      </ForwardRef>
+      </ForwardRef(Styled(Anchor))>
     </div>
     <div
       className="jeans-carousel"
     >
-      <ForwardRef
+      <ForwardRef(Styled(Anchor))
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -278,7 +278,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             }
           }
         />
-        <ForwardRef
+        <ForwardRef(Styled(BodyCopy))
           className="image-text"
           color="text.primary"
           component="p"
@@ -291,14 +291,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
           textAlign="left"
         >
           Distressed
-        </ForwardRef>
+        </ForwardRef(Styled(BodyCopy))>
         <div
           className="overlapping-section"
         >
           <div
             className="text-container"
           >
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="text-header"
               color="text.primary"
               component="p"
@@ -311,8 +311,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Distressed
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="text-subheader"
               color="text.primary"
               component="p"
@@ -325,15 +325,15 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Perfectly ripped and washed
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -346,16 +346,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 1
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -368,16 +368,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 2
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -390,16 +390,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 3
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -412,16 +412,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 4
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -434,14 +434,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 5
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
-            <ForwardRef
+            <ForwardRef(Styled(Image))
               className="style1 plus-icon"
               src="/static/images/plus.png"
             />
           </div>
-          <ForwardRef
+          <ForwardRef(Styled(Anchor))
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
@@ -450,14 +450,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
             to="/node/pdp"
           >
             SHOP NOW
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </div>
-      </ForwardRef>
+      </ForwardRef(Styled(Anchor))>
     </div>
     <div
       className="jeans-carousel"
     >
-      <ForwardRef
+      <ForwardRef(Styled(Anchor))
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -472,7 +472,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             }
           }
         />
-        <ForwardRef
+        <ForwardRef(Styled(BodyCopy))
           className="image-text"
           color="text.primary"
           component="p"
@@ -485,14 +485,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
           textAlign="left"
         >
           Super Skiny
-        </ForwardRef>
+        </ForwardRef(Styled(BodyCopy))>
         <div
           className="overlapping-section"
         >
           <div
             className="text-container"
           >
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="text-header"
               color="text.primary"
               component="p"
@@ -505,8 +505,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Super Skiny
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="text-subheader"
               color="text.primary"
               component="p"
@@ -519,15 +519,15 @@ exports[`JeanModule component should default variant correctly 1`] = `
               textAlign="center"
             >
               Perfectly ripped and washed
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -540,16 +540,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 1
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -562,16 +562,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 2
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -584,16 +584,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 3
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -606,16 +606,16 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 4
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
             <div
               className="text-line"
             >
-              <ForwardRef
+              <ForwardRef(Styled(Image))
                 className="done-button"
                 src="/static/images/confirmation_check.svg"
               />
-              <ForwardRef
+              <ForwardRef(Styled(BodyCopy))
                 className="text-item"
                 color="text.primary"
                 component="p"
@@ -628,14 +628,14 @@ exports[`JeanModule component should default variant correctly 1`] = `
                 textAlign="center"
               >
                 Text Item 5
-              </ForwardRef>
+              </ForwardRef(Styled(BodyCopy))>
             </div>
-            <ForwardRef
+            <ForwardRef(Styled(Image))
               className="style1 plus-icon"
               src="/static/images/plus.png"
             />
           </div>
-          <ForwardRef
+          <ForwardRef(Styled(Anchor))
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
@@ -644,10 +644,10 @@ exports[`JeanModule component should default variant correctly 1`] = `
             to="/node/pdp"
           >
             SHOP NOW
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </div>
-      </ForwardRef>
+      </ForwardRef(Styled(Anchor))>
     </div>
-  </ForwardRef>
+  </ForwardRef(Styled(Carousel))>
 </div>
 `;
