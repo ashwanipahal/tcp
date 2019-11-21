@@ -102,7 +102,7 @@ class Header extends React.PureComponent {
     const { accessibility: { skipNavigation } = {} } = labels;
 
     return (
-      <header className={className}>
+      <header className={`${className} header-global`}>
         <HeaderTopNav
           className="header-topnav"
           brandTabs={brandTabs}

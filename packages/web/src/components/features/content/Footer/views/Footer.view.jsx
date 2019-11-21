@@ -57,7 +57,7 @@ class Footer extends React.Component {
     const { showFooterTopCandidateB } = this.state;
 
     return (
-      <footer className={className}>
+      <footer className={`${className} footer-global`}>
         <Row className="footer-candidate-wrapper" fullBleed>
           {showFooterTopCandidateB ? (
             <FooterTopCandidateB isNavigationFooter={isNavigationFooter} {...props} />
