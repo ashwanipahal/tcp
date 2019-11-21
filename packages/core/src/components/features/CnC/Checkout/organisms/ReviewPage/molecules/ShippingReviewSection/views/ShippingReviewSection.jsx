@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
@@ -14,6 +14,11 @@ import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 export class ShippingReviewSection extends React.PureComponent {
+  shouldRenderAddressTile = () => {
+    const { bagLoading, checkoutRoutingDone } = this.props;
+    return !bagLoading && checkoutRoutingDone;
+  };
+
   render() {
     const {
       className,
@@ -27,7 +32,7 @@ export class ShippingReviewSection extends React.PureComponent {
       shipmentMethods,
       formName,
       formSection,
-      bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
@@ -48,7 +53,7 @@ export class ShippingReviewSection extends React.PureComponent {
           </Col>
         </Row>
 
-        {!bagLoading ? (
+        {this.shouldRenderAddressTile() ? (
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 4, large: 5 }}>
               <div className="shippingAddressTitle">
@@ -95,6 +100,7 @@ export class ShippingReviewSection extends React.PureComponent {
                   formSection={formSection}
                   selectedShipmentId={shippingMethod.id}
                   shipmentHeader={shippingMethodTitle}
+                  checkoutRoutingDone={checkoutRoutingDone}
                 />
               )}
               {isGiftOptionsEnabled && !isExpressCheckout && (
@@ -103,7 +109,7 @@ export class ShippingReviewSection extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          <AddressSkeleton />
+          <GenericSkeleton />
         )}
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
@@ -142,6 +148,7 @@ ShippingReviewSection.propTypes = {
   formSection: PropTypes.string.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 ShippingReviewSection.defaultProps = {
@@ -151,6 +158,7 @@ ShippingReviewSection.defaultProps = {
   giftWrappingDisplayName: 'N/A',
   expressReviewShippingSectionId: {},
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(ShippingReviewSection, styles);
