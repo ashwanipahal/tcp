@@ -18,7 +18,7 @@ class ModalWrapper extends React.PureComponent {
   renderCheckBox = () => {};
 
   render() {
-    const { isOpenModal, margins, modalMargins, heading, children } = this.props;
+    const { isOpenModal, margins, modalMargins, heading, children, noscroll } = this.props;
     return (
       <Container margins={margins}>
         <ModalNative
@@ -30,7 +30,7 @@ class ModalWrapper extends React.PureComponent {
           horizontalBar={false}
           headerStyle={fullWidth}
           isOverlay
-          noscroll
+          noscroll={noscroll}
           fixedWidth
           fullWidth
           stickyHeader
@@ -58,6 +58,7 @@ ModalWrapper.propTypes = {
   children: PropTypes.element,
   onCloseModal: PropTypes.func,
   heading: PropTypes.string.isRequired,
+  noscroll: PropTypes.bool,
 };
 
 ModalWrapper.defaultProps = {
@@ -66,6 +67,7 @@ ModalWrapper.defaultProps = {
   modalMargins: null,
   children: null,
   onCloseModal: null,
+  noscroll: true,
 };
 
 export default ModalWrapper;

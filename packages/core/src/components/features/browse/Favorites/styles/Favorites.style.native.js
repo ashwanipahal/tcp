@@ -21,6 +21,13 @@ const RowContainer = styled.View`
   ${getAdditionalStyle}
 `;
 
+const NoFavoriteContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+
+const RecommendationWrapper = styled.View`
+  margin-left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
 const DropDownContainer = styled.View`
   margin-top: 12px;
 `;
@@ -64,6 +71,8 @@ export {
   PageContainer,
   BrandFilterContainer,
   RowContainer,
+  NoFavoriteContainer,
+  RecommendationWrapper,
   DropDownContainer,
   ShareDropDownContainer,
   ListHeaderContainer,
