@@ -1,5 +1,6 @@
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
-import { LABELS } from '@tcp/core/src/reduxStore/constants';
+/* eslint-disable max-lines */
+import { loadComponentLabelsData, loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS, SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 import {
   setServerErrorCheckout,
@@ -284,7 +285,10 @@ export const routeToPickupPage = () => ({
   type: constants.ROUTE_TO_PICKUP_PAGE,
 });
 
-export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+export const initActions = [
+  loadComponentLabelsData({ category: LABELS.checkout }),
+  loadPageSEOData({ page: SEO_DATA.checkout }),
+];
 
 export const updateShippingAddress = (payload, after) => {
   return {
