@@ -60,7 +60,7 @@ const renderHeroImgCarousel = carouselImg => {
 
 /* Carousel slide render function for Promo Text Carousel */
 const renderPromoTextCarousel = carouselPromoText => {
-  const { item } = carouselPromoText;
+  const { item = { title: '' } } = carouselPromoText;
 
   return (
     <TextCarouselWrapper>
