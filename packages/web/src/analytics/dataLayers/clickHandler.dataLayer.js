@@ -25,12 +25,12 @@ const getCouponCode = store => {
 
 const getStoreSearchCriteria = store => {
   const defaultData = getAnalyticsData(store);
-  return defaultData && defaultData.searchCriteria;
+  return defaultData && defaultData.storeSearchCriteria;
 };
 
 const getStoreSearchDistance = store => {
   const defaultData = getAnalyticsData(store);
-  return defaultData && defaultData.searchDistance;
+  return defaultData && defaultData.storeSearchDistance;
 };
 
 const getInternalCampaignId = store => {

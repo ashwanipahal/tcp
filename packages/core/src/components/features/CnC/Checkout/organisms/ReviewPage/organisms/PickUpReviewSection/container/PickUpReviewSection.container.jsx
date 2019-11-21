@@ -23,6 +23,7 @@ export const PickUpReviewContainer = ({
   isExpressCheckout,
   pickUpContactAlternate,
   bagLoading,
+  checkoutRoutingDone,
 }) => {
   return (
     <PickUpReviewSection
@@ -39,6 +40,7 @@ export const PickUpReviewContainer = ({
       isExpressCheckout={isExpressCheckout}
       pickUpContactAlternate={pickUpContactAlternate}
       bagLoading={bagLoading}
+      checkoutRoutingDone={checkoutRoutingDone}
     />
   );
 };
@@ -55,6 +57,7 @@ PickUpReviewContainer.propTypes = {
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 PickUpReviewContainer.defaultProps = {
@@ -62,6 +65,7 @@ PickUpReviewContainer.defaultProps = {
   pickUpLabels: {},
   isExpressCheckout: false,
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 const mapStateToProps = state => {

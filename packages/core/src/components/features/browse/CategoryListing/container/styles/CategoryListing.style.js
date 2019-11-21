@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  .seo-text-wrapper {
+  .section-wrapper {
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
   }

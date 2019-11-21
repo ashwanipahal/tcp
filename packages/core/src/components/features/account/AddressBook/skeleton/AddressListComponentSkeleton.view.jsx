@@ -3,7 +3,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import AddressSkeleton from '../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 import styles from '../styles/AddressListComponentSkeleton.style';
 
 const AddressListComponentSkeleton = ({ className }) => {
@@ -18,7 +18,7 @@ const AddressListComponentSkeleton = ({ className }) => {
           }}
           className="col-border-color elem-pt-MED elem-pr-SM elem-pb-MED elem-pl-SM"
         >
-          <AddressSkeleton />
+          <GenericSkeleton isCardView />
         </Col>
         <Col
           colSize={{
@@ -28,7 +28,7 @@ const AddressListComponentSkeleton = ({ className }) => {
           }}
           className="col-border-color elem-pt-MED elem-pr-SM elem-pb-MED elem-pl-SM"
         >
-          <AddressSkeleton />
+          <GenericSkeleton isCardView />
         </Col>
       </Row>
     </div>

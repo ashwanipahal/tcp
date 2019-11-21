@@ -67,7 +67,14 @@ const L3Panel = props => {
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
             <li>
-              <Anchor to={shopalllink} data-locator="l3_link_shop_all" asPath={shopallaspath}>
+              <Anchor
+                to={shopalllink}
+                data-locator="l3_link_shop_all"
+                asPath={shopallaspath}
+                onClick={() => {
+                  closeNav();
+                }}
+              >
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -87,20 +94,20 @@ const L3Panel = props => {
               } = l3Links;
               return (
                 <li>
-                  <ClickTracker
-                    clickData={{
-                      pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                  <Anchor
+                    to={url}
+                    asPath={asPath}
+                    onClick={e => {
+                      hideL3Drawer(e);
+                      hideL2Drawer(e, true);
+                      closeNav();
                     }}
+                    dataLocator={`l3_link_${index}`}
                   >
-                    <Anchor
-                      to={url}
-                      asPath={asPath}
-                      onClick={e => {
-                        hideL3Drawer(e);
-                        hideL2Drawer(e, true);
-                        closeNav();
+                    <ClickTracker
+                      clickData={{
+                        pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
                       }}
-                      dataLocator={`l3_link_${index}`}
                     >
                       <BodyCopy
                         className="l2-nav-link"
@@ -111,8 +118,8 @@ const L3Panel = props => {
                       >
                         <span className="nav-bar-item-label full-width">{l3Name}</span>
                       </BodyCopy>
-                    </Anchor>
-                  </ClickTracker>
+                    </ClickTracker>
+                  </Anchor>
                 </li>
               );
             })}
