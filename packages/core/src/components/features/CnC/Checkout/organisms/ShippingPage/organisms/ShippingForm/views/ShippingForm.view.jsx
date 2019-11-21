@@ -19,6 +19,7 @@ import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
+import GenericSkeleton from '../../../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 const formName = 'checkoutShipping';
 
@@ -201,6 +202,13 @@ class ShippingForm extends React.Component {
     toggleCountrySelector({ isModalOpen: true });
   };
 
+  getClassName = () => {
+    const { userAddresses, shippingAddress } = this.props;
+    return (userAddresses && userAddresses.size !== 0) || shippingAddress
+      ? 'hide-on-desktop hide-on-tablet'
+      : '';
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
@@ -217,7 +225,6 @@ class ShippingForm extends React.Component {
       routeToPickupPage,
       isSaveToAddressBookChecked,
       isUsSite,
-      userAddresses,
       shippingAddressId,
       toggleAddNewAddress,
       isAddNewAddress,
@@ -233,6 +240,8 @@ class ShippingForm extends React.Component {
       isMobile,
       pageCategory,
       isLoadingShippingMethods,
+      checkoutRoutingDone,
+      bagLoading,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -250,11 +259,7 @@ class ShippingForm extends React.Component {
           fontSize="fs28"
           fontWeight="regular"
           data-locator="shipping-details"
-          className={`elem-mb-XS elem-mt-MED font-size-26 ${
-            (userAddresses && userAddresses.size !== 0) || shippingAddress
-              ? 'hide-on-desktop hide-on-tablet'
-              : ''
-          }`}
+          className={`elem-mb-XS elem-mt-MED ${this.getClassName()}`}
         >
           {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
         </BodyCopy>
@@ -264,45 +269,51 @@ class ShippingForm extends React.Component {
           onSubmit={this.handleSubmit}
           isEditing={isEditing}
         >
-          {!isGuest && (
-            <RegisteredShippingForm
-              {...this.props}
-              isEditing={isEditing}
-              isMobile={isMobile}
-              toggleIsEditing={this.toggleIsEditing}
-              dispatch={dispatch}
-              isAddNewAddress={isAddNewAddress}
-              toggleAddNewAddress={toggleAddNewAddress}
-              isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-              shippingAddressId={shippingAddressId}
-              updateShippingAddress={updateShippingAddress}
-              addNewShippingAddress={addNewShippingAddress}
-              shippingAddress={shippingAddress}
-              labels={labels}
-              afterAddressUpdate={this.closeEditingMode}
-              setDefaultAddressId={setDefaultAddressId}
-              syncErrorsObject={syncErrorsObject}
-              errorMessageRef={this.editShippingErrorRef}
-              editShipmentDetailsError={editShipmentDetailsError}
-              handleShipIntClick={this.handleShipIntClick}
-            />
-          )}
-          {isGuest && (
-            <div className="address-form">
-              <FormSection name="address">
-                <AddressFields
-                  addressFormLabels={addressFormLabels}
-                  showDefaultCheckbox={false}
-                  formName={formName}
-                  formSection="address"
-                  variation="secondary"
+          {!bagLoading && checkoutRoutingDone ? (
+            <>
+              {!isGuest && (
+                <RegisteredShippingForm
+                  {...this.props}
+                  isEditing={isEditing}
+                  isMobile={isMobile}
+                  toggleIsEditing={this.toggleIsEditing}
                   dispatch={dispatch}
-                  addressPhoneNo={addressPhoneNo}
-                  loadShipmentMethods={loadShipmentMethods}
+                  isAddNewAddress={isAddNewAddress}
+                  toggleAddNewAddress={toggleAddNewAddress}
+                  isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                  shippingAddressId={shippingAddressId}
+                  updateShippingAddress={updateShippingAddress}
+                  addNewShippingAddress={addNewShippingAddress}
+                  shippingAddress={shippingAddress}
+                  labels={labels}
+                  afterAddressUpdate={this.closeEditingMode}
+                  setDefaultAddressId={setDefaultAddressId}
+                  syncErrorsObject={syncErrorsObject}
+                  errorMessageRef={this.editShippingErrorRef}
+                  editShipmentDetailsError={editShipmentDetailsError}
                   handleShipIntClick={this.handleShipIntClick}
                 />
-              </FormSection>
-            </div>
+              )}
+              {isGuest && (
+                <div className="address-form">
+                  <FormSection name="address">
+                    <AddressFields
+                      addressFormLabels={addressFormLabels}
+                      showDefaultCheckbox={false}
+                      formName={formName}
+                      formSection="address"
+                      variation="secondary"
+                      dispatch={dispatch}
+                      addressPhoneNo={addressPhoneNo}
+                      loadShipmentMethods={loadShipmentMethods}
+                      handleShipIntClick={this.handleShipIntClick}
+                    />
+                  </FormSection>
+                </div>
+              )}
+            </>
+          ) : (
+            <GenericSkeleton />
           )}
           {!orderHasPickUp && isUsSite && (
             <FormSection name="smsSignUp">
@@ -337,6 +348,7 @@ class ShippingForm extends React.Component {
                       'checkout'
                     )}
                     isLoadingShippingMethods={isLoadingShippingMethods}
+                    checkoutRoutingDone={checkoutRoutingDone}
                   />
                 </div>
               </FormSection>
