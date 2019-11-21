@@ -54,7 +54,7 @@ class ModuleA extends React.Component {
     let ribbonAlignedClass = '';
 
     if (curCarouselSlide) {
-      const [ribbonBanner] = curCarouselSlide.ribbonBanner;
+      const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
       if (ribbonBanner.ribbonPlacement === 'left') {
         ribbonAlignedClass = 'left-aligned-ribbon';
       }
