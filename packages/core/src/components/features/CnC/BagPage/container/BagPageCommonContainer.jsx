@@ -108,7 +108,6 @@ export class BagPageContainer extends React.Component<Props> {
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
       cartItemSflError,
-      currencySymbol,
       isPayPalWebViewEnable,
       isPickupModalOpen,
       isMobile,
@@ -147,7 +146,6 @@ export class BagPageContainer extends React.Component<Props> {
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
-        currencySymbol={currencySymbol}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
