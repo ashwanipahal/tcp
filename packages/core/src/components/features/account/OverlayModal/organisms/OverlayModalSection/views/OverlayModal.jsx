@@ -171,7 +171,7 @@ class OverlayModal extends React.Component {
 
   modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
     let compElement = comp;
-    if (document.getElementById('account-info-user-points') && isAccountDrawer) {
+    if (isAccountDrawer && document.getElementById('account-info-user-points')) {
       compElement = document.getElementById('account-info-user-points');
     }
     this.styleModalTriangle(compElement);
