@@ -126,8 +126,8 @@ ShareList.defaultProps = {
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
-    { toEmail: 'emailAddressNoAsync' },
-    { fromEmail: 'emailAddressNoAsync' },
+    { toEmail: 'shareToEmailAddresses' },
+    { fromEmail: 'shareFromEmailAddresses' },
     { subject: 'subject' },
     { message: 'message' },
   ])

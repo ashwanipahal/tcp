@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';

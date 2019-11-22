@@ -268,6 +268,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 
 CheckoutContainer.getInitActions = () => initActions;
 
+CheckoutContainer.pageInfo = {
+  pageId: 'Checkout',
+};
+
 CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   const DEFAULT_ACTIVE_COMPONENT = 'shipping';
   const loadedComponent = utils.getObjectValue(
