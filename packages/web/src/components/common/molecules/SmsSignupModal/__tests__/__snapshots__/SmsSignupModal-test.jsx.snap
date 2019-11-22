@@ -116,7 +116,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-iwsKbI",
+                      "componentId": "sc-dnqmqq",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -259,7 +259,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-iwsKbI",
+                    "styledComponentId": "sc-dnqmqq",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -281,7 +281,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-fjdhpX",
+                      "componentId": "sc-jTzLTM",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -404,7 +404,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(InputCheckbox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-fjdhpX",
+                    "styledComponentId": "sc-jTzLTM",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -706,7 +706,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-iwsKbI",
+                      "componentId": "sc-dnqmqq",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -849,7 +849,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-iwsKbI",
+                    "styledComponentId": "sc-dnqmqq",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -871,7 +871,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-fjdhpX",
+                      "componentId": "sc-jTzLTM",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -994,7 +994,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "displayName": "Styled(InputCheckbox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-fjdhpX",
+                    "styledComponentId": "sc-jTzLTM",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
