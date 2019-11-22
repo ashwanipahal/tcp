@@ -20,7 +20,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             component="span"
             data-locator="plp_filter_label_filterby"
             fontFamily="secondary"
-            fontSize="fs16"
+            fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -3085,7 +3085,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           }
         }
         isFavoriteView={false}
+        isLoadingMore={false}
         labels={Object {}}
+        onChange={[Function]}
         onSortSelection={[Function]}
         onSubmit={[MockFunction]}
         removeAllFilters={[Function]}

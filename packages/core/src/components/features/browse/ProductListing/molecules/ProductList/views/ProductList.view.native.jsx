@@ -242,7 +242,7 @@ class ProductList extends React.PureComponent {
    */
   renderHeader = () => {
     const { onRenderHeader } = this.props;
-    return onRenderHeader();
+    return onRenderHeader ? onRenderHeader() : null;
   };
 
   setListRef = ref => {
@@ -273,20 +273,22 @@ class ProductList extends React.PureComponent {
         {AddToFavoriteErrorMsg !== '' && (
           <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
         )}
-        <FlatList
-          ref={ref => this.setListRef(ref)}
-          data={products}
-          renderItem={this.renderItemList}
-          keyExtractor={item => item.productInfo.generalProductId}
-          initialNumToRender={4}
-          maxToRenderPerBatch={2}
-          numColumns={2}
-          extraData={this.props}
-          ListFooterComponent={this.renderFooter}
-          ListHeaderComponent={this.renderHeader}
-          stickyHeaderIndices={[0]}
-          columnWrapperStyle={this.getColumnWrapperStyle()}
-        />
+        {products && products.length && (
+          <FlatList
+            ref={ref => this.setListRef(ref)}
+            data={products}
+            renderItem={this.renderItemList}
+            keyExtractor={item => item.productInfo.generalProductId}
+            initialNumToRender={4}
+            maxToRenderPerBatch={2}
+            numColumns={2}
+            extraData={this.props}
+            ListFooterComponent={this.renderFooter}
+            ListHeaderComponent={this.renderHeader}
+            stickyHeaderIndices={[0]}
+            columnWrapperStyle={this.getColumnWrapperStyle()}
+          />
+        )}
 
         {showModal && (
           <ModalNative
