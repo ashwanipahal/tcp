@@ -163,7 +163,7 @@ export const getPDPLabels = state => {
 };
 
 export const getPLPPromos = (state, type) => {
-  const productID = '54520|489117'; // 'global'; '54520|489117';
+  const productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
   if (Layouts && Layouts.pdp && Layouts.pdp[productID]) {

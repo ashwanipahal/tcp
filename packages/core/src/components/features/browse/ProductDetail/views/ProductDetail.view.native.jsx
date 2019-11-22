@@ -11,6 +11,7 @@ import {
   LoyaltyBannerView,
   RecommendationWrapper,
   PromoMiddleContainer,
+  PromoBottomContainer,
   Margin,
 } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
@@ -117,13 +118,26 @@ class ProductDetailView extends React.PureComponent {
     );
   };
 
-  renderPromoBanner = promoBanners => {
+  renderMiddlePromoBanner = promoBanners => {
+    const { navigation } = this.props;
     return (
       promoBanners &&
       promoBanners.length && (
         <PromoMiddleContainer>
           <PromoPDPBanners promos={promoBanners} navigation={navigation} />
         </PromoMiddleContainer>
+      )
+    );
+  };
+
+  renderBottomPromoBanner = promoBanners => {
+    const { navigation } = this.props;
+    return (
+      promoBanners &&
+      promoBanners.length && (
+        <PromoBottomContainer>
+          <PromoPDPBanners promos={promoBanners} navigation={navigation} />
+        </PromoBottomContainer>
       )
     );
   };
@@ -227,7 +241,7 @@ class ProductDetailView extends React.PureComponent {
               outOfStockLabels={outOfStockLabels}
             />
           </Margin>
-          {this.renderPromoBanner(middlePromos)}
+          {this.renderMiddlePromoBanner(middlePromos)}
           <Margin>
             <ProductAddToBagContainer
               currentProduct={currentProduct}
@@ -252,7 +266,7 @@ class ProductDetailView extends React.PureComponent {
               <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
             </LoyaltyBannerView>
           </Margin>
-          {this.renderPromoBanner(bottomPromos)}
+          {this.renderBottomPromoBanner(bottomPromos)}
           <Margin>
             <ProductDetailDescription
               shortDescription={shortDescription}

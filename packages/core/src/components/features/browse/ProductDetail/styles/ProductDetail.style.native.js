@@ -14,6 +14,10 @@ export const PromoMiddleContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+export const PromoBottomContainer = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
 export const LoyaltyBannerView = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
 `;
