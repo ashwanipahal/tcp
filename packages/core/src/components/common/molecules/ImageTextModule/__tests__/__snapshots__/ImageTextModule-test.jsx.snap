@@ -123,7 +123,7 @@ exports[`ImageTextModule Componenet should match snapshot 1`] = `
             },
           ]
         }
-        className="button-list header-bootom-margin"
+        className="button-list header-bottom-margin"
         dataLocatorDivisionImages="moduleImageText_cta_links_"
         dataLocatorDropDown="moduleImageText_cta_image_"
         dataLocatorTextCta="moduleB_cta_links_"
@@ -151,7 +151,7 @@ exports[`ImageTextModule Componenet should match snapshot 1`] = `
     }
   >
     <div
-      className=""
+      className="img-wrapper "
     >
       <WithTheme(DamImage)
         data-locator="moduleImageText_image"
