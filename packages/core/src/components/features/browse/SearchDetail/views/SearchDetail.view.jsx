@@ -53,6 +53,8 @@ const SearchListingView = ({
   isSearchListing,
   searchResultSuggestions,
   asPathVal,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   const searchResultSuggestionsArg =
@@ -155,6 +157,8 @@ const SearchListingView = ({
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
           ) : null}
@@ -197,6 +201,8 @@ SearchListingView.propTypes = {
       suggestion: PropTypes.string.isRequired,
     })
   ),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 SearchListingView.defaultProps = {
@@ -221,6 +227,8 @@ SearchListingView.defaultProps = {
   isSearchListing: true,
   asPathVal: '',
   searchResultSuggestions: [],
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
