@@ -100,7 +100,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   setBillingInitialValues = () => {
     const { billingData } = this.props;
     const cardType = billingData && billingData.billing && billingData.billing.cardType;
-    return this.isBillingIfoPresent() && cardType !== 'paypal';
+    return this.isBillingIfoPresent() && cardType !== constants.ACCEPTED_CREDIT_CARDS.PAYPAL;
   };
 
   /**
