@@ -20,6 +20,10 @@ const ItemCountContainer = styled.View`
   margin-top: 16px;
 `;
 
+const FilterContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
 const getListHeaderContainerStyle = props => {
   const { theme } = props;
   const { colorPalette, spacing } = theme;
@@ -35,4 +39,4 @@ const ListHeaderContainer = styled.View`
 
 const styles = css``;
 
-export { styles, PageContainer, ItemCountContainer, ListHeaderContainer };
+export { styles, PageContainer, ItemCountContainer, ListHeaderContainer, FilterContainer };

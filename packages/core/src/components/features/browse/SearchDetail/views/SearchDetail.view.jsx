@@ -65,7 +65,7 @@ const SearchListingView = ({
         <Row className="empty-search-result-suggestion">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
-              fontSize={['fs16', 'fs32', 'fs32']}
+              fontSize={['fs22', 'fs24', 'fs32']}
               component="div"
               fontFamily="secondary"
               fontWeight="semibold"
@@ -125,6 +125,7 @@ const SearchListingView = ({
             sortLabels={sortLabels}
             getProducts={getProducts}
             slpLabels={slpLabels}
+            isLoadingMore={isLoadingMore}
           />
         </Col>
       </Row>
