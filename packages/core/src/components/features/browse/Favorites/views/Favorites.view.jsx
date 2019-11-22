@@ -356,6 +356,7 @@ class FavoritesView extends React.PureComponent {
       onFilterSelection,
       onSortSelection,
       defaultWishList,
+      isDataLoading,
     } = this.props;
 
     const shareOptions = [
@@ -385,7 +386,7 @@ class FavoritesView extends React.PureComponent {
     };
 
     // const filteredItemsList = this.getFilteredItemsList();
-
+    if (isDataLoading) return '';
     return (
       <div className={className}>
         <Row fullBleed>

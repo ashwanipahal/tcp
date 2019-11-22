@@ -1,3 +1,4 @@
 import { css } from 'styled-components';
 
-const textboxStyles = css``;
+const textareaStyles = css``;
+export default textareaStyles;
