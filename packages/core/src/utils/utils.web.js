@@ -662,20 +662,6 @@ export const constructToPath = url => {
   return toPath;
 };
 
-/**
- * Routes to an endpoint from rich text link click
- * @param {string} action - data target
- */
-export const richTextInternalRoute = link => {
-  switch (link) {
-    case '/pointsClaimForm':
-      routerPush(internalEndpoints.pointsClaimPage.link, internalEndpoints.pointsClaimPage.path);
-      break;
-    default:
-      break;
-  }
-};
-
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -707,5 +693,4 @@ export default {
   enableBodyScroll,
   disableBodyScroll,
   isAndroidWeb,
-  richTextInternalRoute,
 };

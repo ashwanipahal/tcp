@@ -13,25 +13,46 @@ export class Espot extends PureComponent {
     navigation: PropTypes.func.isRequired,
   };
 
+  /**
+   * @function onPressHandler
+   * @param {string} link - href key
+   * @param {string} target - action type
+   * @param {string} action - data-target of anchor
+   * @returns {function}  - function to open modal or navigate to a path
+   */
   onPressHandler = (link, target, action) => {
     const { togglePlccModal, navigation } = this.props;
 
     switch (target) {
       case '_modal':
-        switch (action) {
-          case 'plccModal':
-            navigation.navigate('ApplyNow');
-            togglePlccModal(true);
-            break;
-          default:
-            break;
-        }
+        openModal(action);
         break;
       default:
         handleNavigationUrl(link, target);
     }
   };
 
+  /**
+   * @function openModal
+   * @param {string} action - action to identify data-target of modal
+   * @returns {function} calls function received from prop to open a modal
+   */
+  openModal = action => {
+    switch (action) {
+      case 'plccModal':
+        navigation.navigate('ApplyNow');
+        togglePlccModal(true);
+        break;
+      default:
+        break;
+    }
+  };
+
+  /**
+   * @function handleNavigationUrl - opens an external url or navigate to internal route
+   * @param {string} link - href in anchor of richtext
+   * @param {string} target - action type to identify navigation destination
+   */
   handleNavigationUrl = (link, target) => {
     const { navigation } = this.props;
     const externalUrl = new RegExp('^(?:[a-z]+:)?//', 'i');

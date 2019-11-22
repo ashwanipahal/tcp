@@ -39,7 +39,6 @@ export {
   isMobileWeb,
   removeBodyScrollLocks,
   isAndroidWeb,
-  richTextInternalRoute,
 } from './utils.web';
 
 export {
