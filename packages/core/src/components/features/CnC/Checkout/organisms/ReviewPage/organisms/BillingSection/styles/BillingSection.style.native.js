@@ -50,6 +50,11 @@ export const PaymentMethodImage = styled.View`
   flex: 0.5;
 `;
 
+export const SkeletonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 200px;
+`;
+
 export const SaveVenmoDetails = styled.View`
   display: flex;
   flex-direction: row;
