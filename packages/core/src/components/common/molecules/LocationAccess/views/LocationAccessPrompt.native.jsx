@@ -1,5 +1,5 @@
-/* eslint-disable react-native/split-platform-components */
 /* eslint-disable no-console */
+/* eslint-disable react-native/split-platform-components */
 import React from 'react';
 import { Linking, PermissionsAndroid } from 'react-native';
 import {
@@ -41,15 +41,14 @@ class LocationAccessPrompt extends React.PureComponent {
 
   componentDidMount() {
     const { isUserLoggedIn } = this.props;
-    this.setState({ isOpenBool: true });
-    // if (isUserLoggedIn) {
-    //   getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
-    //     if (data === LOCATION_ACCESS_VALUE) {
-    //       this.setState({ isOpenBool: false });
-    //     }
-    //     this.setState({ isOpenBool: true });
-    //   });
-    // }
+    if (isUserLoggedIn) {
+      getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
+        if (data === LOCATION_ACCESS_VALUE) {
+          this.setState({ isOpenBool: false });
+        }
+        this.setState({ isOpenBool: true });
+      });
+    }
   }
 
   openModal = () => {
