@@ -116,6 +116,7 @@ export function* removeCartItem({ payload }) {
     }
     yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
   } else {
+    yield put(setLoaderState(false));
     yield call(confirmRemoveItem, { payload: itemId, isMiniBag: true });
   }
 }
@@ -157,9 +158,11 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 }
 
 export function* updateCartItemSaga({ payload }) {
-  const { updateActionType } = payload;
+  const { updateActionType, isMiniBagOpen } = payload;
   try {
-    yield put(setLoaderState(true));
+    if (!isMiniBagOpen) {
+      yield put(setLoaderState(true));
+    }
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());

@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<LazyloadScrollView
-  horizontal={false}
+<ScrollViewMock
   name="lazyload-pdp"
-  recycle={true}
-  recycleDistance={5336}
-  renderDistance={0}
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
@@ -29,8 +25,10 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       }
       imageUrls={null}
       isLoggedIn={false}
+      keepAlive={false}
       onAddItemToFavorites={null}
       onImageClick={[Function]}
+      outOfStockLabels={Object {}}
       removeAddToFavoritesErrorMsg={[Function]}
     />
     <Styled(ProductSummary)
@@ -39,6 +37,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       isBundleProduct={false}
       isGiftCard={false}
       isPlcc={false}
+      keepAlive={false}
+      outOfStockLabels={Object {}}
       pdpLabels={Object {}}
       productData={
         Object {
@@ -70,9 +70,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       errorOnHandleSubmit=""
       handleFormSubmit={null}
       handleSubmit={null}
+      isKeepAliveEnabled={false}
       navigation={Object {}}
       onChangeColor={[Function]}
       onChangeSize={[Function]}
+      outOfStockLabels={Object {}}
       plpLabels={null}
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
@@ -80,6 +82,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     />
     <Connect(ProductPickupContainer)
       formName="ProductAddToBag-undefined"
+      keepAlive={false}
+      outOfStockLabels={Object {}}
       productInfo={
         Object {
           "colorFitsSizesMap": Array [
@@ -131,5 +135,5 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-</LazyloadScrollView>
+</ScrollViewMock>
 `;

@@ -4,24 +4,29 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
-import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import { isTCP } from '@tcp/core/src/utils/utils';
+import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
+import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import mockSeoCopy from '@tcp/core/src/services/abstractors/common/SeoCopy/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName } = this.props;
+    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
 
     if (pageName === 'homepage') {
       this.subscriptionPopUpOnPageLoad();
+    }
+    const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    if (cid) {
+      setCampaignId(cid[0]);
     }
   }
 
@@ -106,6 +111,8 @@ const HomePageView = dynamic({
       openEmailSignUpModal,
       openSmsSignUpModal,
       pageName,
+      setCampaignId,
+      // seoData,
     } = compProps;
 
     return (
@@ -114,10 +121,12 @@ const HomePageView = dynamic({
         openEmailSignUpModal={openEmailSignUpModal}
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
+        setCampaignId={setCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
-        <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
+        {/* <SeoCopy {...seoData} /> */}
+        <SeoCopy {...mockSeoCopy} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
@@ -138,6 +147,7 @@ HomePageWrapper.propTypes = {
   openEmailSignUpModal: PropTypes.func.isRequired,
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -148,6 +158,7 @@ HomePageView.propTypes = {
   name: PropTypes.string,
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
@@ -155,6 +166,13 @@ const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
 // Wrap the home page with a ref-forwarding element
 const RefWrappedHomePageView = withRefWrapper(HomePageViewWithErrorBoundary);
 
-export default RefWrappedHomePageView;
+/**
+ * Hotfix-Aware Component. The use of `withHotfix` is just for making
+ * page hotfix-aware.
+ */
+RefWrappedHomePageView.displayName = 'HomePage';
+const HotfixAwareHomePage = withHotfix(RefWrappedHomePageView);
+
+export default HotfixAwareHomePage;
 
 export { HomePageView as HomePageViewVanilla };

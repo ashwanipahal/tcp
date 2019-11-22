@@ -242,6 +242,12 @@ export default {
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
 
+  // SEO text
+  seo_title: 'seo_title',
+  seo_body: 'seo_body',
+  seo_readmore: 'seo_readmore',
+  seo_readless: 'seo_readless',
+
   // PLP Review Ratings
   plp_rating_review: 'plp_rating_review_text',
 
@@ -410,4 +416,11 @@ export default {
   fav_brand_gym_lbl: 'Gymboree',
   fav_lbl_myFavorites: 'My Favorites',
   fav_lbl_editListSettings: 'Edit List Settings',
+
+  // module M
+  moduleM_header_text: 'moduleM_header_text',
+  moduleM_promobanner_text: 'moduleM_promobanner_text',
+  moduleM_image: 'moduleM_image',
+  moduleM_cta_btn: 'moduleM_cta_btn',
+  moduleM_cta_links: 'moduleM_cta_links',
 };

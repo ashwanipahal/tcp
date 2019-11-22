@@ -149,10 +149,11 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
-export const fetchPageLayout = (payload, layoutName) => {
+export const fetchPageLayout = (payload, layoutName, clpPage) => {
   return {
     payload,
     layoutName,
+    isClpPage: clpPage ? clpPage.clpPage : null,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };
@@ -178,6 +179,11 @@ export const setSubNavigationData = (payload, name) => ({
   payload,
   name,
   type: GLOBAL_CONSTANTS.SET_SUB_NAVIGATION_DATA,
+});
+
+export const getSubNavigationData = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.GET_SUB_NAVIGATION_DATA,
 });
 
 export default {

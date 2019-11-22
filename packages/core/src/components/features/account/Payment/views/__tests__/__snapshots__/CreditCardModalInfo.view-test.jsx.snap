@@ -1,184 +1,320 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreditCardModalInfo Component should render correctly 1`] = `
-<div>
-  <Styled(Row)
-    className="elem-mb-LRG elem-mt-MED"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 10,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="deletecreditmodalhdrmsg"
-        fontFamily="secondary"
-        fontSize="fs18"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XS"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 5,
-          "small": 2,
-        }
-      }
-      offsetLeft={
-        Object {
-          "medium": 3,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="deletecreditmodalcardicon"
-        fontFamily="primary"
-        fontSize={12}
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        <Styled(Image)
-          className="deleteCreditModal__card__icon"
-        />
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 9,
-          "medium": 8,
-          "small": 4,
-        }
-      }
-    >
-      <Styled(Row)
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 6,
-              "small": 6,
-            }
-          }
-          offsetLeft={
-            Object {
-              "medium": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            data-locator="deletecreditmodacardendingtxt"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            111
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 6,
-              "small": 6,
-            }
-          }
-          offsetLeft={
-            Object {
-              "medium": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            data-locator="deletecreditmodalexpiresontxt"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            fgh
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="elem-mb-MED elem-mt-MED"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 6,
-              "small": 6,
-            }
-          }
-          offsetLeft={
-            Object {
-              "medium": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            fontFamily="primary"
-            fontSize="fs14"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            <Styled(Address)
-              dataLocatorPrefix="deletecreditmodal"
-              fontWeight="regular"
-              showCountry={false}
-              showPhone={false}
-            />
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-    </Styled(Col)>
-  </Styled(Row)>
-</div>
+<StyledComponent
+  data={
+    Object {
+      "TotalExp": "123",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "",
+        "city": "Los Angeles",
+        "firstName": "six",
+        "lastName": "test",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "cardText": Object {
+        "cardEnd": "111",
+        "expire": "fgh",
+      },
+      "description": Object {
+        "ccBrand": "dfg",
+      },
+      "getAccNumbr": "www",
+      "heading": "abc",
+    }
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-kgoBCf",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  @media ",
+          [Function],
+          " {
+    .deleteCardModal__card {
+      display: block;
+    }
+  }
+  .deleteCardModal__venmoDesc {
+    padding-left: ",
+          [Function],
+          ";
+    height: 100px;
+  }
+  .deleteCardModal__card {
+    margin-left: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-left: ",
+          [Function],
+          ";
+    }
+  }
+  .deleteCardModal__cardInfo {
+    width: 85%;
+    padding-left: 0px;
+    @media ",
+          [Function],
+          " {
+      width: 55%;
+    }
+    @media ",
+          [Function],
+          " {
+      width: 100%;
+      margin-top: ",
+          [Function],
+          ";
+    }
+  }
+  .deleteCardModal__expiry {
+    float: right;
+    @media ",
+          [Function],
+          " {
+      float: none;
+    }
+  }
+  .deleteCardModal__btnWrapper {
+    padding-top: 20px;
+    clear: both;
+    text-align: center;
+  }
+  .deleteCardModal__btn {
+    display: inline-block;
+    font-weight: ",
+          [Function],
+          ";
+    float: none;
+    width: 162px;
+    letter-spacing: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      float: right;
+      width: 40%;
+    }
+  }
+  .deleteCardModal__deleteCancel {
+    float: none;
+    @media ",
+          [Function],
+          " {
+      margin-bottom: ",
+          [Function],
+          ";
+      margin-left: ",
+          [Function],
+          ";
+    }
+    @media ",
+          [Function],
+          " {
+      padding: 1px 2px;
+      margin-left: 100px;
+      float: left;
+    }
+    @media ",
+          [Function],
+          " {
+      min-height: ",
+          [Function],
+          ";
+    }
+  }
+  .deleteCardModal__desc {
+    text-align: center;
+    @media ",
+          [Function],
+          " {
+      margin: 0 auto;
+      width: 100%;
+    }
+    @media ",
+          [Function],
+          " {
+      min-height: 120px;
+    }
+  }
+  .deleteCardModal__venmo_desc {
+    display: flex;
+    justify-content: center;
+  }
+  .deleteCardModal__img {
+    border: 1px solid ",
+          [Function],
+          ";
+    border-radius: ",
+          [Function],
+          ";
+    width: 90px;
+    height: 56px;
+    float: left;
+    margin-left: 42px;
+    @media ",
+          [Function],
+          " {
+      width: 98px;
+      height: 61px;
+    }
+    @media ",
+          [Function],
+          " {
+      width: 61px;
+      height: 38px;
+      margin-right: 20px;
+    }
+    @media ",
+          [Function],
+          " {
+      float: none;
+    }
+  }
+  .deleteCardModal__addressToDelete {
+    margin: 0 ",
+          [Function],
+          "
+      ",
+          [Function],
+          ";
+    display: block;
+    word-break: break-word;
+    @media ",
+          [Function],
+          " {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: ",
+          [Function],
+          ";
+    }
+  }
+  .deleteCardModal__deleteConfirm {
+    margin-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-right: ",
+          [Function],
+          ";
+    }
+    @media ",
+          [Function],
+          " {
+      padding: 12px 24px;
+      width: 162px;
+    }
+    @media ",
+          [Function],
+          " {
+      min-height: 51px;
+    }
+  }
+  .deleteCardModal__modalTitle {
+    text-align: center;
+    font-size: ",
+          [Function],
+          ";
+    padding: 0 ",
+          [Function],
+          ";
+    margin-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding: 0 ",
+          [Function],
+          ";
+      margin: ",
+          [Function],
+          " 0
+        ",
+          [Function],
+          ";
+      text-align: center;
+    }
+    @media ",
+          [Function],
+          " {
+      margin: ",
+          [Function],
+          " auto;
+      width: 50%;
+    }
+  }
+  .deleteCreditModal__card__icon {
+    height: 56px;
+    border: 1px solid ",
+          [Function],
+          ";
+    border-radius: ",
+          [Function],
+          ";
+  }
+
+  .deleteCreditCard {
+    padding: 0 ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding: 0 ",
+          [Function],
+          ";
+    }
+  }
+  .cardName-spacing-tablet {
+    @media ",
+          [Function],
+          " {
+      margin-top: ",
+          [Function],
+          ";
+    }
+  }
+  .card-details-mobile {
+    padding: 0 ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding: 0;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CreditCardModalInfo)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-kgoBCf",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
 `;

@@ -16,6 +16,7 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import SMSNotifications from '../organisms/SMSNotifications';
 
 const renderAccountForm = isGuest => {
   return (
@@ -27,6 +28,15 @@ const renderAccountForm = isGuest => {
       </Row>
     )
   );
+};
+
+const renderSMSNotification = (labels, isGymboreeCanadaSite) => {
+  return !isGymboreeCanadaSite ? (
+    <Row fullBleed className="smsNotification">
+      <Col colSize={{ small: 6, medium: 8, large: 12 }} />
+      <SMSNotifications labels={labels} />
+    </Row>
+  ) : null;
 };
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
@@ -48,6 +58,7 @@ const ConfirmationView = ({
   isVenmoPaymentInProgress,
   venmoUserName,
   pageCategory,
+  isGymboreeCanadaSite,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
   let venmoPayment = {};
@@ -99,6 +110,8 @@ const ConfirmationView = ({
           <div>SMS SIGN UP</div>
         </Col>
       </Row>
+      {renderSMSNotification(labels, isGymboreeCanadaSite)}
+
       <Row fullBleed className="thank-you-component">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ThankYouComponent
@@ -127,7 +140,6 @@ const ConfirmationView = ({
           {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
-      {renderAccountForm(isGuest)}
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
@@ -135,6 +147,7 @@ const ConfirmationView = ({
         labels={labels}
         pageCategory={pageCategory}
       />
+      {renderAccountForm(isGuest)}
     </div>
   );
 };
@@ -169,6 +182,7 @@ ConfirmationView.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoUserName: PropTypes.string,
   pageCategory: PropTypes.string,
+  isGymboreeCanadaSite: PropTypes.bool,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -180,6 +194,7 @@ ConfirmationView.defaultProps = {
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
   pageCategory: '',
+  isGymboreeCanadaSite: false,
 };
 
 export default withStyles(ConfirmationView, styles);

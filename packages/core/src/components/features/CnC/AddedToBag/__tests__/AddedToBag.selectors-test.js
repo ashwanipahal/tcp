@@ -7,6 +7,7 @@ import {
   getPointsSummary,
   getAddedToPickupError,
   getMultipleItemsAddedToBagError,
+  getAddedToBagInterval,
 } from '../container/AddedToBag.selectors';
 
 describe('#Added to bag Selectors', () => {
@@ -23,6 +24,12 @@ describe('#Added to bag Selectors', () => {
     quantity: '2',
     orderItemId: 12345,
   });
+  AddedToBagState = AddedToBagState.set('itemInfoArray', [
+    {
+      quantity: 1,
+      orderItemId: 12345,
+    },
+  ]);
   const CartPageState = fromJS({
     orderDetails: {
       pointsToNextReward: '2',
@@ -35,6 +42,8 @@ describe('#Added to bag Selectors', () => {
           itemInfo: {
             itemId: 12345,
             quantity: '3',
+            offerPrice: 2,
+            itemPoints: 0,
           },
         },
       ],
@@ -67,16 +76,43 @@ describe('#Added to bag Selectors', () => {
     expect(getQuantityValue(state)).toEqual('3');
   });
 
-  it('#getQuantityValue should return state', () => {
+  it('#getPointsSummary should return state', () => {
     expect(
       getPointsSummary(CartPageState.get('orderDetails'), AddedToBagState.get('itemInfo'))
     ).toEqual({
       bagSubTotal: 94,
       itemPoints: 0,
-      itemPrice: 0,
+      itemPrice: 2,
       pointsToNextReward: '2',
       totalItems: '5',
       userPoints: '3',
     });
+  });
+  it('#getPointsSummary should return state with multiple items', () => {
+    expect(
+      getPointsSummary(CartPageState.get('orderDetails'), AddedToBagState.get('itemInfoArray'))
+    ).toEqual({
+      bagSubTotal: 94,
+      itemPoints: 0,
+      itemPrice: 2,
+      pointsToNextReward: '2',
+      totalItems: '5',
+      userPoints: '3',
+    });
+  });
+});
+
+describe('#Added to Bag Interval Selectors', () => {
+  const sessionState = {
+    siteDetails: {
+      SFL_MAX_COUNT: '200',
+      IS_SAVE_FOR_LATER_ENABLED: true,
+    },
+  };
+  const state = {
+    session: sessionState,
+  };
+  it('#getAddedToBagInterval should return Interval', () => {
+    expect(getAddedToBagInterval(state)).toEqual(0);
   });
 });

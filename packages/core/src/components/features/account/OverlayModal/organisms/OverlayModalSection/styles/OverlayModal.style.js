@@ -91,7 +91,7 @@ const StyledModal = css`
     @media ${props => props.theme.mediaQuery.medium} {
       position: fixed;
       top: 52px;
-      right: 81px;
+      right: 74px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -115,6 +115,7 @@ const StyledModal = css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     font-size: ${props => props.theme.typography.fontSizes.fs18};
+    font-family: ${props => props.theme.typography.fonts.secondary};
   }
 `;
 

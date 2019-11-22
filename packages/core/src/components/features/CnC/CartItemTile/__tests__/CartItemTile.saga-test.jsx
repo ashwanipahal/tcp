@@ -54,6 +54,8 @@ describe('Cart Item saga remove', () => {
       isMiniBag: true,
     };
     const removeCartItemGen = removeCartItem(payload);
+    removeCartItemGen.next();
+
     expect(removeCartItemGen.next().value).toEqual(
       call(confirmRemoveItem, { payload: '3001545548', isMiniBag: true })
     );

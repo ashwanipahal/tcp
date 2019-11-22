@@ -6,7 +6,7 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
-import { isGymboree } from '@tcp/core/src/utils/utils';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -18,7 +18,6 @@ import {
   acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -33,7 +32,6 @@ import CHECKOUT_ACTIONS, {
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
   setSmsNumberForUpdates,
-  emailSignupStatus,
   getSetCheckoutStage,
   toggleCheckoutRouting,
 } from './Checkout.action';
@@ -45,7 +43,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
+import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -106,6 +104,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   if (smsSignUp) {
     transVibesSmsPhoneNo = smsSignUp.phoneNumber;
   }
+  yield put(setLoaderState(true));
   try {
     yield call(
       setShippingMethodAndAddressId,
@@ -115,7 +114,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-
+    yield put(setLoaderState(false));
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
@@ -126,6 +125,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       })
     );
   } catch (err) {
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
@@ -221,39 +221,6 @@ export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  }
-}
-
-export function* subscribeEmailAddress(emailObj, status, field1) {
-  const { payload } = emailObj;
-  const brandGYM = !!(isGymboree() || payload.isEmailOptInSecondBrand);
-  const brandTCP = !!(!isGymboree() || payload.isEmailOptInSecondBrand);
-
-  try {
-    const payloadObject = {
-      emailaddr: payload.signup,
-      URL: 'email-confirmation',
-      response: `${status}:::false:false`,
-      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
-      brandTCP,
-      brandGYM,
-    };
-
-    if (field1) {
-      payloadObject.field1 = field1;
-    }
-
-    const res = yield call(emailSignupAbstractor.subscribeEmail, payloadObject);
-    yield put(emailSignupStatus({ subscription: res }));
-  } catch (err) {
-    logger.error(err);
-  }
-}
-
-export function* validateAndSubmitEmailSignup(emailAddress, field1) {
-  if (emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
   }
 }
 
@@ -460,4 +427,20 @@ export function shouldInvokeReviewCartCall(
   const { REVIEW } = constants.CHECKOUT_STAGES;
   const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
   return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
+}
+
+export function* redirectFromExpress() {
+  yield put(toggleCheckoutRouting(true));
+  yield put(setIsExpressEligible(false));
+  const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
+  if (isOrderHasPickup) {
+    if (!isMobileApp()) {
+      return utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
+    }
+    return yield put(getSetCheckoutStage(constants.PICKUP_DEFAULT_PARAM));
+  }
+  if (!isMobileApp()) {
+    return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  }
+  return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
 }

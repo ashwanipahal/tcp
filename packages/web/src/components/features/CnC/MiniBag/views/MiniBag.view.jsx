@@ -18,7 +18,8 @@ class MiniBag extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ router: nextRouter }) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps({ router: nextRouter }) {
     const { router, closeMiniBagDispatch } = this.props;
     /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {
@@ -73,7 +74,6 @@ class MiniBag extends React.Component {
       labels,
       userName,
       subTotal,
-      currencySymbol,
       isCartItemsUpdating,
       isCartItemSFL,
       cartItemSflError,
@@ -111,7 +111,6 @@ class MiniBag extends React.Component {
           cartItemCount={cartItemCount}
           userName={userName}
           subTotal={subTotal}
-          currencySymbol={currencySymbol}
           isCartItemsUpdating={isCartItemsUpdating}
           savedforLaterQty={sflItemsCount}
           isCartItemSFL={isCartItemSFL}
@@ -137,7 +136,6 @@ MiniBag.propTypes = {
   router: PropTypes.shape({}).isRequired,
   userName: PropTypes.string.isRequired,
   subTotal: PropTypes.string.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   currentPoints: PropTypes.string.isRequired,
   totalRewards: PropTypes.string.isRequired,
   isCartItemsUpdating: PropTypes.bool.isRequired,

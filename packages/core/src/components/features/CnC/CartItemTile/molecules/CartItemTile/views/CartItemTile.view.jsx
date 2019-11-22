@@ -11,8 +11,8 @@ import {
   isCanada,
   getAPIConfig,
   getBrand,
-  getPriceWithCurrency,
 } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -324,9 +324,9 @@ class CartItemTile extends PureComponent {
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -505,11 +505,11 @@ class CartItemTile extends PureComponent {
   // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol, isBagPageSflSection } = this.props;
+    const { isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
-    const topPaddingClass = isBagPageSflSection ? 'padding-top-50' : 'padding-top-15';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
     return (
       <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -554,7 +554,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {getPriceWithCurrency(currencySymbol, offerPrice)}
+            <PriceCurrency price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -598,7 +598,7 @@ class CartItemTile extends PureComponent {
   };
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
-    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     const { salePrice, wasPrice, listPrice, price } = getPrices({
       productDetail,
@@ -627,7 +627,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {getPriceWithCurrency(currencySymbol, Number(price))}
+              <PriceCurrency price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -637,7 +637,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {getPriceWithCurrency(currencySymbol, Number(listPrice))}
+              <PriceCurrency price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -666,7 +666,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {getPriceWithCurrency(currencySymbol, Number(salePrice))}
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -677,7 +677,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {getPriceWithCurrency(currencySymbol, Number(wasPrice))}
+              <PriceCurrency price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
@@ -1097,6 +1097,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                   onClick={this.closeMiniBagMethod}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1304,7 +1305,6 @@ CartItemTile.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   toggleBossBopisError: PropTypes.shape({
@@ -1317,6 +1317,7 @@ CartItemTile.propTypes = {
   disableProductRedirect: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);
