@@ -6,7 +6,9 @@ import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
 
-// const VideoPlayer = dynamic(() => import('../../VideoPlayer'));
+const VideoPlayer = dynamic(() => import('../../VideoPlayer'), {
+  ssr: false,
+});
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -59,21 +61,21 @@ const getBreakpointImgUrl = (type, props) => {
     : `${basePath}/${config}/${imgPath}`;
 };
 
-// const RenderVideo = videoProps => {
-//   const { video, image } = videoProps;
-//   const { autoplay, controls, url, muted, loop } = video;
+const RenderVideo = videoProps => {
+  const { video, image } = videoProps;
+  const { autoplay, controls, url, muted, loop } = video;
 
-//   const options = {
-//     autoplay,
-//     controls,
-//     url,
-//     muted,
-//     loop,
-//     image,
-//   };
+  const options = {
+    autoplay,
+    controls,
+    url,
+    muted,
+    loop,
+    image,
+  };
 
-//   return <VideoPlayer {...options} />;
-// };
+  return <VideoPlayer {...options} />;
+};
 
 const RenderImage = forwardRef((imgProps, ref) => {
   const {
@@ -143,9 +145,9 @@ const DamImage = props => {
     ...other
   } = props;
 
-  // if (videoData) {
-  //   return <RenderVideo video={videoData} image={imgData} />;
-  // }
+  if (videoData) {
+    return <RenderVideo video={videoData} image={imgData} />;
+  }
 
   const imgProps = {
     breakpoints,
