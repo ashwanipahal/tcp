@@ -48,7 +48,8 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderHeader: PropTypes.func,
     renderFooter: PropTypes.func,
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-    defaultWishList: PropTypes.shape({}),
+    defaultWishList: PropTypes.shape([]),
+    activeWishList: PropTypes.shape({}),
     renderItems: PropTypes.func,
   };
 
@@ -69,7 +70,8 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     renderHeader: null,
     renderFooter: null,
     labels: {},
-    defaultWishList: {},
+    defaultWishList: [],
+    activeWishList: {},
     renderItems: null,
   };
 
@@ -121,6 +123,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       flatListTop: 0,
       flatListHeight: 0,
     };
+    this.showDefaultHeartIcon = false;
   }
 
   componentDidMount() {
@@ -167,16 +170,17 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight, isShareOptions } = this.props;
+    const { customDropDownHeight, isWishlist, data } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
+    const dataLength = data && data.length && data.length < 4;
 
     if (showInBottom) {
       if (calculateHeight > dH) {
         listHeight = dH - 100;
       } else {
-        listHeight = isShareOptions ? calculateHeight : calculateHeight - 100;
+        listHeight = isWishlist && dataLength ? calculateHeight + 100 : calculateHeight;
       }
       if (customDropDownHeight) {
         listHeight = customDropDownHeight;
@@ -245,17 +249,17 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
    * Close the drop down
    */
   closeDropDown = () => {
-    this.setState(
-      {
-        dropDownIsOpen: false,
-      },
-      () => {
-        const { onPressOut } = this.props;
-        if (onPressOut) {
-          onPressOut();
-        }
-      }
-    );
+    this.setState({
+      dropDownIsOpen: false,
+    });
+  };
+
+  handleRenderFooter = () => {
+    const { renderFooter } = this.props;
+    if (renderFooter) {
+      return renderFooter(this.closeDropDown);
+    }
+    return null;
   };
 
   render() {
@@ -269,10 +273,17 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       isWishlist,
       fontSize,
       renderHeader,
-      renderFooter,
       renderItems,
+      defaultWishList,
+      activeWishList,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
+
+    if (isWishlist) {
+      const defaultListId = defaultWishList && defaultWishList.length && defaultWishList[0].id;
+      this.showDefaultHeartIcon = activeWishList && activeWishList.id === defaultListId;
+    }
+
     return (
       <View style={dropDownStyle}>
         <Row
@@ -292,7 +303,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
               fontWeight={selectedItemFontWeight}
               text={selectedLabelState}
             />
-            {isWishlist && (
+            {this.showDefaultHeartIcon && (
               <CustomIcon
                 margins="0 0 0 8px"
                 iconFontName={ICON_FONT_CLASS.Icomoon}
@@ -340,7 +351,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
                     bounces={bounces}
                     style={{ height: flatListHeight }}
                     ListHeaderComponent={renderHeader}
-                    ListFooterComponent={renderFooter}
+                    ListFooterComponent={this.handleRenderFooter}
                     ItemSeparatorComponent={() => !isWishlist && <Separator />}
                   />
                 )}

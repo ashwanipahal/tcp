@@ -1,5 +1,5 @@
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
-import { LABELS } from '@tcp/core/src/reduxStore/constants';
+import { loadComponentLabelsData, loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS, SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 import {
   setServerErrorCheckout,
@@ -30,12 +30,10 @@ export const updateShipmentMethodSelection = payload => ({
   payload,
 });
 
-export function getSetGiftWrapOptionsActn(giftWrapOptions) {
-  return {
-    giftWrapOptions,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
-  };
-}
+export const getSetGiftWrapOptionsActn = giftWrapOptions => ({
+  giftWrapOptions,
+  type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+});
 
 export const getSetPickupValuesActn = pickup => ({
   pickUpContact: pickup,
@@ -284,7 +282,10 @@ export const routeToPickupPage = () => ({
   type: constants.ROUTE_TO_PICKUP_PAGE,
 });
 
-export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+export const initActions = [
+  loadComponentLabelsData({ category: LABELS.checkout }),
+  loadPageSEOData({ page: SEO_DATA.checkout }),
+];
 
 export const updateShippingAddress = (payload, after) => {
   return {
@@ -460,13 +461,6 @@ export const setVenmoPaymentOptionSave = payload => {
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,
-    payload,
-  };
-};
-
-export const resetAddGiftCardSuccess = payload => {
-  return {
-    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
     payload,
   };
 };

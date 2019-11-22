@@ -30,6 +30,11 @@ class ProductCustomizeFormPartContainer extends React.Component {
 
   onInputSelectionChange = () => {
     this.setState(oldState => ({ formEnabled: !oldState.formEnabled }));
+    const { changeQuickViewState } = this.props;
+    const { formEnabled } = this.state;
+    if (!formEnabled) {
+      changeQuickViewState(false);
+    }
   };
 
   goToPDPPage = (e, pdpToPath, currentColorPdpUrl) => {
@@ -93,6 +98,7 @@ ProductCustomizeFormPartContainer.propTypes = {
   currency: PropTypes.string,
   addToBagError: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
+  changeQuickViewState: PropTypes.bool.isRequired,
 };
 
 ProductCustomizeFormPartContainer.defaultProps = {

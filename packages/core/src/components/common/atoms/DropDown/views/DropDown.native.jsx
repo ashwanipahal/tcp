@@ -203,7 +203,13 @@ class DropDown extends React.PureComponent<Props> {
     }
 
     return (
-      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
+      <DropDownItemContainer
+        onPress={() => this.onDropDownItemClick(item)}
+        style={itemStyle}
+        // eslint-disable-next-line react-native-a11y/has-valid-accessibility-role
+        accessibilityRole="combobox"
+        accessibilityLabel={label}
+      >
         {typeof label !== 'function' ? (
           <BodyCopy
             fontFamily="secondary"

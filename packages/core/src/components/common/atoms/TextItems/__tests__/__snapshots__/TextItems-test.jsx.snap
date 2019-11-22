@@ -1,18 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextItems component renders correctly 1`] = `
-Array [
-  <span
-    className="test"
-    key="0"
-  >
-    test
-  </span>,
-  <span
-    className="test1"
-    key="1"
-  >
-     test2
-  </span>,
-]
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-kAzzGY",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .header-icon {
+    width: 47px;
+    height: 40px;
+    margin: 0 ",
+          [Function],
+          " -",
+          [Function],
+          ";
+
+    @media ",
+          [Function],
+          " {
+      width: 66px;
+      height: 56px;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(TextItems)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-kAzzGY",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  textItems={
+    Array [
+      Object {
+        "style": "test",
+        "text": "test",
+      },
+      Object {
+        "style": "test1",
+        "text": "test2",
+      },
+    ]
+  }
+/>
 `;

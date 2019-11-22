@@ -5,7 +5,7 @@ class PriceCurrency extends React.Component {
   render() {
     const { currency, currencySymbol, price } = this.props;
     const space = currency === 'USD' || currency === 'CAD' ? '' : ' ';
-    return `${currencySymbol}${space}${(price && price.toFixed(2)) || 0}`;
+    return `${currencySymbol}${(currency && space) || ''}${(price && price.toFixed(2)) || 0}`;
   }
 }
 

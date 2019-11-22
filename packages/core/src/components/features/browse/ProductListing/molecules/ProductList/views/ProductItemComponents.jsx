@@ -95,7 +95,7 @@ export function ProductPricesSection(props) {
               color="red.500"
               fontFamily="secondary"
               fontWeight="semibold"
-              className="merchant-tag"
+              className="merchant-tag elem-ml-XXXS"
               fontSize={['fs10', 'fs12', 'fs14']}
             >
               {merchantTag}

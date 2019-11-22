@@ -91,6 +91,7 @@ export default css`
 
     .CheckBox__text {
       margin-top: 6px;
+      font-size: 14px;
     }
   }
 

@@ -12,6 +12,10 @@ import {
 } from '../../../../../utils/utils';
 import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
+const getOdmLoading = state => {
+  return state.Confirmation && state.Confirmation.get('loading');
+};
+
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
 };
@@ -197,9 +201,12 @@ const getInitialCreateAccountValues = createSelector(
   }
 );
 
-// const getEarnedPlaceCashValue = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.valueOfEarnedPcCoupons;
-// })
+const getEarnedPlaceCashValue = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.valueOfEarnedPcCoupons;
+  }
+);
 
 // const getPlaceCashSpotEnabled = createSelector(getEarnedPlaceCashValue, earnedPlaceCashValue => {
 //   return earnedPlaceCashValue > 0;
@@ -457,6 +464,7 @@ const getLedgerSummaryDataConfirmation = state => {
 };
 
 export default {
+  getOdmLoading,
   getOrderConfirmation,
   getOrderEmailAddress,
   getCurrentSiteId,
@@ -474,7 +482,7 @@ export default {
   // getHoldDate,
   getInitialCreateAccountValues,
   // getIsOrderHasShipping,
-  // getEarnedPlaceCashValue,
+  getEarnedPlaceCashValue,
   // getPlaceCashSpotEnabled,
   getPersonalizedCoupons,
   getEncryptedEmailAddress,

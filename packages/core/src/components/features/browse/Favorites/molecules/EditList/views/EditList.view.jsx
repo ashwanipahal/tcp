@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { Row, TextBox, BodyCopy, Col, Button } from '@tcp/core/src/components/common/atoms';
+import { getLabelValue, getIconPath } from '@tcp/core/src/utils/utils';
+import { Row, TextBox, BodyCopy, Col, Button, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
@@ -93,6 +93,11 @@ class EditList extends React.PureComponent {
                   fontWeight="semibold"
                 >
                   {getLabelValue(labels, 'lbl_fav_default_list')}
+                  <Image
+                    alt="Default Favourite List"
+                    src={getIconPath('add-to-favorite')}
+                    className="fav-list-heart-icon"
+                  />
                 </BodyCopy>
               </Field>
             </Col>

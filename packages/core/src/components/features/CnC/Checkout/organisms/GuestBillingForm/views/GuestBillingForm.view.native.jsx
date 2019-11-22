@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection, reduxForm, change } from 'redux-form';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import AddNewCCForm from '../../AddNewCCForm';
@@ -8,7 +9,11 @@ import cvvInfo from '../../../molecules/CVVInfo';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
-import { PaymentMethodHeader, PayPalTextContainer } from '../styles/GuestBillingForm.styles.native';
+import {
+  PaymentMethodHeader,
+  PayPalTextContainer,
+  SkeletonWrapper,
+} from '../styles/GuestBillingForm.styles.native';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
@@ -46,6 +51,7 @@ class GuestBillingForm extends React.Component {
     paymentMethodId: PropTypes.string,
     isPayPalEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.func,
+    bagLoading: PropTypes.bool.isRequired,
     isVenmoEnabled: PropTypes.bool,
     venmoError: PropTypes.string,
   };
@@ -108,6 +114,21 @@ class GuestBillingForm extends React.Component {
     return null;
   };
 
+  renderPayPalTextContainer = (isPayPalEnabled, paymentMethodId, labels) => {
+    return isPayPalEnabled && paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
+      <PayPalTextContainer>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          spacingStyles="margin-bottom-MED"
+          color="gray.900"
+          dataLocator="paymentMethodLbl"
+          text={labels.payPalLongText}
+        />
+      </PayPalTextContainer>
+    ) : null;
+  };
+
   /**
    * @function render
    * @description render method to be called of component
@@ -138,6 +159,7 @@ class GuestBillingForm extends React.Component {
       getPayPalSettings,
       isPayPalEnabled,
       isPayPalWebViewEnable,
+      bagLoading,
       isVenmoEnabled,
       venmoError,
     } = this.props;
@@ -178,18 +200,7 @@ class GuestBillingForm extends React.Component {
                 dispatch={dispatch}
               />
             </FormSection>
-            {isPayPalEnabled && paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
-              <PayPalTextContainer>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  spacingStyles="margin-bottom-MED"
-                  color="gray.900"
-                  dataLocator="paymentMethodLbl"
-                  text={labels.payPalLongText}
-                />
-              </PayPalTextContainer>
-            ) : null}
+            {this.renderPayPalTextContainer(isPayPalEnabled, paymentMethodId, labels)}
             {isVenmoEnabled && this.renderVenmoText()}
             {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
               <>
@@ -205,17 +216,23 @@ class GuestBillingForm extends React.Component {
                   billingData={billingData}
                   creditFieldLabels={creditFieldLabels}
                 />
-                <CheckoutBillingAddress
-                  isGuest={isGuest}
-                  orderHasShipping={orderHasShipping}
-                  addressLabels={addressLabels}
-                  dispatch={dispatch}
-                  shippingAddress={shippingAddress}
-                  isSameAsShippingChecked={isSameAsShippingChecked}
-                  labels={labels}
-                  billingData={billingData}
-                  formName="checkoutBilling"
-                />
+                {!bagLoading ? (
+                  <CheckoutBillingAddress
+                    isGuest={isGuest}
+                    orderHasShipping={orderHasShipping}
+                    addressLabels={addressLabels}
+                    dispatch={dispatch}
+                    shippingAddress={shippingAddress}
+                    isSameAsShippingChecked={isSameAsShippingChecked}
+                    labels={labels}
+                    billingData={billingData}
+                    formName="checkoutBilling"
+                  />
+                ) : (
+                  <SkeletonWrapper>
+                    <GenericSkeleton />
+                  </SkeletonWrapper>
+                )}
               </>
             ) : null}
           </>
@@ -253,6 +270,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: 'checkoutBilling', // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(GuestBillingForm);
 export { GuestBillingForm as GuestBillingFormVanilla };
