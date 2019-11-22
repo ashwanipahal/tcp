@@ -108,6 +108,7 @@ class SearchDetail extends React.PureComponent {
       labelsLogin,
       searchResultSuggestions,
       slpLabels,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
 
@@ -140,6 +141,7 @@ class SearchDetail extends React.PureComponent {
           isLoggedIn={isLoggedIn}
           labelsLogin={labelsLogin}
           isSearchListing
+          isKeepModalOpen={isKeepModalOpen}
           {...otherProps}
         />
         <QuickViewModal navigation={navigation} />
@@ -167,6 +169,7 @@ SearchDetail.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   searchResultSuggestions: PropTypes.arrayOf(PropTypes.shape({})),
+  isKeepModalOpen: PropTypes.bool,
 };
 
 SearchDetail.defaultProps = {
@@ -178,6 +181,7 @@ SearchDetail.defaultProps = {
   isLoggedIn: false,
   labelsLogin: {},
   searchResultSuggestions: [],
+  isKeepModalOpen: false,
 };
 
 export default withStyles(SearchDetail, styles);
