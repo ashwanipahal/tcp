@@ -166,6 +166,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
+      dispatch,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -213,6 +214,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           ...shippingProps,
           shippingDidMount: this.shippingDidMount,
           isRegisteredUserCallDone,
+          dispatch,
         }}
         orderHasPickUp={orderHasPickUp}
         checkoutRoutingDone={checkoutRoutingDone}
