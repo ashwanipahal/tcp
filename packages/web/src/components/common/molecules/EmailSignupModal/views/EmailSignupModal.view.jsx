@@ -179,7 +179,7 @@ class EmailSignupModal extends React.PureComponent {
                       <Field
                         placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signup"
-                        id="signup"
+                        id="modal_signup"
                         type="text"
                         component={TextBox}
                         maxLength={50}

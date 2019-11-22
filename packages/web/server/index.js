@@ -1,3 +1,22 @@
+const logger = require('@tcp/core/src/utils/loggerInstance');
+
+if (process.env.RWD_APPD_ENABLED === 'true') {
+  try {
+    require('appdynamics').profile({
+      controllerHostName: process.env.RWD_APPD_CONTROLLER_HOST_NAME,
+      controllerPort: 443,
+      controllerSslEnabled: true,
+      accountName: process.env.RWD_APPD_ACCOUNT_NAME,
+      accountAccessKey: process.env.RWD_APPD_ACCOUNT_ACCESS_KEY,
+      applicationName: process.env.RWD_APPD_APPLICATION_NAME,
+      tierName: process.env.RWD_APPD_TIER_NAME,
+      nodeName: process.env.HOSTNAME,
+    });
+  } catch (error) {
+    logger.error('Unable to initialize AppDynamics', error);
+  }
+}
+
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
@@ -9,7 +28,6 @@ const {
   preRouteSlugs,
 } = require('@tcp/core/src/config/route.config');
 const redis = require('async-redis');
-const logger = require('@tcp/core/src/utils/loggerInstance');
 
 const {
   settingHelmetConfig,

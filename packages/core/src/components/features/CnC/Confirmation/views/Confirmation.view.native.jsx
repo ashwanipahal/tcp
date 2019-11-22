@@ -90,7 +90,6 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
-
       <CnCTemplate
         isConfirmationPage
         isGuest={isGuest}

@@ -7,7 +7,8 @@ describe('HeaderPromo component', () => {
   it('renders correctly for mobile', () => {
     const props = {
       className: 'header-promo-mobile',
-      dataPromo: mockData.dataPromo.promoTextBanner,
+      dataTextPromo: mockData.dataPromo.promoTextBanner,
+      dataHtmlPromo: null,
       mobileMarkup: true,
     };
     const component = shallow(<HeaderPromoVanilla {...props} />);
@@ -22,7 +23,8 @@ describe('HeaderPromo component', () => {
   it('renders correctly for desktop', () => {
     const props = {
       className: 'header-promo-desktop',
-      dataPromo: mockData.dataPromo.promoTextBanner,
+      dataTextPromo: mockData.dataPromo.promoTextBanner,
+      dataHtmlPromo: null,
     };
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();

@@ -406,6 +406,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
     styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
     styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
+    damCloudName: processEnv.RWD_CLOUDINARY_CLOUD_NAME,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {

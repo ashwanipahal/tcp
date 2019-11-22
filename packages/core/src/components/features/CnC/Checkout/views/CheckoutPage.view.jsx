@@ -69,11 +69,6 @@ class CheckoutPage extends React.PureComponent {
     return section || CHECKOUT_STAGES.SHIPPING;
   };
 
-  getIsRenderConfirmation = () => {
-    const { router } = this.props;
-    return router.query.fromReview || false;
-  };
-
   /**
    * This method will set venmo banner state once it is visible, so that it won't be visible
    * once user comes back
@@ -178,7 +173,6 @@ class CheckoutPage extends React.PureComponent {
     const currentSection = this.getCurrentCheckoutSection(this.props);
     const isFormLoad = getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
-    const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <div>
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
@@ -304,7 +298,7 @@ class CheckoutPage extends React.PureComponent {
             cartLoading={cartLoading}
           />
         )}
-        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && isRendorConfirmation && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
           <Confirmation
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             pageCategory={currentSection.toLowerCase()}
@@ -337,10 +331,9 @@ class CheckoutPage extends React.PureComponent {
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const currentSection = this.getCurrentCheckoutSection(this.props);
-    const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <>
-        {(!isBagLoaded || cartOrderItemsCount > 0) && isRendorConfirmation ? (
+        {!isBagLoaded || cartOrderItemsCount > 0 ? (
           <CnCTemplate
             showLeftSection
             leftSection={this.renderLeftSection}

@@ -197,9 +197,12 @@ const getInitialCreateAccountValues = createSelector(
   }
 );
 
-// const getEarnedPlaceCashValue = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.valueOfEarnedPcCoupons;
-// })
+const getEarnedPlaceCashValue = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.valueOfEarnedPcCoupons;
+  }
+);
 
 // const getPlaceCashSpotEnabled = createSelector(getEarnedPlaceCashValue, earnedPlaceCashValue => {
 //   return earnedPlaceCashValue > 0;
@@ -474,7 +477,7 @@ export default {
   // getHoldDate,
   getInitialCreateAccountValues,
   // getIsOrderHasShipping,
-  // getEarnedPlaceCashValue,
+  getEarnedPlaceCashValue,
   // getPlaceCashSpotEnabled,
   getPersonalizedCoupons,
   getEncryptedEmailAddress,
