@@ -9,7 +9,6 @@ export const commonSearchBarStyles = css`
     background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     color: ${props => props.theme.colorPalette.gray[800]};
     border-color: unset;
-    margin-right: 5px;
   }
 
   .searchBar-input-wrapper {
@@ -46,7 +45,7 @@ export const commonSearchBarStyles = css`
     width: 100%;
     height: 40px;
     display: inline-block;
-
+    overflow: unset;
     ${props =>
       props.fromCondensedHeader
         ? `
@@ -190,15 +189,18 @@ export const commonStyles = css`
 
   li.linkName {
     height: 40px;
+    line-height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
   }
 
   li.productBox {
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     height: 87px;
+    width: 88px;
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 152px;
+      width: 152px;
     }
   }
 
@@ -228,7 +230,6 @@ export const mediumOnlyStyles = css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: ${props => props.theme.colorPalette.gray[800]};
       border-color: unset;
-      margin-right: 10px;
       margin-left: 53px;
     }
 

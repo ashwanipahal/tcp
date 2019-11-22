@@ -7,7 +7,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kGXeez",
+        "componentId": "sc-ckVGcZ",
         "isStatic": false,
         "rules": Array [
           "
@@ -77,27 +77,29 @@ exports[`GiftServices component renders correctly 1`] = `
   .giftServicesField {
     display: inline-block;
     width: 142px;
+    .CheckBox__text {
+      padding-top: 4px;
+    }
   }
 
   .dropdownliBottomBorder {
-    height: 71px;
+    min-height: 77px;
     cursor: pointer;
     padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
     > div {
       height: 100%;
-      padding-left: ",
-          [Function],
-          ";
-      padding-right: ",
+      padding: ",
           [Function],
           ";
     }
   }
   .price {
     float: right;
-    margin-right: 5px;
+    margin-right: ",
+          [Function],
+          ";
   }
   .longDesc {
     font-size: ",
@@ -107,15 +109,18 @@ exports[`GiftServices component renders correctly 1`] = `
   .giftServicesDetailsLink {
     text-decoration: underline;
     cursor: pointer;
-    padding-top: 3px;
+    padding-top: 7px;
   }
 
   .phone-field-wrapper {
     width: auto;
     margin-left: -12px;
-    padding-right: 15px;
+    padding-right: 0;
     display: flex;
     align-self: center;
+    margin-right: ",
+          [Function],
+          ";
   }
 
   .tcp-radio-button {
@@ -156,6 +161,7 @@ exports[`GiftServices component renders correctly 1`] = `
   }
 
   .dropdownDivOverFlow {
+    overflow-y: visible;
     div {
       font-family: ",
           [Function],
@@ -209,6 +215,12 @@ exports[`GiftServices component renders correctly 1`] = `
           [Function],
           ";
   }
+
+  .CheckBox__input {
+    margin-right: ",
+          [Function],
+          ";
+  }
 ",
           ";
 ",
@@ -217,7 +229,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "displayName": "Styled(GiftServicesDetailsModal)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kGXeez",
+      "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

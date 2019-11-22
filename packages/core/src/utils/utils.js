@@ -47,6 +47,13 @@ export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
 
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
+
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
  *  side and client side hydration should be the same. If this is needed use ServerToClientRenderPatch.jsx.
@@ -453,6 +460,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
   ) {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
+    }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
     }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
@@ -1018,7 +1028,118 @@ export const getStyliticsRegion = () => {
   return styliticsRegionGYM;
 };
 
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
+export const getProductUrlForDAM = uniqueId => {
+  return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter(item => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[0].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
+};
+
+/**
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
+ */
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
+/**
+ * @description - This method calculate Price based on the given value
+ */
+export const calculatePriceValue = (
+  price,
+  currencySymbol = '$',
+  currencyExchangeValue = 1,
+  defaultReturn = 0
+) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchangeValue).toFixed(2)}`;
+  }
+  return priceValue;
+};
+export const orderStatusMapperForNotification = {
+  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING]: 'lbl_global_yourOrderIsProcessing',
+  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_orders_statusOrderShipped',
+  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_orders_statusOrderPartiallyShipped',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_orders_statusItemsReadyForPickup',
+  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
+  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
+  [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
+  /* Status added for BOSS */
+  [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
+};
+
+/**
+ * @function getOrderStatusForNotification
+ * @summary
+ * @param {String} status -
+ * @return orderStatus
+ */
+export const getOrderStatusForNotification = status => {
+  const orderStatus =
+    orderStatusMapperForNotification[status] ||
+    orderStatusMapperForNotification[status.toLowerCase()] ||
+    status;
+
+  return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
+};
+
+/**
+ * @function validateDiffInDaysNotification
+ * @summary
+ * @param {Date}  orderDateParam
+ * @return true if date false between limit range
+ */
+export const validateDiffInDaysNotification = (
+  orderDateParam,
+  limitOfDaysToDisplayNotification
+) => {
+  let orderDate = orderDateParam;
+  orderDate = moment(orderDate, 'MMM DD, YYYY');
+  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+    return true;
+  }
+  return false;
+};
+
 export default {
+  getOrderStatusForNotification,
+  validateDiffInDaysNotification,
   getPromotionalMessage,
   getIconPath,
   getFlagIconPath,
@@ -1059,4 +1180,8 @@ export default {
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
+  getLabelsBasedOnPattern,
+  calculatePriceValue,
+  getProductUrlForDAM,
 };

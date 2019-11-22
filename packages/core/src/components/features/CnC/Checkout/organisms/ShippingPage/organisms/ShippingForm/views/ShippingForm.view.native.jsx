@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import { FormSection, reduxForm, Field } from 'redux-form';
+import { FormSection, reduxForm } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
-import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
-import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
-import {
-  EmailSignUpWrapper,
-  EmailSignUpForm,
-  ShippingFormWrapper,
-} from '../styles/ShippingForm.view.style.native';
+import { ShippingFormWrapper } from '../styles/ShippingForm.view.style.native';
 import GiftServices from '../../../molecules/GiftServices';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
+
+const nextCTAText = (labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed) => {
+  return isVenmoPaymentInProgress && !isVenmoShippingDisplayed
+    ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+    : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
+};
 
 const ShippingForm = ({
   shipmentMethods,
@@ -48,21 +47,27 @@ const ShippingForm = ({
   syncErrorsObject,
   newUserPhoneNo,
   setCheckoutStage,
+  isVenmoPaymentInProgress,
+  isVenmoShippingDisplayed,
   emailSignUpLabels,
   scrollView,
+  initialValues,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [editType, setEditType] = useState('');
   const [editShipmentDetailsError, setEditShipmentDetailsError] = useState('');
   let editModalRef;
-  const setEditState = state => {
+  // Type added for address update. edit when updating address and add when selected 'Add' from dropdown
+  const setEditState = (state, type) => {
     if (!state) {
       setEditShipmentDetailsError('');
     }
     setEditMode(state);
+    setEditType(type);
   };
 
   const handleShippingFormSubmit = e => {
-    if (!editMode) {
+    if (!editMode || editType === 'add') {
       setEditShipmentDetailsError('');
       return handleSubmit(submitShippingForm)(e);
     }
@@ -116,6 +121,7 @@ const ShippingForm = ({
               addressPhoneNo={addressPhoneNo}
               loadShipmentMethods={loadShipmentMethods}
               disableCountry
+              initialValues={initialValues}
             />
           </FormSection>
         )}
@@ -130,64 +136,6 @@ const ShippingForm = ({
               dispatch={dispatch}
               addressPhoneNo={addressPhoneNo}
             />
-          </FormSection>
-        )}
-        {!orderHasPickUp && isGuest && !isUsSite && (
-          <FormSection name="emailSignUp">
-            <EmailSignUpForm>
-              <EmailSignUpWrapper>
-                <Field
-                  dataLocator="signUp-checkbox-field"
-                  name="sendEmailSignup"
-                  component={InputCheckbox}
-                />
-                <BodyCopy
-                  dataLocator="shipping-email-signUp-heading-lbl"
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                  fontWeight="regular"
-                  text={getLabelValue(
-                    labels,
-                    'lbl_pickup_emailSignupHeading',
-                    'pickup',
-                    'checkout'
-                  )}
-                />
-              </EmailSignUpWrapper>
-              <BodyCopy
-                dataLocator="shipping-email-signUp-sub-heading-text"
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-                text={getLabelValue(
-                  labels,
-                  'lbl_pickup_emailSignupSubHeading',
-                  'pickup',
-                  'checkout'
-                )}
-              />
-              <BodyCopy
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-                text={getLabelValue(
-                  labels,
-                  'lbl_pickup_emailSignupSubSubHeading',
-                  'pickup',
-                  'checkout'
-                )}
-              />
-              <Anchor
-                noUnderline
-                anchorVariation="primary"
-                fontSizeVariation="small"
-                noLink
-                href="#"
-                target="_blank"
-                dataLocator="shipping-email-signUp-contact-anchor"
-                text={getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
-              />
-            </EmailSignUpForm>
           </FormSection>
         )}
         <FormSection name="shipmentMethods">
@@ -217,7 +165,7 @@ const ShippingForm = ({
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
+        btnText={nextCTAText(labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed)}
         routeToPage=""
         onPress={e => handleShippingFormSubmit(e)}
         isGuest={isGuest}
@@ -241,6 +189,7 @@ const validateMethod = createValidateMethod({
 
 ShippingForm.propTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,
@@ -267,6 +216,8 @@ ShippingForm.propTypes = {
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
   setCheckoutStage: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  isVenmoShippingDisplayed: PropTypes.bool,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   scrollView: PropTypes.shape({}).isRequired,
 };
@@ -289,6 +240,8 @@ ShippingForm.defaultProps = {
   defaultAddressId: null,
   syncErrorsObject: {},
   newUserPhoneNo: null,
+  isVenmoPaymentInProgress: false,
+  isVenmoShippingDisplayed: true,
 };
 
 export default reduxForm({

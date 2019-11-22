@@ -11,6 +11,7 @@ import { getOpenState } from '@tcp/core/src/components/features/account/OverlayM
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
   isPlccUser,
+  isRememberedUser,
   getUserName,
   getUserLoggedInState,
   getCurrentPointsState,
@@ -21,17 +22,22 @@ import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
   const { Header } = state;
+
   return {
+    loyaltyPromoBanner: Header.loyaltyPromoBanner,
     brandTabs: Header.brandTabs,
     promoMessageWrapper: Header.promoMessageWrapper,
-    headerPromoArea: Header.promoTextBannerCarousel,
+    headerPromoTextArea: Header.promoTextBannerCarousel,
+    headerPromoHtmlArea: Header.promoHtmlBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
     isUserPlcc: isPlccUser(state),
     userName: getUserName(state),
+    isRememberedUser: isRememberedUser(state),
     userPoints: getCurrentPointsState(state),
     userRewards: getTotalRewardsState(state),
     isLoggedIn: getUserLoggedInState(state),
@@ -59,6 +65,9 @@ const mapDispatchToProps = dispatch => {
     openOverlay: component => dispatch(openOverlayModal(component)),
     openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+    setClickAnalyticsData: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
   };
 };
 

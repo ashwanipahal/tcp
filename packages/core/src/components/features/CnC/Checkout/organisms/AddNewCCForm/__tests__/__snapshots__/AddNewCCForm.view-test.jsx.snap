@@ -76,7 +76,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -199,7 +199,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -245,7 +245,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -368,7 +368,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

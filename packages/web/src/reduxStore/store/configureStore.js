@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 import globalSagas from '../sagas';
 import globalReducers from '../reducers';
 import createAnalyticsMiddleware from '../middlewares/analytics';
+import createDataLayer from '../../analytics/dataLayer';
 
 const configureStore = preloadedState => {
   /**
@@ -23,10 +24,7 @@ const configureStore = preloadedState => {
   const enhancers = [applyMiddleware(...middlewares), cacheEnhancerMiddleware()];
 
   // Choose compose method depending upon environment and platform
-  const composeEnhancers =
-    process.env.NODE_ENV !== 'production' && typeof window === 'object'
-      ? composeWithDevTools
-      : compose;
+  const composeEnhancers = typeof window === 'object' ? composeWithDevTools : compose;
 
   /**
    * Since Next.js does server-side rendering, you are REQUIRED to pass
@@ -43,6 +41,14 @@ const configureStore = preloadedState => {
 
   // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
   setStoreRef(store);
+
+  /**
+   * This is where we assign window._dataLayer for analytics logic
+   */
+  if (process.env.ANALYTICS && typeof window !== 'undefined') {
+    // eslint-disable-next-line
+    window._dataLayer = createDataLayer(store);
+  }
 
   return store;
 };

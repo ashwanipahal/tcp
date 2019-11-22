@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import ACCOUNT_CONSTANTS from '@tcp/core/src/components/features/account/Account/Account.constants';
 
 const handleUserName = userName => {
   return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
@@ -11,8 +13,8 @@ const handleUserRewards = userRewards => {
   return userRewards % 1 ? userRewards : Math.floor(userRewards);
 };
 
-const handleCarrottoggle = (userNameClick, isOpenOverlay) => {
-  return userNameClick || !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
+const handleCarrottoggle = isOpenOverlay => {
+  return !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
 };
 
 const LoggedInUserInfo = ({
@@ -26,42 +28,57 @@ const LoggedInUserInfo = ({
   onLinkClick,
   isDrawer,
 }) => {
-  const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
+  const linkClick = e =>
+    onLinkClick(
+      {
+        e,
+        openOverlay,
+        userNameClick,
+        navname: ACCOUNT_CONSTANTS.ACCOUNT_ANALYTICS.navigationText.welcomeMsg,
+      },
+      mainId
+    );
   return (
     <React.Fragment>
-      <BodyCopy component="div" id={mainId} className="account-info-section">
+      <ClickTracker name="welcome_message">
         <BodyCopy
-          className="account-info user-name"
-          onClick={linkClick}
           component="div"
-          role="button"
+          id={mainId}
+          className="account-info-section"
+          onClick={linkClick}
+          tabIndex="0"
         >
-          {`Hi, ${handleUserName(userName)}`}
+          <BodyCopy className="account-info user-name" component="div" role="button">
+            {`Hi, ${handleUserName(userName)}`}
+          </BodyCopy>
+          {!isDrawer ? (
+            <Image
+              alt="user"
+              className={`account-info ${handleCarrottoggle(isOpenOverlay)}`}
+              src={getIconPath('down_arrow_icon')}
+              height="6px"
+            />
+          ) : null}
+          {!isCanada() ? (
+            <BodyCopy component="div">
+              <div className="account-info user-points" id="account-info-user-points">
+                {`${userPoints} Points`}
+              </div>
+              <span className="account-info user-rewards rightLink">
+                {`$${handleUserRewards(userRewards)} Rewards`}
+              </span>
+            </BodyCopy>
+          ) : null}
+          {!isDrawer ? (
+            <Image
+              alt="user"
+              className="usericon"
+              src={getIconPath('user-icon')}
+              onClick={linkClick}
+            />
+          ) : null}
         </BodyCopy>
-        {!isDrawer ? (
-          <Image
-            alt="user"
-            className={`account-info ${handleCarrottoggle(userNameClick, isOpenOverlay)}`}
-            src={getIconPath('down_arrow_icon')}
-            height="6px"
-            onClick={linkClick}
-          />
-        ) : null}
-        <BodyCopy onClick={linkClick} component="div">
-          <div className="account-info user-points">{`${userPoints} Points`}</div>
-          <span className="account-info user-rewards rightLink">
-            {`$${handleUserRewards(userRewards)} Rewards`}
-          </span>
-        </BodyCopy>
-        {!isDrawer ? (
-          <Image
-            alt="user"
-            className="usericon"
-            src={getIconPath('user-icon')}
-            onClick={linkClick}
-          />
-        ) : null}
-      </BodyCopy>
+      </ClickTracker>
     </React.Fragment>
   );
 };

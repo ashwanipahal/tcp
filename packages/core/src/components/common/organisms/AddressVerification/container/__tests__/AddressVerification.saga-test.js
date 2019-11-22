@@ -9,6 +9,7 @@ describe('AddressVerification saga', () => {
     beforeEach(() => {
       verifyAddressGen = verifyAddress({ payload: { firstName: 'test' } });
       verifyAddressGen.next();
+      verifyAddressGen.next();
     });
 
     it('should dispatch verifyAddressSuccess action for success resposnse ', () => {
@@ -20,8 +21,8 @@ describe('AddressVerification saga', () => {
         },
         resultType: 'AS01',
       };
-
-      const putDescriptor = verifyAddressGen.next(response).value;
+      verifyAddressGen.next(response);
+      const putDescriptor = verifyAddressGen.next().value;
       expect(putDescriptor).toEqual(
         put(
           verifyAddressSuccess({
@@ -38,7 +39,8 @@ describe('AddressVerification saga', () => {
 
     it('should dispatch verifyAddressError action for error resposnse', () => {
       const error = new Error();
-      const putDescriptor = verifyAddressGen.throw(error).value;
+      verifyAddressGen.throw(error);
+      const putDescriptor = verifyAddressGen.next().value;
       expect(putDescriptor).toEqual(put(verifyAddressError({ resultType: 'ERROR' })));
     });
   });

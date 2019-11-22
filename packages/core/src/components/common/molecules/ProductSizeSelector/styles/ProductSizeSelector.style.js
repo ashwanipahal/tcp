@@ -17,6 +17,8 @@ const styles = css`
     position: relative;
     left: -5px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -31,8 +33,8 @@ const styles = css`
       display: inline-block;
       text-transform: capitalize;
       font-size: ${props => props.theme.fonts.fontSize.anchor.small}px;
+      color: ${props => props.theme.colorPalette.gray[400]};
       border-radius: 6px;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       text-align: center;
       width: 54px;
     }

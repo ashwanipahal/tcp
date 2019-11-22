@@ -1,7 +1,7 @@
 import { parseBoolean, isBopisProduct, isBossProduct } from './productParser';
 import { extractExtraImages } from './productListing.utils';
 import { extractAttributeValue, extractPrioritizedBadge } from '../../../utils/badge.util';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 import processHelpers from './processHelpers';
 
 const getIsGiftCard = (isGiftCard, baseProduct) => {
@@ -65,7 +65,7 @@ const breadCrumbFactory = state => {
   // const navList = storeState.globalComponents.header.navigationTree;
   // const previousPageUrl = document && document.referrer;
   // const previousPagePathName = seoURLExtactor(previousPageUrl);
-  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  const plpBreadCrumb = state.ProductListing.breadCrumbTrail;
   let breadCrumbs;
   if (plpBreadCrumb) {
     breadCrumbs = plpBreadCrumb;
@@ -109,7 +109,7 @@ const getImgPath = (id, excludeExtension) => {
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -198,10 +198,13 @@ const getCategoryEntity = (categoryColorId, breadCrumbs) => {
   return categoryColorId && processHelpers.parseCategoryEntity(categoryColorId, breadCrumbs);
 };
 
+const getImagePathAttr = isGiftCard => (isGiftCard ? 'prodpartno' : 'imagename');
+
 const getImagesByColor = (itemColor, colorName, getImgPathFunc, isGiftCard, imagesByColor) => {
+  const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
   return {
     ...extractExtraImages(
-      `${itemColor.imagename}#${colorName}`,
+      `${itemColor[imageNameAttr]}#${colorName}`,
       itemColor.alt_img,
       getImgPathFunc,
       false,
@@ -239,7 +242,8 @@ const getColorfitsSizesMap = ({
 }) => {
   let imagesByColor = images;
   const itemColorMap = productVariants.map(itemColor => {
-    const { productImages, colorSwatch } = getImgPath(itemColor.imagename);
+    const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
+    const { productImages, colorSwatch } = getImgPath(itemColor[imageNameAttr]);
     const colorName = getProductColorName(isGiftCard, itemColor);
     const familyName = getFamilyName(isGiftCard, itemColor);
     const categoryColorId = getCategoryColorId(itemColor);
@@ -347,6 +351,29 @@ const getCategoryId = (breadCrumbs, baseProduct, categoryPath) => {
     : categoryPath;
 };
 
+const getCategoryValue = baseProduct => {
+  let categoryId = 'global';
+  const {
+    categoryPath3_catMap: categoryPath3CatMap,
+    categoryPath2_catMap: categoryPath2CatMap,
+  } = baseProduct;
+  try {
+    if (categoryPath3CatMap) {
+      const [, catPath2, catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
+      categoryId = [catPath2, catPath3].join('|');
+    } else if (categoryPath2CatMap) {
+      categoryId = categoryPath2CatMap[0]
+        .split('|')[0]
+        .split('>')
+        .join('|');
+    }
+  } catch (err) {
+    categoryId = 'global';
+  }
+
+  return categoryId;
+};
+
 const getBaseProduct = product => {
   return product[0] || product;
 };
@@ -451,5 +478,6 @@ const processHelperUtil = {
   setDefault,
   getDefaultColorAlternateSizes,
   getIsAdditionalStyles,
+  getCategoryValue,
 };
 export default processHelperUtil;

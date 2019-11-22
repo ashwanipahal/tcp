@@ -1,0 +1,700 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleE component Should render component 1`] = `
+<Styled(Row)
+  className=""
+  fullBleed={
+    Object {
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <Divider
+    disabled={true}
+    position="top"
+  />
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={true}
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+        ignoreGutter={true}
+      >
+        <WithTheme(DamImage)
+          className="module-e-img-full-width"
+          dataLocator="moduleE_eyebrowImage_img__left"
+          imgConfigs={
+            Array [
+              "t_mod_E_eyebrow_img_m",
+              "t_mod_E_eyebrow_img_t",
+              "t_mod_E_eyebrow_img_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Left Image",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Left Image",
+              "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+            }
+          }
+          link={
+            Object {
+              "external": 0,
+              "target": "",
+              "text": "Left Image Link",
+              "title": "Left Image Link",
+              "url": "http://www.childrensplace.com",
+            }
+          }
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 2,
+            "small": 2,
+          }
+        }
+        ignoreGutter={true}
+      >
+        <Styled(PromoBanner)
+          dataLocator="moduleE_eyebrow_text"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "small_text_normal",
+                    "text": "Cue the photos",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+        ignoreGutter={true}
+      >
+        <WithTheme(DamImage)
+          className="module-e-img-full-width"
+          dataLocator="moduleE_eyebrowImage_img__right"
+          imgConfigs={
+            Array [
+              "t_mod_E_eyebrow_img_m",
+              "t_mod_E_eyebrow_img_t",
+              "t_mod_E_eyebrow_img_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Right Image",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Right Image",
+              "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+            }
+          }
+          link={
+            Object {
+              "external": 0,
+              "target": "",
+              "text": "Right Image Link",
+              "title": "Right Image Link",
+              "url": "http://www.childrensplace.com",
+            }
+          }
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(LinkText)
+      className="module-e-header-text"
+      dataLocator="moduleE_header_text"
+      headerText={
+        Array [
+          Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/node/pdp/<uuid>",
+            },
+            "textItems": Array [
+              Object {
+                "style": "large_text_black",
+                "text": "MATCHING FAMILY",
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <Styled(PromoBanner)
+      dataLocator="moduleE_promo_text"
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/banner/url",
+            },
+            "textItems": Array [
+              Object {
+                "style": "spaced_text_only_mobile",
+                "text": "ALL SPRING DRESSES UP",
+              },
+              Object {
+                "style": "percentage_inline_promo_black",
+                "text": "40% OFF",
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <Styled(Anchor)
+      className="promo-area-image-link promo-area-image-link-spaced"
+      dataLocator="moduleE_promo_area_img_cta"
+      target=""
+      title=""
+      url="http://www.childrensplace.com"
+    >
+      <WithTheme(DamImage)
+        className="module-e-img-full-width"
+        dataLocator="moduleE_promo_area_img"
+        imgConfigs={
+          Array [
+            "t_mod_E_promo_area_img_m",
+            "t_mod_E_promo_area_img_t",
+            "t_mod_E_promo_area_img_d",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Promo Area",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Promo Area",
+            "url": "https://test5.childrensplace.com/image/upload/v1573246605/module-E-promo-area.jpg",
+          }
+        }
+      />
+    </Styled(Anchor)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 8,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Styled(Carousel))
+          carouselConfig={
+            Object {
+              "autoplay": true,
+              "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+              "customArrowRight": "/static/images/right-carousel-carrot.svg",
+              "dataLocatorCarousel": "carousel_banner",
+              "dataLocatorPause": undefined,
+              "dataLocatorPlay": undefined,
+              "pauseIconButtonLabel": "Pause",
+              "playIconButtonLabel": "Play",
+            }
+          }
+          options={
+            Object {
+              "afterChange": [Function],
+              "arrows": true,
+              "autoplay": true,
+              "autoplaySpeed": 4000,
+              "dots": true,
+              "dotsClass": "slick-dots",
+              "fade": false,
+              "nextArrow": <CarouselArrow
+                arrowType="next"
+              />,
+              "prevArrow": <CarouselArrow
+                arrowType="prev"
+              />,
+              "responsive": Array [
+                Object {
+                  "breakpoint": 1200,
+                  "settings": Object {
+                    "arrows": false,
+                  },
+                },
+              ],
+              "speed": 1000,
+              "swipe": true,
+            }
+          }
+        >
+          <div>
+            <WithTheme(DamImage)
+              className="module-e-img-full-width"
+              dataLocator="moduleE_carousel_image_img_1"
+              imgConfigs={
+                Array [
+                  "t_mod_E_carousel_img_m",
+                  "t_mod_E_carousel_img_t",
+                  "t_mod_E_carousel_img_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Family Tees2",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees2",
+                  "url": "https://test5.childrensplace.com/image/upload/v1573283582/module-E-test-large-1.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "_blank",
+                  "text": "Shop The Collection",
+                  "title": "Shop The Collection",
+                  "url": "http://www.childrensplace.com",
+                }
+              }
+            />
+          </div>
+          <div>
+            <WithTheme(DamImage)
+              className="module-e-img-full-width"
+              dataLocator="moduleE_carousel_image_img_2"
+              imgConfigs={
+                Array [
+                  "t_mod_E_carousel_img_m",
+                  "t_mod_E_carousel_img_t",
+                  "t_mod_E_carousel_img_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Family Tees",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees",
+                  "url": "https://test5.childrensplace.com/image/upload/v1573239143/module-E-test-large-2.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "_blank",
+                  "text": "Shop The Collection",
+                  "title": "Shop The Collection",
+                  "url": "http://www.childrensplace.com/2",
+                }
+              }
+            />
+          </div>
+        </Styled(Styled(Carousel))>
+        <Styled(Row)
+          fullBleed={
+            Object {
+              "large": true,
+              "medium": false,
+              "small": true,
+            }
+          }
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="carousel-cta-button carousel-cta-button-with-eybrow-img"
+              cta={
+                Object {
+                  "external": 0,
+                  "target": "_blank",
+                  "text": "Shop The Collection",
+                  "title": "Shop The Collection",
+                  "url": "http://www.childrensplace.com",
+                }
+              }
+              dataLocator="moduleE_carousel_image_button_cta_0"
+            >
+              Shop The Collection
+            </Styled(Button)>
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(ButtonList)
+          buttonListVariation="stackedCTAList"
+          buttonsData={
+            Array [
+              Object {
+                "button": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Girl",
+                  "title": "Girl",
+                  "url": "/girl",
+                },
+              },
+              Object {
+                "button": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Toddler Girl",
+                  "title": "Toddler Girl",
+                  "url": "/toddler-girl",
+                },
+              },
+              Object {
+                "button": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Boy",
+                  "title": "Boy",
+                  "url": "/boy",
+                },
+              },
+              Object {
+                "button": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Toddler Boy",
+                  "title": "Toddler Boy",
+                  "url": "/toddler-boy",
+                },
+              },
+              Object {
+                "button": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Baby",
+                  "title": "Baby",
+                  "url": "/baby",
+                },
+              },
+            ]
+          }
+          className="button-list-container-alternate"
+          dataLocatorDivisionImages="moduleE_cta_image_"
+          dataLocatorDropDown="moduleE_shop_now_dropdown"
+          dataLocatorTextCta="moduleE_cta_links_"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Row)
+          fullBleed={
+            Object {
+              "large": true,
+              "medium": false,
+              "small": false,
+            }
+          }
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 4,
+                "small": 3,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "large": true,
+              }
+            }
+          >
+            <div
+              className="small-composite-image small-composite-image-0"
+            >
+              <WithTheme(DamImage)
+                className="module-e-img-full-width"
+                dataLocator="moduleE_small_img_1"
+                imgConfigs={
+                  Array [
+                    "t_mod_E_small_img_m",
+                    "t_mod_E_small_img_t",
+                    "t_mod_E_small_img_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Big & Little Sis",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Big & Little Sis",
+                    "url": "https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url1",
+                  }
+                }
+              />
+              <Styled(LinkText)
+                className="small-composite-image-header"
+                dataLocator="moduleE_small_img_header_text_1"
+                headerText={
+                  Array [
+                    Object {
+                      "link": Object {
+                        "external": 1,
+                        "target": "_blank",
+                        "text": "SHOP NOW",
+                        "title": "SHOP NOW",
+                        "url": "/link/url1",
+                      },
+                      "textItems": Array [
+                        Object {
+                          "style": "spaced_text_regular_black",
+                          "text": "Big & Little Sis",
+                        },
+                      ],
+                    },
+                  ]
+                }
+              />
+              <Styled(Button)
+                buttonVariation="variable-width"
+                className="carousel-cta"
+                cta={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url1",
+                  }
+                }
+                dataLocator="moduleE_small_img_cta_1"
+                fullWidth={false}
+              >
+                SHOP NOW
+              </Styled(Button)>
+            </div>
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 4,
+                "small": 3,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "large": true,
+              }
+            }
+          >
+            <div
+              className="small-composite-image small-composite-image-1"
+            >
+              <WithTheme(DamImage)
+                className="module-e-img-full-width"
+                dataLocator="moduleE_small_img_2"
+                imgConfigs={
+                  Array [
+                    "t_mod_E_small_img_m",
+                    "t_mod_E_small_img_t",
+                    "t_mod_E_small_img_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Big & Little Bro",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Big & Little Bro",
+                    "url": "https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url2",
+                  }
+                }
+              />
+              <Styled(LinkText)
+                className="small-composite-image-header"
+                dataLocator="moduleE_small_img_header_text_2"
+                headerText={
+                  Array [
+                    Object {
+                      "link": Object {
+                        "external": 1,
+                        "target": "_blank",
+                        "text": "SHOP NOW",
+                        "title": "SHOP NOW",
+                        "url": "/link/url2",
+                      },
+                      "textItems": Array [
+                        Object {
+                          "style": "spaced_text_regular_black",
+                          "text": "Big & Little Bro",
+                        },
+                      ],
+                    },
+                  ]
+                }
+              />
+              <Styled(Button)
+                buttonVariation="variable-width"
+                className="carousel-cta"
+                cta={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url2",
+                  }
+                }
+                dataLocator="moduleE_small_img_cta_2"
+                fullWidth={false}
+              >
+                SHOP NOW
+              </Styled(Button)>
+            </div>
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Col)>
+  <Divider
+    disabled={
+      Array [
+        Object {
+          "mediaLinkedList": Array [
+            Object {
+              "image": Object {
+                "alt": "Left Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Left Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Left Image Link",
+                "title": "Left Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+            Object {
+              "image": Object {
+                "alt": "Right Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Right Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Right Image Link",
+                "title": "Right Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "small_text_normal",
+                  "text": "Cue the photos",
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }
+    position="bottom"
+  />
+</Styled(Row)>
+`;

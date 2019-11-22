@@ -26,7 +26,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="bonusPointBtn availability-btn "
+      className="bonusPointBtn availability-btn  "
       color="black"
       id={0}
       onClick={[Function]}
@@ -58,7 +58,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="bonusPointBtn availability-btn disable-btn"
+      className="bonusPointBtn availability-btn disable-btn "
       color="black"
       id={1}
       onClick={[Function]}
@@ -95,7 +95,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="bonusPointBtn availability-btn "
+      className="bonusPointBtn availability-btn  "
       color="black"
       id={0}
       onClick={[Function]}
@@ -132,7 +132,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with enableApply
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="bonusPointBtn availability-btn "
+      className="bonusPointBtn availability-btn  "
       color="black"
       id={0}
       onClick={[Function]}

@@ -1,37 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<LazyloadScrollView
-  horizontal={false}
+<ScrollViewMock
   name="lazyload-pdp"
-  recycle={true}
-  recycleDistance={5336}
-  renderDistance={0}
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
+      AddToFavoriteErrorMsg=""
+      currentColorEntry={
+        Object {
+          "favoritedCount": 0,
+        }
+      }
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
       imageUrls={null}
+      isLoggedIn={false}
+      keepAlive={false}
+      onAddItemToFavorites={null}
       onImageClick={[Function]}
+      outOfStockLabels={Object {}}
+      removeAddToFavoritesErrorMsg={[Function]}
     />
     <Styled(ProductSummary)
       currencyExchange={1}
       currencySymbol="USD"
+      isBundleProduct={false}
       isGiftCard={false}
       isPlcc={false}
+      keepAlive={false}
+      outOfStockLabels={Object {}}
+      pdpLabels={Object {}}
       productData={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
       }
       selectedColorProductId=""
+      showCompleteTheLook={false}
     />
     <Connect(ProductAddToBagContainer)
       alternateSizes={Object {}}
       currentProduct={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
@@ -39,31 +70,43 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       errorOnHandleSubmit=""
       handleFormSubmit={null}
       handleSubmit={null}
+      isKeepAliveEnabled={false}
       navigation={Object {}}
       onChangeColor={[Function]}
       onChangeSize={[Function]}
+      outOfStockLabels={Object {}}
       plpLabels={null}
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
+      toastMessage={[Function]}
     />
-    <Connect(Styled(FulfillmentSection))
-      btnClassName="added-to-bag"
-      buttonLabel="Add To Bag"
-      currentProduct={
+    <Connect(ProductPickupContainer)
+      formName="ProductAddToBag-undefined"
+      keepAlive={false}
+      outOfStockLabels={Object {}}
+      productInfo={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
       }
     />
-    <Connect(AddedToBagContainer)
-      navigation={Object {}}
-    />
+    <Styled(View)>
+      <Connect(LoyaltyBannerContainer)
+        navigation={Object {}}
+        pageCategory="isProductDetailView"
+      />
+    </Styled(View)>
     <ProductDetailDescription
       isShowMore={false}
       itemPartNumber=""
       longDescription=""
+      margins={null}
       pdpLabels={Object {}}
       shortDescription=""
     />
@@ -71,7 +114,26 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       navigation={Object {}}
       pdpLabels={Object {}}
       selectedColorProductId=""
+      setShowCompleteTheLook={[Function]}
     />
+    <Styled(View)>
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        variation="moduleO"
+      />
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        isRecentlyViewed={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        portalValue="recently-viewed-products"
+        variation="moduleO"
+      />
+    </Styled(View)>
   </Styled(View)>
-</LazyloadScrollView>
+</ScrollViewMock>
 `;

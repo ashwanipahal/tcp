@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeftNavigation component LeftNavigation component renders correctly without props 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .nav-link-wrapper:not(:first-child) {
+    padding: ",
+          [Function],
+          " 0 0;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(LeftNavigation)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

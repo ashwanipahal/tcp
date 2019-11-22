@@ -22,16 +22,13 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     colorName={null}
     customStyle={Object {}}
     fontSizeVariation="large"
+    justifyContent=""
     locator=""
     margins={null}
     onPress={[Function]}
     text="Apply Now"
     underline={true}
     visible={false}
-  />
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
   />
   <Styled(TouchableOpacity)
     onPress={[Function]}

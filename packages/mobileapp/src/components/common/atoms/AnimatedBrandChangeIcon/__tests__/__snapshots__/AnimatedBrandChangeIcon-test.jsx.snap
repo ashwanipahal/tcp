@@ -33,7 +33,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
   >
     <Styled(TouchableOpacity)
       accessibilityComponentType="none"
-      accessibilityLabel="tcpBrand"
+      accessibilityLabel="The Childrens Place Link"
       accessibilityTraits="none"
       name="tcpBrand"
       onPress={[Function]}
@@ -43,7 +43,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../src/assets/images/tcp/tcpPeekABoo.png",
+            "testUri": "../../../src/assets/images/tcp/tcp-active-toggle.png",
           }
         }
         url=""
@@ -76,7 +76,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
   >
     <Styled(TouchableOpacity)
       accessibilityComponentType="none"
-      accessibilityLabel="gymboreeBrand"
+      accessibilityLabel="Gymboree Link"
       accessibilityTraits="none"
       name="gymboreeBrand"
       onPress={[Function]}
@@ -86,7 +86,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
+            "testUri": "../../../src/assets/images/gymboree/gym-toggle.png",
           }
         }
         url=""

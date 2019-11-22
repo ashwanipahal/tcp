@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductListView component should render correctly 1`] = `
+<PLPSkeleton
+  col={20}
+/>
+`;

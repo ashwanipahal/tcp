@@ -58,7 +58,6 @@ exports[`EmptyBagPage component with false should renders correctly with false 1
     link={null}
     textAlign="left"
   />
-  <Connect(ApplyNowModalWrapper) />
   <div
     className="element-spacing"
   >
@@ -127,7 +126,6 @@ exports[`EmptyBagPage component with true should renders correctly with true 1`]
     link={null}
     textAlign="left"
   />
-  <Connect(ApplyNowModalWrapper) />
   <div
     className="element-spacing"
   >

@@ -37,10 +37,15 @@ class ProductsGrid extends React.Component {
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
-    currencyExchange: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}).isRequired,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
+    isSearchListing: PropTypes.bool,
     // showQuickViewForProductId: PropTypes.string,
+    getProducts: PropTypes.func,
+    asPathVal: PropTypes.string,
+    AddToFavoriteErrorMsg: PropTypes.string,
+    removeAddToFavoritesErrorMsg: PropTypes.func,
   };
 
   static defaultProps = {
@@ -53,8 +58,12 @@ class ProductsGrid extends React.Component {
     labels: '',
     productTileVariation: '',
     currency: 'USD',
-    currencyExchange: 1,
     isLoggedIn: false,
+    isSearchListing: false,
+    getProducts: () => {},
+    asPathVal: '',
+    AddToFavoriteErrorMsg: '',
+    removeAddToFavoritesErrorMsg: () => {},
   };
 
   constructor(props, context) {
@@ -70,14 +79,14 @@ class ProductsGrid extends React.Component {
       this.containerDivRef = ref;
     };
     this.handleLoadNextPage = this.handleLoadNextPage.bind(this);
+    this.loadEnable = false;
   }
 
-  componentWillMount() {
-    if (isClient()) {
-      document.addEventListener('scroll', this.handleLoadNextPage, true);
-      document.addEventListener('mousewheel', this.handleLoadNextPage, true);
-      document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
-    }
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleLoadNextPage, true);
+    document.addEventListener('mousewheel', this.handleLoadNextPage, true);
+    document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
+    this.loadEnable = false;
   }
 
   componentDidUpdate() {
@@ -126,13 +135,16 @@ class ProductsGrid extends React.Component {
 
   handleLoadNextPage() {
     const { isLoadingMore, productsBlock, getMoreProducts } = this.props;
-    if (!isLoadingMore && this.containerDivRef && productsBlock.length) {
-      const offsetY =
-        findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
+    const offsetY =
+      findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
+    if (this.loadEnable && !isLoadingMore && this.containerDivRef && productsBlock.length) {
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+        this.loadEnable = false;
         getMoreProducts();
       }
+    } else if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET < offsetY) {
+      this.loadEnable = true;
     }
   }
 
@@ -147,10 +159,15 @@ class ProductsGrid extends React.Component {
       onQuickViewOpenClick,
       productTileVariation,
       currency,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      isSearchListing,
       // showQuickViewForProductId,
+      getProducts,
+      asPathVal,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
 
@@ -182,10 +199,15 @@ class ProductsGrid extends React.Component {
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
-                        currencyExchange={currencyExchange}
+                        currencyAttributes={currencyAttributes}
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
+                        isSearchListing={isSearchListing}
+                        getProducts={getProducts}
+                        asPathVal={asPathVal}
+                        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                         {...otherProps}
                       />
                     );

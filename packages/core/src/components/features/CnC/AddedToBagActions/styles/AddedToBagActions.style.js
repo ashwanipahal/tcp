@@ -48,6 +48,7 @@ const ctaStyle = css`
   }
   .paypal-wrapper {
     width: 100%;
+    z-index: 0;
     @media ${props => props.theme.mediaQuery.large} {
       min-width: 220px;
     }
@@ -72,6 +73,10 @@ const ctaStyle = css`
     span {
       font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
+  }
+  .checkoutBtnTracker {
+    display: inline-flex;
+    flex: 1;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

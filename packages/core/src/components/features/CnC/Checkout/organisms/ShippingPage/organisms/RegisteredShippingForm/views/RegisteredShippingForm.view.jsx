@@ -195,7 +195,7 @@ class RegisteredShippingForm extends React.Component {
         {!isEditing && !isAddNewAddress && (
           <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="xlarge"
               underline
               noLink
               anchorVariation="primary"
@@ -250,7 +250,7 @@ class RegisteredShippingForm extends React.Component {
           </Row>
         )}
         <Row fullBleed className="hide-on-mobile">
-          <Col colSize={{ small: 6, medium: 6, large: 4 }}>
+          <Col colSize={{ small: 6 }} className="shipping-section-header">
             <BodyCopy
               fontFamily="primary"
               fontSize="fs28"
@@ -264,7 +264,7 @@ class RegisteredShippingForm extends React.Component {
           {showEditLink && (
             <Col colSize={{ small: 1, medium: 1, large: 1 }} className="edit-link-placement">
               <Anchor
-                fontSizeVariation="medium"
+                fontSizeVariation="xlarge"
                 underline
                 noLink
                 anchorVariation="primary"
@@ -349,7 +349,7 @@ class RegisteredShippingForm extends React.Component {
           <ErrorMessage error={editShipmentDetailsError} className="edit-shipping-error" />
         )}
         <Row fullBleed className="elem-mt-XL edit-cta">
-          <Col colSize={{ small: 6, medium: 2, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 3 }} className="save-cancel-btn">
             <Button
               fill="WHITE"
               type="button"
@@ -361,7 +361,7 @@ class RegisteredShippingForm extends React.Component {
               {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
             </Button>
           </Col>
-          <Col colSize={{ small: 6, medium: 2, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 3 }} className="save-cancel-btn">
             <Button
               type="button"
               buttonVariation="fixed-width"

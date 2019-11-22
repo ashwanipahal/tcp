@@ -50,7 +50,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -178,7 +178,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -231,7 +231,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -359,7 +359,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -412,7 +412,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -540,7 +540,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -593,7 +593,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -721,7 +721,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -798,7 +798,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -921,7 +921,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -971,7 +971,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1094,7 +1094,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1144,7 +1144,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1267,7 +1267,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1317,7 +1317,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1440,7 +1440,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1490,7 +1490,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1613,7 +1613,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

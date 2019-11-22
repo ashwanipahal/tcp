@@ -12,9 +12,88 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     name="expressReviewShippingSection"
   />
   <Connect(BillingSectionContainer)
+    bagLoading={false}
+    checkoutRoutingDone={true}
     isExpressCheckout={false}
   />
-  <Connect(CheckoutCartItemList) />
+  <Connect(CheckoutCartItemList)
+    bagLoading={false}
+    checkoutRoutingDone={true}
+    disableProductRedirect={true}
+  />
+  <Styled(CheckoutOrderInfo)
+    fullPageInfo={true}
+    pageCategory=""
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    footerBody={
+      Array [
+        undefined,
+        <ForwardRef
+          dataLocator="termAndConditionText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+        undefined,
+        <ForwardRef
+          dataLocator="PrivacyText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+      ]
+    }
+    hideBackLink={true}
+  />
+</form>
+`;
+
+exports[`ReviewPageVanilla component should renders correctly when not routing done  1`] = `
+<form
+  name="expressReviewPage"
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="review-title"
+  />
+  <div
+    className="review-pickup"
+  >
+    <Connect(PickUpReviewContainer)
+      bagLoading={false}
+      checkoutRoutingDone={false}
+      isExpressCheckout={false}
+      onEdit={[Function]}
+    />
+  </div>
+  <FormSection
+    name="expressReviewShippingSection"
+  >
+    <div
+      className="review-shipping"
+    >
+      <Connect(ShippingReviewContainer)
+        bagLoading={false}
+        checkoutRoutingDone={false}
+        formName="expressReviewPage"
+        formSection="expressReviewShippingSection"
+        isExpressCheckout={false}
+        onEdit={[Function]}
+      />
+    </div>
+  </FormSection>
+  <Connect(BillingSectionContainer)
+    bagLoading={false}
+    checkoutRoutingDone={false}
+    isExpressCheckout={false}
+  />
+  <Connect(CheckoutCartItemList)
+    bagLoading={false}
+    checkoutRoutingDone={false}
+    disableProductRedirect={true}
+  />
   <Styled(CheckoutOrderInfo)
     fullPageInfo={true}
     pageCategory=""

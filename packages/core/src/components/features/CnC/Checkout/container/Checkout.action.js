@@ -1,16 +1,19 @@
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
-import { LABELS } from '@tcp/core/src/reduxStore/constants';
+import { loadComponentLabelsData, loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS, SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
-import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
-
-/**
- * @function initCheckoutAction
- * action creator for type: INIT_CHECKOUT
- */
-export const initCheckoutAction = router => ({
-  type: constants.INIT_CHECKOUT,
-  router,
-});
+import {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  setIsRTPSFlow,
+  submitAcceptOrDeclinePlccOffer,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
+} from './Checkout.action.util';
 
 export const submitPickupSection = payload => ({
   type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
@@ -27,19 +30,15 @@ export const updateShipmentMethodSelection = payload => ({
   payload,
 });
 
-export function getSetGiftWrapOptionsActn(giftWrapOptions) {
-  return {
-    giftWrapOptions,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
-  };
-}
+export const getSetGiftWrapOptionsActn = giftWrapOptions => ({
+  giftWrapOptions,
+  type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+});
 
-export function getSetPickupValuesActn(pickup) {
-  return {
-    pickUpContact: pickup,
-    type: 'CHECKOUT_VALUES_SET_PICKUP',
-  };
-}
+export const getSetPickupValuesActn = pickup => ({
+  pickUpContact: pickup,
+  type: 'CHECKOUT_VALUES_SET_PICKUP',
+});
 
 export function getSetPickupAltValuesActn(pickup) {
   return {
@@ -279,18 +278,20 @@ export const emailSignupStatus = payload => {
   };
 };
 
-export const routeToPickupPage = () => {
-  return {
-    type: constants.ROUTE_TO_PICKUP_PAGE,
-  };
-};
+export const routeToPickupPage = () => ({
+  type: constants.ROUTE_TO_PICKUP_PAGE,
+});
 
-export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+export const initActions = [
+  loadComponentLabelsData({ category: LABELS.checkout }),
+  loadPageSEOData({ page: SEO_DATA.checkout }),
+];
 
-export const updateShippingAddress = payload => {
+export const updateShippingAddress = (payload, after) => {
   return {
     type: constants.UPDATE_SHIPPING_ADDRESS,
     payload,
+    after,
   };
 };
 export function getSetIsBillingVisitedActn(isBillingVisited) {
@@ -309,12 +310,10 @@ export function submitBillingSection(payload) {
 
 export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
-export const addNewShippingAddress = payload => {
-  return {
-    type: constants.ADD_NEW_SHIPPING_ADDRESS,
-    payload,
-  };
-};
+export const addNewShippingAddress = payload => ({
+  type: constants.ADD_NEW_SHIPPING_ADDRESS,
+  payload,
+});
 
 export const setOnFileAddressKey = payload => {
   // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
@@ -466,48 +465,21 @@ export const resetAddGiftCard = payload => {
   };
 };
 
-export const resetAddGiftCardSuccess = payload => {
-  return {
-    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
-    payload,
-  };
+export const toggleCheckoutRouting = payload => ({
+  payload,
+  type: constants.CHECKOUT_ROUTING_DONE,
+});
+
+export default {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  submitAcceptOrDeclinePlccOffer,
+  setIsRTPSFlow,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 };
-/**
- * @function initIntlCheckoutAction
- *  @param { object } payload
- * action creator for type: INIT_INTL_CHECKOUT
- */
-export const initIntlCheckoutAction = payload => ({
-  type: constants.INIT_INTL_CHECKOUT,
-  payload,
-});
-/**
- * @function getSetIntlUrl
- *  @param { object } internationalUrl
- * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
- */
-export const getSetIntlUrl = internationalUrl => {
-  return {
-    internationalUrl,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
-  };
-};
-
-/**
- * @function updateCardData
- *  @param { object } payload
- * action creator for type: UPDATE_CARD_DATA
- */
-export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
-
-export const initCheckoutSectionPageAction = payload => ({
-  type: constants.INIT_CHECKOUT_SECTION_PAGE,
-  payload,
-});
-
-export const toggleCountrySelectorModal = payload => ({
-  payload,
-  type: constants.COUNTRY_SELECTOR_MODAL_TOGGLE,
-});
-
-export default { setServerErrorCheckout, resetCheckoutReducer };

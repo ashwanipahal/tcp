@@ -16,8 +16,8 @@ export const getCartItemsSflError = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'cartItemSflError']);
 };
 
-export const getIsMiniBagOpen = state => {
-  return state.Header.miniBag;
+export const getMiniBagLoaderState = state => {
+  return state.PageLoader.miniBagLoaderState;
 };
 
 export const getLabelsMiniBag = state => {

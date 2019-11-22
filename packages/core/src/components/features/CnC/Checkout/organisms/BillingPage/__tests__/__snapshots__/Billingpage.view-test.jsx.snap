@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `
+<div
+  className=""
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="billing-title"
+  />
+  <Connect(GiftCardsContainer)
+    isFetching={false}
+  />
+  <div
+    className="payment-container"
+  >
+    <Connect(GiftCardsContainer)
+      addressLabels={null}
+      bagLoading={false}
+      billingData={Object {}}
+      checkoutRoutingDone={false}
+      creditFieldLabels={Object {}}
+      cvvCodeRichText={null}
+      isVenmoEnabled={false}
+      isVenmoPaymentInProgress={false}
+      labels={Object {}}
+      pageCategory=""
+      shippingAddress={null}
+      userAddresses={null}
+    />
+  </div>
+</div>
+`;
+
 exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
 <div
   className=""
@@ -7,14 +38,17 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
   />
-  <[object Object] />
-  <Connect(GiftCardsContainer) />
+  <Connect(GiftCardsContainer)
+    isFetching={false}
+  />
   <div
     className="payment-container"
   >
     <Connect(GiftCardsContainer)
       addressLabels={null}
+      bagLoading={false}
       billingData={Object {}}
+      checkoutRoutingDone={true}
       creditFieldLabels={Object {}}
       cvvCodeRichText={null}
       isVenmoEnabled={false}
@@ -35,10 +69,14 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
   />
-  <Connect(GiftCardsContainer) />
+  <Connect(GiftCardsContainer)
+    isFetching={false}
+  />
   <Connect(GuestBillingContainer)
     addressLabels={null}
+    bagLoading={false}
     billingData={Object {}}
+    checkoutRoutingDone={true}
     creditFieldLabels={Object {}}
     cvvCodeRichText={null}
     isGuest={true}

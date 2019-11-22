@@ -23,9 +23,10 @@ class GiftCards extends React.PureComponent {
     };
   }
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, state) {
     const { orderBalanceTotal } = nextProps;
-    if (orderBalanceTotal) {
+    const { orderBalanceTotalState } = state;
+    if (orderBalanceTotal !== orderBalanceTotalState) {
       return { orderBalanceTotal };
     }
     return null;

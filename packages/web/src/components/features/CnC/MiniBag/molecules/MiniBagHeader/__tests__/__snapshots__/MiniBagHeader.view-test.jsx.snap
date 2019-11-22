@@ -16,7 +16,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="userName"
+        className="userName "
         color="text.primary"
         component="span"
         fontFamily="secondary"

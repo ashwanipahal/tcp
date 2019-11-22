@@ -3,6 +3,7 @@ import { ORDERDETAILS_ACTION_PATTERN } from '../../../../constants/reducer.const
 const ORDERDETAILS_CONSTANTS = {
   GET_ORDERDETAILS: `${ORDERDETAILS_ACTION_PATTERN}GET_ORDERDETAILS`,
   SET_ORDERDETAILS: `${ORDERDETAILS_ACTION_PATTERN}SET_ORDERDETAILS`,
+  SHOW_LOADER: `${ORDERDETAILS_ACTION_PATTERN}SHOW_LOADER`,
   STATUS_CONSTANTS: {
     ORDER_SHIPPED: 'order shipped',
     PARTIALLY_SHIPPED: 'partially shipped',
@@ -26,6 +27,8 @@ const ORDERDETAILS_CONSTANTS = {
     ORDER_PROCESSING_AT_FACILITY: 'order processing at facility',
     EXPIRED_AND_REFUNDED: 'expired and refunded',
     TOP_PREVIEW_ITEMS_COUNT: 3,
+    LBL_NA: 'lbl_orders_statusNa',
+    LBL_CallNeeded: 'lbl_orders_statusUserCallNeeded',
   },
 };
 

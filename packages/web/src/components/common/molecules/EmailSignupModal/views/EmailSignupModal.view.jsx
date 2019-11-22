@@ -5,6 +5,8 @@ import { Button, Col, Row, TextBox, DamImage, Anchor } from '@tcp/core/src/compo
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isGymboree } from '@tcp/core/src/utils/utils';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 
 import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
@@ -13,17 +15,24 @@ import signupWrapperStyle from '../EmailSignupModal.style';
 import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
-  componentDidUpdate({ subscription: oldSubscription }) {
-    const { subscription } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFieldEmpty: true,
+    };
+  }
 
-    if (
-      this.modalContentRef &&
-      subscription.success !== oldSubscription.success &&
-      subscription.success
-    ) {
-      this.formSubmitPromise.resolve();
-      this.modalContentRef.focus();
-    } else if (subscription.error) {
+  componentDidUpdate({ subscription: oldSubscription }) {
+    const { subscription, trackSubscriptionSuccess } = this.props;
+    if (subscription.success !== oldSubscription.success && subscription.success) {
+      if (this.formSubmitPromise) {
+        this.formSubmitPromise.resolve();
+      }
+      if (this.modalContentRef) {
+        this.modalContentRef.focus();
+      }
+      trackSubscriptionSuccess();
+    } else if (subscription.error && this.formSubmitPromise) {
       this.formSubmitPromise.reject();
     }
   }
@@ -39,12 +48,13 @@ class EmailSignupModal extends React.PureComponent {
     closeModal();
   };
 
-  submitForm = ({ signup }) => {
+  submitForm = formObject => {
     const {
       submitEmailSubscription,
       validateSignupEmail,
       formViewConfig: { validationErrorLabel },
     } = this.props;
+    const { emailSignupSecondBrand, signup } = formObject;
 
     return validateSignupEmail(signup)
       .then(subscription => {
@@ -58,13 +68,21 @@ class EmailSignupModal extends React.PureComponent {
          */
         return new Promise((resolve, reject) => {
           this.formSubmitPromise = { resolve, reject };
-          submitEmailSubscription(signup);
+          submitEmailSubscription({
+            isEmailOptInSecondBrand: emailSignupSecondBrand,
+            signup,
+          });
         });
       })
       .catch(() => {
         const error = { signup: validationErrorLabel };
         throw new SubmissionError({ ...error, _error: error });
       });
+  };
+
+  fieldChange = element => {
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
   };
 
   render() {
@@ -78,6 +96,8 @@ class EmailSignupModal extends React.PureComponent {
       submitting,
     } = this.props;
     const { IMG_DATA } = config;
+    const isGym = isGymboree();
+    const { isFieldEmpty } = this.state;
     return (
       <Fragment>
         <Modal
@@ -89,7 +109,7 @@ class EmailSignupModal extends React.PureComponent {
           onRequestClose={this.closeModal}
           noPadding
           widthConfig={{ small: '100%', medium: '458px', large: '851px' }}
-          heightConfig={{ minHeight: '500px', height: '620px', maxHeight: '620px' }}
+          heightConfig={{ minHeight: '500px', height: '645px', maxHeight: '645px' }}
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
@@ -172,13 +192,28 @@ class EmailSignupModal extends React.PureComponent {
                       <Field
                         placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signup"
-                        id="signup"
+                        id="modal_signup"
                         type="text"
                         component={TextBox}
                         maxLength={50}
                         dataLocator="email_address_field"
                         enableSuccessCheck={false}
+                        onChange={this.fieldChange}
                       />
+
+                      <Field
+                        name="emailSignupSecondBrand"
+                        id="emailSignupSecondBrand"
+                        component={InputCheckbox}
+                        dataLocator={isGym ? 'email_tcp_opt' : 'email_gym_opt'}
+                        type="checkbox"
+                        className="email-signup-second-brand"
+                      >
+                        {isGym
+                          ? formViewConfig.lbl_SignUp_tcpSignUpLabel
+                          : formViewConfig.lbl_SignUp_gymSignUpLabel}
+                      </Field>
+
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.lbl_SignUp_termsTextLabel}
                       </BodyCopy>
@@ -187,7 +222,7 @@ class EmailSignupModal extends React.PureComponent {
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
                           fullWidth
-                          disabled={pristine || submitting}
+                          disabled={isFieldEmpty || pristine || submitting}
                           buttonVariation="fixed-width"
                           fill="BLUE"
                           type="submit"
@@ -220,6 +255,7 @@ EmailSignupModal.propTypes = {
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
   validateSignupEmail: PropTypes.func,
+  trackSubscriptionSuccess: PropTypes.func,
   subscription: PropTypes.shape({}),
   isModalOpen: PropTypes.bool,
   pristine: PropTypes.bool,
@@ -232,6 +268,7 @@ EmailSignupModal.defaultProps = {
   closeModal: () => {},
   reset: () => {},
   handleSubmit: () => {},
+  trackSubscriptionSuccess: () => {},
   validateSignupEmail: () => Promise.resolve({}),
   className: '',
   subscription: {},

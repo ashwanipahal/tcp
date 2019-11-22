@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({ className, labels, pointHistory }) => {
+const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
   let pointHistoryData = [];
 
   if (pointHistory && pointHistory.length > 3) {
@@ -22,7 +23,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
   return (
     <div className={className}>
       <Row fullBleed className="elem-mb-SM elem-mt-SM">
-        <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 2, small: 2 }}>
           <BodyCopy
             data-locator="pointshistoryorderdatelbl"
             fontFamily="secondary"
@@ -32,7 +33,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             {getLabelValue(labels, 'lbl_common_order_date')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorytransactionslbl"
             fontFamily="secondary"
@@ -54,28 +55,30 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
           </BodyCopy>
         </Col>
       </Row>
-
-      {pointHistoryData &&
+      {isFetching && <PointHistoryViewSkeleton />}
+      {!isFetching &&
+        pointHistoryData &&
         pointHistoryData.length &&
         pointHistoryData.map(pointHistoryRow => (
           <Row fullBleed className="elem-mb-SM">
-            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistoryorderdate"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="text-break"
               >
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="elem-pr-XXS"
+                className="elem-pr-XXS text-break"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
@@ -86,6 +89,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="text-break"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
@@ -120,6 +124,7 @@ PointsHistory.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
+  isFetching: PropTypes.bool,
 };
 
 PointsHistory.defaultProps = {
@@ -130,6 +135,7 @@ PointsHistory.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
+  isFetching: false,
 };
 
 export default PointsHistory;

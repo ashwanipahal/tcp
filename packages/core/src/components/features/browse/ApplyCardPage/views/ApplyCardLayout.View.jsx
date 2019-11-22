@@ -22,15 +22,21 @@ const getApplyCardLayoutView = (
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
-  if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
+  if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
     return (
       <ApplicationInProgress
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
@@ -43,6 +49,9 @@ const getApplyCardLayoutView = (
         isPLCCModalFlow={isPLCCModalFlow}
         approvedPLCCData={renderViewInfo.approvedPLCCData}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
@@ -54,6 +63,8 @@ const getApplyCardLayoutView = (
       onSubmit={submitPLCCForm}
       initialValues={renderViewInfo.profileInfo}
       applicationStatus={applicationStatus}
+      isRtpsFlow={renderViewInfo.isRtpsFlow}
+      closePLCCModal={renderViewInfo.closePLCCModal}
     />
   );
 };
@@ -69,6 +80,9 @@ const ApplyCardLayoutView = ({
   profileInfo,
   approvedPLCCData,
   resetPLCCApplicationStatus,
+  isRtpsFlow,
+  closePLCCModal,
+  togglePLCCModal,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -84,6 +98,9 @@ const ApplyCardLayoutView = ({
           profileInfo,
           approvedPLCCData,
           resetPLCCApplicationStatus,
+          isRtpsFlow,
+          closePLCCModal,
+          togglePLCCModal,
         }
       )}
     </ApplyRewardsCreditCardStyle>
@@ -101,6 +118,9 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

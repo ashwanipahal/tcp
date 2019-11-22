@@ -16,7 +16,7 @@ exports[`Offers Component should render correctly 1`] = `
         }
       }
     >
-      <Styled(RichText) />
+      <Connect(Espot) />
     </Styled(Col)>
   </Styled(Row)>
 </div>

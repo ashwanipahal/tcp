@@ -17,7 +17,6 @@ jest.setMock('@react-native-community/async-storage', AsyncStorage);
 
 // Mock Timers for Animation
 jest.useFakeTimers();
-jest.mock('LayoutAnimation');
 
 jest.mock('react-native-cookies', () => ({
   addEventListener: jest.fn(),
@@ -28,12 +27,25 @@ jest.mock('react-native-cookies', () => ({
   get: () => Promise.resolve(null),
 }));
 
+// jest.mock('react-native-check-notification-permission', () => ({
+//   changeNotificationSetting: jest.fn(),
+//   checkNotificationPermission: jest.fn(() => Promise.resolve(false)),
+// }));
+
 jest.mock('react-native-awesome-card-io', () => {
   return {
     DETECTION_MODE: 'IMAGE_AND_NUMBER',
     CardIOUtilities: {
       preload: jest.fn(() => Promise.resolve('the response')),
     },
+  };
+});
+
+jest.mock('react-native-keychain', () => {
+  return {
+    setGenericPassword: jest.fn(),
+    getGenericPassword: jest.fn(),
+    resetGenericPassword: jest.fn(),
   };
 });
 

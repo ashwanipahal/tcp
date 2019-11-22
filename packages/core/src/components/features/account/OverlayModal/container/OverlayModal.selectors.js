@@ -17,3 +17,7 @@ export const getColor = state => {
 export const getProps = state => {
   return state.OverlayModalReducer.get('componentProps') || {};
 };
+
+export const getLoginLabels = state => {
+  return state.Labels.global && state.Labels.global.login;
+};

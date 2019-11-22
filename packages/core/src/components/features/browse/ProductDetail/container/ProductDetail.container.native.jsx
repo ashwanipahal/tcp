@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import ProductDetail from '../views';
+import { Spinner } from '../../../../common/atoms';
 import { getProductDetails } from './ProductDetail.actions';
-
 import {
   getNavTree,
   getBreadCrumbs,
@@ -25,6 +28,16 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
+import {
+  addItemsToWishlist,
+  removeAddToFavoriteErrorState,
+} from '../../Favorites/container/Favorites.actions';
+
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -32,6 +45,7 @@ class ProductDetailContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     const { navigation } = props;
+    // eslint-disable-next-line react/prop-types
     this.selectedColorProductId = navigation && navigation.getParam('selectedColorProductId');
   }
 
@@ -84,9 +98,16 @@ class ProductDetailContainer extends React.PureComponent {
       longDescription,
       shortDescription,
       itemPartNumber,
+      onAddItemToFavorites,
+      isLoggedIn,
       currency,
       currencyAttributes,
       alternateSizes,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
+      toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -107,11 +128,20 @@ class ProductDetailContainer extends React.PureComponent {
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
             longDescription={longDescription}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
             currency={currency}
             currencyExchange={currencyAttributes.exchangevalue}
             alternateSizes={alternateSizes}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            toastMessage={toastMessage}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
           />
-        ) : null}
+        ) : (
+          <Spinner />
+        )}
       </React.Fragment>
     );
   }
@@ -130,9 +160,13 @@ function mapStateToProps(state) {
     shortDescription: getShortDescription(state),
     itemPartNumber: getGeneralProductId(state),
     longDescription: getDescription(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
     alternateSizes: getAlternateSizes(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -146,6 +180,15 @@ function mapDispatchToProps(dispatch) {
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 }
@@ -166,11 +209,20 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   currency: PropTypes.string,
-  currencyAttributes: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({
+    exchangevalue: PropTypes.string,
+  }),
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -184,11 +236,18 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
   currency: 'USD',
   currencyAttributes: {
     exchangevalue: 1,
   },
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

@@ -74,6 +74,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         key="0"
         locator=""
         margins={null}
@@ -84,15 +85,23 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
       >
         <Styled(DamImage)
           alt="Boys"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_T_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Anchor)>
@@ -105,6 +114,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         key="1"
         locator=""
         margins={null}
@@ -115,15 +125,23 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
       >
         <Styled(DamImage)
           alt="Girls"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_T_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined1"
           url="https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Anchor)>

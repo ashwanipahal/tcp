@@ -1,173 +1,185 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+// import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { ScrollView as LazyloadScrollView } from 'react-native';
+import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
+import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
+import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
+import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import ImageCarousel from '../molecules/ImageCarousel';
-import PageContainer from '../styles/ProductDetail.style.native';
-import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
-import ProductSummary from '../molecules/ProductSummary';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
+import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
-  getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
-import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
-import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
-import RelatedOutfits from '../molecules/RelatedOutfits/views';
+import BundleProductItems from '../molecules/BundleProductItems';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
-class ProductDetailView extends React.PureComponent {
+class ProductBundle extends React.PureComponent {
+  currentColorEntry;
+
   constructor(props) {
     super(props);
-    const {
-      currentProduct: { colorFitsSizesMap },
-      selectedColorProductId,
-    } = this.props;
     this.state = {
       showCarousel: false,
-      currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
     };
   }
-
-  componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
-    clearAddToBagError();
-  };
-
-  onChangeColor = e => {
-    const {
-      currentProduct: { colorFitsSizesMap },
-    } = this.props;
-    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
-  };
 
   onImageClick = () => {
     const { showCarousel } = this.state;
     this.setState({ showCarousel: !showCarousel });
   };
 
-  renderCarousel = imageUrls => {
-    const { showCarousel } = this.state;
-    if (!showCarousel) return null;
-
-    return <FullScreenImageCarousel imageUrls={imageUrls} />;
-  };
-
-  renderFulfilmentSection = () => {
-    const { currentProduct } = this.props;
-    return (
-      <FulfillmentSection
-        btnClassName="added-to-bag"
-        buttonLabel="Add To Bag"
-        currentProduct={currentProduct}
-      />
-    );
-  };
-
   render() {
     const {
       currentProduct,
-      currentProduct: { colorFitsSizesMap },
+      currentBundle,
       selectedColorProductId,
-      plpLabels,
-      handleFormSubmit,
-      navigation,
-      addToBagError,
-      isPickupModalOpen,
-      handleSubmit,
+      pdpLabels,
       shortDescription,
       itemPartNumber,
       longDescription,
-      pdpLabels,
-      relatedOutfits,
+      plpLabels,
+      navigation,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
+      addToBagErrorId,
+      addToBagError,
+      toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
-    const { currentColorEntry } = this.state;
-    let imageUrls = [];
-    if (colorFitsSizesMap) {
-      imageUrls = getImagesToDisplay({
-        imagesByColor: currentProduct.imagesByColor,
-        curentColorEntry: currentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
+    if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
+      const { colorFitsSizesMap } = currentProduct;
+      this.currentColorEntry = getMapSliceForColorProductId(
+        colorFitsSizesMap,
+        selectedColorProductId
+      );
+      let imageUrls = [];
+      if (colorFitsSizesMap) {
+        imageUrls = getImagesToDisplay({
+          imagesByColor: currentProduct.imagesByColor,
+          curentColorEntry: this.currentColorEntry,
+          isAbTestActive: false,
+          isFullSet: true,
+        });
+      }
+      const recommendationAttributes = {
+        variation: 'moduleO',
+        navigation,
+        page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+        partNumber: itemPartNumber,
+        isHeaderAccordion: true,
+      };
+      return (
+        <ScrollView>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
+          <PageContainer>
+            <ImageCarousel
+              isGiftCard={currentProduct.isGiftCard}
+              imageUrls={imageUrls}
+              addToFavorites={addToFavorites}
+              isLoggedIn={isLoggedIn}
+              currentProduct={currentProduct}
+              onImageClick={this.onImageClick}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              currentColorEntry={this.currentColorEntry}
+              isBundleProduct
+            />
+            <ProductSummary
+              productData={currentProduct}
+              selectedColorProductId={selectedColorProductId}
+              pdpLabels={pdpLabels}
+              isBundleProduct
+            />
+            <ProductDetailDescription
+              margins="16px 0 0 0"
+              shortDescription={shortDescription}
+              itemPartNumber={itemPartNumber}
+              longDescription={longDescription}
+              isShowMore={false}
+              pdpLabels={pdpLabels}
+            />
+            <BundleProductItems
+              currentBundle={currentBundle}
+              plpLabels={plpLabels}
+              navigation={navigation}
+              handleAddToBag={handleAddToBag}
+              addToFavorites={addToFavorites}
+              addToBagEcom={addToBagEcom}
+              currentState={currentState}
+              isLoggedIn={isLoggedIn}
+              addToBagErrorId={addToBagErrorId}
+              addToBagError={addToBagError}
+              toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
+            />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+              <Recommendations
+                isRecentlyViewed
+                {...recommendationAttributes}
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              />
+            </RecommendationWrapper>
+          </PageContainer>
+        </ScrollView>
+      );
     }
-
-    return (
-      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
-        <PageContainer>
-          <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
-          <ProductSummary
-            productData={currentProduct}
-            selectedColorProductId={selectedColorProductId}
-          />
-
-          <ProductAddToBagContainer
-            currentProduct={currentProduct}
-            plpLabels={plpLabels}
-            handleFormSubmit={handleFormSubmit}
-            selectedColorProductId={selectedColorProductId}
-            errorOnHandleSubmit={addToBagError}
-            onChangeColor={this.onChangeColor}
-            handleSubmit={handleSubmit}
-          />
-
-          {this.renderCarousel(imageUrls)}
-          <AddedToBagContainer navigation={navigation} />
-          <ProductDetailDescription
-            shortDescription={shortDescription}
-            itemPartNumber={itemPartNumber}
-            longDescription={longDescription}
-            isShowMore={false}
-            pdpLabels={pdpLabels}
-          />
-          <RelatedOutfits
-            pdpLabels={pdpLabels}
-            navigation={navigation}
-            relatedOutfits={relatedOutfits}
-          />
-          {this.renderFulfilmentSection()}
-          {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-        </PageContainer>
-      </LazyloadScrollView>
-    );
+    return getLoading();
   }
 }
 
-ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({}),
+ProductBundle.propTypes = {
+  currentProduct: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
-  clearAddToBagError: PropTypes.func.isRequired,
   plpLabels: PropTypes.shape({}),
-  handleSubmit: PropTypes.func,
-  isPickupModalOpen: PropTypes.bool,
-  handleFormSubmit: PropTypes.func,
-  addToBagError: PropTypes.string,
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
-  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string.isRequired,
+  removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
-ProductDetailView.defaultProps = {
-  currentProduct: {},
+ProductBundle.defaultProps = {
   navigation: {},
   plpLabels: null,
-  handleSubmit: null,
-  isPickupModalOpen: false,
-  handleFormSubmit: null,
-  addToBagError: '',
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
-  relatedOutfits: [],
+  isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
+  outOfStockLabels: {},
 };
 
-export default withStyles(ProductDetailView);
+export default withStyles(ProductBundle);
 
-export { ProductDetailView as ProductDetailViewVanilla };
+export { ProductBundle as ProductBundleVanilla };

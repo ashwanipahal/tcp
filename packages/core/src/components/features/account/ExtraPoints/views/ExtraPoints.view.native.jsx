@@ -13,7 +13,8 @@ import PromoListTile from '@tcp/core/src/components/common/molecules/PromoListTi
 import endpoints from '../../common/externalEndpoints';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view.native';
-
+import ExtraPointsSkeleton from '../skeleton/ExtraPointsSkeleton.view.native';
+import PromoBannerSkeleton from '../skeleton/PromoBannerSkeleton.view.native';
 import {
   TilesWrapper,
   InnerTileWrapper,
@@ -63,6 +64,94 @@ export class EarnPoints extends React.PureComponent {
   };
 
   /**
+   * toggle modal to open and closed
+   */
+
+  renderPromoList = (isPromoListFetching, promoListData) => {
+    if (isPromoListFetching) {
+      return (
+        <FirstInnerTileWrapper>
+          <PromoBannerSkeleton />
+        </FirstInnerTileWrapper>
+      );
+    }
+    return (
+      <TilesWrapper>
+        {promoListData &&
+          promoListData.length > 0 &&
+          promoListData.map((item, index) => {
+            return (
+              <>
+                <PromoTileWrapper>
+                  <PromoListTile tileData={item} />
+                </PromoTileWrapper>
+                {item && (index === 0 || index === 2) && <LineBorder />}
+              </>
+            );
+          })}
+      </TilesWrapper>
+    );
+  };
+  /**
+   * toggle modal to open and closed
+   */
+
+  renderEarnExtraPointsTile = (waysToEarn, labels, isEarnExtraPointsFetching) => {
+    if (isEarnExtraPointsFetching) {
+      return (
+        <FirstInnerTileWrapper>
+          <ExtraPointsSkeleton />
+        </FirstInnerTileWrapper>
+      );
+    }
+
+    return (
+      waysToEarn && (
+        <TilesWrapper>
+          <MorePointsWrapper>
+            <BodyCopy
+              component="p"
+              fontSize="fs18"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              textAlign="center"
+              color="gray.900"
+              text={getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
+              dataLocator="earn-points-morePoints-text"
+            />
+          </MorePointsWrapper>
+          {waysToEarn &&
+            waysToEarn.map((item, index) => (
+              <>
+                {item && index === 0 && (
+                  <FirstInnerTileWrapper>
+                    <DetailedEarnExtraPointsTile
+                      key={index.toString()}
+                      waysToEarnRow={item}
+                      onViewActivityDetails={this.onViewActivityDetails}
+                      labels={labels}
+                      viewAll
+                    />
+                  </FirstInnerTileWrapper>
+                )}
+                {item && index > 0 && (
+                  <InnerTileWrapper>
+                    <DetailedEarnExtraPointsTile
+                      key={index.toString()}
+                      waysToEarnRow={item}
+                      onViewActivityDetails={this.onViewActivityDetails}
+                      labels={labels}
+                      viewAll
+                    />
+                  </InnerTileWrapper>
+                )}
+              </>
+            ))}
+        </TilesWrapper>
+      )
+    );
+  };
+  /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
@@ -76,6 +165,8 @@ export class EarnPoints extends React.PureComponent {
       earnExtraPointsLabels,
       handleComponentChange,
       promoListData,
+      isEarnExtraPointsFetching,
+      isPromoListFetching,
     } = this.props;
     const { waysToEarnRow, showModal } = this.state;
     let infoMessage = '';
@@ -119,7 +210,7 @@ export class EarnPoints extends React.PureComponent {
           <BodyCopyWithSpacing
             fontFamily="primary"
             fontSize="fs28"
-            fontWeight="extrabold"
+            fontWeight="black"
             text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_youAreEarning')}
             spacingStyles="margin-top-LRG margin-right-LRG margin-bottom-MED margin-left-LRG"
             textAlign="center"
@@ -145,64 +236,8 @@ export class EarnPoints extends React.PureComponent {
             />
           </ViewWithSpacing>
         </ExtraEarningHeader>
-        <TilesWrapper>
-          {promoListData &&
-            promoListData.length > 0 &&
-            promoListData.map((item, index) => {
-              return (
-                <>
-                  <PromoTileWrapper>
-                    <PromoListTile tileData={item} />
-                  </PromoTileWrapper>
-                  {item && (index === 0 || index === 2) && <LineBorder />}
-                </>
-              );
-            })}
-        </TilesWrapper>
-
-        {waysToEarn && (
-          <TilesWrapper>
-            <MorePointsWrapper>
-              <BodyCopy
-                component="p"
-                fontSize="fs18"
-                fontFamily="secondary"
-                fontWeight="semibold"
-                textAlign="center"
-                color="gray.900"
-                text={getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
-                dataLocator="earn-points-morePoints-text"
-              />
-            </MorePointsWrapper>
-            {waysToEarn &&
-              waysToEarn.map((item, index) => (
-                <>
-                  {item && index === 0 && (
-                    <FirstInnerTileWrapper>
-                      <DetailedEarnExtraPointsTile
-                        key={index.toString()}
-                        waysToEarnRow={item}
-                        onViewActivityDetails={this.onViewActivityDetails}
-                        labels={labels}
-                        viewAll
-                      />
-                    </FirstInnerTileWrapper>
-                  )}
-                  {item && index > 0 && (
-                    <InnerTileWrapper>
-                      <DetailedEarnExtraPointsTile
-                        key={index.toString()}
-                        waysToEarnRow={item}
-                        onViewActivityDetails={this.onViewActivityDetails}
-                        labels={labels}
-                        viewAll
-                      />
-                    </InnerTileWrapper>
-                  )}
-                </>
-              ))}
-          </TilesWrapper>
-        )}
+        {this.renderPromoList(isPromoListFetching, promoListData)}
+        {this.renderEarnExtraPointsTile(waysToEarn, labels, isEarnExtraPointsFetching)}
         <MprTermsWrapper>
           <Anchor
             fontSizeVariation="large"
@@ -257,6 +292,8 @@ EarnPoints.propTypes = {
     lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
   handleComponentChange: PropTypes.func,
+  isEarnExtraPointsFetching: PropTypes.bool,
+  isPromoListFetching: PropTypes.bool,
 };
 
 EarnPoints.defaultProps = {
@@ -273,6 +310,8 @@ EarnPoints.defaultProps = {
     lbl_earnExtraPoints_view_points_history: '',
   },
   handleComponentChange: () => {},
+  isEarnExtraPointsFetching: false,
+  isPromoListFetching: false,
 };
 
 export default EarnPoints;

@@ -13,14 +13,14 @@ function* fetchBundleProductDetail({ payload: { productId } }) {
     yield put(setProductDetails({ ...productDetail }));
     const bundledProducts = productDetail.product.bundleProducts;
     const bundleDetails = yield call(getBundleProductsDetails, { bundleProducts: bundledProducts });
-    yield put(setBundleDetails({ ...bundleDetails }));
+    yield put(setBundleDetails([...bundleDetails]));
   } catch (err) {
     logger.error('error: ', err);
   }
 }
 
-function* BundleProductDetailSaga() {
+function* BundleProductSaga() {
   yield takeLatest(BUNDLEPRODUCT_CONSTANTS.FETCH_BUNDLE_DETAILS, fetchBundleProductDetail);
 }
 
-export default BundleProductDetailSaga;
+export default BundleProductSaga;

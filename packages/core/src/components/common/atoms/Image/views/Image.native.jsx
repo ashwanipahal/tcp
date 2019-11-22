@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
-import { LazyloadImage } from 'react-native-lazyload-deux';
+// import { LazyloadImage } from 'react-native-lazyload-deux';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
 
@@ -18,7 +18,8 @@ const ImageComp = (props: Props) => {
   const { url, source, host, alt, ...otherProps } = props;
   const urlVal = url || '';
   const sourceVal = source || '';
-  const ImageComponent = host ? LazyloadImage : Image;
+  // const ImageComponent = host ? Image : Image;
+  const ImageComponent = Image;
   if (sourceVal === '') {
     return (
       <ImageComponent
