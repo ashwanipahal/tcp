@@ -4,6 +4,7 @@ import { Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import { PropTypes } from 'prop-types';
+import CustomComponentMap from '../ComponentMap.native';
 
 /**
  * @param {object} props : Props for RichText
@@ -13,26 +14,26 @@ import { PropTypes } from 'prop-types';
  */
 
 class RichText extends PureComponent {
-  renderImage = ({ style, source, ...otherProps }) => {
-    return <Image url={source} {...otherProps} />;
-  };
+  // renderImage = ({ style, source, ...otherProps }) => {
+  //   return <Image url={source} {...otherProps} />;
+  // };
 
-  renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
+  // renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
 
-  renderAnchor = ({ style, children }) => {
-    const { actionHandler } = this.props;
-    const actionProps = children[0].props;
-    return (
-      <Text
-        style={{ ...style }}
-        onPress={() =>
-          actionHandler(actionProps.href, actionProps.target, actionProps['data-target'])
-        }
-      >
-        {children}
-      </Text>
-    );
-  };
+  // renderAnchor = ({ style, children }) => {
+  //   const { actionHandler } = this.props;
+  //   const actionProps = children[0].props;
+  //   return (
+  //     <Text
+  //       style={{ ...style }}
+  //       onPress={() =>
+  //         actionHandler(actionProps.href, actionProps.target, actionProps['data-target'])
+  //       }
+  //     >
+  //       {children}
+  //     </Text>
+  //   );
+  // };
 
   renderWebView = () => {
     const {
@@ -73,14 +74,7 @@ class RichText extends PureComponent {
           tools={{ navigate: this.handleNativeNavigation }}
           componentMap={{
             ...ComponentMap,
-            br: () => <Text> </Text>,
-            p: props => this.renderText(props),
-            b: props => this.renderText(props),
-            img: props => this.renderImage(props),
-            h3: props => this.renderText(props),
-            ul: props => this.renderText(props),
-            a: props => this.renderAnchor(props),
-            li: props => this.renderText(props),
+            ...CustomComponentMap,
           }}
         />
       </View>
