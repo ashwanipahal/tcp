@@ -159,6 +159,7 @@ const ProductCustomizeFormPart = props => {
           formEnabled={formEnabled}
           toastMessage={toastMessage}
           onCloseClick={onCloseClick}
+          isMultiItemQVModal={isMultiItemQVModal}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>

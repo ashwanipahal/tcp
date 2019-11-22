@@ -94,8 +94,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
   renderAlternateSizes = alternateSizes => {
     const { className, navigation, plpLabels } = this.props;
-    const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
-    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    const sizeAvailable =
+      plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
+    const visibleAlternateSizes =
+      alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
@@ -117,7 +119,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       onCloseClick,
       keepAlive,
     } = this.props;
-    const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    const sizeUnavailable =
+      plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
@@ -159,6 +162,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return !isBundleProduc ? '16px 0 16px 0' : '32px 0 40px 0';
   };
 
+  quickViewPickup = () => {
+    const { isPickup, isMultiItemQVModal, isBundleProduct } = this.props;
+    return (!isPickup && !isBundleProduct) || !isMultiItemQVModal;
+  };
   render() {
     const {
       colorList,
@@ -181,7 +188,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       alternateSizes,
       isPickup,
-      isBundleProduct,
       keepAlive,
     } = this.props;
     const qunatityText = `${quantity}: `;
@@ -233,7 +239,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
           keepAlive={keepAlive}
         />
         <SizeViewContainer>
-          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
+            <SizeChart />
+          )}
           <Field
             id="size"
             name="Size"
@@ -251,8 +259,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {!isPickup && !isBundleProduct && this.renderUnavailableLink()}
-        <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
+        {this.quickViewPickup() && this.renderUnavailableLink()}
+        <RowViewContainer
+          style={quantityDropDownStyle}
+          margins={this.getQtyMarginStyle()}
+        >
           <BodyCopy
             fontWeight="black"
             color="gray.900"
