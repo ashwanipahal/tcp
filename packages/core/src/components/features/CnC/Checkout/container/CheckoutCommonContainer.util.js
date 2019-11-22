@@ -190,6 +190,7 @@ export const mapDispatchToProps = dispatch => {
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
     },
+    dispatch,
   };
 };
 
