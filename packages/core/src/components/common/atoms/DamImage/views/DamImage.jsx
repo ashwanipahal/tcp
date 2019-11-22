@@ -143,9 +143,9 @@ const DamImage = props => {
     ...other
   } = props;
 
-  if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} />;
-  }
+  // if (videoData) {
+  //   return <RenderVideo video={videoData} image={imgData} />;
+  // }
 
   const imgProps = {
     breakpoints,
