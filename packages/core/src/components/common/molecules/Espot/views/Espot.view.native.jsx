@@ -21,14 +21,12 @@ export class Espot extends PureComponent {
    * @returns {function}  - function to open modal or navigate to a path
    */
   onPressHandler = (link, target, action) => {
-    const { togglePlccModal, navigation } = this.props;
-
     switch (target) {
       case '_modal':
-        openModal(action);
+        this.openModal(action);
         break;
       default:
-        handleNavigationUrl(link, target);
+        this.handleNavigationUrl(link, target);
     }
   };
 
@@ -38,6 +36,8 @@ export class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   openModal = action => {
+    const { togglePlccModal, navigation } = this.props;
+
     switch (action) {
       case 'plccModal':
         navigation.navigate('ApplyNow');

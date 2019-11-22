@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, routerPush } from '@tcp/core/src/utils';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 
 class Espot extends PureComponent {
   /**
@@ -12,14 +13,12 @@ class Espot extends PureComponent {
    * @returns {function}  - function to open modal or navigate to a path
    */
   onClickHandler = (link, target, action) => {
-    const { togglePlccModal, openOverlay } = this.props;
-
     switch (target) {
       case '_modal':
-        handleModal(action);
+        this.handleModal(action);
         break;
       default:
-        handleUrl(link, target);
+        this.handleUrl(link, target);
     }
   };
 
@@ -29,6 +28,7 @@ class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   handleModal = action => {
+    const { togglePlccModal, openOverlay } = this.props;
     switch (action) {
       case 'plccModal':
         togglePlccModal(true);
@@ -65,7 +65,7 @@ class Espot extends PureComponent {
     } else {
       switch (target) {
         case '_self':
-          richTextInternalRoute(link);
+          this.richTextInternalRoute(link);
           break;
         case '_blank':
           window.open(`${assetHost}${link}`, '_blank');
