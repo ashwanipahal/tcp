@@ -215,9 +215,7 @@ export const formValidationMessages = {
   },
   promoId: 'lbl_err_airmilesaccountnumber',
   listName: {
-    nonEmpty: 'lbl_fav_list_name_nonempty',
-    name: 'lbl_fav_list_name',
-    maxLength: 'lbl_fav_list_name_maxlength',
+    nonEmpty: 'lbl_err_listname_required',
   },
 };
 
@@ -480,8 +478,6 @@ export const formValidationRules = {
   },
   listName: {
     nonEmpty: true,
-    name: true,
-    maxLength: 50,
     required: true,
   },
 };
