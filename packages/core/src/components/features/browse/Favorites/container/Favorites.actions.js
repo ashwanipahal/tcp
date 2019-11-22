@@ -132,3 +132,10 @@ export const setLoadingState = payload => {
     payload,
   };
 };
+
+export const setWishListShareSuccess = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_WISHLIST_SHARE_SUCCESS,
+    payload,
+  };
+};

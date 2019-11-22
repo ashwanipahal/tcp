@@ -272,6 +272,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
+                onChange={[Function]}
                 type="text"
               />
               <Field
@@ -446,6 +447,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
+                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
                   type="submit"
@@ -862,6 +864,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
+                onChange={[Function]}
                 type="text"
               />
               <Field
@@ -1036,6 +1039,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
+                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
                   type="submit"
