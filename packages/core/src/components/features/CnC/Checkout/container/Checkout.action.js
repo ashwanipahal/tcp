@@ -13,9 +13,6 @@ import {
   getSetIntlUrl,
   getSetGiftWrapValuesActn,
   initCheckoutAction,
-  resetAddGiftCardSuccess,
-  toggleCheckoutRouting,
-  setUpdateFromMSG,
 } from './Checkout.action.util';
 
 export const submitPickupSection = payload => ({
@@ -467,6 +464,11 @@ export const resetAddGiftCard = payload => {
     payload,
   };
 };
+
+export const toggleCheckoutRouting = payload => ({
+  payload,
+  type: constants.CHECKOUT_ROUTING_DONE,
+});
 
 export default {
   setServerErrorCheckout,
