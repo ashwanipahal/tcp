@@ -51,6 +51,7 @@ const ShippingForm = ({
   isVenmoShippingDisplayed,
   emailSignUpLabels,
   scrollView,
+  initialValues,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [editType, setEditType] = useState('');
@@ -120,6 +121,7 @@ const ShippingForm = ({
               addressPhoneNo={addressPhoneNo}
               loadShipmentMethods={loadShipmentMethods}
               disableCountry
+              initialValues={initialValues}
             />
           </FormSection>
         )}
@@ -187,6 +189,7 @@ const validateMethod = createValidateMethod({
 
 ShippingForm.propTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,

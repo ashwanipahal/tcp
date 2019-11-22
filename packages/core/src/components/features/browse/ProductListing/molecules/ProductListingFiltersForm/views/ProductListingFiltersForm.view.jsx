@@ -184,6 +184,7 @@ class ProductListingFiltersForm extends React.Component {
       ? initialValues[fieldName].filter(entryId => entryId !== filterId)
       : [];
     change(fieldName, changeParam);
+    localStorage.setItem('handleRemoveFilter', true);
     this.handleSubmitOnChange();
   }
 
@@ -316,6 +317,8 @@ class ProductListingFiltersForm extends React.Component {
       onSortSelection,
       defaultPlaceholder,
       isFavoriteView,
+      change,
+      isLoadingMore,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
 
@@ -334,7 +337,7 @@ class ProductListingFiltersForm extends React.Component {
                     role="option"
                     textAlign="center"
                     tabIndex={0}
-                    fontSize="fs16"
+                    fontSize="fs14"
                     fontFamily="secondary"
                     color="gray.900"
                     outline="none"
@@ -400,6 +403,8 @@ class ProductListingFiltersForm extends React.Component {
             isFavoriteView={isFavoriteView}
             favoriteSortingParams={favoriteSortingParams}
             onSortSelection={onSortSelection}
+            onChange={change}
+            isLoadingMore={isLoadingMore}
           />
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
@@ -489,6 +494,7 @@ ProductListingFiltersForm.propTypes = {
   onSortSelection: PropTypes.func,
   defaultPlaceholder: PropTypes.string,
   formValues: PropTypes.shape({}),
+  isLoadingMore: PropTypes.bool,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -510,6 +516,7 @@ ProductListingFiltersForm.defaultProps = {
   onSortSelection: () => null,
   favoriteSortingParams: null,
   formValues: {},
+  isLoadingMore: false,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

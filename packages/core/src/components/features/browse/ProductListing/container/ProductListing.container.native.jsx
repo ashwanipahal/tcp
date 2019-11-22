@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import ProductListing from '../views';
 import {
   getPlpProducts,
@@ -12,7 +13,6 @@ import {
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
-
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -28,10 +28,12 @@ import {
   updateAppliedFiltersInState,
   getAllProductsSelect,
   getScrollToTopValue,
+  getModalState,
   getTotalProductsCount,
   getIsDataLoading,
   getSelectedFilter,
   getPLPTopPromos,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -112,6 +114,7 @@ class ProductListingContainer extends React.PureComponent {
       labelsLogin,
       plpTopPromos,
       isSearchListing,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
     return (
@@ -143,6 +146,7 @@ class ProductListingContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
+        isKeepModalOpen={isKeepModalOpen}
         {...otherProps}
       />
     );
@@ -188,6 +192,7 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isKeepModalOpen: getModalState(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
@@ -195,6 +200,8 @@ function mapStateToProps(state) {
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     selectedFilterValue: getSelectedFilter(state),
     plpTopPromos: getPLPTopPromos(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -250,6 +257,7 @@ ProductListingContainer.propTypes = {
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
+  isKeepModalOpen: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -274,6 +282,7 @@ ProductListingContainer.defaultProps = {
   labelsLogin: {},
   plpTopPromos: [],
   isSearchListing: false,
+  isKeepModalOpen: false,
 };
 
 export default connect(

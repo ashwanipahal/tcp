@@ -1,4 +1,4 @@
-/* eslint max-lines: ["error", 500] */
+/* eslint max-lines: ["error", 600] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -6,8 +6,16 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  message: {
+    maxLength: 'lbl_err_name_maxlength',
+  },
   gender: {
     required: 'lbl_err_gender_required',
+  },
+  subject: {
+    nonEmpty: 'lbl_err_name_nonempty',
+    name: 'lbl_err_name_name',
+    maxLength: 'lbl_err_name_maxlength',
   },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
@@ -207,6 +215,14 @@ export const formValidationMessages = {
 };
 
 export const formValidationRules = {
+  subject: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+  },
+  message: {
+    maxLength: 200,
+  },
   gender: {
     required: true,
   },

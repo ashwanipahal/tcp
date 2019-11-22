@@ -777,6 +777,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E3BB6238587A6007879C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BB7238587A6007879C7 /* libRCTVideo.a in Frameworks */,
+				D96E3BB8238587A6007879C7 /* libRNTwitterSignIn.a in Frameworks */,
+				D96E3BB9238587A6007879C7 /* libART.a in Frameworks */,
+				D96E3BBA238587A6007879C7 /* libRNCNetInfo.a in Frameworks */,
+				D96E3BBB238587A6007879C7 /* libRNVectorIcons.a in Frameworks */,
+				D96E3BBC238587A6007879C7 /* JavaScriptCore.framework in Frameworks */,
+				D96E3BBD238587A6007879C7 /* libRCTBlob.a in Frameworks */,
+				D96E3BBE238587A6007879C7 /* libRCTAnimation.a in Frameworks */,
+				D96E3BBF238587A6007879C7 /* libReact.a in Frameworks */,
+				D96E3BC0238587A6007879C7 /* libRCTActionSheet.a in Frameworks */,
+				D96E3BC1238587A6007879C7 /* libRCTGeolocation.a in Frameworks */,
+				D96E3BC2238587A6007879C7 /* libRCTImage.a in Frameworks */,
+				D96E3BC3238587A6007879C7 /* libRCTLinking.a in Frameworks */,
+				D96E3BC4238587A6007879C7 /* libRCTNetwork.a in Frameworks */,
+				D96E3BC5238587A6007879C7 /* libRCTSettings.a in Frameworks */,
+				D96E3BC6238587A6007879C7 /* libRCTText.a in Frameworks */,
+				D96E3BC7238587A6007879C7 /* libRCTVibration.a in Frameworks */,
+				D96E3BC8238587A6007879C7 /* libRCTWebSocket.a in Frameworks */,
+				D96E3BC9238587A6007879C7 /* libRNGestureHandler.a in Frameworks */,
+				D96E3BCA238587A6007879C7 /* libRNCAsyncStorage.a in Frameworks */,
+				D96E3BCB238587A6007879C7 /* libRNKeychain.a in Frameworks */,
+				D96E3BCC238587A6007879C7 /* libTouchID.a in Frameworks */,
+				D96E3BCD238587A6007879C7 /* libReactNativeConfig.a in Frameworks */,
+				D96E3BCE238587A6007879C7 /* libRNCookieManagerIOS.a in Frameworks */,
+				D96E3BCF238587A6007879C7 /* libRNPrint.a in Frameworks */,
+				D96E3BD0238587A6007879C7 /* libRNViewShot.a in Frameworks */,
+				D96E3BD1238587A6007879C7 /* libRCTFBSDK.a in Frameworks */,
+				D96E3BD2238587A6007879C7 /* libRNCardIO.a in Frameworks */,
+				D96E3BD3238587A6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */,
+				D96E3BD4238587A6007879C7 /* Pods_mobileapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C30238588F6007879C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C31238588F6007879C7 /* libRNCheckNotificationPermission.a in Frameworks */,
+				D96E3C32238588F6007879C7 /* libRNTwitterSignIn.a in Frameworks */,
+				D96E3C33238588F6007879C7 /* libRNCardIO.a in Frameworks */,
+				D96E3C34238588F6007879C7 /* libRCTFBSDK.a in Frameworks */,
+				D96E3C35238588F6007879C7 /* libRNPrint.a in Frameworks */,
+				D96E3C36238588F6007879C7 /* libRNViewShot.a in Frameworks */,
+				D96E3C37238588F6007879C7 /* libART.a in Frameworks */,
+				D96E3C38238588F6007879C7 /* libRNCookieManagerIOS.a in Frameworks */,
+				D96E3C39238588F6007879C7 /* libReactNativeConfig.a in Frameworks */,
+				D96E3C3A238588F6007879C7 /* libRNVectorIcons.a in Frameworks */,
+				D96E3C3B238588F6007879C7 /* libRNKeychain.a in Frameworks */,
+				D96E3C3C238588F6007879C7 /* libTouchID.a in Frameworks */,
+				D96E3C3D238588F6007879C7 /* libRNCNetInfo.a in Frameworks */,
+				D96E3C3E238588F6007879C7 /* libRNCAsyncStorage.a in Frameworks */,
+				D96E3C3F238588F6007879C7 /* JavaScriptCore.framework in Frameworks */,
+				D96E3C40238588F6007879C7 /* libRCTBlob.a in Frameworks */,
+				D96E3C41238588F6007879C7 /* libRCTAnimation.a in Frameworks */,
+				D96E3C42238588F6007879C7 /* libReact.a in Frameworks */,
+				D96E3C43238588F6007879C7 /* libRCTActionSheet.a in Frameworks */,
+				D96E3C44238588F6007879C7 /* libRCTGeolocation.a in Frameworks */,
+				D96E3C45238588F6007879C7 /* libRCTImage.a in Frameworks */,
+				D96E3C46238588F6007879C7 /* libRCTLinking.a in Frameworks */,
+				D96E3C47238588F6007879C7 /* libRCTNetwork.a in Frameworks */,
+				D96E3C48238588F6007879C7 /* libRCTSettings.a in Frameworks */,
+				D96E3C49238588F6007879C7 /* libRCTText.a in Frameworks */,
+				D96E3C4A238588F6007879C7 /* libRCTVibration.a in Frameworks */,
+				D96E3C4B238588F6007879C7 /* libRCTWebSocket.a in Frameworks */,
+				D96E3C4C238588F6007879C7 /* libRNGestureHandler.a in Frameworks */,
+				D96E3C4D238588F6007879C7 /* Pods_gymboree.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1010,6 +1083,8 @@
 				84677B36230BCECC001F5301 /* gymboree_int.app */,
 				84677B63230BCF01001F5301 /* gymboree_uat.app */,
 				84677B90230BCF37001F5301 /* gymboree_prod.app */,
+				D96E3BED238587A6007879C7 /* My Place Preview.app */,
+				D96E3C64238588F6007879C7 /* Gymboree-Preview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1315,6 +1390,48 @@
 			productReference = 8480857222D9B52500D7D25B /* gymboree.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D96E3BB2238587A6007879C7 /* mobileapp_preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96E3BEA238587A6007879C7 /* Build configuration list for PBXNativeTarget "mobileapp_preview" */;
+			buildPhases = (
+				D96E3BB3238587A6007879C7 /* [CP] Check Pods Manifest.lock */,
+				D96E3BB4238587A6007879C7 /* Sources */,
+				D96E3BB6238587A6007879C7 /* Frameworks */,
+				D96E3BD5238587A6007879C7 /* Resources */,
+				D96E3BE7238587A6007879C7 /* Bundle React Native code and images */,
+				D96E3BE8238587A6007879C7 /* [CP] Embed Pods Frameworks */,
+				D96E3BE9238587A6007879C7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mobileapp_preview;
+			productName = "Hello World";
+			productReference = D96E3BED238587A6007879C7 /* My Place Preview.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D96E3C2C238588F6007879C7 /* gymboree_preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96E3C61238588F6007879C7 /* Build configuration list for PBXNativeTarget "gymboree_preview" */;
+			buildPhases = (
+				D96E3C2D238588F6007879C7 /* [CP] Check Pods Manifest.lock */,
+				D96E3C2E238588F6007879C7 /* Sources */,
+				D96E3C30238588F6007879C7 /* Frameworks */,
+				D96E3C4E238588F6007879C7 /* Resources */,
+				D96E3C5E238588F6007879C7 /* Bundle React Native code and images */,
+				D96E3C5F238588F6007879C7 /* [CP] Embed Pods Frameworks */,
+				D96E3C60238588F6007879C7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gymboree_preview;
+			productName = "Hello World";
+			productReference = D96E3C64238588F6007879C7 /* Gymboree-Preview.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1366,6 +1483,13 @@
 						ProvisioningStyle = Manual;
 					};
 					8480855122D9B52500D7D25B = {
+						DevelopmentTeam = 9N3QW4M4N3;
+						ProvisioningStyle = Manual;
+					};
+					D96E3BB2238587A6007879C7 = {
+						ProvisioningStyle = Automatic;
+					};
+					D96E3C2C238588F6007879C7 = {
 						DevelopmentTeam = 9N3QW4M4N3;
 						ProvisioningStyle = Manual;
 					};
@@ -1923,6 +2047,52 @@
 				8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */,
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,
 				3656A5882337836800EF9714 /* icomoon.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3BD5238587A6007879C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BD6238587A6007879C7 /* gymboree_prod-Info.plist in Resources */,
+				D96E3BD7238587A6007879C7 /* icomoon.ttf in Resources */,
+				D96E3BD8238587A6007879C7 /* Montserrat-SemiBold.ttf in Resources */,
+				D96E3BD9238587A6007879C7 /* Nunito-Bold.ttf in Resources */,
+				D96E3BDA238587A6007879C7 /* Montserrat-Black.ttf in Resources */,
+				D96E3BDB238587A6007879C7 /* Nunito-SemiBold.ttf in Resources */,
+				D96E3BDC238587A6007879C7 /* mobileapp_prod-Info.plist in Resources */,
+				D96E3BDD238587A6007879C7 /* Images.xcassets in Resources */,
+				D96E3BDE238587A6007879C7 /* Montserrat-ExtraBold.ttf in Resources */,
+				D96E3BDF238587A6007879C7 /* FontAwesome.ttf in Resources */,
+				D96E3BE0238587A6007879C7 /* Montserrat.ttf in Resources */,
+				D96E3BE1238587A6007879C7 /* TCPLaunchScreen.xib in Resources */,
+				D96E3BE2238587A6007879C7 /* Nunito-Black.ttf in Resources */,
+				D96E3BE3238587A6007879C7 /* Montserrat-Bold.ttf in Resources */,
+				D96E3BE4238587A6007879C7 /* Nunito.ttf in Resources */,
+				D96E3BE5238587A6007879C7 /* Montserrat-Medium.ttf in Resources */,
+				D96E3BE6238587A6007879C7 /* Nunito-ExtraBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C4E238588F6007879C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C4F238588F6007879C7 /* GymboreeLaunchScreen.xib in Resources */,
+				D96E3C50238588F6007879C7 /* Montserrat-ExtraBold.ttf in Resources */,
+				D96E3C51238588F6007879C7 /* Montserrat-SemiBold.ttf in Resources */,
+				D96E3C52238588F6007879C7 /* Nunito.ttf in Resources */,
+				D96E3C53238588F6007879C7 /* Montserrat-Black.ttf in Resources */,
+				D96E3C54238588F6007879C7 /* FontAwesome.ttf in Resources */,
+				D96E3C55238588F6007879C7 /* Nunito-Bold.ttf in Resources */,
+				D96E3C56238588F6007879C7 /* Nunito-ExtraBold.ttf in Resources */,
+				D96E3C57238588F6007879C7 /* Nunito-SemiBold.ttf in Resources */,
+				D96E3C58238588F6007879C7 /* Images.xcassets in Resources */,
+				D96E3C59238588F6007879C7 /* Montserrat.ttf in Resources */,
+				D96E3C5A238588F6007879C7 /* Montserrat-Bold.ttf in Resources */,
+				D96E3C5B238588F6007879C7 /* Nunito-Black.ttf in Resources */,
+				D96E3C5C238588F6007879C7 /* Montserrat-Medium.ttf in Resources */,
+				D96E3C5D238588F6007879C7 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2805,6 +2975,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E3BB4238587A6007879C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3BB5238587A6007879C7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E3C2E238588F6007879C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E3C2F238588F6007879C7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3657,6 +3843,223 @@
 			};
 			name = Release;
 		};
+		D96E3BEB238587A6007879C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9350FB68B6B846ED40FF28E9 /* Pods-mobileapp.debug.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = tcp;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "mobileapp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_NAME = "My Place Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		D96E3BEC238587A6007879C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DBB47810F93B78DF5A4B7E2 /* Pods-mobileapp.release.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = tcp;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "mobileapp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_NAME = "My Place Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D96E3C62238588F6007879C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19D2DC9852FF624045811AE3 /* Pods-gymboree.debug.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = gymboree;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "gymboree copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_NAME = "Gymboree-Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		D96E3C63238588F6007879C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA0F90C61826F1A0D653F119 /* Pods-gymboree.release.xcconfig */;
+			buildSettings = {
+				APP_ENV = LOCAL;
+				APP_TYPE = gymboree;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
+					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
+					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
+					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
+					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
+				);
+				INFOPLIST_FILE = "gymboree copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MARKETING_VERSION = "1.0-PREVIEW";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_NAME = "Gymboree-Preview";
+				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3764,6 +4167,24 @@
 			buildConfigurations = (
 				8480857022D9B52500D7D25B /* Debug */,
 				8480857122D9B52500D7D25B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96E3BEA238587A6007879C7 /* Build configuration list for PBXNativeTarget "mobileapp_preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96E3BEB238587A6007879C7 /* Debug */,
+				D96E3BEC238587A6007879C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96E3C61238588F6007879C7 /* Build configuration list for PBXNativeTarget "gymboree_preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96E3C62238588F6007879C7 /* Debug */,
+				D96E3C63238588F6007879C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

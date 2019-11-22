@@ -37,7 +37,6 @@ import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
-
 // constants
 import constants from '../constants';
 
@@ -220,9 +219,6 @@ class TCPWebApp extends App {
       apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
-      // response headers
-      apiConfig.resHeaders = res.getHeaders();
-      apiConfig.reqHeaders = req.headers;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

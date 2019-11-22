@@ -14,7 +14,6 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
-    margin-bottom: auto;
   }
   .favorite-count {
     text-align: center;
@@ -45,7 +44,7 @@ const styles = css`
 
   .added-to-bag {
     width: 100%;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     &:focus {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
@@ -187,7 +186,7 @@ const styles = css`
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    height: 20px;
     span {
       visibility: visible;
     }
@@ -197,9 +196,6 @@ const styles = css`
   }
 
   .product-image-container {
-    @media ${props => props.theme.mediaQuery.large} {
-      height: 320px;
-    }
     position: relative;
   }
 
@@ -236,6 +232,7 @@ const styles = css`
 
     .container-price {
       margin-top: 4px;
+      height: 47px;
     }
     .product-title-container {
       height: 47px;

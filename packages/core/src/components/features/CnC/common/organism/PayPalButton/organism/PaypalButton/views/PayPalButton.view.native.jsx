@@ -21,6 +21,7 @@ class PayPalButton extends React.PureComponent {
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
+      isBillingPage,
       navigation,
       setVenmoState,
       closeModal,
@@ -40,7 +41,7 @@ class PayPalButton extends React.PureComponent {
         closeModal(true);
         break;
       case 'onCancel':
-        clearPaypalSettings();
+        clearPaypalSettings(isBillingPage);
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });

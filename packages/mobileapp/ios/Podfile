@@ -65,7 +65,7 @@ target 'mobileapp_int' do
   # end
 
   use_native_modules!
-  
+
 end
 
 
@@ -126,7 +126,7 @@ target 'mobileapp_prod' do
 
 
 
-  
+
 
 
   target 'mobileappTests' do
@@ -135,7 +135,7 @@ target 'mobileapp_prod' do
   end
 
   use_native_modules!
-  
+
 end
 
 target 'mobileapp' do
@@ -200,7 +200,7 @@ target 'mobileapp' do
   # end
 
   use_native_modules!
-  
+
 end
 
 
@@ -266,7 +266,7 @@ target 'gymboree' do
   # end
 
   use_native_modules!
-  
+
 end
 
 target 'gymboree_int' do
@@ -331,7 +331,7 @@ target 'gymboree_int' do
   # end
 
   use_native_modules!
-  
+
 end
 
 target 'gymboree_prod' do
@@ -396,7 +396,7 @@ target 'gymboree_prod' do
   # end
 
   use_native_modules!
-  
+
 end
 
 post_install do |installer|
@@ -407,10 +407,10 @@ post_install do |installer|
         " && RNC_ROOT=./node_modules/react-native-config/"\
         " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
         " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
-        
+
         target.build_phases << phase
         target.build_phases.move(phase,0)
       end
-      
+
     end
    end

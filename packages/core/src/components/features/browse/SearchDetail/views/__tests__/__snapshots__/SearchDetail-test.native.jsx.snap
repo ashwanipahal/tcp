@@ -37,6 +37,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     filtersLength={0}
     getProducts={[MockFunction]}
     isFavorite={false}
+    isKeepModalOpen={false}
     isLoadingMore={false}
     isLoggedIn={false}
     isSearchListing={true}

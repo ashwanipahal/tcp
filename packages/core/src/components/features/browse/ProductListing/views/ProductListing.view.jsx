@@ -122,7 +122,7 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-section">
+            <div className="filter-section" id="filterWrapper">
               <ProductListingFiltersForm
                 filtersMaps={filters}
                 totalProductsCount={totalProductsCount}
@@ -135,6 +135,7 @@ const ProductListView = ({
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
                 isFilterBy={isFilterBy}
+                isLoadingMore={isLoadingMore}
               />
               {/* UX timer */}
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />
