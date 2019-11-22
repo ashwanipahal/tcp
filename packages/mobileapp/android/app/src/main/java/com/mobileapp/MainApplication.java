@@ -2,69 +2,70 @@ package com.mobileapp;
 
 import android.app.Application;
 
+import android.content.Context;
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.brentvatne.react.ReactVideoPackage;
-import com.reactlibrary.RNCheckNotificationPermissionPackage;
-import com.goldenowl.twittersignin.TwitterSigninPackage;
-import com.cardio.RNCardIOPackage;
-import fr.greweb.reactnativeviewshot.RNViewShotPackage;
-import com.christopherdro.RNPrint.RNPrintPackage;
-import com.psykar.cookiemanager.CookieManagerPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.rnfingerprint.FingerprintAuthPackage;
-import com.oblador.keychain.KeychainPackage;
-import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import com.reactnativecommunity.netinfo.NetInfoPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.facebook.soloader.SoLoader;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.react.ReactInstanceManager;
+
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.facebook.CallbackManager;
+
+import com.microsoft.codepush.react.CodePush;
+import com.microsoft.codepush.react.ReactInstanceHolder;
+
+
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import java.util.Arrays;
+
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+// import com.microsoft.codepush.react.CodePush;
+
+
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
-
-  protected static CallbackManager getCallbackManager() {
-    return mCallbackManager;
-  }
-
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+  private ReactInstanceHolder instanceHolder = new ReactInstanceHolder() {
     @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(new MainReactPackage(),
-            new ReactVideoPackage(),
-            new RNCheckNotificationPermissionPackage(),
-            new TwitterSigninPackage(),
-            new RNCardIOPackage(),
-            new RNViewShotPackage(),
-            new RNPrintPackage(),
-            new CookieManagerPackage(),
-            new ReactNativeConfigPackage(),
-            new FingerprintAuthPackage(),
-            new KeychainPackage(),
-            new NetInfoPackage(),
-            new AsyncStoragePackage(),
-            new VectorIconsPackage(),
-            new FBSDKPackage(mCallbackManager),
-            new RNGestureHandlerPackage());
-    }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "index";
+    public ReactInstanceManager getReactInstanceManager() {
+      return mReactNativeHost.getReactInstanceManager();
     }
   };
+
+
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+   
+
+    
+      @Override
+      protected String getJSBundleFile(){
+        return CodePush.getJSBundleFile();
+      }
+
+      @Override
+      public boolean getUseDeveloperSupport() {
+        return BuildConfig.DEBUG;
+      }
+       
+        @Override
+        protected List<ReactPackage> getPackages() {
+          @SuppressWarnings("UnnecessaryLocalVariable")
+          List<ReactPackage> packages = new PackageList(this).getPackages();
+          // Packages that cannot be autolinked yet can be added manually here, for example
+          // packages.add(new FBSDKPackage());
+          packages.add(new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), MainApplication.this, BuildConfig.DEBUG));
+          return packages;
+        }
+
+        @Override
+        protected String getJSMainModuleName() {
+          return "index";
+        }
+      };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
@@ -73,7 +74,35 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
+//    CodePush.setReactInstanceHolder(instanceHolder);
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    // initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+  }
+
+  /**
+   * Loads Flipper in React Native templates.
+   *
+   * @param context
+   */
+  private static void initializeFlipper(Context context) {
+    if (BuildConfig.DEBUG) {
+      try {
+        /*
+         We use reflection here to pick up the class that initializes Flipper,
+        since Flipper library is not available in release mode
+        */
+        Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
+        aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      } catch (NoSuchMethodException e) {
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      } catch (InvocationTargetException e) {
+        e.printStackTrace();
+      }
+    }
   }
 }

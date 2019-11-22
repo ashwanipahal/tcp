@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `
-<Fragment>
-  <div>
-    Loading....
-  </div>
-</Fragment>
-`;
+exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `<Fragment />`;
 
-exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
-<Fragment>
-  <div>
-    Loading....
-  </div>
-</Fragment>
-`;
+exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `<Fragment />`;

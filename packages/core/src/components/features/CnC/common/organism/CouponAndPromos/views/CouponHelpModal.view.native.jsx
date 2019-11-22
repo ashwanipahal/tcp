@@ -1,5 +1,5 @@
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView } from 'react-native-webview';
 import Modal from '../../../../../../common/molecules/Modal';
 import { ModalHeaderStyle } from '../styles/CouponDetailModal.style.native';
 

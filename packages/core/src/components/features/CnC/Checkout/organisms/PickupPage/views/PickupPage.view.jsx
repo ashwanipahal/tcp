@@ -215,13 +215,11 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
-      checkoutRoutingDone,
       emailSignUpFlags,
+      updateFromMSG,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+
     return (
       <>
         {isBagLoaded && (
@@ -270,6 +268,7 @@ class PickUpFormPart extends React.Component {
                 <div className="pick-up-form-container" dataLocator="pickup-sms">
                   <FormSection name="smsSignUp">
                     <SMSFormFields
+                      onCheckBoxChange={value => updateFromMSG(value)}
                       isOrderUpdateChecked={isOrderUpdateChecked}
                       formName="checkoutPickup"
                       formSection="smsSignUp"
@@ -355,6 +354,7 @@ PickUpFormPart.propTypes = {
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
   isRegisteredUserCallDone: PropTypes.bool.isRequired,
+  updateFromMSG: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,

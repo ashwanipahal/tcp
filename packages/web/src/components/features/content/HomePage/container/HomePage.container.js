@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
@@ -35,8 +34,10 @@ const mapStateToProps = state => {
   const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+  const seoData = state.SEOData.home;
 
   return {
+    seoData,
     slots: homepageSlots.map(slot => {
       // Logic for accomodating two modules in one slot (Half width modules view)
       const { contentId: slotContent = '' } = slot;
@@ -76,14 +77,6 @@ const mapDispatchToProps = dispatch => {
     setInternalCampaignId: campaignId => dispatch(setInternalCampaignId(campaignId)),
   };
 };
-
-/**
- * Hotfix-Aware Component. The use of `withHotfix` is just for making
- * page hotfix-aware.
- */
-HomePageView.displayName = 'HomePage';
-// eslint-disable-next-line no-unused-vars
-const HotfixAwareHomePage = withHotfix(HomePageView);
 
 export default connect(
   mapStateToProps,
