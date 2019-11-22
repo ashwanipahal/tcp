@@ -65,7 +65,7 @@ exports[`Header component renders correctly 1`] = `
     -webkit-transition: top 0.1s ease-in;
     transition: top 0.1s ease-in;
   }
-  .top-promo-bannner {
+  .top-promo-banner {
     display: none;
     @media ",
           [Function],
