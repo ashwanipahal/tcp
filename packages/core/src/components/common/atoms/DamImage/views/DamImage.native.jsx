@@ -73,7 +73,45 @@ const DamImage = props => {
     return <VideoPlayer {...videoData} />;
   }
 
+  const RenderVideo = videoProps => {
+    const { video, image } = videoProps;
+    const { autoplay, controls, url: videoUri } = video;
+
+    const options = {
+      autoplay,
+      controls,
+      url: videoUri,
+      image,
+    };
+
+    return <VideoPlayer {...options} />;
+  };
+
   const uri = createURI(props);
+
+  const getVideoUrl = uriLink => {
+    if (uriLink) {
+      return String(uriLink).match(/\.(mp4|webm|WEBM|MP4)$/g);
+    }
+    return false;
+  };
+
+  const uriParam = getVideoUrl(uri.uri);
+
+  if (uriParam) {
+    const { uri: videoUri } = uri;
+    const VideoUri = videoUri.replace('/image/', '/video/');
+    const videoDataOptions = {
+      autoplay: false,
+      controls: true,
+      loop: false,
+      muted: true,
+      inline: true,
+      url: VideoUri,
+    };
+
+    return <RenderVideo video={videoDataOptions} />;
+  }
 
   return (
     <ImageComponent

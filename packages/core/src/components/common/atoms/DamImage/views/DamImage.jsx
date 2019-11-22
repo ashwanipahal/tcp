@@ -111,6 +111,10 @@ const RenderImage = forwardRef((imgProps, ref) => {
     if (isVideoUrl) {
       videoDataOptions = {
         autoplay: false,
+        controls: true,
+        loop: false,
+        muted: true,
+        inline: true,
         url: getBreakpointImgUrl('xs', imgProps),
       };
     }

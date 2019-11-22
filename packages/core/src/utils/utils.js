@@ -41,7 +41,7 @@ export const getLocator = locator => {
 
 export const getVideoUrl = url => {
   if (url) {
-    return url.match(/\.(mp4|webm|WEBM|MP4)$/g);
+    return String(url).match(/\.(mp4|webm|WEBM|MP4)$/g);
   }
   return false;
 };
