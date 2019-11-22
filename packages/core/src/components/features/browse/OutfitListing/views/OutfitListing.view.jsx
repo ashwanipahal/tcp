@@ -1,5 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import { PAGE_NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Row, Col } from '../../../../common/atoms';
 import PromoModules from '../../../../common/organisms/PromoModules';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -56,12 +58,11 @@ const OutfitListingView = forwardRef(
                   navigationTree={navTree}
                   activeCategoryIds={currentNavIds}
                 />
+                <RenderPerf.Measure name={PAGE_NAVIGATION_VISIBLE} />
               </div>
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-              <Row fullBleed>
-                <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
-              </Row>
+              <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
                 {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
@@ -94,7 +95,12 @@ OutfitListingView.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   asPath: PropTypes.string,
-  plpTopPromos: PropTypes.shape({}),
+  plpTopPromos: PropTypes.arrayOf(
+    PropTypes.shape({
+      // Only including the most important property
+      moduleName: PropTypes.string,
+    })
+  ),
   asPathVal: PropTypes.string,
 };
 
@@ -107,7 +113,7 @@ OutfitListingView.defaultProps = {
   longDescription: '',
   categoryId: '',
   asPath: '',
-  plpTopPromos: {},
+  plpTopPromos: [],
   asPathVal: '',
 };
 

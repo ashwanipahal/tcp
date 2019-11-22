@@ -32,7 +32,8 @@ const AnchorContainer = {
 };
 
 const RecommendationWrapper = styled.View`
-  margin-left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 100%;
 `;
 
 export {

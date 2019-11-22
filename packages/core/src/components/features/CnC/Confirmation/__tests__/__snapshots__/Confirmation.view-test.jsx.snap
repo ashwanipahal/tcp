@@ -23,6 +23,21 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
+  </Styled(Row)>
+  <Styled(Row)
     className="thank-you-component"
     fullBleed={true}
   >
@@ -93,6 +108,12 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -108,12 +129,6 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={false}
-    pageCategory=""
-    venmoPayment={Object {}}
-  />
 </div>
 `;
 
@@ -138,6 +153,21 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         SMS SIGN UP
       </div>
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
   </Styled(Row)>
   <Styled(Row)
     className="thank-you-component"
@@ -206,6 +236,19 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -221,19 +264,6 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    pageCategory=""
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
-  />
 </div>
 `;
 
@@ -258,6 +288,21 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
         SMS SIGN UP
       </div>
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
   </Styled(Row)>
   <Styled(Row)
     className="thank-you-component"
@@ -324,6 +369,19 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -339,19 +397,6 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    pageCategory=""
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
-  />
 </div>
 `;
 
@@ -376,6 +421,21 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
         SMS SIGN UP
       </div>
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="smsNotification"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Connect(SMSNotificationFormContainer) />
   </Styled(Row)>
   <Styled(Row)
     className="thank-you-component"
@@ -448,6 +508,12 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -463,11 +529,5 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={false}
-    pageCategory=""
-    venmoPayment={Object {}}
-  />
 </div>
 `;

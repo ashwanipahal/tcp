@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { isMobileApp } from '@tcp/core/src/utils';
 import { getProductDetails, clearBundleState } from './BundleProduct.actions';
 import BundleProduct from '../views';
 import {
@@ -39,7 +40,10 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
-import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  getIsKeepAliveProduct,
+  getIsKeepAliveProductApp,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 
 export class ProductBundleContainer extends React.PureComponent {
@@ -133,7 +137,7 @@ export class ProductBundleContainer extends React.PureComponent {
         itemPartNumber={itemPartNumber}
         longDescription={longDescription}
         currency={currency}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes.exchangevalue}
         currentBundle={currentBundle}
         handleAddToBag={this.handleAddToBag}
         addToBagEcom={addToBagEcom}
@@ -181,7 +185,9 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     breadCrumbs: getBreadCrumbs(state),
     outfitLabels: getOutfitLabels(state),
-    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    isKeepAliveEnabled: isMobileApp()
+      ? getIsKeepAliveProductApp(state)
+      : getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
   };
 }

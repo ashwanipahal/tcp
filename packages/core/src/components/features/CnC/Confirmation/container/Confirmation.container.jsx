@@ -4,10 +4,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ConfirmationView from '../views';
 import selectors from './Confirmation.selectors';
-import getVenmoUserName, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
 import { fetchUpdateOrderDetailsData } from './Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import SMSNotificationSelectors from '../organisms/SMSNotifications/container/SMSNotifications.selectors';
 
+const { getVenmoUserName } = checkoutSelectors;
 /**
  * @class ConfirmationContainer
  * @description container component to render confirmation component.
@@ -48,6 +52,11 @@ class ConfirmationContainer extends React.Component {
     pageCategory: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
     navigation: PropTypes.shape({}).isRequired,
+    isGymboreeCanadaSite: PropTypes.bool,
+    placeCashConfirmationContentId: PropTypes.string,
+    fetchModuleXContent: PropTypes.func.isRequired,
+    notificationMsgContentId: PropTypes.string,
+    subscribeSuccessMsgContentId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -63,6 +72,10 @@ class ConfirmationContainer extends React.Component {
     venmoUserName: '',
     pageCategory: '',
     isVenmoPaymentInProgress: false,
+    isGymboreeCanadaSite: false,
+    placeCashConfirmationContentId: '',
+    notificationMsgContentId: '',
+    subscribeSuccessMsgContentId: '',
   };
 
   /**
@@ -77,6 +90,10 @@ class ConfirmationContainer extends React.Component {
       updateOrderDetailsBossId,
       fetchUpdateOrderDetails,
       orderNumbersByFullfillmentCenter,
+      placeCashConfirmationContentId,
+      fetchModuleXContent,
+      notificationMsgContentId,
+      subscribeSuccessMsgContentId,
     } = this.props;
     /* istanbul ignore else */
     if (fetchUpdateOrderDetails) {
@@ -86,8 +103,14 @@ class ConfirmationContainer extends React.Component {
           store => store.orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS
         );
       const moduleXId = isBossInList ? updateOrderDetailsBossId : updateOrderDetailsBopisId;
-      fetchUpdateOrderDetails([moduleXId]);
+      fetchUpdateOrderDetails([moduleXId, placeCashConfirmationContentId]);
     }
+    // Call for notification adn Subscribe content needs to be removed from SMS component now
+    fetchModuleXContent([
+      placeCashConfirmationContentId,
+      notificationMsgContentId,
+      subscribeSuccessMsgContentId,
+    ]);
   }
 
   /**
@@ -112,6 +135,7 @@ class ConfirmationContainer extends React.Component {
       isVenmoPaymentInProgress,
       pageCategory,
       navigation,
+      isGymboreeCanadaSite,
     } = this.props;
     return (
       <ConfirmationView
@@ -130,6 +154,7 @@ class ConfirmationContainer extends React.Component {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         pageCategory={pageCategory}
         navigation={navigation}
+        isGymboreeCanadaSite={isGymboreeCanadaSite}
       />
     );
   }
@@ -139,6 +164,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     fetchUpdateOrderDetails: contentIds => {
       dispatch(fetchUpdateOrderDetailsData(contentIds));
+    },
+    fetchModuleXContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
   };
 };
@@ -180,6 +208,13 @@ export const mapStateToProps = state => {
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
     venmoUserName: getVenmoUserName(state),
+    isGymboreeCanadaSite: selectors.isGymboreeCanadaSite(state),
+    placeCashConfirmationContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      PlaceCashSelector.getPlaceCashDetailBannerLabel(state, null, true)
+    ),
+    notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
+    subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
   };
 };
 

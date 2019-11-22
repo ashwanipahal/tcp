@@ -15,6 +15,13 @@ import signupWrapperStyle from '../EmailSignupModal.style';
 import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFieldEmpty: true,
+    };
+  }
+
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription, trackSubscriptionSuccess } = this.props;
     if (subscription.success !== oldSubscription.success && subscription.success) {
@@ -73,6 +80,11 @@ class EmailSignupModal extends React.PureComponent {
       });
   };
 
+  fieldChange = element => {
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
+  };
+
   render() {
     const {
       isModalOpen,
@@ -85,6 +97,7 @@ class EmailSignupModal extends React.PureComponent {
     } = this.props;
     const { IMG_DATA } = config;
     const isGym = isGymboree();
+    const { isFieldEmpty } = this.state;
     return (
       <Fragment>
         <Modal
@@ -179,12 +192,13 @@ class EmailSignupModal extends React.PureComponent {
                       <Field
                         placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signup"
-                        id="signup"
+                        id="modal_signup"
                         type="text"
                         component={TextBox}
                         maxLength={50}
                         dataLocator="email_address_field"
                         enableSuccessCheck={false}
+                        onChange={this.fieldChange}
                       />
 
                       <Field
@@ -208,7 +222,7 @@ class EmailSignupModal extends React.PureComponent {
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
                           fullWidth
-                          disabled={pristine || submitting}
+                          disabled={isFieldEmpty || pristine || submitting}
                           buttonVariation="fixed-width"
                           fill="BLUE"
                           type="submit"

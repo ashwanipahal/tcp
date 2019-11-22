@@ -29,6 +29,11 @@ const BadgeWrapper = styled.View`
   top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+const AddNewButton = styled.View`
+  padding-left: 12px;
+  padding-right: 12px;
+`;
+
 export {
   HeaderContainer,
   Row,
@@ -38,4 +43,5 @@ export {
   FlatList,
   AddNewAddressWrapper,
   BadgeWrapper,
+  AddNewButton,
 };

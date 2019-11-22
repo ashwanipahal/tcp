@@ -107,12 +107,12 @@ export class CreditCardTextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="15px" height="15px" />
+              <Image source={errorIcon} width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
-            mobilefontFamily={['secondary']}
-            fontWeight="semibold"
+            fontFamily="secondary"
+            fontWeight="extrabold"
             fontSize="fs12"
             text={error}
             color="error"
@@ -132,7 +132,7 @@ export class CreditCardTextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { error },
+      meta,
       input,
       enableSuccessCheck,
       keyboardType,
@@ -159,7 +159,8 @@ export class CreditCardTextBox extends React.Component {
           onEndEditing={this.handleBlur}
           keyboardType={keyboardType}
           returnKeyType="next"
-          error={error}
+          meta={meta}
+          error={meta.error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
           {...customStyle}

@@ -530,6 +530,8 @@ export const getCurrentOrderFormatter = (
   }
 
   const usersOrder = {
+    emailSignUpTCP: !!orderDetailsResponse.mixOrderDetails.marketingPromoBox,
+    emailSignUpGYM: !!orderDetailsResponse.mixOrderDetails.marketingPromoBoxGYM,
     isShippingOrder,
     isPickupOrder,
     isBossOrder,
@@ -871,7 +873,6 @@ export const getOrderDetailsData = () => {
     }
 
     const orderDetailsResponse = res.body;
-
     return {
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, isCASite()),
     };

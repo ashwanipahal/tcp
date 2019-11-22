@@ -658,6 +658,8 @@ export const response = {
   earnedReward: '$20 Reward',
   pointsToNextReward: 40,
   totalOrderSavings: 0,
+  emailSignUpGYM: false,
+  emailSignUpTCP: true,
   checkout: {
     pickUpContact: {},
     pickUpAlternative: {},

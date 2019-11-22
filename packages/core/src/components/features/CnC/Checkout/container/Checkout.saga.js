@@ -12,7 +12,6 @@ import {
   startExpressCheckout,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
-import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 import utility from '../util/utility';
 import CHECKOUT_ACTIONS, {
   getSetPickupValuesActn,
@@ -37,7 +36,6 @@ import {
   addRegisteredUserAddress,
   routeToPickupPage,
   addAndSetGiftWrappingOptions,
-  validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
@@ -49,7 +47,9 @@ import {
   handleCheckoutInitRouting,
   makeUpdateRTPSCall,
   shouldInvokeReviewCartCall,
+  redirectFromExpress,
 } from './Checkout.saga.util';
+import { submitEmailSignup } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -100,6 +100,7 @@ function* submitPickupSection({ payload }) {
     const formData = { ...payload };
     const { navigation } = payload;
     yield put(setLoaderState(true));
+    yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
     yield put(setLoaderState(false));
 
@@ -281,25 +282,16 @@ function* triggerExpressCheckout(
   shouldPreScreenUser = false,
   source = null
 ) {
-  const excludeCartItems = true;
   let pageName = section;
   if (isMobileApp()) {
     pageName = yield select(getCurrentCheckoutStage);
     pageName = pageName.toLowerCase();
   }
   try {
-    // const preScreenInfo =
-    yield startExpressCheckout(shouldPreScreenUser, source);
-    /* Doing displayPreScreenModal in parallel. The only issue i can see here is
-      //         * if loadCartAndCheckoutDetails is not resolved by the time the user
-      //         * navigates to the form we can not pre-set the address.
-      //         * If this ever does become an issue then we can just push this out
-      //         * and do it after the other api resolves.
-      //         * Doing it this way should make the page seem more responsive however.
-      //         */
-    //  if (preScreenInfo.plccEligible) {
-    // yield call(displayPreScreenModal(preScreenInfo) )
-    //  };
+    const res = yield startExpressCheckout(shouldPreScreenUser, source);
+    if (!res.orderId) {
+      return yield redirectFromExpress();
+    }
     yield call(getCartDataSaga, {
       payload: {
         isRecalculateTaxes: false,
@@ -314,7 +306,7 @@ function* triggerExpressCheckout(
     }
     const shippingValues = yield select(getShippingDestinationValues);
     const shippingAddress = (shippingValues && shippingValues.address) || {};
-    yield validDateAndLoadShipmentMethods(
+    return yield validDateAndLoadShipmentMethods(
       {
         country: shippingAddress.country || '',
         state: shippingAddress.state || '',
@@ -324,16 +316,7 @@ function* triggerExpressCheckout(
       true
     );
   } catch (e) {
-    yield put(setIsExpressEligible(false));
-    yield call(getCartDataSaga, {
-      payload: {
-        isRecalculateTaxes: false,
-        excludeCartItems: excludeCartItems && !isMobileApp(),
-        recalcRewards,
-        isCheckoutFlow: true,
-        translation: false,
-      },
-    });
+    return yield redirectFromExpress();
   }
 }
 
@@ -572,7 +555,7 @@ function* initIntlCheckout() {
 
 function* submitShipping({
   isEmailSignUpAllowed,
-  emailSignup,
+  emailSignUp = {},
   emailAddress,
   isGuestUser,
   address,
@@ -584,6 +567,7 @@ function* submitShipping({
   smsInfo,
   hasSetGiftOptions,
 }) {
+  const { emailSignUp: emailSignUpTCP, emailSignUpGYM } = emailSignUp;
   const giftServicesFormData = yield select(getGiftServicesFormData);
   yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
@@ -593,7 +577,9 @@ function* submitShipping({
     // remove old gift wrap option (if any)
     // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
     // sign up to receive mail newsletter
-    isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
+    isEmailSignUpAllowed &&
+      (emailSignUpTCP || emailSignUpGYM) &&
+      submitEmailSignup(emailAddress, { emailSignUpTCP, emailSignUpGYM }),
   ];
   let addOrEditAddressRes;
   if (isGuestUser) {
