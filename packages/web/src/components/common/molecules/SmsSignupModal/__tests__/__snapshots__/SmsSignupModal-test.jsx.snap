@@ -116,7 +116,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-htoDjs",
+                      "componentId": "sc-dnqmqq",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -259,7 +259,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-htoDjs",
+                    "styledComponentId": "sc-dnqmqq",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -268,7 +268,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                 }
                 dataLocator="sms_address_field"
                 enableSuccessCheck={false}
-                id="signupPhoneNumber"
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
@@ -281,7 +281,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-VigVT",
+                      "componentId": "sc-jTzLTM",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -404,7 +404,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "displayName": "Styled(InputCheckbox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-VigVT",
+                    "styledComponentId": "sc-jTzLTM",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -706,7 +706,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-htoDjs",
+                      "componentId": "sc-dnqmqq",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -849,7 +849,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "displayName": "Styled(TextBox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-htoDjs",
+                    "styledComponentId": "sc-dnqmqq",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -858,7 +858,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                 }
                 dataLocator="sms_address_field"
                 enableSuccessCheck={false}
-                id="signupPhoneNumber"
+                id="modal_signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
@@ -871,7 +871,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-VigVT",
+                      "componentId": "sc-jTzLTM",
                       "isStatic": false,
                       "rules": Array [
                         "
@@ -994,7 +994,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "displayName": "Styled(InputCheckbox)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-VigVT",
+                    "styledComponentId": "sc-jTzLTM",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],

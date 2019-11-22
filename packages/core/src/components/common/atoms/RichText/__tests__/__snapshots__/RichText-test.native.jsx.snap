@@ -3,6 +3,7 @@
 exports[`RichText should render correctly 1`] = `
 <WebView
   actionHandler={[Function]}
+  cacheEnabled={true}
   domStorageEnabled={false}
   isApplyDeviceHeight={false}
   isNativeView={false}
@@ -19,5 +20,6 @@ exports[`RichText should render correctly 1`] = `
     }
   }
   thirdPartyCookiesEnabled={false}
+  useSharedProcessPool={true}
 />
 `;

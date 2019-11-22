@@ -14,6 +14,7 @@ import {
   setDeletedItemAction,
   setLoadingState,
   setAddToFavoriteErrorState,
+  setWishListShareSuccess,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
@@ -278,7 +279,12 @@ export function* sendWishListMail(formData) {
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
-    const { shareToEmailAddresses, shareFromEmailAddresses, shareSubject, shareMessage } = formData;
+    const {
+      shareToEmailAddresses,
+      shareFromEmailAddresses,
+      shareSubject,
+      shareMessage,
+    } = formData.payload;
     const emailSentResponse = yield call(
       shareWishlistByEmail,
       activeWishlistId,
@@ -287,8 +293,9 @@ export function* sendWishListMail(formData) {
       shareSubject,
       shareMessage
     );
-    if (!emailSentResponse.successful) {
-      throw emailSentResponse;
+
+    if (emailSentResponse.successful) {
+      yield put(setWishListShareSuccess(true));
     }
   } catch (err) {
     yield null;

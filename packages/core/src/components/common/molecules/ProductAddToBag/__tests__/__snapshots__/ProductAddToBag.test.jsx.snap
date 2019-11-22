@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-kpOJdX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -140,7 +140,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-kpOJdX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -389,7 +389,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-kpOJdX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -499,7 +499,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-kpOJdX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

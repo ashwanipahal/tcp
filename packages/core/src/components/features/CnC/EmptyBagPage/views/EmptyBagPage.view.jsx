@@ -57,20 +57,7 @@ const EmptyBagPage = ({
           >
             {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
           </BodyCopy>
-          {showPlccApplyNow ? (
-            <Anchor
-              fontSizeVariation="medium"
-              anchorVariation="primary"
-              noLink
-              handleLinkClick={e => {
-                e.preventDefault();
-                openModalApplyNowModal({ isModalOpen: true });
-              }}
-              underline
-            >
-              {bagLabels.applyNow}
-            </Anchor>
-          ) : null}
+
           <div className="element-spacing">
             <Button
               data-locator={getLocator(

@@ -4,6 +4,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 
@@ -13,7 +14,9 @@ import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import mockSeoCopy from '@tcp/core/src/services/abstractors/common/SeoCopy/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
@@ -116,6 +119,7 @@ const HomePageView = dynamic({
       openSmsSignUpModal,
       pageName,
       setCampaignId,
+      // seoData,
     } = compProps;
 
     return (
@@ -129,6 +133,8 @@ const HomePageView = dynamic({
         <PageSlots slots={slots} modules={modules} />
         <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
+        {/* <SeoCopy {...seoData} /> */}
+        <SeoCopy {...mockSeoCopy} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
@@ -168,6 +174,13 @@ const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
 // Wrap the home page with a ref-forwarding element
 const RefWrappedHomePageView = withRefWrapper(HomePageViewWithErrorBoundary);
 
-export default RefWrappedHomePageView;
+/**
+ * Hotfix-Aware Component. The use of `withHotfix` is just for making
+ * page hotfix-aware.
+ */
+RefWrappedHomePageView.displayName = 'HomePage';
+const HotfixAwareHomePage = withHotfix(RefWrappedHomePageView);
+
+export default HotfixAwareHomePage;
 
 export { HomePageView as HomePageViewVanilla };
