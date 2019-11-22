@@ -57,6 +57,11 @@ const ContainerView = styled.View`
   border-color: ${props => props.theme.colors.PRIMARY.GRAY};
 `;
 
+const SkeletonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 200px;
+`;
+
 export {
   Container,
   CartListHeading,
@@ -68,4 +73,5 @@ export {
   StoreDetailsWrapper,
   TooltipWrapper,
   ContainerView,
+  SkeletonWrapper,
 };
