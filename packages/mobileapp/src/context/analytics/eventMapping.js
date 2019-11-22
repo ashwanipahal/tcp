@@ -1,5 +1,5 @@
 import { ACPCore } from '@adobe/react-native-acpcore';
-import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView } from '@tcp/core/src/analytics';
+import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView, trackClick } from '@tcp/core/src/analytics';
 
 // function trackPageview(action) {
 //   const { payload } = action;
@@ -8,21 +8,21 @@ import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView } from '@tcp/core/src/analy
 //   ACPCore.trackAction('pageView', { currentScreen, previousScreen });
 // }
 
-function trackClick(action) {
-  const { payload } = action;
-  ACPCore.trackAction('click', { msg: 'click' });
-}
-
 export const eventMapping = {
   [TRACK_PAGE_VIEW]: trackPageView(action => {
     const { payload } = action;
-    const { currentScreen, previousScreen, appState } = payload;
+    const { currentScreen, previousScreen, context } = payload;
     return {
       currentScreen,
       previousScreen,
-      appState,
+      context,
     };
   }),
-  'testing array': action => [{ hitType: 'foo' }, { hitType: 'bar' }],
-  TRACK_CLICK: trackClick,
+  [TRACK_CLICK]: trackClick(action => {
+    const { payload } = action;
+    const { linkname } = payload;
+    return {
+      linkname,
+    };
+  }),
 };

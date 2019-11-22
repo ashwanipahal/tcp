@@ -20,5 +20,9 @@ export function trackingTarget(events) {
       console.log(`Tracking PageView: ${previousScreen} -> ${currentScreen}`);
       ACPCore.trackAction(TRACK_PAGE_VIEW, { currentScreen, previousScreen });
     }
+    if (event.hitType === 'click') {
+      const { contextData } = event;
+      ACPCore.trackAction(TRACK_CLICK, contextData);
+    }
   });
 }
