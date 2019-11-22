@@ -40,7 +40,7 @@ const MyRewards = ({
 
   return (
     <div className={className}>
-      <div className="handleTablet">
+      <div className="my-reward-styling ">
         <Row fullBleed>
           <Col
             colSize={{

@@ -22,7 +22,7 @@ const styles = css`
     }
   }
 
-  .handleTablet {
+  .my-reward-styling {
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }

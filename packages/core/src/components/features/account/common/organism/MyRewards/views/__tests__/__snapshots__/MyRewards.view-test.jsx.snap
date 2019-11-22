@@ -5,7 +5,7 @@ exports[`MyRewards should render correctly 1`] = `
   className=""
 >
   <div
-    className="handleTablet"
+    className="my-reward-styling "
   >
     <Styled(Row)
       fullBleed={true}
