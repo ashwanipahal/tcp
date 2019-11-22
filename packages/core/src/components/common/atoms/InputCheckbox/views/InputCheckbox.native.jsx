@@ -1,4 +1,4 @@
-import React, { Fragment } from 'React';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
