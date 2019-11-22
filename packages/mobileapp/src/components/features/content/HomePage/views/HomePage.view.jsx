@@ -1,7 +1,12 @@
+// @flow
 import React from 'react';
-import { Linking, View } from 'react-native';
+import { ScrollView, Linking, View } from 'react-native';
+// import { Box, Text } from '@fabulas/astly';
+// import {LazyloadScrollView} from 'react-native-lazyload-deux';
+import { Button } from '@tcp/core/src/components/common/atoms';
+
 import queryString from 'query-string';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -54,7 +59,8 @@ const modulesMap = {
   moduleG: ModuleG,
 };
 
-class HomePageView extends React.PureComponent<Props> {
+const buttonMargin = { margin: 30 };
+class HomePageView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.submitDate = this.submitDate.bind(this);
@@ -63,7 +69,6 @@ class HomePageView extends React.PureComponent<Props> {
       value: '',
     };
   }
-
   componentDidMount() {
     this.loadBootstrapData();
 
@@ -103,7 +108,7 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   handleOpenURL = event => {
-    this.navigate(event.url);
+    // this.navigate(event.url);
   };
 
   renderGlobalModal = navigation => {
@@ -160,7 +165,7 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     const { value } = this.state;
     return (
-      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+      <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
@@ -191,7 +196,7 @@ class HomePageView extends React.PureComponent<Props> {
           </>
         ) : null}
         {this.renderGlobalModal(navigation)}
-      </LazyloadScrollView>
+      </ScrollView>
     );
   }
 }

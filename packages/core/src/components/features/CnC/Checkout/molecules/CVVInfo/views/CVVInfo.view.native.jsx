@@ -14,7 +14,7 @@ const getCvvInfo = ({ cvvCodeRichText }) => {
   const tooltip = () => <RichText isNativeView source={cvvCodeRichText} />;
   return (
     <ReactTooltip withOverlay={false} popover={tooltip()} height={350} width={350}>
-      <Image source={infoIcon} height={15} width={15} />
+      <Image source={infoIcon} height={15} width={15} marginTop={17} />
     </ReactTooltip>
   );
 };

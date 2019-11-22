@@ -4,6 +4,7 @@ exports[`Venmo Payment Button should render correctly 1`] = `
 <View>
   <Styled(TouchableOpacity)
     accessibilityRole="button"
+    isVenmoBlue={false}
     onPress={[Function]}
   >
     <Styled(ImageComp)
