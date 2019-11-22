@@ -18,7 +18,7 @@ class SmsSignupModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      fieldValue: true,
+      isFieldEmpty: true,
     };
   }
 
@@ -92,8 +92,8 @@ class SmsSignupModal extends React.PureComponent {
   };
 
   fieldChange = element => {
-    const fieldValue = !element.currentTarget.value.trim();
-    this.setState({ fieldValue });
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
   };
 
   render() {
@@ -107,7 +107,7 @@ class SmsSignupModal extends React.PureComponent {
       handleSubmit,
     } = this.props;
     const { IMG_DATA } = config;
-    const { fieldValue } = this.state;
+    const { isFieldEmpty } = this.state;
     const isGym = isGymboree();
     return (
       <Fragment>
@@ -237,7 +237,7 @@ class SmsSignupModal extends React.PureComponent {
                     <Row className="button-wrapper-form" fullBleed>
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
-                          disabled={fieldValue || pristine || submitting}
+                          disabled={isFieldEmpty || pristine || submitting}
                           fullWidth
                           buttonVariation="fixed-width"
                           fill="BLUE"

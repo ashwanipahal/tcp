@@ -14,7 +14,7 @@ class FooterTopSignUpForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      fieldValue: true,
+      isFieldEmpty: true,
     };
   }
 
@@ -43,7 +43,7 @@ class FooterTopSignUpForm extends React.PureComponent {
   };
 
   cleanUpForm = () => {
-    this.setState({ fieldValue: true });
+    this.setState({ isFieldEmpty: true });
     const { reset } = this.props;
     reset();
   };
@@ -74,8 +74,8 @@ class FooterTopSignUpForm extends React.PureComponent {
   };
 
   fieldChange = element => {
-    const fieldValue = !element.currentTarget.value.trim();
-    this.setState({ fieldValue });
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
   };
 
   render() {
@@ -90,7 +90,7 @@ class FooterTopSignUpForm extends React.PureComponent {
       fieldProps,
     } = this.props;
 
-    const { fieldValue } = this.state;
+    const { isFieldEmpty } = this.state;
     const isGym = isGymboree();
 
     return (
@@ -133,7 +133,7 @@ class FooterTopSignUpForm extends React.PureComponent {
               className="candidate_a_inline_container_button"
             >
               <Button
-                disabled={fieldValue || pristine || submitting}
+                disabled={isFieldEmpty || pristine || submitting}
                 buttonVariation="fixed-width"
                 type="submit"
                 data-locator={dataLocators.submitButton}
