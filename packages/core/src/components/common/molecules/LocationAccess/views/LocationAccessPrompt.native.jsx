@@ -1,10 +1,13 @@
+/* eslint-disable react-native/split-platform-components */
+/* eslint-disable no-console */
 import React from 'react';
-import { Linking } from 'react-native';
+import { Linking, PermissionsAndroid } from 'react-native';
 import {
   getScreenWidth,
   getScreenHeight,
   setValueInAsyncStorage,
   getValueFromAsyncStorage,
+  isAndroid,
 } from '@tcp/core/src/utils/utils.app';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -38,14 +41,15 @@ class LocationAccessPrompt extends React.PureComponent {
 
   componentDidMount() {
     const { isUserLoggedIn } = this.props;
-    if (isUserLoggedIn) {
-      getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
-        if (data === LOCATION_ACCESS_VALUE) {
-          this.setState({ isOpenBool: false });
-        }
-        this.setState({ isOpenBool: true });
-      });
-    }
+    this.setState({ isOpenBool: true });
+    // if (isUserLoggedIn) {
+    //   getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
+    //     if (data === LOCATION_ACCESS_VALUE) {
+    //       this.setState({ isOpenBool: false });
+    //     }
+    //     this.setState({ isOpenBool: true });
+    //   });
+    // }
   }
 
   openModal = () => {
@@ -55,8 +59,34 @@ class LocationAccessPrompt extends React.PureComponent {
     });
   };
 
+  androidPermition = () => {
+    try {
+      const granted = PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Location Permission',
+          message: '',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the location');
+      } else {
+        console.log('Location permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
   requestPermission = () => {
     Linking.openURL('app-settings:');
+    if (isAndroid()) {
+      this.androidPermition();
+    }
+    setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
   };
 
   close = () => {
