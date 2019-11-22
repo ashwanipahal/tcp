@@ -170,16 +170,17 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight, isWishlist } = this.props;
+    const { customDropDownHeight, isWishlist, data } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
+    const dataLength = data && data.length && data.length < 4;
 
     if (showInBottom) {
       if (calculateHeight > dH) {
         listHeight = dH - 100;
       } else {
-        listHeight = isWishlist ? calculateHeight + 100 : calculateHeight;
+        listHeight = isWishlist && dataLength ? calculateHeight + 100 : calculateHeight;
       }
       if (customDropDownHeight) {
         listHeight = customDropDownHeight;

@@ -4,8 +4,7 @@ export default css`
   width: 100%;
   height: 100%;
 
-  .video-js-container,
-  .vjs_video_3-dimensions {
+  &.video-js.vjs-fluid {
     width: 100%;
     height: 100%;
   }
