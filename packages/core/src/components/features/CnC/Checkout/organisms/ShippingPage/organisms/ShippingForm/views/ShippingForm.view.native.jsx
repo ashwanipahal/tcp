@@ -7,7 +7,10 @@ import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods'
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
-import { ShippingFormWrapper } from '../styles/ShippingForm.view.style.native';
+import {
+  ShippingFormWrapper,
+  ShippingLoaderWrapper,
+} from '../styles/ShippingForm.view.style.native';
 import GiftServices from '../../../molecules/GiftServices';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
@@ -87,7 +90,9 @@ const ShippingForm = ({
     <>
       <ShippingFormWrapper>
         {bagLoading ? (
-          <PickupPageSkeleton />
+          <ShippingLoaderWrapper>
+            <PickupPageSkeleton />
+          </ShippingLoaderWrapper>
         ) : (
           <>
             {!isGuest && (
