@@ -52,11 +52,11 @@ const getLayoutConfig = set => {
 
 const getImageColumn = (mediaWrapper, layoutConfig) => {
   const { bgType, color, headerPosition } = layoutConfig;
-  const marginClass = headerPosition === 'right' ? 'img-bootom-margin' : '';
+  const marginClass = headerPosition === 'right' ? 'img-bottom-margin' : '';
   if (bgType === 'image') {
     return (
       <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-        <div className={marginClass}>
+        <div className={`img-wrapper ${marginClass}`}>
           {mediaWrapper ? (
             <DamImage
               imgData={mediaWrapper[0]}
@@ -72,7 +72,7 @@ const getImageColumn = (mediaWrapper, layoutConfig) => {
     <Col colSize={{ small: 6, medium: 8, large: 6 }}>
       <BgWrapper
         bgColor={color}
-        className={marginClass}
+        className={`bg-wrapper ${marginClass}`}
         data-locator={getLocator('moduleImageText_bgwrapper')}
       />
     </Col>
@@ -92,7 +92,7 @@ const getHeaderColumn = (headLine, subHeadLine, ctaItems, layoutConfig) => {
   const buttonListProps = getButtonListVariationProps(layoutConfig.ctaType);
   const dualVariation = ctaItems && ctaItems.length < 3 ? null : buttonListProps.dualVariation;
   const { expandableTitle, headerPosition } = layoutConfig;
-  const marginClass = headerPosition === 'left' ? 'header-bootom-margin' : '';
+  const marginClass = headerPosition === 'left' ? 'header-bottom-margin' : '';
   return (
     <Col colSize={{ small: 6, medium: 8, large: 6 }} className="content-wrapper">
       <ContentContainer>

@@ -3,14 +3,22 @@ import styled, { css } from 'styled-components';
 const BgWrapper = styled.div`
   background-color: ${props => props.bgColor};
   height: 350px;
+  width:100%;
+  max-width:375px;
   @media ${props => props.theme.mediaQuery.medium} {
     height: 689px;
+    width:100%;
+    max-width:738px;
   }
   @media ${props => props.theme.mediaQuery.large} {
     height: 576px;
+    width:100%;
+    max-width:576px;
   }
   @media ${props => props.theme.mediaQuery.xlarge} {
     height: 689px;
+    width:100%;
+    max-width:689px;
   }
 `;
 
@@ -45,17 +53,23 @@ const style = css`
     position: relative;
     text-align: center;
   }
-  .img-bootom-margin {
+  .img-bottom-margin {
     margin-bottom: 16px;
     @media ${props => props.theme.mediaQuery.large} {
       margin-bottom: 0;
     }
   }
-  .header-bootom-margin {
+  .header-bottom-margin {
     margin-bottom: 16px;
     @media ${props => props.theme.mediaQuery.large} {
       margin-bottom: 0;
     }
+  }
+  .img-wrapper{
+    text-align:center;
+  }
+  .bg-wrapper{
+    margin: 0 auto;
   }
 `;
 
