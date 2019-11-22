@@ -173,8 +173,8 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
     }
   });
 
-  const seoTitle = seoTitlesMap[0];
-  const seoMetaDesc = seoDescMap[0];
+  const seoTitle = seoTitlesMap[seoTitlesMap.length - 1];
+  const seoMetaDesc = seoDescMap[seoDescMap.length - 1];
 
   const title = seoTitle;
   const description = seoMetaDesc;
