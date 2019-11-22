@@ -197,6 +197,10 @@ export const getScrollToTopValue = state => {
   return state.ProductListing.isScrollToTop;
 };
 
+export const getModalState = state => {
+  return state.ProductListing.isKeepModalOpen;
+};
+
 export const getProductsInCurrCategory = state => {
   return state.ProductListing.productsInCurrCategory;
 };
