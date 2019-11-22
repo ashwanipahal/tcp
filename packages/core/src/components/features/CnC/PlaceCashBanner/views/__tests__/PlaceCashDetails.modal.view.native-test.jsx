@@ -12,7 +12,6 @@ describe('PlaceCashBannerModal should render correctly', () => {
     heading: 'title modal',
     onRequestClose: jest.fn(),
     openState: true,
-    additionalClassNameModal: '',
   };
 
   beforeEach(() => {
