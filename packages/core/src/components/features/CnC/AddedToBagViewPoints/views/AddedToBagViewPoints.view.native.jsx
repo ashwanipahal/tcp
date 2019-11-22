@@ -1,4 +1,5 @@
 import React from 'react';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ViewPointsWrapper,
@@ -10,7 +11,6 @@ import {
 type Props = {
   pointsSummary: Object,
   labels: Object,
-  currencySymbol: String,
   isUserLoggedIn: boolean,
 };
 
@@ -18,7 +18,7 @@ const getModifiedString = (labels, totalItems) => {
   return `${labels.bagSubTotal.replace('#items', `${totalItems}`)}`;
 };
 
-const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol, isUserLoggedIn }: Props) => {
+const AddedToBagViewPoints = ({ pointsSummary, labels, isUserLoggedIn }: Props) => {
   const {
     itemPrice,
     itemPoints,
@@ -34,7 +34,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol, isUserLog
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
-          text={`${currencySymbol}${itemPrice || 0}`}
+          text={<PriceCurrency price={itemPrice} />}
         />
       </DefaultView>
       <DefaultView>
@@ -62,7 +62,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol, isUserLog
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
-          text={`${currencySymbol}${bagSubTotal || 0}`}
+          text={<PriceCurrency price={bagSubTotal} />}
         />
       </DefaultView>
       <DefaultView>
