@@ -78,7 +78,6 @@ class FavoritesView extends React.PureComponent {
       },
     ];
     this.state = {
-      selectedWishlist: '',
       selectedShareOption: '',
       isOpenModal: false,
     };
@@ -98,15 +97,27 @@ class FavoritesView extends React.PureComponent {
   };
 
   onAddNewListHandler = data => {
-    console.tron.log('onAddNewListHandler:', data);
+    const { createNewWishList } = this.props;
+    this.onCloseModal();
+    if (createNewWishList) {
+      createNewWishList(data);
+    }
   };
 
   onEditListHandler = data => {
-    console.tron.log('onEditListHandler:', data);
+    const { updateWishList } = this.props;
+    this.onCloseModal();
+    if (updateWishList) {
+      updateWishList(data);
+    }
   };
 
   onDeleteListHandler = data => {
-    console.tron.log('onDeleteListHandler:', data);
+    const { deleteWishList } = this.props;
+    this.onCloseModal();
+    if (deleteWishList) {
+      deleteWishList(data);
+    }
   };
 
   onCopyLinkHandler = data => {
@@ -134,7 +145,10 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
-  handleAddList = () => {
+  handleAddList = closeDropDown => {
+    if (closeDropDown) {
+      closeDropDown();
+    }
     this.currentPopupName = ADD_LIST;
     this.setState({
       isOpenModal: true,
@@ -181,7 +195,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels } = this.props;
+    const { labels, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
     if (this.currentPopupName === ADD_LIST) {
       return (
         <AddList
@@ -192,12 +206,19 @@ class FavoritesView extends React.PureComponent {
       );
     }
     if (this.currentPopupName === EDIT_LIST) {
+      const isCheckBoxDisabled = (wishlistsSummaries && wishlistsSummaries.length === 1) || false;
       return (
         <EditList
           labels={labels}
           onHandleSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
           onDeleteList={this.onDeleteListHandler}
+          activeWishListId={activeWishListId}
+          initialValues={{
+            listName: activeWishList.displayName,
+            isChecked: activeWishList.isDefault,
+          }}
+          isCheckBoxDisabled={isCheckBoxDisabled}
         />
       );
     }
@@ -205,7 +226,7 @@ class FavoritesView extends React.PureComponent {
       return (
         <ShareList
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onHandleSubmit={this.handleShareListByEmail}
           onCloseModal={this.onCloseModal}
         />
       );
@@ -225,7 +246,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   renderBrandFilter = () => {
-    const { tcpSelected, gymSelected, labels } = this.props;
+    const { tcpSelected, gymSelected, labels, isBothTcpAndGymProductAreAvailable } = this.props;
+    if (isBothTcpAndGymProductAreAvailable) {
+      return null;
+    }
     return (
       <BrandFilterContainer margins="48px 0 0 0">
         <BodyCopy
@@ -277,7 +301,7 @@ class FavoritesView extends React.PureComponent {
     return (
       <ListHeaderContainer>
         <BodyCopy
-          margin="12px 0 0 32px"
+          margin="16px 0 0 32px"
           dataLocator="fav_lbl_myFavorites"
           mobileFontFamily="primary"
           fontSize="fs14"
@@ -290,21 +314,21 @@ class FavoritesView extends React.PureComponent {
   };
 
   // eslint-disable-next-line sonarjs/no-identical-functions
-  renderFooter = () => {
-    const { labels } = this.props;
+  renderFooter = closeDropDown => {
+    const { labels, wishlistsSummaries } = this.props;
+    const isDisable = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
     return (
       <ListFooterContainer>
         <Button
           buttonVariation="fixed-width"
-          onPress={this.createWishlist}
+          onPress={() => this.handleAddList(closeDropDown)}
           fill="BLACK"
           text={getLabelValue(labels, 'lbl_fav_createNewList')}
+          disableButton={isDisable}
         />
       </ListFooterContainer>
     );
   };
-
-  createWishlist = () => {};
 
   renderWishlistItems = ({ item }, onDropDownItemClick) => {
     const { activeWishList } = this.props;
@@ -400,9 +424,10 @@ class FavoritesView extends React.PureComponent {
       wishlistsSummaries,
       defaultWishList,
       activeWishList,
+      // activeWishListId,
     } = this.props;
 
-    const { selectedWishlist, selectedShareOption } = this.state;
+    const { selectedShareOption } = this.state;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
@@ -424,6 +449,7 @@ class FavoritesView extends React.PureComponent {
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
+    const displayName = (activeWishList && activeWishList.displayName) || '';
 
     return (
       <PageContainer>
@@ -440,14 +466,12 @@ class FavoritesView extends React.PureComponent {
         <LineComp borderWidth="2" marginTop="12" borderColor="black" />
         <DropDownContainer>
           <SelectWishListDropdown
-            selectedValue={selectedWishlist}
+            selectedValue={displayName}
             data={wishlistsSummaries}
             defaultWishList={defaultWishList}
             activeWishList={activeWishList}
             onValueChange={itemValue => {
-              this.setState({ selectedWishlist: itemValue }, () =>
-                this.handleWishlistClick(itemValue)
-              );
+              this.handleWishlistClick(itemValue);
             }}
             variation="secondary"
             dropDownStyle={{ ...dropDownStyle }}
@@ -533,10 +557,8 @@ class FavoritesView extends React.PureComponent {
 }
 
 FavoritesView.propTypes = {
-  // eslint-disable-next-line
   wishlistsSummaries: PropTypes.arrayOf({}).isRequired,
   activeWishList: PropTypes.shape({}).isRequired,
-  // eslint-disable-next-line
   activeWishListId: PropTypes.number.isRequired,
   activeWishListProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   filters: PropTypes.shape({}),
@@ -558,6 +580,10 @@ FavoritesView.propTypes = {
   labelsPlpTiles: PropTypes.shape({}).isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
   defaultWishList: PropTypes.shape([]).isRequired,
+  createNewWishList: PropTypes.func.isRequired,
+  deleteWishList: PropTypes.func.isRequired,
+  updateWishList: PropTypes.func.isRequired,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool.isRequired,
 };
 
 FavoritesView.defaultProps = {
