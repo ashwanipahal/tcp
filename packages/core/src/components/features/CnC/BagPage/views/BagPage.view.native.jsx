@@ -6,6 +6,7 @@ import { isCanada } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
@@ -369,6 +370,7 @@ export class BagPage extends React.Component {
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
+              <PlaceCashBanner />
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
               {this.renderRecommendations()}
