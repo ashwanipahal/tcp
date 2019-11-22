@@ -13,7 +13,8 @@ export const formValidationMessages = {
     required: 'lbl_err_gender_required',
   },
   shareToEmailAddresses: {
-    required: 'lbl_err_email_req',
+    required: 'lbl_err_toemail_required',
+    multiEmails: 'lbl_err_toemail_required',
   },
   shareFromEmailAddresses: {
     required: 'lbl_err_email_req',
@@ -223,6 +224,7 @@ export const formValidationMessages = {
 export const formValidationRules = {
   shareToEmailAddresses: {
     required: true,
+    multiEmails: true,
   },
   shareFromEmailAddresses: {
     required: true,
