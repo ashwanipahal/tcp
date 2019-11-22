@@ -140,6 +140,11 @@ class OutfitDetailsContainer extends React.PureComponent {
 
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
+  pageData: {
+    pageName: 'product',
+    pageSection: 'product',
+    pageSubSection: 'product',
+  },
 };
 
 const mapStateToProps = state => {
