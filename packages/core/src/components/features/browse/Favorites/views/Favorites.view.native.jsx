@@ -244,7 +244,6 @@ class FavoritesView extends React.PureComponent {
           initialValues={{
             subject: getLabelValue(labels, 'lbl_fav_subject_default'),
             fromEmail: userEmail,
-            toEmail: 'sumer.patel.222@gmail.com',
           }}
         />
       );
