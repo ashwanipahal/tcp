@@ -384,7 +384,7 @@ class FavoritesView extends React.PureComponent {
       headerAlignment: 'left',
     };
 
-    const filteredItemsList = this.getFilteredItemsList();
+    // const filteredItemsList = this.getFilteredItemsList();
 
     return (
       <div className={className}>
@@ -432,7 +432,7 @@ class FavoritesView extends React.PureComponent {
           </Col>
         </Row>
 
-        {filteredItemsList.length !== 0 ? (
+        {activeWishList && activeWishList.items.length !== 0 ? (
           <>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
