@@ -128,7 +128,6 @@ const HomePageView = dynamic({
         setCampaignId={setCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
-        <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
         {/* <SeoCopy {...seoData} /> */}
         <SeoCopy {...mockSeoCopy} />
