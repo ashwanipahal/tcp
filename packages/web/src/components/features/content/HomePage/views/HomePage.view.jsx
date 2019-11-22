@@ -7,8 +7,6 @@ import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
-import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
