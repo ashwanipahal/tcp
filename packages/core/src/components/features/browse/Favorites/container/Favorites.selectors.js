@@ -38,19 +38,8 @@ export const selectActiveDisplayName = createSelector(
 );
 
 export const selectActiveWishlistId = state => {
-  const wishlistsSummaries = selectWishlistsSummaries(state);
-  let activeWishlistId = null;
-  if (wishlistsSummaries && wishlistsSummaries.length > 0) {
-    const len = wishlistsSummaries.length;
-    for (let i = 0; i < len; i += 1) {
-      const item = wishlistsSummaries[i];
-      if (item.isDefault === true) {
-        activeWishlistId = item.id;
-        break;
-      }
-    }
-  }
-  return activeWishlistId;
+  const activeWishList = selectActiveWishList(state);
+  return activeWishList && activeWishList.id;
 };
 
 export const selectDefaultWishlist = state => {
@@ -62,6 +51,30 @@ export const selectDefaultWishlist = state => {
       return wishlist.isDefault === true;
     })
   );
+};
+
+export const getBothTcpAndGymProductAreAvailability = state => {
+  const activeWishList = selectActiveWishList(state);
+  let isTcpProductAvailable = false;
+  let isGymProductAvailable = false;
+  let isTcpAndGymProductsAvailable = false;
+  const len = (activeWishList && activeWishList.items.length) || 0;
+  for (let i = 0; i < len; i += 1) {
+    if (isTcpProductAvailable && isGymProductAvailable) {
+      isTcpAndGymProductsAvailable = true;
+      break;
+    }
+    const item = activeWishList.items[i];
+    if (item.itemInfo.isTCP) {
+      isTcpProductAvailable = true;
+    } else {
+      isGymProductAvailable = true;
+    }
+  }
+  if (isTcpProductAvailable && isGymProductAvailable) {
+    isTcpAndGymProductsAvailable = true;
+  }
+  return isTcpAndGymProductsAvailable;
 };
 
 export const fetchCurrencySymbol = state => {

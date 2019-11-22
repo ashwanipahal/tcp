@@ -157,7 +157,7 @@ export function* loadWishlistsSummaries(config) {
   }
 }
 
-export function* createNewWishList(formData) {
+export function* createNewWishList({ payload: formData }) {
   try {
     const createdWishListResponse = yield call(
       createWishList,
@@ -206,7 +206,7 @@ export function* createNewWishListMoveItem({ payload: formData }) {
   }
 }
 
-export function* deleteWishListById(wishListId) {
+export function* deleteWishListById({ payload: wishListId }) {
   try {
     const deleteWishListResponse = yield call(deleteWishList, wishListId);
     if (!deleteWishListResponse.success) {
@@ -218,7 +218,7 @@ export function* deleteWishListById(wishListId) {
   }
 }
 
-export function* updateExistingWishList(formData) {
+export function* updateExistingWishList({ payload: formData }) {
   try {
     const updateWishListResponse = yield call(
       updateWishlistName,
