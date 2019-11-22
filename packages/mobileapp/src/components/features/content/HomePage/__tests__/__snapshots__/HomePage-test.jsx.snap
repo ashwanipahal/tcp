@@ -80,5 +80,12 @@ exports[`HomePageView should render correctly 1`] = `
       }
     />
   </View>
+  <Connect(UserOnboardingScreen)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
 </ScrollViewMock>
 `;
