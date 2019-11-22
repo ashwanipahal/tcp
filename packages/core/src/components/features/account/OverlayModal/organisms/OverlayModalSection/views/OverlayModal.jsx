@@ -242,7 +242,10 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
-      e.stopImmediatePropagation();
+      const { component: nextTargetComponent } = this.props;
+      if (e.target.id === nextTargetComponent) {
+        e.stopImmediatePropagation();
+      }
     }
   }
 
