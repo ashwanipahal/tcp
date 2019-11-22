@@ -3200,7 +3200,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3302,7 +3302,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
             "displayName": "Styled(Button)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3969,7 +3969,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4071,7 +4071,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             "displayName": "Styled(Button)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5297,7 +5297,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5399,7 +5399,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             "displayName": "Styled(Button)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
