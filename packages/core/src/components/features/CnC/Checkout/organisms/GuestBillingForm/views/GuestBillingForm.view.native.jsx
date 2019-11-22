@@ -253,6 +253,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: 'checkoutBilling', // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(GuestBillingForm);
 export { GuestBillingForm as GuestBillingFormVanilla };

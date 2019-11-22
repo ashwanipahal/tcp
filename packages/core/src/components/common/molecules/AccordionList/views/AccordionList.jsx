@@ -7,7 +7,7 @@ type Props = {
   className: string,
   children: Object[],
   defaultOpenIndex: number,
-  show: boolean,
+  appliedFilterComponent: Object[],
 };
 
 type State = {
@@ -72,7 +72,8 @@ export default class AccordionList extends React.Component<Props, State> {
         elementClicked: clickedIndex,
         isExpanded:
           !!listItem.getElementsByTagName('a').length ||
-          !!listItem.getElementsByTagName('span').length,
+          !!listItem.getElementsByClassName('color-name').length ||
+          !!listItem.getElementsByClassName('size-title').length,
       });
     }
   }
@@ -85,8 +86,8 @@ export default class AccordionList extends React.Component<Props, State> {
 
   render() {
     const { elementClicked, isExpanded } = this.state;
-    // eslint-disable-next-line
-    const { accordionItems, className, children, show } = this.props;
+
+    const { accordionItems, className, children, appliedFilterComponent } = this.props;
 
     return (
       <div className={`${className} container-accordion`}>
@@ -98,10 +99,12 @@ export default class AccordionList extends React.Component<Props, State> {
                   titleText={
                     accordionItems[index].header.text || accordionItems[index].header.title
                   }
+                  filterLength={accordionItems[index].header.filterLength}
                   updateAccordionState={this.changeAccordionState}
                   index={index}
                   activeClass="inactive"
                   className={className}
+                  appliedFilterComponent={appliedFilterComponent}
                 >
                   {item}
                 </AccordionItem>
@@ -110,10 +113,12 @@ export default class AccordionList extends React.Component<Props, State> {
                   titleText={
                     accordionItems[index].header.text || accordionItems[index].header.title
                   }
+                  filterLength={accordionItems[index].header.filterLength}
                   updateAccordionState={this.changeAccordionState}
                   index={index}
                   activeClass="active"
                   className={className}
+                  appliedFilterComponent={appliedFilterComponent}
                 />
               )}
             </div>

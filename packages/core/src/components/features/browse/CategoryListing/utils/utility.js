@@ -32,3 +32,8 @@ export const getSeoText = (listOfL1, cid) => {
   }
   return description;
 };
+
+export const getCategoryName = asPath => {
+  const categoryNames = asPath && asPath.split('/');
+  return (categoryNames && categoryNames[categoryNames.length - 1]) || '';
+};

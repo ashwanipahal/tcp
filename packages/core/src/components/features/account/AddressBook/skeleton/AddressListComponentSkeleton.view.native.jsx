@@ -1,6 +1,6 @@
 import React from 'react';
 import AddressTileWrapper from '../styles/AddressListComponentSkeleton.style.native';
-import AddressSkelton from '../../../../common/molecules/Address/skeleton/AddressSkeleton.view.native';
+import AddressSkelton from '../../../../common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 
 const AddressListComponentSkeleton = () => {
   return (

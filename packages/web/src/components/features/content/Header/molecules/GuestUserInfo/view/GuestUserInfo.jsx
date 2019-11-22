@@ -98,6 +98,7 @@ const GuestUserInfo = ({
             {!isDrawer && (
               <Image
                 alt="user"
+                className="account-info"
                 src={getIconPath('down_arrow_icon')}
                 height="6px"
                 onClick={LoginLinkClick}
@@ -111,14 +112,6 @@ const GuestUserInfo = ({
                   {`$${handleUserRewards(userRewards)} Rewards`}
                 </span>
               </BodyCopy>
-            ) : null}
-            {!isDrawer ? (
-              <Image
-                alt="user"
-                className="usericon"
-                src={getIconPath('user-icon')}
-                onClick={LoginLinkClick}
-              />
             ) : null}
           </ClickTracker>
         </BodyCopy>

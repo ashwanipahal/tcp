@@ -42,7 +42,8 @@ class Carousel extends React.PureComponent<Props, State> {
     };
   }
 
-  componentWillReceiveProps = (nextProps: Object) => {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps = (nextProps: Object) => {
     const { sliderImageIndex } = nextProps;
     const { sliderImageIndex: sliderImage } = this.props;
     if (sliderImageIndex !== sliderImage) {

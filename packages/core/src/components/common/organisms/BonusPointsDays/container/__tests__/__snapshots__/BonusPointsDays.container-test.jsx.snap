@@ -5,8 +5,10 @@ exports[`BonusPointsDaysContainer should not render correctly 1`] = `""`;
 exports[`BonusPointsDaysContainer should render correctly 1`] = `
 <Styled(BonusPointsView)
   bonusData={Object {}}
+  bonusDetailsContentId="123"
   bonusDetailsData=""
   getBonusDaysData={[Function]}
+  getBonusPointsDetails={[Function]}
   isBagPage={false}
   isDefaultOpen={false}
   isInternationalShipping={false}
