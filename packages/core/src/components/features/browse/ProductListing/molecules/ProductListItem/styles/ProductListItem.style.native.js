@@ -61,7 +61,7 @@ const OfferPriceAndBadge3Container = styled.View`
 `;
 
 const OfferPriceAndBadge3View = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  height: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const TitleContainer = styled.TouchableOpacity`
