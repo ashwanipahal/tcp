@@ -13,6 +13,8 @@ import {
   createNewWishListAction,
   setLastDeletedItemIdAction,
   updateWishListAction,
+  sendWishListMailAction,
+  setWishListShareSuccess,
 } from './Favorites.actions';
 
 import {
@@ -28,7 +30,9 @@ import {
   getIsDataLoading,
   selectDefaultWishlist,
   getBothTcpAndGymProductAreAvailability,
+  selectWishListShareStatus,
 } from './Favorites.selectors';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
@@ -121,6 +125,10 @@ class FavoritesContainer extends React.PureComponent {
       defaultWishList,
       updateWishList,
       isBothTcpAndGymProductAreAvailable,
+      userEmail,
+      sendWishListEmail,
+      wishlistShareStatus,
+      setListShareSuccess,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -155,6 +163,10 @@ class FavoritesContainer extends React.PureComponent {
         defaultWishList={defaultWishList}
         updateWishList={updateWishList}
         isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
+        userEmail={userEmail}
+        sendWishListEmail={sendWishListEmail}
+        wishlistShareStatus={wishlistShareStatus}
+        setListShareSuccess={setListShareSuccess}
         {...this.state}
       />
     );
@@ -178,6 +190,8 @@ const mapStateToProps = state => {
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
+    userEmail: getUserEmail(state),
+    wishlistShareStatus: selectWishListShareStatus(state),
   };
 };
 
@@ -195,6 +209,8 @@ const mapDispatchToProps = dispatch => {
     setLastDeletedItemId: itemId => {
       dispatch(setLastDeletedItemIdAction(itemId));
     },
+    sendWishListEmail: payload => dispatch(sendWishListMailAction(payload)),
+    setListShareSuccess: payload => dispatch(setWishListShareSuccess(payload)),
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
@@ -210,6 +226,7 @@ FavoritesContainer.propTypes = {
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
   deleteWishList: PropTypes.func.isRequired,
+  sendWishListEmail: PropTypes.func.isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
@@ -229,6 +246,9 @@ FavoritesContainer.propTypes = {
   defaultWishList: PropTypes.shape({}),
   updateWishList: PropTypes.func.isRequired,
   isBothTcpAndGymProductAreAvailable: PropTypes.bool.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  wishlistShareStatus: PropTypes.bool,
+  setListShareSuccess: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
@@ -243,6 +263,7 @@ FavoritesContainer.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   defaultWishList: {},
+  wishlistShareStatus: false,
 };
 
 export default connect(

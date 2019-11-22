@@ -7,15 +7,22 @@ const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
   message: {
-    maxLength: 'lbl_err_name_maxlength',
+    nonEmpty: 'lbl_err_message_required',
   },
   gender: {
     required: 'lbl_err_gender_required',
   },
+  shareToEmailAddresses: {
+    required: 'lbl_err_toemail_required',
+    multiEmails: 'lbl_err_toemail_required',
+  },
+  shareFromEmailAddresses: {
+    required: 'lbl_err_email_req',
+    email: 'lbl_err_email',
+  },
   subject: {
-    nonEmpty: 'lbl_err_name_nonempty',
-    name: 'lbl_err_name_name',
-    maxLength: 'lbl_err_name_maxlength',
+    nonEmpty: 'lbl_err_subject_required',
+    required: 'lbl_err_subject_required',
   },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
@@ -213,13 +220,20 @@ export const formValidationMessages = {
 };
 
 export const formValidationRules = {
+  shareToEmailAddresses: {
+    required: true,
+    multiEmails: true,
+  },
+  shareFromEmailAddresses: {
+    required: true,
+    email: true,
+  },
   subject: {
     nonEmpty: true,
-    name: true,
-    maxLength: 50,
+    required: true,
   },
   message: {
-    maxLength: 200,
+    nonEmpty: true,
   },
   gender: {
     required: true,

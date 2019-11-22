@@ -15,6 +15,10 @@ export const selectActiveWishList = createSelector(
   items => items && items.get('activeWishList')
 );
 
+export const selectWishListShareStatus = state => {
+  return state.Favorites && state.Favorites.get('isWishListShared');
+};
+
 export const selectActiveWishlistProducts = state => {
   const activeWishList = selectActiveWishList(state);
   return activeWishList && activeWishList.items;
