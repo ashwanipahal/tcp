@@ -22,6 +22,9 @@
 -elif [ "${CONFIGURATION}" == "Release" ] || [ "${CONFIGURATION}" == "Debug" ]; then
 -  echo "PROD"
 -  echo "brand_config/$brand/.env.prod" > /tmp/envfile
+-elif [ "${CONFIGURATION}" == "Release" ] || [ "${CONFIGURATION}" == "Debug" ]; then
+-  echo "PREVIEW"
+-  echo "brand_config/$brand/.env.preview" > /tmp/envfile
 -else
 -  echo "STAGING"
 -  echo "brand_config/$brand/.env.staging" > /tmp/envfile
