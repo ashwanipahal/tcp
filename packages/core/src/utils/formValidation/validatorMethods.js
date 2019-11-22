@@ -136,6 +136,19 @@ function emailValidator(value) {
   );
 }
 
+function multiEmailsValidator(values) {
+  const valuesArr = (values || '').split(',');
+  let isValid = true;
+
+  valuesArr.map(value => {
+    const localvalue = value.trim();
+    isValid = isValid && (!localvalue || emailValidator(localvalue));
+    return isValid;
+  });
+
+  return isValid;
+}
+
 function matchEmailValidator(value, param, linkedPropsValues, linkedFieldsValues) {
   return (value || '').trim() === (linkedFieldsValues[0] || '').trim();
 }
@@ -247,6 +260,7 @@ const validatorMethods = {
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,
   userBirthday: userBirthdayValidator,
+  multiEmails: multiEmailsValidator,
 };
 
 export default validatorMethods;
