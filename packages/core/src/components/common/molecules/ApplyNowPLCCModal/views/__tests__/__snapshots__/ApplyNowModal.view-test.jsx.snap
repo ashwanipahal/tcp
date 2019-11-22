@@ -6,7 +6,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heading="lbl_PLCCModal_applyNowHeaderText"
   inheritedStyles={
     Array [
       "
@@ -16,7 +15,14 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       [Function],
       ";
   }
-
+  .apply-now-heading {
+    margin: ",
+      [Function],
+      " 0px
+      ",
+      [Function],
+      ";
+  }
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
   }
@@ -183,6 +189,20 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   <div
     className="Modal__Content__Wrapper"
   >
+    <Styled(BodyCopy)
+      className="apply-now-heading"
+      color="gray.900"
+      component="h2"
+      fontFamily="secondary"
+      fontSize="fs36"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_PLCCModal_applyNowHeaderText
+    </Styled(BodyCopy)>
     <Styled(Row)
       className="submit_plcc_form"
       fullBleed={true}
@@ -427,7 +447,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heading="lbl_PLCCModal_applyNowHeaderText"
   inheritedStyles={
     Array [
       "
@@ -437,7 +456,14 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       [Function],
       ";
   }
-
+  .apply-now-heading {
+    margin: ",
+      [Function],
+      " 0px
+      ",
+      [Function],
+      ";
+  }
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
   }
@@ -604,6 +630,20 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   <div
     className="Modal__Content__Wrapper"
   >
+    <Styled(BodyCopy)
+      className="apply-now-heading"
+      color="gray.900"
+      component="h2"
+      fontFamily="secondary"
+      fontSize="fs36"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_PLCCModal_applyNowHeaderText
+    </Styled(BodyCopy)>
     <Styled(Row)
       className="submit_plcc_form"
       fullBleed={true}

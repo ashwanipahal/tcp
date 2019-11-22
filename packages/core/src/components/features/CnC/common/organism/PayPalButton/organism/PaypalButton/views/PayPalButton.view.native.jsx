@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
-import { View, WebView, Platform, KeyboardAvoidingView } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { View, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
 
@@ -20,6 +21,7 @@ class PayPalButton extends React.PureComponent {
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
+      isBillingPage,
       navigation,
       setVenmoState,
       closeModal,
@@ -39,7 +41,7 @@ class PayPalButton extends React.PureComponent {
         closeModal(true);
         break;
       case 'onCancel':
-        clearPaypalSettings();
+        clearPaypalSettings(isBillingPage);
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });

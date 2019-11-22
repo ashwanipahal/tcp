@@ -3,7 +3,7 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import Safe from 'react-safe';
 
-import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
+import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 
 // _document is only rendered on the server side and not on the client side
 // Event handlers like onClick can't be added to this file
@@ -58,7 +58,7 @@ class MyDocument extends Document {
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
           <link href="/static/app.css" rel="stylesheet" />
-          <link href="/static/video-js.css" rel="stylesheet" />
+          <link href="/static/cld-video-player.min.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
           {/* Empty global object definition for external hotfix sources to append */}
           <HotfixScript />
@@ -73,6 +73,8 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <div className="dark-overlay" />
+          {/* Performance measure for SSR app render time */}
+          <RenderPerf.Measure name={FULLY_VISIBLE} />
           {/* Set this in SSR for initial page view */}
           <RenderPerf.Mark name={NAVIGATION_START} />
         </body>

@@ -1,10 +1,12 @@
 import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import dynamic from 'next/dynamic';
 import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
-import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
+
+const VideoPlayer = dynamic(() => import('../../VideoPlayer'));
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -59,17 +61,14 @@ const getBreakpointImgUrl = (type, props) => {
 
 const RenderVideo = videoProps => {
   const { video, image } = videoProps;
-  const { autoplay, controls, url: src } = video;
+  const { autoplay, controls, url, muted, loop } = video;
 
   const options = {
     autoplay,
     controls,
-    sources: [
-      {
-        src,
-        type: 'video/mp4',
-      },
-    ],
+    url,
+    muted,
+    loop,
     image,
   };
 
@@ -105,7 +104,6 @@ const RenderImage = forwardRef((imgProps, ref) => {
 
       {lazyLoad ? (
         <LazyLoadImage
-          className="lazyLoadImage"
           forwardedRef={ref}
           src={getBreakpointImgUrl('xs', imgProps)}
           alt={alt}
@@ -113,7 +111,16 @@ const RenderImage = forwardRef((imgProps, ref) => {
           showPlaceHolder={showPlaceHolder}
         />
       ) : (
-        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <img
+          onError={e => {
+            e.target.onerror = null;
+            e.target.classList.add('error');
+          }}
+          ref={ref}
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+        />
       )}
     </picture>
   );

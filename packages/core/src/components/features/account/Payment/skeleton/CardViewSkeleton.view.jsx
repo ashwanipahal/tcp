@@ -8,7 +8,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import Heading from '../../../../common/atoms/Heading';
-import AddressSkeleton from '../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 import styles from '../styles/CardViewSkeleton.style';
 
 const CardViewSkeleton = ({ className, labels }) => {
@@ -48,7 +48,7 @@ const CardViewSkeleton = ({ className, labels }) => {
               }}
             >
               <LoaderSkelton width="100%" height="40px" className="elem-mb-LRG" />
-              <AddressSkeleton />
+              <GenericSkeleton isCardView />
             </Col>
             <Col
               colSize={{
@@ -96,7 +96,7 @@ const CardViewSkeleton = ({ className, labels }) => {
               }}
             >
               <LoaderSkelton width="100%" height="40px" className="elem-mb-LRG" />
-              <AddressSkeleton />
+              <GenericSkeleton isCardView />
             </Col>
             <Col
               colSize={{

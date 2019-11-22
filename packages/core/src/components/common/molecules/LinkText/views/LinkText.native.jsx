@@ -3,6 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Anchor, BodyCopy, Heading } from '../../../atoms';
 import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
+import { StyledImage } from '../LinkText.style.native';
 
 type Props = {
   type: string,
@@ -16,6 +17,11 @@ type Props = {
 };
 
 const LARGE_TEXT_BLACK_STYLE = { lineHeight: 47 };
+const heartIcon = require('../../../../../assets/heart-icon.png');
+
+export const icons = {
+  'header-icon__heart': heartIcon,
+};
 
 export const bodyCopyStyles = {
   // small text with regular font
@@ -108,6 +114,29 @@ export const bodyCopyStyles = {
 };
 
 /**
+ * This method is to return image icon
+ */
+const getIcon = icon => icon && <StyledImage source={icons[icon]} />;
+
+/**
+ * This method is to return image icon
+ * in middle of text
+ */
+const finalText = (str, placement, icon) => {
+  const text = str.split(' ');
+  if (text.length > 1 && icon && placement && placement === 'middle') {
+    return (
+      <>
+        {text[0]}
+        {getIcon(icon)}
+        {text.slice(1, text.length).join(' ')}
+      </>
+    );
+  }
+  return str;
+};
+
+/**
  * This component creates a link with styled text
  * Text can be configured to be inside a heading tag to some other element.
  * This component uses BodyCopy atom and Heading atom and differentiates based on type="heading"
@@ -117,9 +146,11 @@ export const bodyCopyStyles = {
  * accepts all parameters for BodyCopy and Heading atom
  */
 
-const getTextItems = (textItems, useStyle, compProps) => {
+const getTextItems = (textItems, icon, useStyle, compProps) => {
+  const { placement, icon: iconName } = icon || {};
   return (
     textItems &&
+    // eslint-disable-next-line complexity
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
@@ -136,7 +167,9 @@ const getTextItems = (textItems, useStyle, compProps) => {
       }
       return (
         <StyledText accessibilityRole="text" accessibilityLabel={text} key={index.toString()}>
-          {index ? ` ${text}` : text}
+          {iconName && placement && placement === 'left' && getIcon(iconName)}
+          {index ? ` ${text}` : finalText(text, placement, iconName)}
+          {iconName && placement && placement === 'right' && getIcon(iconName)}
         </StyledText>
       );
     })
@@ -174,17 +207,17 @@ const LinkText = (props: Props) => {
   }
 
   return headerText.map((item, index) => {
-    const { link, textItems } = item;
-    const textItemsComponents = getTextItems(textItems, useStyle, compProps);
+    const { link, icon, textItems } = item || {};
+    const textItemsComponents = getTextItems(textItems, icon, useStyle, compProps);
     if (useStyle) {
       return (
-        <Anchor url={link.url} navigation={navigation}>
+        <Anchor url={link && link.url} navigation={navigation}>
           {renderComponentInNewLine ? textItemsComponents : <Text>{textItemsComponents}</Text>}
         </Anchor>
       );
     }
     return (
-      <Anchor key={index.toString()} url={link.url} navigation={navigation}>
+      <Anchor key={index.toString()} url={link && link.url} navigation={navigation}>
         <Component {...compProps} text={textItemsComponents} locator={locator} />
       </Anchor>
     );

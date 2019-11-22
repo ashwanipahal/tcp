@@ -75,7 +75,6 @@ export const BannerWrapper = styled.View`
 
 export const CnContainer = styled.View`
   ${applyPositionClassStyle}
-  margin-bottom: 60px;
 `;
 
 export const CnContent = styled.View`

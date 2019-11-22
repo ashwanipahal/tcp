@@ -20,7 +20,15 @@ class QuickViewModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleMultipleItemsAddToBagClick = this.handleMultipleItemsAddToBagClick.bind(this);
+    this.state = {
+      showAddProductValidation: false,
+    };
   }
+
+  changeQuickViewState = state => {
+    // const {showAddProductValidation} = this.state
+    this.setState({ showAddProductValidation: state });
+  };
 
   onCloseClick = () => {
     const { closeQuickViewModal, clearAddToBagError, clearMultipleItemsAddToBagError } = this.props;
@@ -48,6 +56,7 @@ class QuickViewModal extends React.Component {
         },
       } = formRef;
       const addProductToBag = formEnabled; // Add product only when the form is enabled
+      this.setState({ showAddProductValidation: !addProductToBag });
       const displayError = formEnabled && fitChanged; // Validate error only when the form is enabled and fit has changed
       if (displayError) {
         displayErrorMessage(fitChanged);
@@ -76,11 +85,15 @@ class QuickViewModal extends React.Component {
   renderAddToBagButton = () => {
     const {
       plpLabels: { addToBag },
+      quickViewLabels,
     } = this.props;
+    const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
         onClickActn={this.handleMultipleItemsAddToBagClick}
         buttonLabel={addToBag}
+        quickViewLabels={quickViewLabels}
+        showAddProductValidation={showAddProductValidation}
       />
     );
   };
@@ -102,7 +115,7 @@ class QuickViewModal extends React.Component {
     return (
       productInfo &&
       productInfo.map(({ product }) => {
-        const { colorFitsSizesMap, colorFitSizeDisplayNames } = product;
+        const { colorFitsSizesMap, colorFitSizeDisplayNames, alternateSizes, isGiftCard } = product;
         const formRef = React.createRef();
         this.skuFormRefs.push(formRef);
         const modifiedColorFitsSizesMap = selectedColorProductId
@@ -128,8 +141,11 @@ class QuickViewModal extends React.Component {
             formRef={formRef}
             quickViewColorSwatchesCss={quickViewColorSwatchesCss}
             toastMessage={toastMessage}
+            changeQuickViewState={this.changeQuickViewState}
             isQuickView
             marginTopNone
+            alternateSizes={alternateSizes}
+            isGiftCard={isGiftCard}
             {...otherProps}
           />
         );
@@ -155,7 +171,6 @@ class QuickViewModal extends React.Component {
 
   render() {
     const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
-
     const product = productInfo && productInfo.length && productInfo[0].product;
     const currentColorEntry =
       product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
@@ -195,6 +210,7 @@ class QuickViewModal extends React.Component {
                   product,
                   currentColorEntry
                 )}
+
                 {isMultiItemQVModal && this.renderAddToBagButton()}
               </React.Fragment>
             )}
