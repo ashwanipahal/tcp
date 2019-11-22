@@ -105,7 +105,7 @@ const SearchListingView = ({
                 fontSize={['fs16', 'fs16', 'fs14']}
                 fontWeight="extrabold"
               >
-                {`"${searchedText}"`}
+                {`"${searchedText.split('?')[0]}"`}
               </BodyCopy>
             </BodyCopy>
           )}
@@ -125,6 +125,7 @@ const SearchListingView = ({
             sortLabels={sortLabels}
             getProducts={getProducts}
             slpLabels={slpLabels}
+            isLoadingMore={isLoadingMore}
           />
         </Col>
       </Row>
