@@ -116,7 +116,9 @@ class ProductsGridItem extends React.PureComponent {
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   getQuickViewInitialValues() {

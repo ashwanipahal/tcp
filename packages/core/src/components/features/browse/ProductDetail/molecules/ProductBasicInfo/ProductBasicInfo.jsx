@@ -23,7 +23,9 @@ class ProductBasicInfo extends React.Component {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   title = () => {
@@ -47,10 +49,14 @@ class ProductBasicInfo extends React.Component {
   handleAddToWishlist = () => {
     const {
       onAddItemToFavorites,
-      productMiscInfo: { colorProductId },
+      productMiscInfo: { colorProductId, colorDisplayId },
+      pageName,
     } = this.props;
 
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+    onAddItemToFavorites({
+      colorProductId: colorDisplayId || colorProductId,
+      page: pageName || 'PDP',
+    });
   };
 
   render() {
