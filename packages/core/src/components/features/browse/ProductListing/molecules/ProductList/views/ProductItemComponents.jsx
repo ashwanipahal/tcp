@@ -5,7 +5,7 @@
  *
  * @author Florencia <facosta@minutentag.com>
  */
-import React from 'react';
+import React, { useMemo } from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
@@ -39,11 +39,18 @@ export function ProductTitle(values) {
         asPath={pdpUrl}
         inheritedStyles="product-title-content"
       >
-        <Dotdotdot clamp={2}>
-          <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
-            {name}
-          </BodyCopy>
-        </Dotdotdot>
+        {useMemo(
+          () => (
+            // Needed this as any prop change was triggering Dotdotdot's didUpdate which was causing resize event of screen
+            // This was creating issue RWD-14751 i.e. triggering getProducts Action infinite
+            <Dotdotdot clamp={2}>
+              <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
+                {name}
+              </BodyCopy>
+            </Dotdotdot>
+          ),
+          [name]
+        )}
       </Anchor>
       {children}
     </div>
@@ -197,21 +204,31 @@ export function BadgeItem(props) {
 
 export function PromotionalMessage(props) {
   const { text } = props;
-  return text ? (
-    <Dotdotdot clamp={2}>
-      <BodyCopy
-        fontSize={['fs9', 'fs12', 'fs14']}
-        fontWeight="extrabold"
-        fontFamily="secondary"
-        data-locator={getLocator('global_loyalty_text')}
-        className="loyalty-text-container"
-      >
-        {text && (
-          <RichText className="rewards__benefits" richTextHtml={getFormattedLoyaltyText(text)} />
-        )}
-      </BodyCopy>
-    </Dotdotdot>
-  ) : null;
+  return text
+    ? useMemo(
+        () => (
+          // Needed this as any prop change was triggering Dotdotdot's didUpdate which was causing resize event of screen
+          // This was creating issue RWD-14751 i.e. triggering getProducts Action infinite
+          <Dotdotdot clamp={2}>
+            <BodyCopy
+              fontSize={['fs9', 'fs12', 'fs14']}
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              data-locator={getLocator('global_loyalty_text')}
+              className="loyalty-text-container"
+            >
+              {text && (
+                <RichText
+                  className="rewards__benefits"
+                  richTextHtml={getFormattedLoyaltyText(text)}
+                />
+              )}
+            </BodyCopy>
+          </Dotdotdot>
+        ),
+        [text]
+      )
+    : null;
 }
 
 const renderWishListItem = (item, labels, activeWishListId) => (
