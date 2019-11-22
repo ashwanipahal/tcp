@@ -29,6 +29,7 @@ const ConfirmationView = ({
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
   navigation,
+  isGymboreeCanadaSite,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -77,7 +78,7 @@ const ConfirmationView = ({
             text="SMS SIGN UP"
           />
         </SMSWrapper>
-        <SMSNotifications />
+        {!isGymboreeCanadaSite && <SMSNotifications />}
         <ThankYouComponent
           emailAddress={emailAddress}
           isOrderPending={isOrderPending}
@@ -139,11 +140,13 @@ ConfirmationView.propTypes = {
     itemsCount: PropTypes.number,
   }).isRequired,
   navigation: PropTypes.shape({}),
+  isGymboreeCanadaSite: PropTypes.bool,
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
   isOrderPending: false,
   encryptedEmailAddress: '',
   navigation: null,
+  isGymboreeCanadaSite: false,
 };
 export default ConfirmationView;
