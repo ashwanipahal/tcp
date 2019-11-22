@@ -259,7 +259,7 @@ class FavoritesView extends React.PureComponent {
       return (
         <AddList
           labels={labels}
-          onHandleSubmit={this.onAddNewListHandler}
+          onSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
         />
       );
