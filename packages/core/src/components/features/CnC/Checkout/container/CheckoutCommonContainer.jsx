@@ -132,6 +132,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpLabels,
       smsSignUpLabels,
       onPickupSubmit,
+      updateFromMSG,
       loadShipmentMethods,
       isGuest,
       isExpressCheckoutPage,
@@ -165,6 +166,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
+      dispatch,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -206,11 +208,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        updateFromMSG={updateFromMSG}
         verifyAddressAction={verifyAddressAction}
         shippingProps={{
           ...shippingProps,
           shippingDidMount: this.shippingDidMount,
           isRegisteredUserCallDone,
+          dispatch,
         }}
         orderHasPickUp={orderHasPickUp}
         checkoutRoutingDone={checkoutRoutingDone}

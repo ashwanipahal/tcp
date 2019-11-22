@@ -16,6 +16,7 @@ import CHECKOUT_ACTIONS, {
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
   getSetIsBillingVisitedActn,
+  setUpdateFromMSG,
 } from './Checkout.action';
 import selectors, {
   isGuest as isGuestUser,
@@ -183,9 +184,13 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    updateFromMSG: value => {
+      dispatch(setUpdateFromMSG(value));
+    },
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
     },
+    dispatch,
   };
 };
 

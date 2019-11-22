@@ -1,7 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { getLoading } from '@tcp/core/src/utils';
+// import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { ScrollView as LazyloadScrollView } from 'react-native';
+import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
@@ -52,6 +54,8 @@ class ProductBundle extends React.PureComponent {
       addToBagErrorId,
       addToBagError,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -119,6 +123,8 @@ class ProductBundle extends React.PureComponent {
               addToBagErrorId={addToBagErrorId}
               addToBagError={addToBagError}
               toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
@@ -157,6 +163,8 @@ ProductBundle.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
   toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductBundle.defaultProps = {
@@ -169,6 +177,7 @@ ProductBundle.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductBundle);
