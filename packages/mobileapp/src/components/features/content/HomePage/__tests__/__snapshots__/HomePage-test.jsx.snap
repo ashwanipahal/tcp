@@ -4,6 +4,9 @@ exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock
   name="lazyload-home"
 >
+  <Styled(View)>
+    <HeaderPromo />
+  </Styled(View)>
   <LoyaltyPromoBanner
     richTextList={
       Array [

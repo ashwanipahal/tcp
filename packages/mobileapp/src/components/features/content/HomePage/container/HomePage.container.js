@@ -8,6 +8,7 @@ import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.c
 const mapStateToProps = state => {
   const { Header = {}, Layouts = {}, Modules = {} } = state;
   const { promoTextBannerCarousel: headerPromo, loyaltyPromoBanner } = Header;
+  const { promoHtmlBannerCarousel } = Header;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
   const labels = state.Labels;
@@ -27,6 +28,7 @@ const mapStateToProps = state => {
     appType: state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE'),
     isUserLoggedIn: getUserLoggedInState(state) || false,
     labels,
+    promoHtmlBannerCarousel,
   };
 };
 

@@ -52,6 +52,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           pageView="myBag"
         />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -144,6 +145,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -221,6 +223,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -309,6 +312,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             />
           </Styled(View)>
         </Styled(View)>
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Connect(CouponContainer)
             showAccordian={false}
