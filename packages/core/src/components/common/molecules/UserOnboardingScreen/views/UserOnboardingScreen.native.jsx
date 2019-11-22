@@ -99,7 +99,7 @@ const UserOnboardingScreen = props => {
     isUserLoggedIn,
   } = props;
 
-  const [showMainModal, setShowMainModal] = useState(true);
+  const [showMainModal, setShowMainModal] = useState(false);
 
   useEffect(() => {
     getValueFromAsyncStorage('isUserOnBoardingScreenVisited').then(
