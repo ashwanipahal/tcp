@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
@@ -149,6 +148,11 @@ class BagPageView extends React.PureComponent {
   renderRecommendations = () => {
     const { sflItems, orderItemsCount } = this.props;
     const hideRec = orderItemsCount === 0 && sflItems.size > 0;
+    const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <>
         {!hideRec ? (
@@ -156,6 +160,7 @@ class BagPageView extends React.PureComponent {
             page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
             variations="moduleO"
             inheritedStyles={recommendationStyles}
+            carouselConfigProps={carouselOptions}
           />
         ) : null}
         {this.renderRecommendationsForRecent()}
@@ -164,7 +169,12 @@ class BagPageView extends React.PureComponent {
   };
 
   renderRecommendationsForRecent = () => {
-    const { labels } = this.props;
+    const { labels, orderItemsCount } = this.props;
+    const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <div className="recentlyViewed">
         <Recommendations
@@ -173,6 +183,7 @@ class BagPageView extends React.PureComponent {
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
           inheritedStyles={recommendationStyles}
+          carouselConfigProps={carouselOptions}
         />
       </div>
     );
@@ -417,7 +428,7 @@ class BagPageView extends React.PureComponent {
           isGuest={isGuest}
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
-          pageCategory="bagPage"
+          pageCategory={BAGPAGE_CONSTANTS.BAG_PAGE}
         />
         <QuickViewModal />
       </div>
@@ -429,24 +440,7 @@ BagPageView.defaultProps = {
   isBagPage: true,
 };
 
-BagPageView.propTypes = {
-  className: PropTypes.string.isRequired,
-  labels: PropTypes.shape({}).isRequired,
-  orderItemsCount: PropTypes.number.isRequired,
-  totalCount: PropTypes.number.isRequired,
-  showAddTobag: PropTypes.bool.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
-  isGuest: PropTypes.bool.isRequired,
-  handleCartCheckout: PropTypes.func.isRequired,
-  sflItems: PropTypes.shape([]).isRequired,
-  setVenmoPaymentInProgress: PropTypes.func.isRequired,
-  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
-  orderBalanceTotal: PropTypes.number.isRequired,
-  bagStickyHeaderInterval: PropTypes.number.isRequired,
-  isSflItemRemoved: PropTypes.bool.isRequired,
-  isBagPage: PropTypes.bool,
-};
+BagPageView.propTypes = BagPageUtils.BagPagePropTypes;
 
 /**
  * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`

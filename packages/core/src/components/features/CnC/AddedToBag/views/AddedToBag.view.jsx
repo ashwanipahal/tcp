@@ -23,7 +23,8 @@ import LoyaltyBanner from '../../LoyaltyBanner';
 import config from './config';
 
 class AddedToBag extends React.PureComponent {
-  componentWillReceiveProps({ router: nextRouter }) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps({ router: nextRouter }) {
     const { router, closeModal } = this.props;
     /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {

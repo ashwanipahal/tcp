@@ -9,7 +9,7 @@ describe('User saga', () => {
     let gen;
     beforeEach(() => {
       gen = getUserInfoSaga();
-      gen.next();
+
       gen.next();
     });
 
