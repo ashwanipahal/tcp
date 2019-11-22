@@ -463,6 +463,7 @@ export class BillingPaymentForm extends React.PureComponent {
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
           venmoError={venmoError}
+          bagLoading={bagLoading}
         />
       </form>
     );
