@@ -34,7 +34,6 @@ class ProductDetailDescription extends React.PureComponent {
       pageName = `product:${generalProductId}:${productName}`;
       pageShortName = pageName;
     }
-    console.log('propsValue', this.props);
     if (isShowMore) {
       buttonShowMoreOrLess = (
         <div className="button-show-less">
