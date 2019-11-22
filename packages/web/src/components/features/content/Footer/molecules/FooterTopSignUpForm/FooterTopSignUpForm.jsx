@@ -11,6 +11,13 @@ import { isGymboree } from '@tcp/core/src/utils/utils';
 import style from '../../Footer.style';
 
 class FooterTopSignUpForm extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFieldEmpty: true,
+    };
+  }
+
   componentDidUpdate({ submitSucceeded: oldSubmitSucceeded }) {
     const { subscription, submitSucceeded, openSuccessModal } = this.props;
 
@@ -36,6 +43,7 @@ class FooterTopSignUpForm extends React.PureComponent {
   };
 
   cleanUpForm = () => {
+    this.setState({ isFieldEmpty: true });
     const { reset } = this.props;
     reset();
   };
@@ -65,6 +73,11 @@ class FooterTopSignUpForm extends React.PureComponent {
       });
   };
 
+  fieldChange = element => {
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
+  };
+
   render() {
     const {
       labels,
@@ -77,6 +90,7 @@ class FooterTopSignUpForm extends React.PureComponent {
       fieldProps,
     } = this.props;
 
+    const { isFieldEmpty } = this.state;
     const isGym = isGymboree();
 
     return (
@@ -104,6 +118,7 @@ class FooterTopSignUpForm extends React.PureComponent {
                 errorDataLocator={dataLocators.errorDataLocator}
                 enableSuccessCheck={false}
                 {...fieldProps}
+                onChange={this.fieldChange}
               />
             </Col>
             <Col
@@ -118,7 +133,7 @@ class FooterTopSignUpForm extends React.PureComponent {
               className="candidate_a_inline_container_button"
             >
               <Button
-                disabled={pristine || submitting}
+                disabled={isFieldEmpty || pristine || submitting}
                 buttonVariation="fixed-width"
                 type="submit"
                 data-locator={dataLocators.submitButton}
