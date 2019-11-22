@@ -161,3 +161,22 @@ export const getPDPLabels = state => {
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
   };
 };
+
+export const getPLPPromos = (state, type) => {
+  const productID = '54520|489117'; // 'global'; '54520|489117';
+  const { Layouts, Modules } = state;
+  let result = null;
+  if (Layouts && Layouts.pdp && Layouts.pdp[productID]) {
+    const { pdp } = Layouts;
+    if (pdp[productID]) {
+      const promo = pdp[productID][type] && pdp[productID][type].slots;
+      result =
+        (promo &&
+          promo.map(promoItem => {
+            return (promoItem.contentId && Modules[promoItem.contentId]) || [];
+          })) ||
+        [];
+    }
+  }
+  return result;
+};
