@@ -117,6 +117,10 @@ const getOrderItemsDetails = state => {
   return state.get('orderItems');
 };
 
+export const getAddedToBagInterval = state => {
+  return parseInt(state.session.siteDetails.ADDED_TO_BAG_MODAL_INTERVAL, 10) || 0;
+};
+
 export const getPointsSummary = (getOrderPointsSummary, lastAddedToBag) => {
   const orderItems = getOrderItemsDetails(getOrderPointsSummary);
   let pointsSummary = {};

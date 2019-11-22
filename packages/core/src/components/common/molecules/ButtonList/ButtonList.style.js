@@ -9,16 +9,19 @@ export default css`
     flex-grow: 1;
     width: 50%;
 
+    .cta-button-text,
     button {
       width: 100%;
     }
   }
 
   .stacked-button:nth-of-type(even) {
+    .cta-button-text,
     button {
       border-left-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
+      .cta-button-text,
       button {
         border-left-width: 1px;
       }
@@ -26,10 +29,12 @@ export default css`
   }
 
   .stacked-button:nth-of-type(n + 3) {
+    .cta-button-text,
     button {
       border-top-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
+      .cta-button-text,
       button {
         border-top-width: 1px;
       }
@@ -148,6 +153,7 @@ export default css`
       }
     }
 
+    .stacked-button .cta-button-text,
     .stacked-button button {
       width: 140px;
       white-space: nowrap;
@@ -160,7 +166,8 @@ export default css`
       white-space: normal;
     }
 
-    .scroll-button button {
+    .scroll-button button,
+    .scroll-button .cta-button-text {
       width: 140px;
       white-space: nowrap;
     }
@@ -221,6 +228,7 @@ export default css`
     &.wrapped-button-text .stacked-button,
     &.wrapped-button-text .scroll-button {
       margin: 0 8px;
+      .cta-button-text,
       button {
         white-space: normal;
         width: 110px;
@@ -253,6 +261,7 @@ export default css`
     .stacked-button {
       flex-grow: 0;
       width: auto;
+      .cta-button-text,
       button {
         width: 210px;
       }
@@ -280,6 +289,7 @@ export default css`
 
     &.stacked-button-list-wrapper .stacked-button,
     &.scroll-button-list-wrapper .scroll-button {
+      .cta-button-text,
       button {
         width: 210px;
       }

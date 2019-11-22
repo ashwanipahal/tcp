@@ -7,7 +7,7 @@ import {
   CARTPAGE_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '@tcp/core/src/utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import {
   getPersonalDataState,
@@ -584,10 +584,9 @@ export const getSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
-const getSmsNumberForOrderUpdates = createSelector(
-  getSmsSignUpFields,
-  smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
-);
+const getSmsNumberForOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']) ||
+  state.Checkout.getIn(['values', 'orderUpdateViaMsg']);
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
@@ -775,6 +774,14 @@ function getInternationalCheckoutUrl(state) {
  * @returns {bool}
  */
 const getIsVenmoEnabled = state => {
+  // Kill switch Handling for mobile app
+  if (isMobileApp()) {
+    return (
+      state[SESSIONCONFIG_REDUCER_KEY] &&
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.VENMO_APP_ENABLED === 'TRUE'
+    );
+  }
+  // Kill switch for mobile web, also checking if on mobile web viewport
   return (
     getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
