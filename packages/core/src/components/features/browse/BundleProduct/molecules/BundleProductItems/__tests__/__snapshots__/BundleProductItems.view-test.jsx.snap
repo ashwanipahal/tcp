@@ -11,7 +11,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jAaTju",
+        "componentId": "sc-gGBfsJ",
         "isStatic": true,
         "rules": Array [
           "
@@ -42,7 +42,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "displayName": "Styled(BundleProductItems)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jAaTju",
+      "styledComponentId": "sc-gGBfsJ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
