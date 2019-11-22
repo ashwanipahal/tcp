@@ -316,6 +316,22 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
     }
   ],
   "signed": true,
