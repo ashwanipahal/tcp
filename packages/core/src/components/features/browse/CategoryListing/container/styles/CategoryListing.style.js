@@ -78,3 +78,12 @@ export const customBreadCrumbStyle = css`
     }
   }
 `;
+
+export const seoTextStyle = css`
+  h1 {
+    text-transform: uppercase;
+  }
+  .body-copy {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
+`;
