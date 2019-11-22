@@ -76,6 +76,7 @@ class Header extends React.PureComponent {
       className,
       brandTabs,
       promoMessageWrapper,
+      topPromoBanner,
       headerPromoTextArea,
       headerPromoHtmlArea,
       navigationDrawer,
@@ -101,14 +102,15 @@ class Header extends React.PureComponent {
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
-
     return (
       <header className={className}>
-        <LoyaltyPromoBanner
-          richTextList={loyaltyPromoBanner}
-          className="header-promo__container top-promo-bannner"
-          cookieID="mprTopHead"
-        />
+        {topPromoBanner ? (
+          <LoyaltyPromoBanner
+            richTextList={[{ richText: topPromoBanner[0], link: '' }]}
+            className="header-promo__container top-promo-banner"
+            cookieID="mprTopHead"
+          />
+        ) : null}
 
         <HeaderTopNav
           className="header-topnav"
@@ -189,6 +191,7 @@ Header.propTypes = {
   className: PropTypes.string.isRequired,
   loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  topPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoTextArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoHtmlArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

@@ -12,6 +12,10 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
             class
           }
 
+          richTextList {
+            text
+          }
+
           promo_message_wrapper: promoMessageWrapper {
             richText {
               text
