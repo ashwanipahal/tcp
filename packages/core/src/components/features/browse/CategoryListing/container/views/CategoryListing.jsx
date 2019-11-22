@@ -12,6 +12,7 @@ import GlobalNavigationMenuDesktopL2 from '../../../ProductListing/molecules/Glo
 import FixedBreadCrumbs from '../../../ProductListing/molecules/FixedBreadCrumbs/views';
 import CategoryPromoImages from '../../molecules/CategoryPromoImages';
 import ReadMore from '../../../ProductListing/molecules/ReadMore/views';
+import SpotlightContainer from '../../../ProductListing/molecules/Spotlight/container/Spotlight.container';
 
 class CategoryListing extends PureComponent {
   render() {
@@ -23,6 +24,7 @@ class CategoryListing extends PureComponent {
       categoryPromoModules,
       seoText,
       labels,
+      categoryId,
     } = this.props;
 
     const recommendationAttributes = {
@@ -42,7 +44,7 @@ class CategoryListing extends PureComponent {
               ) : null}
             </Col>
           </Row>
-          <Row fullBleed>
+          <Row>
             <Col
               colSize={{ large: 2, medium: 0, small: 0 }}
               hideCol={{ small: true, medium: true }}
@@ -84,6 +86,12 @@ class CategoryListing extends PureComponent {
                       {...recommendationAttributes}
                     />
                   </div>
+                </Col>
+                <Col
+                  className="clp-spotlight-container"
+                  colSize={{ small: 6, medium: 8, large: 12 }}
+                >
+                  {categoryId ? <SpotlightContainer categoryId={categoryId} /> : null}
                 </Col>
               </Row>
             </Col>
