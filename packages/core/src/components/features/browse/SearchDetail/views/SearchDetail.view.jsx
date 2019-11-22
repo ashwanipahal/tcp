@@ -53,6 +53,8 @@ const SearchListingView = ({
   isSearchListing,
   searchResultSuggestions,
   asPathVal,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   const searchResultSuggestionsArg =
@@ -65,7 +67,7 @@ const SearchListingView = ({
         <Row className="empty-search-result-suggestion">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
-              fontSize={['fs16', 'fs32', 'fs32']}
+              fontSize={['fs22', 'fs24', 'fs32']}
               component="div"
               fontFamily="secondary"
               fontWeight="semibold"
@@ -155,6 +157,8 @@ const SearchListingView = ({
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
           ) : null}
@@ -197,6 +201,8 @@ SearchListingView.propTypes = {
       suggestion: PropTypes.string.isRequired,
     })
   ),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 SearchListingView.defaultProps = {
@@ -221,6 +227,8 @@ SearchListingView.defaultProps = {
   isSearchListing: true,
   asPathVal: '',
   searchResultSuggestions: [],
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

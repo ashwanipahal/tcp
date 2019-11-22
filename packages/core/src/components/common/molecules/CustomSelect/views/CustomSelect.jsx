@@ -121,6 +121,12 @@ class CustomSelect extends React.Component<Props> {
           className="customSelectTitle"
           data-locator={activeTitle}
         >
+          <BodyCopy
+            component="div"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className={`customSelectArrow ${toggle ? 'up' : 'down'}`}
+          />
           {activeTitle}
         </BodyCopy>
         {toggle && (

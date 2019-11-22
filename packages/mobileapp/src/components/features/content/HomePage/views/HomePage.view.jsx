@@ -38,7 +38,13 @@ import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
-import { TextComponent, TextInputComponent, ButtonComponent } from '../HomePage.style';
+import HeaderPromo from '../../../../common/molecules/HeaderPromo';
+import {
+  HeaderPromoContainer,
+  TextComponent,
+  TextInputComponent,
+  ButtonComponent,
+} from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -162,10 +168,18 @@ class HomePageView extends React.PureComponent {
       navigation,
       screenProps: { apiConfig },
       loyaltyPromoBanner,
+      headerPromo,
+      promoHtmlBannerCarousel,
     } = this.props;
     const { value } = this.state;
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <HeaderPromoContainer>
+          <HeaderPromo
+            headerPromo={headerPromo}
+            promoHtmlBannerCarousel={promoHtmlBannerCarousel}
+          />
+        </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
