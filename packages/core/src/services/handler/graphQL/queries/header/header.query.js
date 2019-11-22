@@ -25,7 +25,15 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
             }
           }
         }
-      }
+      } 
+      
+      promoHtmlBannerCarousel {
+          composites {
+            promoHtmlBanner {
+                text
+              }
+          }
+      } 
 
       promoTextBannerCarousel {
         composites {

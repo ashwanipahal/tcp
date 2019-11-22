@@ -30,7 +30,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-dnqmqq",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -173,7 +173,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-dnqmqq",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

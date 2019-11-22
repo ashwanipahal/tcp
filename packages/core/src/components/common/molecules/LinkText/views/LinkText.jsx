@@ -50,7 +50,7 @@ const LinkText = props => {
   return (
     <div className={className}>
       {headerText.map((item, index) => {
-        const { link, textItems } = item;
+        const { link, icon, textItems } = item;
         const navigationUrl = link;
         navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
         navigationUrl.asPath = link.url;
@@ -64,7 +64,7 @@ const LinkText = props => {
         return (
           <Anchor key={index.toString()} {...navigationUrl}>
             <Component {...compProps} className={`${heading} link-text`}>
-              <TextItems textItems={textItems} />
+              <TextItems textItems={textItems} icon={icon} />
             </Component>
           </Anchor>
         );

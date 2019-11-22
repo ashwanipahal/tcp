@@ -57,6 +57,23 @@ const styles = css`
   .view_all {
     text-align: right;
   }
+  .slick-dots li {
+    margin: 0 3px;
+    button {
+      &:before {
+        background: ${props => props.theme.colorPalette.black};
+      }
+    }
+  }
+
+  li.slick-active {
+    button {
+      &:before {
+        background: ${props => props.theme.colors.WHITE};
+        border: 2px solid ${props => props.theme.colorPalette.black};
+      }
+    }
+  }
 `;
 
 export default styles;

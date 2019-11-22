@@ -39,7 +39,9 @@ exports[`ProductListItem component should render correctly 1`] = `
         "quantityPurchased": 1,
       }
     }
+    keepAlive={false}
     onGoToPDPPage={[MockFunction]}
+    outOfStockLabels={Object {}}
     productImageWidth={false}
     selectedColorIndex={0}
   />
