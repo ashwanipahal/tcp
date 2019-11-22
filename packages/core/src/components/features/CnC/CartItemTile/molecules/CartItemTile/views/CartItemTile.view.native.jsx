@@ -344,7 +344,13 @@ class ProductInformation extends PureComponent {
       updateAppTypeHandler,
       autoSwitchPickupItemInCart,
     } = this.props;
-    const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
+    const {
+      openedTile,
+      setSelectedProductTile,
+      isBagPageSflSection,
+      orderId,
+      handleAddToWishlist,
+    } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
     const isECOMOrder = isEcomOrder(orderItemType);
     const isBOPISOrder = isBopisOrder(orderItemType);
@@ -411,7 +417,8 @@ class ProductInformation extends PureComponent {
                 navigation,
                 updateAppTypeHandler
               )}
-              {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
+              {showOnReviewPage &&
+                CartItemTileExtension.heartIcon(isBagPageSflSection, handleAddToWishlist)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -526,6 +533,7 @@ ProductInformation.propTypes = {
   toggleBossBopisError: PropTypes.shape({
     errorMessage: PropTypes.string,
   }),
+  handleAddToWishlist: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {

@@ -7282,6 +7282,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .dam-image-review-page {
     width: 55px;
   }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
 
   ",
           [Function],
@@ -7830,6 +7833,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
   .dam-image-review-page {
     width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
   }
 
   ",
