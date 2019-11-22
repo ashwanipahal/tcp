@@ -17,6 +17,7 @@ exports[`ConfirmationView should render correctly 1`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={Array []}
       isBossInList={false}
@@ -58,6 +59,7 @@ exports[`ConfirmationView should render correctly 2`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
         Array [
@@ -125,6 +127,7 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
         Array [

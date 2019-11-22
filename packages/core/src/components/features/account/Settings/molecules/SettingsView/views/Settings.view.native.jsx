@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  checkNotificationPermission,
-  changeNotificationSetting,
-} from 'react-native-check-notification-permission';
+// import {
+//   checkNotificationPermission,
+//   changeNotificationSetting,
+// } from 'react-native-check-notification-permission';
 import { Switch, AppState, Alert } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -67,9 +67,9 @@ class SettingsView extends PureComponent {
       });
     }
 
-    checkNotificationPermission().then(result => {
-      this.setState({ pushNotificationValue: result });
-    });
+    // checkNotificationPermission().then(result => {
+    //   this.setState({ pushNotificationValue: result });
+    // });
   }
 
   componentWillUnmount() {
@@ -79,9 +79,9 @@ class SettingsView extends PureComponent {
   handleAppStateChange = nextAppState => {
     const { appState } = this.state;
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
-      checkNotificationPermission().then(result => {
-        this.setState({ pushNotificationValue: result });
-      });
+      // checkNotificationPermission().then(result => {
+      //   this.setState({ pushNotificationValue: result });
+      // });
     }
     this.setState({ appState: nextAppState });
   };

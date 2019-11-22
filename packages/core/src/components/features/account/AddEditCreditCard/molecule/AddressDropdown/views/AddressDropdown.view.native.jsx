@@ -16,6 +16,7 @@ import {
   FlatList,
   AddNewAddressWrapper,
   BadgeWrapper,
+  AddNewButton,
 } from '../styles/AddressDropdown.style.native';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -24,8 +25,8 @@ const upIcon = require('../../../../../../../assets/carrot-small-up.png');
 const additionalItemStyle = {
   marginLeft: -16,
   marginRight: -16,
-  paddingLeft: 16,
-  paddingRight: 16,
+  paddingLeft: 4,
+  paddingRight: 4,
 };
 
 /**
@@ -173,13 +174,15 @@ export class AddressDropdown extends React.PureComponent<Props> {
     const { label } = item;
     const { showButton, disableBtn } = this.props;
     return showButton ? (
-      <Button
-        fullWidth
-        fill="BLACK"
-        text={label}
-        onPress={this.openAddressBook}
-        disableButton={disableBtn}
-      />
+      <AddNewButton>
+        <Button
+          fullWidth
+          fill="BLACK"
+          text={label}
+          onPress={this.openAddressBook}
+          disableButton={disableBtn}
+        />
+      </AddNewButton>
     ) : (
       <AddNewAddressWrapper onPress={this.openAddressBook}>
         <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />

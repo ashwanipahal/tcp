@@ -19,11 +19,11 @@ class ShareList extends React.PureComponent {
   };
 
   render() {
-    const { labels, className, onCloseModal } = this.props;
+    const { labels, className, onCloseModal, handleSubmit } = this.props;
 
     return (
       <>
-        <form className={className}>
+        <form className={`${className} share-list-form`} onSubmit={handleSubmit}>
           <Row fullBleed className="elem-mb-MED">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <BodyCopy component="p" fontSize="fs14" fontFamily="secondary" fontWeight="regular">
@@ -62,6 +62,7 @@ class ShareList extends React.PureComponent {
                 name="subject"
                 id="subject"
                 type="text"
+                className="subject-field"
                 component={TextBox}
                 dataLocator="subjectField"
               />
@@ -96,7 +97,6 @@ class ShareList extends React.PureComponent {
                 type="submit"
                 fill="BLUE"
                 dataLocator="SaveListFormBtn"
-                onClick={this.submitHandler}
               >
                 {getLabelValue(labels, 'btn_fav_save')}
               </Button>
@@ -123,7 +123,14 @@ class ShareList extends React.PureComponent {
   }
 }
 
-const validateMethod = createValidateMethod(getStandardConfig(['listName']));
+const validateMethod = createValidateMethod(
+  getStandardConfig([
+    { toEmail: 'shareToEmailAddresses' },
+    { fromEmail: 'shareFromEmailAddresses' },
+    { subject: 'subject' },
+    { message: 'message' },
+  ])
+);
 
 ShareList.propTypes = {
   labels: PropTypes.shape({}),
