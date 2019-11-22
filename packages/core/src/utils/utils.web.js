@@ -373,6 +373,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     assetHost: `${apiEndpoint}/`,
+    facebookShareURL: processEnv.RWD_WEB_FACEBOOK_SHARE_URL,
     unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
     unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,

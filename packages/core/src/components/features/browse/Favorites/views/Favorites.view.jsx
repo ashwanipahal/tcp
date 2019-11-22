@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
-import { getLabelValue } from '@tcp/core/src/utils';
+import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
@@ -53,12 +53,13 @@ class FavoritesView extends React.PureComponent {
       wishlistsSummaries.filter(wishlist => {
         return wishlist.id === activeWishListId;
       });
-    return currentWishList[0].shareableLink;
+    return currentWishList && currentWishList[0].shareableLink;
   };
 
   handleFacebookShare = () => {
     const shareUrl = this.getSharableLink();
-    const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    const { facebookShareURL } = getAPIConfig();
+    const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
 
     window.open(url);
   };
