@@ -24,12 +24,12 @@ const buildQuery = ({ slot, contentId }) => `
         }
       }
       mediaWrapper {
-         url
-         alt
-         title
-         crop_d
-         crop_t
-         crop
+        image{
+          url
+         	alt
+         	title
+        }
+
       }
     }
  }

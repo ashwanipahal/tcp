@@ -102,7 +102,7 @@ const getButtonListConfig = (variation, length) => {
 };
 
 /**
- * This function renders additional button list when dual variation is passed to Button List component
+ * This function renders additional button list when stacked or scrolls buttons needs to be converted into drop down button.
  * @param {*} variation variation name
  * @param {*} properties Props for the variation
  * @param {Object} display determines to show this additional button list on different view ports
