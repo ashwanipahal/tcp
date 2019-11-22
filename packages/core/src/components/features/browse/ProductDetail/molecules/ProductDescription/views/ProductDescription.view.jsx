@@ -31,7 +31,7 @@ class ProductDetailDescription extends React.PureComponent {
     const productName = productInfo && productInfo.name.toLowerCase();
     if (productId) {
       generalProductId = productId && productId.split('_')[0];
-      pageName = `product:${productId}:${productName}`;
+      pageName = `product:${generalProductId}:${productName}`;
       pageShortName = pageName;
     }
     console.log('propsValue', this.props);
