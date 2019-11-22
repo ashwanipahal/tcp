@@ -98,7 +98,21 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
       noLink={true}
       underline={true}
     >
-      ApplyNowAction
+      <Connect(Component)
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event116",
+            ],
+            "pageName": "gl:shopping bag",
+            "pageSection": "shopping bag",
+            "pageSubSection": "shopping bag",
+            "pageType": "shopping bag",
+          }
+        }
+      >
+        ApplyNowAction
+      </Connect(Component)>
     </Styled(Anchor)>
     <span
       className="space-between"
@@ -124,7 +138,18 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
       noLink={true}
       underline={true}
     >
-      LearnMoreAction
+      <Connect(Component)
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event117",
+            ],
+            "pageName": "gl:shopping bag",
+          }
+        }
+      >
+        LearnMoreAction
+      </Connect(Component)>
     </Styled(Anchor)>
   </div>
 </div>
