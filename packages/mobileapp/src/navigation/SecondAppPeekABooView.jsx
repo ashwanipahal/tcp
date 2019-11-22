@@ -25,7 +25,8 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
     this.peekABooAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { animateCompleteLogo } = nextProps;
     const { animateCompleteLogo: prevAnimateCompleteLogo } = this.props;
     // show full image animation when animateCompleteLogo is true in props

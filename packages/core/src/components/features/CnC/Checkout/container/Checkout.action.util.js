@@ -72,6 +72,18 @@ export const getSetGiftWrapValuesActn = payload => {
   };
 };
 
+export const setUpdateFromMSG = payload => ({
+  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
+  payload,
+});
+
+export const resetAddGiftCardSuccess = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
 /**
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT

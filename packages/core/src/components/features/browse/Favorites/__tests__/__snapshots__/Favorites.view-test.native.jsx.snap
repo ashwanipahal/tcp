@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesViewVanilla should render correctly 1`] = `
+<Styled(View)>
+  <ModalWrapper
+    heading=""
+    isOpenModal={false}
+    labels={Object {}}
+    margins={null}
+    modalMargins="0 14px 0 14px"
+    noscroll={true}
+    onCloseModal={[Function]}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="fav_lbl_myFavorites"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin="40px 0 0 0"
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text="lbl_fav_myFavorites"
+    textDecoration={null}
+  />
+  <Styled(LineComp)
+    borderColor="black"
+    borderWidth="2"
+    marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
+    marginTop="12"
+  />
+  <Styled(View)>
+    <Styled(SelectWishListDropdown)
+      activeWishList={Object {}}
+      arrowImageStyle={
+        Object {
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+      bounces={false}
+      data={Array []}
+      defaultWishList={Object {}}
+      dropDownItemFontWeight="regular"
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 49,
+        }
+      }
+      fontSize="fs24"
+      isAnimateList={false}
+      isShareOptions={false}
+      isWishlist={true}
+      itemStyle={
+        Object {
+          "color": "gray.800",
+          "height": 49,
+        }
+      }
+      labels={Object {}}
+      onValueChange={[Function]}
+      renderFooter={[Function]}
+      renderHeader={[Function]}
+      renderItems={[Function]}
+      selectedItemFontWeight="semibold"
+      selectedValue=""
+      variation="secondary"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel="lbl_fav_editListSettings"
+      anchorVariation="custom"
+      centered={true}
+      colorName="gray.900"
+      customStyle={Object {}}
+      fontSizeVariation="normal"
+      justifyContent=""
+      locator="pdp_write_review_icon"
+      margins={null}
+      onPress={[Function]}
+      text="lbl_fav_editListSettings"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <NoFavoritesFound
+    labels={Object {}}
+  />
+  <Styled(View)>
+    <Connect(Recommendations)
+      headerAlignment="left"
+      page="homepage"
+      showLoyaltyPromotionMessage={false}
+      variation="moduleO"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

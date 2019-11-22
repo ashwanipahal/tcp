@@ -3,6 +3,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
@@ -166,14 +167,14 @@ const getEditError = (productDetail, labels) => {
   );
 };
 
-const PriceOnReviewPage = (currencySymbol, productDetail) => {
+const PriceOnReviewPage = productDetail => {
   return (
     <ProductListPriceOnReview>
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight={['semibold']}
-        text={`${currencySymbol}${productDetail.itemInfo.price}`}
+        text={<PriceCurrency price={productDetail.itemInfo.price} />}
       />
     </ProductListPriceOnReview>
   );

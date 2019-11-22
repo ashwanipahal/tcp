@@ -22,6 +22,9 @@ const Abstractor = {
         promoTextBannerCarousel: data.submodules.promoTextBannerCarousel
           ? data.submodules.promoTextBannerCarousel.composites.promoTextBanner
           : null,
+        promoHtmlBannerCarousel: data.submodules.promoHtmlBannerCarousel
+          ? data.submodules.promoHtmlBannerCarousel.composites.promoHtmlBanner
+          : null,
         loyaltyPromoBanner: data.submodules.loyaltyPromoBannerWrapper.composites.loyaltyPromoBanner,
       };
     } catch (e) {
@@ -29,6 +32,7 @@ const Abstractor = {
         brandTabs: [],
         promoMessageWrapper: [],
         promoTextBannerCarousel: [],
+        promoHtmlBannerCarousel: [],
       };
     }
   },

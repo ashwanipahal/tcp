@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
@@ -19,6 +20,7 @@ import {
   getLongDescription,
   getLastLoadedPageNumber,
   getSelectedFilter,
+  getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
 import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
@@ -35,6 +37,7 @@ import {
   updateAppliedFiltersInState,
   getScrollToTopValue,
   getPDPLabels,
+  getModalState,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -115,6 +118,7 @@ class SearchDetailContainer extends React.PureComponent {
       sortBySelected: true,
       formData,
       scrollToTop: true,
+      isKeepModalOpen: true,
     };
     getProducts(data);
   };
@@ -150,12 +154,13 @@ class SearchDetailContainer extends React.PureComponent {
       labelsLogin,
       navigation,
       pdpLabels,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
 
     return (
       <React.Fragment>
-        {isSearchResultsAvailable ? (
+        {isSearchResultsAvailable || isLoadingMore ? (
           <View>
             {this.searchQuery && products && products.length > 0 ? (
               <SearchDetail
@@ -183,6 +188,7 @@ class SearchDetailContainer extends React.PureComponent {
                 labelsLogin={labelsLogin}
                 navigation={navigation}
                 pdpLabels={pdpLabels}
+                isKeepModalOpen={isKeepModalOpen}
                 {...otherProps}
               />
             ) : (
@@ -257,6 +263,9 @@ function mapStateToProps(state) {
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     pdpLabels: getPDPLabels(state),
+    isKeepModalOpen: getModalState(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -326,6 +335,9 @@ SearchDetailContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isKeepModalOpen: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -355,6 +367,9 @@ SearchDetailContainer.defaultProps = {
   isLoggedIn: false,
   labelsLogin: {},
   pdpLabels: {},
+  isKeepModalOpen: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

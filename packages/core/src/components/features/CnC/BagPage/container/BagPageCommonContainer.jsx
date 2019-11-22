@@ -27,18 +27,19 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent([needHelpContentId]);
+    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
@@ -63,7 +64,7 @@ export class BagPageContainer extends React.Component<Props> {
       if (isSfl !== prevIsSfl && isSfl) {
         const headingElem = document.querySelector('.save-for-later-section-heading');
         setTimeout(() => {
-          headingElem.scrollIntoView(true);
+          scrollToParticularElement(headingElem);
         }, 100);
       }
     }
@@ -161,6 +162,10 @@ export class BagPageContainer extends React.Component<Props> {
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
+BagPageContainer.pageInfo = {
+  pageId: 'Bag',
+};
+
 BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
   const DEFAULT_ACTIVE_COMPONENT = 'shopping bag';
   const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
@@ -227,6 +232,10 @@ export const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    placeCashBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
+    ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),

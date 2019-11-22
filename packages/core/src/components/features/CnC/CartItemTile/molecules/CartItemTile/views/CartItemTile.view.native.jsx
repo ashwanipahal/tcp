@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -208,7 +209,7 @@ class ProductInformation extends PureComponent {
 
   renderPrice = () => {
     const { labels, productDetail, currencyExchange } = this.props;
-    const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage } = this.props;
     const { offerPrice, qty } = productDetail.itemInfo;
     const { salePrice, wasPrice } = getPrices({ productDetail, currencyExchange });
     return (
@@ -228,7 +229,7 @@ class ProductInformation extends PureComponent {
               fontWeight={['semibold']}
               textAlign="left"
               dataLocator={getLocator('cart_item_price')}
-              text={`${currencySymbol}${Number(offerPrice).toFixed(2)}`}
+              text={<PriceCurrency price={Number(offerPrice)} />}
             />
 
             {!isBagPageSflSection && wasPrice !== salePrice && (
@@ -237,7 +238,7 @@ class ProductInformation extends PureComponent {
                   color="gray.800"
                   fontFamily="secondary"
                   fontSize="fs12"
-                  text={`${currencySymbol}${Number(wasPrice * qty).toFixed(2)}`}
+                  text={<PriceCurrency price={Number(wasPrice * qty)} />}
                 />
               </ProductListPrice>
             )}
@@ -331,7 +332,7 @@ class ProductInformation extends PureComponent {
   };
 
   render() {
-    const { labels, itemIndex, showOnReviewPage, currencySymbol, productDetail } = this.props;
+    const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
       productDetail: {
         miscInfo: { store, orderItemType, availability },
@@ -453,8 +454,7 @@ class ProductInformation extends PureComponent {
                 {this.renderPoints()}
               </ProductSubDetails>
             </ProductDescription>
-            {!showOnReviewPage &&
-              CartItemTileExtension.PriceOnReviewPage(currencySymbol, productDetail)}
+            {!showOnReviewPage && CartItemTileExtension.PriceOnReviewPage(productDetail)}
           </OuterContainer>
           {showOnReviewPage &&
             !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
@@ -520,7 +520,6 @@ ProductInformation.propTypes = {
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
-  currencySymbol: PropTypes.string.isRequired,
   orderId: PropTypes.string.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   currencyExchange: PropTypes.func.isRequired,
