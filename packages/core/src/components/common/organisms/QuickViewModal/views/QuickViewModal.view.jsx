@@ -115,7 +115,7 @@ class QuickViewModal extends React.Component {
     return (
       productInfo &&
       productInfo.map(({ product }) => {
-        const { colorFitsSizesMap, colorFitSizeDisplayNames } = product;
+        const { colorFitsSizesMap, colorFitSizeDisplayNames, alternateSizes, isGiftCard } = product;
         const formRef = React.createRef();
         this.skuFormRefs.push(formRef);
         const modifiedColorFitsSizesMap = selectedColorProductId
@@ -144,6 +144,8 @@ class QuickViewModal extends React.Component {
             changeQuickViewState={this.changeQuickViewState}
             isQuickView
             marginTopNone
+            alternateSizes={alternateSizes}
+            isGiftCard={isGiftCard}
             {...otherProps}
           />
         );
