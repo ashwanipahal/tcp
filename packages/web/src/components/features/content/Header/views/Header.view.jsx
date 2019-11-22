@@ -19,7 +19,6 @@ class Header extends React.PureComponent {
     super(props);
     this.state = {
       showCondensedHeader: false,
-      isTopLoyaltyBannerEnable: false,
     };
   }
 
@@ -29,10 +28,6 @@ class Header extends React.PureComponent {
     const { loadFavoriteStore } = this.props;
     loadFavoriteStore({});
     this.addScrollListener();
-
-    if (getViewportInfo().isDesktop) {
-      this.setState({ isTopLoyaltyBannerEnable: true });
-    }
   }
 
   componentDidUpdate() {}
@@ -104,18 +99,16 @@ class Header extends React.PureComponent {
       loyaltyPromoBanner,
       setClickAnalyticsData,
     } = this.props;
-    const { showCondensedHeader, isTopLoyaltyBannerEnable } = this.state;
+    const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
 
     return (
       <header className={className}>
-        {isTopLoyaltyBannerEnable ? (
-          <LoyaltyPromoBanner
-            richTextList={loyaltyPromoBanner}
-            className="header-promo__container"
-            cookieID="mprTopHead"
-          />
-        ) : null}
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container top-promo-banner"
+          cookieID="mprTopHead"
+        />
 
         <HeaderTopNav
           className="header-topnav"
