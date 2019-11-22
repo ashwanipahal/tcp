@@ -27,9 +27,15 @@ import {
 const locationImage = require('../../../../../../src/assets/location.png');
 const closeImage = require('../../../../../../src/assets/close.png');
 
+/**
+ * Module height and width.
+ */
 const PROPMT_WIDTH = getScreenWidth() - 60;
 const HEIGHT = getScreenHeight();
 
+/**
+ * Module LOCATION_ACCESS_KEY & LOCATION_ACCESS_VALUE
+ */
 const LOCATION_ACCESS_KEY = 'location-access-key';
 const LOCATION_ACCESS_VALUE = 'tcp_location-access-value';
 
@@ -39,6 +45,9 @@ class LocationAccessPrompt extends React.PureComponent {
     this.state = { isOpenBool: false };
   }
 
+  /**
+   * @componentDidMount : In this finction to manage the userlogin or not.
+   */
   componentDidMount() {
     const { isUserLoggedIn } = this.props;
     if (isUserLoggedIn) {
@@ -51,6 +60,9 @@ class LocationAccessPrompt extends React.PureComponent {
     }
   }
 
+  /**
+   * @openModal : To manage the modal state .
+   */
   openModal = () => {
     const { isOpenBool } = this.state;
     this.setState({
@@ -58,7 +70,10 @@ class LocationAccessPrompt extends React.PureComponent {
     });
   };
 
-  androidPermition = () => {
+  /**
+   * @openModal : To manage the modal state .
+   */
+  androidPermissions = () => {
     try {
       const granted = PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -80,14 +95,20 @@ class LocationAccessPrompt extends React.PureComponent {
     }
   };
 
+  /**
+   * @requestPermission : To manage location permission in android and ios .
+   */
   requestPermission = () => {
     Linking.openURL('app-settings:');
     if (isAndroid()) {
-      this.androidPermition();
+      this.androidPermissions();
     }
     setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
   };
 
+  /**
+   * @requestPermission : To close the modal in android and ios .
+   */
   close = () => {
     this.openModal();
     setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
