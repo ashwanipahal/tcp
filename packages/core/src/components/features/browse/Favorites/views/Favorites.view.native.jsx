@@ -247,7 +247,7 @@ class FavoritesView extends React.PureComponent {
 
   renderBrandFilter = () => {
     const { tcpSelected, gymSelected, labels, isBothTcpAndGymProductAreAvailable } = this.props;
-    if (isBothTcpAndGymProductAreAvailable) {
+    if (!isBothTcpAndGymProductAreAvailable) {
       return null;
     }
     return (

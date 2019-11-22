@@ -23,9 +23,12 @@ import ModalWrapper from '../molecules/ModalWrapper';
 class FavoritesView extends React.PureComponent {
   currentPopupName;
 
-  state = {
-    isOpenModal: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpenModal: false,
+    };
+  }
 
   static getDerivedStateFromProps(props) {
     const { wishlistShareStatus } = props;
@@ -129,7 +132,13 @@ class FavoritesView extends React.PureComponent {
   };
 
   brandFilterList = () => {
-    const { labels, selectBrandType, gymSelected, tcpSelected } = this.props;
+    const {
+      labels,
+      selectBrandType,
+      gymSelected,
+      tcpSelected,
+      isBothTcpAndGymProductAreAvailable,
+    } = this.props;
     const brandOptions = [
       {
         name: 'gymboreeOption',
@@ -144,6 +153,9 @@ class FavoritesView extends React.PureComponent {
         checked: tcpSelected,
       },
     ];
+    if (!isBothTcpAndGymProductAreAvailable) {
+      return null;
+    }
     return (
       <>
         <div>
@@ -213,11 +225,36 @@ class FavoritesView extends React.PureComponent {
   };
 
   onAddNewListHandler = data => {
-    console.log('onAddNewListHandler:', data);
+    const { createNewWishList } = this.props;
+    const payload = {
+      wishListName: data.listName,
+      isDefault: data.makeDefaultList,
+    };
+    this.onCloseModal();
+    if (createNewWishList) {
+      createNewWishList(payload);
+    }
   };
 
   onEditListHandler = data => {
-    console.log('onEditListHandler:', data);
+    const { updateWishList, activeWishListId } = this.props;
+    this.onCloseModal();
+    if (updateWishList) {
+      const payload = {
+        wishlistId: activeWishListId,
+        wishlistName: data.listName,
+        setAsDefault: data.makeDefaultList,
+      };
+      updateWishList(payload);
+    }
+  };
+
+  onDeleteListHandler = data => {
+    const { deleteWishList } = this.props;
+    this.onCloseModal();
+    if (deleteWishList) {
+      deleteWishList(data);
+    }
   };
 
   onShareListSubmit = data => {
@@ -254,7 +291,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, userEmail } = this.props;
+    const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
     if (this.currentPopupName === 'addList') {
       return (
         <AddList
@@ -265,11 +302,19 @@ class FavoritesView extends React.PureComponent {
       );
     }
     if (this.currentPopupName === 'editList') {
+      const isCheckBoxDisabled = (wishlistsSummaries && wishlistsSummaries.length === 1) || false;
       return (
         <EditList
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
+          activeWishListId={activeWishListId}
+          onDeleteList={this.onDeleteListHandler}
+          initialValues={{
+            listName: activeWishList.displayName,
+            makeDefaultList: activeWishList.isDefault,
+          }}
+          isCheckBoxDisabled={isCheckBoxDisabled}
         />
       );
     }
@@ -449,7 +494,7 @@ FavoritesView.propTypes = {
   wishlistsSummaries: PropTypes.arrayOf({}),
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
-  // deleteWishList: PropTypes.func.isRequired, @TODO will be used in the wish-list pop-up
+  deleteWishList: PropTypes.func.isRequired,
   // getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
