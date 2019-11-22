@@ -86,7 +86,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
-    "superagent-jsonp": "^0.2.1"
+    "superagent-jsonp": "^0.2.1",
+    "urbanairship-react-native": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
