@@ -26,6 +26,9 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
   }
 
   .no-rewards-msg {
@@ -42,9 +45,6 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     }
   }
 
