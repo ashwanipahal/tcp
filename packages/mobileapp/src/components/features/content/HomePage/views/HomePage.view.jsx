@@ -197,6 +197,7 @@ class HomePageView extends React.PureComponent {
           </>
         ) : null}
         {this.renderGlobalModal(navigation)}
+        <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
   }
