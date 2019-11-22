@@ -1,4 +1,4 @@
-/* eslint max-lines: ["error", 550] */
+/* eslint max-lines: ["error", 600] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -6,8 +6,23 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  message: {
+    nonEmpty: 'lbl_err_message_required',
+  },
   gender: {
     required: 'lbl_err_gender_required',
+  },
+  shareToEmailAddresses: {
+    required: 'lbl_err_toemail_required',
+    multiEmails: 'lbl_err_toemail_required',
+  },
+  shareFromEmailAddresses: {
+    required: 'lbl_err_email_req',
+    email: 'lbl_err_email',
+  },
+  subject: {
+    nonEmpty: 'lbl_err_subject_required',
+    required: 'lbl_err_subject_required',
   },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
@@ -207,6 +222,21 @@ export const formValidationMessages = {
 };
 
 export const formValidationRules = {
+  shareToEmailAddresses: {
+    required: true,
+    multiEmails: true,
+  },
+  shareFromEmailAddresses: {
+    required: true,
+    email: true,
+  },
+  subject: {
+    nonEmpty: true,
+    required: true,
+  },
+  message: {
+    nonEmpty: true,
+  },
   gender: {
     required: true,
   },

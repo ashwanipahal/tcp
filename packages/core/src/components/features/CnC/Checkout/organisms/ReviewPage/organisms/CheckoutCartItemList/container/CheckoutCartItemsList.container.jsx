@@ -136,6 +136,7 @@ export const CheckoutCartItemList = ({
   bagPageLabels,
   disableProductRedirect,
   bagLoading,
+  checkoutRoutingDone,
 }) => {
   return (
     <CheckoutCartItemsList
@@ -147,6 +148,7 @@ export const CheckoutCartItemList = ({
       gettingSortedItemList={gettingSortedItemList}
       disableProductRedirect={disableProductRedirect}
       bagLoading={bagLoading}
+      checkoutRoutingDone={checkoutRoutingDone}
     />
   );
 };
@@ -169,6 +171,7 @@ CheckoutCartItemList.propTypes = {
   bagPageLabels: PropTypes.shape({}),
   disableProductRedirect: PropTypes.bool, // Disable Product Redirect
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 CheckoutCartItemList.defaultProps = {
@@ -176,6 +179,7 @@ CheckoutCartItemList.defaultProps = {
   bagPageLabels: {},
   disableProductRedirect: false,
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default connect(mapStateToProps)(CheckoutCartItemList);

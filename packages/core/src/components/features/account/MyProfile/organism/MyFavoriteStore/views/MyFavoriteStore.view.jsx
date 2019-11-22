@@ -25,8 +25,8 @@ const MyFavoriteStore = ({
       className={className}
       title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
       ctaTitle={ctaTitleDefaultStore(labels, favStoreName, isMyPreferences)}
-      ctaPath="/account/profile"
-      ctaLink="/account?id=profile&subSection=change-password"
+      ctaPath="/store-locator"
+      ctaLink="/store-locator"
       dataLocator="myFavStoreLbl"
       favStoreName={favStoreName}
     >

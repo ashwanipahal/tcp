@@ -17,6 +17,7 @@ import CHECKOUT_ACTIONS, {
   submitVerifiedAddressData,
   getSetIsBillingVisitedActn,
 } from './Checkout.action';
+import { setUpdateFromMSG } from './Checkout.action.util';
 import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
@@ -183,6 +184,13 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    updateFromMSG: value => {
+      dispatch(setUpdateFromMSG(value));
+    },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
+    dispatch,
   };
 };
 

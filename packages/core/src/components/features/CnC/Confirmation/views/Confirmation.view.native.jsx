@@ -11,6 +11,7 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
+import SMSNotifications from '../organisms/SMSNotifications';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -28,6 +29,7 @@ const ConfirmationView = ({
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
   navigation,
+  isGymboreeCanadaSite,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -76,6 +78,7 @@ const ConfirmationView = ({
             text="SMS SIGN UP"
           />
         </SMSWrapper>
+        {!isGymboreeCanadaSite && <SMSNotifications />}
         <ThankYouComponent
           emailAddress={emailAddress}
           isOrderPending={isOrderPending}
@@ -90,7 +93,6 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
-
       <CnCTemplate
         isConfirmationPage
         isGuest={isGuest}
@@ -137,11 +139,13 @@ ConfirmationView.propTypes = {
     itemsCount: PropTypes.number,
   }).isRequired,
   navigation: PropTypes.shape({}),
+  isGymboreeCanadaSite: PropTypes.bool,
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
   isOrderPending: false,
   encryptedEmailAddress: '',
   navigation: null,
+  isGymboreeCanadaSite: false,
 };
 export default ConfirmationView;

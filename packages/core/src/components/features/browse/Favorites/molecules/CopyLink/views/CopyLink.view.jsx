@@ -1,22 +1,34 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, TextBox, BodyCopy, Col, Button } from '@tcp/core/src/components/common/atoms';
+import styles from '../styles/CopyLink.style';
 
 class CopyLink extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      isCopySuccess: false,
+    };
     this.copyLinkRef = React.createRef();
     this.handleCopyLink = this.handleCopyLink.bind(this);
   }
 
-  submitHandler = () => {
-    const { handleSubmit, onHandleSubmit } = this.props;
-    handleSubmit(data => {
-      if (onHandleSubmit) {
-        onHandleSubmit(data);
-      }
-    })();
+  showCopySuccess = () => {
+    const { labels } = this.props;
+    const { isCopySuccess } = this.state;
+    return isCopySuccess ? (
+      <Row fullBleed className="copy-success-txt">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BodyCopy component="p" fontSize="fs13" fontFamily="secondary" fontWeight="bold">
+            {getLabelValue(labels, 'lbl_fav_copy_link_success')}
+          </BodyCopy>
+        </Col>
+      </Row>
+    ) : (
+      ''
+    );
   };
 
   handleCopyLink() {
@@ -26,6 +38,9 @@ class CopyLink extends React.PureComponent {
 
     try {
       document.execCommand('copy');
+      this.setState({
+        isCopySuccess: true,
+      });
     } catch (err) {
       console.log('Oops, unable to copy');
     }
@@ -34,7 +49,7 @@ class CopyLink extends React.PureComponent {
   }
 
   render() {
-    const { labels, className, onCloseModal } = this.props;
+    const { labels, className, onCloseModal, shareableLink } = this.props;
 
     return (
       <>
@@ -53,20 +68,22 @@ class CopyLink extends React.PureComponent {
               </BodyCopy>
             </Col>
           </Row>
-          <Row fullBleed className="elem-mb-LRG">
+          <Row fullBleed>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <TextBox
                 input={{
-                  value: 'https://www.xyz',
+                  value: shareableLink,
                   name: 'shareLink',
                 }}
                 id="shareLink"
                 dataLocator="shareLinkforFav"
-                ref={this.copyLinkRef}
+                inputRef={this.copyLinkRef}
+                enableSuccessCheck={false}
               />
             </Col>
           </Row>
-          <Row fullBleed className="elem-mb-LRG">
+          {this.showCopySuccess()}
+          <Row fullBleed className="elem-mt-LRG elem-mb-LRG">
             <Col
               colSize={{ small: 4, medium: 4, large: 8 }}
               offsetLeft={{ small: 1, medium: 2, large: 2 }}
@@ -106,14 +123,13 @@ class CopyLink extends React.PureComponent {
 CopyLink.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string,
-  handleSubmit: PropTypes.func,
-  onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  shareableLink: PropTypes.string,
 };
 CopyLink.defaultProps = {
   labels: {},
   className: '',
-  handleSubmit: () => {},
+  shareableLink: '',
 };
 
-export default CopyLink;
+export default withStyles(CopyLink, styles);

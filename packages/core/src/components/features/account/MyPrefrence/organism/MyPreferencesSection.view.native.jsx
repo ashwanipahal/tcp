@@ -20,7 +20,7 @@ class MyPrefrenceSection extends React.PureComponent {
             programDetailsCta={getLabelValue(labels, 'lbl_prefrence_program_details')}
             termsConditionCta={getLabelValue(labels, 'lbl_prefrence_term_codition')}
           >
-            <MyFavoriteStore isMyPreferences />
+            <MyFavoriteStore isMyPreferences handleComponentChange={handleComponentChange} />
             <SocialContainer
               labels={labels}
               handleComponentChange={handleComponentChange}
