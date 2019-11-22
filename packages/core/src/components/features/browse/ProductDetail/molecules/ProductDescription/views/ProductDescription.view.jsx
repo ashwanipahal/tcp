@@ -22,18 +22,19 @@ class ProductDetailDescription extends React.PureComponent {
 
   getButton = () => {
     let buttonShowMoreOrLess = null;
-    const { pdpLabels, productId, productInfo } = this.props;
+    const { pdpLabels, productInfo, productId } = this.props;
     const { ShowMore, ShowLess } = pdpLabels;
     const { isShowMore } = this.state;
-    if (productId) {
-      return productId.split('_')[0];
-    }
-    const pageName = 'product';
+    let generalProductId = '';
+    let pageName = '';
     let pageShortName = '';
     const productName = productInfo && productInfo.name.toLowerCase();
     if (productId) {
-      pageShortName = `product:${productId}:${productName}`;
+      generalProductId = productId && productId.split('_')[0];
+      pageName = `product:${productId}:${productName}`;
+      pageShortName = pageName;
     }
+    console.log('propsValue', this.props);
     if (isShowMore) {
       buttonShowMoreOrLess = (
         <div className="button-show-less">
@@ -52,10 +53,12 @@ class ProductDetailDescription extends React.PureComponent {
         <div className="button-show-more">
           <ClickTracker
             clickData={{
-              customEvents: ['event132'],
               pageShortName,
               pageName,
-              products: [{ id: `${productId}` }],
+              pageType: 'product',
+              pageSection: 'product',
+              pageSubSection: 'product',
+              products: [{ id: `${generalProductId}` }],
             }}
           >
             <button
