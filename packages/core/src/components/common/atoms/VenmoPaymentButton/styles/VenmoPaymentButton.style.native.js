@@ -4,7 +4,7 @@ const VenmoButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  height: 42px;
   border-radius: ${props =>
     props.theme.isGymboree
       ? props.theme.spacing.ELEM_SPACING.LRG

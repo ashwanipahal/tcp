@@ -60,7 +60,20 @@ export const CheckoutButton = styled.TouchableOpacity`
 
 export const PaymentsButtonWrapper = styled.View`
   margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
-  width: 150px;
+  display: flex;
+  flex: 0.5;
+`;
+
+export const PaypalPaymentsButtonWrapper = styled.View`
+  margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  display: flex;
+  flex: 0.5;
+  margin-left: 20px;
+`;
+
+export const VenmoPaypalWrapper = styled.View`
+  flex: 1;
+  flex-direction: row;
 `;
 
 export default {
