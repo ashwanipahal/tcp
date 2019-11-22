@@ -12,7 +12,7 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
             class
           }
 
-          richTextList {
+          top_promo_banner: richTextList {
             text
           }
 
