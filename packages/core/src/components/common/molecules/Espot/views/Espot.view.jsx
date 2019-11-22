@@ -6,8 +6,6 @@ import { getAPIConfig, richTextRoute } from '@tcp/core/src/utils';
 class Espot extends PureComponent {
   onClickHandler = (link, target, action) => {
     const { togglePlccModal, openOverlay } = this.props;
-    const externalUrl = new RegExp('^(?:[a-z]+:)?//', 'i');
-    const { assetHost } = getAPIConfig();
 
     switch (target) {
       case '_modal':
@@ -33,21 +31,27 @@ class Espot extends PureComponent {
         }
         break;
       default:
-        if (externalUrl.test(link)) {
-          window.open(link, '_blank');
-        } else {
-          switch (target) {
-            case '_self':
-              richTextRoute(link);
-              break;
-            case '_blank':
-              window.open(`${assetHost}${link}`, '_blank');
-              break;
-            default:
-              break;
-          }
-        }
-        break;
+        handleUrl(link, target);
+    }
+  };
+
+  handleUrl = (link, target) => {
+    const externalUrl = new RegExp('^(?:[a-z]+:)?//', 'i');
+    const { assetHost } = getAPIConfig();
+
+    if (externalUrl.test(link)) {
+      window.open(link, '_blank');
+    } else {
+      switch (target) {
+        case '_self':
+          richTextRoute(link);
+          break;
+        case '_blank':
+          window.open(`${assetHost}${link}`, '_blank');
+          break;
+        default:
+          break;
+      }
     }
   };
 

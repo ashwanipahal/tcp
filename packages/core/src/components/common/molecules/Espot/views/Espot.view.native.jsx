@@ -3,7 +3,8 @@ import { View, Linking } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import { richTextNavigationMap, getAPIConfig } from '@tcp/core/src/utils/index.native';
+import { getAPIConfig } from '@tcp/core/src/utils/index.native';
+import RICHTEXT_NAVIGATION_MAP from '../container/Espot.constants';
 
 export class Espot extends PureComponent {
   static propTypes = {
@@ -14,8 +15,6 @@ export class Espot extends PureComponent {
 
   onPressHandler = (link, target, action) => {
     const { togglePlccModal, navigation } = this.props;
-    const externalUrl = new RegExp('^(?:[a-z]+:)?//', 'i');
-    const { assetHost } = getAPIConfig();
 
     switch (target) {
       case '_modal':
@@ -28,24 +27,30 @@ export class Espot extends PureComponent {
             break;
         }
         break;
-
       default:
-        if (externalUrl.test(link)) {
-          Linking.openURL(link);
-        } else {
-          switch (target) {
-            case '_self':
-              navigation.navigate(richTextNavigationMap[link]);
-              break;
+        handleNavigationUrl(link, target);
+    }
+  };
 
-            case '_blank':
-              Linking.openURL(`${assetHost}${link}`);
-              break;
-            default:
-              navigation.navigate('Home');
-          }
-        }
-        break;
+  handleNavigationUrl = (link, target) => {
+    const { navigation } = this.props;
+    const externalUrl = new RegExp('^(?:[a-z]+:)?//', 'i');
+    const { assetHost } = getAPIConfig();
+
+    if (externalUrl.test(link)) {
+      Linking.openURL(link);
+    } else {
+      switch (target) {
+        case '_self':
+          navigation.navigate(RICHTEXT_NAVIGATION_MAP[link]);
+          break;
+        case '_blank':
+          Linking.openURL(`${assetHost}${link}`);
+          break;
+        default:
+          navigation.navigate('Home');
+          break;
+      }
     }
   };
 

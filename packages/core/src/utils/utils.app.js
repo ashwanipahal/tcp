@@ -789,8 +789,3 @@ export const formatPhnNumber = phnNumber =>
     .replace(/\n /g, '')
     .replace(/ /g, '')
     .replace(')', ') ');
-
-// richTextNavigationMap name to be used for  navigation destination
-export const richTextNavigationMap = {
-  '/pointsClaimForm': 'PointsClaimPage',
-};

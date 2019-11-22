@@ -26,7 +26,6 @@ export {
   createGoogleMapUrl,
   mapHandler,
   formatPhnNumber,
-  richTextNavigationMap,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

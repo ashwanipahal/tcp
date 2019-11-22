@@ -666,7 +666,7 @@ export const constructToPath = url => {
  * Routes to an endpoint from rich text link click
  * @param {string} action - data target
  */
-export const richTextRoute = link => {
+export const richTextInternalRoute = link => {
   switch (link) {
     case '/pointsClaimForm':
       routerPush(internalEndpoints.pointsClaimPage.link, internalEndpoints.pointsClaimPage.path);
@@ -707,5 +707,5 @@ export default {
   enableBodyScroll,
   disableBodyScroll,
   isAndroidWeb,
-  richTextRoute,
+  richTextInternalRoute,
 };
