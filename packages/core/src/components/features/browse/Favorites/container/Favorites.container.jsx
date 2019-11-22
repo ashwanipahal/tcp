@@ -12,6 +12,8 @@ import {
   getActiveWishlistAction,
   createNewWishListAction,
   setLastDeletedItemIdAction,
+  sendWishListMailAction,
+  setWishListShareSuccess,
 } from './Favorites.actions';
 
 import {
@@ -26,7 +28,9 @@ import {
   getSLPLabels,
   getIsDataLoading,
   selectDefaultWishlist,
+  selectWishListShareStatus,
 } from './Favorites.selectors';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
@@ -111,6 +115,10 @@ class FavoritesContainer extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       defaultWishList,
+      userEmail,
+      sendWishListEmail,
+      wishlistShareStatus,
+      setListShareSuccess,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -143,6 +151,10 @@ class FavoritesContainer extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         defaultWishList={defaultWishList}
+        userEmail={userEmail}
+        sendWishListEmail={sendWishListEmail}
+        wishlistShareStatus={wishlistShareStatus}
+        setListShareSuccess={setListShareSuccess}
         {...this.state}
       />
     );
@@ -165,6 +177,8 @@ const mapStateToProps = state => {
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    userEmail: getUserEmail(state),
+    wishlistShareStatus: selectWishListShareStatus(state),
   };
 };
 
@@ -180,6 +194,8 @@ const mapDispatchToProps = dispatch => {
     setLastDeletedItemId: itemId => {
       dispatch(setLastDeletedItemIdAction(itemId));
     },
+    sendWishListEmail: payload => dispatch(sendWishListMailAction(payload)),
+    setListShareSuccess: payload => dispatch(setWishListShareSuccess(payload)),
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
@@ -192,6 +208,7 @@ FavoritesContainer.propTypes = {
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
   deleteWishList: PropTypes.func.isRequired,
+  sendWishListEmail: PropTypes.func.isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
@@ -209,6 +226,9 @@ FavoritesContainer.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   defaultWishList: PropTypes.shape({}),
+  userEmail: PropTypes.string.isRequired,
+  wishlistShareStatus: PropTypes.bool,
+  setListShareSuccess: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
@@ -223,6 +243,7 @@ FavoritesContainer.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   defaultWishList: {},
+  wishlistShareStatus: false,
 };
 
 export default connect(

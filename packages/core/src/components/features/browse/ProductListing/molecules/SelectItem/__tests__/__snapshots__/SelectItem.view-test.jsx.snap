@@ -33,6 +33,12 @@ exports[`Select Item is shown should render select item  1`] = `
           ";
     width: auto;
   }
+
+  &.disable-list-items {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   .selected-items {
     text-transform: capitalize;
     text-align: left;

@@ -17,6 +17,20 @@ export default css`
   .filter-and-sort-form-container .desktop-dropdown {
     display: none;
   }
+  .filter-and-sort-form-container .render-mobile-view {
+    position: relative;
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+  .filter-and-sort-form-container .filter-row {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-left: 0;
+    }
+  }
   .searched-label {
     display: block;
   }
