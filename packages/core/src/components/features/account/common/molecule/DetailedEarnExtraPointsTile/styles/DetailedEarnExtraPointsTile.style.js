@@ -24,23 +24,28 @@ const styles = css`
     background-size: contain;
     background-repeat: no-repeat;
   }
-  .AppDownload {
+  .AppDownload,
+  .Gymboree_AppDownload {
     background-image: url('/static/images/download-app.png');
   }
-  .ProductReview {
+  .ProductReview,
+  .Gymboree_ProductReview {
     background-image: url('/static/images/review.png');
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .FacebookLink {
+  .FacebookLink,
+  .Gymboree_FacebookLink {
     background-image: url('/static/images/facebook.png');
   }
-  .InstagramLink {
+  .InstagramLink,
+  .Gymboree_InstagramLink {
     background-image: url('/static/images/instagram.png');
   }
   .ChildProfile {
     background-image: url('/static/images/child-birthday-profile.png');
   }
-  .SMSOptIn {
+  .SMSOptIn,
+  .Gymboree_SMSOptIn {
     background-image: url('/static/images/sms.png');
   }
   .AddMailingAddress {
@@ -58,8 +63,8 @@ const styles = css`
   .FeedbackSurvey {
     background-image: url('/static/images/oval.svg');
   }
-
-  .TwitterLink {
+  .TwitterLink,
+  .Gymboree_TwitterLink {
     background-image: url('/static/images/twitter.png');
   }
 
