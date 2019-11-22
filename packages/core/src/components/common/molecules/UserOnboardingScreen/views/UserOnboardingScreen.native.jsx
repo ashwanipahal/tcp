@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Modal } from 'react-native';
 
 import GuestLoginOverview from '@tcp/core/src/components/features/account/common/molecule/GuestLoginModule';
-import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 
-import { ModalViewWrapper } from '@tcp/core/src/components/features/account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import { BodyCopy, DamImage, Anchor } from '../../../atoms';
 import Carousel from '../../Carousel';
 
@@ -119,68 +117,66 @@ const UserOnboardingScreen = props => {
   }, [isUserLoggedIn]);
 
   return (
-    <ModalNative noHeader horizontalBar isOpen={showMainModal} animationType="fade">
-      <ModalViewWrapper>
-        <Container>
-          {/* ------ Hero Carousel Image Start */}
-          {largeCompImageSimpleCarousel.length > 1 ? (
-            <View pointerEvents="none">
-              <Carousel
-                height={HERO_CAROUSEL_MODULE_HEIGHT}
-                data={largeCompImageSimpleCarousel}
-                renderItem={renderHeroImgCarousel}
-                width={CAROUSEL_MODULE_WIDTH}
-                options={{
-                  autoplayInterval: CAROUSEL_OPTIONS.speed,
-                }}
-              />
-            </View>
-          ) : (
-            <View>{renderHeroImgCarousel({ item: largeCompImageSimpleCarousel[0] })}</View>
-          )}
-          {/* ------ Hero Carousel Image End ------- */}
-          {/* ------ Carousel Text Start */}
-          {textList.length > 1 ? (
+    <Modal visible={showMainModal} animationType="fade">
+      <Container>
+        {/* ------ Hero Carousel Image Start */}
+        {largeCompImageSimpleCarousel.length > 1 ? (
+          <View pointerEvents="none">
             <Carousel
-              data={textList}
+              height={HERO_CAROUSEL_MODULE_HEIGHT}
+              data={largeCompImageSimpleCarousel}
+              renderItem={renderHeroImgCarousel}
               width={CAROUSEL_MODULE_WIDTH}
-              renderItem={renderPromoTextCarousel}
-              paginationProps={{
-                containerStyle: {
-                  paddingVertical: 0,
-                  paddingTop: 46,
-                  paddingBottom: 24,
-                },
-              }}
               options={{
                 autoplayInterval: CAROUSEL_OPTIONS.speed,
               }}
-              showDots
             />
-          ) : (
-            <View>{renderPromoTextCarousel({ item: textList[0] })}</View>
-          )}
-          {/* ------ Carousel Text End ------- */}
-
-          <ButtonsWrapper>
-            <GuestLoginOverview
-              hideLogoutText
-              loggedInWrapperStyle="margin:0"
-              labels={overviewLabels}
-              navigation={navigation}
-              isUserLoggedIn={isUserLoggedIn}
-            />
-          </ButtonsWrapper>
-          <Anchor
-            underline
-            anchorVariation="primary"
-            fontSizeVariation="xlarge"
-            text={startShoppingButtonLabel.text}
-            onPress={() => setShowMainModal(false)}
+          </View>
+        ) : (
+          <View>{renderHeroImgCarousel({ item: largeCompImageSimpleCarousel[0] })}</View>
+        )}
+        {/* ------ Hero Carousel Image End ------- */}
+        {/* ------ Carousel Text Start */}
+        {textList.length > 1 ? (
+          <Carousel
+            data={textList}
+            width={CAROUSEL_MODULE_WIDTH}
+            renderItem={renderPromoTextCarousel}
+            paginationProps={{
+              containerStyle: {
+                paddingVertical: 0,
+                paddingTop: 46,
+                paddingBottom: 24,
+              },
+            }}
+            options={{
+              autoplayInterval: CAROUSEL_OPTIONS.speed,
+            }}
+            showDots
           />
-        </Container>
-      </ModalViewWrapper>
-    </ModalNative>
+        ) : (
+          <View>{renderPromoTextCarousel({ item: textList[0] })}</View>
+        )}
+        {/* ------ Carousel Text End ------- */}
+
+        <ButtonsWrapper>
+          <GuestLoginOverview
+            hideLogoutText
+            loggedInWrapperStyle="margin:0"
+            labels={overviewLabels}
+            navigation={navigation}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        </ButtonsWrapper>
+        <Anchor
+          underline
+          anchorVariation="primary"
+          fontSizeVariation="xlarge"
+          text={startShoppingButtonLabel.text}
+          onPress={() => setShowMainModal(false)}
+        />
+      </Container>
+    </Modal>
   );
 };
 
