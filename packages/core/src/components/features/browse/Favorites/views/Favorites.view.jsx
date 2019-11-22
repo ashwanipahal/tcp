@@ -74,26 +74,12 @@ class FavoritesView extends React.PureComponent {
     }
   };
 
-  renderProductList = () => {
-    const {
-      wishlistsSummaries,
-      activeWishList,
-      createNewWishListMoveItem,
-      createNewWishList,
-      setLastDeletedItemId,
-      labels,
-      onQuickViewOpenClick,
-      selectedColorProductId,
-      filteredId,
-      sortId,
-      gymSelected,
-      tcpSelected,
-      isKeepAliveEnabled,
-      outOfStockLabels,
-    } = this.props;
+  getFilteredItemsList = () => {
+    const { activeWishList, filteredId, sortId, gymSelected, tcpSelected } = this.props;
 
     let filteredItemsList =
       !!activeWishList && getVisibleWishlistItems(activeWishList.items, filteredId, sortId);
+
     if (filteredItemsList) {
       if (gymSelected) {
         filteredItemsList = filteredItemsList.filter(item => !item.itemInfo.isTCP);
@@ -101,6 +87,24 @@ class FavoritesView extends React.PureComponent {
         filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
       }
     }
+
+    return filteredItemsList;
+  };
+
+  renderProductList = () => {
+    const {
+      wishlistsSummaries,
+      createNewWishListMoveItem,
+      createNewWishList,
+      setLastDeletedItemId,
+      labels,
+      onQuickViewOpenClick,
+      selectedColorProductId,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+    } = this.props;
+
+    const filteredItemsList = this.getFilteredItemsList();
 
     return (
       !!filteredItemsList && (
@@ -307,10 +311,6 @@ class FavoritesView extends React.PureComponent {
       onFilterSelection,
       onSortSelection,
       defaultWishList,
-      filteredId,
-      sortId,
-      gymSelected,
-      tcpSelected,
     } = this.props;
 
     const shareOptions = [
@@ -339,15 +339,7 @@ class FavoritesView extends React.PureComponent {
       headerAlignment: 'left',
     };
 
-    let filteredItemsList =
-      !!activeWishList && getVisibleWishlistItems(activeWishList.items, filteredId, sortId);
-    if (filteredItemsList) {
-      if (gymSelected) {
-        filteredItemsList = filteredItemsList.filter(item => !item.itemInfo.isTCP);
-      } else if (tcpSelected) {
-        filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
-      }
-    }
+    const filteredItemsList = this.getFilteredItemsList();
 
     return (
       <div className={className}>
@@ -361,44 +353,42 @@ class FavoritesView extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
-        {filteredItemsList.length !== 0 ? (
-          <>
-            <Row fullBleed className="list-selection-row">
-              <Col colSize={{ small: 6, medium: 6, large: 8 }}>
-                <Row fullBleed>
-                  <Col
-                    colSize={{ small: 6, medium: 5, large: 6 }}
-                    offsetLeft={{ medium: 3, large: 6 }}
-                  >
-                    <SelectWishListDropdown
-                      labels={labels}
-                      wishlistsSummaries={wishlistsSummaries}
-                      createNewWishList={createNewWishList}
-                      getActiveWishlist={getActiveWishlist}
-                      activeWishList={activeWishList}
-                      defaultWishList={defaultWishList}
-                      openAddNewList={this.handleAddList}
-                      openEditList={this.handleEditList}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-              <Col colSize={{ small: 6, medium: 2, large: 4 }}>
-                <Row fullBleed>
-                  <Col
-                    colSize={{ small: 2, medium: 6, large: 4 }}
-                    offsetLeft={{ small: 4, medium: 2, large: 8 }}
-                  >
-                    <CustomSelect
-                      options={shareOptions}
-                      activeTitle={labels.lbl_fav_share}
-                      clickHandler={(e, value) => this.shareClickHandler(value)}
-                      customSelectClassName="social-share-fav-list"
-                    />
-                  </Col>
-                </Row>
+        <Row fullBleed className="list-selection-row">
+          <Col colSize={{ small: 6, medium: 6, large: 8 }}>
+            <Row fullBleed>
+              <Col colSize={{ small: 6, medium: 5, large: 6 }} offsetLeft={{ medium: 3, large: 6 }}>
+                <SelectWishListDropdown
+                  labels={labels}
+                  wishlistsSummaries={wishlistsSummaries}
+                  createNewWishList={createNewWishList}
+                  getActiveWishlist={getActiveWishlist}
+                  activeWishList={activeWishList}
+                  defaultWishList={defaultWishList}
+                  openAddNewList={this.handleAddList}
+                  openEditList={this.handleEditList}
+                />
               </Col>
             </Row>
+          </Col>
+          <Col colSize={{ small: 6, medium: 2, large: 4 }}>
+            <Row fullBleed>
+              <Col
+                colSize={{ small: 2, medium: 6, large: 4 }}
+                offsetLeft={{ small: 4, medium: 2, large: 8 }}
+              >
+                <CustomSelect
+                  options={shareOptions}
+                  activeTitle={labels.lbl_fav_share}
+                  clickHandler={(e, value) => this.shareClickHandler(value)}
+                  customSelectClassName="social-share-fav-list"
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+        {filteredItemsList.length !== 0 ? (
+          <>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <ProductListingFiltersForm
