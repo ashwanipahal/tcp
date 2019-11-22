@@ -42,6 +42,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   }
   initialValues={Object {}}
   isFavorite={false}
+  isKeepModalOpen={false}
   isLoadingMore={false}
   isLoggedIn={false}
   isSearchListing={false}
