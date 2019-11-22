@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import {
@@ -10,6 +11,7 @@ import {
   SectionTwo,
   SectionThree,
   TitlePlusContainer,
+  SkeletonWrapper,
 } from '../styles/PickUpReviewSection.style.native';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
@@ -95,6 +97,7 @@ export class PickUpReviewSection extends React.PureComponent {
       isAlternateUpdateChecked,
       isExpressCheckout,
       pickUpContactAlternate,
+      bagLoading,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -147,25 +150,8 @@ export class PickUpReviewSection extends React.PureComponent {
             );
           })}
         </SectionTwo>
-        <SectionThree>
-          <View>
-            <BodyCopy
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              className="pickupTitle"
-              fontWeight="semibold"
-              color="gray.900"
-              text={title}
-            />
-            <PickUpContactDisplay
-              formData={
-                pickUpContactPerson.firstName !== ''
-                  ? pickUpContactPerson
-                  : pickUpContactAlternate.pickUpContact
-              }
-            />
-          </View>
-          {!isExpressCheckout && isHasPickUpAlternatePerson && (
+        {!bagLoading ? (
+          <SectionThree>
             <View>
               <BodyCopy
                 fontSize="fs16"
@@ -173,26 +159,51 @@ export class PickUpReviewSection extends React.PureComponent {
                 className="pickupTitle"
                 fontWeight="semibold"
                 color="gray.900"
-                text={alternate}
+                text={title}
               />
-              <PickUpContactDisplay formData={pickUpAlternatePerson} />
+              <PickUpContactDisplay
+                formData={
+                  pickUpContactPerson.firstName !== ''
+                    ? pickUpContactPerson
+                    : pickUpContactAlternate.pickUpContact
+                }
+              />
             </View>
-          )}
+            {!isExpressCheckout && isHasPickUpAlternatePerson && (
+              <View>
+                <BodyCopy
+                  fontSize="fs16"
+                  mobileFontFamily="secondary"
+                  className="pickupTitle"
+                  fontWeight="semibold"
+                  color="gray.900"
+                  text={alternate}
+                />
+                <PickUpContactDisplay formData={pickUpAlternatePerson} />
+              </View>
+            )}
 
-          {isExpressCheckout && (
-            <FormSection name="pickUpAlternateExpress">
-              <PickUpAlternateFormPart
-                isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
-                isAlternateUpdateChecked={isAlternateUpdateChecked}
-                showNoteOnToggle
-                formName="checkoutPickup"
-                formSection="pickUpAlternateExpress"
-                labels={pickUpLabels}
-                isExpressCheckout={isExpressCheckout}
-              />
-            </FormSection>
-          )}
-        </SectionThree>
+            {isExpressCheckout && (
+              <FormSection name="pickUpAlternateExpress">
+                <PickUpAlternateFormPart
+                  isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+                  isAlternateUpdateChecked={isAlternateUpdateChecked}
+                  showNoteOnToggle
+                  formName="checkoutPickup"
+                  formSection="pickUpAlternateExpress"
+                  labels={pickUpLabels}
+                  isExpressCheckout={isExpressCheckout}
+                />
+              </FormSection>
+            )}
+          </SectionThree>
+        ) : (
+          <>
+            <SkeletonWrapper>
+              <GenericSkeleton />
+            </SkeletonWrapper>
+          </>
+        )}
       </Container>
     );
   }
@@ -219,6 +230,7 @@ PickUpReviewSection.propTypes = {
   onEdit: PropTypes.func.isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
+  bagLoading: PropTypes.bool.isRequired,
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };

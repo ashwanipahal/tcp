@@ -113,6 +113,8 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
     moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {

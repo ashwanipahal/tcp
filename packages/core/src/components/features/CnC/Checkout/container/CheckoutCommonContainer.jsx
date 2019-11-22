@@ -166,6 +166,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
+      bagLoading,
+      dispatch,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -199,6 +201,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isUsSite={isUsSite}
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
+        bagLoading={bagLoading}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -213,6 +216,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           ...shippingProps,
           shippingDidMount: this.shippingDidMount,
           isRegisteredUserCallDone,
+          dispatch,
         }}
         orderHasPickUp={orderHasPickUp}
         checkoutRoutingDone={checkoutRoutingDone}
@@ -263,6 +267,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 }
 
 CheckoutContainer.getInitActions = () => initActions;
+
+CheckoutContainer.pageInfo = {
+  pageId: 'Checkout',
+};
 
 CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   const DEFAULT_ACTIVE_COMPONENT = 'shipping';

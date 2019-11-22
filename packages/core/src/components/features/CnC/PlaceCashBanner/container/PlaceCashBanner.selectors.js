@@ -5,7 +5,10 @@ import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.s
 import ConfirmationSelector from '../../Confirmation/container/Confirmation.selectors';
 
 const getCurrentCountry = state => {
-  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
+  return (
+    (state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country) ||
+    'US'
+  );
 };
 
 const replaceLabelUtil = ({ earnedPlaceCashValue, cashAmountOff, placeCashOffer, currency }) => {

@@ -154,24 +154,18 @@ const RecommendationsAbstractor = {
       excludeExtension ? '' : '.jpg'
     }`;
   },
-  getProductImgPath: (id, excludeExtension) => {
-    const imgHostDomain = RecommendationsAbstractor.getOriginImgHostSetting();
 
+  getProductImgPath: (id, excludeExtension) => {
+    const imageName = id.split('_');
+    const imagePath = imageName[0];
     return {
-      125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
+      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     };
   },
+
   getImgPath: (id, excludeExtension) => {
     return {
       colorSwatch: RecommendationsAbstractor.getSwatchImgPath(id, excludeExtension),
