@@ -340,7 +340,8 @@ class CheckoutPage extends React.PureComponent {
     const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <>
-        {(!isBagLoaded || cartOrderItemsCount > 0) && isRendorConfirmation ? (
+        {(!isBagLoaded || cartOrderItemsCount > 0) &&
+        (currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION || isRendorConfirmation) ? (
           <CnCTemplate
             showLeftSection
             leftSection={this.renderLeftSection}
