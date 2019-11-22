@@ -33,7 +33,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <TextItems />
+        <Styled(TextItems) />
       </Styled(BodyCopy)>
       <ReduxForm
         dataLocators={
@@ -140,7 +140,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <TextItems />
+        <Styled(TextItems) />
       </Styled(BodyCopy)>
       <ReduxForm
         dataLocators={
@@ -267,7 +267,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               link={null}
               textAlign="left"
             >
-              <TextItems />
+              <Styled(TextItems) />
             </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
@@ -291,7 +291,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-bwzfXH",
+                    "componentId": "sc-ifAKCX",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -393,7 +393,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
                   "displayName": "Styled(Button)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-bwzfXH",
+                  "styledComponentId": "sc-ifAKCX",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
