@@ -292,7 +292,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -686,7 +690,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -1063,7 +1071,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -1455,7 +1467,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -1843,7 +1859,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -2215,7 +2235,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -2588,7 +2612,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -2974,7 +3002,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -3288,7 +3320,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -3674,7 +3710,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -3988,7 +4028,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -4361,7 +4405,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -4754,7 +4802,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -5162,7 +5214,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -5570,7 +5626,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
@@ -5971,7 +6031,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined38.85"
+              text={
+                <Connect(PriceCurrency)
+                  price={38.85}
+                />
+              }
               textAlign="left"
               textDecoration={null}
             />
