@@ -47,6 +47,7 @@ class ProductsGrid extends React.Component {
     asPathVal: PropTypes.string,
     AddToFavoriteErrorMsg: PropTypes.string,
     removeAddToFavoritesErrorMsg: PropTypes.func,
+    openAddNewList: PropTypes.func,
   };
 
   static defaultProps = {
@@ -65,6 +66,7 @@ class ProductsGrid extends React.Component {
     asPathVal: '',
     AddToFavoriteErrorMsg: '',
     removeAddToFavoritesErrorMsg: () => {},
+    openAddNewList: () => {},
   };
 
   constructor(props, context) {
@@ -180,6 +182,7 @@ class ProductsGrid extends React.Component {
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       removeFavItem,
+      openAddNewList,
       ...otherProps
     } = this.props;
 
@@ -222,6 +225,7 @@ class ProductsGrid extends React.Component {
                         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                         removeFavItem={removeFavItem}
+                        openAddNewList={openAddNewList}
                         {...otherProps}
                       />
                     );

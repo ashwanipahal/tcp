@@ -61,6 +61,7 @@ const ProductList = props => {
     asPathVal,
     AddToFavoriteErrorMsg,
     removeAddToFavoritesErrorMsg,
+    openAddNewList,
   } = props;
   let gridIndex = 0;
 
@@ -132,6 +133,7 @@ const ProductList = props => {
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              openAddNewList={openAddNewList}
             />
           </div>
         );
@@ -183,6 +185,7 @@ ProductList.propTypes = {
   asPathVal: PropTypes.string,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  openAddNewList: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -218,6 +221,7 @@ ProductList.defaultProps = {
   asPathVal: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  openAddNewList: () => {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

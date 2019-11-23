@@ -298,13 +298,8 @@ export const ProductSKUInfo = props => {
 
   return (
     <div className="product-sku-info-container">
-      {size && (
-        <span className="size-container">
-          Size
-          {size}
-        </span>
-      )}
-      {size && fit && <i className="separator-bar-icon">|</i>}
+      {size && <span className="size-container">{`Size ${size}`}</span>}
+      {size && fit && <span className="separator-bar-icon"> | </span>}
       {fit && <span className="fit-container">{fit}</span>}
     </div>
   );

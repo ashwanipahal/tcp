@@ -124,6 +124,7 @@ class FavoritesView extends React.PureComponent {
             createNewWishListMoveItem={createNewWishListMoveItem}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            openAddNewList={this.handleAddList}
           />
           <QuickViewModal selectedColorProductId={selectedColorProductId} />
         </>
@@ -290,6 +291,14 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
+  onDropdownChange = data => {
+    const { getActiveWishlist, resetBrandFilters } = this.props;
+    getActiveWishlist(data);
+    if (resetBrandFilters) {
+      resetBrandFilters();
+    }
+  };
+
   getCurrentPopUp = () => {
     const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
     if (this.currentPopupName === 'addList') {
@@ -349,7 +358,6 @@ class FavoritesView extends React.PureComponent {
       className,
       wishlistsSummaries,
       activeWishList,
-      getActiveWishlist,
       createNewWishList,
       labels,
       slpLabels,
@@ -408,7 +416,7 @@ class FavoritesView extends React.PureComponent {
                   labels={labels}
                   wishlistsSummaries={wishlistsSummaries}
                   createNewWishList={createNewWishList}
-                  getActiveWishlist={getActiveWishlist}
+                  getActiveWishlist={this.onDropdownChange}
                   activeWishList={activeWishList}
                   defaultWishList={defaultWishList}
                   openAddNewList={this.handleAddList}

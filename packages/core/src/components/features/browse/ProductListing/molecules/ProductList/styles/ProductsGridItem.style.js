@@ -89,6 +89,9 @@ const styles = css`
     outline: none;
     font-family: ${props => props.theme.typography.fonts.secondary};
     white-space: nowrap;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .move-item-section {
@@ -100,7 +103,7 @@ const styles = css`
     top: 40px;
 
     &.item__odd {
-      right: 60px;
+      right: 0;
     }
   }
 
