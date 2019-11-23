@@ -116,7 +116,31 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       show: false,
       isSortOpenModal: false,
     };
+    this.customSelect = null;
   }
+
+  componentDidMount() {
+    this.customSelect = document.querySelector('.available-filters-sorting-container');
+    this.filterSelect = document.querySelector('.filter-row');
+    this.filterBySection = document.querySelector('.filtered-by-section');
+    window.addEventListener('click', this.closeDropdownIfClickOutside);
+  }
+
+  // eslint-disable-next-line react/sort-comp
+  closeDropdownIfClickOutside = e => {
+    const { isSortOpenModal, show } = this.state;
+    if (
+      (isSortOpenModal || show) &&
+      !this.customSelect.contains(e.target) &&
+      !this.filterSelect.contains(e.target) &&
+      !this.filterBySection.contains(e.target)
+    ) {
+      this.setState({
+        isSortOpenModal: false,
+        show: false,
+      });
+    }
+  };
 
   /**
    * @function getAppliedFiltersCount This gets the applied filter count
@@ -311,11 +335,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             onChange={
               !isFavoriteView
                 ? handleSubmit(formValues => {
-                    this.hideModal(true);
+                    this.showSortModal(true);
                     handleSubmitOnChange(formValues);
                   })
                 : selectedOption => {
-                    this.hideModal(true);
+                    this.showSortModal(true);
                     onSortSelection(selectedOption);
                   }
             }
@@ -510,7 +534,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             <Button
               buttonVariation="fixed-width"
               type="button"
-              className={classNames}
+              className={show ? `${classNames} close-filter-button` : classNames}
               data-locator="view_gallery_button"
               onClick={this.showModal}
               id="filter-open"
@@ -530,7 +554,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             <Button
               buttonVariation="fixed-width"
               type="button"
-              className="open-filter-button"
+              className={
+                isSortOpenModal ? 'open-filter-button close-filter-button' : 'open-filter-button'
+              }
               data-locator="view_gallery_button"
               onClick={this.showSortModal}
             >
