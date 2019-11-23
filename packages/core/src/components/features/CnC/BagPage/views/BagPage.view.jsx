@@ -240,7 +240,14 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      handleCartCheckout,
+      isMobile,
+      isBagPage,
+      bagLoading,
+    } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -252,6 +259,7 @@ class BagPageView extends React.PureComponent {
           paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
           isBagPage={isBagPage}
+          bagLoading={bagLoading}
         />
       </div>
     );
@@ -264,7 +272,7 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage, bagLoading } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -303,6 +311,7 @@ class BagPageView extends React.PureComponent {
                 paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
                 isBagPage={isBagPage}
+                bagLoading={bagLoading}
               />
             </Col>
           </Row>
@@ -435,10 +444,6 @@ class BagPageView extends React.PureComponent {
     );
   }
 }
-
-BagPageView.defaultProps = {
-  isBagPage: true,
-};
 
 BagPageView.propTypes = BagPageUtils.BagPagePropTypes;
 

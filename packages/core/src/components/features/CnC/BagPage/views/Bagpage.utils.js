@@ -100,7 +100,7 @@ const BagPagePropTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
-  isBagPage: PropTypes.bool,
+  isBagPage: PropTypes.bool.isRequired,
 };
 
 const CarouselOptions = {
