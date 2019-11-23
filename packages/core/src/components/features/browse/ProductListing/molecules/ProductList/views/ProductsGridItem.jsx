@@ -4,7 +4,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
@@ -503,13 +502,11 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
-      viaModule,
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
     } = this.props;
 
-    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
     const {
