@@ -27,7 +27,8 @@ const HelpCenterView = dynamic({
       import('@tcp/core/src/components/common/molecules/AccordionModule').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
-    imageText: () => import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;

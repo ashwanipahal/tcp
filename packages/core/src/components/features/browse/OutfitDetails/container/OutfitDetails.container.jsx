@@ -34,7 +34,11 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -108,6 +112,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       navigation,
       pdpLabels,
       toastMessage,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     const { outfitIdLocal } = this.state;
     if (outfitProducts) {
@@ -134,6 +140,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           outfitId={outfitIdLocal}
           pdpLabels={pdpLabels}
           toastMessage={toastMessage}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       );
     }
@@ -162,6 +170,7 @@ const mapStateToProps = state => {
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     pdpLabels: getPDPLabels(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
   };
 };
 
@@ -181,6 +190,9 @@ function mapDispatchToProps(dispatch) {
     },
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }
@@ -207,6 +219,8 @@ OutfitDetailsContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -228,6 +242,8 @@ OutfitDetailsContainer.defaultProps = {
   isLoggedIn: false,
   pdpLabels: {},
   toastMessage: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withIsomorphicRenderer({

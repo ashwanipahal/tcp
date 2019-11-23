@@ -38,18 +38,20 @@ class SeoCopy extends React.PureComponent {
             {copyTitle}
           </Heading>
         )}
-        <BodyCopy
-          className="body-copy"
-          fontSize="fs14"
-          component="div"
-          color="text.primary"
-          fontFamily="secondary"
-          fontWeight="regular"
-          textAlign="center"
-          data-locator={getLocator('seo_body')}
-        >
-          <Espot richTextHtml={copyBody} />
-        </BodyCopy>
+        {copyBody && (
+          <BodyCopy
+            className="body-copy"
+            fontSize="fs14"
+            component="div"
+            color="text.primary"
+            fontFamily="secondary"
+            fontWeight="regular"
+            textAlign="center"
+            data-locator={getLocator('seo_body')}
+          >
+            <Espot richTextHtml={copyBody} />
+          </BodyCopy>
+        )}
         {copyBody && copyBody.includes('read-more-target') && (
           <label htmlFor="seo-text" className="read-more-trigger">
             <input
