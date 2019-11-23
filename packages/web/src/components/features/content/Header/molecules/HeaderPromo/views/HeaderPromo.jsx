@@ -30,7 +30,6 @@ const renderMobileMarkup = (dataPromo, className) => {
             to={promoItem.linkClass.url}
             target={promoItem.linkClass.target}
           >
-            {console.log('len===>', promoItem.linkClass.class)}
             {promoItem.linkClass.class && (
               <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
                 <Image

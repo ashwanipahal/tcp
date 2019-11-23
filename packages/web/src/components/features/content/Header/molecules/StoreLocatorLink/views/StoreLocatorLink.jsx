@@ -10,7 +10,6 @@ const StoreLocatorLink = ({ className, labels, store }) => {
   const basicInfo = store && store.basicInfo;
   const currentDate = new Date();
   const hours = store && store.hours;
-  console.log('storeInfo==>', store);
   const storeTime = hours && getStoreHours(hours, labels, currentDate);
   const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
 
