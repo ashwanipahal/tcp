@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { BillingPaymentForm } from '../views/BillingPaymentForm.view';
-import { onAddNewCreditCardClick } from '../views/BillingPaymentForm.util';
+import { onAddNewCreditCardClick, onCCDropDownChange } from '../views/BillingPaymentForm.util';
 
 const card = [
   {
@@ -201,9 +201,9 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     component.setState({ addNewCCState: true });
     const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
-    instance.onCCDropDownChange();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+    onCCDropDownChange(instance);
+
+    expect(component.state('addNewCCState')).toBe(false);
   });
   it('renders correctly with venmoError', () => {
     props.paymentMethodId = 'venmo';
