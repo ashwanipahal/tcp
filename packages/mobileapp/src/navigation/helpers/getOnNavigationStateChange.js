@@ -12,10 +12,8 @@ export function getOnNavigationStateChange({ store, context }) {
         store.dispatch({
           type: TRACK_PAGE_VIEW,
           payload: {
-            previousScreen: prevScreen,
             currentScreen,
-            context,
-            // appState: store.getState(),
+            previousScreen: prevScreen,
             navState: currentState,
           },
         });
