@@ -1,15 +1,9 @@
 import React from 'react';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { BodyCopy } from '../../../../../../common/atoms';
 import { getLocator } from '../../../../../../../utils';
 
-export default function(
-  highListPrice,
-  highOfferPrice,
-  lowListPrice,
-  lowOfferPrice,
-  currencySymbol,
-  merchantTag
-) {
+export default function(highListPrice, highOfferPrice, lowListPrice, lowOfferPrice, merchantTag) {
   return (
     <div className="container-price">
       {!!highOfferPrice && !!lowOfferPrice && highOfferPrice !== lowOfferPrice ? (
@@ -20,9 +14,9 @@ export default function(
           fontFamily="secondary"
           fontSize={['fs15', 'fs18', 'fs20']}
         >
-          {`${currencySymbol}${lowOfferPrice.toFixed(
-            2
-          )} - ${currencySymbol}${highOfferPrice.toFixed(2)}`}
+          <PriceCurrency price={lowOfferPrice} />
+          -
+          <PriceCurrency price={highOfferPrice} />
         </BodyCopy>
       ) : (
         <BodyCopy
@@ -32,7 +26,7 @@ export default function(
           fontFamily="secondary"
           fontSize={['fs15', 'fs18', 'fs20']}
         >
-          {`${currencySymbol}${lowOfferPrice.toFixed(2)}`}
+          <PriceCurrency price={lowOfferPrice} />
         </BodyCopy>
       )}
       {!!highListPrice && !!lowListPrice && highListPrice !== lowListPrice ? (
@@ -45,7 +39,7 @@ export default function(
             fontSize={['fs10', 'fs12', 'fs14']}
             className="list-price"
           >
-            {`${currencySymbol} ${lowListPrice.toFixed(2)}`}
+            <PriceCurrency price={lowListPrice} />
           </BodyCopy>
           <BodyCopy
             component="span"
@@ -64,7 +58,7 @@ export default function(
             fontSize={['fs10', 'fs12', 'fs14']}
             className="list-price"
           >
-            {`${currencySymbol} ${highListPrice.toFixed(2)}`}
+            <PriceCurrency price={highListPrice} />
           </BodyCopy>
         </span>
       ) : (
@@ -78,7 +72,7 @@ export default function(
             fontSize={['fs10', 'fs12', 'fs14']}
             className="list-price"
           >
-            {currencySymbol + lowListPrice.toFixed(2)}
+            <PriceCurrency price={lowListPrice} />
           </BodyCopy>
         )
       )}
