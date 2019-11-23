@@ -2,7 +2,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { Row, TextBox, BodyCopy, Col, Button } from '@tcp/core/src/components/common/atoms';
+import {
+  Row,
+  TextBox,
+  BodyCopy,
+  Col,
+  Button,
+  TextArea,
+} from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -81,7 +88,7 @@ class ShareList extends React.PureComponent {
                 className="message-txt-field"
                 name="message"
                 id="message"
-                component="textarea"
+                component={TextArea}
                 dataLocator="messageField"
               />
             </Col>

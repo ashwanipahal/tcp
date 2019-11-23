@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container';
 import {
   ModuleD,
   ModuleH,
@@ -33,7 +34,7 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
-import LocationAccssPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
+import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
 // import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -123,7 +124,7 @@ class HomePageView extends React.PureComponent {
       <View>
         <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
-        <LocationAccssPrompt
+        <LocationAccessPrompt
           navigation={navigation}
           isUserLoggedIn={isUserLoggedIn}
           labels={labels}
@@ -218,6 +219,7 @@ class HomePageView extends React.PureComponent {
           </>
         ) : null}
         {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
+        <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
   }

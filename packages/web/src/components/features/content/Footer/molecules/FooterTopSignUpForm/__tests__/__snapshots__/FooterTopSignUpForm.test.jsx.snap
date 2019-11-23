@@ -30,7 +30,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -173,7 +173,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -239,7 +239,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-VigVT",
+                "componentId": "sc-fjdhpX",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -362,7 +362,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-VigVT",
+              "styledComponentId": "sc-fjdhpX",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

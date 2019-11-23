@@ -86,6 +86,8 @@ const styles = css`
             props.theme.spacing.ELEM_SPACING.MED
           };`
         : ''}
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} ${props =>
+  props.theme.spacing.ELEM_SPACING.XL};
   }
   .coupon__button_black:hover,
   .coupon__button_black:focus {

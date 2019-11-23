@@ -234,14 +234,12 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol, item } = this.props;
+    const { item } = this.props;
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
     const priceRange = item && item.productInfo && item.productInfo.priceRange;
-    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection
-        currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}

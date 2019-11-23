@@ -182,6 +182,8 @@ class CheckoutPage extends React.PureComponent {
               },
             }}
             shipmentMethods={shipmentMethods}
+            setVenmoShippingState={setVenmoShippingState}
+            setVenmoPickupState={setVenmoPickupState}
           />
         );
       case CONFIRMATION:

@@ -4,17 +4,8 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, Button, BodyCopy } from '@tcp/core/src/components/common/atoms';
 
 class DeleteList extends React.PureComponent {
-  submitHandler = () => {
-    const { handleSubmit, onHandleSubmit } = this.props;
-    handleSubmit(data => {
-      if (onHandleSubmit) {
-        onHandleSubmit(data);
-      }
-    })();
-  };
-
   render() {
-    const { labels, className, hideDeleteModal } = this.props;
+    const { labels, className, hideDeleteModal, onDeleteList } = this.props;
 
     return (
       <>
@@ -46,7 +37,7 @@ class DeleteList extends React.PureComponent {
               type="submit"
               fill="BLUE"
               dataLocator="DeleteListFormBtn"
-              onClick={this.submitHandler}
+              onClick={onDeleteList}
             >
               {getLabelValue(labels, 'btn_fav_yes_remove')}
             </Button>
