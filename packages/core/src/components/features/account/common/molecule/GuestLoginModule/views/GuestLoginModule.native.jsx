@@ -167,7 +167,7 @@ class GuestLoginOverview extends PureComponent {
   };
 
   render() {
-    const { isUserLoggedIn, labels, navigation } = this.props;
+    const { isUserLoggedIn, labels, navigation, hideLogoutText, loggedInWrapperStyle } = this.props;
     const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     this.getModalHeader(getComponentId, labels);
     const colorPallete = createThemeColorPalette();
@@ -175,21 +175,23 @@ class GuestLoginOverview extends PureComponent {
       <>
         {!isUserLoggedIn && (
           <React.Fragment>
-            <LoggedinTextWrapper>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
-              />
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
-              />
-            </LoggedinTextWrapper>
-            <LoggedinWrapper>
+            {hideLogoutText ? null : (
+              <LoggedinTextWrapper>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs14"
+                  textAlign="center"
+                  text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
+                />
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs14"
+                  textAlign="center"
+                  text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
+                />
+              </LoggedinTextWrapper>
+            )}
+            <LoggedinWrapper loggedInWrapperStyle={loggedInWrapperStyle}>
               <CustomButton
                 className="classBtn"
                 color={colorPallete.text.secondary}
@@ -258,10 +260,14 @@ GuestLoginOverview.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isUserLoggedIn: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  hideLogoutText: PropTypes.bool,
+  loggedInWrapperStyle: PropTypes.shape({}),
 };
 
 GuestLoginOverview.defaultProps = {
   labels: {},
+  hideLogoutText: false,
+  loggedInWrapperStyle: {},
 };
 
 export default GuestLoginOverview;

@@ -40,10 +40,16 @@ class EditList extends React.PureComponent {
   };
 
   render() {
-    const { labels, className, onCloseModal } = this.props;
+    const { labels, className, onCloseModal, handleSubmit, onDeleteList } = this.props;
     const { isShowRemoveModal } = this.state;
     if (isShowRemoveModal) {
-      return <DeleteList labels={labels} hideDeleteModal={this.hideDeleteModal} />;
+      return (
+        <DeleteList
+          labels={labels}
+          hideDeleteModal={this.hideDeleteModal}
+          onDeleteList={onDeleteList}
+        />
+      );
     }
     return (
       <>
@@ -64,7 +70,7 @@ class EditList extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
-        <form className={className}>
+        <form className={className} onSubmit={handleSubmit}>
           <Row fullBleed className="elem-mb-MED">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field

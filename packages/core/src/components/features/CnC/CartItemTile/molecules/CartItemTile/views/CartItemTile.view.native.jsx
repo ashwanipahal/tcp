@@ -291,7 +291,11 @@ class ProductInformation extends PureComponent {
             <TouchableOpacity
               accessibilityRole="link"
               onPress={() => {
-                CartItemTileExtension.callEditMethod(this.props, this.handleEditCartItemWithStore);
+                CartItemTileExtension.callEditMethod(
+                  this.props,
+                  this.handleEditCartItemWithStore,
+                  isBagPageSflSection
+                );
                 CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
                 return this.swipeable.toggle('right');
               }}
