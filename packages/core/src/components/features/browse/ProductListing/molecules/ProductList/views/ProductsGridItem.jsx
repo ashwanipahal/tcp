@@ -324,6 +324,7 @@ class ProductsGridItem extends React.PureComponent {
       createNewWishListMoveItem,
       gridIndex,
       openAddNewList,
+      activeWishListId,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -352,6 +353,7 @@ class ProductsGridItem extends React.PureComponent {
                 itemId={itemId}
                 gridIndex={gridIndex}
                 openAddNewList={openAddNewList}
+                activeWishListId={activeWishListId}
               />
             </div>
           )}

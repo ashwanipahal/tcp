@@ -105,6 +105,7 @@ class FavoritesView extends React.PureComponent {
       selectedColorProductId,
       isKeepAliveEnabled,
       outOfStockLabels,
+      activeWishList,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -125,6 +126,7 @@ class FavoritesView extends React.PureComponent {
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
             openAddNewList={this.handleAddList}
+            activeWishListId={activeWishList.id}
           />
           <QuickViewModal selectedColorProductId={selectedColorProductId} />
         </>
