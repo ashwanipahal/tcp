@@ -21,6 +21,10 @@ export default css`
     }
   }
 
+  .title-wrapper {
+    min-width: max-content;
+  }
+
   .outfit-image {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
