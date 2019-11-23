@@ -44,9 +44,9 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
             fontFamily="primary"
             fontSize={
               Array [
-                "fs10",
-                "fs10",
-                "fs14",
+                "fs18",
+                "fs13",
+                "fs26",
               ]
             }
             fontWeight="bold"
@@ -63,9 +63,9 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
             fontFamily="primary"
             fontSize={
               Array [
+                "fs14",
                 "fs10",
-                "fs9",
-                "fs12",
+                "fs22",
               ]
             }
             fontWeight="regular"
@@ -83,7 +83,13 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
               component="span"
               data-locator="place-cash_info_text"
               fontFamily="primary"
-              fontSize={12}
+              fontSize={
+                Array [
+                  "fs8",
+                  "fs8",
+                  "fs14",
+                ]
+              }
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -95,6 +101,13 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
               className="place-cash__modalLink"
               dataLocator="detailslink"
               fontFamily="primary"
+              fontSize={
+                Array [
+                  "fs8",
+                  "fs8",
+                  "fs14",
+                ]
+              }
               fontSizeVariation="medium"
               href="#"
               onClick={[Function]}

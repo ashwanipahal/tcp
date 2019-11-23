@@ -82,6 +82,14 @@ exports[`HomePageView should render correctly 1`] = `
         }
       }
     />
+    <LocationAccessPrompt
+      isUserLoggedIn={false}
+      navigation={
+        Object {
+          "getParam": [Function],
+        }
+      }
+    />
   </View>
   <Connect(UserOnboardingScreen)
     navigation={

@@ -189,6 +189,13 @@ export default css`
     .color-chip {
       border-radius: 10px;
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      height: 19px;
+      width: 19px;
+    }
+
+    .white-color-class {
+      height: 18px;
+      width: 18px;
     }
 
     .color-chip[data-colorname='white'] {
@@ -208,7 +215,7 @@ export default css`
   li.item-common {
     height: 23px;
     min-width: 140px;
-    width: 45%;
+    width: 47%;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-right: auto;
     border-radius: 6px;
@@ -236,12 +243,34 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       width: 31%;
     }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      .item-select {
-        padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
+  }
+
+  li.item-common.color-filter-chip {
+    margin-right: 10px;
+  }
+
+  li.item-common.color-filter-chip:nth-child(3n) {
+    margin-right: 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: 10px;
     }
   }
+
+  li.item-common.size-detail-chips:nth-child(2n) {
+    margin-right: 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: inherit;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    li.item-common.size-detail-chips:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
   &.mobile-sort-container {
     padding: 0;
 
@@ -324,6 +353,11 @@ export default css`
     .filter-row {
       margin: 7px;
       padding-bottom: 0;
+    }
+
+    .disable-clear-all-button {
+      pointer-events: none;
+      opacity: 0.5;
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {

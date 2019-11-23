@@ -25,7 +25,8 @@ const Static = dynamic({
     moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
-    imageText: () => import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;
