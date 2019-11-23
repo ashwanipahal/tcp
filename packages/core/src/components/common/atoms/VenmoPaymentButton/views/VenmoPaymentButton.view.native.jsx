@@ -12,6 +12,7 @@ import {
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
+const venmoIconWhite = require('../../../../../assets/venmo_logo_white.png');
 
 export class VenmoPaymentButton extends Component {
   constructor(props) {
@@ -125,12 +126,17 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { mode, enabled } = this.props;
+    const { mode, enabled, isVenmoBlueButton } = this.props;
+    const venmoIcon = isVenmoBlueButton ? venmoIconWhite : venmoIconBlue;
     return (
       <View>
         {enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-          <VenmoButton accessibilityRole="button" onPress={this.handleVenmoClick}>
-            <Image source={venmoIconBlue} width="80px" height="15px" />
+          <VenmoButton
+            accessibilityRole="button"
+            onPress={this.handleVenmoClick}
+            isVenmoBlue={isVenmoBlueButton}
+          >
+            <Image source={venmoIcon} width="80px" height="15px" />
           </VenmoButton>
         )}
       </View>
@@ -166,6 +172,7 @@ VenmoPaymentButton.propTypes = {
   isRemoveOOSItems: bool,
   isGuest: bool.isRequired,
   orderId: string.isRequired,
+  isVenmoBlueButton: bool,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -181,6 +188,7 @@ VenmoPaymentButton.defaultProps = {
   setVenmoPaymentInProgress: () => {},
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
+  isVenmoBlueButton: false,
 };
 
 export default VenmoPaymentButton;

@@ -167,6 +167,9 @@ export const importGraphQLQueriesDynamically = query => {
       case 'moduleJeans':
         resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
+      case 'promoContent':
+        resolve(require('../services/handler/graphQL/queries/promoContent'));
+        break;
       default:
         importMoreGraphQLQueries({
           query,
@@ -243,8 +246,9 @@ const getLandingPage = url => {
 export const navigateToPage = (url, navigation, extraParams = {}) => {
   const { URL_PATTERN } = config;
   const { navigate } = navigation;
-  const category = getLandingPage(url);
-  const text = url.split('/');
+  const urlValue = url || '';
+  const category = getLandingPage(urlValue);
+  const text = urlValue.split('/');
   const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
 
   switch (category) {

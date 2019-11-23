@@ -191,6 +191,7 @@ exports[`MyRewards should render correctly 1`] = `
         >
           <BonusPointsDaysSection
             isDefaultOpen={true}
+            isPlaceRewardsPage={true}
           />
         </div>
       </Styled(Col)>

@@ -1,8 +1,23 @@
-export const getPageName = state => {
+const getPageName = state => {
   const { pageData = {} } = state;
   return pageData.pageName || '';
 };
-
-export default {
-  getPageName,
+const getStoreSearchCriteria = state => {
+  return (
+    state.form &&
+    state.form.pickupSearchStoresForm &&
+    state.form.pickupSearchStoresForm.values &&
+    state.form.pickupSearchStoresForm.values.addressLocation
+  );
 };
+
+const getStoreSearchDistance = state => {
+  return (
+    state.form &&
+    state.form.pickupSearchStoresForm &&
+    state.form.pickupSearchStoresForm.values &&
+    state.form.pickupSearchStoresForm.values.distance
+  );
+};
+
+export { getPageName, getStoreSearchCriteria, getStoreSearchDistance };

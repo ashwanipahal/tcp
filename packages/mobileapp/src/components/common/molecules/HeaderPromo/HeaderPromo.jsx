@@ -1,8 +1,15 @@
 import React from 'react';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { View } from 'react-native';
+import { BodyCopy, RichText } from '@tcp/core/src/components/common/atoms';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth, UrlHandler, getLocator } from '@tcp/core/src/utils';
-import { MessageContainer, TextStyle1, TextStyle2, TextStyle3 } from './HeaderPromo.style';
+import {
+  MessageContainer,
+  TextStyle1,
+  TextStyle2,
+  TextStyle3,
+  Container,
+} from './HeaderPromo.style';
 
 /**
  * Module height and width.
@@ -28,7 +35,7 @@ const manageTextStyles = style => {
 /**
  * This Component return the mobile Promo Banner
  */
-class HeaderPromo extends React.PureComponent<props> {
+class HeaderPromo extends React.PureComponent {
   /**
    * @desc Returns updated Banner text details with styles.
    * Content render on the basis of style type .
@@ -63,18 +70,36 @@ class HeaderPromo extends React.PureComponent<props> {
   };
 
   render() {
-    const { headerPromo } = this.props;
+    const { headerPromo, promoHtmlBannerCarousel } = this.props;
+
+    if (headerPromo) {
+      return (
+        <View>
+          <Carousel
+            data={headerPromo}
+            renderItem={this.renderView}
+            height={MODULE_HEIGHT}
+            width={MODULE_WIDTH}
+            variation="show-arrow"
+            carouselConfig={{
+              autoplay: true,
+            }}
+          />
+        </View>
+      );
+    }
+
     return (
-      <Carousel
-        data={headerPromo}
-        renderItem={this.renderView}
-        height={MODULE_HEIGHT}
-        width={MODULE_WIDTH}
-        variation="show-arrow"
-        carouselConfig={{
-          autoplay: true,
-        }}
-      />
+      <Container>
+        {promoHtmlBannerCarousel && (
+          <RichText
+            source={{
+              html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${promoHtmlBannerCarousel &&
+                promoHtmlBannerCarousel[0].text}</body></html>`,
+            }}
+          />
+        )}
+      </Container>
     );
   }
 }

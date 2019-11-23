@@ -199,6 +199,7 @@ class ProductListingContainer extends React.PureComponent {
           breadCrumbs={breadCrumbs}
           currentNavIds={currentNavIds}
           navTree={navTree}
+          categoryId={categoryId}
         />
       );
     }

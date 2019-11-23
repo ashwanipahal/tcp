@@ -132,6 +132,13 @@ export const getIsKeepAliveProduct = state => {
   );
 };
 
+export const getIsKeepAliveProductApp = state => {
+  return parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG_APP
+  );
+};
+
 export const getCurrentSiteLanguage = state => {
   return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language;
 };

@@ -162,13 +162,15 @@ class ProductAddToBag extends React.PureComponent<Props> {
       onCloseClick,
       selectedColorProductId,
       keepAlive,
+      isFromBagProductSfl,
+      isPickup,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
     );
-    return (
+    return !isFromBagProductSfl && !isPickup ? (
       <ProductPickupContainer
         productInfo={currentProduct}
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
@@ -178,7 +180,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         miscInfo={currentColorEntry.miscInfo}
         keepAlive={keepAlive}
       />
-    );
+    ) : null;
   };
 
   renderSizeList = (sizeList, colorFitSizeDisplayNames, errorMessage) => {
@@ -293,7 +295,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {!isPickup && this.renderUnavailableLink()}
+              {this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,

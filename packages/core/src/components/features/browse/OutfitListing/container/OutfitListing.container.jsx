@@ -10,28 +10,25 @@ import { getPLPTopPromos } from '../../ProductListing/container/ProductListing.s
 
 class OutfitListingContainer extends React.PureComponent {
   static getInitialProps = async ({ props }) => {
-    const { getStyliticsProductTabListData, asPath, navigation } = props;
+    const { getStyliticsProductTabListData, asPath, navigation, getProducts } = props;
     const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
     await getStyliticsProductTabListData({ categoryId, count: 20 });
-  };
-
-  componentDidMount() {
-    const { navigation, getProducts } = this.props;
-    // This is needed only for mobile app since the product listing container doesnt have a role here
     if (navigation) {
       const newNavigationUrl = navigation.getParam('url');
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
-  }
+  };
 
   componentDidUpdate({ navigation: oldNavigation }) {
-    const { getProducts, navigation } = this.props;
+    const { getProducts, navigation, getStyliticsProductTabListData } = this.props;
     // This is needed only for mobile app since the product listing container doesnt have a role here
     if (navigation) {
       const oldNavigationUrl = oldNavigation.getParam('url');
       const newNavigationUrl = navigation.getParam('url');
+      const categoryId = newNavigationUrl && newNavigationUrl.split('/c?cid=')[1];
       if (oldNavigationUrl !== newNavigationUrl) {
         getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+        getStyliticsProductTabListData({ categoryId, count: 20 });
       }
     }
   }
@@ -113,6 +110,7 @@ OutfitListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   asPathVal: PropTypes.string,
   getProducts: PropTypes.func,
+  getStyliticsProductTabListData: PropTypes.func.isRequired,
 };
 
 OutfitListingContainer.defaultProps = {

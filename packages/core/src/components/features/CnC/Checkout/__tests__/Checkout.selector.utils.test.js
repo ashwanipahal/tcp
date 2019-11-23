@@ -68,8 +68,9 @@ describe('Checkout Selectors', () => {
   it('#getSmsNumberForOrderUpdates', () => {
     const state = {
       form: FormState,
+      Checkout: fromJS({}),
     };
-    expect(CHECKOUT_SELECTORS.getSmsNumberForOrderUpdates(state)).toEqual(2012345678);
+    expect(CHECKOUT_SELECTORS.getSmsNumberForOrderUpdates(state)).toEqual(undefined);
   });
   it('#getCurrentPickupFormNumber', () => {
     const state = {

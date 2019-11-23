@@ -11,6 +11,7 @@ import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/cont
 import { isPlccUser } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { getAddedToBagError } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
+import { getIsMiniBagOpen } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -18,7 +19,6 @@ import {
   getIsCartItemsUpdating,
   getIsCartItemsSFL,
   getCartItemsSflError,
-  getIsMiniBagOpen,
   getMiniBagLoaderState,
 } from './MiniBag.selectors';
 import {

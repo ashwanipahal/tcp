@@ -212,7 +212,6 @@ export default function create(store) {
         return typeCart;
       },
     },
-
     products: {
       get() {
         return store

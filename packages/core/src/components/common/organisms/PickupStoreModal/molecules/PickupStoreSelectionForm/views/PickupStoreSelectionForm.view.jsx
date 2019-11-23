@@ -136,6 +136,8 @@ class _PickupStoreSelectionForm extends React.Component {
       isSkuResolved,
       pageNameProp,
       currentProduct,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     const disableButton = Object.values(PickupSkuFormValues).includes('');
     let pageName = '';
@@ -175,7 +177,14 @@ class _PickupStoreSelectionForm extends React.Component {
             />
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
-            <ClickTracker clickData={{ customEvents: ['event105'], pageName }}>
+            <ClickTracker
+              clickData={{
+                customEvents: ['event105'],
+                pageName,
+                storeSearchCriteria,
+                storeSearchDistance,
+              }}
+            >
               <Button
                 buttonVariation="fixed-width"
                 fill="BLUE"
@@ -258,6 +267,8 @@ class _PickupStoreSelectionForm extends React.Component {
             updateCartItemStore={updateCartItemStore}
             buttonLabel={buttonLabel}
             isGiftCard={isGiftCard}
+            storeSearchCriteria={storeSearchCriteria}
+            storeSearchDistance={storeSearchDistance}
           />
         </div>
       )

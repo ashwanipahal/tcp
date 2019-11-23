@@ -144,27 +144,28 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <ClickTracker
-              as={Anchor}
-              to={url}
-              asPath={asPath}
-              clickData={{
-                pageNavigationText: clickData,
-              }}
-            >
-              <div className="nav-bar-l1-content">
-                <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-                <span
-                  className={`nav-bar-item-content ${
-                    description ? 'nav-bar-item-sizes-range' : ''
-                  }`}
-                  data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
-                >
-                  {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-                </span>
-                <span className="icon-arrow" />
-              </div>
-            </ClickTracker>
+            <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
+              <ClickTracker
+                clickData={{
+                  pageNavigationText: clickData,
+                }}
+              >
+                <div className="nav-bar-l1-content">
+                  <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+                  <span
+                    className={`nav-bar-item-content ${
+                      description ? 'nav-bar-item-sizes-range' : ''
+                    }`}
+                    data-locator={
+                      description ? `sizesrange_label_${index}` : `promo_badge_${index}`
+                    }
+                  >
+                    {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                  </span>
+                  <span className="icon-arrow" />
+                </div>
+              </ClickTracker>
+            </Anchor>
             {(hovered || this.childRendered) && children}
             <div
               className={`${className} l1-overlay ${classForHovered}`}

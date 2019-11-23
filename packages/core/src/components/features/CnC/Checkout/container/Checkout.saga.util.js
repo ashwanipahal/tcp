@@ -6,6 +6,7 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -42,6 +43,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -102,6 +104,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   if (smsSignUp) {
     transVibesSmsPhoneNo = smsSignUp.phoneNumber;
   }
+  yield put(setLoaderState(true));
   try {
     yield call(
       setShippingMethodAndAddressId,
@@ -111,7 +114,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-
+    yield put(setLoaderState(false));
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
@@ -122,6 +125,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       })
     );
   } catch (err) {
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
@@ -340,7 +344,7 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoInProgress) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
@@ -353,16 +357,23 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
   }
 }
 
-export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+export const makeUpdateRTPSCall = (
+  pageName,
+  isPaypalPostBack,
+  isExpressCheckoutEnabled,
+  isVenmoInProgress
+) => {
   const { BILLING } = constants.CHECKOUT_STAGES;
-  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+  return (
+    pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled) || isVenmoInProgress
+  );
 };
 
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
@@ -423,4 +434,20 @@ export function shouldInvokeReviewCartCall(
   const { REVIEW } = constants.CHECKOUT_STAGES;
   const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
   return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
+}
+
+export function* redirectFromExpress() {
+  yield put(toggleCheckoutRouting(true));
+  yield put(setIsExpressEligible(false));
+  const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
+  if (isOrderHasPickup) {
+    if (!isMobileApp()) {
+      return utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
+    }
+    return yield put(getSetCheckoutStage(constants.PICKUP_DEFAULT_PARAM));
+  }
+  if (!isMobileApp()) {
+    return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  }
+  return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
 }

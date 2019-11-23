@@ -272,6 +272,8 @@ class PickupStoreListItem extends React.Component {
       trackClick,
       isBossSelected,
       isBopisSelected,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     let pageName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
@@ -289,6 +291,8 @@ class PickupStoreListItem extends React.Component {
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
       customEvents: [customEventsVal],
+      storeSearchCriteria,
+      storeSearchDistance,
       pageName,
     });
     trackClick();
@@ -297,6 +301,8 @@ class PickupStoreListItem extends React.Component {
     setTimeout(() => {
       setClickAnalyticsData({
         customEvents: ['scAdd,scOpen,event85,event61'],
+        storeSearchCriteria,
+        storeSearchDistance,
         pageName,
       });
       trackClick();
@@ -339,6 +345,8 @@ class PickupStoreListItem extends React.Component {
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
       customEvents: [customEventsVal],
+      storeSearchCriteria,
+      storeSearchDistance,
       pageName,
     });
     trackClick();
@@ -348,6 +356,8 @@ class PickupStoreListItem extends React.Component {
       setClickAnalyticsData({
         pageName,
         customEvents: ['scAdd,scOpen,event85,event61'],
+        storeSearchCriteria,
+        storeSearchDistance,
       });
       trackClick();
     }, 0);

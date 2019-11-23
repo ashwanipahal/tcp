@@ -7,7 +7,11 @@ import { connect } from 'react-redux';
 import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
 import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
-import { getPageName } from './PickupStoreSelectionForm.selectors';
+import {
+  getPageName,
+  getStoreSearchCriteria,
+  getStoreSearchDistance,
+} from './PickupStoreSelectionForm.selectors';
 import {
   getSkuId,
   getVariantId,
@@ -468,6 +472,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
       currentProduct,
       pageNameProp,
       openRestrictedModalForBopis,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
@@ -515,6 +521,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
         onQuantityChange={this.quantityChange}
         initialValues={this.initialValues}
         openRestrictedModalForBopis={openRestrictedModalForBopis}
+        storeSearchCriteria={storeSearchCriteria}
+        storeSearchDistance={storeSearchDistance}
       />
     );
   }
@@ -522,6 +530,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     pageNameProp: getPageName(state),
+    storeSearchCriteria: getStoreSearchCriteria(state),
+    storeSearchDistance: getStoreSearchDistance(state),
   };
 }
 
