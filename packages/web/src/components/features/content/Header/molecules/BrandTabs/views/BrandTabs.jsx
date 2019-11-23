@@ -6,12 +6,12 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import { isGymboree, isTCP, getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../BrandTabs.style';
 
-const BrandTabs = ({ className, data }) => {
+const BrandTabs = ({ className, data, tcpBrandName, gymBrandName }) => {
   return (
     <Fragment>
       <div className={className}>
         {data.map(tabData => {
-          const { title: alt, class: logoClass, target, url } = tabData;
+          const { class: logoClass, target, url } = tabData;
           let active = false;
 
           if (logoClass === 'header__brand-tab--tcp' && isTCP()) {
@@ -28,7 +28,7 @@ const BrandTabs = ({ className, data }) => {
               key={logoClass}
             >
               <Image
-                alt={alt}
+                alt={logoClass === 'header__brand-tab--tcp' ? tcpBrandName : gymBrandName}
                 className={logoClass}
                 src={getIconPath(logoClass)}
                 data-locator={getLocator(logoClass)}
@@ -46,6 +46,8 @@ BrandTabs.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]))
   ).isRequired,
+  tcpBrandName: PropTypes.string.isRequired,
+  gymBrandName: PropTypes.string.isRequired,
 };
 
 export default withStyles(errorBoundary(BrandTabs), style);

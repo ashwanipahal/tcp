@@ -23,7 +23,9 @@ class ProductBasicInfo extends React.Component {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   title = () => {
@@ -47,15 +49,20 @@ class ProductBasicInfo extends React.Component {
   handleAddToWishlist = () => {
     const {
       onAddItemToFavorites,
-      productMiscInfo: { colorProductId },
+      productMiscInfo: { colorProductId, colorDisplayId },
+      pageName,
     } = this.props;
 
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+    onAddItemToFavorites({
+      colorProductId: colorDisplayId || colorProductId,
+      page: pageName || 'PDP',
+    });
   };
 
   render() {
     const {
       isBundleProduct,
+      asPath,
       pdpUrl,
       badge,
       isGiftCard,
@@ -95,7 +102,7 @@ class ProductBasicInfo extends React.Component {
         <div className="information-container">
           <div className="title-wrapper">
             {typeof pdpUrl === 'string' ? (
-              <Anchor to={pdpUrl} className="product-link-title">
+              <Anchor to={pdpUrl} asPath={asPath} className="product-link-title">
                 {title}
               </Anchor>
             ) : (
@@ -134,6 +141,7 @@ class ProductBasicInfo extends React.Component {
 ProductBasicInfo.propTypes = {
   className: PropTypes.string,
   productInfo: PropTypes.shape({}).isRequired,
+  asPath: PropTypes.string,
   pdpUrl: PropTypes.string,
   badge: PropTypes.string,
   isGiftCard: PropTypes.bool.isRequired,
@@ -152,6 +160,7 @@ ProductBasicInfo.propTypes = {
 
 ProductBasicInfo.defaultProps = {
   className: '',
+  asPath: null,
   pdpUrl: null,
   badge: '',
   isBundleProduct: false,

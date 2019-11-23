@@ -9,11 +9,13 @@ exports[`AccountOverview component should render correctly 1`] = `
   }
 >
   <GuestLoginOverview
+    hideLogoutText={false}
     labels={
       Object {
         "foo": "foo",
       }
     }
+    loggedInWrapperStyle={Object {}}
     navigation={
       Object {
         "state": Object {

@@ -8,6 +8,7 @@
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
@@ -54,7 +55,7 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag, bundleProduct, priceRange } = props;
+  const { listPrice, offerPrice, merchantTag, bundleProduct, priceRange } = props;
 
   const highListPrice = priceRange && priceRange.highListPrice;
   const highOfferPrice = priceRange && priceRange.highOfferPrice;
@@ -73,7 +74,7 @@ export function ProductPricesSection(props) {
               fontFamily="secondary"
               fontSize={['fs15', 'fs18', 'fs20']}
             >
-              {currencySymbol + offerPrice.toFixed(2)}
+              <PriceCurrency price={offerPrice} />
             </BodyCopy>
           )}
           {offerPrice && offerPrice !== listPrice && (
@@ -85,7 +86,7 @@ export function ProductPricesSection(props) {
               fontSize={['fs10', 'fs12', 'fs14']}
               className="list-price"
             >
-              {currencySymbol + listPrice.toFixed(2)}
+              <PriceCurrency price={listPrice} />
             </BodyCopy>
           )}
           {merchantTag && (
@@ -102,14 +103,7 @@ export function ProductPricesSection(props) {
           )}
         </div>
       ) : (
-        BundlePriceSection(
-          highListPrice,
-          highOfferPrice,
-          lowListPrice,
-          lowOfferPrice,
-          currencySymbol,
-          merchantTag
-        )
+        BundlePriceSection(highListPrice, highOfferPrice, lowListPrice, lowOfferPrice, merchantTag)
       )}
     </>
   );
@@ -256,6 +250,7 @@ export const CreateWishList = props => {
     activeWishListId,
     openAddNewList,
   } = props;
+  const activateCreateButton = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
   return (
     <div className="create-wish-list-section">
       <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
@@ -286,6 +281,7 @@ export const CreateWishList = props => {
         fill="BLACK"
         data-locator="create-new-wish-list"
         className="create-new__button"
+        disabled={activateCreateButton}
       >
         {labels.lbl_fav_createNewList}
       </Button>
@@ -335,10 +331,11 @@ export const WishListIcon = (
   if (itemNotAvailable) {
     return null;
   }
+
   return (
     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
       <ProductWishlistIcon
-        onClick={isInDefaultWishlist || isFavoriteView ? null : handleAddToWishlist}
+        onClick={isInDefaultWishlist ? null : handleAddToWishlist}
         activeButton={isInDefaultWishlist || isFavoriteView}
         favoritedCount={favoritedCount}
         className="fav-icon"
@@ -414,7 +411,6 @@ BadgeItem.propTypes = {
 };
 
 ProductPricesSection.defaultProps = {
-  currencySymbol: '$',
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
@@ -423,7 +419,6 @@ ProductPricesSection.defaultProps = {
 };
 
 ProductPricesSection.propTypes = {
-  currencySymbol: PropTypes.string,
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,

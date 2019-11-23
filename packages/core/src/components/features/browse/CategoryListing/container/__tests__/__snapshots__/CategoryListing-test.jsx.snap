@@ -21,9 +21,7 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
         }
       />
     </Styled(Row)>
-    <Styled(Row)
-      fullBleed={true}
-    >
+    <Styled(Row)>
       <Styled(Col)
         colSize={
           Object {
@@ -95,6 +93,20 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           >
             <Styled(ReadMore)
               className=" seo-text"
+              inheritedStyles={
+                Array [
+                  "
+  h1 {
+    text-transform: uppercase;
+  }
+  .body-copy {
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+",
+                ]
+              }
               labels={Object {}}
             />
           </Styled(Col)>
@@ -139,6 +151,16 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
               />
             </div>
           </Styled(Col)>
+          <Styled(Col)
+            className="clp-spotlight-container"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          />
         </Styled(Row)>
       </Styled(Col)>
     </Styled(Row)>

@@ -261,7 +261,8 @@ function* initCheckoutSectionData({ payload }) {
   yield all(pendingPromises);
   const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
   yield call(initShippingData, requestedStage);
-  if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled)) {
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled, isVenmoInProgress)) {
     yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
   }
 }

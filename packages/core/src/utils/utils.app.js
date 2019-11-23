@@ -167,6 +167,9 @@ export const importGraphQLQueriesDynamically = query => {
       case 'moduleJeans':
         resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
+      case 'promoContent':
+        resolve(require('../services/handler/graphQL/queries/promoContent'));
+        break;
       default:
         importMoreGraphQLQueries({
           query,
