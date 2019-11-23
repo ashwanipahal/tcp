@@ -3,6 +3,8 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
+import CONSTANTS from '../../User/User.constants';
+
 import {
   setLoginInfo,
   setCheckoutModalMountedState,
@@ -32,7 +34,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(setLoginModalMountedState({ state: false }));
       yield put(
         setClickAnalyticsData({
-          eventName: 'login',
+          customEvents: ['event14'],
           pageNavigationText: 'header-log in',
         })
       );
@@ -47,9 +49,8 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         );
       }
       yield put(navigateXHRAction());
-
-      yield take(setUserInfo);
-      yield put(trackClick('login_submit'));
+      yield take(CONSTANTS.SET_USER_INFO);
+      yield put(trackClick({ name: 'login-success', module: 'account' }));
     }
 
     return yield put(setLoginInfo(response));
