@@ -39,19 +39,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       viewHeight="65%"
     >
       <Styled(View)>
-        <Connect(ProductTileWrapperContainer)
-          bagLabels={
-            Object {
-              "bagHeading": "test",
-              "checkout": "",
-              "savedLaterButton": "savedLaterButton",
-              "tagLine": "tagline",
-              "viewBag": "",
-            }
-          }
-          navigation={[MockFunction]}
-          pageView="myBag"
-        />
         <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
@@ -73,23 +60,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
-  </Styled(View)>
-  <Styled(View)>
-    <Connect(AddedToBagContainer)
-      hideHeader={[Function]}
-      isNoNEmptyBag={false}
-      labels={
-        Object {
-          "bagHeading": "test",
-          "checkout": "",
-          "savedLaterButton": "savedLaterButton",
-          "tagLine": "tagline",
-          "viewBag": "",
-        }
-      }
-      navigation={[MockFunction]}
-      payPalTop={30}
-    />
   </Styled(View)>
 </Fragment>
 `;

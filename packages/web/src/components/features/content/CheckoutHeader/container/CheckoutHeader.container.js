@@ -12,7 +12,7 @@ const mapStateToProps = state => {
   return {
     brandTabs: Header.brandTabs,
     labels: CheckoutHeaderSelector.getCheckoutHeaderLabels(state),
-    exitCheckoutAriaLabel: CheckoutSelector.getExitCheckoutAriaLabel(state),
+    exitCheckoutAriaLabel: CheckoutSelectors.getExitCheckoutAriaLabel(state),
     isInternationalShipping: getIsInternationalShipping(state),
     itemsCount: CheckoutSelectors.getTotalItems(state),
     cartItems: CheckoutSelectors.getOrderItems(state),

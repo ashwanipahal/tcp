@@ -15,10 +15,6 @@ exports[`ProductList component should renders correctly 1`] = `
         Object {
           "productInfo": "",
         },
-        undefined,
-        Object {
-          "productInfo": "",
-        },
       ]
     }
     disableVirtualization={false}

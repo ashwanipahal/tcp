@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
@@ -63,6 +64,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       setClickAnalyticsDataCheckout,
       cartOrderItems,
       clearCheckoutServerError,
+      isPayPalEnabled,
       setIsPaypalBtnHidden,
     } = this.props;
     return (
@@ -99,6 +101,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         cartOrderItems={cartOrderItems}
         clearCheckoutServerError={clearCheckoutServerError}
         setIsPaypalBtnHidden={setIsPaypalBtnHidden}
+        isPayPalEnabled={isPayPalEnabled}
       />
     );
   }
@@ -149,6 +152,7 @@ const mapStateToProps = state => {
     venmoError: checkoutSelectors.getVenmoError(state),
     isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
     cartOrderItems: BagPageSelectors.getOrderItems(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
   };
 };
 

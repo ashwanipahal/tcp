@@ -3,20 +3,6 @@
 exports[`ConfirmationView should render correctly 1`] = `
 <Styled(ScrollViewMock)>
   <Styled(View)>
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="SMS SIGN UP"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={Array []}
@@ -45,20 +31,6 @@ exports[`ConfirmationView should render correctly 1`] = `
 exports[`ConfirmationView should render correctly 2`] = `
 <Styled(ScrollViewMock)>
   <Styled(View)>
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="SMS SIGN UP"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
@@ -113,20 +85,6 @@ exports[`ConfirmationView should render correctly 2`] = `
 exports[`ConfirmationView should render correctly without order details 1`] = `
 <Styled(ScrollViewMock)>
   <Styled(View)>
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="SMS SIGN UP"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
