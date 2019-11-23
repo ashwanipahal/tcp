@@ -50,7 +50,6 @@ export function* applyCoupon({ payload }) {
           name,
           price: offerPrice,
           extPrice: offerPrice,
-          sflExtPrice: offerPrice,
           listPrice,
           partNumber: productPartNumber,
           size,

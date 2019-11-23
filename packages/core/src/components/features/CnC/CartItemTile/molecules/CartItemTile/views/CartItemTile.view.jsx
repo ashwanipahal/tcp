@@ -248,6 +248,7 @@ class CartItemTile extends PureComponent {
     const {
       itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
       productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -270,6 +271,9 @@ class CartItemTile extends PureComponent {
       size,
       upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event134', 'event136'],
@@ -308,12 +312,12 @@ class CartItemTile extends PureComponent {
       name,
       price: offerPrice,
       extPrice: offerPrice,
-      sflExtPrice: offerPrice,
-      listPrice,
+      offerPrice,
       partNumber: productPartNumber,
-      size,
-      upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event135', 'event137'],
