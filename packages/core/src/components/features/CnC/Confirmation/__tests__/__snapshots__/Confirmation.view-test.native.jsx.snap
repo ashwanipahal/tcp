@@ -17,6 +17,7 @@ exports[`ConfirmationView should render correctly 1`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={Array []}
       isBossInList={false}
@@ -27,11 +28,16 @@ exports[`ConfirmationView should render correctly 1`] = `
       isShowShippingMessage={false}
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -53,6 +59,7 @@ exports[`ConfirmationView should render correctly 2`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
         Array [
@@ -89,11 +96,16 @@ exports[`ConfirmationView should render correctly 2`] = `
       }
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -115,6 +127,7 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
         textDecoration={null}
       />
     </Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
     <ThankYouComponent
       fullfillmentCenterData={
         Array [
@@ -146,11 +159,16 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
       }
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
+    onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Styled(ScrollViewMock)>
 `;

@@ -111,7 +111,12 @@ function cardNumberForTypeValidator(value, param, linkedProps) {
 
 function plccEnabledValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
-  return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
+  // For PLCC card it was returning false and then UI shows the error, which should not happen.
+  // Added PLCC card option for this.
+  return (
+    !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]) ||
+    linkedProps[0] === 'PLACE CARD'
+  );
 }
 
 // TODO - Add test case (Ajay Saini)
@@ -129,6 +134,19 @@ function emailValidator(value) {
   return /^(\s*)([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)(\s*)$/.test(
     value
   );
+}
+
+function multiEmailsValidator(values) {
+  const valuesArr = (values || '').split(',');
+  let isValid = true;
+
+  valuesArr.map(value => {
+    const localvalue = value.trim();
+    isValid = isValid && (!localvalue || emailValidator(localvalue));
+    return isValid;
+  });
+
+  return isValid;
 }
 
 function matchEmailValidator(value, param, linkedPropsValues, linkedFieldsValues) {
@@ -242,6 +260,7 @@ const validatorMethods = {
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,
   userBirthday: userBirthdayValidator,
+  multiEmails: multiEmailsValidator,
 };
 
 export default validatorMethods;

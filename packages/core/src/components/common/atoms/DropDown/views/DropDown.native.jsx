@@ -15,6 +15,7 @@ import {
   StyledLabel,
   SelectedLabelView,
   HeaderItemContainer,
+  FlatListWrapper,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -43,6 +44,7 @@ class DropDown extends React.PureComponent<Props> {
     selectedItemFontWeight: PropTypes.string,
     dropDownItemFontWeight: PropTypes.string,
     openDropdownOnLoad: PropTypes.bool,
+    isAnimateList: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -57,6 +59,7 @@ class DropDown extends React.PureComponent<Props> {
     selectedItemFontWeight: 'semibold',
     dropDownItemFontWeight: 'semibold',
     openDropdownOnLoad: false,
+    isAnimateList: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -118,11 +121,13 @@ class DropDown extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    const { isAnimateList } = this.props;
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList ? 300 : 0);
   }
 
   componentDidUpdate() {
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    const { isAnimateList } = this.props;
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList ? 300 : 0);
   }
 
   /**
@@ -182,7 +187,7 @@ class DropDown extends React.PureComponent<Props> {
     this.setState({
       flatListHeight: listHeight,
       flatListTop: listMargin,
-      dropDownIsOpen: openDropdownOnLoad,
+      ...(openDropdownOnLoad && { dropDownIsOpen: openDropdownOnLoad }),
     });
   };
 
@@ -198,12 +203,18 @@ class DropDown extends React.PureComponent<Props> {
     }
 
     return (
-      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
+      <DropDownItemContainer
+        onPress={() => this.onDropDownItemClick(item)}
+        style={itemStyle}
+        // eslint-disable-next-line react-native-a11y/has-valid-accessibility-role
+        accessibilityRole="combobox"
+        accessibilityLabel={label}
+      >
         {typeof label !== 'function' ? (
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs13"
-            textAlign={variation === 'primary' ? 'center' : ''}
+            textAlign={variation === 'primary' || variation === 'secondary' ? 'center' : ''}
             color={itemStyle.color}
             fontWeight={dropDownItemFontWeight}
             text={label}
@@ -219,8 +230,6 @@ class DropDown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
-    const { openDropdownOnLoad } = this.props;
-    if (openDropdownOnLoad) return;
     this.setState({
       dropDownIsOpen: true,
     });
@@ -250,15 +259,17 @@ class DropDown extends React.PureComponent<Props> {
    * Close the drop down
    */
   closeDropDown = () => {
-    const { onPressOut } = this.props;
-    this.setState({
-      dropDownIsOpen: false,
-    });
-    if (onPressOut) {
-      setTimeout(() => {
-        onPressOut();
-      }, 180);
-    }
+    this.setState(
+      {
+        dropDownIsOpen: false,
+      },
+      () => {
+        const { onPressOut } = this.props;
+        if (onPressOut) {
+          onPressOut();
+        }
+      }
+    );
   };
 
   render() {
@@ -270,37 +281,47 @@ class DropDown extends React.PureComponent<Props> {
       disabled,
       arrowImageStyle,
       selectedItemFontWeight,
+      openDropdownOnLoad,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
         {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
-        <Row
-          {...this.props}
-          onPress={this.openDropDown}
-          ref={ref => {
-            this.rowMarker = ref;
-          }}
-          pointerEvents={disabled ? 'none' : 'auto'}
-        >
-          {typeof selectedLabelState !== 'function' ? (
-            <HeaderContainer>
-              <BodyCopy
-                mobileFontFamily="secondary"
-                fontSize="fs13"
-                textAlign="center"
-                color="gray.800"
-                fontWeight={selectedItemFontWeight}
-                text={selectedLabelState}
-              />
-            </HeaderContainer>
-          ) : (
-            <HeaderItemContainer>
-              <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
-            </HeaderItemContainer>
-          )}
-          <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
-        </Row>
+        {openDropdownOnLoad ? (
+          <Row
+            ref={ref => {
+              this.rowMarker = ref;
+            }}
+          />
+        ) : (
+          <Row
+            {...this.props}
+            onPress={this.openDropDown}
+            ref={ref => {
+              this.rowMarker = ref;
+            }}
+            pointerEvents={disabled ? 'none' : 'auto'}
+          >
+            {typeof selectedLabelState !== 'function' ? (
+              <HeaderContainer>
+                <BodyCopy
+                  mobileFontFamily="secondary"
+                  fontSize="fs13"
+                  textAlign="center"
+                  color="gray.800"
+                  fontWeight={selectedItemFontWeight}
+                  text={selectedLabelState}
+                />
+              </HeaderContainer>
+            ) : (
+              <HeaderItemContainer>
+                <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
+              </HeaderItemContainer>
+            )}
+            <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
+          </Row>
+        )}
+
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity
             accessible
@@ -323,16 +344,18 @@ class DropDown extends React.PureComponent<Props> {
                 width: this.rowFrame.width,
               }}
             >
-              {dropDownIsOpen && (
-                <FlatList
-                  data={data}
-                  renderItem={this.dropDownLayout}
-                  keyExtractor={item => item.key}
-                  bounces={bounces}
-                  style={{ height: flatListHeight }}
-                  ItemSeparatorComponent={() => <Separator />}
-                />
-              )}
+              <FlatListWrapper width={this.rowFrame.width} height={flatListHeight}>
+                {dropDownIsOpen && (
+                  <FlatList
+                    data={data}
+                    renderItem={this.dropDownLayout}
+                    keyExtractor={item => item.key}
+                    bounces={bounces}
+                    style={{ height: flatListHeight }}
+                    ItemSeparatorComponent={() => <Separator />}
+                  />
+                )}
+              </FlatListWrapper>
             </OverLayView>
           </TouchableOpacity>
         </Modal>

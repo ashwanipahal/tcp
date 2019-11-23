@@ -3,15 +3,19 @@ import { css } from 'styled-components';
 export const modalStyles = css`
   .close-modal {
     margin-right: 5px;
+    ${props => (props.isRtpsFlow ? 'display:none' : '')};
   }
-
+  .apply-now-heading {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0px
+      ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
   }
 
-  .TCPModal__InnerContent {
+  div.TCPModal__InnerContent {
     text-align: center;
-    > h2 {
+    div > h2 {
       ::after {
         content: '§';
         display: inline-block;
@@ -133,6 +137,10 @@ export const modalStyles = css`
 
   .footerLink {
     margin-left: 28px;
+  }
+
+  div.TCPModal__InnerContent.plcc_modal_content {
+    height: 100vh;
   }
 `;
 

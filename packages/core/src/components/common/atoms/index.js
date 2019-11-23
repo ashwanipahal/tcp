@@ -18,6 +18,7 @@ import Skeleton from './Skeleton';
 import BackToTop from './BackToTop';
 import PLPSkeleton from './PLPSkeleton';
 import Spinner from './Spinner';
+import TextArea from './TextArea';
 
 export {
   Anchor,
@@ -40,4 +41,5 @@ export {
   BackToTop,
   PLPSkeleton,
   Spinner,
+  TextArea,
 };

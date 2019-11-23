@@ -7,7 +7,7 @@ exports[`Header component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKVCRD",
+        "componentId": "sc-iqzUVk",
         "isStatic": false,
         "rules": Array [
           "
@@ -65,6 +65,14 @@ exports[`Header component renders correctly 1`] = `
     -webkit-transition: top 0.1s ease-in;
     transition: top 0.1s ease-in;
   }
+  .top-promo-banner {
+    display: none;
+    @media ",
+          [Function],
+          " {
+      display: block;
+    }
+  }
 ",
           ";
 ",
@@ -73,7 +81,7 @@ exports[`Header component renders correctly 1`] = `
       "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKVCRD",
+      "styledComponentId": "sc-iqzUVk",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

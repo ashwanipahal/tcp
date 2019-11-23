@@ -120,7 +120,15 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
  * @description - showcases user already holds a plcc card.
  */
 
-const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal) => {
+const footerBottom = (
+  plccData,
+  labels,
+  approvedPLCCData,
+  bagItems,
+  navigation,
+  togglePLCCModal,
+  isRtpsFlow
+) => {
   const totalSavings = fetchTotalSavingOnOrder(plccData, approvedPLCCData);
   return (
     <React.Fragment>
@@ -142,25 +150,31 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
             color="white"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             onPress={() => {
-              toggleModal();
-              navigation.navigate('bag');
+              togglePLCCModal({ isPLCCModalOpen: false, status: null });
+              if (!isRtpsFlow) {
+                navigation.navigate('bag');
+              } else {
+                navigation.goBack();
+              }
             }}
             width="100%"
           />
         </ButtonWrapper>
       ) : null}
-      <CheckoutButtonWrapper>
-        <Button
-          fill={bagItems ? 'WHITE' : 'BLUE'}
-          type="submit"
-          color={bagItems ? 'black' : 'white'}
-          text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-          width="100%"
-        />
-      </CheckoutButtonWrapper>
+      {!isRtpsFlow && (
+        <CheckoutButtonWrapper>
+          <Button
+            fill={bagItems ? 'WHITE' : 'BLUE'}
+            type="submit"
+            color={bagItems ? 'black' : 'white'}
+            text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+            width="100%"
+          />
+        </CheckoutButtonWrapper>
+      )}
       <BottomContainer>
         <StyledBodyCopy
           fontSize="fs10"
@@ -195,7 +209,8 @@ const ApprovedPLCCApplicationView = ({
   approvedPLCCData,
   isGuest,
   navigation,
-  toggleModal,
+  togglePLCCModal,
+  isRtpsFlow,
 }) => {
   const viewRef = useRef(null);
   const [bagItems, setBagItems] = useState(0);
@@ -244,7 +259,15 @@ const ApprovedPLCCApplicationView = ({
         )}
       </ShippingInfoWrapper>
       {getCouponBody(plccData, labels, approvedPLCCData)}
-      {footerBottom(plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal)}
+      {footerBottom(
+        plccData,
+        labels,
+        approvedPLCCData,
+        bagItems,
+        navigation,
+        togglePLCCModal,
+        isRtpsFlow
+      )}
     </ScrollViewContainer>
   );
 };
@@ -255,7 +278,12 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   navigation: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+};
+
+ApprovedPLCCApplicationView.defaultProps = {
+  isRtpsFlow: false,
 };
 
 export default ApprovedPLCCApplicationView;

@@ -3,10 +3,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import { APP_TYPE } from '../../../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.constants';
 import {
   ImgWrapper,
   ImageBrandStyle,
@@ -43,26 +45,41 @@ const heart = require('../../../../../../../assets/heart.png');
  * @param {*} productDetail - details of product for pdp
  * @param {*} navigation - navigation
  */
-const goToPdpPage = (title, productDetail, navigation) => {
+const goToPdpPage = (title, productDetail, navigation, updateAppTypeHandler) => {
   const currentAppBrand = getBrand();
   const {
     productInfo: { pdpUrl, productPartNumber },
     itemInfo: { itemBrand },
   } = productDetail;
   const isProductBrandOfSameDomain = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
-  if (!isProductBrandOfSameDomain) {
-    return;
-  }
   const pdpAsPathUrl = pdpUrl.split('/p/')[1];
-  navigation.navigate('ProductDetail', {
-    title,
-    pdpUrl: pdpAsPathUrl,
-    selectedColorProductId: productPartNumber,
-    reset: true,
-  });
+  if (!isProductBrandOfSameDomain) {
+    updateAppTypeHandler({
+      type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
+      params: {
+        title,
+        pdpUrl: pdpAsPathUrl,
+        selectedColorProductId: productPartNumber,
+        reset: true,
+      },
+    });
+  } else {
+    navigation.navigate('ProductDetail', {
+      title,
+      pdpUrl: pdpAsPathUrl,
+      selectedColorProductId: productPartNumber,
+      reset: true,
+    });
+  }
 };
 
-const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigation) => {
+const CartItemImageWrapper = (
+  productDetail,
+  labels,
+  showOnReviewPage,
+  navigation,
+  updateAppTypeHandler
+) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
@@ -73,7 +90,7 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigatio
         /> */}
         <ImageTouchableOpacity
           onPress={() => {
-            goToPdpPage('', productDetail, navigation);
+            goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
           }}
         >
           <DamImage
@@ -150,14 +167,14 @@ const getEditError = (productDetail, labels) => {
   );
 };
 
-const PriceOnReviewPage = (currencySymbol, productDetail) => {
+const PriceOnReviewPage = productDetail => {
   return (
     <ProductListPriceOnReview>
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight={['semibold']}
-        text={`${currencySymbol}${productDetail.itemInfo.price}`}
+        text={<PriceCurrency price={productDetail.itemInfo.price} />}
       />
     </ProductListPriceOnReview>
   );
@@ -172,7 +189,7 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = (productDetail, showOnReviewPage, navigation) => {
+const getProductName = (productDetail, showOnReviewPage, navigation, updateAppTypeHandler) => {
   return (
     <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
@@ -182,7 +199,7 @@ const getProductName = (productDetail, showOnReviewPage, navigation) => {
         fontWeight={['semibold']}
         text={productDetail.itemInfo.name}
         onPress={() => {
-          goToPdpPage('', productDetail, navigation);
+          goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
         }}
       />
     </ProductName>
@@ -241,67 +258,32 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
-const handleEditCartItemWithStore = (
-  changeStoreType,
-  openSkuSelectionForm = false,
-  openRestrictedModalForBopis = false,
-  props
+const getCartRadioButtons = (
+  {
+    productDetail,
+    labels,
+    itemIndex,
+    openedTile,
+    setSelectedProductTile,
+    isBagPageSflSection,
+    showOnReviewPage,
+    isEcomSoldout,
+    isECOMOrder,
+    isBOSSOrder,
+    isBOPISOrder,
+    noBopisMessage,
+    noBossMessage,
+    bossDisabled,
+    bopisDisabled,
+    isBossEnabled,
+    isBopisEnabled,
+    orderId,
+    setShipToHome,
+    pickupStoresInCart,
+    autoSwitchPickupItemInCart,
+  },
+  handleEditCartItemWithStore
 ) => {
-  const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = props;
-  const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
-  const { store, orderItemType } = productDetail.miscInfo;
-  const { productPartNumber } = productDetail.productInfo;
-  const isItemShipToHome = !store;
-  const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
-  const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  if (clearToggleError) {
-    clearToggleError();
-  }
-  onPickUpOpenClick({
-    colorProductId: productPartNumber,
-    orderInfo: {
-      orderItemId: itemId,
-      Quantity: qty,
-      color,
-      Size: size,
-      Fit: fit,
-      orderId,
-      orderItemType,
-      itemBrand,
-    },
-    openSkuSelectionForm,
-    isBopisCtaEnabled,
-    isBossCtaEnabled,
-    isItemShipToHome,
-    alwaysSearchForBOSS,
-    openRestrictedModalForBopis,
-  });
-};
-
-const getCartRadioButtons = ({
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection,
-  showOnReviewPage,
-  isEcomSoldout,
-  isECOMOrder,
-  isBOSSOrder,
-  isBOPISOrder,
-  noBopisMessage,
-  noBossMessage,
-  bossDisabled,
-  bopisDisabled,
-  isBossEnabled,
-  isBopisEnabled,
-  orderId,
-  onPickUpOpenClick,
-  setShipToHome,
-  pickupStoresInCart,
-}) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
@@ -322,10 +304,10 @@ const getCartRadioButtons = ({
         isBossEnabled={isBossEnabled}
         isBopisEnabled={isBopisEnabled}
         openPickUpModal={handleEditCartItemWithStore}
-        onPickUpOpenClick={onPickUpOpenClick}
-        orderId={orderId}
         setShipToHome={setShipToHome}
         pickupStoresInCart={pickupStoresInCart}
+        autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+        orderId={orderId}
       />
     );
   }
@@ -350,10 +332,10 @@ getCartRadioButtons.propTypes = {
   bopisDisabled: PropTypes.bool.isRequired,
   isBossEnabled: PropTypes.bool.isRequired,
   isBopisEnabled: PropTypes.bool.isRequired,
-  orderId: PropTypes.string.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
   setShipToHome: PropTypes.func.isRequired,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
+  autoSwitchPickupItemInCart: PropTypes.func.isRequired,
+  orderId: PropTypes.number.isRequired,
 };
 
 /**
@@ -417,14 +399,17 @@ renderUnavailableErrorMessage.propTypes = {
   availability: PropTypes.string.isRequired,
 };
 
-const callEditMethod = props => {
+const callEditMethod = (props, handleEditCartItemWithStore, isBagPageSflSection = false) => {
   const { productDetail, onQuickViewOpenClick } = props;
   const {
     miscInfo: { orderItemType },
     productInfo: { productPartNumber },
   } = productDetail;
-  if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
-    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+  if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
+    const { itemId, qty, color, size, fit, itemBrand, isGiftItem } = productDetail.itemInfo;
+    const {
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
     onQuickViewOpenClick({
       colorProductId: productPartNumber,
       orderInfo: {
@@ -434,11 +419,14 @@ const callEditMethod = props => {
         selectedSize: size,
         selectedFit: fit,
         itemBrand,
+        skuId: isGiftItem ? generalProductId : skuId,
       },
+      fromBagPage: true,
+      isSflProduct: isBagPageSflSection,
     });
   } else {
     const openSkuSelectionForm = true;
-    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, false, props);
+    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, false);
   }
 };
 
@@ -512,7 +500,6 @@ export default {
   getCartRadioButtons,
   renderUnavailableErrorMessage,
   callEditMethod,
-  handleEditCartItemWithStore,
   onSwipeComplete,
   renderImage,
   renderTogglingError,

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -14,16 +16,44 @@ import { getLocator } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  componentDidMount() {
+    const {
+      isPayPalHidden,
+      showAddTobag,
+      checkoutServerError,
+      clearCheckoutServerError,
+    } = this.props;
+    if (isPayPalHidden && showAddTobag && checkoutServerError) {
+      clearCheckoutServerError({});
+    }
+  }
+
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    const {
+      showAddTobag,
+      containerId,
+      isBagPageStickyHeader,
+      isPayPalHidden,
+      paypalButtonHeight,
+      setIsPaypalBtnHidden,
+    } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
     }
+    if (showAddTobag && isPayPalHidden) {
+      setIsPaypalBtnHidden(false);
+    }
     return (
-      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerID} />
-      </div>
+      !isPayPalHidden && (
+        <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+          <PayPalButton
+            className="payPal-button"
+            containerId={containerID}
+            height={paypalButtonHeight}
+          />
+        </div>
+      )
     );
   }
 
@@ -36,23 +66,41 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getCheckoutButton() {
-    const { labels, handleCartCheckout, isEditingItem } = this.props;
+    const {
+      labels,
+      handleCartCheckout,
+      isEditingItem,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
+    } = this.props;
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <Button
-        data-locator={getLocator('addedtobag_btncheckout')}
-        className="checkout"
-        onClick={() => handleCartCheckout(isEditingItem)}
-      >
-        <BodyCopy
-          component="span"
-          color="white"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize="fs14"
+      <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
+        <Button
+          data-locator={getLocator('addedtobag_btncheckout')}
+          className="checkout"
+          onClick={() => {
+            setClickAnalyticsDataCheckout({
+              customEvents: ['event8'],
+              products: productsData,
+            });
+            handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
+          }}
         >
-          {labels.checkout}
-        </BodyCopy>
-      </Button>
+          <BodyCopy
+            component="span"
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
+            {labels.checkout}
+          </BodyCopy>
+        </Button>
+      </ClickTracker>
     );
   }
 
@@ -124,13 +172,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
           {this.getCheckoutButton()}
           <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
-        {checkoutServerError && (
+        {(checkoutServerError || venmoError) && (
           <Row className="elem-mt-MED">
             <ErrorMessage
-              error={checkoutServerError.errorMessage}
+              error={venmoError || checkoutServerError.errorMessage}
               className="addBagActions-error"
             />
-            {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </Row>
         )}
       </div>
@@ -149,6 +196,12 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  paypalButtonHeight: PropTypes.number,
+  isAddedToBag: PropTypes.bool,
+  isBagPage: PropTypes.bool,
+  isMiniBag: PropTypes.bool,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
@@ -156,6 +209,10 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  paypalButtonHeight: 48,
+  isAddedToBag: false,
+  isBagPage: false,
+  isMiniBag: false,
 };
 
 export default withStyles(AddedToBagActions, style);

@@ -4,7 +4,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../Offers.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import RichText from '../../../../../../common/atoms/RichText';
+import Espot from '../../../../../../common/molecules/Espot';
 
 const Offers = ({ labels, className }) => {
   return (
@@ -17,7 +17,7 @@ const Offers = ({ labels, className }) => {
             medium: 8,
           }}
         >
-          <RichText richTextHtml={labels.ACC_PAYMNET_BANNER_LABEL} />
+          <Espot richTextHtml={labels.ACC_PAYMNET_BANNER_LABEL} />
         </Col>
       </Row>
     </div>

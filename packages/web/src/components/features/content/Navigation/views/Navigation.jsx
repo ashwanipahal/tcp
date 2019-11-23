@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import { plpRoutingHandling } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
@@ -28,7 +29,7 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
   if (isDrawerOpen) {
     closeNavigationDrawer();
   }
-  document.getElementById(`default_spinner_overlay`).classList.add(`show-default-spinner`);
+  // document.getElementById(`default_spinner_overlay`).classList.add(`show-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
 };
 
 /**
@@ -40,7 +41,7 @@ const handleRouteComplete = url => {
     localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
-  document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`);
+  // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
   const filterParam =
     params.has(FILTER_CATAGORY) ||
     params.has(FILTER_COLOR) ||
@@ -60,9 +61,13 @@ const handleRouteComplete = url => {
    */
   const checkSearchPageParam =
     url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
-
+  const gethandleRemoveFilter = localStorage.getItem('handleRemoveFilter');
+  const plpPageCheck = url.match(/\/c\//g);
+  const filterId = document.getElementById('filterWrapper');
   if (!checkListingPageParam && !checkSearchPageParam) {
-    window.scrollTo(0, 0);
+    if (document.getElementById('filterWrapper') && gethandleRemoveFilter) {
+      plpRoutingHandling(filterId);
+    } else if (!plpPageCheck) window.scrollTo(0, 0);
   } else {
     localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
     localStorage.removeItem(CLEAR_ALL_PLP_FILTER);
@@ -119,9 +124,7 @@ const Navigation = props => {
     isDrawerOpen,
   } = props;
 
-  useEffect(() => {
-    registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen);
-  }, [closeNavigationDrawer, isDrawerOpen]);
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
   useEffect(registerExtoleScript, [isDrawerOpen]);
   return (
     <Drawer

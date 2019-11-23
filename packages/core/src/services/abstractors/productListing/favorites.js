@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, parseBoolean, getBrand } from '@tcp/core/src/utils';
 import {
@@ -27,7 +28,14 @@ export const AVAILABILITY = {
 };
 
 const addItemToWishlist = wishlistDetails => {
-  const { wishListId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
+  const {
+    wishListId,
+    skuIdOrProductId,
+    quantity,
+    isProduct,
+    uniqueId,
+    errorMapping,
+  } = wishlistDetails;
   const payload = {
     header: {
       externalId: wishListId,
@@ -61,6 +69,14 @@ const addItemToWishlist = wishlistDetails => {
     })
     .catch(err => {
       logger.error('err', err);
+      const errorMssg = getFormattedError(err, errorMapping);
+      return {
+        errorMessage:
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (errorMapping && errorMapping.DEFAULT) ||
+          '',
+      };
     });
 };
 
@@ -100,7 +116,7 @@ export const getUserWishLists = userName => {
             displayName: wishlist.nameIdentifier,
             isDefault: wishlist.status === 'Default',
             itemsCount: wishlist.itemCount,
-            shareableLink: `${assetHost}/${siteId}/favorites?wishlistId=${
+            shareableLink: `${assetHost}${siteId}/favorites?wishlistId=${
               wishlist.giftListExternalIdentifier
             }&guestAccessKey=${wishlist.guestAccessKey}`,
           };
@@ -177,7 +193,7 @@ const getExistingImagesNames = (imageSuffixesArray, baseUrl) => {
 
 const getExtraImages = (imagePath, extraSizes, imageGenerator) => {
   const { productImages } = imageGenerator(imagePath);
-  const { assetHost, productAssetPath = `ecom/assets/products/${getBrand()}` } = getAPIConfig();
+  const { assetHost, productAssetPath = `v1/ecom/assets/products/${getBrand()}` } = getAPIConfig();
   const baseImgPath = `${assetHost}/w_320/${productAssetPath}/${productImages[125]}`;
   return getExistingImagesNames(extraSizes || ['', '-1', '-2', '-3', '-4', '-5'], baseImgPath).then(
     existingSuffixes =>

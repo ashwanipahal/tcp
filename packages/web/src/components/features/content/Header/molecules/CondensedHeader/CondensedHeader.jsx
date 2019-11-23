@@ -5,7 +5,13 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
+import {
+  getBrand,
+  getIconPath,
+  isGymboree,
+  routerPush,
+  getViewportInfo,
+} from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
@@ -97,6 +103,34 @@ class CondensedHeader extends React.PureComponent {
     }
   };
 
+  getNavigation = () => {
+    const {
+      userName,
+      userPoints,
+      userRewards,
+      closeNavigationDrawer,
+      navigationDrawer,
+    } = this.props;
+    return getViewportInfo().isDesktop ? (
+      <div className="condensed-navigation">
+        <Navigation
+          openNavigationDrawer={navigationDrawer.open}
+          closeNavigationDrawer={!navigationDrawer.open}
+          closeNav={closeNavigationDrawer}
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+        />
+      </div>
+    ) : null;
+  };
+
+  getImgSrc = navigationDrawer => {
+    return navigationDrawer.open
+      ? '/static/images/mobile-close-dark.svg'
+      : '/static/images/grey-menu.svg';
+  };
+
   render() {
     const {
       className,
@@ -105,8 +139,7 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      userPoints,
-      userRewards,
+
       labels,
     } = this.props;
     const brand = getBrand();
@@ -117,6 +150,7 @@ class CondensedHeader extends React.PureComponent {
       cartItemCount,
       fromCondensedHeader,
       isFullSizeSearchModalOpen,
+      isLoggedIn,
     } = this.state;
     const {
       accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
@@ -127,11 +161,7 @@ class CondensedHeader extends React.PureComponent {
           <div className="content-wrapper">
             <div className="condensed-hamburger-menu">
               <Image
-                src={
-                  navigationDrawer.open
-                    ? '/static/images/mobile-close-dark.svg'
-                    : '/static/images/grey-menu.svg'
-                }
+                src={this.getImgSrc(navigationDrawer)}
                 alt={hamburgerMenu}
                 tabIndex="0"
                 role="button"
@@ -159,16 +189,7 @@ class CondensedHeader extends React.PureComponent {
               dataLocator={config[brand].dataLocator}
               imgSrc={config[brand].imgSrc}
             />
-            <div className="condensed-navigation">
-              <Navigation
-                openNavigationDrawer={navigationDrawer.open}
-                closeNavigationDrawer={!navigationDrawer.open}
-                closeNav={closeNavigationDrawer}
-                userName={userName}
-                userPoints={userPoints}
-                userRewards={userRewards}
-              />
-            </div>
+            {this.getNavigation()}
             <div className="condensed-header-icons">
               {isFullSizeSearchModalOpen ? (
                 <Modal
@@ -206,7 +227,7 @@ class CondensedHeader extends React.PureComponent {
                 />
               )}
 
-              {userName ? (
+              {userName && isLoggedIn ? (
                 <React.Fragment>
                   <BodyCopy
                     id="accountDrawer"

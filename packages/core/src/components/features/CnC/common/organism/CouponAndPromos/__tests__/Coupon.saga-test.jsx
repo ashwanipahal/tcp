@@ -24,6 +24,7 @@ describe('Coupon saga', () => {
   it('should dispatch showLoader applyCoupon action', () => {
     const payload = { formPromise: {}, formData: {}, source: '' };
     const applyCouponSaga = applyCoupon({ payload });
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(
@@ -40,6 +41,8 @@ describe('Coupon saga', () => {
       source: '',
     };
     const applyCouponSaga = applyCoupon({ payload });
+    applyCouponSaga.next();
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     applyCouponSaga.next();
@@ -57,6 +60,8 @@ describe('Coupon saga', () => {
       source: 'data',
     };
     const applyCouponSaga = applyCoupon({ payload });
+    applyCouponSaga.next();
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     applyCouponSaga.next();
@@ -73,6 +78,8 @@ describe('Coupon saga', () => {
       coupon: couponData,
     };
     const removeCouponSaga = removeCoupon({ payload });
+    removeCouponSaga.next();
+
     expect(removeCouponSaga.next().value).toEqual(put(showLoader()));
     removeCouponSaga.next();
     removeCouponSaga.next();
@@ -106,6 +113,8 @@ describe('Coupon saga', () => {
 
     it('should dispatch setCouponList on success', () => {
       gen.next();
+      gen.next();
+
       const putDescriptor = gen.next({}).value;
       expect(putDescriptor).toEqual(put(setCouponList({})));
     });

@@ -1,29 +1,42 @@
-import { fromJS } from 'immutable';
 import BUNDLEPRODUCT_CONSTANTS from './BundleProduct.constants';
 import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 
-const initialState = fromJS({
+const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
-});
-
-const getDefaultState = state => {
-  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  if (state instanceof Object) {
-    return fromJS(state);
-  }
-  return state;
 };
 
 const BundleProductReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { payload = {}, type } = action;
+  switch (type) {
     case BUNDLEPRODUCT_CONSTANTS.SET_BUNDLE_DETAILS:
-      return state
-        .set('currentProduct', action.payload.product)
-        .set('breadCrumbs', action.payload.breadCrumbs);
+      return { ...state, currentProduct: { ...payload.product }, breadCrumbs: payload.breadCrumbs };
     case BUNDLEPRODUCT_CONSTANTS.SET_BUNDLE_PRODUCTS_DETAILS:
-      return state.set('currentBundle', action.payload);
+      return { ...state, currentBundle: action.payload };
+    case BUNDLEPRODUCT_CONSTANTS.CLEAR_BUNDLE_DETAILS:
+      return { ...state, currentProduct: null, currentBundle: null };
+    case BUNDLEPRODUCT_CONSTANTS.SET_ADD_TO_FAVORITE:
+      // eslint-disable-next-line no-case-declarations
+      let bundleMap = state.currentBundle;
+      // eslint-disable-next-line consistent-return
+      bundleMap = bundleMap.map(bundles => {
+        // eslint-disable-next-line no-param-reassign
+        bundles.products.colorFitsSizesMap = bundles.products.colorFitsSizesMap.map(item => {
+          if (item.colorDisplayId === action.payload.colorProductId) {
+            // eslint-disable-next-line no-param-reassign
+            item = {
+              ...item,
+              isFavorite: true,
+              favoritedCount: action.payload.res && action.payload.res.favoritedCount,
+            };
+          }
+          return item;
+        });
+        return bundles;
+      });
+
+      return { ...state, currentBundle: bundleMap };
     default:
-      return getDefaultState(state);
+      return { ...state };
   }
 };
 

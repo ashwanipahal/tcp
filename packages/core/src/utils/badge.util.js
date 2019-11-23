@@ -140,7 +140,49 @@ export const checkMatchingFamily = (matchingFamily, excludeBadge, siteAttributes
   return false;
 };
 
-export const extractPrioritizedBadge = (product, siteAttributes, categoryType, excludeBadge) => {
+// function
+function getAllLangConsts(categoryType) {
+  return Object.keys(categoryType).map(key => categoryType[key]);
+}
+
+/* Below functions are used to check whether to show/hide clearance/New Arrivals/Online Only badges in both en and translated sites.
+Doing this as motion point is translating the categories in the redux store */
+export const LANG_STRINGS = {
+  PRODUCTS: {
+    ATTRIBUTES: {
+      CLEARANCE: {
+        en: 'Clearance',
+        fr: 'Liquidation',
+        es: 'Liquidación',
+      },
+      ONLINE_ONLY: {
+        en: 'Online Only',
+        fr: 'Online Only', // Added english word as we dont have online only for ca-fr
+        es: 'Solo en línea',
+      },
+      NEW_ARRIVALS: {
+        en: 'New Arrivals',
+        fr: 'Nouveautés',
+        es: 'Novedades',
+      },
+    },
+  },
+};
+
+// function to select the corresponding category
+export function getClearanceString(categoryType) {
+  return getAllLangConsts(LANG_STRINGS.PRODUCTS.ATTRIBUTES[categoryType]);
+}
+
+// DT-708
+// eslint-disable-next-line complexity
+export function extractPrioritizedBadge(
+  product,
+  siteAttributes,
+  categoryType,
+  excludeBadge,
+  hidePdpBadge
+) {
   const matchingCategory = extractAttributeValue(product, siteAttributes.matchingCategory);
   const matchingFamily = extractAttributeValue(product, siteAttributes.matchingFamily);
   const isGlowInTheDark = parseBoolean(
@@ -150,28 +192,38 @@ export const extractPrioritizedBadge = (product, siteAttributes, categoryType, e
     extractAttributeValue(product, siteAttributes.limitedQuantity) === 'limited quantities';
   const isOnlineOnly = parseBoolean(extractAttributeValue(product, siteAttributes.onlineOnly));
   const clearanceOrNewArrival = extractAttributeValue(product, siteAttributes.clearance);
-  const badges = {
-    matchBadge: false,
-    defaultBadge: '',
-  };
+  const bundleBadge = !hidePdpBadge
+    ? extractAttributeValue(product, siteAttributes.bundleChecklist)
+    : '';
+  const badges = {};
 
-  badges.matchBadge = checkMatchingFamily(matchingFamily, excludeBadge, siteAttributes);
+  if (matchingFamily && excludeBadge !== siteAttributes.matchingFamily) {
+    badges.matchBadge = matchingFamily;
+  }
 
-  if (matchingCategory) {
+  if (bundleBadge) {
+    badges.defaultBadge = bundleBadge;
+  } else if (matchingCategory) {
     badges.defaultBadge = matchingCategory;
   } else if (isGlowInTheDark) {
     badges.defaultBadge = 'GLOW-IN-THE-DARK';
   } else if (isLimitedQuantity) {
     badges.defaultBadge = 'JUST A FEW LEFT!';
-  } else if (isOnlineOnly && categoryType !== 'Online Only') {
+  } else if (isOnlineOnly && !getClearanceString('ONLINE_ONLY').includes(categoryType)) {
     // TDB: node missing in service response, need to check it's possible values
     badges.defaultBadge = 'ONLINE EXCLUSIVE';
-  } else if (clearanceOrNewArrival === 'Clearance' && categoryType !== 'Clearance') {
+  } else if (
+    clearanceOrNewArrival === 'Clearance' &&
+    !getClearanceString('CLEARANCE').includes(categoryType)
+  ) {
     // TDB: node missing in service response, need to check it's possible values
     badges.defaultBadge = 'CLEARANCE';
-  } else if (clearanceOrNewArrival === 'New Arrivals' && categoryType !== 'New Arrivals') {
+  } else if (
+    clearanceOrNewArrival === 'New Arrivals' &&
+    !getClearanceString('NEW_ARRIVALS').includes(categoryType)
+  ) {
     // TDB: node missing in service response, need to check it's possible values
     badges.defaultBadge = 'NEW!';
   }
   return badges;
-};
+}

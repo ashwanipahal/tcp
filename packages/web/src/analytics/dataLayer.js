@@ -1,5 +1,11 @@
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
+import {
+  generateBrowseDataLayer,
+  generateHomePageDataLayer,
+  generateClickHandlerDataLayer,
+} from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -21,25 +27,60 @@ import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
   const homepageDataLayer = generateHomePageDataLayer(store);
+  const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
+  const { pageCountCookieKey } = API_CONFIG;
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
+    ...clickHandlerDataLayer,
+    pageCount: {
+      get() {
+        return readCookie(pageCountCookieKey);
+      },
+    },
     pageName: {
       get() {
-        return `gl:${store.getState().pageData.pageName}`;
+        /* If clickActionAnalyticsData has pageName then this will be used else
+           pageName will used from pageData. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+
+        return `gl:${pageName}`;
       },
     },
 
-    pageshortName: {
+    isCurrentRoute: () => false,
+
+    pageShortName: {
       get() {
-        return store.getState().pageData.pageName;
+        /* If clickActionAnalyticsData has pageShortName then this will be used else
+           pageShortName will used from pageData. Also if pageShortName is not available then pageName will
+           be used. This is usually require when on some event you need
+           to override the pageName value. For instance, onClick event.
+         */
+        const { pageData, AnalyticsDataKey } = store.getState();
+
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageShortName = clickActionAnalyticsData.pageShortName
+          ? clickActionAnalyticsData.pageShortName
+          : pageData.pageShortName;
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+        return `gl:${pageShortName || pageName}`;
       },
     },
 
     pageType: {
       get() {
-        return store.getState().pageData.pageName;
+        const { pageData } = store.getState();
+        return pageData.pageType ? pageData.pageType : pageData.pageName;
       },
     },
 
@@ -75,27 +116,32 @@ export default function create(store) {
 
     customerType: {
       get() {
+        return store.getState().User.getIn(['personalData', 'isGuest'])
+          ? 'no rewards:guest'
+          : 'no rewards:logged in';
+      },
+    },
+
+    checkoutType: {
+      get() {
         return store
           .getState()
           .User.get('personalData')
           .get('isGuest')
-          ? 'no rewards:guest'
-          : 'rewards member:logged in';
+          ? 'guest'
+          : 'registered';
       },
     },
 
     userEmailAddress: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'emailAddress']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'emailAddress'], '');
       },
     },
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency;
+        return store.getState().APIConfig.currency.toUpperCase();
       },
     },
 
@@ -107,28 +153,27 @@ export default function create(store) {
 
     customerId: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('userId');
+        return store.getState().User.getIn(['personalData', 'userId'], '');
       },
     },
 
     customerFirstName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'firstName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'firstName'], '');
       },
     },
 
     customerLastName: {
       get() {
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
+      },
+    },
+
+    pageNavigationText: {
+      get() {
         return store
           .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'lastName']);
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
       },
     },
 
@@ -136,6 +181,31 @@ export default function create(store) {
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
+      },
+    },
+    cartType: {
+      get() {
+        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+        let typeCart = 'standard';
+        const isBopisOrder = orderDetails.get('isBopisOrder');
+        const isBossOrder = orderDetails.get('isBossOrder');
+        const isPickupOrder = orderDetails.get('isPickupOrder');
+        const isShippingOrder = orderDetails.get('isShippingOrder');
+        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+          typeCart = 'mix';
+        } else if (isBopisOrder && !isBossOrder) {
+          typeCart = 'bopis';
+        } else if (isBossOrder && !isBopisOrder) {
+          typeCart = 'boss';
+        }
+        return typeCart;
+      },
+    },
+    products: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
       },
     },
   });

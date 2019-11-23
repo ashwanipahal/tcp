@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BillingPaymentForm.style';
@@ -16,6 +17,7 @@ import utility, {
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
+  scrollToFirstError,
 } from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import DropdownList from './CreditCardDropdownList.view';
@@ -28,7 +30,6 @@ import {
   defaultProps,
   getCardOptions,
   onCCDropUpdateChange,
-  onAddNewCreditCardUpdate,
   getFormName,
   renderBillingAddressHeading,
 } from './BillingPaymentForm.view.util';
@@ -42,6 +43,7 @@ import {
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
+  onAddNewCreditCardClick,
 } from './BillingPaymentForm.util';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
@@ -62,16 +64,6 @@ export class BillingPaymentForm extends React.PureComponent {
   }
 
   /**
-   * @function onAddNewCreditCardClick
-   * @description sets the add new credit card state as true
-   */
-  onAddNewCreditCardClick = () => {
-    const { dispatch } = this.props;
-    this.setState({ addNewCCState: true });
-    onAddNewCreditCardUpdate(dispatch);
-  };
-
-  /**
    * @function getCreditCardDropDown
    * @description returns the  credit card list
    */
@@ -89,13 +81,13 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const { selectedOnFileAddressId, isSameAsShippingChecked } = this.props;
+    const { selectedOnFileAddressId, isSameAsShippingChecked, bagLoading } = this.props;
     const { isEditFormSameAsShippingChecked, editFormSelectedOnFileAddressId } = this.props;
     const { userAddresses, labels, cardList, isGuest, dispatch } = this.props;
     const { orderHasShipping, addressLabels, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
-    return (
+    return !bagLoading ? (
       <CheckoutBillingAddress
         shippingAddress={shippingAddress}
         isSameAsShippingChecked={
@@ -114,6 +106,8 @@ export class BillingPaymentForm extends React.PureComponent {
           (creditCardList && creditCardList.size === 0)
         }
       />
+    ) : (
+      <GenericSkeleton />
     );
   };
 
@@ -194,7 +188,7 @@ export class BillingPaymentForm extends React.PureComponent {
   getCCDropDown = ({ labels, creditCardList, onFileCardKey, selectedCard, editMode }) => {
     const { addNewCCState } = this.state;
     const { dispatch } = this.props;
-    const restCardParam = { addNewCC: this.onAddNewCreditCardClick, selectedCard };
+    const restCardParam = { addNewCC: () => onAddNewCreditCardClick(this), selectedCard };
     const cardParams = { creditCardList, labels, onFileCardKey, addNewCCState, ...restCardParam };
     const colSize = { large: 6, small: 6, medium: 10 };
     if (onFileCardKey) {
@@ -304,7 +298,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         className="field"
                         showSuccessCheck={false}
                         enableSuccessCheck={false}
-                        autocomplete="noautocomplete"
+                        autoComplete="off"
                       />
                       <span className="hide-show show-hide-icons">
                         <span className="info-icon-img-wrapper">
@@ -406,7 +400,6 @@ export class BillingPaymentForm extends React.PureComponent {
     const { paymentMethodId, orderHasShipping, backLinkPickup, isPayPalEnabled } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
-
     return (
       <form
         name={constants.FORM_NAME}
@@ -458,7 +451,11 @@ export class BillingPaymentForm extends React.PureComponent {
         />
         <CheckoutFooter
           hideBackLink
-          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          backLinkHandler={() =>
+            orderHasShipping
+              ? utility.routeToPage(CHECKOUT_ROUTES.shippingPage)
+              : utility.routeToPage(CHECKOUT_ROUTES.pickupPage)
+          }
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
@@ -479,6 +476,8 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(BillingPaymentForm, styles));
 export { BillingPaymentForm as BillingPaymentFormVanilla };

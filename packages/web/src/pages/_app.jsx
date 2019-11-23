@@ -9,7 +9,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import {
   createAPIConfig,
   getAPIConfig,
@@ -19,23 +19,24 @@ import {
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { HotfixBrowserContext } from '@tcp/core/src/components/common/context/HotfixContext';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
-import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import createDataLayer from '../analytics/dataLayer';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
-
+import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
 // constants
 import constants from '../constants';
 
@@ -45,6 +46,46 @@ function AnalyticsScript() {
   const handleLoad = () => performance && performance.mark('analytics_script_loaded');
   return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
 }
+
+/**
+ * TO update the payload in case component needs to be loaded at server side
+ * @param {} req
+ * @param {*} payload
+ * @param {*} Component
+ */
+const updatePayload = (req, payload, Component) => {
+  let updatedPayload = { ...payload };
+  const { pageInfo } = Component;
+  const { staticPage, paramName } = pageInfo || {};
+
+  // This check ensures this block is executed once since Component is not available in first call
+  if (pageInfo) {
+    updatedPayload = {
+      ...pageInfo,
+      ...updatedPayload,
+    };
+    // This will check when page has to be rendered at server side and includes multiple urls
+    if (staticPage && paramName) {
+      // staticPage - this var will be passed inside component pageinfo
+      // paramName - this keyword will have the variable name to page the page url from the request.
+      const dynamicPageName = req.params[paramName] || null;
+      if (!constants.staticPagesWithOwnTemplate.includes(dynamicPageName) && dynamicPageName) {
+        updatedPayload = { ...updatedPayload, name: dynamicPageName };
+      }
+    }
+    if (req && req.headers) {
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
+    }
+  }
+
+  return updatedPayload;
+};
 
 class TCPWebApp extends App {
   static siteConfigSet = false;
@@ -61,7 +102,7 @@ class TCPWebApp extends App {
     } catch (e) {
       globalProps = {};
     }
-    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
+    const pageProps = await TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -116,10 +157,14 @@ class TCPWebApp extends App {
   };
 
   componentDidMount() {
+    const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
+    window.testApp = payload => {
+      store.dispatch(SetTcpSegmentMethodCall(payload));
+    };
 
     try {
       if (isErrorReportingBrowserActive) {
@@ -136,14 +181,6 @@ class TCPWebApp extends App {
       }
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
-    }
-
-    /**
-     * This is where we assign window._dataLayer for analytics logic
-     */
-    if (process.env.ANALYTICS) {
-      // eslint-disable-next-line
-      global._dataLayer = createDataLayer(this.props.store);
     }
   }
 
@@ -176,12 +213,12 @@ class TCPWebApp extends App {
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
       const { locals } = res;
-      const { device = {} } = req;
+      const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
-      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
-      apiConfig.previewDate = query.preview_date;
+      apiConfig.previewDate = req.query.preview_date || '';
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -200,22 +237,18 @@ class TCPWebApp extends App {
           optimizelyHeadersObject[item] = optimizelyHeaderValue;
         });
       }
-
       payload = {
         siteConfig: true,
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
+        originalUrl,
       };
 
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
-      if (Component.pageInfo) {
-        payload = {
-          ...Component.pageInfo,
-          ...payload,
-        };
-      }
+      // This will be called when we need to include the layout call in bootstrap.
+      payload = updatePayload(req, payload, Component);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
@@ -226,11 +259,11 @@ class TCPWebApp extends App {
     return initialProps;
   }
 
-  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, req = {}, query = '' }, pageProps) {
     let compProps = {};
     if (Component.getInitialProps) {
       try {
-        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+        compProps = await Component.getInitialProps({ store, isServer, query, req }, pageProps);
       } catch (e) {
         compProps = {};
       }
@@ -246,9 +279,18 @@ class TCPWebApp extends App {
     // Just a sample - any store specific data should be set in this
     if (pageId) {
       const seoConfig = deriveSEOTags(pageId, store, router);
-      return <SEOTags seoConfig={seoConfig} />;
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
     }
     return null;
+  };
+
+  checkLoadAnalyticsOnload = pageProps => {
+    const isLoadAnalyticsOnload =
+      pageProps && pageProps.pageData && pageProps.pageData.loadAnalyticsOnload;
+    if (typeof isLoadAnalyticsOnload === 'undefined') {
+      return true;
+    }
+    return isLoadAnalyticsOnload;
   };
 
   // eslint-disable-next-line complexity
@@ -270,6 +312,7 @@ class TCPWebApp extends App {
       reviewPage.asPath,
       internationalCheckout.asPath,
     ];
+    const isCheckAnalyticsOnload = this.checkLoadAnalyticsOnload(pageProps);
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -288,18 +331,23 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div className="content-wrapper">
-                <div id="overlayWrapper">
-                  <div id="overlayComponent" />
-                  <Component {...pageProps} />
+              {/* Provider for global hotfixes object */}
+              <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
+                <div className="content-wrapper">
+                  <div id="overlayWrapper">
+                    <div id="overlayComponent" />
+                    <Component {...pageProps} pageName={componentPageName} />
+                  </div>
                 </div>
-              </div>
+              </HotfixBrowserContext.Provider>
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <AddedToBagContainer />
+              <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
+            {process.env.ANALYTICS && isCheckAnalyticsOnload && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

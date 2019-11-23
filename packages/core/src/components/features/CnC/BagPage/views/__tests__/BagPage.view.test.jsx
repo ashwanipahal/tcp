@@ -40,10 +40,10 @@ describe('Bag page View', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should call removeScrollListener', () => {
+  it('should call componentWillUnmount', () => {
     const component = shallow(<BagPageViewVanilla {...props} />);
-    const spyOpenModal = jest.spyOn(component.instance(), 'removeScrollListener');
-    component.instance().removeScrollListener();
+    const spyOpenModal = jest.spyOn(component.instance(), 'componentWillUnmount');
+    component.instance().componentWillUnmount();
     expect(spyOpenModal).toHaveBeenCalled();
   });
 
@@ -111,5 +111,38 @@ describe('Bag page View', () => {
   it('should call componentWillUnmount', () => {
     const component = shallow(<BagPageViewVanilla {...props} />);
     component.instance().componentWillUnmount();
+  });
+  it('should call renderRecommendations', () => {
+    props.orderItemsCount = 0;
+    props.sflItems = { size: 2 };
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    const spyOpenModal = jest.spyOn(component.instance(), 'renderRecommendations');
+    component.instance().renderRecommendations();
+    expect(spyOpenModal).toHaveBeenCalled();
+  });
+  it('should call renderHeaderError', () => {
+    props.orderItemsCount = 0;
+    props.sflItems = { size: 2 };
+    props.labels = {};
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    const spyOpenModal = jest.spyOn(component.instance(), 'renderHeaderError');
+    component.instance().renderHeaderError(true, [props]);
+    expect(spyOpenModal).toHaveBeenCalled();
+  });
+  it('renders correctly with bag section with method', () => {
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    component.setState({ activeSection: 'BAG', showCondensedHeader: true });
+    const spyHandleScroll = jest.spyOn(component.instance(), 'handleScroll');
+    const event = { nativeEvent: { contentOffset: { y: 4 } } };
+    component.instance().handleScroll(event);
+    expect(spyHandleScroll).toHaveBeenCalled();
+  });
+  it('renders correctly with bag section with method without y', () => {
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    component.setState({ activeSection: 'BAG', showCondensedHeader: true });
+    const spyHandleScroll = jest.spyOn(component.instance(), 'handleScroll');
+    const event = { nativeEvent: { contentOffset: { y: 0 } } };
+    component.instance().handleScroll(event);
+    expect(spyHandleScroll).toHaveBeenCalled();
   });
 });

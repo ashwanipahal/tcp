@@ -205,7 +205,12 @@ export class DetailedCouponTile extends React.Component {
               </BodyCopy>
             )}
           </BodyCopy>
-          <ErrorMessage className="error-notification" error={coupon.error} noBackground />
+          <ErrorMessage
+            className="error-notification"
+            error={coupon.error}
+            fontWeight="extrabold"
+            noBackground
+          />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">

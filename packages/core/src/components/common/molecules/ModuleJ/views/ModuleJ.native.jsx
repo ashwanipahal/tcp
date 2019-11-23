@@ -5,9 +5,14 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator, validateColor } from '../../../../../utils/index.native';
+import {
+  getLocator,
+  validateColor,
+  getProductUrlForDAM,
+  getScreenWidth,
+} from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../moduleJ.config';
+import moduleJConfig from '../moduleJ.config';
 
 import {
   Container,
@@ -35,7 +40,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA, TOTAL_IMAGES } = config;
+const { IMG_DATA, TOTAL_IMAGES } = moduleJConfig;
 class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -48,7 +53,7 @@ class ModuleJ extends React.PureComponent {
 
   onProductTabChange = (catId, tabItem) => {
     this.setState({
-      selectedCategoryId: catId,
+      selectedCategoryId: catId.toString(),
       selectedTabItem: tabItem,
     });
   };
@@ -59,16 +64,11 @@ class ModuleJ extends React.PureComponent {
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId];
     selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
+
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
-          const {
-            imageUrl: [imageUrl],
-            uniqueId,
-            product_name: productName,
-            productItemIndex,
-          } = productItem;
-
+          const { uniqueId, product_name: productName, productItemIndex } = productItem;
           return (
             <ImageItemWrapper
               key={uniqueId}
@@ -89,10 +89,11 @@ class ModuleJ extends React.PureComponent {
                 <StyledImage
                   alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
-                  url={imageUrl}
+                  url={getProductUrlForDAM(uniqueId)}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
-                  imageConfig={IMG_DATA.productImgConfig[0]}
+                  imgConfig={IMG_DATA.productImgConfig[0]}
+                  isProductImage
                 />
               </Anchor>
             </ImageItemWrapper>
@@ -107,6 +108,7 @@ class ModuleJ extends React.PureComponent {
     const { productTabList } = this.props;
     let selectedProductList = productTabList[selectedCategoryId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
+
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
         const lastList = list[list.length - 1];
@@ -165,6 +167,13 @@ class ModuleJ extends React.PureComponent {
       bgColor,
     } = this.props;
 
+    const videoData = mediaLinkedList[1] &&
+      mediaLinkedList[1].video && {
+        ...mediaLinkedList[1].video,
+        videoWidth: getScreenWidth(),
+        videoHeight: 310,
+      };
+
     return (
       <Container>
         <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
@@ -220,6 +229,7 @@ class ModuleJ extends React.PureComponent {
               width="100%"
               testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
+              videoData={videoData}
               imgConfig={IMG_DATA.promoImgConfig[0]}
             />
           </Anchor>

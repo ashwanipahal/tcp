@@ -20,6 +20,7 @@ class GiftCardTile extends React.PureComponent {
     isFromReview: PropTypes.bool,
     isExpressCheckout: PropTypes.bool,
     isPaymentDisabled: PropTypes.bool,
+    giftCardList: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class GiftCardTile extends React.PureComponent {
     isFromReview: false,
     isExpressCheckout: false,
     isPaymentDisabled: false,
+    giftCardList: {},
   };
 
   showRemoveCtas = () => {
@@ -115,7 +117,12 @@ class GiftCardTile extends React.PureComponent {
               large: 9,
             }}
           >
-            <ErrorMessage className="error_box" error={giftCardErrors[cardData.creditCardId]} />
+            <ErrorMessage
+              fontSize="fs12"
+              fontWeight="bold"
+              className="error_box"
+              error={giftCardErrors[cardData.creditCardId]}
+            />
           </Col>
         </Row>
       );

@@ -1,8 +1,9 @@
-const buildQuery = ({ slot, contentId, cid }) => `
-${slot || `moduleX`}: moduleById(id: "${contentId || cid}") {
+const buildQuery = ({ slot, contentId, cid, lang }) => `
+${slot || `moduleX`}: moduleById(id: "${contentId || cid}" ${lang ? `, lang: ${lang}` : ``}) {
   contentId
   name
   type
+  errorMessage
   composites {
     richTextList {
       text

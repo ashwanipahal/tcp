@@ -1,3 +1,5 @@
+import { loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 import SLP_CONSTANTS from './SearchDetail.constants';
 
 export const setSlpProducts = payload => {
@@ -62,3 +64,12 @@ export const resetSlpProducts = payload => {
     payload,
   };
 };
+
+export const setAddToFavoriteSLP = payload => {
+  return {
+    type: SLP_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};
+
+export const initActions = [loadPageSEOData({ page: SEO_DATA.search })];

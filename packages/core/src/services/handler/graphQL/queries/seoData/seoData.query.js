@@ -1,9 +1,14 @@
-const buildQuery = ({ page, brand, country, channel }) => `
+const buildQuery = ({ page, brand, country, channel, lang }) => `
   seoData(${
     page ? `page: "${page}",` : ``
-  } brand: "${brand}", country: "${country}", channel: "${channel}") {
+  } brand: "${brand}", country: "${country}", channel: "${channel}" ${
+  lang ? `lang: ${lang}` : ``
+}) {
+    errorMessage
     path
     pageTitle
+    copyBody
+    copyTitle
     keywords
     description
     robotsInfo

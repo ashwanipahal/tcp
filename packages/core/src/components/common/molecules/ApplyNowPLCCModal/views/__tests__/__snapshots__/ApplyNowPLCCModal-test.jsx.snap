@@ -13,12 +13,14 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
   isOpen={true}
   maxWidth="724px"
-  minHeight="646px"
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <Connect(ApplyCardLayoutContainer)
+    closePLCCModal={[MockFunction]}
     isPLCCModalFlow={true}
   />
 </Styled(Modal)>

@@ -1,21 +1,23 @@
+/* eslint-disable max-lines */
 /**
  * @module ProductItemComponents
  * Container of smaller function that will be renderer as Component to create a ProductItem.
  *
  * @author Florencia <facosta@minutentag.com>
  */
-
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
-import { Image, BodyCopy, Anchor, Button, Col } from '../../../../../../common/atoms';
+import { Image, BodyCopy, Anchor, Button, Col, RichText } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
+import BundlePriceSection from './BundlePriceSection.view';
 
 export function productLink(loadedProductCount, pdpUrl, event) {
   event.preventDefault();
@@ -53,52 +55,71 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
+  const { listPrice, offerPrice, merchantTag, bundleProduct, priceRange } = props;
+
+  const highListPrice = priceRange && priceRange.highListPrice;
+  const highOfferPrice = priceRange && priceRange.highOfferPrice;
+  const lowListPrice = priceRange && priceRange.lowListPrice;
+  const lowOfferPrice = priceRange && priceRange.lowOfferPrice;
 
   return (
-    <div className="container-price">
-      {offerPrice && (
-        <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
-          color="red.500"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize={['fs15', 'fs18', 'fs20']}
-        >
-          {currencySymbol + offerPrice.toFixed(2)}
-        </BodyCopy>
+    <>
+      {!bundleProduct ? (
+        <div className="container-price">
+          {offerPrice && (
+            <BodyCopy
+              dataLocator={getLocator('global_Price_text')}
+              color="red.500"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize={['fs15', 'fs18', 'fs20']}
+            >
+              <PriceCurrency price={offerPrice} />
+            </BodyCopy>
+          )}
+          {offerPrice && offerPrice !== listPrice && (
+            <BodyCopy
+              component="span"
+              color="gray.700"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              fontSize={['fs10', 'fs12', 'fs14']}
+              className="list-price"
+            >
+              <PriceCurrency price={listPrice} />
+            </BodyCopy>
+          )}
+          {merchantTag && (
+            <BodyCopy
+              component="span"
+              color="red.500"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              className="merchant-tag elem-ml-XXXS"
+              fontSize={['fs10', 'fs12', 'fs14']}
+            >
+              {merchantTag}
+            </BodyCopy>
+          )}
+        </div>
+      ) : (
+        BundlePriceSection(highListPrice, highOfferPrice, lowListPrice, lowOfferPrice, merchantTag)
       )}
-      {offerPrice && offerPrice !== listPrice && (
-        <BodyCopy
-          component="span"
-          color="gray.700"
-          fontFamily="secondary"
-          fontWeight="semibold"
-          fontSize={['fs10', 'fs12', 'fs14']}
-          className="list-price"
-        >
-          {currencySymbol + listPrice.toFixed(2)}
-        </BodyCopy>
-      )}
-      {merchantTag && (
-        <BodyCopy
-          component="span"
-          color="red.500"
-          fontFamily="secondary"
-          fontWeight="semibold"
-          className="merchant-tag"
-          fontSize={['fs10', 'fs12', 'fs14']}
-        >
-          {merchantTag}
-        </BodyCopy>
-      )}
-    </div>
+    </>
   );
 }
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile, className, activeButton } = this.props;
+    const {
+      onClick,
+      isRemove,
+      isDisabled,
+      isMobile,
+      className,
+      activeButton,
+      favoritedCount,
+    } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
@@ -121,15 +142,30 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <button className="clear-button">
-            <Image
-              data-locator={getLocator('global_favorite_button')}
-              alt="Add-to-favorite"
-              title="addToFavorite"
-              className={activeButton ? `${className} active` : className}
-              src={activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')}
-            />
-          </button>
+          <>
+            <button className="clear-button">
+              <Image
+                data-locator={getLocator('global_favorite_button')}
+                alt="Add-to-favorite"
+                title="addToFavorite"
+                className={activeButton ? `${className} active` : className}
+                src={
+                  activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')
+                }
+              />
+            </button>
+            {favoritedCount && (
+              <BodyCopy
+                dataLocator="pdp_favorite_icon_count"
+                className="favorite-count"
+                fontSize="fs10"
+                fontWeight="regular"
+                color="gray.600"
+              >
+                {favoritedCount}
+              </BodyCopy>
+            )}
+          </>
         )}
       </BodyCopy>
     );
@@ -155,7 +191,7 @@ export function BadgeItem(props) {
 
 export function PromotionalMessage(props) {
   const { text } = props;
-  return (
+  return text ? (
     <Dotdotdot clamp={2}>
       <BodyCopy
         fontSize={['fs9', 'fs12', 'fs14']}
@@ -164,17 +200,19 @@ export function PromotionalMessage(props) {
         data-locator={getLocator('global_loyalty_text')}
         className="loyalty-text-container"
       >
-        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <RichText className="rewards__benefits" richTextHtml={getFormattedLoyaltyText(text)} />
+        )}
       </BodyCopy>
     </Dotdotdot>
-  );
+  ) : null;
 }
 
-const renderWishListItem = (item, labels) => (
+const renderWishListItem = (item, labels, activeWishListId) => (
   <div className="wish-list-item-section">
     <p className="wish-list-name">
-      <span>
-        {item.isDefault && (
+      <span className={`${item.id === activeWishListId ? 'default-list' : ''}`}>
+        {item.id === activeWishListId && (
           <Image
             src={getIconPath('selected-item-check-no-circle')}
             alt="check mark"
@@ -184,11 +222,19 @@ const renderWishListItem = (item, labels) => (
           />
         )}
       </span>
-      <span>{item.displayName}</span>
+      <span className={`${item.id === activeWishListId ? 'default-list-item' : ''}`}>
+        {item.displayName}
+      </span>
     </p>
     <p className="wish-list-count-section">
-      <span className="wish-list-count">{item.itemsCount}</span>
-      <span>{labels.lbl_fav_items}</span>
+      <span
+        className={`${
+          item.id === activeWishListId ? 'default-list-count wish-list-count' : 'wish-list-count'
+        }`}
+      >
+        {item.itemsCount}
+      </span>
+      <span>{` ${labels.lbl_fav_items}`}</span>
     </p>
   </div>
 );
@@ -197,9 +243,12 @@ export const CreateWishList = props => {
   const {
     labels,
     wishlistsSummaries,
-    createNewWishList,
+    // createNewWishList,
     createNewWishListMoveItem,
     itemId,
+    getActiveWishlist,
+    activeWishListId,
+    openAddNewList,
   } = props;
   return (
     <div className="create-wish-list-section">
@@ -212,16 +261,21 @@ export const CreateWishList = props => {
                 onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
                 className="wish-list-item__button"
               >
-                {renderWishListItem(item, labels)}
+                {renderWishListItem(item, labels, activeWishListId)}
               </Button>
             ) : (
-              renderWishListItem(item, labels)
+              <Button
+                onClick={() => getActiveWishlist(item.id)}
+                className="wish-list-change-item__button"
+              >
+                {renderWishListItem(item, labels, activeWishListId)}
+              </Button>
             )}
           </li>
         ))}
       </ul>
       <Button
-        onClick={createNewWishList}
+        onClick={openAddNewList}
         buttonVariation="fixed-width"
         fill="BLACK"
         data-locator="create-new-wish-list"
@@ -269,7 +323,8 @@ export const WishListIcon = (
   isFavoriteView,
   isInDefaultWishlist,
   handleAddToWishlist,
-  itemNotAvailable
+  itemNotAvailable,
+  favoritedCount
 ) => {
   if (itemNotAvailable) {
     return null;
@@ -277,8 +332,9 @@ export const WishListIcon = (
   return (
     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
       <ProductWishlistIcon
-        onClick={handleAddToWishlist}
+        onClick={isInDefaultWishlist || isFavoriteView ? null : handleAddToWishlist}
         activeButton={isInDefaultWishlist || isFavoriteView}
+        favoritedCount={favoritedCount}
         className="fav-icon"
       />
     </Col>
@@ -319,9 +375,16 @@ ProductSKUInfo.defaultProps = {
 CreateWishList.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   wishlistsSummaries: PropTypes.arrayOf({}).isRequired,
-  createNewWishList: PropTypes.func.isRequired,
+  // createNewWishList: PropTypes.func.isRequired,
+  openAddNewList: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
+  getActiveWishlist: PropTypes.func,
+  activeWishListId: PropTypes.string.isRequired,
+};
+
+CreateWishList.defaultProps = {
+  getActiveWishlist: () => {},
 };
 
 PromotionalMessage.propTypes = {
@@ -345,15 +408,17 @@ BadgeItem.propTypes = {
 };
 
 ProductPricesSection.defaultProps = {
-  currencySymbol: '$',
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
+  bundleProduct: false,
+  priceRange: {},
 };
 
 ProductPricesSection.propTypes = {
-  currencySymbol: PropTypes.string,
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
+  bundleProduct: PropTypes.bool,
+  priceRange: PropTypes.shape({}),
 };

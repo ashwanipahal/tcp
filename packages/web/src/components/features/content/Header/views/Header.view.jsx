@@ -5,7 +5,6 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -77,11 +76,14 @@ class Header extends React.PureComponent {
       className,
       brandTabs,
       promoMessageWrapper,
-      headerPromoArea,
+      topPromoBanner,
+      headerPromoTextArea,
+      headerPromoHtmlArea,
       navigationDrawer,
       openNavigationDrawer,
       closeNavigationDrawer,
       isUserPlcc,
+      isRememberedUser,
       userName,
       userPoints,
       userRewards,
@@ -95,11 +97,21 @@ class Header extends React.PureComponent {
       totalItems,
       favStore,
       isPickupModalOpen,
+      loyaltyPromoBanner,
+      setClickAnalyticsData,
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
     return (
       <header className={className}>
+        {topPromoBanner ? (
+          <LoyaltyPromoBanner
+            richTextList={[{ richText: topPromoBanner[0], link: '' }]}
+            className="header-promo__container top-promo-banner"
+            cookieID="mprTopHead"
+          />
+        ) : null}
+
         <HeaderTopNav
           className="header-topnav"
           brandTabs={brandTabs}
@@ -119,6 +131,7 @@ class Header extends React.PureComponent {
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
           isUserPlcc={isUserPlcc}
+          isRememberedUser={isRememberedUser}
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
@@ -130,14 +143,25 @@ class Header extends React.PureComponent {
           openMiniBagDispatch={openMiniBagDispatch}
           store={favStore}
           labels={labels}
+          setClickAnalyticsData={setClickAnalyticsData}
         />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
-          dataPromo={headerPromoArea}
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
         />
-        <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner />
+        <HeaderPromo
+          className="header__promo-area--desktop"
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
+        />
+        <LoyaltyPromoBanner
+          richTextList={loyaltyPromoBanner}
+          className="header-promo__container"
+          cookieID="mprAboveHead"
+        />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -155,11 +179,9 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
-        <SpinnerOverlay />
       </header>
     );
   }
@@ -167,9 +189,12 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  topPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoTextArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoHtmlArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
@@ -196,6 +221,8 @@ Header.propTypes = {
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
@@ -219,6 +246,7 @@ Header.defaultProps = {
     features: {},
   },
   isPickupModalOpen: false,
+  isRememberedUser: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

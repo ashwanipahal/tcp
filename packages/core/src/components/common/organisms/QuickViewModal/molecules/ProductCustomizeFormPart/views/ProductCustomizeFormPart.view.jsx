@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import { BodyCopy, Anchor, DamImage } from '../../../../../atoms';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
@@ -10,7 +11,8 @@ import styles, {
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
-import { getSiteId, getLocator } from '../../../../../../../utils';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../molecules/ProductAddToBag/views/ProductAddToBag.view';
+import { getSiteId, getLocator, getAPIConfig, getBrand } from '../../../../../../../utils';
 import InputCheckbox from '../../../../../atoms/InputCheckbox';
 import {
   getPrices,
@@ -25,7 +27,7 @@ const ProductCustomizeFormPart = props => {
     plpLabels,
     currency,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -44,15 +46,17 @@ const ProductCustomizeFormPart = props => {
     fromBagPage,
     productInfoFromBag,
     quickViewColorSwatchesCss,
+    onCloseClick,
+    alternateSizes,
+    isGiftCard,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const currentColorPdpUrl =
     currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
-  const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const productPriceProps = {
     currencySymbol: currency,
-    currencyExchange,
+    currencyAttributes,
     priceCurrency,
     isItemPartNumberVisible: false,
     ...prices,
@@ -67,6 +71,20 @@ const ProductCustomizeFormPart = props => {
     url: imageUrl,
   };
 
+  const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
+
+  const apiConfigObj = getAPIConfig();
+  const { crossDomain } = apiConfigObj;
+  const currentSiteBrand = getBrand();
+  const isProductBrandOfSameDomain = !isEmpty(productInfoFromBag)
+    ? currentSiteBrand.toUpperCase() === productInfoFromBag.itemBrand.toUpperCase()
+    : true;
+  const toPath = isProductBrandOfSameDomain
+    ? `/${getSiteId()}${currentColorPdpUrl}`
+    : `${crossDomain}/${getSiteId()}${currentColorPdpUrl}`;
+  const pdpToPath = isProductBrandOfSameDomain
+    ? getProductListToPath(currentColorPdpUrl)
+    : `${crossDomain}/${getSiteId()}${currentColorPdpUrl}`;
   return (
     <div className={className}>
       {isMultiItemQVModal && (
@@ -84,14 +102,21 @@ const ProductCustomizeFormPart = props => {
               <DamImage
                 data-locator={getLocator('quick_view_product_image')}
                 imgData={imgData}
+                lazyLoad={false}
                 isProductImage
               />
               <Anchor
                 dataLocator={getLocator('quick_view_View_Product_details')}
                 className="link-redirect"
                 noLink
-                to={`/${getSiteId()}${currentColorPdpUrl}`}
-                onClick={e => goToPDPPage(e, pdpToPath, currentColorPdpUrl)}
+                to={toPath}
+                onClick={e =>
+                  goToPDPPage(
+                    e,
+                    pdpToPath,
+                    isProductBrandOfSameDomain ? currentColorPdpUrl : pdpToPath
+                  )
+                }
               >
                 <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
                   {quickViewLabels.viewProductDetails}
@@ -140,6 +165,9 @@ const ProductCustomizeFormPart = props => {
               formRef={formRef}
               formEnabled={formEnabled}
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+              onCloseClick={onCloseClick}
+              alternateSizes={alternateSizes}
+              sizeChartLinkVisibility={sizeChartLinkVisibility}
             />
           </div>
         </div>
@@ -161,7 +189,7 @@ ProductCustomizeFormPart.propTypes = {
   currency: PropTypes.string,
   className: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   isCanada: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   isMultiItemQVModal: PropTypes.bool.isRequired,
@@ -177,13 +205,15 @@ ProductCustomizeFormPart.propTypes = {
   fromBagPage: PropTypes.bool.isRequired,
   quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
+  onCloseClick: PropTypes.func,
+  alternateSizes: PropTypes.shape({}),
+  isGiftCard: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
   currency: 'USD',
   className: '',
   priceCurrency: '',
-  currencyExchange: 1,
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,
@@ -192,6 +222,9 @@ ProductCustomizeFormPart.defaultProps = {
   addToBagError: '',
   imageUrl: '',
   quickViewColorSwatchesCss: '',
+  onCloseClick: () => {},
+  alternateSizes: {},
+  isGiftCard: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

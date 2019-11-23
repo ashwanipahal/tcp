@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import throttle from 'lodash/throttle';
 import ProductList from '../../ProductList/views';
 import { isClient } from '../../../../../../../utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -37,10 +38,15 @@ class ProductsGrid extends React.Component {
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
-    currencyExchange: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}).isRequired,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
+    isSearchListing: PropTypes.bool,
     // showQuickViewForProductId: PropTypes.string,
+    getProducts: PropTypes.func,
+    asPathVal: PropTypes.string,
+    AddToFavoriteErrorMsg: PropTypes.string,
+    removeAddToFavoritesErrorMsg: PropTypes.func,
   };
 
   static defaultProps = {
@@ -53,8 +59,12 @@ class ProductsGrid extends React.Component {
     labels: '',
     productTileVariation: '',
     currency: 'USD',
-    currencyExchange: 1,
     isLoggedIn: false,
+    isSearchListing: false,
+    getProducts: () => {},
+    asPathVal: '',
+    AddToFavoriteErrorMsg: '',
+    removeAddToFavoritesErrorMsg: () => {},
   };
 
   constructor(props, context) {
@@ -65,30 +75,32 @@ class ProductsGrid extends React.Component {
       // eslint-disable-next-line
       bopisAutoSkipStep1: true,
     };
-
+    this.isLoadingMoreState = false;
     this.captureContainerDivRef = ref => {
       this.containerDivRef = ref;
     };
     this.handleLoadNextPage = this.handleLoadNextPage.bind(this);
   }
 
-  componentWillMount() {
-    if (isClient()) {
-      document.addEventListener('scroll', this.handleLoadNextPage, true);
-      document.addEventListener('mousewheel', this.handleLoadNextPage, true);
-      document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
-    }
+  componentDidMount() {
+    this.addRemoveScrollListeners('scroll');
   }
 
-  componentDidUpdate() {
-    // TODO - fix this when user comes back from PDP, to select the same item, this is required
+  componentDidUpdate(prevProps) {
+    const { isLoadingMore: isOldLoadingMore } = prevProps;
+    const { isLoadingMore } = this.props;
+    if (!isLoadingMore && isOldLoadingMore !== isLoadingMore) {
+      setTimeout(() => {
+        // This hack is required to let the newly feteched products get rendered and then enable the flag
+        // else the call to fetch product is going in infinite loop - RWD-14751
+        this.isLoadingMoreState = isLoadingMore;
+      }, 10);
+    }
   }
 
   componentWillUnmount() {
     if (isClient()) {
-      document.removeEventListener('scroll', this.handleLoadNextPage, true);
-      document.removeEventListener('mousewheel', this.handleLoadNextPage, true);
-      document.removeEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
+      this.addRemoveScrollListeners('scroll', false);
     }
   }
 
@@ -124,13 +136,23 @@ class ProductsGrid extends React.Component {
     );
   };
 
+  addRemoveScrollListeners(eventName, isAddEvent = true) {
+    const throttleTime = 100;
+    const throttleParam = { trailing: true, leading: true };
+    document[isAddEvent ? 'addEventListener' : 'removeEventListener'](
+      eventName,
+      throttle(this.handleLoadNextPage, throttleTime, throttleParam)
+    );
+  }
+
   handleLoadNextPage() {
-    const { isLoadingMore, productsBlock, getMoreProducts } = this.props;
-    if (!isLoadingMore && this.containerDivRef && productsBlock.length) {
+    const { productsBlock, getMoreProducts } = this.props;
+    if (!this.isLoadingMoreState && this.containerDivRef && productsBlock.length) {
       const offsetY =
         findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+        this.isLoadingMoreState = true;
         getMoreProducts();
       }
     }
@@ -147,10 +169,15 @@ class ProductsGrid extends React.Component {
       onQuickViewOpenClick,
       productTileVariation,
       currency,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      isSearchListing,
       // showQuickViewForProductId,
+      getProducts,
+      asPathVal,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
 
@@ -182,10 +209,15 @@ class ProductsGrid extends React.Component {
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
-                        currencyExchange={currencyExchange}
+                        currencyAttributes={currencyAttributes}
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
+                        isSearchListing={isSearchListing}
+                        getProducts={getProducts}
+                        asPathVal={asPathVal}
+                        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                         {...otherProps}
                       />
                     );

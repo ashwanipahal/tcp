@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
@@ -13,23 +14,10 @@ import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 export class ShippingReviewSection extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const {
-      updateShippingMethodSelection,
-      expressReviewShippingSectionId,
-      isExpressCheckout,
-    } = this.props;
-    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
-    if (
-      isExpressCheckout &&
-      prevexpressReviewShippingSectionId.shippingMethodId &&
-      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
-      expressReviewShippingSectionId.shippingMethodId !==
-        prevexpressReviewShippingSectionId.shippingMethodId
-    ) {
-      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
-    }
-  }
+  shouldRenderAddressTile = () => {
+    const { bagLoading, checkoutRoutingDone } = this.props;
+    return !bagLoading && checkoutRoutingDone;
+  };
 
   render() {
     const {
@@ -44,6 +32,7 @@ export class ShippingReviewSection extends React.PureComponent {
       shipmentMethods,
       formName,
       formSection,
+      checkoutRoutingDone,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
@@ -64,30 +53,21 @@ export class ShippingReviewSection extends React.PureComponent {
           </Col>
         </Row>
 
-        <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            <div className="shippingAddressTitle">
-              <BodyCopy
-                fontSize="fs16"
-                dataLocator=""
-                fontFamily="secondary"
-                color="gray.900"
-                fontWeight="extrabold"
-              >
-                {addressTitle}
-              </BodyCopy>
-            </div>
-            <Address className="addressStyle" address={shippingAddress.address} />
-            <BodyCopy
-              fontSize="fs16"
-              dataLocator=""
-              fontFamily="secondary"
-              color="gray.900"
-              fontWeight="regular"
-            >
-              {shippingAddress.emailAddress}
-            </BodyCopy>
-            {shippingAddress.phoneNumber && (
+        {this.shouldRenderAddressTile() ? (
+          <Row fullBleed>
+            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+              <div className="shippingAddressTitle">
+                <BodyCopy
+                  fontSize="fs16"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  color="gray.900"
+                  fontWeight="extrabold"
+                >
+                  {addressTitle}
+                </BodyCopy>
+              </div>
+              <Address className="addressStyle" address={shippingAddress.address} />
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
@@ -95,32 +75,51 @@ export class ShippingReviewSection extends React.PureComponent {
                 color="gray.900"
                 fontWeight="regular"
               >
-                {formatPhoneNumber(shippingAddress.phoneNumber)}
+                {shippingAddress.emailAddress}
               </BodyCopy>
-            )}
-          </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            {!isExpressCheckout && shippingMethod && (
-              <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
-            )}
-            {isExpressCheckout && shippingMethod && (
-              <ShipmentMethods
-                shipmentMethods={shipmentMethods}
-                formName={formName}
-                formSection={formSection}
-                selectedShipmentId={shippingMethod.id}
-                shipmentHeader={shippingMethodTitle}
-              />
-            )}
-            {isGiftOptionsEnabled && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
-            )}
-          </Col>
-        </Row>
+              {shippingAddress.phoneNumber && (
+                <BodyCopy
+                  fontSize="fs16"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  color="gray.900"
+                  fontWeight="regular"
+                >
+                  {formatPhoneNumber(shippingAddress.phoneNumber)}
+                </BodyCopy>
+              )}
+            </Col>
+            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+              {!isExpressCheckout && shippingMethod && (
+                <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
+              )}
+              {isExpressCheckout && shippingMethod && (
+                <ShipmentMethods
+                  shipmentMethods={shipmentMethods}
+                  formName={formName}
+                  formSection={formSection}
+                  selectedShipmentId={shippingMethod.id}
+                  shipmentHeader={shippingMethodTitle}
+                  checkoutRoutingDone={checkoutRoutingDone}
+                />
+              )}
+              {isGiftOptionsEnabled && !isExpressCheckout && (
+                <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              )}
+            </Col>
+          </Row>
+        ) : (
+          <GenericSkeleton />
+        )}
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {isExpressCheckout && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              <GiftWrappingDisplay
+                labels={labels}
+                displayName={giftWrappingDisplayName}
+                onEdit={onEdit}
+                isExpressCheckout={isExpressCheckout}
+              />
             )}
           </Col>
         </Row>
@@ -147,8 +146,9 @@ ShippingReviewSection.propTypes = {
   shipmentMethods: PropTypes.shape({}).isRequired,
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
+  bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 ShippingReviewSection.defaultProps = {
@@ -157,6 +157,8 @@ ShippingReviewSection.defaultProps = {
   isGiftOptionsEnabled: false,
   giftWrappingDisplayName: 'N/A',
   expressReviewShippingSectionId: {},
+  bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(ShippingReviewSection, styles);

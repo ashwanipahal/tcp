@@ -43,6 +43,7 @@ export class TextBox extends React.Component {
     showSuccessCheck: PropTypes.bool,
     successText: PropTypes.string,
     onChangeText: PropTypes.func,
+    autoCapitalize: PropTypes.string,
   };
 
   static defaultProps = {
@@ -59,6 +60,7 @@ export class TextBox extends React.Component {
     marginBottom: true,
     showSuccessCheck: false,
     successText: '',
+    autoCapitalize: 'sentences',
     onChangeText: () => {},
   };
 
@@ -93,12 +95,12 @@ export class TextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="15px" height="15px" />
+              <Image source={errorIcon} width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
-            mobilefontFamily={['secondary']}
-            fontWeight="semibold"
+            fontFamily="secondary"
+            fontWeight="extrabold"
             fontSize="fs12"
             text={error}
             color="error"
@@ -126,7 +128,7 @@ export class TextBox extends React.Component {
             <Image source={successCircleIcon} width="18px" height="18px" />
           </StyledSuccessCheck>
           <BodyCopy
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
             fontWeight="semibold"
             fontSize="fs12"
             text={successText}
@@ -147,12 +149,13 @@ export class TextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { error },
+      meta,
       input,
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
       onChangeText,
+      autoCapitalize,
     } = this.props;
     return (
       <View>
@@ -173,11 +176,13 @@ export class TextBox extends React.Component {
           onBlur={this.handleBlur}
           onEndEditing={this.handleBlur}
           keyboardType={keyboardType}
+          autoCapitalize={autoCapitalize}
           returnKeyType="next"
-          error={error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
+          meta={meta}
+          error={meta.error}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>

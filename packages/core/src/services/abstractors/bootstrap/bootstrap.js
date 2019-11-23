@@ -1,4 +1,5 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import ProductListingAbstractor from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListingApiHandler';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
@@ -16,7 +17,11 @@ import { setDataInRedis } from '../../../utils/redis.util';
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchBootstrapData = async ({ page, labels, brand, country, channel }, bootstrapModules) => {
+const fetchBootstrapData = async (
+  { page, labels, brand, country, channel, lang },
+  bootstrapModules
+) => {
+  logger.info('bootstrap received language ', lang);
   /**
    * Sets up query params for page requests
    */
@@ -45,6 +50,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'header':
@@ -53,6 +59,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'footer':
@@ -61,6 +68,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'navigation':
@@ -68,6 +76,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       default:
@@ -89,8 +98,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
 /**
  * Generate base bootstrap parameters
  */
-const createBootstrapParams = () => {
-  const apiConfig = getAPIConfig();
+const createBootstrapParams = (apiConfig, language) => {
   const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
     labels: {
@@ -101,6 +109,7 @@ const createBootstrapParams = () => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+    lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
   };
 };
 
@@ -138,6 +147,123 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   return bootstrapData[key];
 };
 
+export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
+  originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined';
+
+/**
+ * This function parses Error out of response
+ * @param {*} bootstrapData Response from API call
+ * @param {*} pageName Page Name
+ */
+const checkAndLogErrors = (bootstrapData, pageName) => {
+  const { labels, header, footer, navigation } = bootstrapData;
+  const { errorMessage: headerErrorMessage } = header;
+  const errorObject = {
+    header_error: 0,
+    footer_error: 0,
+    navigation_error: 0,
+    labels_error: 0,
+    layout_error: 0,
+  };
+
+  try {
+    if (headerErrorMessage) {
+      errorObject.header_error = 1;
+      errorObject.header_error_message = headerErrorMessage;
+      logger.error(`Error occurred in header query ${headerErrorMessage}`);
+    }
+    const { errorMessage: footerErrorMessage } = footer;
+    if (footerErrorMessage) {
+      errorObject.footer_error = 1;
+      errorObject.footer_error_message = footerErrorMessage;
+      logger.error(`Error occurred in footer query ${footerErrorMessage}`);
+    }
+    const [{ errorMessage: navigationErrorMessage }] = navigation;
+    if (navigationErrorMessage) {
+      errorObject.navigation_error = 1;
+      errorObject.navigation_error_message = navigationErrorMessage;
+      logger.error(`Error occurred in navigation query ${navigationErrorMessage}`);
+    }
+    const [{ errorMessage: labelsErrorMessage }] = labels;
+    if (labelsErrorMessage) {
+      errorObject.labels_error = 1;
+      errorObject.labels_error_message = labelsErrorMessage;
+      logger.error(`Error occurred in labels query ${labelsErrorMessage}`);
+    }
+    const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
+    if (layoutErrorMessage) {
+      errorObject.layout_error = 1;
+      errorObject.layout_error_message = layoutErrorMessage;
+      logger.error(`Error occurred in layout query ${layoutErrorMessage}`);
+    }
+  } catch (e) {
+    logger.error(`Error Occurred While Parsing error response`);
+  }
+
+  return errorObject;
+};
+
+/**
+ * This function returns parsed response from the bootstrap API
+ * @param {*} response
+ * @param {*} fetchCachedDataParams
+ * @param {*} bootstrapData
+ */
+const parsedResponse = async (
+  response,
+  fetchCachedDataParams,
+  bootstrapData,
+  state,
+  originalUrl,
+  deviceType
+) => {
+  try {
+    response.header = headerAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing header data: ${e}`);
+  }
+
+  try {
+    response.footer =
+      bootstrapData.footer &&
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
+  } catch (e) {
+    logger.error(`Error occurred while processing footer data: ${e}`);
+  }
+
+  try {
+    response.labels = labelsAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing labels data: ${e}`);
+  }
+
+  try {
+    response.navigation = navigationAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing navigation data: ${e}`);
+  }
+
+  try {
+    if (shouldInitiateSSRCall(originalUrl, deviceType)) {
+      response.PLP = await ProductListingAbstractor({
+        navigationData: response.navigation,
+        location: { pathname: originalUrl },
+        state,
+      });
+    }
+  } catch (e) {
+    logger.error(`Error occurred while processing PLP data: ${e}`);
+  }
+
+  return response;
+};
+
 /**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
@@ -147,10 +273,11 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl, deviceType) => {
   const response = {};
-
-  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
+  const apiConfig = getAPIConfig();
+  const { language } = apiConfig;
+  const bootstrapParams = { page: pageName, ...createBootstrapParams(apiConfig, language) };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application
@@ -165,18 +292,20 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
     logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
+    const errorObject = checkAndLogErrors(bootstrapData, pageName);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
     const fetchCachedDataParams = { bootstrapData, cachedData };
 
-    if (pageName) {
+    if (pageName && !errorObject.layout_error) {
       try {
         response[pageName] = bootstrapData[pageName];
         logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
         response.modules =
           bootstrapData[pageName] &&
           (await layoutAbstractor.getModulesFromLayout(
-            retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName }),
+            language
           ));
         logger.info('Modules Query Executed Successfully');
         logger.debug('Modules Query Result: ', response.modules);
@@ -185,17 +314,13 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       }
     }
 
-    response.header = headerAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
-    );
-    response.footer =
-      bootstrapData.footer &&
-      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
-    response.labels = labelsAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
-    );
-    response.navigation = navigationAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
+    return parsedResponse(
+      response,
+      fetchCachedDataParams,
+      bootstrapData,
+      state,
+      originalUrl,
+      deviceType
     );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -24,14 +25,24 @@ class MiniBagBody extends React.PureComponent {
     super(props);
     this.state = {
       headerError: false,
+      isShowServerError: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { addedToBagError } = this.props;
+    const { addedToBagError: prevAddedToBagError } = prevProps;
+    const { isShowServerError } = this.state;
+    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.isShowServerError();
   }
 
   componentWillUnmount() {
     const { resetSuccessMessage } = this.props;
     resetSuccessMessage(false);
   }
-
+  setisShowServerError = () => {
+    this.setState({ isShowServerError: true });
+  };
   setHeaderErrorState = (state, ...params) => {
     this.setState({ headerError: true, params });
   };
@@ -48,13 +59,20 @@ class MiniBagBody extends React.PureComponent {
     return (
       <Anchor
         fontSizeVariation="medium"
+        noLink
         underline
         anchorVariation="primary"
-        asPath={CHECKOUT_ROUTES.bagPage.asPath}
-        to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
-        onClick={() => closeMiniBag()}
+        onClick={e => {
+          const timestamp = Date.now();
+          e.preventDefault();
+          routerPush(
+            `${CHECKOUT_ROUTES.bagPage.to}?isSfl=${timestamp}`,
+            `${CHECKOUT_ROUTES.bagPage.to}`
+          );
+          closeMiniBag();
+        }}
       >
         {`${labels.viewSfl} (${savedforLaterQty})`}
       </Anchor>
@@ -160,12 +178,14 @@ class MiniBagBody extends React.PureComponent {
       cartItemCount,
       savedforLaterQty,
       subTotal,
-      currencySymbol,
       closeMiniBag,
       onLinkClick,
       isShowSaveForLaterSwitch,
+      isRememberedUser,
+      isUserLoggedIn,
+      isMiniBag,
     } = this.props;
-    const { headerError, params } = this.state;
+    const { headerError, params, isShowServerError } = this.state;
     return (
       <div className={className}>
         <div className="minibag-viewbag">
@@ -207,13 +227,15 @@ class MiniBagBody extends React.PureComponent {
             {this.renderGiftCardError()}
           </Row>
         </div>
-        {this.renderServerError()}
+        {isShowServerError ? this.renderServerError() : null}
         <BodyCopy component="div" className="viewBagAndProduct">
           {cartItemCount ? (
             <ProductTileWrapper
               sflItemsCount={savedforLaterQty}
               onItemEdit={this.handleItemEdit}
               setHeaderErrorState={this.setHeaderErrorState}
+              isMiniBag={isMiniBag}
+              closeMiniBag={closeMiniBag}
             />
           ) : (
             <EmptyMiniBag
@@ -221,6 +243,8 @@ class MiniBagBody extends React.PureComponent {
               userName={userName}
               closeMiniBag={closeMiniBag}
               onLinkClick={onLinkClick}
+              isRememberedUser={isRememberedUser}
+              isUserLoggedIn={isUserLoggedIn}
             />
           )}
         </BodyCopy>
@@ -228,7 +252,8 @@ class MiniBagBody extends React.PureComponent {
           <React.Fragment>
             <div className="miniBagFooter">
               <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-                {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
+                {`${labels.subTotal}: `}
+                <PriceCurrency price={subTotal} />
               </BodyCopy>
               <AddedToBagActions
                 containerId="paypal-button-container-minibag"
@@ -236,6 +261,7 @@ class MiniBagBody extends React.PureComponent {
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
                 showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
+                isMiniBag={isMiniBag}
               />
               <AirmilesBanner />
             </div>
@@ -249,7 +275,8 @@ class MiniBagBody extends React.PureComponent {
               className="subTotalEmpty"
               fontFamily="secondary"
             >
-              {`${labels.subTotal}: ${currencySymbol}0.00`}
+              {`${labels.subTotal}:`}
+              <PriceCurrency price={0.0} />
             </BodyCopy>
           </div>
         )}
@@ -259,6 +286,10 @@ class MiniBagBody extends React.PureComponent {
   }
 }
 
+MiniBagBody.defaultProps = {
+  isMiniBag: true,
+};
+
 MiniBagBody.propTypes = {
   className: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
@@ -266,7 +297,6 @@ MiniBagBody.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   subTotal: PropTypes.number.isRequired,
   cartItemCount: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   savedforLaterQty: PropTypes.number.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
@@ -275,6 +305,9 @@ MiniBagBody.propTypes = {
   resetSuccessMessage: PropTypes.func.isRequired,
   addedToBagError: PropTypes.string.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isRememberedUser: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool,
 };
 
 export default withStyles(MiniBagBody, styles);
