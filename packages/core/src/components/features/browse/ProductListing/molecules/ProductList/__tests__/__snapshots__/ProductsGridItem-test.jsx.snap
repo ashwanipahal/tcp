@@ -94,7 +94,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       >
         <ProductPricesSection
           bundleProduct={false}
-          currencySymbol="$"
           hidePrefixListPrice={true}
           listPrice={0}
           merchantTag=""
