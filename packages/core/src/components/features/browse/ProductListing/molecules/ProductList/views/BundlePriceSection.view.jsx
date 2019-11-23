@@ -15,7 +15,7 @@ export default function(highListPrice, highOfferPrice, lowListPrice, lowOfferPri
           fontSize={['fs15', 'fs18', 'fs20']}
         >
           <PriceCurrency price={lowOfferPrice} />
-          -
+          {' - '}
           <PriceCurrency price={highOfferPrice} />
         </BodyCopy>
       ) : (
