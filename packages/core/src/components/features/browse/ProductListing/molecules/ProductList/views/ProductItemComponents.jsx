@@ -331,10 +331,11 @@ export const WishListIcon = (
   if (itemNotAvailable) {
     return null;
   }
+
   return (
     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
       <ProductWishlistIcon
-        onClick={isInDefaultWishlist || isFavoriteView ? null : handleAddToWishlist}
+        onClick={isInDefaultWishlist ? null : handleAddToWishlist}
         activeButton={isInDefaultWishlist || isFavoriteView}
         favoritedCount={favoritedCount}
         className="fav-icon"

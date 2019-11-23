@@ -397,7 +397,6 @@ class ProductsGridItem extends React.PureComponent {
       AddToFavoriteErrorMsg,
     } = this.props;
     const { errorProductId } = this.state;
-
     const fulfilmentSection =
       AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
