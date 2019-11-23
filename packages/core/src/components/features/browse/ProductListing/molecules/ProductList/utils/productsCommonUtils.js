@@ -126,6 +126,17 @@ export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) 
 }
 
 /**
+ * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
+ */
+export function getMapSliceForSizeSkuID(colorProduct, size) {
+  let skuId;
+  colorProduct.fits.forEach(fitsMap => {
+    skuId = fitsMap.sizes.filter(sizesMap => sizesMap.sizeName === size);
+  });
+  return skuId;
+}
+
+/**
  * @return the element flagged as default (or the first one) on the fits array
  */
 export function getDefaultFitForColorSlice(colorFitsSizesMapEntry, ignoreQtyCheck = false) {

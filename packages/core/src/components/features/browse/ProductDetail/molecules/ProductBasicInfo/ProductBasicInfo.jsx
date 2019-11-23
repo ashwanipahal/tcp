@@ -49,12 +49,16 @@ class ProductBasicInfo extends React.Component {
   handleAddToWishlist = () => {
     const {
       onAddItemToFavorites,
-      productMiscInfo: { colorProductId, colorDisplayId },
+      productInfo: { productId },
+      productMiscInfo: { colorProductId },
       pageName,
+      skuId,
     } = this.props;
 
     onAddItemToFavorites({
-      colorProductId: colorDisplayId || colorProductId,
+      colorProductId: productId,
+      productSkuId: (skuId && skuId[0].skuId) || null,
+      pdpColorProductId: colorProductId,
       page: pageName || 'PDP',
     });
   };
@@ -72,6 +76,7 @@ class ProductBasicInfo extends React.Component {
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
+      AddToFavoriteErrorMsgID,
     } = this.props;
     const isFavorite =
       productMiscInfo.isFavorite ||
@@ -153,6 +158,7 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
+  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
@@ -169,6 +175,7 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
+  AddToFavoriteErrorMsgID: '',
   removeAddToFavoritesErrorMsg: () => {},
 };
 
