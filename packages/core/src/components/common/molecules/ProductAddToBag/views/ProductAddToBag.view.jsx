@@ -234,14 +234,17 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
   getPageShortName = currentProduct => {
     let pageShortName = '';
+    let outfitPageShortName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
     const productName = currentProduct && currentProduct.name.toLowerCase();
     if (productId) {
       pageShortName = `product:${productId}:${productName}`;
+      outfitPageShortName = `outfit:${productId}:${productName}`;
     }
     return {
       pageShortName,
       productId,
+      outfitPageShortName,
     };
   };
 
@@ -279,7 +282,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
     colorList = fromJS(colorList);
     const { errorMessage, fit: fitTitle } = plpLabels;
-    const { pageShortName, productId } = this.getPageShortName(currentProduct);
+    const { pageShortName, productId, outfitPageShortName } = this.getPageShortName(currentProduct);
     const pageName = pageShortName;
     return (
       <form className={className} noValidate>
@@ -347,24 +350,37 @@ class ProductAddToBag extends React.PureComponent<Props> {
             >
               {!isBundleProduct && this.renderOutfitButton()}
               <div className="button-wrapper">
-                <Button
-                  type="submit"
-                  className="add-to-bag-button"
-                  disabled={keepAlive}
-                  // eslint-disable-next-line sonarjs/no-identical-functions
-                  onClick={e => {
-                    e.preventDefault();
-                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-                    if (fitChanged) {
-                      displayErrorMessage(fitChanged);
-                    } else {
-                      displayATBErrorMessage(true);
-                      handleFormSubmit();
-                    }
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['scAdd,scOpen,event85,event61,event77'],
+                    eventName: 'cart add',
+                    pageShortName,
+                    pageName: outfitPageShortName,
+                    pageType: 'outfit',
+                    pageSection: 'outfit',
+                    pageSubSection: 'outfit',
+                    products: [{ id: `${productId}` }],
                   }}
                 >
-                  {this.getButtonLabel()}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="add-to-bag-button"
+                    disabled={keepAlive}
+                    // eslint-disable-next-line sonarjs/no-identical-functions
+                    onClick={e => {
+                      e.preventDefault();
+                      // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                      if (fitChanged) {
+                        displayErrorMessage(fitChanged);
+                      } else {
+                        displayATBErrorMessage(true);
+                        handleFormSubmit();
+                      }
+                    }}
+                  >
+                    {this.getButtonLabel()}
+                  </Button>
+                </ClickTracker>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
             </Col>
