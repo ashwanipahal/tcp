@@ -3078,117 +3078,9 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-            "eVar28": "outfit:2625899",
-            "eVar65": "companyinfo:companyinfo",
-            "pageName": "companyinfo:companyinfo",
-            "pageSection": "companyInfo",
-            "pageSubSection": "companyInfo",
-            "pageType": "companyInfo",
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
@@ -3197,8 +3089,20 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Styled(Button)
@@ -3743,117 +3647,9 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-            "eVar28": "outfit:2625899",
-            "eVar65": "companyinfo:companyinfo",
-            "pageName": "companyinfo:companyinfo",
-            "pageSection": "companyInfo",
-            "pageSubSection": "companyInfo",
-            "pageType": "companyInfo",
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
@@ -3862,8 +3658,20 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Styled(Button)
@@ -4409,117 +4217,9 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-            "eVar28": "outfit:2625899",
-            "eVar65": "companyinfo:companyinfo",
-            "pageName": "companyinfo:companyinfo",
-            "pageSection": "companyInfo",
-            "pageSubSection": "companyInfo",
-            "pageType": "companyInfo",
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
@@ -4528,8 +4228,20 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <styled.div>
@@ -4974,117 +4686,9 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-            "eVar28": "outfit:2625899",
-            "eVar65": "companyinfo:companyinfo",
-            "pageName": "companyinfo:companyinfo",
-            "pageSection": "companyInfo",
-            "pageSubSection": "companyInfo",
-            "pageType": "companyInfo",
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
@@ -5093,8 +4697,20 @@ exports[`StoreAddressTile component Listing should render listing view with inde
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Styled(Button)

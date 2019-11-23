@@ -83,7 +83,7 @@ export default function create(store) {
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
         return clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
-          : pageData.pageName;
+          : pageData.pageType;
       },
     },
 
