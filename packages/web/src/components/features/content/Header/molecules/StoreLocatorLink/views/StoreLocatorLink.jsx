@@ -1,38 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, toTimeString, getLabelValue, getLocator } from '@tcp/core/src/utils';
-import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
+import { getIconPath, getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
 import ClickTracker from '../../../../../../common/atoms/ClickTracker';
 
-const getStoreHours = store => {
-  const hours = store && store.hours;
-  const storeHours = hours && [
-    ...hours.regularAndHolidayHours,
-    ...hours.regularHours,
-    ...hours.holidayHours,
-  ];
-  const todaysDate = new Date();
-  let storeTime = '';
-  /* eslint-disable no-unused-expressions */
-  storeHours &&
-    storeHours.forEach(hour => {
-      const openInterval =
-        hour &&
-        hour.openIntervals.length > 0 &&
-        hour.openIntervals[hour.openIntervals.length - 1].toHour;
-      if (compareDate(todaysDate, parseDate(openInterval))) {
-        storeTime = toTimeString(parseDate(openInterval), true);
-      }
-    });
-  return storeTime;
-};
-
 const StoreLocatorLink = ({ className, labels, store }) => {
   const basicInfo = store && store.basicInfo;
-  const storeTime = getStoreHours(store);
+  const currentDate = new Date();
+  const hours = store && store.hours;
+  console.log('storeInfo==>', store);
+  const storeTime = hours && getStoreHours(hours, labels, currentDate);
   const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
 
   return (
@@ -73,9 +52,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
               >
-                {storeTime
-                  ? `${getLabelValue(labels, 'lbl_storelocator_openUntilTxt')} ${storeTime}`
-                  : ''}
+                {storeTime}
               </BodyCopy>
             </div>
           ) : (
