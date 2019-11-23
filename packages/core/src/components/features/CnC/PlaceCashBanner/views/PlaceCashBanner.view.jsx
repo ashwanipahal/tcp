@@ -4,7 +4,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/PlaceCashBanner.style';
 import { BodyCopy, Row, Col, DamImage, Anchor } from '../../../../common/atoms';
 import PlaceCashDetailsModal from './PlaceCashDetails.modal.view';
-
 /**
  * PlaceCashBanner Component
  * @description Display User's place cash value earned
@@ -43,7 +42,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               colSize={{ small: 6, medium: 8, large: 12 }}
               textAlign="center"
             >
-              {/* Fix Me: wiith given zeplin assets transforms are not working properly
+              {/* Fix Me: with given zeplin assets transforms are not working properly
               need correct zeplin assets : mod_placeBug_bag_d */}
               <DamImage
                 className="place-cash__img"

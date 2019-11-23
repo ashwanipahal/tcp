@@ -14,8 +14,8 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "D96E3BB2238587A6007879C7"
-                     BuildableName = "My Place Preview.app"
+                     BlueprintIdentifier = "39B94DA82387BC330068B1E5"
+                     BuildableName = "My Place - Preview.app"
                      BlueprintName = "mobileapp_preview"
                      ReferencedContainer = "container:mobileapp.xcodeproj">
                   </BuildableReference>
@@ -32,8 +32,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D96E3BB2238587A6007879C7"
-               BuildableName = "My Place Preview.app"
+               BlueprintIdentifier = "39B94DA82387BC330068B1E5"
+               BuildableName = "My Place - Preview.app"
                BlueprintName = "mobileapp_preview"
                ReferencedContainer = "container:mobileapp.xcodeproj">
             </BuildableReference>
@@ -62,8 +62,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D96E3BB2238587A6007879C7"
-            BuildableName = "My Place Preview.app"
+            BlueprintIdentifier = "39B94DA82387BC330068B1E5"
+            BuildableName = "My Place - Preview.app"
             BlueprintName = "mobileapp_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
@@ -79,8 +79,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D96E3BB2238587A6007879C7"
-            BuildableName = "My Place Preview.app"
+            BlueprintIdentifier = "39B94DA82387BC330068B1E5"
+            BuildableName = "My Place - Preview.app"
             BlueprintName = "mobileapp_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>

@@ -135,6 +135,7 @@ const ProductListView = ({
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
                 isFilterBy={isFilterBy}
+                isLoadingMore={isLoadingMore}
               />
               {/* UX timer */}
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />

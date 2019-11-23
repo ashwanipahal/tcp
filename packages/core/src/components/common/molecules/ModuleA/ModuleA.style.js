@@ -102,6 +102,12 @@ const style = css`
     position: relative;
   }
 
+  .moduleA_carousel_wrapper {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 100%;
+    }
+  }
+
   .tcp_carousel_wrapper .slick-list,
   .banner-slide {
     min-height: 200px;
