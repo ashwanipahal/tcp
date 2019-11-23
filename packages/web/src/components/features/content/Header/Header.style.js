@@ -39,7 +39,6 @@ export default css`
     -webkit-transition: top 0.1s ease-in;
     transition: top 0.1s ease-in;
   }
-
   .top-promo-banner {
     display: none;
     @media ${props => props.theme.mediaQuery.large} {
