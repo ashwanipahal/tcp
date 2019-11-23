@@ -33,6 +33,8 @@ const OutfitDetailsView = ({
   labels,
   pdpLabels,
   outfitId,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
   const recommendationAttributes = {
@@ -93,6 +95,8 @@ const OutfitDetailsView = ({
                     addToFavorites={addToFavorites}
                     currencySymbol={currencySymbol}
                     currencyAttributes={currencyAttributes}
+                    AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                    removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                   />
                 </li>
               ))}
@@ -136,6 +140,8 @@ OutfitDetailsView.propTypes = {
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   outfitId: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -150,6 +156,8 @@ OutfitDetailsView.defaultProps = {
   currencySymbol: 'USD',
   pdpLabels: {},
   outfitId: '',
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

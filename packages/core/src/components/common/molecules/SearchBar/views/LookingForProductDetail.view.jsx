@@ -80,11 +80,12 @@ class LookingForProductDetail extends React.PureComponent {
                         }}
                         isProductImage
                         height="25px"
+                        lazyLoad={false}
                       />
                       {keepAlive && (
                         <OutOfStockWaterMark
                           label={outOfStockLabels.outOfStockCaps}
-                          fontSizes={['fs12', 'fs12', 'fs12']}
+                          fontSizes={['fs12', 'fs16', 'fs12']}
                         />
                       )}
                     </Anchor>
