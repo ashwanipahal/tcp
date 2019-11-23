@@ -562,9 +562,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
                   <Button
                     buttonVariation="fixed-width"
                     type="button"
-                    className="gallery-button-left"
+                    className={
+                      appliedFiltersCount === 0
+                        ? 'gallery-button-left disable-clear-all-button'
+                        : 'gallery-button-left'
+                    }
                     data-locator="view_gallery_button"
                     onClick={() => this.hideModal()}
+                    disabled={appliedFiltersCount === 0}
                   >
                     {labels.lbl_clear}
                   </Button>

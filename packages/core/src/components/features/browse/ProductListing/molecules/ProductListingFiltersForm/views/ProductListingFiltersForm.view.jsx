@@ -339,7 +339,7 @@ class ProductListingFiltersForm extends React.Component {
       <div className="filter-and-sort-form-container">
         {/* {totalProductsCount > 0 && <ProductListingCount currentSearchTerm={currentSearchTerm} isMobile={false} totalProductsCount={totalProductsCount} isShowAllEnabled={false} />} NOTE: FPO isShowAllEnabled */}
         <form className="render-desktop-view" onSubmit={handleSubmit(this.handleImmediateSubmit)}>
-          {totalProductsCount > 0 && (
+          {totalProductsCount > 1 && (
             <div className={`${className} desktop-dropdown`}>
               <div className="filters-only-container">
                 {isFilterBy && (
@@ -399,24 +399,26 @@ class ProductListingFiltersForm extends React.Component {
           </Row>
         </form>
         <div className="render-mobile-view">
-          <ProductListingMobileFiltersForm
-            totalProductsCount={totalProductsCount}
-            initialValues={initialValues}
-            filtersMaps={filtersMaps}
-            className={className}
-            labels={labels}
-            onSubmit={onSubmit}
-            handleSubmit={handleSubmit}
-            handleImmediateSubmit={this.handleImmediateSubmit}
-            removeAllFilters={this.handleRemoveAllFilters}
-            handleSubmitOnChange={this.handleSubmitOnChange}
-            sortLabels={sortLabels}
-            isFavoriteView={isFavoriteView}
-            favoriteSortingParams={favoriteSortingParams}
-            onSortSelection={onSortSelection}
-            onChange={change}
-            isLoadingMore={isLoadingMore}
-          />
+          {totalProductsCount > 1 && (
+            <ProductListingMobileFiltersForm
+              totalProductsCount={totalProductsCount}
+              initialValues={initialValues}
+              filtersMaps={filtersMaps}
+              className={className}
+              labels={labels}
+              onSubmit={onSubmit}
+              handleSubmit={handleSubmit}
+              handleImmediateSubmit={this.handleImmediateSubmit}
+              removeAllFilters={this.handleRemoveAllFilters}
+              handleSubmitOnChange={this.handleSubmitOnChange}
+              sortLabels={sortLabels}
+              isFavoriteView={isFavoriteView}
+              favoriteSortingParams={favoriteSortingParams}
+              onSortSelection={onSortSelection}
+              onChange={change}
+              isLoadingMore={isLoadingMore}
+            />
+          )}
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
       </div>

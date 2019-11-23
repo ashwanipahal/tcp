@@ -19,17 +19,26 @@ export default css`
     margin-bottom: 8px;
     padding-bottom: 0;
     border: 0;
-    max-width: 90px;
+    max-width: 31%;
     min-width: 90px;
 
     .item-select,
     .selected-items {
-      padding-left: 22px;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding-left: 22px;
+      }
     }
 
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       max-width: 150px;
       min-width: 150px;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 22%;
+      min-width: 110px;
     }
 
     .selected-items {
@@ -42,6 +51,7 @@ export default css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-right: 0;
       white-space: nowrap;
+      margin-left: 0;
     }
   }
   .color-chip {
@@ -76,6 +86,10 @@ export default css`
   .color-name {
     vertical-align: top;
     width: 86px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 60px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
