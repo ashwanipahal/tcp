@@ -265,7 +265,7 @@ class Socialview extends React.PureComponent {
       case 'Facebook':
         if (!isConnected) {
           // Attempt a login using the Facebook login dialog asking for default permissions.
-          return LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
+          return LoginManager.logInWithPermissions(['public_profile']).then(result => {
             if (result.isCancelled) {
               // do nothing
             } else {
