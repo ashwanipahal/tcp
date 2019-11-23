@@ -119,9 +119,11 @@ export class BagPageContainer extends React.Component<Props> {
       cartOrderItems,
       isCartLoaded,
       trackPageViewBag,
+      router,
     } = this.props;
 
     const showAddTobag = false;
+    const fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
     return (
       <BagPage
         isMobile={isMobile}
@@ -156,6 +158,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
+        fromMiniBag={fromMiniBag}
       />
     );
   }
@@ -178,7 +181,6 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
         pageSection: loadedComponent,
         pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageNavigationText: 'header-cart',
         loadAnalyticsOnload: false,
       },
     },

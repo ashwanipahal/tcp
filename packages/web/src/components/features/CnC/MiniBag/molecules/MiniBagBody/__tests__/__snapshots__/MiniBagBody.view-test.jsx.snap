@@ -32,11 +32,10 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
@@ -129,11 +128,10 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
@@ -226,11 +224,10 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
