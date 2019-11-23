@@ -34,6 +34,7 @@ export default class ShippingPage extends React.PureComponent {
     setAsDefaultShipping: false,
     saveToAddressBook: false,
     hasSetGiftOptions: false,
+    updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
     newUserPhoneNo: null,
