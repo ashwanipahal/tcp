@@ -424,6 +424,9 @@ export default css`
   .dam-image-review-page {
     width: 55px;
   }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
