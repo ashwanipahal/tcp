@@ -250,6 +250,7 @@ export const CreateWishList = props => {
     activeWishListId,
     openAddNewList,
   } = props;
+  const activateCreateButton = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
   return (
     <div className="create-wish-list-section">
       <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
@@ -280,6 +281,7 @@ export const CreateWishList = props => {
         fill="BLACK"
         data-locator="create-new-wish-list"
         className="create-new__button"
+        disabled={activateCreateButton}
       >
         {labels.lbl_fav_createNewList}
       </Button>
