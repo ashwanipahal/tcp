@@ -93,6 +93,20 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
           >
             <Styled(ReadMore)
               className=" seo-text"
+              inheritedStyles={
+                Array [
+                  "
+  h1 {
+    text-transform: uppercase;
+  }
+  .body-copy {
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+",
+                ]
+              }
               labels={Object {}}
             />
           </Styled(Col)>
