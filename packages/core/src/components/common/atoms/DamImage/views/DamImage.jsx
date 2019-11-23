@@ -6,7 +6,9 @@ import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
 
-const VideoPlayer = dynamic(() => import('../../VideoPlayer'));
+const VideoPlayer = dynamic(() => import('../../VideoPlayer'), {
+  ssr: false,
+});
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -143,9 +145,9 @@ const DamImage = props => {
     ...other
   } = props;
 
-  // if (videoData) {
-  //   return <RenderVideo video={videoData} image={imgData} />;
-  // }
+  if (videoData) {
+    return <RenderVideo video={videoData} image={imgData} />;
+  }
 
   const imgProps = {
     breakpoints,
