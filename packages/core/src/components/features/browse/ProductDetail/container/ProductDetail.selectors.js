@@ -163,6 +163,7 @@ export const getPDPLabels = state => {
 };
 
 export const getPLPPromos = (state, type) => {
+  // TODO: Dynamic the productID generation logic
   const productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
