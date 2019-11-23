@@ -171,7 +171,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
-    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
+    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount, bagLoading } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
       checkoutProgressBarLabels
@@ -259,6 +259,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         updateCheckoutPageData={updateCheckoutPageData}
         pageData={pageData}
+        bagLoading={bagLoading}
       />
     );
   }

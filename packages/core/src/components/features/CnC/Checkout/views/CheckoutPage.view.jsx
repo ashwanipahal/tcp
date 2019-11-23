@@ -4,6 +4,7 @@ import {
   setLoaderState,
   setSectionLoaderState,
 } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { isClient } from '@tcp/core/src/utils';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
@@ -326,11 +327,12 @@ class CheckoutPage extends React.PureComponent {
       checkoutServerError,
       isBagLoaded,
     } = this.props;
-    const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels, bagLoading } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const currentSection = this.getCurrentCheckoutSection(this.props);
+
     return (
       <>
         {!isBagLoaded || cartOrderItemsCount > 0 ? (
@@ -343,18 +345,24 @@ class CheckoutPage extends React.PureComponent {
             orderLedgerAfterView={
               currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
                 <div className="review-submit-container">
-                  <Button
-                    aria-label={ariaLabelSubmitOrderButton}
-                    type="button"
-                    className="review-submit-button"
-                    fontSize="fs13"
-                    fontWeight="extrabold"
-                    buttonVariation="variable-width"
-                    fill="BLUE"
-                    onClick={dispatchReviewReduxForm}
-                  >
-                    {nextSubmitText}
-                  </Button>
+                  {!bagLoading ? (
+                    <Button
+                      aria-label={ariaLabelSubmitOrderButton}
+                      type="button"
+                      className="review-submit-button"
+                      fontSize="fs13"
+                      fontWeight="extrabold"
+                      buttonVariation="variable-width"
+                      fill="BLUE"
+                      onClick={dispatchReviewReduxForm}
+                    >
+                      {nextSubmitText}
+                    </Button>
+                  ) : (
+                    <div className="review-submit-button">
+                      <LoaderSkelton />
+                    </div>
+                  )}
                   <div className="submit-disclaimer">
                     {applyConditionPreText}
                     <Anchor
