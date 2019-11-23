@@ -22,4 +22,9 @@ const TitlePlusContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export { Container, SectionOne, SectionTwo, SectionThree, TitlePlusContainer };
+const SkeletonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 200px;
+`;
+
+export { Container, SectionOne, SectionTwo, SectionThree, TitlePlusContainer, SkeletonWrapper };

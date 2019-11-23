@@ -20,7 +20,11 @@ class AddList extends React.PureComponent {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
       if (onHandleSubmit) {
-        onHandleSubmit(data);
+        const payload = {
+          wishListName: data.listName,
+          isDefault: data.default_checkbox,
+        };
+        onHandleSubmit(payload);
       }
     })();
   };

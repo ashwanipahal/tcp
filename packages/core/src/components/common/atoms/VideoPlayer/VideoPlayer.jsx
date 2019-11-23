@@ -17,7 +17,7 @@ const parseFileName = url => {
 
 class VideoPlayer extends React.Component {
   componentDidMount() {
-    const { id, autoplay, url } = this.props;
+    const { id, autoplay, url, muted } = this.props;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
@@ -25,6 +25,7 @@ class VideoPlayer extends React.Component {
 
     const player = cloudinaryCore.videoPlayer(id || 'cld-video-player', {
       autoplay,
+      muted,
     });
 
     player.fluid(true);
@@ -35,7 +36,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { id, controls, muted, loop, url, className } = this.props;
+    const { id, controls, muted, loop, url, className, autoplay } = this.props;
 
     if (!url) {
       return null;
@@ -43,12 +44,16 @@ class VideoPlayer extends React.Component {
 
     let loopVideo;
     let mutedVideo;
+    let autoplayVideo;
 
     if (loop) {
       loopVideo = 'true';
     }
     if (muted) {
-      mutedVideo = 'true';
+      mutedVideo = '';
+    }
+    if (autoplay) {
+      autoplayVideo = '';
     }
 
     return (
@@ -58,6 +63,7 @@ class VideoPlayer extends React.Component {
         muted={mutedVideo}
         loop={loopVideo}
         className={className}
+        autoPlay={autoplayVideo}
       >
         <track
           src="/static/captions/captions_en.vtt"
