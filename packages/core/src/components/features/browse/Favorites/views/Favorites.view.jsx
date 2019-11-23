@@ -389,6 +389,7 @@ class FavoritesView extends React.PureComponent {
     if (isDataLoading) return '';
     return (
       <div className={className}>
+        {this.renderModalWrapper()}
         <Row fullBleed>
           <Col
             colSize={{ small: 6, medium: 8, large: 12 }}
@@ -469,7 +470,6 @@ class FavoritesView extends React.PureComponent {
                 {this.renderProductList()}
               </Col>
             </Row>
-            {this.renderModalWrapper()}
           </>
         ) : (
           <Row fullBleed>
