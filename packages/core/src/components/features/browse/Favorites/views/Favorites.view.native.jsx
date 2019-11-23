@@ -338,44 +338,24 @@ class FavoritesView extends React.PureComponent {
       contentType: 'link',
       contentUrl: this.getSharableLink(),
     };
-    ShareDialog.canShow(shareLinkContent)
-      .then(canShow => {
-        if (canShow) {
-          return ShareDialog.show(shareLinkContent);
-        }
-        return null;
-      })
-      .then(
-        result => {
-          if (result.isCancelled) {
-            console.log('Share cancelled');
-          } else {
-            console.log('Share success with postId: ', result.postId);
-          }
-        },
-        error => {
-          console.log('Share fail with error: ', error);
-        }
-      );
+    ShareDialog.canShow(shareLinkContent).then(canShow => {
+      if (canShow) {
+        return ShareDialog.show(shareLinkContent);
+      }
+      return null;
+    });
   };
 
   onShareLink = () => {
-    try {
-      const result = Share.share({
-        message: this.getSharableLink(),
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          console.log('shared with activity type of result.activityType');
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
+    const result = Share.share({
+      message: this.getSharableLink(),
+    });
+    if (result.action === Share.sharedAction) {
+      if (result.activityType) {
+        // shared with activity type of result.activityType
       }
-    } catch (error) {
-      console.log(error.message);
+    } else if (result.action === Share.dismissedAction) {
+      // dismissed
     }
   };
 
