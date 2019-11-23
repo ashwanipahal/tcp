@@ -2,6 +2,9 @@ import React from 'react';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import { getSflItemCount, getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getSiteId } from '@tcp/core/src/utils/utils.web';
+
 import withRefWrapper from '../../../../common/hoc/withRefWrapper';
 import withHotfix from '../../../../common/hoc/withHotfix';
 
@@ -43,9 +46,12 @@ class BagPageView extends React.PureComponent {
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
+    const siteId = getSiteId() && getSiteId().toUpperCase();
+    const cartTotalCount = getCartItemCount();
+    const sflTotalCount = getSflItemCount(siteId);
     this.setState({
       activeSection:
-        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+        !cartTotalCount && sflTotalCount && isShowSaveForLaterSwitch
           ? BAGPAGE_CONSTANTS.SFL_STATE
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
