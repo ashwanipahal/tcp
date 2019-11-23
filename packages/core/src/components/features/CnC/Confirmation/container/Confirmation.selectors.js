@@ -4,8 +4,17 @@ import { createSelector } from 'reselect';
 //   getPersonalDataState,
 // } from '../../../account/User/container/User.selectors';
 import constants from '../../Checkout/Checkout.constants';
-import { getLabelValue, buildStorePageUrlSuffix, getAPIConfig } from '../../../../../utils/utils';
+import {
+  getLabelValue,
+  buildStorePageUrlSuffix,
+  getAPIConfig,
+  isTCP,
+} from '../../../../../utils/utils';
 import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
+
+const getOdmLoading = state => {
+  return state.Confirmation && state.Confirmation.get('loading');
+};
 
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
@@ -192,9 +201,12 @@ const getInitialCreateAccountValues = createSelector(
   }
 );
 
-// const getEarnedPlaceCashValue = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.valueOfEarnedPcCoupons;
-// })
+const getEarnedPlaceCashValue = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.valueOfEarnedPcCoupons;
+  }
+);
 
 // const getPlaceCashSpotEnabled = createSelector(getEarnedPlaceCashValue, earnedPlaceCashValue => {
 //   return earnedPlaceCashValue > 0;
@@ -299,6 +311,9 @@ const isCanadaSite = () => {
   return getCurrentSiteId() === constants.ROUTING_CONST.siteIds.ca;
 };
 
+const isGymboreeCanadaSite = () => {
+  return !isTCP() && isCanadaSite();
+};
 const getConfirmationLblObj = state =>
   state && state.Labels && state.Labels.checkout && state.Labels.checkout.orderConfirmation;
 
@@ -367,6 +382,7 @@ const getConfirmationLabels = createSelector(
       lbl_confirmation_venmo_ship_information: venmoShipInformation,
       lbl_confirmation_paid_with_venmo: paidWithVenmo,
     } = labels;
+
     return {
       thankYouHeading,
       mixOrderMsg1,
@@ -448,6 +464,7 @@ const getLedgerSummaryDataConfirmation = state => {
 };
 
 export default {
+  getOdmLoading,
   getOrderConfirmation,
   getOrderEmailAddress,
   getCurrentSiteId,
@@ -465,7 +482,7 @@ export default {
   // getHoldDate,
   getInitialCreateAccountValues,
   // getIsOrderHasShipping,
-  // getEarnedPlaceCashValue,
+  getEarnedPlaceCashValue,
   // getPlaceCashSpotEnabled,
   getPersonalizedCoupons,
   getEncryptedEmailAddress,
@@ -489,4 +506,5 @@ export default {
   getUpdateOrderDetailsData,
   getConfirmationLblObj,
   getLedgerSummaryDataConfirmation,
+  isGymboreeCanadaSite,
 };

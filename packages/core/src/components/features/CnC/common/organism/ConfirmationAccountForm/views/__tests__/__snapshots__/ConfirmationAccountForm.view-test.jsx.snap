@@ -114,7 +114,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -257,7 +257,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -345,7 +345,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -488,7 +488,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -560,7 +560,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -683,7 +683,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -865,7 +865,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1008,7 +1008,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1096,7 +1096,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1239,7 +1239,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1311,7 +1311,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1434,7 +1434,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1611,7 +1611,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1754,7 +1754,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1797,7 +1797,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1940,7 +1940,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1984,7 +1984,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2127,7 +2127,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2215,7 +2215,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2358,7 +2358,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2428,7 +2428,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2571,7 +2571,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2616,7 +2616,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2759,7 +2759,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2804,7 +2804,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2927,7 +2927,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3041,7 +3041,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3184,7 +3184,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3227,7 +3227,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3370,7 +3370,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3413,7 +3413,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3556,7 +3556,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3600,7 +3600,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3743,7 +3743,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3831,7 +3831,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3974,7 +3974,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4044,7 +4044,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4187,7 +4187,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4232,7 +4232,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4375,7 +4375,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4420,7 +4420,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4543,7 +4543,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4724,7 +4724,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4867,7 +4867,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4955,7 +4955,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -5098,7 +5098,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -5170,7 +5170,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -5293,7 +5293,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

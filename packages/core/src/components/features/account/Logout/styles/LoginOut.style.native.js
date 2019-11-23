@@ -36,6 +36,7 @@ const logggedInText = props => {
 
 const LoggedinWrapper = styled.View`
   ${logggedInStyle}
+  ${props => props.loggedInWrapperStyle || ''}
 `;
 
 const LoggedinTextWrapper = styled.View`

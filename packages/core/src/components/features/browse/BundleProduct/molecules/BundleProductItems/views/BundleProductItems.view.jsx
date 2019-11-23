@@ -21,9 +21,13 @@ class BundleProductItems extends React.PureComponent {
       handleAddToBag,
       isLoggedIn,
       currencySymbol,
-      currencyExchange,
+      currencyAttributes,
       className,
       outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     return (
       <ul className="outfiting-list-container">
@@ -49,11 +53,18 @@ class BundleProductItems extends React.PureComponent {
                   addToBagError={addToBagErrorId === productItem.generalProductId && addToBagError}
                   isLoggedIn={isLoggedIn}
                   addToFavorites={() => {
-                    addToFavorites({ colorProductId: productItem.generalProductId });
+                    addToFavorites({
+                      colorProductId: productItem.generalProductId,
+                      page: 'BUNDLE',
+                    });
                   }}
                   currencySymbol={currencySymbol}
-                  currencyExchange={currencyExchange}
+                  currencyAttributes={currencyAttributes}
                   isBundleProduct
+                  isKeepAliveEnabled={isKeepAliveEnabled}
+                  outOfStockLabels={outOfStockLabels}
+                  AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                  removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                 />
               </li>
             );
@@ -78,10 +89,14 @@ BundleProductItems.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   className: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 BundleProductItems.defaultProps = {
@@ -91,10 +106,12 @@ BundleProductItems.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
   className: '',
+  outOfStockLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(BundleProductItems, styles);

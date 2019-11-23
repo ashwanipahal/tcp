@@ -6,6 +6,7 @@ import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import {
   ICON_NAME,
   ICON_FONT_CLASS,
@@ -17,6 +18,7 @@ import { LogoutWrapper } from '@tcp/core/src/components/features/account/Logout/
 import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
+import WebViewModal from '@tcp/core/src/components/common/molecules/WebViewModal';
 import {
   UnderlineStyle,
   TextWrapper,
@@ -27,11 +29,12 @@ import {
   TouchabelContainer,
   FavImageWrapper,
   FavtWrapper,
+  AnchorStyles,
 } from '../styles/FooterLinks.style.native';
 
 const favIcon = require('../../../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
-const rightIcon = require('../../../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
+const rightIcon = require('../../../../../../../../../mobileapp/src/assets/images/carrot-right.png');
 
 class FooterLinks extends PureComponent {
   constructor(props) {
@@ -46,6 +49,8 @@ class FooterLinks extends PureComponent {
       horizontalBar: true,
       modalHeaderLbl: ' ',
       changePassword: false,
+      toggleViewModal: false,
+      webUrl: '',
     };
   }
 
@@ -148,6 +153,15 @@ class FooterLinks extends PureComponent {
     openApplyNowModal({ isModalOpen: true });
   };
 
+  showSettingsModal = () => {
+    const { navigation, isUserLoggedIn } = this.props;
+    navigation.navigate('AppSettings', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+      isUserLoggedIn,
+    });
+  };
+
   toggleModal = ({ getComponentId }) => {
     this.setState(state => ({
       showModal: !state.showModal,
@@ -199,8 +213,15 @@ class FooterLinks extends PureComponent {
     });
   };
 
+  openWebViewModal = (webUri = '') => {
+    this.setState(state => ({
+      toggleViewModal: !state.toggleViewModal,
+      webUrl: webUri,
+    }));
+  };
+
   renderLinks = () => {
-    const { getComponentId } = this.state;
+    const { getComponentId, toggleViewModal, webUrl } = this.state;
     const {
       isUserLoggedIn,
       labels,
@@ -273,14 +294,10 @@ class FooterLinks extends PureComponent {
                 />
               </TextWrapper>
             </FavoritesWrapper>
-            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={6} height={10} />
+            </RightArrowImageContainer>
           </TouchabelContainer>
-        );
-      } else if (leafLink.url.includes('credit-account')) {
-        linkMarkup = (
-          <>
-            <Panel title={leafLink.text} isVariationTypeLink />
-          </>
         );
       } else if (leafLink.url.includes('gift-card')) {
         linkMarkup = (
@@ -300,7 +317,7 @@ class FooterLinks extends PureComponent {
               color="gray.900"
             />
             <RightArrowImageContainer>
-              <ImageComp source={rightIcon} width={7} height={10} />
+              <ImageComp source={rightIcon} width={6} height={10} />
             </RightArrowImageContainer>
           </TouchabelContainer>
         );
@@ -313,9 +330,14 @@ class FooterLinks extends PureComponent {
           />
         );
       } else if (leafLink.url.includes('settings')) {
-        linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key />;
-      } else if (leafLink.url.includes('helpCenter')) {
-        linkMarkup = <Panel title={leafLink.text} isVariationTypeLink />;
+        linkMarkup = (
+          <Panel
+            title={leafLink.text}
+            isVariationTypeLink
+            key
+            handleComponentChange={this.showSettingsModal}
+          />
+        );
       } else if (leafLink.url.includes('messages')) {
         linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key="" />;
       } else if (leafLink.url.includes('store-locator')) {
@@ -334,11 +356,42 @@ class FooterLinks extends PureComponent {
         linkMarkup = (
           <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         );
+      } else if (!leafLink.url.includes('track-order')) {
+        linkMarkup = (
+          <Anchor
+            {...(leafLink.target === '_self'
+              ? { onPress: () => this.openWebViewModal(leafLink.url) }
+              : { url: leafLink.url })}
+            customStyle={AnchorStyles}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={leafLink.text}
+              color="gray.900"
+            />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={6} height={10} />
+            </RightArrowImageContainer>
+          </Anchor>
+        );
       }
       return (
         <>
           {linkMarkup}
           {(index === 0 || index === 2 || index === 5) && showDivider ? <UnderlineStyle /> : null}
+          {toggleViewModal && (
+            <WebViewModal
+              openState={toggleViewModal}
+              toggleModalHandler={this.openWebViewModal}
+              webViewProps={{
+                source: {
+                  uri: webUrl,
+                },
+              }}
+            />
+          )}
         </>
       );
     });

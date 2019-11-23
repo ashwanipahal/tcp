@@ -18,7 +18,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   initialLoad = true;
 
   componentDidMount() {
-    const { router, initCheckout } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,
       checkoutServerError,
@@ -27,7 +28,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
     callNeedHelpContent(this.props);
     if (checkoutServerError) {
@@ -44,7 +45,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isRegisteredUserCallDone &&
       !isRTPSFlow
     ) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
   }
 
@@ -131,6 +132,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpLabels,
       smsSignUpLabels,
       onPickupSubmit,
+      updateFromMSG,
       loadShipmentMethods,
       isGuest,
       isExpressCheckoutPage,
@@ -157,13 +159,17 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
+      bagLoading,
+      dispatch,
     } = this.props;
-    const { pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
@@ -174,6 +180,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        emailSignUpFlags={emailSignUpFlags}
         isRegisteredUserCallDone={isRegisteredUserCallDone}
         isBagLoaded={isBagLoaded}
         initialValues={initialValues}
@@ -194,6 +201,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isUsSite={isUsSite}
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
+        bagLoading={bagLoading}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -202,11 +210,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        updateFromMSG={updateFromMSG}
         verifyAddressAction={verifyAddressAction}
         shippingProps={{
           ...shippingProps,
           shippingDidMount: this.shippingDidMount,
           isRegisteredUserCallDone,
+          dispatch,
         }}
         orderHasPickUp={orderHasPickUp}
         checkoutRoutingDone={checkoutRoutingDone}
@@ -240,6 +250,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}
@@ -255,6 +267,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 }
 
 CheckoutContainer.getInitActions = () => initActions;
+
+CheckoutContainer.pageInfo = {
+  pageId: 'Checkout',
+};
 
 CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   const DEFAULT_ACTIVE_COMPONENT = 'shipping';

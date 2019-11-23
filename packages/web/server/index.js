@@ -1,3 +1,22 @@
+const logger = require('@tcp/core/src/utils/loggerInstance');
+
+if (process.env.RWD_APPD_ENABLED === 'true') {
+  try {
+    require('appdynamics').profile({
+      controllerHostName: process.env.RWD_APPD_CONTROLLER_HOST_NAME,
+      controllerPort: 443,
+      controllerSslEnabled: true,
+      accountName: process.env.RWD_APPD_ACCOUNT_NAME,
+      accountAccessKey: process.env.RWD_APPD_ACCOUNT_ACCESS_KEY,
+      applicationName: process.env.RWD_APPD_APPLICATION_NAME,
+      tierName: process.env.RWD_APPD_TIER_NAME,
+      nodeName: process.env.HOSTNAME,
+    });
+  } catch (error) {
+    logger.error('Unable to initialize AppDynamics', error);
+  }
+}
+
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
@@ -9,7 +28,6 @@ const {
   preRouteSlugs,
 } = require('@tcp/core/src/config/route.config');
 const redis = require('async-redis');
-const logger = require('@tcp/core/src/utils/loggerInstance');
 
 const {
   settingHelmetConfig,
@@ -35,6 +53,7 @@ const {
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
+const isLocalEnv = process.env.RWD_WEB_ENV_ID === 'LOCAL';
 const port = process.env.RWD_WEB_PORT || 3000;
 
 const app = next({ dev, dir: './src' });
@@ -92,6 +111,19 @@ const setSiteDetails = (req, res) => {
 };
 
 const setBrandId = (req, res) => {
+  if (isLocalEnv) {
+    const { hostname } = req;
+    let brandId = 'tcp';
+    const reqUrl = hostname.split('.');
+    for (let i = 0; i < reqUrl.length - 1; i++) {
+      if (reqUrl[i].toLowerCase() === 'gymboree') {
+        brandId = 'gym';
+        break;
+      }
+    }
+    res.locals.brandId = brandId;
+    return null;
+  }
   res.locals.brandId = process.env.RWD_WEB_BRANDID;
 };
 

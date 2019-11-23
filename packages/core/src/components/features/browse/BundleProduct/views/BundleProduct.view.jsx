@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Carousel from '../../../../common/molecules/Carousel';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BundleProduct.style';
@@ -73,7 +75,7 @@ class BundleProduct extends React.PureComponent {
       productDetails,
       pdpLabels,
       currency,
-      currencyExchange,
+      currencyAttributes,
       ...otherProps
     } = this.props;
     const selectedColorProductId = currentColorEntry.colorProductId;
@@ -87,7 +89,7 @@ class BundleProduct extends React.PureComponent {
               isGiftCard={currentProduct.isGiftCard}
               selectedColorProductId={selectedColorProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isBundleProduct
               {...otherProps}
             />
@@ -114,6 +116,12 @@ class BundleProduct extends React.PureComponent {
       outfitLabels,
       addToBagErrorId,
       addToBagError,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      currencyAttributes,
+      currency,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -129,7 +137,13 @@ class BundleProduct extends React.PureComponent {
             outfitLabels={outfitLabels}
             addToBagErrorId={addToBagErrorId}
             addToBagError={addToBagError}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+            currencySymbol={currency}
+            currencyAttributes={currencyAttributes}
             className="bundle-products-list"
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           />
         </Col>
       </Row>
@@ -151,6 +165,43 @@ class BundleProduct extends React.PureComponent {
         </Col>
         <Col colSize={{ small: 2, medium: 2, large: 3 }}>{this.getSocialConnectWidget()}</Col>
       </Row>
+    );
+  };
+
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
+    const { breadCrumbs } = this.props;
+    if (breadCrumbs) {
+      const category = breadCrumbs.map((crumb, index) => {
+        const { displayName } = crumb;
+        const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
+        return displayName + separationChar;
+      });
+      return category.join('');
+    }
+    return '';
+  };
+
+  getRecommendations = () => {
+    const { itemPartNumber, pdpLabels } = this.props;
+    const categoryId = this.getCatIdForRecommendation();
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+      categoryName: categoryId,
+      partNumber: itemPartNumber,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
+    return (
+      <div className="product-detail-section">
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          {...recommendationAttributes}
+        />
+      </div>
     );
   };
 
@@ -208,6 +259,7 @@ class BundleProduct extends React.PureComponent {
               {this.getBundleProductsList()}
             </Col>
           </Row>
+          {this.getRecommendations()}
         </div>
       );
     }
@@ -226,7 +278,7 @@ BundleProduct.propTypes = {
   currentProduct: PropTypes.shape({}).isRequired,
   productDetails: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   plpLabels: PropTypes.shape({}),
   currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleAddToBag: PropTypes.func.isRequired,
@@ -236,6 +288,10 @@ BundleProduct.propTypes = {
   isLoggedIn: PropTypes.bool,
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 BundleProduct.defaultProps = {
@@ -248,11 +304,13 @@ BundleProduct.defaultProps = {
   breadCrumbs: [],
   productDetails: {},
   currency: 'USD',
-  currencyExchange: '',
   plpLabels: {},
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(BundleProduct, styles);

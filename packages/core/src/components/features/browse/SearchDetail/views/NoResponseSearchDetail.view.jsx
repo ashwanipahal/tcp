@@ -4,6 +4,8 @@ import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
 import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
@@ -99,6 +101,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
       searchedText,
       searchResultSuggestions,
       searchResults,
+      pdpLabels,
     } = this.props;
 
     const { showProduct } = this.state;
@@ -108,6 +111,12 @@ class NoResponseSearchDetailView extends React.PureComponent {
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
         : slpLabels.lbl_no_suggestion;
 
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NULL_SEARCH,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
     return (
       <div className={className}>
         <Row className="search-by-keywords-container">
@@ -119,7 +128,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
             >
               {slpLabels.lbl_searched_for}
-              <span className="empty-searched-label">{` "${searchedText}"`}</span>
+              <span className="empty-searched-label">{`"${searchedText.split('?')[0]}"`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -133,7 +142,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
               textAlign="center"
             >
               {slpLabels.lbl_nothing_matched}
-              <span className="empty-searched-label-title">{` "${searchedText}".`}</span>
+              <span className="empty-searched-label-title">
+                {`"${searchedText.split('?')[0]}"`}
+              </span>
             </BodyCopy>
           </Col>
         </Row>
@@ -310,6 +321,24 @@ class NoResponseSearchDetailView extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className={`${className} product-description-list`}>
+              <Recommendations {...recommendationAttributes} />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="product-detail-section">
+              <Recommendations
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+                {...recommendationAttributes}
+              />
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -336,6 +365,7 @@ NoResponseSearchDetailView.propTypes = {
     lbl_search_looking_for: PropTypes.string,
     lbl_search_product_matches: PropTypes.string,
   }),
+  pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 NoResponseSearchDetailView.defaultProps = {
@@ -354,6 +384,7 @@ NoResponseSearchDetailView.defaultProps = {
     lbl_search_looking_for: '',
     lbl_search_product_matches: '',
   }),
+  pdpLabels: {},
 };
 
 const mapStateToProps = state => {

@@ -33,7 +33,11 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -106,6 +110,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       isLoggedIn,
       navigation,
       pdpLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     const { outfitIdLocal } = this.state;
     if (outfitProducts) {
@@ -119,7 +125,7 @@ class OutfitDetailsContainer extends React.PureComponent {
           isPlcc={isPlcc}
           isInternationalShipping={isInternationalShipping}
           currencySymbol={priceCurrency}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}
@@ -131,6 +137,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           navigation={navigation}
           outfitId={outfitIdLocal}
           pdpLabels={pdpLabels}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       );
     }
@@ -159,6 +167,7 @@ const mapStateToProps = state => {
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     pdpLabels: getPDPLabels(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
   };
 };
 
@@ -175,6 +184,9 @@ function mapDispatchToProps(dispatch) {
     },
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }
@@ -200,6 +212,8 @@ OutfitDetailsContainer.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -220,6 +234,8 @@ OutfitDetailsContainer.defaultProps = {
   isPickupModalOpen: false,
   isLoggedIn: false,
   pdpLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withIsomorphicRenderer({

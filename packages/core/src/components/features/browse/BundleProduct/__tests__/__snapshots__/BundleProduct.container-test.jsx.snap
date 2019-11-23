@@ -9,10 +9,15 @@ exports[`BundleProductDetail should render correctly 1`] = `
   addToFavorites={[MockFunction]}
   breadCrumbs={Array []}
   currency="USD"
-  currencyExchange={1}
+  currencyAttributes={
+    Object {
+      "exchangevalue": 1,
+    }
+  }
   currentProduct={Object {}}
   currentState={Object {}}
   handleAddToBag={[Function]}
+  isKeepAliveEnabled={false}
   isLoggedIn={false}
   isPickupModalOpen={false}
   isPlcc={false}
@@ -56,6 +61,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
       },
     }
   }
+  outOfStockLabels={Object {}}
   outfitLabels={Object {}}
   pdpLabels={Object {}}
   plpLabels={Object {}}

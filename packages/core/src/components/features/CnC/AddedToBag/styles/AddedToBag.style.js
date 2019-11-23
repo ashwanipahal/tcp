@@ -24,6 +24,11 @@ export const modalStyles = css`
       padding: 0;
       display: inline;
     }
+
+    .close-modal {
+      right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
   }
 `;
 

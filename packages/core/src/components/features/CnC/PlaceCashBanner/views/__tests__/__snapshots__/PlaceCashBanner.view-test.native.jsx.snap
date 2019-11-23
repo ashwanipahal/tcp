@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceCashBanner should render correctly should match snapshot 1`] = `
+<Styled(View)>
+  <ImageBackground
+    source={
+      Object {
+        "uri": undefined,
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "left": 2,
+        "position": "relative",
+        "top": 2,
+        "width": "100%",
+      }
+    }
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs18"
+        margin={null}
+        numberOfLines={null}
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs8"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
+        />
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          dataLocator="detailslink"
+          fontFamily="primary"
+          fontSize="fs8"
+          fontSizeVariation="small"
+          justifyContent=""
+          locator=""
+          margins={null}
+          noLink={true}
+          onPress={[Function]}
+          text=""
+          to=""
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <PlaceCashDetailsModal
+      labels={
+        Object {
+          "lbl_placeCash_CA_bag_detailModalTitle": "Place Cash Detail",
+          "lbl_placeCash_CA_bag_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+          "lbl_placeCash_CA_bag_modalLink": "See Details",
+          "lbl_placeCash_CA_bag_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+          "lbl_placeCash_CA_bag_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+          "lbl_placeCash_CA_bag_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+          "lbl_placeCash_CA_confirmation_detailModalTitle": "Place Cash Detail",
+          "lbl_placeCash_CA_confirmation_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+          "lbl_placeCash_CA_confirmation_modalLink": "See Details",
+          "lbl_placeCash_CA_confirmation_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+          "lbl_placeCash_CA_confirmation_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+          "lbl_placeCash_CA_confirmation_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+          "lbl_placeCash_US_bag_detailModalTitle": "Place Cash Detail",
+          "lbl_placeCash_US_bag_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+          "lbl_placeCash_US_bag_modalLink": "See Details",
+          "lbl_placeCash_US_bag_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+          "lbl_placeCash_US_bag_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+          "lbl_placeCash_US_bag_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+          "lbl_placeCash_US_confirmation_detailModalTitle": "Place Cash Detail",
+          "lbl_placeCash_US_confirmation_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+          "lbl_placeCash_US_confirmation_modalLink": "See Details",
+          "lbl_placeCash_US_confirmation_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+          "lbl_placeCash_US_confirmation_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+          "lbl_placeCash_US_confirmation_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+          "referred": Array [
+            Object {
+              "__typename": "ReferredContent",
+              "contentId": "ab6a5c6a-3e4e-4d2b-824b-a61c93e70f73",
+              "name": "PlaceCash_Detail_US_bag",
+            },
+          ],
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </ImageBackground>
+</Styled(View)>
+`;

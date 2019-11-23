@@ -116,7 +116,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = getLabelValue(state.Labels, 'addedToBagModal', 'global');
+  const { referred = [] } = state.Labels.global.addedToBagModal;
 
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
@@ -127,6 +127,9 @@ const getDetailsContentTcpId = state => {
   const content = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
   return content && content.contentId;
 };
+
+const getExitCheckoutAriaLabel = state =>
+  getLabelValue(state.Labels, 'exit_checkout', 'accessibility', 'global');
 
 const getDetailsContentGymId = state => {
   const { referred = [] } = state.Labels.checkout.shipping;
@@ -241,8 +244,20 @@ const getIsPayPalHidden = state => {
 const isBagLoading = state => {
   return state.CartPageReducer.getIn(['bagLoading']);
 };
+
+const isBagRouting = state => {
+  return state.CartPageReducer.get('isRouting');
+};
+
 const getCartLoadedState = state => {
   return state.CartPageReducer.get('loaded');
+};
+
+const getIfEmailSignUpDone = state => {
+  return {
+    emailSignUpTCP: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpTCP']),
+    emailSignUpGYM: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpGYM']),
+  };
 };
 
 export default {
@@ -277,4 +292,7 @@ export default {
   getIsPayPalHidden,
   isBagLoading,
   getCartLoadedState,
+  isBagRouting,
+  getIfEmailSignUpDone,
+  getExitCheckoutAriaLabel,
 };

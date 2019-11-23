@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
+import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { redirectToBag, redirectToHome, getFooterButtonSize } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
@@ -19,6 +19,7 @@ const ApplicationInProgress = ({
   resetPLCCResponse,
   isRtpsFlow,
   togglePLCCModal,
+  closePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -39,7 +40,7 @@ const ApplicationInProgress = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 4, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="underprogress_checkout_button"
           >
             <Button
@@ -63,20 +64,19 @@ const ApplicationInProgress = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 4, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="underprogress_continue_button"
           >
-            <Anchor
-              url={redirectToHome()}
-              fontSizeVariation="large"
+            <Button
+              onClick={() => redirectToHome(isPLCCModalFlow, closePLCCModal, resetPLCCResponse)}
               buttonVariation="fixed-width"
-              anchorVariation="button"
+              type="submit"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
               centered
               className="existing_continue_button"
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Anchor>
+            </Button>
           </Col>
         </Row>
       )}
@@ -90,6 +90,7 @@ ApplicationInProgress.propTypes = {
   resetPLCCResponse: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
   togglePLCCModal: PropTypes.func.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplicationInProgress;

@@ -6,6 +6,8 @@ import {
   enableBodyScroll as enableBodyScrollLib,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -372,6 +374,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
     productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
+    assetHost: `${apiEndpoint}/`,
+    facebookShareURL: processEnv.RWD_WEB_FACEBOOK_SHARE_URL,
     unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
     unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -406,6 +410,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
     styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
     styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
+    damCloudName: processEnv.RWD_CLOUDINARY_CLOUD_NAME,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -689,4 +694,5 @@ export default {
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,
+  isAndroidWeb,
 };

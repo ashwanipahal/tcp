@@ -30,9 +30,11 @@ exports[`ProductList component should renders correctly 1`] = `
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
+        "isKeepAliveEnabled": false,
         "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
+        "isSearchListing": false,
         "labelsLogin": Object {
           "logIn": "",
         },
@@ -47,6 +49,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
         "onRenderHeader": [MockFunction],
+        "outOfStockLabels": Object {},
         "products": Array [
           Object {
             "productInfo": "",

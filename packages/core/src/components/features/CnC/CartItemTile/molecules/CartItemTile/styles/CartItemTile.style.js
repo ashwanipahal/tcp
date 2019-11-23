@@ -5,8 +5,13 @@ export default css`
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -44,8 +49,12 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-50 {
-    padding-top: 50px;
+  .padding-top-40 {
+    padding-top: 26px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -172,7 +181,7 @@ export default css`
     }
 
     .product-detail-section {
-      display: flex;
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -398,7 +407,7 @@ export default css`
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -416,5 +425,12 @@ export default css`
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

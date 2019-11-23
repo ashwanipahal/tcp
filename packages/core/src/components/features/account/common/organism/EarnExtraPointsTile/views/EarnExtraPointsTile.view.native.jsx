@@ -5,6 +5,7 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getScreenWidth, getLabelValue } from '@tcp/core/src/utils';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
+import EarnExtraPointsTileSkeleton from '../skeleton/EarnExtraPointsTileSkeleton.view.native';
 
 /**
  * used style component for give style to EarnExtraPointsTile component
@@ -51,7 +52,7 @@ class EarnExtraPointsTile extends PureComponent {
   };
 
   render() {
-    const { labels, waysToEarn, handleComponentChange, isAccountOverview } = this.props;
+    const { labels, waysToEarn, handleComponentChange, isAccountOverview, isFetching } = this.props;
 
     return (
       <View>
@@ -77,21 +78,25 @@ class EarnExtraPointsTile extends PureComponent {
         )}
         <EarnExtraPointsWrapper>
           <View>
-            <Carousel
-              data={waysToEarn}
-              renderItem={this.renderView}
-              height={MODULE_HEIGHT}
-              width={!isAccountOverview ? MODULE_WIDTH : MODULE_WIDTH_ACCOUNT}
-              variation="show-arrow"
-              showDots
-              darkArrow
-              autoplay={false}
-              options={{
-                enableSnap: true,
-                loop: false,
-                autoplay: false,
-              }}
-            />
+            {isFetching ? (
+              <EarnExtraPointsTileSkeleton />
+            ) : (
+              <Carousel
+                data={waysToEarn}
+                renderItem={this.renderView}
+                height={MODULE_HEIGHT}
+                width={!isAccountOverview ? MODULE_WIDTH : MODULE_WIDTH_ACCOUNT}
+                variation="show-arrow"
+                showDots
+                darkArrow
+                autoplay={false}
+                options={{
+                  enableSnap: true,
+                  loop: false,
+                  autoplay: false,
+                }}
+              />
+            )}
           </View>
         </EarnExtraPointsWrapper>
       </View>
@@ -107,6 +112,7 @@ EarnExtraPointsTile.propTypes = {
     lbl_common_viewAll: PropTypes.string,
   }),
   isAccountOverview: PropTypes.bool,
+  isFetching: PropTypes.bool,
 };
 
 EarnExtraPointsTile.defaultProps = {
@@ -117,6 +123,7 @@ EarnExtraPointsTile.defaultProps = {
     lbl_common_viewAll: '',
   },
   isAccountOverview: false,
+  isFetching: false,
 };
 
 export default EarnExtraPointsTile;

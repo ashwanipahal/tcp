@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
+import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import L1NavItem from '../../molecules/L1NavItem';
 import style from './NavBar.style';
 import L2Panel from '../../molecules/L2Panel';
@@ -43,9 +44,16 @@ const NavBar = props => {
                 });
               }
             }
+            let topNavigationAnalyticsData;
+            if (isClient()) {
+              topNavigationAnalyticsData = getViewportInfo().isDesktop
+                ? `topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`
+                : `hamburger- ${navL1Item.categoryContent.name.toLowerCase()}`;
+            }
             return (
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
+                clickData={topNavigationAnalyticsData}
                 index={index}
                 key={`l1menu_link_${stringId}`}
                 sizesRange={sizesRange}
@@ -89,6 +97,7 @@ const NavBar = props => {
                     l3Drawer={l3Drawer}
                     accessibilityLabels={accessibilityLabels}
                     closeNav={closeNav}
+                    analyticsData={topNavigationAnalyticsData}
                   />
                 </Drawer>
               </L1NavItem>

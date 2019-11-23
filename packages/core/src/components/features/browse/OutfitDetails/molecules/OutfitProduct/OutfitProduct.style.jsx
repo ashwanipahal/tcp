@@ -34,6 +34,9 @@ export default css`
     }
   }
 
+  .image-wrapper {
+    position: relative;
+  }
   .outfit-button-wrapper,
   .outfit-button-wrapper-desktop {
     margin-right: auto;
@@ -188,6 +191,7 @@ export default css`
   }
 
   .outfit-mobile-image {
+    position: relative;
     min-width: 103px;
     min-height: 127px;
   }

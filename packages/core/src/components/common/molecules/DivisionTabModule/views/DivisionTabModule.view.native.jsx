@@ -15,10 +15,13 @@ import { getSiteId } from '../../../../../utils';
 
 const onTabChange = (routeUrl, navigation) => {
   const routeName = routeUrl && routeUrl.includes('-outfits') ? 'OutfitListing' : 'ProductListing';
+
   const url = routeUrl && routeUrl.replace('/c/', '/c?cid=');
+  const categoryIds = (url && url.split('cid=')) || [];
   navigation.navigate(routeName, {
     url,
     reset: true,
+    outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
   });
 };
 
@@ -56,7 +59,7 @@ export class DivisionTabModule extends PureComponent {
         </Container>
         <ButtonTabWrapper>
           <ButtonTabs
-            className="button-tabs"
+            wrappedButtonTabs
             selectedTabId={pathWithoutSiteId}
             onTabChange={url => onTabChange(url, navigation)}
             tabs={data.buttonList}

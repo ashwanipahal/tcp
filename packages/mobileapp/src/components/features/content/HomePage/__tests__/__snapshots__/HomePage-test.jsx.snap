@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<LazyloadScrollView
-  horizontal={false}
+<ScrollViewMock
   name="lazyload-home"
-  recycle={true}
-  recycleDistance={5336}
-  renderDistance={0}
 >
   <Styled(View)>
     <HeaderPromo />
@@ -86,6 +82,21 @@ exports[`HomePageView should render correctly 1`] = `
         }
       }
     />
+    <LocationAccessPrompt
+      isUserLoggedIn={false}
+      navigation={
+        Object {
+          "getParam": [Function],
+        }
+      }
+    />
   </View>
-</LazyloadScrollView>
+  <Connect(UserOnboardingScreen)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+</ScrollViewMock>
 `;

@@ -41,6 +41,8 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   isExpressCheckout={false}
   isRegisteredUserCallDone={true}
   isVenmoPaymentInProgress={false}
+  isVenmoPickupBannerDisplayed={true}
+  isVenmoShippingBannerDisplayed={true}
   labels={Object {}}
   pageData={Object {}}
   pickupDidMount={[Function]}
@@ -60,6 +62,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   shippingMethod={Object {}}
   shippingProps={
     Object {
+      "dispatch": undefined,
       "isRegisteredUserCallDone": true,
       "shippingDidMount": [Function],
     }

@@ -47,6 +47,13 @@ export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
 
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
+
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
  *  side and client side hydration should be the same. If this is needed use ServerToClientRenderPatch.jsx.
@@ -454,6 +461,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
     }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
+    }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
   return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
@@ -612,6 +622,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const plpRoute = `${ROUTE_PATH.plp.name}/`;
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
+  const staticContentRoute = `${ROUTE_PATH.content.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -627,6 +638,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(searchRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  if (url.includes(staticContentRoute)) {
+    const urlItems = url.split(staticContentRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
   }
   return url;
 };
@@ -1026,6 +1042,26 @@ export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
 };
 
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter(item => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[0].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
+};
+
 /**
  *
  * Get labels based on pattern
@@ -1068,9 +1104,9 @@ export const orderStatusMapperForNotification = {
   [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
   /* Status added for BOSS */
   [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
-  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_global_yourOrderWasCanceled',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
   [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
-  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_global_yourOrderWasPickedUp',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
   [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
 };
 
@@ -1088,9 +1124,6 @@ export const getOrderStatusForNotification = status => {
 
   return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
 };
-
-export const getPriceWithCurrency = (currencySymbol, price) =>
-  `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) || 0}`;
 
 /**
  * @function validateDiffInDaysNotification
@@ -1157,5 +1190,4 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
-  getPriceWithCurrency,
 };

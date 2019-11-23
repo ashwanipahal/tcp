@@ -1,7 +1,6 @@
 import { submit } from 'redux-form';
 import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
-  initCheckoutAction,
   submitShippingSection,
   submitPickupSection,
   onEditModeChangeAction,
@@ -18,6 +17,7 @@ import CHECKOUT_ACTIONS, {
   submitVerifiedAddressData,
   getSetIsBillingVisitedActn,
 } from './Checkout.action';
+import { setUpdateFromMSG } from './Checkout.action.util';
 import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
@@ -47,6 +47,8 @@ import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
 import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
+import SMSNotificationSelectors from '../../Confirmation/organisms/SMSNotifications/container/SMSNotifications.selectors';
+import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 const {
   getSmsSignUpLabels,
@@ -108,6 +110,7 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
       isPaypalPostBack,
       initialLoad: scopeValue.initialLoad,
       appRouting,
+      navigation,
       ...extraProps,
     });
     scopeValue.initialLoad = false;
@@ -120,8 +123,8 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 /* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: (router, isPaypalFlow) => {
-      dispatch(initCheckoutAction(router, isPaypalFlow));
+    initCheckout: (router, isPaypalFlow, navigation) => {
+      dispatch(CHECKOUT_ACTIONS.initCheckoutAction(router, isPaypalFlow, navigation));
     },
     initCheckoutSectionPage: payload => {
       dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));
@@ -153,6 +156,7 @@ export const mapDispatchToProps = dispatch => {
     },
     submitBilling: payload => dispatch(submitBillingSection(payload)),
     fetchNeedHelpContent: contentIds => dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds)),
+    markBagPageRoutingDone: () => dispatch(BAG_PAGE_ACTIONS.setBagPageIsRouting(false)),
     submitReview: payload => dispatch(submitReviewSection(payload)),
     verifyAddressAction: payload => dispatch(verifyAddress(payload)),
     dispatchReviewReduxForm: () => dispatch(submit(constants.REVIEW_FORM_NAME)),
@@ -180,15 +184,25 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    updateFromMSG: value => {
+      dispatch(setUpdateFromMSG(value));
+    },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
+    dispatch,
   };
 };
 
 /* istanbul ignore next */
 export const mapStateToProps = state => {
+  const giftWrap = getInitialGiftWrapOptions(state);
+  const hasSetGiftOptions = giftWrap && giftWrap.size;
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
     checkoutRoutingDone: selectors.getIfCheckoutRoutingDone(state),
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
     isGuest: isGuestUser(state),
@@ -197,7 +211,7 @@ export const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
-
+    emailSignUpFlags: BagPageSelector.getIfEmailSignUpDone(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -223,6 +237,7 @@ export const mapStateToProps = state => {
       isLoadingShippingMethods: GiftCardSelector.getIsLoading(state),
       isFetching: getCardListFetchingState(state),
       bagLoading: BagPageSelector.isBagLoading(state),
+      hasSetGiftOptions,
     },
     billingProps: {
       labels: getBillingLabels(state),
@@ -264,7 +279,7 @@ export const mapStateToProps = state => {
       isFetching: getCardListFetchingState(state),
       bagLoading: BagPageSelector.isBagLoading(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
@@ -278,6 +293,10 @@ export const mapStateToProps = state => {
     isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     pageData: getPageData(state),
+    notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
+    subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
+    isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
+    isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
   };
 };
 
@@ -289,6 +308,8 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   } = props;
   fetchNeedHelpContent([
     needHelpContentId,
@@ -296,5 +317,7 @@ export const callNeedHelpContent = props => {
     getGiftServicesContentGymId,
     cvvCodeInfoContentId,
     couponHelpContentId,
+    notificationMsgContentId,
+    subscribeSuccessMsgContentId,
   ]);
 };

@@ -17,6 +17,7 @@ export default css`
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
+    flex-shrink: 0;
     border: none;
     height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     width: ${props => props.theme.spacing.LAYOUT_SPACING.MED};

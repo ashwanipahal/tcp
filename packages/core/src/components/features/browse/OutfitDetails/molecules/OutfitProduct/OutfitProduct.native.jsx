@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useState } from 'react';
 import { TouchableOpacity, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
@@ -31,7 +32,7 @@ import LoginPageContainer from '../../../../account/LoginPage/index';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 
 const renderPickUpStore = props => {
-  const { currentProduct, selectedColorProductId } = props;
+  const { currentProduct, selectedColorProductId, keepAlive, outOfStockLabels } = props;
   if (currentProduct) {
     const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
     const curentColorEntry = getMapSliceForColorProductId(
@@ -45,6 +46,8 @@ const renderPickUpStore = props => {
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
         miscInfo={miscInfo}
         simplifiedProductPickupView
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }
@@ -54,15 +57,26 @@ const renderPickUpStore = props => {
 renderPickUpStore.propTypes = {
   currentProduct: PropTypes.string.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
+  keepAlive: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
-const renderImageContainer = (
+const navigateToPdp = (navigation, outfitProduct) =>
+  navigation.navigate('ProductDetail', {
+    title: outfitProduct.name,
+    pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
+    reset: true,
+  });
+
+const renderImageContainer = ({
   navigation,
   outfitProduct,
   productIndexText,
   imageUrls,
-  isBundleProduct
-) => {
+  isBundleProduct,
+  keepAlive,
+  outOfStockLabels,
+}) => {
   return (
     <ImageContainer>
       {!isBundleProduct && (
@@ -74,15 +88,14 @@ const renderImageContainer = (
           text={productIndexText}
         />
       )}
-      <ImageCarousel imageUrls={imageUrls} />
+      <ImageCarousel
+        imageUrls={imageUrls}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
+        onImageClick={() => navigateToPdp(navigation, outfitProduct)}
+      />
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('ProductDetail', {
-            title: outfitProduct.name,
-            pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
-            reset: true,
-          })
-        }
+        onPress={() => navigateToPdp(navigation, outfitProduct)}
         accessible
         accessibilityRole="button"
         accessibilityLabel={`${outfitProduct.name}`}
@@ -98,6 +111,16 @@ const renderImageContainer = (
       </TouchableOpacity>
     </ImageContainer>
   );
+};
+
+renderImageContainer.propTypes = {
+  navigation: PropTypes.shape({}).isRequired,
+  outfitProduct: PropTypes.shape({}).isRequired,
+  productIndexText: PropTypes.string.isRequired,
+  imageUrls: PropTypes.shape([]).isRequired,
+  isBundleProduct: PropTypes.bool.isRequired,
+  keepAlive: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
 const renderFavoriteSection = (
@@ -165,7 +188,12 @@ const renderAddToBagContainer = (
   outfitProduct,
   plpLabels,
   sizeChartLinkVisibility,
-  addToBagError
+  addToBagError,
+  isBundleProduct,
+  toastMessage,
+  isKeepAliveEnabled,
+  outOfStockLabels
+  // eslint-disable-next-line max-params
 ) => {
   return (
     <ProductAddToBagContainer
@@ -179,6 +207,10 @@ const renderAddToBagContainer = (
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
         onChangeColor(colorIndex, setCurrentColorIndex)
       }
+      isBundleProduct={isBundleProduct}
+      toastMessage={toastMessage}
+      isKeepAliveEnabled={isKeepAliveEnabled}
+      outOfStockLabels={outOfStockLabels}
     />
   );
 };
@@ -190,6 +222,21 @@ const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex)
       colorFitsSizesMap[currentColorIndex].colorProductId) ||
     colorProductId
   );
+};
+
+const renderOutOfStockError = (keepAlive, outOfStockLabels) => {
+  return keepAlive ? (
+    <BodyCopy
+      text={outOfStockLabels.itemSoldOutMessage}
+      color="red.500"
+      fontSize="fs10"
+      fontFamily="secondary"
+    />
+  ) : null;
+};
+
+const checkKeepAlive = (isKeepAliveEnabled, keepAliveProduct) => {
+  return isKeepAliveEnabled && keepAliveProduct;
 };
 
 const OutfitDetailsView = ({
@@ -207,6 +254,9 @@ const OutfitDetailsView = ({
   addToFavorites,
   isBundleProduct,
   addToBagError,
+  toastMessage,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -237,7 +287,9 @@ const OutfitDetailsView = ({
 
   const { listPrice, offerPrice } = prices;
   // The PLP badge2 (EXTENDED SIZE etc) are not showing on the PDP as per the production behavior
-  const { badge1, badge2 } = miscInfo;
+  const { badge1, badge2, keepAlive: keepAliveProduct } = miscInfo;
+
+  const keepAlive = checkKeepAlive(isKeepAliveEnabled, keepAliveProduct);
   // get default top badge data
   const badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
 
@@ -279,13 +331,15 @@ const OutfitDetailsView = ({
   return (
     <OutfitProductWrapper>
       <OutfitProductContainer>
-        {renderImageContainer(
+        {renderImageContainer({
           navigation,
           outfitProduct,
           productIndexText,
           imageUrls,
-          isBundleProduct
-        )}
+          isBundleProduct,
+          keepAlive,
+          outOfStockLabels,
+        })}
         <DetailsContainer>
           {badge1Value !== '' && (
             <BodyCopy
@@ -297,14 +351,22 @@ const OutfitDetailsView = ({
               margin="0 0 4px 0"
             />
           )}
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs18"
-            fontWeight="extrabold"
-            color="gray.900"
-            text={name}
-            margin="0 0 4px 0"
-          />
+          {renderOutOfStockError(keepAlive, outOfStockLabels)}
+          <TouchableOpacity
+            onPress={_ => navigateToPdp(navigation, outfitProduct)}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={`${name}`}
+          >
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize="fs18"
+              fontWeight="extrabold"
+              color="gray.900"
+              text={name}
+              margin="0 0 4px 0"
+            />
+          </TouchableOpacity>
           <BodyCopy
             margin="4px 0 0 0"
             mobileFontFamily="secondary"
@@ -360,12 +422,19 @@ const OutfitDetailsView = ({
         outfitProduct,
         plpLabels,
         sizeChartLinkVisibility,
-        addToBagError
+        addToBagError,
+        isBundleProduct,
+        toastMessage,
+        isKeepAliveEnabled,
+        outOfStockLabels
       )}
-      {renderPickUpStore({
-        currentProduct: outfitProduct,
-        selectedColorProductId: colorProductId,
-      })}
+      {!isBundleProduct &&
+        renderPickUpStore({
+          currentProduct: outfitProduct,
+          selectedColorProductId: colorProductId,
+          keepAlive,
+          outOfStockLabels,
+        })}
     </OutfitProductWrapper>
   );
 };
@@ -387,6 +456,9 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
   addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -403,6 +475,7 @@ OutfitDetailsView.defaultProps = {
   addToFavorites: () => {},
   isBundleProduct: false,
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

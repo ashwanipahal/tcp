@@ -57,10 +57,10 @@ export function* addToCartEcom({ payload }) {
       externalId: wishlistItemId || '',
     };
     const isGuestUser = yield select(getIsGuest);
-    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToBagErrorState());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(
       SetAddedToBagData({
         ...payload,
@@ -109,10 +109,10 @@ export function* addItemToCartBopis({ payload }) {
       itemPartNumber: variantId,
     };
     const isGuestUser = yield select(getIsGuest);
-    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(
       getFavoriteStoreActn({
         ignoreCache: true,
@@ -140,8 +140,9 @@ export function* addItemToCartBopis({ payload }) {
   }
 }
 
-export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBack } }) {
+export function* addMultipleItemToCartECOM({ payload }) {
   try {
+    const { callBack, productItemsInfo } = payload;
     const paramsArray = productItemsInfo.map(product => {
       const { productId, skuId: catEntryId } = product.skuInfo;
       const { wishlistItemId, quantity } = product;
@@ -161,29 +162,23 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
         'calculationUsage[]': '-7',
         externalId: wishlistItemId || '',
         productId,
+        product,
       };
     });
 
     const isGuestUser = yield select(getIsGuest);
-    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addMultipleProductsInEcom, paramsArray);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     if (callBack) {
       callBack();
     }
     console.log(' API has no Error and all the products have been added to bag', res);
 
     // TODO - res and below code is for CnC team to be used for AddedToBag Modal
-    // yield put(
-    //   SetAddedToBagData({
-    //     ...payload,
-    //     ...res,
-    //   })
-    // );
-    // if (!fromMoveToBag) {
-    //   yield put(openAddedToBag());
-    // }
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(SetAddedToBagData([...res]));
+    yield put(openAddedToBag());
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (errorObj) {
     const { error, errorProductId, atbSuccessProducts } = errorObj;
     if (atbSuccessProducts && atbSuccessProducts.length) {

@@ -55,7 +55,7 @@ class OverlayModal extends React.Component {
     this.overlayElement.classList.add('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.addEventListener('mousedown', this.handleWindowClick);
+      this.body.addEventListener('click', this.handleWindowClick);
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
@@ -98,7 +98,7 @@ class OverlayModal extends React.Component {
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.removeEventListener('mousedown', this.handleWindowClick);
+      this.body.removeEventListener('click', this.handleWindowClick);
       this.body.style['overflow-y'] = '';
     }
     const modal = document.getElementById('dialogContent');
@@ -120,13 +120,23 @@ class OverlayModal extends React.Component {
     return '';
   };
 
+  /* set scroll height in mobile view */
+  setInnerScrollHeight = () => {
+    const modal = document.getElementById('dialogContent');
+    /* istanbul ignore else */
+    if (window && window.innerWidth < 767) {
+      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
+      this.bodyContainer.style.overflow = 'hidden';
+    }
+  };
+
   /**
    * Set Left position of modal triangle
    * @param {*} comp
    */
 
   // eslint-disable-next-line complexity
-  styleModalTriangle = ({ comp }) => {
+  styleModalTriangle = comp => {
     const { showCondensedHeader, component } = this.props;
     if (this.isMobile && component !== 'accountDrawer') return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
@@ -144,13 +154,7 @@ class OverlayModal extends React.Component {
       }
       this.body.style.overflow = 'hidden';
     }
-
-    /* istanbul ignore else */
-    /* set scroll height in mobile view */
-    if (window && window.innerWidth < 767) {
-      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
-      this.bodyContainer.style.overflow = 'hidden';
-    }
+    this.setInnerScrollHeight();
     /* istanbul ignore else */
     if (
       !showCondensedHeader &&
@@ -159,17 +163,27 @@ class OverlayModal extends React.Component {
       modalRectBoundingX &&
       modalTriangle
     ) {
-      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
   };
 
+  modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
+    let compElement = comp;
+    if (isAccountDrawer && document.getElementById('account-info-user-points')) {
+      compElement = document.getElementById('account-info-user-points');
+    }
+    this.styleModalTriangle(compElement);
+  };
+
+  // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
     const { component, showCondensedHeader } = this.props;
+    const isAccountDrawer = component === 'accountDrawer' || false;
     if (this.isMobile && component !== 'accountDrawer') return;
     let comp = document.getElementById(component);
-    if (component === 'accountDrawer' && showCondensedHeader) {
+    if (isAccountDrawer && showCondensedHeader) {
       comp = document.getElementById('condensedLogin');
     }
     /* istanbul ignore else */
@@ -181,7 +195,9 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.styleModalTriangle({ comp });
+      this.modalTrianglePositioning({ comp, isAccountDrawer });
+    } else if (isAccountDrawer) {
+      this.setInnerScrollHeight();
     }
   };
 
@@ -206,7 +222,7 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = '';
+    this.bodyContainer.style.overflow = 'visible';
   };
 
   /**
@@ -226,6 +242,11 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
+      const { component: currentComponent, isLoggedIn } = this.props;
+      const nextComponent = e.target.id;
+      if (nextComponent === currentComponent || isLoggedIn) {
+        e.stopImmediatePropagation();
+      }
     }
   }
 

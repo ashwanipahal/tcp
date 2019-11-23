@@ -184,4 +184,8 @@ export default css`
   .header-container {
     margin-right: 0;
   }
+
+  .moduleM__productContainer {
+    height: 100%;
+  }
 `;

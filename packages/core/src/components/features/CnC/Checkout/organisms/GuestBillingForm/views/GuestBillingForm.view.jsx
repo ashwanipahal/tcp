@@ -11,13 +11,12 @@ import CONSTANTS, { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
-import utility, { scrollToFirstError } from '../../../util/utility';
-import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
+import utility, { scrollToFirstError, getExpirationRequiredFlag } from '../../../util/utility';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import BillingPayPalButton from '../../BillingPayPalButton';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
-import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -97,11 +96,6 @@ class GuestBillingForm extends React.Component {
     }
   }
 
-  getExpirationRequiredFlag = () => {
-    const { cardType } = this.props;
-    return !cardType || cardType !== CREDIT_CARD_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
-  };
-
   renderBillingPayPalButton = () => {
     const { isPayPalEnabled, paymentMethodId, labels } = this.props;
     return isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL ? (
@@ -142,7 +136,7 @@ class GuestBillingForm extends React.Component {
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
-    const isExpirationRequired = this.getExpirationRequiredFlag();
+    const isExpirationRequired = getExpirationRequiredFlag({ cardType });
 
     return (
       <form className={className} name="checkoutBilling" onSubmit={handleSubmit}>
@@ -185,7 +179,7 @@ class GuestBillingForm extends React.Component {
                       formName="checkoutBilling"
                     />
                   ) : (
-                    <AddressSkeleton />
+                    <GenericSkeleton />
                   )}
                 </>
               ) : null}

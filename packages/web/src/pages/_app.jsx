@@ -37,7 +37,6 @@ import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
-
 // constants
 import constants from '../constants';
 
@@ -47,6 +46,46 @@ function AnalyticsScript() {
   const handleLoad = () => performance && performance.mark('analytics_script_loaded');
   return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
 }
+
+/**
+ * TO update the payload in case component needs to be loaded at server side
+ * @param {} req
+ * @param {*} payload
+ * @param {*} Component
+ */
+const updatePayload = (req, payload, Component) => {
+  let updatedPayload = { ...payload };
+  const { pageInfo } = Component;
+  const { staticPage, paramName } = pageInfo || {};
+
+  // This check ensures this block is executed once since Component is not available in first call
+  if (pageInfo) {
+    updatedPayload = {
+      ...pageInfo,
+      ...updatedPayload,
+    };
+    // This will check when page has to be rendered at server side and includes multiple urls
+    if (staticPage && paramName) {
+      // staticPage - this var will be passed inside component pageinfo
+      // paramName - this keyword will have the variable name to page the page url from the request.
+      const dynamicPageName = req.params[paramName] || null;
+      if (!constants.staticPagesWithOwnTemplate.includes(dynamicPageName) && dynamicPageName) {
+        updatedPayload = { ...updatedPayload, name: dynamicPageName };
+      }
+    }
+    if (req && req.headers) {
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
+    }
+  }
+
+  return updatedPayload;
+};
 
 class TCPWebApp extends App {
   static siteConfigSet = false;
@@ -177,11 +216,9 @@ class TCPWebApp extends App {
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
-      apiConfig.isPreviewEnv = req.query.preview || '';
+      apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
-      // response headers
-      apiConfig.headers = res.getHeaders();
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -200,7 +237,6 @@ class TCPWebApp extends App {
           optimizelyHeadersObject[item] = optimizelyHeaderValue;
         });
       }
-
       payload = {
         siteConfig: true,
         apiConfig,
@@ -211,12 +247,8 @@ class TCPWebApp extends App {
 
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
-      if (Component.pageInfo) {
-        payload = {
-          ...Component.pageInfo,
-          ...payload,
-        };
-      }
+      // This will be called when we need to include the layout call in bootstrap.
+      payload = updatePayload(req, payload, Component);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {

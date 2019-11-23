@@ -35,7 +35,10 @@ class BillingPage extends React.PureComponent {
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
     setCheckoutStage: PropTypes.func.isRequired,
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.bool,
+    isFetching: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -46,6 +49,8 @@ class BillingPage extends React.PureComponent {
     billingData: null,
     userAddresses: null,
     creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
+    isVenmoEnabled: false,
     isPayPalWebViewEnable: false,
   };
 
@@ -73,7 +78,10 @@ class BillingPage extends React.PureComponent {
       userAddresses,
       creditFieldLabels,
       setCheckoutStage,
+      isVenmoPaymentInProgress,
+      isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       isPayPalWebViewEnable,
+      isFetching,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -95,7 +103,7 @@ class BillingPage extends React.PureComponent {
         >
           <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />
-            <GiftCardsContainer />
+            <GiftCardsContainer isFetching={isFetching} />
             {isGuest ? (
               <GuestBillingForm
                 shippingAddress={shippingAddress}
@@ -112,6 +120,8 @@ class BillingPage extends React.PureComponent {
                 btnText={nextSubmitText}
                 creditFieldLabels={creditFieldLabels}
                 setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             ) : (
@@ -132,6 +142,8 @@ class BillingPage extends React.PureComponent {
                 creditFieldLabels={creditFieldLabels}
                 scrollView={this.scrollView}
                 setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
               />
             )}

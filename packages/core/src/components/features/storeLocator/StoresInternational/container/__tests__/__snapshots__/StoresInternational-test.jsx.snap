@@ -89,6 +89,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "1500": "#c3c3c3",
           "1600": "#979797",
           "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -508,6 +509,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -686,9 +688,9 @@ exports[`StoresInternational component StoresInternational component renders cor
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-jzJRlG",
+            "componentId": "sc-kgoBCf",
             "isStatic": false,
-            "lastClassName": "dYYPUA",
+            "lastClassName": "kjRVEk",
             "rules": Array [
               "
   ",
@@ -704,7 +706,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "displayName": "Styled(StoresInternational)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-jzJRlG",
+          "styledComponentId": "sc-kgoBCf",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -714,16 +716,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="test sc-jzJRlG dYYPUA"
+        className="test sc-kgoBCf kjRVEk"
         content="test"
         dataLocator="test"
       >
         <div
-          className="test sc-jzJRlG dYYPUA"
+          className="test sc-kgoBCf kjRVEk"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="test sc-jzJRlG dYYPUA__backlink"
+            className="test sc-kgoBCf kjRVEk__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -732,7 +734,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="test sc-jzJRlG dYYPUA__backlink"
+              className="test sc-kgoBCf kjRVEk__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -840,7 +842,7 @@ exports[`StoresInternational component StoresInternational component renders cor
                 IsSlugPathAdded={false}
                 anchorVariation="secondary"
                 asPath=""
-                className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
+                className="test sc-kgoBCf kjRVEk__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -854,7 +856,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
+                  className="test sc-kgoBCf kjRVEk__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
@@ -942,7 +944,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-kgoBCf",
         "isStatic": false,
         "rules": Array [
           "
@@ -959,7 +961,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "displayName": "Styled(StoresInternational)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

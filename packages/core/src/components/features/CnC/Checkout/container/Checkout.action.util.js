@@ -64,3 +64,33 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
+export const getSetGiftWrapValuesActn = payload => {
+  return {
+    payload,
+    type: constants.CHECKOUT_VALUES_SET_GIFTWRAP,
+  };
+};
+
+export const setUpdateFromMSG = payload => ({
+  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
+  payload,
+});
+
+export const resetAddGiftCardSuccess = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
+export const initCheckoutAction = (router, isPaypalFlow, navigation) => ({
+  type: constants.INIT_CHECKOUT,
+  router,
+  isPaypalFlow,
+  navigation,
+});

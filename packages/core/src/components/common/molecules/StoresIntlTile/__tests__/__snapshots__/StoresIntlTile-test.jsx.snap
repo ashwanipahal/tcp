@@ -89,6 +89,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "1500": "#c3c3c3",
           "1600": "#979797",
           "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -508,6 +509,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -686,9 +688,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kGXeez",
+            "componentId": "sc-jKJlTe",
             "isStatic": false,
-            "lastClassName": "UBWCa",
+            "lastClassName": "knhaod",
             "rules": Array [
               "
   ",
@@ -716,7 +718,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kGXeez",
+          "styledComponentId": "sc-jKJlTe",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -732,7 +734,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kGXeez UBWCa"
+        className="sc-jKJlTe knhaod"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -835,6 +837,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "1500": "#c3c3c3",
           "1600": "#979797",
           "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -1254,6 +1257,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -1506,9 +1510,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kGXeez",
+            "componentId": "sc-jKJlTe",
             "isStatic": false,
-            "lastClassName": "UBWCa",
+            "lastClassName": "knhaod",
             "rules": Array [
               "
   ",
@@ -1536,7 +1540,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kGXeez",
+          "styledComponentId": "sc-jKJlTe",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1626,7 +1630,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kGXeez UBWCa"
+        className="sc-jKJlTe knhaod"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1709,7 +1713,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-kGXeez UBWCa"
+          className="sc-jKJlTe knhaod"
         >
           <styled.h3>
             <StyledComponent
@@ -1718,9 +1722,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-kgoBCf",
+                    "componentId": "sc-ckVGcZ",
                     "isStatic": false,
-                    "lastClassName": "byzwwl",
+                    "lastClassName": "dEpjwx",
                     "rules": Array [
                       "
   position: relative;
@@ -1764,7 +1768,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-kgoBCf",
+                  "styledComponentId": "sc-ckVGcZ",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1774,7 +1778,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-kgoBCf byzwwl"
+                className="sc-ckVGcZ dEpjwx"
               >
                 Test
               </h3>
@@ -1789,9 +1793,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-dnqmqq",
+                    "componentId": "sc-gqjmRU",
                     "isStatic": false,
-                    "lastClassName": "efvruK",
+                    "lastClassName": "kpKHCY",
                     "rules": Array [
                       "
   ",
@@ -1817,7 +1821,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "Styled(Row)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-dnqmqq",
+                  "styledComponentId": "sc-gqjmRU",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1828,13 +1832,13 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               fullBleed={true}
             >
               <Row
-                className="sc-dnqmqq efvruK"
+                className="sc-gqjmRU kpKHCY"
                 fullBleed={true}
                 otherprops={Object {}}
                 tagName="div"
               >
                 <div
-                  className="sc-dnqmqq efvruK"
+                  className="sc-gqjmRU kpKHCY"
                   fullBleed={true}
                   otherprops={Object {}}
                 >
@@ -1863,9 +1867,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -1884,7 +1888,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -1894,7 +1898,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -1914,7 +1918,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -2203,9 +2207,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -2224,7 +2228,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -2234,7 +2238,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -2254,7 +2258,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -2543,9 +2547,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -2564,7 +2568,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -2574,7 +2578,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -2594,7 +2598,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -2808,9 +2812,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -2829,7 +2833,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -2839,7 +2843,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -2859,7 +2863,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -3148,9 +3152,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -3169,7 +3173,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -3179,7 +3183,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -3199,7 +3203,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -3488,9 +3492,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -3509,7 +3513,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -3519,7 +3523,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -3539,7 +3543,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -3753,9 +3757,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -3774,7 +3778,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -3784,7 +3788,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -3804,7 +3808,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -4018,9 +4022,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -4039,7 +4043,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -4049,7 +4053,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -4069,7 +4073,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -4358,9 +4362,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -4379,7 +4383,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -4389,7 +4393,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -4409,7 +4413,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -4698,9 +4702,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -4719,7 +4723,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -4729,7 +4733,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -4749,7 +4753,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -4963,9 +4967,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -4984,7 +4988,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -4994,7 +4998,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -5014,7 +5018,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -5303,9 +5307,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -5324,7 +5328,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -5334,7 +5338,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -5354,7 +5358,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -5643,9 +5647,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -5664,7 +5668,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -5674,7 +5678,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -5694,7 +5698,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,
@@ -5908,9 +5912,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "$$typeof": Symbol(react.forward_ref),
                           "attrs": Array [],
                           "componentStyle": ComponentStyle {
-                            "componentId": "sc-bZQynM",
+                            "componentId": "sc-dnqmqq",
                             "isStatic": false,
-                            "lastClassName": "bfKBuE",
+                            "lastClassName": "koSGGh",
                             "rules": Array [
                               "
   ",
@@ -5929,7 +5933,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "displayName": "Styled(Col)",
                           "foldedComponentIds": Array [],
                           "render": [Function],
-                          "styledComponentId": "sc-bZQynM",
+                          "styledComponentId": "sc-dnqmqq",
                           "target": [Function],
                           "toString": [Function],
                           "warnTooManyClasses": [Function],
@@ -5939,7 +5943,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="store-intl-item sc-dnqmqq koSGGh"
                         colSize={
                           Object {
                             "large": 2,
@@ -5959,7 +5963,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="store-intl-item sc-dnqmqq koSGGh"
                           colSize={
                             Object {
                               "large": 2,

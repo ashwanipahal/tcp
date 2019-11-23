@@ -12,9 +12,10 @@ const TILE_SHADOW = `
 `;
 
 const getAdditionalStyle = props => {
-  const { isCompleteTheLook } = props;
+  const { isRelatedOutfit } = props;
   return {
-    ...(!isCompleteTheLook && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+    ...(!isRelatedOutfit && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+    ...(!isRelatedOutfit && { padding: props.theme.spacing.ELEM_SPACING.LRG }),
   };
 };
 
@@ -24,12 +25,17 @@ const applyBackgroundClassStyle = props => {
       background-color: #F5F5BE;
     `;
   }
+
+  if (props.bgClass === 'gray-bg') {
+    return `
+      background-color: #f1f0f0;
+    `;
+  }
   return '';
 };
 
 export const Container = styled.View`
   width: 100%;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
   ${applyBackgroundClassStyle}
   ${getAdditionalStyle}
 `;

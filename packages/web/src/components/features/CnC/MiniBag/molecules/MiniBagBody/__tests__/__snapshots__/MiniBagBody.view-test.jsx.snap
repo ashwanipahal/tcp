@@ -79,7 +79,10 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
@@ -173,7 +176,10 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
@@ -233,24 +239,6 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
-  <Styled(Row)
-    className="mainWrapper"
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(ErrorMessage)
-        className="error_box minibag-error"
-        error="something went wrong"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(BodyCopy)
     className="viewBagAndProduct"
     color="text.primary"
@@ -285,7 +273,10 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined 112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"

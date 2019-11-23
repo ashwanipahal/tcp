@@ -29,7 +29,8 @@ class SearchProduct extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { searchResults } = nextProps;
     const { searchResults: prevSearchResults, labels: slpLabels } = this.props;
 

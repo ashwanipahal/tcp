@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from '../../ProductListing/container/ProductListing.util';
-import { getAPIConfig, flattenArray } from '../../../../../utils';
+import { getAPIConfig, flattenArray, getLabelValue } from '../../../../../utils';
 import { PRODUCTS_PER_LOAD } from './SearchDetail.constants';
 import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
@@ -154,6 +154,10 @@ export const getIsLoadingMore = state => {
   return state[SLP_PAGE_REDUCER_KEY].isLoadingMore;
 };
 
+export const getModalState = state => {
+  return state[SLP_PAGE_REDUCER_KEY].isKeepModalOpen;
+};
+
 export const checkIfSearchResultsAvailable = state => {
   return state[SLP_PAGE_REDUCER_KEY].isSearchResultsAvailable;
 };
@@ -216,4 +220,12 @@ export const updateAppliedFiltersInState = state => {
 
 export const getScrollToTopValue = state => {
   return getSearchListingState(state).isScrollToTop;
+};
+
+export const getPDPLabels = state => {
+  return {
+    completeTheLook: getLabelValue(state.Labels, 'lbl_complete_the_look', 'PDP', 'Browse'),
+    youMayAlsoLike: getLabelValue(state.Labels, 'lbl_you_may_also_like', 'PDP', 'Browse'),
+    recentlyViewed: getLabelValue(state.Labels, 'lbl_recently_viewed', 'PDP', 'Browse'),
+  };
 };

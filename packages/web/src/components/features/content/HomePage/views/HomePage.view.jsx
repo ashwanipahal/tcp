@@ -3,22 +3,29 @@ import { withRouter } from 'next/router';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import { isTCP } from '@tcp/core/src/utils/utils';
+import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
+import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName } = this.props;
+    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
 
     if (pageName === 'homepage') {
       this.subscriptionPopUpOnPageLoad();
+    }
+    const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    if (cid) {
+      setCampaignId(cid[0]);
     }
   }
 
@@ -91,10 +98,12 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     moduleT: () => import('@tcp/core/src/components/common/molecules/ModuleT').then(returnModule),
-    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -103,6 +112,8 @@ const HomePageView = dynamic({
       openEmailSignUpModal,
       openSmsSignUpModal,
       pageName,
+      setCampaignId,
+      seoData,
     } = compProps;
 
     return (
@@ -111,9 +122,11 @@ const HomePageView = dynamic({
         openEmailSignUpModal={openEmailSignUpModal}
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
+        setCampaignId={setCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
+        <SeoCopy {...seoData} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
@@ -134,6 +147,7 @@ HomePageWrapper.propTypes = {
   openEmailSignUpModal: PropTypes.func.isRequired,
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -144,7 +158,21 @@ HomePageView.propTypes = {
   name: PropTypes.string,
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
-export default errorBoundary(HomePageView);
+const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
+
+// Wrap the home page with a ref-forwarding element
+const RefWrappedHomePageView = withRefWrapper(HomePageViewWithErrorBoundary);
+
+/**
+ * Hotfix-Aware Component. The use of `withHotfix` is just for making
+ * page hotfix-aware.
+ */
+RefWrappedHomePageView.displayName = 'HomePage';
+const HotfixAwareHomePage = withHotfix(RefWrappedHomePageView);
+
+export default HotfixAwareHomePage;
+
 export { HomePageView as HomePageViewVanilla };

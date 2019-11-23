@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import { Wrapper, SMSWrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
+import { Wrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import {
   checkIfShippingFullName,
@@ -11,11 +9,7 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
-import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
-
-const renderAccountForm = isGuest => {
-  return isGuest ? <ConfirmationAccountFormContainer /> : null;
-};
+import SMSNotifications from '../organisms/SMSNotifications';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -33,6 +27,7 @@ const ConfirmationView = ({
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
   navigation,
+  isGymboreeCanadaSite,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -72,15 +67,7 @@ const ConfirmationView = ({
   return (
     <Wrapper>
       <InnerWrapper>
-        <SMSWrapper>
-          <BodyCopyWithSpacing
-            textAlign="center"
-            fontSize="fs16"
-            mobileFontFamily="secondary"
-            spacingStyles="margin-top-LRG margin-bottom-LRG"
-            text="SMS SIGN UP"
-          />
-        </SMSWrapper>
+        {!isGymboreeCanadaSite && <SMSNotifications />}
         <ThankYouComponent
           emailAddress={emailAddress}
           isOrderPending={isOrderPending}
@@ -95,8 +82,6 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
-      {renderAccountForm(isGuest)}
-
       <CnCTemplate
         isConfirmationPage
         isGuest={isGuest}
@@ -143,11 +128,13 @@ ConfirmationView.propTypes = {
     itemsCount: PropTypes.number,
   }).isRequired,
   navigation: PropTypes.shape({}),
+  isGymboreeCanadaSite: PropTypes.bool,
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
   isOrderPending: false,
   encryptedEmailAddress: '',
   navigation: null,
+  isGymboreeCanadaSite: false,
 };
 export default ConfirmationView;

@@ -133,13 +133,14 @@ export const getProductsFilters = createSelector(
 export const getLabelsProductListing = state => {
   if (!state.Labels || !state.Labels.PLP)
     return {
-      addToBag: {},
-      readMore: {},
-      readLess: {},
+      addToBag: '',
+      readMore: '',
+      readLess: '',
+      shopCollection: '',
     };
   const {
     PLP: {
-      plpTiles: { lbl_add_to_bag: addToBag },
+      plpTiles: { lbl_add_to_bag: addToBag, lbl_plpTiles_shop_collection: shopCollection },
       seoText: { lbl_read_more: readMore, lbl_read_less: readLess },
     },
   } = state.Labels;
@@ -148,6 +149,27 @@ export const getLabelsProductListing = state => {
     addToBag,
     readMore,
     readLess,
+    shopCollection,
+  };
+};
+
+export const getLabelsOutOfStock = state => {
+  if (!state.Labels || !state.Labels.Browse)
+    return {
+      browseCommon: {},
+    };
+  const {
+    Browse: {
+      browseCommon: {
+        lbl_common_outOfStockCaps: outOfStockCaps,
+        lbl_common_itemSoldOut: itemSoldOutMessage,
+      },
+    },
+  } = state.Labels;
+
+  return {
+    outOfStockCaps,
+    itemSoldOutMessage,
   };
 };
 
@@ -173,6 +195,10 @@ export const getIsLoadingMore = state => {
 
 export const getScrollToTopValue = state => {
   return state.ProductListing.isScrollToTop;
+};
+
+export const getModalState = state => {
+  return state.ProductListing.isKeepModalOpen;
 };
 
 export const getProductsInCurrCategory = state => {

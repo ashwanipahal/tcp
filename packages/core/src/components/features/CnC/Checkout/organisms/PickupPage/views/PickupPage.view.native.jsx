@@ -5,18 +5,19 @@ import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
+import PickupPageSkeleton from './PickupPageSkeleton.native';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import { getNextCTAText, renderSmsUpdatedEnabled } from './PickupPage.view.utils';
 
 import {
   FormStyle,
   Container,
   PickupContainer,
   PickUpForm,
-  SmsSignUpForm,
   EmailSignupForm,
   PickUpAlternateForm,
   PickupError,
@@ -35,6 +36,8 @@ import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
+import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
 import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 const formName = 'checkoutPickup';
@@ -150,6 +153,25 @@ class PickUpFormPart extends React.Component {
     });
   };
 
+  /**
+   * This function is to validate if we need to show venmo banner or not.
+   * Only if user comes on pickup or shipping page, but not on coming back from navigation
+   * @params {string} currentSection - current checkout section name
+   */
+  isShowVenmoBanner = currentSection => {
+    const {
+      isVenmoPaymentInProgress,
+      isVenmoPickupDisplayed,
+      isVenmoShippingDisplayed,
+    } = this.props;
+    const { CHECKOUT_STAGES } = CONSTANTS;
+    return (
+      isVenmoPaymentInProgress &&
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
+    );
+  };
+
   updatePickupForm() {
     const { pickupInitialValues, dispatch } = this.props;
     const { pickUpContact } = this.state;
@@ -189,6 +211,7 @@ class PickUpFormPart extends React.Component {
       setCheckoutStage,
       checkoutPageEmptyBagLabels,
       cartOrderItemsCount,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated, editPickupError } = this.state;
     if (!dataUpdated) {
@@ -204,6 +227,9 @@ class PickUpFormPart extends React.Component {
               availableStages={availableStages}
               setCheckoutStage={setCheckoutStage}
             />
+            {this.isShowVenmoBanner(CONSTANTS.CHECKOUT_STAGES.PICKUP) && (
+              <VenmoBanner labels={pickUpLabels} />
+            )}
             <ScrollView
               ref={ref => {
                 this.scrollView = ref;
@@ -227,50 +253,44 @@ class PickUpFormPart extends React.Component {
                       dataLocator="pickup-title"
                     />
                   )}
-                  <PickUpForm>
-                    <FormSection name="pickUpContact">
-                      {isGuest ? (
-                        <ContactFormFields
-                          className="pickup-contact-guest-form"
-                          showEmailAddress
-                          showPhoneNumber
-                          labels={pickUpLabels}
-                        />
-                      ) : (
-                        <PickupMainContactEditForm
-                          errorMessageRef={ref => {
-                            this.errorMessageRef = ref;
-                          }}
-                          editModeSubmissionError={editPickupError}
-                          dispatch={dispatch}
-                          labels={pickUpLabels}
-                          handleSubmit={handleSubmit}
-                          isEditing={isEditing}
-                          className="pickup-contact-guest-form"
-                          showPhoneNumber
-                          formData={pickUpContact}
-                          onEditModeChange={this.handleEditModeChange}
-                          handleExitEditModeClick={this.handleExitEditModeClick}
-                        />
-                      )}
-                    </FormSection>
-                  </PickUpForm>
-                  {isSmsUpdatesEnabled && (
-                    <SmsSignUpForm>
-                      <FormSection name="smsSignUp">
-                        <SMSFormFields
-                          isOrderUpdateChecked={isOrderUpdateChecked}
-                          formName="checkoutPickup"
-                          formSection="smsSignUp"
-                          altInitValue={currentPhoneNumber}
-                          labels={smsSignUpLabels}
-                          showDefaultCheckbox={false}
-                          variation="secondary"
-                          dispatch={dispatch}
-                          addressPhoneNo={currentPhoneNumber}
-                        />
+                  {bagLoading ? (
+                    <PickupPageSkeleton />
+                  ) : (
+                    <PickUpForm>
+                      <FormSection name="pickUpContact">
+                        {isGuest ? (
+                          <ContactFormFields
+                            className="pickup-contact-guest-form"
+                            showEmailAddress
+                            showPhoneNumber
+                            labels={pickUpLabels}
+                          />
+                        ) : (
+                          <PickupMainContactEditForm
+                            errorMessageRef={ref => {
+                              this.errorMessageRef = ref;
+                            }}
+                            editModeSubmissionError={editPickupError}
+                            dispatch={dispatch}
+                            labels={pickUpLabels}
+                            handleSubmit={handleSubmit}
+                            isEditing={isEditing}
+                            className="pickup-contact-guest-form"
+                            showPhoneNumber
+                            formData={pickUpContact}
+                            onEditModeChange={this.handleEditModeChange}
+                            handleExitEditModeClick={this.handleExitEditModeClick}
+                          />
+                        )}
                       </FormSection>
-                    </SmsSignUpForm>
+                    </PickUpForm>
+                  )}
+                  {renderSmsUpdatedEnabled(
+                    isSmsUpdatesEnabled,
+                    isOrderUpdateChecked,
+                    currentPhoneNumber,
+                    smsSignUpLabels,
+                    dispatch
                   )}
                   {isGuest && !isUsSite && (
                     <EmailSignupForm>
@@ -342,7 +362,7 @@ class PickUpFormPart extends React.Component {
               </Container>
               <CnCTemplate
                 navigation={navigation}
-                btnText={pickUpLabels.nextToBilling}
+                btnText={getNextCTAText(this.props)}
                 routeToPage="ShippingPage"
                 isGuest={isGuest}
                 onPress={handleSubmit(this.pickupSubmit)}
@@ -377,8 +397,12 @@ PickUpFormPart.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  isVenmoPickupDisplayed: PropTypes.bool,
+  isVenmoShippingDisplayed: PropTypes.bool,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  bagLoading: PropTypes.number.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
@@ -389,6 +413,9 @@ PickUpFormPart.defaultProps = {
   isAlternateUpdateChecked: false,
   pickupError: '',
   currentPhoneNumber: '',
+  isVenmoPaymentInProgress: false,
+  isVenmoPickupDisplayed: true,
+  isVenmoShippingDisplayed: true,
 };
 
 const validateMethod = createValidateMethod({

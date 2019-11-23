@@ -109,6 +109,8 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
             }
           }
           showCountry={false}
+          showName={false}
+          showPhone={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -202,6 +204,8 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
             }
           }
           showCountry={false}
+          showName={false}
+          showPhone={false}
         />
       </Styled(Col)>
     </Styled(Row)>

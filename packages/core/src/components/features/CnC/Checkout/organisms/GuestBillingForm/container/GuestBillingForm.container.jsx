@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import GuestBillingPage from '../views';
@@ -160,7 +160,11 @@ class GuestBillingContainer extends React.Component {
     let expMonth;
     let expYear;
     let billingOnFileAddressKey;
-    if (billingData && billingData.billing) {
+    if (
+      billingData &&
+      billingData.billing &&
+      billingData.billing.cardType !== CONSTANTS.PAYPAL_LABEL
+    ) {
       ({
         billing: { cardNumber, cardType, expMonth, expYear },
         address: { onFileAddressKey: billingOnFileAddressKey },

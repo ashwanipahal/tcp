@@ -28,11 +28,13 @@ const OutfitDetailsView = ({
   addToBagErrorId,
   isLoggedIn,
   addToFavorites,
-  currencyExchange,
+  currencyAttributes,
   currencySymbol,
   labels,
   pdpLabels,
   outfitId,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
   const recommendationAttributes = {
@@ -92,7 +94,9 @@ const OutfitDetailsView = ({
                     isLoggedIn={isLoggedIn}
                     addToFavorites={addToFavorites}
                     currencySymbol={currencySymbol}
-                    currencyExchange={currencyExchange}
+                    currencyAttributes={currencyAttributes}
+                    AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                    removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                   />
                 </li>
               ))}
@@ -132,10 +136,12 @@ OutfitDetailsView.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   outfitId: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -147,10 +153,11 @@ OutfitDetailsView.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
   outfitId: '',
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

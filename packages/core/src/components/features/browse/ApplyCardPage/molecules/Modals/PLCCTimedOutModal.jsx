@@ -26,7 +26,11 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
   };
 
   handleCheckoutClick = () => {
-    routerPush(window.location.href, '/bag');
+    const { isRtpsFlow, closePLCCModal } = this.props;
+    if (isRtpsFlow && closePLCCModal) {
+      return closePLCCModal();
+    }
+    return routerPush(window.location.href, '/bag');
   };
 
   render() {
@@ -155,7 +159,12 @@ StyledPLCCTimedoutModal.propTypes = {
     lbl_PLCCTimeoutModal_applicationClosure: PropTypes.string.isRequired,
     lbl_PLCCTimeoutModal_preacceptance: PropTypes.string.isRequired,
   }).isRequired,
+  isRtpsFlow: PropTypes.bool,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
+StyledPLCCTimedoutModal.defaultProps = {
+  isRtpsFlow: false,
+};
 export default withStyles(StyledPLCCTimedoutModal, styles);
 export { StyledPLCCTimedoutModal as StyledPLCCTimedoutModalVanilla };

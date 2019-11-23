@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, RichText, Row, Col } from '../../../atoms';
 import { readCookie, setCookie } from '../../../../../utils/cookie.util';
+import { loyalityAnalyticsValue } from '../../../../../constants/analytics';
 import withStyles from '../../../hoc/withStyles';
 
 import style from '../LoyaltyPromoBanner.style';
@@ -18,10 +20,11 @@ const getUUID = uuidCookieString => {
 const LoyaltyPromoBanner = props => {
   const {
     className,
+    cookieID,
     richTextList: [{ richText, link }],
     dataLocator,
   } = props;
-  const cookieName = `mprAboveHead_${getUUID('WC_USERACTIVITY_')}`;
+  const cookieName = `${cookieID}_${getUUID('WC_USERACTIVITY_')}`;
   const [bannerClosed, setBannerClosed] = useState(true);
 
   useEffect(() => {
@@ -50,15 +53,24 @@ const LoyaltyPromoBanner = props => {
             large: 12,
           }}
         >
-          <Anchor
-            to={link.url}
-            asPath={link.url}
-            target={link.target}
-            title={link.title}
-            dataLocator={dataLocator || `loyalty-promo-banner`}
-          >
+          {link ? (
+            <ClickTracker
+              as={Anchor}
+              to={link.url}
+              asPath={link.url}
+              target={link.target}
+              title={link.title}
+              dataLocator={dataLocator || `loyalty-promo-banner`}
+              clickData={{
+                customEvents: ['event80', 'event81'],
+                internalCampaignId: loyalityAnalyticsValue,
+              }}
+            >
+              <RichText richTextHtml={richText.text} />
+            </ClickTracker>
+          ) : (
             <RichText richTextHtml={richText.text} />
-          </Anchor>
+          )}
           <button
             aria-label="close"
             className="loyalty-promo-close-btn"
@@ -80,6 +92,7 @@ const LoyaltyPromoBanner = props => {
 
 LoyaltyPromoBanner.propTypes = {
   className: PropTypes.string.isRequired,
+  cookieID: PropTypes.string.isRequired,
   richTextList: PropTypes.arrayOf(PropTypes.object),
   dataLocator: PropTypes.string,
 };

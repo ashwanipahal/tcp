@@ -103,6 +103,8 @@ export const getCurrencyAttributes = state => {
   return (
     (state.session.siteDetails && state.session.siteDetails.currencyAttributes) || {
       exchangevalue: 1,
+      merchantMargin: 1,
+      roundMethod: '',
     }
   );
 };
@@ -158,4 +160,24 @@ export const getPDPLabels = state => {
     back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
   };
+};
+
+export const getPLPPromos = (state, type) => {
+  // TODO: Dynamic the productID generation logic
+  const productID = 'global'; // 'global'; '54520|489117';
+  const { Layouts, Modules } = state;
+  let result = null;
+  if (Layouts && Layouts.pdp && Layouts.pdp[productID]) {
+    const { pdp } = Layouts;
+    if (pdp[productID]) {
+      const promo = pdp[productID][type] && pdp[productID][type].slots;
+      result =
+        (promo &&
+          promo.map(promoItem => {
+            return (promoItem.contentId && Modules[promoItem.contentId]) || {};
+          })) ||
+        [];
+    }
+  }
+  return result;
 };

@@ -136,7 +136,7 @@ class Recommendations extends Component {
           >
             {headerLabel}
           </Heading>
-          <Row fullBleed>
+          <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
                 small: 6,
@@ -195,13 +195,23 @@ class Recommendations extends Component {
   }
 
   render() {
-    const { className, variations } = this.props;
+    const { className, variations, ariaPrevious, ariaNext } = this.props;
 
     config.CAROUSEL_OPTIONS.prevArrow = (
-      <button type="button" data-locator="moduleO_left_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={ariaPrevious}
+        data-locator="moduleO_left_arrow"
+        className="slick-prev"
+      />
     );
     config.CAROUSEL_OPTIONS.nextArrow = (
-      <button type="button" data-locator="moduleO_right_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={ariaNext}
+        data-locator="moduleO_right_arrow"
+        className="slick-prev"
+      />
     );
 
     const variation = variations.split(',');

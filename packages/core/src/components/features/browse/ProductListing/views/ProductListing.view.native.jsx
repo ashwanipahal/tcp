@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import { styles, PageContainer, ListHeaderContainer } from '../styles/ProductListing.style.native';
+import {
+  styles,
+  PageContainer,
+  ListHeaderContainer,
+  FilterContainer,
+} from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
@@ -34,6 +39,8 @@ const onRenderHeader = data => {
     renderBrandFilter,
     setSelectedFilter,
     selectedFilterValue,
+    isKeepModalOpen,
+    isLoadingMore,
   } = data;
   return (
     <ListHeaderContainer>
@@ -51,6 +58,8 @@ const onRenderHeader = data => {
           filteredId={filteredId}
           setSelectedFilter={setSelectedFilter}
           selectedFilterValue={selectedFilterValue}
+          isKeepModalOpen={isKeepModalOpen}
+          isLoadingMore={isLoadingMore}
         />
       )}
 
@@ -92,10 +101,11 @@ const ProductListView = ({
   selectedFilterValue,
   plpTopPromos,
   isSearchListing,
+  isKeepModalOpen,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading) return <PLPSkeleton col={20} />;
+  if (isDataLoading && !isKeepModalOpen) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -112,26 +122,33 @@ const ProductListView = ({
     setSelectedFilter,
     selectedFilterValue,
     plpTopPromos,
+    isKeepModalOpen,
+    isLoadingMore,
   };
   return (
     <ScrollView>
+      {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
       <PageContainer margins={margins} paddings={paddings}>
-        {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
-        <ProductList
-          products={products}
-          title={title}
-          scrollToTop={scrollToTop}
-          totalProductsCount={totalProductsCount}
-          onRenderHeader={() => onRenderHeader(headerData)}
-          onrenderItemCountView={() => renderItemCountView(totalProductsCount)}
-          isFavorite={isFavorite}
-          onAddItemToFavorites={onAddItemToFavorites}
-          isLoggedIn={isLoggedIn}
-          labelsLogin={labelsLogin}
-          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-          {...otherProps}
-        />
+        <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
+        {!isLoadingMore && (
+          <ProductList
+            getProducts={getProducts}
+            navigation={navigation}
+            products={products}
+            title={title}
+            scrollToTop={scrollToTop}
+            totalProductsCount={totalProductsCount}
+            onrenderItemCountView={() => renderItemCountView(totalProductsCount)}
+            isFavorite={isFavorite}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
+            labelsLogin={labelsLogin}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            isSearchListing={isSearchListing}
+            {...otherProps}
+          />
+        )}
         {isLoadingMore ? <PLPSkeleton col={20} /> : null}
         <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -173,6 +190,7 @@ ProductListView.propTypes = {
   setSelectedFilter: PropTypes.func.isRequired,
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
+  isKeepModalOpen: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -197,6 +215,7 @@ ProductListView.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   plpTopPromos: [],
   isSearchListing: false,
+  isKeepModalOpen: false,
 };
 
 export default withStyles(ProductListView, styles);

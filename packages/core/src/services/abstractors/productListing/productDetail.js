@@ -1,3 +1,7 @@
+import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
+import { getAPIConfig } from '@tcp/core/src/utils';
+import logger from '@tcp/core/src/utils/loggerInstance';
+import handler from '@tcp/core/src/services/handler/handler';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import processHelpers from './processHelpers';
@@ -132,6 +136,7 @@ export const parseProductFromAPI = (
   const categoryPathMap = processHelperUtil.getCategoryPathMap(baseProduct);
   const categoryPath = processHelperUtil.getCategory(baseProduct);
   const categoryId = processHelperUtil.getCategoryId(breadCrumbs, baseProduct, categoryPath);
+  const category = processHelperUtil.getCategoryValue(baseProduct);
 
   return processResponse({
     baseProduct,
@@ -145,7 +150,87 @@ export const parseProductFromAPI = (
     reviewsCount,
     alternateSizes,
     breadCrumbs,
+    category,
   });
+};
+
+/**
+ * @function moduleResolver
+ * @param {object} moduleObjects -  module data to make module graphQL call
+ * @summary This will get the modules of the layout from CMS based on categoryId
+ */
+const moduleResolver = async moduleObjects => {
+  const response = await layoutAbstractor.getModulesData(moduleObjects);
+  return layoutAbstractor.processModuleData(response.data);
+};
+
+/**
+ * @function formatSlotData
+ * @param {array} slotItems -  list of slots
+ * @param {string} language -  selected language
+ * @summary Formats the slot as per the requirement of graphQL queryBuilder
+ */
+const formatSlotData = (slotItems, language) => {
+  return slotItems.map((slot, index) => {
+    return {
+      name: slot.moduleName,
+      data: {
+        contentId: slot.contentId,
+        slot: slot.name || `slot_${index + 1}`, // TODO: Remove Temporary Check for slot, as not supported from CMS yet
+        lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
+      },
+    };
+  });
+};
+
+/**
+ * @function layoutResolver
+ * @param {object} layoutConfig -  contains categoryId and pageName
+ * @summary This will get the layout of the page from CMS based on categoryId
+ */
+export const layoutResolver = async ({ category, pageName }) => {
+  let modules = {};
+  const layout = {};
+  try {
+    const { channelId, siteIdCMS, brandIdCMS, language } = getAPIConfig();
+    const moduleConfig = {
+      name: 'promoContent',
+      data: {
+        brand: brandIdCMS,
+        country: siteIdCMS,
+        channel: channelId,
+        lang: language === 'en' ? '' : language,
+        path: pageName,
+        category,
+      },
+    };
+    let {
+      data: { contentLayout },
+    } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig });
+    if (!(contentLayout && contentLayout.length)) {
+      ({
+        data: { contentLayout },
+      } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig, category: 'global' }));
+    }
+    const moduleObjects = [];
+    contentLayout.forEach(data => {
+      const dataItems = data.items;
+      layout[data.key] = dataItems;
+      Object.keys(dataItems).forEach(item => {
+        const slotItems = dataItems[item].slots;
+        if (typeof slotItems === 'object') {
+          moduleObjects.push(...slotItems);
+        }
+      });
+    });
+    modules = await moduleResolver(formatSlotData(moduleObjects, language));
+  } catch (err) {
+    logger.error(err);
+  }
+  return {
+    layout,
+    modules,
+  };
 };
 
 /**

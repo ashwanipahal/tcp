@@ -6,7 +6,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heading="lbl_PLCCModal_applyNowHeaderText"
   inheritedStyles={
     Array [
       "
@@ -16,19 +15,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       [Function],
       ";
   }
-
+  .apply-now-heading {
+    margin: ",
+      [Function],
+      " 0px
+      ",
+      [Function],
+      ";
+  }
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
-    ",
-      [Function],
-      ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -185,13 +181,28 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
-  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={false}
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"
   >
+    <Styled(BodyCopy)
+      className="apply-now-heading"
+      color="gray.900"
+      component="h2"
+      fontFamily="secondary"
+      fontSize="fs36"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_PLCCModal_applyNowHeaderText
+    </Styled(BodyCopy)>
     <Styled(Row)
       className="submit_plcc_form"
       fullBleed={true}
@@ -436,7 +447,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heading="lbl_PLCCModal_applyNowHeaderText"
   inheritedStyles={
     Array [
       "
@@ -446,19 +456,16 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       [Function],
       ";
   }
-
+  .apply-now-heading {
+    margin: ",
+      [Function],
+      " 0px
+      ",
+      [Function],
+      ";
+  }
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
-    ",
-      [Function],
-      ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -615,13 +622,28 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
-  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"
   >
+    <Styled(BodyCopy)
+      className="apply-now-heading"
+      color="gray.900"
+      component="h2"
+      fontFamily="secondary"
+      fontSize="fs36"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_PLCCModal_applyNowHeaderText
+    </Styled(BodyCopy)>
     <Styled(Row)
       className="submit_plcc_form"
       fullBleed={true}
@@ -680,9 +702,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         >
           lbl_PLCCModal_applyNowSubText
         </Styled(BodyCopy)>
-        <Styled(RichText)
-          className="congrats_msg"
-        />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)

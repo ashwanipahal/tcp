@@ -22,18 +22,28 @@ const CheckoutHeader = ({
   className,
   brandTabs,
   labels,
+  exitCheckoutAriaLabel,
   isInternationalShipping,
   itemsCount,
   isExpressCheckoutPage,
   bagLoading,
+  cartItems,
+  currentStage,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
       <Row className="header-topnav__row">
         <button
           onClick={() => {
-            checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            const availableStages = checkoutUtil.getAvailableStages(cartItems);
+            const currentIndex = availableStages.indexOf(currentStage);
+            if (currentIndex === 0) {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            } else {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES[`${availableStages[currentIndex - 1]}Page`]);
+            }
           }}
+          aria-label={exitCheckoutAriaLabel}
           className="exitFromCheckout"
         >
           <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
@@ -72,7 +82,7 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          {!bagLoading && itemsCount > 0 ? (
+          {!bagLoading ? (
             <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
               <Anchor
                 fontSizeVariation="medium"
@@ -127,10 +137,13 @@ CheckoutHeader.propTypes = {
   className: PropTypes.string.isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  exitCheckoutAriaLabel: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   itemsCount: PropTypes.number.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
   bagLoading: PropTypes.bool,
+  cartItems: PropTypes.shape({}).isRequired,
+  currentStage: PropTypes.string.isRequired,
 };
 
 CheckoutHeader.defaultProps = {

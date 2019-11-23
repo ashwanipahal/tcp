@@ -4,7 +4,7 @@ export const config = {
     linkList: 'linkCTAList',
     CTAButtonCarousel: 'scrollCTAList',
     divImageCTACarousel: 'imageCTAList',
-    stackedCTAButtonsExpandable: 'dropdownButtonCTA',
+    stackedCTAButtonsExpandable: 'stackedCTAList',
     CTAButtonCarouselExpandable: 'scrollCTAList',
   },
 };

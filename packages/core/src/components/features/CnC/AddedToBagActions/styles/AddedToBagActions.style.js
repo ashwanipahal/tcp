@@ -29,6 +29,7 @@ const ctaStyle = css`
     height: 48px;
     margin-left: ${props =>
       props.isInternationalShipping ? '0px' : props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    ${props => (!props.isVenmoEnabled && !props.isPayPalEnabled ? `margin-left: 0;` : '')};
     flex: 1;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     @media ${props => props.theme.mediaQuery.smallMax} {
@@ -48,6 +49,7 @@ const ctaStyle = css`
   }
   .paypal-wrapper {
     width: 100%;
+    z-index: 0;
     @media ${props => props.theme.mediaQuery.large} {
       min-width: 220px;
     }

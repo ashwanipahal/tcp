@@ -1,17 +1,22 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { getLoading } from '@tcp/core/src/utils';
+// import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { ScrollView as LazyloadScrollView } from 'react-native';
+import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import PageContainer from '../styles/BundleProduct.style.native';
+import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import BundleProductItems from '../molecules/BundleProductItems';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class ProductBundle extends React.PureComponent {
   currentColorEntry;
@@ -48,6 +53,9 @@ class ProductBundle extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       addToBagErrorId,
       addToBagError,
+      toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -64,8 +72,18 @@ class ProductBundle extends React.PureComponent {
           isFullSet: true,
         });
       }
+      const recommendationAttributes = {
+        variation: 'moduleO',
+        navigation,
+        page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+        partNumber: itemPartNumber,
+        isHeaderAccordion: true,
+      };
       return (
         <ScrollView>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
           <PageContainer>
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
@@ -104,7 +122,19 @@ class ProductBundle extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               addToBagErrorId={addToBagErrorId}
               addToBagError={addToBagError}
+              toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+              <Recommendations
+                isRecentlyViewed
+                {...recommendationAttributes}
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              />
+            </RecommendationWrapper>
           </PageContainer>
         </ScrollView>
       );
@@ -132,6 +162,9 @@ ProductBundle.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductBundle.defaultProps = {
@@ -144,6 +177,7 @@ ProductBundle.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductBundle);

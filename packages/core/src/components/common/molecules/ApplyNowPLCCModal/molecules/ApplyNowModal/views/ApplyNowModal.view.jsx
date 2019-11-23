@@ -31,18 +31,29 @@ const StyledApplyNowModal = ({
       fixedWidth
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      heading={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="464px"
-      minHeight="646px"
+      standardHeight
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
+      shouldCloseOnEsc={!isRtpsFlow}
     >
       <div className="Modal__Content__Wrapper">
+        <BodyCopy
+          component="h2"
+          color="gray.900"
+          fontFamily="secondary"
+          fontSize="fs36"
+          textAlign="center"
+          fontWeight="black"
+          className="apply-now-heading"
+        >
+          {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+        </BodyCopy>
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
@@ -70,7 +81,7 @@ const StyledApplyNowModal = ({
               {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             </BodyCopy>
 
-            <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />
+            {isRtpsFlow && <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />}
           </Col>
         </Row>
 

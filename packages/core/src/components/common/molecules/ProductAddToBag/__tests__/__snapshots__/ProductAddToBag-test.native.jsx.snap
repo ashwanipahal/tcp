@@ -11,7 +11,9 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   fitList={Array []}
   fromBagPage={true}
   handleFormSubmit={null}
+  isBundleProduct={false}
   isErrorMessageDisplayed={false}
+  isFromBagProductSfl={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
@@ -36,6 +38,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "isGiftCard": false,
           "itemNameKey": "",
           "itemValue": "",
+          "keepAlive": false,
           "keyExtractor": null,
           "locators": null,
           "renderColorItem": false,
@@ -91,6 +94,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
             "isGiftCard": false,
             "itemNameKey": "",
             "itemValue": "",
+            "keepAlive": false,
             "keyExtractor": null,
             "locators": null,
             "renderColorItem": false,
@@ -145,6 +149,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     sizeUnavailable=""
   />
   <Styled(View)
+    margins="16px 0 16px 0"
     style={
       Object {
         "width": 200,

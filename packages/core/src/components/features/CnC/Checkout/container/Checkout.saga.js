@@ -12,7 +12,6 @@ import {
   startExpressCheckout,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
-import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 import utility from '../util/utility';
 import CHECKOUT_ACTIONS, {
   getSetPickupValuesActn,
@@ -37,7 +36,6 @@ import {
   addRegisteredUserAddress,
   routeToPickupPage,
   addAndSetGiftWrappingOptions,
-  validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
@@ -47,19 +45,18 @@ import {
   handleServerSideErrorAPI,
   submitAcceptOrDeclinePlccData,
   handleCheckoutInitRouting,
+  makeUpdateRTPSCall,
+  shouldInvokeReviewCartCall,
+  redirectFromExpress,
 } from './Checkout.saga.util';
+import { submitEmailSignup } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 
-const {
-  getIsOrderHasShipping,
-  getShippingDestinationValues,
-  getDefaultAddress,
-  getGiftServicesFormData,
-  getShipmentMethods,
-} = selectors;
+const { getIsOrderHasShipping, getShippingDestinationValues, getDefaultAddress } = selectors;
+const { getGiftServicesFormData, getShipmentMethods, getCurrentCheckoutStage } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
 
@@ -84,14 +81,11 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
-    // resCheckoutValues.giftWrap &&
-    //   getSetGiftWrapValuesActn(
-    //     {
-    //       hasGiftWrapping:
-    //       !!resCheckoutValues.giftWrap.optionId,
-    //       ...resCheckoutValues.giftWrap
-    //     }
-    //   ),
+    resCheckoutValues.giftWrap &&
+      CHECKOUT_ACTIONS.getSetGiftWrapValuesActn({
+        hasGiftWrapping: !!resCheckoutValues.giftWrap.optionId,
+        ...resCheckoutValues.giftWrap,
+      }),
     resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
   yield all(actions.map(action => put(action)));
@@ -106,6 +100,7 @@ function* submitPickupSection({ payload }) {
     const formData = { ...payload };
     const { navigation } = payload;
     yield put(setLoaderState(true));
+    yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
     yield put(setLoaderState(false));
 
@@ -227,12 +222,11 @@ function* triggerInternationalCheckoutIfRequired() {
   return null;
 }
 
-function* initCheckoutSectionData({
-  payload: { recalc, pageName, isPaypalPostBack, initialLoad, appRouting },
-}) {
+function* initCheckoutSectionData({ payload }) {
+  const { recalc, pageName, isPaypalPostBack, appRouting, navigation } = payload;
   yield call(triggerInternationalCheckoutIfRequired);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
+  const { PICKUP, SHIPPING, BILLING } = CONSTANTS.CHECKOUT_STAGES;
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     if (!appRouting) {
@@ -249,11 +243,7 @@ function* initCheckoutSectionData({
         })
       );
     }
-  } else if (
-    pageName === REVIEW &&
-    !appRouting &&
-    !(initialLoad && isExpressCheckoutEnabled && !isPaypalPostBack)
-  ) {
+  } else if (shouldInvokeReviewCartCall(isExpressCheckoutEnabled, payload)) {
     pendingPromises.push(
       call(getCartDataSaga, {
         payload: {
@@ -267,10 +257,14 @@ function* initCheckoutSectionData({
       })
     );
   }
+
   yield all(pendingPromises);
   const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
-  yield call(initShippingData, requestedStage, initialLoad);
-  yield call(callUpdateRTPS, pageName);
+  yield call(initShippingData, requestedStage);
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled, isVenmoInProgress)) {
+    yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
+  }
 }
 
 // function* displayPreScreenModal (res) {
@@ -284,23 +278,21 @@ function* initCheckoutSectionData({
 function* triggerExpressCheckout(
   recalcRewards,
   section,
+  navigation,
+  isPaypalPostBack,
   shouldPreScreenUser = false,
   source = null
 ) {
-  const excludeCartItems = true;
+  let pageName = section;
+  if (isMobileApp()) {
+    pageName = yield select(getCurrentCheckoutStage);
+    pageName = pageName.toLowerCase();
+  }
   try {
-    // const preScreenInfo =
-    yield startExpressCheckout(shouldPreScreenUser, source);
-    /* Doing displayPreScreenModal in parallel. The only issue i can see here is
-      //         * if loadCartAndCheckoutDetails is not resolved by the time the user
-      //         * navigates to the form we can not pre-set the address.
-      //         * If this ever does become an issue then we can just push this out
-      //         * and do it after the other api resolves.
-      //         * Doing it this way should make the page seem more responsive however.
-      //         */
-    //  if (preScreenInfo.plccEligible) {
-    // yield call(displayPreScreenModal(preScreenInfo) )
-    //  };
+    const res = yield startExpressCheckout(shouldPreScreenUser, source);
+    if (!res.orderId) {
+      return yield redirectFromExpress();
+    }
     yield call(getCartDataSaga, {
       payload: {
         isRecalculateTaxes: false,
@@ -310,10 +302,12 @@ function* triggerExpressCheckout(
         translation: true,
       },
     });
-    yield call(callUpdateRTPS, section, true);
+    if (!isPaypalPostBack) {
+      yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
+    }
     const shippingValues = yield select(getShippingDestinationValues);
     const shippingAddress = (shippingValues && shippingValues.address) || {};
-    yield validDateAndLoadShipmentMethods(
+    return yield validDateAndLoadShipmentMethods(
       {
         country: shippingAddress.country || '',
         state: shippingAddress.state || '',
@@ -323,20 +317,11 @@ function* triggerExpressCheckout(
       true
     );
   } catch (e) {
-    yield put(setIsExpressEligible(false));
-    yield call(getCartDataSaga, {
-      payload: {
-        isRecalculateTaxes: false,
-        excludeCartItems: excludeCartItems && !isMobileApp(),
-        recalcRewards,
-        isCheckoutFlow: true,
-        translation: false,
-      },
-    });
+    return yield redirectFromExpress();
   }
 }
 
-function* loadExpressCheckout(isRecalcRewards, section) {
+function* loadExpressCheckout(isRecalcRewards, section, navigation, isPaypalPostBack) {
   //    On shipping we taking into acocunt if this is a gift or not.
   //    On express checkout we pre-screen no matter what,
   //    even though the user may have a gift order
@@ -348,10 +333,10 @@ function* loadExpressCheckout(isRecalcRewards, section) {
   //     if (checkoutStoreView.isVenmoPaymentInProgress(this.store.getState())) {
   //       source = 'venmo';
   //     }
-  yield call(triggerExpressCheckout, isRecalcRewards, section);
+  yield call(triggerExpressCheckout, isRecalcRewards, section, navigation, isPaypalPostBack);
 }
 
-function* loadStartupData(isPaypalPostBack, isRecalcRewards, section /* isVenmo */) {
+function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation /* isVenmo */) {
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   // const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   // if (isVenmo) {
@@ -393,7 +378,9 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, section /* isVenmo 
   // }
 
   if (!isPaypalPostBack && isExpressCheckoutEnabled) {
-    pendingPromises.push(call(loadExpressCheckout, isRecalcRewards, section));
+    pendingPromises.push(
+      call(loadExpressCheckout, isRecalcRewards, section, navigation, isPaypalPostBack)
+    );
   } else {
     pendingPromises.push(call(getAddressList));
   }
@@ -536,7 +523,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, section /* isVenmo 
   //   }
 }
 
-function* initCheckout({ router, isPaypalFlow }) {
+function* initCheckout({ router, isPaypalFlow, navigation }) {
   let isPaypalPostBack;
   let recalc;
   let section;
@@ -549,7 +536,7 @@ function* initCheckout({ router, isPaypalFlow }) {
   }
 
   try {
-    yield call(loadStartupData, isPaypalPostBack, recalc, section);
+    yield call(loadStartupData, isPaypalPostBack, recalc, section, navigation);
   } catch (e) {
     logger.error(e);
   }
@@ -569,7 +556,7 @@ function* initIntlCheckout() {
 
 function* submitShipping({
   isEmailSignUpAllowed,
-  emailSignup,
+  emailSignUp = {},
   emailAddress,
   isGuestUser,
   address,
@@ -579,9 +566,11 @@ function* submitShipping({
   saveToAccount,
   method,
   smsInfo,
+  hasSetGiftOptions,
 }) {
+  const { emailSignUp: emailSignUpTCP, emailSignUpGYM } = emailSignUp;
   const giftServicesFormData = yield select(getGiftServicesFormData);
-  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options
@@ -589,7 +578,9 @@ function* submitShipping({
     // remove old gift wrap option (if any)
     // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
     // sign up to receive mail newsletter
-    isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
+    isEmailSignUpAllowed &&
+      (emailSignUpTCP || emailSignUpGYM) &&
+      submitEmailSignup(emailAddress, { emailSignUpTCP, emailSignUpGYM }),
   ];
   let addOrEditAddressRes;
   if (isGuestUser) {
