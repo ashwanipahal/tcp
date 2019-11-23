@@ -29,6 +29,14 @@ const AccountDrawerBottomLinks = props => {
           <Anchor
             fontSizeVariation="large"
             fontFamily="secondary"
+            href="#"
+            onClick={e =>
+              onLinkRedirect({
+                e,
+                link: internalEndpoints.favorites.link,
+                path: internalEndpoints.favorites.path,
+              })
+            }
             anchorVariation="primary"
             text={getLabelValue(labels, 'CREATE_ACC_MY_FAV')}
           />
@@ -38,6 +46,14 @@ const AccountDrawerBottomLinks = props => {
             <Anchor
               fontSizeVariation="large"
               fontFamily="secondary"
+              href="#"
+              onClick={e =>
+                onLinkRedirect({
+                  e,
+                  link: internalEndpoints.rewardsCreditCard.link,
+                  path: internalEndpoints.rewardsCreditCard.path,
+                })
+              }
               anchorVariation="primary"
               text={getLabelValue(labels, 'CREATE_ACC_MY_PLACE_REWARDS_CC')}
             />
