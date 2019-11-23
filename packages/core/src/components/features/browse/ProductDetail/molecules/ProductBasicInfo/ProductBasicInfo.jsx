@@ -57,7 +57,7 @@ class ProductBasicInfo extends React.Component {
 
     onAddItemToFavorites({
       colorProductId: productId,
-      productSkuId: (skuId && skuId[0].skuId) || null,
+      productSkuId: (skuId && skuId.skuId) || null,
       pdpColorProductId: colorProductId,
       page: pageName || 'PDP',
     });
