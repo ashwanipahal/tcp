@@ -149,6 +149,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
       className="error-notification"
+      fontWeight="extrabold"
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -333,6 +334,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
       className="error-notification"
+      fontWeight="extrabold"
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -598,6 +600,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
       className="error-notification"
+      fontWeight="extrabold"
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -831,6 +834,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
       className="error-notification"
+      fontWeight="extrabold"
       noBackground={true}
     />
     <Styled(BodyCopy)

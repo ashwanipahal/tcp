@@ -136,13 +136,10 @@ const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenC
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
-const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, colorsMap, selectedColorIndex) => {
-  const selectedColorMapData = colorsMap && colorsMap[selectedColorIndex];
+const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {
   return (
     (isKeepAliveEnabled && keepAlive) ||
-    (selectedColorMapData &&
-      selectedColorMapData.itemInfo &&
-      selectedColorMapData.itemInfo.availability === AVAILABILITY.SOLDOUT)
+    (itemInfo && itemInfo.availability === AVAILABILITY.SOLDOUT)
   );
 };
 
@@ -184,12 +181,7 @@ const ListItem = props => {
   const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
   const { keepAlive } = miscInfoData;
-  const itemOutOfStock = isItemOutOfStock(
-    isKeepAliveEnabled,
-    keepAlive,
-    colorsMap,
-    selectedColorIndex
-  );
+  const itemOutOfStock = isItemOutOfStock(isKeepAliveEnabled, keepAlive, itemInfo);
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (

@@ -43,6 +43,7 @@ export default css`
     }
   }
   .render-mobile-view {
+    position: relative;
     width: auto;
     padding: 0;
 
@@ -53,6 +54,10 @@ export default css`
       .filter-row {
         width: auto;
       }
+    }
+    .filter-row {
+      margin: 0;
+      padding-bottom: 0;
     }
   }
 

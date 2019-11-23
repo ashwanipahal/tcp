@@ -1,4 +1,5 @@
 import { takeLatest, call, put, delay } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import { getUserInfo } from '../../User/container/User.actions';
@@ -18,6 +19,7 @@ const getErrorMessage = res => {
 };
 
 export function* createsaga({ payload }) {
+  yield put(setLoaderState(true));
   yield put(setLoadingState({ isLoading: true }));
   try {
     const { emailAddress } = payload;
@@ -47,9 +49,11 @@ export function* createsaga({ payload }) {
       return yield put(getUserInfo());
     }
     const resErr = getErrorMessage(res);
+    yield put(setLoaderState(false));
     return yield put(createAccountErr(resErr));
   } catch (err) {
     const { errorCode, errorMessage } = err;
+    yield put(setLoaderState(false));
     yield put(setLoadingState({ isLoading: false }));
     return yield put(
       createAccountErr({

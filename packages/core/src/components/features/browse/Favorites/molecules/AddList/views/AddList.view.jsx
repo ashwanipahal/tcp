@@ -20,11 +20,11 @@ class AddList extends React.PureComponent {
   };
 
   render() {
-    const { labels, className, onCloseModal } = this.props;
+    const { labels, className, onCloseModal, handleSubmit } = this.props;
 
     return (
       <>
-        <form className={className}>
+        <form className={className} onSubmit={handleSubmit}>
           <Row fullBleed className="elem-mb-MED">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Field
@@ -73,7 +73,6 @@ class AddList extends React.PureComponent {
                 type="submit"
                 fill="BLUE"
                 dataLocator="SaveListFormBtn"
-                onClick={this.submitHandler}
               >
                 {getLabelValue(labels, 'btn_fav_save')}
               </Button>

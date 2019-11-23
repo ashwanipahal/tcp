@@ -282,6 +282,7 @@ export default class ShippingPage extends React.Component {
       isVenmoShippingDisplayed,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      bagLoading,
     } = this.props;
 
     const { CHECKOUT_STAGES } = CONSTANTS;
@@ -366,6 +367,7 @@ export default class ShippingPage extends React.Component {
                     onFileAddressKey: defaultAddressId,
                   }}
                   selectedShipmentId={selectedShipmentId}
+                  bagLoading={bagLoading}
                   scrollView={this.scrollView}
                   isGuest={isGuest}
                   isUsSite={isUsSite}
