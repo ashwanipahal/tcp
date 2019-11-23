@@ -1,6 +1,8 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+
 import {
   setUpdateOrderDetailsData,
   setLoadingState,
@@ -28,6 +30,7 @@ const getErrorMessage = res => {
 };
 
 export function* createSMSNotification({ payload }) {
+  yield put(setLoaderState(true));
   yield put(setLoadingState({ isLoading: true }));
   try {
     const errorMappings = yield select(BagPageSelectors.getErrorMapping);
@@ -38,9 +41,10 @@ export function* createSMSNotification({ payload }) {
       const resErr = getErrorMessage(res);
       return yield put(smsNotificationErr(resErr));
     }
-
+    yield put(setLoaderState(false));
     return yield put(setSmsNotificationSuccess(true));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(setLoadingState({ isLoading: false }));
     return yield put(smsNotificationErr(err));
   }

@@ -2,7 +2,7 @@
 
 exports[`ModuleB component should render TCP or default variant correctly 1`] = `
 <div
-  className="undefined parent-wrapper"
+  className="undefined moduleB "
 >
   <Styled(Row)>
     <Styled(Col)
