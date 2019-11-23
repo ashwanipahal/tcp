@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { configureInternalNavigationFromCMSUrl } from '../../../../utils';
-import { Anchor } from '../../atoms';
+import Anchor from '../../atoms/Anchor';
 import { BodyCopyVanilla } from '../../atoms/BodyCopy/views/BodyCopy';
 import errorBoundary from '../../hoc/withErrorBoundary';
 import withStyles from '../../hoc/withStyles';

@@ -3,22 +3,22 @@ import styled, { css } from 'styled-components';
 const BgWrapper = styled.div`
   background-color: ${props => props.bgColor};
   height: 350px;
-  width:100%;
-  max-width:375px;
+  width: 100%;
+  max-width: 375px;
   @media ${props => props.theme.mediaQuery.medium} {
     height: 689px;
-    width:100%;
-    max-width:738px;
+    width: 100%;
+    max-width: 738px;
   }
   @media ${props => props.theme.mediaQuery.large} {
     height: 576px;
-    width:100%;
-    max-width:576px;
+    width: 100%;
+    max-width: 576px;
   }
   @media ${props => props.theme.mediaQuery.xlarge} {
     height: 689px;
-    width:100%;
-    max-width:689px;
+    width: 100%;
+    max-width: 689px;
   }
 `;
 
@@ -65,10 +65,10 @@ const style = css`
       margin-bottom: 0;
     }
   }
-  .img-wrapper{
-    text-align:center;
+  .img-wrapper {
+    text-align: center;
   }
-  .bg-wrapper{
+  .bg-wrapper {
     margin: 0 auto;
   }
 `;

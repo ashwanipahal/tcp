@@ -87,16 +87,18 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       visible={false}
     />
   </Styled(View)>
-  <NoFavoritesFound
-    labels={Object {}}
-  />
-  <Styled(View)>
-    <Connect(Recommendations)
-      headerAlignment="left"
-      page="homepage"
-      showLoyaltyPromotionMessage={false}
-      variation="moduleO"
+  <View>
+    <NoFavoritesFound
+      labels={Object {}}
     />
-  </Styled(View)>
+    <Styled(View)>
+      <Connect(Recommendations)
+        headerAlignment="left"
+        page="homepage"
+        showLoyaltyPromotionMessage={false}
+        variation="moduleO"
+      />
+    </Styled(View)>
+  </View>
 </Styled(View)>
 `;

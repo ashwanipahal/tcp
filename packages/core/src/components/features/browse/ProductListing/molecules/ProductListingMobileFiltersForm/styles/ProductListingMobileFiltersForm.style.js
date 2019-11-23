@@ -189,6 +189,13 @@ export default css`
     .color-chip {
       border-radius: 10px;
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      height: 19px;
+      width: 19px;
+    }
+
+    .white-color-class {
+      height: 18px;
+      width: 18px;
     }
 
     .color-chip[data-colorname='white'] {

@@ -1,5 +1,7 @@
+/* eslint-disable max-lines */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import DamImage from '../../../../../../common/atoms/DamImage';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingFiltersFormStyle from '../ProductListingFiltersForm.style';
@@ -25,38 +27,47 @@ import LoadedProductsCount from '../../LoadedProductsCount/views';
  * @param {Boolean} isMobile - check for mobile view
  */
 function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
-  return colorOptionsMap.map(color => ({
-    value: color.id,
-    title: color.displayName,
-    content: (
-      <div className="color-title">
-        <Image
-          className="color-chip"
-          src={color.imagePath}
-          height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-          width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-          alt={color.displayName}
-          data-colorname={color.displayName.toLowerCase()}
-        />
-
-        {!isMobile && (
-          <BodyCopy
-            component="span"
-            role="option"
-            textAlign="center"
-            tabIndex={-1}
-            fontSize="fs14"
-            fontFamily="secondary"
-            color="gray.900"
-            className="color-name"
-            outline="none"
-          >
-            {color.displayName}
-          </BodyCopy>
-        )}
-      </div>
-    ),
-  }));
+  return colorOptionsMap.map(color => {
+    const swatchUrl = color.swatchImage;
+    const swatchImagePath = swatchUrl && swatchUrl.split('_');
+    const imgUrl = swatchImagePath
+      ? `${swatchImagePath[0]}/${swatchImagePath[0]}_${swatchImagePath[1]}`
+      : '';
+    const imgData = { alt: color.displayName, url: imgUrl };
+    const imgConfig = `w_50,h_50,c_thumb,g_auto:0`;
+    const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
+    const whiteColorClass = color.displayName.toLowerCase() === 'white';
+    return {
+      value: color.id,
+      title: color.displayName,
+      content: (
+        <div className="color-title">
+          <DamImage
+            className={`color-chip ${whiteColorClass ? 'white-color-class' : ''}`}
+            imgData={imgData}
+            isProductImage
+            imgConfigs={imgDataConfig}
+            data-colorname={color.displayName.toLowerCase()}
+          />
+          {!isMobile && (
+            <BodyCopy
+              component="span"
+              role="option"
+              textAlign="center"
+              tabIndex={-1}
+              fontSize="fs14"
+              fontFamily="secondary"
+              color="gray.900"
+              className="color-name"
+              outline="none"
+            >
+              {color.displayName}
+            </BodyCopy>
+          )}
+        </div>
+      ),
+    };
+  });
 }
 
 /**
