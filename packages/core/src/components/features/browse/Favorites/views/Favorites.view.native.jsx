@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import React from 'react';
+import { View, Share } from 'react-native';
 import { PropTypes } from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -7,6 +8,7 @@ import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { getLoading, getLabelValue } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { ShareDialog } from 'react-native-fbsdk';
 import {
   PageContainer,
   BrandFilterContainer,
@@ -56,7 +58,6 @@ class FavoritesView extends React.PureComponent {
   currentPopupName;
 
   brandOptions;
-  // eslint-disable-next-line
   constructor(props) {
     super(props);
     this.state = {
@@ -122,6 +123,18 @@ class FavoritesView extends React.PureComponent {
 
   onCopyLinkHandler = data => {
     console.tron.log('onCopyLinkHandler:', data);
+  };
+
+  onShareListEmailHandler = data => {
+    this.onCloseModal();
+    const { sendWishListEmail } = this.props;
+    const payload = {
+      shareToEmailAddresses: data.toEmail,
+      shareFromEmailAddresses: data.fromEmail,
+      shareSubject: data.subject,
+      shareMessage: data.message,
+    };
+    sendWishListEmail(payload);
   };
 
   handleEditList = () => {
@@ -195,7 +208,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const { labels, activeWishListId, activeWishList, wishlistsSummaries, userEmail } = this.props;
     if (this.currentPopupName === ADD_LIST) {
       return (
         <AddList
@@ -226,8 +239,12 @@ class FavoritesView extends React.PureComponent {
       return (
         <ShareList
           labels={labels}
-          onHandleSubmit={this.handleShareListByEmail}
+          onHandleSubmit={this.onShareListEmailHandler}
           onCloseModal={this.onCloseModal}
+          initialValues={{
+            subject: getLabelValue(labels, 'lbl_fav_subject_default'),
+            fromEmail: userEmail,
+          }}
         />
       );
     }
@@ -294,7 +311,53 @@ class FavoritesView extends React.PureComponent {
     getActiveWishlist(value);
   };
 
-  handleShareClick = () => {};
+  handleShareClick = value => {
+    if (value === 'facebook') {
+      this.shareLinkOnFacebook();
+    } else if (value === 'email') {
+      this.handleShareListByEmail();
+    } else {
+      this.onShareLink();
+    }
+  };
+
+  getSharableLink = () => {
+    const { activeWishList, wishlistsSummaries } = this.props;
+    const activeWishListId = activeWishList && activeWishList.id;
+    const currentWishList =
+      wishlistsSummaries &&
+      wishlistsSummaries.length > 0 &&
+      wishlistsSummaries.filter(wishlist => {
+        return wishlist.id === activeWishListId;
+      });
+    return currentWishList && currentWishList[0].shareableLink;
+  };
+
+  shareLinkOnFacebook = () => {
+    const shareLinkContent = {
+      contentType: 'link',
+      contentUrl: this.getSharableLink(),
+    };
+    ShareDialog.canShow(shareLinkContent).then(canShow => {
+      if (canShow) {
+        return ShareDialog.show(shareLinkContent);
+      }
+      return null;
+    });
+  };
+
+  onShareLink = () => {
+    const result = Share.share({
+      message: this.getSharableLink(),
+    });
+    if (result.action === Share.sharedAction) {
+      if (result.activityType) {
+        // shared with activity type of result.activityType
+      }
+    } else if (result.action === Share.dismissedAction) {
+      // dismissed
+    }
+  };
 
   renderHeader = () => {
     const { labels } = this.props;
@@ -313,7 +376,6 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  // eslint-disable-next-line sonarjs/no-identical-functions
   renderFooter = closeDropDown => {
     const { labels, wishlistsSummaries } = this.props;
     const isDisable = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
@@ -390,15 +452,15 @@ class FavoritesView extends React.PureComponent {
     return [
       {
         displayName: labels.lbl_fav_facebook,
-        value: labels.lbl_fav_facebook,
+        value: 'facebook',
       },
       {
         displayName: labels.lbl_fav_email,
-        value: labels.lbl_fav_email,
+        value: 'email',
       },
       {
         displayName: labels.lbl_fav_copyLink,
-        value: labels.lbl_fav_copyLink,
+        value: 'copyLink',
       },
     ];
   };
@@ -502,22 +564,22 @@ class FavoritesView extends React.PureComponent {
           />
         </DropDownContainer>
         {filteredItemsList.length === 0 ? (
-          <>
+          <View>
             <NoFavoritesFound labels={labels} />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
             </RecommendationWrapper>
-          </>
+          </View>
         ) : (
-          <>
+          <View>
             <ShareDropDownContainer>
               <SelectWishListDropdown
                 selectedValue={selectedShareOption}
                 data={this.getSharingOptions()}
                 onValueChange={itemValue => {
-                  this.setState({ selectedShareOption: itemValue }, () =>
-                    this.handleShareClick(itemValue)
-                  );
+                  setTimeout(() => {
+                    this.handleShareClick(itemValue);
+                  }, 160);
                 }}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
@@ -552,7 +614,7 @@ class FavoritesView extends React.PureComponent {
               isKeepAliveEnabled={isKeepAliveEnabled}
               outOfStockLabels={outOfStockLabels}
             />
-          </>
+          </View>
         )}
       </PageContainer>
     );
@@ -589,6 +651,8 @@ FavoritesView.propTypes = {
   isBothTcpAndGymProductAreAvailable: PropTypes.bool.isRequired,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  userEmail: PropTypes.string.isRequired,
+  sendWishListEmail: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {
