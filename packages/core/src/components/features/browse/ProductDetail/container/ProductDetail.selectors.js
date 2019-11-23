@@ -173,7 +173,7 @@ export const getPLPPromos = (state, type) => {
       result =
         (promo &&
           promo.map(promoItem => {
-            return (promoItem.contentId && Modules[promoItem.contentId]) || [];
+            return (promoItem.contentId && Modules[promoItem.contentId]) || {};
           })) ||
         [];
     }

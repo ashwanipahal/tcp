@@ -344,7 +344,7 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoInProgress) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
@@ -357,16 +357,23 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
   }
 }
 
-export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+export const makeUpdateRTPSCall = (
+  pageName,
+  isPaypalPostBack,
+  isExpressCheckoutEnabled,
+  isVenmoInProgress
+) => {
   const { BILLING } = constants.CHECKOUT_STAGES;
-  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+  return (
+    pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled) || isVenmoInProgress
+  );
 };
 
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
