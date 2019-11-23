@@ -72,6 +72,7 @@ class LookingForProductDetail extends React.PureComponent {
                         }}
                         isProductImage
                         height="25px"
+                        lazyLoad={false}
                       />
                     </Anchor>
                   </BodyCopy>
