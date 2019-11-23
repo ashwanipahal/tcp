@@ -164,6 +164,7 @@ class ProductsGrid extends React.Component {
       productsBlock,
       className,
       labels,
+      isFavoriteView,
       isLoadingMore,
       onPickUpOpenClick,
       onQuickViewOpenClick,
@@ -178,6 +179,7 @@ class ProductsGrid extends React.Component {
       asPathVal,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      removeFavItem,
       ...otherProps
     } = this.props;
 
@@ -206,6 +208,7 @@ class ProductsGrid extends React.Component {
                         onPickUpOpenClick={onPickUpOpenClick}
                         className={`${className} product-list`}
                         labels={labels}
+                        isFavoriteView={isFavoriteView}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
@@ -218,6 +221,7 @@ class ProductsGrid extends React.Component {
                         asPathVal={asPathVal}
                         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                        removeFavItem={removeFavItem}
                         {...otherProps}
                       />
                     );
