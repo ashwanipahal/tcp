@@ -14,58 +14,8 @@ class ShippingContainer extends React.Component {
     shipmentMethods: PropTypes.shape({}).isRequired,
 
     addressLabels: PropTypes.shape({}).isRequired,
-    isOrderUpdateChecked: PropTypes.bool,
-    isGiftServicesChecked: PropTypes.bool,
-    smsSignUpLabels: PropTypes.shape({}).isRequired,
-    address: PropTypes.shape({}),
-    selectedShipmentId: PropTypes.string,
-    addressPhoneNumber: PropTypes.number,
-    emailSignUpLabels: PropTypes.shape({}).isRequired,
-    isGuest: PropTypes.bool,
-    isUsSite: PropTypes.bool,
-    isSubmitting: PropTypes.bool.isRequired,
-    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-    orderHasPickUp: PropTypes.bool,
-    handleSubmit: PropTypes.func.isRequired,
-    shipmentMethods: PropTypes.shape([]),
-    defaultShipmentId: PropTypes.number,
-    loadShipmentMethods: PropTypes.func.isRequired,
-    routeToPickupPage: PropTypes.func.isRequired,
-    isSaveToAddressBookChecked: PropTypes.bool,
-    userAddresses: PropTypes.shape([]),
-    onFileAddressKey: PropTypes.string,
-    isMobile: PropTypes.bool,
-    newUserPhoneNo: PropTypes.number,
-    shippingAddressId: PropTypes.string,
-    setAsDefaultShipping: PropTypes.bool,
-    addNewShippingAddressData: PropTypes.func.isRequired,
-    // checkoutRoutingDone: PropTypes.bool.isRequired,
-    formatPayload: PropTypes.func.isRequired,
-    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
-    verifyAddressAction: PropTypes.func.isRequired,
-    updateShippingMethodSelection: PropTypes.func.isRequired,
-    saveToAddressBook: PropTypes.bool,
-    updateShippingAddressData: PropTypes.func.isRequired,
-    toggleCountrySelector: PropTypes.func.isRequired,
-    shippingDidMount: PropTypes.func.isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    syncErrors: PropTypes.shape({}),
-    shippingAddress: PropTypes.shape({}),
-    isVenmoPaymentInProgress: PropTypes.bool,
-    isVenmoShippingDisplayed: PropTypes.bool,
-    setVenmoPickupState: PropTypes.func,
-    shippingPhoneAndEmail: PropTypes.shape({}),
-    ServerErrors: PropTypes.node.isRequired,
-    isRegisteredUserCallDone: PropTypes.bool.isRequired,
-    pageCategory: PropTypes.string,
-    clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
-    navigation: PropTypes.shape({}).isRequired,
-    pickUpContactPerson: PropTypes.shape({}).isRequired,
-    isLoadingShippingMethods: PropTypes.bool,
   };
-
-  static defaultProps = {};
 
   componentDidMount() {
     const { shippingDidMount } = this.props;
@@ -106,7 +56,6 @@ class ShippingContainer extends React.Component {
   shippingDidUpdate = prevProps => {
     const { address } = this.props;
     const { selectedShipmentId, updateShippingMethodSelection, shippingAddressId } = this.props;
-
     const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
     if (address && prevAddress) {
       const {
@@ -124,12 +73,13 @@ class ShippingContainer extends React.Component {
       }
     }
 
-    if (
-      shippingAddressId &&
-      prevSelectedShipmentId &&
-      selectedShipmentId !== prevSelectedShipmentId
-    ) {
+    if (shippingAddressId && selectedShipmentId !== prevSelectedShipmentId) {
       updateShippingMethodSelection({ id: selectedShipmentId });
+    }
+    const { shipmentMethods: prevShipmentMethods } = prevProps;
+    const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;
+    if (nextShipmentMethods && prevShipmentMethods !== nextShipmentMethods) {
+      dispatch(change('checkoutShipping', 'shipmentMethods.shippingMethodId', defaultShipmentId));
     }
   };
 
