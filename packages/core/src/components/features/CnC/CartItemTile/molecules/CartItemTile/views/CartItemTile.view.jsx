@@ -301,6 +301,7 @@ class CartItemTile extends PureComponent {
     const {
       itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
       productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
