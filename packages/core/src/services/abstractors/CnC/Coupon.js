@@ -12,21 +12,29 @@ export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
     },
   };
 
-  return executeStatefulAPICall(payload, ({ err }) => {
+  return executeStatefulAPICall(payload, ({ err: errorObj }) => {
+    const placeCash = 'PC';
+
+    const err = errorObj;
+    const isPlaceCashError =
+      err.response.body &&
+      err.response.body.errors &&
+      err.response.body.errors[0].errorParameters[1] === placeCash;
+    if (isPlaceCashError) {
+      err.response.body.errors[0].errorCode = '_PLACE_CASH_ERROR';
+      err.response.body.errors[0].errorKey = '_PLACE_CASH_ERROR';
+    }
+
     const error = getFormattedError(err, errorsMapping);
     getDynamicCodeErrorMessage(error, couponCode);
-    const placeCash = 'PC';
+
     error.errorMessages = error.errorMessages || { _error: 'Oops... an error occured' };
     const { errorMessages } = error;
     // eslint-disable-next-line
     errorMessages._error = {
       // eslint-disable-next-line
       msg: errorMessages._error,
-      redemptionType:
-        errorMessages.errorParameters &&
-        errorMessages.errorParameters[1] &&
-        errorMessages.errorParameters[1] === placeCash &&
-        placeCash,
+      redemptionType: isPlaceCashError && placeCash,
     };
     throw new SubmissionError(error.errorMessages);
   });
