@@ -71,12 +71,6 @@ class FavoritesContainer extends React.PureComponent {
       tcpSelected: id === 'tcpOption' && checked,
     });
   };
-  resetBrandFilters = () => {
-    this.setState({
-      gymSelected: false,
-      tcpSelected: false,
-    });
-  };
 
   resetBrandFilters = () => {
     this.setState({
