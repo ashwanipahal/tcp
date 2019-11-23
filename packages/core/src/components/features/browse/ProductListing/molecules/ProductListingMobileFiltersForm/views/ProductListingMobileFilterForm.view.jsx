@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import DamImage from '../../../../../../common/atoms/DamImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
@@ -51,35 +52,45 @@ function getSortCustomOptionsMap(sortOptionsMap) {
  * @param {Array} colorOptionsMap - list of color options
  */
 const getColorFilterOptionsMap = colorOptionsMap => {
-  return colorOptionsMap.map(color => ({
-    value: color.id,
-    title: color.displayName,
-    content: (
-      <div className="color-title">
-        <Image
-          className="color-chip"
-          src={color.imagePath}
-          height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-          width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-          alt={color.displayName}
-          data-colorname={color.displayName.toLowerCase()}
-        />
-        <BodyCopy
-          component="span"
-          textAlign="center"
-          tabIndex={-1}
-          fontSize="fs14"
-          fontFamily="secondary"
-          color="gray.900"
-          className="color-name"
-          outline="none"
-          data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
-        >
-          {color.displayName}
-        </BodyCopy>
-      </div>
-    ),
-  }));
+  return colorOptionsMap.map(color => {
+    const swatchUrl = color.swatchImage;
+    const swatchImagePath = swatchUrl && swatchUrl.split('_');
+    const imgUrl = swatchImagePath
+      ? `${swatchImagePath[0]}/${swatchImagePath[0]}_${swatchImagePath[1]}`
+      : '';
+    const imgData = { alt: color.displayName, url: imgUrl };
+    const imgConfig = `w_50,h_50,c_thumb,g_auto:0`;
+    const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
+    const whiteColorClass = color.displayName.toLowerCase() === 'white';
+    return {
+      value: color.id,
+      title: color.displayName,
+      content: (
+        <div className="color-title">
+          <DamImage
+            className={`color-chip ${whiteColorClass ? 'white-color-class' : ''}`}
+            imgData={imgData}
+            isProductImage
+            imgConfigs={imgDataConfig}
+            data-colorname={color.displayName.toLowerCase()}
+          />
+          <BodyCopy
+            component="span"
+            textAlign="center"
+            tabIndex={-1}
+            fontSize="fs14"
+            fontFamily="secondary"
+            color="gray.900"
+            className="color-name"
+            outline="none"
+            data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
+          >
+            {color.displayName}
+          </BodyCopy>
+        </div>
+      ),
+    };
+  });
 };
 
 /**
@@ -551,9 +562,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
                   <Button
                     buttonVariation="fixed-width"
                     type="button"
-                    className="gallery-button-left"
+                    className={
+                      appliedFiltersCount === 0
+                        ? 'gallery-button-left disable-clear-all-button'
+                        : 'gallery-button-left'
+                    }
                     data-locator="view_gallery_button"
                     onClick={() => this.hideModal()}
+                    disabled={appliedFiltersCount === 0}
                   >
                     {labels.lbl_clear}
                   </Button>

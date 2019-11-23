@@ -4,7 +4,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
@@ -116,7 +115,9 @@ class ProductsGridItem extends React.PureComponent {
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   getQuickViewInitialValues() {
@@ -234,14 +235,12 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol, item } = this.props;
+    const { item } = this.props;
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
     const priceRange = item && item.productInfo && item.productInfo.priceRange;
-    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection
-        currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
@@ -399,7 +398,6 @@ class ProductsGridItem extends React.PureComponent {
       AddToFavoriteErrorMsg,
     } = this.props;
     const { errorProductId } = this.state;
-
     const fulfilmentSection =
       AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
@@ -503,13 +501,11 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
-      viaModule,
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
     } = this.props;
 
-    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
     const {
