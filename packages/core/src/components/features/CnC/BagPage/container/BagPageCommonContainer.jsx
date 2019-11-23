@@ -35,6 +35,7 @@ import {
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -173,8 +174,10 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shopping bag',
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageNavigationText: 'header-cart',
         loadAnalyticsOnload: false,
       },
