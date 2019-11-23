@@ -25,14 +25,24 @@ class MiniBagBody extends React.PureComponent {
     super(props);
     this.state = {
       headerError: false,
+      isShowServerError: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { addedToBagError } = this.props;
+    const { addedToBagError: prevAddedToBagError } = prevProps;
+    const { isShowServerError } = this.state;
+    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.isShowServerError();
   }
 
   componentWillUnmount() {
     const { resetSuccessMessage } = this.props;
     resetSuccessMessage(false);
   }
-
+  setisShowServerError = () => {
+    this.setState({ isShowServerError: true });
+  };
   setHeaderErrorState = (state, ...params) => {
     this.setState({ headerError: true, params });
   };
@@ -186,7 +196,7 @@ class MiniBagBody extends React.PureComponent {
       isUserLoggedIn,
       isMiniBag,
     } = this.props;
-    const { headerError, params } = this.state;
+    const { headerError, params, isShowServerError } = this.state;
     return (
       <div className={className}>
         <div className="minibag-viewbag">
@@ -226,7 +236,7 @@ class MiniBagBody extends React.PureComponent {
             {this.renderGiftCardError()}
           </Row>
         </div>
-        {this.renderServerError()}
+        {isShowServerError ? this.renderServerError() : null}
         <BodyCopy component="div" className="viewBagAndProduct">
           {cartItemCount ? (
             <ProductTileWrapper

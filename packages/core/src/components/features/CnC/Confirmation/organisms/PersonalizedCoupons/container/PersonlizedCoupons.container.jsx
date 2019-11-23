@@ -7,6 +7,7 @@ import personalizedCouponsSelectors from './PersonalizedCoupons.selectors';
 
 const mapStateToProps = state => {
   return {
+    couponLoading: confirmationSelectors.getOdmLoading(state),
     coupons: confirmationSelectors.getPersonalizedCoupons(state),
     couponLabels: getCouponsLabels(state),
     labels: personalizedCouponsSelectors.getConfirmationCouponLabels(state),

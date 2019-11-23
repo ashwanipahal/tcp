@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -117,6 +118,8 @@ export class BagPageContainer extends React.Component<Props> {
       isBagPage,
       setClickAnalyticsDataBag,
       cartOrderItems,
+      isVenmoEnabled,
+      isPayPalEnabled,
       isCartLoaded,
       trackPageViewBag,
       router,
@@ -159,6 +162,8 @@ export class BagPageContainer extends React.Component<Props> {
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
         fromMiniBag={fromMiniBag}
+        isVenmoEnabled={isVenmoEnabled}
+        isPayPalEnabled={isPayPalEnabled}
       />
     );
   }
@@ -242,6 +247,8 @@ export const mapStateToProps = state => {
       PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
     ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),

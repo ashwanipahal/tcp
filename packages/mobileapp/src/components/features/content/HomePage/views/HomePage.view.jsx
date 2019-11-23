@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container';
 import {
   ModuleD,
   ModuleH,
@@ -33,12 +34,19 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
 // import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
-import { TextComponent, TextInputComponent, ButtonComponent } from '../HomePage.style';
+import HeaderPromo from '../../../../common/molecules/HeaderPromo';
+import {
+  HeaderPromoContainer,
+  TextComponent,
+  TextInputComponent,
+  ButtonComponent,
+} from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -111,11 +119,16 @@ class HomePageView extends React.PureComponent {
     // this.navigate(event.url);
   };
 
-  renderGlobalModal = navigation => {
+  renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
     return (
       <View>
         <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
+        <LocationAccessPrompt
+          navigation={navigation}
+          isUserLoggedIn={isUserLoggedIn}
+          labels={labels}
+        />
       </View>
     );
   };
@@ -162,10 +175,20 @@ class HomePageView extends React.PureComponent {
       navigation,
       screenProps: { apiConfig },
       loyaltyPromoBanner,
+      isUserLoggedIn,
+      labels,
+      headerPromo,
+      promoHtmlBannerCarousel,
     } = this.props;
     const { value } = this.state;
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <HeaderPromoContainer>
+          <HeaderPromo
+            headerPromo={headerPromo}
+            promoHtmlBannerCarousel={promoHtmlBannerCarousel}
+          />
+        </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
@@ -195,7 +218,8 @@ class HomePageView extends React.PureComponent {
             />
           </>
         ) : null}
-        {this.renderGlobalModal(navigation)}
+        {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
+        <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
   }
