@@ -93,7 +93,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           Array [
             "fs9",
             "fs9",
-            "fs12",
+            "fs11",
           ]
         }
         fontWeight="regular"
@@ -203,7 +203,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           Array [
             "fs9",
             "fs9",
-            "fs12",
+            "fs11",
           ]
         }
         fontWeight="regular"
