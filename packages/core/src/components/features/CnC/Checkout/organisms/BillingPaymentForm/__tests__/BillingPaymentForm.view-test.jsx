@@ -60,6 +60,7 @@ describe('ButtonList component', () => {
     nextSubmitText: '',
     isPaymentDisabled,
     dispatch: jest.fn(),
+    bagLoading: false,
   };
 
   it('renders correctly without props', () => {
@@ -99,6 +100,7 @@ describe('ButtonList component', () => {
       backLinkShipping: '',
       nextSubmitText: '',
       isPaymentDisabled,
+      bagLoading: false,
     };
     const component = shallow(<BillingPaymentForm {...props1} isPaymentDisabled />);
     expect(component).toMatchSnapshot();
@@ -118,6 +120,7 @@ describe('ButtonList component', () => {
       backLinkPickup: '',
       backLinkShipping: '',
       nextSubmitText: '',
+      bagLoading: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     expect(component).toMatchSnapshot();
@@ -144,6 +147,7 @@ describe('ButtonList component', () => {
       },
       dispatch: jest.fn(),
       change: jest.fn(),
+      bagLoading: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
@@ -173,6 +177,7 @@ describe('ButtonList component', () => {
       dispatch: jest.fn(),
       change: jest.fn(),
       isPayPalEnabled: false,
+      bagLoading: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
