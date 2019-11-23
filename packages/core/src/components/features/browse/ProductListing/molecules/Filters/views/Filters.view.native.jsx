@@ -135,6 +135,7 @@ class Filters extends React.PureComponent {
     const { selectedIndex } = this.state;
     const { displayName, isSelected } = item;
     const selectedState = isFavorite ? selectedIndex === index : isSelected;
+    const isDisabled = item.disabled || isLoadingMore;
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
@@ -145,7 +146,7 @@ class Filters extends React.PureComponent {
         selected={selectedState}
         data-locator=""
         accessibilityLabel={displayName}
-        disableButton={isLoadingMore}
+        disableButton={isDisabled}
       />
     );
   };
