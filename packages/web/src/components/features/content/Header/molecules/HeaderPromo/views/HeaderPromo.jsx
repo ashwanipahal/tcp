@@ -30,9 +30,15 @@ const renderMobileMarkup = (dataPromo, className) => {
             to={promoItem.linkClass.url}
             target={promoItem.linkClass.target}
           >
-            <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
-              <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
-            </div>
+            {console.log('len===>', promoItem.linkClass.class)}
+            {promoItem.linkClass.class && (
+              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
+                <Image
+                  src={getIconPath(promoItem.linkClass.class)}
+                  alt={promoItem.linkClass.title}
+                />
+              </div>
+            )}
             <div className="header-promo-item__content">
               {promoItem.textItems[0] && (
                 <BodyCopy
@@ -80,12 +86,14 @@ const renderDesktopMarkup = (dataPromo, className) => {
               to={promoItem.linkClass.url}
               target={promoItem.linkClass.target}
             >
-              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
-                <Image
-                  src={getIconPath(promoItem.linkClass.class)}
-                  alt={promoItem.linkClass.title}
-                />
-              </div>
+              {promoItem.linkClass.class && (
+                <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
+                  <Image
+                    src={getIconPath(promoItem.linkClass.class)}
+                    alt={promoItem.linkClass.title}
+                  />
+                </div>
+              )}
               <div className="header-promo-item__content">
                 {promoItem.textItems[0] && (
                   <BodyCopy
