@@ -126,22 +126,6 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
-  // eslint-disable-next-line react/sort-comp
-  closeDropdownIfClickOutside = e => {
-    const { isSortOpenModal, show } = this.state;
-    if (
-      (isSortOpenModal || show) &&
-      !this.customSelect.contains(e.target) &&
-      !this.filterSelect.contains(e.target) &&
-      !this.filterBySection.contains(e.target)
-    ) {
-      this.setState({
-        isSortOpenModal: false,
-        show: false,
-      });
-    }
-  };
-
   /**
    * @function getAppliedFiltersCount This gets the applied filter count
    */
@@ -167,6 +151,21 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const { filtersLength } = this.props;
     return (filtersLength && Object.keys(filtersLength) > 0 && this.sumValues(filtersLength)) || 0;
   }
+
+  closeDropdownIfClickOutside = e => {
+    const { isSortOpenModal, show } = this.state;
+    if (
+      (isSortOpenModal || show) &&
+      !this.customSelect.contains(e.target) &&
+      !this.filterSelect.contains(e.target) &&
+      !this.filterBySection.contains(e.target)
+    ) {
+      this.setState({
+        isSortOpenModal: false,
+        show: false,
+      });
+    }
+  };
 
   sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
