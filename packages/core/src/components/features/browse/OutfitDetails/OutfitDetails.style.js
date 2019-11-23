@@ -21,6 +21,11 @@ export default css`
     }
   }
 
+  .wishlist-container {
+    position: absolute;
+    right: 0;
+  }
+
   .title-wrapper {
     min-width: max-content;
   }
