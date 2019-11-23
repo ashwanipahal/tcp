@@ -20,6 +20,7 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
   getAlternateSizes,
+  getPLPPromos,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -38,6 +39,7 @@ import {
 } from '../../Favorites/container/Favorites.actions';
 
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -108,6 +110,9 @@ class ProductDetailContainer extends React.PureComponent {
       toastMessage,
       isKeepAliveEnabled,
       outOfStockLabels,
+      topPromos,
+      middlePromos,
+      bottomPromos,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -138,6 +143,9 @@ class ProductDetailContainer extends React.PureComponent {
             toastMessage={toastMessage}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            topPromos={topPromos}
+            middlePromos={middlePromos}
+            bottomPromos={bottomPromos}
           />
         ) : (
           <Spinner />
@@ -167,6 +175,9 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
+    bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
   };
 }
 

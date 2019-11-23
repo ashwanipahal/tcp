@@ -34,6 +34,7 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
 // import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -250,11 +251,16 @@ class HomePageView extends React.PureComponent {
     // this.navigate(event.url);
   };
 
-  renderGlobalModal = navigation => {
+  renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
     return (
       <View>
         <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
+        <LocationAccessPrompt
+          navigation={navigation}
+          isUserLoggedIn={isUserLoggedIn}
+          labels={labels}
+        />
       </View>
     );
   };
@@ -301,6 +307,8 @@ class HomePageView extends React.PureComponent {
       navigation,
       screenProps: { apiConfig },
       loyaltyPromoBanner,
+      isUserLoggedIn,
+      labels,
       headerPromo,
       promoHtmlBannerCarousel,
     } = this.props;
@@ -342,7 +350,7 @@ class HomePageView extends React.PureComponent {
             />
           </>
         ) : null}
-        {this.renderGlobalModal(navigation)}
+        {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
         <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );

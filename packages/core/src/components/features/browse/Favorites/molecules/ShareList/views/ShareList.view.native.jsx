@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -11,6 +11,12 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class ShareList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+    };
+  }
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -21,7 +27,8 @@ class ShareList extends React.PureComponent {
   };
 
   render() {
-    const { labels, margins, onCloseModal } = this.props;
+    const { labels, margins, onCloseModal, dispatch } = this.props;
+    const { message } = this.state;
     return (
       <Container margins={margins}>
         <BodyCopy
@@ -81,6 +88,11 @@ class ShareList extends React.PureComponent {
           name="message"
           id="message"
           type="text"
+          value={message}
+          onChangeText={text => {
+            this.setState({ message: text });
+            dispatch(change('ShareListForm', `message`, text));
+          }}
           autoCapitalize="none"
           component={InputBoxWrapper}
           dataLocator="message"
@@ -115,6 +127,7 @@ ShareList.propTypes = {
   onHandleSubmit: PropTypes.func.isRequired,
   margins: PropTypes.string,
   onCloseModal: PropTypes.func,
+  dispatch: PropTypes.func,
 };
 
 ShareList.defaultProps = {
@@ -122,6 +135,7 @@ ShareList.defaultProps = {
   handleSubmit: () => {},
   margins: null,
   onCloseModal: () => {},
+  dispatch: () => {},
 };
 
 const validateMethod = createValidateMethod(
@@ -136,5 +150,5 @@ const validateMethod = createValidateMethod(
 export default reduxForm({
   form: 'ShareListForm',
   ...validateMethod,
-})(withStyles(ShareList));
+})(ShareList);
 export { ShareList as ShareListVanilla };

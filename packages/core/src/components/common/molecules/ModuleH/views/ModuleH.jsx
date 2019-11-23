@@ -54,7 +54,7 @@ class ModuleH extends React.PureComponent {
             <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
           )}
         </Col>
-        <Col colSize={COL_SIZE}>
+        <Col colSize={COL_SIZE} className="moduleH_carousel_wrapper">
           <Carousel
             options={CAROUSEL_OPTIONS}
             className="moduleH_carousel"

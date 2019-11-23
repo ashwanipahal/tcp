@@ -8,6 +8,7 @@ import {
   getPrices,
   getMapSliceForColorProductId,
   getProductListToPath,
+  getMapSliceForColor,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -37,9 +38,11 @@ const OutfitDetailsView = ({
   isBundleProduct,
   isKeepAliveEnabled,
   outOfStockLabels,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
 }) => {
   const { imagesByColor, colorFitsSizesMap, isGiftCard, name } = outfitProduct;
-  const colorProduct =
+  let colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
   const badges = colorProduct.miscInfo.badge1;
@@ -58,6 +61,10 @@ const OutfitDetailsView = ({
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   const keepAlive = isKeepAliveEnabled && colorProduct.miscInfo.keepAlive;
 
+  const onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
+    colorProduct = getMapSliceForColor(colorFitsSizesMap, e);
+  };
+
   return (
     <Row className={className}>
       <Col
@@ -70,12 +77,14 @@ const OutfitDetailsView = ({
           {productIndexText}
         </BodyCopy>
         <BodyCopy component="div" className="image-wrapper">
-          <DamImage
-            className="full-size-desktop-image"
-            imgData={imgData}
-            itemProp="contentUrl"
-            isProductImage
-          />
+          <Anchor to={pdpToPath} asPath={outfitProduct.pdpUrl}>
+            <DamImage
+              className="full-size-desktop-image"
+              imgData={imgData}
+              itemProp="contentUrl"
+              isProductImage
+            />
+          </Anchor>
           {renderOutOfStock(keepAlive, outOfStockLabels)}
         </BodyCopy>
         <BodyCopy className="view-detail-anchor">
@@ -122,10 +131,16 @@ const OutfitDetailsView = ({
             productInfo={outfitProduct}
             isCanada={isCanada}
             isPlcc={isPlcc}
+            pdpUrl={pdpToPath}
+            asPath={outfitProduct.pdpUrl}
             isInternationalShipping={isInternationalShipping}
             onAddItemToFavorites={addToFavorites}
             isLoggedIn={isLoggedIn}
             badge={badge1}
+            productMiscInfo={colorProduct}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            pageName="OUTFIT"
           />
           <ProductPrice
             currencySymbol={currencySymbol}
@@ -149,6 +164,7 @@ const OutfitDetailsView = ({
             sizeChartLinkVisibility={sizeChartLinkVisibility}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            onChangeColor={onChangeColor}
           />
         </div>
       </Col>
@@ -175,6 +191,8 @@ OutfitDetailsView.propTypes = {
   isBundleProduct: PropTypes.bool,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -192,6 +210,8 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   isBundleProduct: false,
   outOfStockLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);
