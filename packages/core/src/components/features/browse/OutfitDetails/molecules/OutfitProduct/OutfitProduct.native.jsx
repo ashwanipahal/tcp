@@ -447,7 +447,7 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
   addToBagError: PropTypes.string,
-  toastMessage: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
 };
@@ -467,6 +467,7 @@ OutfitDetailsView.defaultProps = {
   isBundleProduct: false,
   addToBagError: '',
   outOfStockLabels: {},
+  toastMessage: () => {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);
