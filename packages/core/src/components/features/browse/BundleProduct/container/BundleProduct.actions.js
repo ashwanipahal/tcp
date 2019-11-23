@@ -27,3 +27,9 @@ export const clearBundleState = () => {
     payload: {},
   };
 };
+export const setAddToFavoriteBUNDLE = payload => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};

@@ -10,7 +10,6 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
-import mockSeoCopy from '@tcp/core/src/services/abstractors/common/SeoCopy/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
@@ -103,6 +102,8 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
     moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -112,7 +113,7 @@ const HomePageView = dynamic({
       openSmsSignUpModal,
       pageName,
       setCampaignId,
-      // seoData,
+      seoData,
     } = compProps;
 
     return (
@@ -125,8 +126,7 @@ const HomePageView = dynamic({
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
-        {/* <SeoCopy {...seoData} /> */}
-        <SeoCopy {...mockSeoCopy} />
+        <SeoCopy {...seoData} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"

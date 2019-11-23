@@ -12,6 +12,7 @@ import {
   getActiveWishlistAction,
   createNewWishListAction,
   setLastDeletedItemIdAction,
+  updateWishListAction,
   sendWishListMailAction,
   setWishListShareSuccess,
 } from './Favorites.actions';
@@ -28,6 +29,7 @@ import {
   getSLPLabels,
   getIsDataLoading,
   selectDefaultWishlist,
+  getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
 } from './Favorites.selectors';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -92,12 +94,18 @@ class FavoritesContainer extends React.PureComponent {
     });
   };
 
+  deleteWishListHandler = () => {
+    const { deleteWishList, activeWishListId } = this.props;
+    if (deleteWishList && activeWishListId) {
+      deleteWishList(activeWishListId);
+    }
+  };
+
   render() {
     const {
       wishlistsSummaries,
       activeWishList,
       createNewWishListMoveItem,
-      deleteWishList,
       getActiveWishlist,
       createNewWishList,
       setLastDeletedItemId,
@@ -115,6 +123,8 @@ class FavoritesContainer extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       defaultWishList,
+      updateWishList,
+      isBothTcpAndGymProductAreAvailable,
       userEmail,
       sendWishListEmail,
       wishlistShareStatus,
@@ -128,7 +138,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistsSummaries={wishlistsSummaries}
         activeWishList={activeWishList}
         createNewWishListMoveItem={createNewWishListMoveItem}
-        deleteWishList={deleteWishList}
+        deleteWishList={this.deleteWishListHandler}
         getActiveWishlist={getActiveWishlist}
         createNewWishList={createNewWishList}
         setLastDeletedItemId={setLastDeletedItemId}
@@ -151,6 +161,8 @@ class FavoritesContainer extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         defaultWishList={defaultWishList}
+        updateWishList={updateWishList}
+        isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
         userEmail={userEmail}
         sendWishListEmail={sendWishListEmail}
         wishlistShareStatus={wishlistShareStatus}
@@ -177,6 +189,7 @@ const mapStateToProps = state => {
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
   };
@@ -190,7 +203,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(deleteWishListAction(wishListId));
     },
     getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
-    createNewWishList: formData => dispatch(createNewWishListAction(formData)),
+    createNewWishList: formData => {
+      dispatch(createNewWishListAction(formData));
+    },
     setLastDeletedItemId: itemId => {
       dispatch(setLastDeletedItemIdAction(itemId));
     },
@@ -198,6 +213,9 @@ const mapDispatchToProps = dispatch => {
     setListShareSuccess: payload => dispatch(setWishListShareSuccess(payload)),
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
+    },
+    updateWishList: payload => {
+      dispatch(updateWishListAction(payload));
     },
   };
 };
@@ -226,6 +244,8 @@ FavoritesContainer.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   defaultWishList: PropTypes.shape({}),
+  updateWishList: PropTypes.func.isRequired,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool.isRequired,
   userEmail: PropTypes.string.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,

@@ -30,6 +30,9 @@ export default css`
   .image-tile-full-bleed {
     width: calc(50% - 20px);
   }
+  .clp-spotlight-container {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
 
   @media ${props => props.theme.mediaQuery.medium} {
     .image-tile-desktop {
@@ -40,6 +43,9 @@ export default css`
     .image-tile-desktop-2-up,
     .image-tile-full-bleed {
       width: calc(50% - 28px);
+    }
+    .clp-spotlight-container {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
@@ -58,6 +64,9 @@ export default css`
     }
     .image-tile-full-bleed {
       width: calc(100% - ${props => props.theme.spacing.ELEM_SPACING.XL});
+    }
+    .clp-spotlight-container {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
 `;
