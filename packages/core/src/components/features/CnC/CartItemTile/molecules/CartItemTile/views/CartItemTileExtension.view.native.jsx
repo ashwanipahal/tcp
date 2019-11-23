@@ -180,10 +180,14 @@ const PriceOnReviewPage = productDetail => {
   );
 };
 
-const heartIcon = isBagPageSflSection => {
+const heartIcon = (isBagPageSflSection, handleAddToWishlist) => {
   if (!isBagPageSflSection) return null;
   return (
-    <HeartIcon onPress={() => {}}>
+    <HeartIcon
+      onPress={() => {
+        handleAddToWishlist();
+      }}
+    >
       <Image data-locator="heartIcon" source={heart} height={13} width={15} />
     </HeartIcon>
   );
@@ -399,14 +403,17 @@ renderUnavailableErrorMessage.propTypes = {
   availability: PropTypes.string.isRequired,
 };
 
-const callEditMethod = (props, handleEditCartItemWithStore) => {
+const callEditMethod = (props, handleEditCartItemWithStore, isBagPageSflSection = false) => {
   const { productDetail, onQuickViewOpenClick } = props;
   const {
     miscInfo: { orderItemType },
     productInfo: { productPartNumber },
   } = productDetail;
-  if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
-    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+  if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
+    const { itemId, qty, color, size, fit, itemBrand, isGiftItem } = productDetail.itemInfo;
+    const {
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
     onQuickViewOpenClick({
       colorProductId: productPartNumber,
       orderInfo: {
@@ -416,8 +423,10 @@ const callEditMethod = (props, handleEditCartItemWithStore) => {
         selectedSize: size,
         selectedFit: fit,
         itemBrand,
+        skuId: isGiftItem ? generalProductId : skuId,
       },
       fromBagPage: true,
+      isSflProduct: isBagPageSflSection,
     });
   } else {
     const openSkuSelectionForm = true;

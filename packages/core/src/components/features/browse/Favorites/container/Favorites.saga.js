@@ -36,6 +36,8 @@ import { isCanada } from '../../../../../utils';
 import { setAddToFavorite } from '../../ProductListing/container/ProductListing.actions';
 import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail.actions';
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
+import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
+import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
 
 export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
   try {
@@ -57,6 +59,7 @@ export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
   }
 }
 
+// eslint-disable-next-line complexity
 export function* addItemsToWishlist({ payload }) {
   const { colorProductId, page } = payload;
   const state = yield select();
@@ -90,6 +93,12 @@ export function* addItemsToWishlist({ payload }) {
             break;
           case 'SLP':
             yield put(setAddToFavoriteSLP({ colorProductId, res }));
+            break;
+          case 'OUTFIT':
+            yield put(setAddToFavoriteOUTFIT({ colorProductId, res }));
+            break;
+          case 'BUNDLE':
+            yield put(setAddToFavoriteBUNDLE({ colorProductId, res }));
             break;
           default:
             break;
@@ -157,7 +166,7 @@ export function* loadWishlistsSummaries(config) {
   }
 }
 
-export function* createNewWishList(formData) {
+export function* createNewWishList({ payload: formData }) {
   try {
     const createdWishListResponse = yield call(
       createWishList,
@@ -206,7 +215,7 @@ export function* createNewWishListMoveItem({ payload: formData }) {
   }
 }
 
-export function* deleteWishListById(wishListId) {
+export function* deleteWishListById({ payload: wishListId }) {
   try {
     const deleteWishListResponse = yield call(deleteWishList, wishListId);
     if (!deleteWishListResponse.success) {
@@ -218,7 +227,7 @@ export function* deleteWishListById(wishListId) {
   }
 }
 
-export function* updateExistingWishList(formData) {
+export function* updateExistingWishList({ payload: formData }) {
   try {
     const updateWishListResponse = yield call(
       updateWishlistName,

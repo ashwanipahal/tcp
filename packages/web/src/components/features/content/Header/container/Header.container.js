@@ -31,6 +31,7 @@ const mapStateToProps = state => {
   return {
     loyaltyPromoBanner: Header.loyaltyPromoBanner,
     brandTabs: Header.brandTabs,
+    topPromoBanner: Header.topPromoBanner,
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoTextArea: Header.promoTextBannerCarousel,
     headerPromoHtmlArea: Header.promoHtmlBannerCarousel,

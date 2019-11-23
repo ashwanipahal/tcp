@@ -2,6 +2,9 @@ import React from 'react';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import { getSflItemCount, getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getSiteId } from '@tcp/core/src/utils/utils.web';
+
 import withRefWrapper from '../../../../common/hoc/withRefWrapper';
 import withHotfix from '../../../../common/hoc/withHotfix';
 
@@ -43,9 +46,12 @@ class BagPageView extends React.PureComponent {
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
+    const siteId = getSiteId() && getSiteId().toUpperCase();
+    const cartTotalCount = getCartItemCount();
+    const sflTotalCount = getSflItemCount(siteId);
     this.setState({
       activeSection:
-        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+        !cartTotalCount && sflTotalCount && isShowSaveForLaterSwitch
           ? BAGPAGE_CONSTANTS.SFL_STATE
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
@@ -265,12 +271,6 @@ class BagPageView extends React.PureComponent {
     );
   };
 
-  handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
-  };
-
   stickyBagCondensedHeader = () => {
     const { labels, showAddTobag, handleCartCheckout, isBagPage, bagLoading } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
@@ -374,7 +374,7 @@ class BagPageView extends React.PureComponent {
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
               onClick={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE, this);
               }}
             >
               <Heading
@@ -406,7 +406,7 @@ class BagPageView extends React.PureComponent {
                 colSize={{ small: 3, medium: 4, large: 6 }}
                 className="left-sec"
                 onClick={() => {
-                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                  BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE, this);
                 }}
               >
                 <Heading

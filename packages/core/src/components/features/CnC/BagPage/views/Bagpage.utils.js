@@ -83,6 +83,12 @@ const onPageUnload = () => {
   scrollPage();
 };
 
+const handleChangeActiveSection = (sectionName, scope) => {
+  scope.setState({
+    activeSection: sectionName,
+  });
+};
+
 const BagPagePropTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
@@ -121,4 +127,5 @@ export default {
   onPageUnload,
   BagPagePropTypes,
   CarouselOptions,
+  handleChangeActiveSection,
 };

@@ -35,6 +35,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       containerId,
       isBagPageStickyHeader,
       isPayPalHidden,
+      isPayPalEnabled,
       paypalButtonHeight,
       setIsPaypalBtnHidden,
       bagLoading,
@@ -48,7 +49,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
     }
     return (
       !isPayPalHidden &&
-      !bagLoading && (
+      !bagLoading &&
+      (isPayPalEnabled && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
           <PayPalButton
             className="payPal-button"
@@ -56,7 +58,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             height={paypalButtonHeight}
           />
         </div>
-      )
+      ))
     );
   }
 

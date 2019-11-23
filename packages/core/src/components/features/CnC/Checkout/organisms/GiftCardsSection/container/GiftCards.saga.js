@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, select, delay } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
@@ -23,6 +24,7 @@ import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
+    yield put(setLoaderState(true));
     yield put(resetGiftCardError());
     const errorMappings = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addGiftCardPaymentToOrder, payload, errorMappings);
@@ -43,11 +45,13 @@ export function* applyGiftCard(payloadData) {
         })
       );
     }
+    yield put(setLoaderState(false));
   } catch (err) {
     const errorObject = {
       [payload.creditCardId]: err,
     };
     yield put(setGiftCardError(errorObject));
+    yield put(setLoaderState(false));
     yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
     yield put(resetGiftCardError());
   }
@@ -55,6 +59,7 @@ export function* applyGiftCard(payloadData) {
 
 export function* removeGiftCardFromOrder(payloadData) {
   try {
+    yield put(setLoaderState(true));
     const { payload } = payloadData;
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
@@ -72,7 +77,9 @@ export function* removeGiftCardFromOrder(payloadData) {
         translation: false,
       })
     );
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     console.log(err);
   }
 }
