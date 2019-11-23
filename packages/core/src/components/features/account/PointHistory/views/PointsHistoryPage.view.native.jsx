@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
-import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { UrlHandler } from '../../../../../utils/utils.app';
@@ -10,7 +10,6 @@ import Anchor from '../../../../common/atoms/Anchor';
 import PointsHistoryList from '../../common/organism/PointsHistory';
 import {
   RichTextWrapper,
-  contentHeight,
   StyledAnchorWrapper,
   AnchorLeftMargin,
 } from '../styles/PointsHistoryPage.view.style.native';
@@ -26,11 +25,7 @@ export const PointsHistoryPageView = props => {
       <ViewWithSpacing spacingStyles="margin-LRG">
         <PointsHistoryList view="edit" labels={labels} showFullHistory />
         <RichTextWrapper dataLocator="points_history_rte">
-          <RichText
-            source={{ html: richTextContent }}
-            scrollEnabled={false}
-            style={contentHeight}
-          />
+          <Espot richTextHtml={richTextContent} />
         </RichTextWrapper>
         <StyledAnchorWrapper>
           <Anchor

@@ -276,6 +276,8 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         <Styled(ErrorMessage)
           className="error_box"
           error="some error message"
+          fontSize="fs12"
+          fontWeight="bold"
         />
       </Styled(Col)>
     </Styled(Row)>

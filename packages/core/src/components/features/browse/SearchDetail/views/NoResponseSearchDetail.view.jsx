@@ -128,7 +128,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
             >
               {slpLabels.lbl_searched_for}
-              <span className="empty-searched-label">{` "${searchedText}"`}</span>
+              <span className="empty-searched-label">{`"${searchedText.split('?')[0]}"`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -142,7 +142,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
               textAlign="center"
             >
               {slpLabels.lbl_nothing_matched}
-              <span className="empty-searched-label-title">{` "${searchedText}".`}</span>
+              <span className="empty-searched-label-title">
+                {`"${searchedText.split('?')[0]}"`}
+              </span>
             </BodyCopy>
           </Col>
         </Row>

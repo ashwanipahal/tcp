@@ -622,6 +622,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const plpRoute = `${ROUTE_PATH.plp.name}/`;
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
+  const staticContentRoute = `${ROUTE_PATH.content.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -637,6 +638,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(searchRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  if (url.includes(staticContentRoute)) {
+    const urlItems = url.split(staticContentRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
   }
   return url;
 };
