@@ -40,7 +40,14 @@ class EditList extends React.PureComponent {
   };
 
   render() {
-    const { labels, className, onCloseModal, handleSubmit, onDeleteList } = this.props;
+    const {
+      labels,
+      className,
+      onCloseModal,
+      handleSubmit,
+      onDeleteList,
+      isCheckBoxDisabled,
+    } = this.props;
     const { isShowRemoveModal } = this.state;
     if (isShowRemoveModal) {
       return (
@@ -91,6 +98,7 @@ class EditList extends React.PureComponent {
                 component={InputCheckbox}
                 dataLocator="makeDefaultList"
                 className="default-check-row"
+                disabled={isCheckBoxDisabled}
               >
                 <BodyCopy
                   component="span"
@@ -140,21 +148,23 @@ class EditList extends React.PureComponent {
               </Button>
             </Col>
           </Row>
-          <Row fullBleed className="delete-list-link">
-            <Col
-              colSize={{ small: 4, medium: 6, large: 10 }}
-              offsetLeft={{ small: 1, medium: 1, large: 1 }}
-              offsetRight={{ small: 1, medium: 1, large: 1 }}
-            >
-              <Button
-                buttonVariation="fixed-width"
-                dataLocator="DeleteListFormBtn"
-                onClick={this.showDeleteModal}
+          {!isCheckBoxDisabled && (
+            <Row fullBleed className="delete-list-link">
+              <Col
+                colSize={{ small: 4, medium: 6, large: 10 }}
+                offsetLeft={{ small: 1, medium: 1, large: 1 }}
+                offsetRight={{ small: 1, medium: 1, large: 1 }}
               >
-                {getLabelValue(labels, 'btn_fav_delete_list')}
-              </Button>
-            </Col>
-          </Row>
+                <Button
+                  buttonVariation="fixed-width"
+                  dataLocator="DeleteListFormBtn"
+                  onClick={this.showDeleteModal}
+                >
+                  {getLabelValue(labels, 'btn_fav_delete_list')}
+                </Button>
+              </Col>
+            </Row>
+          )}
         </form>
       </>
     );
