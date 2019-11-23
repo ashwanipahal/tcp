@@ -36,15 +36,21 @@ class ReviewPage extends React.PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.func.isRequired,
     selectedShipmentId: PropTypes.func.isRequired,
+    setVenmoShippingState: PropTypes.func,
+    setVenmoPickupState: PropTypes.func,
   };
 
   static defaultProps = {
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
     isPaymentDisabled: false,
     isExpressCheckout: false,
   };
 
   componentDidMount() {
-    const { reviewDidMount } = this.props;
+    const { reviewDidMount, setVenmoShippingState, setVenmoPickupState } = this.props;
+    setVenmoShippingState(true);
+    setVenmoPickupState(true);
     reviewDidMount();
   }
 
