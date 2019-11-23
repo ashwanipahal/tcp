@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
@@ -131,7 +131,7 @@ export function* fetchMoreProducts({ payload = {} }) {
             products
           );
         }
-        yield put(setPlpProducts({ ...plpProducts }));
+        yield putResolve(setPlpProducts({ ...plpProducts }));
       }
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));

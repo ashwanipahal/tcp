@@ -50,4 +50,5 @@ export default css`
   .read-more-state:checked ~ .read-less {
     display: block;
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
