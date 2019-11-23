@@ -76,7 +76,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                 >
                   {labels.subTitle}
                 </BodyCopy>
-                {isOrderConfirmation && (
+                {!isOrderConfirmation && (
                   <div className="place-cash__tnc-container">
                     <BodyCopy
                       component="span"
