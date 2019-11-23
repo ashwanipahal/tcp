@@ -160,7 +160,11 @@ class GuestBillingContainer extends React.Component {
     let expMonth;
     let expYear;
     let billingOnFileAddressKey;
-    if (billingData && billingData.billing && billingData.billing.cardType !== 'paypal') {
+    if (
+      billingData &&
+      billingData.billing &&
+      billingData.billing.cardType !== CONSTANTS.PAYPAL_LABEL
+    ) {
       ({
         billing: { cardNumber, cardType, expMonth, expYear },
         address: { onFileAddressKey: billingOnFileAddressKey },

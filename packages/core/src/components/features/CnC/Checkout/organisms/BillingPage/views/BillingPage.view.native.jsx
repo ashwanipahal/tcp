@@ -38,6 +38,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.bool,
+    isFetching: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -80,6 +81,7 @@ class BillingPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       isPayPalWebViewEnable,
+      isFetching,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -101,7 +103,7 @@ class BillingPage extends React.PureComponent {
         >
           <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />
-            <GiftCardsContainer />
+            <GiftCardsContainer isFetching={isFetching} />
             {isGuest ? (
               <GuestBillingForm
                 shippingAddress={shippingAddress}

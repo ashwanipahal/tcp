@@ -4,8 +4,8 @@ const styles = css`
   .new_gift_card_button {
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
     width: 104%;
   }
   .headsUpMsgBoldTitle {
@@ -58,8 +58,7 @@ const styles = css`
   && .card__btn--medium > button,
   .new_gift_card_button,
   .error-box {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-      ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    padding: 10px ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
 
   && .card__btn--medium {
