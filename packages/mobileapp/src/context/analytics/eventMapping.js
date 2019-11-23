@@ -11,18 +11,13 @@ import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView, trackClick } from '@tcp/co
 export const eventMapping = {
   [TRACK_PAGE_VIEW]: trackPageView(action => {
     const { payload } = action;
-    const { currentScreen, previousScreen, context } = payload;
+    const { currentScreen, previousScreen, context, pageData } = payload;
     return {
       currentScreen,
       previousScreen,
       context,
+      pageData,
     };
   }),
-  [TRACK_CLICK]: trackClick(action => {
-    const { payload } = action;
-    const { linkname } = payload;
-    return {
-      linkname,
-    };
-  }),
+  [TRACK_CLICK]: trackClick(),
 };

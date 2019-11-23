@@ -1,3 +1,5 @@
+import AppNavigator from '../AppNavigator';
+
 export function getActiveRouteName(navigationState) {
   if (!navigationState) {
     return null;

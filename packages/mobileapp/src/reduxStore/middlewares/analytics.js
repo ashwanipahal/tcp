@@ -1,6 +1,5 @@
 /* eslint-disable  */
 import { createMiddleware } from 'redux-beacon';
-import logger from '@redux-beacon/logger';
 import { eventMapping } from '../../context/analytics/eventMapping';
 import { trackingTarget } from '../../context/analytics/trackingTarget';
 import {
@@ -27,10 +26,5 @@ ACPAnalytics.registerExtension();
 ACPCore.start();
 
 export default function create() {
-  return createMiddleware(
-    eventMapping,
-    trackingTarget,
-    // Only use logger in dev mode
-    process.env.NODE_ENV === 'development' && { logger }
-  );
+  return createMiddleware(eventMapping, trackingTarget);
 }

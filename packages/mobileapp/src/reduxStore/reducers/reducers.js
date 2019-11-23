@@ -126,8 +126,10 @@ import {
   MY_PREFERENCE_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
+  ANALYTICS_DATA_KEY,
   SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
+import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
@@ -137,6 +139,7 @@ import UserReducer from '@tcp/core/src/components/features/account/User/containe
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
+import AnalyticsReducer from '@tcp/core/src/analytics/Analytics.reducer';
 import immutableTransform from 'redux-persist-transform-immutable';
 
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
@@ -181,7 +184,25 @@ const filteredRecommendationsReducers = createFilteredReducer(
   RECOMMENDATIONS_REDUCER_KEY
 );
 
+function pageNameReducer(state = {}, action) {
+  switch (action.type) {
+    case TRACK_PAGE_VIEW: {
+      const { payload } = action;
+      if (payload.pageData) {
+        return { ...state, ...pageData };
+      }
+      return state;
+    }
+    case UPDATE_PAGE_DATA: {
+      return action.payload;
+    }
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
+  pageData: pageNameReducer,
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
@@ -248,6 +269,7 @@ const rootReducer = combineReducers({
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
+  [ANALYTICS_DATA_KEY]: AnalyticsReducer,
   [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
 });
 

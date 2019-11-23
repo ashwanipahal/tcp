@@ -9,6 +9,7 @@ import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 import globalReducers from '../reducers';
 import rootSaga from '../sagas/sagas';
 import createAnalyticsMiddleware from '../middlewares/analytics';
+import createDataLayer from '../../context/analytics/dataLayer';
 
 export const initializeStore = initialState => {
   const sagaMonitor = Reactotron.createSagaMonitor();
@@ -33,6 +34,8 @@ export const initializeStore = initialState => {
 
   // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
   setStoreRef(store);
+
+  global._dataLayer = createDataLayer(store);
 
   const persistor = persistStore(store);
   return { store, persistor };
