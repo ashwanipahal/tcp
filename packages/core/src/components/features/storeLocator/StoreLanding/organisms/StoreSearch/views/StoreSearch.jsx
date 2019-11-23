@@ -46,14 +46,9 @@ export class StoreSearch extends PureComponent {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
-    const pageData = 'storelocator';
     setClickAnalyticsData({
       storeSearchCriteria: place,
       customEvents: ['event89'],
-      pageType: 'companyinfo',
-      pageSection: pageData,
-      pageSubSection: pageData,
-      pageName: pageData,
       pageNavigationText: 'header-find a store',
       eVar65: 'storelocator',
     });

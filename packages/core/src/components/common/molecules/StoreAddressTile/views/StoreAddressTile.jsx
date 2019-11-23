@@ -69,12 +69,10 @@ class StoreAddressTile extends PureComponent {
       store,
       openStoreDetails,
     } = this.props;
-    const pageData = 'companyinfo:companyinfo';
-    const pageVal = 'companyInfo';
     return (
       <Fragment>
         <div>
-          <ClickTracker
+          <Anchor
             fontSizeVariation="medium"
             underline
             to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
@@ -84,19 +82,17 @@ class StoreAddressTile extends PureComponent {
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
-            as={Anchor}
-            clickData={{
-              customEvents: ['event80,event96'],
-              pageType: pageVal,
-              pageSection: pageVal,
-              pageSubSection: pageVal,
-              pageName: pageData,
-              eVar65: pageData,
-              eVar28: 'outfit:2625899',
-            }}
           >
-            {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
-          </ClickTracker>
+            <ClickTracker
+              clickData={{
+                customEvents: ['event80,event96'],
+                eVar65: 'companyinfo:companyinfo',
+                eVar28: 'outfit:2625899',
+              }}
+            >
+              {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            </ClickTracker>
+          </Anchor>
         </div>
         <div>
           {isFavorite && this.getIsFavStoreIcon()}

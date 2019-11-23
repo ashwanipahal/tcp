@@ -46,10 +46,6 @@ const StoreLocatorLink = ({ className, labels, store }) => {
         className={className}
         clickData={{
           customEvents: ['event80'],
-          pageType: 'companyinfo',
-          pageSection: pageData,
-          pageSubSection: pageData,
-          pageName: pageData,
           pageNavigationText: 'header-find a store',
           eVar65: 'storelocator',
           eVar12: '09:20:21',

@@ -127,6 +127,17 @@ export class StoreLanding extends PureComponent {
   }
 }
 
+// StoreLanding.pageInfo = {
+//   name:'storelocator:',
+//   pageId: 'storelocator',
+//   pageData: {
+//     pageName: 'storelocator',
+//     pageType: 'companyinfo',
+//     pageSection: 'storelocator',
+//     pageSubSection: 'storelocator',
+//   },
+// };
+
 StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
   getFavoriteStore: PropTypes.func.isRequired,
