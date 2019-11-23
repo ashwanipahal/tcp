@@ -56,7 +56,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               <div className="place-cash__text-wrapper">
                 <BodyCopy
                   component="h3"
-                  fontSize={['fs10', 'fs10', 'fs14']}
+                  fontSize={['fs18', 'fs13', 'fs26']}
                   fontFamily="primary"
                   fontWeight="bold"
                   textAlign="center"
@@ -67,7 +67,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                 </BodyCopy>
                 <BodyCopy
                   component="h4"
-                  fontSize={['fs10', 'fs9', 'fs12']}
+                  fontSize={['fs14', 'fs10', 'fs22']}
                   fontFamily="primary"
                   textAlign="center"
                   className="place-cash__subTitle"
@@ -82,6 +82,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                     textAlign="center"
                     className="place-cash__tnc-text"
                     data-locator="place-cash_info_text"
+                    fontSize={['fs8', 'fs8', 'fs14']}
                   >
                     {labels.tnc}
                   </BodyCopy>
@@ -94,6 +95,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                     title={labels.label4}
                     dataLocator="detailslink"
                     className="place-cash__modalLink"
+                    fontSize={['fs8', 'fs8', 'fs14']}
                     onClick={e => this.toggleShowDetailModal(e)}
                   >
                     {labels.modalLink}
