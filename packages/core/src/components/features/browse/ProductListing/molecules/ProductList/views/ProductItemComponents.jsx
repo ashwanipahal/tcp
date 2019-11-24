@@ -259,7 +259,7 @@ export const CreateWishList = props => {
           <li className="wish-list-item">
             {createNewWishListMoveItem ? (
               <Button
-                onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
+                onClick={() => createNewWishListMoveItem({ wisListId: item.id, itemId })}
                 className="wish-list-item__button"
               >
                 {renderWishListItem(item, labels, activeWishListId)}
@@ -276,7 +276,7 @@ export const CreateWishList = props => {
         ))}
       </ul>
       <Button
-        onClick={openAddNewList}
+        onClick={() => openAddNewList(itemId)}
         buttonVariation="fixed-width"
         fill="BLACK"
         data-locator="create-new-wish-list"

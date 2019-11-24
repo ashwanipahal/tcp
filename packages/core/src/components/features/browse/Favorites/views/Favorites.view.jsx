@@ -27,6 +27,8 @@ class FavoritesView extends React.PureComponent {
     super(props);
     this.state = {
       isOpenModal: false,
+      itemToMove: '',
+      addListFromMoveOption: false,
     };
   }
 
@@ -181,11 +183,19 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  handleAddList = () => {
+  handleAddList = itemId => {
     this.currentPopupName = 'addList';
-    this.setState({
-      isOpenModal: true,
-    });
+    if (itemId) {
+      this.setState({
+        isOpenModal: true,
+        itemToMove: itemId,
+        addListFromMoveOption: true,
+      });
+    } else {
+      this.setState({
+        isOpenModal: true,
+      });
+    }
   };
 
   handleEditList = () => {
@@ -209,10 +219,18 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
-  onCloseModal = () => {
-    this.setState({
-      isOpenModal: false,
-    });
+  onCloseModal = moveItem => {
+    if (moveItem) {
+      this.setState({
+        isOpenModal: false,
+        itemToMove: '',
+        addListFromMoveOption: false,
+      });
+    } else {
+      this.setState({
+        isOpenModal: false,
+      });
+    }
   };
 
   getCurrentPopUpHeading = () => {
@@ -228,14 +246,19 @@ class FavoritesView extends React.PureComponent {
   };
 
   onAddNewListHandler = data => {
-    const { createNewWishList } = this.props;
+    const { createNewWishList, createNewWishListMoveItem } = this.props;
+    const { addListFromMoveOption } = this.state;
     const payload = {
       wishListName: data.listName,
       isDefault: data.makeDefaultList,
+      itemId: data.itemId,
     };
-    this.onCloseModal();
-    if (createNewWishList) {
+    if (addListFromMoveOption) {
+      createNewWishListMoveItem(payload);
+      this.onCloseModal(true);
+    } else {
       createNewWishList(payload);
+      this.onCloseModal(false);
     }
   };
 
@@ -303,12 +326,16 @@ class FavoritesView extends React.PureComponent {
 
   getCurrentPopUp = () => {
     const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const { itemToMove } = this.state;
     if (this.currentPopupName === 'addList') {
       return (
         <AddList
           labels={labels}
           onSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          initialValues={{
+            itemId: itemToMove,
+          }}
         />
       );
     }
