@@ -99,21 +99,4 @@ describe('FiltersVanilla is shown', () => {
       .onPress();
     expect(onSubmit).toHaveBeenCalledWith({});
   });
-
-  it('should apply all filters', () => {
-    const onSubmit = jest.fn();
-    wrapper.setProps({
-      filters: {
-        unbxdDisplayName: { TCPColor_uFilter: 'Color' },
-        TCPColor_uFilter: [{ id: 'red', isSelected: true }, { id: 'blue' }],
-      },
-      onSubmit,
-    });
-
-    wrapper
-      .find('[text="Apply"]')
-      .props()
-      .onPress();
-    expect(onSubmit).toHaveBeenCalledWith({ Size: [], TCPColor_uFilter: ['red'] });
-  });
 });

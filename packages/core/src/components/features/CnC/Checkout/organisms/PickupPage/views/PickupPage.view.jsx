@@ -314,6 +314,7 @@ class PickUpFormPart extends React.Component {
                 backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
                 nextButtonText={this.getNextCTAText()}
                 pageCategory={pageCategory}
+                bagLoading={bagLoading}
               />
             </form>
             <PickupAnalytics {...this.props} />

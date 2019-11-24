@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAPIConfig, isMobileApp } from '@tcp/core/src/utils/utils';
+import { getAPIConfig, isMobileApp, isGymboree } from '@tcp/core/src/utils/utils';
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
@@ -32,7 +32,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       style: {
         size: 'responsive',
         color: isBillingPage ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT,
-        shape: 'rect',
+        shape: isGymboree() ? 'pill' : 'rect',
         label: CONSTANTS.PAYPAL_LABEL,
         tagline: false,
         height,

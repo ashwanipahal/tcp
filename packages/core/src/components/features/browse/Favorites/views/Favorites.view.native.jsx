@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import React from 'react';
+import { View, Share } from 'react-native';
 import { PropTypes } from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -7,9 +8,9 @@ import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { getLoading, getLabelValue } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { ShareDialog } from 'react-native-fbsdk';
 import {
   PageContainer,
-  BrandFilterContainer,
   RowContainer,
   DropDownContainer,
   ShareDropDownContainer,
@@ -56,7 +57,6 @@ class FavoritesView extends React.PureComponent {
   currentPopupName;
 
   brandOptions;
-  // eslint-disable-next-line
   constructor(props) {
     super(props);
     this.state = {
@@ -78,7 +78,6 @@ class FavoritesView extends React.PureComponent {
       },
     ];
     this.state = {
-      selectedWishlist: '',
       selectedShareOption: '',
       isOpenModal: false,
     };
@@ -98,19 +97,43 @@ class FavoritesView extends React.PureComponent {
   };
 
   onAddNewListHandler = data => {
-    console.tron.log('onAddNewListHandler:', data);
+    const { createNewWishList } = this.props;
+    this.onCloseModal();
+    if (createNewWishList) {
+      createNewWishList(data);
+    }
   };
 
   onEditListHandler = data => {
-    console.tron.log('onEditListHandler:', data);
+    const { updateWishList } = this.props;
+    this.onCloseModal();
+    if (updateWishList) {
+      updateWishList(data);
+    }
   };
 
   onDeleteListHandler = data => {
-    console.tron.log('onDeleteListHandler:', data);
+    const { deleteWishList } = this.props;
+    this.onCloseModal();
+    if (deleteWishList) {
+      deleteWishList(data);
+    }
   };
 
   onCopyLinkHandler = data => {
     console.tron.log('onCopyLinkHandler:', data);
+  };
+
+  onShareListEmailHandler = data => {
+    this.onCloseModal();
+    const { sendWishListEmail } = this.props;
+    const payload = {
+      shareToEmailAddresses: data.toEmail,
+      shareFromEmailAddresses: data.fromEmail,
+      shareSubject: data.subject,
+      shareMessage: data.message,
+    };
+    sendWishListEmail(payload);
   };
 
   handleEditList = () => {
@@ -134,7 +157,10 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
-  handleAddList = () => {
+  handleAddList = closeDropDown => {
+    if (closeDropDown) {
+      closeDropDown();
+    }
     this.currentPopupName = ADD_LIST;
     this.setState({
       isOpenModal: true,
@@ -181,7 +207,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels } = this.props;
+    const { labels, activeWishListId, activeWishList, wishlistsSummaries, userEmail } = this.props;
     if (this.currentPopupName === ADD_LIST) {
       return (
         <AddList
@@ -192,12 +218,19 @@ class FavoritesView extends React.PureComponent {
       );
     }
     if (this.currentPopupName === EDIT_LIST) {
+      const isCheckBoxDisabled = (wishlistsSummaries && wishlistsSummaries.length === 1) || false;
       return (
         <EditList
           labels={labels}
           onHandleSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
           onDeleteList={this.onDeleteListHandler}
+          activeWishListId={activeWishListId}
+          initialValues={{
+            listName: activeWishList.displayName,
+            isChecked: activeWishList.isDefault,
+          }}
+          isCheckBoxDisabled={isCheckBoxDisabled}
         />
       );
     }
@@ -205,8 +238,12 @@ class FavoritesView extends React.PureComponent {
       return (
         <ShareList
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onHandleSubmit={this.onShareListEmailHandler}
           onCloseModal={this.onCloseModal}
+          initialValues={{
+            subject: getLabelValue(labels, 'lbl_fav_subject_default'),
+            fromEmail: userEmail,
+          }}
         />
       );
     }
@@ -225,43 +262,36 @@ class FavoritesView extends React.PureComponent {
   };
 
   renderBrandFilter = () => {
-    const { tcpSelected, gymSelected, labels } = this.props;
+    const { tcpSelected, gymSelected, isBothTcpAndGymProductAreAvailable } = this.props;
+    if (!isBothTcpAndGymProductAreAvailable) {
+      return null;
+    }
     return (
-      <BrandFilterContainer margins="48px 0 0 0">
-        <BodyCopy
-          dataLocator="fav_brand_title"
-          mobileFontFamily="secondary"
+      <RowContainer margins="12px 0 0 0">
+        <InputCheckbox
+          dataLocator={this.brandOptions[0].dataLocator}
+          execOnChangeByDefault={false}
+          rightText={this.brandOptions[0].brandLabel}
+          isChecked={tcpSelected}
           fontSize="fs14"
-          fontWeight="regular"
-          color="gray.1700"
-          text={labels.lbl_fav_brand}
+          input={{
+            value: this.brandOptions[0].checked,
+            onChange: isChecked => this.onSelectBrandType(this.brandOptions[0].name, isChecked),
+          }}
         />
-        <RowContainer margins="10px 0 0 0">
-          <InputCheckbox
-            dataLocator={this.brandOptions[0].dataLocator}
-            execOnChangeByDefault={false}
-            rightText={this.brandOptions[0].brandLabel}
-            isChecked={tcpSelected}
-            fontSize="fs14"
-            input={{
-              value: this.brandOptions[0].checked,
-              onChange: isChecked => this.onSelectBrandType(this.brandOptions[0].name, isChecked),
-            }}
-          />
-          <InputCheckbox
-            margins="0 0 0 19px"
-            dataLocator={this.brandOptions[1].dataLocator}
-            execOnChangeByDefault={false}
-            rightText={this.brandOptions[1].brandLabel}
-            isChecked={gymSelected}
-            fontSize="fs14"
-            input={{
-              value: this.brandOptions[1].checked,
-              onChange: isChecked => this.onSelectBrandType(this.brandOptions[1].name, isChecked),
-            }}
-          />
-        </RowContainer>
-      </BrandFilterContainer>
+        <InputCheckbox
+          margins="0 0 0 19px"
+          dataLocator={this.brandOptions[1].dataLocator}
+          execOnChangeByDefault={false}
+          rightText={this.brandOptions[1].brandLabel}
+          isChecked={gymSelected}
+          fontSize="fs14"
+          input={{
+            value: this.brandOptions[1].checked,
+            onChange: isChecked => this.onSelectBrandType(this.brandOptions[1].name, isChecked),
+          }}
+        />
+      </RowContainer>
     );
   };
 
@@ -270,14 +300,60 @@ class FavoritesView extends React.PureComponent {
     getActiveWishlist(value);
   };
 
-  handleShareClick = () => {};
+  handleShareClick = value => {
+    if (value === 'facebook') {
+      this.shareLinkOnFacebook();
+    } else if (value === 'email') {
+      this.handleShareListByEmail();
+    } else {
+      this.onShareLink();
+    }
+  };
+
+  getSharableLink = () => {
+    const { activeWishList, wishlistsSummaries } = this.props;
+    const activeWishListId = activeWishList && activeWishList.id;
+    const currentWishList =
+      wishlistsSummaries &&
+      wishlistsSummaries.length > 0 &&
+      wishlistsSummaries.filter(wishlist => {
+        return wishlist.id === activeWishListId;
+      });
+    return currentWishList && currentWishList[0].shareableLink;
+  };
+
+  shareLinkOnFacebook = () => {
+    const shareLinkContent = {
+      contentType: 'link',
+      contentUrl: this.getSharableLink(),
+    };
+    ShareDialog.canShow(shareLinkContent).then(canShow => {
+      if (canShow) {
+        return ShareDialog.show(shareLinkContent);
+      }
+      return null;
+    });
+  };
+
+  onShareLink = () => {
+    const result = Share.share({
+      message: this.getSharableLink(),
+    });
+    if (result.action === Share.sharedAction) {
+      if (result.activityType) {
+        // shared with activity type of result.activityType
+      }
+    } else if (result.action === Share.dismissedAction) {
+      // dismissed
+    }
+  };
 
   renderHeader = () => {
     const { labels } = this.props;
     return (
       <ListHeaderContainer>
         <BodyCopy
-          margin="12px 0 0 32px"
+          margin="16px 0 0 32px"
           dataLocator="fav_lbl_myFavorites"
           mobileFontFamily="primary"
           fontSize="fs14"
@@ -289,22 +365,21 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  // eslint-disable-next-line sonarjs/no-identical-functions
-  renderFooter = () => {
-    const { labels } = this.props;
+  renderFooter = closeDropDown => {
+    const { labels, wishlistsSummaries } = this.props;
+    const isDisable = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
     return (
       <ListFooterContainer>
         <Button
           buttonVariation="fixed-width"
-          onPress={this.createWishlist}
+          onPress={() => this.handleAddList(closeDropDown)}
           fill="BLACK"
           text={getLabelValue(labels, 'lbl_fav_createNewList')}
+          disableButton={isDisable}
         />
       </ListFooterContainer>
     );
   };
-
-  createWishlist = () => {};
 
   renderWishlistItems = ({ item }, onDropDownItemClick) => {
     const { activeWishList } = this.props;
@@ -366,15 +441,15 @@ class FavoritesView extends React.PureComponent {
     return [
       {
         displayName: labels.lbl_fav_facebook,
-        value: labels.lbl_fav_facebook,
+        value: 'facebook',
       },
       {
         displayName: labels.lbl_fav_email,
-        value: labels.lbl_fav_email,
+        value: 'email',
       },
       {
         displayName: labels.lbl_fav_copyLink,
-        value: labels.lbl_fav_copyLink,
+        value: 'copyLink',
       },
     ];
   };
@@ -402,9 +477,11 @@ class FavoritesView extends React.PureComponent {
       activeWishList,
       isKeepAliveEnabled,
       outOfStockLabels,
+      resetBrandFilters,
+      isBothTcpAndGymProductAreAvailable,
     } = this.props;
 
-    const { selectedWishlist, selectedShareOption } = this.state;
+    const { selectedShareOption } = this.state;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
@@ -426,6 +503,7 @@ class FavoritesView extends React.PureComponent {
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
+    const displayName = (activeWishList && activeWishList.displayName) || '';
 
     return (
       <PageContainer>
@@ -442,14 +520,15 @@ class FavoritesView extends React.PureComponent {
         <LineComp borderWidth="2" marginTop="12" borderColor="black" />
         <DropDownContainer>
           <SelectWishListDropdown
-            selectedValue={selectedWishlist}
+            selectedValue={displayName}
             data={wishlistsSummaries}
             defaultWishList={defaultWishList}
             activeWishList={activeWishList}
             onValueChange={itemValue => {
-              this.setState({ selectedWishlist: itemValue }, () =>
-                this.handleWishlistClick(itemValue)
-              );
+              if (resetBrandFilters) {
+                resetBrandFilters();
+              }
+              this.handleWishlistClick(itemValue);
             }}
             variation="secondary"
             dropDownStyle={{ ...dropDownStyle }}
@@ -479,22 +558,22 @@ class FavoritesView extends React.PureComponent {
           />
         </DropDownContainer>
         {filteredItemsList.length === 0 ? (
-          <>
+          <View>
             <NoFavoritesFound labels={labels} />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
             </RecommendationWrapper>
-          </>
+          </View>
         ) : (
-          <>
+          <View>
             <ShareDropDownContainer>
               <SelectWishListDropdown
                 selectedValue={selectedShareOption}
                 data={this.getSharingOptions()}
                 onValueChange={itemValue => {
-                  this.setState({ selectedShareOption: itemValue }, () =>
-                    this.handleShareClick(itemValue)
-                  );
+                  setTimeout(() => {
+                    this.handleShareClick(itemValue);
+                  }, 160);
                 }}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
@@ -516,7 +595,7 @@ class FavoritesView extends React.PureComponent {
               isFavorite
               currencySymbol={currencySymbol}
               labelsFilter={labels}
-              labels={labels}
+              labelsFavorite={labels}
               onQuickViewOpenClick={onQuickViewOpenClick}
               selectedColorProductId={selectedColorProductId}
               setLastDeletedItemId={setLastDeletedItemId}
@@ -528,8 +607,9 @@ class FavoritesView extends React.PureComponent {
               labelsPlpTiles={labelsPlpTiles}
               isKeepAliveEnabled={isKeepAliveEnabled}
               outOfStockLabels={outOfStockLabels}
+              isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
             />
-          </>
+          </View>
         )}
       </PageContainer>
     );
@@ -537,10 +617,8 @@ class FavoritesView extends React.PureComponent {
 }
 
 FavoritesView.propTypes = {
-  // eslint-disable-next-line
   wishlistsSummaries: PropTypes.arrayOf({}).isRequired,
   activeWishList: PropTypes.shape({}).isRequired,
-  // eslint-disable-next-line
   activeWishListId: PropTypes.number.isRequired,
   activeWishListProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   filters: PropTypes.shape({}),
@@ -561,9 +639,16 @@ FavoritesView.propTypes = {
   isDataLoading: PropTypes.bool.isRequired,
   labelsPlpTiles: PropTypes.shape({}).isRequired,
   getActiveWishlist: PropTypes.func.isRequired,
-  defaultWishList: PropTypes.shape({}),
+  defaultWishList: PropTypes.shape([]).isRequired,
+  createNewWishList: PropTypes.func.isRequired,
+  deleteWishList: PropTypes.func.isRequired,
+  updateWishList: PropTypes.func.isRequired,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool.isRequired,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  userEmail: PropTypes.string.isRequired,
+  sendWishListEmail: PropTypes.func.isRequired,
+  resetBrandFilters: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {
@@ -572,7 +657,6 @@ FavoritesView.defaultProps = {
   labels: {},
   selectedColorProductId: '',
   filteredId: 'ALL',
-  defaultWishList: {},
   outOfStockLabels: {},
 };
 
