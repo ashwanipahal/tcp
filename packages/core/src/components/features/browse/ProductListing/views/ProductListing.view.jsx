@@ -74,9 +74,10 @@ const ProductListView = ({
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
   loyaltyBanner,
+  isLoggedIn,
+  isPlcc,
   ...otherProps
 }) => {
-  console.log('loyaltyBanner $$$$$$$$$$$$$ ', loyaltyBanner[0] && loyaltyBanner[0].html);
   // State needed to trigger UX timer once initial product results have rendered
   const [resultsExist, setResultsExist] = useState(false);
 
@@ -109,22 +110,14 @@ const ProductListView = ({
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-          {loyaltyBanner && loyaltyBanner[0] && <RichText richTextHtml={loyaltyBanner[0].html} />}
           {plpTopPromos.length > 0 && (
-            <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+            <PromoModules
+              plpTopPromos={plpTopPromos}
+              asPath={asPathVal}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
+            />
           )}
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area">
-              {/*
-              // Changes as per RWD-9852. Keeping this for future reference.
-              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
-              <ModuleD {...moduleDMock.composites} fullBleed />
-              <ModuleG {...moduleGMock.moduleG.composites} />
-              <ModuleQ {...moduleQMock.moduleQ.composites} />
-              <Recommendations variations="moduleO,moduleP" />
-              */}
-            </div>
-          </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section">
               <ProductListingFiltersForm
@@ -162,6 +155,8 @@ const ProductListView = ({
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
               {...otherProps}
             />
             {/* UX timer */}

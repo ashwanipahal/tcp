@@ -70,7 +70,6 @@ export function* fetchPlpProducts({ payload }) {
           instanceProductListing.parsedModuleData,
           plpProducts.bannerInfo
         );
-        console.log('plpProducts.bannerInfo #### ', plpProducts.bannerInfo);
         yield put(loadLayoutData(layout, 'productListingPage'));
         yield put(loadModulesData(modules));
         if (plpProducts.bannerInfo && plpProducts.bannerInfo.loyaltyBanner) {

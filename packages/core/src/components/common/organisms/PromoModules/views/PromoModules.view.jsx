@@ -14,9 +14,21 @@ const modules = {
   moduleG: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleG')),
   moduleM: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleM')),
   moduleQ: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleQ')),
+  moduleX: lazy(() => import('@tcp/core/src/components/common/molecules/ModuleX')),
 };
 
-const PromoModules = ({ asPath, plpTopPromos }) => {
+const userSpecificModuleX = (userType, isPlcc, isLoggedIn) => {
+  if (
+    (userType === 'plcc' && isPlcc) ||
+    (userType === 'mpr' && isLoggedIn) ||
+    (userType === 'guest' && !isLoggedIn)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const PromoModules = ({ asPath, plpTopPromos, isLoggedIn, isPlcc }) => {
   // isMounted state is needed to ensure the <Suspense> only renders client-side
   // We don't want to render this in SSR (and can't because NextJS will error).
   const [isMounted, setMounted] = useState(false);
@@ -29,8 +41,18 @@ const PromoModules = ({ asPath, plpTopPromos }) => {
   return isMounted ? (
     <Suspense fallback={null}>
       {plpTopPromos.map(promo => {
-        const { contentId, moduleName, data: slotData, ...others } = promo;
+        const { contentId, moduleName, userType, data: slotData, ...others } = promo;
         const Module = modules[moduleName];
+        // This is user specific moduleX - eg. For loyalty Banner on PLP
+        if (userType && moduleName === 'moduleX') {
+          const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
+          if (isUserSpecificModuleX) {
+            return (
+              <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
+            );
+          }
+          return null;
+        }
         return (
           Module && (
             <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
