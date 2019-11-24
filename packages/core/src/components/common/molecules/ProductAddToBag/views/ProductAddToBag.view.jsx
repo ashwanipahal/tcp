@@ -9,10 +9,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
-import {
-  CALL_TO_ACTION_VISIBLE,
-  CONTROLS_VISIBLE,
-} from '@tcp/core/src/constants/rum.constants';
+import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
 import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
@@ -60,12 +57,7 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
 
 class ProductAddToBag extends React.PureComponent<Props> {
   getButtonLabel = () => {
-    const {
-      fromBagPage,
-      plpLabels,
-      keepAlive,
-      outOfStockLabels = {},
-    } = this.props;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {} } = this.props;
     const { addToBag, update } = plpLabels;
     const addToBagLabel = fromBagPage ? update : addToBag;
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
@@ -80,8 +72,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       keepAlive,
     } = this.props;
     const currentColorEntry =
-      getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) ||
-      {};
+      getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) || {};
     return isOutfitPage ? (
       <div className="outfit-pickup">
         <ProductPickupContainer
@@ -118,11 +109,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onChange={selectColor}
             dataLocator="addnewaddress-state"
             title={`${colorTitle}:`}
-            inheritedStyles={
-              isGiftCard && isPDP
-                ? giftCardDesignStyle
-                : quickViewColorSwatchesCss
-            }
+            inheritedStyles={isGiftCard && isPDP ? giftCardDesignStyle : quickViewColorSwatchesCss}
           />
         </div>
       )
@@ -153,10 +140,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
   renderAlternateSizes = alternateSizes => {
     const { className, plpLabels } = this.props;
-    const sizeAvailable =
-      plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
-    const visibleAlternateSizes =
-      alternateSizes && Object.keys(alternateSizes).length > 0;
+    const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
+    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
@@ -177,8 +162,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedColorProductId,
       keepAlive,
     } = this.props;
-    const sizeUnavailable =
-      plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
@@ -208,14 +192,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
       sizeList &&
       sizeList.size > 0 && (
         <div className="size-selector">
-          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
-            <SizeChart />
-          )}
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
           <Field
             width={49}
-            className={
-              isErrorMessageDisplayed ? 'size-field-error' : 'size-field'
-            }
+            className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
             id="size"
             name="Size"
             component={ProductSizeSelector}
@@ -251,10 +231,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
-  quickViewPickup = () => {
-    const { isPickup, isMultiItemQVModal } = this.props;
-    return !isPickup || !isMultiItemQVModal;
-  };
   render() {
     const {
       plpLabels,
@@ -272,6 +248,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed,
       keepAlive,
       isFromBagProductSfl,
+      quickViewPickup,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -297,13 +274,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
-              {this.renderSizeList(
-                sizeList,
-                colorFitSizeDisplayNames,
-                errorMessage
-              )}
+              {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {this.quickViewPickup() && this.renderUnavailableLink()}
+              {quickViewPickup && this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,
@@ -318,14 +291,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
           errorOnHandleSubmit &&
           ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
-          <Row
-            fullBleed
-            className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}
-          >
-            <Col
-              colSize={{ small: 12, medium: 12, large: 12 }}
-              className="outfit-button-wrapper"
-            >
+          <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
+            <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
                 <Button
                   type="submit"
