@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { WebView } from 'react-native-webview';
 import { View, Platform, KeyboardAvoidingView } from 'react-native';
-import { getScreenHeight } from '@tcp/core/src/utils';
+import { getScreenHeight, isGymboree } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
 
 const containerStyle = { flex: 1 };
@@ -21,6 +21,7 @@ class PayPalButton extends React.PureComponent {
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
+      isBillingPage,
       navigation,
       setVenmoState,
       closeModal,
@@ -40,7 +41,7 @@ class PayPalButton extends React.PureComponent {
         closeModal(true);
         break;
       case 'onCancel':
-        clearPaypalSettings();
+        clearPaypalSettings(isBillingPage);
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });
@@ -61,7 +62,7 @@ class PayPalButton extends React.PureComponent {
     if (getPayPalSettings && getPayPalSettings.paypalInContextToken) {
       webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
         getPayPalSettings.paypalInContextToken
-      }&paypalEnv=${paypalEnv}&paypalColor=${paypalColor}`;
+      }&paypalEnv=${paypalEnv}&paypalColor=${paypalColor}&isGymboree=${isGymboree()}`;
     }
     return webURL;
   };

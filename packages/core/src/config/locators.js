@@ -133,6 +133,15 @@ export default {
   moduleE_carousel_image_button_cta: 'moduleE_carousel_image_button_cta_',
   moduleE_carousel_image_link: 'moduleE_carousel_image_link_',
 
+  // Module Image Text
+  moduleImageText_headline_text: 'moduleImageText_headerline_text',
+  moduleImageText_headsubline_text: 'moduleImageText_headersubline_text',
+  moduleImageText_image: 'moduleImageText_image',
+  moduleImageText_bgwrapper: 'moduleImageText_bgwrapper',
+  moduleImageText_cta_image: 'moduleImageText_cta_image_',
+  moduleImageText_cta_links: 'moduleImageText_cta_links_',
+  moduleImageText_dropdown: 'moduleImageText_shop_now_dropdown',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -241,6 +250,12 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // SEO text
+  seo_title: 'seo_title',
+  seo_body: 'seo_body',
+  seo_readmore: 'seo_readmore',
+  seo_readless: 'seo_readless',
 
   // PLP Review Ratings
   plp_rating_review: 'plp_rating_review_text',
@@ -410,4 +425,11 @@ export default {
   fav_brand_gym_lbl: 'Gymboree',
   fav_lbl_myFavorites: 'My Favorites',
   fav_lbl_editListSettings: 'Edit List Settings',
+
+  // module M
+  moduleM_header_text: 'moduleM_header_text',
+  moduleM_promobanner_text: 'moduleM_promobanner_text',
+  moduleM_image: 'moduleM_image',
+  moduleM_cta_btn: 'moduleM_cta_btn',
+  moduleM_cta_links: 'moduleM_cta_links',
 };

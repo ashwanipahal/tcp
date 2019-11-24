@@ -27,4 +27,9 @@ const StyledView = styled.View`
   opacity: 0.5;
   ${props => `${getWrapperStyles(props)}`};
 `;
-export { BtnWrapper, StyledView, StyledTouchableOpacity };
+
+const PlaceRewardsPageStyledView = styled.View`
+  opacity: 1;
+  ${props => `${getWrapperStyles(props)}`};
+`;
+export { BtnWrapper, StyledView, StyledTouchableOpacity, PlaceRewardsPageStyledView };

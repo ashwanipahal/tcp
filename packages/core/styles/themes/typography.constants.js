@@ -78,4 +78,5 @@ export const FONT_SIZES = {
   fs12: '12px',
   fs10: '10px',
   fs9: '9px',
+  fs8: '8px',
 };

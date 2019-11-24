@@ -1,47 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, toTimeString, getLabelValue, getLocator } from '@tcp/core/src/utils';
-import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
+import { getIconPath, getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
-
-const getStoreHours = store => {
-  const hours = store && store.hours;
-  const storeHours = hours && [
-    ...hours.regularAndHolidayHours,
-    ...hours.regularHours,
-    ...hours.holidayHours,
-  ];
-  const todaysDate = new Date();
-  let storeTime = '';
-  /* eslint-disable no-unused-expressions */
-  storeHours &&
-    storeHours.forEach(hour => {
-      const openInterval =
-        hour &&
-        hour.openIntervals.length > 0 &&
-        hour.openIntervals[hour.openIntervals.length - 1].toHour;
-      if (compareDate(todaysDate, parseDate(openInterval))) {
-        storeTime = toTimeString(parseDate(openInterval), true);
-      }
-    });
-  return storeTime;
-};
+import ClickTracker from '../../../../../../common/atoms/ClickTracker';
 
 const StoreLocatorLink = ({ className, labels, store }) => {
   const basicInfo = store && store.basicInfo;
-  const storeTime = getStoreHours(store);
+  const currentDate = new Date();
+  const hours = store && store.hours;
+  const storeTime = hours && getStoreHours(hours, labels, currentDate);
   const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
 
   return (
     <React.Fragment>
-      <Anchor
+      <ClickTracker
+        as={Anchor}
         dataLocator={getLocator('store_drawerlink')}
         fontSizeVariation="small"
         anchorVariation="primary"
         to="/store-locator"
         className={className}
+        clickData={{ customEvents: ['event80'] }}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>
           <div className="storelocatorlink__img">
@@ -70,9 +51,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
               >
-                {storeTime
-                  ? `${getLabelValue(labels, 'lbl_storelocator_openUntilTxt')} ${storeTime}`
-                  : ''}
+                {storeTime}
               </BodyCopy>
             </div>
           ) : (
@@ -90,7 +69,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
             </BodyCopy>
           )}
         </div>
-      </Anchor>
+      </ClickTracker>
     </React.Fragment>
   );
 };

@@ -45,7 +45,10 @@ exports[`Bag page View should not render SFL section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: undefined50.00
+          undefined: 
+          <Connect(PriceCurrency)
+            price={50}
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -107,7 +110,10 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: undefined50.00
+          undefined: 
+          <Connect(PriceCurrency)
+            price={50}
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -169,7 +175,10 @@ exports[`Bag page View should render SFL section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: undefined50.00
+          undefined: 
+          <Connect(PriceCurrency)
+            price={50}
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -280,7 +289,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
         onClick={[Function]}
       >
         <Styled(Heading)
-          className="bag-header activeHeader"
+          className="bag-header "
           color="text.primary"
           component="h2"
           dataLocator=""
@@ -291,7 +300,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
           undefined (10)
         </Styled(Heading)>
         <Styled(BodyCopy)
-          className="estimatedHeaderText activeEstimatedHeader"
+          className="estimatedHeaderText "
           color="text.primary"
           component="p"
           fontFamily="secondary"
@@ -302,7 +311,10 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: undefined50.00
+          undefined: 
+          <Connect(PriceCurrency)
+            price={50}
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -317,7 +329,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
         onClick={[Function]}
       >
         <Styled(Heading)
-          className="bag-header bag-header-sfl "
+          className="bag-header bag-header-sfl activeHeader"
           color="text.primary"
           component={null}
           dataLocator=""
@@ -336,7 +348,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
     leftSection={[Function]}
     pageCategory="bagPage"
     showAccordian={false}
-    showLeftSection={true}
+    showLeftSection={false}
   />
   <Connect(QuickViewModalContainer) />
 </div>

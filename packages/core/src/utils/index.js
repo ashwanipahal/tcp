@@ -81,10 +81,12 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  getStoreHours,
   generateTraceId,
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,
   calculatePriceValue,
   getProductUrlForDAM,
+  plpRoutingHandling,
 } from './utils';

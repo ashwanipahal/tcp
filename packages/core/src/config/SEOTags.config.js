@@ -10,6 +10,7 @@ const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
+const GenericSeoPages = ['Home', 'Checkout', 'Account', 'Bag'];
 
 const SEO_CONFIG = {
   canonical: TCP_BASE_URL,
@@ -152,8 +153,8 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
     }
   });
 
-  const seoTitle = seoTitlesMap[0];
-  const seoMetaDesc = seoDescMap[0];
+  const seoTitle = seoTitlesMap[seoTitlesMap.length - 1];
+  const seoMetaDesc = seoDescMap[seoDescMap.length - 1];
 
   const title = seoTitle;
   const description = seoMetaDesc;
@@ -186,7 +187,7 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
   });
 };
 
-const getGenericSeoTags = (store, router, categoryKey, path = '') => {
+const getGenericSeoTags = (store, router, categoryKey, path = 'home') => {
   const brandDetails = getBrandDetails();
   const { brandId } = getAPIConfig();
   const brand = brandId.toUpperCase();
@@ -280,6 +281,10 @@ export const getPdpSEOTags = (productInfo, router, categoryKey) => {
 
 export const deriveSEOTags = (pageId, store, router) => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
+  if (GenericSeoPages.indexOf(pageId) !== -1) {
+    const categoryKey = router.asPath;
+    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
+  }
   if (pageId === PAGES.PRODUCT_LISTING_PAGE) {
     const categoryKey = router.asPath;
     const getSeoMap = getPlpSEOTags(store, router, categoryKey);

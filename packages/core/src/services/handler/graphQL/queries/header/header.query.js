@@ -12,6 +12,10 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
             class
           }
 
+          top_promo_banner: richTextList {
+            text
+          }
+
           promo_message_wrapper: promoMessageWrapper {
             richText {
               text
@@ -25,7 +29,15 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
             }
           }
         }
-      }
+      } 
+      
+      promoHtmlBannerCarousel {
+          composites {
+            promoHtmlBanner {
+                text
+              }
+          }
+      } 
 
       promoTextBannerCarousel {
         composites {

@@ -72,7 +72,7 @@ class SearchImageWrapper extends React.PureComponent {
                     alt="search"
                     id="search-image-typeAhead"
                     className="searchBar-image-typeAhead icon-small"
-                    src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                    src={getIconPath(`${SEARCH_IMAGE}`)}
                     data-locator="search-icon"
                     height="25px"
                     onClick={openSearchBar}

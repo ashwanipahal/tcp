@@ -40,25 +40,36 @@ const PromoModules = ({ asPath, plpTopPromos, isLoggedIn, isPlcc }) => {
 
   return isMounted ? (
     <Suspense fallback={null}>
-      {plpTopPromos.map(promo => {
-        const { contentId, moduleName, userType, data: slotData, ...others } = promo;
-        const Module = modules[moduleName];
-        // This is user specific moduleX - eg. For loyalty Banner on PLP
-        if (userType && moduleName === 'moduleX') {
-          const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
-          if (isUserSpecificModuleX) {
-            return (
-              <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
-            );
+      {plpTopPromos &&
+        plpTopPromos.length &&
+        plpTopPromos.map(promo => {
+          const { contentId, moduleName, userType, data: slotData, ...others } = promo;
+          const Module = modules[moduleName];
+          // This is user specific moduleX - eg. For loyalty Banner on PLP
+          if (userType && moduleName === 'moduleX') {
+            const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
+            if (isUserSpecificModuleX) {
+              return (
+                Module && (
+                  <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
+                )
+              );
+            }
+            return null;
           }
-          return null;
-        }
-        return (
-          Module && (
-            <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
-          )
-        );
-      })}
+          return (
+            Module && (
+              <Module
+                fullBleed
+                key={contentId}
+                data={promo}
+                asPath={asPath}
+                {...slotData}
+                {...others}
+              />
+            )
+          );
+        })}
       {/* UX timer for when the lazy promos above resolve */}
       <RenderPerf.Measure name={PROMOTION_VISIBLE} />
     </Suspense>

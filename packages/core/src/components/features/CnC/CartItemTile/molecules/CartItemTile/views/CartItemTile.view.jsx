@@ -324,9 +324,9 @@ class CartItemTile extends PureComponent {
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -804,14 +804,20 @@ class CartItemTile extends PureComponent {
   };
 
   renderHeartIcon = () => {
-    const { isBagPageSflSection, labels } = this.props;
-    if (!isBagPageSflSection) return null;
+    const { isBagPageSflSection, labels, handleAddToWishlist, productDetail } = this.props;
+    if (
+      !isBagPageSflSection ||
+      productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+    )
+      return null;
+
     return (
       <div className="heartIcon">
         <Image
           alt={getLabelValue(labels, 'lbl_sfl_favIcon', 'bagPage', 'checkout')}
           className="sfl-fav-image"
           src={getIconPath('fav-icon')}
+          onClick={handleAddToWishlist}
         />
       </div>
     );
@@ -1317,6 +1323,8 @@ CartItemTile.propTypes = {
   disableProductRedirect: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
+  handleAddToWishlist: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

@@ -105,11 +105,6 @@ const ConfirmationView = ({
   }
   return (
     <div className={className}>
-      <Row fullBleed className="placeholder sms-sign-up">
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>SMS SIGN UP</div>
-        </Col>
-      </Row>
       {renderSMSNotification(labels, isGymboreeCanadaSite)}
 
       <Row fullBleed className="thank-you-component">
@@ -140,7 +135,6 @@ const ConfirmationView = ({
           {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
-      {renderAccountForm(isGuest)}
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
@@ -148,6 +142,7 @@ const ConfirmationView = ({
         labels={labels}
         pageCategory={pageCategory}
       />
+      {renderAccountForm(isGuest)}
     </div>
   );
 };

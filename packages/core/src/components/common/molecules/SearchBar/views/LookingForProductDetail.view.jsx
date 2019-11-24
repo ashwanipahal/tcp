@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import { getSiteId } from '@tcp/core/src/utils/utils';
 import { BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isMobileApp } from '@tcp/core/src/utils';
+import {
+  getIsKeepAliveProduct,
+  getIsKeepAliveProductApp,
+} from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchBarStyle from '../SearchBar.style';
 import { routerPush } from '../../../../../utils/index';
+import OutOfStockWaterMark from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
+import { getLabelsOutOfStock } from '../../../../features/browse/ProductListing/container/ProductListing.selectors';
 
 /**
  * This component produces a Search Bar component for Header
@@ -44,7 +51,7 @@ class LookingForProductDetail extends React.PureComponent {
   };
 
   render() {
-    const { searchResults } = this.props;
+    const { searchResults, isKeepAliveEnabled, outOfStockLabels } = this.props;
 
     return (
       <React.Fragment>
@@ -53,10 +60,11 @@ class LookingForProductDetail extends React.PureComponent {
             {searchResults &&
               searchResults.autosuggestProducts &&
               searchResults.autosuggestProducts.map(item => {
+                const keepAlive = isKeepAliveEnabled && item.keepAlive;
                 return (
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
-                      className="suggestion-label"
+                      className="suggestion-label out-of-stock-wrapper"
                       noLink
                       to={`/${getSiteId()}${item.productUrl}`}
                       onClick={e => {
@@ -72,7 +80,14 @@ class LookingForProductDetail extends React.PureComponent {
                         }}
                         isProductImage
                         height="25px"
+                        lazyLoad={false}
                       />
+                      {keepAlive && (
+                        <OutOfStockWaterMark
+                          label={outOfStockLabels.outOfStockCaps}
+                          fontSizes={['fs12', 'fs16', 'fs12']}
+                        />
+                      )}
                     </Anchor>
                   </BodyCopy>
                 );
@@ -101,4 +116,13 @@ LookingForProductDetail.defaultProps = {
   },
 };
 
-export default connect()(withStyles(LookingForProductDetail, SearchBarStyle));
+const mapStateToProps = state => {
+  return {
+    isKeepAliveEnabled: isMobileApp()
+      ? getIsKeepAliveProductApp(state)
+      : getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(LookingForProductDetail, SearchBarStyle));

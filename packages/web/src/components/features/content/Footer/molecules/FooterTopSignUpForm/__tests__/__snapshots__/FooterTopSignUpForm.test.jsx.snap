@@ -30,7 +30,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-dnqmqq",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -173,7 +173,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-dnqmqq",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -184,6 +184,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
           enableSuccessCheck={false}
           id="signup"
           name="signup"
+          onChange={[Function]}
           placeholder="Enter email address"
           type="text"
         />
@@ -207,7 +208,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
           buttonVariation="fixed-width"
           className="candidate_a_form_button"
           data-locator="email_submit_btn"
-          disabled={false}
+          disabled={true}
           type="submit"
         >
           Submit
@@ -238,7 +239,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-VigVT",
+                "componentId": "sc-fjdhpX",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -361,7 +362,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-VigVT",
+              "styledComponentId": "sc-fjdhpX",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

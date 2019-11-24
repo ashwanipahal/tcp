@@ -14,7 +14,6 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
-    margin-bottom: auto;
   }
   .favorite-count {
     text-align: center;
@@ -45,7 +44,7 @@ const styles = css`
 
   .added-to-bag {
     width: 100%;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     &:focus {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
@@ -90,10 +89,13 @@ const styles = css`
     outline: none;
     font-family: ${props => props.theme.typography.fonts.secondary};
     white-space: nowrap;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .move-item-section {
-    min-width: 256px;
+    min-width: 310px;
     border: solid 1px ${props => props.theme.colors.BUTTON.WHITE.BORDER};
     background: ${props => props.theme.colors.WHITE};
     position: absolute;
@@ -101,7 +103,7 @@ const styles = css`
     top: 40px;
 
     &.item__odd {
-      right: 60px;
+      right: 0;
     }
   }
 
@@ -129,11 +131,12 @@ const styles = css`
     text-transform: lowercase;
     display: inline-block;
     padding-right: 2px;
+    padding-top: 3px;
   }
 
-  .wish-list-count,
-  .wish-list-name {
-    font-weight: 800;
+  .default-list-item,
+  .default-list-count {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
 
   .create-new__button {
@@ -165,6 +168,9 @@ const styles = css`
   .wish-list-item__button {
     text-align: left;
     width: 100%;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .edit-fav-item__button {
@@ -187,7 +193,7 @@ const styles = css`
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    height: 20px;
     span {
       visibility: visible;
     }
@@ -197,9 +203,6 @@ const styles = css`
   }
 
   .product-image-container {
-    @media ${props => props.theme.mediaQuery.large} {
-      height: 320px;
-    }
     position: relative;
   }
 
@@ -236,6 +239,7 @@ const styles = css`
 
     .container-price {
       margin-top: 4px;
+      height: 47px;
     }
     .product-title-container {
       height: 47px;

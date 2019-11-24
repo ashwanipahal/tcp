@@ -16,7 +16,7 @@ import { Container, RowContainer } from '../styles/EditList.style.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import RemoveList from '../../RemoveList';
+import DeleteList from '../../DeleteList';
 
 class EditList extends React.PureComponent {
   constructor(props) {
@@ -27,15 +27,20 @@ class EditList extends React.PureComponent {
   }
 
   submitHandler = () => {
-    const { handleSubmit, onHandleSubmit } = this.props;
+    const { handleSubmit, onHandleSubmit, activeWishListId } = this.props;
     handleSubmit(data => {
       if (onHandleSubmit) {
-        onHandleSubmit(data);
+        const payload = {
+          wishlistId: activeWishListId,
+          wishlistName: data.listName,
+          setAsDefault: data.default_checkbox,
+        };
+        onHandleSubmit(payload);
       }
     })();
   };
 
-  onRemoveListHandler = () => {
+  onDeleteListHandler = () => {
     this.setState({
       isShowRemoveModal: true,
     });
@@ -47,18 +52,18 @@ class EditList extends React.PureComponent {
     });
   };
 
-  renderRemoveListPopup = () => {
-    const { labels, onRemoveList } = this.props;
+  renderDeleteListPopup = () => {
+    const { labels, onDeleteList } = this.props;
     return (
-      <RemoveList labels={labels} onRemoveList={onRemoveList} onCloseModal={this.onRemoveCancel} />
+      <DeleteList labels={labels} onDeleteList={onDeleteList} onCloseModal={this.onRemoveCancel} />
     );
   };
 
   render() {
-    const { labels, margins, onCloseModal } = this.props;
+    const { labels, margins, onCloseModal, initialValues, isCheckBoxDisabled } = this.props;
     const { isShowRemoveModal } = this.state;
     if (isShowRemoveModal) {
-      return this.renderRemoveListPopup();
+      return this.renderDeleteListPopup();
     }
     return (
       <Container margins={margins}>
@@ -88,8 +93,9 @@ class EditList extends React.PureComponent {
             inputVariation="inputVariation-1"
             name="default_checkbox"
             component={InputCheckbox}
+            {...initialValues}
+            disabled={isCheckBoxDisabled}
             dataLocator="default_checkbox"
-            disabled={false}
             rightText={getLabelValue(labels, 'lbl_fav_default_list')}
             textMargin="4px 0 0 0"
           />
@@ -116,19 +122,21 @@ class EditList extends React.PureComponent {
           onPress={onCloseModal}
           text={getLabelValue(labels, 'btn_fav_cancel')}
         />
-        <Anchor
-          locator="btn_fav_delete_list"
-          accessibilityRole="link"
-          accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
-          text={getLabelValue(labels, 'btn_fav_delete_list')}
-          anchorVariation="custom"
-          colorName="gray.900"
-          fontSizeVariation="large"
-          onPress={this.onRemoveListHandler}
-          centered
-          underline
-          margins="22px 0 0 0"
-        />
+        {!isCheckBoxDisabled && (
+          <Anchor
+            locator="btn_fav_delete_list"
+            accessibilityRole="link"
+            accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
+            text={getLabelValue(labels, 'btn_fav_delete_list')}
+            anchorVariation="custom"
+            colorName="gray.900"
+            fontSizeVariation="large"
+            onPress={this.onDeleteListHandler}
+            centered
+            underline
+            margins="22px 0 0 0"
+          />
+        )}
       </Container>
     );
   }
@@ -140,7 +148,10 @@ EditList.propTypes = {
   margins: PropTypes.string,
   onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func,
-  onRemoveList: PropTypes.func,
+  onDeleteList: PropTypes.func,
+  activeWishListId: PropTypes.number.isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
+  isCheckBoxDisabled: PropTypes.bool,
 };
 
 EditList.defaultProps = {
@@ -148,7 +159,8 @@ EditList.defaultProps = {
   handleSubmit: () => {},
   margins: null,
   onCloseModal: () => {},
-  onRemoveList: () => {},
+  onDeleteList: () => {},
+  isCheckBoxDisabled: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));

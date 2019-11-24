@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -25,14 +25,24 @@ class MiniBagBody extends React.PureComponent {
     super(props);
     this.state = {
       headerError: false,
+      isShowServerError: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { addedToBagError } = this.props;
+    const { addedToBagError: prevAddedToBagError } = prevProps;
+    const { isShowServerError } = this.state;
+    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.isShowServerError();
   }
 
   componentWillUnmount() {
     const { resetSuccessMessage } = this.props;
     resetSuccessMessage(false);
   }
-
+  setisShowServerError = () => {
+    this.setState({ isShowServerError: true });
+  };
   setHeaderErrorState = (state, ...params) => {
     this.setState({ headerError: true, params });
   };
@@ -49,13 +59,20 @@ class MiniBagBody extends React.PureComponent {
     return (
       <Anchor
         fontSizeVariation="medium"
+        noLink
         underline
         anchorVariation="primary"
-        asPath={CHECKOUT_ROUTES.bagPage.asPath}
-        to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
-        onClick={() => closeMiniBag()}
+        onClick={e => {
+          const timestamp = Date.now();
+          e.preventDefault();
+          routerPush(
+            `${CHECKOUT_ROUTES.bagPage.to}?isSfl=${timestamp}`,
+            `${CHECKOUT_ROUTES.bagPage.to}`
+          );
+          closeMiniBag();
+        }}
       >
         {`${labels.viewSfl} (${savedforLaterQty})`}
       </Anchor>
@@ -168,7 +185,7 @@ class MiniBagBody extends React.PureComponent {
       isUserLoggedIn,
       isMiniBag,
     } = this.props;
-    const { headerError, params } = this.state;
+    const { headerError, params, isShowServerError } = this.state;
     return (
       <div className={className}>
         <div className="minibag-viewbag">
@@ -210,7 +227,7 @@ class MiniBagBody extends React.PureComponent {
             {this.renderGiftCardError()}
           </Row>
         </div>
-        {this.renderServerError()}
+        {isShowServerError ? this.renderServerError() : null}
         <BodyCopy component="div" className="viewBagAndProduct">
           {cartItemCount ? (
             <ProductTileWrapper

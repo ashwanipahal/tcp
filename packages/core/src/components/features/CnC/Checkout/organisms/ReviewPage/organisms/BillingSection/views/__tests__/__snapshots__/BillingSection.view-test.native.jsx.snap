@@ -106,7 +106,6 @@ exports[`BillingSection should render correctly without address details 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
-              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -183,6 +182,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
             alt=""
             height={15}
             host=""
+            marginTop={17}
             source={
               Object {
                 "testUri": "../../../../core/src/assets/info-icon.png",

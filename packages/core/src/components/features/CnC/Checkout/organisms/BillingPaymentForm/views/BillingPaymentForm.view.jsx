@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
-import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BillingPaymentForm.style';
@@ -44,6 +44,7 @@ import {
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
   onAddNewCreditCardClick,
+  onCCDropDownChange,
 } from './BillingPaymentForm.util';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
@@ -107,7 +108,7 @@ export class BillingPaymentForm extends React.PureComponent {
         }
       />
     ) : (
-      <AddressSkeleton />
+      <GenericSkeleton />
     );
   };
 
@@ -158,19 +159,6 @@ export class BillingPaymentForm extends React.PureComponent {
   };
 
   /**
-   * @function onCCDropDownChange
-   * @description sets the add new credit card state to false if it is true
-   */
-  onCCDropDownChange = () => {
-    const { addNewCCState } = this.state;
-    if (addNewCCState) {
-      this.setState({ addNewCCState: false });
-    }
-    const { dispatch } = this.props;
-    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
-  };
-
-  /**
    * @function onEditCardFocus
    * @description on edit card number field focus event to clear the field first time only
    */
@@ -210,7 +198,7 @@ export class BillingPaymentForm extends React.PureComponent {
             childrenComp={(options, onClickHandler, activeValue, onClose) =>
               this.getCreditCardDropDown(options, onClickHandler, activeValue, onClose)
             }
-            onChange={this.onCCDropDownChange}
+            onChange={() => onCCDropDownChange(this)}
             customTitle={labels.addCreditCard}
           />
         </Col>
@@ -398,7 +386,13 @@ export class BillingPaymentForm extends React.PureComponent {
     const { className, handleSubmit, cardList, isGuest, pageCategory } = this.props;
     const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, venmoError } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup, isPayPalEnabled } = this.props;
-    const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
+    const {
+      backLinkShipping,
+      nextSubmitText,
+      isPaymentDisabled,
+      showAccordian,
+      bagLoading,
+    } = this.props;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <form
@@ -463,6 +457,7 @@ export class BillingPaymentForm extends React.PureComponent {
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
           venmoError={venmoError}
+          bagLoading={bagLoading}
         />
       </form>
     );

@@ -10,11 +10,31 @@ import StyledApplyNowModal from '../../molecules/ApplyNowModal/views/ApplyNowMod
 
 class ApplyNowModalWrapper extends React.Component {
   componentDidMount() {
-    const { labels, fetchModuleXContent, resetPLCCApplicationStatus } = this.props;
-    if (labels && labels.referred) {
+    const {
+      labels,
+      fetchModuleXContent,
+      resetPLCCApplicationStatus,
+      isModalOpen,
+      isPLCCModalOpen,
+    } = this.props;
+
+    if (labels && labels.referred && (isModalOpen || isPLCCModalOpen)) {
       fetchModuleXContent(labels.referred);
     }
     resetPLCCApplicationStatus({ status: null });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isModalOpen, isPLCCModalOpen, labels, fetchModuleXContent } = this.props;
+
+    if (
+      ((!prevProps.isModalOpen && isModalOpen) ||
+        (!prevProps.isPLCCModalOpen && isPLCCModalOpen)) &&
+      labels &&
+      labels.referred
+    ) {
+      fetchModuleXContent(labels.referred);
+    }
   }
 
   setRTPSFlow = () => {

@@ -31,8 +31,10 @@ const mapStateToProps = state => {
   return {
     loyaltyPromoBanner: Header.loyaltyPromoBanner,
     brandTabs: Header.brandTabs,
+    topPromoBanner: Header.topPromoBanner,
     promoMessageWrapper: Header.promoMessageWrapper,
-    headerPromoArea: Header.promoTextBannerCarousel,
+    headerPromoTextArea: Header.promoTextBannerCarousel,
+    headerPromoHtmlArea: Header.promoHtmlBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
     isUserPlcc: isPlccUser(state),
     userName: getUserName(state),

@@ -120,6 +120,8 @@ class BundleProduct extends React.PureComponent {
       outOfStockLabels,
       currencyAttributes,
       currency,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -140,6 +142,8 @@ class BundleProduct extends React.PureComponent {
             currencySymbol={currency}
             currencyAttributes={currencyAttributes}
             className="bundle-products-list"
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           />
         </Col>
       </Row>
@@ -250,12 +254,12 @@ class BundleProduct extends React.PureComponent {
                 >
                   {this.getProductSummary(currentColorEntry)}
                   {this.getProductDescription()}
-                  {this.getRecommendations()}
                 </Col>
               </Row>
               {this.getBundleProductsList()}
             </Col>
           </Row>
+          {this.getRecommendations()}
         </div>
       );
     }
@@ -286,6 +290,8 @@ BundleProduct.propTypes = {
   addToBagError: PropTypes.string,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 BundleProduct.defaultProps = {
@@ -303,6 +309,8 @@ BundleProduct.defaultProps = {
   addToBagErrorId: '',
   addToBagError: '',
   outOfStockLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(BundleProduct, styles);

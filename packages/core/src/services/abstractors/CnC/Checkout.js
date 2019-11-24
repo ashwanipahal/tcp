@@ -1048,11 +1048,8 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);
       }
-      const rtpsData = extractRtpsEligibleAndCode(res);
       return {
         orderId: res.body.orderId,
-        plccEligible: rtpsData.plccEligible,
-        prescreenCode: rtpsData.prescreenCode,
       };
     })
     .catch(err => {

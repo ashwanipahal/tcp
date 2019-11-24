@@ -8,6 +8,12 @@ export default css`
   overflow: hidden;
   position: relative;
 
+  .moduleH_carousel_wrapper {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 100%;
+    }
+  }
+
   img {
     height: 425px;
     @media ${props => props.theme.mediaQuery.medium} {

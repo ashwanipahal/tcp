@@ -45,6 +45,7 @@ class ReviewPage extends React.PureComponent {
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
     bagLoading: PropTypes.bool,
+    cartLoading: PropTypes.func,
   };
 
   static defaultProps = {
@@ -55,7 +56,14 @@ class ReviewPage extends React.PureComponent {
     isPaymentDisabled: false,
     pageCategory: '',
     bagLoading: false,
+    cartLoading: () => {},
   };
+
+  constructor(props) {
+    super(props);
+    const { cartLoading } = props;
+    if (cartLoading) cartLoading();
+  }
 
   componentDidMount() {
     const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
@@ -120,14 +128,14 @@ class ReviewPage extends React.PureComponent {
     } = labels;
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {ServerErrors && <ServerErrors />}
-        {!!orderHasPickUp && (
+        {(!!orderHasPickUp || !checkoutRoutingDone) && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer
               isExpressCheckout={isExpressCheckout}
@@ -135,11 +143,12 @@ class ReviewPage extends React.PureComponent {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
               bagLoading={bagLoading}
+              checkoutRoutingDone={checkoutRoutingDone}
             />
           </div>
         )}
         <FormSection name={expressReviewShippingSection}>
-          {!!orderHasShipping && (
+          {(!!orderHasShipping || !checkoutRoutingDone) && (
             <div className="review-shipping">
               <ShippingReviewSection
                 isExpressCheckout={isExpressCheckout}
@@ -150,12 +159,21 @@ class ReviewPage extends React.PureComponent {
                   utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
                 }}
                 bagLoading={bagLoading}
+                checkoutRoutingDone={checkoutRoutingDone}
               />
             </div>
           )}
         </FormSection>
-        <BillingSection isExpressCheckout={isExpressCheckout} bagLoading={bagLoading} />
-        <CheckoutCartItemList disableProductRedirect bagLoading={bagLoading} />
+        <BillingSection
+          isExpressCheckout={isExpressCheckout}
+          bagLoading={bagLoading}
+          checkoutRoutingDone={checkoutRoutingDone}
+        />
+        <CheckoutCartItemList
+          disableProductRedirect
+          bagLoading={bagLoading}
+          checkoutRoutingDone={checkoutRoutingDone}
+        />
         <CheckoutOrderInfo
           showAccordian={showAccordian}
           isGuest={isGuest}
@@ -189,6 +207,7 @@ class ReviewPage extends React.PureComponent {
               {applyConditionPolicyText}
             </Anchor>,
           ]}
+          bagLoading={bagLoading}
         />
       </form>
     );

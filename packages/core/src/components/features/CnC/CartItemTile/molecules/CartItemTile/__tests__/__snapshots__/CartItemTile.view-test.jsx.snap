@@ -6789,7 +6789,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-frDJqD",
+        "componentId": "sc-jbKcbu",
         "isStatic": false,
         "rules": Array [
           "
@@ -6852,7 +6852,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
     padding-top: 15px;
   }
   .padding-top-40 {
-    padding-top: 41px;
+    padding-top: 26px;
+
+    @media ",
+          [Function],
+          " {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -7282,6 +7288,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .dam-image-review-page {
     width: 55px;
   }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
 
   ",
           [Function],
@@ -7294,7 +7303,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-frDJqD",
+      "styledComponentId": "sc-jbKcbu",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7338,7 +7347,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-frDJqD",
+        "componentId": "sc-jbKcbu",
         "isStatic": false,
         "rules": Array [
           "
@@ -7401,7 +7410,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     padding-top: 15px;
   }
   .padding-top-40 {
-    padding-top: 41px;
+    padding-top: 26px;
+
+    @media ",
+          [Function],
+          " {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -7831,6 +7846,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .dam-image-review-page {
     width: 55px;
   }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
 
   ",
           [Function],
@@ -7843,7 +7861,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-frDJqD",
+      "styledComponentId": "sc-jbKcbu",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
