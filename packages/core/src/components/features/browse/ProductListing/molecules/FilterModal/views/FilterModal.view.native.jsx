@@ -125,7 +125,9 @@ class FilterModal extends React.PureComponent {
       // restore sort if available
       filterData = { ...filterData, sort: language };
     }
-    onSubmit(filterData, false, getProducts, url, true);
+    if (onSubmit) {
+      onSubmit(filterData, false, getProducts, url, true);
+    }
 
     if (!filters) {
       this.setModalVisibilityState(false);
@@ -225,7 +227,9 @@ class FilterModal extends React.PureComponent {
                   labelsFilter={labelsFilter}
                   filters={filters}
                   onSubmit={filter => {
-                    setSelectedFilter(filter);
+                    if (setSelectedFilter) {
+                      setSelectedFilter(filter);
+                    }
                     this.applyFilters(filter);
                   }}
                   ref={ref => {

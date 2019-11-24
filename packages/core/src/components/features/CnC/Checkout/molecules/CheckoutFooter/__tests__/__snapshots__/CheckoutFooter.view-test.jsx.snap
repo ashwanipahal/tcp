@@ -14,6 +14,11 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
     <div
       className="back-space"
     />
+    <div
+      className="footer-button footer-button-web"
+    >
+      <SkeletonLine />
+    </div>
   </div>
 </div>
 `;
@@ -37,6 +42,11 @@ exports[`CheckoutFooterVanilla component should renders correctly with footer 1`
     <div
       className="back-space"
     />
+    <div
+      className="footer-button footer-button-web"
+    >
+      <SkeletonLine />
+    </div>
   </div>
 </div>
 `;
@@ -55,6 +65,11 @@ exports[`CheckoutFooterVanilla component should renders correctly with venmo 1`]
     <div
       className="back-space"
     />
+    <div
+      className="footer-button footer-button-web"
+    >
+      <SkeletonLine />
+    </div>
   </div>
 </div>
 `;
@@ -77,6 +92,11 @@ exports[`CheckoutFooterVanilla component should renders correctly with venmo and
     <div
       className="back-space"
     />
+    <div
+      className="footer-button footer-button-web"
+    >
+      <SkeletonLine />
+    </div>
   </div>
 </div>
 `;

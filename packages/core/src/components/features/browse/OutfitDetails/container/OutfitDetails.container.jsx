@@ -1,5 +1,6 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -110,6 +111,7 @@ class OutfitDetailsContainer extends React.PureComponent {
       isLoggedIn,
       navigation,
       pdpLabels,
+      toastMessage,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
     } = this.props;
@@ -137,6 +139,7 @@ class OutfitDetailsContainer extends React.PureComponent {
           navigation={navigation}
           outfitId={outfitIdLocal}
           pdpLabels={pdpLabels}
+          toastMessage={toastMessage}
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
@@ -148,6 +151,11 @@ class OutfitDetailsContainer extends React.PureComponent {
 
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
+  pageData: {
+    pageName: 'product',
+    pageSection: 'product',
+    pageSubSection: 'product',
+  },
 };
 
 const mapStateToProps = state => {
@@ -185,6 +193,9 @@ function mapDispatchToProps(dispatch) {
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
@@ -212,6 +223,7 @@ OutfitDetailsContainer.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
@@ -234,6 +246,7 @@ OutfitDetailsContainer.defaultProps = {
   isPickupModalOpen: false,
   isLoggedIn: false,
   pdpLabels: {},
+  toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
 };
