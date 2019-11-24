@@ -14,8 +14,10 @@ const StyledModal = css`
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
   z-index: ${props => props.theme.zindex.zDrawer};
   ${props =>
-    props.isAccountDrawer
-      ? ''
+    props.component === 'accountDrawer'
+      ? `@media ${props.theme.mediaQuery.smallOnly} {
+        width: 100%;
+      }`
       : `@media ${props.theme.mediaQuery.smallOnly} {
       position: fixed;
       top: 0 !important;
@@ -34,7 +36,16 @@ const StyledModal = css`
   }
   .condensed-overlay {
     top: 0;
-
+    ${props =>
+      props.component === 'accountDrawer'
+        ? `
+      @media ${props.theme.mediaQuery.small} {
+        overflow-y: scroll;
+        position: fixed;
+        top: 61px;
+      }
+    `
+        : ''}
     @media ${props => props.theme.mediaQuery.medium} {
       overflow-y: scroll;
       position: fixed;
@@ -47,7 +58,10 @@ const StyledModal = css`
   }
   .modal__bar {
     position: absolute;
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props =>
+      props.component === 'accountDrawer'
+        ? props.theme.mediaQuery.small
+        : props.theme.mediaQuery.medium} {
       position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
     }
     height: 8px;
@@ -81,6 +95,17 @@ const StyledModal = css`
     border-bottom: 10px solid ${props => props.theme.colorPalette.userTheme.noMprPlcc};
   }
   .modal__triangle.condensed-modal-triangle {
+    ${props =>
+      props.component === 'accountDrawer'
+        ? `
+      @media ${props.theme.mediaQuery.small} {
+        position: fixed;
+        top: 52px;
+        right: 74px;
+      }
+    `
+        : ''}
+
     @media ${props => props.theme.mediaQuery.medium} {
       position: fixed;
       top: 52px;

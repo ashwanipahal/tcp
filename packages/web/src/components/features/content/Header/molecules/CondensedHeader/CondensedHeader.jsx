@@ -234,6 +234,7 @@ class CondensedHeader extends React.PureComponent {
                     textAlign="right"
                     className="username"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
+                    data-overlayTarget="true"
                   >
                     <Image
                       alt={accountIconButton}
@@ -251,6 +252,7 @@ class CondensedHeader extends React.PureComponent {
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
+                  data-overlayTarget="true"
                 >
                   <Image
                     alt={accountIconButton}
