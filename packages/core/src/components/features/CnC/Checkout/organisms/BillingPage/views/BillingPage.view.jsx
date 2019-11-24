@@ -81,9 +81,6 @@ class BillingPage extends React.PureComponent {
       bagLoading,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
-    // if (!checkoutRoutingDone) {
-    //   return <div>Loading....</div>;
-    // }
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
