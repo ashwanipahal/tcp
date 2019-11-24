@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
@@ -161,13 +162,15 @@ class ProductAddToBag extends React.PureComponent<Props> {
       onCloseClick,
       selectedColorProductId,
       keepAlive,
+      isFromBagProductSfl,
+      isPickup,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
     );
-    return (
+    return !isFromBagProductSfl && !isPickup ? (
       <ProductPickupContainer
         productInfo={currentProduct}
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
@@ -177,7 +180,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         miscInfo={currentColorEntry.miscInfo}
         keepAlive={keepAlive}
       />
-    );
+    ) : null;
   };
 
   renderSizeList = (sizeList, colorFitSizeDisplayNames, errorMessage) => {
@@ -231,6 +234,22 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
+  getPageShortName = currentProduct => {
+    let pageShortName = '';
+    let outfitPageShortName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    const productName = currentProduct && currentProduct.name.toLowerCase();
+    if (productId) {
+      pageShortName = `product:${productId}:${productName}`;
+      outfitPageShortName = `outfit:${productId}:${productName}`;
+    }
+    return {
+      pageShortName,
+      productId,
+      outfitPageShortName,
+    };
+  };
+
   render() {
     const {
       plpLabels,
@@ -249,8 +268,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       keepAlive,
       isFromBagProductSfl,
       quickViewPickup,
+      currentProduct,
     } = this.props;
-
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
     colorFitSizeDisplayNames = {
       color: 'Color',
@@ -266,7 +285,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
     colorList = fromJS(colorList);
     const { errorMessage, fit: fitTitle } = plpLabels;
-
+    const { pageShortName, productId, outfitPageShortName } = this.getPageShortName(currentProduct);
+    const pageName = pageShortName;
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
@@ -294,23 +314,35 @@ class ProductAddToBag extends React.PureComponent<Props> {
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
-                <Button
-                  type="submit"
-                  className="add-to-bag-button"
-                  disabled={keepAlive}
-                  onClick={e => {
-                    e.preventDefault();
-                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-                    if (fitChanged) {
-                      displayErrorMessage(fitChanged);
-                    } else {
-                      displayATBErrorMessage(true);
-                      handleFormSubmit();
-                    }
+                <ClickTracker
+                  clickData={{
+                    eventName: 'cart add',
+                    pageShortName,
+                    pageName,
+                    pageType: 'product',
+                    pageSection: 'product',
+                    pageSubSection: 'product',
+                    products: [{ id: `${productId}` }],
                   }}
                 >
-                  {this.getButtonLabel()}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="add-to-bag-button"
+                    disabled={keepAlive}
+                    onClick={e => {
+                      e.preventDefault();
+                      // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                      if (fitChanged) {
+                        displayErrorMessage(fitChanged);
+                      } else {
+                        displayATBErrorMessage(true);
+                        handleFormSubmit();
+                      }
+                    }}
+                  >
+                    {this.getButtonLabel()}
+                  </Button>
+                </ClickTracker>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
               {!isBundleProduct && this.renderOutfitButton()}
@@ -321,24 +353,37 @@ class ProductAddToBag extends React.PureComponent<Props> {
             >
               {!isBundleProduct && this.renderOutfitButton()}
               <div className="button-wrapper">
-                <Button
-                  type="submit"
-                  className="add-to-bag-button"
-                  disabled={keepAlive}
-                  // eslint-disable-next-line sonarjs/no-identical-functions
-                  onClick={e => {
-                    e.preventDefault();
-                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-                    if (fitChanged) {
-                      displayErrorMessage(fitChanged);
-                    } else {
-                      displayATBErrorMessage(true);
-                      handleFormSubmit();
-                    }
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['scAdd,scOpen,event85,event61,event77'],
+                    eventName: 'cart add',
+                    pageShortName,
+                    pageName: outfitPageShortName,
+                    pageType: 'outfit',
+                    pageSection: 'outfit',
+                    pageSubSection: 'outfit',
+                    products: [{ id: `${productId}` }],
                   }}
                 >
-                  {this.getButtonLabel()}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="add-to-bag-button"
+                    disabled={keepAlive}
+                    // eslint-disable-next-line sonarjs/no-identical-functions
+                    onClick={e => {
+                      e.preventDefault();
+                      // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                      if (fitChanged) {
+                        displayErrorMessage(fitChanged);
+                      } else {
+                        displayATBErrorMessage(true);
+                        handleFormSubmit();
+                      }
+                    }}
+                  >
+                    {this.getButtonLabel()}
+                  </Button>
+                </ClickTracker>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
             </Col>

@@ -18,6 +18,9 @@ const Abstractor = {
     try {
       return {
         brandTabs: data.submodules.topNavWrapper.composites.brand_tabs,
+        topPromoBanner: data.submodules.topNavWrapper.composites.top_promo_banner
+          ? data.submodules.topNavWrapper.composites.top_promo_banner
+          : null,
         promoMessageWrapper: data.submodules.topNavWrapper.composites.promo_message_wrapper,
         promoTextBannerCarousel: data.submodules.promoTextBannerCarousel
           ? data.submodules.promoTextBannerCarousel.composites.promoTextBanner
@@ -33,6 +36,7 @@ const Abstractor = {
         promoMessageWrapper: [],
         promoTextBannerCarousel: [],
         promoHtmlBannerCarousel: [],
+        topPromoBanner: [],
       };
     }
   },

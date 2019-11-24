@@ -284,6 +284,7 @@ export const mapStateToProps = state => {
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
     pickUpAlternatePerson: getPickupAltValues(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
     isHasPickUpAlternatePerson: isPickupAlt(state),
     pickUpContactPerson: getPickupValues(state),
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),

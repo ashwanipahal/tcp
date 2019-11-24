@@ -47,6 +47,7 @@ const ProductCustomizeFormPart = props => {
     onInputSelectionChange,
     toastMessage,
     onCloseClick,
+    isFromBagProductSfl,
     ...otherProps
   } = props;
 
@@ -160,6 +161,7 @@ const ProductCustomizeFormPart = props => {
           toastMessage={toastMessage}
           onCloseClick={onCloseClick}
           isMultiItemQVModal={isMultiItemQVModal}
+          isFromBagProductSfl={isFromBagProductSfl}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>

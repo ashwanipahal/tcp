@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kpOJdX",
+                  "componentId": "sc-dxgOiQ",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -140,7 +140,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kpOJdX",
+                "styledComponentId": "sc-dxgOiQ",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -333,6 +333,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 },
               ],
               "generalProductId": "3000935_IV",
+              "name": "Girl School Uniform",
               "ratingsProductId": "2100622",
             }
           }
@@ -389,7 +390,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kpOJdX",
+                  "componentId": "sc-dxgOiQ",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -499,7 +500,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kpOJdX",
+                "styledComponentId": "sc-dxgOiQ",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -727,6 +728,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 },
               ],
               "generalProductId": "3000935_IV",
+              "name": "Girl School Uniform",
               "ratingsProductId": "2100622",
             }
           }

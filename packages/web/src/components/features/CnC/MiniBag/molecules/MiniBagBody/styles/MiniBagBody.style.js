@@ -93,7 +93,6 @@ export default css`
 
   .checkout {
     height: 48px;
-    margin-left: 10px;
     flex: 1;
 
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};

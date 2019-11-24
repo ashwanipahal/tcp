@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import { Wrapper, SMSWrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
+import { Wrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import {
   checkIfShippingFullName,
@@ -69,15 +67,6 @@ const ConfirmationView = ({
   return (
     <Wrapper>
       <InnerWrapper>
-        <SMSWrapper>
-          <BodyCopyWithSpacing
-            textAlign="center"
-            fontSize="fs16"
-            mobileFontFamily="secondary"
-            spacingStyles="margin-top-LRG margin-bottom-LRG"
-            text="SMS SIGN UP"
-          />
-        </SMSWrapper>
         {!isGymboreeCanadaSite && <SMSNotifications />}
         <ThankYouComponent
           emailAddress={emailAddress}

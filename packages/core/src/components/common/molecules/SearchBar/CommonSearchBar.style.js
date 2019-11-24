@@ -194,6 +194,7 @@ export const commonStyles = css`
   }
 
   li.productBox {
+    position: relative;
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     height: 87px;
     width: 88px;
@@ -202,6 +203,11 @@ export const commonStyles = css`
       height: 152px;
       width: 152px;
     }
+  }
+
+  li a.out-of-stock-wrapper {
+    position: absolute;
+    height: 100%;
   }
 
   .autosuggest-image {

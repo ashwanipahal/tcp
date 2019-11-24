@@ -61,6 +61,13 @@ renderPickUpStore.propTypes = {
   outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
+const navigateToPdp = (navigation, outfitProduct) =>
+  navigation.navigate('ProductDetail', {
+    title: outfitProduct.name,
+    pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
+    reset: true,
+  });
+
 const renderImageContainer = ({
   navigation,
   outfitProduct,
@@ -85,15 +92,10 @@ const renderImageContainer = ({
         imageUrls={imageUrls}
         keepAlive={keepAlive}
         outOfStockLabels={outOfStockLabels}
+        onImageClick={() => navigateToPdp(navigation, outfitProduct)}
       />
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('ProductDetail', {
-            title: outfitProduct.name,
-            pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
-            reset: true,
-          })
-        }
+        onPress={() => navigateToPdp(navigation, outfitProduct)}
         accessible
         accessibilityRole="button"
         accessibilityLabel={`${outfitProduct.name}`}
@@ -350,14 +352,21 @@ const OutfitDetailsView = ({
             />
           )}
           {renderOutOfStockError(keepAlive, outOfStockLabels)}
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs18"
-            fontWeight="extrabold"
-            color="gray.900"
-            text={name}
-            margin="0 0 4px 0"
-          />
+          <TouchableOpacity
+            onPress={_ => navigateToPdp(navigation, outfitProduct)}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={`${name}`}
+          >
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize="fs18"
+              fontWeight="extrabold"
+              color="gray.900"
+              text={name}
+              margin="0 0 4px 0"
+            />
+          </TouchableOpacity>
           <BodyCopy
             margin="4px 0 0 0"
             mobileFontFamily="secondary"
@@ -447,7 +456,7 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
   addToBagError: PropTypes.string,
-  toastMessage: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
 };
@@ -467,6 +476,7 @@ OutfitDetailsView.defaultProps = {
   isBundleProduct: false,
   addToBagError: '',
   outOfStockLabels: {},
+  toastMessage: () => {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

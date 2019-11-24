@@ -23,9 +23,14 @@ import ModalWrapper from '../molecules/ModalWrapper';
 class FavoritesView extends React.PureComponent {
   currentPopupName;
 
-  state = {
-    isOpenModal: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpenModal: false,
+      itemToMove: '',
+      addListFromMoveOption: false,
+    };
+  }
 
   static getDerivedStateFromProps(props) {
     const { wishlistShareStatus } = props;
@@ -102,6 +107,7 @@ class FavoritesView extends React.PureComponent {
       selectedColorProductId,
       isKeepAliveEnabled,
       outOfStockLabels,
+      activeWishList,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -121,6 +127,8 @@ class FavoritesView extends React.PureComponent {
             createNewWishListMoveItem={createNewWishListMoveItem}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            openAddNewList={this.handleAddList}
+            activeWishListId={activeWishList.id}
           />
           <QuickViewModal selectedColorProductId={selectedColorProductId} />
         </>
@@ -129,7 +137,13 @@ class FavoritesView extends React.PureComponent {
   };
 
   brandFilterList = () => {
-    const { labels, selectBrandType, gymSelected, tcpSelected } = this.props;
+    const {
+      labels,
+      selectBrandType,
+      gymSelected,
+      tcpSelected,
+      isBothTcpAndGymProductAreAvailable,
+    } = this.props;
     const brandOptions = [
       {
         name: 'gymboreeOption',
@@ -144,6 +158,9 @@ class FavoritesView extends React.PureComponent {
         checked: tcpSelected,
       },
     ];
+    if (!isBothTcpAndGymProductAreAvailable) {
+      return null;
+    }
     return (
       <>
         <div>
@@ -166,11 +183,19 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  handleAddList = () => {
+  handleAddList = itemId => {
     this.currentPopupName = 'addList';
-    this.setState({
-      isOpenModal: true,
-    });
+    if (itemId) {
+      this.setState({
+        isOpenModal: true,
+        itemToMove: itemId,
+        addListFromMoveOption: true,
+      });
+    } else {
+      this.setState({
+        isOpenModal: true,
+      });
+    }
   };
 
   handleEditList = () => {
@@ -194,10 +219,18 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
-  onCloseModal = () => {
-    this.setState({
-      isOpenModal: false,
-    });
+  onCloseModal = moveItem => {
+    if (moveItem) {
+      this.setState({
+        isOpenModal: false,
+        itemToMove: '',
+        addListFromMoveOption: false,
+      });
+    } else {
+      this.setState({
+        isOpenModal: false,
+      });
+    }
   };
 
   getCurrentPopUpHeading = () => {
@@ -213,11 +246,41 @@ class FavoritesView extends React.PureComponent {
   };
 
   onAddNewListHandler = data => {
-    console.log('onAddNewListHandler:', data);
+    const { createNewWishList, createNewWishListMoveItem } = this.props;
+    const { addListFromMoveOption } = this.state;
+    const payload = {
+      wishListName: data.listName,
+      isDefault: data.makeDefaultList,
+      itemId: data.itemId,
+    };
+    if (addListFromMoveOption) {
+      createNewWishListMoveItem(payload);
+      this.onCloseModal(true);
+    } else {
+      createNewWishList(payload);
+      this.onCloseModal(false);
+    }
   };
 
   onEditListHandler = data => {
-    console.log('onEditListHandler:', data);
+    const { updateWishList, activeWishListId } = this.props;
+    this.onCloseModal();
+    if (updateWishList) {
+      const payload = {
+        wishlistId: activeWishListId,
+        wishlistName: data.listName,
+        setAsDefault: data.makeDefaultList,
+      };
+      updateWishList(payload);
+    }
+  };
+
+  onDeleteListHandler = data => {
+    const { deleteWishList } = this.props;
+    this.onCloseModal();
+    if (deleteWishList) {
+      deleteWishList(data);
+    }
   };
 
   onShareListSubmit = data => {
@@ -253,23 +316,43 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
+  onDropdownChange = data => {
+    const { getActiveWishlist, resetBrandFilters } = this.props;
+    getActiveWishlist(data);
+    if (resetBrandFilters) {
+      resetBrandFilters();
+    }
+  };
+
   getCurrentPopUp = () => {
-    const { labels, userEmail } = this.props;
+    const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const { itemToMove } = this.state;
     if (this.currentPopupName === 'addList') {
       return (
         <AddList
           labels={labels}
-          onHandleSubmit={this.onAddNewListHandler}
+          onSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          initialValues={{
+            itemId: itemToMove,
+          }}
         />
       );
     }
     if (this.currentPopupName === 'editList') {
+      const isCheckBoxDisabled = (wishlistsSummaries && wishlistsSummaries.length === 1) || false;
       return (
         <EditList
           labels={labels}
-          onHandleSubmit={this.onEditListHandler}
+          onSubmit={this.onEditListHandler}
           onCloseModal={this.onCloseModal}
+          activeWishListId={activeWishListId}
+          onDeleteList={this.onDeleteListHandler}
+          initialValues={{
+            listName: activeWishList.displayName,
+            makeDefaultList: activeWishList.isDefault,
+          }}
+          isCheckBoxDisabled={isCheckBoxDisabled}
         />
       );
     }
@@ -304,13 +387,13 @@ class FavoritesView extends React.PureComponent {
       className,
       wishlistsSummaries,
       activeWishList,
-      getActiveWishlist,
       createNewWishList,
       labels,
       slpLabels,
       onFilterSelection,
       onSortSelection,
       defaultWishList,
+      isDataLoading,
     } = this.props;
 
     const shareOptions = [
@@ -339,10 +422,11 @@ class FavoritesView extends React.PureComponent {
       headerAlignment: 'left',
     };
 
-    const filteredItemsList = this.getFilteredItemsList();
-
+    // const filteredItemsList = this.getFilteredItemsList();
+    if (isDataLoading) return '';
     return (
       <div className={className}>
+        {this.renderModalWrapper()}
         <Row fullBleed>
           <Col
             colSize={{ small: 6, medium: 8, large: 12 }}
@@ -361,7 +445,7 @@ class FavoritesView extends React.PureComponent {
                   labels={labels}
                   wishlistsSummaries={wishlistsSummaries}
                   createNewWishList={createNewWishList}
-                  getActiveWishlist={getActiveWishlist}
+                  getActiveWishlist={this.onDropdownChange}
                   activeWishList={activeWishList}
                   defaultWishList={defaultWishList}
                   openAddNewList={this.handleAddList}
@@ -387,7 +471,7 @@ class FavoritesView extends React.PureComponent {
           </Col>
         </Row>
 
-        {filteredItemsList.length !== 0 ? (
+        {activeWishList && activeWishList.items.length !== 0 ? (
           <>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -423,7 +507,6 @@ class FavoritesView extends React.PureComponent {
                 {this.renderProductList()}
               </Col>
             </Row>
-            {this.renderModalWrapper()}
           </>
         ) : (
           <Row fullBleed>
@@ -449,7 +532,7 @@ FavoritesView.propTypes = {
   wishlistsSummaries: PropTypes.arrayOf({}),
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
-  // deleteWishList: PropTypes.func.isRequired, @TODO will be used in the wish-list pop-up
+  deleteWishList: PropTypes.func.isRequired,
   // getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   getActiveWishlist: PropTypes.func.isRequired,

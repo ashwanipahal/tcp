@@ -116,6 +116,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedColorProductId,
       onCloseClick,
       keepAlive,
+      isFromBagProductSfl,
+      isPickup,
+      isBundleProduct,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
@@ -123,7 +126,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedColorProductId
     );
 
-    return (
+    return !isFromBagProductSfl && !isPickup && !isBundleProduct ? (
       <ProductPickupContainer
         productInfo={currentProduct}
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
@@ -133,7 +136,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         onPickupClickAddon={onCloseClick}
         keepAlive={keepAlive}
       />
-    );
+    ) : null;
   };
 
   onQuantityValueChange = selectedQuantity => {
@@ -183,6 +186,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isPickup,
       keepAlive,
       quickViewPickup,
+      isFromBagProductSfl,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -252,26 +256,29 @@ class ProductAddToBag extends React.PureComponent<Props> {
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
         {quickViewPickup && this.renderUnavailableLink()}
-        <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
-          <BodyCopy
-            fontWeight="black"
-            color="gray.900"
-            fontFamily="secondary"
-            fontSize="fs14"
-            text={qunatityText}
-          />
-          <Field
-            component={NativeDropDown}
-            data={quantityList}
-            id="quantity"
-            selectedValue={selectedQuantity}
-            onValueChange={this.onQuantityValueChange}
-            heading={qunatityText}
-            name="Quantity"
-            textAlignLeft
-            lightGrayColor
-          />
-        </RowViewContainer>
+        {!isFromBagProductSfl && (
+          <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
+            <BodyCopy
+              fontWeight="black"
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs14"
+              text={qunatityText}
+            />
+
+            <Field
+              component={NativeDropDown}
+              data={quantityList}
+              id="quantity"
+              selectedValue={selectedQuantity}
+              onValueChange={this.onQuantityValueChange}
+              heading={qunatityText}
+              name="Quantity"
+              textAlignLeft
+              lightGrayColor
+            />
+          </RowViewContainer>
+        )}
 
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
@@ -297,6 +304,7 @@ ProductAddToBag.propTypes = {
   selectedColorProductId: PropTypes.number.isRequired,
   toastMessage: PropTypes.func,
   isBundleProduct: PropTypes.bool,
+  isFromBagProductSfl: PropTypes.bool,
 };
 
 ProductAddToBag.defaultProps = {
@@ -314,6 +322,7 @@ ProductAddToBag.defaultProps = {
   showAddToBagCTA: true,
   toastMessage: () => {},
   isBundleProduct: false,
+  isFromBagProductSfl: false,
 };
 
 /* export view with redux form */
