@@ -6,7 +6,7 @@ import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
-import { getAPIConfig, isMobileApp } from '../../../utils';
+import { getAPIConfig, isMobileApp, createLayoutPath } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS } from '../../../reduxStore/constants';
 import CACHED_KEYS from '../../../constants/cache.config';
@@ -33,10 +33,10 @@ const fetchBootstrapData = async (
           brand,
           country,
           channel,
+          pageName: page && page.match(/-([a-z])/g) ? createLayoutPath(page) : page,
         },
       }
     : {};
-
   /**
    * Sets up query params for global modules requests - (labels, header, footer, navigation)
    */
@@ -190,13 +190,14 @@ const checkAndLogErrors = (bootstrapData, pageName) => {
       errorObject.labels_error_message = labelsErrorMessage;
       logger.error(`Error occurred in labels query ${labelsErrorMessage}`);
     }
-    const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
+    const { errorMessage: layoutErrorMessage } = pageName ? bootstrapData[pageName] : {};
     if (layoutErrorMessage) {
       errorObject.layout_error = 1;
       errorObject.layout_error_message = layoutErrorMessage;
       logger.error(`Error occurred in layout query ${layoutErrorMessage}`);
     }
   } catch (e) {
+    console.log(e);
     logger.error(`Error Occurred While Parsing error response`);
   }
 
@@ -292,19 +293,25 @@ const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl,
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
     logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
-    const errorObject = checkAndLogErrors(bootstrapData, pageName);
+    const layoutPageName =
+      pageName && pageName.match(/-([a-z])/g) ? createLayoutPath(pageName) : pageName;
+    const errorObject = checkAndLogErrors(bootstrapData, layoutPageName);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
     const fetchCachedDataParams = { bootstrapData, cachedData };
 
-    if (pageName && !errorObject.layout_error) {
+    if (layoutPageName && !errorObject.layout_error) {
       try {
-        response[pageName] = bootstrapData[pageName];
-        logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
+        response[layoutPageName] = bootstrapData[layoutPageName];
+        logger.info(
+          'Executing Modules Query with params: ',
+          bootstrapData[layoutPageName],
+          layoutPageName
+        );
         response.modules =
-          bootstrapData[pageName] &&
+          bootstrapData[layoutPageName] &&
           (await layoutAbstractor.getModulesFromLayout(
-            retrieveCachedData({ ...fetchCachedDataParams, key: pageName }),
+            retrieveCachedData({ ...fetchCachedDataParams, key: layoutPageName }),
             language
           ));
         logger.info('Modules Query Executed Successfully');

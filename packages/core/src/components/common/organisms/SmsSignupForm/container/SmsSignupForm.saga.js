@@ -2,8 +2,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 
-import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
-import { smsSignupStatus } from './SmsSignupModal.actions';
+import EMAIL_SIGNUP_CONSTANTS from './SmsSignupForm.constants';
+import { smsSignupStatus } from './SmsSignupForm.actions';
 
 export function* subscribeSms({ payload }) {
   try {

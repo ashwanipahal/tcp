@@ -2,8 +2,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { subscribeEmailAddress } from '@tcp/core/src/components/features/CnC/Checkout/container/CheckoutExtended.saga.util';
-import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
-import { setEmailValidationStatus } from './EmailSignupModal.actions';
+import EMAIL_SIGNUP_CONSTANTS from './EmailSignupForm.constants';
+import { setEmailValidationStatus } from './EmailSignupForm.actions';
 
 export function* subscribeEmail(emailObj, status) {
   return yield call(subscribeEmailAddress, emailObj, status);

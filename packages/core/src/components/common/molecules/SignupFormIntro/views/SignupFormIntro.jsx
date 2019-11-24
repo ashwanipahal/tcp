@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Col } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import SignupFormIntroStyle from '../SignupFormIntro.style';
+import SignupFormIntroStyle from '../styles/SignupFormIntro.style';
 
 const SignupFormIntro = ({ className, formViewConfig }) => (
   <Fragment>

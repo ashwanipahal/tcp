@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects';
+import { put, putResolve } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
 import {
   getCurrentStore,
@@ -17,7 +17,9 @@ describe('StoreDetail saga', () => {
     });
     it('should return correct takeLatest effect', () => {
       const received = currentStoreGen.next().value;
-      expect(currentStoreGen.next(received).value).toEqual(put(setCurrentStoreInfo(received)));
+      expect(currentStoreGen.next(received).value).toEqual(
+        putResolve(setCurrentStoreInfo(received))
+      );
     });
   });
   describe('#getNearByStore', () => {

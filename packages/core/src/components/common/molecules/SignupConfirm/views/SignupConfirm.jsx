@@ -4,7 +4,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { isGymboree, getIconPath } from '@tcp/core/src/utils';
-import SignupConfirmStyle from '../SignupConfirm.style';
+import SignupConfirmStyle from '../styles/SignupConfirm.style';
 
 const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
   const color = isGymboree() ? 'orange' : 'blue';

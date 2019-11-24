@@ -20,8 +20,8 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       pageName=""
       referenceID=""
     />
-    <Connect(Styled(ReduxForm)) />
-    <Connect(Styled(ReduxForm)) />
+    <Connect(EmailSignupModal) />
+    <Connect(SmsSignupModal) />
   </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"
@@ -155,8 +155,8 @@ exports[`Footer component Footer component renders correctly without props 1`] =
       pageName=""
       referenceID=""
     />
-    <Connect(Styled(ReduxForm)) />
-    <Connect(Styled(ReduxForm)) />
+    <Connect(EmailSignupModal) />
+    <Connect(SmsSignupModal) />
   </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"

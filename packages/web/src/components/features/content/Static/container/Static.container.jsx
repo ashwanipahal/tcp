@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { createLayoutPath } from '@tcp/core/src/utils';
 import Static from '../views/Static.view';
 
 Static.propTypes = {
@@ -13,7 +15,12 @@ Static.defaultProps = {
 
 const mapStateToProps = (state, props) => {
   // TO DO - Replace the mock with the state.
-  const { urlPath } = props;
+  const {
+    router: {
+      query: { contentType },
+    },
+  } = props;
+  const urlPath = contentType && createLayoutPath(contentType);
   const { Layouts, Modules } = state;
   const contentSlots = Layouts && Layouts[urlPath] ? Layouts[urlPath].slots : [];
   return {
@@ -42,4 +49,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Static);
+export default withRouter(connect(mapStateToProps)(Static));

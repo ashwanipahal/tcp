@@ -1,6 +1,14 @@
 import { css } from 'styled-components';
 
-const EmailSignupModalStyle = css`
+const styles = css`
+  ${props =>
+    props.noModal
+      ? `
+    @media ${props.theme.mediaQuery.large} {
+      padding: 0 15px;
+    }
+  `
+      : ``}
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
 
@@ -59,7 +67,14 @@ const EmailSignupModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
-      width: 457px;
+      width: ${props => (props.noModal ? '100%' : '457px')};
+      ${props =>
+        props.noModal
+          ? `
+        margin-right: 0;
+        margin-left: 0;
+      `
+          : ''}
     }
     .button-container {
       bottom: 24px;
@@ -80,13 +95,18 @@ const EmailSignupModalStyle = css`
     }
     .img-wrapper {
       display: flex;
-      width: 300px;
+      ${props => (props.noModal ? `` : `width: 300px`)};
       margin-right: 0;
       height: 645px;
     }
-    .img-wrapper + div {
-      width: calc(100% - 300px);
-    }
+    ${props =>
+      props.noModal
+        ? ``
+        : `
+      .img-wrapper + div {
+        width: calc(100% - 300px);
+      }
+    `}
     .shop-button {
       bottom: 0;
       width: 100%;
@@ -97,4 +117,4 @@ const EmailSignupModalStyle = css`
   }
 `;
 
-export default EmailSignupModalStyle;
+export default styles;

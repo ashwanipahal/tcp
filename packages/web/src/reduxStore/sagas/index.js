@@ -70,8 +70,8 @@ import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/S
 import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
 import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import BundleProductSaga from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.saga';
-import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
-import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
+import EmailSignupForm from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.saga';
+import SmsSignupForm from '@tcp/core/src/components/common/organisms/SmsSignupForm/container/SmsSignupForm.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
 
 export default function* rootSaga() {
@@ -94,8 +94,8 @@ export default function* rootSaga() {
     AddressVerificationSaga(),
     PaymentSaga(),
     TrackOrderSaga(),
-    EmailSignupSaga(),
-    SmsSignupSaga(),
+    EmailSignupForm(),
+    SmsSignupForm(),
     DeleteCardSaga(),
     GiftCardBalanceSaga(),
     DefaultPaymentSaga(),

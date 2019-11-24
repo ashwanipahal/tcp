@@ -220,12 +220,14 @@ class HeaderMiddleNav extends React.PureComponent {
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
               <StoreLocatorLink store={store} labels={storeLabel} />
-              <BrandLogo
-                alt={config[brand] && config[brand].alt}
-                className="header-brand__home-logo--brand"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+              {config[brand] && (
+                <BrandLogo
+                  alt={config[brand].alt}
+                  className="header-brand__home-logo--brand"
+                  dataLocator={config[brand].dataLocator}
+                  imgSrc={config[brand].imgSrc}
+                />
+              )}
             </Col>
             <Col
               colSize={{

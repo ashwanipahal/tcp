@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const SmsSignupModalStyle = css`
+export default css`
   padding-top: 109px;
   .offer-type__label {
     padding-top: 4px;
@@ -37,4 +37,3 @@ const SmsSignupModalStyle = css`
     }
   }
 `;
-export default SmsSignupModalStyle;
