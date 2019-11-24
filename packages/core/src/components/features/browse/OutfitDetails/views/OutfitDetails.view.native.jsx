@@ -28,6 +28,7 @@ const renderItem = ({
   labels,
   navigation,
   isLoggedIn,
+  toastMessage,
 }) => {
   return (
     <OutfitProduct
@@ -41,6 +42,7 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      toastMessage={toastMessage}
     />
   );
 };
@@ -87,6 +89,7 @@ const OutfitDetailsView = props => {
     isLoggedIn,
     outfitId,
     pdpLabels,
+    toastMessage,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -115,6 +118,7 @@ const OutfitDetailsView = props => {
             labels,
             navigation,
             isLoggedIn,
+            toastMessage,
           })
         }
       />
@@ -149,6 +153,7 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   outfitId: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -162,6 +167,7 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   outfitId: '',
   pdpLabels: {},
+  toastMessage: () => {},
 };
 
 export default OutfitDetailsView;

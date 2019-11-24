@@ -9,7 +9,7 @@ const styles = css`
   .brandWrapper {
     display: inline-flex;
     width: 100%;
-    margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0px;
   }
   .CheckBox__text {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

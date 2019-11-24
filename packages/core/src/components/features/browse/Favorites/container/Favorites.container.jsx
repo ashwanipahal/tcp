@@ -72,6 +72,13 @@ class FavoritesContainer extends React.PureComponent {
     });
   };
 
+  resetBrandFilters = () => {
+    this.setState({
+      gymSelected: false,
+      tcpSelected: false,
+    });
+  };
+
   openQuickViewModal = (payload, allColors) => {
     const { onQuickViewOpenClick } = this.props;
     this.setState(
@@ -167,6 +174,7 @@ class FavoritesContainer extends React.PureComponent {
         sendWishListEmail={sendWishListEmail}
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
+        resetBrandFilters={this.resetBrandFilters}
         {...this.state}
       />
     );

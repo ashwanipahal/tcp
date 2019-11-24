@@ -4,7 +4,7 @@ const getAdditionalStyle = props => {
   const { margins, paddings } = props;
   return {
     ...(margins && { margin: margins }),
-    ...(margins && { padding: paddings }),
+    ...(paddings && { padding: paddings }),
   };
 };
 
@@ -15,9 +15,12 @@ const PageContainer = styled.View`
 
 const ItemCountContainer = styled.View`
   flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 12px;
-  margin-top: 16px;
+`;
+
+const EmptyView = styled.View`
+  min-width: 10px;
+  min-height: 10px;
+  ${getAdditionalStyle};
 `;
 
 const FilterContainer = styled.View`
@@ -37,6 +40,20 @@ const ListHeaderContainer = styled.View`
   ${getListHeaderContainerStyle}
 `;
 
+const RowContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  ${getAdditionalStyle};
+`;
+
 const styles = css``;
 
-export { styles, PageContainer, ItemCountContainer, ListHeaderContainer, FilterContainer };
+export {
+  styles,
+  PageContainer,
+  ItemCountContainer,
+  ListHeaderContainer,
+  FilterContainer,
+  EmptyView,
+  RowContainer,
+};

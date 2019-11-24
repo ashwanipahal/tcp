@@ -66,6 +66,7 @@ class ProductBasicInfo extends React.Component {
   render() {
     const {
       isBundleProduct,
+      asPath,
       pdpUrl,
       badge,
       isGiftCard,
@@ -106,7 +107,7 @@ class ProductBasicInfo extends React.Component {
         <div className="information-container">
           <div className="title-wrapper">
             {typeof pdpUrl === 'string' ? (
-              <Anchor to={pdpUrl} className="product-link-title">
+              <Anchor to={pdpUrl} asPath={asPath} className="product-link-title">
                 {title}
               </Anchor>
             ) : (
@@ -145,6 +146,7 @@ class ProductBasicInfo extends React.Component {
 ProductBasicInfo.propTypes = {
   className: PropTypes.string,
   productInfo: PropTypes.shape({}).isRequired,
+  asPath: PropTypes.string,
   pdpUrl: PropTypes.string,
   badge: PropTypes.string,
   isGiftCard: PropTypes.bool.isRequired,
@@ -164,6 +166,7 @@ ProductBasicInfo.propTypes = {
 
 ProductBasicInfo.defaultProps = {
   className: '',
+  asPath: null,
   pdpUrl: null,
   badge: '',
   isBundleProduct: false,
