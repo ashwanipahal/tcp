@@ -408,38 +408,7 @@ const processResponse = (
       typ: 'promoCombination',
       sub: 'plp',
       val: {
-        top: [
-          {
-            typ: 'slot',
-            sub: 'slot_1',
-            val: {
-              cid: '38796a2d-58c3-4299-a4a1-989061a9b783',
-              typ: 'module',
-              sub: 'moduleA',
-              val: '',
-            },
-          },
-          {
-            typ: 'slot',
-            sub: 'slot_2',
-            val: {
-              cid: '08142819-d8a4-466d-87b1-f132aa18311f',
-              typ: 'module',
-              sub: 'moduleQ',
-              val: '',
-            },
-          },
-          {
-            typ: 'slot',
-            sub: 'slot_3',
-            val: {
-              cid: 'de2bd00b-82a7-469b-bfeb-7036f6225668',
-              typ: 'module',
-              sub: 'outfitCarousel',
-              val: '',
-            },
-          },
-        ],
+        top: [],
         grid: [
           {
             typ: 'slot',

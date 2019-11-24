@@ -280,9 +280,16 @@ function mapStateToProps(state) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
     }
   }
+  const plpHorizontalPromos = getPlpHorizontalPromo(state);
+  const plpGridPromos = getPLPGridPromos(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
+    productsBlock: getProductsAndTitleBlocks(
+      state,
+      productBlocks,
+      plpGridPromos,
+      plpHorizontalPromos
+    ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,

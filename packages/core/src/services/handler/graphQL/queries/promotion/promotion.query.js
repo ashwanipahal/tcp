@@ -13,6 +13,19 @@ const buildQuery = ({ slot, contentId, lang }) => `
 				external
 				action
 			}
+			subHeadLine {
+				text
+				style
+			}
+			mediaWrapper {
+				url
+				alt
+				title
+			}
+			textItems {
+				text
+				style
+			}
 		}
 }
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import queryString from 'query-string';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { isMobileApp } from '../../../../../utils';
@@ -248,15 +249,65 @@ function getIsShowCategoryGrouping(state) {
   return isL2Category && isNotAppliedSort && isNotAppliedFilter;
 }
 
-export function getProductsAndTitleBlocks(state, productBlocks = []) {
+export function getProductsAndTitleBlocks(state, productBlocks = [], gridPromo, horizontalPromo) {
   const productsAndTitleBlocks = [];
   let lastCategoryName = null;
+  const slots = [];
+  const horizontalSlots = [];
+  const rowSize = 4;
 
+  gridPromo.forEach(promoItem => {
+    console.log('promoItem', promoItem.slot);
+    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+    slots.push(parseInt(slotNumber, 10));
+  });
+
+  console.log('slots #$$$## ', slots);
+
+  horizontalPromo.forEach(promoItem => {
+    console.log('horizontalPromo ', promoItem.slot);
+    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+    horizontalSlots.push(parseInt(slotNumber, 10));
+  });
+
+  console.log('horizontalSlots', horizontalSlots);
+
+  let totalItemsAdded = 0;
+
+  // console.log('productBlocks @@@@ ', productBlocks);
   productBlocks.forEach(block => {
     const productsAndTitleBlock = [];
+    let promoAddedInCurrentBlock = 0;
+    // let horizontalPromoAddedInCurrentBlock = 0;
     // For each product in this block try to extract the category name if new
-    block.forEach(product => {
+    // if(productBlocks[blockIndex+1] && typeof productBlocks[blockIndex+1][0] === 'string') {
+    //   // New block is starting after this, in case you want to add a promo at the end, do it
+    //   console.log('New block is starting after this, in case you want to add a promo at the end, do it');
+    // }
+    block.forEach((product, index) => {
       const { categoryName } = product.miscInfo;
+
+      const indexOfProduct = totalItemsAdded + promoAddedInCurrentBlock + index + 1;
+      const slotIndex = slots.indexOf(indexOfProduct);
+      if (slotIndex !== -1) {
+        productsAndTitleBlock.push({
+          itemType: 'gridPromo',
+          gridStyle: 'vertical',
+          itemVal: gridPromo[slotIndex],
+        });
+        promoAddedInCurrentBlock += 1;
+      }
+
+      // For horizontal / mobile only promo
+      const horizontalSlotIndex = indexOfProduct > 0 && horizontalSlots.indexOf(indexOfProduct - 1);
+      if (horizontalSlotIndex !== -1) {
+        productsAndTitleBlock.push({
+          itemType: 'gridPromo',
+          gridStyle: 'horizontal',
+          itemVal: horizontalPromo[horizontalSlotIndex],
+        });
+        // horizontalPromoAddedInCurrentBlock += 1;
+      }
 
       // This is to inject Dynamic Marketing Espots into our product Grid
       // Use this for promo tiles if required later - injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
@@ -272,6 +323,31 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
       productsAndTitleBlock.push(product);
     });
 
+    const productsAdded = block.length;
+    // console.log('productsAdded', productsAdded);
+    const promosAdded = slots.filter(
+      slot => slot < totalItemsAdded + productsAdded && slot > totalItemsAdded
+    ).length;
+    totalItemsAdded += productsAdded;
+    // console.log('promosAdded', promosAdded);
+    totalItemsAdded += promosAdded;
+    // console.log('totalItemsAdded', totalItemsAdded);
+
+    // Check empty space at the end of block
+    // TODO - decide what to do in case there are empty slots and the promo is falling in one of the empty slots
+    // console.log('(productsAdded + promosAdded) % rowSize', (productsAdded + promosAdded) % rowSize);
+    // if((productsAdded + promosAdded) % rowSize > 0) {
+    // Incomplete row
+    // console.log('incomplete row !!!!!!!! ');
+    // console.log('blockIndex', blockIndex);
+    // console.log('productBlocks', productBlocks);
+    // console.log('productBlocks[blockIndex+1]', productBlocks[blockIndex+1]);
+    // console.log('productBlocks[blockIndex+1][0]', productBlocks[blockIndex+1] && productBlocks[blockIndex+1][0]);
+    // if(productBlocks[blockIndex+1] && typeof productBlocks[blockIndex+1][0] === 'string') {
+    //   // New block is starting after this, in case you want to add a promo at the end, do it
+    //   console.log('New block is starting after this, in case you want to add a promo at the end, do it');
+    // }
+    // }
     // push: product block onto matrix
     productsAndTitleBlocks.push(productsAndTitleBlock);
   });

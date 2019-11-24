@@ -73,12 +73,6 @@ class ProductsGrid extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = {
-      // TODO - fix this - This would be used when integrating BOSS/ BOPIS
-      // eslint-disable-next-line
-      bopisAutoSkipStep1: true,
-    };
-
     this.captureContainerDivRef = ref => {
       this.containerDivRef = ref;
     };
@@ -104,38 +98,6 @@ class ProductsGrid extends React.Component {
       document.removeEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
     }
   }
-
-  pickUpIconClick = (...args) => {
-    this.setState(
-      {
-        // TODO - fix this - This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: false,
-      },
-      () => {
-        const { onPickUpOpenClick } = this.props;
-        if (onPickUpOpenClick) {
-          onPickUpOpenClick(...args);
-        }
-      }
-    );
-  };
-
-  quickViewOpenClick = (...args) => {
-    this.setState(
-      {
-        // This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: true,
-      },
-      () => {
-        const { onQuickViewOpenClick } = this.props;
-        if (onQuickViewOpenClick) {
-          onQuickViewOpenClick(...args);
-        }
-      }
-    );
-  };
 
   handleLoadNextPage() {
     const { isLoadingMore, productsBlock, getMoreProducts } = this.props;

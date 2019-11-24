@@ -7,7 +7,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
-
+import GridPromo from '../../../../../../common/molecules/GridPromo';
 /**
  * Hotfix-Aware Component. The use `withHotfix` below is just for
  * making the cart page hotfix-aware.
@@ -57,8 +57,6 @@ const ProductList = props => {
     outOfStockLabels,
     isKeepAliveEnabled,
     isSearchListing,
-    plpGridPromos,
-    plpHorizontalPromos,
     getProducts,
     asPathVal,
     AddToFavoriteErrorMsg,
@@ -67,13 +65,14 @@ const ProductList = props => {
   let gridIndex = 0;
 
   console.log('productsBlock %%%% ', productsBlock);
-  console.log('plpGridPromos ### ', plpGridPromos);
-  console.log('plpHorizontalPromos RRRR ', plpHorizontalPromos);
 
   return (
     <Fragment>
       {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
+        if (item && item.itemType === 'gridPromo') {
+          return <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />;
+        }
         if (typeof item === 'string') {
           gridIndex = 0;
         } else if (isGridItem(item)) {

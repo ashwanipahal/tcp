@@ -11,6 +11,10 @@ export default css`
     margin: 0 0 6px 0;
     width: calc(50% - ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS});
 
+    &.promo-div {
+      background: gray;
+    }
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
       padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.SM};
