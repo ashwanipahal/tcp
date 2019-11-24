@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -7,9 +7,16 @@ import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
+import { getMapSliceForColorProductId } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
+};
+
+const getColorindex = (colorIndex, setCurrentColorIndex) => {
+  if (setCurrentColorIndex) {
+    setCurrentColorIndex(colorIndex);
+  }
 };
 
 /**
@@ -18,6 +25,7 @@ const keyExtractor1 = (_, index) => {
  */
 const renderItem = ({
   item,
+  colorProductId,
   plpLabels,
   productsCount,
   index,
@@ -29,7 +37,30 @@ const renderItem = ({
   navigation,
   isLoggedIn,
   toastMessage,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
+  currentColorIndex,
+  setCurrentColorIndex,
 }) => {
+  // eslint-disable-next-line no-shadow
+  const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
+    return (
+      (colorProductId === '' &&
+        colorFitsSizesMap &&
+        colorFitsSizesMap[currentColorIndex].colorProductId) ||
+      colorProductId
+    );
+  };
+
+  const colorProductIdValue = getColorProductId(
+    colorProductId,
+    item.colorFitsSizesMap,
+    currentColorIndex
+  );
+
+  const colorProduct =
+    item && getMapSliceForColorProductId(item.colorFitsSizesMap, colorProductIdValue);
+
   return (
     <OutfitProduct
       plpLabels={plpLabels}
@@ -43,6 +74,13 @@ const renderItem = ({
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
       toastMessage={toastMessage}
+      AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+      removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+      productMiscInfo={colorProduct}
+      favoriteCount={colorProduct.favoritedCount}
+      colorindex={colorIndex => {
+        getColorindex(colorIndex, setCurrentColorIndex);
+      }}
     />
   );
 };
@@ -98,6 +136,8 @@ const OutfitDetailsView = props => {
     partNumber: outfitId,
     isHeaderAccordion: true,
   };
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+
   return (
     <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
@@ -119,6 +159,8 @@ const OutfitDetailsView = props => {
             navigation,
             isLoggedIn,
             toastMessage,
+            currentColorIndex,
+            setCurrentColorIndex,
           })
         }
       />
@@ -143,6 +185,7 @@ OutfitDetailsView.propTypes = {
   outfitProducts: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
+  colorProductId: PropTypes.string,
   handleAddToBag: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
@@ -154,13 +197,16 @@ OutfitDetailsView.propTypes = {
   outfitId: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
   outfitImageUrl: '',
   outfitProducts: null,
   plpLabels: {},
-  item: PropTypes.shape({}),
+  item: {},
+  colorProductId: '',
   labels: {},
   isPickupModalOpen: false,
   navigation: {},
@@ -168,6 +214,8 @@ OutfitDetailsView.defaultProps = {
   outfitId: '',
   pdpLabels: {},
   toastMessage: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default OutfitDetailsView;

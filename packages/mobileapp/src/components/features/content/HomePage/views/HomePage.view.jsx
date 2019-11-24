@@ -183,12 +183,12 @@ class HomePageView extends React.PureComponent {
     const { value } = this.state;
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <HeaderPromoContainer>
+        {/* <HeaderPromoContainer>
           <HeaderPromo
             headerPromo={headerPromo}
             promoHtmlBannerCarousel={promoHtmlBannerCarousel}
           />
-        </HeaderPromoContainer>
+        </HeaderPromoContainer> */}
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
