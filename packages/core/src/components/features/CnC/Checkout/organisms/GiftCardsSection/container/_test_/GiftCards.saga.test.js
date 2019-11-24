@@ -31,6 +31,7 @@ describe('GiftCards saga', () => {
       applyGiftCardGen.next();
       applyGiftCardGen.next();
       applyGiftCardGen.next();
+      applyGiftCardGen.next();
       expect(applyGiftCardGen.next(response).value).toEqual(
         put(
           BAG_PAGE_ACTIONS.getCartData({

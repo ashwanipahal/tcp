@@ -28,6 +28,8 @@ const mapStateToProps = (state, ownProps) => {
     ctaText: getLabelValue(state.Labels, 'CTA_TEXT', 'recommendations', 'global'),
     ctaTitle: getLabelValue(state.Labels, 'CTA_TITLE', 'recommendations', 'global'),
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
+    ariaPrevious: getLabelValue(state.Labels, 'previousButton', 'accessibility', 'global'),
+    ariaNext: getLabelValue(state.Labels, 'nextIconButton', 'accessibility', 'global'),
     loadedProductCount: getLoadedProductsCount(state),
     labels: getLabelsProductListing(state),
     currency: getCurrentCurrency(state),

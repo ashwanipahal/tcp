@@ -42,16 +42,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   >
     <div
       className="paypal-venmo "
-    >
-      <div
-        className="paypal-wrapper-atb"
-      >
-        <Connect(PayPalButtonContainer)
-          className="payPal-button"
-          height={48}
-        />
-      </div>
-    </div>
+    />
     <Connect(Component)
       className="checkoutBtnTracker"
       name="Gift_Services"
@@ -132,16 +123,7 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
   >
     <div
       className="paypal-venmo "
-    >
-      <div
-        className="paypal-wrapper-atb"
-      >
-        <Connect(PayPalButtonContainer)
-          className="payPal-button"
-          height={48}
-        />
-      </div>
-    </div>
+    />
     <Connect(Component)
       className="checkoutBtnTracker"
       name="Gift_Services"

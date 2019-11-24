@@ -101,7 +101,7 @@ export default class GiftCardTile extends React.PureComponent {
       <>
         <GiftBox>
           <GiftCardRow>
-            <GiftCardCal>
+            <GiftCardCal flex={2}>
               <GiftBoxText>
                 <BodyCopyWithSpacing
                   text={`${getLabelValue(
@@ -115,7 +115,7 @@ export default class GiftCardTile extends React.PureComponent {
                 />
               </GiftBoxText>
             </GiftCardCal>
-            {showCtas && <GiftCardCal>{this.renderApplyRemoveBtn()}</GiftCardCal>}
+            {showCtas && <GiftCardCal flex={1}>{this.renderApplyRemoveBtn()}</GiftCardCal>}
           </GiftCardRow>
         </GiftBox>
       </>

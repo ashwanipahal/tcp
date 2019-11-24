@@ -165,6 +165,7 @@ export class App extends React.PureComponent {
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
+        <Loader />
         <Box style={styles.container}>
           {Platform.OS === 'ios' ? (
             <StatusBar barStyle="default" />

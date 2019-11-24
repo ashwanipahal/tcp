@@ -18,10 +18,6 @@ const styles = css`
       display: none;
     }
   }
-
-  .sms-sign-up {
-    height: 50px;
-  }
 `;
 
 export default styles;
