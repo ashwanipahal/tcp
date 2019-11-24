@@ -36,7 +36,6 @@ import {
   getIsFilterBy,
   getPLPTopPromos,
   getLabelsOutOfStock,
-  getLoyaltyBanner,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -192,7 +191,6 @@ class ProductListingContainer extends React.PureComponent {
       navigation,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
-      loyaltyBanner,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -239,7 +237,6 @@ class ProductListingContainer extends React.PureComponent {
         navigation={navigation}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-        loyaltyBanner={loyaltyBanner}
         {...otherProps}
       />
     ) : (
@@ -319,7 +316,6 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
-    loyaltyBanner: getLoyaltyBanner(state),
   };
 }
 
@@ -387,7 +383,6 @@ ProductListingContainer.propTypes = {
   isSearchListing: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
-  loyaltyBanner: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingContainer.defaultProps = {
@@ -418,7 +413,6 @@ ProductListingContainer.defaultProps = {
   isSearchListing: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
-  loyaltyBanner: {},
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({

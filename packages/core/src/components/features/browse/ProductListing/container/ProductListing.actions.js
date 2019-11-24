@@ -62,10 +62,3 @@ export const setAddToFavorite = payload => {
     payload,
   };
 };
-
-export const loadPlpLoyaltyBanner = payload => {
-  return {
-    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_LOYALTY_BANNER,
-    payload,
-  };
-};

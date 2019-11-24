@@ -7,26 +7,12 @@ import {
   RESULTS_VISIBLE,
 } from '@tcp/core/src/constants/rum.constants';
 import PromoModules from '../../../../common/organisms/PromoModules';
-import RichText from '../../../../common/atoms/RichText';
 
 // Changes as per RWD-9852. Keeping this for future reference.
 // import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 
 import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 
-/*
-// Changes as per RWD-9852. Keeping this for future reference.
-import ModuleA from '../../../../common/molecules/ModuleA';
-import ModuleD from '../../../../common/molecules/ModuleD';
-import ModuleG from '../../../../common/molecules/ModuleG';
-import ModuleQ from '../../../../common/molecules/ModuleQ';
-import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock';
-import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
-import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
-import moduleQMock from '../../../../../services/abstractors/common/moduleQ/mock';
-*/
-
-// import ProductList from '../molecules/ProductList/views';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -73,7 +59,6 @@ const ProductListView = ({
   isSearchListing,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
-  loyaltyBanner,
   isLoggedIn,
   isPlcc,
   ...otherProps

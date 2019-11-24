@@ -5,7 +5,6 @@ const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
 };
 
-// eslint-disable-next-line complexity
 const ProductListingReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PRODUCTS:
@@ -23,7 +22,6 @@ const ProductListingReducer = (state = initialState, action) => {
         ssr: true,
       };
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PLP_LOADING_STATE:
-    case PRODUCTLISTINGPAGE_CONSTANTS.SET_LOYALTY_BANNER:
       return { ...state, ...action.payload };
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_WISHLIST_ITEMS:
       return { ...state };
