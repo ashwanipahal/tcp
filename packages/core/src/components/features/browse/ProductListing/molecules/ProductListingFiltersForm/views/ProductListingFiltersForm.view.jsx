@@ -339,7 +339,7 @@ class ProductListingFiltersForm extends React.Component {
       <div className="filter-and-sort-form-container">
         {/* {totalProductsCount > 0 && <ProductListingCount currentSearchTerm={currentSearchTerm} isMobile={false} totalProductsCount={totalProductsCount} isShowAllEnabled={false} />} NOTE: FPO isShowAllEnabled */}
         <form className="render-desktop-view" onSubmit={handleSubmit(this.handleImmediateSubmit)}>
-          {totalProductsCount > 1 && (
+          {(totalProductsCount > 1 || isFavoriteView) && (
             <div className={`${className} desktop-dropdown`}>
               <div className="filters-only-container">
                 {isFilterBy && (
