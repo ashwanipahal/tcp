@@ -377,6 +377,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -674,6 +675,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -736,6 +738,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -801,6 +804,7 @@ exports[`ButtonList component renders correctly with venmoError 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1045,7 +1049,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-cSHVUG",
+                "componentId": "sc-kAzzGY",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1188,7 +1192,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-cSHVUG",
+              "styledComponentId": "sc-kAzzGY",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1433,6 +1437,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1675,7 +1680,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-cSHVUG",
+                "componentId": "sc-kAzzGY",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1818,7 +1823,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-cSHVUG",
+              "styledComponentId": "sc-kAzzGY",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2063,6 +2068,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2085,6 +2091,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2170,6 +2177,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2232,6 +2240,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}

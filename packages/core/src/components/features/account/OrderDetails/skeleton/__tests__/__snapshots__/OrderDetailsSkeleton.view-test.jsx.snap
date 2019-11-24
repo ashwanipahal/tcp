@@ -8,7 +8,7 @@ exports[`OrderDetailsSkeleton component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
+        "componentId": "sc-kGXeez",
         "isStatic": false,
         "rules": Array [
           "
@@ -30,7 +30,7 @@ exports[`OrderDetailsSkeleton component should renders correctly 1`] = `
       "displayName": "Styled(OrderDetailsSkeleton)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
+      "styledComponentId": "sc-kGXeez",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

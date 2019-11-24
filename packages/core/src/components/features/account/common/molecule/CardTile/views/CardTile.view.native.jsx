@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { View, Text } from 'react-native';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';

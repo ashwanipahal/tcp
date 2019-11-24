@@ -23,6 +23,7 @@ import { DamImage } from '../../../../../../common/atoms';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import OutOfStockWaterMark from '../../OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -47,7 +48,9 @@ class ImageCarousel extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   // this method set current visible image
@@ -144,6 +147,13 @@ class ImageCarousel extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  renderOutOfStockOverlay = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} fontSize="fs24" />
+    ) : null;
+  };
+
   renderNormalImage = imgSource => {
     const { onImageClick } = this.props;
     const { activeSlideIndex } = this.state;
@@ -163,6 +173,7 @@ class ImageCarousel extends React.PureComponent {
           width={imageWidth}
           height={imageHeight}
         />
+        {this.renderOutOfStockOverlay()}
       </ImageTouchableOpacity>
     );
   };
@@ -306,6 +317,10 @@ ImageCarousel.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
@@ -319,6 +334,10 @@ ImageCarousel.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   currentColorEntry: '',
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

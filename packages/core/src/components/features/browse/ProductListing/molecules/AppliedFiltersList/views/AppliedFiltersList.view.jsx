@@ -10,11 +10,12 @@ type Props = {
   removeAllFilters: any,
   className: string,
   labels: any,
+  id: string,
 };
 
 class AppliedFiltersList extends React.PureComponent<Props> {
   render() {
-    const { appliedFilters, onRemoveFilter, removeAllFilters, className, labels } = this.props;
+    const { appliedFilters, onRemoveFilter, removeAllFilters, className, labels, id } = this.props;
     let chipsCount = 0;
 
     return (
@@ -50,6 +51,7 @@ class AppliedFiltersList extends React.PureComponent<Props> {
               className="applied-filter-clear-all"
               onClick={removeAllFilters}
               data-locator="plp_filter_applied_filter_clear_all"
+              id={id}
             >
               <span className="applied-filter-remove-button"> Clear All </span>
               {labels.lbl_clear}

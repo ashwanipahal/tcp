@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { toggleApplyNowModal } from '../../ApplyNowPLCCModal/container/ApplyNowModal.actions';
-import EspotComponent from '../views/Espot.view';
+import EspotComponent from '../views';
 
 export const mapDispatchToProps = dispatch => {
   return {

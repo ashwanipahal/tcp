@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
@@ -28,11 +28,16 @@ const getUrl = url => {
 
 export function* fetchPlpProducts({ payload }) {
   try {
-    const { url, formData, sortBySelected, scrollToTop } = payload;
+    const { url, formData, sortBySelected, scrollToTop, isKeepModalOpen } = payload;
     yield put(loadLayoutData({}, 'productListingPage'));
     const location = getUrl(url);
     yield put(
-      setPlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop, isDataLoading: true })
+      setPlpLoadingState({
+        isLoadingMore: true,
+        isScrollToTop: scrollToTop,
+        isDataLoading: true,
+        isKeepModalOpen,
+      })
     );
     let state = yield select();
     let reqObj = operatorInstance.getProductListingBucketedData(
@@ -130,7 +135,7 @@ export function* fetchMoreProducts({ payload = {} }) {
             products
           );
         }
-        yield put(setPlpProducts({ ...plpProducts }));
+        yield putResolve(setPlpProducts({ ...plpProducts }));
       }
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));

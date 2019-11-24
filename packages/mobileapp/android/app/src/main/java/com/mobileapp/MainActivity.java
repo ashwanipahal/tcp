@@ -1,12 +1,21 @@
 package com.mobileapp;
 
-import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactActivityDelegate;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.app.Activity;
+import android.view.KeyEvent;
+
+import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
+
+import com.microsoft.codepush.react.CodePush;
 
 public class MainActivity extends ReactActivity {
+   
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -30,9 +39,9 @@ public class MainActivity extends ReactActivity {
         };
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
-    }
+    // @Override
+    // public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    //     super.onActivityResult(requestCode, resultCode, data);
+    //     MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+    // }
 }

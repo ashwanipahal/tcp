@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import PropTypes from 'prop-types';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isClient, scrollPage } from '../../../../../utils';
 
@@ -82,6 +83,40 @@ const onPageUnload = () => {
   scrollPage();
 };
 
+const handleChangeActiveSection = (sectionName, scope) => {
+  scope.setState({
+    activeSection: sectionName,
+  });
+};
+
+const BagPagePropTypes = {
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  orderItemsCount: PropTypes.number.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  showAddTobag: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
+  sflItems: PropTypes.shape([]).isRequired,
+  setVenmoPaymentInProgress: PropTypes.func.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  orderBalanceTotal: PropTypes.number.isRequired,
+  bagStickyHeaderInterval: PropTypes.number.isRequired,
+  currencySymbol: PropTypes.string.isRequired,
+  isSflItemRemoved: PropTypes.bool.isRequired,
+  isBagPage: PropTypes.bool.isRequired,
+};
+
+const CarouselOptions = {
+  CAROUSEL_OPTIONS: {
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  },
+};
+
 export default {
   getElementStickyPosition,
   bindScrollEvent,
@@ -90,4 +125,7 @@ export default {
   formatBagProductsData,
   getDefaultStateValues,
   onPageUnload,
+  BagPagePropTypes,
+  CarouselOptions,
+  handleChangeActiveSection,
 };

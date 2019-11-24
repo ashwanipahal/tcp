@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAPIConfig, isMobileApp } from '@tcp/core/src/utils/utils';
+import { getAPIConfig, isMobileApp, isGymboree } from '@tcp/core/src/utils/utils';
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
@@ -9,8 +9,8 @@ import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   componentDidMount() {
-    const { startPaypalNativeCheckoutAction } = this.props;
-    if (isMobileApp()) startPaypalNativeCheckoutAction();
+    const { startPaypalNativeCheckoutAction, isBillingPage } = this.props;
+    if (isMobileApp()) startPaypalNativeCheckoutAction(isBillingPage);
   }
 
   componentWillUnmount() {
@@ -32,7 +32,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       style: {
         size: 'responsive',
         color: isBillingPage ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT,
-        shape: 'rect',
+        shape: isGymboree() ? 'pill' : 'rect',
         label: CONSTANTS.PAYPAL_LABEL,
         tagline: false,
         height,
@@ -107,14 +107,14 @@ export const mapDispatchToProps = dispatch => {
     startPaypalCheckout: payload => {
       dispatch(bagPageActions.startPaypalCheckout(payload));
     },
-    startPaypalNativeCheckoutAction: () => {
-      dispatch(bagPageActions.startPaypalNativeCheckout());
+    startPaypalNativeCheckoutAction: isBillingPage => {
+      dispatch(bagPageActions.startPaypalNativeCheckout({ isBillingPage }));
     },
     paypalAuthorizationHandle: payload => {
       dispatch(bagPageActions.paypalAuthorization(payload));
     },
-    clearPaypalSettings: () => {
-      dispatch(bagPageActions.startPaypalNativeCheckout());
+    clearPaypalSettings: isBillingPage => {
+      dispatch(bagPageActions.startPaypalNativeCheckout({ isBillingPage }));
     },
     payPalWebViewHandle: payload => {
       dispatch(bagPageActions.getSetPayPalWebView(payload));

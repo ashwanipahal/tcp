@@ -31,7 +31,6 @@ const StyledApplyNowModal = ({
       fixedWidth
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      heading={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
@@ -44,6 +43,17 @@ const StyledApplyNowModal = ({
       shouldCloseOnEsc={!isRtpsFlow}
     >
       <div className="Modal__Content__Wrapper">
+        <BodyCopy
+          component="h2"
+          color="gray.900"
+          fontFamily="secondary"
+          fontSize="fs36"
+          textAlign="center"
+          fontWeight="black"
+          className="apply-now-heading"
+        >
+          {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+        </BodyCopy>
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}

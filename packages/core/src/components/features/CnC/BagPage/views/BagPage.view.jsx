@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import { getSflItemCount, getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getSiteId } from '@tcp/core/src/utils/utils.web';
+
 import withRefWrapper from '../../../../common/hoc/withRefWrapper';
 import withHotfix from '../../../../common/hoc/withHotfix';
 
@@ -44,9 +46,12 @@ class BagPageView extends React.PureComponent {
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
+    const siteId = getSiteId() && getSiteId().toUpperCase();
+    const cartTotalCount = getCartItemCount();
+    const sflTotalCount = getSflItemCount(siteId);
     this.setState({
       activeSection:
-        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+        !cartTotalCount && sflTotalCount && isShowSaveForLaterSwitch
           ? BAGPAGE_CONSTANTS.SFL_STATE
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
@@ -149,6 +154,11 @@ class BagPageView extends React.PureComponent {
   renderRecommendations = () => {
     const { sflItems, orderItemsCount } = this.props;
     const hideRec = orderItemsCount === 0 && sflItems.size > 0;
+    const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <>
         {!hideRec ? (
@@ -156,6 +166,7 @@ class BagPageView extends React.PureComponent {
             page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
             variations="moduleO"
             inheritedStyles={recommendationStyles}
+            carouselConfigProps={carouselOptions}
           />
         ) : null}
         {this.renderRecommendationsForRecent()}
@@ -164,7 +175,12 @@ class BagPageView extends React.PureComponent {
   };
 
   renderRecommendationsForRecent = () => {
-    const { labels } = this.props;
+    const { labels, orderItemsCount } = this.props;
+    const isNoNEmptyBag = orderItemsCount > 0;
+    let carouselOptions;
+    if (isNoNEmptyBag) {
+      carouselOptions = BagPageUtils.CarouselOptions;
+    }
     return (
       <div className="recentlyViewed">
         <Recommendations
@@ -173,6 +189,7 @@ class BagPageView extends React.PureComponent {
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
           inheritedStyles={recommendationStyles}
+          carouselConfigProps={carouselOptions}
         />
       </div>
     );
@@ -229,7 +246,14 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      handleCartCheckout,
+      isMobile,
+      isBagPage,
+      bagLoading,
+    } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -241,19 +265,14 @@ class BagPageView extends React.PureComponent {
           paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
           isBagPage={isBagPage}
+          bagLoading={bagLoading}
         />
       </div>
     );
   };
 
-  handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
-  };
-
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage, bagLoading } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -292,6 +311,7 @@ class BagPageView extends React.PureComponent {
                 paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
                 isBagPage={isBagPage}
+                bagLoading={bagLoading}
               />
             </Col>
           </Row>
@@ -354,7 +374,7 @@ class BagPageView extends React.PureComponent {
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
               onClick={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE, this);
               }}
             >
               <Heading
@@ -386,7 +406,7 @@ class BagPageView extends React.PureComponent {
                 colSize={{ small: 3, medium: 4, large: 6 }}
                 className="left-sec"
                 onClick={() => {
-                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                  BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE, this);
                 }}
               >
                 <Heading
@@ -417,7 +437,7 @@ class BagPageView extends React.PureComponent {
           isGuest={isGuest}
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
-          pageCategory="bagPage"
+          pageCategory={BAGPAGE_CONSTANTS.BAG_PAGE}
         />
         <QuickViewModal />
       </div>
@@ -425,28 +445,7 @@ class BagPageView extends React.PureComponent {
   }
 }
 
-BagPageView.defaultProps = {
-  isBagPage: true,
-};
-
-BagPageView.propTypes = {
-  className: PropTypes.string.isRequired,
-  labels: PropTypes.shape({}).isRequired,
-  orderItemsCount: PropTypes.number.isRequired,
-  totalCount: PropTypes.number.isRequired,
-  showAddTobag: PropTypes.bool.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
-  isGuest: PropTypes.bool.isRequired,
-  handleCartCheckout: PropTypes.func.isRequired,
-  sflItems: PropTypes.shape([]).isRequired,
-  setVenmoPaymentInProgress: PropTypes.func.isRequired,
-  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
-  orderBalanceTotal: PropTypes.number.isRequired,
-  bagStickyHeaderInterval: PropTypes.number.isRequired,
-  isSflItemRemoved: PropTypes.bool.isRequired,
-  isBagPage: PropTypes.bool,
-};
+BagPageView.propTypes = BagPageUtils.BagPagePropTypes;
 
 /**
  * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`

@@ -15,10 +15,6 @@ exports[`ProductList component should renders correctly 1`] = `
         Object {
           "productInfo": "",
         },
-        undefined,
-        Object {
-          "productInfo": "",
-        },
       ]
     }
     disableVirtualization={false}
@@ -30,6 +26,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
+        "isKeepAliveEnabled": false,
         "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
@@ -48,6 +45,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
         "onRenderHeader": [MockFunction],
+        "outOfStockLabels": Object {},
         "products": Array [
           Object {
             "productInfo": "",

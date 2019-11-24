@@ -461,6 +461,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
     }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
+    }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
   return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
@@ -619,6 +622,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const plpRoute = `${ROUTE_PATH.plp.name}/`;
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
+  const staticContentRoute = `${ROUTE_PATH.content.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -634,6 +638,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(searchRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  if (url.includes(staticContentRoute)) {
+    const urlItems = url.split(staticContentRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
   }
   return url;
 };
@@ -852,11 +861,11 @@ export const getStoreHours = (
     const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
     const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
     if (!isPastStoreHours(selectedDateToHour, currentDate)) {
-      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+      return `${openUntilLabel} ${toTimeString(selectedDateToHour, true)}`;
     }
     const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
     // Handle the other scenarion
-    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+    return `${opensAtLabel} ${toTimeString(selectedDateFromHour, true)}`;
   } catch (err) {
     // Show empty incase no data found.
     return '';
@@ -1173,6 +1182,7 @@ export default {
   stringify,
   readCookieMobileApp,
   changeImageURLToDOM,
+  getStoreHours,
   generateTraceId,
   insertIntoString,
   getStyliticsUserName,

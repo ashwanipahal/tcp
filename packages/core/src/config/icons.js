@@ -122,4 +122,5 @@ export default {
   'sms-enabled': '/static/images/sms-enabled.svg',
   'app-store': '/static/images/app-store-logo.png',
   'google-play': '/static/images/google-play-badge.svg',
+  'header-icon__heart': '/static/images/heart-icon.png',
 };

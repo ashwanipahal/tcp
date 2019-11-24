@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
+import { change } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
@@ -104,6 +105,15 @@ export default class ShippingPage extends React.Component {
       }
       if (selectedShipmentId !== prevSelectedShipmentId) {
         updateShippingMethodSelection({ id: selectedShipmentId });
+      }
+      const { shipmentMethods: prevShipmentMethods } = prevProps;
+      const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;
+      if (
+        prevShipmentMethods &&
+        nextShipmentMethods &&
+        prevShipmentMethods !== nextShipmentMethods
+      ) {
+        dispatch(change('checkoutShipping', 'shipmentMethods.shippingMethodId', defaultShipmentId));
       }
     }
   }
@@ -272,6 +282,7 @@ export default class ShippingPage extends React.Component {
       isVenmoShippingDisplayed,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      bagLoading,
     } = this.props;
 
     const { CHECKOUT_STAGES } = CONSTANTS;
@@ -348,42 +359,41 @@ export default class ShippingPage extends React.Component {
                     textAlign="left"
                   />
                 </StyledHeader>
-                {shipmentMethods && shipmentMethods.length > 0 && (
-                  <ShippingForm
-                    shipmentMethods={shipmentMethods}
-                    initialValues={{
-                      address: getAddressInitialValues(this),
-                      shipmentMethods: { shippingMethodId: defaultShipmentId },
-                      onFileAddressKey: defaultAddressId,
-                    }}
-                    selectedShipmentId={selectedShipmentId}
-                    scrollView={this.scrollView}
-                    isGuest={isGuest}
-                    isUsSite={isUsSite}
-                    orderHasPickUp={orderHasPickUp}
-                    smsSignUpLabels={smsSignUpLabels}
-                    isOrderUpdateChecked={isOrderUpdateChecked}
-                    emailSignUpLabels={emailSignUpLabels}
-                    addressPhoneNo={addressPhoneNumber}
-                    addressLabels={addressLabels}
-                    loadShipmentMethods={loadShipmentMethods}
-                    navigation={navigation}
-                    submitShippingForm={this.submitShippingForm}
-                    labels={labels}
-                    isGiftServicesChecked={isGiftServicesChecked}
-                    userAddresses={userAddresses}
-                    onFileAddressKey={onFileAddressKey}
-                    isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-                    updateShippingAddress={this.updateShippingAddress}
-                    addNewShippingAddress={this.addNewShippingAddress}
-                    address={address}
-                    setAsDefaultShipping={setAsDefaultShipping}
-                    defaultAddressId={defaultAddressId}
-                    syncErrorsObject={syncErrors}
-                    newUserPhoneNo={newUserPhoneNo}
-                    setCheckoutStage={setCheckoutStage}
-                  />
-                )}
+                <ShippingForm
+                  shipmentMethods={shipmentMethods}
+                  initialValues={{
+                    address: getAddressInitialValues(this),
+                    shipmentMethods: { shippingMethodId: defaultShipmentId },
+                    onFileAddressKey: defaultAddressId,
+                  }}
+                  selectedShipmentId={selectedShipmentId}
+                  bagLoading={bagLoading}
+                  scrollView={this.scrollView}
+                  isGuest={isGuest}
+                  isUsSite={isUsSite}
+                  orderHasPickUp={orderHasPickUp}
+                  smsSignUpLabels={smsSignUpLabels}
+                  isOrderUpdateChecked={isOrderUpdateChecked}
+                  emailSignUpLabels={emailSignUpLabels}
+                  addressPhoneNo={addressPhoneNumber}
+                  addressLabels={addressLabels}
+                  loadShipmentMethods={loadShipmentMethods}
+                  navigation={navigation}
+                  submitShippingForm={this.submitShippingForm}
+                  labels={labels}
+                  isGiftServicesChecked={isGiftServicesChecked}
+                  userAddresses={userAddresses}
+                  onFileAddressKey={onFileAddressKey}
+                  isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                  updateShippingAddress={this.updateShippingAddress}
+                  addNewShippingAddress={this.addNewShippingAddress}
+                  address={address}
+                  setAsDefaultShipping={setAsDefaultShipping}
+                  defaultAddressId={defaultAddressId}
+                  syncErrorsObject={syncErrors}
+                  newUserPhoneNo={newUserPhoneNo}
+                  setCheckoutStage={setCheckoutStage}
+                />
               </ScrollView>
             </>
           </>
