@@ -37,6 +37,13 @@ const PlpStack = createStackNavigator(
   {
     [ROUTE_NAMES.NAV_MENU_LEVEL_1]: {
       screen: Navigation, // CategoryListing
+      params: {
+        pageData: {
+          pageName: 'navigation',
+          pageShortName: 'plp',
+          pageType: 'myPlace',
+        },
+      },
     },
     OutfitDetail: {
       screen: OutfitDetail,

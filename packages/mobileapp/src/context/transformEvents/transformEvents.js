@@ -22,10 +22,13 @@ export const transformPageEvent = screenName => {
 };
 
 export const transformClickEvent = (name, module) => {
-  if (!module || !name) {
-    return {};
+  if (!name) {
+    return null;
   }
-  const mappingString = clickEvents[module][name];
-
+  const mappingString = clickEvents[module || 'global'][name];
+  if (!mappingString) {
+    // if mapping is not present then event should not be logged
+    return null;
+  }
   return getTransformedObject(mappingString);
 };

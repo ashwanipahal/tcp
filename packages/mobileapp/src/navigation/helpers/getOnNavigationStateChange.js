@@ -1,20 +1,19 @@
-import { TRACK_PAGE_VIEW, TRACK_CLICK } from '@tcp/core/src/analytics';
-import { getActiveRouteName } from './getActiveRouteName';
+import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import { getActiveRoute } from './getActiveRoute';
 /*eslint-disable */
 
 export function getOnNavigationStateChange({ store, context }) {
   return {
     onNavigationStateChange: (prevState, currentState, action) => {
-      const currentScreen = getActiveRouteName(currentState);
-      const prevScreen = getActiveRouteName(prevState);
-      if (prevScreen !== currentScreen) {
+      const currentScreen = getActiveRoute(currentState);
+      const prevScreen = getActiveRoute(prevState);
+      if (prevScreen.routeName !== currentScreen.routeName) {
         // change the tracker here to use other Mobile analytics SDK.
         store.dispatch({
           type: TRACK_PAGE_VIEW,
           payload: {
-            currentScreen,
-            previousScreen: prevScreen,
-            navState: currentState,
+            currentScreen: currentScreen.routeName,
+            pageData: currentScreen.params && currentScreen.params.pageData,
           },
         });
         __DEV__

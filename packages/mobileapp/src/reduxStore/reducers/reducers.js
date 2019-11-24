@@ -189,7 +189,7 @@ function pageNameReducer(state = {}, action) {
     case TRACK_PAGE_VIEW: {
       const { payload } = action;
       if (payload.pageData) {
-        return { ...state, ...pageData };
+        return { ...state, ...payload.pageData };
       }
       return state;
     }

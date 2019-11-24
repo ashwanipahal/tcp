@@ -1,6 +1,7 @@
 import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { generateClickHandlerDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -21,7 +22,9 @@ import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
  */
 export default function create(store) {
   const siteType = 'global site';
+  const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   return Object.create(defaultDataLayer, {
+    ...clickHandlerDataLayer,
     pageName: {
       get() {
         /* If clickActionAnalyticsData has pageName then this will be used else
