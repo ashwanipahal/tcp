@@ -399,7 +399,7 @@ class ProductListingFiltersForm extends React.Component {
           </Row>
         </form>
         <div className="render-mobile-view">
-          {totalProductsCount > 1 && (
+          {(totalProductsCount > 1 || this.getAppliedFiltersCount() > 0) && (
             <ProductListingMobileFiltersForm
               totalProductsCount={totalProductsCount}
               initialValues={initialValues}
