@@ -246,7 +246,14 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      handleCartCheckout,
+      isMobile,
+      isBagPage,
+      bagLoading,
+    } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -258,19 +265,14 @@ class BagPageView extends React.PureComponent {
           paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
           isBagPage={isBagPage}
+          bagLoading={bagLoading}
         />
       </div>
     );
   };
 
-  handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
-  };
-
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage, bagLoading } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -309,6 +311,7 @@ class BagPageView extends React.PureComponent {
                 paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
                 isBagPage={isBagPage}
+                bagLoading={bagLoading}
               />
             </Col>
           </Row>
@@ -371,7 +374,7 @@ class BagPageView extends React.PureComponent {
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
               onClick={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE, this);
               }}
             >
               <Heading
@@ -403,7 +406,7 @@ class BagPageView extends React.PureComponent {
                 colSize={{ small: 3, medium: 4, large: 6 }}
                 className="left-sec"
                 onClick={() => {
-                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                  BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE, this);
                 }}
               >
                 <Heading
@@ -441,10 +444,6 @@ class BagPageView extends React.PureComponent {
     );
   }
 }
-
-BagPageView.defaultProps = {
-  isBagPage: true,
-};
 
 BagPageView.propTypes = BagPageUtils.BagPagePropTypes;
 

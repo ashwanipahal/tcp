@@ -121,6 +121,7 @@ export class BagPageContainer extends React.Component<Props> {
       isPayPalEnabled,
       isCartLoaded,
       trackPageViewBag,
+      bagLoading,
     } = this.props;
 
     const showAddTobag = false;
@@ -158,6 +159,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
+        bagLoading={bagLoading}
         isVenmoEnabled={isVenmoEnabled}
         isPayPalEnabled={isPayPalEnabled}
       />
@@ -262,6 +264,7 @@ export const mapStateToProps = state => {
     cartOrderItems: BagPageSelector.getOrderItems(state),
     isCartLoaded: BagPageSelector.getCartLoadedState(state),
     bagPageIsRouting: BagPageSelector.isBagRouting(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
   };
 };
 

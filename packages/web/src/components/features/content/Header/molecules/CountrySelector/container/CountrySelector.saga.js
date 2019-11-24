@@ -26,8 +26,13 @@ import { udpateSiteId, setModuleXContent } from './CountrySelector.actions';
 
 export function* fetchModuleX({ payload = '' }) {
   try {
-    const result = yield call(getModuleX, payload);
-    yield put(setModuleXContent(result.richText));
+    const countrySelectorModuleX = yield select(state =>
+      state[COUNTRY_SELECTOR_REDUCER_KEY].get('moduleXContent')
+    );
+    if (!countrySelectorModuleX) {
+      const result = yield call(getModuleX, payload);
+      yield put(setModuleXContent(result.richText));
+    }
   } catch (err) {
     yield null;
   }
