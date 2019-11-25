@@ -206,7 +206,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     loadWishList: payload => dispatch(getSetWishlistsSummariesAction(payload)),
-    createNewWishListMoveItem: wishListId => dispatch(createNewWishListMoveItemAction(wishListId)),
+    createNewWishListMoveItem: formData => {
+      dispatch(createNewWishListMoveItemAction(formData));
+    },
     deleteWishList: wishListId => {
       dispatch(deleteWishListAction(wishListId));
     },

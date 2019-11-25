@@ -201,14 +201,14 @@ export function* createNewWishListMoveItem({ payload: formData }) {
     }
     const payload = {
       toWishListId: formData.wisListId || createdWishListResponse.id,
-      itemId: formData.id,
+      itemId: formData.itemId,
     };
     const state = yield select();
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
     const activeWishlistItem = activeWishlistObject.items.find(
-      item => item.itemInfo.itemId === formData.id
+      item => item.itemInfo.itemId === formData.itemId
     );
     const itemMovedResponse = yield call(
       moveItemToNewWishList,
