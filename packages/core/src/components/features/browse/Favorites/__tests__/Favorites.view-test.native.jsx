@@ -32,6 +32,11 @@ describe('FavoritesViewVanilla', () => {
     deleteWishList: jest.fn(),
     updateWishList: jest.fn(),
     isBothTcpAndGymProductAreAvailable: true,
+    isKeepAliveEnabled: false,
+    outOfStockLabels: {},
+    userEmail: '',
+    sendWishListEmail: jest.fn(),
+    resetBrandFilters: jest.fn(),
   };
 
   beforeEach(() => {

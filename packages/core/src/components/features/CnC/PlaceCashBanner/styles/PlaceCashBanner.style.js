@@ -7,15 +7,6 @@ const styles = css`
       margin: 0 0 10px 0;
       width: 100%;
     }
-    &__img {
-      height: 70px;
-      @media ${props => props.theme.mediaQuery.medium} {
-        height: 80px;
-      }
-      @media ${props => props.theme.mediaQuery.large} {
-        height: 100px;
-      }
-    }
     &__text-wrapper {
       width: 100%;
       position: absolute;
@@ -34,26 +25,23 @@ const styles = css`
       margin: 0 0 8px 0;
     }
     &__tnc-text {
-      font-size: 6px;
+      font-size: ${props => props.theme.typography.fontSizes.fs8};
       color: ${props => props.theme.colors.PRIMARY.DARK};
       @media ${props => props.theme.mediaQuery.large} {
-        font-size: 8px;
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
       }
     }
     &__tnc-container {
       margin: 0 auto;
       line-height: 0.8;
       text-align: center;
-      @media ${props => props.theme.mediaQuery.large} {
-        width: 40%;
-      }
     }
     &__modalLink {
-      font-size: 6px;
+      font-size: ${props => props.theme.typography.fontSizes.fs8};
       padding: 0 2px;
       color: ${props => props.theme.colors.PRIMARY.DARK};
       @media ${props => props.theme.mediaQuery.large} {
-        font-size: 8px;
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
       }
     }
   }

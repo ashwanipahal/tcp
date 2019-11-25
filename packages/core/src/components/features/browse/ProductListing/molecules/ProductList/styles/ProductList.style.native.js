@@ -4,14 +4,8 @@ const PageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-const ItemCountContainer = styled.View`
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 12px;
-  margin-top: 4px;
-  flex: 1;
-`;
+const HeaderContainer = styled.View``;
 
 const styles = css``;
 
-export { styles, PageContainer, ItemCountContainer };
+export { styles, PageContainer, HeaderContainer };

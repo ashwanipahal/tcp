@@ -165,7 +165,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {getStoreHours(hours, labels, currentDate)}
+                {`(${getStoreHours(hours, labels, currentDate)})`}
               </BodyCopy>
               {!geoLocationDisabled && (
                 <BodyCopy
@@ -275,7 +275,7 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {storeHours}
+              {`(${storeHours})`}
             </BodyCopy>
           )}
           {!geoLocationDisabled && (
