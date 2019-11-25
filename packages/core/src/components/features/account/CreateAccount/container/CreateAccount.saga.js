@@ -30,6 +30,7 @@ export function* createsaga({ payload }) {
     yield put(setLoadingState({ isLoading: false }));
     yield put(
       setClickAnalyticsData({
+        eventName: 'create account',
         customEvents: ['event13', 'event14'],
         pageNavigationText: 'header-create account',
       })

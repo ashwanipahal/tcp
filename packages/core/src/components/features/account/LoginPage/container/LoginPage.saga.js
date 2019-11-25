@@ -33,6 +33,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(setLoginModalMountedState({ state: false }));
       yield put(
         setClickAnalyticsData({
+          eventName: 'login',
           customEvents: ['event14'],
           pageNavigationText: 'header-log in',
         })
