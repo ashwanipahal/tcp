@@ -36,6 +36,7 @@ import {
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -121,10 +122,12 @@ export class BagPageContainer extends React.Component<Props> {
       isPayPalEnabled,
       isCartLoaded,
       trackPageViewBag,
+      router,
       bagLoading,
     } = this.props;
 
     const showAddTobag = false;
+    const fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
     return (
       <BagPage
         isMobile={isMobile}
@@ -159,6 +162,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
+        fromMiniBag={fromMiniBag}
         bagLoading={bagLoading}
         isVenmoEnabled={isVenmoEnabled}
         isPayPalEnabled={isPayPalEnabled}
@@ -180,9 +184,10 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shopping bag',
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
-        pageNavigationText: 'header-cart',
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         loadAnalyticsOnload: false,
       },
     },
