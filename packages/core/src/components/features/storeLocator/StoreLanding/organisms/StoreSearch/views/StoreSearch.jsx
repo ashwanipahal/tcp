@@ -49,6 +49,7 @@ export class StoreSearch extends PureComponent {
     setClickAnalyticsData({
       storeSearchCriteria: place,
       customEvents: ['event89'],
+      eVar65: 'storelocator',
     });
     trackClick();
     this.setState({ storeSelected: true });

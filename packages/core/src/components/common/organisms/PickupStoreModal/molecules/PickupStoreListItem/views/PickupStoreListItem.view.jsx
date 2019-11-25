@@ -325,6 +325,8 @@ class PickupStoreListItem extends React.Component {
       currentProduct,
       isBossSelected,
       isBopisSelected,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
 
     const isBoss = this.isBossSelected;
