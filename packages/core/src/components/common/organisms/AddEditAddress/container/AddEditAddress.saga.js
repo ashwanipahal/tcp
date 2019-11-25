@@ -8,6 +8,7 @@ import {
 } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
+import { clearUserInfo } from '../../../../features/account/User/container/User.actions';
 
 export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
@@ -26,6 +27,7 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
         })
       );
       yield put(clearGetAddressListTTL());
+      yield put(clearUserInfo());
       return yield put(addAddressSuccess(res.body));
     }
     return yield put(addAddressFail(res.body));
@@ -60,6 +62,7 @@ export function* updateAddressPut({ payload }, fromCheckout) {
         })
       );
       yield put(clearGetAddressListTTL());
+      yield put(clearUserInfo());
       const putRes = yield put(addAddressSuccess(res.body));
       if (fromCheckout) {
         return res.body;

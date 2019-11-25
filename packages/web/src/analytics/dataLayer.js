@@ -184,9 +184,11 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
-        return clickActionAnalyticsData.pageNavigationText
+        const pageNavigationText = clickActionAnalyticsData.pageNavigationText
           ? clickActionAnalyticsData.pageNavigationText
           : pageData.pageNavigationText;
+
+        return pageNavigationText || '';
       },
     },
 

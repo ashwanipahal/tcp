@@ -122,7 +122,7 @@ class ProductDetailView extends React.PureComponent {
     const { navigation } = this.props;
     return (
       promoBanners &&
-      promoBanners.length && (
+      promoBanners.length > 0 && (
         <PromoMiddleContainer>
           <PromoPDPBanners promos={promoBanners} navigation={navigation} />
         </PromoMiddleContainer>
