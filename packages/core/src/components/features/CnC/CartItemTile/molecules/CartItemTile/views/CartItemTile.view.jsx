@@ -299,8 +299,8 @@ class CartItemTile extends PureComponent {
   moveToBagSflItem = () => {
     const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
-      productInfo: { skuId, generalProductId, upc, productPartNumber },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice },
+      productInfo: { skuId, generalProductId, productPartNumber },
       miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
