@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getSiteId } from '@tcp/core/src/utils/utils';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isMobileApp } from '@tcp/core/src/utils';
+import {
+  getIsKeepAliveProduct,
+  getIsKeepAliveProductApp,
+} from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchBarStyle from '../SearchBar.style';
 import { routerPush } from '../../../../../utils/index';
+import OutOfStockWaterMark from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
+import { getLabelsOutOfStock } from '../../../../features/browse/ProductListing/container/ProductListing.selectors';
 
 /**
  * This component produces a Search Bar component for Header
@@ -18,6 +25,12 @@ import { routerPush } from '../../../../../utils/index';
  * @param {*} props
  */
 class LookingForProductDetail extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.generateDamUrl = this.generateDamUrl.bind(this);
+  }
+
   redirectToProductUrl = productUrl => {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
@@ -26,8 +39,19 @@ class LookingForProductDetail extends React.PureComponent {
     });
   };
 
+  generateDamUrl = itemUrl => {
+    const fileNameFull =
+      itemUrl && itemUrl[0] ? itemUrl[0].substring(itemUrl[0].lastIndexOf('/') + 1) : '';
+    const fileNameNoExt =
+      fileNameFull.lastIndexOf('.') > 0
+        ? fileNameFull.substring(0, fileNameFull.lastIndexOf('.'))
+        : fileNameFull;
+    const prodNum = fileNameNoExt.split('_')[0];
+    return `${prodNum}/${fileNameFull}`;
+  };
+
   render() {
-    const { searchResults } = this.props;
+    const { searchResults, isKeepAliveEnabled, outOfStockLabels } = this.props;
 
     return (
       <React.Fragment>
@@ -36,10 +60,11 @@ class LookingForProductDetail extends React.PureComponent {
             {searchResults &&
               searchResults.autosuggestProducts &&
               searchResults.autosuggestProducts.map(item => {
+                const keepAlive = isKeepAliveEnabled && item.keepAlive;
                 return (
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
-                      className="suggestion-label"
+                      className="suggestion-label out-of-stock-wrapper"
                       noLink
                       to={`/${getSiteId()}${item.productUrl}`}
                       onClick={e => {
@@ -47,13 +72,22 @@ class LookingForProductDetail extends React.PureComponent {
                         this.redirectToProductUrl(`${item.productUrl}`);
                       }}
                     >
-                      <Image
-                        alt={`${item.name}`}
+                      <DamImage
                         className="autosuggest-image"
-                        src={`${item.imageUrl[0]}`}
-                        data-locator={`${item.name}`}
+                        imgData={{
+                          alt: `${item.name}`,
+                          url: `${this.generateDamUrl(item.imageUrl)}`,
+                        }}
+                        isProductImage
                         height="25px"
+                        lazyLoad={false}
                       />
+                      {keepAlive && (
+                        <OutOfStockWaterMark
+                          label={outOfStockLabels.outOfStockCaps}
+                          fontSizes={['fs12', 'fs16', 'fs12']}
+                        />
+                      )}
                     </Anchor>
                   </BodyCopy>
                 );
@@ -82,4 +116,13 @@ LookingForProductDetail.defaultProps = {
   },
 };
 
-export default connect()(withStyles(LookingForProductDetail, SearchBarStyle));
+const mapStateToProps = state => {
+  return {
+    isKeepAliveEnabled: isMobileApp()
+      ? getIsKeepAliveProductApp(state)
+      : getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(LookingForProductDetail, SearchBarStyle));

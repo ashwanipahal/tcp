@@ -18,7 +18,7 @@ const JeansModuleStyles = css`
   .title-section {
     width: 313px;
     height: 30px;
-    background: ${props => props.jeansModule.set[1].val};
+    background: ${props => props.data.set[1].val};
     position: absolute;
     bottom: -30px;
     left: 0;
@@ -33,10 +33,13 @@ const JeansModuleStyles = css`
     border-top: 1px solid ${props => props.theme.colorPalette.gray[900]};
     background: transparent;
     text-align: center;
-    line-height: 36px;
+    line-height: 38px;
     width: 80%;
     margin-left: 10%;
     text-transform: uppercase;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
   }
   .tcp_carousel_wrapper {
     margin-left: 44px;
@@ -90,6 +93,7 @@ const JeansModuleStyles = css`
 
     .jeans-carousel:hover {
       position: relative;
+
       .overlapping-section {
         display: block;
         position: absolute;
@@ -117,13 +121,16 @@ const JeansModuleStyles = css`
     .shop-now-link {
       position: absolute;
       bottom: 0;
-      background: ${props => props.jeansModule.set[1].val};
+      background: ${props => props.data.set[1].val};
       color: white;
       width: 100%;
       height: 38px;
-      line-height: 36px;
+      line-height: 38px;
       left: 0;
+      font-family: ${props => props.theme.fonts.primaryFontFamily};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
+
     .text-header {
       margin: 19px 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     }

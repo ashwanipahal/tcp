@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductItemsVanilla should render correctly 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="fav_brand_title"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin="0 0 32px 0"
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="lbl_fav_share_list_msg"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Field
+    autoCapitalize="none"
+    bottomBorderColor="gray.600"
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "autoCapitalize": "sentences",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="toEmail"
+    id="toEmail"
+    label="lbl_fav_to"
+    maxLength={50}
+    name="toEmail"
+    type="text"
+  />
+  <Field
+    autoCapitalize="none"
+    bottomBorderColor="gray.600"
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "autoCapitalize": "sentences",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="fromEmail"
+    id="fromEmail"
+    label="lbl_fav_from"
+    maxLength={50}
+    name="fromEmail"
+    type="text"
+  />
+  <Field
+    autoCapitalize="none"
+    bottomBorderColor="gray.600"
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "autoCapitalize": "sentences",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="subject"
+    id="subject"
+    label="lbl_fav_subject"
+    maxLength={50}
+    name="subject"
+    type="text"
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="fav_brand_title"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin="0 0 6px 0"
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="lbl_fav_message"
+    textDecoration={null}
+  />
+  <Field
+    autoCapitalize="none"
+    bottomBorderColor="gray.600"
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "State": Object {
+          "blurTextInput": [Function],
+          "currentlyFocusedField": [Function],
+          "focusTextInput": [Function],
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextInput)",
+        "getDefaultProps": [Function],
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+  height: 146px;
+  width: 100%;
+  border: 1px solid ",
+            [Function],
+            ";
+",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="message"
+    id="message"
+    label="lbl_fav_subject"
+    maxLength={100}
+    multiline={true}
+    name="message"
+    onChangeText={[Function]}
+    textAlign="left"
+    type="text"
+    value=""
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="40px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="btn_fav_save"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="WHITE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="24px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="btn_fav_cancel"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+</Styled(View)>
+`;

@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
-import { ScrollViewContainer } from '../styles/OutfitDetails.native.style';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
+import { getMapSliceForColorProductId } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
+};
+
+const getColorindex = (colorIndex, setCurrentColorIndex) => {
+  if (setCurrentColorIndex) {
+    setCurrentColorIndex(colorIndex);
+  }
 };
 
 /**
@@ -17,6 +26,7 @@ const keyExtractor1 = (_, index) => {
  */
 const renderItem = ({
   item,
+  colorProductId,
   plpLabels,
   productsCount,
   index,
@@ -27,7 +37,31 @@ const renderItem = ({
   labels,
   navigation,
   isLoggedIn,
+  toastMessage,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
+  currentColorIndex,
+  setCurrentColorIndex,
 }) => {
+  // eslint-disable-next-line no-shadow
+  const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
+    return (
+      (colorProductId === '' &&
+        colorFitsSizesMap &&
+        colorFitsSizesMap[currentColorIndex].colorProductId) ||
+      colorProductId
+    );
+  };
+
+  const colorProductIdValue = getColorProductId(
+    colorProductId,
+    item.colorFitsSizesMap,
+    currentColorIndex
+  );
+
+  const colorProduct =
+    item && getMapSliceForColorProductId(item.colorFitsSizesMap, colorProductIdValue);
+
   return (
     <OutfitProduct
       plpLabels={plpLabels}
@@ -39,6 +73,14 @@ const renderItem = ({
       isLoggedIn={isLoggedIn}
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
+      }}
+      toastMessage={toastMessage}
+      AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+      removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+      productMiscInfo={colorProduct}
+      favoriteCount={colorProduct.favoritedCount}
+      colorindex={colorIndex => {
+        getColorindex(colorIndex, setCurrentColorIndex);
       }}
     />
   );
@@ -84,7 +126,20 @@ const OutfitDetailsView = props => {
     isPickupModalOpen,
     navigation,
     isLoggedIn,
+    outfitId,
+    pdpLabels,
+    unavailableCount,
+    toastMessage,
   } = props;
+  const recommendationAttributes = {
+    variation: 'moduleO',
+    navigation,
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
+    partNumber: outfitId,
+    isHeaderAccordion: true,
+  };
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+
   return (
     <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
@@ -105,11 +160,31 @@ const OutfitDetailsView = props => {
             labels,
             navigation,
             isLoggedIn,
+            toastMessage,
+            currentColorIndex,
+            setCurrentColorIndex,
           })
         }
       />
+      {!!unavailableCount && (
+        <BodyCopyWithSpacing
+          spacingStyles="margin-top-XS margin-bottom-MED"
+          fontSize="fs16"
+          fontFamily="secondary"
+          text={`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+        />
+      )}
+      <RecommendationWrapper>
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          isRecentlyViewed
+          {...recommendationAttributes}
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+        />
+      </RecommendationWrapper>
+
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-      <AddedToBagContainer navigation={navigation} />
     </ScrollViewContainer>
   );
 };
@@ -117,8 +192,10 @@ const OutfitDetailsView = props => {
 OutfitDetailsView.propTypes = {
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
+  unavailableCount: PropTypes.number,
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
+  colorProductId: PropTypes.string,
   handleAddToBag: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
@@ -127,17 +204,29 @@ OutfitDetailsView.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   navigation: PropTypes.shape({}),
   isLoggedIn: PropTypes.bool,
+  outfitId: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
-  item: PropTypes.shape({}),
+  item: {},
+  colorProductId: '',
   labels: {},
   isPickupModalOpen: false,
   navigation: {},
   isLoggedIn: false,
+  outfitId: '',
+  pdpLabels: {},
+  toastMessage: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default OutfitDetailsView;

@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
@@ -33,6 +34,8 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
       component="div"
       fontFamily="secondary"
       fontWeight="regular"
+      role="alert"
+      aria-live="assertive"
     >
       <Image
         alt="Error"
@@ -55,9 +58,10 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
 
 class ProductAddToBag extends React.PureComponent<Props> {
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels } = this.props;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {} } = this.props;
     const { addToBag, update } = plpLabels;
-    return fromBagPage ? update : addToBag;
+    const addToBagLabel = fromBagPage ? update : addToBag;
+    return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
   renderOutfitButton = () => {
@@ -66,11 +70,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
       currentProduct: { colorFitsSizesMap },
       selectedColorProductId,
       isOutfitPage,
+      keepAlive,
     } = this.props;
-    const currentColorEntry = getMapSliceForColorProductId(
-      colorFitsSizesMap,
-      selectedColorProductId
-    );
+    const currentColorEntry =
+      getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) || {};
     return isOutfitPage ? (
       <div className="outfit-pickup">
         <ProductPickupContainer
@@ -78,6 +81,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           formName={`ProductAddToBag-${currentProduct.generalProductId}`}
           miscInfo={currentColorEntry.miscInfo}
           isOutfitVariant
+          keepAlive={keepAlive}
         />
       </div>
     ) : null;
@@ -101,6 +105,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             id="color"
             name="color"
             component={ProductColorChipsSelector}
+            isGiftCard={isGiftCard}
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"
@@ -113,7 +118,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderFitList = (fitList, fitTitle) => {
-    const { selectFit } = this.props;
+    const { selectFit, keepAlive } = this.props;
     return (
       fitList &&
       fitList.size > 0 && (
@@ -127,6 +132,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onChange={selectFit}
             dataLocator="addnewaddress-state"
             title={`${fitTitle}:`}
+            keepAlive={keepAlive}
           />
         </div>
       )
@@ -155,13 +161,16 @@ class ProductAddToBag extends React.PureComponent<Props> {
       plpLabels,
       onCloseClick,
       selectedColorProductId,
+      keepAlive,
+      isFromBagProductSfl,
+      isPickup,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
     );
-    return (
+    return !isFromBagProductSfl && !isPickup ? (
       <ProductPickupContainer
         productInfo={currentProduct}
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
@@ -169,8 +178,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
         sizeUnavailable={sizeUnavailable}
         onPickupClickAddon={onCloseClick}
         miscInfo={currentColorEntry.miscInfo}
+        keepAlive={keepAlive}
       />
-    );
+    ) : null;
   };
 
   renderSizeList = (sizeList, colorFitSizeDisplayNames, errorMessage) => {
@@ -179,6 +189,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       selectSize,
       isDisableZeroInventoryEntries,
+      keepAlive,
     } = this.props;
     return (
       sizeList &&
@@ -196,11 +207,47 @@ class ProductAddToBag extends React.PureComponent<Props> {
             dataLocator="addnewaddress-state"
             title={`${colorFitSizeDisplayNames.size}:`}
             isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+            keepAlive={keepAlive}
           />
           {isErrorMessageDisplayed && ErrorComp(errorMessage)}
         </div>
       )
     );
+  };
+
+  renderQuantitySelector = () => {
+    const { isFromBagProductSfl, quantityList } = this.props;
+    return (
+      !isFromBagProductSfl && (
+        <div className="qty-selector">
+          <Field
+            width={32}
+            id="quantity"
+            name="Quantity"
+            component={MiniBagSelect}
+            options={quantityList}
+            onChange={this.quantityChange}
+            dataLocator="addnewaddress-state"
+          />
+        </div>
+      )
+    );
+  };
+
+  getPageShortName = currentProduct => {
+    let pageShortName = '';
+    let outfitPageShortName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    const productName = currentProduct && currentProduct.name.toLowerCase();
+    if (productId) {
+      pageShortName = `product:${productId}:${productName}`;
+      outfitPageShortName = `outfit:${productId}:${productName}`;
+    }
+    return {
+      pageShortName,
+      productId,
+      outfitPageShortName,
+    };
   };
 
   render() {
@@ -210,13 +257,18 @@ class ProductAddToBag extends React.PureComponent<Props> {
       fitChanged,
       quantityList,
       displayErrorMessage,
+      displayATBErrorMessage,
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
       alternateSizes,
       isPickup,
+      isBundleProduct,
+      isATBErrorMessageDisplayed,
+      keepAlive,
+      isFromBagProductSfl,
+      currentProduct,
     } = this.props;
-
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
     colorFitSizeDisplayNames = {
       color: 'Color',
@@ -232,56 +284,107 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
     colorList = fromJS(colorList);
     const { errorMessage, fit: fitTitle } = plpLabels;
-
+    const { pageShortName, productId, outfitPageShortName } = this.getPageShortName(currentProduct);
+    const pageName = pageShortName;
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {!isPickup && this.renderUnavailableLink()}
-              <div className="qty-selector">
-                <Field
-                  width={32}
-                  id="quantity"
-                  name="Quantity"
-                  component={MiniBagSelect}
-                  options={quantityList}
-                  onChange={this.quantityChange}
-                  dataLocator="addnewaddress-state"
-                />
-              </div>
+              {this.renderUnavailableLink()}
+              {this.renderQuantitySelector(
+                isFromBagProductSfl,
+                MiniBagSelect,
+                quantityList,
+                this.quantityChange
+              )}
             </div>
             <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
-        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
+        {isATBErrorMessageDisplayed &&
+          errorOnHandleSubmit &&
+          ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
-                <Button
-                  type="submit"
-                  className="add-to-bag-button"
-                  onClick={e => {
-                    e.preventDefault();
-                    // TODO: with handleSubmit
-                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-                    if (fitChanged) {
-                      displayErrorMessage(fitChanged);
-                    } else {
-                      handleFormSubmit();
-                    }
+                <ClickTracker
+                  clickData={{
+                    eventName: 'cart add',
+                    pageShortName,
+                    pageName,
+                    pageType: 'product',
+                    pageSection: 'product',
+                    pageSubSection: 'product',
+                    products: [{ id: `${productId}` }],
                   }}
                 >
-                  {this.getButtonLabel()}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="add-to-bag-button"
+                    disabled={keepAlive}
+                    onClick={e => {
+                      e.preventDefault();
+                      // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                      if (fitChanged) {
+                        displayErrorMessage(fitChanged);
+                      } else {
+                        displayATBErrorMessage(true);
+                        handleFormSubmit();
+                      }
+                    }}
+                  >
+                    {this.getButtonLabel()}
+                  </Button>
+                </ClickTracker>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
-              {this.renderOutfitButton()}
+              {!isBundleProduct && this.renderOutfitButton()}
+            </Col>
+            <Col
+              colSize={{ small: 12, medium: 12, large: 12 }}
+              className="outfit-button-wrapper-desktop"
+            >
+              {!isBundleProduct && this.renderOutfitButton()}
+              <div className="button-wrapper">
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['scAdd,scOpen,event85,event61,event77'],
+                    eventName: 'cart add',
+                    pageShortName,
+                    pageName: outfitPageShortName,
+                    pageType: 'outfit',
+                    pageSection: 'outfit',
+                    pageSubSection: 'outfit',
+                    products: [{ id: `${productId}` }],
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    className="add-to-bag-button"
+                    disabled={keepAlive}
+                    // eslint-disable-next-line sonarjs/no-identical-functions
+                    onClick={e => {
+                      e.preventDefault();
+                      // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                      if (fitChanged) {
+                        displayErrorMessage(fitChanged);
+                      } else {
+                        displayATBErrorMessage(true);
+                        handleFormSubmit();
+                      }
+                    }}
+                  >
+                    {this.getButtonLabel()}
+                  </Button>
+                </ClickTracker>
+                <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
+              </div>
             </Col>
           </Row>
         )}

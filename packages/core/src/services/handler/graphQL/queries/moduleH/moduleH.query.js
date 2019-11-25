@@ -7,11 +7,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
       val
       key
     }
+    errorMessage
     composites {
       headerText {
         textItems {
           text
           style
+        }
+        icon {
+          placement
+          icon
         }
         link {
           url

@@ -46,6 +46,8 @@ const ProductCustomizeFormPart = props => {
     formEnabled,
     onInputSelectionChange,
     toastMessage,
+    onCloseClick,
+    isFromBagProductSfl,
     ...otherProps
   } = props;
 
@@ -123,7 +125,7 @@ const ProductCustomizeFormPart = props => {
                     dataLocator="pdp_discounted_product_price"
                     textDecoration="line-through"
                     fontFamily="secondary"
-                    fontSize="fs12"
+                    fontSize="fs14"
                     fontWeight="regular"
                     color="gray.800"
                     text={`${currencyPrefix}${listPrice}`}
@@ -134,7 +136,7 @@ const ProductCustomizeFormPart = props => {
                     dataLocator="pdp_discounted_percentage"
                     margin="0 0 0 4px"
                     fontFamily="secondary"
-                    fontSize="fs12"
+                    fontSize="fs14"
                     fontWeight="regular"
                     color="red.500"
                     text={badge2}
@@ -157,6 +159,8 @@ const ProductCustomizeFormPart = props => {
           formRef={formRef}
           formEnabled={formEnabled}
           toastMessage={toastMessage}
+          onCloseClick={onCloseClick}
+          isFromBagProductSfl={isFromBagProductSfl}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>
@@ -185,6 +189,7 @@ ProductCustomizeFormPart.propTypes = {
   formEnabled: PropTypes.bool.isRequired,
   onInputSelectionChange: PropTypes.func.isRequired,
   toastMessage: PropTypes.func,
+  onCloseClick: PropTypes.func,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -192,6 +197,7 @@ ProductCustomizeFormPart.defaultProps = {
   addToBagError: '',
   navigation: {},
   toastMessage: () => {},
+  onCloseClick: () => {},
 };
 
 export default ProductCustomizeFormPart;

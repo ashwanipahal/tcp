@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
@@ -18,7 +19,10 @@ import {
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getSelectedFilter,
+  getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
@@ -32,6 +36,8 @@ import {
   getAllProductsSelect,
   updateAppliedFiltersInState,
   getScrollToTopValue,
+  getPDPLabels,
+  getModalState,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -112,6 +118,7 @@ class SearchDetailContainer extends React.PureComponent {
       sortBySelected: true,
       formData,
       scrollToTop: true,
+      isKeepModalOpen: true,
     };
     getProducts(data);
   };
@@ -145,12 +152,15 @@ class SearchDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      navigation,
+      pdpLabels,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
 
     return (
       <React.Fragment>
-        {isSearchResultsAvailable ? (
+        {isSearchResultsAvailable || isLoadingMore ? (
           <View>
             {this.searchQuery && products && products.length > 0 ? (
               <SearchDetail
@@ -176,6 +186,9 @@ class SearchDetailContainer extends React.PureComponent {
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
                 labelsLogin={labelsLogin}
+                navigation={navigation}
+                pdpLabels={pdpLabels}
+                isKeepModalOpen={isKeepModalOpen}
                 {...otherProps}
               />
             ) : (
@@ -186,6 +199,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={this.searchQuery}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                navigation={navigation}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             )}
@@ -236,16 +251,21 @@ function mapStateToProps(state) {
     labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
+    selectedFilterValue: getSelectedFilter(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     slpLabels: getLabels(state),
     searchResultSuggestions:
-      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+      state.SearchListingPage && state.SearchListingPage.searchResultSuggestions,
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    pdpLabels: getPDPLabels(state),
+    isKeepModalOpen: getModalState(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -268,6 +288,9 @@ function mapDispatchToProps(dispatch) {
     },
     setRecentSearches: searchTerm => {
       dispatch(setRecentSearch({ searchTerm }));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
   };
 }
@@ -311,6 +334,10 @@ SearchDetailContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isKeepModalOpen: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -339,6 +366,10 @@ SearchDetailContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  pdpLabels: {},
+  isKeepModalOpen: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

@@ -21,6 +21,8 @@ export class ShippingReviewContainer extends React.PureComponent {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     expressReviewShippingSectionId: PropTypes.shape({}),
     dispatch: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool,
+    checkoutRoutingDone: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,6 +31,8 @@ export class ShippingReviewContainer extends React.PureComponent {
     formName: '',
     formSection: '',
     expressReviewShippingSectionId: {},
+    bagLoading: false,
+    checkoutRoutingDone: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -64,10 +68,13 @@ export class ShippingReviewContainer extends React.PureComponent {
       updateShippingMethodSelection,
       expressReviewShippingSectionId,
       dispatch,
+      bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     return (
       <ShippingReviewSection
         shippingAddress={shippingAddress}
+        checkoutRoutingDone={checkoutRoutingDone}
         shippingMethod={shippingMethod}
         onEdit={onEdit}
         labels={labels}
@@ -80,6 +87,7 @@ export class ShippingReviewContainer extends React.PureComponent {
         formSection={formSection}
         updateShippingMethodSelection={updateShippingMethodSelection}
         expressReviewShippingSectionId={expressReviewShippingSectionId}
+        bagLoading={bagLoading}
       />
     );
   }

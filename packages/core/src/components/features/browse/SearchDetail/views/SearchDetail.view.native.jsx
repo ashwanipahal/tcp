@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '../../../../common/atoms/index.native';
+import { navigateToNestedRoute } from '@tcp/core/src/utils';
+import { BodyCopy, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import { styles, PageContainer, Container } from '../SearchDetail.style.native';
+import {
+  styles,
+  PageContainer,
+  Container,
+  AnchorContainer,
+  AnchorStyle,
+} from '../SearchDetail.style.native';
 import ProductListing from '../../ProductListing/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class SearchDetail extends React.PureComponent {
   listRef;
@@ -39,6 +45,49 @@ class SearchDetail extends React.PureComponent {
     return null;
   };
 
+  didYouMeanText = (text, suggestion) => {
+    return (
+      <BodyCopy
+        margin="12px 0 0 0"
+        dataLocator="slp_store_name_value"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        color={suggestion ? 'blue.800' : 'gray.900'}
+        text={text}
+      />
+    );
+  };
+
+  goToSearchResultsPage = searchText => {
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'SearchDetail', {
+      title: searchText,
+      isForceUpdate: true,
+    });
+  };
+
+  renderDidYouMeanTextSection = searchResultSuggestionsArg => {
+    const { slpLabels } = this.props;
+    if (searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion) {
+      return (
+        <Container margins="0 12px 0 12px">
+          <AnchorContainer>
+            {this.didYouMeanText(`${slpLabels.lbl_didYouMean} `, false)}
+            <Anchor
+              customStyle={AnchorStyle}
+              onPress={() => this.goToSearchResultsPage(searchResultSuggestionsArg.toString())}
+            >
+              {this.didYouMeanText(`"${searchResultSuggestionsArg}"`, true)}
+              {this.didYouMeanText('?', false)}
+            </Anchor>
+          </AnchorContainer>
+        </Container>
+      );
+    }
+    return null;
+  };
+
   render() {
     const {
       searchedText,
@@ -57,12 +106,21 @@ class SearchDetail extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      searchResultSuggestions,
+      slpLabels,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
 
+    const searchResultSuggestionsArg =
+      searchResultSuggestions && searchResultSuggestions.length
+        ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
+        : slpLabels.lbl_no_suggestion;
     return (
       <PageContainer>
-        {this.renderSearchTopSection()}
+        {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion
+          ? this.renderDidYouMeanTextSection(searchResultSuggestionsArg)
+          : this.renderSearchTopSection()}
         <ProductListing
           setListRef={this.setListRef}
           products={products}
@@ -82,10 +140,11 @@ class SearchDetail extends React.PureComponent {
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
           labelsLogin={labelsLogin}
+          isSearchListing
+          isKeepModalOpen={isKeepModalOpen}
           {...otherProps}
         />
         <QuickViewModal navigation={navigation} />
-        <AddedToBagContainer navigation={navigation} />
       </PageContainer>
     );
   }
@@ -109,6 +168,8 @@ SearchDetail.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  searchResultSuggestions: PropTypes.arrayOf(PropTypes.shape({})),
+  isKeepModalOpen: PropTypes.bool,
 };
 
 SearchDetail.defaultProps = {
@@ -119,6 +180,8 @@ SearchDetail.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  searchResultSuggestions: [],
+  isKeepModalOpen: false,
 };
 
 export default withStyles(SearchDetail, styles);

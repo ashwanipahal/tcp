@@ -40,16 +40,31 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels } = this.props;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels } = this.props;
     const { addToBag, update } = plpLabels;
-    return fromBagPage ? update : addToBag;
+    const addToBagLabel = fromBagPage ? update : addToBag;
+    return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
-  componentDidUpdate = () => {
-    const { errorOnHandleSubmit } = this.props;
-    if (errorOnHandleSubmit) {
-      this.onToastMessage(errorOnHandleSubmit);
+  componentDidUpdate = prevProps => {
+    const {
+      errorOnHandleSubmit,
+      isErrorMessageDisplayed,
+      plpLabels: { errorMessage },
+      toastMessage,
+      displayErrorMessage,
+    } = this.props;
+    const changeInFormValidationError =
+      isErrorMessageDisplayed && isErrorMessageDisplayed !== prevProps.isErrorMessageDisplayed;
+    if (errorOnHandleSubmit || changeInFormValidationError) {
+      if (changeInFormValidationError) {
+        // This is to provide functionality to trigger error from container as well.
+        toastMessage(errorMessage); // calling this method directly as state's showToastMessage is never reset and toast message is not displayed second time
+        return displayErrorMessage(false); // calling this method to call didUpdate when isErrorMessageDisplayed is set true again
+      }
+      return this.onToastMessage(errorOnHandleSubmit);
     }
+    return null;
   };
 
   /**
@@ -59,12 +74,20 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const { handleFormSubmit, fitChanged, displayErrorMessage } = this.props;
+    const {
+      handleFormSubmit,
+      fitChanged,
+      displayErrorMessage,
+      plpLabels: { errorMessage },
+      toastMessage,
+      keepAlive,
+    } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
         color="white"
         fill="BLUE"
+        disableButton={keepAlive}
         text={this.getButtonLabel()}
         fontSize="fs10"
         fontWeight="extrabold"
@@ -104,21 +127,29 @@ class ProductAddToBag extends React.PureComponent<Props> {
       currentProduct: { colorFitsSizesMap },
       plpLabels,
       selectedColorProductId,
+      onCloseClick,
+      keepAlive,
+      isFromBagProductSfl,
+      isPickup,
+      isBundleProduct,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
       colorFitsSizesMap,
       selectedColorProductId
     );
-    return (
+
+    return !isFromBagProductSfl && !isPickup && !isBundleProduct ? (
       <ProductPickupContainer
         productInfo={currentProduct}
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
         sizeUnavailable={sizeUnavailable}
         isAnchor
         miscInfo={currentColorEntry && currentColorEntry.miscInfo}
+        onPickupClickAddon={onCloseClick}
+        keepAlive={keepAlive}
       />
-    );
+    ) : null;
   };
 
   onQuantityValueChange = selectedQuantity => {
@@ -139,6 +170,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
     }
   };
 
+  getQtyMarginStyle = () => {
+    const { isBundleProduc } = this.props;
+    return !isBundleProduc ? '16px 0 16px 0' : '32px 0 40px 0';
+  };
+
   render() {
     const {
       colorList,
@@ -149,8 +185,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedSize,
       selectFit,
       selectSize,
-      isErrorMessageDisplayed,
-      plpLabels: { errorMessage, size, fit, color },
+      plpLabels: { size, fit, color },
       quantityList,
       plpLabels: { quantity },
       selectedQuantity,
@@ -162,12 +197,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       alternateSizes,
       isPickup,
+      keepAlive,
+      isFromBagProductSfl,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
-    const sizeError = isErrorMessageDisplayed ? this.onToastMessage(errorMessage) : '';
 
     const quantityDropDownStyle = {
       width: 200,
@@ -210,6 +246,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           selectItem={selectFit}
           itemNameKey="displayName"
           locators={{ key: 'pdp_fit_label', value: 'pdp_fit_value' }}
+          keepAlive={keepAlive}
         />
         <SizeViewContainer>
           {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
@@ -224,33 +261,36 @@ class ProductAddToBag extends React.PureComponent<Props> {
             selectedItem={sizeName}
             selectItem={selectSize}
             itemNameKey="displayName"
-            error={sizeError}
             locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
             isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+            keepAlive={keepAlive}
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {!isPickup && this.renderUnavailableLink()}
-        <RowViewContainer style={quantityDropDownStyle}>
-          <BodyCopy
-            fontWeight="black"
-            color="gray.900"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            text={qunatityText}
-          />
-          <Field
-            component={NativeDropDown}
-            data={quantityList}
-            id="quantity"
-            selectedValue={selectedQuantity}
-            onValueChange={this.onQuantityValueChange}
-            heading={qunatityText}
-            name="Quantity"
-            textAlignLeft
-            lightGrayColor
-          />
-        </RowViewContainer>
+        {this.renderUnavailableLink()}
+        {!isFromBagProductSfl && (
+          <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
+            <BodyCopy
+              fontWeight="black"
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs14"
+              text={qunatityText}
+            />
+
+            <Field
+              component={NativeDropDown}
+              data={quantityList}
+              id="quantity"
+              selectedValue={selectedQuantity}
+              onValueChange={this.onQuantityValueChange}
+              heading={qunatityText}
+              name="Quantity"
+              textAlignLeft
+              lightGrayColor
+            />
+          </RowViewContainer>
+        )}
 
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
@@ -275,6 +315,8 @@ ProductAddToBag.propTypes = {
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
   toastMessage: PropTypes.func,
+  isBundleProduct: PropTypes.bool,
+  isFromBagProductSfl: PropTypes.bool,
 };
 
 ProductAddToBag.defaultProps = {
@@ -291,6 +333,8 @@ ProductAddToBag.defaultProps = {
   selectedQuantity: 1,
   showAddToBagCTA: true,
   toastMessage: () => {},
+  isBundleProduct: false,
+  isFromBagProductSfl: false,
 };
 
 /* export view with redux form */

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import { routerPush } from '../../../../../utils';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 const routesBack = e => {
   e.preventDefault();
@@ -18,6 +21,7 @@ const routesBack = e => {
 const OutfitDetailsView = ({
   className,
   outfitImageUrl,
+  unavailableCount,
   outfitProducts,
   plpLabels,
   handleAddToBag,
@@ -27,16 +31,33 @@ const OutfitDetailsView = ({
   addToBagErrorId,
   isLoggedIn,
   addToFavorites,
-  currencyExchange,
+  currencyAttributes,
   currencySymbol,
   labels,
+  pdpLabels,
+  outfitId,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
+  asPathVal,
+  topPromos,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
+  const recommendationAttributes = {
+    variations: 'moduleO',
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
+    partNumber: outfitId,
+    showLoyaltyPromotionMessage: false,
+    headerAlignment: 'left',
+  };
   return (
-    <>
-      <Row className={className}>
+    <div className={className}>
+      <Row>
         <Col
-          colSize={{ small: 6, medium: 8, large: 12 }}
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
           ignoreGutter={{ small: true }}
           className="outfit-back-button"
         >
@@ -52,6 +73,15 @@ const OutfitDetailsView = ({
             {backLabel}
           </Anchor>
         </Col>
+      </Row>
+      {topPromos && topPromos.length > 0 && (
+        <Row>
+          <Col className="promo-area-top" colSize={{ small: 6, medium: 8, large: 12 }}>
+            <PromoPDPBanners promos={topPromos} asPath={asPathVal} />
+          </Col>
+        </Row>
+      )}
+      <Row>
         <Col
           colSize={{ small: 6, medium: 3, large: 5 }}
           ignoreGutter={{ small: true }}
@@ -82,30 +112,50 @@ const OutfitDetailsView = ({
                     isLoggedIn={isLoggedIn}
                     addToFavorites={addToFavorites}
                     currencySymbol={currencySymbol}
-                    currencyExchange={currencyExchange}
+                    currencyAttributes={currencyAttributes}
+                    AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                    removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                   />
                 </li>
               ))}
+
+            {unavailableCount && (
+              <BodyCopy
+                textAlign="left"
+                fontFamily="secondary"
+                fontSize="fs16"
+                className="elem-mt-MED elem-mb-MED"
+              >
+                {`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+              </BodyCopy>
+            )}
           </ul>
         </Col>
         <Col
           colSize={{ small: 6, medium: 8, large: 12 }}
           ignoreGutter={{ small: true, medium: true, large: true }}
         >
-          <div className="placeholder promo-area-1">Complete the look</div>
+          <div className="placeholder promo-area-1">{pdpLabels.completeTheLook}</div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="placeholder promo-area-1">You may also like</div>
+          <Recommendations {...recommendationAttributes} />
+        </Col>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Recommendations
+            headerLabel={pdpLabels.recentlyViewed}
+            portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+            {...recommendationAttributes}
+          />
         </Col>
       </Row>
-      <AddedToBagContainer />
-    </>
+    </div>
   );
 };
 
 OutfitDetailsView.propTypes = {
   className: PropTypes.string,
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
@@ -116,21 +166,29 @@ OutfitDetailsView.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
+  outfitId: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
   className: '',
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
   labels: {},
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
+  pdpLabels: {},
+  outfitId: '',
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

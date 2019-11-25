@@ -23,6 +23,7 @@ import { DamImage } from '../../../../../../common/atoms';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import OutOfStockWaterMark from '../../OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -38,6 +39,7 @@ class ImageCarousel extends React.PureComponent {
     this.state = {
       activeSlideIndex: 0,
       showModal: false,
+      productId: '',
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
@@ -46,7 +48,9 @@ class ImageCarousel extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   // this method set current visible image
@@ -73,7 +77,18 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites, skuId, currentColorEntry } = props;
+    const { colorProductId } = currentColorEntry;
+    const { productId } = state;
     if (props.isLoggedIn && state.showModal) {
+      if (productId !== '') {
+        onAddItemToFavorites({
+          colorProductId: productId,
+          productSkuId: (skuId && skuId.skuId) || null,
+          pdpColorProductId: colorProductId,
+          page: 'PDP',
+        });
+      }
       return { showModal: false };
     }
     return null;
@@ -84,11 +99,20 @@ class ImageCarousel extends React.PureComponent {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
-  onFavorite = colorProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+  onFavorite = productId => {
+    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry } = this.props;
+    const { colorProductId } = currentColorEntry;
+
     if (!isLoggedIn) {
+      this.setState({ productId });
       this.setState({ showModal: true });
+    } else {
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        page: 'PDP',
+      });
     }
   };
 
@@ -135,6 +159,13 @@ class ImageCarousel extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  renderOutOfStockOverlay = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} fontSize="fs24" />
+    ) : null;
+  };
+
   renderNormalImage = imgSource => {
     const { onImageClick } = this.props;
     const { activeSlideIndex } = this.state;
@@ -154,23 +185,25 @@ class ImageCarousel extends React.PureComponent {
           width={imageWidth}
           height={imageHeight}
         />
+        {this.renderOutOfStockOverlay()}
       </ImageTouchableOpacity>
     );
   };
 
-  renderFavoriteIcon = currentColorEntry => {
-    const { isBundleProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
+  renderFavoriteIcon = () => {
+    const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
+    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
-          {isFavorite !== undefined ? (
+          {isFavorite !== undefined || miscInfo.isInDefaultWishlist ? (
             <CustomIcon
               isButton
-              name={ICON_NAME.favorite}
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.filledHeart}
               size={this.favoriteIconSize}
               color="gray.500"
-              fill="gray.500"
               dataLocator="pdp_favorite_icon"
             />
           ) : (
@@ -178,10 +211,10 @@ class ImageCarousel extends React.PureComponent {
               isButton
               name={ICON_NAME.favorite}
               size={this.favoriteIconSize}
-              color={this.favoriteIconColor}
+              color="gray.600"
               dataLocator="pdp_favorite_icon"
               onPress={() => {
-                this.onFavorite(colorProductId);
+                this.onFavorite(productId);
               }}
             />
           )}
@@ -201,13 +234,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const {
-      imageUrls,
-      isLoggedIn,
-      isGiftCard,
-      AddToFavoriteErrorMsg,
-      currentColorEntry,
-    } = this.props;
+    const { imageUrls, isLoggedIn, isGiftCard, AddToFavoriteErrorMsg } = this.props;
 
     const { activeSlideIndex, showModal } = this.state;
 
@@ -237,7 +264,7 @@ class ImageCarousel extends React.PureComponent {
           />
           {!isGiftCard ? (
             <FavoriteAndPaginationContainer>
-              {this.renderFavoriteIcon(currentColorEntry)}
+              {this.renderFavoriteIcon()}
               {imageUrls.length > 1 && (
                 <PaginationDots
                   numberOfDots={imageUrls.length}
@@ -303,6 +330,10 @@ ImageCarousel.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
@@ -316,6 +347,10 @@ ImageCarousel.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   currentColorEntry: '',
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

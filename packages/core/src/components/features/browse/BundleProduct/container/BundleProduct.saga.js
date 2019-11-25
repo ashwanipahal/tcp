@@ -13,7 +13,7 @@ function* fetchBundleProductDetail({ payload: { productId } }) {
     yield put(setProductDetails({ ...productDetail }));
     const bundledProducts = productDetail.product.bundleProducts;
     const bundleDetails = yield call(getBundleProductsDetails, { bundleProducts: bundledProducts });
-    yield put(setBundleDetails({ ...bundleDetails }));
+    yield put(setBundleDetails([...bundleDetails]));
   } catch (err) {
     logger.error('error: ', err);
   }

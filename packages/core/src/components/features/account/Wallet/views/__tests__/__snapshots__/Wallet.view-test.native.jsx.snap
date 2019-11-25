@@ -1,191 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Wallet should render correctly 1`] = `
-<View>
+<Fragment>
   <ScrollViewMock
     keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(View)>
-      <Styled(View)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs14"
-          margin={null}
-          numberOfLines={null}
-          text="lbl_overview_logout_heading_Text_1"
-          textAlign="center"
-          textDecoration={null}
-        />
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs14"
-          margin={null}
-          numberOfLines={null}
-          text="lbl_overview_logout_heading_Text_2"
-          textAlign="center"
-          textDecoration={null}
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          className="classBtn"
-          color="#575757"
-          customStyle={Object {}}
-          customTextStyle={null}
-          data-locator=""
-          disableButton={false}
-          fill=""
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          id="createAccount"
-          locator=""
-          navigation={Object {}}
-          onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
-          text="lbl_overview_join_text"
-          theme={Object {}}
-          type="submit"
-          url=""
-          width="47%"
-          withNoLineHeight={false}
-        />
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
-          customTextStyle={null}
-          data-locator=""
-          disableButton={false}
-          fill="BLUE"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          id="login"
-          locator=""
-          navigation={Object {}}
-          onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
-          text="lbl_overview_login_text"
-          theme={Object {}}
-          type="submit"
-          url=""
-          width="47%"
-          withNoLineHeight={false}
-        />
-      </Styled(View)>
-      <Styled(View)
-        spacingStyles="margin-top-XXXS"
-      >
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View)>
-            <Styled(View)>
-              <Styled(Styled(ImageComp))
-                alt=""
-                height={30}
-                host=""
-                source={
-                  Object {
-                    "testUri": "../../../src/assets/images/tcp-cc.png",
-                  }
-                }
-                url=""
-                width={47}
-              />
-            </Styled(View)>
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.900"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                margin={null}
-                numberOfLines={null}
-                text="lbl_overview_apply_today"
-                textAlign="center"
-                textDecoration={null}
-              />
-            </Styled(View)>
-          </Styled(View)>
-          <Styled(CustomIcon)
-            accessibilityLabel=""
-            color="gray.600"
-            dataLocator=""
-            iconFontName="FontAwesome"
-            isButton={true}
-            isDisabled={false}
-            margins={null}
-            name="chevron-right"
-            onPress={[Function]}
-            size="fs12"
-          />
-        </Styled(TouchableOpacity)>
-        <Panel
-          handleComponentChange={[Function]}
-          isCardApply={false}
-          isFavorite={false}
-          isVariationTypeLink={true}
-          title="lbl_overview_manage_creditCard"
-        />
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View)>
-            <Styled(BodyCopy)
-              accessibilityText=""
-              color="gray.900"
-              dataLocator=""
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              margin={null}
-              numberOfLines={null}
-              text="lbl_overview_purchase_giftCards"
-              textDecoration={null}
-            />
-          </Styled(View)>
-          <Styled(CustomIcon)
-            accessibilityLabel=""
-            color="gray.600"
-            dataLocator=""
-            iconFontName="FontAwesome"
-            isButton={true}
-            isDisabled={false}
-            margins={null}
-            name="chevron-right"
-            onPress={[Function]}
-            size="fs12"
-          />
-        </Styled(TouchableOpacity)>
-        <Panel
-          handleComponentChange={[Function]}
-          isCardApply={false}
-          isFavorite={false}
-          isVariationTypeLink={true}
-          title="lbl_overview_refer_friend"
-        />
-      </Styled(View)>
+      <GuestLoginOverview
+        hideLogoutText={false}
+        labels={
+          Object {
+            "common": Object {},
+            "myPlaceRewards": Object {},
+          }
+        }
+        loggedInWrapperStyle={Object {}}
+        navigation={[Function]}
+      />
     </Styled(View)>
   </ScrollViewMock>
-</View>
+</Fragment>
 `;

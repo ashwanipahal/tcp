@@ -65,21 +65,21 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.stopPropagation();
-    if (userNameClick || triggerLoginCreateAccount) {
+  onLinkClick = ({ openOverlay, navname }, componentToOpen) => {
+    const { setClickAnalyticsData, isOpenOverlay, closeOverlay } = this.props;
+
+    setClickAnalyticsData({
+      eventName: 'navigation click',
+      pageNavigationText: navname,
+    });
+    if (!isOpenOverlay) {
       openOverlay({
         component: componentToOpen,
         variation: 'primary',
       });
+    } else {
+      closeOverlay();
     }
-    this.setState({
-      userNameClick: !userNameClick,
-    });
-  };
-
-  handleUserTypeColor = isUserPlcc => {
-    return isUserPlcc ? 'blue.500' : 'orange.800';
   };
 
   renderAccountInfoSection = (
@@ -116,6 +116,8 @@ class HeaderMiddleNav extends React.PureComponent {
           openOverlay={openOverlay}
           isRememberedUser={isRememberedUser}
           userName={displayName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           isDrawer={false}
         />
       )
@@ -219,7 +221,7 @@ class HeaderMiddleNav extends React.PureComponent {
               />
               <StoreLocatorLink store={store} labels={storeLabel} />
               <BrandLogo
-                alt={config[brand].alt}
+                alt={config[brand] && config[brand].alt}
                 className="header-brand__home-logo--brand"
                 dataLocator={config[brand].dataLocator}
                 imgSrc={config[brand].imgSrc}
@@ -365,6 +367,8 @@ HeaderMiddleNav.propTypes = {
   }),
   labels: PropTypes.shape({}).isRequired,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  closeOverlay: PropTypes.func,
 };
 
 HeaderMiddleNav.defaultProps = {
@@ -387,6 +391,7 @@ HeaderMiddleNav.defaultProps = {
     features: {},
   },
   isRememberedUser: false,
+  closeOverlay: () => {},
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };

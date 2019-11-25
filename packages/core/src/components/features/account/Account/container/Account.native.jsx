@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { loadComponentLabelsData, getSubNavigationData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
@@ -9,6 +9,7 @@ import {
   StyledKeyboardAvoidingView,
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
+import constants from '../Account.constants';
 import { getLabels, getAccountNavigationState } from './Account.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
@@ -35,6 +36,7 @@ const navConfigMap = {
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',
   favorites: 'myFavoritePageMobile',
+  'rewards-credit-card': 'myPlaceRewardsCCPageMobile',
 };
 
 export class Account extends React.PureComponent {
@@ -46,6 +48,7 @@ export class Account extends React.PureComponent {
     getAccountNavigationAction: PropTypes.func,
     navigation: PropTypes.shape({}),
     fetchLabels: PropTypes.func,
+    fetchFooterLinks: PropTypes.func,
   };
 
   static defaultProps = {
@@ -56,6 +59,7 @@ export class Account extends React.PureComponent {
     getAccountNavigationAction: () => {},
     navigation: {},
     fetchLabels: () => {},
+    fetchFooterLinks: () => {},
   };
 
   constructor(props) {
@@ -87,8 +91,9 @@ export class Account extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { getAccountNavigationAction, fetchLabels } = this.props;
+    const { getAccountNavigationAction, fetchLabels, fetchFooterLinks } = this.props;
     getAccountNavigationAction();
+    fetchFooterLinks([constants.FOOTER_LINKS, constants.LEGAL_LINKS]);
     fetchLabels({ category: LABELS.account });
   }
 
@@ -118,6 +123,7 @@ export class Account extends React.PureComponent {
       addressBookMobile: 'addressBookMobile',
       orderDetailsPageMobile: 'orderDetailsPageMobile',
       myFavoritePageMobile: 'myFavoritePageMobile',
+      myPlaceRewardsCCPageMobile: 'myPlaceRewardsCCPageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];
@@ -128,7 +134,12 @@ export class Account extends React.PureComponent {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = (component, otherProps) => {
+  handleComponentChange = (component, otherProps, isPageNavigation) => {
+    if (isPageNavigation) {
+      const { navigation } = this.props;
+      navigation.navigate(component);
+      return;
+    }
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
@@ -183,6 +194,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchLabels: payload => {
       dispatch(loadComponentLabelsData(payload));
+    },
+    fetchFooterLinks: payload => {
+      dispatch(getSubNavigationData(payload));
     },
   };
 };

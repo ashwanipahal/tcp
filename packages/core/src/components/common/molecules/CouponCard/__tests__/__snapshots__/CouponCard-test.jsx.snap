@@ -7,6 +7,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
   >
     <Styled(ErrorMessage)
       error=""
+      isEspot={false}
     />
     <div
       className="couponCard__container_main"
@@ -55,7 +56,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             className="couponCard__col"
           >
             <Styled(BodyCopy)
-              className={null}
+              className="elem-pr-SM"
               color="text.primary"
               component="div"
               fontFamily="primary"

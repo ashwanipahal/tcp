@@ -51,24 +51,24 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { selectedColor, selectedFit, selectedSize } = this.state;
     const { colorFitsSizesMap } = this.props;
     const colorItem = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
-    const hasFits = colorItem.getIn([0, 'hasFits']);
+    const hasFits = colorItem[0].hasFits;
     let fit;
     let sizeItem;
     if (hasFits) {
-      fit = colorItem.getIn([0, 'fits']).find(fitItems => fitItems.get('fitName') === selectedFit);
-      sizeItem = fit && fit.get('sizes');
+      fit = colorItem[0].fits.find(fitItems => fitItems.fitName === selectedFit);
+      sizeItem = fit && fit.sizes;
     } else {
-      fit = colorItem.getIn([0, 'fits']);
-      sizeItem = fit && fit.getIn([0, 'sizes']);
+      fit = colorItem[0].fits;
+      sizeItem = fit && fit[0].sizes;
     }
-    return sizeItem && sizeItem.find(size => size.get('sizeName') === selectedSize).get('skuId');
+    return sizeItem && sizeItem.find(size => size.sizeName === selectedSize).skuId;
   };
 
   getSelectedColorData = (colorFitsSizesMap, color) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
-        return color && colorItem.getIn(['color', 'name']) === color.name && colorItem;
+        return color && colorItem.color.name === color.name && colorItem;
       })
     );
   };
@@ -82,18 +82,18 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             <img
               alt=""
               className="selected-color-image"
-              src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
+              src={endpoints.global.baseURI + colorItem.color.imagePath}
             />
-            <span>{colorItem.getIn(['color', 'name'])}</span>
+            <span>{colorItem.color.name}</span>
           </React.Fragment>
         ),
         content: (
           <React.Fragment>
-            <img alt="" src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])} />
-            <span>{colorItem.getIn(['color', 'name'])}</span>
+            <img alt="" src={endpoints.global.baseURI + colorItem.color.imagePath} />
+            <span>{colorItem.color.name}</span>
           </React.Fragment>
         ),
-        value: colorItem.getIn(['color', 'name']),
+        value: colorItem.color.name,
       }))
     );
   };
@@ -101,9 +101,9 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   getFitOptions = colorItem => {
     return (
       (colorItem &&
-        colorItem.get('fits').map(fit => ({
-          displayName: fit.get('fitName'),
-          id: fit.get('fitName'),
+        colorItem.fits.map(fit => ({
+          displayName: fit.fitName,
+          id: fit.fitName,
         }))) ||
       []
     );
@@ -112,12 +112,12 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   getSizeOptions = (colorItem, selectedFit?, fitChanged) => {
     let sizeOptions = [];
     if (colorItem) {
-      colorItem.get('fits').forEach(fit => {
+      colorItem.fits.forEach(fit => {
         if (selectedFit) {
-          if (fit.get('fitName') === selectedFit) {
-            sizeOptions = fit.get('sizes').map(size => ({
-              displayName: size.get('sizeName'),
-              id: size.get('sizeName'),
+          if (fit.fitName === selectedFit) {
+            sizeOptions = fit.sizes.map(size => ({
+              displayName: size.sizeName,
+              id: size.sizeName,
             }));
             if (fitChanged) {
               sizeOptions = sizeOptions.unshift({
@@ -127,9 +127,9 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             }
           }
         } else {
-          sizeOptions = fit.get('sizes').map(size => ({
-            displayName: size.get('sizeName'),
-            id: size.get('sizeName'),
+          sizeOptions = fit.sizes.map(size => ({
+            displayName: size.sizeName,
+            id: size.sizeName,
           }));
         }
       });
@@ -199,25 +199,19 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { colorFitsSizesMap, item } = this.props;
-    const {
-      selectedColor,
-      selectedFit,
-      selectedQuantity,
-      isErrorMessageDisplayed,
-      fitChanged,
-    } = this.state;
+    const { colorFitsSizesMap } = this.props;
+    const { selectedColor, selectedFit, isErrorMessageDisplayed, fitChanged } = this.state;
     const labels = {};
 
     // const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
-    const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
-    const fitList = hasFits && this.getFitOptions(selectedColorElement.get(0));
+    const hasFits = selectedColorElement && selectedColorElement[0].hasFits;
+    const fitList = hasFits && this.getFitOptions(selectedColorElement[0]);
     const sizeList =
       selectedColorElement &&
       (hasFits
-        ? this.getSizeOptions(selectedColorElement.get(0), selectedFit, fitChanged)
-        : this.getSizeOptions(selectedColorElement.get(0)));
+        ? this.getSizeOptions(selectedColorElement[0], selectedFit, fitChanged)
+        : this.getSizeOptions(selectedColorElement[0]));
 
     const { className } = this.props;
     // const { handleSubmit } = this.props;
@@ -276,6 +270,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                   component="div"
                   fontFamily="secondary"
                   fontWeight="regular"
+                  role="alert"
+                  aria-live="assertive"
                 >
                   <Image
                     alt="Error"

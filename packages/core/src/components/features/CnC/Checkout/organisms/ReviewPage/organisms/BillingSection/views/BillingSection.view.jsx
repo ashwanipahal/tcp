@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -7,6 +8,7 @@ import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import GiftCardsContainer from '../../../../GiftCardsSection';
 import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 import getCvvInfo from '../../../../../molecules/CVVInfo';
@@ -104,6 +106,11 @@ export class BillingSection extends PureComponent {
     };
   };
 
+  skeletonCondition = () => {
+    const { bagLoading, checkoutRoutingDone } = this.props;
+    return !bagLoading && checkoutRoutingDone;
+  };
+
   render() {
     const {
       className,
@@ -112,6 +119,8 @@ export class BillingSection extends PureComponent {
       labels,
       venmoPayment,
       venmoPayment: { isVenmoPaymentSelected, venmoSaveToAccountDisplayed, userName },
+      bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     const { saveVenmoPayment } = this.state;
     const colProps = this.getColProps();
@@ -149,7 +158,11 @@ export class BillingSection extends PureComponent {
                       {labels.lbl_review_paymentMethod}
                     </BodyCopy>
                     <BodyCopy>
-                      <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      {!bagLoading && checkoutRoutingDone ? (
+                        <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      ) : (
+                        <LoaderSkelton width="300px" height="25px" />
+                      )}
                     </BodyCopy>
                   </Fragment>
                 )}
@@ -164,7 +177,13 @@ export class BillingSection extends PureComponent {
                     >
                       {labels.lbl_review_billingAddress}
                     </BodyCopy>
-                    <Address address={address} className="review-billing-address" />
+                    {this.skeletonCondition() ? (
+                      <Address address={address} className="review-billing-address" />
+                    ) : (
+                      <>
+                        <GenericSkeleton />
+                      </>
+                    )}
                   </Fragment>
                 )}
               </Col>
@@ -229,6 +248,8 @@ BillingSection.propTypes = {
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
+  bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
@@ -251,6 +272,8 @@ BillingSection.defaultProps = {
     userName: '',
   },
   saveVenmoPaymentOption: () => {},
+  bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(BillingSection, styles);

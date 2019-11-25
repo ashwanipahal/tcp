@@ -3,6 +3,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
     contentId
     name
     type
+    errorMessage
     composites {
       masonryGrid {
         promoBanner {
@@ -44,6 +45,10 @@ const buildQuery = ({ slot, contentId, lang }) => `
         textItems {
           text
           style
+        }
+        icon {
+          placement
+          icon
         }
         link {
           url

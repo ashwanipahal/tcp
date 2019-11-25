@@ -12,7 +12,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -53,7 +53,9 @@ exports[`MyRewards should render correctly 1`] = `
       <Connect(PointsHistoryContainer) />
     </Styled(View)>
     <Styled(View)>
-      <BonusPointsDaysSection />
+      <BonusPointsDaysSection
+        isPlaceRewardsPage={true}
+      />
     </Styled(View)>
     <Styled(View)>
       <Connect(EarnExtraPointsTileContainer) />

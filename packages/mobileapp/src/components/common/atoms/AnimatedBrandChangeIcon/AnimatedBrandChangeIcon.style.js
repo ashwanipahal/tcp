@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 const Container = styled.TouchableOpacity`
   align-items: center;
-  background: transparent;
-  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  bottom: 55;
   flex-direction: row;
   justify-content: center;
   left: 0;
@@ -24,18 +24,14 @@ const brandIconStyles = css`
 
 const TCPIcon = styled.TouchableOpacity`
   ${props => `
-    border: 2px solid ${props.theme.colorPalette.blue[700]};
-    box-shadow: 2px 2px 2px ${props.theme.colorPalette.blue[700]}; 
-    background: ${props.theme.colorPalette.white};
+    border: 1px solid ${props.theme.colorPalette.blue[700]};
     ${brandIconStyles};
   `};
 `;
 
 const GymIcon = styled.TouchableOpacity`
   ${props => `
-    border: 2px solid ${props.theme.colorPalette.orange[800]};
-    box-shadow: 2px 2px 2px ${props.theme.colorPalette.orange[700]}; 
-    background: ${props.theme.colorPalette.white};
+    border: 1px solid ${props.theme.colorPalette.orange[700]};
     ${brandIconStyles};
   `};
 `;

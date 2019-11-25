@@ -41,7 +41,7 @@ const isNoBucketing = bucketingSeqConfig => {
 };
 
 const getqParam = searchTerm => {
-  return searchTerm || '*';
+  return searchTerm.split('?')[0] || '*';
 };
 
 const validateStartVal = start => {
@@ -120,7 +120,7 @@ class ProductsDynamicAbstractor {
     }
     const loadedProductsPageData =
       state.SearchListingPage &&
-      state.SearchListingPage.get('loadedProductsPages').map(a => {
+      state.SearchListingPage.loadedProductsPages.map(a => {
         return a.length;
       });
 
@@ -132,7 +132,7 @@ class ProductsDynamicAbstractor {
   };
 
   getTotalProductsCount = state => {
-    return state.SearchListingPage ? state.SearchListingPage.get('totalProductsCount') : 0;
+    return state.SearchListingPage ? state.SearchListingPage.totalProductsCount : 0;
   };
 
   isMoreProductsApiCalled = (isSearch, pageNumber, state) => {
@@ -216,9 +216,10 @@ class ProductsDynamicAbstractor {
       extraParams,
       shouldApplyUnbxdLogic,
       hasShortImage,
+      location,
+      filterMaps,
       isLazyLoading,
     } = reqObj;
-
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
     const { sort = null } = filtersAndSort;
     const facetsPayload = this.extractFilters(filtersAndSort);
@@ -294,7 +295,9 @@ class ProductsDynamicAbstractor {
           isOutfitPage,
           searchTerm,
           sort,
+          location,
           filterSortView: Object.keys(filtersAndSort).length > 0,
+          filterMaps,
           isLazyLoading,
         })
       )

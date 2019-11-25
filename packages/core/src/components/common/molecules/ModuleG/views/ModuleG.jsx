@@ -12,9 +12,14 @@ import {
   getIconPath,
   getLocator,
   getProductUrlForDAM,
+  configureInternalNavigationFromCMSUrl,
 } from '../../../../../utils';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
+
+const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
+const firstCarouselOption = { ...CAROUSEL_OPTIONS };
+const secondCarouselOption = { ...CAROUSEL_OPTIONS };
 
 class ModuleG extends React.PureComponent {
   constructor(props) {
@@ -22,7 +27,8 @@ class ModuleG extends React.PureComponent {
 
     this.state = {
       currentCatId: [],
-      next: 0,
+      firstCarouselNext: 0,
+      secondCarouselNext: 0,
     };
   }
 
@@ -33,7 +39,6 @@ class ModuleG extends React.PureComponent {
   getImagesData = () => {
     const { currentCatId } = this.state;
     const { productTabList } = this.props;
-    const { TOTAL_IMAGES } = moduleGConfig;
     let data = [];
     data = currentCatId.map(item => [...data, ...(productTabList[item] || [])]);
     data = data.slice(0, TOTAL_IMAGES);
@@ -45,20 +50,20 @@ class ModuleG extends React.PureComponent {
 
   onAddToBagClick = () => {
     const { onQuickViewOpenClick } = this.props;
-    const { next } = this.state;
+    const { firstCarouselNext, secondCarouselNext } = this.state;
     const data = this.getImagesData();
     onQuickViewOpenClick([
       {
-        colorProductId: data.length && data[0][next].prodpartno,
+        colorProductId: data.length && data[0][firstCarouselNext].prodpartno,
       },
       {
-        colorProductId: data.length && data[1][next].prodpartno,
+        colorProductId: data.length && data[1][secondCarouselNext].prodpartno,
       },
     ]);
   };
 
   getCurrentCtaButton = () => {
-    const { currentCatId, next } = this.state;
+    const { currentCatId } = this.state;
     const { divTabs, productTabList } = this.props;
     let currentSingleCTAButton = {};
 
@@ -74,7 +79,6 @@ class ModuleG extends React.PureComponent {
         currentSingleCTAButton = tab.singleCTAButton;
       }
     });
-
     let productExists = false;
     if (currentCatId.length) {
       currentCatId.forEach(id => {
@@ -86,7 +90,6 @@ class ModuleG extends React.PureComponent {
         }
       });
     }
-    const data = this.getImagesData();
     return productExists && Object.keys(currentSingleCTAButton).length ? (
       <>
         <Row centered>
@@ -101,6 +104,7 @@ class ModuleG extends React.PureComponent {
               onClick={() => this.onAddToBagClick()}
               buttonVariation="fixed-width"
               className="cta-btn"
+              dataLocator={getLocator('moduleG_add_to_bag_btn')}
             >
               {currentSingleCTAButton.text}
             </Button>
@@ -116,18 +120,11 @@ class ModuleG extends React.PureComponent {
             className="carousel-bottom-link"
           >
             <Anchor
-              noLink
-              to={`${currentSingleCTAButton.url}${data &&
-                data.length &&
-                data[0][next] &&
-                data[0][next].pdpAsPath}`}
+              to={configureInternalNavigationFromCMSUrl(currentSingleCTAButton.url)}
               target={currentSingleCTAButton.target}
               title={currentSingleCTAButton.title}
-              asPath={`${currentSingleCTAButton.url}${data &&
-                data.length &&
-                data[0][next] &&
-                data[0][next].pdpAsPath}`}
-              dataLocator={getLocator('moduleJ_cta_btn')}
+              asPath={currentSingleCTAButton.url}
+              dataLocator={getLocator('moduleG_shop_all_link')}
             >
               <span className="shopall_footerlink">{currentSingleCTAButton.title}</span>
               <span className="right_chevron_arrow">
@@ -169,7 +166,7 @@ class ModuleG extends React.PureComponent {
         <PromoBanner
           promoBanner={promoBanner}
           className="promoBanner"
-          dataLocator={getLocator('moduleJ_promobanner_text')}
+          dataLocator={getLocator('moduleG_promobanner_text')}
         />
       )
     );
@@ -177,13 +174,13 @@ class ModuleG extends React.PureComponent {
 
   renderCarousel = (type, currentCatId) => {
     const { productTabList } = this.props;
-    const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     let dataStatus = true;
     if (productTabList && productTabList.completed) {
       dataStatus = productTabList.completed[currentCatId];
     }
+    const carouselOption = type === 'top' ? firstCarouselOption : secondCarouselOption;
     if (dataStatus) {
       return (
         <StyledSkeleton
@@ -216,7 +213,7 @@ class ModuleG extends React.PureComponent {
         >
           {data.length > 0 ? (
             <Carousel
-              options={CAROUSEL_OPTIONS}
+              options={carouselOption}
               carouselConfig={{
                 autoplay: false,
                 variation: 'big-arrows',
@@ -231,7 +228,7 @@ class ModuleG extends React.PureComponent {
                       className="image-link"
                       to={pdpUrl}
                       asPath={pdpAsPath}
-                      dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
+                      dataLocator={`${getLocator('moduleG_image')}${index}`}
                     >
                       <DamImage
                         imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
@@ -259,9 +256,11 @@ class ModuleG extends React.PureComponent {
       // layout,
       divTabs,
     } = this.props;
-    const { CAROUSEL_OPTIONS } = moduleGConfig;
-    CAROUSEL_OPTIONS.beforeChange = (current, next) => {
-      this.setState({ next });
+    firstCarouselOption.afterChange = current => {
+      this.setState({ firstCarouselNext: current });
+    };
+    secondCarouselOption.afterChange = current => {
+      this.setState({ secondCarouselNext: current });
     };
     const { currentCatId } = this.state;
     // const promoMediaLinkedList = mediaLinkedList || [];
@@ -296,7 +295,7 @@ class ModuleG extends React.PureComponent {
             <ProductTabList
               onProductTabChange={this.onTabChange}
               tabItems={divTabs}
-              dataLocator={getLocator('moduleJ_cta_link')}
+              dataLocator={getLocator('moduleG_cta_link')}
             />
           </Col>
         </Row>

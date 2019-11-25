@@ -6,6 +6,7 @@ import styles from '../styles/OutfitCarouselModule.style';
 import { getIconPath } from '../../../../../utils';
 import theme from '../../../../../../styles/themes/TCP';
 import Carousel from '../../Carousel';
+import { constructToPath } from '../../../../../utils/utils.web';
 
 const { breakpoints } = theme;
 
@@ -19,13 +20,14 @@ const CAROUSEL_OPTIONS = {
   dots: false,
   swipe: true,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  infinite: false,
+  slidesToScroll: 4,
+  infinite: true,
   responsive: [
     {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
       settings: {
         slidesToShow: 2,
+        slidesToScroll: 2,
         arrows: true,
         swipeToSlide: true,
       },
@@ -34,6 +36,7 @@ const CAROUSEL_OPTIONS = {
       breakpoint: parseInt(breakpoints.large, 10) - 1,
       settings: {
         slidesToShow: 4,
+        slidesToScroll: 4,
         arrows: true,
         swipeToSlide: true,
       },
@@ -43,24 +46,24 @@ const CAROUSEL_OPTIONS = {
 
 export class OutfitCarouselModule extends PureComponent {
   static propTypes = {
-    outfitModule: PropTypes.shape({}),
+    data: PropTypes.shape({}),
     className: PropTypes.string,
   };
 
   static defaultProps = {
-    outfitModule: {},
+    data: {},
     className: '',
   };
 
   render() {
-    const { outfitModule, className } = this.props;
+    const { data, className } = this.props;
     return (
       <div className={className}>
         <BodyCopy fontSize={['fs16', 'fs16', 'fs28']} fontWeight="black" className="heading">
-          {outfitModule.headLine[0].text}
+          {data.headLine[0].text}
         </BodyCopy>
         <BodyCopy fontSize={['fs15', 'fs15', 'fs22']} fontWeight="regular" className="subheading">
-          {outfitModule.subHeadLine[0].text}
+          {data.subHeadLine[0].text}
         </BodyCopy>
         <Carousel
           options={CAROUSEL_OPTIONS}
@@ -70,13 +73,13 @@ export class OutfitCarouselModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {outfitModule.mediaLinkedList.map(({ image, link }, index) => {
+          {data.mediaLinkedList.map(({ image, link }, index) => {
             return (
               <div key={index.toString()}>
                 <Anchor
                   className="image-link"
-                  to={image.url}
-                  asPath={image.url}
+                  to={constructToPath(link.url)}
+                  asPath={link.url}
                   dataLocator="dummy-datalocator"
                 >
                   <DamImage
@@ -89,12 +92,12 @@ export class OutfitCarouselModule extends PureComponent {
                 </Anchor>
                 <Anchor
                   className="image-link"
-                  to={link.url}
+                  to={constructToPath(link.url)}
                   asPath={link.url}
                   fontSizeVariation="small"
                   dataLocator="dummy-datalocator"
                 >
-                  {`${link.text} >`}
+                  {link.text ? `${link.text} >` : ''}
                 </Anchor>
               </div>
             );

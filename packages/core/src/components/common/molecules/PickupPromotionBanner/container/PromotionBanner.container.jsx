@@ -4,13 +4,23 @@ import { connect } from 'react-redux';
 import promotionBannerSelectors from './PromotionBanner.selectors';
 import PromotionBanner from '../views/PromotionBanner.view';
 import { getTcpSegmentValue } from '../../../../../reduxStore/selectors/session.selectors';
+import { getBrand } from '../../../../../utils';
 
-export const PromotionBannerContainer = ({ labels, tcpSegmentValue, bossBanner, fullBleed }) => (
+export const PromotionBannerContainer = ({
+  labels,
+  tcpSegmentValue,
+  bossBanner,
+  fullBleed,
+  itemBrand = getBrand(),
+  isPickupMobilePromotion,
+}) => (
   <PromotionBanner
     labels={labels}
     tcpSegmentValue={tcpSegmentValue}
     bossBanner={bossBanner}
     fullBleed={fullBleed}
+    itemBrand={itemBrand}
+    isPickupMobilePromotion={isPickupMobilePromotion}
   />
 );
 
@@ -26,10 +36,13 @@ PromotionBannerContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
   tcpSegmentValue: PropTypes.string.isRequired,
+  itemBrand: PropTypes.string.isRequired,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBannerContainer.defaultProps = {
   bossBanner: false,
   fullBleed: false,
+  isPickupMobilePromotion: false,
 };
 export default connect(mapStateToProps)(PromotionBannerContainer);

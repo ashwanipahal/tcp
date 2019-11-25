@@ -10,6 +10,12 @@ const styles = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1400;
+
   .tcp-circle {
     display: inline-block;
     position: relative;
@@ -22,6 +28,10 @@ const styles = css`
     top: 27px;
     width: 8px;
     height: 8px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 12px;
+      height: 12px;
+    }
     border-radius: 100%;
     background: ${props => applyBrandSpecificColor(props)};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);

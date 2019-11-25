@@ -22,29 +22,32 @@ class GiftServices extends React.PureComponent {
     super(props);
     const { isGiftServicesChecked, initialValues, cartOrderItems } = this.props;
     const productsData = [];
-    cartOrderItems.map(tile => {
-      const productDetail = getProductDetails(tile);
-      const {
-        itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-        productInfo: { skuId, upc, productPartNumber },
-      } = productDetail;
+    if (cartOrderItems) {
+      cartOrderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        const {
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
+          productInfo: { skuId, upc, productPartNumber, generalProductId },
+        } = productDetail;
 
-      const prodData = {
-        color,
-        id: itemId,
-        name,
-        price: offerPrice,
-        extPrice: offerPrice,
-        sflExtPrice: offerPrice,
-        listPrice,
-        partNumber: productPartNumber,
-        size,
-        upc,
-        sku: skuId.toString(),
-      };
-      productsData.push(prodData);
-      return prodData;
-    });
+        const prodData = {
+          color,
+          id: itemId,
+          name,
+          price: offerPrice,
+          extPrice: offerPrice,
+          listPrice,
+          partNumber: productPartNumber,
+          size,
+          upc,
+          sku: skuId.toString(),
+          quantity: qty,
+          colorId: generalProductId,
+        };
+        productsData.push(prodData);
+        return prodData;
+      });
+    }
     this.state = {
       detailStatus: false,
       isChecked: isGiftServicesChecked,
@@ -66,6 +69,7 @@ class GiftServices extends React.PureComponent {
       eventName: 'select gift option',
       products: orderItems,
     });
+    /* istanbul ignore else */
     if (!isChecked && dispatch) {
       dispatch(change('GiftServices', `message`, ''));
       dispatch(change('GiftServices', `optionId`, 'standard'));
@@ -127,6 +131,7 @@ class GiftServices extends React.PureComponent {
 
   giftServiceChanged = (e, value) => {
     const { dispatch } = this.props;
+    /* istanbul ignore else */
     if (dispatch) {
       dispatch(change('GiftServices', `optionId`, value));
     }

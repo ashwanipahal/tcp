@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -12,19 +13,22 @@ import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/i
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
+    yield put(setLoaderState(true));
     yield put(setShippingLoadingState(true));
     const {
       // giftWrap,
       method,
       smsInfo,
       shipTo,
+      emailSignUp,
+      hasSetGiftOptions,
     } = formData;
     let {
       shipTo: { emailAddress },
     } = formData;
     const isCanadaUser = yield select(isCanada);
     const isGuestUser = yield select(isGuest);
-    const isEmailSignUpAllowed = !(!isCanadaUser && isGuestUser);
+    const isEmailSignUpAllowed = isCanadaUser && isGuestUser;
     const recalcFlag = false;
     if (!emailAddress || !isGuestUser) {
       // on registered user entering a new address the email field is not visible -> emailAddress = null
@@ -49,6 +53,8 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
         isEmailSignUpAllowed,
         emailAddress,
         isGuestUser,
+        emailSignUp,
+        hasSetGiftOptions,
       });
     }
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
@@ -59,8 +65,10 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
       yield call(redirectToBilling);
     }
     yield put(setShippingLoadingState(false));
+    yield put(setLoaderState(false));
   } catch (err) {
     yield put(setShippingLoadingState(false));
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(err, errorsMapping);

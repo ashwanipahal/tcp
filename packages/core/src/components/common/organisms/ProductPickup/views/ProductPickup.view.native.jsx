@@ -2,6 +2,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
@@ -21,9 +22,6 @@ import {
   StoreContainer,
   RowContainer,
   ColumnContainer,
-  PromotionESpot,
-  PromotionESpotLeftArrow,
-  PromotionESpotTextContainer,
   UnavailableLink,
 } from '../styles/ProductPickup.style.native';
 
@@ -133,6 +131,7 @@ class ProductPickup extends React.PureComponent {
      * method responsible for triggering the operator method for BopisQuickViewModal
      */
     onPickUpOpenClick: PropTypes.func,
+    onPickupClickAddon: PropTypes.func,
     /**
      * carries the inventory information of the bopis item selected
      */
@@ -144,7 +143,6 @@ class ProductPickup extends React.PureComponent {
     pickupTitleText: PropTypes.string,
     isBossEligBossInvAvail: PropTypes.bool,
     isStoreBopisEligible: PropTypes.bool,
-    showPickupDetails: PropTypes.bool,
     showPickupInfo: PropTypes.bool,
     isSubmitting: PropTypes.bool,
     labels: PropTypes.shape({
@@ -165,6 +163,7 @@ class ProductPickup extends React.PureComponent {
     simplifiedProductPickupView: PropTypes.bool,
     isAnchor: PropTypes.bool,
     sizeUnavailable: PropTypes.string,
+    isStoreAndProductBossEligible: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -186,6 +185,7 @@ class ProductPickup extends React.PureComponent {
       Quantity: null,
     },
     onPickUpOpenClick: null,
+    onPickupClickAddon: () => {},
     bopisItemInventory: [],
     isBopisEligible: false,
     // isBossEligible: false,
@@ -194,7 +194,6 @@ class ProductPickup extends React.PureComponent {
     pickupTitleText: '',
     isBossEligBossInvAvail: false,
     isStoreBopisEligible: false,
-    showPickupDetails: false,
     showPickupInfo: false,
     isSubmitting: false,
     labels: {
@@ -215,6 +214,7 @@ class ProductPickup extends React.PureComponent {
     simplifiedProductPickupView: false,
     isAnchor: false,
     sizeUnavailable: 'Size unavailable online?',
+    isStoreAndProductBossEligible: false,
   };
 
   constructor(props) {
@@ -228,7 +228,7 @@ class ProductPickup extends React.PureComponent {
    */
 
   handlePickupModalClick = () => {
-    const { productInfo, onPickUpOpenClick } = this.props;
+    const { productInfo, onPickUpOpenClick, onPickupClickAddon } = this.props;
     const { /* colorFitsSizesMap, */ generalProductId } = productInfo;
     // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
@@ -238,8 +238,10 @@ class ProductPickup extends React.PureComponent {
       // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       currentProduct: productInfo,
     });
-    // if (closeQuickViewClick) {
-    // }
+
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   handleChangeStoreOnKeyPress = event =>
@@ -354,35 +356,41 @@ class ProductPickup extends React.PureComponent {
     const {
       bopisItemInventory,
       isStoreBopisEligible,
-      showPickupDetails,
-      isBopisEligible,
-      offerEspotAvailable,
       labels,
+      isStoreAndProductBossEligible,
     } = this.props;
-    if (showPickupDetails) {
+    const bopisItemInventoryRes =
+      bopisItemInventory &&
+      bopisItemInventory.inventoryResponse &&
+      bopisItemInventory.inventoryResponse[0];
+    const bopisItemInventoryStatus = bopisItemInventoryRes && bopisItemInventoryRes.status;
+
+    const bopisStatusAvailability = isStoreBopisEligible ? (
+      <RowContainer margins="4px 0 0 0px">
+        <BodyCopy
+          dataLocator="pdp_store_availability_label"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="semibold"
+          color="green.500"
+          text={`${bopisItemInventoryStatus}!`}
+        />
+        <BodyCopy
+          margin="0 0 0 4px"
+          dataLocator="pdp_store_availability_value"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          color="gray.900"
+          text={labels.lbl_Product_pickup_BOPIS_AVAILABLE}
+        />
+      </RowContainer>
+    ) : null;
+
+    if (isStoreBopisEligible && isStoreAndProductBossEligible) {
       return (
         <React.Fragment>
-          {isStoreBopisEligible && (
-            <RowContainer margins="4px 0 0 0px">
-              <BodyCopy
-                dataLocator="pdp_store_availability_label"
-                fontFamily="secondary"
-                fontSize="fs12"
-                fontWeight="semibold"
-                color="green.500"
-                text={`${bopisItemInventory[0].status}!`}
-              />
-              <BodyCopy
-                margin="0 0 0 4px"
-                dataLocator="pdp_store_availability_value"
-                fontFamily="secondary"
-                fontSize="fs12"
-                fontWeight="regular"
-                color="gray.900"
-                text={labels.lbl_Product_pickup_BOPIS_AVAILABLE}
-              />
-            </RowContainer>
-          )}
+          {bopisStatusAvailability}
           <RowContainer margins="4px 0 0 0px">
             <BodyCopy
               dataLocator="pdp_store_no_rush_label"
@@ -396,81 +404,33 @@ class ProductPickup extends React.PureComponent {
                   : labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE
               }
             />
-            {offerEspotAvailable && (
-              <PromotionESpot>
-                <PromotionESpotLeftArrow />
-                <PromotionESpotTextContainer>
-                  <BodyCopy
-                    dataLocator="pdp_store_no_rush_value"
-                    fontFamily="primary"
-                    fontSize="fs10"
-                    fontWeight="black"
-                    color="black"
-                    text="EXTRA 5% OFF"
-                  />
-                </PromotionESpotTextContainer>
-              </PromotionESpot>
-            )}
+            <PickupPromotionBanner bossBanner />
           </RowContainer>
         </React.Fragment>
       );
     }
 
-    if (isBopisEligible) {
-      return (
-        isStoreBopisEligible && (
-          <RowContainer margins="4px 0 0 0px">
-            <BodyCopy
-              dataLocator="pdp_store_availability_label"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="semibold"
-              color="green.500"
-              text={`${bopisItemInventory[0].status}!`}
-            />
-            <BodyCopy
-              margin="0 0 0 4px"
-              dataLocator="pdp_store_availability_value"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              color="gray.900"
-              text={labels.lbl_Product_pickup_BOPIS_ONLY_AVAILABLE}
-            />
-          </RowContainer>
-        )
-      );
+    if (isStoreBopisEligible) {
+      return bopisStatusAvailability;
     }
 
-    return (
-      <RowContainer margins="4px 0 0 0px">
-        <BodyCopy
-          dataLocator="pdp_store_no_rush_label"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
-          color="gray.900"
-          text={labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
-        />
-        {offerEspotAvailable && (
-          <PromotionESpot>
-            <PromotionESpotLeftArrow />
-            <PromotionESpotTextContainer>
-              <BodyCopy
-                dataLocator="pdp_store_no_rush_value"
-                fontFamily="primary"
-                fontSize="fs10"
-                fontWeight="black"
-                color="black"
-                text="EXTRA 5% OFF"
-              />
-            </PromotionESpotTextContainer>
-          </PromotionESpot>
-        )}
-      </RowContainer>
-    );
+    if (isStoreAndProductBossEligible) {
+      return (
+        <RowContainer margins="4px 0 0 0px">
+          <BodyCopy
+            dataLocator="pdp_store_no_rush_label"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            color="gray.900"
+            text={labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
+          />
+          <PickupPromotionBanner bossBanner />
+        </RowContainer>
+      );
+    }
+    return null;
   }
-  /* eslint-enable */
 
   renderPickupInfoError() {
     const { labels } = this.props;
@@ -522,6 +482,18 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  renderSoldOutError = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <BodyCopy
+        text={outOfStockLabels.itemSoldOutMessage}
+        color="red.500"
+        fontFamily="secondary"
+        fontSize="fs10"
+      />
+    ) : null;
+  };
+
   render() {
     const {
       showPickupInfo,
@@ -529,6 +501,7 @@ class ProductPickup extends React.PureComponent {
       labels,
       simplifiedProductPickupView,
       isAnchor,
+      keepAlive,
     } = this.props;
     return (
       <>
@@ -578,7 +551,7 @@ class ProductPickup extends React.PureComponent {
                   <ColumnContainer margins="0 0 0 20px">
                     <RowContainer>{this.renderPickupTitle()}</RowContainer>
                     {showPickupInfo && this.renderPickupInfo()}
-                    {!showPickupInfo && this.renderPickupInfoError()}
+                    {this.renderSoldOutError()}
                   </ColumnContainer>
                 </StoreContainer>
               </>
@@ -597,12 +570,12 @@ class ProductPickup extends React.PureComponent {
               fontFamily="secondary"
               onPress={this.handlePickupModalClick}
               locator="pdp_pick_up_in_store_btn"
-              disabled={isSubmitting}
+              disableButton={keepAlive || isSubmitting}
             />
           </Container>
-        ) : (
+        ) : !keepAlive ? (
           this.renderPickUpInStoreAnchorButton()
-        )}
+        ) : null}
       </>
     );
   }

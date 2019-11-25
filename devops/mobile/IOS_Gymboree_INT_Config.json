@@ -150,6 +150,14 @@
       "value": "https://test1.theplace.com/image/upload"
     },
     {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
+      "value": "v1/ecom/assets/products/tcp"
+    },
+    {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM",
+      "value": "v1/ecom/assets/products/gym"
+    },
+    {
       "name": "RWD_APP_API_DOMAIN_GYM",
       "value": "https://test5.gymboree.com"
     },
@@ -304,6 +312,22 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
     }
   ],
   "signed": true,

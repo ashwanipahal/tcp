@@ -25,6 +25,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               }
             }
             isProductImage={true}
+            lazyLoad={false}
           />
           <Styled(Anchor)
             className="link-redirect"
@@ -67,7 +68,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
@@ -116,7 +116,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
@@ -142,6 +141,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           />
         </div>
         <Connect(ProductAddToBagContainer)
+          alternateSizes={Object {}}
           colorFitsSizesMap={
             Array [
               Object {
@@ -243,6 +243,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               },
             ]
           }
+          currencyExchange=""
           currentProduct={
             Object {
               "alternateSizes": Object {},
@@ -433,6 +434,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           quickViewColorSwatchesCss=""
           showAddToBagCTA={true}
           showColorChips={true}
+          sizeChartLinkVisibility={2}
         />
       </div>
     </div>

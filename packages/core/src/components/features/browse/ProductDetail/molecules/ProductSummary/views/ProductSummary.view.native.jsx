@@ -238,7 +238,7 @@ class ProductSummary extends React.PureComponent {
     const { listPrice, offerPrice, highListPrice } = productData;
     const listPriceValue = this.calculatePriceValue(listPrice);
     const highListPriceValue = this.calculatePriceValue(highListPrice, null);
-    if (listPrice && offerPrice && listPrice > offerPrice) {
+    if (listPrice > offerPrice || highListPrice > listPrice) {
       return (
         <RowContainer>
           {this.renderListPriceLabels(listPriceValue)}
@@ -249,6 +249,18 @@ class ProductSummary extends React.PureComponent {
       );
     }
     return null;
+  };
+
+  renderSoldOutError = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <BodyCopy
+        text={outOfStockLabels.itemSoldOutMessage}
+        color="red.500"
+        fontFamily="secondary"
+        fontSize="fs10"
+      />
+    ) : null;
   };
 
   render() {
@@ -272,6 +284,7 @@ class ProductSummary extends React.PureComponent {
           {this.renderBazaarVoiceComponent()}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {this.renderTopBadge(badge1Value)}
+          {this.renderSoldOutError()}
           <BodyCopy
             dataLocator="pdp_product_titles"
             margin={badge1Value !== '' ? '0px' : '16px 0 0 0'}
@@ -303,6 +316,10 @@ ProductSummary.propTypes = {
   showCompleteTheLook: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
 };
 
 ProductSummary.defaultProps = {
@@ -313,6 +330,10 @@ ProductSummary.defaultProps = {
   showCompleteTheLook: false,
   pdpLabels: {},
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
 };
 
 export default withStyles(ProductSummary, styles);

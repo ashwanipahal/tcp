@@ -136,14 +136,15 @@ const applyPositionClassStyle = props => {
   if (props.isPayPalWebViewEnable) {
     return `
     top: 0;
+    height:100%;
     `;
   }
-  return 'bottom: 0;';
+  return 'bottom: 0; min-height: 60px;';
 };
 
 export const FooterView = styled.View`
   width: 100%;
-  height: 160px;
+  min-height: 60px;
   position: absolute;
   background-color: ${props => props.theme.colors.WHITE};
   ${applyPositionClassStyle}

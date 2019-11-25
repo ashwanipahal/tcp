@@ -4,6 +4,10 @@ import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules
 import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
+import {
+  setCampaignId,
+  setInternalCampaignId,
+} from '../../../../../../../core/src/analytics/actions';
 import { toggleCountrySelectorModal } from '../../Header/molecules/CountrySelector/container/CountrySelector.actions';
 
 HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
@@ -11,7 +15,15 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   if (!isServer && !state.Layouts.homepage) {
     store.dispatch(fetchPageLayout('homepage'));
   }
-  return pageProps;
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'home page',
+        pageSection: 'homepage',
+      },
+    },
+  };
 };
 
 HomePageView.getInitActions = () => initActions;
@@ -30,8 +42,10 @@ const mapStateToProps = state => {
   const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+  const seoData = state.SEOData.home;
 
   return {
+    seoData,
     slots: homepageSlots.map(slot => {
       // Logic for accomodating two modules in one slot (Half width modules view)
       const { contentId: slotContent = '' } = slot;
@@ -67,6 +81,8 @@ const mapDispatchToProps = dispatch => {
     openCountrySelectorModal: () => dispatch(toggleCountrySelectorModal({ isModalOpen: true })),
     openEmailSignUpModal: () => dispatch(toggleEmailSignupModal({ isModalOpen: true })),
     openSmsSignUpModal: () => dispatch(toggleSmsSignupModal({ isModalOpen: true })),
+    setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
+    setInternalCampaignId: campaignId => dispatch(setInternalCampaignId(campaignId)),
   };
 };
 

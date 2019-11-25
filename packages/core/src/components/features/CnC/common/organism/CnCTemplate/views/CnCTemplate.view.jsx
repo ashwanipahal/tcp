@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -13,6 +14,7 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
+import BAG_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 const getBagActions = ({ BagActions }) => {
   return BagActions && <BagActions />;
@@ -53,7 +55,6 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isConfirmationPage,
-  isNotLoaded,
   orderLedgerAfterView,
   pageCategory,
 }) => {
@@ -77,7 +78,7 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {!!isNotLoaded && (
+            {
               <>
                 {isConfirmationPage ? (
                   <>
@@ -99,6 +100,7 @@ const CnCTemplate = ({
                     />
 
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                    {pageCategory === BAG_CONSTANTS.BAG_PAGE && <PlaceCashBanner />}
                     <AirmilesBanner />
                     <CouponAndPromos
                       fullPageInfo={!isCheckoutView || orderLedgerAfterView}
@@ -109,7 +111,7 @@ const CnCTemplate = ({
                   </>
                 )}
               </>
-            )}
+            }
           </Col>
         )}
       </Row>
@@ -130,7 +132,6 @@ CnCTemplate.propTypes = {
   showAccordian: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
-  isNotLoaded: PropTypes.bool,
   pageCategory: PropTypes.string,
 };
 
@@ -141,7 +142,6 @@ CnCTemplate.defaultProps = {
   showAccordian: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: true,
   pageCategory: '',
 };
 

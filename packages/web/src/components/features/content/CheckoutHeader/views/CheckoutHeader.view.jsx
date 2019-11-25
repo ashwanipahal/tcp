@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
 import checkoutUtil from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
@@ -21,17 +22,28 @@ const CheckoutHeader = ({
   className,
   brandTabs,
   labels,
+  exitCheckoutAriaLabel,
   isInternationalShipping,
   itemsCount,
   isExpressCheckoutPage,
+  bagLoading,
+  cartItems,
+  currentStage,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
       <Row className="header-topnav__row">
         <button
           onClick={() => {
-            checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            const availableStages = checkoutUtil.getAvailableStages(cartItems);
+            const currentIndex = availableStages.indexOf(currentStage);
+            if (currentIndex === 0) {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            } else {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES[`${availableStages[currentIndex - 1]}Page`]);
+            }
           }}
+          aria-label={exitCheckoutAriaLabel}
           className="exitFromCheckout"
         >
           <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
@@ -56,7 +68,9 @@ const CheckoutHeader = ({
           }}
         >
           <BodyCopy component="span" fontSize="fs32">
-            {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
+            {isExpressCheckoutPage && itemsCount > 0
+              ? labels.expressCheckoutLbl
+              : labels.checkoutHeaderLabel}
           </BodyCopy>
         </Col>
 
@@ -68,18 +82,22 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              anchorVariation="primary"
-              to="/bag"
-              dataLocator="checkout-header-returnToBag"
-              className="return-bag-link"
-            >
-              {labels.returnBagLabel}
-            </Anchor>
-          </BodyCopy>
+          {!bagLoading ? (
+            <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                to="/bag"
+                dataLocator="checkout-header-returnToBag"
+                className="return-bag-link"
+              >
+                {labels.returnBagLabel}
+              </Anchor>
+            </BodyCopy>
+          ) : (
+            <LoaderSkelton width="100px" height="22px" />
+          )}
         </Col>
       </Row>
       <Row className="checkout-mobile-header" centered>
@@ -119,13 +137,18 @@ CheckoutHeader.propTypes = {
   className: PropTypes.string.isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  exitCheckoutAriaLabel: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   itemsCount: PropTypes.number.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
+  bagLoading: PropTypes.bool,
+  cartItems: PropTypes.shape({}).isRequired,
+  currentStage: PropTypes.string.isRequired,
 };
 
 CheckoutHeader.defaultProps = {
   isExpressCheckoutPage: false,
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutHeader, style);

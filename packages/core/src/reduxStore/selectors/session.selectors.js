@@ -1,7 +1,7 @@
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { SESSIONCONFIG_REDUCER_KEY } from '../../constants/reducer.constants';
 import { defaultCountries } from '../../constants/site.constants';
-import { getBrand, parseBoolean } from '../../utils';
+import { getBrand, parseBoolean, isMobileApp } from '../../utils';
 
 const USA_VALUES = {
   currency: 'USD',
@@ -62,6 +62,10 @@ export const getIsBossAppEnabled = state => {
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
+  if (isMobileApp()) {
+    const isBOSSEnabledAppFlag = brand && `isBossEnabledApp${brand.toUpperCase()}`;
+    return getIsBossAppEnabled(state)[isBOSSEnabledAppFlag];
+  }
   const isBOSSEnabled = brand && `isBOSSEnabled_${brand.toUpperCase()}`;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
@@ -122,10 +126,21 @@ export const getIsShowPriceRange = state => {
 };
 
 export const getIsKeepAliveProduct = state => {
-  return (
+  return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG
   );
+};
+
+export const getIsKeepAliveProductApp = state => {
+  return parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG_APP
+  );
+};
+
+export const getCurrentSiteLanguage = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language;
 };
 
 export const getIsPayPalEnabled = state => {

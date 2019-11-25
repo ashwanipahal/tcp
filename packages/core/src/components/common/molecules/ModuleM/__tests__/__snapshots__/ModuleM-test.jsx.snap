@@ -29,6 +29,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         <Styled(LinkText)
           className="promo-header"
           component="div"
+          dataLocator="moduleM_header_text"
           headerText={
             Array [
               Object {
@@ -83,6 +84,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
       </div>
       <Styled(PromoBanner)
         className="promoBanner"
+        dataLocator="moduleM_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -97,12 +99,12 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
               "textItems": Array [
                 Object {
                   "__typename": "StyledText",
-                  "style": "medium_text_semibold",
+                  "style": "small_white_text_semibold",
                   "text": "ALL UNIFORMS",
                 },
                 Object {
                   "__typename": "StyledText",
-                  "style": "fixed_medium_text_black",
+                  "style": "extra_large_white_text_black",
                   "text": "60% OFF",
                 },
               ],
@@ -123,7 +125,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
     >
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_0"
         key="modMTabs-GIRL"
       >
         <Styled(Button)
@@ -136,7 +138,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_1"
         key="modMTabs-TODDLER GIRL"
       >
         <Styled(Button)
@@ -149,7 +151,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_2"
         key="modMTabs-BOY"
       >
         <Styled(Button)
@@ -162,7 +164,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_3"
         key="modMTabs-TODDLER BOY"
       >
         <Styled(Button)
@@ -171,32 +173,6 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
           onClick={[Function]}
         >
           TODDLER BOY
-        </Styled(Button)>
-      </div>
-      <div
-        className="product-tab-list__item"
-        data-locator=""
-        key="modMTabs-TODDLER BOY1"
-      >
-        <Styled(Button)
-          active={false}
-          buttonVariation="mini-nav"
-          onClick={[Function]}
-        >
-          TODDLER BOY1
-        </Styled(Button)>
-      </div>
-      <div
-        className="product-tab-list__item"
-        data-locator=""
-        key="modMTabs-TODDLER BOY2"
-      >
-        <Styled(Button)
-          active={false}
-          buttonVariation="mini-nav"
-          onClick={[Function]}
-        >
-          TODDLER BOY2
         </Styled(Button)>
       </div>
     </Styled(Col)>
@@ -217,12 +193,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined0"
+            dataLocator="moduleM_image_0"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -245,12 +245,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined1"
+            dataLocator="moduleM_image_1"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Toddler Girl title"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Toddler Girl alt",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Toddler Girl title",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Skorts",
+                  "title": "Skorts",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -273,12 +297,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined2"
+            dataLocator="moduleM_image_2"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Boy"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Boy",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Boy",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Sweaters",
+                  "title": "Sweaters",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -301,12 +349,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined3"
+            dataLocator="moduleM_image_3"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Toddler Boy title"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Toddler Boy alt",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Toddler Boy title",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Shorts",
+                  "title": "Shorts",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -329,12 +401,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined4"
+            dataLocator="moduleM_image_4"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Baby"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Baby",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Baby",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Polos",
+                  "title": "Polos",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -357,12 +453,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined5"
+            dataLocator="moduleM_image_5"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -385,12 +505,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined6"
+            dataLocator="moduleM_image_6"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -413,12 +557,36 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined7"
+            dataLocator="moduleM_image_7"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_mod_M_img_product_m",
+                  "t_mod_M_img_product_t",
+                  "t_mod_M_img_product_d",
+                ]
+              }
+              imgData={
+                Object {
+                  "alt": "Girl",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Girl",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Dresses",
+                  "title": "Dresses",
+                  "url": "/c/",
+                }
+              }
             />
             <Styled(BodyCopy)
               className="moduleM__productName"
@@ -442,7 +610,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
           <Styled(Anchor)
             asPath="/c/baby-clothes"
             className="moduleM__shopAllBtn"
-            dataLocator="undefined"
+            dataLocator="moduleM_cta_btn"
             to="/c/baby-clothes"
           >
             SHOP ALL
@@ -483,6 +651,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         <Styled(LinkText)
           className="promo-header"
           component="div"
+          dataLocator="moduleM_header_text"
           headerText={
             Array [
               Object {
@@ -537,6 +706,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       </div>
       <Styled(PromoBanner)
         className="promoBanner"
+        dataLocator="moduleM_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -551,12 +721,12 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "textItems": Array [
                 Object {
                   "__typename": "StyledText",
-                  "style": "medium_text_semibold",
+                  "style": "small_white_text_semibold",
                   "text": "ALL UNIFORMS",
                 },
                 Object {
                   "__typename": "StyledText",
-                  "style": "fixed_medium_text_black",
+                  "style": "extra_large_white_text_black",
                   "text": "60% OFF",
                 },
               ],
@@ -577,7 +747,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
     >
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_0"
         key="modMTabs-GIRL"
       >
         <Styled(Button)
@@ -590,7 +760,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_1"
         key="modMTabs-TODDLER GIRL"
       >
         <Styled(Button)
@@ -603,7 +773,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_2"
         key="modMTabs-BOY"
       >
         <Styled(Button)
@@ -616,7 +786,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       </div>
       <div
         className="product-tab-list__item"
-        data-locator=""
+        data-locator="moduleM_cta_links_3"
         key="modMTabs-TODDLER BOY"
       >
         <Styled(Button)
@@ -625,32 +795,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           onClick={[Function]}
         >
           TODDLER BOY
-        </Styled(Button)>
-      </div>
-      <div
-        className="product-tab-list__item"
-        data-locator=""
-        key="modMTabs-TODDLER BOY1"
-      >
-        <Styled(Button)
-          active={false}
-          buttonVariation="mini-nav"
-          onClick={[Function]}
-        >
-          TODDLER BOY1
-        </Styled(Button)>
-      </div>
-      <div
-        className="product-tab-list__item"
-        data-locator=""
-        key="modMTabs-TODDLER BOY2"
-      >
-        <Styled(Button)
-          active={false}
-          buttonVariation="mini-nav"
-          onClick={[Function]}
-        >
-          TODDLER BOY2
         </Styled(Button)>
       </div>
     </Styled(Col)>
@@ -689,22 +833,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined0"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_0"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Girl"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -732,22 +902,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined1"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_1"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Toddler Girl title"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Toddler Girl alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Girl title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Skorts",
+                    "title": "Skorts",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -787,22 +983,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined2"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_2"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Boy"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Boy",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Boy",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Sweaters",
+                    "title": "Sweaters",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -836,22 +1058,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined3"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_3"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Toddler Boy title"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Toddler Boy alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Boy title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Shorts",
+                    "title": "Shorts",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -879,22 +1127,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined4"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_4"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Baby"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Baby",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Baby",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Polos",
+                    "title": "Polos",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -934,22 +1208,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined5"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_5"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Girl"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -983,22 +1283,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined6"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_6"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Girl"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1026,22 +1352,48 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         >
           <Styled(Anchor)
             asPath="/c/"
-            dataLocator="undefined7"
+            className="moduleM__productContainer"
+            dataLocator="moduleM_image_7"
             to="/c/"
           >
             <div
               className="moduleM__productImage"
             >
-              <Styled(Image)
-                alt="Girl"
-                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
+                }
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "className": "moduleM__productContainer",
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
               />
             </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1083,7 +1435,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           <Styled(Anchor)
             asPath="/c/baby-clothes"
             className="moduleM__shopAllBtn"
-            dataLocator="undefined"
+            dataLocator="moduleM_cta_btn"
             title="SHOP ALL"
             to="/c/baby-clothes"
           >

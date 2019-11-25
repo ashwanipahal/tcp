@@ -53,6 +53,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -341,7 +342,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -491,6 +494,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -779,7 +783,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -925,6 +931,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -1230,7 +1237,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1376,6 +1385,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -1664,7 +1674,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1810,6 +1822,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -2098,7 +2111,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2244,6 +2259,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -2532,7 +2548,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2692,6 +2710,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -2992,7 +3011,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3152,6 +3173,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -3440,7 +3462,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3600,6 +3624,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -3900,7 +3925,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4060,6 +4087,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -4348,7 +4376,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4508,6 +4538,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -4796,7 +4827,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4942,6 +4975,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -5247,7 +5281,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5393,6 +5429,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -5698,7 +5735,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5844,6 +5883,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -6149,7 +6189,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6309,6 +6351,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            className=""
             imgData={
               Object {
                 "alt": undefined,
@@ -6626,7 +6669,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6744,7 +6789,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-dNLxif",
         "isStatic": false,
         "rules": Array [
           "
@@ -6756,8 +6801,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -6800,6 +6850,15 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .padding-top-15 {
     padding-top: 15px;
+  }
+  .padding-top-40 {
+    padding-top: 26px;
+
+    @media ",
+          [Function],
+          " {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -6938,7 +6997,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .product-detail-section {
-      display: flex;
+      display: ",
+          [Function],
+          ";
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -7101,6 +7162,21 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
     }
 
+    @media ",
+          [Function],
+          " {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ",
+          [Function],
+          " {
+      .save-for-later-label {
+        left: 7px;
+      }
+    }
+
     .price-label {
       margin-left: 122px;
     }
@@ -7141,9 +7217,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
@@ -7183,7 +7263,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -7205,6 +7285,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
+
   ",
           [Function],
           ";
@@ -7216,7 +7303,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-dNLxif",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7260,7 +7347,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-dNLxif",
         "isStatic": false,
         "rules": Array [
           "
@@ -7272,8 +7359,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -7316,6 +7408,15 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
   .padding-top-15 {
     padding-top: 15px;
+  }
+  .padding-top-40 {
+    padding-top: 26px;
+
+    @media ",
+          [Function],
+          " {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -7454,7 +7555,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     }
 
     .product-detail-section {
-      display: flex;
+      display: ",
+          [Function],
+          ";
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -7617,6 +7720,21 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       }
     }
 
+    @media ",
+          [Function],
+          " {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ",
+          [Function],
+          " {
+      .save-for-later-label {
+        left: 7px;
+      }
+    }
+
     .price-label {
       margin-left: 122px;
     }
@@ -7657,9 +7775,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           ";
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
@@ -7699,7 +7821,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -7721,6 +7843,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
+
   ",
           [Function],
           ";
@@ -7732,7 +7861,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-dNLxif",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

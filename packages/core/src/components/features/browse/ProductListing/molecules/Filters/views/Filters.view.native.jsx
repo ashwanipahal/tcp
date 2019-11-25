@@ -26,6 +26,8 @@ class Filters extends React.PureComponent {
     onFilterSelection: PropTypes.func,
     filteredId: PropTypes.string,
     onCloseModal: PropTypes.func,
+    closeModal: PropTypes.func,
+    isLoadingMore: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -37,6 +39,8 @@ class Filters extends React.PureComponent {
     onFilterSelection: () => {},
     filteredId: 'ALL',
     onCloseModal: () => {},
+    closeModal: () => {},
+    isLoadingMore: false,
   };
 
   filterNames = [];
@@ -77,6 +81,22 @@ class Filters extends React.PureComponent {
     return <ItemSeparatorStyle />;
   };
 
+  onItemPress = (isFavorite, item, index) => {
+    if (isFavorite) {
+      this.onSingleSelectFilter(item, index);
+    } else {
+      this.onSelectFilter(item);
+    }
+    this.onApplyFilter();
+  };
+
+  onColorItemPress = (isLoadingMore, item) => {
+    if (!isLoadingMore) {
+      this.onSelectFilter(item);
+      this.onApplyFilter();
+    }
+  };
+
   /**
    * @function onSelectFilter
    * This method is called on tap of an item in filter list
@@ -111,26 +131,29 @@ class Filters extends React.PureComponent {
   };
 
   renderListItem = ({ item, index }) => {
-    const { isFavorite } = this.props;
+    const { isFavorite, isLoadingMore } = this.props;
     const { selectedIndex } = this.state;
     const { displayName, isSelected } = item;
     const selectedState = isFavorite ? selectedIndex === index : isSelected;
+    const isDisabled = item.disabled || isLoadingMore;
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
         text={displayName}
-        onPress={() =>
-          isFavorite ? this.onSingleSelectFilter(item, index) : this.onSelectFilter(item)
-        }
+        onPress={() => {
+          this.onItemPress(isFavorite, item, index);
+        }}
         selected={selectedState}
         data-locator=""
         accessibilityLabel={displayName}
+        disableButton={isDisabled}
       />
     );
   };
 
   renderColorSwitchItem = ({ item }) => {
     const { isSelected, displayName, swatchImage } = item;
+    const { isLoadingMore } = this.props;
     const name = displayName || '';
 
     const swatchImageUrl = swatchImage && swatchImage.split('_');
@@ -141,7 +164,9 @@ class Filters extends React.PureComponent {
       <LinkImageIcon
         uri={imageUrl}
         selected={isSelected}
-        onPress={() => this.onSelectFilter(item)}
+        onPress={() => {
+          this.onColorItemPress(isLoadingMore, item);
+        }}
         name={name}
       />
     );
@@ -255,7 +280,7 @@ class Filters extends React.PureComponent {
   };
 
   render() {
-    const { labelsFilter, isFavorite } = this.props;
+    const { labelsFilter, isFavorite, closeModal } = this.props;
     return (
       <PageContainer>
         {this.renderFilters()}
@@ -276,7 +301,7 @@ class Filters extends React.PureComponent {
               type="submit"
               data-locator=""
               text={labelsFilter.lbl_apply}
-              onPress={this.onApplyFilter}
+              onPress={closeModal}
               accessibilityLabel={labelsFilter.lbl_apply}
               width="48%"
               fontSize="fs14"

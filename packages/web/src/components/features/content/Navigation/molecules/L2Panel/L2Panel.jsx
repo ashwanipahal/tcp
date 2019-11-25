@@ -9,6 +9,7 @@ import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
 import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 const MAX_ITEMS_IN_COL = 8;
@@ -20,9 +21,14 @@ const renderArrowIcon = hasSubCategories => {
 };
 
 const renderLabel = (classForRedContent, promoBadge, name) => {
+  const indexOfPipe = name.indexOf('|');
+  let labelToPrint = name;
+  if (indexOfPipe !== -1) {
+    labelToPrint = labelToPrint.slice(0, indexOfPipe);
+  }
   return (
     <span className={`nav-bar-item-label ${classForRedContent} ${!promoBadge ? 'full-width' : ''}`}>
-      {name}
+      {labelToPrint}
     </span>
   );
 };
@@ -56,8 +62,8 @@ const renderL3Panel = (
   l3Drawer,
   hideL3Drawer,
   name,
-  subCategories,
-  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }
+  { url, asPath, subCategories },
+  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav, analyticsData }
 ) => {
   return (
     hasSubCategories && (
@@ -70,8 +76,11 @@ const renderL3Panel = (
         hideL2Nav={hideL2Nav}
         name={name}
         links={subCategories}
+        shopalllink={url}
+        shopallaspath={asPath}
         accessibilityLabels={accessibilityLabels}
         closeNav={closeNav}
+        analyticsData={analyticsData}
       />
     )
   );
@@ -113,6 +122,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   }
 ) => {
   const navHandler = {
@@ -120,6 +130,7 @@ const createLinks = (
     hideL2Drawer,
     context,
     closeNav,
+    analyticsData,
   };
   if (links.length) {
     return (
@@ -132,39 +143,47 @@ const createLinks = (
             subCategories,
             hasL3,
           } = l2Links;
+          const shopallparams = { url, asPath, subCategories };
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor
-                asPath={asPath}
-                to={url}
-                onClick={e =>
-                  openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                }
-              >
-                <BodyCopy
-                  className="l2-nav-link"
-                  fontFamily="secondary"
-                  fontSize={['fs13', 'fs13', 'fs14']}
-                  lineHeight="lh107"
-                  color="text.primary"
+              <div className="L2-panel-container">
+                <Anchor
+                  asPath={asPath}
+                  to={url}
+                  onClick={e =>
+                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                  }
                 >
-                  {renderLabel(classForRedContent, promoBadge, name)}
-                  {renderPromoBadge(promoBadge, currentIndex)}
-                  {renderArrowIcon(hasSubCategories)}
-                </BodyCopy>
-              </Anchor>
+                  <ClickTracker
+                    clickData={{
+                      pageNavigationText: `${analyticsData}-${name.toLowerCase()}`,
+                    }}
+                  >
+                    <BodyCopy
+                      className="l2-nav-link"
+                      fontFamily="secondary"
+                      fontSize={['fs13', 'fs13', 'fs14']}
+                      lineHeight="lh107"
+                      color="text.primary"
+                    >
+                      {renderLabel(classForRedContent, promoBadge, name)}
+                      {renderPromoBadge(promoBadge, currentIndex)}
+                      {renderArrowIcon(hasSubCategories)}
+                    </BodyCopy>
+                  </ClickTracker>
+                </Anchor>
+              </div>
               {renderL3Panel(
                 hasSubCategories,
                 currentIndex,
                 l3Drawer,
                 hideL3Drawer,
                 name,
-                subCategories,
+                shopallparams,
                 navHandler
               )}
             </li>
@@ -226,6 +245,7 @@ const L2Panel = props => {
     l3Drawer,
     accessibilityLabels,
     closeNav,
+    analyticsData,
   } = props;
   const { previousButton } = accessibilityLabels;
   const isShopBySizeCol = isNextColShopBySize(categoryLayout);
@@ -297,6 +317,7 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                               {createLinks(secondCol, 2, categoryIndex, {
                                 openL3Drawer,
@@ -307,6 +328,7 @@ const L2Panel = props => {
                                 hideL2Drawer,
                                 context,
                                 closeNav,
+                                analyticsData,
                               })}
                             </div>
                           </Col>
@@ -341,6 +363,7 @@ L2Panel.propTypes = {
   closeNav: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
   accessibilityLabels: PropTypes.shape({}).isRequired,
+  analyticsData: PropTypes.string.isRequired,
 };
 
 L2Panel.defaultProps = {

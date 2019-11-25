@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  getLabelValue,
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+} from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -12,13 +20,6 @@ import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
-import {
-  getIconPath,
-  getLocator,
-  isCanada,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -124,17 +125,26 @@ class CartItemTile extends PureComponent {
     toggleEditAllowance();
   };
 
-  handleEditCartItem = (pageView, itemBrand, productNumber) => {
+  handleEditCartItemMiniBag = (pageView, itemBrand, productNumber) => {
+    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+    this.toggleFormVisibility();
+    const { getProductSKUInfo } = this.props;
+    getProductSKUInfo({ productNum, itemBrand });
+  };
+
+  handleEditCartItem = (pageView, itemBrand, productNumber, isBagPageSflSection = false) => {
     if (pageView !== 'myBag') {
-      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-      this.toggleFormVisibility();
-      const { getProductSKUInfo } = this.props;
-      getProductSKUInfo({ productNum, itemBrand });
+      this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { itemId, qty, color, size, fit, isGiftItem } = productDetail.itemInfo;
+      const {
+        productInfo: { skuId, generalProductId },
+      } = productDetail;
       onQuickViewOpenClick({
+        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
+        isSflProduct: isBagPageSflSection,
         orderInfo: {
           orderItemId: itemId,
           selectedQty: qty,
@@ -142,6 +152,7 @@ class CartItemTile extends PureComponent {
           selectedSize: size,
           selectedFit: fit,
           itemBrand,
+          skuId: isGiftItem ? generalProductId : skuId,
         },
       });
     }
@@ -190,19 +201,26 @@ class CartItemTile extends PureComponent {
   };
 
   callEditMethod = () => {
-    const { productDetail, pageView } = this.props;
+    const { productDetail, pageView, isBagPageSflSection } = this.props;
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
+        productDetail.productInfo.productPartNumber,
+        isBagPageSflSection
       );
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
       this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    } else {
+      this.handleEditCartItemMiniBag(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
     }
   };
 
@@ -224,21 +242,23 @@ class CartItemTile extends PureComponent {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      pageView,
       setClickAnalyticsData,
     } = this.props;
     const {
       itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
       productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
-
+    const isMiniBag = pageView !== 'myBag';
     this.clearToggleErrorState();
 
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
-    const payloadData = { itemId, catEntryId, userInfoRequired };
+    const payloadData = { itemId, catEntryId, userInfoRequired, isMiniBag };
     const productsData = {
       color,
       id: itemId,
@@ -251,6 +271,9 @@ class CartItemTile extends PureComponent {
       size,
       upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event134', 'event136'],
@@ -276,8 +299,9 @@ class CartItemTile extends PureComponent {
   moveToBagSflItem = () => {
     const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
-      productInfo: { skuId, generalProductId, upc, productPartNumber },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice },
+      productInfo: { skuId, generalProductId, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
@@ -289,12 +313,12 @@ class CartItemTile extends PureComponent {
       name,
       price: offerPrice,
       extPrice: offerPrice,
-      sflExtPrice: offerPrice,
-      listPrice,
+      offerPrice,
       partNumber: productPartNumber,
-      size,
-      upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event135', 'event137'],
@@ -305,9 +329,9 @@ class CartItemTile extends PureComponent {
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -483,14 +507,16 @@ class CartItemTile extends PureComponent {
     );
   };
 
+  // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
+    const { isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
     return (
-      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
+      <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -533,7 +559,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`${currencySymbol}${offerPrice.toFixed(2)}`}
+            <PriceCurrency price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -577,7 +603,7 @@ class CartItemTile extends PureComponent {
   };
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
-    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     const { salePrice, wasPrice, listPrice, price } = getPrices({
       productDetail,
@@ -606,7 +632,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {`${currencySymbol}${Number(price).toFixed(2)}`}
+              <PriceCurrency price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -616,7 +642,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(listPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -645,7 +671,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {`${currencySymbol}${Number(salePrice).toFixed(2)}`}
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -656,7 +682,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(wasPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
@@ -783,14 +809,20 @@ class CartItemTile extends PureComponent {
   };
 
   renderHeartIcon = () => {
-    const { isBagPageSflSection, labels } = this.props;
-    if (!isBagPageSflSection) return null;
+    const { isBagPageSflSection, labels, handleAddToWishlist, productDetail } = this.props;
+    if (
+      !isBagPageSflSection ||
+      productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+    )
+      return null;
+
     return (
       <div className="heartIcon">
         <Image
           alt={getLabelValue(labels, 'lbl_sfl_favIcon', 'bagPage', 'checkout')}
           className="sfl-fav-image"
           src={getIconPath('fav-icon')}
+          onClick={handleAddToWishlist}
         />
       </div>
     );
@@ -1076,6 +1108,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                   onClick={this.closeMiniBagMethod}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1283,7 +1316,6 @@ CartItemTile.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   toggleBossBopisError: PropTypes.shape({
@@ -1296,6 +1328,8 @@ CartItemTile.propTypes = {
   disableProductRedirect: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
+  handleAddToWishlist: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

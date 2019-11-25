@@ -15,7 +15,6 @@ export { applyCouponToCart, removeCouponOrPromo, getAllCoupons } from './Coupon'
 export {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
   addPaymentToOrder,
@@ -28,5 +27,8 @@ export {
   getInternationCheckoutSettings,
   startExpressCheckout,
   getServerErrorMessage,
+  updateRTPSData,
+  acceptOrDeclinePreScreenOffer,
+  subscribeSmsNotification,
 } from './Checkout';
 export { getVenmoToken } from './venmo';

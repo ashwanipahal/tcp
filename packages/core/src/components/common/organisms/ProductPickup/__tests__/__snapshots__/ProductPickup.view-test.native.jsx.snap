@@ -50,6 +50,8 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       borderColor="gray.1600"
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={16}
     />
     <Styled(View)>
@@ -82,17 +84,6 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             textDecoration={null}
           />
         </Styled(View)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          color="red.500"
-          dataLocator="pdp_pick_up_error_info"
-          fontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="black"
-          margin={null}
-          numberOfLines={null}
-          textDecoration={null}
-        />
       </Styled(View)>
     </Styled(View)>
     <Styled(CustomButton)
@@ -102,7 +93,6 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       customStyle={Object {}}
       customTextStyle={null}
       disableButton={false}
-      disabled={false}
       fill="BLACK"
       fontFamily="secondary"
       fontSize="fs12"

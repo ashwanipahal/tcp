@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
@@ -28,6 +29,7 @@ const OrderLedger = ({
   isConfirmationPage,
   orderLedgerAfterView,
   pageCategory,
+  bagLoading,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
@@ -39,8 +41,11 @@ const OrderLedger = ({
     summaryData,
     labels,
     pageCategory,
-    orderLedgerAfterView
+    orderLedgerAfterView,
+    bagLoading,
+    isConfirmationPage
   );
+
   return (
     <div className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}>
       <Col
@@ -67,6 +72,7 @@ const OrderLedger = ({
 
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
+  bagLoading: PropTypes.bool,
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
     grandTotal: PropTypes.number,
@@ -106,6 +112,7 @@ OrderLedger.defaultProps = {
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
   pageCategory: '',
+  bagLoading: false,
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

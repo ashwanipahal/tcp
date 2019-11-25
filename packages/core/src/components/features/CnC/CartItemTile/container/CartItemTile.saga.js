@@ -8,6 +8,12 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
@@ -30,14 +36,18 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { isItemBossBopisInEligible } from './CartItemTile.selectors';
+import {
+  isItemBossBopisInEligible,
+  getIsDeleteConfirmationModalEnabled,
+} from './CartItemTile.selectors';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
 export function* afterRemovingCartItem() {
+  yield put(setLoaderState(false));
   yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
   yield delay(3000);
   yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
@@ -50,8 +60,13 @@ export function* afterRemovingCartItem() {
  * @export
  * @param {*} { payload, afterHandler }
  */
-export function* confirmRemoveItem({ payload, afterHandler }) {
+export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
   try {
+    if (isMiniBag || payload.isMiniBag) {
+      yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
+    } else {
+      yield put(setLoaderState(true));
+    }
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
     if (afterHandler) {
@@ -66,7 +81,11 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
         excludeCartItems: false,
       })
     );
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
   } catch (err) {
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     logger.error(err);
     yield call(handleServerSideErrorAPI, err, CARTPAGE_CONSTANTS.CART_ITEM_TILE);
   }
@@ -85,13 +104,20 @@ export function* removeCartItem({ payload }) {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
     const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
     const isShowSaveForLaterSwitch = yield select(getSaveForLaterSwitch);
-    if (isUnqualifiedItem || isItemInEligible || !isShowSaveForLaterSwitch) {
+    const isDeleteConfirmationModalEnabled = yield select(getIsDeleteConfirmationModalEnabled);
+    if (
+      isUnqualifiedItem ||
+      isItemInEligible ||
+      !isShowSaveForLaterSwitch ||
+      !isDeleteConfirmationModalEnabled
+    ) {
       yield call(confirmRemoveItem, { payload: itemId });
       return;
     }
     yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
   } else {
-    yield call(confirmRemoveItem, { payload: itemId });
+    yield put(setLoaderState(false));
+    yield call(confirmRemoveItem, { payload: itemId, isMiniBag: true });
   }
 }
 
@@ -132,14 +158,28 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 }
 
 export function* updateCartItemSaga({ payload }) {
-  const { updateActionType } = payload;
+  const { updateActionType, isMiniBagOpen } = payload;
   try {
+    if (!isMiniBagOpen) {
+      yield put(setLoaderState(true));
+    }
+    yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());
     yield put(clearToggleCartItemError());
     yield put(clearToggleBossBopisCartItemError());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(updateItem, payload, errorMapping);
+    const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+    yield put(
+      setClickAnalyticsData({
+        customEvents: ['event68'],
+        products: productsData,
+        eventName: 'cart update',
+      })
+    );
+    yield put(trackClick('cart update'));
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
@@ -157,7 +197,11 @@ export function* updateCartItemSaga({ payload }) {
     );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const errorMessage =
       // eslint-disable-next-line no-underscore-dangle
@@ -166,6 +210,7 @@ export function* updateCartItemSaga({ payload }) {
       'ERROR';
     yield call(updateSagaErrorActions, updateActionType, errorMessage);
     yield setUpdateItemErrorMessages(payload, errorMessage);
+    yield put(setLoaderState(false));
   }
 }
 

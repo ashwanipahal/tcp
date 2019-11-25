@@ -21,12 +21,14 @@
         return vars;
       }
       const paypalEnv = getUrlVars()['paypalEnv'];
+      const paypalColor = getUrlVars()["paypalColor"];
+      const isGymboree = getUrlVars()["isGymboree"];
       paypal.Button.render(
         {
           style: {
             size: 'responsive',
-            color: 'blue',
-            shape: 'rect',
+            color: paypalColor,
+            shape: isGymboree === "true" ? 'pill' : 'rect',
             tagline: false,
             height: 42,
             label: 'paypal',

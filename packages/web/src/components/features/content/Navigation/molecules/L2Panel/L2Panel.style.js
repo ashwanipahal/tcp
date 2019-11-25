@@ -8,6 +8,12 @@ export default css`
   background: ${props => props.theme.colorPalette.white};
   z-index: ${props => props.theme.zindex.zDrawer};
 
+  .L2-panel-container {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-right: 50px;
+    }
+  }
+
   .shop-by-size-links {
     padding: 10px 14px 10px;
     ul {
@@ -197,6 +203,8 @@ export default css`
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
+        display: inline-block;
+        width: auto;
       }
       .nav-bar-item-label:hover {
         width: auto;

@@ -2,12 +2,14 @@ import { all, put } from 'redux-saga/effects';
 import { getUserInfoSaga } from '../User.saga';
 import { setUserInfo, setIsRegisteredUserCallDone } from '../User.actions';
 import { setAddressList } from '../../../AddressBook/container/AddressBook.actions';
+import { setBossBopisFlags } from '../../../../../../reduxStore/actions';
 
 describe('User saga', () => {
   describe('getUserInfoSaga', () => {
     let gen;
     beforeEach(() => {
       gen = getUserInfoSaga();
+
       gen.next();
     });
 
@@ -20,6 +22,7 @@ describe('User saga', () => {
         all([
           put(setUserInfo(response)),
           put(setAddressList(response.contactList, true)),
+          put(setBossBopisFlags()),
           put(setIsRegisteredUserCallDone()),
         ])
       );

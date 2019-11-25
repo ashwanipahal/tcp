@@ -9,6 +9,18 @@ describe('ReviewPageVanilla component', () => {
       handleSubmit: jest.fn(),
       reviewDidMount: () => {},
       ServerErrors: {},
+      checkoutRoutingDone: true,
+    };
+    const component = shallow(<ReviewPageVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders correctly when not routing done ', () => {
+    const props = {
+      checkoutRoutingDone: false,
+      labels: {},
+      reviewDidMount: () => {},
+      handleSubmit: () => {},
     };
     const component = shallow(<ReviewPageVanilla {...props} />);
     expect(component).toMatchSnapshot();

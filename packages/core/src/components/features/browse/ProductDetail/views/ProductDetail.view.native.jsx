@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+// import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { ScrollView as LazyloadScrollView } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
@@ -9,6 +10,9 @@ import {
   PageContainer,
   LoyaltyBannerView,
   RecommendationWrapper,
+  PromoMiddleContainer,
+  PromoBottomContainer,
+  Margin,
 } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
@@ -17,16 +21,18 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getMapSliceForColor,
+  getMapSliceForSizeSkuID,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
+
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -42,6 +48,7 @@ class ProductDetailView extends React.PureComponent {
       currentGiftCardValue: currentProduct.offerPrice,
       selectedColorProductId,
       showCompleteTheLook: false,
+      size: '',
     };
   }
 
@@ -80,8 +87,8 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
-  onChangeSize = e => {
-    this.setState({ currentGiftCardValue: e });
+  onChangeSize = (color, e, fit, quantity) => {
+    this.setState({ currentGiftCardValue: e, size: e });
   };
 
   onImageClick = () => {
@@ -96,8 +103,8 @@ class ProductDetailView extends React.PureComponent {
     return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
-  renderFulfilmentSection = () => {
-    const { currentProduct } = this.props;
+  renderFulfilmentSection = keepAlive => {
+    const { currentProduct, outOfStockLabels } = this.props;
     const { currentColorEntry } = this.state;
     return (
       currentProduct &&
@@ -106,7 +113,33 @@ class ProductDetailView extends React.PureComponent {
           productInfo={currentProduct}
           formName={`ProductAddToBag-${currentProduct.generalProductId}`}
           miscInfo={currentColorEntry.miscInfo}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
         />
+      )
+    );
+  };
+
+  renderMiddlePromoBanner = promoBanners => {
+    const { navigation } = this.props;
+    return (
+      promoBanners &&
+      promoBanners.length > 0 && (
+        <PromoMiddleContainer>
+          <PromoPDPBanners promos={promoBanners} navigation={navigation} />
+        </PromoMiddleContainer>
+      )
+    );
+  };
+
+  renderBottomPromoBanner = promoBanners => {
+    const { navigation } = this.props;
+    return (
+      promoBanners &&
+      promoBanners.length && (
+        <PromoBottomContainer>
+          <PromoPDPBanners promos={promoBanners} navigation={navigation} />
+        </PromoBottomContainer>
       )
     );
   };
@@ -139,14 +172,21 @@ class ProductDetailView extends React.PureComponent {
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      middlePromos,
+      bottomPromos,
     } = this.props;
     const {
       currentColorEntry,
       currentGiftCardValue,
       selectedColorProductId,
       showCompleteTheLook,
+      size,
     } = this.state;
     let imageUrls = [];
+    let skuId = null;
+
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
         imagesByColor: currentProduct.imagesByColor,
@@ -158,96 +198,112 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-    const { categoryId } = currentProduct;
     const recommendationAttributes = {
       variation: 'moduleO',
       navigation,
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
-      categoryName: categoryId,
-      partNumber: selectedColorProductId,
+      partNumber: itemPartNumber,
       isHeaderAccordion: true,
     };
+    const keepAlive = isKeepAliveEnabled && currentColorEntry.miscInfo.keepAlive;
+
+    if (size) {
+      skuId = getMapSliceForSizeSkuID(currentColorEntry, size);
+    }
 
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
-          <ImageCarousel
-            isGiftCard={currentProduct.isGiftCard}
-            imageUrls={imageUrls}
-            onAddItemToFavorites={onAddItemToFavorites}
-            isLoggedIn={isLoggedIn}
-            currentProduct={currentProduct}
-            onImageClick={this.onImageClick}
-            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-            currentColorEntry={currentColorEntry}
-          />
-          <ProductSummary
-            productData={currentProduct}
-            selectedColorProductId={selectedColorProductId}
-            offerPrice={
-              currentProduct.isGiftCard
-                ? parseInt(currentGiftCardValue, 10)
-                : currentProduct.offerPrice
-            }
-            listPrice={
-              currentProduct.isGiftCard
-                ? parseInt(currentGiftCardValue, 10)
-                : currentProduct.listPrice
-            }
-            currencySymbol={currency}
-            currencyExchange={currencyExchange}
-            isGiftCard={currentProduct.isGiftCard}
-            showCompleteTheLook={showCompleteTheLook}
-            pdpLabels={pdpLabels}
-          />
-
-          <ProductAddToBagContainer
-            currentProduct={currentProduct}
-            plpLabels={plpLabels}
-            handleFormSubmit={handleFormSubmit}
-            selectedColorProductId={selectedColorProductId}
-            errorOnHandleSubmit={addToBagError}
-            onChangeColor={this.onChangeColor}
-            handleSubmit={handleSubmit}
-            onChangeSize={this.onChangeSize}
-            sizeChartLinkVisibility={sizeChartLinkVisibility}
-            alternateSizes={alternateSizes}
-            navigation={navigation}
-            toastMessage={toastMessage}
-          />
-          {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
-          {this.renderFulfilmentSection()}
-          {this.renderCarousel(imageUrls)}
-          <AddedToBagContainer navigation={navigation} />
-          <LoyaltyBannerView>
-            <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
-          </LoyaltyBannerView>
-          <ProductDetailDescription
-            shortDescription={shortDescription}
-            itemPartNumber={itemPartNumber}
-            longDescription={longDescription}
-            isShowMore={false}
-            pdpLabels={pdpLabels}
-          />
-          {!currentProduct.isGiftCard ? (
-            <RelatedOutfits
-              pdpLabels={pdpLabels}
-              navigation={navigation}
+          <Margin>
+            <ImageCarousel
+              isGiftCard={currentProduct.isGiftCard}
+              imageUrls={imageUrls}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              currentProduct={currentProduct}
+              onImageClick={this.onImageClick}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              currentColorEntry={currentColorEntry}
+              keepAlive={keepAlive}
+              outOfStockLabels={outOfStockLabels}
+              skuId={skuId}
+            />
+            <ProductSummary
+              productData={currentProduct}
               selectedColorProductId={selectedColorProductId}
-              setShowCompleteTheLook={this.setShowCompleteTheLook}
+              offerPrice={
+                currentProduct.isGiftCard
+                  ? parseInt(currentGiftCardValue, 10)
+                  : currentProduct.offerPrice
+              }
+              listPrice={
+                currentProduct.isGiftCard
+                  ? parseInt(currentGiftCardValue, 10)
+                  : currentProduct.listPrice
+              }
+              currencySymbol={currency}
+              currencyExchange={currencyExchange}
+              isGiftCard={currentProduct.isGiftCard}
+              showCompleteTheLook={showCompleteTheLook}
+              pdpLabels={pdpLabels}
+              keepAlive={keepAlive}
+              outOfStockLabels={outOfStockLabels}
             />
-          ) : null}
-          <RecommendationWrapper>
-            <Recommendations {...recommendationAttributes} />
-            <Recommendations
-              isRecentlyViewed
-              {...recommendationAttributes}
-              headerLabel={pdpLabels.recentlyViewed}
-              portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          </Margin>
+          {this.renderMiddlePromoBanner(middlePromos)}
+          <Margin>
+            <ProductAddToBagContainer
+              currentProduct={currentProduct}
+              plpLabels={plpLabels}
+              handleFormSubmit={handleFormSubmit}
+              selectedColorProductId={selectedColorProductId}
+              errorOnHandleSubmit={addToBagError}
+              onChangeColor={this.onChangeColor}
+              handleSubmit={handleSubmit}
+              onChangeSize={this.onChangeSize}
+              sizeChartLinkVisibility={sizeChartLinkVisibility}
+              alternateSizes={alternateSizes}
+              navigation={navigation}
+              toastMessage={toastMessage}
+              isKeepAliveEnabled={isKeepAliveEnabled}
+              outOfStockLabels={outOfStockLabels}
             />
-          </RecommendationWrapper>
-          {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+            {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
+            {this.renderFulfilmentSection(keepAlive)}
+            {this.renderCarousel(imageUrls)}
+            <LoyaltyBannerView>
+              <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
+            </LoyaltyBannerView>
+          </Margin>
+          {this.renderBottomPromoBanner(bottomPromos)}
+          <Margin>
+            <ProductDetailDescription
+              shortDescription={shortDescription}
+              itemPartNumber={itemPartNumber}
+              longDescription={longDescription}
+              isShowMore={false}
+              pdpLabels={pdpLabels}
+            />
+            {!currentProduct.isGiftCard ? (
+              <RelatedOutfits
+                pdpLabels={pdpLabels}
+                navigation={navigation}
+                selectedColorProductId={selectedColorProductId}
+                setShowCompleteTheLook={this.setShowCompleteTheLook}
+              />
+            ) : null}
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+              <Recommendations
+                isRecentlyViewed
+                {...recommendationAttributes}
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              />
+            </RecommendationWrapper>
+            {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+          </Margin>
         </PageContainer>
       </LazyloadScrollView>
     );
@@ -285,6 +341,8 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   toastMessage: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
@@ -314,6 +372,8 @@ ProductDetailView.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   toastMessage: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductDetailView);

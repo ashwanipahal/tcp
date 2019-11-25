@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
+import { reduxForm, FormSection, change, initialize } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -10,12 +10,12 @@ import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart'
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import ContactFormFields from '../../../molecules/ContactFormFields';
 import styles from '../styles/PickupPage.style';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
-import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import { scrollToFirstError } from '../../../util/utility';
+import PickupAnalytics from './PickupAnalytics.view';
+import EmailSignUpCheckBox from '../../../molecules/EmailSignUpCheckBox';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -37,6 +37,14 @@ class PickUpFormPart extends React.Component {
   componentDidMount() {
     const { pickupDidMount } = this.props;
     pickupDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { pickupDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      pickupDidMount();
+    }
   }
 
   handleEditModeChange = (isEditing, pickUpContact) => {
@@ -120,6 +128,7 @@ class PickUpFormPart extends React.Component {
     const { isEditing } = this.state;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
+    const { emailSignUp: emailSignUpTCP, emailSignUpGYM } = data.emailSignUp || {};
     if (!isEditing) {
       const params = {
         pickUpContact: {
@@ -131,6 +140,8 @@ class PickUpFormPart extends React.Component {
             wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
           },
         },
+        emailSignUpTCP,
+        emailSignUpGYM,
         hasAlternatePickup,
         pickUpAlternate: {
           firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
@@ -204,8 +215,12 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
+      emailSignUpFlags,
+      updateFromMSG,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
+
     return (
       <>
         {isBagLoaded && (
@@ -254,6 +269,7 @@ class PickUpFormPart extends React.Component {
                 <div className="pick-up-form-container" dataLocator="pickup-sms">
                   <FormSection name="smsSignUp">
                     <SMSFormFields
+                      onCheckBoxChange={value => updateFromMSG(value)}
                       isOrderUpdateChecked={isOrderUpdateChecked}
                       formName="checkoutPickup"
                       formSection="smsSignUp"
@@ -268,46 +284,11 @@ class PickUpFormPart extends React.Component {
                 </div>
               )}
               {isGuest && !isUsSite && (
-                <div className="email-signup-container">
-                  <Field
-                    dataLocator="signUp-checkbox-field"
-                    name="emailSignup"
-                    component={InputCheckbox}
-                    className="email-signup"
-                  >
-                    <BodyCopy
-                      dataLocator="pickup-email-signUp-heading-lbl"
-                      fontSize="fs16"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      {pickUpLabels.emailSignupHeading}
-                    </BodyCopy>
-                  </Field>
-                  <div className="emailSignupText">
-                    <BodyCopy
-                      dataLocator="pickup-email-signUp-sub-heading-text"
-                      fontSize="fs12"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      {pickUpLabels.emailSignupSubHeading}
-                    </BodyCopy>
-                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                      {pickUpLabels.emailSignupSubSubHeading}
-                    </BodyCopy>
-                    <Anchor
-                      anchorVariation="primary"
-                      fontSizeVariation="small"
-                      noLink
-                      href="#"
-                      target="_blank"
-                      dataLocator="pickup-email-signUp-contact-anchor"
-                    >
-                      {pickUpLabels.emailSignupContact}
-                    </Anchor>
-                  </div>
-                </div>
+                <EmailSignUpCheckBox
+                  labels={pickUpLabels}
+                  fieldName="emailSignUp"
+                  values={emailSignUpFlags}
+                />
               )}
               <div className="pickUpAlternate-container">
                 <FormSection name="pickUpAlternate">
@@ -333,8 +314,11 @@ class PickUpFormPart extends React.Component {
                 hideBackLink={false}
                 backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
                 nextButtonText={this.getNextCTAText()}
+                pageCategory={pageCategory}
+                bagLoading={bagLoading}
               />
             </form>
+            <PickupAnalytics {...this.props} />
           </div>
         )}
       </>
@@ -367,13 +351,17 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
+  updateFromMSG: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
+  emailSignUpFlags: PropTypes.shape({}).isRequired,
 };
 
 PickUpFormPart.defaultProps = {
@@ -401,5 +389,6 @@ export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

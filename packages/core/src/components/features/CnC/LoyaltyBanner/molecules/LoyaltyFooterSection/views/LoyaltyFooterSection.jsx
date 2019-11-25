@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
@@ -14,7 +15,8 @@ const openModalApplyNowModal = (openApplyNowModal, step = 1) => {
   return null;
 };
 
-const renderApplyNowLink = (text, openApplyNowModal) => {
+const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
+  const pageData = 'shopping bag';
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -23,15 +25,26 @@ const renderApplyNowLink = (text, openApplyNowModal) => {
       handleLinkClick={e => {
         e.preventDefault();
         openModalApplyNowModal(openApplyNowModal, 2);
+        closeAddedToBagModal();
       }}
       underline
     >
-      {text}
+      <ClickTracker
+        clickData={{
+          pageType: pageData,
+          pageSection: pageData,
+          pageSubSection: pageData,
+          pageName: pageData,
+          customEvents: ['event116'],
+        }}
+      >
+        {text}
+      </ClickTracker>
     </Anchor>
   );
 };
 
-const renderLearnMoreLink = (text, openApplyNowModal) => {
+const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -41,9 +54,17 @@ const renderLearnMoreLink = (text, openApplyNowModal) => {
       handleLinkClick={e => {
         e.preventDefault();
         openModalApplyNowModal(openApplyNowModal);
+        closeAddedToBagModal();
       }}
     >
-      {text}
+      <ClickTracker
+        clickData={{
+          pageName: 'shopping bag',
+          customEvents: ['event117'],
+        }}
+      >
+        {text}
+      </ClickTracker>
     </Anchor>
   );
 };
@@ -96,10 +117,10 @@ const getLinkWithName = (props, action, text) => {
   const { closeAddedToBagModal, openOverlay, openApplyNowModal } = props;
   switch (action) {
     case 'ApplyNowAction':
-      returnLink = renderApplyNowLink(text, openApplyNowModal);
+      returnLink = renderApplyNowLink(text, closeAddedToBagModal, openApplyNowModal);
       break;
     case 'LearnMoreAction':
-      returnLink = renderLearnMoreLink(text, openApplyNowModal);
+      returnLink = renderLearnMoreLink(text, closeAddedToBagModal, openApplyNowModal);
       break;
     case 'CreateAccountAction':
       returnLink = renderCreateAccountLink(text, closeAddedToBagModal, openOverlay);

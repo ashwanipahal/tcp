@@ -9,12 +9,13 @@ import {
   PointTransView,
 } from '../styles/PointHistory.style';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view.native';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
+const PointsHistory = ({ labels, accountlabels, pointHistory, navigation, isFetching }) => {
   let pointHistoryData = [];
 
   if (pointHistory && pointHistory.length > 3) {
@@ -54,8 +55,9 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
           />
         </PointView>
       </PointHistoryView>
-
-      {pointHistoryData &&
+      {isFetching && <PointHistoryViewSkeleton />}
+      {!isFetching &&
+        pointHistoryData &&
         pointHistoryData.length &&
         pointHistoryData.map(pointHistoryRow => (
           <PointHistoryView>
@@ -115,6 +117,7 @@ PointsHistory.propTypes = {
   }),
   accountlabels: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isFetching: PropTypes.bool,
 };
 
 PointsHistory.defaultProps = {
@@ -124,6 +127,7 @@ PointsHistory.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
+  isFetching: false,
 };
 
 export default PointsHistory;

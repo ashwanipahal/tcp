@@ -44,7 +44,12 @@ class ModuleH extends React.PureComponent {
    * @return {Node} : Returns Image element.
    */
   renderItem = ({ item, index }) => {
-    const { image } = item;
+    const { image, video } = item;
+    const videoData = video && {
+      ...video,
+      videoWidth: MODULE_WIDTH,
+      videoHeight: MODULE_HEIGHT,
+    };
     return (
       <DamImage
         key={index.toString()}
@@ -54,6 +59,7 @@ class ModuleH extends React.PureComponent {
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
         alt={image.alt}
+        videoData={videoData}
         imgConfig={config.IMG_DATA.imgConfig[0]}
       />
     );

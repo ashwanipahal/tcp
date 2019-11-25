@@ -1,4 +1,5 @@
 import { getLabelValue } from '@tcp/core/src/utils';
+import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 export const getCartOrderList = state => {
@@ -12,6 +13,10 @@ export const getEditableProductInfo = state => {
 
 export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
+};
+
+export const getIsMiniBagOpen = state => {
+  return state.Header.miniBag;
 };
 
 export const getCartOrderId = state => {
@@ -124,6 +129,18 @@ export const getIsInventoryAvailBOSS = product => {
 
 export const getIsStoreBOSSEligible = product => {
   return product.getIn(['miscInfo', 'isStoreBOSSEligible']);
+};
+
+export const getStoreTodayOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTodayOpenRange']);
+};
+
+export const getStoreTomorrowOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTomorrowOpenRange']);
+};
+
+export const getStorePhoneNumber = product => {
+  return product.getIn(['miscInfo', 'storePhoneNumber']);
 };
 
 export const getProductItemUpcNumber = product => {
@@ -353,11 +370,6 @@ function getCurrenciesMap(state) {
   return state.session.siteOptions.currenciesMap;
 }
 
-export function getCurrencyExchange(state) {
-  const selectedCurrency = getCurrentCurrency(state);
-  return getCurrenciesMap(state).filter(currency => currency.id === selectedCurrency);
-}
-
 export const getProductDetails = tile => {
   return {
     itemInfo: {
@@ -404,6 +416,9 @@ export const getProductDetails = tile => {
       clearanceItem: getClearanceItem(tile),
       isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
       isStoreBOSSEligible: getIsStoreBOSSEligible(tile),
+      storeTodayOpenRange: getStoreTodayOpenRange(tile),
+      storeTomorrowOpenRange: getStoreTomorrowOpenRange(tile),
+      storePhoneNumber: getStorePhoneNumber(tile),
     },
   };
 };
@@ -432,4 +447,11 @@ export const getCartToggleError = state => {
 
 export const getCartBossBopisToggleError = state => {
   return state.CartItemTileReducer.get('toggleBossBopisError');
+};
+
+export const getIsDeleteConfirmationModalEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_DELETE_CONFIRMATION_MODAL_ENABLED === 'TRUE'
+  );
 };

@@ -11,7 +11,9 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   fitList={Array []}
   fromBagPage={true}
   handleFormSubmit={null}
+  isBundleProduct={false}
   isErrorMessageDisplayed={false}
+  isFromBagProductSfl={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
@@ -36,6 +38,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "isGiftCard": false,
           "itemNameKey": "",
           "itemValue": "",
+          "keepAlive": false,
           "keyExtractor": null,
           "locators": null,
           "renderColorItem": false,
@@ -91,6 +94,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
             "isGiftCard": false,
             "itemNameKey": "",
             "itemValue": "",
+            "keepAlive": false,
             "keyExtractor": null,
             "locators": null,
             "renderColorItem": false,
@@ -120,7 +124,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         }
       }
       data={Array []}
-      error=""
       id="size"
       itemNameKey="displayName"
       itemValue=""
@@ -146,6 +149,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     sizeUnavailable=""
   />
   <Styled(View)
+    margins="16px 0 16px 0"
     style={
       Object {
         "width": 200,
@@ -156,10 +160,10 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       fontWeight="black"
       margin={null}
-      mobileFontFamily="secondary"
       numberOfLines={null}
       text="undefined: "
       textDecoration={null}

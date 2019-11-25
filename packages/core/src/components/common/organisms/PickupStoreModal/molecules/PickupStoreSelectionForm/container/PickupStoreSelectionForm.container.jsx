@@ -8,6 +8,11 @@ import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
 import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
 import {
+  getPageName,
+  getStoreSearchCriteria,
+  getStoreSearchDistance,
+} from './PickupStoreSelectionForm.selectors';
+import {
   getSkuId,
   getVariantId,
   getMapSliceForSize,
@@ -81,6 +86,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
     this.getIsBopisAvailable = this.getIsBopisAvailable.bind(this);
     this.preferredStore = null;
     this.isAutoSearchTriggered = false;
+    this.isZipCodePrePopulated = false;
     this.initialValues = {
       addressLocation: '',
       distance: 25,
@@ -99,7 +105,10 @@ class PickupStoreSelectionFormContainer extends React.Component {
           address: { zipCode },
         },
       } = defaultStore;
-      changeDispatch('addressLocation', zipCode);
+      if (!this.isZipCodePrePopulated) {
+        changeDispatch('addressLocation', zipCode);
+        this.isZipCodePrePopulated = true;
+      }
       // submitting the search form forcefully in case of step-2
       const autoSearch = isSkuResolved;
       if (autoSearch) {
@@ -460,14 +469,20 @@ class PickupStoreSelectionFormContainer extends React.Component {
       cartBopisStoresList,
       isGetUserStoresLoaded,
       error,
+      currentProduct,
+      pageNameProp,
       openRestrictedModalForBopis,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
       <PickupStoreSelectionForm
         onSearch={this.onSearch}
+        pageNameProp={pageNameProp}
         isPickUpWarningModal={isPickUpWarningModal}
+        currentProduct={currentProduct}
         renderVariationText={this.renderVariationText}
         getPreferredStoreData={this.getPreferredStoreData}
         isGetUserStoresLoaded={isGetUserStoresLoaded}
@@ -506,9 +521,18 @@ class PickupStoreSelectionFormContainer extends React.Component {
         onQuantityChange={this.quantityChange}
         initialValues={this.initialValues}
         openRestrictedModalForBopis={openRestrictedModalForBopis}
+        storeSearchCriteria={storeSearchCriteria}
+        storeSearchDistance={storeSearchDistance}
       />
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    pageNameProp: getPageName(state),
+    storeSearchCriteria: getStoreSearchCriteria(state),
+    storeSearchDistance: getStoreSearchDistance(state),
+  };
+}
 
-export default connect()(PickupStoreSelectionFormContainer);
+export default connect(mapStateToProps)(PickupStoreSelectionFormContainer);

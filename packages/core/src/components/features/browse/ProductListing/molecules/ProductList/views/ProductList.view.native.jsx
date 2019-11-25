@@ -1,13 +1,15 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer } from '../styles/ProductList.style.native';
+import { styles, PageContainer, HeaderContainer } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
@@ -22,6 +24,7 @@ class ProductList extends React.PureComponent {
     this.state = {
       showModal: false,
       favorites: true,
+      colorProductId: '',
     };
   }
 
@@ -35,12 +38,21 @@ class ProductList extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites, getProducts, navigation, isSearchListing } = props;
+    const { colorProductId } = state;
     if (props.isLoggedIn && state.showModal) {
-      return { showModal: false };
+      this.categoryUrl = navigation && navigation.getParam('url');
+      getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
+      if (colorProductId !== '') {
+        onAddItemToFavorites({ colorProductId, page: isSearchListing ? 'SLP' : 'PLP' });
+      }
+      return { showModal: false, colorProductId: '' };
     }
     return null;
   }
@@ -50,12 +62,15 @@ class ProductList extends React.PureComponent {
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
-
-    onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
-
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
     if (!isLoggedIn) {
+      this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
     }
   };
 
@@ -117,9 +132,10 @@ class ProductList extends React.PureComponent {
       setLastDeletedItemId,
       isLoggedIn,
       labelsPlpTiles,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     const { item } = itemData;
-
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -137,7 +153,6 @@ class ProductList extends React.PureComponent {
 
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
-
     return (
       <ListItem
         item={item}
@@ -156,6 +171,8 @@ class ProductList extends React.PureComponent {
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   };
@@ -200,7 +217,10 @@ class ProductList extends React.PureComponent {
    */
   renderHeader = () => {
     const { onRenderHeader } = this.props;
-    return onRenderHeader();
+    if (onRenderHeader) {
+      return <HeaderContainer>{onRenderHeader()}</HeaderContainer>;
+    }
+    return null;
   };
 
   setListRef = ref => {
@@ -221,8 +241,7 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products, isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
-
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg, products } = this.props;
     const { logIn } = labelsLogin;
     const { showModal, favorites } = this.state;
     return (
@@ -230,20 +249,22 @@ class ProductList extends React.PureComponent {
         {AddToFavoriteErrorMsg !== '' && (
           <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
         )}
-        <FlatList
-          ref={ref => this.setListRef(ref)}
-          data={products}
-          renderItem={this.renderItemList}
-          keyExtractor={item => item.productInfo.generalProductId}
-          initialNumToRender={4}
-          maxToRenderPerBatch={2}
-          numColumns={2}
-          extraData={this.props}
-          ListFooterComponent={this.renderFooter}
-          ListHeaderComponent={this.renderHeader}
-          stickyHeaderIndices={[0]}
-          columnWrapperStyle={this.getColumnWrapperStyle()}
-        />
+        {products && products.length > 0 && (
+          <FlatList
+            ref={ref => this.setListRef(ref)}
+            data={products}
+            renderItem={this.renderItemList}
+            keyExtractor={item => item.productInfo.generalProductId}
+            initialNumToRender={4}
+            maxToRenderPerBatch={2}
+            numColumns={2}
+            extraData={this.props}
+            ListFooterComponent={this.renderFooter}
+            ListHeaderComponent={this.renderHeader}
+            stickyHeaderIndices={[0]}
+            columnWrapperStyle={this.getColumnWrapperStyle()}
+          />
+        )}
 
         {showModal && (
           <ModalNative
@@ -320,6 +341,9 @@ ProductList.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isSearchListing: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -352,6 +376,9 @@ ProductList.defaultProps = {
   labelsPlpTiles: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isSearchListing: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(ProductList, styles);

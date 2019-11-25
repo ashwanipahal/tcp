@@ -16,24 +16,8 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     <Styled(View)
       dataLocator="points_history_rte"
     >
-      <RichText
-        actionHandler={[Function]}
-        domStorageEnabled={false}
-        isApplyDeviceHeight={false}
-        isNativeView={false}
-        javaScriptEnabled={false}
-        scrollEnabled={false}
-        source={
-          Object {
-            "html": "",
-          }
-        }
-        style={
-          Object {
-            "minHeight": 600,
-          }
-        }
-        thirdPartyCookiesEnabled={false}
+      <Connect(withNavigation(Espot))
+        richTextHtml=""
       />
     </Styled(View)>
     <Styled(View)>
@@ -43,6 +27,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         noLink={true}
@@ -60,6 +45,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         customStyle={Object {}}
         dataLocator="my-rewards-program-details"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -75,6 +61,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
           customStyle={Object {}}
           dataLocator="my-rewards-tnc"
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}

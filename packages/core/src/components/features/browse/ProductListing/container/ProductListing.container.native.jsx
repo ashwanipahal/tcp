@@ -2,12 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import ProductListing from '../views';
-import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
+import {
+  getPlpProducts,
+  getMorePlpProducts,
+  resetPlpProducts,
+  setFilter,
+} from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
-
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -23,8 +28,12 @@ import {
   updateAppliedFiltersInState,
   getAllProductsSelect,
   getScrollToTopValue,
+  getModalState,
   getTotalProductsCount,
   getIsDataLoading,
+  getSelectedFilter,
+  getPLPTopPromos,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -46,6 +55,15 @@ class ProductListingContainer extends React.PureComponent {
 
   componentDidMount() {
     this.makeApiCall();
+  }
+
+  componentDidUpdate({ navigation: oldNavigation }) {
+    const { getProducts, navigation } = this.props;
+    const oldNavigationUrl = oldNavigation.getParam('url');
+    const newNavigationUrl = navigation.getParam('url');
+    if (navigation && oldNavigationUrl !== newNavigationUrl) {
+      getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+    }
   }
 
   makeApiCall = () => {
@@ -94,6 +112,9 @@ class ProductListingContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      plpTopPromos,
+      isSearchListing,
+      isKeepModalOpen,
       ...otherProps
     } = this.props;
     return (
@@ -123,6 +144,9 @@ class ProductListingContainer extends React.PureComponent {
         onLoadMoreProducts={this.onLoadMoreProducts}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        plpTopPromos={plpTopPromos}
+        isSearchListing={isSearchListing}
+        isKeepModalOpen={isKeepModalOpen}
         {...otherProps}
       />
     );
@@ -149,12 +173,10 @@ function mapStateToProps(state) {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getAllProductsSelect(state),
     filters,
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
+    breadCrumbs: processBreadCrumbs(state.ProductListing && state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     filtersLength,
@@ -170,11 +192,16 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isKeepModalOpen: getModalState(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    selectedFilterValue: getSelectedFilter(state),
+    plpTopPromos: getPLPTopPromos(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -182,6 +209,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
@@ -225,6 +255,9 @@ ProductListingContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
+  isKeepModalOpen: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -247,6 +280,9 @@ ProductListingContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  plpTopPromos: [],
+  isSearchListing: false,
+  isKeepModalOpen: false,
 };
 
 export default connect(

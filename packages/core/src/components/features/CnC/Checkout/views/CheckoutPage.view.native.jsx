@@ -49,6 +49,7 @@ class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      bagLoading,
       availableStages,
       labels,
       submitBilling,
@@ -62,6 +63,11 @@ class CheckoutPage extends React.PureComponent {
       submitReview,
       currentStage,
       setCheckoutStage,
+      isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isExpressCheckout,
       pickUpContactAlternate,
       isHasPickUpAlternatePerson,
@@ -69,8 +75,11 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       pickupDidMount,
+      isPayPalWebViewEnable,
+      pickUpContactPerson,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    const { venmoBannerText } = pickUpLabels;
     const { shipmentMethods } = shippingProps;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
@@ -83,6 +92,7 @@ class CheckoutPage extends React.PureComponent {
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
             pickupInitialValues={pickupInitialValues}
+            bagLoading={bagLoading}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -94,6 +104,10 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             availableStages={availableStages}
             setCheckoutStage={setCheckoutStage}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            orderHasShipping={orderHasShipping}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
           />
         );
@@ -116,8 +130,14 @@ class CheckoutPage extends React.PureComponent {
             updateShippingMethodSelection={updateShippingMethodSelection}
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
+            pickUpContactPerson={pickUpContactPerson}
             labels={labels}
             setCheckoutStage={setCheckoutStage}
+            venmoBannerLabel={{ venmoBannerText }}
+            setVenmoPickupState={setVenmoPickupState}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case BILLING:
@@ -131,6 +151,10 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             submitBilling={submitBilling}
             setCheckoutStage={setCheckoutStage}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            setVenmoPickupState={setVenmoPickupState}
+            setVenmoShippingState={setVenmoShippingState}
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
           />
         );
       case REVIEW:
@@ -143,6 +167,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isExpressCheckout={isExpressCheckout}
             pickUpContactAlternate={pickUpContactAlternate}
             initialValues={{
@@ -157,6 +182,8 @@ class CheckoutPage extends React.PureComponent {
               },
             }}
             shipmentMethods={shipmentMethods}
+            setVenmoShippingState={setVenmoShippingState}
+            setVenmoPickupState={setVenmoPickupState}
           />
         );
       case CONFIRMATION:
@@ -185,10 +212,12 @@ CheckoutPage.propTypes = {
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
+  pickUpContactPerson: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
@@ -210,14 +239,25 @@ CheckoutPage.propTypes = {
   checkoutServerError: PropTypes.shape({}).isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
+  setVenmoShippingState: PropTypes.func,
+  isVenmoPickupBannerDisplayed: PropTypes.bool,
+  isVenmoShippingBannerDisplayed: PropTypes.bool,
   cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
+  isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
+  isVenmoPickupBannerDisplayed: true,
+  isVenmoShippingBannerDisplayed: true,
   isExpressCheckout: false,
 };
 

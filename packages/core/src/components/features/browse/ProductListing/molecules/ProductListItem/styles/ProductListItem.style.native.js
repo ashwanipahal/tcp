@@ -65,7 +65,6 @@ const OfferPriceAndBadge3View = styled.View`
 `;
 
 const TitleContainer = styled.TouchableOpacity`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   height: 32;
 `;
 

@@ -2,6 +2,10 @@
 import { getLabelValue } from '@tcp/core/src/utils';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
+export const getAddedToBagLoaderState = state => {
+  return state.PageLoader && state.PageLoader.addedToBagLoaderState;
+};
+
 export const getAddedToBagData = state => {
   return state.AddedToBagReducer.get('itemInfo');
 };
@@ -35,6 +39,35 @@ export const filterItemObject = (arr, searchedValue) => {
     );
   });
   return filteredValue.get(0);
+};
+
+export const filterItemObjectFromArray = (arr, searchedValue) => {
+  const filteredData = [];
+  let lastItemsData;
+  if (typeof arr !== 'undefined') {
+    lastItemsData = searchedValue.map(lastItem => {
+      const filteredValue = arr.filter(value => {
+        return (
+          value.getIn(['itemInfo', 'itemId']) &&
+          lastItem.orderItemId &&
+          value.getIn(['itemInfo', 'itemId']).toString() === lastItem.orderItemId.toString()
+        );
+      });
+      const filteredValueParam = filteredValue.get(0);
+      filteredData.push({
+        itemPrice: filteredValueParam ? filteredValueParam.getIn(['itemInfo', 'offerPrice']) : 0,
+        itemPoints: filteredValueParam ? filteredValueParam.getIn(['itemInfo', 'itemPoints']) : 0,
+        quantity: filteredValueParam ? filteredValueParam.getIn(['itemInfo', 'quantity']) : 0,
+      });
+      return filteredData;
+    });
+    return {
+      filteredPrice: lastItemsData[0].reduce((a, b) => a + (b.itemPrice || 0), 0),
+      filteredProductItemPoints: lastItemsData[0].reduce((a, b) => a + (b.itemPoints || 0), 0),
+      filteredProductQuantity: lastItemsData[0].reduce((a, b) => a + (b.quantity || 0), 0),
+    };
+  }
+  return {};
 };
 
 export const getQuantityValue = state => {
@@ -84,11 +117,28 @@ const getOrderItemsDetails = state => {
   return state.get('orderItems');
 };
 
+export const getAddedToBagInterval = state => {
+  return parseInt(state.session.siteDetails.ADDED_TO_BAG_MODAL_INTERVAL, 10) || 0;
+};
+
 export const getPointsSummary = (getOrderPointsSummary, lastAddedToBag) => {
   const orderItems = getOrderItemsDetails(getOrderPointsSummary);
   let pointsSummary = {};
+  let lastAddedItem;
+  let offerPrice;
+  let productItemPoints;
   if (orderItems) {
-    const lastAddedItem = filterItemObject(orderItems, lastAddedToBag);
+    if (Array.isArray(lastAddedToBag)) {
+      lastAddedItem = filterItemObjectFromArray(orderItems, lastAddedToBag);
+      const { filteredPrice, filteredProductItemPoints } = lastAddedItem;
+      offerPrice = filteredPrice;
+      productItemPoints = filteredProductItemPoints;
+    } else {
+      lastAddedItem = filterItemObject(orderItems, lastAddedToBag);
+      offerPrice = lastAddedItem && lastAddedItem.getIn(['itemInfo', 'offerPrice']);
+      productItemPoints = lastAddedItem && lastAddedItem.getIn(['itemInfo', 'itemPoints']);
+    }
+
     const obj = {
       pointsToNextReward: getOrderPointsSummary.get('pointsToNextReward'),
       estimatedRewards: getOrderPointsSummary.get('estimatedRewards'),
@@ -97,10 +147,10 @@ export const getPointsSummary = (getOrderPointsSummary, lastAddedToBag) => {
       giftCardsTotal: getOrderPointsSummary.get('giftCardsTotal'),
     };
 
-    if (lastAddedItem) {
+    if (lastAddedItem && offerPrice > 0) {
       pointsSummary = {
-        itemPrice: lastAddedItem.getIn(['itemInfo', 'offerPrice']) || 0,
-        itemPoints: lastAddedItem.getIn(['itemInfo', 'itemPoints']) || 0,
+        itemPrice: offerPrice,
+        itemPoints: productItemPoints,
         pointsToNextReward: obj.pointsToNextReward,
         userPoints: obj.estimatedRewards || 0,
         bagSubTotal: obj.grandTotal - obj.giftCardsTotal || 0,
