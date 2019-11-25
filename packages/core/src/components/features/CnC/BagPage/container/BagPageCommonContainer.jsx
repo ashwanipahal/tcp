@@ -127,7 +127,7 @@ export class BagPageContainer extends React.Component<Props> {
     } = this.props;
 
     const showAddTobag = false;
-    const fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    // const fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
     return (
       <BagPage
         isMobile={isMobile}
@@ -162,7 +162,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
-        fromMiniBag={fromMiniBag}
+        // fromMiniBag={fromMiniBag}
         bagLoading={bagLoading}
         isVenmoEnabled={isVenmoEnabled}
         isPayPalEnabled={isPayPalEnabled}
