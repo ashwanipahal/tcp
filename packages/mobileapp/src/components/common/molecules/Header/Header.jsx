@@ -159,13 +159,17 @@ class Header extends React.PureComponent {
   };
 
   renderSearchBar = () => {
-    const { showSearch, slpLabels } = this.props;
+    const { showSearch, slpLabels, navigation } = this.props;
     const { showSearchModal } = this.state;
     if (!showSearch) return null;
     return (
       <SearchContainer>
         {showSearch && (
-          <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          <SearchBar
+            openSearchProductPage={this.openSearchProductPage}
+            navigation={navigation}
+            labels={slpLabels}
+          />
         )}
         {showSearchModal && (
           <SearchProduct

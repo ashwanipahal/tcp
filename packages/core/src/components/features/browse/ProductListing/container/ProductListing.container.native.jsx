@@ -49,7 +49,10 @@ class ProductListingContainer extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    const { resetProducts } = this.props;
+    const { resetProducts, navigation } = this.props;
+    this.state = {
+      showCustomLoader: (navigation && navigation.getParam('showCustomLoader')) || false,
+    };
     resetProducts();
   }
 
@@ -58,13 +61,22 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   componentDidUpdate({ navigation: oldNavigation }) {
-    const { getProducts, navigation } = this.props;
+    const { getProducts, navigation, isDataLoading } = this.props;
     const oldNavigationUrl = oldNavigation.getParam('url');
     const newNavigationUrl = navigation.getParam('url');
     if (navigation && oldNavigationUrl !== newNavigationUrl) {
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
+    if (this.state.showCustomLoader && !isDataLoading) {
+      setTimeout(() => {
+        this.resetCustomLoader();
+      }, 100000);
+    }
   }
+
+  resetCustomLoader = () => {
+    this.setState({ showCustomLoader: false });
+  };
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
@@ -117,6 +129,8 @@ class ProductListingContainer extends React.PureComponent {
       isKeepModalOpen,
       ...otherProps
     } = this.props;
+
+    const { showCustomLoader } = this.state;
     return (
       <ProductListing
         margins="0 12px 0 12px"
@@ -147,6 +161,7 @@ class ProductListingContainer extends React.PureComponent {
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}
+        showCustomLoader={showCustomLoader}
         {...otherProps}
       />
     );

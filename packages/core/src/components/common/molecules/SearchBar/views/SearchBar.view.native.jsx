@@ -6,7 +6,12 @@ import { BodyCopy } from '../../../atoms';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../atoms/Icon/Icon.constants';
 
-import styles, { TouchableOpacityContainer, ViewContainer } from '../Searchbar.style.native';
+import styles, {
+  TouchableOpacityContainer,
+  ViewContainer,
+  TouchableQRContainer,
+  ViewQRContainer,
+} from '../Searchbar.style.native';
 import withStyles from '../../../hoc/withStyles';
 
 /**
@@ -18,6 +23,11 @@ class SearchBar extends React.PureComponent {
   onSearchFocus = () => {
     const { openSearchProductPage } = this.props;
     if (openSearchProductPage) openSearchProductPage();
+  };
+
+  onQRIconFocus = () => {
+    const { navigation } = this.props;
+    navigation.navigate('QRScanner');
   };
 
   render() {
@@ -45,8 +55,8 @@ class SearchBar extends React.PureComponent {
     }
 
     return (
-      <View {...this.props}>
-        <TouchableOpacityContainer activeOpacity={1} onPress={this.onSearchFocus}>
+      <ViewQRContainer {...this.props}>
+        <TouchableOpacityContainer activeOpacity={1} width="95%" onPress={this.onSearchFocus}>
           <CustomIcon
             iconFontName={ICON_FONT_CLASS.Icomoon}
             name={ICON_NAME.search}
@@ -60,14 +70,16 @@ class SearchBar extends React.PureComponent {
             text={getLabelValue(labels, 'lbl_looking_for')}
             color="gray.900"
           />
-          <CustomIcon
-            iconFontName={ICON_FONT_CLASS.Icomoon}
-            name={ICON_NAME.qrcode}
-            size="fs16"
-            color="gray.600"
-          />
+          <TouchableQRContainer activeOpacity={1} width="50px" onPress={this.onQRIconFocus}>
+            <CustomIcon
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.qrcode}
+              size="fs16"
+              color="gray.600"
+            />
+          </TouchableQRContainer>
         </TouchableOpacityContainer>
-      </View>
+      </ViewQRContainer>
     );
   }
 }

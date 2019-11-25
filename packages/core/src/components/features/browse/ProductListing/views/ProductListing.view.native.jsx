@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
@@ -13,7 +13,9 @@ import {
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
+import PLPGifAnimation from '../../../../common/atoms/PLPGifAnimation';
 import PromoModules from '../../../../common/organisms/PromoModules';
+import ImageComp from '../../../../common/atoms/Image';
 
 const renderItemCountView = itemCount => {
   if (itemCount === undefined) {
@@ -68,6 +70,7 @@ const onRenderHeader = data => {
   );
 };
 
+// eslint-disable-next-line complexity
 const ProductListView = ({
   products,
   filters,
@@ -102,10 +105,11 @@ const ProductListView = ({
   plpTopPromos,
   isSearchListing,
   isKeepModalOpen,
+  showCustomLoader,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading && !isKeepModalOpen) return <PLPSkeleton col={20} />;
+  if (isDataLoading && !isKeepModalOpen && !showCustomLoader) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -125,7 +129,9 @@ const ProductListView = ({
     isKeepModalOpen,
     isLoadingMore,
   };
-  return (
+  return showCustomLoader ? (
+    <PLPGifAnimation url="https://media.giphy.com/media/rIEyYzbMqa7hS/giphy.gif" />
+  ) : (
     <ScrollView>
       {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
       <PageContainer margins={margins} paddings={paddings}>

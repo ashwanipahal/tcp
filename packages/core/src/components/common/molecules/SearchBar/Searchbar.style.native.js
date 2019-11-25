@@ -25,6 +25,18 @@ export const TouchableOpacityContainer = styled.TouchableOpacity`
   ${getAdditionalStyle}
 `;
 
+export const TouchableQRContainer = styled.TouchableOpacity`
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ViewQRContainer = styled.View`
+  flex-direction: row;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export const ViewContainer = styled.View`
   align-items: center;
   margin-top: 32px;
