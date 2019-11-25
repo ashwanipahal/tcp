@@ -239,6 +239,8 @@ class _PickupStoreSelectionForm extends React.Component {
       getIsBopisAvailable,
       currentProduct,
       pageNameProp,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     return (
       !storeLimitReached &&
