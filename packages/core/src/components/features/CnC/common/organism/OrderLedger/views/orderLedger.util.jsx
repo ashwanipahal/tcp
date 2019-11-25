@@ -198,7 +198,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                   >
                     {`${labels.couponsLabel}:`}
                   </BodyCopy>
@@ -209,7 +209,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                     textAlign="right"
                   >
                     -
