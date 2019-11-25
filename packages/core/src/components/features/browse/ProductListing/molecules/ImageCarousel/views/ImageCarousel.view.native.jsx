@@ -12,7 +12,7 @@ import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockW
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
 const numberOfColumn = 2;
-const imageWidth = win.width / numberOfColumn - paddingAroundImage;
+const imageWidth = win.width / numberOfColumn;
 const imageHeight = '205px';
 
 class ImageCarousel extends React.PureComponent {

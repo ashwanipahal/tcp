@@ -79,6 +79,13 @@ export function* fetchSlpProducts({ payload }) {
     );
   } catch (err) {
     logger.error(err);
+    yield put(
+      setSlpLoadingState({
+        isLoadingMore: false,
+        isScrollToTop: false,
+        isSearchResultsAvailable: true,
+      })
+    );
   }
 }
 
