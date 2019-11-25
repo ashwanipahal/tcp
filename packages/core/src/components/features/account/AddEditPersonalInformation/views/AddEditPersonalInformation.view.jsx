@@ -42,6 +42,7 @@ export const AddEditPersonalInformation = ({
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={onSubmit}
+        onChange={onChangeHandler}
         birthMonthOptionsMap={birthMonthOptionsMap}
         birthYearOptionsMap={birthYearOptionsMap}
         initialValues={initialValues}
