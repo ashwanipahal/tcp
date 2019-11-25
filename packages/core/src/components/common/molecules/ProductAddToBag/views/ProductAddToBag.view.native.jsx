@@ -74,14 +74,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-      plpLabels: { errorMessage },
-      toastMessage,
-      keepAlive,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage, keepAlive } = this.props;
     return (
       <Button
         margin="16px 0 0 0"

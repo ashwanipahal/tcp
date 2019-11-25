@@ -1,8 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -41,7 +39,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
-      submitting,
       isSearchOnlyInCartStores,
       onCloseClick,
       addToCartError,
@@ -108,7 +105,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       submitting,
       storeSearchError,
       isSkuResolved,
-      onCloseClick,
       handleSubmit,
       onSearch,
       PickupSkuFormValues,
