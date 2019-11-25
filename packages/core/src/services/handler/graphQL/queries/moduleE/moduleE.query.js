@@ -76,7 +76,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					text
 					title
 					target
-				}
+        }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
 			}
 
 			largeCompImageSimpleCarousel {
@@ -87,7 +96,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
 
 				singleCTAButton {
 					url
@@ -105,7 +123,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
 				styled {
 					text
 					style
@@ -131,7 +158,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
 			}
 		}
 

@@ -18,6 +18,15 @@ const buildQuery = ({ slot, contentId }) => `
           crop_t
           crop_m
         }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
         styled {
           text
         }

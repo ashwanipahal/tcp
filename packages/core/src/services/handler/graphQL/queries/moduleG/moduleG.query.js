@@ -1,6 +1,6 @@
 const buildQuery = ({ slot, contentId }) => `
   ${slot}: moduleById(id: "${contentId}") {
-   
+
     contentId
     name
     type
@@ -46,7 +46,15 @@ const buildQuery = ({ slot, contentId }) => `
          title
          target
        }
-
+       video {
+        url
+        title
+        autoplay
+        controls
+        loop
+        muted
+        inline
+      }
        image {
          url
          alt
