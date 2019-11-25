@@ -1,5 +1,6 @@
 import throttle from 'lodash/throttle';
 import PropTypes from 'prop-types';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isClient, scrollPage } from '../../../../../utils';
 
@@ -114,6 +115,24 @@ const CarouselOptions = {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: breakpoints.values.lg - 1,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: breakpoints.values.sm - 1,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   },
 };
 
