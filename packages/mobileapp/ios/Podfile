@@ -205,6 +205,8 @@ target 'mobileapp' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   # target 'mobileappTests' do
   #   inherit! :search_paths
   #   # Pods for testing

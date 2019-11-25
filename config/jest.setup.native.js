@@ -49,6 +49,12 @@ jest.mock('react-native-keychain', () => {
   };
 });
 
+jest.mock('react-native-gesture-handler', () => {
+  return {
+    gestureHandlerRootHOC: jest.fn(),
+  };
+});
+
 // Mock NetInfo for react-native modules
 NativeModules.RNCNetInfo = {
   getCurrentState: jest.fn(() => Promise.resolve()),
