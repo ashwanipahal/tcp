@@ -179,6 +179,7 @@ class ContactInformationFormWrapper extends React.Component {
                   id="statewocountry"
                   name="statewocountry"
                   component={Select}
+                  aria-label={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
