@@ -40,6 +40,8 @@ describe('Country Selector Modal Component', () => {
       currency: 'USD',
       language: 'en',
     },
+    loadCountryModuleXData: jest.fn(),
+    getCountryListData: jest.fn(),
   };
 
   it('renders correctly', () => {

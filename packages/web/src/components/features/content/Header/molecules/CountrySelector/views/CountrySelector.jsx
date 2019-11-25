@@ -15,17 +15,14 @@ import style from '../styles/CountrySelector.style';
  * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
  */
 class CountrySelector extends React.Component {
-  componentDidMount() {
+  loadCountryModuleXData = () => {
     const { getModuleXContent, noteContentId } = this.props;
     getModuleXContent(noteContentId);
-  }
+  };
 
   openModal = () => {
     const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
-    if (!countriesMap.length) {
-      this.getCountryListData();
-    }
   };
 
   closeModal = () => {
@@ -125,7 +122,7 @@ class CountrySelector extends React.Component {
 
     return (
       <div className={`${className} countrySelector`}>
-        {showInFooter ? (
+        {showInFooter && isModalOpen ? (
           <React.Fragment>
             <BodyCopy
               className="countrySelector__shipTo"
@@ -158,6 +155,8 @@ class CountrySelector extends React.Component {
                 language: savedLanguage,
                 currency: savedCurrency,
               }}
+              getCountryListData={this.getCountryListData}
+              loadCountryModuleXData={this.loadCountryModuleXData}
             />
           </React.Fragment>
         ) : (

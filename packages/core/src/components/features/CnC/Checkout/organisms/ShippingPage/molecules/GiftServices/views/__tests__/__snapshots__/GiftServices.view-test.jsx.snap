@@ -33,7 +33,7 @@ exports[`GiftServices component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-ifAKCX",
+                    "componentId": "sc-jTzLTM",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -156,7 +156,7 @@ exports[`GiftServices component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-ifAKCX",
+                  "styledComponentId": "sc-jTzLTM",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -255,7 +255,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-EHOje",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -383,7 +383,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "foldedComponentIds": Array [],
               "labeledRadioButtonCounter": 0,
               "render": [Function],
-              "styledComponentId": "sc-EHOje",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -435,7 +435,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-EHOje",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -563,7 +563,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "foldedComponentIds": Array [],
               "labeledRadioButtonCounter": 0,
               "render": [Function],
-              "styledComponentId": "sc-EHOje",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

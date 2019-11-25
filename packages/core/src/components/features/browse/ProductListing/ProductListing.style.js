@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
+  .fixed-bread-crumb-height {
+    min-height: 67px;
+  }
+
   .bread-crumb,
   .filter-area {
     padding-top: 20px;

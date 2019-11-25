@@ -42,12 +42,12 @@ exports[`DropdownList component should renders correctly 1`] = `
         data-locator="drop-down-list"
       >
         <li
-          className="dropdownliBottomBorder "
+          className="  "
           key="1"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className={null}
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -62,18 +62,6 @@ exports[`DropdownList component should renders correctly 1`] = `
             role="link"
             textAlign="left"
           >
-            <Styled(BodyCopy)
-              className=""
-              color="text.primary"
-              component="div"
-              fontFamily="primary"
-              fontSize={12}
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
             <div>
               <p>
                 Test 1
@@ -129,12 +117,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
         data-locator="drop-down-list"
       >
         <li
-          className="dropdownliBottomBorder "
+          className="  "
           key="1"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className={null}
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -149,18 +137,6 @@ exports[`DropdownList component should renders correctly when optional fields ar
             role="link"
             textAlign="left"
           >
-            <Styled(BodyCopy)
-              className=""
-              color="text.primary"
-              component="div"
-              fontFamily="primary"
-              fontSize={12}
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
             <div>
               <p>
                 Test 1
@@ -169,12 +145,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
           </Styled(BodyCopy)>
         </li>
         <li
-          className="dropdownliBottomBorder "
+          className="  "
           key="2"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className={null}
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -189,18 +165,6 @@ exports[`DropdownList component should renders correctly when optional fields ar
             role="link"
             textAlign="left"
           >
-            <Styled(BodyCopy)
-              className=""
-              color="text.primary"
-              component="div"
-              fontFamily="primary"
-              fontSize={12}
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
             <div>
               <p>
                 Test 2
@@ -209,12 +173,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
           </Styled(BodyCopy)>
         </li>
         <li
-          className="dropdownliBottomBorder dropdownActiveClass"
+          className=" dropdownActiveClass "
           key=""
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className={null}
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -229,18 +193,6 @@ exports[`DropdownList component should renders correctly when optional fields ar
             role="link"
             textAlign="left"
           >
-            <Styled(BodyCopy)
-              className="dropdownActiveIcon"
-              color="text.primary"
-              component="div"
-              fontFamily="primary"
-              fontSize={12}
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
             <div>
               <p>
                 Test 3

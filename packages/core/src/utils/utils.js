@@ -861,11 +861,11 @@ export const getStoreHours = (
     const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
     const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
     if (!isPastStoreHours(selectedDateToHour, currentDate)) {
-      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+      return `${openUntilLabel} ${toTimeString(selectedDateToHour, true)}`;
     }
     const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
     // Handle the other scenarion
-    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+    return `${opensAtLabel} ${toTimeString(selectedDateFromHour, true)}`;
   } catch (err) {
     // Show empty incase no data found.
     return '';
@@ -1182,6 +1182,7 @@ export default {
   stringify,
   readCookieMobileApp,
   changeImageURLToDOM,
+  getStoreHours,
   generateTraceId,
   insertIntoString,
   getStyliticsUserName,

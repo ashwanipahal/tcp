@@ -26,39 +26,56 @@ export class PickUpReviewSection extends React.PureComponent {
    * Stores are sorted on the basis on orderType
    */
 
+  getPickUpData = pickupItems => {
+    const bossStartDate = pickupItems[0].bossStartDate
+      ? pickupItems[0].bossStartDate
+      : pickupItems[1].bossStartDate;
+
+    const bossEndDate = pickupItems[0].bossEndDate
+      ? pickupItems[0].bossEndDate
+      : pickupItems[1].bossEndDate;
+
+    const bossItems =
+      pickupItems[0].orderType === ORDER_ITEM_TYPE.BOSS
+        ? pickupItems[0].storeItemsCount
+        : pickupItems[1].storeItemsCount;
+
+    const bopisItems =
+      pickupItems[0].orderType === ORDER_ITEM_TYPE.BOPIS
+        ? pickupItems[0].storeItemsCount
+        : pickupItems[1].storeItemsCount;
+    return { bossStartDate, bossEndDate, bossItems, bopisItems };
+  };
+
   generateStoreDetails = pickupData => {
-    const stores = [];
-    const pickupItems = [...pickupData];
-    const MIX = 'MIX';
-    if (pickupItems.length === 1) {
-      stores.push(pickupItems[0]);
-    } else if (
-      pickupItems[0].orderType !== pickupItems[1].orderType &&
-      pickupItems[0].storeId === pickupItems[1].storeId
-    ) {
-      pickupItems[0].bossStartDate = pickupItems[0].bossStartDate
-        ? pickupItems[0].bossStartDate
-        : pickupItems[1].bossStartDate;
-      pickupItems[0].bossEndDate = pickupItems[0].bossEndDate
-        ? pickupItems[0].bossEndDate
-        : pickupItems[1].bossEndDate;
-      pickupItems[0].bossItems =
-        pickupItems[0].orderType === ORDER_ITEM_TYPE.BOSS
-          ? pickupItems[0].storeItemsCount
-          : pickupItems[1].storeItemsCount;
-      pickupItems[0].bopisItems =
-        pickupItems[0].orderType === ORDER_ITEM_TYPE.BOPIS
-          ? pickupItems[0].storeItemsCount
-          : pickupItems[1].storeItemsCount;
-      pickupItems[0].orderType = MIX;
-      stores.push(pickupItems[0]);
-    } else {
-      if (pickupItems[0].orderType !== pickupItems[1].orderType) {
-        this.sortPickupItems(pickupItems);
+    if (pickupData) {
+      const stores = [];
+      const pickupItems = [...pickupData];
+      const MIX = 'MIX';
+      if (pickupItems.length === 1) {
+        stores.push(pickupItems[0]);
+      } else if (
+        pickupItems[0].orderType !== pickupItems[1].orderType &&
+        pickupItems[0].storeId === pickupItems[1].storeId
+      ) {
+        const { bossStartDate, bossEndDate, bossItems, bopisItems } = this.getPickUpData(
+          pickupItems
+        );
+        pickupItems[0].bossStartDate = bossStartDate;
+        pickupItems[0].bossEndDate = bossEndDate;
+        pickupItems[0].bossItems = bossItems;
+        pickupItems[0].bopisItems = bopisItems;
+        pickupItems[0].orderType = MIX;
+        stores.push(pickupItems[0]);
+      } else {
+        if (pickupItems[0].orderType !== pickupItems[1].orderType) {
+          this.sortPickupItems(pickupItems);
+        }
+        stores.push(...pickupItems);
       }
-      stores.push(...pickupItems);
+      return stores;
     }
-    return stores;
+    return null;
   };
 
   sortPickupItems = pickupItems => {
@@ -95,19 +112,21 @@ export class PickUpReviewSection extends React.PureComponent {
       lbl_review_sectionPickupText: text,
       lbl_review_sectionPickupAlternateHeading: alternate,
     } = labels;
-    const pickupStores = [...cartStores]
-      .filter(store => store.stLocId !== 'ECOM')
-      .map(store => {
-        return {
-          storeId: store.stLocId,
-          store: store.storeName,
-          storeAddress: store.address,
-          storeItemsCount: store.itemsCount,
-          bossStartDate: store.bossStartDate,
-          bossEndDate: store.bossEndDate,
-          orderType: store.orderType,
-        };
-      });
+    const pickupStores =
+      cartStores &&
+      [...cartStores]
+        .filter(store => store.stLocId !== 'ECOM')
+        .map(store => {
+          return {
+            storeId: store.stLocId,
+            store: store.storeName,
+            storeAddress: store.address,
+            storeItemsCount: store.itemsCount,
+            bossStartDate: store.bossStartDate,
+            bossEndDate: store.bossEndDate,
+            orderType: store.orderType,
+          };
+        });
     const stores = this.generateStoreDetails(pickupStores);
     return (
       <div className={className} dataLocator="review-pickup-section">
