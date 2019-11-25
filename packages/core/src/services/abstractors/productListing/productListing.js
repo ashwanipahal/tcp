@@ -41,7 +41,7 @@ const isNoBucketing = bucketingSeqConfig => {
 };
 
 const getqParam = searchTerm => {
-  return searchTerm || '*';
+  return searchTerm.split('?')[0] || '*';
 };
 
 const validateStartVal = start => {

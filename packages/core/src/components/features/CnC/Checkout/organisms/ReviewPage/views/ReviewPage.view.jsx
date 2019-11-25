@@ -207,6 +207,7 @@ class ReviewPage extends React.PureComponent {
               {applyConditionPolicyText}
             </Anchor>,
           ]}
+          bagLoading={bagLoading}
         />
       </form>
     );

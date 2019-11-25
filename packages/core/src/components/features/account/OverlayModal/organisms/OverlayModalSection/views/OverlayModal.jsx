@@ -136,7 +136,7 @@ class OverlayModal extends React.Component {
    */
 
   // eslint-disable-next-line complexity
-  styleModalTriangle = ({ comp }) => {
+  styleModalTriangle = comp => {
     const { showCondensedHeader, component } = this.props;
     if (this.isMobile && component !== 'accountDrawer') return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
@@ -169,6 +169,14 @@ class OverlayModal extends React.Component {
     }
   };
 
+  modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
+    let compElement = comp;
+    if (isAccountDrawer && document.getElementById('account-info-user-points')) {
+      compElement = document.getElementById('account-info-user-points');
+    }
+    this.styleModalTriangle(compElement);
+  };
+
   // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
     const { component, showCondensedHeader } = this.props;
@@ -187,12 +195,7 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      if (isAccountDrawer) {
-        comp = document.getElementById('account-info-user-points');
-        this.styleModalTriangle({ comp });
-      } else {
-        this.styleModalTriangle({ comp });
-      }
+      this.modalTrianglePositioning({ comp, isAccountDrawer });
     } else if (isAccountDrawer) {
       this.setInnerScrollHeight();
     }
@@ -239,7 +242,11 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
-      e.stopImmediatePropagation();
+      const { component: currentComponent, isLoggedIn } = this.props;
+      const nextComponent = e.target.id;
+      if (nextComponent === currentComponent || isLoggedIn) {
+        e.stopImmediatePropagation();
+      }
     }
   }
 

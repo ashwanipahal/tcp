@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import ProductDetail from '../views';
 import { Spinner } from '../../../../common/atoms';
 import { getProductDetails } from './ProductDetail.actions';
@@ -18,6 +20,7 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
   getAlternateSizes,
+  getPLPPromos,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -36,6 +39,7 @@ import {
 } from '../../Favorites/container/Favorites.actions';
 
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -104,6 +108,10 @@ class ProductDetailContainer extends React.PureComponent {
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      middlePromos,
+      bottomPromos,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -132,6 +140,10 @@ class ProductDetailContainer extends React.PureComponent {
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             toastMessage={toastMessage}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+            middlePromos={middlePromos}
+            bottomPromos={bottomPromos}
           />
         ) : (
           <Spinner />
@@ -159,6 +171,10 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     alternateSizes: getAlternateSizes(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    isKeepAliveEnabled: getIsKeepAliveProductApp(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
+    middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
+    bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
   };
 }
 
@@ -213,6 +229,8 @@ ProductDetailContainer.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   toastMessage: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -236,6 +254,8 @@ ProductDetailContainer.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   toastMessage: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

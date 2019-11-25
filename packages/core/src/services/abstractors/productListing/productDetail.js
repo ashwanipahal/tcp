@@ -223,7 +223,7 @@ export const layoutResolver = async ({ category, pageName }) => {
         }
       });
     });
-    modules = await moduleResolver(...formatSlotData(moduleObjects, language));
+    modules = await moduleResolver(formatSlotData(moduleObjects, language));
   } catch (err) {
     logger.error(err);
   }

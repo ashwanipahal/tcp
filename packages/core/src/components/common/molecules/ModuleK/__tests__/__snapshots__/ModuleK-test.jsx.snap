@@ -13,7 +13,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gzVnrw",
+        "componentId": "sc-bwzfXH",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`ModuleK component renders correctly 1`] = `
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gzVnrw",
+      "styledComponentId": "sc-bwzfXH",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-TOsTZ",
+              "componentId": "sc-cJSrbW",
               "isStatic": false,
               "rules": Array [
                 "
@@ -403,10 +403,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-iAyFgw",
+              "sc-eHgmQL",
             ],
             "render": [Function],
-            "styledComponentId": "sc-TOsTZ",
+            "styledComponentId": "sc-cJSrbW",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -450,7 +450,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-cHGsZl",
+              "componentId": "sc-kgAjT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -741,10 +741,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-kGXeez",
+              "sc-dxgOiQ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-cHGsZl",
+            "styledComponentId": "sc-kgAjT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

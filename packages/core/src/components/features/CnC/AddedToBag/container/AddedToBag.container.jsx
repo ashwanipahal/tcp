@@ -1,4 +1,4 @@
 import { withRouter } from 'next/router'; // eslint-disable-line
-import CheckoutCommonContainer from './AddedToBagCommonContainer';
+import AddedToBagCommonContainer from './AddedToBagCommonContainer';
 
-export default withRouter(CheckoutCommonContainer);
+export default withRouter(AddedToBagCommonContainer);

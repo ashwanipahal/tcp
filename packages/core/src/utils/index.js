@@ -82,6 +82,7 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  getStoreHours,
   generateTraceId,
   readCookieMobileApp,
   getStyliticsUserName,

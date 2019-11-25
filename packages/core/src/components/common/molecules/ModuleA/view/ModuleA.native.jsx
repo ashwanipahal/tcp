@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
@@ -136,7 +136,13 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, position, ignoreLazyLoadImage) => {
+const renderCarousel = (
+  largeCompImageCarousel,
+  navigation,
+  position,
+  ignoreLazyLoadImage,
+  setCurCarouselIndex
+) => {
   let config = {};
   if (isGymboree()) {
     config = {
@@ -159,6 +165,7 @@ const renderCarousel = (largeCompImageCarousel, navigation, position, ignoreLazy
           carouselConfig={{
             autoplay: true,
           }}
+          onSnapToItem={index => setCurCarouselIndex(index)}
           showDots
           overlap
         />
@@ -193,6 +200,27 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
   );
 };
 
+/* Returns the position of the ribbon in current slide. */
+const getRibbonPosition = (largeCompImageCarousel, curSlideIndex) => {
+  const curCarouselSlide = largeCompImageCarousel && largeCompImageCarousel[curSlideIndex];
+  let ribbonPosition = 'left';
+
+  if (curCarouselSlide) {
+    const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
+    const { ribbonPlacement } = ribbonBanner;
+
+    /*
+      Need to refactor the code. Currently if you set 'left' the ribbon is being aligned to
+      right and vice versa.
+    */
+    if (ribbonPlacement === 'left') {
+      ribbonPosition = 'right';
+    }
+  }
+
+  return ribbonPosition;
+};
+
 /**
  * @param {object} props : Props for Module A multi type of banner list, button list, header text.
  * @desc This is Module A global component. It has capability to display
@@ -204,10 +232,18 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
 const ModuleA = (props: Props) => {
   const { navigation, largeCompImageCarousel, ctaItems, ctaType, ignoreLazyLoadImage } = props;
   const ctaTypeValue = ctaTypes[ctaType];
+  const [curCarouselSlideIndex, setCurCarouselIndex] = useState(0);
+  const ribbonPosition = getRibbonPosition(largeCompImageCarousel, curCarouselSlideIndex);
 
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'left', ignoreLazyLoadImage)}
+      {renderCarousel(
+        largeCompImageCarousel,
+        navigation,
+        ribbonPosition,
+        ignoreLazyLoadImage,
+        setCurCarouselIndex
+      )}
 
       {ctaTypeValue === ctaTypes.divImageCTACarouse && (
         <DivImageCTAContainer>

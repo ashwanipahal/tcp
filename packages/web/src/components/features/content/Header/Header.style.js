@@ -19,7 +19,7 @@ export default css`
     padding: 6px;
     position: absolute;
     top: -40px;
-    left: 0px;
+    left: -200px;
     color: ${props => props.theme.colorPalette.white};
     border-right: 1px solid ${props => props.theme.colorPalette.white};
     border-bottom: 1px solid ${props => props.theme.colorPalette.white};
@@ -38,5 +38,11 @@ export default css`
     outline-color: transparent;
     -webkit-transition: top 0.1s ease-in;
     transition: top 0.1s ease-in;
+  }
+  .top-promo-banner {
+    display: none;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
   }
 `;

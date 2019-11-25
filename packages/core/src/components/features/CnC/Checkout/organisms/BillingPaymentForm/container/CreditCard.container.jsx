@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
@@ -100,7 +100,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   setBillingInitialValues = () => {
     const { billingData } = this.props;
     const cardType = billingData && billingData.billing && billingData.billing.cardType;
-    return this.isBillingIfoPresent() && cardType !== 'paypal';
+    return this.isBillingIfoPresent() && cardType !== constants.ACCEPTED_CREDIT_CARDS.PAYPAL;
   };
 
   /**
