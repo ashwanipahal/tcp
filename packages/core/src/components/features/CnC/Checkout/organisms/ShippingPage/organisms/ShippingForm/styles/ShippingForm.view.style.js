@@ -27,9 +27,6 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
       ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
-  .font-size-26 {
-    font-size: ${props => props.theme.typography.fontSizes.fs26};
-  }
 `;
 
 export default styles;

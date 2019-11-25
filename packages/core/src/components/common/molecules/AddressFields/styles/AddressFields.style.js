@@ -27,6 +27,7 @@ const styles = css`
     }
   }
   .change-country-link {
+    display: none;
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
