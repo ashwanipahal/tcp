@@ -6,13 +6,13 @@ exports[`Selectbox component renders correctly 1`] = `
 >
   <select
     Value="hi"
-    aria-describedby="selectbox__error"
+    aria-describedby=""
     aria-label=""
     className="select__input"
     data-locator=""
     disabled={false}
     id="abcd"
-    name=""
+    name="abcd"
     type="text"
     value="hello"
   >
@@ -48,13 +48,13 @@ exports[`Selectbox component renders correctly with disabled props 1`] = `
 >
   <select
     Value="hi"
-    aria-describedby="selectbox__error"
+    aria-describedby=""
     aria-label=""
     className="select__input"
     data-locator=""
     disabled={true}
     id="abcd"
-    name=""
+    name="abcd"
     type="text"
     value="hello"
   >
@@ -89,14 +89,14 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
   className="asdfasdf"
 >
   <select
-    aria-describedby="selectbox__error"
+    aria-describedby="selectbox__error__abcd"
     aria-label=""
     className="select__input"
     data-locator=""
     defaultValue="United States"
     disabled={false}
     id="abcd"
-    name=""
+    name="abcd"
     type="text"
     value="some string @@LABEL@@"
   >
@@ -135,7 +135,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="extrabold"
-      id="selectbox__error"
+      id="selectbox__error__abcd"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -153,14 +153,14 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
   className="asdfasdf"
 >
   <select
-    aria-describedby="selectbox__error"
+    aria-describedby="selectbox__error__abcd"
     aria-label=""
     className="select__input"
     data-locator=""
     defaultValue="United States"
     disabled={false}
     id="abcd"
-    name=""
+    name="abcd"
     type="text"
     value=""
   >

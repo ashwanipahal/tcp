@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
@@ -164,40 +164,49 @@ class CountrySelector extends React.Component {
         ) : (
           ''
         )}
-        <div className="countrySelector__flag-icon">
-          <Image
-            src={flagIconSrc}
-            width="20px"
-            height="20px"
-            onClick={this.openModal}
-            data-locator={getLocator(showInFooter ? 'footer_country_flag' : 'header_country_flag')}
-          />
-        </div>
-        <div>
-          {languages.map((language, index) => (
-            <BodyCopy
-              key={index.toString()}
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs13"
-              data-locator={
-                language.id === savedLanguage
-                  ? getLocator(
-                      showInFooter ? 'footer_language_selected' : 'header_language_selected'
-                    )
-                  : ''
-              }
-              className={`${
-                language.id === savedLanguage
-                  ? 'countrySelector__locale--selected'
-                  : 'countrySelector__locale--disabled'
-              } countrySelector__locale`}
+        <Anchor
+          noLink
+          handleLinkClick={e => {
+            e.preventDefault();
+            this.openModal();
+          }}
+        >
+          <div className="countrySelector__flag-icon">
+            <Image
+              src={flagIconSrc}
+              width="20px"
+              height="20px"
               onClick={this.openModal}
-            >
-              {language.id}
-            </BodyCopy>
-          ))}
-        </div>
+              data-locator={getLocator(
+                showInFooter ? 'footer_country_flag' : 'header_country_flag'
+              )}
+            />
+          </div>
+          <div>
+            {languages.map((language, index) => (
+              <BodyCopy
+                key={index.toString()}
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs13"
+                data-locator={
+                  language.id === savedLanguage
+                    ? getLocator(
+                        showInFooter ? 'footer_language_selected' : 'header_language_selected'
+                      )
+                    : ''
+                }
+                className={`${
+                  language.id === savedLanguage
+                    ? 'countrySelector__locale--selected'
+                    : 'countrySelector__locale--disabled'
+                } countrySelector__locale`}
+              >
+                {language.id}
+              </BodyCopy>
+            ))}
+          </div>
+        </Anchor>
       </div>
     );
   }

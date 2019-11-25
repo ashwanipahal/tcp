@@ -24,6 +24,7 @@ renderTitle.defaultProps = {
   title: '',
 };
 
+// eslint-disable-next-line complexity
 const SelectBox = ({
   className,
   id,
@@ -38,20 +39,21 @@ const SelectBox = ({
   title,
   ...otherProps
 }) => {
-  const errorMessagea11yLbl = name ? `selectbox__error__${name}` : 'selectbox__error';
+  const elementID = id || name;
+  const errorMessagea11yLbl = elementID ? `selectbox__error__${elementID}` : 'selectbox__error';
   return (
     <div className={className}>
       <select
         {...input}
-        id={id}
+        id={id || elementID}
         aria-label={ariaLabel}
         className="select__input"
-        name={name}
+        name={name || elementID}
         value={input.value || placeholder}
         data-locator={dataLocator}
         {...otherProps}
         disabled={disabled}
-        aria-describedby={errorMessagea11yLbl}
+        aria-describedby={touched && errorMessagea11yLbl}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
