@@ -309,7 +309,7 @@ class FavoritesView extends React.PureComponent {
         isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
-        heightConfig={modalHeight}
+        standardHeight
       >
         {this.getCurrentPopUp()}
       </ModalWrapper>

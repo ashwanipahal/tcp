@@ -46,10 +46,11 @@ export function* createsaga({ payload }) {
         yield put(setCreateAccountSuccess(false));
       }
       yield put(navigateXHRAction());
+      yield put(setLoaderState(false));
       return yield put(getUserInfo());
     }
     const resErr = getErrorMessage(res);
-    yield put(setLoaderState(false));
+
     return yield put(createAccountErr(resErr));
   } catch (err) {
     const { errorCode, errorMessage } = err;

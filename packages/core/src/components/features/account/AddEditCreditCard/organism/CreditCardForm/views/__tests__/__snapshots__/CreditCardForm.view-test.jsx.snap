@@ -137,6 +137,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+            "profile": Object {},
+          }
+        }
         name="onFileAddressKey"
         options={
           Immutable.List [
@@ -160,7 +167,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
-                fill="BLUE"
+                fill="BLACK"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
@@ -394,6 +401,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+            "profile": Object {},
+          }
+        }
         name="onFileAddressKey"
         options={
           Immutable.List [
@@ -417,7 +431,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
-                fill="BLUE"
+                fill="BLACK"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
