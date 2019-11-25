@@ -33,118 +33,167 @@ import {
   getSaveForLaterSwitch,
   getSflMaxCount,
 } from '../../SaveForLater/container/SaveForLater.selectors';
-import { getPersonalDataState } from '../../../account/User/container/User.selectors';
+import {
+  getPersonalDataState,
+  getUserLoggedInState,
+} from '../../../account/User/container/User.selectors';
 import {
   openQuickViewWithValues,
   updateAppTypeWithParams,
 } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
+import { addItemsToWishlist } from '../../../browse/Favorites/container/Favorites.actions';
 
 /* eslint-disable no-shadow */
-export const CartItemTileContainer = ({
-  labels,
-  productDetail,
-  removeCartItem,
-  updateCartItem,
-  isMiniBagOpen,
-  getProductSKUInfo,
-  editableProductInfo,
-  pageView,
-  className,
-  isEditAllowed,
-  toggleEditAllowance,
-  inheritedStyles,
-  isPlcc,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  setSwipedElement,
-  swipedElement,
-  isShowSaveForLater,
-  sflMaxCount,
-  isGenricGuest,
-  addItemToSflList,
-  setCartItemsSflError,
-  sflItemsCount,
-  isBagPageSflSection,
-  startSflItemDelete,
-  startSflDataMoveToBag,
-  onQuickViewOpenClick,
-  isBossEnabledTCP,
-  isBossEnabledGYM,
-  isBopisEnabledTCP,
-  isBopisEnabledGYM,
-  isBossClearanceProductEnabled,
-  isBopisClearanceProductEnabled,
-  isRadialInventoryEnabled,
-  onPickUpOpenClick,
-  orderId,
-  setShipToHome,
-  toggleError,
-  toggleBossBopisError,
-  clearToggleError,
-  currencyExchange,
-  pickupStoresInCart,
-  autoSwitchPickupItemInCart,
-  navigation,
-  updateAppTypeHandler,
-  disableProductRedirect,
-  setClickAnalyticsData,
-  closeMiniBag,
-}) => (
-  <CartItemTile
-    labels={labels}
-    productDetail={productDetail}
-    removeCartItem={removeCartItem}
-    updateCartItem={updateCartItem}
-    isMiniBagOpen={isMiniBagOpen}
-    getProductSKUInfo={getProductSKUInfo}
-    editableProductInfo={editableProductInfo}
-    pageView={pageView}
-    className={className}
-    toggleEditAllowance={toggleEditAllowance}
-    isEditAllowed={isEditAllowed}
-    inheritedStyles={inheritedStyles}
-    isPlcc={isPlcc}
-    itemIndex={itemIndex}
-    openedTile={openedTile}
-    setSelectedProductTile={setSelectedProductTile}
-    setSwipedElement={setSwipedElement}
-    swipedElement={swipedElement}
-    isShowSaveForLater={isShowSaveForLater}
-    sflMaxCount={sflMaxCount}
-    isGenricGuest={isGenricGuest}
-    addItemToSflList={addItemToSflList}
-    setCartItemsSflError={setCartItemsSflError}
-    sflItemsCount={sflItemsCount}
-    isBagPageSflSection={isBagPageSflSection}
-    startSflItemDelete={startSflItemDelete}
-    startSflDataMoveToBag={startSflDataMoveToBag}
-    onQuickViewOpenClick={onQuickViewOpenClick}
-    isBossEnabledTCP={isBossEnabledTCP}
-    isBossEnabledGYM={isBossEnabledGYM}
-    isBopisEnabledTCP={isBopisEnabledTCP}
-    isBopisEnabledGYM={isBopisEnabledGYM}
-    isBossClearanceProductEnabled={isBossClearanceProductEnabled}
-    isBopisClearanceProductEnabled={isBopisClearanceProductEnabled}
-    isRadialInventoryEnabled={isRadialInventoryEnabled}
-    onPickUpOpenClick={onPickUpOpenClick}
-    orderId={orderId}
-    setShipToHome={setShipToHome}
-    toggleError={toggleError}
-    toggleBossBopisError={toggleBossBopisError}
-    clearToggleError={clearToggleError}
-    currencyExchange={currencyExchange}
-    pickupStoresInCart={pickupStoresInCart}
-    autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
-    navigation={navigation}
-    updateAppTypeHandler={updateAppTypeHandler}
-    disableProductRedirect={disableProductRedirect}
-    setClickAnalyticsData={setClickAnalyticsData}
-    closeMiniBag={closeMiniBag}
-  />
-);
+export class CartItemTileContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      generalProductId: '',
+      productDataforDelete: null,
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn, onAddItemToFavorites, startSflItemDelete } = nextProps;
+    const { generalProductId, productDataforDelete } = prevState;
+
+    if (isLoggedIn && generalProductId !== '') {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+      });
+      startSflItemDelete({ ...productDataforDelete });
+      return { generalProductId: '' };
+    }
+    return null;
+  }
+
+  handleAddToWishlist = () => {
+    const { productDetail, onAddItemToFavorites, startSflItemDelete, isLoggedIn } = this.props;
+    const {
+      itemInfo: { isGiftItem },
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
+    const generalProductIdState = generalProductId;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+    const payloadData = { catEntryId };
+    onAddItemToFavorites({ colorProductId: generalProductId });
+    if (isLoggedIn) {
+      startSflItemDelete({ ...payloadData });
+    } else {
+      this.setState({ generalProductId: generalProductIdState, productDataforDelete: payloadData });
+    }
+  };
+
+  render() {
+    const {
+      labels,
+      productDetail,
+      removeCartItem,
+      updateCartItem,
+      isMiniBagOpen,
+      getProductSKUInfo,
+      editableProductInfo,
+      pageView,
+      className,
+      isEditAllowed,
+      toggleEditAllowance,
+      inheritedStyles,
+      isPlcc,
+      itemIndex,
+      openedTile,
+      setSelectedProductTile,
+      setSwipedElement,
+      swipedElement,
+      isShowSaveForLater,
+      sflMaxCount,
+      isGenricGuest,
+      addItemToSflList,
+      setCartItemsSflError,
+      sflItemsCount,
+      isBagPageSflSection,
+      startSflItemDelete,
+      startSflDataMoveToBag,
+      onQuickViewOpenClick,
+      isBossEnabledTCP,
+      isBossEnabledGYM,
+      isBopisEnabledTCP,
+      isBopisEnabledGYM,
+      isBossClearanceProductEnabled,
+      isBopisClearanceProductEnabled,
+      isRadialInventoryEnabled,
+      onPickUpOpenClick,
+      orderId,
+      setShipToHome,
+      toggleError,
+      toggleBossBopisError,
+      clearToggleError,
+      currencyExchange,
+      pickupStoresInCart,
+      autoSwitchPickupItemInCart,
+      navigation,
+      updateAppTypeHandler,
+      disableProductRedirect,
+      setClickAnalyticsData,
+      closeMiniBag,
+    } = this.props;
+    return (
+      <CartItemTile
+        labels={labels}
+        productDetail={productDetail}
+        removeCartItem={removeCartItem}
+        updateCartItem={updateCartItem}
+        isMiniBagOpen={isMiniBagOpen}
+        getProductSKUInfo={getProductSKUInfo}
+        editableProductInfo={editableProductInfo}
+        pageView={pageView}
+        className={className}
+        toggleEditAllowance={toggleEditAllowance}
+        isEditAllowed={isEditAllowed}
+        inheritedStyles={inheritedStyles}
+        isPlcc={isPlcc}
+        itemIndex={itemIndex}
+        openedTile={openedTile}
+        setSelectedProductTile={setSelectedProductTile}
+        setSwipedElement={setSwipedElement}
+        swipedElement={swipedElement}
+        isShowSaveForLater={isShowSaveForLater}
+        sflMaxCount={sflMaxCount}
+        isGenricGuest={isGenricGuest}
+        addItemToSflList={addItemToSflList}
+        setCartItemsSflError={setCartItemsSflError}
+        sflItemsCount={sflItemsCount}
+        isBagPageSflSection={isBagPageSflSection}
+        startSflItemDelete={startSflItemDelete}
+        startSflDataMoveToBag={startSflDataMoveToBag}
+        onQuickViewOpenClick={onQuickViewOpenClick}
+        isBossEnabledTCP={isBossEnabledTCP}
+        isBossEnabledGYM={isBossEnabledGYM}
+        isBopisEnabledTCP={isBopisEnabledTCP}
+        isBopisEnabledGYM={isBopisEnabledGYM}
+        isBossClearanceProductEnabled={isBossClearanceProductEnabled}
+        isBopisClearanceProductEnabled={isBopisClearanceProductEnabled}
+        isRadialInventoryEnabled={isRadialInventoryEnabled}
+        onPickUpOpenClick={onPickUpOpenClick}
+        orderId={orderId}
+        setShipToHome={setShipToHome}
+        toggleError={toggleError}
+        toggleBossBopisError={toggleBossBopisError}
+        clearToggleError={clearToggleError}
+        currencyExchange={currencyExchange}
+        pickupStoresInCart={pickupStoresInCart}
+        autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+        navigation={navigation}
+        updateAppTypeHandler={updateAppTypeHandler}
+        disableProductRedirect={disableProductRedirect}
+        setClickAnalyticsData={setClickAnalyticsData}
+        closeMiniBag={closeMiniBag}
+        handleAddToWishlist={this.handleAddToWishlist}
+      />
+    );
+  }
+}
 
 const createSetShipToHomePayload = (orderItemId, orderItemType) => {
   return {
@@ -247,6 +296,9 @@ export const mapDispatchToProps = dispatch => {
     setClickAnalyticsData: payload => {
       dispatch(setClickAnalyticsData(payload));
     },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
+    },
   };
 };
 
@@ -275,6 +327,7 @@ export function mapStateToProps(state) {
     currencyExchange: getCurrencyExchange(state),
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
     isMiniBagOpen: getIsMiniBagOpen(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 }
 
@@ -330,6 +383,8 @@ CartItemTileContainer.propTypes = {
   isBopisEnabledGYM: PropTypes.bool.isRequired,
   isRadialInventoryEnabled: PropTypes.bool.isRequired,
   isMiniBagOpen: PropTypes.bool.isRequired,
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 CartItemTileContainer.defaultProps = {

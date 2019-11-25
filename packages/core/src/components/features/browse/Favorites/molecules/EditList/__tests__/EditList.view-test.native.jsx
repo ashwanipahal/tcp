@@ -9,7 +9,8 @@ describe('BundleProductItemsVanilla', () => {
     handleSubmit: () => {},
     margins: null,
     onCloseModal: () => {},
-    onRemoveList: () => {},
+    onDeleteList: () => {},
+    isCheckBoxDisabled: false,
   };
 
   beforeEach(() => {

@@ -228,8 +228,10 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
     maxLength={100}
     multiline={true}
     name="message"
+    onChangeText={[Function]}
     textAlign="left"
     type="text"
+    value=""
   />
   <Styled(CustomButton)
     active={false}

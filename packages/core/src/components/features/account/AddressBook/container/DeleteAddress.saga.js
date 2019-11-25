@@ -8,6 +8,7 @@ import {
   setDeleteModalMountedState,
 } from './AddressBook.actions';
 import { deleteAddressApi } from '../../../../../services/abstractors/account';
+import { clearUserInfo } from '../../User/container/User.actions';
 
 export function* deleteAddress({ payload }) {
   yield put(setLoaderState(true));
@@ -17,6 +18,7 @@ export function* deleteAddress({ payload }) {
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
       yield put(clearCardListTTL());
+      yield put(clearUserInfo());
       yield put(setDeleteModalMountedState({ state: false }));
     } else {
       yield put(updateAddressListOnDeleteErr(res.error));

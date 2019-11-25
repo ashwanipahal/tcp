@@ -13,6 +13,10 @@ const ROUTE_PATH = {
     name: '/search',
     param: 'sq',
   },
+  content: {
+    name: '/content',
+    param: 'contentType',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 
