@@ -9,15 +9,6 @@ const styles = css`
     }
   }
 
-  .email-signup-container {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
-  .emailSignupText {
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
-
   .shipment-methods-form {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -30,7 +21,7 @@ const styles = css`
       display: none;
     }
   }
-  .select__input {
+  .select__input.select__input {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0

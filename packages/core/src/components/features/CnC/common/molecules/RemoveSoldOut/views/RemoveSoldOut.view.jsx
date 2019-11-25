@@ -7,6 +7,8 @@ import style from '../styles/RemoveSoldOut.style';
 
 class RemoveSoldOut extends React.PureComponent {
   getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const { pageView } = this.props;
+    const isMiniBag = pageView !== 'myBag';
     const remove = labels.updateUnavailable.split('#remove#');
     const newRemove = (
       <BodyCopy
@@ -14,7 +16,7 @@ class RemoveSoldOut extends React.PureComponent {
         fontSize="fs12"
         component="span"
         className="removeErrorMessage"
-        onClick={() => removeCartItem(getUnavailableOOSItems)}
+        onClick={() => removeCartItem({ getUnavailableOOSItems, isMiniBag })}
       >
         {labels.removeError}
       </BodyCopy>

@@ -49,12 +49,15 @@ const RenderSeparator = () => {
 const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelectedColorIndex) => {
   const { item, index } = itemObj;
   const { color, colorProductId } = item;
+  const { swatchImage } = color;
   const colorName = get(color, 'name', '').toLowerCase();
   const selected =
     (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId;
   const accState = selected ? 'selected' : '';
-  const splitUrl = colorProductId.split('_')[0];
-  const imageUrl = `${splitUrl}/${colorProductId}`;
+  const swatchImageUrl = swatchImage && swatchImage.split('_');
+  const imageUrl = swatchImageUrl
+    ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
+    : '';
 
   return (
     <ImageTouchableOpacity

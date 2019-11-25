@@ -19,6 +19,7 @@ import styles from '../styles/AddressFields.style';
 import Anchor from '../../../atoms/Anchor';
 import { getSiteId } from '../../../../../utils/utils.web';
 import { API_CONFIG } from '../../../../../services/config';
+import { formatPhoneNumber } from '../../../../../utils/formValidation/phoneNumber';
 
 export class AddressFields extends React.PureComponent {
   static propTypes = {
@@ -33,6 +34,7 @@ export class AddressFields extends React.PureComponent {
     className: PropTypes.string,
     variation: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    handleShipIntClick: PropTypes.func.isRequired,
     isGuest: PropTypes.bool,
   };
 
@@ -63,12 +65,16 @@ export class AddressFields extends React.PureComponent {
   };
 
   handlePlaceSelected = (place, inputValue) => {
-    const { dispatch, formName, formSection } = this.props;
+    const { dispatch, formName, formSection, loadShipmentMethods } = this.props;
     const address = getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
+    // Load Shipment Methods when address selected from an autocomplete
+    if (loadShipmentMethods) {
+      loadShipmentMethods({ state: address.state, formName });
+    }
   };
 
   changeShipmentMethods = (e, value) => {
@@ -79,7 +85,7 @@ export class AddressFields extends React.PureComponent {
   };
 
   renderCountrySelector = () => {
-    const { addressFormLabels, formSection } = this.props;
+    const { addressFormLabels, formSection, handleShipIntClick } = this.props;
     return (
       <>
         <Col
@@ -108,6 +114,7 @@ export class AddressFields extends React.PureComponent {
             dataLocator="shipping internationally"
             target="_self"
             className="change-country-link"
+            onClick={handleShipIntClick}
           >
             {addressFormLabels.shipInternationally}
           </Anchor>
@@ -318,6 +325,7 @@ export class AddressFields extends React.PureComponent {
                 type="tel"
                 className="address-field"
                 enableSuccessCheck={false}
+                normalize={formatPhoneNumber}
               />
             </Col>
             {isGuest && (

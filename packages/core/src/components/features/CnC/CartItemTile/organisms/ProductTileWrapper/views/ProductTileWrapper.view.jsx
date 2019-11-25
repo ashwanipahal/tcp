@@ -8,6 +8,7 @@ import {
 import { getIconPath, isMobileApp } from '@tcp/core/src/utils';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
+import MiniBagTileSkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/MiniBagTileSkeleton.view';
 import productTileCss, { miniBagCSS } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartItemTileSkelton.view';
@@ -117,8 +118,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isUserLoggedIn,
     isBagPageSflSection,
     showPlccApplyNow,
-    isBagPage
+    isBagPage,
+    openModalApplyNowModal
   ) => {
+    const { isMiniBag } = this.props;
     if (productSectionData.size === 0) {
       return (
         <EmptyBag
@@ -127,6 +130,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isBagPageSflSection={isBagPageSflSection}
           showPlccApplyNow={showPlccApplyNow}
           onLinkClick={this.onLinkClick}
+          openModalApplyNowModal={openModalApplyNowModal}
         />
       );
     }
@@ -135,6 +139,14 @@ class ProductTileWrapper extends React.PureComponent<props> {
         <>
           <CartItemTileSkelton />
           <CartItemTileSkelton />
+        </>
+      );
+    }
+    if (isMiniBag) {
+      return (
+        <>
+          <MiniBagTileSkeleton />
+          <MiniBagTileSkeleton />
         </>
       );
     }
@@ -158,6 +170,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isCartItemSFL,
       isSflItemRemoved,
       setHeaderErrorState,
+      navigation,
+      openModalApplyNowModal,
+      isMiniBag,
+      closeMiniBag,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -195,6 +211,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
               swipedElement={swipedElement}
               sflItemsCount={sflItemsCount}
               isBagPageSflSection={isBagPageSflSection}
+              navigation={navigation}
+              closeMiniBag={closeMiniBag}
             />
           </>
         );
@@ -247,7 +265,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUserLoggedIn,
           isBagPageSflSection,
           showPlccApplyNow,
-          isBagPage
+          isBagPage,
+          openModalApplyNowModal,
+          isMiniBag
         )}
       </>
     );
@@ -274,6 +294,7 @@ ProductTileWrapper.propTypes = {
   showPlccApplyNow: PropTypes.bool.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool.isRequired,
 };
 
 export default ProductTileWrapper;

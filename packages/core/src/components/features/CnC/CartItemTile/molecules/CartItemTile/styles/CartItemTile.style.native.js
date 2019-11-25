@@ -23,7 +23,6 @@ const UnavailableView = styled.View`
 `;
 const ProductName = styled.View`
   width: ${props => (props.showOnReviewPage ? 'auto' : '66%')};
-  flex-wrap: wrap;
 `;
 const ProductDesc = styled.View`
   flex-direction: row;
@@ -53,6 +52,10 @@ const ImgWrapper = styled.View`
   margin-left: ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
   width: ${props => (props.showOnReviewPage ? `30%` : `auto`)};
   align-items: center;
+`;
+
+const ImageTouchableOpacity = styled.TouchableOpacity`
+  justify-content: center;
 `;
 
 const ProductSubDetails = styled.View`
@@ -189,4 +192,5 @@ export {
   ProductListPriceOnReview,
   SizeQtyOnReview,
   ToggleError,
+  ImageTouchableOpacity,
 };

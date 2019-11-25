@@ -11,6 +11,18 @@ export const getProductInfoFromBag = state => {
   return state.QuickView.get('quickViewProductFromBag');
 };
 
+export const getLoadingState = state => {
+  return state.QuickView.get('isLoading');
+};
+
+export const getFromBagPage = state => {
+  return state.QuickView.get('fromBagPage');
+};
+
+export const getIsFromBagProductSfl = state => {
+  return state.QuickView.get('isSflProduct');
+};
+
 export const getGeneralProductId = state => {
   return state.QuickView.getIn(['quickViewProducts', 'generalProductId']);
 };
@@ -31,6 +43,12 @@ export const getQuickViewLabels = state => {
   return {
     addToBag: getLabelValue(state.Labels, 'lbl_add_to_bag', 'QuickView', 'Browse'),
     editItem: getLabelValue(state.Labels, 'lbl_edit_item', 'QuickView', 'Browse'),
+    noProductSelected: getLabelValue(
+      state.Labels,
+      'plp_no_product_selected_error',
+      'QuickView',
+      'Browse'
+    ),
     viewProductDetails: getLabelValue(
       state.Labels,
       'lbl_view_product_details',

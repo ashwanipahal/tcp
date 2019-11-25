@@ -5,7 +5,6 @@ import withStyles from '../../../hoc/withStyles.native';
 import {
   PromotionalMessageContainer,
   PromotionalText,
-  PromotionalMessagePostfix,
 } from '../styles/PromotionalMessage.style.native';
 
 export const getFormattedLoyaltyText = text => {
@@ -16,10 +15,9 @@ export const getFormattedLoyaltyText = text => {
     .split('on');
 };
 
-const PromotionalMessage = ({ text, isPlcc, height, marginTop, dataLocator, fontSize }) => {
+const PromotionalMessage = ({ text, isPlcc, marginTop, dataLocator, fontSize }) => {
   return (
     <PromotionalMessageContainer
-      height={height}
       marginTop={marginTop}
       {...setTestId(getLocator(dataLocator))}
       accessibilityRole="text"
@@ -32,11 +30,6 @@ const PromotionalMessage = ({ text, isPlcc, height, marginTop, dataLocator, font
         fontSize={fontSize}
       >
         {text && getFormattedLoyaltyText(text)[0]}
-        {text && (
-          <PromotionalMessagePostfix fontSize={fontSize}>
-            {` on${getFormattedLoyaltyText(text)[1]}`}
-          </PromotionalMessagePostfix>
-        )}
       </PromotionalText>
     </PromotionalMessageContainer>
   );

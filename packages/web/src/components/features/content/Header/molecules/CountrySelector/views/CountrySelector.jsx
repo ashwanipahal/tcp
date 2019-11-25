@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
@@ -15,19 +15,24 @@ import style from '../styles/CountrySelector.style';
  * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
  */
 class CountrySelector extends React.Component {
-  componentDidMount() {
+  loadCountryModuleXData = () => {
     const { getModuleXContent, noteContentId } = this.props;
     getModuleXContent(noteContentId);
-  }
+  };
 
   openModal = () => {
-    const { toggleModal } = this.props;
+    const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
   };
 
   closeModal = () => {
     const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false });
+  };
+
+  getCountryListData = () => {
+    const { loadCountryListData } = this.props;
+    loadCountryListData();
   };
 
   getSelectedCountry = countryCode => {
@@ -117,7 +122,7 @@ class CountrySelector extends React.Component {
 
     return (
       <div className={`${className} countrySelector`}>
-        {showInFooter ? (
+        {showInFooter && isModalOpen ? (
           <React.Fragment>
             <BodyCopy
               className="countrySelector__shipTo"
@@ -150,45 +155,56 @@ class CountrySelector extends React.Component {
                 language: savedLanguage,
                 currency: savedCurrency,
               }}
+              getCountryListData={this.getCountryListData}
+              loadCountryModuleXData={this.loadCountryModuleXData}
             />
           </React.Fragment>
         ) : (
           ''
         )}
-        <div className="countrySelector__flag-icon">
-          <Image
-            src={flagIconSrc}
-            width="20px"
-            height="20px"
-            onClick={this.openModal}
-            data-locator={getLocator(showInFooter ? 'footer_country_flag' : 'header_country_flag')}
-          />
-        </div>
-        <div>
-          {languages.map((language, index) => (
-            <BodyCopy
-              key={index.toString()}
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs13"
-              data-locator={
-                language.id === savedLanguage
-                  ? getLocator(
-                      showInFooter ? 'footer_language_selected' : 'header_language_selected'
-                    )
-                  : ''
-              }
-              className={`${
-                language.id === savedLanguage
-                  ? 'countrySelector__locale--selected'
-                  : 'countrySelector__locale--disabled'
-              } countrySelector__locale`}
+        <Anchor
+          noLink
+          handleLinkClick={e => {
+            e.preventDefault();
+            this.openModal();
+          }}
+        >
+          <div className="countrySelector__flag-icon">
+            <Image
+              src={flagIconSrc}
+              width="20px"
+              height="20px"
               onClick={this.openModal}
-            >
-              {language.id}
-            </BodyCopy>
-          ))}
-        </div>
+              data-locator={getLocator(
+                showInFooter ? 'footer_country_flag' : 'header_country_flag'
+              )}
+            />
+          </div>
+          <div>
+            {languages.map((language, index) => (
+              <BodyCopy
+                key={index.toString()}
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs13"
+                data-locator={
+                  language.id === savedLanguage
+                    ? getLocator(
+                        showInFooter ? 'footer_language_selected' : 'header_language_selected'
+                      )
+                    : ''
+                }
+                className={`${
+                  language.id === savedLanguage
+                    ? 'countrySelector__locale--selected'
+                    : 'countrySelector__locale--disabled'
+                } countrySelector__locale`}
+              >
+                {language.id}
+              </BodyCopy>
+            ))}
+          </div>
+        </Anchor>
       </div>
     );
   }
@@ -204,6 +220,7 @@ CountrySelector.propTypes = {
   savedCountry: PropTypes.string.isRequired,
   savedCurrency: PropTypes.string.isRequired,
   savedLanguage: PropTypes.string.isRequired,
+  loadCountryListData: PropTypes.func,
   countriesMap: PropTypes.shape({}).isRequired,
   currenciesMap: PropTypes.shape({}).isRequired,
   getModuleXContent: PropTypes.func.isRequired,
@@ -224,6 +241,7 @@ CountrySelector.defaultProps = {
   showInFooter: false,
   handleSubmit: () => {},
   toggleModal: () => {},
+  loadCountryListData: () => {},
   updateCountry: () => {},
   updateLanguage: () => {},
   updateCurrency: () => {},

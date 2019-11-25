@@ -15,6 +15,8 @@ describe('User reducer', () => {
     favoriteStore: null,
     defaultStore: null,
     isRegisteredUserCallDone: false,
+    isFetching: false,
+    isRemembered: null,
   });
 
   it('should return default state', () => {
@@ -101,7 +103,9 @@ describe('User reducer', () => {
       };
       const originalState = fromJS({});
       const updatedState = UserReducer(originalState, action);
-      const returnValue = originalState.set('isRegisteredUserCallDone', false);
+      const returnValue = originalState
+        .set('isFetching', true)
+        .set('isRegisteredUserCallDone', false);
       expect(updatedState).toStrictEqual(returnValue);
     });
 

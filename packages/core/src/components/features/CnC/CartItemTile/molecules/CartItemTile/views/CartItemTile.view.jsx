@@ -1,17 +1,25 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  getLabelValue,
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+} from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
-import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
+import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -30,16 +38,69 @@ import {
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
   getPrices,
-  isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
-import { currencyConversion } from '../../../utils/utils';
+import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
-class CartItemTile extends React.Component {
+/**
+ * LinkWrapper component is to wrap anchor component to decide whether child needs anchor tag or not
+ * @param {object} props
+ */
+const LinkWrapper = props => {
+  LinkWrapper.propTypes = {
+    pdpToPath: PropTypes.string.isRequired,
+    pdpAsPathUrl: PropTypes.string.isRequired,
+    disableLink: PropTypes.bool.isRequired,
+    noWrap: PropTypes.bool.isRequired,
+    IsSlugPathAdded: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+  };
+
+  LinkWrapper.defaultProps = {
+    IsSlugPathAdded: false,
+  };
+
+  const { pdpToPath, pdpAsPathUrl, disableLink, children, noWrap, IsSlugPathAdded } = props;
+  return noWrap ? (
+    children
+  ) : (
+    <Anchor
+      to={pdpToPath}
+      asPath={pdpAsPathUrl}
+      noLink={disableLink}
+      IsSlugPathAdded={IsSlugPathAdded}
+    >
+      {children}
+    </Anchor>
+  );
+};
+
+class CartItemTile extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       isEdit: false,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      isBagPageSflSection,
+      toggleBossBopisError,
+      productDetail: {
+        itemInfo: { itemId },
+      },
+    } = this.props;
+    if (
+      !isBagPageSflSection &&
+      toggleBossBopisError &&
+      itemId === toggleBossBopisError.itemId &&
+      (prevProps.toggleBossBopisError === null ||
+        prevProps.toggleBossBopisError.errorMessage !== toggleBossBopisError.errorMessage)
+    ) {
+      setTimeout(() => {
+        this.handleEditCartItemWithStore(toggleBossBopisError.targetOrderType);
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -64,17 +125,26 @@ class CartItemTile extends React.Component {
     toggleEditAllowance();
   };
 
-  handleEditCartItem = (pageView, itemBrand, productNumber) => {
+  handleEditCartItemMiniBag = (pageView, itemBrand, productNumber) => {
+    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+    this.toggleFormVisibility();
+    const { getProductSKUInfo } = this.props;
+    getProductSKUInfo({ productNum, itemBrand });
+  };
+
+  handleEditCartItem = (pageView, itemBrand, productNumber, isBagPageSflSection = false) => {
     if (pageView !== 'myBag') {
-      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-      this.toggleFormVisibility();
-      const { getProductSKUInfo } = this.props;
-      getProductSKUInfo({ productNum, itemBrand });
+      this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { itemId, qty, color, size, fit, isGiftItem } = productDetail.itemInfo;
+      const {
+        productInfo: { skuId, generalProductId },
+      } = productDetail;
       onQuickViewOpenClick({
+        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
+        isSflProduct: isBagPageSflSection,
         orderInfo: {
           orderItemId: itemId,
           selectedQty: qty,
@@ -82,6 +152,7 @@ class CartItemTile extends React.Component {
           selectedSize: size,
           selectedFit: fit,
           itemBrand,
+          skuId: isGiftItem ? generalProductId : skuId,
         },
       });
     }
@@ -96,7 +167,8 @@ class CartItemTile extends React.Component {
   handleEditCartItemWithStore = (
     changeStoreType,
     openSkuSelectionForm = false,
-    openRestrictedModalForBopis = false
+    openRestrictedModalForBopis = false,
+    isPickUpWarningModal = false
   ) => {
     const { onPickUpOpenClick, productDetail, orderId } = this.props;
     const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
@@ -124,23 +196,31 @@ class CartItemTile extends React.Component {
       isItemShipToHome,
       alwaysSearchForBOSS,
       openRestrictedModalForBopis,
+      isPickUpWarningModal,
     });
   };
 
   callEditMethod = () => {
-    const { productDetail, pageView } = this.props;
+    const { productDetail, pageView, isBagPageSflSection } = this.props;
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
+        productDetail.productInfo.productPartNumber,
+        isBagPageSflSection
       );
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
       this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    } else {
+      this.handleEditCartItemMiniBag(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
     }
   };
 
@@ -162,20 +242,44 @@ class CartItemTile extends React.Component {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      pageView,
+      setClickAnalyticsData,
     } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
-      productInfo: { skuId, generalProductId },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
+      productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
-
+    const isMiniBag = pageView !== 'myBag';
     this.clearToggleErrorState();
 
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
-    const payloadData = { itemId, catEntryId, userInfoRequired };
+    const payloadData = { itemId, catEntryId, userInfoRequired, isMiniBag };
+    const productsData = {
+      color,
+      id: itemId,
+      name,
+      price: offerPrice,
+      extPrice: offerPrice,
+      sflExtPrice: offerPrice,
+      listPrice,
+      partNumber: productPartNumber,
+      size,
+      upc,
+      sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
+    };
+    setClickAnalyticsData({
+      customEvents: ['event134', 'event136'],
+      products: [productsData],
+      eventName: 'Save for Later',
+    });
     return addItemToSflList({ ...payloadData });
   };
 
@@ -193,22 +297,41 @@ class CartItemTile extends React.Component {
   };
 
   moveToBagSflItem = () => {
-    const { productDetail, startSflDataMoveToBag } = this.props;
+    const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
-      productInfo: { skuId, generalProductId },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice },
+      productInfo: { skuId, generalProductId, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
     const payloadData = { itemId, catEntryId };
     this.clearToggleErrorState();
+    const productsData = {
+      color,
+      id: itemId,
+      name,
+      price: offerPrice,
+      extPrice: offerPrice,
+      offerPrice,
+      partNumber: productPartNumber,
+      sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
+    };
+    setClickAnalyticsData({
+      customEvents: ['event135', 'event137'],
+      products: [productsData],
+      eventName: 'Move to Bag',
+    });
     return startSflDataMoveToBag({ ...payloadData });
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
+    const { updateCartItem, isMiniBagOpen } = this.props;
     this.clearToggleErrorState();
-    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo, isMiniBagOpen);
     this.toggleFormVisibility();
   };
 
@@ -264,19 +387,21 @@ class CartItemTile extends React.Component {
       isShowSaveForLater
     ) {
       return (
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          component="p"
-          fontWeight={['semibold']}
-          dataLocator="saveForLaterLink"
-          className="sflActions"
-          onClick={() => {
-            this.handleMoveItemtoSaveList();
-          }}
-        >
-          {labels.saveForLaterLink}
-        </BodyCopy>
+        <ClickTracker name="Save_for_Later">
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            component="p"
+            fontWeight={['semibold']}
+            dataLocator="saveForLaterLink"
+            className="sflActions"
+            onClick={() => {
+              this.handleMoveItemtoSaveList();
+            }}
+          >
+            {labels.saveForLaterLink}
+          </BodyCopy>
+        </ClickTracker>
       );
     }
     if (
@@ -284,19 +409,21 @@ class CartItemTile extends React.Component {
       productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.OK
     ) {
       return (
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          component="p"
-          fontWeight={['semibold']}
-          dataLocator="moveToBagLink"
-          className="sflActions"
-          onClick={() => {
-            this.moveToBagSflItem();
-          }}
-        >
-          {labels.moveToBagLink}
-        </BodyCopy>
+        <ClickTracker name="Move_to_Bag">
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            component="p"
+            fontWeight={['semibold']}
+            dataLocator="moveToBagLink"
+            className="sflActions"
+            onClick={() => {
+              this.moveToBagSflItem();
+            }}
+          >
+            {labels.moveToBagLink}
+          </BodyCopy>
+        </ClickTracker>
       );
     }
     return null;
@@ -331,27 +458,71 @@ class CartItemTile extends React.Component {
     });
   };
 
-  getOfferPrice = (offerPrice, currencyExchange) => {
-    const isCurrencyExchange = isCurrencyExchangeAvailable(currencyExchange);
-    return isCurrencyExchange && offerPrice
-      ? currencyConversion(offerPrice, currencyExchange[0])
-      : offerPrice;
+  renderEditLink = () => {
+    const {
+      labels,
+      showOnReviewPage,
+      isBagPageSflSection,
+      isEditAllowed,
+      productDetail: {
+        miscInfo: { orderItemType, availability },
+        itemInfo: { itemBrand },
+      },
+    } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
+    return (
+      <>
+        {showOnReviewPage &&
+          !isBagPageSflSection &&
+          isEditAllowed &&
+          !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="div"
+              role="button"
+              tabIndex="0"
+              dataLocator={getLocator('cart_item_edit_link')}
+              className="padding-left-10 responsive-edit-css"
+              onClick={this.callEditMethod}
+              onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
+            >
+              {labels.edit}
+            </BodyCopy>
+          )}
+      </>
+    );
   };
 
+  // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol, currencyExchange } = this.props;
-    let { offerPrice } = productDetail.itemInfo;
+    const { isBagPageSflSection } = this.props;
+    const { offerPrice } = productDetail.itemInfo;
     // SFL prices
-    offerPrice = this.getOfferPrice(offerPrice, currencyExchange);
+    const isBagPage = pageView === 'myBag';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
     return (
-      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
-        {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
+      <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
+        {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
+              className={!isBagPage ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -366,7 +537,7 @@ class CartItemTile extends React.Component {
             !isEdit && (
               <BodyCopy
                 fontFamily="secondary"
-                className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
+                className={!isBagPage ? 'updateOOSMiniBag' : 'updateOOSBag'}
                 color="error"
                 fontSize="fs12"
                 component="span"
@@ -377,8 +548,9 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             )}
           {this.renderSflActionsLinks()}
+          {isBagPage && this.renderEditLink()}
         </Col>
-        {pageView === 'myBag' && (
+        {isBagPage && (
           <BodyCopy
             className="price-label"
             fontFamily="secondary"
@@ -387,7 +559,7 @@ class CartItemTile extends React.Component {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`${currencySymbol}${offerPrice.toFixed(2)}`}
+            <PriceCurrency price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -410,8 +582,8 @@ class CartItemTile extends React.Component {
     return 'orange.800';
   };
 
-  getProductItemUpcNumber = (productDetail, pageView) => {
-    if (pageView === 'myBag') {
+  getProductItemUpcNumber = (productDetail, isBagPage) => {
+    if (isBagPage) {
       return (
         <Row className="product-detail-row">
           <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -431,7 +603,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
-    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     const { salePrice, wasPrice, listPrice, price } = getPrices({
       productDetail,
@@ -460,7 +632,7 @@ class CartItemTile extends React.Component {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {`${currencySymbol}${Number(price).toFixed(2)}`}
+              <PriceCurrency price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -470,7 +642,7 @@ class CartItemTile extends React.Component {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(listPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -499,7 +671,7 @@ class CartItemTile extends React.Component {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {`${currencySymbol}${Number(salePrice).toFixed(2)}`}
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -510,7 +682,7 @@ class CartItemTile extends React.Component {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(wasPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
@@ -576,7 +748,7 @@ class CartItemTile extends React.Component {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {` ${labels.qty}:`}
@@ -586,7 +758,7 @@ class CartItemTile extends React.Component {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator="addedtobag-productqty"
         >
@@ -604,7 +776,7 @@ class CartItemTile extends React.Component {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {this.getSizeLabel(productDetail, labels)}
@@ -614,7 +786,7 @@ class CartItemTile extends React.Component {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator={getLocator('cart_item_size')}
         >
@@ -637,14 +809,20 @@ class CartItemTile extends React.Component {
   };
 
   renderHeartIcon = () => {
-    const { isBagPageSflSection, labels } = this.props;
-    if (!isBagPageSflSection) return null;
+    const { isBagPageSflSection, labels, handleAddToWishlist, productDetail } = this.props;
+    if (
+      !isBagPageSflSection ||
+      productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+    )
+      return null;
+
     return (
       <div className="heartIcon">
         <Image
           alt={getLabelValue(labels, 'lbl_sfl_favIcon', 'bagPage', 'checkout')}
           className="sfl-fav-image"
           src={getIconPath('fav-icon')}
+          onClick={handleAddToWishlist}
         />
       </div>
     );
@@ -812,6 +990,19 @@ class CartItemTile extends React.Component {
     return itemBrand && itemBrand.toLowerCase();
   };
 
+  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : `${crossDomain}${pdpUrl}`;
+  };
+
+  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
+  };
+
+  closeMiniBagMethod = () => {
+    const { closeMiniBag } = this.props;
+    closeMiniBag();
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -820,17 +1011,20 @@ class CartItemTile extends React.Component {
       productDetail: {
         miscInfo: { store, orderItemType, availability },
         itemInfo: { itemBrand },
+        productInfo: { pdpUrl },
       },
       labels,
       editableProductInfo,
       className,
       pageView,
-      isEditAllowed,
       isBagPageSflSection,
       showOnReviewPage,
       setShipToHome,
       currencyExchange,
       pickupStoresInCart,
+      autoSwitchPickupItemInCart,
+      orderId,
+      disableProductRedirect,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -838,6 +1032,10 @@ class CartItemTile extends React.Component {
     const isBOPISOrder = isBopisOrder(orderItemType);
     const isBOSSOrder = isBossOrder(orderItemType);
     const isEcomSoldout = isSoldOut(availability);
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const currentSiteBrand = getBrand();
+    const isProductBrandOfSameDomain = currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
 
     const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
     const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
@@ -855,7 +1053,11 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
+    const pdpToPath = this.getPdpToPath(isProductBrandOfSameDomain, pdpUrl, crossDomain);
+    const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
+    const isBagPage = pageView === 'myBag';
+    const disableLink = disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -871,7 +1073,7 @@ class CartItemTile extends React.Component {
         })}
         <Row
           fullBleed
-          className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+          className={['product', isBagPage ? 'product-tile-wrapper' : ''].join(' ')}
           tabIndex="0"
           aria-label={`${productDetail.itemInfo.name}. ${labels.price} ${
             productDetail.itemInfo.price
@@ -891,14 +1093,24 @@ class CartItemTile extends React.Component {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <DamImage
-                imgData={{
-                  alt: labels.productImageAlt,
-                  url: productDetail.itemInfo.imagePath,
-                }}
-                itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
-                isProductImage
-              />
+              <LinkWrapper
+                pdpToPath={pdpToPath}
+                pdpAsPathUrl={pdpAsPathUrl}
+                disableLink={disableLink}
+                noWrap={disableLink}
+                IsSlugPathAdded
+              >
+                <DamImage
+                  imgData={{
+                    alt: labels.productImageAlt,
+                    url: productDetail.itemInfo.imagePath,
+                  }}
+                  itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
+                  isProductImage
+                  onClick={this.closeMiniBagMethod}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
+                />
+              </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
                   className="soldOutLabel"
@@ -936,33 +1148,40 @@ class CartItemTile extends React.Component {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="h2"
-                  fontSize="fs14"
-                  fontWeight={['extrabold']}
-                  dataLocator={getLocator('cart_item_title')}
+                <LinkWrapper
+                  pdpToPath={pdpToPath}
+                  pdpAsPathUrl={pdpAsPathUrl}
+                  disableLink={disableLink}
+                  noWrap={disableLink}
+                  IsSlugPathAdded
                 >
-                  {productDetail.itemInfo.name}
-                </BodyCopy>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="h2"
+                    fontSize="fs14"
+                    fontWeight={['extrabold']}
+                    dataLocator={getLocator('cart_item_title')}
+                    onClick={this.closeMiniBagMethod}
+                  >
+                    {productDetail.itemInfo.name}
+                  </BodyCopy>
+                </LinkWrapper>
               </Col>
             </Row>
-            {showOnReviewPage && this.getProductItemUpcNumber(productDetail, pageView)}
+            {showOnReviewPage && this.getProductItemUpcNumber(productDetail, isBagPage)}
             {!isEdit ? (
               <React.Fragment>
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <Col
-                    className={
-                      pageView !== 'myBag' ? this.getProductDetailClass() : 'product-detail-bag'
-                    }
-                    colSize={{ small: 10, medium: 10, large: 10 }}
+                    className={!isBagPage ? this.getProductDetailClass() : 'product-detail-bag'}
+                    colSize={{ small: 12, medium: 12, large: 12 }}
                   >
-                    <div>
+                    <div className="product-detail-section">
                       <div className="color-size-fit-label">
                         <BodyCopy
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           fontWeight={['extrabold']}
                           textAlign="left"
                         >
@@ -973,7 +1192,7 @@ class CartItemTile extends React.Component {
                         className="padding-left-10"
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs12"
+                        fontSize="fs13"
                         color="gray.800"
                         dataLocator={getLocator('cart_item_color')}
                       >
@@ -984,41 +1203,16 @@ class CartItemTile extends React.Component {
                           className="color-fit-size-separator"
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           color="gray.600"
                         >
                           |
                         </BodyCopy>
                       )}
+                      {this.renderReviewPageSection()}
                     </div>
-                    {this.renderReviewPageSection()}
+                    {!isBagPage && this.renderEditLink()}
                   </Col>
-                  {showOnReviewPage && (
-                    <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-                      {!isBagPageSflSection &&
-                        isEditAllowed &&
-                        !hideEditBossBopis(
-                          isBOSSOrder,
-                          bossDisabled,
-                          isBOPISOrder,
-                          bopisDisabled
-                        ) && (
-                          <BodyCopy
-                            fontFamily="secondary"
-                            fontSize="fs12"
-                            component="div"
-                            role="button"
-                            tabIndex="0"
-                            dataLocator={getLocator('cart_item_edit_link')}
-                            className="padding-left-10 responsive-edit-css"
-                            onClick={this.callEditMethod}
-                            onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
-                          >
-                            {labels.edit}
-                          </BodyCopy>
-                        )}
-                    </Col>
-                  )}
                 </Row>
               </React.Fragment>
             ) : (
@@ -1041,7 +1235,7 @@ class CartItemTile extends React.Component {
         </Row>
         {showOnReviewPage &&
           !isBagPageSflSection &&
-          pageView === 'myBag' &&
+          isBagPage &&
           showRadioButtons({
             isEcomSoldout,
             isECOMOrder,
@@ -1067,6 +1261,8 @@ class CartItemTile extends React.Component {
                 openPickUpModal={this.handleEditCartItemWithStore}
                 setShipToHome={setShipToHome}
                 pickupStoresInCart={pickupStoresInCart}
+                autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+                orderId={orderId}
               />
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </Row>
@@ -1086,8 +1282,12 @@ CartItemTile.defaultProps = {
   onQuickViewOpenClick: () => {},
   setShipToHome: () => {},
   toggleError: null,
+  toggleBossBopisError: null,
   clearToggleError: () => {},
   currencyExchange: null,
+  autoSwitchPickupItemInCart: () => {},
+  disableProductRedirect: false,
+  closeMiniBag: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1116,12 +1316,20 @@ CartItemTile.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
+  toggleBossBopisError: PropTypes.shape({
+    errorMessage: PropTypes.string,
+  }),
   clearToggleError: PropTypes.func,
   currencyExchange: PropTypes.shape([]),
   pickupStoresInCart: PropTypes.shape({}).isRequired,
+  autoSwitchPickupItemInCart: PropTypes.func,
+  disableProductRedirect: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  closeMiniBag: PropTypes.func,
+  isMiniBagOpen: PropTypes.bool.isRequired,
+  handleAddToWishlist: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

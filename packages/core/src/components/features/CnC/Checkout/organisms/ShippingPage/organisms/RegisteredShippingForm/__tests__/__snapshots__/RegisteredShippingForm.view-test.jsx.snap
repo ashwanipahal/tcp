@@ -95,10 +95,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -132,7 +131,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -174,7 +173,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -276,10 +275,9 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -313,7 +311,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -405,7 +403,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -508,10 +506,9 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -545,7 +542,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -650,7 +647,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="medium"
+        fontSizeVariation="xlarge"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -773,10 +770,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -963,6 +959,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1043,16 +1042,18 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       fullBleed={true}
     >
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
       >
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="cancel-btn"
           data-locator="edit-shipping-cancel-btn"
           fill="WHITE"
           onClick={[Function]}
@@ -1062,10 +1063,11 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         </Styled(Button)>
       </Styled(Col)>
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
@@ -1172,10 +1174,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -1345,6 +1346,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1510,6 +1514,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1674,10 +1681,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -1847,6 +1853,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2012,6 +2021,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2196,10 +2208,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -2370,6 +2381,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2450,16 +2464,18 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       fullBleed={true}
     >
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
       >
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="cancel-btn"
           data-locator="edit-shipping-cancel-btn"
           fill="WHITE"
           onClick={[Function]}
@@ -2469,10 +2485,11 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         </Styled(Button)>
       </Styled(Col)>
       <Styled(Col)
+        className="save-cancel-btn"
         colSize={
           Object {
             "large": 3,
-            "medium": 2,
+            "medium": 4,
             "small": 6,
           }
         }
@@ -2658,6 +2675,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2823,6 +2843,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3066,6 +3089,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3231,6 +3257,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3474,6 +3503,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3639,6 +3671,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3882,6 +3917,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -4047,6 +4085,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {

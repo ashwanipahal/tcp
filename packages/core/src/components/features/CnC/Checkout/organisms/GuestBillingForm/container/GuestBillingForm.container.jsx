@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
+import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import GuestBillingPage from '../views';
 import CONSTANTS from '../../../Checkout.constants';
 import {
@@ -15,6 +16,7 @@ import {
   setVenmoPaymentInProgress,
 } from '../../../container/Checkout.action';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import * as sessionSelectors from '../../../../../../../reduxStore/selectors/session.selectors';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 import { getSiteId } from '../../../../../../../utils';
 
@@ -24,6 +26,17 @@ import { getSiteId } from '../../../../../../../utils';
  * @description container component to render guest user form.
  */
 class GuestBillingContainer extends React.Component {
+  /**
+   * @function getSelectedPaymentMethod
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getSelectedPaymentMethod = () => {
+    const { billingData } = this.props;
+    return billingData.paymentMethod === CONSTANTS.PAYPAL_LABEL
+      ? CONSTANTS.PAYMENT_METHOD_PAYPAL
+      : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
   /**
    * @function submitBillingData
    * @description submits the billing data
@@ -138,13 +151,20 @@ class GuestBillingContainer extends React.Component {
       shippingOnFileAddressKey,
       isVenmoPaymentInProgress,
       setCheckoutStage,
+      venmoError,
+      isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     let cardNumber;
     let cardType;
     let expMonth;
     let expYear;
     let billingOnFileAddressKey;
-    if (billingData && billingData.billing) {
+    if (
+      billingData &&
+      billingData.billing &&
+      billingData.billing.cardType !== CONSTANTS.PAYPAL_LABEL
+    ) {
       ({
         billing: { cardNumber, cardType, expMonth, expYear },
         address: { onFileAddressKey: billingOnFileAddressKey },
@@ -156,7 +176,7 @@ class GuestBillingContainer extends React.Component {
         initialValues={{
           paymentMethodId: isVenmoPaymentInProgress
             ? CONSTANTS.PAYMENT_METHOD_VENMO
-            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+            : this.getSelectedPaymentMethod(),
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
@@ -169,6 +189,9 @@ class GuestBillingContainer extends React.Component {
         onSubmit={this.submitBillingData}
         syncErrorsObj={syncErrors}
         setCheckoutStage={setCheckoutStage}
+        venmoError={venmoError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -180,8 +203,12 @@ export const mapStateToProps = state => {
     syncErrors: getSyncError(state),
     isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     paymentMethodId: getPaymentMethodId(state),
+    isPayPalEnabled: sessionSelectors.getIsPayPalEnabled(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
+    venmoError: CheckoutSelectors.getVenmoError(state),
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
   };
 };
 
@@ -204,7 +231,21 @@ GuestBillingContainer.propTypes = {
   paymentMethodId: PropTypes.string,
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
-  billingData: PropTypes.shape({}),
+  billingData: PropTypes.shape({
+    address: PropTypes.shape({
+      addressLine1: PropTypes.string,
+      addressLine2: PropTypes.string,
+      city: PropTypes.string,
+      country: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      state: PropTypes.string,
+      zipCode: PropTypes.string,
+      onFileAddressKey: PropTypes.string,
+      onFileAddressId: PropTypes.string,
+    }),
+    billing: PropTypes.shape({}),
+  }),
   orderHasShipping: PropTypes.bool,
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
@@ -212,6 +253,9 @@ GuestBillingContainer.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoProgress: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  venmoError: PropTypes.string,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -222,11 +266,13 @@ GuestBillingContainer.defaultProps = {
   paymentMethodId: null,
   shippingAddress: null,
   isSameAsShippingChecked: true,
-  billingData: {},
+  billingData: { billing: {} },
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
   navigation: null,
   isVenmoPaymentInProgress: false,
+  venmoError: '',
+  bagLoading: false,
 };
 
 export default connect(

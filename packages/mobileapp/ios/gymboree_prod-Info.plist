@@ -38,9 +38,27 @@
 				<string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gym</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.childrensplace.tcp-ios.payments</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CodePushDeploymentKey</key>
+	<string>yk5X-LiBxTDjh7fLUaPRhDljtJ0UIdsHa1hhW</string>
 	<key>FacebookAppID</key>
 	<string>2346328792295830</string>
 	<key>FacebookDisplayName</key>
@@ -57,6 +75,10 @@
 	<key>NSCameraUsageDescription</key>
 	<string>This app would like to access your camera to attach pictures with your product review.</string>
 	<key>NSFaceIDUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>

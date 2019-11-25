@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Drawer component renders correctly 1`] = `
-<div>
+<div
+  id="drawer-wrapper"
+>
   <div
     className="  "
   >
@@ -10,9 +12,6 @@ exports[`Drawer component renders correctly 1`] = `
   <aside
     className="tcp-drawer tcp-drawer__isOpen undefined display-small-none display-medium-none display-large-none"
   >
-    <Styled(Row)>
-      <AccountInfoSection />
-    </Styled(Row)>
     <div
       className="tcp-drawer-content"
       id="tcp-nav-drawer"

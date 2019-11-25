@@ -28,9 +28,23 @@ export const setModalState = payload => {
   };
 };
 
+export const setLoadingState = payload => {
+  return {
+    payload,
+    type: QUICK_VIEW_CONSTANTS.SET_LOADING_STATE,
+  };
+};
+
 export const closeQuickViewModal = payload => {
   return {
     payload,
     type: QUICK_VIEW_CONSTANTS.CLOSE_QUICK_VIEW_MODAL,
+  };
+};
+
+export const updateAppTypeWithParams = payload => {
+  return {
+    type: QUICK_VIEW_CONSTANTS.UPDATE_APP_TYPE_AND_REDIRECT,
+    payload,
   };
 };

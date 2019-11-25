@@ -185,7 +185,7 @@ class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
-      if (prop === 'pointsAwarded') {
+      if (prop === 'pointsAwarded' && accounts[prop] !== null) {
         this.pointsInformation = {
           activity: accounts[prop].activity,
           id: accounts[prop].id,
@@ -216,9 +216,15 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <p className="social-accounts__subTitle" data-locator="mypreference-socialaccountheader">
+          <BodyCopy
+            fontSize="fs16"
+            fontFamily="secondary"
+            component="p"
+            className="social-accounts__subTitle"
+            data-locator="mypreference-socialaccountheader"
+          >
             {labels.lbl_prefrence_social_text}
-          </p>
+          </BodyCopy>
           <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
         </section>
       </React.Fragment>

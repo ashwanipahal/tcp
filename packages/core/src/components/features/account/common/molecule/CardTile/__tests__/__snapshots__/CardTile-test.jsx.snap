@@ -95,7 +95,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
             className="cardTile__img_wrapper elem-mt-XS"
           >
             <img
-              alt="COMPASSAMEX"
+              alt="Amex"
               className="cardTile__img"
               data-locator="Amex"
               src="/static/images/amex.svg"
@@ -132,11 +132,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -275,11 +275,11 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -398,7 +398,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
             className="cardTile__img_wrapper elem-mt-MED"
           >
             <img
-              alt="COMPASSDISCOVER"
+              alt="DISC"
               className="cardTile__img"
               data-locator="DISC"
               src="/static/images/discover.svg"
@@ -435,11 +435,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -531,7 +531,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
             className="cardTile__img_wrapper elem-mt-XL"
           >
             <img
-              alt="GiftCard"
+              alt="GC"
               className="cardTile__img"
               data-locator="GC"
               src="/static/images/TCP-gift.svg"
@@ -562,7 +562,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -705,7 +705,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -848,7 +848,7 @@ exports[`CardTile should render correctly with master card 1`] = `
             className="cardTile__img_wrapper elem-mt-MED"
           >
             <img
-              alt="COMPASSMASTERCARD"
+              alt="MC"
               className="cardTile__img"
               data-locator="MC"
               src="/static/images/mastercard.svg"
@@ -885,11 +885,11 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -920,7 +920,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         "small": 6,
       }
     }
-    message="INVLAID CAPTCHA"
+    message="INVALID CAPTCHA"
     status="error"
   />
   <div
@@ -992,7 +992,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             className="cardTile__img_wrapper elem-mt-XL"
           >
             <img
-              alt="GiftCard"
+              alt="GC"
               className="cardTile__img"
               data-locator="GC"
               src="/static/images/TCP-gift.svg"
@@ -1023,7 +1023,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1166,7 +1166,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1329,11 +1329,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -1552,7 +1552,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
             className="cardTile__img_wrapper elem-mt-MED"
           >
             <img
-              alt="COMPASSVISA"
+              alt="Visa"
               className="cardTile__img"
               data-locator="Visa"
               src="/static/images/visa.svg"
@@ -1589,11 +1589,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -1685,7 +1685,7 @@ exports[`CardTile should show loading 1`] = `
             className="cardTile__img_wrapper elem-mt-XL"
           >
             <img
-              alt="GiftCard"
+              alt="GC"
               className="cardTile__img"
               data-locator="GC"
               src="/static/images/TCP-gift.svg"
@@ -1711,7 +1711,7 @@ exports[`CardTile should show loading 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1854,7 +1854,7 @@ exports[`CardTile should show loading 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1977,7 +1977,7 @@ exports[`CardTile should show remining balance 1`] = `
             className="cardTile__img_wrapper elem-mt-XL"
           >
             <img
-              alt="GiftCard"
+              alt="GC"
               className="cardTile__img"
               data-locator="GC"
               src="/static/images/TCP-gift.svg"
@@ -2003,7 +2003,7 @@ exports[`CardTile should show remining balance 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htoDjs",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2146,7 +2146,7 @@ exports[`CardTile should show remining balance 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htoDjs",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

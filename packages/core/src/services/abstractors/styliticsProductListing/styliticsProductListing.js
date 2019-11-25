@@ -1,6 +1,7 @@
 import mock from './mock';
 import { executeExternalAPICall } from '../../handler';
 import endpoints from '../../endpoints';
+import { getStyliticsUserName, getStyliticsRegion } from '../../../utils';
 
 /**
  * Abstractor layer for loading Product List Tabs data
@@ -13,34 +14,25 @@ const Abstractor = {
    * @return {Object} return Promise.
    */
   getData: params => {
-    const { categoryId, count = 7 } = params;
+    const { categoryId, count = 20, isRelatedOutfit } = params;
 
+    const styliticsRegion = getStyliticsRegion();
     const payload = {
       body: {
-        username: 'thechildrensplace',
-        region: 'US',
+        username: getStyliticsUserName(),
         total: count,
-        item_number: categoryId,
       },
       webService: endpoints.getStyliticsProductViewById,
     };
+    if (isRelatedOutfit) {
+      payload.body.item_number = categoryId;
+    } else {
+      payload.body.tags = categoryId;
+    }
 
-    return executeExternalAPICall(payload)
-      .then(Abstractor.processData)
-      .catch(Abstractor.handleError);
-  },
-  getOutfit: params => {
-    const { categoryId, count = 20 } = params;
-
-    const payload = {
-      body: {
-        username: 'thechildrensplace',
-        region: 'US',
-        total: count,
-        tags: categoryId,
-      },
-      webService: endpoints.getStyliticsProductViewById,
-    };
+    if (styliticsRegion) {
+      payload.body.region = styliticsRegion;
+    }
 
     return executeExternalAPICall(payload)
       .then(Abstractor.processData)

@@ -200,12 +200,21 @@ export class DetailedCouponTile extends React.Component {
                 component="div"
                 data-locator="myrewards-barcode"
                 className="barcode-content hide-on-desktop hide-on-tablet"
+                aria-label={coupon.id}
+                role="img"
               >
-                <Barcode value={coupon.id} barcodeId={coupon.id} />
+                <BodyCopy component="div" aria-hidden>
+                  <Barcode value={coupon.id} barcodeId={coupon.id} aria-hidden />
+                </BodyCopy>
               </BodyCopy>
             )}
           </BodyCopy>
-          <ErrorMessage className="error-notification" error={coupon.error} noBackground />
+          <ErrorMessage
+            className="error-notification"
+            error={coupon.error}
+            fontWeight="extrabold"
+            noBackground
+          />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">

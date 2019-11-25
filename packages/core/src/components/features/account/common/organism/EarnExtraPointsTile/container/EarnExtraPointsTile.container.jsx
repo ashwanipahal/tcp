@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import EarnExtraPointsTile from '../views';
-import { getEarnExtraPointsDataState, getCommonLabels } from './EarnExtraPointsTile.selectors';
+import {
+  getEarnExtraPointsDataState,
+  getCommonLabels,
+  getEarnExtraPointsFetchingState,
+} from './EarnExtraPointsTile.selectors';
 import { getEarnExtraPointsList } from './EarnExtraPointsTile.actions';
 
 export class EarnExtraPointsTileContainer extends React.PureComponent {
@@ -18,6 +22,7 @@ export class EarnExtraPointsTileContainer extends React.PureComponent {
    */
   render() {
     const { labels, waysToEarn, isAccountOverview, ...otherProps } = this.props;
+
     return (
       <EarnExtraPointsTile
         waysToEarn={waysToEarn}
@@ -41,6 +46,7 @@ const mapStateToProps = state => {
   return {
     waysToEarn: getEarnExtraPointsDataState(state),
     labels: getCommonLabels(state),
+    isFetching: getEarnExtraPointsFetchingState(state),
   };
 };
 
@@ -49,12 +55,14 @@ EarnExtraPointsTileContainer.propTypes = {
   labels: PropTypes.shape({}),
   waysToEarn: PropTypes.shape([]),
   isAccountOverview: PropTypes.bool,
+  isFetching: PropTypes.bool,
 };
 
 EarnExtraPointsTileContainer.defaultProps = {
   labels: {},
   waysToEarn: [],
   isAccountOverview: false,
+  isFetching: false,
 };
 
 export default connect(

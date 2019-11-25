@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -7,11 +8,14 @@ import {
   getOutfitImage,
   getOutfitProducts,
   getAddedToBagErrorCatId,
+  getPDPLabels,
+  getUnavailableCount,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
   getPlpLabels,
   getCurrencyAttributes,
+  getPLPPromos,
 } from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
 import {
@@ -32,27 +36,53 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
 
 class OutfitDetailsContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      getOutfit,
-      router: { query },
-      navigation,
-    } = this.props;
-
+  static getInitialProps = async ({ props, query, isServer }) => {
+    const { getOutfit, navigation } = props;
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
       // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
       // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
       // const outfitId = '138548';
-      getOutfit({ outfitId, vendorColorProductIdsList });
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
-      const { vendorColorProductIdsList, outfitId } = query;
-      getOutfit({ outfitId, vendorColorProductIdsList });
+      let vendorColorProductIdsList;
+      let outfitId;
+      if (isServer) {
+        ({ vendorColorProductIdsList, outfitId } = query);
+      } else {
+        ({
+          router: {
+            query: { vendorColorProductIdsList, outfitId },
+          },
+        } = props);
+      }
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: {
+        query: { outfitId: selectedOutfitId },
+      },
+    } = nextProps;
+    return selectedOutfitId ? { ...prevState, outfitIdLocal: selectedOutfitId } : { ...prevState };
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      outfitIdLocal: '',
+    };
   }
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
@@ -69,6 +99,7 @@ class OutfitDetailsContainer extends React.PureComponent {
     const {
       labels,
       outfitImageUrl,
+      unavailableCount,
       outfitProducts,
       plpLabels,
       isPlcc,
@@ -82,19 +113,28 @@ class OutfitDetailsContainer extends React.PureComponent {
       addToBagErrorId,
       isPickupModalOpen,
       isLoggedIn,
+      navigation,
+      pdpLabels,
+      toastMessage,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
+      topPromos,
+      router: { asPath: asPathVal },
     } = this.props;
+    const { outfitIdLocal } = this.state;
     if (outfitProducts) {
       return (
         <OutfitDetails
           labels={labels}
           outfitImageUrl={outfitImageUrl}
+          unavailableCount={unavailableCount}
           outfitProducts={outfitProducts}
           plpLabels={plpLabels}
           isCanada={isCanada()}
           isPlcc={isPlcc}
           isInternationalShipping={isInternationalShipping}
           currencySymbol={priceCurrency}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}
@@ -103,6 +143,14 @@ class OutfitDetailsContainer extends React.PureComponent {
           isPickupModalOpen={isPickupModalOpen}
           addToFavorites={addToFavorites}
           isLoggedIn={isLoggedIn}
+          navigation={navigation}
+          outfitId={outfitIdLocal}
+          pdpLabels={pdpLabels}
+          toastMessage={toastMessage}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          asPathVal={asPathVal}
+          topPromos={topPromos}
         />
       );
     }
@@ -112,12 +160,18 @@ class OutfitDetailsContainer extends React.PureComponent {
 
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
+  pageData: {
+    pageName: 'product',
+    pageSection: 'product',
+    pageSubSection: 'product',
+  },
 };
 
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     outfitImageUrl: getOutfitImage(state),
+    unavailableCount: getUnavailableCount(state),
     outfitProducts: getOutfitProducts(state),
     plpLabels: getPlpLabels(state),
     isCanada: isCanada(),
@@ -130,6 +184,9 @@ const mapStateToProps = state => {
     currentState: state,
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    pdpLabels: getPDPLabels(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
   };
 };
 
@@ -147,13 +204,19 @@ function mapDispatchToProps(dispatch) {
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
+    },
   };
 }
 
 OutfitDetailsContainer.propTypes = {
-  getOutfit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   router: PropTypes.shape({
     query: PropTypes.shape({}),
@@ -171,11 +234,16 @@ OutfitDetailsContainer.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsContainer.defaultProps = {
   labels: {},
   outfitImageUrl: '',
+  unavailableCount: 0,
   outfitProducts: null,
   router: {
     query: {},
@@ -190,9 +258,14 @@ OutfitDetailsContainer.defaultProps = {
   addToBagErrorId: '',
   isPickupModalOpen: false,
   isLoggedIn: false,
+  pdpLabels: {},
+  toastMessage: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
-export default connect(
+export default withIsomorphicRenderer({
+  WrappedComponent: OutfitDetailsContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(OutfitDetailsContainer);
+  mapDispatchToProps,
+});

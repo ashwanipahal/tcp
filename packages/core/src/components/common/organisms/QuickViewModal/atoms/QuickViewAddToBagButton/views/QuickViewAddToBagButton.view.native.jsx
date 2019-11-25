@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { QuickViewAddToBagButtonWrapper } from '../styles/QuickViewAddToBagButton.styles.native';
 import { Button } from '../../../../../atoms';
 
-export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn }) => {
+export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn, dataLocator }) => {
   return (
     <QuickViewAddToBagButtonWrapper>
       <Button
@@ -16,7 +16,7 @@ export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn }) => {
         fontWeight="extrabold"
         fontFamily="secondary"
         onPress={onClickActn}
-        locator="pdp_color_swatch"
+        locator={dataLocator || 'SINGLE_QV_ATB'}
         accessibilityLabel={buttonLabel}
       />
     </QuickViewAddToBagButtonWrapper>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import { plpRoutingHandling } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
@@ -28,6 +29,7 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
   if (isDrawerOpen) {
     closeNavigationDrawer();
   }
+  // document.getElementById(`default_spinner_overlay`).classList.add(`show-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
 };
 
 /**
@@ -39,7 +41,7 @@ const handleRouteComplete = url => {
     localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
-
+  // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
   const filterParam =
     params.has(FILTER_CATAGORY) ||
     params.has(FILTER_COLOR) ||
@@ -59,9 +61,13 @@ const handleRouteComplete = url => {
    */
   const checkSearchPageParam =
     url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
-
+  const gethandleRemoveFilter = localStorage.getItem('handleRemoveFilter');
+  const plpPageCheck = url.match(/\/c\//g);
+  const filterId = document.getElementById('filterWrapper');
   if (!checkListingPageParam && !checkSearchPageParam) {
-    window.scrollTo(0, 0);
+    if (document.getElementById('filterWrapper') && gethandleRemoveFilter) {
+      plpRoutingHandling(filterId);
+    } else if (!plpPageCheck) window.scrollTo(0, 0);
   } else {
     localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
     localStorage.removeItem(CLEAR_ALL_PLP_FILTER);
@@ -83,6 +89,24 @@ const registerRouterChangeEvent = (closeNavigationDrawer, isDrawerOpen) => () =>
   };
 };
 
+const registerExtoleScript = () => {
+  if (window.extole) {
+    // Data hard coded with reference to extole 3rd party script
+    window.extole.createZone({
+      name: 'global_footer',
+      element_id: 'extole_zone_global_navigation_footer',
+      data: {
+        email: 'abc@abc.com',
+        first_name: 'test',
+        last_name: 'abc',
+        partner_user_id: '123',
+        labels: 'us, en',
+      },
+    });
+  }
+  return () => {};
+};
+
 const Navigation = props => {
   const {
     openNavigationDrawer,
@@ -98,12 +122,12 @@ const Navigation = props => {
     showCondensedHeader,
     openOverlay,
     isDrawerOpen,
+    isCondensedHeader,
+    accessibilityLabels,
   } = props;
 
-  useEffect(() => {
-    registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen);
-  }, []);
-
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
+  useEffect(registerExtoleScript, [isDrawerOpen]);
   return (
     <Drawer
       id="l1_drawer"
@@ -133,7 +157,10 @@ const Navigation = props => {
       hideNavigationFooter={hideNavigationFooter}
       showCondensedHeader={showCondensedHeader}
     >
-      <nav className={`${className} navigation nav-bar`}>
+      <nav
+        className={`${className} navigation nav-bar`}
+        aria-label={isCondensedHeader && accessibilityLabels.condensed_navigation_aria_label}
+      >
         <NavBar {...props} />
       </nav>
     </Drawer>
@@ -154,6 +181,12 @@ Navigation.propTypes = {
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
+  accessibilityLabels: PropTypes.shape({}).isRequired,
+  isCondensedHeader: PropTypes.bool,
+};
+
+Navigation.defaultProps = {
+  isCondensedHeader: false,
 };
 
 export { Navigation as NavigationVanilla };

@@ -38,6 +38,7 @@ exports[`Create Account component should renders correctly 1`] = `
       textAlign="left"
     >
       <Styled(Image)
+        alt="My Place Rewards"
         className="tcp_carousel__play"
         src="/static/images/my-place-rewards.png"
       />
@@ -72,11 +73,11 @@ exports[`Create Account component should renders correctly 1`] = `
       </span>
       <Styled(BodyCopy)
         className={null}
-        color="gray.700"
+        color="gray.800"
         component="span"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize={12}
-        fontWeight="regular"
+        fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
@@ -159,7 +160,13 @@ exports[`Create Account component should renders correctly 1`] = `
         link={null}
         textAlign="center"
       >
-        lbl_createAccount_resetPassword
+        <Styled(Anchor)
+          className="reset-password"
+          onClick={[Function]}
+          underline={true}
+        >
+          lbl_createAccount_resetPassword
+        </Styled(Anchor)>
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>

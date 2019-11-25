@@ -48,13 +48,14 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
         color="black"
-        fontWeight="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
       {couponsCount > 0 && (
         <CouponWrapper>
           <View>
             <BodyCopy
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="semibold"
               data-locator={walletDataLocator}

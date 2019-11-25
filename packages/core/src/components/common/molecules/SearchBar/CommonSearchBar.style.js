@@ -9,7 +9,6 @@ export const commonSearchBarStyles = css`
     background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     color: ${props => props.theme.colorPalette.gray[800]};
     border-color: unset;
-    margin-right: 5px;
   }
 
   .searchBar-input-wrapper {
@@ -46,7 +45,7 @@ export const commonSearchBarStyles = css`
     width: 100%;
     height: 40px;
     display: inline-block;
-
+    overflow: unset;
     ${props =>
       props.fromCondensedHeader
         ? `
@@ -94,6 +93,11 @@ export const commonSearchBarStyles = css`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    caret-color: ${props => props.theme.colors.TEXTBOX.FOCUS_BORDER};
+  }
+
+  .searchbar input::-ms-clear {
+    display: none;
   }
   .search-model-wrapper {
     margin-top: 100px;
@@ -158,7 +162,7 @@ export const commonStyles = css`
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
@@ -175,21 +179,35 @@ export const commonStyles = css`
   }
 
   li.recentTag {
-    height: 35px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+  }
+
+  li.recentTag a {
+    line-height: 3.08;
   }
 
   li.linkName {
     height: 40px;
+    line-height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
   }
 
   li.productBox {
+    position: relative;
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     height: 87px;
+    width: 88px;
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 152px;
+      width: 152px;
     }
+  }
+
+  li a.out-of-stock-wrapper {
+    position: absolute;
+    height: 100%;
   }
 
   .autosuggest-image {
@@ -218,7 +236,6 @@ export const mediumOnlyStyles = css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: ${props => props.theme.colorPalette.gray[800]};
       border-color: unset;
-      margin-right: 10px;
       margin-left: 53px;
     }
 
@@ -287,9 +304,8 @@ export const mediumOnlyStyles = css`
     }
 
     .searchbar input {
-      width: 122px;
+      width: calc(100% - 250px);
       font-size: ${props => props.theme.typography.fontSizes.fs14};
-      padding-right: 172px;
       background-color: ${props => props.theme.colors.WHITE};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
@@ -351,12 +367,10 @@ export const mediumOnlyStyles = css`
         ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
 
-    .search-close-icon-wrapper {
-      padding-left: 251px;
-    }
-
     .cancel-search-label-wrapper {
-      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      float: right;
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      line-height: 40px;
     }
   }
 `;

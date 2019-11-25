@@ -24,6 +24,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -68,367 +69,58 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         name="childName"
       />
     </Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
+      text="lbl_add_child_birthday_heading"
+      textDecoration={null}
+    />
     <Styled(View)>
       <Styled(View)>
         <Field
-          bgColor={true}
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "arrowImageStyle": null,
-                "bounces": true,
-                "data": Array [],
-                "dropDownItemFontWeight": "semibold",
-                "dropDownStyle": null,
-                "itemStyle": null,
-                "onValueChange": null,
-                "selectedItemFontWeight": "semibold",
-                "selectedValue": null,
-                "variation": "primary",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(DropDown)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  height: ",
-                  [Function],
-                  "px;
-  ",
-                  [Function],
-                  ";
-  background-color: ",
-                  [Function],
-                  ";
-  width: 100%;
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          data={Array []}
-          dataLocator="childBirthdayMonthDD"
-          dropDownStyle={
-            Object {
-              "border": 1,
-              "height": 41,
-            }
-          }
-          heading="lbl_add_child_birthday_heading"
-          itemStyle={
-            Object {
-              "color": "black",
-              "height": 41,
-              "paddingLeft": 6,
-            }
-          }
-          onValueChange={[Function]}
-          selectedValue="lbl_add_child_birthday_month"
-          variation="secondary"
+          component={[Function]}
+          name="childBirthMonth"
+          options={Array []}
+          placeholder="lbl_add_child_birthday_month"
         />
-        <Styled(View)
-          spacingStyles="margin-top-SM"
-        >
-          <Field
-            component={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "_foldedDefaultProps": Object {
-                  "ariaLabel": "input",
-                  "dataLocator": "input-field",
-                  "enableSuccessCheck": false,
-                  "id": "input",
-                  "keyboardType": "default",
-                  "label": "input",
-                  "marginBottom": true,
-                  "meta": Object {
-                    "error": "",
-                    "touched": "",
-                  },
-                  "onChangeText": [Function],
-                  "secureTextEntry": false,
-                  "showErrorIcon": true,
-                  "showSuccessCheck": false,
-                  "successText": "",
-                  "type": "text",
-                },
-                "attrs": Array [],
-                "displayName": "Styled(TextBox)",
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "
-    ",
-                    "
-  ",
-                    [Function],
-                    ";
-",
-                    ";
-  ",
-                  ],
-                },
-                "render": [Function],
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
-              }
-            }
-            id="userBirthMonth"
-            name="userBirthMonth"
-            title=""
-            type="hidden"
-          />
-        </Styled(View)>
       </Styled(View)>
-      <Styled(View)
-        birthYear={true}
-      >
+      <Styled(View)>
         <Field
-          bgColor={true}
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "arrowImageStyle": null,
-                "bounces": true,
-                "data": Array [],
-                "dropDownItemFontWeight": "semibold",
-                "dropDownStyle": null,
-                "itemStyle": null,
-                "onValueChange": null,
-                "selectedItemFontWeight": "semibold",
-                "selectedValue": null,
-                "variation": "primary",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(DropDown)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  height: ",
-                  [Function],
-                  "px;
-  ",
-                  [Function],
-                  ";
-  background-color: ",
-                  [Function],
-                  ";
-  width: 100%;
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          data={Array []}
-          dataLocator="childBirthdayYearDD"
-          dropDownStyle={
-            Object {
-              "border": 1,
-              "height": 41,
-            }
-          }
-          itemStyle={
-            Object {
-              "color": "black",
-              "height": 41,
-              "paddingLeft": 6,
-            }
-          }
-          onValueChange={[Function]}
-          selectedValue="lbl_add_child_birthday_year"
-          variation="secondary"
-        />
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="userBirthYear"
-          name="userBirthYear"
-          title=""
-          type="hidden"
+          component={[Function]}
+          name="childBirthYear"
+          options={Array []}
+          placeholder="lbl_add_child_birthday_year"
         />
       </Styled(View)>
     </Styled(View)>
-    <Styled(View)
-      chooseGender={true}
-    >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
+      text="add_child_gender_heading"
+      textDecoration={null}
+    />
+    <Styled(View)>
       <Styled(View)>
         <Field
-          bgColor={true}
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "arrowImageStyle": null,
-                "bounces": true,
-                "data": Array [],
-                "dropDownItemFontWeight": "semibold",
-                "dropDownStyle": null,
-                "itemStyle": null,
-                "onValueChange": null,
-                "selectedItemFontWeight": "semibold",
-                "selectedValue": null,
-                "variation": "primary",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(DropDown)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  height: ",
-                  [Function],
-                  "px;
-  ",
-                  [Function],
-                  ";
-  background-color: ",
-                  [Function],
-                  ";
-  width: 100%;
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          data={Array []}
-          dataLocator="childGenderDD"
-          dropDownStyle={
-            Object {
-              "border": 1,
-              "height": 41,
-            }
-          }
-          heading="lbl_add_child_gender_heading"
-          itemStyle={
-            Object {
-              "color": "black",
-              "height": 41,
-              "paddingLeft": 6,
-            }
-          }
-          onValueChange={[Function]}
-          selectedValue="lbl_add_child_choose_gender"
-          variation="secondary"
+          component={[Function]}
+          name="gender"
+          options={Array []}
+          placeholder="lbl_add_child_gender_heading"
         />
-        <Styled(View)
-          spacingStyles="margin-top-SM"
-        >
-          <Field
-            component={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "_foldedDefaultProps": Object {
-                  "ariaLabel": "input",
-                  "dataLocator": "input-field",
-                  "enableSuccessCheck": false,
-                  "id": "input",
-                  "keyboardType": "default",
-                  "label": "input",
-                  "marginBottom": true,
-                  "meta": Object {
-                    "error": "",
-                    "touched": "",
-                  },
-                  "onChangeText": [Function],
-                  "secureTextEntry": false,
-                  "showErrorIcon": true,
-                  "showSuccessCheck": false,
-                  "successText": "",
-                  "type": "text",
-                },
-                "attrs": Array [],
-                "displayName": "Styled(TextBox)",
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "
-    ",
-                    "
-  ",
-                    [Function],
-                    ";
-",
-                    ";
-  ",
-                  ],
-                },
-                "render": [Function],
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
-              }
-            }
-            id="gender"
-            name="gender"
-            title=""
-            type="hidden"
-          />
-        </Styled(View)>
       </Styled(View)>
     </Styled(View)>
     <Styled(Styled(BodyCopy))
@@ -451,6 +143,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -502,6 +195,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -576,6 +270,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         customStyle={Object {}}
         data-locator="privacyLnk"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -590,6 +285,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         customStyle={Object {}}
         data-locator="faqLnk"
         fontSizeVariation="medium"
+        justifyContent=""
         locator=""
         margins={null}
         noLink={true}
@@ -618,6 +314,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -625,6 +322,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)
@@ -645,12 +343,14 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_add_child_cancel"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>

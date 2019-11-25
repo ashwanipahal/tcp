@@ -12,7 +12,9 @@ export default css`
 
     .searchWrapper {
       top: 0;
-      height: 50px;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .searchbar {
@@ -21,11 +23,9 @@ export default css`
       height:50px;
     }
 
-
     .searchbar input {
-      width: 122px;
+      width: calc(100% - 205px);
       font-size:${props => props.theme.typography.fontSizes.fs14};
-      padding-right: 172px;
       background-color: ${props => props.theme.colors.WHITE};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
@@ -61,8 +61,11 @@ export default css`
       display: none;
     }
 
-    .close-image-mobile {
+    .icon-small.close-image-mobile {
       display: inline-block;
+      padding-left: 0;
+      width: 12px;
+      height: 12px;
     }
 
     .trendingBox .trendingBoxHead,
@@ -79,16 +82,13 @@ export default css`
     .recentBox .recentBoxBody {
       padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
         ${props => props.theme.spacing.ELEM_SPACING.XXL}
-        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+        ${props => props.theme.spacing.ELEM_SPACING.LRG}
+        ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
 
     .matchLinkBox .matchLinkBoxBody {
       padding: ${props => props.theme.spacing.ELEM_SPACING.XS} ${props =>
   props.theme.spacing.LAYOUT_SPACING.LRG};
-    }
-
-    .search-close-icon-wrapper{
-        padding-left :251px;
     }
 
     .cancel-search-label-wrapper {
@@ -114,7 +114,6 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: #575757;
       border-color: unset;
-      margin-right: 10px;
     }
 
     .searchBar-input-wrapper{
@@ -134,8 +133,9 @@ export default css`
     .searchBar-input{
 
       width: 172px;
+      padding: 0;
       height: 30px;
-      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      background-color: transparent;
       border: none;
       outline: none;
       font-size: 12px;
@@ -146,14 +146,17 @@ export default css`
       height: 15px;
       width: 15px;
       position: absolute;
-      top: 8px;
-      right: 5px;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     .searchWrapper {
       position: absolute;
       top: 0;
       left:0;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       ${props =>
         props.fromCondensedHeader
           ? `
@@ -182,11 +185,10 @@ export default css`
     }
 
     .searchbar input {
-      width: 122px;
+      width: calc(100% - 170px);
       font-size:${props => props.theme.typography.fontSizes.fs14};
-      padding-right: 94px;
       background-color: ${props => props.theme.colors.WHITE};
-      padding-left: 26px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
 
     .matchProductBox {
@@ -228,12 +230,12 @@ export default css`
     }
 
     .cancel-search-label-wrapper {
-      padding-left: 33px;
+      float: right;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      line-height: 40px;
     }
 
-    .search-close-icon-wrapper{
-        width :15px;
-    }
     .matchLinkBox .matchLinkBoxBody {
       padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
         ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -271,12 +273,13 @@ export default css`
       width: 100%;
       height: 40px;
       display: inline-block;
-      position:absolute;
-      right:0;
+      position: absolute;
+      right: 10px;
       top:0;
-
+      overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -286,25 +289,11 @@ export default css`
       ${props =>
         props.fromCondensedHeader
           ? `
-
-          position: fixed;
           width: 437px;
           right: 120px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
-
-          @media ${props.theme.mediaQuery.large} {
-            width: 74%;
-          }
-
-          @media ${props.theme.mediaQuery.large} {
-            width: 437px;
-            right: 218px;
-            top: ${props.theme.spacing.ELEM_SPACING.SM};
-          }
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
-
-
     }
 
     .searchbar {
@@ -319,29 +308,22 @@ export default css`
     }
 
     .searchbar input {
-      width: calc(100% - 80px);
+      width: calc(100% - 105px);
       height: 25px;
       outline: none;
-      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border: 0;
-      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM} 0 ${props =>
+  props.theme.spacing.APP_LAYOUT_SPACING.SM};
       border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      color: ${props => props.theme.colors.TEXTBOX.COLOR};
+      color: ${props => props.theme.colors.TEXT.DARKGRAY};
       vertical-align: middle;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
     }
 
-    .close-image-toggle {
-      display: inline-block;
-      height:12px;
-      width:12px;
-    }
-    .close-image-mobile {
-      display: inline-block;
-    }
     .search-mobile-image {
       display: none;
     }
@@ -364,9 +346,19 @@ export default css`
     .searchbar .icon-small {
       vertical-align: middle;
       height: 16px;
-      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM} 0 0;
       width: 20px;
       cursor: pointer;
+    }
+
+    .icon-small.close-image-toggle {
+      display: inline-block;
+      height:12px;
+      width:12px;
+    }
+
+    .close-image-mobile {
+      display: inline-block;
     }
 
     .trendingBox .trendingBoxHead,
@@ -381,9 +373,8 @@ export default css`
     }
 
     .recentBox .recentBoxBody {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-        ${props => props.theme.spacing.ELEM_SPACING.XXL}
-        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL} ${props =>
+  props.theme.spacing.ELEM_SPACING.MED};
     }
 
     .matchLinkBox .matchLinkBoxBody {

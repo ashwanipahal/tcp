@@ -34,12 +34,24 @@ export class StoreSearch extends PureComponent {
    * @param {object} geometry - The geometry details of the selected location
    * @param {object} location - The location details of the selected location
    */
-  handleLocationSelection = ({ geometry, location }) => {
-    const { loadStoresByCoordinates, submitting, showSubmitError } = this.props;
+  handleLocationSelection = ({ geometry, location }, place) => {
+    const {
+      loadStoresByCoordinates,
+      submitting,
+      showSubmitError,
+      setClickAnalyticsData,
+      trackClick,
+    } = this.props;
     if ((!geometry && !location) || submitting) {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
+    setClickAnalyticsData({
+      storeSearchCriteria: place,
+      customEvents: ['event89'],
+      eVar65: 'storelocator',
+    });
+    trackClick();
     this.setState({ storeSelected: true });
     showSubmitError(false);
     loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
@@ -186,6 +198,7 @@ export class StoreSearch extends PureComponent {
                   enableSuccessCheck={false}
                   onChange={this.onStoreChange}
                 />
+
                 <Button type="submit" title="search" className="button-search-store">
                   <Image
                     alt="search"
@@ -257,6 +270,8 @@ StoreSearch.propTypes = {
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
   showSubmitError: PropTypes.func,
+  setClickAnalyticsData: PropTypes.func,
+  trackClick: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
@@ -264,6 +279,8 @@ StoreSearch.defaultProps = {
   labels: {},
   mapView: false,
   showSubmitError: () => false,
+  setClickAnalyticsData: () => null,
+  trackClick: () => null,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));

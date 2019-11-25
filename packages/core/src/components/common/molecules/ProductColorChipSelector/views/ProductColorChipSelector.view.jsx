@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
+import DamImage from '../../../atoms/DamImage';
 import withStyles from '../../../hoc/withStyles';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import styles from '../styles/ProductColorChipSelector.style';
@@ -17,24 +17,41 @@ import styles from '../styles/ProductColorChipSelector.style';
 const getColorsChipsOptionsMap = (
   colorFitsSizesMap,
   isShowZeroInventoryEntries,
-  isDisableZeroInventoryEntries
+  isDisableZeroInventoryEntries,
+  isGiftCard
 ) => {
   return (
     colorFitsSizesMap &&
     colorFitsSizesMap.map(colorEntry => {
       const color = colorEntry && colorEntry.get('color');
       const name = color && color.get('name');
-      const imagePath = color && color.get('imagePath');
+      const swatchImagePath = color && color.get('swatchImage');
+      const swatchImageUrl = swatchImagePath && swatchImagePath.split('_');
+      let imgUrl = swatchImageUrl
+        ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
+        : '';
+      let imgConfig = 'w_50,h_50,c_thumb,g_auto:0';
+      if (isGiftCard && color && color.get('imagePath')) {
+        imgUrl = color.get('imagePath');
+        imgConfig = 'w_125';
+      }
+      const imgData = {
+        alt: '',
+        url: imgUrl,
+      };
+
+      const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
       return {
         value: name,
         title: name,
         content: (
           <span className="color-title-container" title={name}>
             <span className="color-name">{name}</span>
-            <img
+            <DamImage
               className="color-image"
-              src={changeImageURLToDOM(imagePath, 'w_50,h_50,c_thumb,g_auto:0')}
-              alt=""
+              imgData={imgData}
+              isProductImage
+              imgConfigs={imgDataConfig}
             />
           </span>
         ),
@@ -74,12 +91,14 @@ class ProductColorChipsSelector extends React.PureComponent<Props> {
       isShowZeroInventoryEntries,
       isDisableZeroInventoryEntries,
       className, // eslint-disable-line no-unused-vars
+      isGiftCard,
       ...otherProps
     } = this.props;
     const optionsMap = getColorsChipsOptionsMap(
       colorFitsSizesMap,
       isShowZeroInventoryEntries,
-      isDisableZeroInventoryEntries
+      isDisableZeroInventoryEntries,
+      isGiftCard
     );
     return (
       <LabeledRadioButtonGroup

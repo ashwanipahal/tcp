@@ -9,3 +9,7 @@
 #import <React/RCTUtils.h>
 #import <React/RCTConvert.h>
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTLinkingManager.h>
+#import "PPDataCollector.h"
+#import "BraintreeCore.h"
+#import "BraintreeVenmo.h"

@@ -19,19 +19,23 @@ const getButtonListVariationProps = ctaType => {
   return buttonTypeProps[ctaType];
 };
 
-const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
-  const promoTexts = promoBanner[0];
-  const buttonListProps = getButtonListVariationProps(ctaType);
-  let dualVariation = null;
-  const isDropDown =
-    ctaType === 'stackedCTAButtonsExpandable' || ctaType === 'CTAButtonCarouselExpandable';
-  if (isDropDown) {
-    dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
-  }
-  const mappedPromoBanner = promoTexts.textItems.map(item => {
+const getMappedPromoBanner = promoBanner => {
+  const promoTexts = promoBanner ? promoBanner[0] : { textItems: [] };
+  return promoTexts.textItems.map(item => {
     return { ...promoTexts, textItems: [item] };
   });
+};
+
+const ModuleN = props => {
+  const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
+
+  const buttonListProps = getButtonListVariationProps(ctaType);
+  let dualVariation = null;
+  if (ctaType === 'stackedCTAButtonsExpandable' || ctaType === 'CTAButtonCarouselExpandable') {
+    dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
+  }
+  const mappedPromoBanner = getMappedPromoBanner(promoBanner);
+
   return (
     <Row
       className={`${className} moduleN`}
@@ -84,7 +88,7 @@ const ModuleN = props => {
             dataLocatorDropDown={getLocator('moduleN_dropdown')}
             dropdownLabel={expandableTitle}
             dataLocatorTextCta={getLocator('moduleN_cta_links')}
-            dualVariation={isDropDown ? dualVariation : undefined}
+            dualVariation={dualVariation}
           />
         </div>
       </Col>

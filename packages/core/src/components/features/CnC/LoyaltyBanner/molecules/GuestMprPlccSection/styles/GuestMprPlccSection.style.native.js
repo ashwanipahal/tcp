@@ -33,6 +33,17 @@ const HeadingLabel = styled.Text`
       font-size: ${props.theme.typography.fontSizes.fs16};
       `
       : ''}
+
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isProductDetailView
+      ? `color: ${plccMpr(props)}
+      font-size: 16px;
+      font-family: ${props.theme.typography.fonts.secondary};
+      font-weight: ${props.theme.typography.fontWeights.extrabold};
+      `
+      : ''}
   ${props =>
     props.pageChecksObj &&
     props.pageChecksObj.pageCategoryArr &&
@@ -42,6 +53,14 @@ const HeadingLabel = styled.Text`
             ? `color: ${props.theme.colorPalette.gray[900]};`
             : `color: ${plccMpr(props)}`
         }
+      font-size: ${props.theme.typography.fontSizes.fs16};
+      `
+      : ''}
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isAddedToBagPage
+      ? `color: ${plccMpr(props)}
       font-size: ${props.theme.typography.fontSizes.fs16};
       `
       : ''}
@@ -55,14 +74,48 @@ const SubHeadingLabel = styled.Text`
     props.pageChecksObj.pageCategoryArr &&
     props.pageChecksObj.pageCategoryArr.isReviewPage
       ? `color: ${props.theme.colorPalette.gray[900]};
-          font-size: ${props.theme.typography.fontSizes.fs12};
-          `
+          font-size: 12px;`
+      : ''}
+
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isProductDetailView
+      ? `color: ${props.theme.colorPalette.gray[900]};
+      font-family: ${props.theme.typography.fonts.secondary};
+      font-weight: ${props.theme.typography.fontWeights.extrabold};
+      padding-top: ${props.theme.spacing.ELEM_SPACING.XXS};
+      font-size: ${props.theme.typography.fontSizes.fs12};
+      `
+      : ''}
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isAddedToBagPage
+      ? `color: ${props.theme.colorPalette.gray[900]};
+        font-size: ${props.theme.typography.fontSizes.fs12};
+        ${!props.pageChecksObj.isGuest &&
+          !props.pageChecksObj.isPlcc &&
+          `color: ${plccMpr(props)}
+          font-size: ${props.theme.typography.fontSizes.fs16};
+          `}
+      `
       : ''}
 `;
 
 const DescriptionLabel = styled.Text`
   padding: 12px 20px 0;
   font-size: 12px;
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isProductDetailView
+      ? `color: ${props.theme.colorPalette.gray[900]};
+      font-family: ${props.theme.typography.fonts.secondary};
+      font-weight: ${props.theme.typography.fontWeights.extrabold};
+      padding-top: ${props.theme.spacing.ELEM_SPACING.XXS};
+      `
+      : ''}
 `;
 
 const RemainingPlccLabel = styled.Text`

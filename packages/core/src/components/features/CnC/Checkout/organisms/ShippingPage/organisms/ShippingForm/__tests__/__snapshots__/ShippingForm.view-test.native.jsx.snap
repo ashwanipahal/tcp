@@ -57,12 +57,18 @@ exports[`Shipping Form should render correctly 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={true}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -88,69 +94,6 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
       />
     </FormSection>
     <FormSection
-      name="emailSignUp"
-    >
-      <Styled(View)>
-        <Styled(View)>
-          <Field
-            component={[Function]}
-            dataLocator="signUp-checkbox-field"
-            name="sendEmailSignup"
-          />
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator="shipping-email-signUp-heading-lbl"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            margin={null}
-            numberOfLines={null}
-            text="lbl_pickup_emailSignupHeading"
-            textDecoration={null}
-          />
-        </Styled(View)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator="shipping-email-signUp-sub-heading-text"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
-          margin={null}
-          numberOfLines={null}
-          text="lbl_pickup_emailSignupSubHeading"
-          textDecoration={null}
-        />
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
-          margin={null}
-          numberOfLines={null}
-          text="lbl_pickup_emailSignupSubSubHeading"
-          textDecoration={null}
-        />
-        <Styled(Anchor)
-          accessibilityLabel=""
-          anchorVariation="primary"
-          colorName={null}
-          customStyle={Object {}}
-          dataLocator="shipping-email-signUp-contact-anchor"
-          fontSizeVariation="small"
-          href="#"
-          locator=""
-          margins={null}
-          noLink={true}
-          noUnderline={true}
-          onPress={null}
-          target="_blank"
-          text="lbl_pickup_emailSignupContact"
-          visible={false}
-        />
-      </Styled(View)>
-    </FormSection>
-    <FormSection
       name="shipmentMethods"
     >
       <ShipmentMethods
@@ -174,12 +117,18 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={true}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;
@@ -193,12 +142,15 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
       addressFormLabels={Object {}}
       addressPhoneNo={null}
       defaultAddressId={null}
+      editShipmentDetailsError=""
       formName="checkoutShipping"
       isGuest={false}
       isSaveToAddressBookChecked={false}
       newUserPhoneNo={null}
       onFileAddressKey={null}
       setAsDefaultShipping={null}
+      setEditModalRef={[Function]}
+      setEditState={[Function]}
       shippingAddress={null}
       syncErrorsObject={Object {}}
       updateShippingAddress={[Function]}
@@ -241,12 +193,18 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText="lbl_shipping_billingText"
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isGuest={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    onPress={[Function]}
+    onVenmoSubmit={[Function]}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
+    showVenmoSubmit={false}
   />
 </Fragment>
 `;

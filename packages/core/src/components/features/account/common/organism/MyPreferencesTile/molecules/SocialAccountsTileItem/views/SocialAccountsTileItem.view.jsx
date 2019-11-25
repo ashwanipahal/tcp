@@ -64,7 +64,7 @@ class SocialAccountsTileItem extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
-        <Row fullBleed className="elem-mt-XS">
+        <Row fullBleed className="elem-mt-XS line-height-0">
           <Col
             colSize={{
               small: 5,
@@ -100,7 +100,7 @@ class SocialAccountsTileItem extends React.PureComponent {
                 )}
               </>
             ) : (
-              <BodyCopy fontSize="fs14" fontFamily="secondary">
+              <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXXL elem-pb-XS">
                 {getLabelValue(
                   labels,
                   'lbl_preference_tileConnectedSocialAccountsText',

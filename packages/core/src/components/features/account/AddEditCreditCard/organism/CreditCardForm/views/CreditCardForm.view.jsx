@@ -6,6 +6,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import CreditCardFields from '../../../../../../common/molecules/CreditCardFields';
 import constants from '../../../container/AddEditCreditCard.constants';
@@ -99,7 +100,7 @@ export class CreditCardForm extends React.PureComponent {
       value: '',
       title: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
+        <Button fullWidth buttonVariation="variable-width" fill="BLACK">
           {getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC')}
         </Button>
       ),
@@ -170,44 +171,66 @@ export class CreditCardForm extends React.PureComponent {
           {getSubHeading(subHeading)}
         </Heading>
         {addressList && addressList.size > 0 && (
-          <Row fullBleed className="elem-mb-XL">
-            <Col
-              colSize={{
-                large: 6,
-                small: 6,
-                medium: 4,
-              }}
-              className="creditCardForm__addressBook"
-            >
-              <Field
-                selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
-                name="onFileAddressKey"
-                id="onFileAddressKey"
-                component={AddressDropdown}
-                dataLocator="payment-billingaddressdd"
-                options={this.getAddressOptions()}
-              />
-            </Col>
-            <Col
-              colSize={{
-                large: 6,
-                medium: 4,
-                small: 6,
-              }}
-              className="addressContainer"
-            >
-              {onFileAddressKey && (
-                <Address
-                  address={this.getSelectedAddress(addressList, onFileAddressKey)}
-                  showCountry={false}
-                  showPhone={false}
-                  className="CreditCardForm__address"
-                  dataLocatorPrefix="payment"
-                  singleLineAddress
+          <>
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  large: 6,
+                  small: 6,
+                  medium: 4,
+                }}
+                className="creditCardForm__addressBook"
+              >
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight="black"
+                  color="gray.900"
+                  dataLocator="payment-billingaddressLbl"
+                >
+                  {getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
+                </BodyCopy>
+              </Col>
+            </Row>
+            <Row fullBleed className="elem-mb-XL">
+              <Col
+                colSize={{
+                  large: 6,
+                  small: 6,
+                  medium: 4,
+                }}
+                className="creditCardForm__addressBook"
+              >
+                <Field
+                  name="onFileAddressKey"
+                  id="onFileAddressKey"
+                  component={AddressDropdown}
+                  dataLocator="payment-billingaddressdd"
+                  options={this.getAddressOptions()}
+                  labels={labels}
                 />
-              )}
-            </Col>
-          </Row>
+              </Col>
+              <Col
+                colSize={{
+                  large: 6,
+                  medium: 4,
+                  small: 6,
+                }}
+                className="addressContainer"
+              >
+                {onFileAddressKey && (
+                  <Address
+                    address={this.getSelectedAddress(addressList, onFileAddressKey)}
+                    showCountry={false}
+                    showPhone={false}
+                    className="CreditCardForm__address"
+                    dataLocatorPrefix="payment"
+                    singleLineAddress
+                  />
+                )}
+              </Col>
+            </Row>
+          </>
         )}
 
         {showAddressForm && (

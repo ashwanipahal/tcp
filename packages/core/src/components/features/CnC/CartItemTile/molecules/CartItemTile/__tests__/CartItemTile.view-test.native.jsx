@@ -1,8 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
 import CartItemTile from '../views/CartItemTile.view.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileExtension from '../views/CartItemTileExtension.view.native';
+
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 
 describe('CartItemTile common component', () => {
   it('renders correctly', () => {
@@ -19,7 +22,7 @@ describe('CartItemTile common component', () => {
           itemBrand: 'TCP',
           color: 'red',
         },
-        productInfo: { skuId: '123', productPartNumber: 123 },
+        productInfo: { skuId: '123', productPartNumber: 123, pdpUrl: '' },
         miscInfo: {
           badge: '',
         },
@@ -40,7 +43,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with Save for later enabled', () => {
     const props = {
       productDetail: {
-        productInfo: { skuId: '123' },
+        productInfo: { skuId: '123', pdpUrl: '' },
         itemInfo: {
           name: 'Boys Basic',
           qty: '1',
@@ -71,7 +74,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with bag page sfl section', () => {
     const props = {
       productDetail: {
-        productInfo: { skuId: '123' },
+        productInfo: { skuId: '123', pdpUrl: '' },
         itemInfo: {
           name: 'Boys Basic Skinny Jeans',
           qty: '1',
@@ -118,6 +121,8 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
           fit: 'regular',
           itemBrand: 'TCP',
           itemUnitPrice: 12.345,
+          offerPrice: 38.85,
+          itemId: '123',
         },
         miscInfo: {
           badge: '',
@@ -132,6 +137,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
         },
         productInfo: {
           upc: 'upc',
+          pdpUrl: '',
         },
       },
       labels: {
@@ -152,6 +158,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
       onPickUpOpenClick: jest.fn(),
       orderId: 123,
       removeCartItem: jest.fn(),
+      onQuickViewOpenClick: jest.fn(),
     };
   });
 
@@ -236,7 +243,22 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.clearanceItem = true;
     props.isBopisClearanceProductEnabled = false;
     const component = shallow(<CartItemTile {...props} />);
-    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, props);
+    component.instance().handleEditCartItemWithStore('BOPIS', false, false, props);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should call gotopdp page', () => {
+    props.productDetail.productInfo.pdpUrl = '';
+    props.productDetail.productInfo.productPartNumber = 'IV_24';
+    props.navigation = { navigate: jest.fn() };
+    props.productDetail.itemInfo.itemBrand = 'TCP';
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.goToPdpPage(
+      '',
+      { productInfo: { pdpUrl: '', productPartNumber: 'IV_24' }, itemInfo: { itemBrand: 'TCP' } },
+      { navigate: jest.fn() },
+      jest.fn()
+    );
     expect(component).toMatchSnapshot();
   });
 
@@ -272,5 +294,48 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
       orderItemType: 'BOSS',
     });
     expect(props.clearToggleError).toHaveBeenCalled();
+  });
+
+  it('should open pickup modal for boss/bopis toggle error', () => {
+    jest.useFakeTimers();
+    props.pageView = 'myBag';
+    props.toggleBossBopisError = {
+      errorMessage: 'errorMessage',
+      itemId: '123',
+      targetOrderType: 'BOPIS',
+    };
+    props.isBagPageSflSection = false;
+    const component = shallow(<CartItemTile {...props} />);
+    const instance = component.instance();
+    instance.componentDidUpdate({ toggleBossBopisError: null });
+    jest.runAllTimers();
+    expect(props.onPickUpOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Quick View Modal for Ecom item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = false;
+    props.productDetail.miscInfo.orderItemType = 'ECOM';
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(props.onQuickViewOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Quick View Modal for SFL item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = true;
+    props.productDetail.miscInfo.orderItemType = null;
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(props.onQuickViewOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Pickup Modal for BOSS item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = false;
+    props.productDetail.miscInfo.orderItemType = 'BOSS';
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(pickupHandler).toHaveBeenCalled();
   });
 });

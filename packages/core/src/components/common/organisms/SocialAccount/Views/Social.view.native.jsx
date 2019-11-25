@@ -220,7 +220,7 @@ class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
-      if (prop === 'pointsAwarded') {
+      if (prop === 'pointsAwarded' && accounts[prop]) {
         this.pointsInformation = {
           activity: accounts[prop].activity,
           id: accounts[prop].id,
@@ -265,7 +265,7 @@ class Socialview extends React.PureComponent {
       case 'Facebook':
         if (!isConnected) {
           // Attempt a login using the Facebook login dialog asking for default permissions.
-          return LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
+          return LoginManager.logInWithPermissions(['public_profile']).then(result => {
             if (result.isCancelled) {
               // do nothing
             } else {

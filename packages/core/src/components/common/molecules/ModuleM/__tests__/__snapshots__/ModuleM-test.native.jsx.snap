@@ -1,0 +1,761 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleM component ModuleM component renders correctly with props 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <LinkText
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs32"
+      fontWeight="black"
+      headerText={
+        Array [
+          Object {
+            "__typename": "HeaderText",
+            "icon": Object {
+              "__typename": "Icon",
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "__typename": "Link",
+              "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+              "target": "_blank",
+              "title": "ALL CLEARANCE",
+              "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+              "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+            },
+            "textItems": Array [
+              Object {
+                "__typename": "StyledText",
+                "style": "medium_text_black",
+                "text": "YOUR UNIFORM PLACE",
+              },
+            ],
+          },
+        ]
+      }
+      textAlign="center"
+      type="heading"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <LinkText
+      headerText={
+        Array [
+          Object {
+            "__typename": "HeaderText",
+            "icon": Object {
+              "__typename": "Icon",
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "__typename": "Link",
+              "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+              "target": "_blank",
+              "title": "Give Their School Outfits A Head-To-Toe Refresh",
+              "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+              "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+            },
+            "textItems": Array [
+              Object {
+                "__typename": "StyledText",
+                "style": "medium_text_subpromo",
+                "text": "Give Their School Outfits A Head-To-Toe Refresh",
+              },
+            ],
+          },
+        ]
+      }
+      useStyle={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <PromoBanner
+      promoBanner={
+        Array [
+          Object {
+            "__typename": "PromoBanner",
+            "link": Object {
+              "__typename": "Link",
+              "asPath": "/c/kids-holiday-dress-up-all",
+              "title": "",
+              "to": "/c?cid=kids-holiday-dress-up-all",
+              "url": "/c/kids-holiday-dress-up-all",
+            },
+            "textItems": Array [
+              Object {
+                "__typename": "StyledText",
+                "style": "small_white_text_semibold",
+                "text": "ALL UNIFORMS",
+              },
+              Object {
+                "__typename": "StyledText",
+                "style": "extra_large_white_text_black",
+                "text": "60% OFF",
+              },
+            ],
+          },
+        ]
+      }
+      testID="moduleM_promobanner_text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <ButtonTabs
+      onTabChange={[Function]}
+      selectedTabId="tablList-0"
+      tabs={
+        Array [
+          Object {
+            "id": "tablList-0",
+            "label": "GIRL",
+          },
+          Object {
+            "id": "tablList-1",
+            "label": "TODDLER GIRL",
+          },
+          Object {
+            "id": "tablList-2",
+            "label": "BOY",
+          },
+          Object {
+            "id": "tablList-3",
+            "label": "TODDLER BOY",
+          },
+        ]
+      }
+      wrappedButtonTabs={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="0"
+      tileIndex={0}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image0"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined0"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Dresses"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="1"
+      tileIndex={1}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Toddler Girl alt"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Toddler Girl alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Girl title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image1"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined1"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Skorts"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="2"
+      tileIndex={2}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Boy"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Boy",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image2"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined2"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Sweaters"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="3"
+      tileIndex={3}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Toddler Boy alt"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Toddler Boy alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Boy title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image3"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined3"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Shorts"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="4"
+      tileIndex={4}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Baby"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Baby",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image4"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined4"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Polos"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="5"
+      tileIndex={5}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image5"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined5"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Dresses"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="6"
+      tileIndex={6}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image6"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined6"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Dresses"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(View)
+      imageCount={8}
+      key="7"
+      tileIndex={7}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          checkBrand=""
+          crop=""
+          height={228}
+          host=""
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
+            Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            }
+          }
+          isProductImage={false}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="moduleM_image7"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
+          width={228}
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        testID="undefined7"
+        text=""
+        url="/c/"
+        visible={false}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="Dresses"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={null}
+      testID="moduleM_cta_btn"
+      text=""
+      url="/c/baby-clothes"
+      visible={false}
+    >
+      <Styled(View)
+        imageCount={8}
+        imageDimension={228}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="white"
+          dataLocator=""
+          fontSize="fs20"
+          fontWeight="extrabold"
+          letterSpacing="ls1"
+          margin={null}
+          mobileFontFamily="primary"
+          numberOfLines={null}
+          text="SHOP ALL"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(Anchor)>
+  </Styled(View)>
+</Styled(View)>
+`;

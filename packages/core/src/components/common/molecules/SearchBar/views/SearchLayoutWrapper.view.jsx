@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
+import { getIconPath, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBarStyle from '../SearchBar.style';
@@ -30,6 +31,13 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.searchInput = React.createRef();
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
+    this.targetElement = React.createRef();
+  }
+
+  componentDidMount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      disableBodyScroll(this.targetElement.current);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -39,86 +47,80 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      enableBodyScroll(this.targetElement.current);
+    }
+  }
+
   startInitiateSearch = () => {
-    const { setSearchState, setDataInLocalStorage, redirectToSearchPage } = this.props;
-    const searchText = this.searchInput.current.value;
+    const {
+      setSearchState,
+      setDataInLocalStorage,
+      redirectToSearchPage,
+      commonCloseClick,
+    } = this.props;
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
-    } else {
-      routerPush(`/search?searchQuery=`, `/search/`, { shallow: true });
+      setSearchState(false);
+      if (window.innerWidth <= breakpoints.values.lg) {
+        commonCloseClick();
+      }
     }
-    setSearchState(false);
   };
 
   cancelSearchBar = e => {
+    const { startSearch, labels } = this.props;
     e.preventDefault();
-    const searchText = this.searchInput.current.value;
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     if (searchText) {
       document.getElementById('searchBar-input-form').reset();
       document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
     }
+    const payload = {
+      searchText: '',
+      slpLabels: labels,
+    };
+    startSearch(payload);
+  };
+
+  changeCaseFirstLetter = params => {
+    if (typeof params === 'string') {
+      return params.charAt(0).toUpperCase() + params.slice(1);
+    }
+    return null;
   };
 
   highlight = inputTextParam => {
-    const text = this.searchInput.current.value;
+    const text = this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
-    if (index >= 0) {
+    inputText = this.changeCaseFirstLetter(inputText);
+    if (index >= 0 && inputText) {
       return (
         <div className="lookingFor-textWrapper-div">
-          {`${inputText.substring(0, index).toUpperCase()}`}
+          {`${inputText.substring(0, index)}`}
           <span className="highlight-search-result">
-            {`${inputText.substring(index, index + text.length).toUpperCase()}`}
+            {`${inputText.substring(index, index + text.length)}`}
           </span>
-          {`${inputText.substring(index + text.length).toUpperCase()}`}
+          {`${inputText.substring(index + text.length)}`}
         </div>
       );
     }
-    return null;
-  };
 
-  isLookingForExist = searchResults => {
-    const { labels } = this.props;
-    if (
-      searchResults &&
-      searchResults.autosuggestList &&
-      searchResults.autosuggestList[0] &&
-      searchResults.autosuggestList[0].suggestions.length > 0
-    ) {
-      return (
-        <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
-          {getLabelValue(labels, 'lbl_search_looking_for')}
-        </BodyCopy>
-      );
-    }
-    return null;
-  };
-
-  isLookingForProductsExist = searchResults => {
-    const { labels } = this.props;
-    if (
-      searchResults &&
-      searchResults.autosuggestProducts &&
-      searchResults.autosuggestProducts.length > 0
-    ) {
-      return (
-        <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-          {getLabelValue(labels, 'lbl_search_product_matches')}
-        </BodyCopy>
-      );
-    }
-    return null;
+    return <div className="lookingFor-textWrapper-div">{`${inputText}`}</div>;
   };
 
   initiateSearchByModal = e => {
-    const { commonCloseClick } = this.props;
     e.preventDefault();
     this.startInitiateSearch();
-    commonCloseClick();
   };
 
   initiateSearch = e => {
@@ -126,18 +128,16 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.startInitiateSearch();
   };
 
-  initiateSearchBySubmit = () => {
-    const { commonCloseClick } = this.props;
+  initiateSearchBySubmit = e => {
+    e.preventDefault();
     this.startInitiateSearch();
-    if (window.innerWidth <= breakpoints.values.lg) {
-      commonCloseClick();
-    }
   };
 
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch, labels } = this.props;
-    const searchText = this.searchInput.current.value;
+    const { startSearch, labels, toggleSearchResults } = this.props;
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document
@@ -146,11 +146,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
     const termLength = 1;
     if (searchText.length <= termLength) {
-      const payload = {
-        searchText: '',
-        slpLabels: labels,
-      };
-      startSearch(payload);
+      toggleSearchResults(false);
     } else {
       const payload = {
         searchText,
@@ -166,6 +162,27 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
+  suggestionFound = searchResults => {
+    let flag = false;
+    if (searchResults && searchResults.autosuggestList) {
+      searchResults.autosuggestList.forEach(type => {
+        if (type.suggestions && type.suggestions.length > 0) {
+          flag = true;
+          return false;
+        }
+        return true;
+      });
+    }
+    return flag;
+  };
+
+  handleClickOutside() {
+    const { setSearchState, isSearchOpen } = this.props;
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
+      setSearchState(false);
+    }
+  }
+
   render() {
     const {
       className,
@@ -175,28 +192,21 @@ class SearchLayoutWrapper extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
       closeSearchLayover,
     } = this.props;
-
-    const LookingForLabel = () => {
-      return this.isLookingForExist(searchResults);
-    };
-
-    const LookingForProductLabel = () => {
-      return this.isLookingForProductsExist(searchResults);
-    };
 
     const HighLightSearch = inputText => this.highlight(inputText);
 
     // const SEARCH_BLUE_IMAGE = 'search-icon';
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
 
+    const suggestionFound = this.suggestionFound(searchResults);
+
     return (
       <React.Fragment>
-        <div className="searchWrapper">
+        <div className="searchWrapper" ref={this.targetElement}>
           <div className="searchbar">
             <Image
               alt="search-mobile"
@@ -218,6 +228,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 maxLength="50"
@@ -246,53 +257,77 @@ class SearchLayoutWrapper extends React.PureComponent {
                 isLatestSearchResultsExists={isLatestSearchResultsExists}
                 latestSearchResults={latestSearchResults}
                 labels={labels}
-                hideOverlayAfterClick={hideOverlayAfterClick}
+                redirectToSuggestedUrl={redirectToSuggestedUrl}
               />
             ) : (
               <div className="matchBox" id="matchBox-wrapper">
-                <div className="matchLinkBox">
-                  <LookingForLabel searchResults={searchResults} />
-                  {searchResults &&
-                    searchResults.autosuggestList &&
-                    searchResults.autosuggestList.map(item => {
-                      return (
-                        <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
-                          <ul>
-                            {item &&
-                              item.suggestions &&
-                              item.suggestions.map(itemData => {
-                                return (
-                                  <BodyCopy
-                                    component="li"
-                                    fontFamily="secondary"
-                                    fontSize="fs14"
-                                    key={item.id}
-                                    className="linkName"
-                                  >
-                                    <Anchor
-                                      noLink
-                                      className="suggestion-label"
-                                      onClick={() => redirectToSuggestedUrl(`${itemData.text}`)}
+                {suggestionFound && (
+                  <div className="matchLinkBox">
+                    {searchResults.autosuggestList.map(item => {
+                      if (item && item.suggestions && item.suggestions.length > 0) {
+                        return (
+                          <div>
+                            <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
+                              {item.heading}
+                            </BodyCopy>
+                            <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
+                              <ul>
+                                {item.suggestions.map(itemData => {
+                                  const isCategory =
+                                    item.heading === getLabelValue(labels, 'lbl_category_matches');
+                                  let itemUrl;
+                                  let toPath = `/${getSiteId()}/search/${itemData.text}`;
+                                  if (isCategory) {
+                                    itemUrl = itemData.url.replace(/'/g, '');
+                                    toPath = `/${getSiteId()}${itemUrl}`;
+                                  }
+                                  return (
+                                    <BodyCopy
+                                      component="li"
+                                      fontFamily="secondary"
+                                      fontSize="fs14"
+                                      key={item.id}
+                                      className="linkName"
                                     >
-                                      {itemData && itemData.text && (
-                                        <HighLightSearch inputText={`${itemData.text}`} />
-                                      )}
-                                    </Anchor>
-                                  </BodyCopy>
-                                );
-                              })}
-                          </ul>
-                        </BodyCopy>
-                      );
+                                      <Anchor
+                                        noLink
+                                        className="suggestion-label"
+                                        to={toPath}
+                                        onClick={e => {
+                                          e.preventDefault();
+                                          redirectToSuggestedUrl(`${itemData.text}`, itemUrl);
+                                        }}
+                                      >
+                                        {itemData.text && (
+                                          <HighLightSearch inputText={`${itemData.text}`} />
+                                        )}
+                                      </Anchor>
+                                    </BodyCopy>
+                                  );
+                                })}
+                              </ul>
+                            </BodyCopy>
+                          </div>
+                        );
+                      }
+                      return '';
                     })}
-                </div>
-                <div className="matchProductBox">
-                  <LookingForProductLabel searchResults={searchResults} />
-                  <LookingForProductDetail
-                    searchResults={searchResults}
-                    closeSearchLayover={closeSearchLayover}
-                  />
-                </div>
+                  </div>
+                )}
+
+                {searchResults &&
+                  searchResults.autosuggestProducts &&
+                  searchResults.autosuggestProducts.length > 0 && (
+                    <div className="matchProductBox">
+                      <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
+                        {getLabelValue(labels, 'lbl_search_product_matches')}
+                      </BodyCopy>
+                      <LookingForProductDetail
+                        searchResults={searchResults}
+                        closeSearchLayover={closeSearchLayover}
+                      />
+                    </div>
+                  )}
               </div>
             )}
           </div>
@@ -307,12 +342,12 @@ SearchLayoutWrapper.propTypes = {
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,
   redirectToSearchPage: PropTypes.func.isRequired,
   startSearch: PropTypes.func.isRequired,
+  toggleSearchResults: PropTypes.func.isRequired,
   commonCloseClick: PropTypes.func.isRequired,
   showProduct: PropTypes.bool,
   isSearchOpen: PropTypes.bool,
@@ -350,4 +385,4 @@ SearchLayoutWrapper.defaultProps = {
   latestSearchResults: [],
 };
 
-export default connect()(withStyles(SearchLayoutWrapper, SearchBarStyle));
+export default connect()(withStyles(enhanceWithClickOutside(SearchLayoutWrapper), SearchBarStyle));

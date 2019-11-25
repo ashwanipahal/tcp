@@ -34,9 +34,12 @@ const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.
  *     and shoe the name fro register user
  */
 class BagPageHeader extends React.PureComponent<Props> {
-  render() {
+  closeIconAction = () => {
     const { navigation } = this.props;
+    navigation.goBack();
+  };
 
+  render() {
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
@@ -49,11 +52,7 @@ class BagPageHeader extends React.PureComponent<Props> {
             />
           </BrandIconSection>
           <CloseContainer>
-            <CloseIconTouchable
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
+            <CloseIconTouchable onPress={this.closeIconAction}>
               <CloseIcon
                 source={closeIcon}
                 data-locator={getLocator('global_bagpageheaderpanelcloseicon')}

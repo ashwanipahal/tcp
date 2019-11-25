@@ -12,6 +12,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
   }
 >
   <ForwardRef
+    className="moduleA_carousel_wrapper"
     colSize={
       Object {
         "large": 12,
@@ -36,6 +37,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
         }
         options={
           Object {
+            "afterChange": [Function],
             "arrows": true,
             "autoplay": true,
             "autoplaySpeed": 4000,
@@ -60,8 +62,9 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
               },
             ],
-            "speed": 1000,
+            "speed": 200,
             "swipe": true,
+            "swipeToSlide": true,
           }
         }
       >
@@ -644,6 +647,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
   }
 >
   <ForwardRef
+    className="moduleA_carousel_wrapper"
     colSize={
       Object {
         "large": 12,
@@ -668,6 +672,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
         }
         options={
           Object {
+            "afterChange": [Function],
             "arrows": true,
             "autoplay": true,
             "autoplaySpeed": 4000,
@@ -692,8 +697,9 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
               },
             ],
-            "speed": 1000,
+            "speed": 200,
             "swipe": true,
+            "swipeToSlide": true,
           }
         }
       >

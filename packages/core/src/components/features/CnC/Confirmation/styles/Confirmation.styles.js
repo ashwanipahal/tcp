@@ -13,9 +13,10 @@ const styles = css`
     margin-bottom: 16px;
     text-align: center;
   }
-
-  .sms-sign-up {
-    height: 50px;
+  .loyalty-banner {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: none;
+    }
   }
 `;
 

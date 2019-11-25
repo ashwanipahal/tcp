@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import style, {
   TileHeader,
   TileFooter,
@@ -82,7 +83,15 @@ class StoreAddressTile extends PureComponent {
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
           >
-            {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            <ClickTracker
+              clickData={{
+                customEvents: ['event80,event96'],
+                eVar65: 'companyinfo:companyinfo',
+                eVar28: 'outfit:2625899',
+              }}
+            >
+              {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            </ClickTracker>
           </Anchor>
         </div>
         <div>
@@ -94,7 +103,9 @@ class StoreAddressTile extends PureComponent {
               type="button"
               data-locator={locatorSetFavStore}
             >
-              {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+              <ClickTracker clickData={{ customEvents: ['event67'] }}>
+                {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+              </ClickTracker>
             </Button>
           )}
         </div>
@@ -160,7 +171,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {getStoreHours(hours, labels, currentDate)}
+                {`(${getStoreHours(hours, labels, currentDate)})`}
               </BodyCopy>
               {!geoLocationDisabled && (
                 <BodyCopy
@@ -176,7 +187,9 @@ class StoreAddressTile extends PureComponent {
                   }`}
                 </BodyCopy>
               )}
-              <Anchor
+
+              <ClickTracker
+                as={Anchor}
                 fontSizeVariation="medium"
                 underline
                 url={openStoreDirections(store)}
@@ -184,9 +197,10 @@ class StoreAddressTile extends PureComponent {
                 target="_blank"
                 className="store-directions-link"
                 title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+                clickData={{ customEvents: ['event97'] }}
               >
                 {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-              </Anchor>
+              </ClickTracker>
             </div>
           </div>
           <div className="address-wrapper">
@@ -267,7 +281,7 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {storeHours}
+              {`(${storeHours})`}
             </BodyCopy>
           )}
           {!geoLocationDisabled && (
@@ -277,7 +291,8 @@ class StoreAddressTile extends PureComponent {
               }`}
             </BodyCopy>
           )}
-          <Anchor
+          <ClickTracker
+            as={Anchor}
             fontSizeVariation="medium"
             underline
             url={openStoreDirections(store)}
@@ -285,9 +300,10 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+            clickData={{ customEvents: ['event97'], pageName: 'storelocator:' }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-          </Anchor>
+          </ClickTracker>
         </div>
       </div>
     );
@@ -442,3 +458,5 @@ StoreAddressTile.propTypes = propTypes;
 StoreAddressTile.defaultProps = defaultProps;
 
 export default withStyles(StoreAddressTile, style);
+
+export { StoreAddressTile as StoreAddressTileVanilla };

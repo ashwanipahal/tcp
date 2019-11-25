@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import logger from '@tcp/core/src/utils/loggerInstance';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
 
@@ -65,6 +65,14 @@ export function getVariantId(colorFitsSizesMap, color, fit, size) {
 }
 
 /**
+ * @return the variant no selected by the user.
+ */
+export function getVariantNo(colorFitsSizesMap, color, fit, size) {
+  const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
+  return currentSizeEntry && currentSizeEntry.variantNo;
+}
+
+/**
  * Returns the list and offer prices corresponding to the sku with the given color, fit and size.
  */
 export function getPrices(productInfo, color, fit, size) {
@@ -118,6 +126,27 @@ export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) 
 }
 
 /**
+ * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
+ */
+export function getMapSliceForSizeSkuID(colorProduct, size) {
+  let skuId;
+  if (colorProduct && colorProduct.fits && Array.isArray(colorProduct.fits)) {
+    for (let i = 0; i < colorProduct.fits.length; i++) {
+      const fitsMap = colorProduct.fits[i];
+      for (let j = 0; j < fitsMap.sizes.length; j++) {
+        const sizesMap = fitsMap.sizes[j];
+        if (sizesMap.sizeName === size) {
+          skuId = sizesMap;
+          break;
+        }
+      }
+    }
+  }
+
+  return skuId;
+}
+
+/**
  * @return the element flagged as default (or the first one) on the fits array
  */
 export function getDefaultFitForColorSlice(colorFitsSizesMapEntry, ignoreQtyCheck = false) {
@@ -150,7 +179,7 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
 }
 
 const getIsColorOnModelLegible = curentColorEntry =>
-  curentColorEntry && curentColorEntry.miscInfo.hasOnModelAltImages;
+  curentColorEntry && curentColorEntry.miscInfo && curentColorEntry.miscInfo.hasOnModelAltImages;
 
 /**
  * @summary This function will return an array of image paths to display
@@ -222,11 +251,7 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
 };
 
 export const getFormattedLoyaltyText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
+  return text.replace(/\s+/g, ' ').trim();
 };
 
 export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
@@ -296,9 +321,19 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
 };
 
 export const getProductListToPath = str => {
+  const bundlePath = str.indexOf('/b/') !== -1;
+  if (bundlePath) {
+    return `/b?bid=${str.split('/b/')[1]}`;
+  }
   return `/p?pid=${str.split('/p/')[1]}`;
 };
 
 export const getProductListToPathInMobileApp = str => {
-  return `${str.split('/p/')[1]}`;
+  let searchPath = str;
+  if (str && str.indexOf('/p/') !== -1) {
+    searchPath = `${str.split('/p/')[1]}`;
+  } else if (str && str.indexOf('/b/') !== -1) {
+    searchPath = `${str.split('/b/')[1]}`;
+  }
+  return searchPath;
 };

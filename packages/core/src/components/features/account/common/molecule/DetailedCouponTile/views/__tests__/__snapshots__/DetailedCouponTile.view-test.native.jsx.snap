@@ -50,6 +50,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -58,6 +59,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"
@@ -72,6 +74,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
           margins={null}
           onPress={[Function]}
@@ -96,12 +99,14 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -119,12 +124,14 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -218,6 +225,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -226,6 +234,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"
@@ -240,6 +249,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
           margins={null}
           onPress={[Function]}
@@ -265,12 +275,14 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
         <Styled(Styled(View)) />
       </Styled(View)>
@@ -289,12 +301,14 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="remove from bag"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -369,6 +383,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -377,6 +392,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"
@@ -391,6 +407,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
+          justifyContent=""
           locator=""
           margins={null}
           onPress={[Function]}
@@ -415,12 +432,14 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -438,12 +457,14 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

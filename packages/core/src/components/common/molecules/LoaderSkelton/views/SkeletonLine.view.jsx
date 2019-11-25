@@ -7,8 +7,7 @@ const WrappedComponent = styled.div`
   height: ${props => (props.height ? props.height : '100%')};
   width: ${props => (props.width ? props.width : '100%')};
   min-height: ${props => (props.height ? props.height : '15px')};
-  border-radius: 10px;
-  background-color: rgb(239, 241, 246);
+  background-color: #d8d8d8;
   overflow: hidden;
   position: relative;
   &:before {
@@ -37,6 +36,6 @@ const WrappedComponent = styled.div`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-const SkeletonLine = () => <WrappedComponent />;
+const SkeletonLine = props => <WrappedComponent {...props} />;
 
 export default SkeletonLine;

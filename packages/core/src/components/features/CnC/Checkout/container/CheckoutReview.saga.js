@@ -2,6 +2,7 @@
 import { call, all, select, put } from 'redux-saga/effects';
 import moment from 'moment';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import {
@@ -13,13 +14,13 @@ import {
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
-import { validateAndSubmitEmailSignup, callPickupSubmitMethod } from './Checkout.saga.util';
+import { callPickupSubmitMethod } from './Checkout.saga.util';
+import { validateAndSubmitEmailSignup } from './CheckoutExtended.saga.util';
 import {
   getAppliedCouponListState,
   isCouponApplied,
 } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
 import {
   getSetCouponsValuesActn,
   getSetRewardPointsOrderConfActn,
@@ -34,6 +35,7 @@ import {
   resetCouponReducer,
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
@@ -152,7 +154,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   }
   if (isVenmoInProgress && venmoData) {
     const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
-    const email = yield select(getUserEmail);
+    const email = yield select(selectors.getVenmoUserEmail);
     venmoPayloadData = {
       venmoNonce,
       venmo_device_data: venmoDeviceData,
@@ -227,6 +229,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     const currentLanguage = yield select(getCurrentLanguage);
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     const pendingPromises = [];
+    yield put(setLoaderState(true));
     if (isExpressCheckoutEnabled && formData) {
       yield call(expressCheckoutSubmit, formData);
     }
@@ -337,7 +340,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     yield all(pendingPromises);
     const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
     if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
+      utility.routeToPage(CHECKOUT_ROUTES.confirmationPage, { fromReview: 'true' });
     } else if (navigation) {
       navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
     }
@@ -346,9 +349,16 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
     const isCaSite = yield call(isCanada);
     const isGuestUser = yield select(isGuest);
+    const { tcpProducts, gymProducts } = yield select(BagPageSelectors.getProductsTypes);
     /* istanbul ignore else */
     if (isGuestUser && !isCaSite && email) {
-      yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+      yield call(
+        validateAndSubmitEmailSignup,
+        email,
+        'us_guest_checkout',
+        tcpProducts.length > 0,
+        gymProducts.length > 0
+      );
     }
     const isCouponAppliedInOrder = yield select(isCouponApplied);
     // const vendorId =
@@ -369,9 +379,11 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // .catch(err => {
     //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
     // });
+    yield put(setLoaderState(false));
   } catch (e) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setLoaderState(false));
     yield put(
       CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
     );

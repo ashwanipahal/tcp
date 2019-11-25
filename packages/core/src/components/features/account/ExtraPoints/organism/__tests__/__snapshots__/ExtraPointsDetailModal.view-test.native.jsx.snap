@@ -42,6 +42,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
   />
   <Styled(View)>
     <RichText
+      actionHandler={[Function]}
       data-locator="earnPointsModal_undefined_ShortDesc"
       domStorageEnabled={false}
       isApplyDeviceHeight={false}
@@ -71,12 +72,14 @@ exports[`Extra Points Details Modal for native should render correctly native co
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
-import { BodyCopy, Button } from '../../../../common/atoms';
+import { BodyCopy, Button, Anchor } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
-import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
 import utility from '../../Checkout/util/utility';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 
@@ -41,6 +40,7 @@ const EmptyBagPage = ({
   isBagPageSflSection,
   showPlccApplyNow = true,
   onLinkClick,
+  openModalApplyNowModal,
 }) => {
   return (
     <div className={className}>
@@ -57,7 +57,7 @@ const EmptyBagPage = ({
           >
             {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
           </BodyCopy>
-          {showPlccApplyNow ? <ApplyNowModal /> : null}
+
           <div className="element-spacing">
             <Button
               data-locator={getLocator(
@@ -114,6 +114,7 @@ EmptyBagPage.propTypes = {
   showPlccApplyNow: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
   onLinkClick: PropTypes.func.isRequired,
+  openModalApplyNowModal: PropTypes.func.isRequired,
 };
 
 EmptyBagPage.defaultProps = {

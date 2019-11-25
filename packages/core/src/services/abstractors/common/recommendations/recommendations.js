@@ -109,8 +109,9 @@ const RecommendationsAbstractor = {
       }
     });
   },
-  getAppData: ({ pageType, categoryName, partNumber }) => {
-    const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
+  getAppData: ({ pageType, categoryName, partNumber, mbox = 'target-global-mbox' }) => {
+    const ADOBE_CLIENT = isGymboree() ? 'gym' : 'tcp';
+    const ADOBE_RECOMMENDATIONS_URL = `https://tcp.tt.omtrdc.net/rest/v1/mbox?client=${ADOBE_CLIENT}`;
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
     const region = getSiteId(); // TODO use `CA` for Canada
@@ -126,11 +127,11 @@ const RecommendationsAbstractor = {
       },
       body: {
         marketingCloudVisitorId: '',
-        mbox: 'target-global-mbox',
+        mbox,
         requestLocation,
         mboxParameters: {
-          'entity.categoryId': categoryName || 'boysskinnychinopants', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
-          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          'entity.categoryId': categoryName || '',
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '',
           pageType,
           region,
         },
@@ -153,24 +154,18 @@ const RecommendationsAbstractor = {
       excludeExtension ? '' : '.jpg'
     }`;
   },
-  getProductImgPath: (id, excludeExtension) => {
-    const imgHostDomain = RecommendationsAbstractor.getOriginImgHostSetting();
 
+  getProductImgPath: (id, excludeExtension) => {
+    const imageName = id.split('_');
+    const imagePath = imageName[0];
     return {
-      125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
-      900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
-        excludeExtension ? '' : '.jpg'
-      }`,
+      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     };
   },
+
   getImgPath: (id, excludeExtension) => {
     return {
       colorSwatch: RecommendationsAbstractor.getSwatchImgPath(id, excludeExtension),
@@ -193,7 +188,7 @@ const RecommendationsAbstractor = {
       body: {
         id: productIds.join(','),
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
+          'productimage,alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
       },
       webService: endpoints.getProductDetails,
     };

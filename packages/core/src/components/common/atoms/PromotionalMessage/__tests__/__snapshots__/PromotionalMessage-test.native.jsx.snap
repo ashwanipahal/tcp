@@ -3,7 +3,6 @@
 exports[`HeadingVanilla should render correctly 1`] = `
 <Styled(View)
   accessibilityRole="text"
-  height={null}
   marginTop={null}
 >
   <Styled(Text)

@@ -67,9 +67,7 @@ export class AddEditCreditCard extends React.PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
     this.setInitialValues();
   }
 
@@ -127,7 +125,7 @@ export class AddEditCreditCard extends React.PureComponent {
         expYear: creditCard.expYear.trim(),
         expMonth: creditCard.expMonth.trim(),
         address: {
-          country: 'US',
+          country: isCanada() ? 'CA' : 'US',
           addressLine2: '',
         },
       };

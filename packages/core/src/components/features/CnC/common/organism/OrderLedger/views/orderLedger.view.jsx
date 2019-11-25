@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
@@ -28,15 +29,25 @@ const OrderLedger = ({
   isConfirmationPage,
   orderLedgerAfterView,
   pageCategory,
+  bagLoading,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = OrderLedgerUtils.getBody(className, summaryData, labels, pageCategory);
+  const body = OrderLedgerUtils.getBody(
+    className,
+    summaryData,
+    labels,
+    pageCategory,
+    orderLedgerAfterView,
+    bagLoading,
+    isConfirmationPage
+  );
+
   return (
-    <div className={`${className} elem-mb-MED`}>
+    <div className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}>
       <Col
         colSize={{
           large: 12,
@@ -52,15 +63,16 @@ const OrderLedger = ({
           iconLocator="arrowicon"
           defaultOpen={false}
           isDefaultView={!showAccordian}
+          showHeaderAlways={isConfirmationPage}
         />
       </Col>
-      {orderLedgerAfterView}
     </div>
   );
 };
 
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
+  bagLoading: PropTypes.bool,
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
     grandTotal: PropTypes.number,
@@ -90,6 +102,7 @@ OrderLedger.propTypes = {
     giftCardsTotal: PropTypes.number,
     currencySymbol: PropTypes.string.isRequired,
     orderBalanceTotal: PropTypes.number,
+    totalOrderSavings: PropTypes.number,
   }),
 };
 
@@ -99,6 +112,7 @@ OrderLedger.defaultProps = {
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
   pageCategory: '',
+  bagLoading: false,
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

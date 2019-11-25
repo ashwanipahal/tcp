@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getDateInformation } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import CONFIRMATION_CONSTANTS from '../../../Confirmation.constants';
-import { getDateInformation } from '../../../../../../../utils';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/ConfirmationOrderNumberDisplay.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { ROUTE_PATH } from '../../../../../../../config/route.config';
 import internalEndpoints from '../../../../../account/common/internalEndpoints';
 
-const { orderPage } = internalEndpoints;
+const { orderPage, trackOrder } = internalEndpoints;
 
 /**
  * @function ConfirmationOrderNumberDisplay
@@ -74,14 +74,17 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
           {isGuest ? (
             <Anchor
               underline
-              url={ROUTE_PATH.guestOrderDetails({
-                pathSuffix: `${orderNumber}/${encryptedEmailAddress}`,
-              })}
+              to={`${trackOrder.link}&orderId=${orderNumber}&emailAddress=${encryptedEmailAddress}`}
+              asPath={`${trackOrder.path}/${orderNumber}/${encryptedEmailAddress}`}
             >
               {orderNumber}
             </Anchor>
           ) : (
-            <Anchor underline to={orderPage.link} asPath={`${orderPage.path}/${orderNumber}`}>
+            <Anchor
+              underline
+              to={`${orderPage.link}&orderId=${orderNumber}`}
+              asPath={`${orderPage.path}/${orderNumber}`}
+            >
               {orderNumber}
             </Anchor>
           )}
@@ -91,7 +94,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            {`${labels.currencySign} ${orderTotal.toFixed(2)}`}
+            <PriceCurrency price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

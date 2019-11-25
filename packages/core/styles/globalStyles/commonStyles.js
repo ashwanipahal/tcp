@@ -88,6 +88,10 @@ export default css`
     display: block;
   }
 
+  .pointerEventsNone {
+    pointer-events: none;
+  }
+
   .visually-hidden {
     position: absolute;
     white-space: nowrap;
@@ -149,6 +153,10 @@ export default css`
   h2,
   p {
     margin: 0;
+  }
+
+  .line-height-0 {
+    line-height: 0;
   }
 
   .hide-on-mobile {

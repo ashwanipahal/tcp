@@ -2,9 +2,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { getLabelValue } from '@tcp/core/src/utils';
-import { FreeShippingLabel, AnchorWrapper } from '../styles/FreeShippingBannerSection.style.native';
-import { BodyCopy, Anchor } from '../../../../../../common/atoms';
+import {
+  FreeShippingLabel,
+  AnchorWrapper,
+  FreeShippingIconWrapper,
+} from '../styles/FreeShippingBannerSection.style.native';
+import { BodyCopy, Anchor, Image } from '../../../../../../common/atoms';
 import mobileHashValues from '../../../../LoyaltyBanner/util/utilityNative';
+import fastShipping from '../../../../../../../assets/fast-shipping.png';
 
 const FreeShippingBannerSection = props => {
   const { labels } = props;
@@ -21,6 +26,9 @@ const FreeShippingBannerSection = props => {
     <>
       {freeShippingLabel && (
         <FreeShippingLabel>
+          <FreeShippingIconWrapper>
+            <Image source={fastShipping} height={18} width={20} />
+          </FreeShippingIconWrapper>
           <View>
             <BodyCopy
               mobilefontFamily={['secondary']}

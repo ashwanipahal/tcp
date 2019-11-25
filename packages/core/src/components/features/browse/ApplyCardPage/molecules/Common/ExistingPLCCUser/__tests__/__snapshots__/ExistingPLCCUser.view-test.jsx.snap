@@ -17,7 +17,7 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
       className="existing_continue_button"
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 4,
           "small": 12,
         }
@@ -30,12 +30,31 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
     >
       <Styled(Button)
         buttonVariation="fixed-width"
+        centered={true}
         className="existing_continue_button"
         fill="BLUE"
         onClick={[Function]}
         type="submit"
       >
-        continue
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "scCheckout,event86,event69,event114",
+              ],
+              "eVar12": "09:20:21",
+              "eVar14": "new",
+              "eVar65": "checkout:pickup",
+              "pageName": "checkout:pickup",
+              "pageNavigationText": "header-cart",
+              "pageSection": "checkout",
+              "pageSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
+        >
+          continue
+        </Connect(Component)>
       </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>

@@ -15,6 +15,7 @@ import {
   getProductSkuId,
   getCartItemsSflError,
   getCartToggleError,
+  getPdpUrl,
 } from '../container/CartItemTile.selectors';
 
 describe('#CartItemTile selector', () => {
@@ -64,6 +65,19 @@ describe('#CartItemTile selector', () => {
       },
     });
     expect(getProductSkuId(productState)).toEqual(productState.getIn(['productInfo', 'skuId']));
+  });
+
+  it('#getPdpUrl should return product sku id', () => {
+    const productState = fromJS({
+      productInfo: {
+        color: {
+          name: 'red',
+        },
+        skuId: '1234',
+        pdpUrl: '',
+      },
+    });
+    expect(getPdpUrl(productState)).toEqual(productState.getIn(['productInfo', 'pdpUrl']));
   });
 
   it('#getProductFit should return product fit', () => {
@@ -173,7 +187,7 @@ describe('#CartItemTile selector', () => {
             lbl_cartTile_productBrandAlt: 'Brand',
             lbl_cartTile_productImageAlt: 'Product',
             lbl_cartTile_update: 'update',
-            lbl_cartTile_remove: 'removeEdit',
+            lbl_cartTile_remove: 'minibag',
             lbl_cartTile_bopis: 'bopis',
             lbl_cartTile_boss: 'boss',
             lbl_cartTile_noRushPickup: 'boss',

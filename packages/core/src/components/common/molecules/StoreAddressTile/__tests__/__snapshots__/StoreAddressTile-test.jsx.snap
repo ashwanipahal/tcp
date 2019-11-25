@@ -1,21 +1,4737 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StoreAddressTile component Details should render details view - with titleClickCb 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-details-header\\"><button class=\\"store-name store-name--details-btn\\" data-locator=\\"store_addresslabel\\">86th Street - 3rd Ave.</button></div></div><div class=\\"tile-body sc-jzJRlG fWgVfo\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span><span class=\\"sc-bZQynM iIHBtc\\">0.17 miles away<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"store-type sc-bZQynM iIHBtc\\"><img class=\\"store-type__marker sc-bxivhb bGKKwc\\" src=\\"/static/images/marker-icon.png\\" srcset=\\"\\" alt=\\"Retail Store\\" title=\\"Retail Store\\"><span class=\\"store-type__text sc-bZQynM iOFkuJ\\">Retail Store</span></div><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX lofNwc\\"><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH jXXuaI\\" type=\\"button\\" data-category-link-label=\\"\\" fill=\\"BLUE\\">Get Directions</button></div><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\" title=\\"Store Details\\">SET AS FAVORITE</button></div></div></div>"`;
+exports[`StoreAddressTile component Details should render details view - with titleClickCb 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={[MockFunction]}
+    variation="detail"
+  >
+    <div
+      className="store-details-header"
+    >
+      <button
+        className="store-name store-name--details-btn"
+        data-locator="store_addresslabel"
+        onClick={[MockFunction]}
+      >
+        86th Street - 3rd Ave.
+      </button>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={[MockFunction]}
+    variation="detail"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="0.17 miles away3"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          0.17 miles away
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="store-type"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Retail Store"
+              className="store-type__marker"
+              src="/static/images/marker-icon.png"
+              title="Retail Store"
+            />
+            <Styled(BodyCopy)
+              className="store-type__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Retail Store
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={[MockFunction]}
+    variation="detail"
+  >
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Get Directions
+      </Styled(Button)>
+    </div>
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        title="Store Details"
+        type="button"
+      >
+        SET AS FAVORITE
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
 
-exports[`StoreAddressTile component Details should render details view 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-details-header\\"><h4 class=\\"store-name store-name--details\\">86th Street - 3rd Ave.</h4></div></div><div class=\\"tile-body sc-jzJRlG fWgVfo\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span><span class=\\"sc-bZQynM iIHBtc\\">0.17 miles away<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"store-type sc-bZQynM iIHBtc\\"><img class=\\"store-type__marker sc-bxivhb bGKKwc\\" src=\\"/static/images/marker-icon.png\\" srcset=\\"\\" alt=\\"Retail Store\\" title=\\"Retail Store\\"><span class=\\"store-type__text sc-bZQynM iOFkuJ\\">Retail Store</span></div><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX lofNwc\\"><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH jXXuaI\\" type=\\"button\\" data-category-link-label=\\"\\" fill=\\"BLUE\\">Get Directions</button></div><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\" title=\\"Store Details\\">SET AS FAVORITE</button></div></div></div>"`;
+exports[`StoreAddressTile component Details should render details view 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="store-details-header"
+    >
+      <h4
+        className="store-name store-name--details"
+      >
+        86th Street - 3rd Ave.
+      </h4>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="0.17 miles away3"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          0.17 miles away
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="store-type"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Retail Store"
+              className="store-type__marker"
+              src="/static/images/marker-icon.png"
+              title="Retail Store"
+            />
+            <Styled(BodyCopy)
+              className="store-type__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Retail Store
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Get Directions
+      </Styled(Button)>
+    </div>
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        title="Store Details"
+        type="button"
+      >
+        SET AS FAVORITE
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
 
-exports[`StoreAddressTile component Details should render details view with clickable title 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-details-header\\"><button class=\\"store-name store-name--details-btn\\" data-locator=\\"store_addresslabel\\">86th Street - 3rd Ave.</button></div></div><div class=\\"tile-body sc-jzJRlG fWgVfo\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span><span class=\\"sc-bZQynM iIHBtc\\">0.17 miles away<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"store-type sc-bZQynM iIHBtc\\"><img class=\\"store-type__marker sc-bxivhb bGKKwc\\" src=\\"/static/images/marker-icon.png\\" srcset=\\"\\" alt=\\"Retail Store\\" title=\\"Retail Store\\"><span class=\\"store-type__text sc-bZQynM iOFkuJ\\">Retail Store</span></div><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX lofNwc\\"><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH jXXuaI\\" type=\\"button\\" data-category-link-label=\\"\\" fill=\\"BLUE\\">Get Directions</button></div><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\" title=\\"Store Details\\">SET AS FAVORITE</button></div></div></div>"`;
+exports[`StoreAddressTile component Details should render details view with clickable title 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={[Function]}
+    variation="detail"
+  >
+    <div
+      className="store-details-header"
+    >
+      <button
+        className="store-name store-name--details-btn"
+        data-locator="store_addresslabel"
+        onClick={[Function]}
+      >
+        86th Street - 3rd Ave.
+      </button>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={[Function]}
+    variation="detail"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="0.17 miles away3"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          0.17 miles away
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="store-type"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Retail Store"
+              className="store-type__marker"
+              src="/static/images/marker-icon.png"
+              title="Retail Store"
+            />
+            <Styled(BodyCopy)
+              className="store-type__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Retail Store
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={[Function]}
+    variation="detail"
+  >
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Get Directions
+      </Styled(Button)>
+    </div>
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        title="Store Details"
+        type="button"
+      >
+        SET AS FAVORITE
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
 
-exports[`StoreAddressTile component Details should render details view with fav store 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-details-header\\"><h4 class=\\"store-name store-name--details\\">86th Street - 3rd Ave.</h4></div></div><div class=\\"tile-body sc-jzJRlG fWgVfo\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span><span class=\\"sc-bZQynM iIHBtc\\">0.17 miles away<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"store-type sc-bZQynM iIHBtc\\"><img class=\\"store-type__marker sc-bxivhb bGKKwc\\" src=\\"/static/images/marker-icon.png\\" srcset=\\"\\" alt=\\"Retail Store\\" title=\\"Retail Store\\"><span class=\\"store-type__text sc-bZQynM iOFkuJ\\">Retail Store</span></div><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"><div class=\\"sc-cSHVUG llEVwa\\"><img class=\\"favorite-store-icon sc-bxivhb bGKKwc\\" src=\\"/static/images/star.png\\" srcset=\\"\\" alt=\\"Your Store\\" title=\\"Your Store\\"><span class=\\"sc-bZQynM cRKCtp\\">Your Store</span></div></div></div></div></div><div class=\\"tile-footer sc-fjdhpX lofNwc\\"><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH jXXuaI\\" type=\\"button\\" data-category-link-label=\\"\\" fill=\\"BLUE\\">Get Directions</button></div><div class=\\"tile-footer__fullwidth\\"></div></div></div>"`;
+exports[`StoreAddressTile component Details should render details view with fav store 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="store-details-header"
+    >
+      <h4
+        className="store-name store-name--details"
+      >
+        86th Street - 3rd Ave.
+      </h4>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="0.17 miles away3"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          0.17 miles away
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="store-type"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Retail Store"
+              className="store-type__marker"
+              src="/static/images/marker-icon.png"
+              title="Retail Store"
+            />
+            <Styled(BodyCopy)
+              className="store-type__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Retail Store
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        >
+          <styled.div>
+            <Styled(Image)
+              alt="Your Store"
+              className="favorite-store-icon"
+              src="/static/images/star.png"
+              title="Your Store"
+            />
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Your Store
+            </Styled(BodyCopy)>
+          </styled.div>
+        </div>
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Get Directions
+      </Styled(Button)>
+    </div>
+    <div
+      className="tile-footer__fullwidth"
+    />
+  </styled.div>
+</div>
+`;
 
-exports[`StoreAddressTile component Details should render details view with set fav button 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-details-header\\"><h4 class=\\"store-name store-name--details\\">86th Street - 3rd Ave.</h4></div></div><div class=\\"tile-body sc-jzJRlG fWgVfo\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span><span class=\\"sc-bZQynM iIHBtc\\">0.17 miles away<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"store-type sc-bZQynM iIHBtc\\"><img class=\\"store-type__marker sc-bxivhb bGKKwc\\" src=\\"/static/images/marker-icon.png\\" srcset=\\"\\" alt=\\"Retail Store\\" title=\\"Retail Store\\"><span class=\\"store-type__text sc-bZQynM iOFkuJ\\">Retail Store</span></div><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX lofNwc\\"><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH jXXuaI\\" type=\\"button\\" data-category-link-label=\\"\\" fill=\\"BLUE\\">Get Directions</button></div><div class=\\"tile-footer__fullwidth\\"><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\" title=\\"Store Details\\">SET AS FAVORITE</button></div></div></div>"`;
+exports[`StoreAddressTile component Details should render details view with set fav button 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="store-details-header"
+    >
+      <h4
+        className="store-name store-name--details"
+      >
+        86th Street - 3rd Ave.
+      </h4>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="0.17 miles away3"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          0.17 miles away
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="store-type"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Retail Store"
+              className="store-type__marker"
+              src="/static/images/marker-icon.png"
+              title="Retail Store"
+            />
+            <Styled(BodyCopy)
+              className="store-type__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Retail Store
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={null}
+    variation="detail"
+  >
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Get Directions
+      </Styled(Button)>
+    </div>
+    <div
+      className="tile-footer__fullwidth"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        title="Store Details"
+        type="button"
+      >
+        SET AS FAVORITE
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
 
-exports[`StoreAddressTile component Listing Header should render listing-header view 1`] = `"<div class=\\"address-tile sc-kAzzGY ilANgT \\"><div class=\\"listing-header\\"><div class=\\"heading-left\\"><div class=\\"title\\"><div class=\\"title__one\\"><span class=\\"sc-bZQynM gLNbrE\\">86th Street - 3rd Ave.</span></div><div class=\\"title__two\\"><span class=\\"sc-bZQynM iIHBtc\\">(open until 8 pm)</span><a class=\\"store-directions-link sc-bdVaJa iZjHGQ\\" href=\\"/undefined[object Object]\\" title=\\"Get Directions\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Get Directions</a></div></div><div class=\\"address-wrapper\\"><address class=\\"address-details address-details--listing-header\\"><div class=\\"address-inline\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street brooklyn, NY, 11201 | (718) 243-1150</span></div><div class=\\"address-block\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span></div></address><div class=\\"brand-store brand-store--sm sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div></div><div class=\\"heading-right\\"><div class=\\"brand-store brand-store--lg sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div><a href=\\"/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850\\" class=\\"store-details-link sc-bdVaJa iZjHGQ\\" title=\\"Store Details\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Store Details</a></div></div></div>"`;
+exports[`StoreAddressTile component Listing Header should render listing-header view 1`] = `
+<div
+  className="address-tile null "
+>
+  <div
+    className="listing-header"
+  >
+    <div
+      className="heading-left"
+    >
+      <div
+        className="title"
+      >
+        <div
+          className="title__one"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            86th Street - 3rd Ave.
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="title__two"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            (open until 8 pm)
+          </Styled(BodyCopy)>
+          <Connect(Component)
+            anchorVariation="primary"
+            as={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bdVaJa",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  font-family: ",
+                    [Function],
+                    ";
+  color: inherit;
 
-exports[`StoreAddressTile component Listing should not render gymboree store 1`] = `"<div class=\\"address-tile sc-kAzzGY eHGPRb \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-listing-header\\"><div class=\\"title-one\\"><span class=\\"store-name store-name--listing sc-bZQynM gLNbrE\\">86th Street - 3rd Ave.</span></div><div class=\\"title-two\\"><span class=\\"sc-bZQynM iIHBtc\\">(open until 8 pm)</span><a class=\\"store-directions-link sc-bdVaJa iZjHGQ\\" href=\\"/undefined[object Object]\\" title=\\"Get Directions\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Get Directions</a></div></div></div><div class=\\"tile-body sc-jzJRlG hKJspp\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span></address><div class=\\"address-meta__nodisplay\\"><div class=\\"address-meta__left\\"><div class=\\"brand-store\\"></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX bkQvkB\\"><div><a href=\\"/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850\\" class=\\"store-details-link sc-bdVaJa iZjHGQ\\" title=\\"Store Details\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Store Details</a></div><div><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\">SET AS FAVORITE</button></div></div></div>"`;
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
+  ",
+                    [Function],
+                    ";
 
-exports[`StoreAddressTile component Listing should render listing view 1`] = `"<div class=\\"address-tile sc-kAzzGY eHGPRb \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-listing-header\\"><div class=\\"title-one\\"><span class=\\"store-name store-name--listing sc-bZQynM gLNbrE\\">86th Street - 3rd Ave.</span></div><div class=\\"title-two\\"><span class=\\"sc-bZQynM iIHBtc\\">(open until 8 pm)</span><a class=\\"store-directions-link sc-bdVaJa iZjHGQ\\" href=\\"/undefined[object Object]\\" title=\\"Get Directions\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Get Directions</a></div></div></div><div class=\\"tile-body sc-jzJRlG hKJspp\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX bkQvkB\\"><div><a href=\\"/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850\\" class=\\"store-details-link sc-bdVaJa iZjHGQ\\" title=\\"Store Details\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Store Details</a></div><div><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\">SET AS FAVORITE</button></div></div></div>"`;
+  .left-arrow {
+    border: solid ",
+                    [Function],
+                    ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(Anchor)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bdVaJa",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            className="store-directions-link"
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event97",
+                ],
+              }
+            }
+            fontSizeVariation="medium"
+            target="_blank"
+            title="Get Directions"
+            underline={true}
+            url="[object Object]"
+          >
+            Get Directions
+          </Connect(Component)>
+        </div>
+      </div>
+      <div
+        className="address-wrapper"
+      >
+        <address
+          className="address-details address-details--listing-header"
+        >
+          <div
+            className="address-inline"
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              471-485 fulton street brooklyn, NY, 11201 | (718) 243-1150
+            </Styled(BodyCopy)>
+          </div>
+          <div
+            className="address-block"
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              key="471-485 fulton street0"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              471-485 fulton street
+              <br />
+            </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              key="brooklyn, NY, 112011"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              brooklyn, NY, 11201
+              <br />
+            </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              key="(718) 243-11502"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              (718) 243-1150
+              <br />
+            </Styled(BodyCopy)>
+          </div>
+        </address>
+        <Styled(BodyCopy)
+          className="brand-store brand-store--sm"
+          color="text.primary"
+          component="div"
+          dataLocator="store_gymboreetstorelabel"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(Image)
+            alt="Gymboree"
+            className="brand-store__image"
+            src="/static/images/gymboree-logo.svg"
+            title="Gymboree Store"
+          />
+          <Styled(BodyCopy)
+            className="brand-store__text"
+            color="text.primary"
+            component="span"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            at this PLACE!
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </div>
+    </div>
+    <div
+      className="heading-right"
+    >
+      <Styled(BodyCopy)
+        className="brand-store brand-store--lg"
+        color="text.primary"
+        component="div"
+        dataLocator="store_gymboreetstorelabel"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(Image)
+          alt="Gymboree"
+          className="brand-store__image"
+          src="/static/images/gymboree-logo.svg"
+          title="Gymboree Store"
+        />
+        <Styled(BodyCopy)
+          className="brand-store__text"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          at this PLACE!
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="store-details-link"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        target="_blank"
+        title="Store Details"
+        to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
+        underline={true}
+      >
+        Store Details
+      </Styled(Anchor)>
+    </div>
+  </div>
+</div>
+`;
 
-exports[`StoreAddressTile component Listing should render listing view with fav store 1`] = `"<div class=\\"address-tile sc-kAzzGY eHGPRb \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-listing-header\\"><div class=\\"title-one\\"><span class=\\"store-name store-name--listing sc-bZQynM gLNbrE\\">2. 86th Street - 3rd Ave.</span></div><div class=\\"title-two\\"><span class=\\"sc-bZQynM iIHBtc\\">(open until 8 pm)</span><a class=\\"store-directions-link sc-bdVaJa iZjHGQ\\" href=\\"/undefined[object Object]\\" title=\\"Get Directions\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Get Directions</a></div></div></div><div class=\\"tile-body sc-jzJRlG hKJspp\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX bkQvkB\\"><div><a href=\\"/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850\\" class=\\"store-details-link sc-bdVaJa iZjHGQ\\" title=\\"Store Details\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Store Details</a></div><div><div class=\\"sc-cSHVUG llEVwa\\"><img class=\\"favorite-store-icon sc-bxivhb bGKKwc\\" src=\\"/static/images/star.png\\" srcset=\\"\\" alt=\\"Your Store\\" title=\\"Your Store\\"><span class=\\"sc-bZQynM cRKCtp\\">Your Store</span></div></div></div></div>"`;
+exports[`StoreAddressTile component Listing should not render gymboree store 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="store-listing-header"
+    >
+      <div
+        className="title-one"
+      >
+        <Styled(BodyCopy)
+          className="store-name store-name--listing"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          handleLinkClick={[Function]}
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          noLink={true}
+          textAlign="left"
+        >
+          86th Street - 3rd Ave.
+        </Styled(BodyCopy)>
+      </div>
+      <div
+        className="title-two"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (open until 8 pm)
+        </Styled(BodyCopy)>
+        <Connect(Component)
+          anchorVariation="primary"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  font-family: ",
+                  [Function],
+                  ";
+  color: inherit;
 
-exports[`StoreAddressTile component Listing should render listing view with index 1`] = `"<div class=\\"address-tile sc-kAzzGY eHGPRb \\"><div class=\\"tile-header sc-jTzLTM bAKzCx\\"><div class=\\"store-listing-header\\"><div class=\\"title-one\\"><span class=\\"store-name store-name--listing sc-bZQynM gLNbrE\\">1. 86th Street - 3rd Ave.</span></div><div class=\\"title-two\\"><a class=\\"store-directions-link sc-bdVaJa iZjHGQ\\" href=\\"/undefined[object Object]\\" title=\\"Get Directions\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Get Directions</a></div></div></div><div class=\\"tile-body sc-jzJRlG hKJspp\\"><div class=\\"address-wrapper\\"><address class=\\"address-details sc-bZQynM iIHBtc\\"><span class=\\"sc-bZQynM iIHBtc\\">471-485 fulton street<br></span><span class=\\"sc-bZQynM iIHBtc\\">brooklyn, NY, 11201<br></span><span class=\\"sc-bZQynM iIHBtc\\">(718) 243-1150<br></span></address><div class=\\"address-meta\\"><div class=\\"address-meta__left\\"><div class=\\"brand-store  sc-bZQynM iIHBtc\\" data-locator=\\"store_gymboreetstorelabel\\"><img class=\\"brand-store__image sc-bxivhb bGKKwc\\" src=\\"/static/images/gymboree-logo.svg\\" srcset=\\"\\" alt=\\"Gymboree\\" title=\\"Gymboree Store\\"><span class=\\"brand-store__text sc-bZQynM iOFkuJ\\">at this PLACE!</span></div></div><div class=\\"address-meta__right\\"></div></div></div></div><div class=\\"tile-footer sc-fjdhpX bkQvkB\\"><div><a href=\\"/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850\\" class=\\"store-details-link sc-bdVaJa iZjHGQ\\" title=\\"Store Details\\" target=\\"_blank\\" data-locator=\\"\\" fontsizevariation=\\"medium\\" anchorvariation=\\"primary\\">Store Details</a></div><div><button class=\\"sc-bwzfXH hegyhJ\\" type=\\"button\\" data-locator=\\"set-favorite-store\\" data-category-link-label=\\"\\">SET AS FAVORITE</button></div></div></div>"`;
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  .left-arrow {
+    border: solid ",
+                  [Function],
+                  ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Anchor)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          className="store-directions-link"
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event97",
+              ],
+              "pageName": "storelocator:",
+            }
+          }
+          fontSizeVariation="medium"
+          target="_blank"
+          title="Get Directions"
+          underline={true}
+          url="[object Object]"
+        >
+          Get Directions
+        </Connect(Component)>
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta__nodisplay"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <div
+            className="brand-store"
+          />
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": false,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="store-details-link"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        target="_blank"
+        title="Store Details"
+        to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
+        underline={true}
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
+    </div>
+    <div>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        type="button"
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="store-listing-header"
+    >
+      <div
+        className="title-one"
+      >
+        <Styled(BodyCopy)
+          className="store-name store-name--listing"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          handleLinkClick={[Function]}
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          noLink={true}
+          textAlign="left"
+        >
+          86th Street - 3rd Ave.
+        </Styled(BodyCopy)>
+      </div>
+      <div
+        className="title-two"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (open until 8 pm)
+        </Styled(BodyCopy)>
+        <Connect(Component)
+          anchorVariation="primary"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  font-family: ",
+                  [Function],
+                  ";
+  color: inherit;
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  .left-arrow {
+    border: solid ",
+                  [Function],
+                  ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Anchor)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          className="store-directions-link"
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event97",
+              ],
+              "pageName": "storelocator:",
+            }
+          }
+          fontSizeVariation="medium"
+          target="_blank"
+          title="Get Directions"
+          underline={true}
+          url="[object Object]"
+        >
+          Get Directions
+        </Connect(Component)>
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={0}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="store-details-link"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        target="_blank"
+        title="Store Details"
+        to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
+        underline={true}
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
+    </div>
+    <div>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        type="button"
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view with fav store 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={2}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="store-listing-header"
+    >
+      <div
+        className="title-one"
+      >
+        <Styled(BodyCopy)
+          className="store-name store-name--listing"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          handleLinkClick={[Function]}
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          noLink={true}
+          textAlign="left"
+        >
+          2. 
+          86th Street - 3rd Ave.
+        </Styled(BodyCopy)>
+      </div>
+      <div
+        className="title-two"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (open until 8 pm)
+        </Styled(BodyCopy)>
+        <Connect(Component)
+          anchorVariation="primary"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  font-family: ",
+                  [Function],
+                  ";
+  color: inherit;
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  .left-arrow {
+    border: solid ",
+                  [Function],
+                  ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Anchor)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          className="store-directions-link"
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event97",
+              ],
+              "pageName": "storelocator:",
+            }
+          }
+          fontSizeVariation="medium"
+          target="_blank"
+          title="Get Directions"
+          underline={true}
+          url="[object Object]"
+        >
+          Get Directions
+        </Connect(Component)>
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={2}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={true}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-17 10:00:00",
+                  "toHour": "2019-09-17 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-18 10:00:00",
+                  "toHour": "2019-09-18 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "THURSDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-19 10:00:00",
+                  "toHour": "2019-09-19 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "FRIDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-20 10:00:00",
+                  "toHour": "2019-09-20 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SATURDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-21 10:00:00",
+                  "toHour": "2019-09-21 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "SUNDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-22 11:00:00",
+                  "toHour": "2019-09-22 18:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "MONDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-23 10:00:00",
+                  "toHour": "2019-09-23 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "TUESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-24 10:00:00",
+                  "toHour": "2019-09-24 20:00:00",
+                },
+              ],
+            },
+            Object {
+              "dayName": "WEDNESDAY",
+              "isClosed": false,
+              "openIntervals": Array [
+                Object {
+                  "fromHour": "2019-09-25 10:00:00",
+                  "toHour": "2019-09-25 20:00:00",
+                },
+              ],
+            },
+          ],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={2}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="store-details-link"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        target="_blank"
+        title="Store Details"
+        to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
+        underline={true}
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
+    </div>
+    <div>
+      <styled.div>
+        <Styled(Image)
+          alt="Your Store"
+          className="favorite-store-icon"
+          src="/static/images/star.png"
+          title="Your Store"
+        />
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Your Store
+        </Styled(BodyCopy)>
+      </styled.div>
+    </div>
+  </styled.div>
+</div>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view with index 1`] = `
+<div
+  className="address-tile null "
+>
+  <styled.div
+    className="tile-header"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={1}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="store-listing-header"
+    >
+      <div
+        className="title-one"
+      >
+        <Styled(BodyCopy)
+          className="store-name store-name--listing"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          handleLinkClick={[Function]}
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          noLink={true}
+          textAlign="left"
+        >
+          1. 
+          86th Street - 3rd Ave.
+        </Styled(BodyCopy)>
+      </div>
+      <div
+        className="title-two"
+      >
+        <Connect(Component)
+          anchorVariation="primary"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  font-family: ",
+                  [Function],
+                  ";
+  color: inherit;
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  .left-arrow {
+    border: solid ",
+                  [Function],
+                  ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Anchor)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          className="store-directions-link"
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event97",
+              ],
+              "pageName": "storelocator:",
+            }
+          }
+          fontSizeVariation="medium"
+          target="_blank"
+          title="Get Directions"
+          underline={true}
+          url="[object Object]"
+        >
+          Get Directions
+        </Connect(Component)>
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-body"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    storeIndex={1}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div
+      className="address-wrapper"
+    >
+      <Styled(BodyCopy)
+        className="address-details"
+        color="text.primary"
+        component="address"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="471-485 fulton street0"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          471-485 fulton street
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="brooklyn, NY, 112011"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          brooklyn, NY, 11201
+          <br />
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="(718) 243-11502"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          (718) 243-1150
+          <br />
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <div
+        className="address-meta"
+      >
+        <div
+          className="address-meta__left"
+        >
+          <Styled(BodyCopy)
+            className="brand-store "
+            color="text.primary"
+            component="div"
+            dataLocator="store_gymboreetstorelabel"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Gymboree"
+              className="brand-store__image"
+              src="/static/images/gymboree-logo.svg"
+              title="Gymboree Store"
+            />
+            <Styled(BodyCopy)
+              className="brand-store__text"
+              color="text.primary"
+              component="span"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              at this PLACE!
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="address-meta__right"
+        />
+      </div>
+    </div>
+  </styled.div>
+  <styled.div
+    className="tile-footer"
+    dataLocatorKey=""
+    geoLocationDisabled={true}
+    isFavorite={false}
+    isListingHeader={false}
+    labels={
+      Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+        "lbl_storedetails_setfav_btn": "Set as favorite",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
+      }
+    }
+    locatorDirections="get-store-directions"
+    locatorSetFavStore="set-favorite-store"
+    openCallStore={null}
+    openStoreDetail={null}
+    openStoreDirections={[Function]}
+    setFavoriteStore={null}
+    showSetFavorite={true}
+    store={
+      Object {
+        "basicInfo": Object {
+          "address": Object {
+            "addressLine1": "471-485 fulton street",
+            "city": "brooklyn",
+            "country": "US ",
+            "state": "NY",
+            "zipCode": "11201",
+          },
+          "coordinates": Object {
+            "lat": 40.69112,
+            "long": -73.98625,
+          },
+          "id": "110850",
+          "isDefault": "1",
+          "phone": "(718) 243-1150",
+          "storeName": "86th Street - 3rd Ave.",
+        },
+        "distance": "0.17",
+        "features": Object {
+          "storeType": "Retail Store",
+        },
+        "hours": Object {
+          "holidayHours": Array [],
+          "regularAndHolidayHours": Array [],
+          "regularHours": Array [],
+        },
+        "isGym": true,
+        "pickupType": Object {
+          "isStoreBopisSelected": true,
+          "isStoreBossSelected": true,
+        },
+        "productAvailability": Object {},
+        "storeBossInfo": Object {
+          "endDate": "09/29/2019",
+          "isBossEligible": "1",
+          "startDate": "09/24/2019",
+        },
+      }
+    }
+    storeIndex={1}
+    titleClickCb={null}
+    variation="listing"
+  >
+    <div>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="store-details-link"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        target="_blank"
+        title="Store Details"
+        to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
+        underline={true}
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
+    </div>
+    <div>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="set-favorite-store"
+        onClick={[Function]}
+        type="button"
+      >
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event67",
+              ],
+            }
+          }
+        >
+          SET AS FAVORITE
+        </Connect(Component)>
+      </Styled(Button)>
+    </div>
+  </styled.div>
+</div>
+`;

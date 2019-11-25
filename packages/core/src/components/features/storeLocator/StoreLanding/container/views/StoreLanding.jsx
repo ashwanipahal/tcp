@@ -51,7 +51,7 @@ export class StoreLanding extends PureComponent {
       const storeList = document.querySelectorAll(
         '.store__list.store_item_container .address-tile'
       );
-      let storeMaxHeight = 0;
+      let storeMaxHeight = storeList && storeList.length > 0 ? storeList[0].offsetHeight : 0;
       storeList.forEach(list => {
         if (storeMaxHeight < list.offsetHeight) storeMaxHeight = list.offsetHeight;
       });
@@ -248,6 +248,8 @@ export class StoreLanding extends PureComponent {
       searchIcon,
       markerIcon,
       getLocationStores,
+      setClickAnalyticsData,
+      trackClick,
       ...others
     } = this.props;
     const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
@@ -295,6 +297,8 @@ export class StoreLanding extends PureComponent {
                     markerIcon={markerIcon}
                     getLocationStores={getLocationStores}
                     showSubmitError={this.showSubmitError}
+                    setClickAnalyticsData={setClickAnalyticsData}
+                    trackClick={trackClick}
                     selectedCountry={isCanada() ? 'CA' : 'USA'}
                   />
                 </Col>
@@ -342,6 +346,8 @@ StoreLanding.propTypes = {
   getLocationStores: PropTypes.func.isRequired,
   searchDone: PropTypes.bool,
   geoLocationEnabled: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {

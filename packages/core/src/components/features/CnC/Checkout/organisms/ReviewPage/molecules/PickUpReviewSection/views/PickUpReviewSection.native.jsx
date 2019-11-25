@@ -1,6 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
+import { FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import {
@@ -9,11 +11,13 @@ import {
   SectionTwo,
   SectionThree,
   TitlePlusContainer,
+  SkeletonWrapper,
 } from '../styles/PickUpReviewSection.style.native';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
+import PickUpAlternateFormPart from '../../../../../molecules/PickUpAlternateFormPart';
 
 /**
  *Section Display pickup details on review page
@@ -89,6 +93,11 @@ export class PickUpReviewSection extends React.PureComponent {
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
       onEdit,
+      pickUpLabels,
+      isAlternateUpdateChecked,
+      isExpressCheckout,
+      pickUpContactAlternate,
+      bagLoading,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -141,19 +150,8 @@ export class PickUpReviewSection extends React.PureComponent {
             );
           })}
         </SectionTwo>
-        <SectionThree>
-          <View>
-            <BodyCopy
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              className="pickupTitle"
-              fontWeight="semibold"
-              color="gray.900"
-              text={title}
-            />
-            <PickUpContactDisplay formData={pickUpContactPerson} />
-          </View>
-          {isHasPickUpAlternatePerson && (
+        {!bagLoading ? (
+          <SectionThree>
             <View>
               <BodyCopy
                 fontSize="fs16"
@@ -161,12 +159,51 @@ export class PickUpReviewSection extends React.PureComponent {
                 className="pickupTitle"
                 fontWeight="semibold"
                 color="gray.900"
-                text={alternate}
+                text={title}
               />
-              <PickUpContactDisplay formData={pickUpAlternatePerson} />
+              <PickUpContactDisplay
+                formData={
+                  pickUpContactPerson.firstName !== ''
+                    ? pickUpContactPerson
+                    : pickUpContactAlternate.pickUpContact
+                }
+              />
             </View>
-          )}
-        </SectionThree>
+            {!isExpressCheckout && isHasPickUpAlternatePerson && (
+              <View>
+                <BodyCopy
+                  fontSize="fs16"
+                  mobileFontFamily="secondary"
+                  className="pickupTitle"
+                  fontWeight="semibold"
+                  color="gray.900"
+                  text={alternate}
+                />
+                <PickUpContactDisplay formData={pickUpAlternatePerson} />
+              </View>
+            )}
+
+            {isExpressCheckout && (
+              <FormSection name="pickUpAlternateExpress">
+                <PickUpAlternateFormPart
+                  isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+                  isAlternateUpdateChecked={isAlternateUpdateChecked}
+                  showNoteOnToggle
+                  formName="checkoutPickup"
+                  formSection="pickUpAlternateExpress"
+                  labels={pickUpLabels}
+                  isExpressCheckout={isExpressCheckout}
+                />
+              </FormSection>
+            )}
+          </SectionThree>
+        ) : (
+          <>
+            <SkeletonWrapper>
+              <GenericSkeleton />
+            </SkeletonWrapper>
+          </>
+        )}
       </Container>
     );
   }
@@ -191,6 +228,11 @@ PickUpReviewSection.propTypes = {
   isHasPickUpAlternatePerson: PropTypes.bool.isRequired,
   cartStores: PropTypes.shape({}).isRequired,
   onEdit: PropTypes.func.isRequired,
+  pickUpLabels: PropTypes.shape({}).isRequired,
+  isAlternateUpdateChecked: PropTypes.bool.isRequired,
+  bagLoading: PropTypes.bool.isRequired,
+  isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };
 
 PickUpReviewSection.defaultProps = {
@@ -209,6 +251,7 @@ PickUpReviewSection.defaultProps = {
     lastName: '',
     emailAddress: '',
   },
+  isExpressCheckout: false,
 };
 
 export default withStyles(PickUpReviewSection);

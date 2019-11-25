@@ -1,13 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Field, change, FormSection } from 'redux-form';
-import PropTypes from 'prop-types';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
-import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
+import ErrorMessage from '../../../../../../../../common/atoms/ErrorDisplay';
 import { getLabelValue } from '../../../../../../../../../utils';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import {
@@ -15,8 +14,8 @@ import {
   SaveToAccountWrapper,
   MarginBottom,
   AddressViewWrapper,
-  EditAddressFormHeader,
   EditFromSeparator,
+  ErrorMessageWrapper,
 } from '../styles/RegisteredShippingForm.view.style.native';
 import {
   onSaveBtnClick,
@@ -24,6 +23,7 @@ import {
   nativeDefaultPropTypes,
   nativePropTypes,
 } from './RegisteredShippingForm.util';
+import AddEditShippingAddress from './RegisteredShippingForm.view.native.util';
 
 const saveToAddressBookConst = 'saveToAddressBook';
 const addressPhoneNumber = 'address.phoneNumber';
@@ -40,51 +40,6 @@ const itemStyle = {
 const CustomAddress = {
   fontWeight: 'regular',
   fontSize: 'fs14',
-};
-
-const AddEditShippingAddress = ({
-  addressFields,
-  defaultOptions,
-  modalType,
-  actionButtons,
-  labels,
-}) => {
-  return (
-    <>
-      <EditAddressFormHeader>
-        <BodyCopy
-          color="black"
-          fontWeight="regular"
-          fontFamily="primary"
-          fontSize="fs28"
-          text={
-            modalType === 'add'
-              ? getLabelValue(labels, 'lbl_shipping_addHeading', 'shipping', 'checkout')
-              : getLabelValue(labels, 'lbl_shipping_editHeading', 'shipping', 'checkout')
-          }
-          textAlign="left"
-        />
-      </EditAddressFormHeader>
-      {addressFields()}
-      {defaultOptions()}
-      {actionButtons()}
-    </>
-  );
-};
-
-AddEditShippingAddress.propTypes = {
-  addressFields: PropTypes.func,
-  defaultOptions: PropTypes.func,
-  modalType: PropTypes.string,
-  actionButtons: PropTypes.func,
-  labels: PropTypes.shape({}).isRequired,
-};
-
-AddEditShippingAddress.defaultProps = {
-  addressFields: () => {},
-  defaultOptions: () => {},
-  modalType: null,
-  actionButtons: () => {},
 };
 
 class RegisteredShippingForm extends React.Component {
@@ -106,7 +61,7 @@ class RegisteredShippingForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { defaultAddressId, dispatch, formName } = this.props;
+    const { defaultAddressId, dispatch, formName, setEditModalRef } = this.props;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     const { modalState, modalType } = this.state;
     if (defaultAddressId && defaultAddressId !== prevDefaultAddressId && modalState) {
@@ -115,10 +70,13 @@ class RegisteredShippingForm extends React.Component {
       }
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
     }
+    if (modalState) {
+      setEditModalRef(this.editModalRef);
+    }
   }
 
   getAddressOptions = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, labels } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
@@ -135,7 +93,7 @@ class RegisteredShippingForm extends React.Component {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: '+Add New Address',
+      label: getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout'),
       content: '',
       primary: false,
     });
@@ -186,7 +144,10 @@ class RegisteredShippingForm extends React.Component {
   };
 
   toggleModal = ({ type, open }) => {
+    const { setEditState } = this.props;
     this.setState({ modalState: open, modalType: type });
+    // type: edit/add address form flag
+    setEditState(open, type);
   };
 
   onAddressDropDownChange = itemValue => {
@@ -302,10 +263,19 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderActionButtons = () => {
-    const { labels } = this.props;
+    const { labels, editShipmentDetailsError } = this.props;
     const { modalType } = this.state;
     return (
-      <>
+      <View
+        ref={errorBtnRef => {
+          this.editModalRef = errorBtnRef;
+        }}
+      >
+        {editShipmentDetailsError ? (
+          <ErrorMessageWrapper>
+            <ErrorMessage error={editShipmentDetailsError} />
+          </ErrorMessageWrapper>
+        ) : null}
         <MarginBottom>
           <Button
             fill="BLUE"
@@ -324,7 +294,7 @@ class RegisteredShippingForm extends React.Component {
           onPress={() => this.toggleModal({ type: modalType, open: false })}
           text={getLabelValue(labels, 'lbl_shipping_cancelCaps', 'shipping', 'checkout')}
         />
-      </>
+      </View>
     );
   };
 
@@ -349,8 +319,10 @@ class RegisteredShippingForm extends React.Component {
             onValueChange={itemValue => {
               this.onAddressDropDownChange(itemValue);
             }}
+            addAddress={() => {
+              this.onAddressDropDownChange('');
+            }}
             variation="secondary"
-            showButton={false}
             selectedValue={onFileAddressKey}
           />
         </View>

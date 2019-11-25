@@ -1,9 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { Image, Anchor } from '../../../../common/atoms';
+import { Image, Anchor, Skeleton } from '../../../../common/atoms';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Container, Separator, AnchorStyle } from '../OutfitListing.style.native';
+import PromoModules from '../../../../common/organisms/PromoModules';
 
 class OutfitListing extends React.PureComponent {
   /**
@@ -70,18 +71,33 @@ class OutfitListing extends React.PureComponent {
   itemSeparator = () => <Separator />;
 
   render() {
-    const { outfitDetails, asPath } = this.props;
+    const {
+      outfitDetails,
+      outfitDetails: { isFetchingDataForOutfit },
+      asPath,
+      plpTopPromos,
+      navigation,
+    } = this.props;
     const outfits = (outfitDetails && outfitDetails[asPath]) || [];
 
     const flatlistContentContainerStyle = { paddingBottom: 32 };
+    if (isFetchingDataForOutfit)
+      return (
+        <ScrollView>
+          <Skeleton row={6} col={1} outFitSkeleton height={350} width={getScreenWidth() - 24} />
+        </ScrollView>
+      );
     return (
-      <Container
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        data={outfits}
-        ItemSeparatorComponent={this.itemSeparator}
-        contentContainerStyle={flatlistContentContainerStyle}
-      />
+      <ScrollView>
+        <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />
+        <Container
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          data={outfits}
+          ItemSeparatorComponent={this.itemSeparator}
+          contentContainerStyle={flatlistContentContainerStyle}
+        />
+      </ScrollView>
     );
   }
 }
@@ -91,6 +107,7 @@ OutfitListing.propTypes = {
   asPath: PropTypes.string,
   labels: PropTypes.instanceOf(Object),
   navigation: PropTypes.instanceOf(Object),
+  plpTopPromos: PropTypes.instanceOf(Object),
 };
 
 OutfitListing.defaultProps = {
@@ -98,6 +115,7 @@ OutfitListing.defaultProps = {
   asPath: '',
   labels: {},
   navigation: null,
+  plpTopPromos: null,
 };
 
 export default OutfitListing;

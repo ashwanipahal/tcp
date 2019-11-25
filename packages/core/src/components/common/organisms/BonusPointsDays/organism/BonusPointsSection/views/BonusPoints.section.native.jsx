@@ -137,6 +137,7 @@ const getContent = ({
   getBonusDaysData,
   orderDetails,
   isPlcc,
+  isPlaceRewardsPage,
 }) => {
   let allUsed = false;
   let valueOfbonusDayAvailableToday = 0;
@@ -152,7 +153,7 @@ const getContent = ({
         <React.Fragment>
           <ApplyAnyDayWrapper>
             <BodyCopy
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
               data-locator="msgtextinbold"
@@ -162,7 +163,7 @@ const getContent = ({
           </ApplyAnyDayWrapper>
           <InfoWrapper>
             <BodyCopy
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               data-locator="infomsg"
@@ -174,7 +175,7 @@ const getContent = ({
       ) : (
         <InfoWrapper>
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="regular"
             data-locator="infomsg"
@@ -192,6 +193,7 @@ const getContent = ({
         bonusDayAvailableToday={valueOfbonusDayAvailableToday}
         className="availability-msg"
         isPlcc={isPlcc}
+        isPlaceRewardsPage={isPlaceRewardsPage}
       />
       <Anchor
         fontSizeVariation="medium"
@@ -218,9 +220,11 @@ const BonusPointsSection = ({
   isBagPage,
   bagBonusLabels,
   showAccordian,
+  ...otherProps
 }) => {
   const bonusPoints =
     bonusData && createBonusPoints({ bonusData, labels, isBagPage, bagBonusLabels });
+  const { isPlaceRewardsPage } = otherProps;
   const header = getHeader({ labels });
   const body = getContent({
     labels,
@@ -231,6 +235,7 @@ const BonusPointsSection = ({
     getBonusDaysData,
     orderDetails,
     isPlcc,
+    isPlaceRewardsPage,
   });
   return (
     <View>
@@ -281,6 +286,7 @@ getContent.propTypes = {
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 getContent.defaultProps = {
@@ -292,6 +298,7 @@ getContent.defaultProps = {
   getBonusDaysData: () => {},
   orderDetails: {},
   isPlcc: false,
+  isPlaceRewardsPage: false,
 };
 
 getHeader.propTypes = {

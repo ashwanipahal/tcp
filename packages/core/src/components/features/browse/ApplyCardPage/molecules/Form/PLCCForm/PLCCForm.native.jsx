@@ -6,12 +6,12 @@ import { Field, reduxForm, change } from 'redux-form';
 import { RichText, Button } from '../../../../../../common/atoms';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox/views/InputCheckbox.native';
-import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
 import { calendarDaysMap, calendarYearsMap } from '../../../utils/DateOfBirthHelper';
 import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../../RewardsCard.constants';
 import { GooglePlacesInput } from '../../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import Select from '../../../../../../common/atoms/Select';
 
 import {
   ImageContainer,
@@ -28,7 +28,6 @@ import {
   ScrollViewContainer,
   CheckBoxContainerView,
   CheckBoxImage,
-  CheckMessageView,
   ButtonWrapper,
   StyledImage,
   RichTextContainer,
@@ -37,10 +36,8 @@ import {
   ParentMessageContainer,
   FirstNameContainer,
   MiddleNameContainer,
-  FieldContainer,
   SSNContainer,
   AddressLine1Container,
-  DropDownContainer,
 } from './style/PLCCForm.style.native';
 import {
   CAcountriesStatesTable,
@@ -49,17 +46,6 @@ import {
 import { getLabelValue, getSiteId } from '../../../../../../../utils';
 
 const headerImage = require('../../../../../../../../src/assets/tcp-cc.png');
-
-const dropDownStyle = {
-  height: 28,
-  border: 1,
-};
-
-const itemStyle = {
-  height: 41,
-  paddingLeft: 6,
-  color: 'black',
-};
 
 class PLCCForm extends React.PureComponent<Props> {
   static propTypes = {
@@ -91,18 +77,10 @@ class PLCCForm extends React.PureComponent<Props> {
       // eslint-disable-next-line react/no-unused-state
       dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
       isPreScreen: false,
-      date: this.date[0].displayName,
-      month: months[0].displayName,
-      year: this.year[0].displayName,
     };
 
     this.locationRef = null;
   }
-
-  onClose = () => {
-    const { setLoginModalMountState } = this.props;
-    setLoginModalMountState({ state: false });
-  };
 
   togglePreScreen = () => {
     const { isPreScreen } = this.props;
@@ -124,8 +102,12 @@ class PLCCForm extends React.PureComponent<Props> {
     dispatch(change('PLCCForm', 'noCountryZip', address.zip));
     dispatch(change('PLCCForm', 'statewocountry', address.state));
     dispatch(change('PLCCForm', 'addressLine1', address.street));
-    this.setState({ dropDownItem: address.state });
+
     this.locationRef.setAddressText(address.street);
+  };
+
+  getInitialAddressLine1 = initialValues => {
+    return (initialValues && initialValues.addressLine1) || '';
   };
 
   /**
@@ -135,8 +117,8 @@ class PLCCForm extends React.PureComponent<Props> {
    */
   // eslint-disable-next-line complexity
   render() {
-    const { toggleModal, plccData, labels, handleSubmit, dispatch } = this.props;
-    const { dropDownItem, isPreScreen, date, month, year } = this.state;
+    const { toggleModal, plccData, labels, handleSubmit, initialValues, isRtpsFlow } = this.props;
+    const { isPreScreen } = this.state;
 
     return (
       <ScrollViewContainer>
@@ -151,47 +133,50 @@ class PLCCForm extends React.PureComponent<Props> {
         {isPreScreen && (
           <TextBoxContainer>
             <Field
-              name={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
+              name="preScreenCode"
               id="preScreenCode"
               label={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
-              type="text"
+              type="tel"
               component={TextBox}
               maxLength={12}
+              keyboardType="numeric"
             />
           </TextBoxContainer>
         )}
 
-        <PreScreenCodeContainer>
-          <StyledBodyCopy
-            text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
-            fontSize="fs15"
-            color="gray.900"
-            paddingLeft="16px"
-            mobilefontFamily="secondary"
-            textAlign="center"
-            paddingTop={!isPreScreen ? '22px' : '1px'}
-          />
-
-          {!isPreScreen ? (
-            <StyledAnchor
-              onPress={() => this.togglePreScreen()}
-              fontSizeVariation="large"
-              underline
-              text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
-              paddingRight="16px"
-              paddingTop={!isPreScreen ? '22px' : '1px'}
-            />
-          ) : (
+        {!isRtpsFlow && (
+          <PreScreenCodeContainer>
             <StyledBodyCopy
-              text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
+              text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
               fontSize="fs15"
               color="gray.900"
+              paddingLeft="16px"
+              mobilefontFamily="secondary"
               textAlign="center"
-              paddingRight="16px"
-              paddingTop={!isPreScreen ? '12px' : '1px'}
+              paddingTop={!isPreScreen ? '22px' : '1px'}
             />
-          )}
-        </PreScreenCodeContainer>
+
+            {!isPreScreen ? (
+              <StyledAnchor
+                onPress={() => this.togglePreScreen()}
+                fontSizeVariation="large"
+                underline
+                text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
+                paddingRight="16px"
+                paddingTop={!isPreScreen ? '22px' : '1px'}
+              />
+            ) : (
+              <StyledBodyCopy
+                text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
+                fontSize="fs15"
+                color="gray.900"
+                textAlign="center"
+                paddingRight="16px"
+                paddingTop={!isPreScreen ? '12px' : '1px'}
+              />
+            )}
+          </PreScreenCodeContainer>
+        )}
 
         <StyledBodyCopy
           text={getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
@@ -205,7 +190,6 @@ class PLCCForm extends React.PureComponent<Props> {
           paddingTop="26px"
           paddingBottom="12px"
         />
-
         <NameFieldContainer>
           <ParentMessageContainer>
             <FirstNameContainer>
@@ -256,16 +240,11 @@ class PLCCForm extends React.PureComponent<Props> {
             name="addressLine1"
             headerTitle={getLabelValue(labels, 'lbl_PLCCForm_addressLine1')}
             component={GooglePlacesInput}
-            onPlaceSelected={this.handlePlaceSelected}
             componentRestrictions={Object.assign({}, { country: [this.siteId] })}
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onChangeText={text => {
-              setTimeout(() => {
-                dispatch(change('AddressForm', 'addressLine1', text));
-              });
-            }}
+            initialValue={this.getInitialAddressLine1(initialValues)}
             refs={instance => {
               this.locationRef = instance;
             }}
@@ -274,7 +253,6 @@ class PLCCForm extends React.PureComponent<Props> {
             <Field label="" component={TextBox} title="" type="hidden" id="addressLine1" />
           </AddressLine1Container>
         </NameFieldContainer>
-
         <NameFieldContainer>
           <Field
             name="addressLine2"
@@ -300,29 +278,10 @@ class PLCCForm extends React.PureComponent<Props> {
             <Field
               id="statewocountry"
               name="statewocountry"
-              bounces={false}
-              component={DropDown}
+              component={Select}
               heading="State"
-              data={this.siteId === 'us' ? this.UScountriesStates : this.CAcountriesStates}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              selectedValue={dropDownItem}
-              onValueChange={itemValue => {
-                dispatch(change('PLCCForm', 'statewocountry', itemValue));
-                this.setState({ dropDownItem: itemValue });
-              }}
+              options={this.siteId === 'us' ? CAcountriesStatesTable : UScountriesStatesTable}
             />
-            <FieldContainer>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="statewocountry"
-                name="statewocountry"
-              />
-            </FieldContainer>
           </StateContainerView>
           <ZipContainerView>
             <Field
@@ -380,7 +339,6 @@ class PLCCForm extends React.PureComponent<Props> {
           fontFamily="secondary"
           textAlign="left"
         />
-
         <StyledBodyCopy
           text={getLabelValue(labels, 'lbl_PLCCForm_dob')}
           mobilefontSize="fs10"
@@ -391,67 +349,18 @@ class PLCCForm extends React.PureComponent<Props> {
           textAlign="left"
           fontWeight="extrabold"
         />
+
         <PersonalInformationContainerView>
           <DateContainerView>
-            <Field
-              id="month"
-              name="month"
-              bounces={false}
-              component={DropDown}
-              data={months}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              onValueChange={itemValue => {
-                dispatch(change('PLCCForm', 'month', itemValue));
-                this.setState({ month: itemValue });
-              }}
-              selectedValue={month}
-            />
-            <DropDownContainer>
-              <Field label="" component={TextBox} title="" type="hidden" id="month" name="month" />
-            </DropDownContainer>
+            <Field id="month" name="month" component={Select} heading="Mm" options={months} />
           </DateContainerView>
 
           <DateContainerView>
-            <Field
-              id="date"
-              name="date"
-              bounces={false}
-              component={DropDown}
-              data={this.date}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              selectedValue={date}
-              onValueChange={itemValue => {
-                dispatch(change('PLCCForm', 'date', itemValue));
-                this.setState({ date: itemValue });
-              }}
-            />
-            <DropDownContainer>
-              <Field label="" component={TextBox} title="" type="hidden" id="date" name="date" />
-            </DropDownContainer>
+            <Field id="date" name="date" component={Select} heading="Dd" options={this.date} />
           </DateContainerView>
+
           <DateContainerView>
-            <Field
-              id="year"
-              name="year"
-              bounces={false}
-              component={DropDown}
-              data={this.year}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              onValueChange={itemValue => {
-                dispatch(change('PLCCForm', 'year', itemValue));
-                this.setState({ year: itemValue });
-              }}
-              selectedValue={year}
-            />
-            <DropDownContainer>
-              <Field label="" component={TextBox} title="" type="hidden" id="year" name="year" />
-            </DropDownContainer>
+            <Field id="year" name="year" component={Select} heading="Yyyy" options={this.year} />
           </DateContainerView>
         </PersonalInformationContainerView>
 
@@ -463,17 +372,15 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={4}
+            keyboardType="numeric"
           />
         </SSNContainer>
-
         <MessageViewContainer height="635px">
           <RichText source={{ html: plccData && plccData.account_classified_disclaimer }} />
         </MessageViewContainer>
-
         <MessageViewContainer height="300px">
           <RichText source={{ html: plccData && plccData.electronic_consent }} />
         </MessageViewContainer>
-
         <StyledBodyCopy
           text={getLabelValue(labels, 'lbl_PLCCForm_financialTermsHeading')}
           fontSize="fs16"
@@ -485,38 +392,22 @@ class PLCCForm extends React.PureComponent<Props> {
           fontFamily="secondary"
           textAlign="left"
         />
-
         <MessageViewContainer height="900px">
           <RichText
             source={{ uri: 'https://comenity.net/childrensplace/common/Legal/disclosures.xhtml' }}
           />
         </MessageViewContainer>
-
         <CheckBoxContainerView>
           <CheckBoxImage>
-            <Field id="iAgree" name="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
-          </CheckBoxImage>
-          <CheckMessageView>
-            <StyledBodyCopy
-              text={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
-              fontSize="fs12"
-              color="black"
-              fontFamily="secondary"
-              textAlign="left"
+            <Field
+              id="iAgree"
+              name="iAgree"
+              component={InputCheckbox}
+              enableSuccessCheck={false}
+              rightText={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
             />
-            <FieldContainer>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="iAgree"
-                name="iAgree"
-              />
-            </FieldContainer>
-          </CheckMessageView>
+          </CheckBoxImage>
         </CheckBoxContainerView>
-
         <ButtonWrapper>
           <Button
             fill="BLUE"
@@ -533,7 +424,7 @@ class PLCCForm extends React.PureComponent<Props> {
             text={getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
             paddingTop="40px"
             paddingBottom="60px"
-            onPress={toggleModal}
+            onPress={() => toggleModal()}
             url=""
           />
         </ButtonWrapper>
@@ -562,7 +453,6 @@ const validateMethod = createValidateMethod(
 );
 
 PLCCForm.propTypes = {
-  setLoginModalMountState: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
@@ -575,3 +465,5 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod,
 })(PLCCForm);
+
+export { PLCCForm as PLCCFormVanilla };

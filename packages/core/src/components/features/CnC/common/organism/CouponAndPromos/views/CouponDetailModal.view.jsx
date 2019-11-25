@@ -23,7 +23,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
 
   componentDidUpdate() {
     const { coupon, handleErrorCoupon } = this.props;
-    if (coupon.error) {
+    if (coupon.error && handleErrorCoupon) {
       handleErrorCoupon(coupon);
     }
   }
@@ -69,8 +69,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
             component="div"
             data-locator={`couponDetailModal_${coupon.status}_BarCode`}
             className="couponModal_modalbarcode"
+            aria-label={coupon.id}
+            role="img"
           >
-            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
+            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED" aria-hidden>
               <Barcode value={coupon.id} barcodeId={coupon.id} fontSize={24} />
             </BodyCopy>
           </BodyCopy>
@@ -151,9 +153,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         onRequestClose={onRequestClose}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
-        maxWidth="616px"
-        minHeight="540px"
-        fixedWidth
+        heightConfig={{ height: '90%' }}
         closeIconDataLocator="coupondetailmodalcrossicon"
         customWrapperClassName={additionalClassNameModal}
       >

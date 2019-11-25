@@ -15,6 +15,7 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  isIOS,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
   setTestId,
@@ -24,6 +25,7 @@ export {
   readCookieMobileApp,
   createGoogleMapUrl,
   mapHandler,
+  formatPhnNumber,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -61,8 +63,12 @@ export {
   getModifiedLanguageCode,
   generateTraceId,
   parseBoolean,
-  enableBodyScroll,
-  disableBodyScroll,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  canUseDOM,
+  calculatePriceValue,
+  getProductUrlForDAM,
+  isTCP,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

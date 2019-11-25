@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import { BodyCopy, Col, Row, SelectBox, TextBox } from '../../../../../common/atoms';
+import { BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
+import Select from '../../../../../common/atoms/Select';
 import { calendarDaysMap, calendarYearsMap } from '../../utils/DateOfBirthHelper';
 import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../RewardsCard.constants';
 import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
@@ -16,21 +17,20 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
         <BodyCopy component="h2" className="title">
           {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
+        <BodyCopy
+          fontSize="fs10"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          className="free_dropdown_label"
+        >
+          {getLabelValue(labels, 'lbl_PLCCForm_dob')}
+        </BodyCopy>
         <Row fullBleed>
           <Col
             className="contact_information_form"
             key="contact_information_form"
             colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
-            <BodyCopy
-              component="span"
-              fontSize="fs10"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              className="free_dropdown_label"
-            >
-              {getLabelValue(labels, 'lbl_PLCCForm_dob')}
-            </BodyCopy>
             <Row fullBleed>
               <Col
                 className="table_contact_month"
@@ -40,7 +40,10 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="month"
                   name="month"
-                  component={SelectBox}
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_month')}
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_month')}
+                  component={Select}
                   options={months}
                   dataLocator={getLocator('plcc_date')}
                   className="field_dob"
@@ -55,7 +58,10 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="date"
                   name="date"
-                  component={SelectBox}
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_day')}
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_day')}
+                  component={Select}
                   options={calendarDaysMap()}
                   dataLocator={getLocator('plcc_month')}
                   className="field_dob"
@@ -70,7 +76,10 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="year"
                   name="year"
-                  component={SelectBox}
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_year')}
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_year')}
+                  component={Select}
                   options={calendarYearsMap()}
                   dataLocator={getLocator('plcc_year')}
                   className="field_dob"

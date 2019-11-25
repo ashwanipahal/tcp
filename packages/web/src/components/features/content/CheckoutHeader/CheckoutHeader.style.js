@@ -51,6 +51,9 @@ export default css`
         width: 85px;
         height: auto;
       }
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: auto;
+      }
     }
   }
 
@@ -104,6 +107,11 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
   }
 

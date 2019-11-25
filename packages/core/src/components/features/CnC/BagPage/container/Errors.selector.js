@@ -9,6 +9,7 @@ const getErrorList = state => {
       'errorMessages',
       'global'
     ),
+    CWXFR0221E: getLabelValue(state.Labels, 'lbl_errorMessages_DEFAULT', 'errorMessages', 'global'),
     _2270: getLabelValue(state.Labels, 'lbl_errorMessages_2270', 'errorMessages', 'global'),
     _2080: getLabelValue(state.Labels, 'lbl_errorMessages_2080', 'errorMessages', 'global'),
     _2030: getLabelValue(state.Labels, 'lbl_errorMessages_2030', 'errorMessages', 'global'),
@@ -532,6 +533,12 @@ const getErrorList = state => {
     ERR_REQUEST_TIMEOUT: getLabelValue(
       state.Labels,
       'lbl_errorMessages_PROCESS_REQUEST_ERROR',
+      'errorMessages',
+      'global'
+    ),
+    _PLACE_CASH_ERROR: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_PLACE_CASH_ERROR',
       'errorMessages',
       'global'
     ),

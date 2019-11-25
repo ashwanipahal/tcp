@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Image, FlatList } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import {
+  PageContainer,
   StyleProductDescription,
   StyleLongDescription,
   ImageStyleWrapper,
@@ -50,11 +51,11 @@ class ProductDetailDescription extends React.PureComponent {
   };
 
   render() {
-    const { longDescription, shortDescription, pdpLabels, itemPartNumber } = this.props;
+    const { longDescription, shortDescription, pdpLabels, itemPartNumber, margins } = this.props;
     const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isAccordionOpen } = this.state;
     return (
-      <View>
+      <PageContainer margins={margins}>
         <StyleProductDescription onPress={this.handleAccordionToggle}>
           <BodyCopy
             fontFamily="secondary"
@@ -107,7 +108,7 @@ class ProductDetailDescription extends React.PureComponent {
             </ItemStyleWrapper>
           </>
         ) : null}
-      </View>
+      </PageContainer>
     );
   }
 }
@@ -117,6 +118,7 @@ ProductDetailDescription.propTypes = {
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
+  margins: PropTypes.string,
 };
 
 ProductDetailDescription.defaultProps = {
@@ -124,6 +126,7 @@ ProductDetailDescription.defaultProps = {
   pdpLabels: {},
   shortDescription: '',
   itemPartNumber: '',
+  margins: null,
 };
 
 export default ProductDetailDescription;

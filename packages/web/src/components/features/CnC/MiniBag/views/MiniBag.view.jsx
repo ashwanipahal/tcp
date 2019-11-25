@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getCartItemCount, getSflItemCount } from '@tcp/core/src/utils/cookie.util';
-import styles, { modalStyles } from '../styles/MiniBag.style';
+import { getSflItemCount, getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
+import styles, { modalStyles, customStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
 import { getSiteId } from '../../../../../../../core/src/utils/utils.web';
@@ -17,7 +18,8 @@ class MiniBag extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ router: nextRouter }) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps({ router: nextRouter }) {
     const { router, closeMiniBagDispatch } = this.props;
     /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {
@@ -44,7 +46,10 @@ class MiniBag extends React.Component {
       onRequestClose,
       openOverlay,
       isPlcc,
+      isUserLoggedIn,
+      isRememberedUser,
     } = this.props;
+
     return (
       <MiniBagHeader
         labels={labels}
@@ -55,6 +60,8 @@ class MiniBag extends React.Component {
         onRequestClose={onRequestClose}
         openOverlay={openOverlay}
         isPlcc={isPlcc}
+        isUserLoggedIn={isUserLoggedIn}
+        isRememberedUser={isRememberedUser}
       />
     );
   };
@@ -67,13 +74,16 @@ class MiniBag extends React.Component {
       labels,
       userName,
       subTotal,
-      currencySymbol,
       isCartItemsUpdating,
       isCartItemSFL,
       cartItemSflError,
       resetSuccessMessage,
       addedToBagError,
       isShowSaveForLaterSwitch,
+      isUserLoggedIn,
+      isRememberedUser,
+      miniBagLoaderState,
+      isMiniBag,
     } = this.props;
     const { country } = this.state;
     const cartItemCount = getCartItemCount();
@@ -93,6 +103,7 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {miniBagLoaderState && <SpinnerOverlay inheritedStyles={customStyles} />}
         {this.renderMiniBagHeader(cartItemCount)}
         <MiniBagBody
           closeMiniBag={onRequestClose}
@@ -100,7 +111,6 @@ class MiniBag extends React.Component {
           cartItemCount={cartItemCount}
           userName={userName}
           subTotal={subTotal}
-          currencySymbol={currencySymbol}
           isCartItemsUpdating={isCartItemsUpdating}
           savedforLaterQty={sflItemsCount}
           isCartItemSFL={isCartItemSFL}
@@ -109,6 +119,9 @@ class MiniBag extends React.Component {
           resetSuccessMessage={resetSuccessMessage}
           addedToBagError={addedToBagError}
           isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+          isUserLoggedIn={isUserLoggedIn}
+          isRememberedUser={isRememberedUser}
+          isMiniBag={isMiniBag}
         />
       </Modal>
     );
@@ -123,7 +136,6 @@ MiniBag.propTypes = {
   router: PropTypes.shape({}).isRequired,
   userName: PropTypes.string.isRequired,
   subTotal: PropTypes.string.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   currentPoints: PropTypes.string.isRequired,
   totalRewards: PropTypes.string.isRequired,
   isCartItemsUpdating: PropTypes.bool.isRequired,
@@ -135,6 +147,10 @@ MiniBag.propTypes = {
   isPlcc: PropTypes.bool.isRequired,
   addedToBagError: PropTypes.string.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isRememberedUser: PropTypes.bool.isRequired,
+  miniBagLoaderState: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

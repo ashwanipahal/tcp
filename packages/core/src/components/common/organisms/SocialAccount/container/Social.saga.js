@@ -3,8 +3,10 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import SOCIAL_CONSTANTS from '../social.constants';
-import { setSocialAccount, showPointModalDetails } from './Social.actions';
+import { validateReduxCache } from '../../../../../utils/cache.util';
+import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -12,6 +14,7 @@ import {
 
 export function* getsocialAccounts(action) {
   try {
+    yield put(showLoader());
     const res = yield call(getSocialAccountsInformation, action);
     /* istanbul ignore else */
     if (res) {
@@ -23,6 +26,7 @@ export function* getsocialAccounts(action) {
 }
 
 export function* savesocialAccounts({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const body = {
       token: payload.socialAccInfo.accessToken,
@@ -37,6 +41,7 @@ export function* savesocialAccounts({ payload }) {
 
     const res = yield call(saveSocialAccountsInfo, body);
     /* istanbul ignore else */
+    yield put(setLoaderState(false));
     if (res) {
       yield put(setSocialAccount(res));
     }
@@ -45,11 +50,13 @@ export function* savesocialAccounts({ payload }) {
       yield put(showPointModalDetails({ state: !isConnected }));
     }
   } catch (err) {
+    yield put(setLoaderState(false));
     console.log('err', err);
   }
 }
 export function* SocialAccountSaga() {
-  yield takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, getsocialAccounts);
+  const cachedSocialAccounts = validateReduxCache(getsocialAccounts);
+  yield takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, cachedSocialAccounts);
   yield takeLatest(SOCIAL_CONSTANTS.SAVE_SOCIAL_LOAD, savesocialAccounts);
 }
 

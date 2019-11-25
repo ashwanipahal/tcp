@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Image } from '@tcp/core/src/components/common/atoms';
+import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, isGymboree } from '@tcp/core/src/utils/utils';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -32,7 +32,6 @@ class SearchImageWrapper extends React.PureComponent {
       searchResults,
       isSearchOpen,
       closeSearchBar,
-      hideOverlayAfterClick,
       redirectToSuggestedUrl,
       setSearchState,
       setDataInLocalStorage,
@@ -59,7 +58,7 @@ class SearchImageWrapper extends React.PureComponent {
                     onSubmit={initiateSearchBySubmit}
                   >
                     <input
-                      id="search-input"
+                      id="searchBar-input"
                       ref={this.searchBarInput}
                       onClick={openSearchBar}
                       className="searchBar-input"
@@ -73,7 +72,7 @@ class SearchImageWrapper extends React.PureComponent {
                     alt="search"
                     id="search-image-typeAhead"
                     className="searchBar-image-typeAhead icon-small"
-                    src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                    src={getIconPath(`${SEARCH_IMAGE}`)}
                     data-locator="search-icon"
                     height="25px"
                     onClick={openSearchBar}
@@ -81,16 +80,24 @@ class SearchImageWrapper extends React.PureComponent {
                 </div>
               </div>
             ) : (
-              <Image
-                alt="search-image"
+              <Anchor
+                noLink
                 className="search-image icon"
-                onClick={openSearchBar}
-                src={getIconPath(
-                  fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
-                )}
                 data-locator="search-icon"
-                height="25px"
-              />
+                onClick={openSearchBar}
+                fontSizeVariation="large"
+                anchorVariation="primary"
+              >
+                <Image
+                  alt="search-image"
+                  src={getIconPath(
+                    fromCondensedHeader && !isGymboree()
+                      ? `${SEARCH_BLUE_IMAGE}`
+                      : `${SEARCH_IMAGE}`
+                  )}
+                  height="25px"
+                />
+              </Anchor>
             )}
           </div>
         )}
@@ -104,7 +111,6 @@ class SearchImageWrapper extends React.PureComponent {
               latestSearchResults={latestSearchResults}
               labels={labels}
               searchResults={searchResults}
-              hideOverlayAfterClick={hideOverlayAfterClick}
               redirectToSuggestedUrl={redirectToSuggestedUrl}
               setSearchState={setSearchState}
               setDataInLocalStorage={setDataInLocalStorage}
@@ -114,6 +120,7 @@ class SearchImageWrapper extends React.PureComponent {
               commonCloseClick={commonCloseClick}
               toggleSearchResults={toggleSearchResults}
               closeSearchLayover={closeSearchLayover}
+              isSearchOpen={isSearchOpen}
             />
           )}
         </div>
@@ -128,7 +135,6 @@ SearchImageWrapper.propTypes = {
   openSearchBar: PropTypes.func.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,

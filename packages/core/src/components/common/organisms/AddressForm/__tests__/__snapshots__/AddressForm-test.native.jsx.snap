@@ -8,6 +8,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -59,6 +60,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -124,6 +126,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -173,6 +176,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -545,6 +549,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -615,6 +620,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -687,6 +693,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -694,6 +701,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -712,12 +720,14 @@ exports[`AddressForm component should render correctly with default address 1`] 
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -731,6 +741,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -782,6 +793,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -847,6 +859,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -896,6 +909,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1268,6 +1282,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1338,6 +1353,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1408,6 +1424,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -1415,6 +1432,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -1433,12 +1451,14 @@ exports[`AddressForm component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

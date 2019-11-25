@@ -75,10 +75,9 @@ class CouponListSection extends React.Component<Props> {
             <div className="couponList__iconContainer">
               <div className="couponList__helpIcon">?</div>
               <Anchor
-                fontSizeVariation="small"
+                fontSizeVariation="medium"
                 underline
                 anchorVariation="primary"
-                fontSize="fs12"
                 fontFamily="secondary"
                 dataLocator="couponcard-helpApplyingPlaceCashlink"
                 onClick={this.helpAnchorClick}
@@ -113,7 +112,7 @@ class CouponListSection extends React.Component<Props> {
             })}
           </Col>
         </Row>
-        <div>
+        <div className="cart-show-more-btn">
           {couponList.size >= 5 && (
             <Anchor
               fontSizeVariation="small"

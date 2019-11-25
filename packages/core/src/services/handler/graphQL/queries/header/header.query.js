@@ -1,5 +1,6 @@
-const buildQuery = ({ type, brand, country, channel }) => `
-  header: globalModule(type: "${type}", brand: "${brand}", country: "${country}", channel: "${channel}") {
+const buildQuery = ({ type, brand, country, channel, lang }) => `
+  header: globalModule(type: "${type}", brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+    errorMessage
     submodules {
       topNavWrapper {
         composites {
@@ -9,6 +10,10 @@ const buildQuery = ({ type, brand, country, channel }) => `
             target
             external
             class
+          }
+
+          top_promo_banner: richTextList {
+            text
           }
 
           promo_message_wrapper: promoMessageWrapper {
@@ -24,7 +29,15 @@ const buildQuery = ({ type, brand, country, channel }) => `
             }
           }
         }
-      }
+      } 
+      
+      promoHtmlBannerCarousel {
+          composites {
+            promoHtmlBanner {
+                text
+              }
+          }
+      } 
 
       promoTextBannerCarousel {
         composites {
@@ -48,21 +61,13 @@ const buildQuery = ({ type, brand, country, channel }) => `
       loyaltyPromoBannerWrapper {
         composites {
           loyaltyPromoBanner {
-            image {
-              url
-              title
-              alt
-            }
             link {
               url
               title
-              text
               target
-              external
             }
-            styled {
+            richText {
               text
-              style
             }
           }
         }

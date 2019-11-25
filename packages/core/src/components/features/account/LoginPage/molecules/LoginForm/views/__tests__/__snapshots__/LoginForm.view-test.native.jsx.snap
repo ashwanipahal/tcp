@@ -27,6 +27,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -67,6 +68,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
       dataLocator="emailAddress"
       id="emailAddress"
+      keyboardType="email-address"
       label="lbl_login_email"
       name="emailAddress"
       type="text"
@@ -78,6 +80,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -133,6 +136,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           dataLocator=""
           fontFamily="secondary"
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -184,12 +188,14 @@ exports[`LoginForm component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_login_loginCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(Anchor)
       accessibilityLabel=""
@@ -202,6 +208,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
       }
       fontSizeVariation="xlarge"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -213,6 +220,8 @@ exports[`LoginForm component should renders correctly 1`] = `
       borderColor={null}
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={28}
     />
   </View>

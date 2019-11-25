@@ -10,7 +10,7 @@ const styles = css`
     transform: rotate(135deg);
   }
   @media ${props => props.theme.mediaQuery.medium} {
-    border-top: 1px solid ${props => props.theme.colors.BLACK};
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .footer-body-container {
@@ -33,6 +33,9 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
       width: auto;
       flex-direction: row;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      ${props => (props.showPayPalButton ? 'flex-direction: column-reverse' : null)};
     }
 
     .back-space {
@@ -70,10 +73,13 @@ const styles = css`
       display: none;
       @media ${props => props.theme.mediaQuery.medium} {
         display: block;
+      }
+      @media ${props => props.theme.mediaQuery.mediumMax} {
         width: 192px;
-        height: 51px;
+        height: 42px;
       }
       @media ${props => props.theme.mediaQuery.large} {
+        height: 51px;
         width: 210px;
       }
     }
@@ -86,6 +92,18 @@ const styles = css`
     }
     .footer-venmo-button {
       display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .footer-paypal-button {
+      position: relative;
+      width: 450px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 192px;
+      }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
         width: 100%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { reduxForm, change, FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -11,8 +12,12 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import BillingSection from '../organisms/BillingSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const { Container, FooterTextContainer, FooterLink } = style;
+const formName = 'expressReviewPage';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -24,12 +29,62 @@ class ReviewPage extends React.PureComponent {
     reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     setCheckoutStage: PropTypes.func.isRequired,
+    isPaymentDisabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    bagLoading: PropTypes.bool.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    shipmentMethods: PropTypes.func.isRequired,
+    selectedShipmentId: PropTypes.func.isRequired,
+    setVenmoShippingState: PropTypes.func,
+    setVenmoPickupState: PropTypes.func,
+  };
+
+  static defaultProps = {
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
+    isPaymentDisabled: false,
+    isExpressCheckout: false,
   };
 
   componentDidMount() {
-    const { reviewDidMount } = this.props;
+    const { reviewDidMount, setVenmoShippingState, setVenmoPickupState } = this.props;
+    setVenmoShippingState(true);
+    setVenmoPickupState(true);
     reviewDidMount();
   }
+
+  componentDidUpdate(prevProps) {
+    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
+    const { isPaymentDisabled, dispatch } = this.props;
+    if (prevPaymentDisabled !== isPaymentDisabled) {
+      dispatch(change(formName, 'cvvCode', null));
+    }
+  }
+
+  /**
+   * @function reviewFormSubmit
+   * @description returns form submit data
+   *
+   */
+  reviewFormSubmit = data => {
+    const { submitReview, isExpressCheckout, navigation } = this.props;
+    const { cvvCode } = data;
+
+    if (isExpressCheckout && cvvCode) {
+      const formDataSubmission = {
+        formData: {
+          billing: {
+            cvv: cvvCode,
+          },
+        },
+        navigation,
+      };
+      submitReview(formDataSubmission);
+    } else {
+      submitReview({ navigation });
+    }
+  };
 
   renderFooter = () => {
     const {
@@ -55,11 +110,16 @@ class ReviewPage extends React.PureComponent {
     const {
       navigation,
       labels,
-      submitReview,
       availableStages,
       orderHasShipping,
       orderHasPickUp,
       setCheckoutStage,
+      handleSubmit,
+      isExpressCheckout,
+      shipmentMethods,
+      dispatch,
+      selectedShipmentId,
+      bagLoading,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -79,29 +139,43 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
+                isExpressCheckout={isExpressCheckout}
+                bagLoading={bagLoading}
               />
             )}
+
             {!!orderHasShipping && (
-              <ShippingReviewSection
-                onEdit={() => {
-                  setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
-                }}
-              />
+              <FormSection name="expressReviewShippingSection">
+                <ShippingReviewSection
+                  onEdit={() => {
+                    setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
+                  }}
+                  isExpressCheckout={isExpressCheckout}
+                  shipmentMethods={shipmentMethods}
+                  dispatch={dispatch}
+                  formName={formName}
+                  formSection="expressReviewShippingSection"
+                  selectedShipmentId={selectedShipmentId}
+                  bagLoading={bagLoading}
+                />
+              </FormSection>
             )}
 
             <BillingSection
               onEdit={() => {
                 setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
+              isExpressCheckout={isExpressCheckout}
+              bagLoading={bagLoading}
             />
           </Container>
-          <CheckoutCartItemList />
+          <CheckoutCartItemList bagLoading={bagLoading} />
           <CnCTemplate
             isReviewPage
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
-            onPress={() => submitReview({ navigation })}
+            onPress={handleSubmit(this.reviewFormSubmit)}
             backLinkText={backLinkBilling}
             onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
@@ -114,6 +188,15 @@ class ReviewPage extends React.PureComponent {
   }
 }
 
-export default ReviewPage;
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
+});
+
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+})(ReviewPage);
 
 export { ReviewPage as ReviewPageVanilla };

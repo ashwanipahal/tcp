@@ -1,5 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import BONUS_POINTS_DAYS_CONSTANTS from '../BonusPointsDays.constants';
+
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import {
   getBonusPointsData,
@@ -26,10 +28,13 @@ export function* getBonusDaysData() {
 
 export function* applyBonusDaysData(dto) {
   try {
+    yield put(setLoaderState(true));
     yield call(applyBonusPointsData, dto);
     yield call(getBonusDaysData);
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(setBonusDaysError(err));
   }
 }

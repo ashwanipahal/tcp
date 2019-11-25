@@ -39,37 +39,27 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       viewHeight="65%"
     >
       <Styled(View)>
-        <Connect(ProductTileWrapperContainer)
-          bagLabels={
-            Object {
-              "bagHeading": "test",
-              "checkout": "",
-              "savedLaterButton": "savedLaterButton",
-              "tagLine": "tagline",
-              "viewBag": "",
-            }
-          }
-        />
+        <Connect(Styled(PlaceCashBanner)) />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
-        fromBagPage={true}
+        navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
-  </Styled(View)>
-  <Styled(View)>
-    <Connect(AddedToBagContainer)
-      isNoNEmptyBag={false}
-      labels={
-        Object {
-          "bagHeading": "test",
-          "checkout": "",
-          "savedLaterButton": "savedLaterButton",
-          "tagLine": "tagline",
-          "viewBag": "",
-        }
-      }
-      navigation={[MockFunction]}
-    />
   </Styled(View)>
 </Fragment>
 `;
@@ -122,11 +112,28 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
-        fromBagPage={true}
+        navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
   </Styled(View)>
@@ -183,11 +190,28 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
-        fromBagPage={true}
+        navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
   </Styled(View)>
@@ -241,9 +265,14 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               "viewBag": "",
             }
           }
+          navigation={[MockFunction]}
+          pageView="myBag"
         />
         <Styled(View)>
-          <Connect(OrderLedgerContainer) />
+          <Connect(OrderLedgerContainer)
+            navigation={[MockFunction]}
+            pageCategory="bagPage"
+          />
         </Styled(View)>
         <Styled(View)>
           <Styled(View)>
@@ -253,19 +282,36 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             />
           </Styled(View)>
         </Styled(View)>
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Connect(CouponContainer)
             showAccordian={false}
           />
         </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
-        fromBagPage={true}
+        navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
     <Connect(AddedToBagContainer)
+      hideHeader={[Function]}
       isNoNEmptyBag={true}
       labels={
         Object {
@@ -277,6 +323,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         }
       }
       navigation={[MockFunction]}
+      payPalTop={30}
       showAddTobag={true}
     />
   </Styled(View)>

@@ -3,8 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
+import {
+  getBrand,
+  getIconPath,
+  isGymboree,
+  routerPush,
+  getViewportInfo,
+} from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
@@ -12,6 +19,7 @@ import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
+import { customHeaderStyle } from '../HeaderMiddleNav/HeaderMiddleNav.style';
 
 const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isOpen) => () => {
   return isOpen ? closeNavigationDrawer('l1_drawer') : openNavigationDrawer('l1_drawer');
@@ -28,6 +36,7 @@ class CondensedHeader extends React.PureComponent {
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
       isFullSizeSearchModalOpen: false,
+      fromCondensedHeader: true,
     };
     this.setSearchState = this.setSearchState.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
@@ -94,6 +103,35 @@ class CondensedHeader extends React.PureComponent {
     }
   };
 
+  getNavigation = () => {
+    const {
+      userName,
+      userPoints,
+      userRewards,
+      closeNavigationDrawer,
+      navigationDrawer,
+    } = this.props;
+    return getViewportInfo().isDesktop ? (
+      <div className="condensed-navigation">
+        <Navigation
+          openNavigationDrawer={navigationDrawer.open}
+          closeNavigationDrawer={!navigationDrawer.open}
+          closeNav={closeNavigationDrawer}
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          isCondensedHeader
+        />
+      </div>
+    ) : null;
+  };
+
+  getImgSrc = navigationDrawer => {
+    return navigationDrawer.open
+      ? '/static/images/mobile-close-dark.svg'
+      : '/static/images/grey-menu.svg';
+  };
+
   render() {
     const {
       className,
@@ -102,12 +140,19 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      userPoints,
-      userRewards,
+
       labels,
     } = this.props;
     const brand = getBrand();
-    const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
+    const {
+      isSearchOpen,
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+      fromCondensedHeader,
+      isFullSizeSearchModalOpen,
+      isLoggedIn,
+    } = this.state;
     const {
       accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
     } = labels;
@@ -117,11 +162,7 @@ class CondensedHeader extends React.PureComponent {
           <div className="content-wrapper">
             <div className="condensed-hamburger-menu">
               <Image
-                src={
-                  navigationDrawer.open
-                    ? '/static/images/mobile-close-dark.svg'
-                    : '/static/images/grey-menu.svg'
-                }
+                src={this.getImgSrc(navigationDrawer)}
                 alt={hamburgerMenu}
                 tabIndex="0"
                 role="button"
@@ -149,26 +190,45 @@ class CondensedHeader extends React.PureComponent {
               dataLocator={config[brand].dataLocator}
               imgSrc={config[brand].imgSrc}
             />
-            <div className="condensed-navigation">
-              <Navigation
-                openNavigationDrawer={navigationDrawer.open}
-                closeNavigationDrawer={!navigationDrawer.open}
-                closeNav={closeNavigationDrawer}
-                userName={userName}
-                userPoints={userPoints}
-                userRewards={userRewards}
-              />
-            </div>
+            {this.getNavigation()}
             <div className="condensed-header-icons">
-              <SearchBar
-                className={!isSearchOpen && 'rightLink search-icon'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
-                fromCondensedHeader
-                onCloseClick={this.onCloseClick}
-              />
+              {isFullSizeSearchModalOpen ? (
+                <Modal
+                  isOpen={isFullSizeSearchModalOpen}
+                  onRequestClose={this.handleShowHideFullSizeModalClick}
+                  overlayClassName="TCPModal__Overlay"
+                  className="TCPModal__Content"
+                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
+                  heightConfig={{ height: '99%' }}
+                  fixedWidth
+                  inheritedStyles={customHeaderStyle}
+                  headingAlign="center"
+                  horizontalBar={false}
+                  stickyCloseIcon
+                  fullWidth
+                  stickyHeader
+                >
+                  <SearchBar
+                    className={!isSearchOpen}
+                    setSearchState={this.setSearchState}
+                    isSearchOpen={isSearchOpen}
+                    onCloseClick={this.onCloseClick}
+                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                    fromCondensedHeader={fromCondensedHeader}
+                  />
+                </Modal>
+              ) : (
+                <SearchBar
+                  className={!isSearchOpen && 'rightLink search-icon'}
+                  setSearchState={this.setSearchState}
+                  isSearchOpen={isSearchOpen}
+                  fromCondensedHeader={fromCondensedHeader}
+                  onCloseClick={this.onCloseClick}
+                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                />
+              )}
 
-              {userName ? (
+              {userName && isLoggedIn ? (
                 <React.Fragment>
                   <BodyCopy
                     id="accountDrawer"

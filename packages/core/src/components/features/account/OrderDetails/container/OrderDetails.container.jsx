@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+// import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import OrderDetailsView from '../views';
 import { getOrderDetails } from './OrderDetails.actions';
-import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
-
+import {
+  getOrderDetailsDataState,
+  getOrdersLabels,
+  getOrderDetailsDataFetchingState,
+} from './OrderDetails.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 /**
  * This Class component use for return the Order Details data
  * can be passed in the component.
@@ -33,12 +38,22 @@ export class OrderDetailsContainer extends PureComponent {
    */
 
   render() {
-    const { orderId, orderDetailsData, ordersLabels } = this.props;
+    const {
+      orderId,
+      orderDetailsData,
+      ordersLabels,
+      navigation,
+      isFetching,
+      isLoggedIn,
+    } = this.props;
     return (
       <OrderDetailsView
         orderDetailsData={orderDetailsData}
         ordersLabels={ordersLabels}
         orderId={orderId}
+        navigation={navigation}
+        isFetching={isFetching}
+        isLoggedIn={isLoggedIn}
       />
     );
   }
@@ -58,6 +73,8 @@ export const mapStateToProps = (state, ownProps) => {
     emailAddress: ownProps.router.query.emailAddress,
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
+    isFetching: getOrderDetailsDataFetchingState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -67,6 +84,9 @@ OrderDetailsContainer.propTypes = {
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
   getOrderDetailsAction: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
+  isFetching: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
 };
 
 OrderDetailsContainer.defaultProps = {
@@ -74,6 +94,9 @@ OrderDetailsContainer.defaultProps = {
   orderId: '',
   ordersLabels: {},
   orderDetailsData: {},
+  navigation: {},
+  isFetching: false,
+  isLoggedIn: false,
 };
 
 export default connect(

@@ -5,8 +5,13 @@ export default css`
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -44,6 +49,13 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
+  .padding-top-40 {
+    padding-top: 26px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: 40px;
+    }
+  }
   .padding-bottom-20 {
     padding-bottom: 20px;
   }
@@ -71,7 +83,9 @@ export default css`
   }
   .imageWrapper {
     position: relative;
-    width: 100px;
+    img {
+      max-height: 100px;
+    }
   }
   .logoWrapper {
     position: relative;
@@ -165,6 +179,30 @@ export default css`
       flex-wrap: wrap;
       width: fit-content;
     }
+
+    .product-detail-section {
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
+      align-items: center;
+      flex-wrap: wrap;
+      > span {
+        padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      }
+    }
+
+    .product-detail {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .responsive-edit-css {
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    }
   }
 
   .product-tile-wrapper {
@@ -230,20 +268,14 @@ export default css`
 
       .responsive-edit-css {
         text-decoration: underline;
-        padding-top: 4px;
+        padding-top: 0px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
-        padding-left: 15px;
-        left: 155px;
-        bottom: 4px;
-        /* stylelint-disable */
-        @media ${props => props.theme.mediaQuery.large} {
-          position: absolute;
-          left: 110px;
-          bottom: 3px;
-        }
-        /* stylelint-enable */
+      }
+
+      .sflActions {
+        padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
       }
 
       /* stylelint-disable */
@@ -274,9 +306,6 @@ export default css`
       }
       .responsive-edit-css {
         text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 50%;
         cursor: pointer;
       }
       .bag-product-detail-wrapper {
@@ -290,6 +319,17 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       .color-fit-size-desktop {
         width: auto;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.mobile} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      .save-for-later-label {
+        left: 7px;
       }
     }
 
@@ -327,9 +367,15 @@ export default css`
 
   .parent- {
     padding-bottom: 0px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      position: absolute;
-      right: -10px;
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
@@ -357,14 +403,11 @@ export default css`
     }
   }
   .heartIcon {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .sflActions {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -382,5 +425,12 @@ export default css`
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

@@ -172,6 +172,12 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_CHANGE_STORE: PropTypes.string,
     }),
     simplifiedProductPickupView: PropTypes.bool,
+    isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
+    onPickupClickAddon: PropTypes.func,
+    isOutfitVariant: PropTypes.bool,
+    keepAlive: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -208,15 +214,22 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
       lbl_Product_pickup_BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
       lbl_Product_pickup_BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
-      lbl_Product_pickup_FIND_STORE: 'FIND A STORE',
+      lbl_Product_pickup_FIND_STORE: 'Find In Store',
       lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
       lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
       lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
       lbl_Product_pickup_PRODUCT_BOPIS: 'Select Store',
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
       lbl_Product_pickup_CHANGE_STORE: '(Change Store)',
+      lbl_Product_pickup_UNAVAILABLE_IN_STORES: 'UNAVAILABLE IN STORES',
     },
     simplifiedProductPickupView: false,
+    isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
+    onPickupClickAddon: () => {},
+    isOutfitVariant: false,
+    keepAlive: false,
+    outOfStockLabels: {},
   };
 
   constructor(props, context) {
@@ -258,6 +271,7 @@ class ProductPickupContainer extends React.PureComponent {
       isBopisClearanceProductEnabled,
       isBopisEnabled,
       miscInfo,
+      isAnchor,
     } = this.props;
     const bossValidatingParams = {
       isBossClearanceProductEnabled,
@@ -267,11 +281,12 @@ class ProductPickupContainer extends React.PureComponent {
       isBopisClearanceProductEnabled,
       isBopisEnabled,
     };
-    this.isSkuResolved = false;
+
     this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
     this.isGeoStoreAPIRequested = false;
-    if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps)) {
+
+    if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps, isAnchor)) {
       // Added New check for userDefaultStore to fire getBopisInventoryDetails when user has already selected sku and allows location access later.
       const itemPartNumber = getVariantId(
         productInfo.colorFitsSizesMap,
@@ -317,10 +332,19 @@ class ProductPickupContainer extends React.PureComponent {
   };
 
   getIsStoreBopisEligible = bopisItemInventory => {
-    return bopisItemInventory.length > 0 && bopisItemInventory[0].quantity > 0;
+    return (
+      this.isBopisEligible &&
+      bopisItemInventory &&
+      bopisItemInventory.inventoryResponse &&
+      bopisItemInventory.inventoryResponse.length > 0 &&
+      bopisItemInventory.inventoryResponse[0].quantity > 0
+    );
   };
 
-  getIsStoreAndProductBossEligible = (isBOSSInventoryAvailable, isStoreAndProductBossEligible) => {
+  getIsStoreAndProductBossEligibleWithInventory = (
+    isBOSSInventoryAvailable,
+    isStoreAndProductBossEligible
+  ) => {
     return isBOSSInventoryAvailable && isStoreAndProductBossEligible;
   };
 
@@ -343,7 +367,6 @@ class ProductPickupContainer extends React.PureComponent {
       isRadialInventoryEnabled,
       labels,
     } = this.props;
-
     let isStoreBossEligible = false;
     if (userDefaultStore) {
       isStoreBossEligible = numericStringToBool(
@@ -378,7 +401,7 @@ class ProductPickupContainer extends React.PureComponent {
          * @returns if the product is only bopis eligible and the sku is resolved
          * then it @returns {labels.PRODUCT_BOPIS}
          */
-        pickupTitleText = labels.lbl_Product_pickup_PRODUCT_BOPIS;
+        pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
         return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
       }
       pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
@@ -416,7 +439,7 @@ class ProductPickupContainer extends React.PureComponent {
     } = this.props;
 
     const isStoreBopisEligible = this.getIsStoreBopisEligible(bopisItemInventory);
-    let isStoreBossEligible = false;
+    let isStoreBossEligible = true;
     if (userDefaultStore) {
       isStoreBossEligible = numericStringToBool(
         userDefaultStore.storeBossInfo && userDefaultStore.storeBossInfo.isBossEligible
@@ -428,7 +451,7 @@ class ProductPickupContainer extends React.PureComponent {
     if (isRadialInventoryEnabled) {
       // kill switch RAD-171 RAD-74
       const isBOSSInventoryAvailable = !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-      isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligible(
+      isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligibleWithInventory(
         isBOSSInventoryAvailable,
         isStoreAndProductBossEligible
       );
@@ -436,6 +459,7 @@ class ProductPickupContainer extends React.PureComponent {
     return {
       showPickupDetails: this.pickupRenderCondition(isStoreAndProductBossEligible),
       isStoreBopisEligible,
+      isStoreAndProductBossEligible,
     };
   }
 
@@ -447,8 +471,9 @@ class ProductPickupContainer extends React.PureComponent {
     return !this.isBopisEligible && !this.isBossEligible;
   };
 
-  shouldGetInventoryDetails = (userDefaultStore, itemValues, prevProps) => {
+  shouldGetInventoryDetails = (userDefaultStore, itemValues, prevProps, isAnchor) => {
     return (
+      !isAnchor &&
       this.isSkuResolved &&
       userDefaultStore &&
       (itemValues.Size !== prevProps.itemValues.Size || this.compareDefaultStore(prevProps))
@@ -494,31 +519,29 @@ class ProductPickupContainer extends React.PureComponent {
       onPickUpOpenClick,
       labels,
       simplifiedProductPickupView,
+      isAnchor,
+      sizeUnavailable,
+      onPickupClickAddon,
+      isOutfitVariant,
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
       return null;
     }
-
     this.isSkuResolved = validateSkuDetails(productInfo, itemValues);
     const { isSubmitting } = this.state;
-
     // RAD-74 Replace Outbound1 Inventory check to Outbound2(Radial/Boss Inventory)
-    let showPickupInfo;
-    if (isRadialInventoryEnabled) {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    } else {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    }
-
+    const validateBossOOS = isRadialInventoryEnabled ? isBOSSProductOOS : isProductOOS;
+    const isbossInventoryAvailable = !validateBossOOS(productInfo.colorFitsSizesMap, itemValues);
+    const showPickupInfo = !userDefaultStore || !this.isSkuResolved || isbossInventoryAvailable;
     const { showChangeStore, pickupTitleText, isBossEligBossInvAvail } = this.setPickupTitle();
-    const { showPickupDetails, isStoreBopisEligible } = this.getPickupInfo();
+    const {
+      showPickupDetails,
+      isStoreBopisEligible,
+      isStoreAndProductBossEligible,
+    } = this.getPickupInfo();
 
     return (
       <ProductPickup
@@ -529,6 +552,7 @@ class ProductPickupContainer extends React.PureComponent {
         productInfo={productInfo}
         isSkuResolved={this.isSkuResolved}
         isBopisEligible={this.isBopisEligible}
+        isBossEligible={this.isBossEligible}
         showChangeStore={showChangeStore}
         pickupTitleText={pickupTitleText}
         userDefaultStore={userDefaultStore}
@@ -539,6 +563,13 @@ class ProductPickupContainer extends React.PureComponent {
         showPickupInfo={showPickupInfo}
         isSubmitting={isSubmitting}
         simplifiedProductPickupView={simplifiedProductPickupView}
+        isAnchor={isAnchor}
+        sizeUnavailable={sizeUnavailable}
+        onPickupClickAddon={onPickupClickAddon}
+        isOutfitVariant={isOutfitVariant}
+        isStoreAndProductBossEligible={isStoreAndProductBossEligible}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }
@@ -560,6 +591,9 @@ function mapStateToProps(state, ownProps) {
   // const userDefaultStore = favStore || geoDefaultStore || null;
   // const offerEspot = generalStoreView.getEspotByName(state, 'fav_store_pickup_content');
   // const userDefaultStore = null;
+  const userDefaultStore = PickupSelectors.getDefaultStore(state);
+  const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
+  const defaultStore = userDefaultStore || geoDefaultStore || null;
 
   return {
     labels: PickupSelectors.getLabels(state),
@@ -569,144 +603,12 @@ function mapStateToProps(state, ownProps) {
     isBossEnabled: getIsBossEnabled(state),
     isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
     isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
-    // isBopisEnabled: true,
-    // isBossEnabled: true,
-    // isBopisClearanceProductEnabled: true,
-    // isBossClearanceProductEnabled: true,
+    // isBopisEnabled: false,
+    // isBossEnabled: false,
+    // isBopisClearanceProductEnabled: false,
+    // isBossClearanceProductEnabled: false,
+    userDefaultStore: defaultStore,
 
-    // userDefaultStore,
-    // TODO - This is a sample default store value for implementation.
-    // Will be removed once the favorite store is available in the store
-    userDefaultStore: {
-      storeBossInfo: {
-        isBossEligible: '1',
-        startDate: '09/29/2019',
-        endDate: '10/03/2019',
-      },
-      pickupType: {
-        isStoreBossSelected: true,
-        isStoreBopisSelected: true,
-      },
-      distance: null,
-      basicInfo: {
-        id: '114037',
-        storeName: 'south park meadows',
-        isDefault: 1,
-        address: {
-          addressLine1: '9500 south ih-35',
-          city: 'austin',
-          state: 'TX',
-          country: 'US',
-          zipCode: '78748',
-        },
-        phone: '(512) 292-3025',
-        coordinates: {
-          lat: 30.16216,
-          long: -97.7892,
-        },
-      },
-      hours: {
-        regularHours: [
-          {
-            dayName: 'TUESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-24 10:00:00',
-                toHour: '2019-09-24 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'WEDNESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-25 10:00:00',
-                toHour: '2019-09-25 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'THURSDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-26 10:00:00',
-                toHour: '2019-09-26 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'FRIDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-27 10:00:00',
-                toHour: '2019-09-27 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'SATURDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-28 10:00:00',
-                toHour: '2019-09-28 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'SUNDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-29 12:00:00',
-                toHour: '2019-09-29 18:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'MONDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-30 10:00:00',
-                toHour: '2019-09-30 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'TUESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-10-01 10:00:00',
-                toHour: '2019-10-01 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'WEDNESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-10-02 10:00:00',
-                toHour: '2019-10-02 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-        ],
-        holidayHours: [],
-        regularAndHolidayHours: [],
-      },
-      features: {
-        storeType: 'Retail Store',
-      },
-      productAvailability: {},
-      timeStamp: 1569314564525,
-    },
     userGeoCoordinates: {
       lat: null,
       long: null,

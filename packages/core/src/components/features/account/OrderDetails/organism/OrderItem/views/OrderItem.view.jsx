@@ -63,46 +63,63 @@ const OrderItems = ({ className, ...otherProps }) => {
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
         >
-          <Row fullBleed>
-            <Col colSize={{ large: 7, medium: 8, small: 4 }}>
-              <BodyCopy
-                component="div"
-                fontSize="fs14"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-              >
-                {name}
-              </BodyCopy>
-            </Col>
-            <Col colSize={{ large: 5, medium: 0, small: 4 }} />
-          </Row>
+          <BodyCopy component="div" className="item-preview-details">
+            <Row fullBleed>
+              <Col colSize={{ large: 7, medium: 8, small: 4 }}>
+                <BodyCopy
+                  component="div"
+                  fontSize="fs14"
+                  fontWeight="extrabold"
+                  fontFamily="secondary"
+                >
+                  {name}
+                </BodyCopy>
+              </Col>
+              <Col colSize={{ large: 5, medium: 0, small: 4 }} />
+            </Row>
 
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-MED">
-            {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
-            {upc}
-          </BodyCopy>
-          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
-            {getLabelValue(ordersLabels, 'lbl_orderDetails_color')}
-            {color.name}
-          </BodyCopy>
-          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
-            {fit && (
-              <BodyCopy
-                component="span"
-                fontSize="fs14"
-                fontFamily="secondary"
-                className="elem-mr-XL"
-              >
-                {getLabelValue(ordersLabels, 'lbl_orderDetails_fit')}
-                {fit}
-              </BodyCopy>
-            )}
-            {size && (
-              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                {getLabelValue(ordersLabels, 'lbl_orderDetails_size')}
-                {size}
-              </BodyCopy>
-            )}
+            <BodyCopy
+              component="div"
+              fontSize="fs14"
+              fontFamily="secondary"
+              className="elem-mt-MED"
+            >
+              {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
+              {upc}
+            </BodyCopy>
+            <BodyCopy
+              className="elem-mt-XXXS"
+              component="div"
+              fontSize="fs14"
+              fontFamily="secondary"
+            >
+              {getLabelValue(ordersLabels, 'lbl_orderDetails_color')}
+              {color.name}
+            </BodyCopy>
+            <BodyCopy
+              className="elem-mt-XXXS"
+              component="div"
+              fontSize="fs14"
+              fontFamily="secondary"
+            >
+              {fit && (
+                <BodyCopy
+                  component="span"
+                  fontSize="fs14"
+                  fontFamily="secondary"
+                  className="elem-mr-XL"
+                >
+                  {getLabelValue(ordersLabels, 'lbl_orderDetails_fit')}
+                  {fit}
+                </BodyCopy>
+              )}
+              {size && (
+                <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+                  {getLabelValue(ordersLabels, 'lbl_orderDetails_size')}
+                  {size}
+                </BodyCopy>
+              )}
+            </BodyCopy>
           </BodyCopy>
           <BodyCopy component="div" className="elem-mt-SM itemInfo_details">
             <BodyCopy component="div" className="itemInfo_details_items">

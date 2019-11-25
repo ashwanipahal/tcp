@@ -24,7 +24,8 @@ class DeleteAddressModal extends React.Component {
    * @return {[Function]} function called
    */
   onClose = () => {
-    const { setDeleteModalMountState } = this.props;
+    const { setDeleteModalMountState, clearNotificationError } = this.props;
+    clearNotificationError();
     setDeleteModalMountState({ state: false });
   };
 
@@ -151,6 +152,7 @@ DeleteAddressModal.propTypes = {
   openState: PropTypes.bool.isRequired,
   showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  clearNotificationError: PropTypes.func.isRequired,
 };
 
 export default withStyles(DeleteAddressModal, styles);

@@ -1,4 +1,5 @@
 import { getLabelValue } from '@tcp/core/src/utils';
+import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 export const getCartOrderList = state => {
@@ -12,6 +13,10 @@ export const getEditableProductInfo = state => {
 
 export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
+};
+
+export const getIsMiniBagOpen = state => {
+  return state.Header.miniBag;
 };
 
 export const getCartOrderId = state => {
@@ -126,6 +131,18 @@ export const getIsStoreBOSSEligible = product => {
   return product.getIn(['miscInfo', 'isStoreBOSSEligible']);
 };
 
+export const getStoreTodayOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTodayOpenRange']);
+};
+
+export const getStoreTomorrowOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTomorrowOpenRange']);
+};
+
+export const getStorePhoneNumber = product => {
+  return product.getIn(['miscInfo', 'storePhoneNumber']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -136,6 +153,10 @@ export const getGeneralProdId = product => {
 
 export const getProductSkuId = product => {
   return product.getIn(['productInfo', 'skuId']);
+};
+
+export const getPdpUrl = product => {
+  return product.getIn(['productInfo', 'pdpUrl']);
 };
 
 export const getProductItemId = product => {
@@ -187,55 +208,6 @@ export const getCartItemsSflError = state => {
 };
 
 export const getLabelsCartItemTile = state => {
-  const {
-    global: {
-      addedToBagModal: {
-        lbl_info_color: color,
-        lbl_info_size: size,
-        lbl_info_Qty: qty,
-        lbl_info_price: price,
-        lbl_info_giftDesign: design,
-        lbl_info_giftValue: value,
-      },
-      cartItemTile: {
-        lbl_cartTile_fit: fit,
-        lbl_cartTile_points: points,
-        lbl_cartTile_cancel: cancel,
-        lbl_cartTile_edit: edit,
-        lbl_cartTile_update: update,
-        lbl_cartTile_remove: removeEdit,
-        lbl_cartTile_saveForLater: saveForLater,
-        lbl_cartTile_productBrandAlt: productBandAlt,
-        lbl_cartTile_productImageAlt: productImageAlt,
-        lbl_cartTile_bopis: bopisLabel,
-        lbl_cartTile_boss: bossLabel,
-        lbl_cartTile_noRushPickup: bossPickUp,
-        lbl_cartTile_pickUpToday: bopisPickUp,
-        lbl_cartTile_shipToHome: ecomShipping,
-        lbl_cartTile_extra: extra,
-        lbl_cartTile_off: off,
-        lbl_cartTile_delete: deleteItem,
-        lbl_cartTile_today: today,
-        lbl_cartTile_tomorrow: tomorrow,
-        lbl_cartTile_phone: phone,
-        lbl_cartTile_pickup: pickup,
-        lbl_cartTile_at: at,
-        lbl_cartTile_shipping: shipping,
-      },
-      minibag: {
-        lbl_miniBag_problemWithOrder: problemWithOrder,
-        lbl_miniBag_error: removeSoldOut,
-        lbl_miniBag_itemUnavailable: itemUnavailable,
-        lbl_miniBag_itemSoldOut: itemSoldOut,
-        lbl_miniBag_chooseDiff: chooseDiff,
-        lbl_miniBag_soldOut: soldOut,
-        lbl_minibag_errorSize: errorSize,
-        lbl_minibag_errorUpdateUnavailable: updateUnavailable,
-        lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
-      },
-    },
-  } = state.Labels;
-
   const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
   const moveToBagLink = getLabelValue(state.Labels, 'lbl_sfl_moveToBag', 'bagPage', 'checkout');
   const sflMaxLimitError = getLabelValue(
@@ -264,52 +236,82 @@ export const getLabelsCartItemTile = state => {
   // } = state.Labels;
 
   return {
-    color,
-    size,
-    qty,
-    price,
-    design,
-    value,
-    fit,
-    points,
-    cancel,
-    edit,
-    update,
-    removeEdit,
-    saveForLater,
-    productBandAlt,
-    productImageAlt,
-    bopisLabel,
-    bossLabel,
-    bossPickUp,
-    bopisPickUp,
-    ecomShipping,
-    extra,
-    off,
-    problemWithOrder,
+    color: getLabelValue(state.Labels, 'lbl_info_color', 'addedToBagModal', 'global'),
+    size: getLabelValue(state.Labels, 'lbl_info_size', 'addedToBagModal', 'global'),
+    qty: getLabelValue(state.Labels, 'lbl_info_Qty', 'addedToBagModal', 'global'),
+    price: getLabelValue(state.Labels, 'lbl_info_price', 'addedToBagModal', 'global'),
+    design: getLabelValue(state.Labels, 'lbl_info_giftDesign', 'addedToBagModal', 'global'),
+    value: getLabelValue(state.Labels, 'lbl_info_giftValue', 'addedToBagModal', 'global'),
+    fit: getLabelValue(state.Labels, 'lbl_cartTile_fit', 'cartItemTile', 'global'),
+    points: getLabelValue(state.Labels, 'lbl_cartTile_points', 'cartItemTile', 'global'),
+    cancel: getLabelValue(state.Labels, 'lbl_cartTile_cancel', 'cartItemTile', 'global'),
+    edit: getLabelValue(state.Labels, 'lbl_cartTile_edit', 'cartItemTile', 'global'),
+    update: getLabelValue(state.Labels, 'lbl_cartTile_update', 'cartItemTile', 'global'),
+    removeEdit: getLabelValue(state.Labels, 'lbl_cartTile_remove', 'cartItemTile', 'global'),
+    saveForLater: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_saveForLater',
+      'cartItemTile',
+      'global'
+    ),
+    productBandAlt: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_productBrandAlt',
+      'cartItemTile',
+      'global'
+    ),
+    productImageAlt: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_productImageAlt',
+      'cartItemTile',
+      'global'
+    ),
+    bopisLabel: getLabelValue(state.Labels, 'lbl_cartTile_bopis', 'cartItemTile', 'global'),
+    bossLabel: getLabelValue(state.Labels, 'lbl_cartTile_boss', 'cartItemTile', 'global'),
+    bossPickUp: getLabelValue(state.Labels, 'lbl_cartTile_noRushPickup', 'cartItemTile', 'global'),
+    bopisPickUp: getLabelValue(state.Labels, 'lbl_cartTile_pickUpToday', 'cartItemTile', 'global'),
+    ecomShipping: getLabelValue(state.Labels, 'lbl_cartTile_shipToHome', 'cartItemTile', 'global'),
+    extra: getLabelValue(state.Labels, 'lbl_cartTile_extra', 'cartItemTile', 'global'),
+    off: getLabelValue(state.Labels, 'lbl_cartTile_off', 'cartItemTile', 'global'),
+    problemWithOrder: getLabelValue(state.Labels, 'lbl_cartTile_remove', 'cartItemTile', 'global'),
     // pleaseText,
     // remove,
-    removeSoldOut,
-    itemUnavailable,
-    itemSoldOut,
-    chooseDiff,
-    soldOut,
-    errorSize,
-    updateUnavailable,
-    removeSoldoutHeader,
-    deleteItem,
+    removeSoldOut: getLabelValue(state.Labels, 'lbl_miniBag_error', 'minibag', 'global'),
+    itemUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_miniBag_itemUnavailable',
+      'minibag',
+      'global'
+    ),
+    itemSoldOut: getLabelValue(state.Labels, 'lbl_miniBag_itemSoldOut', 'minibag', 'global'),
+    chooseDiff: getLabelValue(state.Labels, 'lbl_miniBag_chooseDiff', 'minibag', 'global'),
+    soldOut: getLabelValue(state.Labels, 'lbl_miniBag_soldOut', 'minibag', 'global'),
+    errorSize: getLabelValue(state.Labels, 'lbl_minibag_errorSize', 'minibag', 'global'),
+    updateUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_minibag_errorUpdateUnavailable',
+      'minibag',
+      'global'
+    ),
+    removeSoldoutHeader: getLabelValue(
+      state.Labels,
+      'lbl_minibag_errorRemoveSoldoutHeader',
+      'minibag',
+      'global'
+    ),
+    deleteItem: getLabelValue(state.Labels, 'lbl_cartTile_delete', 'cartItemTile', 'global'),
     saveForLaterLink,
     sflMaxLimitError,
     moveToBagLink,
     itemDeleted,
     sflSuccess,
-    today,
-    tomorrow,
-    phone,
-    pickup,
-    at,
-    by: getLabelValue(state.Labels, 'lbl_cartTile_by', 'cartItemTile', 'global'),
-    shipping,
+    today: getLabelValue(state.Labels, 'lbl_cartTile_today', 'cartItemTile', 'global'),
+    tomorrow: getLabelValue(state.Labels, 'lbl_cartTile_tomorrow', 'cartItemTile', 'global'),
+    phone: getLabelValue(state.Labels, 'lbl_cartTile_phone', 'cartItemTile', 'global'),
+    pickup: getLabelValue(state.Labels, 'lbl_cartTile_pickup', 'cartItemTile', 'global'),
+    at: getLabelValue(state.Labels, 'lbl_cartTile_pickup', 'cartItemTile', 'global'),
+    by: getLabelValue(state.Labels, 'lbl_cartTile_at', 'cartItemTile', 'global'),
+    shipping: getLabelValue(state.Labels, 'lbl_cartTile_shipping', 'cartItemTile', 'global'),
     sflDeleteSuccess,
     removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
     itemUpdated: getLabelValue(state.Labels, 'lbl_minibag_itemUpdated', 'minibag', 'global'),
@@ -368,11 +370,6 @@ function getCurrenciesMap(state) {
   return state.session.siteOptions.currenciesMap;
 }
 
-export function getCurrencyExchange(state) {
-  const selectedCurrency = getCurrentCurrency(state);
-  return getCurrenciesMap(state).filter(currency => currency.id === selectedCurrency);
-}
-
 export const getProductDetails = tile => {
   return {
     itemInfo: {
@@ -403,6 +400,7 @@ export const getProductDetails = tile => {
       upc: getProductItemUpcNumber(tile),
       generalProductId: getGeneralProdId(tile),
       skuId: getProductSkuId(tile),
+      pdpUrl: getPdpUrl(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),
@@ -418,6 +416,9 @@ export const getProductDetails = tile => {
       clearanceItem: getClearanceItem(tile),
       isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
       isStoreBOSSEligible: getIsStoreBOSSEligible(tile),
+      storeTodayOpenRange: getStoreTodayOpenRange(tile),
+      storeTomorrowOpenRange: getStoreTomorrowOpenRange(tile),
+      storePhoneNumber: getStorePhoneNumber(tile),
     },
   };
 };
@@ -442,4 +443,15 @@ export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = 
 
 export const getCartToggleError = state => {
   return state.CartItemTileReducer.get('toggleError');
+};
+
+export const getCartBossBopisToggleError = state => {
+  return state.CartItemTileReducer.get('toggleBossBopisError');
+};
+
+export const getIsDeleteConfirmationModalEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_DELETE_CONFIRMATION_MODAL_ENABLED === 'TRUE'
+  );
 };

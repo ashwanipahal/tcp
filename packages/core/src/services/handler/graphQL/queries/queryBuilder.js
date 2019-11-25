@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
 import { importGraphQLQueriesDynamically, getAPIConfig } from '../../../../utils';
+import { ENV_PREVIEW } from '../../../../constants/env.config';
+import { moduleNames } from '../../../config';
 
 /**
  * Builds query for GraphQL service
@@ -20,14 +22,12 @@ const QueryBuilder = {
    */
   addPreviewQueryMeta: query => {
     const apiConfig = getAPIConfig();
-    const { isPreviewEnv, previewToken, previewDate, previewDateEnv } = apiConfig;
-    const isPreview = !!(isPreviewEnv || previewToken);
+    const { isPreviewEnv, previewDate, previewEnvId } = apiConfig;
+    const isPreview = !!(isPreviewEnv || previewEnvId === ENV_PREVIEW);
     if (isPreview) {
       let localQuery = query;
-      let previewQueryMeta = `is_preview: "TRUE"`;
-      previewQueryMeta += previewToken ? `, preview_token: "${previewToken}"` : '';
-      previewQueryMeta +=
-        previewDate || previewDateEnv ? `, preview_date: "${previewDate || previewDateEnv}"` : '';
+      let previewQueryMeta = `is_preview: "true"`;
+      previewQueryMeta += previewDate ? `, preview_date: "${previewDate}"` : '';
       // For root components and labels
       localQuery = localQuery.replace(/(brand\s*:\s*\S*,{1,1})/g, `$1 ${previewQueryMeta},`);
       // For modules
@@ -38,6 +38,7 @@ const QueryBuilder = {
     }
     return query;
   },
+
   /**
    * Async function which dynamically loads query for a module
    * @param {String} module
@@ -45,7 +46,10 @@ const QueryBuilder = {
    */
   loadModuleQuery: async (module, data) => {
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      return QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
+      const { accountNavigation, navigation } = moduleNames;
+      return module === navigation || module === accountNavigation
+        ? QueryModule.getQuery(data)
+        : QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
     });
   },
   /**

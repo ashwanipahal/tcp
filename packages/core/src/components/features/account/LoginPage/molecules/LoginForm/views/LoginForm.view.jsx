@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -14,7 +15,8 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
-import styles from '../styles/LoginForm.styles';
+import styles, { customSpinnerStyle } from '../styles/LoginForm.styles';
+import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -32,6 +34,11 @@ class LoginForm extends React.PureComponent<Props> {
     }
   };
 
+  loginLoader = () => {
+    const { isLoading } = this.props;
+    return <>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>;
+  };
+
   render() {
     const {
       handleSubmit,
@@ -46,6 +53,7 @@ class LoginForm extends React.PureComponent<Props> {
       tooltipContent,
       userplccCardNumber,
       userplccCardId,
+      isRememberedUser,
     } = this.props;
     return (
       <div className={className}>
@@ -56,18 +64,33 @@ class LoginForm extends React.PureComponent<Props> {
             </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
-            <Field
-              id="emailAddress"
-              placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
-              name="emailAddress"
-              component={TextBox}
-              dataLocator="login-emailfield"
-              errorDataLocator="login-emailerror"
-              showSuccessCheck={false}
-              enableSuccessCheck={false}
-              className="elem-mb-SM"
-              onChange={this.resetError}
-            />
+            {!isRememberedUser && (
+              <Field
+                id="emailAddress"
+                placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
+                name="emailAddress"
+                component={TextBox}
+                dataLocator="login-emailfield"
+                errorDataLocator="login-emailerror"
+                showSuccessCheck={false}
+                enableSuccessCheck={false}
+                className="elem-mb-SM"
+                onChange={this.resetError}
+              />
+            )}
+            {isRememberedUser && (
+              <Field
+                id="emailAddress"
+                placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
+                name="emailAddress"
+                component={TextBox}
+                dataLocator="login-emailfield"
+                className="elem-mb-SM"
+                props={{
+                  readOnly: true,
+                }}
+              />
+            )}
             <Field
               labels={labels}
               id="password"
@@ -149,30 +172,35 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
-            {variation === 'checkout' && (
-              <Button
-                fill="WHITE"
-                type="button"
-                buttonVariation="fixed-width"
-                dataLocator="login-logincta"
-                fullWidth
-                className="elem-mb-XS elem-mt-SM"
-                onClick={handleContinueAsGuest}
-              >
-                {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
-              </Button>
+            {variation === 'checkout' && !isRememberedUser && (
+              <ClickTracker name="checkout_as_guest">
+                <Button
+                  fill="WHITE"
+                  type="button"
+                  buttonVariation="fixed-width"
+                  dataLocator="login-logincta"
+                  fullWidth
+                  className="elem-mb-XS elem-mt-SM"
+                  onClick={handleContinueAsGuest}
+                >
+                  {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
+                </Button>
+              </ClickTracker>
             )}
-            <Anchor
-              underline
-              fontSizeVariation="xlarge"
-              anchorVariation="secondary"
-              dataLocator="login-forgotpasswordlnk"
-              onClick={this.showForgotPasswordForm}
-            >
-              {getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
-            </Anchor>
+            {!isRememberedUser && (
+              <Anchor
+                underline
+                fontSizeVariation="large"
+                anchorVariation="primary"
+                dataLocator="login-forgotpasswordlnk"
+                onClick={this.showForgotPasswordForm}
+              >
+                {getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
+              </Anchor>
+            )}
           </BodyCopy>
         </form>
+        {this.loginLoader}
       </div>
     );
   }

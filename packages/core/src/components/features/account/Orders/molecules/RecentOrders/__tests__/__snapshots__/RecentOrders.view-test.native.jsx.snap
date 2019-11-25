@@ -82,12 +82,14 @@ exports[`RecentOrders component should renders correctly 2`] = `
     locator=""
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
     text="lbl_orders_trackit"
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </Fragment>
 `;

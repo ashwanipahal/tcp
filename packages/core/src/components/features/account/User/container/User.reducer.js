@@ -5,6 +5,7 @@ import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.uti
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
   personalData: null,
+  isRemembered: null,
   airmiles: null,
   rewards: null,
   survey: null,
@@ -12,6 +13,7 @@ const initialState = fromJS({
   favoriteStore: null,
   defaultStore: null,
   isRegisteredUserCallDone: false,
+  isFetching: false,
 });
 /* eslint-disable */
 
@@ -32,9 +34,10 @@ const getUserReducer = (state = initialState, { type, payload }) => {
 const UserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_CONSTANTS.GET_USER_INFO:
-      return state.set('isRegisteredUserCallDone', false);
+      return state.set('isFetching', true).set('isRegisteredUserCallDone', false);
     case USER_CONSTANTS.SET_USER_INFO:
       return state
+        .set('isFetching', false)
         .set(
           'personalData',
           fromJS({
@@ -55,6 +58,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
             isExpressEligible: payload.isExpressEligible,
             associateId: payload.associateId,
             hobbies: payload.hobbies,
+            plccCardId: payload.plccCardId,
+            plccCardNumber: payload.plccCardNumber,
           })
         )
         .set(

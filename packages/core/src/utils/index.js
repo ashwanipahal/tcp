@@ -34,6 +34,11 @@ export {
   getUrlParameter,
   scrollToParticularElement,
   getDirections,
+  enableBodyScroll,
+  disableBodyScroll,
+  isMobileWeb,
+  removeBodyScrollLocks,
+  isAndroidWeb,
 } from './utils.web';
 
 export {
@@ -49,6 +54,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  isUsOnly,
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
@@ -75,8 +81,12 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  getStoreHours,
   generateTraceId,
-  enableBodyScroll,
-  disableBodyScroll,
   readCookieMobileApp,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  calculatePriceValue,
+  getProductUrlForDAM,
+  plpRoutingHandling,
 } from './utils';

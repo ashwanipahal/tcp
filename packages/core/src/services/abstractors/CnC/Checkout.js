@@ -1,8 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { flatCurrencyToCents } from './CartItemTile';
@@ -15,8 +13,6 @@ import {
 import { getAPIConfig, capitalize, toTimeString } from '../../../utils';
 import { parseDate } from '../../../utils/parseDate';
 import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
-
-const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
 const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -59,9 +55,34 @@ export const getGiftWrappingOptions = () => {
   // });
 };
 
+export const getShippingMethodServerError = (errorBody, errorsMapping) => {
+  let errMsg = false;
+  if (
+    errorBody &&
+    errorBody.updateShippingMethodSelectionResponse &&
+    errorBody.updateShippingMethodSelectionResponse.errors &&
+    errorBody.updateShippingMethodSelectionResponse.errors.length
+  ) {
+    const { errorKey } = errorBody.updateShippingMethodSelectionResponse.errors[0];
+    const errorList = [
+      {
+        errorKey,
+      },
+    ];
+    errMsg = getFormattedErrorFromResponse(
+      { response: { body: errorBody } },
+      errorsMapping,
+      errorList
+    );
+  }
+  return errMsg;
+};
+
 export const getServerErrorMessage = (error, errorsMapping) => {
   let errorMsg;
-  if (error.response && error.response.body && error.response.body.errors) {
+  const errorBody = error.response && error.response.body;
+  errorMsg = getShippingMethodServerError(errorBody, errorsMapping);
+  if (errorBody && errorBody.errors) {
     errorMsg = getFormattedError(error, errorsMapping);
   } else if (error.errorResponse && error.errorResponse.errors) {
     const errorList = [
@@ -72,9 +93,16 @@ export const getServerErrorMessage = (error, errorsMapping) => {
       },
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
+  } else if (typeof error.errorCode !== 'undefined') {
+    const errorList = [
+      {
+        errorCode: error.errorCode,
+      },
+    ];
+    errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
-  if (typeof errorMsg.errorMessages === 'undefined') {
-    return 'Oops... Something went Wrong !!!!';
+  if (!errorMsg || typeof errorMsg.errorMessages === 'undefined') {
+    return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line
   return errorMsg.errorMessages._error;
@@ -202,30 +230,6 @@ export function removeGiftWrappingOption() {
     return res;
   });
 }
-export function briteVerifyStatusExtraction(emailAddress) {
-  return new Promise(resolve => {
-    superagent
-      .get('https://bpi.briteverify.com/emails.json')
-      .query({
-        apikey: BV_API_KEY,
-        address: emailAddress,
-      })
-      .use(
-        jsonp({
-          timeout: 2000,
-        })
-      )
-      .then(response => {
-        const result = response.body;
-        resolve(`${result.status}::false:false`);
-      })
-      .catch(() => {
-        // call to briteverify validation failed
-        /** assume email address is OK -- this validation is a nicety */
-        resolve('no_response::false:false');
-      });
-  });
-}
 function extractRtpsEligibleAndCode(apiResponse) {
   const response = apiResponse.body.processOLPSResponse;
   const prescreenResponse = (response && response.response) || {};
@@ -239,8 +243,7 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo,
-  labels
+  transVibesSmsPhoneNo
 ) {
   const payload = {
     body: {
@@ -256,7 +259,14 @@ export function setShippingMethodAndAddressId(
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      if (responseContainsErrors(res)) {
+      const resBody = res && res.body;
+      if (
+        responseContainsErrors(res) ||
+        (resBody &&
+          resBody.updateShippingMethodSelectionResponse &&
+          resBody.updateShippingMethodSelectionResponse.errors &&
+          resBody.updateShippingMethodSelectionResponse.errors.length)
+      ) {
         throw new ServiceResponseError(res);
       } else {
         const rtpsData = extractRtpsEligibleAndCode(res);
@@ -270,7 +280,7 @@ export function setShippingMethodAndAddressId(
     })
     .catch(err => {
       // throw getFormattedError(err, labels);
-      throw getServerErrorMessage(err, labels);
+      throw err;
     });
 }
 
@@ -520,7 +530,7 @@ function parseStoreOpeningAndClosingTimes(store) {
 const getCouponTotal = orderDetails => {
   let total = 0;
   if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
-    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+    orderDetails.OrderLevelPromos.explicit.forEach(item => {
       Object.keys(item).forEach(promoCode => {
         total += Math.abs(flatCurrencyToCents(item[promoCode].price));
       });
@@ -576,6 +586,7 @@ const getOrderConfirmationDetails = ({
       valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
       subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
       grandTotal: orderSummary.grandTotal,
+      totalOrderSavings: flatCurrencyToCents(orderSummary.orderTotalSaving || 0),
     },
 
     isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
@@ -1037,9 +1048,32 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);
       }
-      const rtpsData = extractRtpsEligibleAndCode(res);
       return {
         orderId: res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function updateRTPSData(prescreen, isExpressCheckout) {
+  let fromPage = 'normal';
+  if (isExpressCheckout) {
+    fromPage = 'expressCheckout';
+  }
+  const payload = {
+    body: {
+      prescreen,
+      fromPage,
+    },
+    webService: endpoints.updateRTPSdata,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        success: true,
         plccEligible: rtpsData.plccEligible,
         prescreenCode: rtpsData.prescreenCode,
       };
@@ -1049,10 +1083,85 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
     });
 }
 
+export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
+  const payload = {
+    body: {
+      preScreenId: preScreenCode,
+      madeOffer: accepted ? 'true' : 'false',
+    },
+    webService: endpoints.processPreScreenOffer,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return res.body;
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function subscribeSmsNotification(payload, errorsMapping) {
+  const { ACQUISITION_ID } = getAPIConfig();
+  const { brandTCP, brandGYM } = payload;
+
+  let subscriptionBrands = brandTCP ? 'TCP' : '';
+  if (brandGYM) {
+    subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},GYM` : 'GYM';
+  }
+
+  const body = {
+    acquisition_id: ACQUISITION_ID,
+    mobile_phone: {
+      mdn: payload.phoneNumber.replace(/\D/g, ''),
+    },
+    custom_fields: {
+      src_cd: '1',
+      sub_src_cd: 'sms_footer',
+    },
+  };
+
+  const reqObj = {
+    webService: endpoints.addSmsSignup,
+    body,
+    header: {
+      brandSubscribe: subscriptionBrands,
+    },
+  };
+  return executeStatefulAPICall(reqObj)
+    .then(resp => {
+      if (responseContainsErrors(resp)) {
+        throw new ServiceResponseError(resp);
+      }
+      return resp.body;
+    })
+    .catch(err => {
+      const statusCode = err.status;
+      let message;
+
+      switch (statusCode) {
+        case 422:
+          message = 'VIDES_ERRRO_2';
+          break;
+        case 409:
+          message = 'VIDES_ERRRO_1';
+          break;
+        default:
+          message = 'VIDES_ERRRO_2';
+          break;
+      }
+
+      const error = { response: { body: { errors: [{ errorMessageKey: message }] } } };
+      throw getServerErrorMessage(error, errorsMapping);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
   addGiftCardPaymentToOrder,
@@ -1065,4 +1174,5 @@ export default {
   requestPersonalizedCoupons,
   addGiftCard,
   getInternationCheckoutSettings,
+  subscribeSmsNotification,
 };

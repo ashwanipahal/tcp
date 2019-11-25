@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextItems from '../TextItems';
+import TextItems from '../views/TextItems';
 
 describe('TextItems component', () => {
   it('renders correctly', () => {

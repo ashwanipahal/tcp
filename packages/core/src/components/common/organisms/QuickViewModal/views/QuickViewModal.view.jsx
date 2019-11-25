@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import ProductPickupContainer from '../../ProductPickup';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
   customHeaderStyle,
   quickViewColorSwatchesCss,
+  customSpinnerStyle,
 } from '../styles/QuickViewModal.style';
-import FulfillmentSection from '../../FulfillmentSection';
-import { getLocator, enableBodyScroll, isMobileApp } from '../../../../../utils';
+import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
+import { Spinner } from '../../../atoms';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
@@ -17,20 +20,29 @@ class QuickViewModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleMultipleItemsAddToBagClick = this.handleMultipleItemsAddToBagClick.bind(this);
+    this.state = {
+      showAddProductValidation: false,
+    };
   }
 
-  componentWillUnmount = () => {
-    const { clearAddToBagError, clearMultipleItemsAddToBagError } = this.props;
+  changeQuickViewState = state => {
+    // const {showAddProductValidation} = this.state
+    this.setState({ showAddProductValidation: state });
+  };
+
+  onCloseClick = () => {
+    const { closeQuickViewModal, clearAddToBagError, clearMultipleItemsAddToBagError } = this.props;
+    closeQuickViewModal();
     clearAddToBagError();
     clearMultipleItemsAddToBagError();
   };
 
-  onCloseClick = () => {
-    if (!isMobileApp()) {
-      enableBodyScroll();
+  getHeadingText = () => {
+    const { quickViewLabels, fromBagPage, isLoading } = this.props;
+    if (isLoading) {
+      return ' ';
     }
-    const { closeQuickViewModal } = this.props;
-    closeQuickViewModal();
+    return fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag;
   };
 
   handleMultipleItemsAddToBagClick(e) {
@@ -44,6 +56,7 @@ class QuickViewModal extends React.Component {
         },
       } = formRef;
       const addProductToBag = formEnabled; // Add product only when the form is enabled
+      this.setState({ showAddProductValidation: !addProductToBag });
       const displayError = formEnabled && fitChanged; // Validate error only when the form is enabled and fit has changed
       if (displayError) {
         displayErrorMessage(fitChanged);
@@ -72,11 +85,16 @@ class QuickViewModal extends React.Component {
   renderAddToBagButton = () => {
     const {
       plpLabels: { addToBag },
+      quickViewLabels,
     } = this.props;
+    const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
+        dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
         buttonLabel={addToBag}
+        quickViewLabels={quickViewLabels}
+        showAddProductValidation={showAddProductValidation}
       />
     );
   };
@@ -90,85 +108,116 @@ class QuickViewModal extends React.Component {
       plpLabels,
       addToBagError,
       addToBagMultipleItemError,
-      currencyExchange,
+      currencyAttributes,
+      toastMessage,
       ...otherProps
     } = this.props;
     this.skuFormRefs = [];
-    return productInfo.map(({ product }) => {
-      const { colorFitsSizesMap, colorFitSizeDisplayNames } = product;
-      const formRef = React.createRef();
-      this.skuFormRefs.push(formRef);
-      const modifiedColorFitsSizesMap = selectedColorProductId
-        ? colorFitsSizesMap.filter(item => item.colorDisplayId === selectedColorProductId)
-        : colorFitsSizesMap;
-      const { errorProductId, errMsg } = addToBagMultipleItemError;
-      const errorMessage = !isMultiItemQVModal
-        ? addToBagError
-        : (product.generalProductId === errorProductId && errMsg) || null;
-      return (
-        <ProductCustomizeFormPart
-          productInfo={product}
-          addToBagError={errorMessage}
-          colorFitsSizesMap={
-            modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
-          }
-          currencyExchange={currencyExchange}
-          plpLabels={plpLabels}
-          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-          quickViewLabels={quickViewLabels}
-          onCloseClick={this.onCloseClick}
-          isMultiItemQVModal={isMultiItemQVModal}
-          formRef={formRef}
-          quickViewColorSwatchesCss={quickViewColorSwatchesCss}
-          {...otherProps}
-        />
-      );
-    });
+    return (
+      productInfo &&
+      productInfo.map(({ product }) => {
+        const { colorFitsSizesMap, colorFitSizeDisplayNames, alternateSizes, isGiftCard } = product;
+        const formRef = React.createRef();
+        this.skuFormRefs.push(formRef);
+        const modifiedColorFitsSizesMap = selectedColorProductId
+          ? colorFitsSizesMap.filter(item => item.colorDisplayId === selectedColorProductId)
+          : colorFitsSizesMap;
+        const { errorProductId, errMsg } = addToBagMultipleItemError;
+        const errorMessage = !isMultiItemQVModal
+          ? addToBagError
+          : (product.generalProductId === errorProductId && errMsg) || null;
+        return (
+          <ProductCustomizeFormPart
+            productInfo={product}
+            addToBagError={errorMessage}
+            colorFitsSizesMap={
+              modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
+            }
+            currencyAttributes={currencyAttributes}
+            plpLabels={plpLabels}
+            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+            quickViewLabels={quickViewLabels}
+            onCloseClick={this.onCloseClick}
+            isMultiItemQVModal={isMultiItemQVModal}
+            formRef={formRef}
+            quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+            toastMessage={toastMessage}
+            changeQuickViewState={this.changeQuickViewState}
+            isQuickView
+            marginTopNone
+            alternateSizes={alternateSizes}
+            isGiftCard={isGiftCard}
+            {...otherProps}
+          />
+        );
+      })
+    );
   }
 
-  render() {
-    const {
-      isModalOpen,
-      productInfo,
-      isMultiItemQVModal,
-      quickViewLabels,
-      fromBagPage,
-    } = this.props;
-    const [{ product }] = productInfo;
-
+  renderFulFilmentSection = (isMultiItemQVModal, fromBagPage, product, currentColorEntry) => {
     return (
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={this.onCloseClick}
-        overlayClassName="TCPModal__Overlay"
-        className="TCPModal__Content"
-        dataLocator={getLocator('quick_view_modal')}
-        dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
-        closeIconDataLocator={getLocator('quick_view_icon_btn')}
-        heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
-        widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-        heightConfig={{ height: '95%' }}
-        fixedWidth
-        inheritedStyles={customHeaderStyle}
-        headingAlign="center"
-        horizontalBar={false}
-        stickyCloseIcon
-        fullWidth
-        stickyHeader
-        rightAlignCrossIcon
-      >
-        {this.renderProductCustomizeFormPart()}
-        {!isMultiItemQVModal && !fromBagPage && (
-          <FulfillmentSection
-            btnClassName="added-to-bag"
-            dataLocator={getLocator('global_addtocart_Button')}
-            buttonLabel="Pickup In Store"
-            currentProduct={product}
-            closeQuickViewClick={this.onCloseClick}
-          />
-        )}
-        {isMultiItemQVModal && this.renderAddToBagButton()}
-      </Modal>
+      !isMultiItemQVModal &&
+      !fromBagPage &&
+      product &&
+      currentColorEntry && (
+        <ProductPickupContainer
+          productInfo={product}
+          formName={`ProductAddToBag-${product.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+          onPickupClickAddon={this.onCloseClick}
+        />
+      )
+    );
+  };
+
+  render() {
+    const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
+    const product = productInfo && productInfo.length && productInfo[0].product;
+    const currentColorEntry =
+      product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
+    return (
+      <React.Fragment>
+        {isModalOpen ? (
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={this.onCloseClick}
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content"
+            dataLocator={getLocator('quick_view_modal')}
+            dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
+            closeIconDataLocator={getLocator('quick_view_icon_btn')}
+            heading={this.getHeadingText()}
+            widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
+            heightConfig={{ height: '95%' }}
+            fixedWidth
+            inheritedStyles={customHeaderStyle}
+            headingAlign="center"
+            horizontalBar={false}
+            stickyCloseIcon
+            fullWidth
+            stickyHeader
+            rightAlignCrossIcon
+            headingFontWeight="bold"
+            fontSize="fs22"
+          >
+            {isLoading ? (
+              <Spinner inheritedStyles={customSpinnerStyle} />
+            ) : (
+              <React.Fragment>
+                {this.renderProductCustomizeFormPart()}
+                {this.renderFulFilmentSection(
+                  isMultiItemQVModal,
+                  fromBagPage,
+                  product,
+                  currentColorEntry
+                )}
+
+                {isMultiItemQVModal && this.renderAddToBagButton()}
+              </React.Fragment>
+            )}
+          </Modal>
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -191,11 +240,13 @@ QuickViewModal.propTypes = {
   fromBagPage: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 QuickViewModal.defaultProps = {
-  currencyExchange: 1,
+  toastMessage: () => {},
 };
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };

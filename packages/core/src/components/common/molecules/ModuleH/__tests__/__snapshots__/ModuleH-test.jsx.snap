@@ -8,7 +8,7 @@ exports[`ModuleH component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-EHOje",
+        "componentId": "sc-htoDjs",
         "isStatic": false,
         "rules": Array [
           "
@@ -18,9 +18,9 @@ exports[`ModuleH component renders correctly 1`] = `
           [Function],
           "
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ",
+          [Function],
+          "
   &.content-wrapper {
     margin: 0 auto;
   }
@@ -35,7 +35,7 @@ exports[`ModuleH component renders correctly 1`] = `
       "displayName": "Styled(Row)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-EHOje",
+      "styledComponentId": "sc-htoDjs",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -202,6 +202,7 @@ exports[`ModuleH component renders correctly 1`] = `
     />
   </Styled(Col)>
   <Styled(Col)
+    className="moduleH_carousel_wrapper"
     colSize={
       Object {
         "large": 12,

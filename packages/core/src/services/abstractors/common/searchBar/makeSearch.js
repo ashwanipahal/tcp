@@ -1,5 +1,8 @@
 import filter from 'lodash/filter';
 import { getLabelValue } from '@tcp/core/src/utils';
+import processHelpers from '../../productListing/processHelpers';
+import { parseBoolean } from '../../productListing/productParser';
+import { extractAttributeValue } from '../../../../utils/badge.util';
 import { executeUnbxdAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
 
@@ -82,7 +85,6 @@ const getCategoryMatches = response => {
 
 export const makeSearch = (input, defaultResultCount = 4) => {
   const { suggestionsCount, searchTerm, isHideBundleProduct, slpLabels } = input;
-
   const bundleFilter = isHideBundleProduct ? { filter: '-product_type:BUNDLE' } : {};
   const payload = {
     header: {},
@@ -109,6 +111,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
       if (!response) {
         throw new Error('Response has errors!');
       }
+      const productAttributes = processHelpers.getProductAttributes();
       // Iterate through the full response and grab only the data we require
       // filter out product list from the API response
       const productsList = response.products
@@ -127,6 +130,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
             highOfferPrice: parseFloat(product.high_offer_price) || 0,
             isBundleProduct: bundleProduct,
             productUrl: `${bundleProduct ? '/b' : '/p'}/${pdpURLID}`,
+            keepAlive: parseBoolean(product[productAttributes.keepAlive]),
           };
         });
 

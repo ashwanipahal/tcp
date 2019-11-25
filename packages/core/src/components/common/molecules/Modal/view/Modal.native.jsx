@@ -1,18 +1,13 @@
 import React from 'react';
-import { Modal, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
-import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { Modal, KeyboardAvoidingView, Platform } from 'react-native';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import {
-  StyledCrossImage,
-  StyledTouchableOpacity,
-  ModalHeading,
-  LineWrapper,
-  RowWrapper,
-  ImageWrapper,
   ModalCustomWrapper,
-  Heading,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
 } from '../Modal.style.native';
-import BodyCopy from '../../../atoms/BodyCopy';
+import ModalNativeHeader from './Modal.native.header';
 
 // How To use this react native modal
 // import this component in your file.
@@ -26,55 +21,6 @@ type Props = {
   children: node,
   isOverlay?: boolean,
   inheritedStyles?: String,
-};
-
-const closeIcon = require('../../../../../assets/close.png');
-const arrowIcon = require('../../../../../assets/carrot-large-left.png');
-
-type CloseIconProps = {
-  onRequestClose: Function,
-  headerStyle: Object,
-  iconType: String,
-  isOverlay: Boolean,
-  rightAlignCrossIcon: Boolean,
-  stickyCloseIcon: Boolean,
-};
-
-const getCloseIcon = ({
-  stickyCloseIcon,
-  onRequestClose,
-  headerStyle,
-  iconType,
-  isOverlay,
-  rightAlignCrossIcon,
-}: CloseIconProps) => {
-  return (
-    <ImageWrapper stickyCloseIcon={stickyCloseIcon} style={headerStyle}>
-      <StyledTouchableOpacity
-        onPress={onRequestClose}
-        accessibilityRole="button"
-        accessibilityLabel="close"
-        isOverlay={isOverlay}
-      >
-        <StyledCrossImage
-          rightAlignCrossIcon={rightAlignCrossIcon}
-          source={iconType === 'arrow' ? arrowIcon : closeIcon}
-        />
-      </StyledTouchableOpacity>
-    </ImageWrapper>
-  );
-};
-
-const geLine = (horizontalBar, borderColor) => {
-  return (
-    <>
-      {horizontalBar ? (
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
-        </LineWrapper>
-      ) : null}
-    </>
-  );
 };
 
 const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
@@ -95,12 +41,23 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     horizontalBar = true,
     borderColor = 'black',
     rightAlignCrossIcon,
+    noscroll,
+    customHeaderMargin,
+    modalHeadingMargin,
+    margins,
+    paddings,
+    childrenMargins,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
   if (Platform.OS === 'ios') {
     behavior = 'padding';
     keyboardVerticalOffset = 64;
+  }
+
+  let Component = ScrollView;
+  if (noscroll) {
+    Component = ViewContainer;
   }
 
   return (
@@ -117,42 +74,38 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
             keyboardVerticalOffset={keyboardVerticalOffset}
             enabled
           >
-            <ScrollView
+            <Component
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
               stickyHeaderIndices={[0]}
+              margins={margins}
+              paddings={paddings}
             >
-              <Heading>
-                <ToastContainer shouldShowSafeArea={false} />
-                <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-                  {heading && (
-                    <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                      <BodyCopy
-                        mobileFontFamily={headingFontFamily || 'primary'}
-                        fontWeight={headingFontWeight || 'extrabold'}
-                        textAlign={headingAlign}
-                        fontSize={fontSize || 'fs16'}
-                        text={heading}
-                      />
-                    </ModalHeading>
-                  )}
-                  {getCloseIcon({
-                    onRequestClose,
-                    headerStyle,
-                    iconType,
-                    isOverlay,
-                    stickyCloseIcon,
-                    rightAlignCrossIcon,
-                  })}
-                </RowWrapper>
-                {geLine(horizontalBar, borderColor)}
-              </Heading>
-              {children}
-            </ScrollView>
+              <ModalNativeHeader
+                heading={heading}
+                onRequestClose={onRequestClose}
+                headingAlign={headingAlign}
+                headingFontFamily={headingFontFamily}
+                headerStyle={headerStyle}
+                headingFontWeight={headingFontWeight}
+                fontSize={fontSize}
+                iconType={iconType}
+                fullWidth={fullWidth}
+                stickyCloseIcon={stickyCloseIcon}
+                horizontalBar={horizontalBar}
+                borderColor={borderColor}
+                rightAlignCrossIcon={rightAlignCrossIcon}
+                customHeaderMargin={customHeaderMargin}
+                modalHeadingMargin={modalHeadingMargin}
+              />
+
+              <ChildrenContainer childrenMargins={childrenMargins}>{children}</ChildrenContainer>
+            </Component>
           </KeyboardAvoidingView>
         </ModalCustomWrapper>
       )}
       {customTransparent && children}
+      <Loader />
     </Modal>
   );
 };

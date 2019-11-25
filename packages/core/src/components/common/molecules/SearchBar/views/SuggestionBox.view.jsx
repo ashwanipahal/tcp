@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 
@@ -22,7 +22,7 @@ class SuggestionBox extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
+      redirectToSuggestedUrl,
     } = this.props;
 
     return (
@@ -39,6 +39,7 @@ class SuggestionBox extends React.PureComponent {
               <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                 <ul>
                   {latestSearchResults.reverse().map(item => {
+                    const itemParts = item.split('<url>');
                     return (
                       <BodyCopy
                         component="li"
@@ -50,9 +51,17 @@ class SuggestionBox extends React.PureComponent {
                         <Anchor
                           noLink
                           className="suggestion-label"
-                          onClick={() => hideOverlayAfterClick(`${item}`)}
+                          to={
+                            itemParts[1]
+                              ? `/${getSiteId()}${itemParts[1]}`
+                              : `/${getSiteId()}/search/${itemParts[0]}`
+                          }
+                          onClick={e => {
+                            e.preventDefault();
+                            redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
+                          }}
                         >
-                          {item.toUpperCase()}
+                          {itemParts[0].charAt(0).toUpperCase() + itemParts[0].slice(1)}
                         </Anchor>
                       </BodyCopy>
                     );
@@ -73,7 +82,7 @@ SuggestionBox.propTypes = {
   }),
   isLatestSearchResultsExists: PropTypes.bool,
   latestSearchResults: PropTypes.arrayOf(PropTypes.shape({})),
-  hideOverlayAfterClick: PropTypes.func.isRequired,
+  redirectToSuggestedUrl: PropTypes.func.isRequired,
 };
 
 SuggestionBox.defaultProps = {

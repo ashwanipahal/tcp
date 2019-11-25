@@ -27,7 +27,7 @@ export const customHeaderStyle = css`
     }
   }
   .Modal-Header {
-    z-index: ${props => props.theme.zindex.zModal + 1};
+    z-index: ${props => props.theme.zindex.zIndexQuickView};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.medium} {
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -106,6 +106,10 @@ export const quickViewColorSwatchesCss = css`
       }
     }
   }
+`;
+
+export const customSpinnerStyle = css`
+  height: 100%;
 `;
 
 export default styles;

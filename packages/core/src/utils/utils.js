@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -45,6 +46,13 @@ export const isMobileApp = () => {
 export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
+
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
 
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
@@ -105,6 +113,11 @@ export const isTCP = () => {
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
+};
+
+export const isUsOnly = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.us;
 };
 
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
@@ -448,6 +461,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
     }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
+    }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
   return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
@@ -606,6 +622,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const plpRoute = `${ROUTE_PATH.plp.name}/`;
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
+  const staticContentRoute = `${ROUTE_PATH.content.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -621,6 +638,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(searchRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  if (url.includes(staticContentRoute)) {
+    const urlItems = url.split(staticContentRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
   }
   return url;
 };
@@ -839,11 +861,11 @@ export const getStoreHours = (
     const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
     const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
     if (!isPastStoreHours(selectedDateToHour, currentDate)) {
-      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+      return `${openUntilLabel} ${toTimeString(selectedDateToHour, true)}`;
     }
     const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
     // Handle the other scenarion
-    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+    return `${opensAtLabel} ${toTimeString(selectedDateFromHour, true)}`;
   } catch (err) {
     // Show empty incase no data found.
     return '';
@@ -974,16 +996,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   WCS store image path to DAM image for Gymboree
   MUST BE REVERTED
  */
-export const changeImageURLToDOM = (img, cropParams) => {
-  let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
-    const imgArr = imageUrl.split('/');
-    const productPartId = imgArr.slice(-1);
-    const productArr = productPartId[0].split('_');
-    const productId = productArr[0];
-    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
-  }
-  return imageUrl;
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
 };
 
 /**
@@ -999,27 +1018,134 @@ export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
-/**
- * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
- */
-export const enableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
+export const getStyliticsUserName = () => {
+  const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsUserNameTCP;
   }
+  return styliticsUserNameGYM;
+};
+
+export const getStyliticsRegion = () => {
+  const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsRegionTCP;
+  }
+  return styliticsRegionGYM;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
+export const getProductUrlForDAM = uniqueId => {
+  return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter(item => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[0].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
 };
 
 /**
- * Disable Body Scroll
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
  */
-export const disableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
+/**
+ * @description - This method calculate Price based on the given value
+ */
+export const calculatePriceValue = (
+  price,
+  currencySymbol = '$',
+  currencyExchangeValue = 1,
+  defaultReturn = 0
+) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchangeValue).toFixed(2)}`;
   }
+  return priceValue;
+};
+export const orderStatusMapperForNotification = {
+  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING]: 'lbl_global_yourOrderIsProcessing',
+  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_orders_statusOrderShipped',
+  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_orders_statusOrderPartiallyShipped',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_orders_statusItemsReadyForPickup',
+  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
+  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
+  [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
+  /* Status added for BOSS */
+  [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
+};
+
+/**
+ * @function getOrderStatusForNotification
+ * @summary
+ * @param {String} status -
+ * @return orderStatus
+ */
+export const getOrderStatusForNotification = status => {
+  const orderStatus =
+    orderStatusMapperForNotification[status] ||
+    orderStatusMapperForNotification[status.toLowerCase()] ||
+    status;
+
+  return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
+};
+
+/**
+ * @function validateDiffInDaysNotification
+ * @summary
+ * @param {Date}  orderDateParam
+ * @return true if date false between limit range
+ */
+export const validateDiffInDaysNotification = (
+  orderDateParam,
+  limitOfDaysToDisplayNotification
+) => {
+  let orderDate = orderDateParam;
+  orderDate = moment(orderDate, 'MMM DD, YYYY');
+  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+    return true;
+  }
+  return false;
 };
 
 export default {
+  getOrderStatusForNotification,
+  validateDiffInDaysNotification,
   getPromotionalMessage,
   getIconPath,
   getFlagIconPath,
@@ -1056,6 +1182,13 @@ export default {
   stringify,
   readCookieMobileApp,
   changeImageURLToDOM,
+  getStoreHours,
   generateTraceId,
   insertIntoString,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  canUseDOM,
+  getLabelsBasedOnPattern,
+  calculatePriceValue,
+  getProductUrlForDAM,
 };

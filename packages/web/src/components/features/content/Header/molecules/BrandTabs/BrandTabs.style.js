@@ -2,15 +2,22 @@ import { css } from 'styled-components';
 
 export default css`
   margin-top: 5px;
+  @media ${props => props.theme.mediaQuery.medium} {
+    margin-top: 10px;
+  }
 
   a {
     border-radius: 5px 5px 0px 0px;
     display: inline-block;
-    padding: 11px 15px;
+    padding: 9px 15px;
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 8px 16px;
+      padding: 8px 15px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: 8px 20px;
     }
 
     &.header-topnav__brand-tabs--activeTab {
@@ -43,8 +50,8 @@ export default css`
       height: 21px;
 
       @media ${props => props.theme.mediaQuery.medium} {
-        width: 70px;
-        height: 27px;
+        width: 80px;
+        height: 28px;
       }
     }
   }

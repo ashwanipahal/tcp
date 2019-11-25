@@ -21,7 +21,7 @@ exports[`BillingSection should render correctly for empty state 1`] = `
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -94,7 +94,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -150,15 +150,9 @@ exports[`BillingSection should render correctly without address details 1`] = `
         link={null}
         textAlign="left"
       >
-        <Styled(CardImage)
-          card={
-            Object {
-              "cardNumber": "1234",
-              "ccBrand": "PLACE CASH",
-              "ccType": "PLACE CASH",
-            }
-          }
-          cardNumber="ending in 1234"
+        <SkeletonLine
+          height="25px"
+          width="300px"
         />
       </Styled(BodyCopy)>
     </Styled(Col)>
@@ -214,7 +208,7 @@ exports[`BillingSection should render correctly without card & address details o
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -287,7 +281,7 @@ exports[`BillingSection should render correctly without card & address details o
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -360,7 +354,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -404,19 +398,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
       >
         Billing Address
       </Styled(BodyCopy)>
-      <Styled(Address)
-        address={
-          Object {
-            "addressLine1": "1234 XYZ",
-            "city": "New York",
-            "country": "US",
-            "firstName": "Test",
-            "lastName": "Test",
-            "state": "NY",
-          }
-        }
-        className="review-billing-address"
-      />
+      <Styled(AddressSkelton) />
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -470,7 +452,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
         color="text.primary"
         component="span"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -526,15 +508,9 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
         link={null}
         textAlign="left"
       >
-        <Styled(CardImage)
-          card={
-            Object {
-              "cardNumber": "1234",
-              "ccBrand": "PLACE CASH",
-              "ccType": "PLACE CASH",
-            }
-          }
-          cardNumber="ending in 1234"
+        <SkeletonLine
+          height="25px"
+          width="300px"
         />
       </Styled(BodyCopy)>
     </Styled(Col)>
@@ -549,13 +525,13 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
       }
     >
       <Field
-        autocomplete="noautocomplete"
+        autoComplete="off"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-gZMcBi",
               "isStatic": false,
               "rules": Array [
                 "
@@ -698,7 +674,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

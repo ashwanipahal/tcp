@@ -1,4 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
+import { trackClick } from '@tcp/core/src/analytics/actions';
 import CREATE_ACCOUNT_CONSTANTS from '../../CreateAccount.constants';
 import { CreateAccountSaga, createsaga } from '../CreateAccount.saga';
 import { getUserInfo } from '../../../User/container/User.actions';
@@ -20,6 +21,9 @@ describe('Create Account Saga', () => {
     beforeEach(() => {
       createAccountGen = createsaga({ payload });
       createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next();
     });
 
     it('should dispatch getUserInfo action for success response', () => {
@@ -29,8 +33,33 @@ describe('Create Account Saga', () => {
         },
       };
       createAccountGen.next(response);
-      const putDescriptor = createAccountGen.next(response).value;
+      createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next(response);
+      const putDescriptor = createAccountGen.next().value;
       expect(putDescriptor).toEqual(put(getUserInfo()));
+    });
+
+    it('should dispatch trackClick action for success response', () => {
+      const response = {
+        body: {
+          contact: [],
+        },
+      };
+
+      const data = {
+        module: 'account',
+        name: 'user_register',
+      };
+
+      createAccountGen.next(response);
+      createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next();
+      createAccountGen.next(response);
+      const putDescriptor = createAccountGen.next().value;
+      expect(putDescriptor).toEqual(put(trackClick(data)));
     });
 
     it('should dispatch createAccountErr action for failure response', () => {
@@ -43,8 +72,10 @@ describe('Create Account Saga', () => {
           ],
         },
       };
-      const putDescriptor = createAccountGen.next(response).value;
-      expect(putDescriptor).toEqual(put(createAccountErr({ errorMessage: 'foo' })));
+      createAccountGen.next(response);
+      createAccountGen.next();
+      const putDescriptor1 = createAccountGen.next(response).value;
+      expect(putDescriptor1).toEqual(put(createAccountErr({ errorMessage: 'foo' })));
     });
 
     it('should dispatch createAccountErr action for error', () => {
@@ -52,7 +83,9 @@ describe('Create Account Saga', () => {
         errorMessage: 'foo',
         errorCode: 'foo',
       };
-      expect(createAccountGen.throw(error).value).toEqual(
+      createAccountGen.throw(error);
+      createAccountGen.next();
+      expect(createAccountGen.next().value).toEqual(
         put(createAccountErr({ errorCode: 'foo', errorMessage: 'foo' }))
       );
     });

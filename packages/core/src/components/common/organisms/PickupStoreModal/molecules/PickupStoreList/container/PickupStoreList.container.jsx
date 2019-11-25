@@ -2,7 +2,13 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import PickupStoreList from '../views/PickupStoreList.view';
-import { getSuggestedStores, getDefaultStore } from '../../../container/PickUpStoreModal.selectors';
+import {
+  getSuggestedStores,
+  getDefaultStore,
+  isStoreSearching,
+  getIsGetUserStoresLoaded,
+} from '../../../container/PickUpStoreModal.selectors';
+import { setClickAnalyticsData, trackClick } from '../../../../../../../analytics/actions';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 
@@ -78,12 +84,14 @@ class _PickupStoreList extends React.Component {
     isBopisCtaEnabled: PropTypes.bool.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     defaultStoreName: PropTypes.string,
+    currentProduct: PropTypes.string,
   };
 
   static defaultProps = {
     isBossEnabled: true,
     isBopisEnabled: true,
     defaultStoreName: '',
+    currentProduct: '',
   };
 
   constructor(props) {
@@ -105,6 +113,7 @@ class _PickupStoreList extends React.Component {
       allowBossStoreSearch,
       bopisChangeStore,
       isBopisEnabled,
+      currentProduct,
       ...otherProps
     } = this.props;
 
@@ -147,6 +156,10 @@ class _PickupStoreList extends React.Component {
         handleShowAvailableChange={this.handleShowAvailableChange}
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}
+        isBopisEnabled={isBopisEnabled}
+        currentProduct={currentProduct}
+        setClickAnalyticsData={setClickAnalyticsData}
+        trackClick={trackClick}
         {...otherProps}
       />
     );
@@ -158,10 +171,19 @@ function mapStateToProps(state, ownProps) {
   const defaultStore = getDefaultStore(state);
   return {
     storesList: suggestedStores,
+    isSearching: isStoreSearching(state),
+    isUserCartStoreLoaded: getIsGetUserStoresLoaded(state),
     isShowFilterCheckbox: suggestedStores && suggestedStores.length > 0,
     defaultStoreName: (defaultStore && defaultStore.basicInfo.storeName) || null,
     ...ownProps,
   };
 }
+const mapDispatchToProps = dispatch => ({
+  setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClick: payload => dispatch(trackClick(payload)),
+});
 
-export default connect(mapStateToProps)(_PickupStoreList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_PickupStoreList);

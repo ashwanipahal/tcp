@@ -1,3 +1,7 @@
+import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
+import { getAPIConfig } from '@tcp/core/src/utils';
+import logger from '@tcp/core/src/utils/loggerInstance';
+import handler from '@tcp/core/src/services/handler/handler';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import processHelpers from './processHelpers';
@@ -132,6 +136,7 @@ export const parseProductFromAPI = (
   const categoryPathMap = processHelperUtil.getCategoryPathMap(baseProduct);
   const categoryPath = processHelperUtil.getCategory(baseProduct);
   const categoryId = processHelperUtil.getCategoryId(breadCrumbs, baseProduct, categoryPath);
+  const category = processHelperUtil.getCategoryValue(baseProduct);
 
   return processResponse({
     baseProduct,
@@ -145,7 +150,87 @@ export const parseProductFromAPI = (
     reviewsCount,
     alternateSizes,
     breadCrumbs,
+    category,
   });
+};
+
+/**
+ * @function moduleResolver
+ * @param {object} moduleObjects -  module data to make module graphQL call
+ * @summary This will get the modules of the layout from CMS based on categoryId
+ */
+const moduleResolver = async moduleObjects => {
+  const response = await layoutAbstractor.getModulesData(moduleObjects);
+  return layoutAbstractor.processModuleData(response.data);
+};
+
+/**
+ * @function formatSlotData
+ * @param {array} slotItems -  list of slots
+ * @param {string} language -  selected language
+ * @summary Formats the slot as per the requirement of graphQL queryBuilder
+ */
+const formatSlotData = (slotItems, language) => {
+  return slotItems.map((slot, index) => {
+    return {
+      name: slot.moduleName,
+      data: {
+        contentId: slot.contentId,
+        slot: slot.name || `slot_${index + 1}`, // TODO: Remove Temporary Check for slot, as not supported from CMS yet
+        lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
+      },
+    };
+  });
+};
+
+/**
+ * @function layoutResolver
+ * @param {object} layoutConfig -  contains categoryId and pageName
+ * @summary This will get the layout of the page from CMS based on categoryId
+ */
+export const layoutResolver = async ({ category, pageName }) => {
+  let modules = {};
+  const layout = {};
+  try {
+    const { channelId, siteIdCMS, brandIdCMS, language } = getAPIConfig();
+    const moduleConfig = {
+      name: 'promoContent',
+      data: {
+        brand: brandIdCMS,
+        country: siteIdCMS,
+        channel: channelId,
+        lang: language === 'en' ? '' : language,
+        path: pageName,
+        category,
+      },
+    };
+    let {
+      data: { contentLayout },
+    } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig });
+    if (!(contentLayout && contentLayout.length)) {
+      ({
+        data: { contentLayout },
+      } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig, category: 'global' }));
+    }
+    const moduleObjects = [];
+    contentLayout.forEach(data => {
+      const dataItems = data.items;
+      layout[data.key] = dataItems;
+      Object.keys(dataItems).forEach(item => {
+        const slotItems = dataItems[item].slots;
+        if (typeof slotItems === 'object') {
+          moduleObjects.push(...slotItems);
+        }
+      });
+    });
+    modules = await moduleResolver(formatSlotData(moduleObjects, language));
+  } catch (err) {
+    logger.error(err);
+  }
+  return {
+    layout,
+    modules,
+  };
 };
 
 /**
@@ -160,7 +245,8 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
 
   const breadCrumb = processHelperUtil.breadCrumbFactory(state);
   // eslint-disable-next-line
-  const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
+  const categoryId =
+    breadCrumb[breadCrumb.length - 1] && breadCrumb[breadCrumb.length - 1].categoryId;
   const navigationTree = getNavTree(state);
   const excludeBage = categoryId
     ? processHelperUtil.getNavAttributes(navigationTree, categoryId, 'excludeAttribute')
@@ -174,7 +260,7 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
   productColorId =
     productColorId.indexOf('-') > -1 ? productColorId.replace('-', '_') : productColorId; // As ProductColorId response has always _ rather than hyphen(-)
   let fields =
-    'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore';
+    'alt_img,style_partno,swatchimage,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore';
   let count = 100;
   if (!isBundleProduct) {
     if (isRadialInvEnabled) {
@@ -182,7 +268,7 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
     }
   } else {
     fields =
-      'alt_img,style_partno,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,product_name,TCPColor,imagename,productid,uniqueId,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description,seo_token,prodpartno,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,low_offer_price,high_offer_price,low_list_price,high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products';
+      'alt_img,style_partno,swatchimage,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,product_name,TCPColor,imagename,productid,uniqueId,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description,seo_token,prodpartno,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,low_offer_price,high_offer_price,low_list_price,high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products';
     count = 0;
   }
 

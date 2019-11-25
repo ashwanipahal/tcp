@@ -14,3 +14,8 @@ export const getPointsModal = createSelector(
   getSocialResponse,
   resp => resp && resp.get('pointModalMountState')
 );
+
+export const getSocialDataFetchingState = createSelector(
+  getSocialResponse,
+  resp => resp && resp.get('isFetching')
+);

@@ -3,9 +3,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import Spinner from '../../../atoms/Spinner';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
@@ -47,10 +47,15 @@ class _PickupStoreSelectionForm extends React.Component {
   };
 
   componentDidMount() {
-    const { onSearch, openRestrictedModalForBopis } = this.props;
-    if (openRestrictedModalForBopis) {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
       onSearch();
     }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
   }
 
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
@@ -75,6 +80,7 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      currentProduct,
     } = this.props;
 
     return submitting ? (
@@ -82,6 +88,7 @@ class _PickupStoreSelectionForm extends React.Component {
     ) : (
       <PickupStoreListContainer
         isShoppingBag={isShoppingBag}
+        currentProduct={currentProduct}
         onStoreSelect={handleAddTobag}
         onStoreUpdate={handleUpdatePickUpItem}
         onPickupRadioBtnToggle={handlePickupRadioBtn}
@@ -126,20 +133,18 @@ class _PickupStoreSelectionForm extends React.Component {
       className,
       storeSearchError,
       PickupSkuFormValues,
-      colorFitsSizesMap,
       isSkuResolved,
+      pageNameProp,
+      currentProduct,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
-
-    let disableButton = pristine;
-
-    const formExists = Object.entries(PickupSkuFormValues).length === 0;
-
-    const { color, Fit, Size } = PickupSkuFormValues;
-
-    const enableButton = formExists ? pristine : true;
-
-    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
+    let pageName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    if (productId) {
+      pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
+    }
 
     return showStoreSearching ? (
       <div className={className}>
@@ -172,16 +177,25 @@ class _PickupStoreSelectionForm extends React.Component {
             />
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
-            <Button
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              type="submit"
-              title="search"
-              className="button-search-bopis"
-              disabled={pristine || submitting || disableButton}
+            <ClickTracker
+              clickData={{
+                customEvents: ['event105'],
+                pageName,
+                storeSearchCriteria,
+                storeSearchDistance,
+              }}
             >
-              Search
-            </Button>
+              <Button
+                buttonVariation="fixed-width"
+                fill="BLUE"
+                type="submit"
+                title="search"
+                className="button-search-bopis"
+                disabled={pristine || submitting || disableButton}
+              >
+                Search
+              </Button>
+            </ClickTracker>
           </Col>
         </Row>
         {isSkuResolved && (
@@ -221,16 +235,25 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      isGetUserStoresLoaded,
       getIsBopisAvailable,
+      currentProduct,
+      pageNameProp,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <div className="favorite-store-box">
           <PickupStoreListItem
             sameStore={sameStore}
+            pageNameProp={pageNameProp}
             isShoppingBag={isShoppingBag}
             store={preferredStore}
+            currentProduct={currentProduct}
             onStoreSelect={handleAddTobag}
             onStoreUpdate={handleUpdatePickUpItem}
             onPickupRadioBtnToggle={handlePickupRadioBtn}
@@ -246,6 +269,8 @@ class _PickupStoreSelectionForm extends React.Component {
             updateCartItemStore={updateCartItemStore}
             buttonLabel={buttonLabel}
             isGiftCard={isGiftCard}
+            storeSearchCriteria={storeSearchCriteria}
+            storeSearchDistance={storeSearchDistance}
           />
         </div>
       )
@@ -255,7 +280,6 @@ class _PickupStoreSelectionForm extends React.Component {
   displayStoreSearchComp() {
     const {
       getPreferredStoreData,
-      isLoading,
       deriveStoreSearchAttributes,
       deriveBossCtaEnabled,
       updateCartItemStore,
@@ -285,9 +309,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isBossCtaEnabled,
           })}
         {this.displayStoreSearchForm(showStoreSearching)}
-        {isLoading ? (
-          <Spinner />
-        ) : (
+        {
           <React.Fragment>
             {isSkuResolved &&
               this.displayStoreListItems({
@@ -297,7 +319,7 @@ class _PickupStoreSelectionForm extends React.Component {
               })}
             {isSkuResolved && this.displayErrorCopy()}
           </React.Fragment>
-        )}
+        }
       </React.Fragment>
     );
   }

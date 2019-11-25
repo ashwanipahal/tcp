@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -31,11 +30,17 @@ const popover = message => {
   );
 };
 
-const getLoyaltybanner = (isConfirmationPage, pageCategory) => {
+const renderFreeShippingBanner = pageCategory => {
+  return pageCategory === 'bagPage' && <FreeShippingBanner />;
+};
+
+const getLoyaltybanner = (isConfirmationPage, pageCategory, navigation) => {
   return (
-    !isCanada() && (
-      <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />
-    )
+    <LoyaltyBanner
+      isConfirmationPage={isConfirmationPage}
+      pageCategory={pageCategory}
+      navigation={navigation}
+    />
   );
 };
 
@@ -66,7 +71,7 @@ export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, l
   ) : null;
 };
 
-const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) => {
+const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, navigation) => {
   const {
     itemsCount,
     currencySymbol,
@@ -313,8 +318,8 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <FreeShippingBanner />
-      {getLoyaltybanner(isConfirmationPage, pageCategory)}
+      {renderFreeShippingBanner(pageCategory)}
+      {getLoyaltybanner(isConfirmationPage, pageCategory, navigation)}
     </StyledOrderLedger>
   );
 };
@@ -344,13 +349,14 @@ const OrderLedger = ({
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
   pageCategory,
+  navigation,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory);
+  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory, navigation);
   return (
     <View>
       {showAccordian ? (
@@ -457,11 +463,14 @@ OrderLedger.propTypes = {
 
     /** This is used to display the balance total */
     orderBalanceTotal: PropTypes.number,
+
+    navigation: PropTypes.shape({}),
   }),
 
   /** Flag to identify if the current page is confirmation page */
   isConfirmationPage: PropTypes.bool,
   pageCategory: PropTypes.shape({}),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 OrderLedger.defaultProps = {

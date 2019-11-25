@@ -1,44 +1,64 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { getLoading } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
-  ItemCountContainer,
   ListHeaderContainer,
+  FilterContainer,
+  EmptyView,
+  RowContainer,
+  ItemCountContainer,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
+import PromoModules from '../../../../common/organisms/PromoModules';
 
-const renderItemCountView = itemCount => {
+const renderItemCountView = (itemCount, labelsFavorite, isBothTcpAndGymProductAreAvailable) => {
   if (itemCount === undefined) {
-    return itemCount;
+    return <EmptyView />;
   }
 
   return (
-    <ItemCountContainer>
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        color="gray.900"
-        text={`${itemCount} `}
-      />
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        color="gray.900"
-        text="Items"
-      />
-    </ItemCountContainer>
+    <RowContainer margins="12px 0 0 0">
+      {isBothTcpAndGymProductAreAvailable ? (
+        <BodyCopy
+          dataLocator="fav_brand_title"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="gray.1700"
+          text={getLabelValue(labelsFavorite, 'lbl_fav_brand')}
+        />
+      ) : (
+        <EmptyView />
+      )}
+      <ItemCountContainer>
+        <BodyCopy
+          dataLocator="pdp_product_badges"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          color="gray.900"
+          text={itemCount}
+        />
+        <BodyCopy
+          margin="0 0 0 4px"
+          dataLocator="pdp_product_badges"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="gray.900"
+          text="Items"
+        />
+      </ItemCountContainer>
+    </RowContainer>
   );
 };
 
@@ -56,23 +76,43 @@ const onRenderHeader = data => {
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
+    isKeepModalOpen,
+    isLoadingMore,
+    labelsFavorite,
+    isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   } = data;
+
+  let appliedfilters = false;
+  appliedfilters =
+    filtersLength &&
+    Object.keys(filtersLength).some(key => {
+      return filtersLength[key] > 0;
+    });
+
   return (
     <ListHeaderContainer>
-      <FilterModal
-        filters={filters}
-        labelsFilter={labelsFilter}
-        onSubmit={onSubmit}
-        getProducts={getProducts}
-        navigation={navigation}
-        sortLabels={sortLabels}
-        isFavorite={isFavorite}
-        onFilterSelection={onFilterSelection}
-        onSortSelection={onSortSelection}
-        filteredId={filteredId}
-      />
-
-      {renderItemCountView(totalProductsCount)}
+      {(totalProductsCount > 1 || appliedfilters || isFavorite) && (
+        <FilterModal
+          filters={filters}
+          labelsFilter={labelsFilter}
+          onSubmit={onSubmit}
+          getProducts={getProducts}
+          navigation={navigation}
+          sortLabels={sortLabels}
+          isFavorite={isFavorite}
+          onFilterSelection={onFilterSelection}
+          onSortSelection={onSortSelection}
+          filteredId={filteredId}
+          setSelectedFilter={setSelectedFilter}
+          selectedFilterValue={selectedFilterValue}
+          isKeepModalOpen={isKeepModalOpen}
+          isLoadingMore={isLoadingMore}
+        />
+      )}
+      {renderItemCountView(totalProductsCount, labelsFavorite, isBothTcpAndGymProductAreAvailable)}
       {renderBrandFilter && renderBrandFilter()}
     </ListHeaderContainer>
   );
@@ -82,6 +122,7 @@ const ProductListView = ({
   products,
   filters,
   labelsFilter,
+  labelsLogin,
   breadCrumbs,
   onPressFilter,
   onPressSort,
@@ -101,10 +142,23 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  onAddItemToFavorites,
+  isLoggedIn,
+  isLoadingMore,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
+  setSelectedFilter,
+  selectedFilterValue,
+  plpTopPromos,
+  isSearchListing,
+  isKeepModalOpen,
+  labelsFavorite,
+  isBothTcpAndGymProductAreAvailable,
+  filtersLength,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading) return getLoading();
+  if (isDataLoading && !isKeepModalOpen) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -118,22 +172,43 @@ const ProductListView = ({
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
+    plpTopPromos,
+    isKeepModalOpen,
+    isLoadingMore,
+    labelsFavorite,
+    isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   };
   return (
-    <PageContainer margins={margins} paddings={paddings}>
-      <ProductList
-        products={products}
-        title={title}
-        scrollToTop={scrollToTop}
-        totalProductsCount={totalProductsCount}
-        onRenderHeader={() => onRenderHeader(headerData)}
-        isFavorite={isFavorite}
-        {...otherProps}
-      />
-      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
-      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-    </PageContainer>
+    <ScrollView>
+      {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
+      <PageContainer margins={margins} paddings={paddings}>
+        <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
+        {!isLoadingMore && (
+          <ProductList
+            getProducts={getProducts}
+            navigation={navigation}
+            products={products}
+            title={title}
+            scrollToTop={scrollToTop}
+            totalProductsCount={totalProductsCount}
+            isFavorite={isFavorite}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
+            labelsLogin={labelsLogin}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            isSearchListing={isSearchListing}
+            {...otherProps}
+          />
+        )}
+        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
+        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+        {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      </PageContainer>
+    </ScrollView>
   );
 };
 
@@ -160,6 +235,19 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoadingMore: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  selectedFilterValue: PropTypes.shape({}).isRequired,
+  setSelectedFilter: PropTypes.func.isRequired,
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
+  isKeepModalOpen: PropTypes.bool,
+  labelsFavorite: PropTypes.shape({}),
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -177,6 +265,17 @@ ProductListView.defaultProps = {
   renderBrandFilter: null,
   margins: null,
   paddings: null,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
+  labelsLogin: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  plpTopPromos: [],
+  isSearchListing: false,
+  isKeepModalOpen: false,
+  labelsFavorite: {},
+  isBothTcpAndGymProductAreAvailable: false,
 };
 
 export default withStyles(ProductListView, styles);
+export { ProductListView as ProductListViewVanilla };

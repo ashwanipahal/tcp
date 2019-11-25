@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="https://d.comenity.net/childrensplace/?ecid=manageacct"
+  ctaTitle="MANAGE YOUR CARD"
+  linkClick={null}
+  target="new"
+  title="lbl_overview_myPlaceRewardsCardHeading"
+>
+  <Styled(Row)
+    className=" elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="cardDetailsWrapper elem-pt-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(Image)
+          className="elem-mr-XS"
+          src="/static/images/visa.svg"
+        />
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <span>
+            lbl_overview_card_ending
+          </span>
+          <span>
+             
+          </span>
+          <span>
+            1111
+          </span>
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className="elem-mt-LRG"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            25% OFF
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+             your kids’ birthdays!
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-LRG"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            EARN DOUBLE POINTS
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+             when you check out using your card
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-LRG"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            EXCLUSIVE BONUS EVENTS
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            Tripe points, double rewards & more!
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;
+
+exports[`MyPlaceRewardsCreditCardTile component should render Empty state correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink=""
+  ctaTitle="lbl_overview_applyOrAcceptOffer"
+  target="new"
+  title="lbl_overview_myPlaceRewardsCardHeading"
+>
+  <Styled(Row)
+    className=" elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="container-top"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            Add your card to:
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="list-style"
+            color="text.primary"
+            component="ul"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <li
+              className="elem-ml-MED"
+            >
+              <span>
+                Earn 2 pints for every $1 spent
+              </span>
+            </li>
+            <li
+              className="elem-ml-MED"
+            >
+              <span>
+                Get 25% off birthday savings
+              </span>
+            </li>
+            <li
+              className="elem-ml-MED"
+            >
+              <span>
+                Check out even faster
+              </span>
+            </li>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="elem-mt-LRG"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="shop-now-btn"
+              color="GRAY"
+              data-locator="orders-shop-now-btn"
+              fill="WHITE"
+              onClick={[Function]}
+            >
+              ADD YOUR CARD
+            </Styled(Button)>
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Don’t have a My Place Rewards Credit Card?
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;

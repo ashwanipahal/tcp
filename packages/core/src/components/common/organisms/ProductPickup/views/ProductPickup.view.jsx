@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /** @module ProductPickup
  * @summary Shows the BOPIS CTA in PDP
  *
@@ -5,6 +6,8 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
@@ -133,7 +136,6 @@ class ProductPickup extends React.PureComponent {
     pickupTitleText: PropTypes.string,
     isBossEligBossInvAvail: PropTypes.bool,
     isStoreBopisEligible: PropTypes.bool,
-    showPickupDetails: PropTypes.bool,
     showPickupInfo: PropTypes.bool,
     isSubmitting: PropTypes.bool,
     labels: PropTypes.shape({
@@ -150,6 +152,15 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_PICKUP_IN_STORE: PropTypes.string,
       lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
+    }),
+    isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
+    onPickupClickAddon: PropTypes.func,
+    isOutfitVariant: PropTypes.bool,
+    isStoreAndProductBossEligible: PropTypes.bool,
+    keepAlive: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({
+      itemSoldOutMessage: PropTypes.string,
     }),
   };
 
@@ -181,7 +192,6 @@ class ProductPickup extends React.PureComponent {
     pickupTitleText: '',
     isBossEligBossInvAvail: false,
     isStoreBopisEligible: false,
-    showPickupDetails: false,
     showPickupInfo: false,
     isSubmitting: false,
     labels: {
@@ -192,12 +202,21 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
       lbl_Product_pickup_BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
       lbl_Product_pickup_BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
-      lbl_Product_pickup_FIND_STORE: 'FIND A STORE',
+      lbl_Product_pickup_FIND_STORE: 'Find In Store',
       lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
       lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
       lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
       lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
+    },
+    isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
+    onPickupClickAddon: () => {},
+    isOutfitVariant: false,
+    isStoreAndProductBossEligible: false,
+    keepAlive: false,
+    outOfStockLabels: {
+      itemSoldOutMessage: '',
     },
   };
 
@@ -205,6 +224,18 @@ class ProductPickup extends React.PureComponent {
     super(props);
     this.handlePickupModalClick = this.handlePickupModalClick.bind(this);
   }
+
+  getPageName = productInfo => {
+    let pageName = '';
+    const productId = productInfo && productInfo.generalProductId.split('_')[0];
+    const productName = productInfo && productInfo.name.toLowerCase();
+    if (productId) {
+      pageName = `product:${productId}:${productName}`;
+    }
+    return {
+      pageName,
+    };
+  };
 
   /**
    * @method handlePickupModalClick -
@@ -215,19 +246,21 @@ class ProductPickup extends React.PureComponent {
     const {
       onPickUpOpenClick,
       productInfo,
-      itemValues,
+      onPickupClickAddon,
       isBopisEligible,
       isBossEligible,
     } = this.props;
-
     e.preventDefault();
-    return onPickUpOpenClick({
+    onPickUpOpenClick({
       generalProductId: productInfo.generalProductId,
-      initialValues: { color: itemValues && itemValues.color },
       isBopisCtaEnabled: isBopisEligible,
       isBossCtaEnabled: isBossEligible,
+      currentProduct: productInfo,
       colorProductId: productInfo.generalProductId,
     });
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   /**
@@ -342,73 +375,64 @@ class ProductPickup extends React.PureComponent {
    * then it @returns - the boss dates information along with the BOSS only
    * pickup labels
    */
+
   renderPickupInfo() {
     const {
       bopisItemInventory,
       isStoreBopisEligible,
-      showPickupDetails,
-      isBopisEligible,
       labels,
+      isStoreAndProductBossEligible,
     } = this.props;
-    if (showPickupDetails) {
+
+    const bopisItemInventoryRes =
+      bopisItemInventory &&
+      bopisItemInventory.inventoryResponse &&
+      bopisItemInventory.inventoryResponse[0];
+    const bopisItemInventoryStatus = bopisItemInventoryRes && bopisItemInventoryRes.status;
+
+    const bopisStatusAvailability = isStoreBopisEligible ? (
+      <BodyCopy fontSize="fs12" fontFamily="secondary">
+        <BodyCopy
+          fontSize="fs12"
+          className="availability"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          color="success"
+          component="span"
+        >
+          {`${bopisItemInventoryStatus}!`}
+        </BodyCopy>
+        {labels.lbl_Product_pickup_BOPIS_AVAILABLE}
+      </BodyCopy>
+    ) : null;
+
+    if (isStoreBopisEligible && isStoreAndProductBossEligible) {
       return (
         <div className="pickup-info">
-          {isStoreBopisEligible && (
-            <BodyCopy fontSize="fs12" fontFamily="secondary">
-              <BodyCopy
-                fontSize="fs12"
-                className="availability"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                color="success"
-                component="span"
-              >
-                {`${bopisItemInventory[0].status}!`}
-              </BodyCopy>
-              {labels.lbl_Product_pickup_BOPIS_AVAILABLE}
-            </BodyCopy>
-          )}
-          <BodyCopy
-            className="pickup-boss-info"
-            fontSize="fs12"
-            fontFamily="secondary"
-            component="span"
-          >
-            {isStoreBopisEligible
-              ? labels.lbl_Product_pickup_BOSS_AVAILABLE
-              : labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
-          </BodyCopy>
-          {/* <ContentSlot className="pickup-espot" contentSlotName="fav_store_pickup_content" /> */}
+          {bopisStatusAvailability}
+          <br />
+          <span className="boss-message">
+            {labels.lbl_Product_pickup_BOSS_AVAILABLE}
+            <PickupPromotionBanner bossBanner />
+          </span>
         </div>
       );
     }
-    if (isBopisEligible) {
+    if (isStoreBopisEligible) {
+      return <div className="pickup-info">{bopisStatusAvailability}</div>;
+    }
+
+    if (isStoreAndProductBossEligible) {
       return (
-        isStoreBopisEligible && (
-          <BodyCopy className="pickup-info" fontSize="fs12" fontFamily="secondary">
-            <BodyCopy
-              fontSize="fs12"
-              className="availability"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              color="success"
-              component="span"
-            >
-              {`${bopisItemInventory[0].status}!`}
-            </BodyCopy>
-            {labels.lbl_Product_pickup_BOPIS_ONLY_AVAILABLE}
-          </BodyCopy>
-        )
+        <div className="pickup-info">
+          <span className="boss-message">
+            {labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
+            <PickupPromotionBanner bossBanner />
+          </span>
+        </div>
       );
     }
-    return (
-      <div className="pickup-info">
-        <BodyCopy className="pickup-boss-info">
-          {labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
-        </BodyCopy>
-        {/* <ContentSlot className="pickup-espot" contentSlotName="no_fav_pickup_content" /> */}
-      </div>
-    );
+    return null;
   }
 
   renderPickupInfoError() {
@@ -427,65 +451,136 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
-  render() {
-    const { className, showPickupInfo, isSubmitting, labels } = this.props;
+  renderSoldOutError = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <BodyCopy color="red.500" fontFamily="secondary" fontSize="fs10">
+        {outOfStockLabels.itemSoldOutMessage}
+      </BodyCopy>
+    ) : null;
+  };
 
+  // eslint-disable-next-line complexity
+  render() {
+    const {
+      className,
+      showPickupInfo,
+      isSubmitting,
+      labels,
+      isAnchor,
+      sizeUnavailable,
+      isOutfitVariant,
+      keepAlive,
+      productInfo,
+    } = this.props;
+    const { pageName } = this.getPageName(productInfo);
     return (
       <React.Fragment>
-        <div className={`${className} pickup-section-container`}>
-          <div className="pickup-sub-container">
-            <div className="pickup-header">
-              <div className="title-pickup-section">
-                <img
-                  className="shipping-icon"
-                  alt="shipping-icon"
-                  src="/static/images/fast-shipping.svg"
-                />
-                <div className="shipping-text-section">
-                  <BodyCopy
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    fontFamily="secondary"
-                    component="span"
-                  >
-                    {labels.lbl_Product_pickup_FREE_SHIPPING}
-                  </BodyCopy>
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
-                    {labels.lbl_Product_pickup_NO_MIN_PURCHASE}
-                  </BodyCopy>
-                </div>
-              </div>
-            </div>
-            <div className="pickup-content">
-              <div className="pickup-section">
+        {isOutfitVariant && (
+          <ClickTracker
+            clickData={{
+              customEvents: ['event131'],
+              pageName,
+            }}
+          >
+            <Button
+              className="button-find-in-store"
+              buttonVariation="fixed-width"
+              fill="BLACK"
+              disabled={keepAlive || isSubmitting}
+              onClick={this.handlePickupModalClick}
+            >
+              {showPickupInfo
+                ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                : labels.lbl_Product_pickup_FIND_STORE}
+            </Button>
+          </ClickTracker>
+        )}
+        {!isAnchor && !isOutfitVariant ? (
+          <div className={`${className} pickup-section-container`}>
+            <div className="pickup-sub-container">
+              <div className="pickup-header">
                 <div className="title-pickup-section">
                   <img
-                    className="pickup-icon"
-                    alt="pickup-icon"
-                    src="/static/images/marker-icon.svg"
+                    className="shipping-icon"
+                    alt="shipping-icon"
+                    src="/static/images/fast-shipping.svg"
                   />
-                </div>
-                <div className="pickup-details">
-                  {this.renderPickupTitle()}
-                  {showPickupInfo && this.renderPickupInfo()}
-                  {!showPickupInfo && this.renderPickupInfoError()}
+                  <div className="shipping-text-section">
+                    <BodyCopy
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      fontFamily="secondary"
+                      component="span"
+                    >
+                      {labels.lbl_Product_pickup_FREE_SHIPPING}
+                    </BodyCopy>
+                    <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
+                      {labels.lbl_Product_pickup_NO_MIN_PURCHASE}
+                    </BodyCopy>
+                  </div>
                 </div>
               </div>
-              <Button
-                className="button-find-in-store"
-                buttonVariation="fixed-width"
-                fill="BLACK"
-                disabled={isSubmitting}
-                onClick={this.handlePickupModalClick}
-              >
-                {showPickupInfo
-                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                  : labels.lbl_Product_pickup_FIND_STORE}
-              </Button>
+              <div className="pickup-content">
+                <div className="pickup-section">
+                  <div className="title-pickup-section">
+                    <img
+                      className="pickup-icon"
+                      alt="pickup-icon"
+                      src="/static/images/marker-icon.svg"
+                    />
+                  </div>
+                  <div className="pickup-details">
+                    {this.renderPickupTitle()}
+                    {showPickupInfo && this.renderPickupInfo()}
+                    {this.renderSoldOutError()}
+                  </div>
+                </div>
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event131'],
+                    pageName,
+                  }}
+                >
+                  <Button
+                    className="button-find-in-store"
+                    buttonVariation="fixed-width"
+                    fill="BLACK"
+                    disabled={keepAlive || isSubmitting}
+                    onClick={this.handlePickupModalClick}
+                  >
+                    {showPickupInfo
+                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                      : labels.lbl_Product_pickup_FIND_STORE}
+                  </Button>
+                </ClickTracker>
+              </div>
             </div>
           </div>
-        </div>
-        {/* {this.isBopisEligible && (
+        ) : (
+          !isOutfitVariant &&
+          !keepAlive && (
+            <p className="size-unavailable">
+              <span className="unavailable-text">{sizeUnavailable}</span>
+              <span className="size-find-in-store">
+                <Anchor
+                  noLink
+                  handleLinkClick={this.handlePickupModalClick}
+                  title={
+                    showPickupInfo
+                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                      : labels.lbl_Product_pickup_FIND_STORE
+                  }
+                >
+                  {showPickupInfo
+                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                    : labels.lbl_Product_pickup_FIND_STORE}
+                </Anchor>
+              </span>
+            </p>
+          )
+        )}
+        {/* {isBopisEligible && (
           <ContentSlot contentSlotName="pdp_bopis_promo" className="product-details-bopis-promo" />
         )} */}
       </React.Fragment>

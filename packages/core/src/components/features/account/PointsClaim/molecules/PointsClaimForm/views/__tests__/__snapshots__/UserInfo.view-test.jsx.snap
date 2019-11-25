@@ -20,8 +20,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
@@ -48,10 +48,11 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="profileinfo-rewardsId_value"
       colSize={
         Object {
-          "large": 3,
-          "medium": 4,
+          "large": 8,
+          "medium": 5,
           "small": 4,
         }
       }
@@ -78,8 +79,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
@@ -108,8 +109,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 8,
+          "medium": 5,
           "small": 4,
         }
       }
@@ -136,8 +137,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
@@ -166,8 +167,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 8,
+          "medium": 5,
           "small": 4,
         }
       }
@@ -194,8 +195,8 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
-          "medium": 4,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
@@ -224,14 +225,14 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 4,
+          "large": 8,
+          "medium": 5,
           "small": 4,
         }
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="profileinfo-email_value"
         color="text.primary"
         component="span"
         dataLocator="profileinfo-email_value"

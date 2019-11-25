@@ -82,6 +82,10 @@ export default {
 
   /* This will be used to get the name of where this component has been called */
   viaModule: PropTypes.string,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
+  activeWishListId: PropTypes.number,
 };
 
 export const productGridDefaultProps = {
@@ -101,4 +105,8 @@ export const productGridDefaultProps = {
     exchangevalue: 0,
   },
   viaModule: '',
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
+  activeWishListId: '',
 };

@@ -4,7 +4,11 @@ const getPageCategory = pageCategory => {
   let isReviewPage = false;
   let isConfirmationPage = false;
   let isAddedToBagPage = false;
+  let isProductDetailView = false;
   switch (pageCategory) {
+    case 'isProductDetailView':
+      isProductDetailView = true;
+      break;
     case 'review':
       isReviewPage = true;
       break;
@@ -14,10 +18,17 @@ const getPageCategory = pageCategory => {
     case 'isAddedToBagPage':
       isAddedToBagPage = true;
       break;
+
     default:
       ischeckoutPage = true;
   }
-  return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
+  return {
+    ischeckoutPage,
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView,
+  };
 };
 const reviewPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
@@ -118,6 +129,7 @@ const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGue
       subHeadingLabel = labels.added2bagGuestRewardsSubHeading;
     } else if (!isPlcc) {
       headingLabelVal = labels.added2bagMprRewardsHeading;
+      subHeadingLabel = labels.added2bagMprRewardsSubHeading;
       descriptionLabel = labels.added2bagMprRewardsDescription;
     } else {
       headingLabelVal = labels.added2bagPlccRewardsHeading;
@@ -132,27 +144,24 @@ const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGue
   };
 };
 
-const productDetailPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
-  let rewardPointsValue = '';
+const productDetailPageLabelsFn = (labels, isGuest, isPlcc) => {
   let headingLabelVal = '';
   let subHeadingLabel = '';
-  if (!earnedReward) {
-    rewardPointsValue = estimatedRewardsVal;
-    if (isGuest) {
-      headingLabelVal = labels.getRewardedShopping;
-      subHeadingLabel = labels.loyaltyPayPoints;
-    } else if (!isPlcc) {
-      headingLabelVal = labels.earnDoublePointsPDP;
-      subHeadingLabel = labels.myPlaceCreditCard;
-    } else {
-      headingLabelVal = labels.getDoublePointsPLCCPDP;
-      subHeadingLabel = labels.checkoutMyPlaceCreditCard;
-    }
+  let descriptionLabel = '';
+  if (isGuest) {
+    headingLabelVal = labels.pdpGuestRewardsHeading;
+    subHeadingLabel = labels.pdpGuestRewardsSubHeading;
+  } else if (!isPlcc) {
+    headingLabelVal = labels.pdpMprRewardsHeading;
+    descriptionLabel = labels.pdpMprRewardsDescription;
+  } else {
+    headingLabelVal = labels.pdpPlccRewardsHeading;
+    descriptionLabel = labels.pdpPlccRewardsDescription;
   }
   return {
-    rewardPointsValue,
     headingLabelVal,
     subHeadingLabel,
+    descriptionLabel,
   };
 };
 
@@ -257,18 +266,10 @@ const renderLoyaltyLabels = (
     descriptionLabelFn = addedToBagPageLabels.descriptionLabel;
     remainingPlccValFn = addedToBagPageLabels.remainingPlccVal;
   } else if (isProductDetailView) {
-    const addedToBagPageLabels = productDetailPageLabelsFn(
-      labels,
-      earnedReward,
-      estimatedRewardsVal,
-      isGuest,
-      isPlcc
-    );
-    rewardPointsValueFn = addedToBagPageLabels.rewardPointsValue;
-    headingLabelValFn = addedToBagPageLabels.headingLabelVal;
-    subHeadingLabelFn = addedToBagPageLabels.subHeadingLabel;
-    descriptionLabelFn = addedToBagPageLabels.descriptionLabel;
-    remainingPlccValFn = addedToBagPageLabels.remainingPlccVal;
+    const productDetailPageLabels = productDetailPageLabelsFn(labels, isGuest, isPlcc);
+    headingLabelValFn = productDetailPageLabels.headingLabelVal;
+    subHeadingLabelFn = productDetailPageLabels.subHeadingLabel;
+    descriptionLabelFn = productDetailPageLabels.descriptionLabel;
   } else {
     const bagcheckoutPageLabels = bagCheckoutPageLabelsFn(
       labels,

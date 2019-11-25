@@ -105,7 +105,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-jTzLTM",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -180,6 +180,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -225,7 +228,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-jTzLTM",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -270,7 +273,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-jTzLTM",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -345,6 +348,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -390,7 +396,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-jTzLTM",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],

@@ -29,15 +29,16 @@ const PickupSkuSelectionForm = props => {
     isHasPlcc,
     className,
     onChangeColor,
+    onChangeSize,
     currentColorEntry,
     imageUrl,
     generalProductId,
     navigateToPDP,
-    currencyExchange,
+    currencyAttributes,
   } = props;
   const productPriceProps = {
     currencySymbol: currency,
-    currencyExchange,
+    currencyAttributes,
     isItemPartNumberVisible: false,
     ...prices,
     isCanada,
@@ -109,6 +110,7 @@ const PickupSkuSelectionForm = props => {
 
           <ProductAddToBagContainer
             onChangeColor={onChangeColor}
+            onChangeSize={onChangeSize}
             plpLabels={SKU_DETAILS}
             currentProduct={currentProduct}
             customFormName={PRODUCT_SKU_SELECTION_FORM}
@@ -117,6 +119,7 @@ const PickupSkuSelectionForm = props => {
             showAddToBagCTA={false}
             renderReceiveProps
             isDisableZeroInventoryEntries={false}
+            isPickup
           />
         </div>
       </div>
@@ -153,7 +156,7 @@ PickupSkuSelectionForm.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -167,6 +170,7 @@ PickupSkuSelectionForm.propTypes = {
   generalProductId: PropTypes.string.isRequired,
 
   onChangeColor: PropTypes.func,
+  onChangeSize: PropTypes.func,
   currentColorEntry: PropTypes.shape({}),
   imageUrl: PropTypes.string.isRequired,
   navigateToPDP: PropTypes.func.isRequired,
@@ -178,8 +182,8 @@ PickupSkuSelectionForm.defaultProps = {
   isHasPlcc: false,
   className: '',
   onChangeColor: () => {},
+  onChangeSize: () => {},
   currentColorEntry: {},
-  currencyExchange: 1,
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

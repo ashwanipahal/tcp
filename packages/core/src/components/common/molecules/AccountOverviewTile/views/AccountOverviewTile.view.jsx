@@ -10,8 +10,10 @@ export const AccountOverviewTile = ({
   ctaTitle,
   ctaLink,
   ctaPath,
+  target,
   children,
   className,
+  linkClick,
   dataLocatorPrefix,
 }) => {
   return (
@@ -33,12 +35,14 @@ export const AccountOverviewTile = ({
         <Anchor
           to={ctaLink}
           asPath={ctaPath}
+          onClick={linkClick}
           anchorVariation="button"
           buttonVariation="fixed-width"
           fullWidth
           fill="BLUE"
           centered
           className="elem-mb-SM"
+          target={target}
           dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
         >
           {ctaTitle}
@@ -56,6 +60,8 @@ AccountOverviewTile.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   dataLocatorPrefix: PropTypes.string,
+  target: PropTypes.string,
+  linkClick: PropTypes.func,
 };
 
 AccountOverviewTile.defaultProps = {
@@ -65,6 +71,8 @@ AccountOverviewTile.defaultProps = {
   ctaPath: '',
   className: '',
   dataLocatorPrefix: '',
+  target: '_self',
+  linkClick: () => {},
 };
 
 export default withStyles(AccountOverviewTile, styles);

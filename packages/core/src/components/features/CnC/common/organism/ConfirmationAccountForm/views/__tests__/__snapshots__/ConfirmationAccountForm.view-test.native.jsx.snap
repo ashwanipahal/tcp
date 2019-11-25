@@ -60,6 +60,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -115,6 +116,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -158,6 +160,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -231,6 +234,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -250,6 +254,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -316,6 +321,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -323,6 +329,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -389,6 +396,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -444,6 +452,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -487,6 +496,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -560,6 +570,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -579,6 +590,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -645,6 +657,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -652,6 +665,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -717,6 +731,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -767,6 +782,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -819,6 +835,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -874,6 +891,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -917,6 +935,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -981,6 +1000,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1033,6 +1053,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1092,6 +1113,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1111,6 +1133,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1177,6 +1200,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1184,6 +1208,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1216,6 +1241,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1266,6 +1292,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1316,6 +1343,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1368,6 +1396,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1423,6 +1452,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1466,6 +1496,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1530,6 +1561,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1582,6 +1614,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1641,6 +1674,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1660,6 +1694,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1726,6 +1761,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1733,6 +1769,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1803,6 +1840,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1858,6 +1896,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1901,6 +1940,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1974,6 +2014,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1993,6 +2034,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2059,6 +2101,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -2066,6 +2109,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

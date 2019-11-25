@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -26,36 +28,53 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement, isMobileApp } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
+    const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    setVenmoInProgress(false); // Setting venmo progress as false. User can select normal checkout on cart page.
     this.fetchInitialActions();
   }
 
   componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-      const { router, isRegisteredUserCallDone } = this.props;
-      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+      const {
+        isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+        router: prevRouter,
+      } = prevProps;
+      const { router, isRegisteredUserCallDone, bagPageIsRouting } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && !bagPageIsRouting) {
         this.fetchInitialActions();
       }
+
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
-      if (isSfl) {
-        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+      const prevIsSfl = utils.getObjectValue(prevRouter, undefined, 'query', 'isSfl');
+
+      if (isSfl !== prevIsSfl && isSfl) {
+        const headingElem = document.querySelector('.save-for-later-section-heading');
+        setTimeout(() => {
+          scrollToParticularElement(headingElem);
+        }, 100);
       }
     }
+  }
+
+  componentWillUnmount() {
+    const { resetBagLoadedState } = this.props;
+    resetBagLoadedState();
   }
 
   closeModal = () => {};
@@ -92,12 +111,26 @@ export class BagPageContainer extends React.Component<Props> {
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
       cartItemSflError,
-      currencySymbol,
+      isPayPalWebViewEnable,
       isPickupModalOpen,
       isMobile,
+      bagPageServerError,
+      isBagPage,
+      setClickAnalyticsDataBag,
+      cartOrderItems,
+      isVenmoEnabled,
+      isPayPalEnabled,
+      isCartLoaded,
+      trackPageViewBag,
+      router,
+      bagLoading,
     } = this.props;
 
     const showAddTobag = false;
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
     return (
       <BagPage
         isMobile={isMobile}
@@ -124,14 +157,46 @@ export class BagPageContainer extends React.Component<Props> {
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
-        currencySymbol={currencySymbol}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
+        bagPageServerError={bagPageServerError}
+        isBagPage={isBagPage}
+        cartOrderItems={cartOrderItems}
+        setClickAnalyticsDataBag={setClickAnalyticsDataBag}
+        isCartLoaded={isCartLoaded}
+        trackPageViewBag={trackPageViewBag}
+        fromMiniBag={fromMiniBag}
+        bagLoading={bagLoading}
+        isVenmoEnabled={isVenmoEnabled}
+        isPayPalEnabled={isPayPalEnabled}
       />
     );
   }
 }
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
+
+BagPageContainer.pageInfo = {
+  pageId: 'Bag',
+};
+
+BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shopping bag';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageSection: loadedComponent,
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        loadAnalyticsOnload: false,
+      },
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -162,6 +227,15 @@ export const mapDispatchToProps = dispatch => {
     toastMessagePositionInfo: palyoad => {
       dispatch(toastMessagePosition(palyoad));
     },
+    setClickAnalyticsDataBag: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+    trackPageViewBag: payload => {
+      dispatch(trackPageView(payload));
+    },
+    resetBagLoadedState: () => {
+      dispatch(BAG_PAGE_ACTIONS.resetBagLoadedState());
+    },
   };
 };
 
@@ -174,7 +248,13 @@ export const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    placeCashBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
+    ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
@@ -185,9 +265,15 @@ export const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
+    isCartLoaded: BagPageSelector.getCartLoadedState(state),
+    bagPageIsRouting: BagPageSelector.isBagRouting(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
   };
 };
 

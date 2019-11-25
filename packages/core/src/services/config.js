@@ -28,6 +28,11 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL.int,
 };
 
+export const moduleNames = {
+  accountNavigation: 'AccountNavigation',
+  navigation: 'navigation',
+};
+
 // TODO - to move it in env config file
 export const API_CONFIG = {
   sites: ['us', 'ca'],
@@ -105,6 +110,7 @@ export const API_CONFIG = {
   },
   overlayTimeout: 5000,
   sessionCookieKey: 'QuantumMetricSessionID',
+  pageCountCookieKey: 'pv',
   apiContentType: 'application/json',
 };
 

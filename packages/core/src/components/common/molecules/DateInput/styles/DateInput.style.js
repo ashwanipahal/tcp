@@ -14,6 +14,7 @@ const DateInput = css`
     font-size: ${props => props.theme.typography.fontSizes.fs16};
     line-height: normal;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: -${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   .react-datepicker__header {
@@ -134,6 +135,7 @@ const DateInput = css`
 
     &:after {
       top: -10px;
+      box-shadow: 0 0 4px 2px rgba(163, 162, 162, 0.31);
     }
   }
 `;

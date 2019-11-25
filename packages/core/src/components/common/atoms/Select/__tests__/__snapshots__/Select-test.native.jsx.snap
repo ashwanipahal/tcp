@@ -31,9 +31,11 @@ exports[`Selectbox component renders correctly 1`] = `
     }
     disabled={false}
     id="test"
+    lightGrayColor={false}
     name="test"
     onValueChange={[Function]}
     selectedValue="test"
+    textAlignLeft={false}
     width="100%"
   />
 </Styled(View)>
@@ -70,18 +72,20 @@ exports[`Selectbox component renders correctly for error 1`] = `
     }
     disabled={false}
     id="test"
+    lightGrayColor={false}
     name="test"
     onValueChange={[Function]}
     selectedValue="test"
+    textAlignLeft={false}
     width="100%"
   />
   <Styled(View)>
     <Styled(View)
-      spacingStyles="margin-right-XXXS"
+      spacingStyles="margin-right-XS"
     >
       <Styled(ImageComp)
         alt=""
-        height="15px"
+        height="14px"
         host=""
         source={
           Object {
@@ -89,15 +93,16 @@ exports[`Selectbox component renders correctly for error 1`] = `
           }
         }
         url=""
-        width="15px"
+        width="16px"
       />
     </Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
       color="error"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs12"
-      fontWeight="semibold"
+      fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
       text="error message"

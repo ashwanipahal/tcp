@@ -2,1805 +2,6 @@
 
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
 <Fragment>
-  <Styled(Modal)
-    bodyOpenClassName={null}
-    heightConfig={
-      Object {
-        "height": "100%",
-      }
-    }
-    inheritedStyles={
-      Array [
-        "
-  div.TCPModal__InnerContent {
-    background: none;
-    z-index: ",
-        [Function],
-        ";
-  }
-  button.close-modal {
-    display: none;
-  }
-",
-      ]
-    }
-    isOpen={false}
-    style={
-      Object {
-        "overlay": Object {
-          "zIndex": 9,
-        },
-      }
-    }
-    widthConfig={
-      Object {
-        "large": "100%",
-        "medium": "100%",
-        "small": "100%",
-      }
-    }
-  >
-    <form
-      className=" available-filters-sorting-container"
-    >
-      <Styled(FilterModal)
-        classNames="open-filter-button"
-        handleClose={[Function]}
-        isSortOpenModal={false}
-        labels={Object {}}
-        show={false}
-        sortLabels={Array []}
-      >
-        <div
-          className="  new-filter-and-sort-form-container"
-        >
-          <div>
-            <div
-              className="filters-sorting-container"
-            >
-              <Styled(Col)
-                className="accordion-class"
-                colSize={
-                  Object {
-                    "large": 12,
-                    "medium": 8,
-                    "small": 6,
-                  }
-                }
-                ignoreGutter={
-                  Object {
-                    "medium": true,
-                    "small": true,
-                  }
-                }
-              >
-                <AccordionList
-                  accordionItems={
-                    Array [
-                      Object {
-                        "header": Object {
-                          "title": "Category",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Color",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Size",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Price",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Fit",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Gender",
-                        },
-                      },
-                      Object {
-                        "header": Object {
-                          "title": "Size Range",
-                        },
-                      },
-                    ]
-                  }
-                  className=""
-                  show={false}
-                >
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="categoryPath2_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Essentials Shop
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Essentials Shop",
-                          "value": "Essentials Shop",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Baby Girl
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Baby Girl",
-                          "value": "Baby Girl",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Bottoms
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Bottoms",
-                          "value": "Bottoms",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Tops
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Tops",
-                          "value": "Tops",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Shoes & Accessories
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Shoes & Accessories",
-                          "value": "Shoes & Accessories",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Leggings
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Leggings",
-                          "value": "Leggings",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Polos
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Polos",
-                          "value": "Polos",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Socks, Tights & Underwear
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Socks, Tights & Underwear",
-                          "value": "Socks, Tights & Underwear",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Online Only
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Online Only",
-                          "value": "Online Only",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Baby Boy
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Baby Boy",
-                          "value": "Baby Boy",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Socks & Underwear
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Socks & Underwear",
-                          "value": "Socks & Underwear",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Unisex
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Unisex",
-                          "value": "Unisex",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Active
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Active",
-                          "value": "Active",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Skorts & Shorts
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Skorts & Shorts",
-                          "value": "Skorts & Shorts",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Jeggings & Chinos
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Jeggings & Chinos",
-                          "value": "Jeggings & Chinos",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Shoes
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Shoes",
-                          "value": "Shoes",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Dresses & Jumpers
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Dresses & Jumpers",
-                          "value": "Dresses & Jumpers",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Dresses
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Dresses",
-                          "value": "Dresses",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Shorts
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Shorts",
-                          "value": "Shorts",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Activewear
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Activewear",
-                          "value": "Activewear",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            All Easter Dress Up
-                          </span>,
-                          "disabled": undefined,
-                          "title": "All Easter Dress Up",
-                          "value": "All Easter Dress Up",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Easter Dress Up
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Easter Dress Up",
-                          "value": "Easter Dress Up",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Sibling Shop
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Sibling Shop",
-                          "value": "Sibling Shop",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Big & Lil Sister
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Big & Lil Sister",
-                          "value": "Big & Lil Sister",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Big & Little Sister
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Big & Little Sister",
-                          "value": "Big & Little Sister",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Flower Girl Shop
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Flower Girl Shop",
-                          "value": "Flower Girl Shop",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Jackets
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Jackets",
-                          "value": "Jackets",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Matching Family Collections
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Matching Family Collections",
-                          "value": "Matching Family Collections",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Accessories
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Accessories",
-                          "value": "Accessories",
-                        },
-                      ]
-                    }
-                    placeholder="Category"
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="color-filter-chip size-detail"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    facetName="TCPColor_uFilter"
-                    forwardRef={true}
-                    labels={Object {}}
-                    name="TCPColor_uFilter"
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="BLUE"
-                              className="color-chip"
-                              data-colorname="blue"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_BLUE"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              BLUE
-                            </ForwardRef>
-                          </div>,
-                          "title": "BLUE",
-                          "value": "BLUE",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="WHITE"
-                              className="color-chip"
-                              data-colorname="white"
-                              height="18px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif"
-                              width="18px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_WHITE"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              WHITE
-                            </ForwardRef>
-                          </div>,
-                          "title": "WHITE",
-                          "value": "WHITE",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="BLACK"
-                              className="color-chip"
-                              data-colorname="black"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_BLACK"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              BLACK
-                            </ForwardRef>
-                          </div>,
-                          "title": "BLACK",
-                          "value": "BLACK",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="GRAY"
-                              className="color-chip"
-                              data-colorname="gray"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_GRAY"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              GRAY
-                            </ForwardRef>
-                          </div>,
-                          "title": "GRAY",
-                          "value": "GRAY",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="PINK"
-                              className="color-chip"
-                              data-colorname="pink"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_PINK"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              PINK
-                            </ForwardRef>
-                          </div>,
-                          "title": "PINK",
-                          "value": "PINK",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="TAN"
-                              className="color-chip"
-                              data-colorname="tan"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_TAN"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              TAN
-                            </ForwardRef>
-                          </div>,
-                          "title": "TAN",
-                          "value": "TAN",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="RED"
-                              className="color-chip"
-                              data-colorname="red"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_RED"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              RED
-                            </ForwardRef>
-                          </div>,
-                          "title": "RED",
-                          "value": "RED",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="MULTI"
-                              className="color-chip"
-                              data-colorname="multi"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_MULTI"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              MULTI
-                            </ForwardRef>
-                          </div>,
-                          "title": "MULTI",
-                          "value": "MULTI",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="DENIM"
-                              className="color-chip"
-                              data-colorname="denim"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_DENIM"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              DENIM
-                            </ForwardRef>
-                          </div>,
-                          "title": "DENIM",
-                          "value": "DENIM",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="GREEN"
-                              className="color-chip"
-                              data-colorname="green"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_GREEN"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              GREEN
-                            </ForwardRef>
-                          </div>,
-                          "title": "GREEN",
-                          "value": "GREEN",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="PURPLE"
-                              className="color-chip"
-                              data-colorname="purple"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_PURPLE"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              PURPLE
-                            </ForwardRef>
-                          </div>,
-                          "title": "PURPLE",
-                          "value": "PURPLE",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="YELLOW"
-                              className="color-chip"
-                              data-colorname="yellow"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_YELLOW"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              YELLOW
-                            </ForwardRef>
-                          </div>,
-                          "title": "YELLOW",
-                          "value": "YELLOW",
-                        },
-                        Object {
-                          "content": <div
-                            className="color-title"
-                          >
-                            <ForwardRef
-                              alt="BROWN"
-                              className="color-chip"
-                              data-colorname="brown"
-                              height="19px"
-                              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif"
-                              width="19px"
-                            />
-                            <ForwardRef
-                              className="color-name"
-                              color="gray.900"
-                              component="span"
-                              data-locator="plp_filter_color_option_BROWN"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              fontWeight="regular"
-                              letterSpacing="normal"
-                              lineHeight="normal"
-                              link={null}
-                              outline="none"
-                              tabIndex={-1}
-                              textAlign="center"
-                            >
-                              BROWN
-                            </ForwardRef>
-                          </div>,
-                          "title": "BROWN",
-                          "value": "BROWN",
-                        },
-                      ]
-                    }
-                    placeholder="Color"
-                    title=""
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="v_tcpsize_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            6-9 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "6-9 M",
-                          "value": "EF_6-9 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            6-12 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "6-12 M",
-                          "value": "EG_6-12 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            9-12 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "9-12 M",
-                          "value": "EJ_9-12 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            12-18 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "12-18 M",
-                          "value": "EM_12-18 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            12-24 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "12-24 M",
-                          "value": "EN_12-24 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            18-24 M
-                          </span>,
-                          "disabled": undefined,
-                          "title": "18-24 M",
-                          "value": "EP_18-24 M",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            2T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "2T",
-                          "value": "ET_2T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            2T - 3T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "2T - 3T",
-                          "value": "EV_2T - 3T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            3T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "3T",
-                          "value": "EX_3T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            3T-4T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "3T-4T",
-                          "value": "EY_3T-4T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            4T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "4T",
-                          "value": "EZ_4T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            5T
-                          </span>,
-                          "disabled": undefined,
-                          "title": "5T",
-                          "value": "FB_5T",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 4
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 4",
-                          "value": "IW_TODDLER 4",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 5
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 5",
-                          "value": "IZ_TODDLER 5",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 6
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 6",
-                          "value": "JC_TODDLER 6",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 7
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 7",
-                          "value": "JF_TODDLER 7",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 8
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 8",
-                          "value": "JI_TODDLER 8",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 9
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 9",
-                          "value": "JL_TODDLER 9",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 10
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 10",
-                          "value": "JO_TODDLER 10",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            TODDLER 11
-                          </span>,
-                          "disabled": undefined,
-                          "title": "TODDLER 11",
-                          "value": "JR_TODDLER 11",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            ONE SIZE
-                          </span>,
-                          "disabled": undefined,
-                          "title": "ONE SIZE",
-                          "value": "LA_ONE SIZE",
-                        },
-                      ]
-                    }
-                    placeholder="Size"
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="unbxd_price_range_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            $10 and Under
-                          </span>,
-                          "disabled": undefined,
-                          "title": "$10 and Under",
-                          "value": "$10 and Under",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            $10 - $19.99
-                          </span>,
-                          "disabled": undefined,
-                          "title": "$10 - $19.99",
-                          "value": "$10 - $19.99",
-                        },
-                      ]
-                    }
-                    placeholder="Price"
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="v_tcpfit_unbxd_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Regular
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Regular",
-                          "value": "Regular",
-                        },
-                      ]
-                    }
-                    placeholder="Fit"
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="gender_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Girl
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Girl",
-                          "value": "Girl",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Unisex
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Unisex",
-                          "value": "Unisex",
-                        },
-                      ]
-                    }
-                    placeholder="Gender"
-                    withRef={true}
-                  />
-                  <Field
-                    allowMultipleSelections={true}
-                    className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-jzJRlG",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
-  ",
-                            "
-  .filter-label {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    padding-right: ",
-                            [Function],
-                            ";
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      transform: rotate(45deg);
-      width: 7px;
-      height: 2px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: 3px;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      border-radius: 15px;
-      background: ",
-                            [Function],
-                            ";
-      display: inline-block;
-      top: 10px;
-      right: -2px;
-      bottom: 16px;
-      transform: rotate(-45deg);
-    }
-  }
-  .filter-label-expanded {
-    font-weight: bold;
-    &:after {
-      transform: rotate(-45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-    &:before {
-      transform: rotate(45deg);
-      background: ",
-                            [Function],
-                            ";
-    }
-  }
-",
-                            ";
-",
-                          ],
-                        },
-                        "customSelectCounter": 0,
-                        "displayName": "Styled(CustomSelect)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-jzJRlG",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    disableExpandStateChanges={true}
-                    expanded={true}
-                    forwardRef={true}
-                    name="age_group_uFilter"
-                    onFilterSelection={null}
-                    optionsMap={
-                      Array [
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Big Kid (4 - 18)
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Big Kid (4 - 18)",
-                          "value": "AB_Big Kid (4 - 18)",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Toddler (6M - 5T)
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Toddler (6M - 5T)",
-                          "value": "AC_Toddler (6M - 5T)",
-                        },
-                        Object {
-                          "content": <span
-                            className="size-title"
-                          >
-                            Baby (0 - 18M)
-                          </span>,
-                          "disabled": undefined,
-                          "title": "Baby (0 - 18M)",
-                          "value": "AD_Baby (0 - 18M)",
-                        },
-                      ]
-                    }
-                    placeholder="Size Range"
-                    withRef={true}
-                  />
-                </AccordionList>
-              </Styled(Col)>
-            </div>
-          </div>
-        </div>
-      </Styled(FilterModal)>
-    </form>
-  </Styled(Modal)>
   <Styled(Row)
     centered={true}
     className="filter-row "
@@ -1840,6 +41,1967 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         type="button"
       />
     </Styled(Col)>
+  </Styled(Row)>
+  <form
+    className=" hide-sort hide-filter available-filters-sorting-container"
+  >
+    <div
+      className="  new-filter-and-sort-form-container"
+    >
+      <div>
+        <div
+          className="filters-sorting-container"
+        >
+          <Styled(Col)
+            className="accordion-class"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "medium": true,
+                "small": true,
+              }
+            }
+          >
+            <AccordionList
+              accordionItems={
+                Array [
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Category",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Color",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Size",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Price",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Fit",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Gender",
+                    },
+                  },
+                  Object {
+                    "header": Object {
+                      "filterLength": 0,
+                      "title": "Size Range",
+                    },
+                  },
+                ]
+              }
+              appliedFilterComponent={Array []}
+              className=""
+              show={false}
+            >
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="categoryPath2_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Essentials Shop
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Essentials Shop",
+                      "value": "Essentials Shop",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Baby Girl
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Baby Girl",
+                      "value": "Baby Girl",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Bottoms
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Bottoms",
+                      "value": "Bottoms",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Tops
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Tops",
+                      "value": "Tops",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Shoes & Accessories
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Shoes & Accessories",
+                      "value": "Shoes & Accessories",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Leggings
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Leggings",
+                      "value": "Leggings",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Polos
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Polos",
+                      "value": "Polos",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Socks, Tights & Underwear
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Socks, Tights & Underwear",
+                      "value": "Socks, Tights & Underwear",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Online Only
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Online Only",
+                      "value": "Online Only",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Baby Boy
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Baby Boy",
+                      "value": "Baby Boy",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Socks & Underwear
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Socks & Underwear",
+                      "value": "Socks & Underwear",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Unisex
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Unisex",
+                      "value": "Unisex",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Active
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Active",
+                      "value": "Active",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Skorts & Shorts
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Skorts & Shorts",
+                      "value": "Skorts & Shorts",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Jeggings & Chinos
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Jeggings & Chinos",
+                      "value": "Jeggings & Chinos",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Shoes
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Shoes",
+                      "value": "Shoes",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Dresses & Jumpers
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Dresses & Jumpers",
+                      "value": "Dresses & Jumpers",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Dresses
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Dresses",
+                      "value": "Dresses",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Shorts
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Shorts",
+                      "value": "Shorts",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Activewear
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Activewear",
+                      "value": "Activewear",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        All Easter Dress Up
+                      </span>,
+                      "disabled": undefined,
+                      "title": "All Easter Dress Up",
+                      "value": "All Easter Dress Up",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Easter Dress Up
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Easter Dress Up",
+                      "value": "Easter Dress Up",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Sibling Shop
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Sibling Shop",
+                      "value": "Sibling Shop",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Big & Lil Sister
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Big & Lil Sister",
+                      "value": "Big & Lil Sister",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Big & Little Sister
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Big & Little Sister",
+                      "value": "Big & Little Sister",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Flower Girl Shop
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Flower Girl Shop",
+                      "value": "Flower Girl Shop",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Jackets
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Jackets",
+                      "value": "Jackets",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Matching Family Collections
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Matching Family Collections",
+                      "value": "Matching Family Collections",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Accessories
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Accessories",
+                      "value": "Accessories",
+                    },
+                  ]
+                }
+                placeholder="Category"
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="color-filter-chip size-detail"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                facetName="TCPColor_uFilter"
+                forwardRef={true}
+                isLoadingMore={false}
+                labels={Object {}}
+                name="TCPColor_uFilter"
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="blue"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "BLUE",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_BLUE"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          BLUE
+                        </ForwardRef>
+                      </div>,
+                      "title": "BLUE",
+                      "value": "BLUE",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip white-color-class"
+                          data-colorname="white"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "WHITE",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_WHITE"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          WHITE
+                        </ForwardRef>
+                      </div>,
+                      "title": "WHITE",
+                      "value": "WHITE",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="black"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "BLACK",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_BLACK"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          BLACK
+                        </ForwardRef>
+                      </div>,
+                      "title": "BLACK",
+                      "value": "BLACK",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="gray"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "GRAY",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_GRAY"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          GRAY
+                        </ForwardRef>
+                      </div>,
+                      "title": "GRAY",
+                      "value": "GRAY",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="pink"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "PINK",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_PINK"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          PINK
+                        </ForwardRef>
+                      </div>,
+                      "title": "PINK",
+                      "value": "PINK",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="tan"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "TAN",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_TAN"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          TAN
+                        </ForwardRef>
+                      </div>,
+                      "title": "TAN",
+                      "value": "TAN",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="red"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "RED",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_RED"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          RED
+                        </ForwardRef>
+                      </div>,
+                      "title": "RED",
+                      "value": "RED",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="multi"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "MULTI",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_MULTI"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          MULTI
+                        </ForwardRef>
+                      </div>,
+                      "title": "MULTI",
+                      "value": "MULTI",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="denim"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "DENIM",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_DENIM"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          DENIM
+                        </ForwardRef>
+                      </div>,
+                      "title": "DENIM",
+                      "value": "DENIM",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="green"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "GREEN",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_GREEN"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          GREEN
+                        </ForwardRef>
+                      </div>,
+                      "title": "GREEN",
+                      "value": "GREEN",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="purple"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "PURPLE",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_PURPLE"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          PURPLE
+                        </ForwardRef>
+                      </div>,
+                      "title": "PURPLE",
+                      "value": "PURPLE",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="yellow"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "YELLOW",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_YELLOW"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          YELLOW
+                        </ForwardRef>
+                      </div>,
+                      "title": "YELLOW",
+                      "value": "YELLOW",
+                    },
+                    Object {
+                      "content": <div
+                        className="color-title"
+                      >
+                        <ForwardRef
+                          className="color-chip "
+                          data-colorname="brown"
+                          imgConfigs={
+                            Array [
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                              "w_50,h_50,c_thumb,g_auto:0",
+                            ]
+                          }
+                          imgData={
+                            Object {
+                              "alt": "BROWN",
+                              "url": "",
+                            }
+                          }
+                          isProductImage={true}
+                        />
+                        <ForwardRef
+                          className="color-name"
+                          color="gray.900"
+                          component="span"
+                          data-locator="plp_filter_color_option_BROWN"
+                          fontFamily="secondary"
+                          fontSize="fs14"
+                          fontWeight="regular"
+                          letterSpacing="normal"
+                          lineHeight="normal"
+                          link={null}
+                          outline="none"
+                          tabIndex={-1}
+                          textAlign="center"
+                        >
+                          BROWN
+                        </ForwardRef>
+                      </div>,
+                      "title": "BROWN",
+                      "value": "BROWN",
+                    },
+                  ]
+                }
+                placeholder="Color"
+                title=""
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="v_tcpsize_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        6-9 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "6-9 M",
+                      "value": "EF_6-9 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        6-12 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "6-12 M",
+                      "value": "EG_6-12 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        9-12 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "9-12 M",
+                      "value": "EJ_9-12 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        12-18 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "12-18 M",
+                      "value": "EM_12-18 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        12-24 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "12-24 M",
+                      "value": "EN_12-24 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        18-24 M
+                      </span>,
+                      "disabled": undefined,
+                      "title": "18-24 M",
+                      "value": "EP_18-24 M",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        2T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "2T",
+                      "value": "ET_2T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        2T - 3T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "2T - 3T",
+                      "value": "EV_2T - 3T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        3T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "3T",
+                      "value": "EX_3T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        3T-4T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "3T-4T",
+                      "value": "EY_3T-4T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        4T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "4T",
+                      "value": "EZ_4T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        5T
+                      </span>,
+                      "disabled": undefined,
+                      "title": "5T",
+                      "value": "FB_5T",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 4
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 4",
+                      "value": "IW_TODDLER 4",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 5
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 5",
+                      "value": "IZ_TODDLER 5",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 6
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 6",
+                      "value": "JC_TODDLER 6",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 7
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 7",
+                      "value": "JF_TODDLER 7",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 8
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 8",
+                      "value": "JI_TODDLER 8",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 9
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 9",
+                      "value": "JL_TODDLER 9",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 10
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 10",
+                      "value": "JO_TODDLER 10",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        TODDLER 11
+                      </span>,
+                      "disabled": undefined,
+                      "title": "TODDLER 11",
+                      "value": "JR_TODDLER 11",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        ONE SIZE
+                      </span>,
+                      "disabled": undefined,
+                      "title": "ONE SIZE",
+                      "value": "LA_ONE SIZE",
+                    },
+                  ]
+                }
+                placeholder="Size"
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="unbxd_price_range_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        $10 and Under
+                      </span>,
+                      "disabled": undefined,
+                      "title": "$10 and Under",
+                      "value": "$10 and Under",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        $10 - $19.99
+                      </span>,
+                      "disabled": undefined,
+                      "title": "$10 - $19.99",
+                      "value": "$10 - $19.99",
+                    },
+                  ]
+                }
+                placeholder="Price"
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="v_tcpfit_unbxd_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Regular
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Regular",
+                      "value": "Regular",
+                    },
+                  ]
+                }
+                placeholder="Fit"
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="gender_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Girl
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Girl",
+                      "value": "Girl",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Unisex
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Unisex",
+                      "value": "Unisex",
+                    },
+                  ]
+                }
+                placeholder="Gender"
+                withRef={true}
+              />
+              <Field
+                allowMultipleSelections={true}
+                className="item-list-collapsible item-list-collapsible-expanded size-detail-chips"
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+                        [Function],
+                        ";
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+                        [Function],
+                        ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+                        [Function],
+                        ";
+    }
+  }
+",
+                        ";
+",
+                      ],
+                    },
+                    "customSelectCounter": 0,
+                    "displayName": "Styled(CustomSelect)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                disableExpandStateChanges={true}
+                expanded={true}
+                forwardRef={true}
+                isLoadingMore={false}
+                name="age_group_uFilter"
+                onFilterSelection={null}
+                onOptionSelected={[Function]}
+                optionsMap={
+                  Array [
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Big Kid (4 - 18)
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Big Kid (4 - 18)",
+                      "value": "AB_Big Kid (4 - 18)",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Toddler (6M - 5T)
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Toddler (6M - 5T)",
+                      "value": "AC_Toddler (6M - 5T)",
+                    },
+                    Object {
+                      "content": <span
+                        className="size-title"
+                      >
+                        Baby (0 - 18M)
+                      </span>,
+                      "disabled": undefined,
+                      "title": "Baby (0 - 18M)",
+                      "value": "AD_Baby (0 - 18M)",
+                    },
+                  ]
+                }
+                placeholder="Size Range"
+                withRef={true}
+              />
+            </AccordionList>
+          </Styled(Col)>
+        </div>
+      </div>
+    </div>
+    <div
+      className="modal-spacing"
+    >
+      <Styled(Row)
+        centered={true}
+      >
+        <Styled(Col)
+          className="close-button"
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left disable-clear-all-button"
+            data-locator="view_gallery_button"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left"
+            data-locator="plp_filter_apply_button"
+            fill="BLACK"
+            onClick={[Function]}
+            type="button"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </div>
+  </form>
+  <Styled(Row)
+    className=" filtered-by-section"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "medium": 8,
+          "small": 0,
+        }
+      }
+    />
   </Styled(Row)>
 </Fragment>
 `;

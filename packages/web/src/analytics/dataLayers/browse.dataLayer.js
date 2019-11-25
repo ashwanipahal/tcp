@@ -11,7 +11,6 @@ const generateSortFilterKeys = ParamObj => {
   });
   return sortFilterKey;
 };
-
 const getFilterParams = store => {
   const state = store.getState();
   const { form: { 'filter-form': { values } = {} } = {} } = state;
@@ -34,25 +33,35 @@ const getSortParams = store => {
 
 const getDepartmentList = store => {
   const state = store.getState();
-  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  const departmentListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
   return departmentListing[0].displayName;
 };
 
 const getCategoryList = store => {
   const state = store.getState();
-  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
-  return departmentListing[1].displayName;
+  const categoryListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
+  return categoryListing[1].displayName;
 };
 
 const getListingCount = store => {
   const state = store.getState();
-  return state.ProductListing && state.ProductListing.get('totalProductsCount');
+  return state.ProductListing && state.ProductListing.totalProductsCount;
 };
 
 const getStoreId = store => {
   const state = store.getState();
   const defaultStore = state.User && state.User.get('defaultStore');
   return defaultStore.basicInfo && defaultStore.basicInfo.id;
+};
+
+const getPageType = store => {
+  const state = store.getState();
+  return state.pageData && state.pageData.pageName;
+};
+
+const getPageFullCategoryName = store => {
+  const state = store.getState();
+  return state.ProductListing && state.ProductListing.entityCategory;
 };
 
 export const generateBrowseDataLayer = store => {
@@ -89,6 +98,54 @@ export const generateBrowseDataLayer = store => {
     storeId: {
       get() {
         return getStoreId(store) || '';
+      },
+    },
+    pageFullCategoryName: {
+      get() {
+        return getPageFullCategoryName(store) || '';
+      },
+    },
+
+    externalReferrer: {
+      get() {
+        const { pageData } = store.getState();
+        return (pageData && pageData.pageReferer) || '';
+      },
+    },
+    campaignId: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'campaignId'], '');
+      },
+    },
+    internalCampaignId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData.internalCampaignId
+          ? clickActionAnalyticsData.internalCampaignId
+          : pageData.internalCampaignId;
+      },
+    },
+    storeSearchCriteria: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchCriteria'], '');
+      },
+    },
+    storeSearchDistance: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchDistance'], '');
+      },
+    },
+
+    productFindingMethod: {
+      get() {
+        return getPageType(store) || '';
       },
     },
   };

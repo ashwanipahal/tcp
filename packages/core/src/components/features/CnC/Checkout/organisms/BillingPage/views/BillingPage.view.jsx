@@ -14,6 +14,8 @@ class BillingPage extends React.PureComponent {
     orderHasShipping: PropTypes.bool.isRequired,
     submitBilling: PropTypes.func.isRequired,
     billingDidMount: PropTypes.func.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
@@ -23,7 +25,10 @@ class BillingPage extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool,
+    pageCategory: PropTypes.string,
     ServerErrors: PropTypes.node.isRequired,
+    isFetching: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -34,13 +39,24 @@ class BillingPage extends React.PureComponent {
     billingData: {},
     userAddresses: null,
     creditFieldLabels: {},
+    pageCategory: '',
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
+    isFetching: false,
+    bagLoading: false,
   };
 
   componentDidMount() {
     const { billingDidMount } = this.props;
     billingDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { billingDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      billingDidMount();
+    }
   }
 
   render() {
@@ -59,13 +75,17 @@ class BillingPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       ServerErrors,
+      pageCategory,
+      checkoutRoutingDone,
+      isFetching,
+      bagLoading,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         {ServerErrors && <ServerErrors />}
-        <GiftCardsContainer />
+        <GiftCardsContainer isFetching={isFetching} />
         {!isGuest ? (
           <div className="payment-container">
             <BillingPaymentForm
@@ -84,6 +104,9 @@ class BillingPage extends React.PureComponent {
               creditFieldLabels={creditFieldLabels}
               isVenmoPaymentInProgress={isVenmoPaymentInProgress}
               isVenmoEnabled={isVenmoEnabled}
+              pageCategory={pageCategory}
+              bagLoading={bagLoading}
+              checkoutRoutingDone={checkoutRoutingDone}
             />
           </div>
         ) : (
@@ -101,6 +124,9 @@ class BillingPage extends React.PureComponent {
             creditFieldLabels={creditFieldLabels}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isVenmoEnabled={isVenmoEnabled}
+            pageCategory={pageCategory}
+            bagLoading={bagLoading}
+            checkoutRoutingDone={checkoutRoutingDone}
           />
         )}
       </div>
