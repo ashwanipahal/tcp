@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
 import { getLabelValue } from '../../../../../../../utils';
@@ -24,6 +25,7 @@ const ExistingPLCCUserView = ({
   closePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
+  const pageAnalyticsData = 'checkout';
   return (
     <ExistingPLCCUserStyle isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
@@ -66,7 +68,21 @@ const ExistingPLCCUserView = ({
               centered
               className="existing_continue_button"
             >
-              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+              <ClickTracker
+                clickData={{
+                  pageType: pageAnalyticsData,
+                  pageSection: pageAnalyticsData,
+                  pageSubSection: pageAnalyticsData,
+                  customEvents: ['scCheckout,event86,event69,event114'],
+                  pageName: 'checkout:pickup',
+                  pageNavigationText: 'header-cart',
+                  eVar65: 'checkout:pickup',
+                  eVar12: '09:20:21',
+                  eVar14: 'new',
+                }}
+              >
+                {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+              </ClickTracker>
             </Button>
           </Col>
         </Row>

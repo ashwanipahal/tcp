@@ -125,6 +125,8 @@ class ProductBundle extends React.PureComponent {
               toastMessage={toastMessage}
               isKeepAliveEnabled={isKeepAliveEnabled}
               outOfStockLabels={outOfStockLabels}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />

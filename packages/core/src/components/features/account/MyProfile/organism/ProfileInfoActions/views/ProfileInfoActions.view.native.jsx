@@ -94,7 +94,7 @@ export const ProfileInfoActions = ({
           activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
           activityCompletionState={getFavStoreState(defaultStore, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => handleComponentChange('StoreLanding', null, true)}
         />
         <ProfileInfoActionTile
           activityId="userBirthday"

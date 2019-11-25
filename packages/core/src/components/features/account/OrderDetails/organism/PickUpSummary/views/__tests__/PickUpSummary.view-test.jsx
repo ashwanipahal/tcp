@@ -9,24 +9,25 @@ describe('Order Summary Details component', () => {
       basicInfo: {
         address: {
           addressLine1: 'space 170',
-          city: 'Ohio',
-          state: 'CA',
+          city: 'New Jersey',
+          state: 'NJ',
           zipCode: '33232',
         },
-        phone: '8139942076',
+        phone: '23423423423',
       },
       pickUpPrimary: {
-        firstName: 'abc',
-        lastName: 'def',
+        firstName: 'Username1',
+        lastName: 'Username2',
       },
+      pickUpAlternative: {},
       hours: {
         regularHours: [
           {
-            dayName: 'COLUMBUS DAY',
+            dayName: 'TUESDAY',
             openIntervals: [
               {
-                fromHour: '2019-10-14 10:00:00',
-                toHour: '2019-10-14 21:00:00',
+                fromHour: '2019-11-12 10:00:00',
+                toHour: '2019-11-12 21:00:00',
               },
             ],
           },
