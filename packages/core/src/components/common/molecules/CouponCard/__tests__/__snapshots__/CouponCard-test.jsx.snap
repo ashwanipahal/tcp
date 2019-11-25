@@ -7,6 +7,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
   >
     <Styled(ErrorMessage)
       error=""
+      isEspot={false}
     />
     <div
       className="couponCard__container_main"

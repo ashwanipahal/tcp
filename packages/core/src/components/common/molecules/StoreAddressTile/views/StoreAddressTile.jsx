@@ -72,7 +72,7 @@ class StoreAddressTile extends PureComponent {
     return (
       <Fragment>
         <div>
-          <ClickTracker
+          <Anchor
             fontSizeVariation="medium"
             underline
             to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
@@ -82,25 +82,31 @@ class StoreAddressTile extends PureComponent {
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
-            as={Anchor}
-            clickData={{ customEvents: ['event80,event96'] }}
           >
-            {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
-          </ClickTracker>
+            <ClickTracker
+              clickData={{
+                customEvents: ['event80,event96'],
+                eVar65: 'companyinfo:companyinfo',
+                eVar28: 'outfit:2625899',
+              }}
+            >
+              {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            </ClickTracker>
+          </Anchor>
         </div>
         <div>
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <ClickTracker
-              as={Button}
-              clickData={{ customEvents: ['event67'] }}
+            <Button
               onClick={() => setFavoriteStore(store)}
               buttonVariation="fixed-width"
               type="button"
               data-locator={locatorSetFavStore}
             >
-              {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
-            </ClickTracker>
+              <ClickTracker clickData={{ customEvents: ['event67'] }}>
+                {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+              </ClickTracker>
+            </Button>
           )}
         </div>
       </Fragment>
@@ -165,7 +171,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {getStoreHours(hours, labels, currentDate)}
+                {`(${getStoreHours(hours, labels, currentDate)})`}
               </BodyCopy>
               {!geoLocationDisabled && (
                 <BodyCopy
@@ -275,7 +281,7 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {storeHours}
+              {`(${storeHours})`}
             </BodyCopy>
           )}
           {!geoLocationDisabled && (
@@ -294,7 +300,7 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-            clickData={{ customEvents: ['event97'] }}
+            clickData={{ customEvents: ['event97'], pageName: 'storelocator:' }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </ClickTracker>

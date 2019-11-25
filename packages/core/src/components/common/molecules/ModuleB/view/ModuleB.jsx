@@ -71,7 +71,7 @@ const ModuleB = props => {
   };
 
   return (
-    <div className={`${className} parent-wrapper`}>
+    <div className={`${className} moduleB `}>
       <Row>
         <Col colSize={colSize}>
           <ImageBanner {...imageBannerProps} />

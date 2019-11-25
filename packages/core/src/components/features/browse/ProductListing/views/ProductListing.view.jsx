@@ -88,7 +88,7 @@ const ProductListView = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+        <Col className="fixed-bread-crumb-height" colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="bread-crumb">
             <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
           </div>

@@ -3,6 +3,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import Spinner from '../../../atoms/Spinner';
@@ -79,6 +80,7 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      currentProduct,
     } = this.props;
 
     return submitting ? (
@@ -86,6 +88,7 @@ class _PickupStoreSelectionForm extends React.Component {
     ) : (
       <PickupStoreListContainer
         isShoppingBag={isShoppingBag}
+        currentProduct={currentProduct}
         onStoreSelect={handleAddTobag}
         onStoreUpdate={handleUpdatePickUpItem}
         onPickupRadioBtnToggle={handlePickupRadioBtn}
@@ -131,8 +134,17 @@ class _PickupStoreSelectionForm extends React.Component {
       storeSearchError,
       PickupSkuFormValues,
       isSkuResolved,
+      pageNameProp,
+      currentProduct,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     const disableButton = Object.values(PickupSkuFormValues).includes('');
+    let pageName = '';
+    const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
+    if (productId) {
+      pageName = `${pageNameProp}:${productId}:${currentProduct.name.toLowerCase()}`;
+    }
 
     return showStoreSearching ? (
       <div className={className}>
@@ -165,16 +177,25 @@ class _PickupStoreSelectionForm extends React.Component {
             />
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
-            <Button
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              type="submit"
-              title="search"
-              className="button-search-bopis"
-              disabled={pristine || submitting || disableButton}
+            <ClickTracker
+              clickData={{
+                customEvents: ['event105'],
+                pageName,
+                storeSearchCriteria,
+                storeSearchDistance,
+              }}
             >
-              Search
-            </Button>
+              <Button
+                buttonVariation="fixed-width"
+                fill="BLUE"
+                type="submit"
+                title="search"
+                className="button-search-bopis"
+                disabled={pristine || submitting || disableButton}
+              >
+                Search
+              </Button>
+            </ClickTracker>
           </Col>
         </Row>
         {isSkuResolved && (
@@ -216,6 +237,10 @@ class _PickupStoreSelectionForm extends React.Component {
       isShowMessage,
       isGetUserStoresLoaded,
       getIsBopisAvailable,
+      currentProduct,
+      pageNameProp,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -225,8 +250,10 @@ class _PickupStoreSelectionForm extends React.Component {
         <div className="favorite-store-box">
           <PickupStoreListItem
             sameStore={sameStore}
+            pageNameProp={pageNameProp}
             isShoppingBag={isShoppingBag}
             store={preferredStore}
+            currentProduct={currentProduct}
             onStoreSelect={handleAddTobag}
             onStoreUpdate={handleUpdatePickUpItem}
             onPickupRadioBtnToggle={handlePickupRadioBtn}
@@ -242,6 +269,8 @@ class _PickupStoreSelectionForm extends React.Component {
             updateCartItemStore={updateCartItemStore}
             buttonLabel={buttonLabel}
             isGiftCard={isGiftCard}
+            storeSearchCriteria={storeSearchCriteria}
+            storeSearchDistance={storeSearchDistance}
           />
         </div>
       )

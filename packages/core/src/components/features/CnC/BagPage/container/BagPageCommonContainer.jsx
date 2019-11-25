@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -27,7 +28,7 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement, isMobileApp } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
@@ -35,6 +36,7 @@ import {
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -116,11 +118,19 @@ export class BagPageContainer extends React.Component<Props> {
       isBagPage,
       setClickAnalyticsDataBag,
       cartOrderItems,
+      isVenmoEnabled,
+      isPayPalEnabled,
       isCartLoaded,
       trackPageViewBag,
+      router,
+      bagLoading,
     } = this.props;
 
     const showAddTobag = false;
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
     return (
       <BagPage
         isMobile={isMobile}
@@ -155,6 +165,10 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
+        fromMiniBag={fromMiniBag}
+        bagLoading={bagLoading}
+        isVenmoEnabled={isVenmoEnabled}
+        isPayPalEnabled={isPayPalEnabled}
       />
     );
   }
@@ -173,9 +187,11 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shopping bag',
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
-        pageNavigationText: 'header-cart',
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         loadAnalyticsOnload: false,
       },
     },
@@ -237,6 +253,8 @@ export const mapStateToProps = state => {
       PlaceCashSelector.getPlaceCashDetailBannerLabel(state)
     ),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
@@ -255,6 +273,7 @@ export const mapStateToProps = state => {
     cartOrderItems: BagPageSelector.getOrderItems(state),
     isCartLoaded: BagPageSelector.getCartLoadedState(state),
     bagPageIsRouting: BagPageSelector.isBagRouting(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
   };
 };
 

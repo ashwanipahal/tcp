@@ -1,5 +1,7 @@
 /* istanbul ignore file */
 import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 
 export function getSetDefaultStoreActn(payload) {
   return {
@@ -42,3 +44,5 @@ export function setStoresByCoordinates(payload) {
     type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,
   };
 }
+
+export const initActions = [loadComponentLabelsData({ category: LABELS.global })];

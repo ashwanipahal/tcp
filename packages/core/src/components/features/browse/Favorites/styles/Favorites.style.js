@@ -1,6 +1,11 @@
 import { css } from 'styled-components';
 
 export default css`
+  .item-disabledOption {
+    span {
+      color: ${props => props.theme.colors.TEXT.LIGHTGRAY};
+    }
+  }
   .favorite-title {
     padding-bottom: 12px;
     border-bottom: 3px solid black;

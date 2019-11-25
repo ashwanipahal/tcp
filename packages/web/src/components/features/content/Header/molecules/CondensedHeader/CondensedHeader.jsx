@@ -120,6 +120,7 @@ class CondensedHeader extends React.PureComponent {
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
+          isCondensedHeader
         />
       </div>
     ) : null;
