@@ -11,6 +11,10 @@ const getTransformedObject = mapping => {
   }, {});
 };
 
+/**
+ * This function will generate the required payload for page load event
+ * @param { string } screenName - name of the page, should have mapping in ./pages.js file
+ */
 export const transformPageEvent = screenName => {
   const mappingString = pageMapper[screenName];
 
@@ -21,6 +25,11 @@ export const transformPageEvent = screenName => {
   return getTransformedObject(mappingString);
 };
 
+/**
+ * This function will generate the required payload for a click event
+ * @param { string } name - name of the event key, should have mapping in ./clickEvents
+ * @param {string } module - name of the module in which event to be searched, 'global' is the default one
+ */
 export const transformClickEvent = (name, module) => {
   if (!name) {
     return null;

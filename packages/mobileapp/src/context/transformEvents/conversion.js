@@ -1,6 +1,8 @@
-// this will contain all static values
 import get from 'lodash/get';
 
+/**
+ * This object will contain mapping of constants variables
+ */
 const staticConversion = {
   prop27: 'D=mid',
   eVar10: 'D=pageName',
@@ -9,7 +11,10 @@ const staticConversion = {
   eVar51: 'D=c24',
 };
 
-// this will contain all values other than eVar and props
+/**
+ * This object will contain mapping for standard variables other than
+ * eVar and props
+ */
 const standardConversion = {
   pageName: 'pageName',
   pageType: 'pageType',
@@ -35,10 +40,13 @@ const propConversion = {
   prop4: 'pageSection',
   prop5: 'pageSubSubSection',
   prop6: 'countryId',
+  prop21: 'pageNavigationText',
   prop29: 'storeId',
 };
 
-// this function will return the dataLayer key corresponding to the given event key
+/**
+ * This function will return dataLayer key corresponding to event key
+ */
 const getConversionKey = key => {
   if (staticConversion[key]) {
     return staticConversion[key];
@@ -55,7 +63,9 @@ const getConversionKey = key => {
   return standardConversion[key];
 };
 
-// this function will return the value of event key
+/**
+ * This function will return value of the event key
+ */
 const getConversionValue = key => {
   /* eslint-disable */
   const dataLayer = global._dataLayer;

@@ -1,7 +1,12 @@
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import { getActiveRoute } from './getActiveRoute';
-/*eslint-disable */
 
+/**
+ * This function will be called on every route change in app and will trigger the page load event
+ * with currentScreen name and pageData if available in route params.
+ * @param { store } store - current store object
+ * @param { context } context - context object
+ */
 export function getOnNavigationStateChange({ store, context }) {
   return {
     onNavigationStateChange: (prevState, currentState, action) => {
@@ -16,9 +21,6 @@ export function getOnNavigationStateChange({ store, context }) {
             pageData: currentScreen.params && currentScreen.params.pageData,
           },
         });
-        __DEV__
-          ? console.info(`%cNow navigating to: ${currentScreen}`, 'background: #333; color: #fff')
-          : null;
       }
     },
   };

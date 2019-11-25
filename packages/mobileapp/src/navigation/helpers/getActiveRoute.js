@@ -1,3 +1,7 @@
+/**
+ * This function will return the routeName and params for current active route.
+ * @param { object } navigationState current navigation state
+ */
 export function getActiveRoute(navigationState) {
   if (!navigationState) {
     return null;
