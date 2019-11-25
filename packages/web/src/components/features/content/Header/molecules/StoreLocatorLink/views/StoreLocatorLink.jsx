@@ -34,7 +34,6 @@ const StoreLocatorLink = ({ className, labels, store }) => {
   const basicInfo = store && store.basicInfo;
   const storeTime = getStoreHours(store);
   const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
-  const pageData = 'storelocator';
   return (
     <React.Fragment>
       <ClickTracker
@@ -46,10 +45,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
         className={className}
         clickData={{
           customEvents: ['event80'],
-          pageNavigationText: 'header-find a store',
           eVar65: 'storelocator',
-          eVar12: '09:20:21',
-          eVar14: 'repeat',
         }}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>

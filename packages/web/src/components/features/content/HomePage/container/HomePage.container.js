@@ -12,7 +12,15 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   if (!isServer && !state.Layouts.homepage) {
     store.dispatch(fetchPageLayout('homepage'));
   }
-  return pageProps;
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'home page',
+        pageSection: 'homepage',
+      },
+    },
+  };
 };
 
 HomePageView.getInitActions = () => initActions;
