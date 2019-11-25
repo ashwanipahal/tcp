@@ -42,7 +42,7 @@ class BagPageView extends React.PureComponent {
     if (isClient()) {
       window.addEventListener('beforeunload', BagPageUtils.onPageUnload);
     }
-    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { setVenmoPaymentInProgress } = this.props;
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
