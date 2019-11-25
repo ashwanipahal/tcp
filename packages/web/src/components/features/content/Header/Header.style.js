@@ -18,8 +18,8 @@ export default css`
   .skip-main {
     padding: 6px;
     position: absolute;
-    top: -400px;
-    left: -400px;
+    top: -9999px;
+    left: -9999px;
     color: ${props => props.theme.colorPalette.white};
     border-right: 1px solid ${props => props.theme.colorPalette.white};
     border-bottom: 1px solid ${props => props.theme.colorPalette.white};
