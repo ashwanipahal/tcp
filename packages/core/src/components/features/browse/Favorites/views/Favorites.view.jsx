@@ -309,7 +309,7 @@ class FavoritesView extends React.PureComponent {
         isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
-        heightConfig={modalHeight}
+        standardHeight
       >
         {this.getCurrentPopUp()}
       </ModalWrapper>
@@ -422,7 +422,7 @@ class FavoritesView extends React.PureComponent {
       headerAlignment: 'left',
     };
 
-    // const filteredItemsList = this.getFilteredItemsList();
+    const filteredItemsList = this.getFilteredItemsList();
     if (isDataLoading) return '';
     return (
       <div className={className}>
@@ -482,7 +482,7 @@ class FavoritesView extends React.PureComponent {
                       display_group_uFilter: filters.length && filters[0].displayName,
                     },
                   }}
-                  totalProductsCount={!!activeWishList && activeWishList.items.length}
+                  totalProductsCount={filteredItemsList.length}
                   initialValues={{}}
                   filtersLength={{}}
                   labels={labels}

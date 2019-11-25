@@ -3,14 +3,9 @@ import { View, NativeModules } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
 import logger from '../../../../../utils/loggerInstance';
-import {
-  modes,
-  constants,
-  VENMO_USER_STATES,
-  VENMO_MOCK_DATA,
-} from '../container/VenmoPaymentButton.util';
+import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
-import BodyCopy from '../../BodyCopy';
+import { isAndroid } from '../../../../../utils/index.native';
 
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
 const venmoIconWhite = require('../../../../../assets/venmo_logo_white.png');
@@ -20,40 +15,8 @@ export class VenmoPaymentButton extends Component {
     super(props);
     this.state = {
       hasVenmoError: true,
-      textcheck: '',
     };
   }
-
-  // iOS Venmo Initialization and authorization
-  +paymentVenmo = () => {
-    const { authorizationKey } = this.props;
-    NativeModules.VenmoPayment.initialize(authorizationKey);
-
-    // this.setState({
-    //   // eslint-disable-next-line react/no-unused-state
-    //   textcheck: NativeModules.VenmoPayment.isVenmoInstalled(check => {
-    //     // eslint-disable-next-line react/no-unused-state
-    //     this.setState({ textcheck: check });
-    //   }),
-    //});
-
-    NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
-      console.log(error);
-      console.log(val);
-      this.setState({ textcheck: val && val.nonce });
-    });
-
-    // .then(
-    //   value => {
-    //     // eslint-disable-next-line react/no-unused-state
-    //     this.setState({ textcheck: value.nonce });
-    //   },
-    //   error => {
-    //     // eslint-disable-next-line react/no-unused-state
-    //     this.setState({ textcheck: error });
-    //   }
-    // );
-  };
 
   /**
    * @function fetchVenmoClientToken
@@ -62,12 +25,7 @@ export class VenmoPaymentButton extends Component {
   fetchVenmoClientToken = () => {
     const { isGuest, orderId, enabled, isNonceNotExpired, getVenmoPaymentTokenAction } = this.props;
     if (enabled && !isNonceNotExpired) {
-      let userState = '';
-      if (isGuest) {
-        userState = VENMO_USER_STATES.GUEST;
-      } else {
-        userState = VENMO_USER_STATES.REGISTERED;
-      }
+      const userState = isGuest ? VENMO_USER_STATES.GUEST : VENMO_USER_STATES.REGISTERED;
       getVenmoPaymentTokenAction({ userState, orderId });
     }
   };
@@ -99,16 +57,18 @@ export class VenmoPaymentButton extends Component {
       setVenmoPaymentInProgress,
       isRemoveOOSItems,
     } = this.props;
+    setVenmoData({ loading: true, error: null });
+    setVenmoPaymentInProgress(true);
     // Condition for OOS items in the bag, modal will open and proceed with regular checkout on continue cta trigger
     if (isRemoveOOSItems) {
       onVenmoPaymentButtonClick(mode);
       setVenmoData({ loading: false });
     }
-    setVenmoData({ loading: true, error: null });
-    setVenmoPaymentInProgress(true);
-    // // Local Test Data without bridge, required for local development and testing
-    // this.handleVenmoSuccess(VENMO_MOCK_DATA);
-    this.paymentVenmo();
+    if (isAndroid()) {
+      this.authorizeVenmoPaymentApp();
+    } else {
+      this.paymentVenmo();
+    }
   };
 
   /**
@@ -134,15 +94,21 @@ export class VenmoPaymentButton extends Component {
     if (code !== constants.VENMO_CANCELED) {
       setVenmoData(errorData);
       onVenmoPaymentButtonError(errorData);
-      // Suppress error message
     }
   };
 
   componentDidUpdate = prevProps => {
-    const { isGuest } = this.props;
+    const { mode, authorizationKey, isNonceNotExpired, isGuest } = this.props;
     if (prevProps.isGuest !== isGuest) {
       // Condition for bag page reload on registered user, and user logging in from bag page
       this.fetchVenmoClientToken();
+    }
+    if (
+      mode === modes.CLIENT_TOKEN &&
+      (prevProps.authorizationKey !== authorizationKey ||
+        prevProps.isNonceNotExpired !== isNonceNotExpired)
+    ) {
+      NativeModules.VenmoPayment.initialize(authorizationKey);
     }
   };
 
@@ -151,20 +117,58 @@ export class VenmoPaymentButton extends Component {
       venmoData: { nonce },
       setVenmoData,
       isNonceNotExpired,
+      authorizationKey,
     } = this.props;
+    this.fetchVenmoClientToken();
     if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
+    } else if (this.canCallVenmoApi()) {
+      NativeModules.VenmoPayment.initialize(authorizationKey);
     }
-    this.fetchVenmoClientToken();
+  };
+
+  /**
+   * @description - This method should be called on Venmo payment button click
+   */
+  authorizeVenmoPaymentApp = () => {
+    NativeModules.VenmoPayment.authorizeVenmoAccount(
+      errorMessage => {
+        this.handleVenmoError(errorMessage);
+      },
+      successMessage => {
+        if (successMessage) {
+          this.handleVenmoSuccess(JSON.parse(successMessage));
+        }
+      }
+    );
+  };
+
+  // iOS Venmo Initialization and authorization
+  paymentVenmo = () => {
+    NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
+      if (val) {
+        this.handleVenmoSuccess(val);
+      } else {
+        this.handleVenmoError(errorMessage);
+      }
+    });
+  };
+
+  /**
+   * @description - condition to display Venmo CTA
+   */
+  displayVenmoButton = () => {
+    const { mode, enabled } = this.props;
+    return enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN);
   };
 
   render() {
-    const { mode, enabled, isVenmoBlueButton } = this.props;
+    const { isVenmoBlueButton } = this.props;
     const venmoIcon = isVenmoBlueButton ? venmoIconWhite : venmoIconBlue;
     return (
       <View>
-        {enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
+        {this.displayVenmoButton() && (
           <VenmoButton
             accessibilityRole="button"
             onPress={this.handleVenmoClick}
