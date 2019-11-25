@@ -45,8 +45,8 @@ const styles = css`
     color: ${props => props.theme.colors.TEXT.DARK};
   }
   .cartDetailsLink {
-    position: absolute;
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    position: ${props => (props.isCarouselView ? 'static' : 'absolute')};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
     color: ${props => props.theme.colors.TEXT.DARK};
   }
   .couponCard__header_expired {
@@ -55,6 +55,7 @@ const styles = css`
     background: ${props => props.theme.colors.TEXT.DARKERGRAY};
     color: ${props => props.theme.colors.WHITE};
     line-height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
   .couponCard__body {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
