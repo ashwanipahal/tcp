@@ -41,12 +41,14 @@ exports[`ProductListContainer component should render correctly 1`] = `
     }
   }
   initialValues={Object {}}
+  isBothTcpAndGymProductAreAvailable={false}
   isFavorite={false}
   isKeepModalOpen={false}
   isLoadingMore={false}
   isLoggedIn={false}
   isSearchListing={false}
   labels={Object {}}
+  labelsFavorite={Object {}}
   labelsFilter={Object {}}
   labelsLogin={Object {}}
   lastLoadedPageNumber={0}

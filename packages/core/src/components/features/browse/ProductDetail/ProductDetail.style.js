@@ -37,6 +37,16 @@ export default css`
   .product-summary-desktop-view {
     display: none;
   }
+  .promo-area-top {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  }
+  .promo-area-middle {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .promo-area-bottom {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
   .product-summary-wrapper {
     display: flex;
     flex-direction: column;

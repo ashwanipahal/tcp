@@ -23,7 +23,6 @@ const UnavailableView = styled.View`
 `;
 const ProductName = styled.View`
   width: ${props => (props.showOnReviewPage ? 'auto' : '66%')};
-  flex-wrap: wrap;
 `;
 const ProductDesc = styled.View`
   flex-direction: row;
