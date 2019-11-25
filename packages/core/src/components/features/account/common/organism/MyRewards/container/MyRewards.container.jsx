@@ -127,6 +127,11 @@ const mapStateToProps = state => ({
   isApplyingOrRemovingCoupon: getCouponFetchingState(state),
 });
 
+const analyticsData = {
+  eventName: 'walletlinksclickevent',
+  pageNavigationText: 'my account-my wallet-apply to bag',
+};
+
 export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
@@ -135,7 +140,7 @@ export const mapDispatchToProps = dispatch => ({
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
-          formData: { couponCode: coupon.id },
+          formData: { couponCode: coupon.id, analyticsData },
           formPromise: { resolve, reject },
           coupon,
         })

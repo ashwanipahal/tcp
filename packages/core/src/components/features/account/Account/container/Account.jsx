@@ -138,6 +138,7 @@ Account.getInitialProps = (reduxProps, pageProps) => {
           ? accountPageNameMapping[componentToLoad].pageName
           : '',
         pageSection: 'myplace',
+        pageSubSection: 'myplace',
         loadAnalyticsOnload: false,
       },
     },
