@@ -130,7 +130,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
             highOfferPrice: parseFloat(product.high_offer_price) || 0,
             isBundleProduct: bundleProduct,
             productUrl: `${bundleProduct ? '/b' : '/p'}/${pdpURLID}`,
-            keepAlive: parseBoolean(extractAttributeValue(product, productAttributes.keepAlive)),
+            keepAlive: parseBoolean(product[productAttributes.keepAlive]),
           };
         });
 
