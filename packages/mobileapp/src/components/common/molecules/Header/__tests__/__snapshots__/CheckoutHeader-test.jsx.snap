@@ -38,7 +38,6 @@ exports[`CheckoutHeader Component  Checkout Header should render correctly 1`] =
         fontWeight="semibold"
         margin={null}
         numberOfLines={null}
-        textAlign="center"
         textDecoration={null}
       />
     </Styled(View)>
