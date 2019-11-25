@@ -21,6 +21,7 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getMapSliceForColor,
+  getMapSliceForSizeSkuID,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
@@ -47,6 +48,7 @@ class ProductDetailView extends React.PureComponent {
       currentGiftCardValue: currentProduct.offerPrice,
       selectedColorProductId,
       showCompleteTheLook: false,
+      size: '',
     };
   }
 
@@ -85,8 +87,8 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
-  onChangeSize = e => {
-    this.setState({ currentGiftCardValue: e });
+  onChangeSize = (color, e, fit, quantity) => {
+    this.setState({ currentGiftCardValue: e, size: e });
   };
 
   onImageClick = () => {
@@ -180,8 +182,11 @@ class ProductDetailView extends React.PureComponent {
       currentGiftCardValue,
       selectedColorProductId,
       showCompleteTheLook,
+      size,
     } = this.state;
     let imageUrls = [];
+    let skuId = null;
+
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
         imagesByColor: currentProduct.imagesByColor,
@@ -202,6 +207,10 @@ class ProductDetailView extends React.PureComponent {
     };
     const keepAlive = isKeepAliveEnabled && currentColorEntry.miscInfo.keepAlive;
 
+    if (size) {
+      skuId = getMapSliceForSizeSkuID(currentColorEntry, size);
+    }
+
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
@@ -218,6 +227,7 @@ class ProductDetailView extends React.PureComponent {
               currentColorEntry={currentColorEntry}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              skuId={skuId}
             />
             <ProductSummary
               productData={currentProduct}

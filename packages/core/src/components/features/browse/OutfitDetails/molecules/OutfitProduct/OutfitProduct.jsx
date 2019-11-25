@@ -40,6 +40,7 @@ const OutfitDetailsView = ({
   outOfStockLabels,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  pageName,
 }) => {
   const { imagesByColor, colorFitsSizesMap, isGiftCard, name } = outfitProduct;
   let colorProduct =
@@ -140,7 +141,7 @@ const OutfitDetailsView = ({
             productMiscInfo={colorProduct}
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-            pageName="OUTFIT"
+            pageName={pageName || 'OUTFIT'}
           />
           <ProductPrice
             currencySymbol={currencySymbol}
@@ -193,6 +194,7 @@ OutfitDetailsView.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageName: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -212,6 +214,7 @@ OutfitDetailsView.defaultProps = {
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  pageName: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

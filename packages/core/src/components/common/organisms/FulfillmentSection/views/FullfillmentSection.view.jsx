@@ -34,7 +34,7 @@ class FulfillmentSection extends React.Component {
   }
 
   render() {
-    const { className, buttonLabel, dataLocator, btnClassName, isAnchor, title } = this.props;
+    const { className, dataLocator, btnClassName, isAnchor, title } = this.props;
     return (
       <React.Fragment>
         {!isAnchor ? (
