@@ -1,4 +1,5 @@
 import { SubmissionError } from 'redux-form'; // ES6
+import CheckoutConstants from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
@@ -12,19 +13,8 @@ export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
     },
   };
 
-  return executeStatefulAPICall(payload, ({ err: errorObj }) => {
-    const placeCash = 'PC';
-
-    const err = errorObj;
-    const isPlaceCashError =
-      err.response.body &&
-      err.response.body.errors &&
-      err.response.body.errors[0].errorParameters[1] === placeCash;
-    if (isPlaceCashError) {
-      err.response.body.errors[0].errorCode = '_PLACE_CASH_ERROR';
-      err.response.body.errors[0].errorKey = '_PLACE_CASH_ERROR';
-    }
-
+  return executeStatefulAPICall(payload, ({ err }) => {
+    const isPlaceCashError = setPlaceCashError({ err });
     const error = getFormattedError(err, errorsMapping);
     getDynamicCodeErrorMessage(error, couponCode);
 
@@ -34,10 +24,25 @@ export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
     errorMessages._error = {
       // eslint-disable-next-line
       msg: errorMessages._error,
-      redemptionType: isPlaceCashError && placeCash,
+      isPlaceCashError,
     };
     throw new SubmissionError(error.errorMessages);
   });
+};
+
+const setPlaceCashError = ({ err: errorObj }) => {
+  const placeCash = CheckoutConstants.PLACE_CASH;
+
+  const err = errorObj;
+  const isPlaceCashError =
+    err.response.body &&
+    err.response.body.errors &&
+    err.response.body.errors[0].errorParameters[1] === placeCash;
+  if (isPlaceCashError) {
+    err.response.body.errors[0].errorCode = CheckoutConstants.PLACE_CASH_ERROR;
+    err.response.body.errors[0].errorKey = CheckoutConstants.PLACE_CASH_ERROR;
+  }
+  return isPlaceCashError;
 };
 
 export const removeCouponOrPromo = ({ couponCode = '' }) => {
