@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, NativeModules } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
 import logger from '../../../../../utils/loggerInstance';
@@ -10,6 +10,7 @@ import {
   VENMO_MOCK_DATA,
 } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
+import BodyCopy from '../../BodyCopy';
 
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
 const venmoIconWhite = require('../../../../../assets/venmo_logo_white.png');
@@ -19,8 +20,40 @@ export class VenmoPaymentButton extends Component {
     super(props);
     this.state = {
       hasVenmoError: true,
+      textcheck: '',
     };
   }
+
+  // iOS Venmo Initialization and authorization
+  +paymentVenmo = () => {
+    const { authorizationKey } = this.props;
+    NativeModules.VenmoPayment.initialize(authorizationKey);
+
+    // this.setState({
+    //   // eslint-disable-next-line react/no-unused-state
+    //   textcheck: NativeModules.VenmoPayment.isVenmoInstalled(check => {
+    //     // eslint-disable-next-line react/no-unused-state
+    //     this.setState({ textcheck: check });
+    //   }),
+    //});
+
+    NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
+      console.log(error);
+      console.log(val);
+      this.setState({ textcheck: val && val.nonce });
+    });
+
+    // .then(
+    //   value => {
+    //     // eslint-disable-next-line react/no-unused-state
+    //     this.setState({ textcheck: value.nonce });
+    //   },
+    //   error => {
+    //     // eslint-disable-next-line react/no-unused-state
+    //     this.setState({ textcheck: error });
+    //   }
+    // );
+  };
 
   /**
    * @function fetchVenmoClientToken
@@ -73,8 +106,9 @@ export class VenmoPaymentButton extends Component {
     }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
-    // Local Test Data without bridge, required for local development and testing
-    this.handleVenmoSuccess(VENMO_MOCK_DATA);
+    // // Local Test Data without bridge, required for local development and testing
+    // this.handleVenmoSuccess(VENMO_MOCK_DATA);
+    this.paymentVenmo();
   };
 
   /**
