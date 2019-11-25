@@ -120,7 +120,6 @@ class OutfitDetailsContainer extends React.PureComponent {
       router: { asPath: asPathVal },
     } = this.props;
     const { outfitIdLocal } = this.state;
-    console.log('topPromos', topPromos);
     if (outfitProducts) {
       return (
         <OutfitDetails
