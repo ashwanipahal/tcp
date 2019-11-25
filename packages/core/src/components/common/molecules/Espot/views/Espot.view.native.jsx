@@ -36,24 +36,12 @@ export class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   openModal = action => {
-    const { togglePlccModal, openOverlay, navigation } = this.props;
+    const { togglePlccModal, navigation } = this.props;
 
     switch (action) {
       case 'plccModal':
         navigation.navigate('ApplyNow');
         togglePlccModal(true);
-        break;
-      case 'login':
-        openOverlay({
-          component: 'login',
-          variation: 'primary',
-        });
-        break;
-      case 'create-account':
-        openOverlay({
-          component: 'createAccount',
-          variation: 'primary',
-        });
         break;
       default:
         break;

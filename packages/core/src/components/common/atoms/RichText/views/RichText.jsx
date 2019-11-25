@@ -7,7 +7,6 @@ import styles from '../RichText.style';
 
 // This accepts an HTML and inserts it wherever the component is added.
 const RichText = ({ className, richTextHtml, dataLocator, isNativeView, actionHandler }) => {
-  // const richTextHtmlDummy = "<div>loyalty banner<div><a class='abcd' data-target='login' target='_modal'>Login</a><a class='abcd' data-target='create-account' target='_modal'>Create Account</a>";
   if (isNativeView) {
     const handleNativeNavigation = node => {
       if (node.properties) {

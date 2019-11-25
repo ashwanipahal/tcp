@@ -51,9 +51,6 @@ const PromoModules = ({ asPath, plpTopPromos, isLoggedIn, isPlcc }) => {
             const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
             if (isUserSpecificModuleX) {
               return (
-                // Module && (
-                //   <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
-                // )
                 <Espot
                   richTextHtml={
                     promo.richTextList && promo.richTextList[0] && promo.richTextList[0].text
