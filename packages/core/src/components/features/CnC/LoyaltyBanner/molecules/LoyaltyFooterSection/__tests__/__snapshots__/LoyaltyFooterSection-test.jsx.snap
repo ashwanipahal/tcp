@@ -104,7 +104,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
             "customEvents": Array [
               "event116",
             ],
-            "pageName": "gl:shopping bag",
+            "pageName": "shopping bag",
             "pageSection": "shopping bag",
             "pageSubSection": "shopping bag",
             "pageType": "shopping bag",
@@ -144,7 +144,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
             "customEvents": Array [
               "event117",
             ],
-            "pageName": "gl:shopping bag",
+            "pageName": "shopping bag",
           }
         }
       >
