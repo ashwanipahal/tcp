@@ -42,7 +42,8 @@ const OrderLedger = ({
     labels,
     pageCategory,
     orderLedgerAfterView,
-    bagLoading
+    bagLoading,
+    isConfirmationPage
   );
 
   return (

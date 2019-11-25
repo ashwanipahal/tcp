@@ -536,6 +536,12 @@ const getErrorList = state => {
       'errorMessages',
       'global'
     ),
+    _PLACE_CASH_ERROR: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_PLACE_CASH_ERROR',
+      'errorMessages',
+      'global'
+    ),
   };
 };
 

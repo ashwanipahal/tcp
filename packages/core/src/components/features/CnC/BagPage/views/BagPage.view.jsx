@@ -42,7 +42,7 @@ class BagPageView extends React.PureComponent {
     if (isClient()) {
       window.addEventListener('beforeunload', BagPageUtils.onPageUnload);
     }
-    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { setVenmoPaymentInProgress } = this.props;
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
@@ -157,7 +157,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <>
@@ -179,7 +179,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <div className="recentlyViewed">
