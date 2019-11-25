@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
@@ -89,6 +90,7 @@ const OutfitDetailsView = props => {
     isLoggedIn,
     outfitId,
     pdpLabels,
+    unavailableCount,
     toastMessage,
   } = props;
   const recommendationAttributes = {
@@ -122,7 +124,14 @@ const OutfitDetailsView = props => {
           })
         }
       />
-
+      {!!unavailableCount && (
+        <BodyCopyWithSpacing
+          spacingStyles="margin-top-XS margin-bottom-MED"
+          fontSize="fs16"
+          fontFamily="secondary"
+          text={`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+        />
+      )}
       <RecommendationWrapper>
         <Recommendations {...recommendationAttributes} />
         <Recommendations
@@ -141,6 +150,7 @@ const OutfitDetailsView = props => {
 OutfitDetailsView.propTypes = {
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
+  unavailableCount: PropTypes.number,
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
@@ -159,6 +169,7 @@ OutfitDetailsView.propTypes = {
 OutfitDetailsView.defaultProps = {
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
   item: PropTypes.shape({}),
   labels: {},

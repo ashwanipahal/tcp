@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
@@ -19,6 +20,7 @@ const routesBack = e => {
 const OutfitDetailsView = ({
   className,
   outfitImageUrl,
+  unavailableCount,
   outfitProducts,
   plpLabels,
   handleAddToBag,
@@ -100,6 +102,17 @@ const OutfitDetailsView = ({
                   />
                 </li>
               ))}
+
+            {unavailableCount && (
+              <BodyCopy
+                textAlign="left"
+                fontFamily="secondary"
+                fontSize="fs16"
+                className="elem-mt-MED elem-mb-MED"
+              >
+                {`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+              </BodyCopy>
+            )}
           </ul>
         </Col>
         <Col
@@ -126,6 +139,7 @@ const OutfitDetailsView = ({
 OutfitDetailsView.propTypes = {
   className: PropTypes.string,
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
@@ -148,6 +162,7 @@ OutfitDetailsView.defaultProps = {
   className: '',
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
   labels: {},
   addToBagError: '',
