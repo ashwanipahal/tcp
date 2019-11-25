@@ -195,9 +195,31 @@
 		4C99722C233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
 		4C99722D233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
 		4C99722E233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
+
 		52E2F8A3A812AE2049914EAC /* libPods-gymboree_dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FED26EEEDE07EB6208629 /* libPods-gymboree_dev.a */; };
 		5C658802DBEE101155B3D33B /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C598B9782044E026FB8BD81 /* libPods-mobileapp_preview.a */; };
 		6D40DB93D473EF097D9197A5 /* libPods-mobileapp_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA601903E0D05110E23DD59 /* libPods-mobileapp_uat.a */; };
+
+		4F423250FA434EB16A1EFB8D /* libPods-mobileapp_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4F9C099A974C3D88D3353A /* libPods-mobileapp_int.a */; };
+		502D8870B0623D01256B498E /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 171D9F16111D307A089DB7AC /* libPods-mobileapp_preview.a */; };
+		82FA410D238BE4F3009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		82FA410F238BE50B009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */; };
+		82FA4110238BE510009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		846779FF230BC69E001F5301 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		84677A00230BC69E001F5301 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		84677A01230BC69E001F5301 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		84677A02230BC69E001F5301 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		84677A03230BC69E001F5301 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
+		84677A04230BC69E001F5301 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
+		84677A05230BC69E001F5301 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
+		84677A06230BC69E001F5301 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
+		84677A07230BC69E001F5301 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		84677A08230BC69E001F5301 /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
+		84677A09230BC69E001F5301 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		84677A0A230BC69E001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		84677A0B230BC69E001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
+
 		84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
@@ -676,6 +698,14 @@
 		7B42C6CA99056BDB5A9D33A8 /* Pods-mobileapp_prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_prod.release.xcconfig"; path = "Target Support Files/Pods-mobileapp_prod/Pods-mobileapp_prod.release.xcconfig"; sourceTree = "<group>"; };
 		7F6A72B8494E5EAC3994A2D1 /* libPods-gymboree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gymboree.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82AAC050F67E4C53B6FB0F64 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		82FA4103238BE4E1009ECD1F /* mobileapp_prod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_prod.entitlements; sourceTree = "<group>"; };
+		82FA4105238BE4E2009ECD1F /* mobileapp_uat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_uat.entitlements; sourceTree = "<group>"; };
+		82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		82FA4109238BE4E2009ECD1F /* mobileapp_int.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_int.entitlements; sourceTree = "<group>"; };
+		82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		82FA410C238BE4E2009ECD1F /* mobileapp_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_dev.entitlements; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		844B12E82301623400A82DAA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -1033,6 +1063,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		82FA4101238BE4E1009ECD1F /* mobileapp_prod */ = {
+			isa = PBXGroup;
+			children = (
+				82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */,
+				82FA4103238BE4E1009ECD1F /* mobileapp_prod.entitlements */,
+			);
+			path = mobileapp_prod;
+			sourceTree = "<group>";
+		};
+		82FA4104238BE4E2009ECD1F /* mobileapp_uat */ = {
+			isa = PBXGroup;
+			children = (
+				82FA4105238BE4E2009ECD1F /* mobileapp_uat.entitlements */,
+				82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */,
+			);
+			path = mobileapp_uat;
+			sourceTree = "<group>";
+		};
+		82FA4107238BE4E2009ECD1F /* mobileapp_int */ = {
+			isa = PBXGroup;
+			children = (
+				82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */,
+				82FA4109238BE4E2009ECD1F /* mobileapp_int.entitlements */,
+			);
+			path = mobileapp_int;
+			sourceTree = "<group>";
+		};
+		82FA410A238BE4E2009ECD1F /* mobileapp_dev */ = {
+			isa = PBXGroup;
+			children = (
+				82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */,
+				82FA410C238BE4E2009ECD1F /* mobileapp_dev.entitlements */,
+			);
+			path = mobileapp_dev;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -1065,6 +1131,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+
+				CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */,
+				82FA410A238BE4E2009ECD1F /* mobileapp_dev */,
+				82FA4107238BE4E2009ECD1F /* mobileapp_int */,
+				82FA4101238BE4E1009ECD1F /* mobileapp_prod */,
+				82FA4104238BE4E2009ECD1F /* mobileapp_uat */,
 				D94ECAAD22D70C2600D9D051 /* fonts */,
 				13B07FAE1A68108700A75B9A /* mobileapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1980,6 +2052,7 @@
 				84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
+				82FA410D238BE4F3009ECD1F /* AirshipConfig.plist in Resources */,
 				4C945DCA233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
@@ -1998,6 +2071,7 @@
 				CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */,
+				82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */,
 				CA3106412375C79800D8D91A /* Montserrat-Bold.ttf in Resources */,
 				CA31063A2375C71C00D8D91A /* Nunito.ttf in Resources */,
 				16C47548238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
@@ -2028,6 +2102,7 @@
 				84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */,
+				82FA4110238BE510009ECD1F /* AirshipConfig.plist in Resources */,
 				4C945DCC233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */,
 				84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */,
@@ -2054,6 +2129,7 @@
 				162BF021238D697A0056246A /* Montserrat.ttf in Resources */,
 				162BF022238D697A0056246A /* Montserrat-Black.ttf in Resources */,
 				84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */,
+				82FA410F238BE50B009ECD1F /* AirshipConfig.plist in Resources */,
 				4C945DCD233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */,
 				3656A5872337836800EF9714 /* icomoon.ttf in Resources */,
@@ -4018,6 +4094,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_dev/mobileapp_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4054,6 +4131,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_dev/mobileapp_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4088,6 +4166,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_int/mobileapp_int.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
@@ -4124,9 +4203,14 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+
+				CODE_SIGN_ENTITLEMENTS = mobileapp_int/mobileapp_int.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4159,6 +4243,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_uat/mobileapp_uat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4195,8 +4280,13 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+
+				CODE_SIGN_ENTITLEMENTS = mobileapp_uat/mobileapp_uat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4228,6 +4318,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_prod/mobileapp_prod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4263,6 +4354,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_prod/mobileapp_prod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
