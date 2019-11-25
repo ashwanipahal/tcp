@@ -9,6 +9,7 @@ import {
   getOutfitProducts,
   getAddedToBagErrorCatId,
   getPDPLabels,
+  getUnavailableCount,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
@@ -96,6 +97,7 @@ class OutfitDetailsContainer extends React.PureComponent {
     const {
       labels,
       outfitImageUrl,
+      unavailableCount,
       outfitProducts,
       plpLabels,
       isPlcc,
@@ -121,6 +123,7 @@ class OutfitDetailsContainer extends React.PureComponent {
         <OutfitDetails
           labels={labels}
           outfitImageUrl={outfitImageUrl}
+          unavailableCount={unavailableCount}
           outfitProducts={outfitProducts}
           plpLabels={plpLabels}
           isCanada={isCanada()}
@@ -162,6 +165,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     outfitImageUrl: getOutfitImage(state),
+    unavailableCount: getUnavailableCount(state),
     outfitProducts: getOutfitProducts(state),
     plpLabels: getPlpLabels(state),
     isCanada: isCanada(),
@@ -205,6 +209,7 @@ function mapDispatchToProps(dispatch) {
 OutfitDetailsContainer.propTypes = {
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   router: PropTypes.shape({
     query: PropTypes.shape({}),
@@ -231,6 +236,7 @@ OutfitDetailsContainer.propTypes = {
 OutfitDetailsContainer.defaultProps = {
   labels: {},
   outfitImageUrl: '',
+  unavailableCount: 0,
   outfitProducts: null,
   router: {
     query: {},
