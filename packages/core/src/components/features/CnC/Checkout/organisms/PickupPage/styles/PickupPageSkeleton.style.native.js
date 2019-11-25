@@ -1,7 +1,11 @@
 import styled from 'styled-components/native';
 
-const PricePointsWrapper = styled.View`
+const ParentWrapper = styled.View`
   padding: 10px;
+`;
+
+const PricePointsWrapper = styled.View`
+  padding: 10px 0 0 0;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -22,4 +26,4 @@ const PriceSubText3 = styled.View`
   height: 15px;
 `;
 
-export { PricePointsWrapper, PriceSubText, PriceSubText2, PriceSubText3 };
+export { ParentWrapper, PricePointsWrapper, PriceSubText, PriceSubText2, PriceSubText3 };
