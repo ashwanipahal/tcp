@@ -135,6 +135,7 @@ const ProductListView = ({
   paddings,
   onAddItemToFavorites,
   isLoggedIn,
+  isPlcc,
   isLoadingMore,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
@@ -172,7 +173,14 @@ const ProductListView = ({
   };
   return (
     <ScrollView>
-      {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
+      {!isSearchListing && (
+        <PromoModules
+          plpTopPromos={plpTopPromos}
+          navigation={navigation}
+          isPlcc={isPlcc}
+          isLoggedIn={isLoggedIn}
+        />
+      )}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
         {!isLoadingMore && (
