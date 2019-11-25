@@ -1,5 +1,6 @@
 import React from 'react';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -21,9 +22,18 @@ class ProductDetailDescription extends React.PureComponent {
 
   getButton = () => {
     let buttonShowMoreOrLess = null;
-    const { pdpLabels } = this.props;
+    const { pdpLabels, productInfo, productId } = this.props;
     const { ShowMore, ShowLess } = pdpLabels;
     const { isShowMore } = this.state;
+    let generalProductId = '';
+    let pageName = '';
+    let pageShortName = '';
+    const productName = productInfo && productInfo.name.toLowerCase();
+    if (productId) {
+      generalProductId = productId && productId.split('_')[0];
+      pageName = `product:${generalProductId}:${productName}`;
+      pageShortName = pageName;
+    }
     if (isShowMore) {
       buttonShowMoreOrLess = (
         <div className="button-show-less">
@@ -40,14 +50,25 @@ class ProductDetailDescription extends React.PureComponent {
     } else {
       buttonShowMoreOrLess = (
         <div className="button-show-more">
-          <button
-            className="button-wrapper"
-            type="button"
-            onClick={this.handleToggleShowMoreOrLess}
-            data-locator={getLocator('pdp_read_more')}
+          <ClickTracker
+            clickData={{
+              pageShortName,
+              pageName,
+              pageType: 'product',
+              pageSection: 'product',
+              pageSubSection: 'product',
+              products: [{ id: `${generalProductId}` }],
+            }}
           >
-            {ShowMore}
-          </button>
+            <button
+              className="button-wrapper"
+              type="button"
+              onClick={this.handleToggleShowMoreOrLess}
+              data-locator={getLocator('pdp_read_more')}
+            >
+              {ShowMore}
+            </button>
+          </ClickTracker>
         </div>
       );
     }
@@ -178,6 +199,7 @@ ProductDetailDescription.propTypes = {
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
+  productInfo: PropTypes.string,
 };
 
 ProductDetailDescription.defaultProps = {
@@ -187,6 +209,7 @@ ProductDetailDescription.defaultProps = {
   productId: '',
   pdpLabels: {},
   shortDescription: '',
+  productInfo: '',
 };
 
 export default withStyles(errorBoundary(ProductDetailDescription), style);

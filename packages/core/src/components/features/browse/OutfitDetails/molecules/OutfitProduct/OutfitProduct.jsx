@@ -77,12 +77,14 @@ const OutfitDetailsView = ({
           {productIndexText}
         </BodyCopy>
         <BodyCopy component="div" className="image-wrapper">
-          <DamImage
-            className="full-size-desktop-image"
-            imgData={imgData}
-            itemProp="contentUrl"
-            isProductImage
-          />
+          <Anchor to={pdpToPath} asPath={outfitProduct.pdpUrl}>
+            <DamImage
+              className="full-size-desktop-image"
+              imgData={imgData}
+              itemProp="contentUrl"
+              isProductImage
+            />
+          </Anchor>
           {renderOutOfStock(keepAlive, outOfStockLabels)}
         </BodyCopy>
         <BodyCopy className="view-detail-anchor">
@@ -129,6 +131,8 @@ const OutfitDetailsView = ({
             productInfo={outfitProduct}
             isCanada={isCanada}
             isPlcc={isPlcc}
+            pdpUrl={pdpToPath}
+            asPath={outfitProduct.pdpUrl}
             isInternationalShipping={isInternationalShipping}
             onAddItemToFavorites={addToFavorites}
             isLoggedIn={isLoggedIn}

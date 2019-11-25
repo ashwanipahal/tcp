@@ -47,6 +47,8 @@ class ProductsGrid extends React.Component {
     asPathVal: PropTypes.string,
     AddToFavoriteErrorMsg: PropTypes.string,
     removeAddToFavoritesErrorMsg: PropTypes.func,
+    openAddNewList: PropTypes.func,
+    activeWishListId: PropTypes.number,
   };
 
   static defaultProps = {
@@ -65,6 +67,8 @@ class ProductsGrid extends React.Component {
     asPathVal: '',
     AddToFavoriteErrorMsg: '',
     removeAddToFavoritesErrorMsg: () => {},
+    openAddNewList: () => {},
+    activeWishListId: '',
   };
 
   constructor(props, context) {
@@ -164,6 +168,7 @@ class ProductsGrid extends React.Component {
       productsBlock,
       className,
       labels,
+      isFavoriteView,
       isLoadingMore,
       onPickUpOpenClick,
       onQuickViewOpenClick,
@@ -178,6 +183,9 @@ class ProductsGrid extends React.Component {
       asPathVal,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      removeFavItem,
+      openAddNewList,
+      activeWishListId,
       ...otherProps
     } = this.props;
 
@@ -206,6 +214,7 @@ class ProductsGrid extends React.Component {
                         onPickUpOpenClick={onPickUpOpenClick}
                         className={`${className} product-list`}
                         labels={labels}
+                        isFavoriteView={isFavoriteView}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
@@ -218,6 +227,9 @@ class ProductsGrid extends React.Component {
                         asPathVal={asPathVal}
                         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                        removeFavItem={removeFavItem}
+                        openAddNewList={openAddNewList}
+                        activeWishListId={activeWishListId}
                         {...otherProps}
                       />
                     );

@@ -9,6 +9,7 @@ import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 jest.mock('@tcp/core/src/utils', () => ({
   ...jest.requireActual('@tcp/core/src/utils'),
   isCanada: jest.fn(),
+  routerPush: jest.fn(),
 }));
 
 describe('MiniBagBody component', () => {
@@ -98,5 +99,26 @@ describe('MiniBagBody component', () => {
     };
     const tree = shallow(<MiniBagBodyVanilla {...props} />);
     expect(tree.find(EmptyMiniBag)).toBeTruthy();
+  });
+  it('handleViewBag called', () => {
+    const props = {
+      labels: {
+        viewBag: 'View bag',
+        viewSaveForLater: 'sfllater',
+        subTotal: 'Sub',
+        currencySymbol: 'USD',
+      },
+      userName: 'test',
+      cartItemCount: 12,
+      subTotal: 23,
+      isCartItemsUpdating: {},
+      addedToBagError: 'something',
+      closeMiniBag: jest.fn(),
+    };
+    const e = {
+      preventDefault: jest.fn(),
+    };
+    const component = shallow(<MiniBagBodyVanilla {...props} />);
+    component.instance().handleViewBag(e);
   });
 });

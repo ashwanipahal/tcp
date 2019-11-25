@@ -11,11 +11,6 @@ const PageContainer = styled.View`
   justify-content: center;
 `;
 
-const BrandFilterContainer = styled.View`
-  position: absolute;
-  ${getAdditionalStyle};
-`;
-
 const RowContainer = styled.View`
   flex-direction: row;
   ${getAdditionalStyle}
@@ -69,7 +64,6 @@ const ItemCountContainer = styled.View`
 
 export {
   PageContainer,
-  BrandFilterContainer,
   RowContainer,
   NoFavoriteContainer,
   RecommendationWrapper,
