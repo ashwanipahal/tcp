@@ -172,6 +172,7 @@ class CountrySelector extends React.Component {
           <div className="countrySelector__flag-icon">
             <Image
               src={flagIconSrc}
+              alt={`${savedCountry} Flag`}
               width="20px"
               height="20px"
               onClick={this.openModal}

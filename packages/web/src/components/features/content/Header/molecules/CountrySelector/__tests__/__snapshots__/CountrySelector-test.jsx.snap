@@ -122,6 +122,7 @@ exports[`Country Selector Component renders correctly 1`] = `
       <Styled(Image)
         data-locator="footer_country_flag"
         height="20px"
+        alt="US Flag"
         onClick={[Function]}
         src="/static/images/flags/united-states-of-america.svg"
         width="20px"
