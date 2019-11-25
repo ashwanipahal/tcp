@@ -147,7 +147,12 @@ class CouponCard extends React.Component<Props> {
     return (
       <div className={className}>
         <div className={`couponCard__container ${containerOveride}`}>
-          {!isCarouselView && <ErrorMessage error={coupon.error} />}
+          {!isCarouselView && (
+            <ErrorMessage
+              error={coupon.error}
+              isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
+            />
+          )}
           <div className="couponCard__container_main">
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
               this.RenderCardHeader(
@@ -209,7 +214,13 @@ class CouponCard extends React.Component<Props> {
               </div>
             </div>
           </div>
-          {isCarouselView && <ErrorMessage className="transparent-box" error={coupon.error} />}
+          {isCarouselView && (
+            <ErrorMessage
+              className="transparent-box"
+              error={coupon.error}
+              isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
+            />
+          )}
         </div>
       </div>
     );
