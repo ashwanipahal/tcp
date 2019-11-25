@@ -15,15 +15,27 @@ const parseFileName = url => {
   return urlFragments[urlFragments.length - 1].split('.')[0];
 };
 
+const getUniqueID = () => {
+  return `video_${Date.now() + (Math.random() * 100000).toFixed()}`;
+};
 class VideoPlayer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      uniqueId: getUniqueID(),
+    };
+  }
+
   componentDidMount() {
     const { id, autoplay, url, muted } = this.props;
+    const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
     });
 
-    const player = cloudinaryCore.videoPlayer(id || 'cld-video-player', {
+    const player = cloudinaryCore.videoPlayer(uniqueId || 'cld-video-player', {
       autoplay,
       muted,
     });
@@ -37,6 +49,7 @@ class VideoPlayer extends React.Component {
 
   render() {
     const { id, controls, muted, loop, url, className, autoplay } = this.props;
+    const { uniqueId } = this.state;
 
     if (!url) {
       return null;
@@ -58,7 +71,8 @@ class VideoPlayer extends React.Component {
 
     return (
       <video
-        id={id || 'cld-video-player'}
+        id={uniqueId || 'cld-video-player'}
+        source={url}
         controls={controls}
         muted={mutedVideo}
         loop={loopVideo}

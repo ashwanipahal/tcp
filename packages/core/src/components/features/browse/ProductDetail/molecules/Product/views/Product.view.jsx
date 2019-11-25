@@ -72,7 +72,7 @@ const Product = props => {
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop hide-on-tablet'}>
         <ProductBasicInfo
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
@@ -97,7 +97,7 @@ const Product = props => {
           skuId={skuId}
         />
       </div>
-      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
         {!isGiftCard ? (
           <>
             <ProductPrice
