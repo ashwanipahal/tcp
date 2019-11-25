@@ -2,7 +2,12 @@ import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import dynamic from 'next/dynamic';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+  getVideoUrl,
+} from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
 
