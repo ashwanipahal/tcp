@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
 import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 
 const modules = {
   divisionTabs: lazy(() => import('@tcp/core/src/components/common/molecules/DivisionTabModule')),
@@ -50,9 +51,14 @@ const PromoModules = ({ asPath, plpTopPromos, isLoggedIn, isPlcc }) => {
             const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
             if (isUserSpecificModuleX) {
               return (
-                Module && (
-                  <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
-                )
+                // Module && (
+                //   <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
+                // )
+                <Espot
+                  richTextHtml={
+                    promo.richTextList && promo.richTextList[0] && promo.richTextList[0].text
+                  }
+                />
               );
             }
             return null;
