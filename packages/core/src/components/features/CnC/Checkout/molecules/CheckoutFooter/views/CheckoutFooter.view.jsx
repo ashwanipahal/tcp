@@ -9,6 +9,18 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CheckoutFooter extends React.PureComponent {
+  renderSkeleton = (showVenmoSubmit, showPayPalButton) => {
+    return (
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
+    );
+  };
+
   renderNextButton = () => {
     const {
       showVenmoSubmit,
@@ -35,9 +47,13 @@ class CheckoutFooter extends React.PureComponent {
         {nextButtonText}
       </Button>
     ) : (
-      <div className="footer-button footer-button-mob">
-        <LoaderSkelton />
-      </div>
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
     );
   };
 
@@ -119,9 +135,7 @@ class CheckoutFooter extends React.PureComponent {
               {nextButtonText}
             </Button>
           ) : (
-            <div className="footer-button footer-button-web">
-              <LoaderSkelton />
-            </div>
+            this.renderSkeleton()
           )}
         </div>
       </div>

@@ -263,7 +263,7 @@ export default function* submitBilling(action = {}) {
       yield call(submitBillingData, formData, address);
     }
     yield call(getAddressList);
-    yield call(getCardList);
+    yield call(getCardList, { ignoreCache: true });
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {
@@ -283,7 +283,7 @@ export function* updateCardDetails({ payload: { formData, resolve, reject } }) {
   try {
     const cardType = yield select(CreditCardSelector.getEditFormCardType);
     yield updateCreditCardSaga({ payload: { ...formData, cardType } }, true);
-    yield call(getCardList);
+    yield call(getCardList, { ignoreCache: true });
     resolve();
   } catch (err) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);

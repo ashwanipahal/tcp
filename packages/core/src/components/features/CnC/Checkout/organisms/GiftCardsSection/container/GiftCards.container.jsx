@@ -28,7 +28,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   /* eslint-disable-next-line */
   UNSAFE_componentWillMount() {
     const { getCardListAction } = this.props;
-    getCardListAction();
+    getCardListAction({ ignoreCache: true });
   }
 
   componentDidUpdate(prevProps) {
