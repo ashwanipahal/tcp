@@ -58,13 +58,27 @@ exports[`ProductListContainer component should render correctly 1`] = `
       "getParam": [MockFunction] {
         "calls": Array [
           Array [
+            "showCustomLoader",
+          ],
+          Array [
             "url",
+          ],
+          Array [
+            "showCustomLoader",
           ],
           Array [
             "url",
           ],
         ],
         "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
           Object {
             "type": "return",
             "value": undefined,
@@ -109,6 +123,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
     }
   }
   router={Object {}}
+  showCustomLoader={false}
   sortLabels={Array []}
   totalProductsCount="0"
 />
