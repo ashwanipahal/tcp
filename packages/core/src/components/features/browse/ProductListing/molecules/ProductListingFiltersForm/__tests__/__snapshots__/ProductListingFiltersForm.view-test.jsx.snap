@@ -121,7 +121,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="categoryPath2_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -1513,7 +1513,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="v_tcpsize_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2073,7 +2073,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="unbxd_price_range_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2215,7 +2215,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="v_tcpfit_unbxd_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2335,7 +2335,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="gender_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2477,7 +2477,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="age_group_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
