@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
-
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
@@ -75,19 +75,25 @@ class BonusPointsView extends React.Component {
             isPlcc={isPlcc}
           />
         )}
-        {view !== constants.VIEWS.READ && (
-          <BonusPointsSection
-            labels={labels.global.bonusPoints}
-            bonusData={bonusData}
-            toggleBonusPointsModal={this.toggleBonusPointsModal}
-            getBonusDaysData={getBonusDaysData}
-            orderDetails={orderDetails}
-            isPlcc={isPlcc}
-            isBagPage={isBagPage}
-            bagBonusLabels={labels.checkout.bagBonusPoints}
-            showAccordian={showAccordian}
-            {...otherProps}
-          />
+        {bonusData ? (
+          <>
+            {view !== constants.VIEWS.READ && (
+              <BonusPointsSection
+                labels={labels.global.bonusPoints}
+                bonusData={bonusData}
+                toggleBonusPointsModal={this.toggleBonusPointsModal}
+                getBonusDaysData={getBonusDaysData}
+                orderDetails={orderDetails}
+                isPlcc={isPlcc}
+                isBagPage={isBagPage}
+                bagBonusLabels={labels.checkout.bagBonusPoints}
+                showAccordian={showAccordian}
+                {...otherProps}
+              />
+            )}
+          </>
+        ) : (
+          <LoaderSkelton width="420px" height="156px" />
         )}
         <Modal
           isOpen={openModalState}

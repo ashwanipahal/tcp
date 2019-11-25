@@ -14,6 +14,7 @@ import {
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor';
 import CouponCard from '../../../molecules/CouponCard';
+import CouponSkeleton from '../skeleton/CouponSkeleton.view.native';
 
 export class CouponListSection extends React.Component<Props> {
   constructor(props) {
@@ -83,37 +84,43 @@ export class CouponListSection extends React.Component<Props> {
           )}
         </TitleContainer>
 
-        <CardContainer>
-          {couponListFilter.map(coupon => {
-            return (
-              <CouponCard
-                key={coupon.id}
-                labels={labels}
-                isFetching={isFetching}
-                coupon={coupon}
-                couponDetailClick={couponDetailClick}
-                onApply={onApply}
-                onRemove={onRemove}
-                handleErrorCoupon={handleErrorCoupon}
-              />
-            );
-          })}
-        </CardContainer>
-        <ShowMoreContainer>
-          {couponList.size >= 5 && helpSubHeading !== undefined && (
-            <Anchor
-              fontSizeVariation="small"
-              fontFamily="secondary"
-              underline
-              anchorVariation="primary"
-              onPress={this.toggleShow}
-              noLink
-              to="/#"
-              dataLocator=""
-              text={buttonText}
-            />
-          )}
-        </ShowMoreContainer>
+        {!isFetching ? (
+          <>
+            <CardContainer>
+              {couponListFilter.map(coupon => {
+                return (
+                  <CouponCard
+                    key={coupon.id}
+                    labels={labels}
+                    isFetching={isFetching}
+                    coupon={coupon}
+                    couponDetailClick={couponDetailClick}
+                    onApply={onApply}
+                    onRemove={onRemove}
+                    handleErrorCoupon={handleErrorCoupon}
+                  />
+                );
+              })}
+            </CardContainer>
+            <ShowMoreContainer>
+              {couponList.size >= 5 && helpSubHeading !== undefined && (
+                <Anchor
+                  fontSizeVariation="small"
+                  fontFamily="secondary"
+                  underline
+                  anchorVariation="primary"
+                  onPress={this.toggleShow}
+                  noLink
+                  to="/#"
+                  dataLocator=""
+                  text={buttonText}
+                />
+              )}
+            </ShowMoreContainer>
+          </>
+        ) : (
+          <CouponSkeleton />
+        )}
       </WrapperStyle>
     );
   }

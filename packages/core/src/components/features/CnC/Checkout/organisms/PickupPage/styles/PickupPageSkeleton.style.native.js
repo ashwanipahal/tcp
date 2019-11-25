@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 const PricePointsWrapper = styled.View`
-  padding: 10px 0 0 10px;
+  padding: 10px;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
