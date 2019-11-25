@@ -18,6 +18,7 @@ const applyPositionClassStyle = props => {
 const Container = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   ${applyPositionClassStyle}
 `;
 
