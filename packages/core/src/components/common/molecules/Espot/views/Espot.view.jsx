@@ -28,7 +28,7 @@ class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   handleModal = action => {
-    const { togglePlccModal, openOverlay } = this.props;
+    const { togglePlccModal, openOverlay, toggleNeedHelpModal } = this.props;
     switch (action) {
       case 'plccModal':
         togglePlccModal(true);
@@ -45,7 +45,9 @@ class Espot extends PureComponent {
           variation: 'primary',
         });
         break;
-
+      case 'isCouponHelpModalOpen':
+        toggleNeedHelpModal();
+        break;
       default:
         break;
     }
