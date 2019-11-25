@@ -48,14 +48,14 @@ const PromoModules = ({ plpTopPromos, navigation, isLoggedIn, isPlcc }) => {
       const Module = modules[moduleName];
       // This is user specific moduleX - eg. For loyalty Banner on PLP
       if (userType && moduleName === 'moduleX') {
-        console.log('promo ###### ', promo);
         const isUserSpecificModuleX = userSpecificModuleX(userType, isPlcc, isLoggedIn);
         if (isUserSpecificModuleX) {
           return (
-            <Espot richTextHtml={promo.richTextList[0].text} />
-            // Module && (
-            //   <Module key={contentId} data={promo} asPath={asPath} {...slotData} {...others} />
-            // )
+            <Espot
+              richTextHtml={
+                promo.richTextList && promo.richTextList[0] && promo.richTextList[0].text
+              }
+            />
           );
         }
         return null;
