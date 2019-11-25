@@ -98,6 +98,9 @@ export function* fetchPlpProducts({ payload }) {
     );
   } catch (err) {
     logger.error(err);
+    yield put(
+      setPlpLoadingState({ isLoadingMore: false, isScrollToTop: false, isDataLoading: false })
+    );
   }
 }
 
