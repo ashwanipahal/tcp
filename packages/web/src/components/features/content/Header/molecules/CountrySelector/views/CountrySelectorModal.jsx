@@ -25,6 +25,14 @@ class CountrySelectorModal extends React.Component {
     this.toggleDisable = this.toggleDisable.bind(this);
   }
 
+  componentDidMount() {
+    const { getCountryListData, countriesMap, loadCountryModuleXData } = this.props;
+    if (!countriesMap.length) {
+      getCountryListData();
+    }
+    loadCountryModuleXData();
+  }
+
   handleCountryChange = (event, selectedCountry) => {
     const { dispatch, updateCountry, countriesMap } = this.props;
     const currentCountry = countriesMap.find(country => country.id === selectedCountry);
@@ -211,6 +219,8 @@ CountrySelectorModal.propTypes = {
   updateCurrency: PropTypes.func.isRequired,
   updatedCountry: PropTypes.string.isRequired,
   updatedCurrency: PropTypes.string.isRequired,
+  loadCountryModuleXData: PropTypes.func.isRequired,
+  getCountryListData: PropTypes.func.isRequired,
 };
 
 CountrySelectorModal.defaultPropTypes = {

@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import makeSearch from '@tcp/core/src/services/abstractors/common/searchBar';
 import SLP_CONSTANTS from './SearchDetail.constants';
@@ -33,16 +33,17 @@ const getUrl = url => {
 
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { searchQuery, asPath, formData, url, scrollToTop } = payload;
+    const { searchQuery, asPath, formData, url, scrollToTop, isKeepModalOpen } = payload;
     const location = getUrl(url);
     const state = yield select();
     yield put(
       setSlpLoadingState({
         isLoadingMore: true,
         isScrollToTop: scrollToTop || false,
+        isKeepModalOpen,
+        isSearchResultsAvailable: false,
       })
     );
-    yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
@@ -67,12 +68,24 @@ export function* fetchSlpProducts({ payload }) {
       );
     }
     if (res) {
-      yield put(setListingFirstProductsPage({ ...res }));
+      yield putResolve(setListingFirstProductsPage({ ...res }));
     }
-    yield put(setSlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
-    yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
+    yield put(
+      setSlpLoadingState({
+        isLoadingMore: false,
+        isScrollToTop: false,
+        isSearchResultsAvailable: true,
+      })
+    );
   } catch (err) {
     logger.error(err);
+    yield put(
+      setSlpLoadingState({
+        isLoadingMore: false,
+        isScrollToTop: false,
+        isSearchResultsAvailable: true,
+      })
+    );
   }
 }
 

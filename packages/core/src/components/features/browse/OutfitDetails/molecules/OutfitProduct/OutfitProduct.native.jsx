@@ -1,17 +1,19 @@
 /* eslint-disable max-lines */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TouchableOpacity, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { calculatePriceValue } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/common/molecules/ImageCarousel';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import CustomIcon from '../../../../../common/atoms/Icon';
-import { ICON_NAME } from '../../../../../common/atoms/Icon/Icon.constants';
+import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
 import {
   getPrices,
   getImagesToDisplay,
   getMapSliceForColorProductId,
+  getMapSliceForSizeSkuID,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import { BodyCopy } from '../../../../../common/atoms';
@@ -61,6 +63,13 @@ renderPickUpStore.propTypes = {
   outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
+const navigateToPdp = (navigation, outfitProduct) =>
+  navigation.navigate('ProductDetail', {
+    title: outfitProduct.name,
+    pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
+    reset: true,
+  });
+
 const renderImageContainer = ({
   navigation,
   outfitProduct,
@@ -85,15 +94,10 @@ const renderImageContainer = ({
         imageUrls={imageUrls}
         keepAlive={keepAlive}
         outOfStockLabels={outOfStockLabels}
+        onImageClick={() => navigateToPdp(navigation, outfitProduct)}
       />
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('ProductDetail', {
-            title: outfitProduct.name,
-            pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
-            reset: true,
-          })
-        }
+        onPress={() => navigateToPdp(navigation, outfitProduct)}
         accessible
         accessibilityRole="button"
         accessibilityLabel={`${outfitProduct.name}`}
@@ -126,13 +130,18 @@ const renderFavoriteSection = (
   setShowModal,
   isLoggedIn,
   favoriteCount,
-  showModal,
   handleAddToFavorites
 ) => {
   return (
     <FavoriteView accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
       {isAddedToFav ? (
-        <CustomIcon name={ICON_NAME.favorite} size="fs25" color="gray.500" isButton />
+        <CustomIcon
+          iconFontName={ICON_FONT_CLASS.Icomoon}
+          name={ICON_NAME.filledHeart}
+          size="fs25"
+          color="gray.600"
+          isButton
+        />
       ) : (
         <CustomIcon
           name={ICON_NAME.favorite}
@@ -141,26 +150,6 @@ const renderFavoriteSection = (
           isButton
           onPress={() => handleAddToFavorites()}
         />
-      )}
-      {showModal && (
-        <ModalNative
-          isOpen={showModal}
-          onRequestClose={() => setShowModal(!showModal)}
-          heading="LOG IN"
-          headingFontFamily="secondary"
-          fontSize="fs16"
-        >
-          <SafeAreaView>
-            <ModalViewWrapper>
-              <LoginPageContainer
-                onRequestClose={() => setShowModal(!showModal)}
-                isUserLoggedIn={isLoggedIn}
-                variation="favorites"
-                showLogin={showModal}
-              />
-            </ModalViewWrapper>
-          </SafeAreaView>
-        </ModalNative>
       )}
       <BodyCopy
         mobileFontFamily="secondary"
@@ -174,14 +163,18 @@ const renderFavoriteSection = (
   );
 };
 
-const onChangeColor = (colorIndex, setCurrentColorIndex) => {
+const onChangeColor = (colorIndex, setCurrentColorIndex, colorindex, generalProductId) => {
   if (setCurrentColorIndex) {
     setCurrentColorIndex(colorIndex);
+  }
+  if (colorindex && generalProductId) {
+    colorindex(colorIndex, generalProductId);
   }
 };
 
 const renderAddToBagContainer = (
   setCurrentColorIndex,
+  setSelectedSizeName,
   handleAddToBag,
   outfitProduct,
   plpLabels,
@@ -190,9 +183,11 @@ const renderAddToBagContainer = (
   isBundleProduct,
   toastMessage,
   isKeepAliveEnabled,
-  outOfStockLabels
+  outOfStockLabels,
+  colorindex
   // eslint-disable-next-line max-params
 ) => {
+  const { generalProductId } = outfitProduct;
   return (
     <ProductAddToBagContainer
       handleFormSubmit={handleAddToBag}
@@ -203,7 +198,11 @@ const renderAddToBagContainer = (
       isOutfitPage
       simplifiedProductPickupView
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
-        onChangeColor(colorIndex, setCurrentColorIndex)
+        // eslint-disable-next-line sonarjs/no-extra-arguments
+        onChangeColor(colorIndex, setCurrentColorIndex, colorindex, generalProductId)
+      }
+      onChangeSize={(colorName, selectedSizeName, selectedFitName, selectedQuantity) =>
+        setSelectedSizeName(selectedSizeName)
       }
       isBundleProduct={isBundleProduct}
       toastMessage={toastMessage}
@@ -237,6 +236,7 @@ const checkKeepAlive = (isKeepAliveEnabled, keepAliveProduct) => {
   return isKeepAliveEnabled && keepAliveProduct;
 };
 
+// eslint-disable-next-line complexity
 const OutfitDetailsView = ({
   outfitProduct,
   colorProductId,
@@ -255,10 +255,50 @@ const OutfitDetailsView = ({
   toastMessage,
   isKeepAliveEnabled,
   outOfStockLabels,
+  pageName,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
+  productMiscInfo,
+  colorindex,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [isAddedToFav, setIsAddedToFav] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(
+    productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist || false
+  );
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
+  const [selectedSizeName, setSelectedSizeName] = useState('');
+  const [isFaviconClicked, setFaviconClicked] = useState(false);
+
+  const usePrevious = value => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  };
+
+  const prevLoggedIn = usePrevious(isLoggedIn);
+  const prevProductId = usePrevious(productMiscInfo);
+
+  useEffect(() => {
+    if (prevLoggedIn !== isLoggedIn && isFaviconClicked) {
+      setShowModal(false);
+      setFaviconClicked(false);
+      addToFavorites({
+        colorProductId: outfitProduct.productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProduct.colorProductId,
+        page: pageName || 'OUTFIT',
+      });
+    }
+
+    return () => {
+      if (typeof removeAddToFavoritesErrorMsg === 'function') {
+        removeAddToFavoritesErrorMsg('');
+      }
+    };
+  }, []);
 
   const { colorFitsSizesMap, promotionalMessage, promotionalPLCCMessage, name } = outfitProduct;
 
@@ -281,6 +321,16 @@ const OutfitDetailsView = ({
     });
   }
 
+  let skuId = null;
+  if (typeof selectedSizeName === 'string' && selectedSizeName) {
+    skuId = getMapSliceForSizeSkuID(colorProduct, selectedSizeName);
+  }
+  if (
+    (productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist) &&
+    !isAddedToFav
+  ) {
+    setIsAddedToFav(productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist);
+  }
   const { miscInfo } = colorProduct;
 
   const { listPrice, offerPrice } = prices;
@@ -309,12 +359,16 @@ const OutfitDetailsView = ({
 
   const handleAddToFavorites = () => {
     if (isLoggedIn) {
-      addToFavorites({ colorProductId: outfitProduct.generalProductId });
+      addToFavorites({
+        colorProductId: outfitProduct.productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProduct.colorProductId,
+        page: pageName || 'OUTFIT',
+      });
     } else {
       setShowModal(true);
+      setFaviconClicked(true);
     }
-
-    setIsAddedToFav(!!isLoggedIn);
   };
 
   const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
@@ -328,6 +382,9 @@ const OutfitDetailsView = ({
 
   return (
     <OutfitProductWrapper>
+      {AddToFavoriteErrorMsg !== 'undefined' && AddToFavoriteErrorMsg !== '' && (
+        <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+      )}
       <OutfitProductContainer>
         {renderImageContainer({
           navigation,
@@ -350,14 +407,21 @@ const OutfitDetailsView = ({
             />
           )}
           {renderOutOfStockError(keepAlive, outOfStockLabels)}
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs18"
-            fontWeight="extrabold"
-            color="gray.900"
-            text={name}
-            margin="0 0 4px 0"
-          />
+          <TouchableOpacity
+            onPress={_ => navigateToPdp(navigation, outfitProduct)}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={`${name}`}
+          >
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize="fs18"
+              fontWeight="extrabold"
+              color="gray.900"
+              text={name}
+              margin="0 0 4px 0"
+            />
+          </TouchableOpacity>
           <BodyCopy
             margin="4px 0 0 0"
             mobileFontFamily="secondary"
@@ -403,12 +467,12 @@ const OutfitDetailsView = ({
           setShowModal,
           isLoggedIn,
           favoriteCount,
-          showModal,
           handleAddToFavorites
         )}
       </OutfitProductContainer>
       {renderAddToBagContainer(
         setCurrentColorIndex,
+        setSelectedSizeName,
         handleAddToBag,
         outfitProduct,
         plpLabels,
@@ -417,7 +481,8 @@ const OutfitDetailsView = ({
         isBundleProduct,
         toastMessage,
         isKeepAliveEnabled,
-        outOfStockLabels
+        outOfStockLabels,
+        colorindex
       )}
       {!isBundleProduct &&
         renderPickUpStore({
@@ -426,6 +491,27 @@ const OutfitDetailsView = ({
           keepAlive,
           outOfStockLabels,
         })}
+
+      {showModal && (
+        <ModalNative
+          isOpen={showModal}
+          onRequestClose={() => setShowModal(!showModal)}
+          heading="LOG IN"
+          headingFontFamily="secondary"
+          fontSize="fs16"
+        >
+          <SafeAreaView>
+            <ModalViewWrapper>
+              <LoginPageContainer
+                onRequestClose={() => setShowModal(!showModal)}
+                isUserLoggedIn={isLoggedIn}
+                variation="favorites"
+                showLogin={showModal}
+              />
+            </ModalViewWrapper>
+          </SafeAreaView>
+        </ModalNative>
+      )}
     </OutfitProductWrapper>
   );
 };
@@ -447,9 +533,11 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
   addToBagError: PropTypes.string,
-  toastMessage: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  productMiscInfo: PropTypes.shape({}),
+  colorindex: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -467,6 +555,9 @@ OutfitDetailsView.defaultProps = {
   isBundleProduct: false,
   addToBagError: '',
   outOfStockLabels: {},
+  toastMessage: () => {},
+  productMiscInfo: {},
+  colorindex: () => {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

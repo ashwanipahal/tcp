@@ -371,6 +371,7 @@ class ShippingForm extends React.Component {
               'checkout'
             )}
             isLoadingShippingMethods={isLoadingShippingMethods}
+            bagLoading={bagLoading}
           />
         </form>
       </div>

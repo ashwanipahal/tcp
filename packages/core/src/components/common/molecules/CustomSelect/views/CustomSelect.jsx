@@ -77,12 +77,13 @@ class CustomSelect extends React.Component<Props> {
   };
 
   getDropDownListWithChild = () => {
-    const { options, childrenComp, dataLocatorObj } = this.props;
+    const { options, childrenComp, dataLocatorObj, labels } = this.props;
     const { activeValue } = this.state;
     return childrenComp !== null ? (
       childrenComp(options, this.onClickHandler, activeValue, this.onClose)
     ) : (
       <DropdownList
+        labels={labels}
         optionsMap={options}
         clickHandler={this.onClickHandler}
         activeValue={activeValue}
@@ -121,6 +122,12 @@ class CustomSelect extends React.Component<Props> {
           className="customSelectTitle"
           data-locator={activeTitle}
         >
+          <BodyCopy
+            component="div"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className={`customSelectArrow ${toggle ? 'up' : 'down'}`}
+          />
           {activeTitle}
         </BodyCopy>
         {toggle && (

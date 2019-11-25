@@ -4,6 +4,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -78,6 +79,7 @@ class ProductsGridItem extends React.PureComponent {
       getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
       onAddItemToFavorites({
         colorProductId: generalProductId,
+        productSkuId: null,
         page: isSearchListing ? 'SLP' : 'PLP',
       });
       return { generalProductId: '' };
@@ -116,7 +118,9 @@ class ProductsGridItem extends React.PureComponent {
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   getQuickViewInitialValues() {
@@ -234,14 +238,12 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol, item } = this.props;
+    const { item } = this.props;
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
     const priceRange = item && item.productInfo && item.productInfo.priceRange;
-    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection
-        currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
@@ -324,6 +326,8 @@ class ProductsGridItem extends React.PureComponent {
       createNewWishList,
       createNewWishListMoveItem,
       gridIndex,
+      openAddNewList,
+      activeWishListId,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -351,6 +355,8 @@ class ProductsGridItem extends React.PureComponent {
                 createNewWishListMoveItem={createNewWishListMoveItem}
                 itemId={itemId}
                 gridIndex={gridIndex}
+                openAddNewList={openAddNewList}
+                activeWishListId={activeWishListId}
               />
             </div>
           )}
@@ -391,7 +397,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard, generalProductId },
+        productInfo: { bundleProduct, isGiftCard, generalProductId, pdpUrl },
       },
       removeFavItem,
       isFavoriteView,
@@ -399,10 +405,23 @@ class ProductsGridItem extends React.PureComponent {
       AddToFavoriteErrorMsg,
     } = this.props;
     const { errorProductId } = this.state;
-
     const fulfilmentSection =
       AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
+    let pageShortName = '';
+    const productId = generalProductId;
+    if (productId) {
+      const productIdParts = productId.split('_');
+      const splitPdpUrl = pdpUrl && pdpUrl.split('/')[2];
+      pageShortName = `product:${productIdParts[0]}:${splitPdpUrl
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -417,24 +436,36 @@ class ProductsGridItem extends React.PureComponent {
       </div>
     ) : (
       <div className={fulfilmentSection}>
-        <Button
-          className="added-to-bag"
-          fullWidth
-          buttonVariation="fixed-width"
-          dataLocator={getLocator('global_addtocart_Button')}
-          onClick={
-            // eslint-disable-next-line no-nested-ternary
-            isGiftCard
-              ? () => {} // TODO Gift Card Quick View Modal
-              : isShowQuickView && !isBundleProduct
-              ? this.handleQuickViewOpenClick
-              : this.handleViewBundleClick
-          }
-          disabled={keepAlive}
-          fill={isFavoriteView ? 'BLUE' : ''}
+        <ClickTracker
+          clickData={{
+            eventName: 'cart add',
+            pageType: 'product',
+            pageSection: 'product',
+            pageSubSection: 'product',
+            pageShortName,
+            pageName,
+            products: [{ id: `${productId}` }],
+          }}
         >
-          {this.renderAddToBagLabel(isBundleProduct, keepAlive)}
-        </Button>
+          <Button
+            className="added-to-bag"
+            fullWidth
+            buttonVariation="fixed-width"
+            dataLocator={getLocator('global_addtocart_Button')}
+            onClick={
+              // eslint-disable-next-line no-nested-ternary
+              isGiftCard
+                ? () => {} // TODO Gift Card Quick View Modal
+                : isShowQuickView && !isBundleProduct
+                ? this.handleQuickViewOpenClick
+                : this.handleViewBundleClick
+            }
+            disabled={keepAlive}
+            fill={isFavoriteView ? 'BLUE' : ''}
+          >
+            {this.renderAddToBagLabel(isBundleProduct, keepAlive)}
+          </Button>
+        </ClickTracker>
       </div>
     );
   };
@@ -503,13 +534,11 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
-      viaModule,
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
     } = this.props;
 
-    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
     const {

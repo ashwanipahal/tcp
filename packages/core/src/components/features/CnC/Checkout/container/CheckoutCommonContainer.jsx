@@ -171,7 +171,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
-    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
+    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount, bagLoading } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
       checkoutProgressBarLabels
@@ -200,6 +200,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isUsSite={isUsSite}
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
+        bagLoading={bagLoading}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -265,6 +266,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 }
 
 CheckoutContainer.getInitActions = () => initActions;
+
+CheckoutContainer.pageInfo = {
+  pageId: 'Checkout',
+};
 
 CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   const DEFAULT_ACTIVE_COMPONENT = 'shipping';

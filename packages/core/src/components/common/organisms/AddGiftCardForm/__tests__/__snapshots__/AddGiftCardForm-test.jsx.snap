@@ -1582,7 +1582,7 @@ exports[`Add gift card form component should render component correctly when sav
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gZMcBi",
+            "componentId": "sc-htoDjs",
             "isStatic": false,
             "rules": Array [
               "
@@ -1705,7 +1705,7 @@ exports[`Add gift card form component should render component correctly when sav
           "displayName": "Styled(InputCheckbox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gZMcBi",
+          "styledComponentId": "sc-htoDjs",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],

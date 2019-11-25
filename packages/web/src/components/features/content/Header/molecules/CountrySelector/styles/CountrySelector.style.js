@@ -4,6 +4,9 @@ export default css`
   display: flex;
   float: right;
   padding-top: 3px;
+  & > a {
+    display: inline-flex;
+  }
 
   ${props =>
     props.showInFooter

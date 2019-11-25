@@ -10,13 +10,18 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
-import mockSeoCopy from '@tcp/core/src/services/abstractors/common/SeoCopy/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
+    const {
+      openCountrySelectorModal,
+      router,
+      pageName,
+      setCampaignId,
+      setInternalCampaignId,
+    } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
@@ -25,8 +30,12 @@ class HomePageWrapper extends React.Component {
       this.subscriptionPopUpOnPageLoad();
     }
     const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    const icid = getQueryParamsFromUrl(router.asPath, 'icid');
     if (cid) {
       setCampaignId(cid[0]);
+    }
+    if (icid) {
+      setInternalCampaignId(icid[0]);
     }
   }
 
@@ -103,6 +112,8 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
     moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
+    imageText: () =>
+      import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -112,7 +123,8 @@ const HomePageView = dynamic({
       openSmsSignUpModal,
       pageName,
       setCampaignId,
-      // seoData,
+      setInternalCampaignId,
+      seoData,
     } = compProps;
 
     return (
@@ -122,11 +134,11 @@ const HomePageView = dynamic({
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
         setCampaignId={setCampaignId}
+        setInternalCampaignId={setInternalCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
-        {/* <SeoCopy {...seoData} /> */}
-        <SeoCopy {...mockSeoCopy} />
+        <SeoCopy {...seoData} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
@@ -148,6 +160,7 @@ HomePageWrapper.propTypes = {
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -159,6 +172,7 @@ HomePageView.propTypes = {
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);

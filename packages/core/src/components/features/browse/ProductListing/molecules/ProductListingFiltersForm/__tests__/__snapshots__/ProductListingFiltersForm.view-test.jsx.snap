@@ -20,7 +20,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             component="span"
             data-locator="plp_filter_label_filterby"
             fontFamily="secondary"
-            fontSize="fs16"
+            fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -40,7 +40,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -108,7 +108,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -121,7 +121,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="categoryPath2_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -776,7 +776,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -844,7 +844,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -864,12 +864,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="BLUE"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="blue"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "BLUE",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -897,12 +907,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="WHITE"
-                      className="color-chip"
+                      className="color-chip white-color-class"
                       data-colorname="white"
-                      height="18px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif"
-                      width="18px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "WHITE",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -930,12 +950,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="BLACK"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="black"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "BLACK",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -963,12 +993,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="GRAY"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="gray"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "GRAY",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -996,12 +1036,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="PINK"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="pink"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "PINK",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1029,12 +1079,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="TAN"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="tan"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "TAN",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1062,12 +1122,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="RED"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="red"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "RED",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1095,12 +1165,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="MULTI"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="multi"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "MULTI",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1128,12 +1208,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="DENIM"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="denim"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "DENIM",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1161,12 +1251,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="GREEN"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="green"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "GREEN",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1194,12 +1294,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="PURPLE"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="purple"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "PURPLE",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1227,12 +1337,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="YELLOW"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="yellow"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "YELLOW",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1260,12 +1380,22 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     className="color-title"
                   >
                     <ForwardRef
-                      alt="BROWN"
-                      className="color-chip"
+                      className="color-chip "
                       data-colorname="brown"
-                      height="19px"
-                      src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif"
-                      width="19px"
+                      imgConfigs={
+                        Array [
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                          "w_50,h_50,c_thumb,g_auto:0",
+                        ]
+                      }
+                      imgData={
+                        Object {
+                          "alt": "BROWN",
+                          "url": "",
+                        }
+                      }
+                      isProductImage={true}
                     />
                     <ForwardRef
                       className="color-name"
@@ -1302,7 +1432,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1370,7 +1500,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1383,7 +1513,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="v_tcpsize_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -1862,7 +1992,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1930,7 +2060,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1943,7 +2073,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="unbxd_price_range_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2004,7 +2134,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2072,7 +2202,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2085,7 +2215,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="v_tcpfit_unbxd_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2124,7 +2254,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2192,7 +2322,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2205,7 +2335,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="gender_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -2266,7 +2396,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kGXeez",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2334,7 +2464,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "displayName": "Styled(CustomSelect)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kGXeez",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2347,7 +2477,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             forwardRef={true}
             labels={Object {}}
             name="age_group_uFilter"
-            onFilterSelection={[Function]}
+            onChange={[Function]}
             optionsMap={
               Array [
                 Object {
@@ -3085,7 +3215,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           }
         }
         isFavoriteView={false}
+        isLoadingMore={false}
         labels={Object {}}
+        onChange={[Function]}
         onSortSelection={[Function]}
         onSubmit={[MockFunction]}
         removeAllFilters={[Function]}

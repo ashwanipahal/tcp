@@ -4,7 +4,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/PlaceCashBanner.style';
 import { BodyCopy, Row, Col, DamImage, Anchor } from '../../../../common/atoms';
 import PlaceCashDetailsModal from './PlaceCashDetails.modal.view';
-
 /**
  * PlaceCashBanner Component
  * @description Display User's place cash value earned
@@ -30,9 +29,10 @@ class PlaceCashBanner extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, className, isEnabled } = this.props;
+    const { labels, className, isEnabled, isOrderConfirmation } = this.props;
     const { isPlaceCasModalOpen } = this.state;
-
+    const titleFonts = isOrderConfirmation ? ['fs16', 'fs16', 'fs32'] : ['fs18', 'fs13', 'fs26'];
+    const subTitleFonts = isOrderConfirmation ? ['fs14', 'fs14', 'fs26'] : ['fs14', 'fs10', 'fs22'];
     return isEnabled ? (
       <div className={className}>
         <div className="place-cash">
@@ -43,7 +43,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               colSize={{ small: 6, medium: 8, large: 12 }}
               textAlign="center"
             >
-              {/* Fix Me: wiith given zeplin assets transforms are not working properly
+              {/* Fix Me: with given zeplin assets transforms are not working properly
               need correct zeplin assets : mod_placeBug_bag_d */}
               <DamImage
                 className="place-cash__img"
@@ -57,7 +57,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               <div className="place-cash__text-wrapper">
                 <BodyCopy
                   component="h3"
-                  fontSize={['fs10', 'fs10', 'fs14']}
+                  fontSize={titleFonts}
                   fontFamily="primary"
                   fontWeight="bold"
                   textAlign="center"
@@ -68,7 +68,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                 </BodyCopy>
                 <BodyCopy
                   component="h4"
-                  fontSize={['fs10', 'fs9', 'fs12']}
+                  fontSize={subTitleFonts}
                   fontFamily="primary"
                   textAlign="center"
                   className="place-cash__subTitle"
@@ -76,30 +76,34 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                 >
                   {labels.subTitle}
                 </BodyCopy>
-                <div className="place-cash__tnc-container">
-                  <BodyCopy
-                    component="span"
-                    fontFamily="primary"
-                    textAlign="center"
-                    className="place-cash__tnc-text"
-                    data-locator="place-cash_info_text"
-                  >
-                    {labels.tnc}
-                  </BodyCopy>
-                  <Anchor
-                    fontSizeVariation="medium"
-                    underline
-                    href="#"
-                    anchorVariation="primary"
-                    fontFamily="primary"
-                    title={labels.label4}
-                    dataLocator="detailslink"
-                    className="place-cash__modalLink"
-                    onClick={e => this.toggleShowDetailModal(e)}
-                  >
-                    {labels.modalLink}
-                  </Anchor>
-                </div>
+                {!isOrderConfirmation && (
+                  <div className="place-cash__tnc-container">
+                    <BodyCopy
+                      component="span"
+                      fontFamily="primary"
+                      textAlign="center"
+                      className="place-cash__tnc-text"
+                      data-locator="place-cash_info_text"
+                      fontSize={['fs8', 'fs8', 'fs14']}
+                    >
+                      {labels.tnc}
+                    </BodyCopy>
+                    <Anchor
+                      fontSizeVariation="medium"
+                      underline
+                      href="#"
+                      anchorVariation="primary"
+                      fontFamily="primary"
+                      title={labels.label4}
+                      dataLocator="detailslink"
+                      className="place-cash__modalLink"
+                      fontSize={['fs8', 'fs8', 'fs14']}
+                      onClick={e => this.toggleShowDetailModal(e)}
+                    >
+                      {labels.modalLink}
+                    </Anchor>
+                  </div>
+                )}
               </div>
               <PlaceCashDetailsModal
                 labels={labels}

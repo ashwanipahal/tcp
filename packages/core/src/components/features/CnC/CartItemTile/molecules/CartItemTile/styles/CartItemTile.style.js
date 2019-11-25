@@ -50,7 +50,11 @@ export default css`
     padding-top: 30px;
   }
   .padding-top-40 {
-    padding-top: 41px;
+    padding-top: 26px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -430,6 +434,9 @@ export default css`
   }
   .dam-image-review-page {
     width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

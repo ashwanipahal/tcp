@@ -248,6 +248,7 @@ class CartItemTile extends PureComponent {
     const {
       itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
       productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -270,6 +271,9 @@ class CartItemTile extends PureComponent {
       size,
       upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event134', 'event136'],
@@ -295,8 +299,9 @@ class CartItemTile extends PureComponent {
   moveToBagSflItem = () => {
     const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
-      productInfo: { skuId, generalProductId, upc, productPartNumber },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice },
+      productInfo: { skuId, generalProductId, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
@@ -308,12 +313,12 @@ class CartItemTile extends PureComponent {
       name,
       price: offerPrice,
       extPrice: offerPrice,
-      sflExtPrice: offerPrice,
-      listPrice,
+      offerPrice,
       partNumber: productPartNumber,
-      size,
-      upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event135', 'event137'],
@@ -802,14 +807,20 @@ class CartItemTile extends PureComponent {
   };
 
   renderHeartIcon = () => {
-    const { isBagPageSflSection, labels } = this.props;
-    if (!isBagPageSflSection) return null;
+    const { isBagPageSflSection, labels, handleAddToWishlist, productDetail } = this.props;
+    if (
+      !isBagPageSflSection ||
+      productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+    )
+      return null;
+
     return (
       <div className="heartIcon">
         <Image
           alt={getLabelValue(labels, 'lbl_sfl_favIcon', 'bagPage', 'checkout')}
           className="sfl-fav-image"
           src={getIconPath('fav-icon')}
+          onClick={handleAddToWishlist}
         />
       </div>
     );
@@ -1316,6 +1327,7 @@ CartItemTile.propTypes = {
   setClickAnalyticsData: PropTypes.func.isRequired,
   closeMiniBag: PropTypes.func,
   isMiniBagOpen: PropTypes.bool.isRequired,
+  handleAddToWishlist: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);
