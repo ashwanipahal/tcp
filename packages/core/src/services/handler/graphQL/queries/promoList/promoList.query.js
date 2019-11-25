@@ -33,15 +33,6 @@ ${slot || `promoList`}: moduleById(id: "${contentId || cid}") {
           crop_t
           crop_m
         }
-        video{
-          url
-          title
-          autoplay
-          controls
-          loop
-          muted
-          inline
-        }
       }
     }
     set {
