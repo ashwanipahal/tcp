@@ -4,7 +4,10 @@ import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules
 import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
-import { setCampaignId } from '../../../../../../../core/src/analytics/actions';
+import {
+  setCampaignId,
+  setInternalCampaignId,
+} from '../../../../../../../core/src/analytics/actions';
 import { toggleCountrySelectorModal } from '../../Header/molecules/CountrySelector/container/CountrySelector.actions';
 
 HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
@@ -71,6 +74,7 @@ const mapDispatchToProps = dispatch => {
     openEmailSignUpModal: () => dispatch(toggleEmailSignupModal({ isModalOpen: true })),
     openSmsSignUpModal: () => dispatch(toggleSmsSignupModal({ isModalOpen: true })),
     setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
+    setInternalCampaignId: campaignId => dispatch(setInternalCampaignId(campaignId)),
   };
 };
 
