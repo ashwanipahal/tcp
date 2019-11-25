@@ -82,10 +82,19 @@ const onRenderHeader = data => {
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   } = data;
+
+  let appliedfilters = false;
+  appliedfilters =
+    filtersLength &&
+    Object.keys(filtersLength).some(key => {
+      return filtersLength[key] > 0;
+    });
+
   return (
     <ListHeaderContainer>
-      {(totalProductsCount > 1 || isFavorite) && (
+      {(totalProductsCount > 1 || appliedfilters || isFavorite) && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -146,6 +155,7 @@ const ProductListView = ({
   labelsFavorite,
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
+  filtersLength,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -170,6 +180,7 @@ const ProductListView = ({
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   };
   return (
     <ScrollView>

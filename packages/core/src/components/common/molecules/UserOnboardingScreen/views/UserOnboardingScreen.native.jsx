@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, Modal } from 'react-native';
+import { View, Modal, Platform } from 'react-native';
+import CookieManager from 'react-native-cookies';
 
 import GuestLoginOverview from '@tcp/core/src/components/features/account/common/molecule/GuestLoginModule';
 
@@ -30,6 +31,20 @@ const HERO_CAROUSEL_MODULE_HEIGHT = 317;
 const CAROUSEL_MODULE_WIDTH = getScreenWidth();
 
 const { IMG_DATA, CAROUSEL_OPTIONS } = config;
+
+// Set the login cookie
+const setIOSLoginCookie = () => {
+  if (Platform.OS === 'ios') {
+    // save cookies in the async storage for ios to persist login
+    CookieManager.getAll().then(res => {
+      Object.keys(res).forEach(key => {
+        if (key.startsWith('WC_')) {
+          setValueInAsyncStorage(key, res[key].value);
+        }
+      });
+    });
+  }
+};
 
 /* Carousel slide render function for Hero Image Carousel */
 const renderHeroImgCarousel = carouselImg => {
@@ -113,6 +128,7 @@ const UserOnboardingScreen = props => {
   useEffect(() => {
     if (isUserLoggedIn) {
       setShowMainModal(false);
+      setIOSLoginCookie();
     }
   }, [isUserLoggedIn]);
 
