@@ -1,7 +1,9 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetUserInfo } from '../../User/container/User.actions';
+import CONSTANTS from '../../User/User.constants';
 import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
@@ -29,6 +31,11 @@ export function* logoutSaga() {
           },
         })
       );
+      yield put(
+        setClickAnalyticsData({
+          customEvents: ['event80'],
+        })
+      );
       yield put(BAG_PAGE_ACTIONS.getOrderDetails());
       yield put(clearCouponTTL());
       if (!isMobileApp()) {
@@ -45,6 +52,10 @@ export function* logoutSaga() {
           scrollPage();
         }
       }
+
+      // Trgigger analytics event after reset user data
+      yield take(CONSTANTS.RESET_USER_INFO);
+      yield put(trackPageView());
     }
   } catch (err) {
     if (!isMobileApp()) {
