@@ -509,6 +509,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {

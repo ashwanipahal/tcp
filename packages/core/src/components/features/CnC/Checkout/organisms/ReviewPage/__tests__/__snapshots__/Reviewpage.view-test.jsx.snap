@@ -28,6 +28,7 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
+    bagLoading={false}
     footerBody={
       Array [
         undefined,
@@ -101,6 +102,7 @@ exports[`ReviewPageVanilla component should renders correctly when not routing d
   />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
+    bagLoading={false}
     footerBody={
       Array [
         undefined,

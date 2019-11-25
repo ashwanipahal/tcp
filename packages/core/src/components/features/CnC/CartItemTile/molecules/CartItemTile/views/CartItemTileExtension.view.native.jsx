@@ -180,10 +180,14 @@ const PriceOnReviewPage = productDetail => {
   );
 };
 
-const heartIcon = isBagPageSflSection => {
+const heartIcon = (isBagPageSflSection, handleAddToWishlist) => {
   if (!isBagPageSflSection) return null;
   return (
-    <HeartIcon onPress={() => {}}>
+    <HeartIcon
+      onPress={() => {
+        handleAddToWishlist();
+      }}
+    >
       <Image data-locator="heartIcon" source={heart} height={13} width={15} />
     </HeartIcon>
   );

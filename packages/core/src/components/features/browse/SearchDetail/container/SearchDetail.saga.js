@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import makeSearch from '@tcp/core/src/services/abstractors/common/searchBar';
 import SLP_CONSTANTS from './SearchDetail.constants';
@@ -68,7 +68,7 @@ export function* fetchSlpProducts({ payload }) {
       );
     }
     if (res) {
-      yield put(setListingFirstProductsPage({ ...res }));
+      yield putResolve(setListingFirstProductsPage({ ...res }));
     }
     yield put(
       setSlpLoadingState({
@@ -79,6 +79,13 @@ export function* fetchSlpProducts({ payload }) {
     );
   } catch (err) {
     logger.error(err);
+    yield put(
+      setSlpLoadingState({
+        isLoadingMore: false,
+        isScrollToTop: false,
+        isSearchResultsAvailable: true,
+      })
+    );
   }
 }
 

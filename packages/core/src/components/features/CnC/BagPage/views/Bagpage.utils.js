@@ -38,7 +38,8 @@ const formatBagProductsData = cartOrderItems => {
       const productDetail = getProductDetails(tile);
       const {
         itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-        productInfo: { skuId, upc, productPartNumber },
+        productInfo: { skuId, upc, productPartNumber, generalProductId },
+        miscInfo: { store },
       } = productDetail;
 
       const prodData = {
@@ -47,12 +48,15 @@ const formatBagProductsData = cartOrderItems => {
         name,
         price: offerPrice,
         extPrice: offerPrice,
-        sflExtPrice: offerPrice,
+        paidPrice: offerPrice,
         listPrice,
         partNumber: productPartNumber,
         size,
         upc,
         sku: skuId.toString(),
+        pricingState: 'full price',
+        colorId: generalProductId,
+        storeId: store,
       };
       productsData.push(prodData);
       return prodData;
@@ -61,11 +65,12 @@ const formatBagProductsData = cartOrderItems => {
   return productsData;
 };
 
-const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems) => {
+const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems, fromMiniBag) => {
   const productsData = formatBagProductsData(cartOrderItems);
   setClickAnalyticsDataBag({
     customEvents: ['scView', 'scOpen', 'event80'],
     products: productsData,
+    pageNavigationText: fromMiniBag ? 'header-cart' : '',
   });
 };
 
@@ -81,6 +86,12 @@ const getDefaultStateValues = () => {
 
 const onPageUnload = () => {
   scrollPage();
+};
+
+const handleChangeActiveSection = (sectionName, scope) => {
+  scope.setState({
+    activeSection: sectionName,
+  });
 };
 
 const BagPagePropTypes = {
@@ -100,7 +111,7 @@ const BagPagePropTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
-  isBagPage: PropTypes.bool,
+  isBagPage: PropTypes.bool.isRequired,
 };
 
 const CarouselOptions = {
@@ -121,4 +132,5 @@ export default {
   onPageUnload,
   BagPagePropTypes,
   CarouselOptions,
+  handleChangeActiveSection,
 };

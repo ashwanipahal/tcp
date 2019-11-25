@@ -15,7 +15,11 @@ const OrderItemsList = ({ className, ...otherProps }) => {
     <BodyCopy component="div" className={className}>
       <Row fullBleed>
         {items.map((item, index) => (
-          <Col className="elem-pt-XL" colSize={{ large: 6, medium: 4, small: 6 }}>
+          <Col
+            ignoreGutter={(index + 1) % 2 === 0 ? { large: true, medium: true } : {}}
+            className="elem-pt-XL"
+            colSize={{ large: 6, medium: 4, small: 6 }}
+          >
             <OrderItem key={index.toString()} {...{ item }} {...otherProps} />
           </Col>
         ))}

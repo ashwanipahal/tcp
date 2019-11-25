@@ -79,8 +79,11 @@ export default function create(store) {
 
     pageType: {
       get() {
-        const { pageData } = store.getState();
-        return pageData.pageType ? pageData.pageType : pageData.pageName;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData.pageType
+          ? clickActionAnalyticsData.pageType
+          : pageData.pageType;
       },
     },
 
@@ -98,13 +101,21 @@ export default function create(store) {
 
     pageSection: {
       get() {
-        return store.getState().pageData.pageSection;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData.pageSection
+          ? clickActionAnalyticsData.pageSection
+          : pageData.pageSection;
       },
     },
 
     pageSubSubSection: {
       get() {
-        return store.getState().pageData.pageSection;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData.pageSubSection
+          ? clickActionAnalyticsData.pageSubSection
+          : pageData.pageSubSection;
       },
     },
 
@@ -171,9 +182,13 @@ export default function create(store) {
 
     pageNavigationText: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const pageNavigationText = clickActionAnalyticsData.pageNavigationText
+          ? clickActionAnalyticsData.pageNavigationText
+          : pageData.pageNavigationText;
+
+        return pageNavigationText || '';
       },
     },
 

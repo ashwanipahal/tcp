@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
@@ -28,6 +29,7 @@ const renderItem = ({
   labels,
   navigation,
   isLoggedIn,
+  toastMessage,
 }) => {
   return (
     <OutfitProduct
@@ -41,6 +43,7 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      toastMessage={toastMessage}
     />
   );
 };
@@ -87,6 +90,8 @@ const OutfitDetailsView = props => {
     isLoggedIn,
     outfitId,
     pdpLabels,
+    unavailableCount,
+    toastMessage,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -115,10 +120,18 @@ const OutfitDetailsView = props => {
             labels,
             navigation,
             isLoggedIn,
+            toastMessage,
           })
         }
       />
-
+      {!!unavailableCount && (
+        <BodyCopyWithSpacing
+          spacingStyles="margin-top-XS margin-bottom-MED"
+          fontSize="fs16"
+          fontFamily="secondary"
+          text={`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+        />
+      )}
       <RecommendationWrapper>
         <Recommendations {...recommendationAttributes} />
         <Recommendations
@@ -137,6 +150,7 @@ const OutfitDetailsView = props => {
 OutfitDetailsView.propTypes = {
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
+  unavailableCount: PropTypes.number,
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
@@ -149,11 +163,13 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   outfitId: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
   item: PropTypes.shape({}),
   labels: {},
@@ -162,6 +178,7 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   outfitId: '',
   pdpLabels: {},
+  toastMessage: () => {},
 };
 
 export default OutfitDetailsView;
