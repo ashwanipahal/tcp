@@ -291,7 +291,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCC_interested
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event47",
+                ],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_interested
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
@@ -323,7 +335,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           target="_blank"
           underline={true}
         >
-          lbl_PLCC_noThanks
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event48",
+                ],
+                "eventName": "plcc checkout invite declined",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_noThanks
+          </Connect(Component)>
         </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
@@ -729,7 +753,19 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCCModal_applyNowCTA
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event47",
+                ],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCCModal_applyNowCTA
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
