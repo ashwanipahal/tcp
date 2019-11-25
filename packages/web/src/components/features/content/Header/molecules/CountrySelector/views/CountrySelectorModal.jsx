@@ -25,6 +25,13 @@ class CountrySelectorModal extends React.Component {
     this.toggleDisable = this.toggleDisable.bind(this);
   }
 
+  componentDidMount() {
+    const { getCountryListData, countriesMap } = this.props;
+    if (!countriesMap.length) {
+      getCountryListData();
+    }
+  }
+
   handleCountryChange = (event, selectedCountry) => {
     const { dispatch, updateCountry, countriesMap } = this.props;
     const currentCountry = countriesMap.find(country => country.id === selectedCountry);

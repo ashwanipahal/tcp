@@ -23,9 +23,6 @@ class CountrySelector extends React.Component {
   openModal = () => {
     const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
-    if (!countriesMap.length) {
-      this.getCountryListData();
-    }
   };
 
   closeModal = () => {
@@ -125,7 +122,7 @@ class CountrySelector extends React.Component {
 
     return (
       <div className={`${className} countrySelector`}>
-        {showInFooter ? (
+        {showInFooter && isModalOpen ? (
           <React.Fragment>
             <BodyCopy
               className="countrySelector__shipTo"
@@ -158,6 +155,7 @@ class CountrySelector extends React.Component {
                 language: savedLanguage,
                 currency: savedCurrency,
               }}
+              getCountryListData={this.getCountryListData}
             />
           </React.Fragment>
         ) : (
