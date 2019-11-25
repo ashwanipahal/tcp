@@ -15,14 +15,7 @@ import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view.
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({
-  labels,
-  accountlabels,
-  pointHistory,
-  navigation,
-  isFetching,
-  trackClickAction,
-}) => {
+const PointsHistory = ({ labels, accountlabels, pointHistory, navigation, isFetching }) => {
   let pointHistoryData = [];
 
   if (pointHistory && pointHistory.length > 3) {
@@ -104,7 +97,6 @@ const PointsHistory = ({
           underline
           anchorVariation="primary"
           onPress={() => {
-            trackClickAction({ linkname: 'pointHistoryLink' });
             navigation.navigate('PointsHistoryPage', {
               title: getLabelValue(accountlabels, 'lbl_common_points_history_heading', 'common'),
             });

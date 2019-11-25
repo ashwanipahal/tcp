@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { trackClick } from '@tcp/core/src/analytics/actions';
 import PointsHistory from '../views';
 import PointsHistoryList from '../views/PointsHistoryList.view';
 import {
@@ -53,9 +52,6 @@ export const mapDispatchToProps = dispatch => {
     },
     resetStateAction: () => {
       dispatch(resetState());
-    },
-    trackClickAction: data => {
-      dispatch(trackClick(data));
     },
   };
 };
