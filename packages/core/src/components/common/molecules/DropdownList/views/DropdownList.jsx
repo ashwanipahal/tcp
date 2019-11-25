@@ -12,12 +12,13 @@ const itemLists = (lastElementButton, count, index, item, activeValue, clickHand
     <li
       key={item.value}
       tabIndex={-1}
-      className={`dropdownliBottomBorder ${
-        activeValue === item.value ? 'dropdownActiveClass' : ''
-      }${isDisabledClass} ${lastElementButton && index === count - 2 ? 'dropDownItems' : ''}`}
+      className={`${activeValue === item.value ? 'dropdownActiveClass' : ''}${isDisabledClass} ${
+        lastElementButton && index === count - 2 ? 'dropDownItems' : ''
+      }`}
     >
       <BodyCopy
         component="div"
+        className="dropdownliBottomBorder"
         role="link"
         key={item.value}
         onClick={e => clickHandler(e, item.value, item.title)}

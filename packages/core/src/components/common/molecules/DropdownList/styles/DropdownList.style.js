@@ -32,8 +32,8 @@ const dropDownlist = css`
     background-image: url(${activeIcon});
     background-repeat: no-repeat;
     position: absolute;
-    right: 0;
     top: 18%;
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .dropDownListwrapper {
@@ -58,12 +58,6 @@ const dropDownlist = css`
   }
 
   .ulBorderWithLastRow li:last-child {
-    /* position: absolute;
-    width: 93%;
-    height: 42px;
-    padding: 0:
-    left: 0;
-    bottom: 0; */
     border-bottom: none;
   }
 
