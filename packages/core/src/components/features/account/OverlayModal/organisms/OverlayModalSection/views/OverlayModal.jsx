@@ -154,7 +154,7 @@ class OverlayModal extends React.Component {
     this.body.style.overflow = 'hidden';
 
     /* istanbul ignore else */
-    if ((!showCondensedHeader || isAccountDrawer) && modal && modalTriangle) {
+    if ((!showCondensedHeader || this.isMobile) && modal && modalTriangle) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
