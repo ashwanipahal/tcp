@@ -128,7 +128,6 @@ export class StoreLanding extends PureComponent {
 }
 
 // StoreLanding.pageInfo = {
-//   name:'storelocator:',
 //   pageId: 'storelocator',
 //   pageData: {
 //     pageName: 'storelocator',
@@ -136,6 +135,19 @@ export class StoreLanding extends PureComponent {
 //     pageSection: 'storelocator',
 //     pageSubSection: 'storelocator',
 //   },
+// };
+// StoreLanding.getInitActions = () => initActions;
+// StoreLanding.getInitialProps = (pageProps) => {
+//   return {
+//     ...pageProps,
+//     ...{
+//       pageData: {
+//         pageName: 'storelocator',
+//         pageSection: 'header',
+//         loadAnalyticsOnload: false,
+//       },
+//     },
+//   }
 // };
 
 StoreLanding.propTypes = {
