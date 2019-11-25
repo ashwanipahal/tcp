@@ -34,6 +34,7 @@ describe('Create Account Saga', () => {
       };
       createAccountGen.next(response);
       createAccountGen.next();
+      createAccountGen.next();
       createAccountGen.next(response);
       const putDescriptor = createAccountGen.next().value;
       expect(putDescriptor).toEqual(put(getUserInfo()));
@@ -52,6 +53,7 @@ describe('Create Account Saga', () => {
       };
 
       createAccountGen.next(response);
+      createAccountGen.next();
       createAccountGen.next();
       createAccountGen.next();
       createAccountGen.next();
