@@ -1,5 +1,5 @@
 import React from 'react';
-import { WebView } from 'react-native-webview';
+import { RichText } from '@tcp/core/src/components/common/atoms';
 import Modal from '../../../../../../common/molecules/Modal';
 import { ModalHeaderStyle } from '../styles/CouponDetailModal.style.native';
 
@@ -15,8 +15,16 @@ class CouponHelpModal extends React.PureComponent<Props> {
         closeIconDataLocator="added-to-bg-close"
         animationType="slide"
         headerStyle={ModalHeaderStyle}
+        heading=" "
       >
-        <WebView source={{ html: labels.NEED_HELP_RICH_TEXT }} />
+        <RichText
+          source={{
+            html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${
+              labels.NEED_HELP_RICH_TEXT
+            }</body></html>`,
+          }}
+          isApplyDeviceHeight
+        />
       </Modal>
     );
   }

@@ -7,6 +7,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
     error=""
     fontSize=""
     fontWeight=""
+    isEspot={false}
   />
   <Styled(View)>
     <Styled(View)>

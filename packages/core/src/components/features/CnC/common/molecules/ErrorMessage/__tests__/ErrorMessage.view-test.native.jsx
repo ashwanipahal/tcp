@@ -9,6 +9,7 @@ describe('ErrorMessage Component', () => {
   beforeEach(() => {
     props = {
       error: 'This is test error',
+      isEspot: false,
     };
   });
 

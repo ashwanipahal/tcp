@@ -10,27 +10,27 @@ exports[`Help Coupon Modal should call correctly 1`] = `
       "maxHeight": 50,
     }
   }
+  heading="hello"
   inheritedStyles=""
   isOpen={false}
   isOverlay={false}
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
 >
-  <WebView
-    cacheEnabled={true}
-    javaScriptEnabled={true}
-    originWhitelist={
-      Array [
-        "http://*",
-        "https://*",
-      ]
-    }
-    source={
-      Object {
-        "html": undefined,
+  <Styled(View)>
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={true}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>undefined</body></html>",
+        }
       }
-    }
-    useSharedProcessPool={true}
-  />
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
 </ModalNative>
 `;
