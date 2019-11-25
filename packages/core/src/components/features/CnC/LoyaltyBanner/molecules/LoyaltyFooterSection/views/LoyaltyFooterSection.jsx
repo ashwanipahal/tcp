@@ -34,7 +34,7 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
           pageType: pageData,
           pageSection: pageData,
           pageSubSection: pageData,
-          pageName: `gl:${pageData}`,
+          pageName: pageData,
           customEvents: ['event116'],
         }}
       >
@@ -59,7 +59,7 @@ const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
     >
       <ClickTracker
         clickData={{
-          pageName: 'gl:shopping bag',
+          pageName: 'shopping bag',
           customEvents: ['event117'],
         }}
       >

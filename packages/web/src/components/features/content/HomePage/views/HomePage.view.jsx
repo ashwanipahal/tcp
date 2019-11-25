@@ -124,7 +124,7 @@ const HomePageView = dynamic({
       pageName,
       setCampaignId,
       setInternalCampaignId,
-      // seoData,
+      seoData,
     } = compProps;
 
     return (
