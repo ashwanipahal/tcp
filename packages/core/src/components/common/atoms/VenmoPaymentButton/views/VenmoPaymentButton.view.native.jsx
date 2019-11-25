@@ -3,12 +3,7 @@ import { View, NativeModules } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
 import logger from '../../../../../utils/loggerInstance';
-import {
-  modes,
-  constants,
-  VENMO_USER_STATES,
-  VENMO_MOCK_DATA,
-} from '../container/VenmoPaymentButton.util';
+import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 import { isAndroid } from '../../../../../utils/index.native';
 
@@ -72,8 +67,7 @@ export class VenmoPaymentButton extends Component {
     if (isAndroid()) {
       this.authorizeVenmoPaymentApp();
     } else {
-      // Local Test Data without bridge, required for local development and testing
-      this.handleVenmoSuccess(VENMO_MOCK_DATA);
+      this.paymentVenmo();
     }
   };
 
@@ -149,6 +143,18 @@ export class VenmoPaymentButton extends Component {
       }
     );
   };
+
+  // iOS Venmo Initialization and authorization
+  paymentVenmo = () => {
+    NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
+      if (val) {
+        this.handleVenmoSuccess(val);
+      } else {
+        this.handleVenmoError(errorMessage);
+      }
+    });
+  };
+
   /**
    * @description - condition to display Venmo CTA
    */
