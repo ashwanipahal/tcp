@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
+import { withRouter } from 'next/router'; // eslint-disable-line
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
 import {
@@ -10,6 +11,7 @@ import {
   createNewWishListMoveItemAction,
   deleteWishListAction,
   getActiveWishlistAction,
+  getActiveWishlistGuestAction,
   createNewWishListAction,
   setLastDeletedItemIdAction,
   updateWishListAction,
@@ -46,8 +48,18 @@ class FavoritesContainer extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { loadWishList } = this.props;
+    const {
+      loadWishList,
+      getActiveWishlistGuest,
+      router: {
+        query: { wishlistId, guestAccessKey },
+      },
+    } = this.props;
     loadWishList({ isDataLoading: true });
+    if (wishlistId && guestAccessKey) {
+      const payload = { wishlistId, guestAccessKey };
+      getActiveWishlistGuest({ wishlistId, guestAccessKey });
+    }
   }
 
   onFilterSelection = filteredId => {
@@ -212,6 +224,7 @@ const mapDispatchToProps = dispatch => {
     deleteWishList: wishListId => {
       dispatch(deleteWishListAction(wishListId));
     },
+    getActiveWishlistGuest: payload => dispatch(getActiveWishlistGuestAction(payload)),
     getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
     createNewWishList: formData => {
       dispatch(createNewWishListAction(formData));
@@ -276,9 +289,11 @@ FavoritesContainer.defaultProps = {
   wishlistShareStatus: false,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FavoritesContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(FavoritesContainer)
+);
 
 export { FavoritesContainer as FavoritesContainerVanilla };

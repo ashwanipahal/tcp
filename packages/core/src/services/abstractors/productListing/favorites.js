@@ -216,14 +216,14 @@ const newArrivalItem = item => (item.itemTCPProductInd || '').toLowerCase() === 
 
 /**
  * @function getWishListbyId
- * @param {String} wishListId - Id of the wishlist you are moving the item from
+ * @param {String} wishlistId - Id of the wishlist you are moving the item from
  * @param {String} userName - Backend is not going to return a default wishlist, so if the service returns nothing we need to fake one.
  * @param {String} guestAccessKey - guestAccessKey for shared wishlist
  * @see https://childrensplace.atlassian.net/browse/DT-24970
  * @see https://childrensplace.atlassian.net/wiki/display/DT/TCP+API+Specifications?preview=/44072969/69013363/TCP%20-%20API%20Design%20Specification%20-%20Category-Checkout_getWishListById_v1.docx
  */
 export const getWishListbyId = ({
-  wishListId,
+  wishlistId,
   userName,
   guestAccessKey,
   isCanada,
@@ -231,13 +231,13 @@ export const getWishListbyId = ({
 }) => {
   const payload = {
     header: {
-      externalId: wishListId,
+      externalId: wishlistId,
       guestAccessKey,
     },
     webService: endpoints.getWishListbyId,
   };
 
-  if (wishListId === FAKE_WISHLIST_ID) {
+  if (wishlistId === FAKE_WISHLIST_ID) {
     return {
       id: FAKE_WISHLIST_ID,
       displayName: `${userName}'s Favorites`,
@@ -248,7 +248,6 @@ export const getWishListbyId = ({
   }
 
   const { isUSStore } = getAPIConfig();
-
   return executeStatefulAPICall(payload)
     .then(res => {
       if (responseContainsErrors(res)) {

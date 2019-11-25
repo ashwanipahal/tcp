@@ -39,20 +39,24 @@ import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.a
 import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
 
-export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
+export function* loadActiveWishlistByGuestKey({ payload }) {
+  const { wishlistId, guestAccessKey } = payload;
   try {
     const state = yield select();
-    const userName = getUserContactInfo(state).get('firstName');
-    const isCanadaCheck = isCanada();
 
+    // TO DO Fix getUser Selector
+    // const userName = getUserContactInfo(state).get('firstName');
+    const userName = 'sid';
+    const isCanadaCheck = isCanada();
     const wishlistItems = yield call(getWishListbyId, {
-      wishListId,
+      wishlistId,
       userName,
       guestAccessKey,
       isCanada: isCanadaCheck,
+      imageGenerator: processHelperUtil.getImgPath,
     });
-    getSetIsWishlistReadOnlyAction(true);
-    getSetActiveWishlistAction(wishlistItems);
+    yield put(getSetIsWishlistReadOnlyAction(true));
+    yield put(setActiveWishlistAction(wishlistItems));
     return wishlistItems;
   } catch (err) {
     return [];
@@ -315,6 +319,10 @@ function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
   yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
   yield takeLatest(FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST, loadActiveWishlist);
+  yield takeLatest(
+    FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST_GUEST,
+    loadActiveWishlistByGuestKey
+  );
   yield takeLatest(FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST, createNewWishList);
   yield takeLatest(FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST_MOVE_ITEM, createNewWishListMoveItem);
   yield takeLatest(FAVORITES_CONSTANTS.DELETE_WISHLIST, deleteWishListById);
