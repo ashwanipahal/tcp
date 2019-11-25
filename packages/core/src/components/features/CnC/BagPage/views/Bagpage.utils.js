@@ -88,6 +88,12 @@ const onPageUnload = () => {
   scrollPage();
 };
 
+const handleChangeActiveSection = (sectionName, scope) => {
+  scope.setState({
+    activeSection: sectionName,
+  });
+};
+
 const BagPagePropTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
@@ -105,7 +111,7 @@ const BagPagePropTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
-  isBagPage: PropTypes.bool,
+  isBagPage: PropTypes.bool.isRequired,
 };
 
 const CarouselOptions = {
@@ -126,4 +132,5 @@ export default {
   onPageUnload,
   BagPagePropTypes,
   CarouselOptions,
+  handleChangeActiveSection,
 };

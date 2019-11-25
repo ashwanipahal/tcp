@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
@@ -37,6 +38,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isPayPalEnabled,
       paypalButtonHeight,
       setIsPaypalBtnHidden,
+      bagLoading,
     } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
@@ -47,7 +49,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
     }
     return (
       !isPayPalHidden &&
-      isPayPalEnabled && (
+      !bagLoading &&
+      (isPayPalEnabled && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
           <PayPalButton
             className="payPal-button"
@@ -55,7 +58,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             height={paypalButtonHeight}
           />
         </div>
-      )
+      ))
     );
   }
 
@@ -77,33 +80,42 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isAddedToBag,
       isBagPage,
       isMiniBag,
+      bagLoading,
     } = this.props;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
-        <Button
-          data-locator={getLocator('addedtobag_btncheckout')}
-          className="checkout"
-          onClick={() => {
-            setClickAnalyticsDataCheckout({
-              customEvents: ['event8'],
-              products: productsData,
-              eventName: 'checkout login click',
-            });
-            handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
-          }}
-        >
-          <BodyCopy
-            component="span"
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs14"
-          >
-            {labels.checkout}
-          </BodyCopy>
-        </Button>
-      </ClickTracker>
+      <>
+        {!bagLoading ? (
+          <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
+            <Button
+              data-locator={getLocator('addedtobag_btncheckout')}
+              className="checkout"
+              onClick={() => {
+                setClickAnalyticsDataCheckout({
+                  customEvents: ['event8'],
+                  products: productsData,
+                  eventName: 'checkout login click',
+                });
+                handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
+              }}
+            >
+              <BodyCopy
+                component="span"
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs14"
+              >
+                {labels.checkout}
+              </BodyCopy>
+            </Button>
+          </ClickTracker>
+        ) : (
+          <div className="checkout">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
     );
   }
 
@@ -115,7 +127,16 @@ class AddedToBagActions extends React.PureComponent<Props> {
       handleCartCheckout,
       isEditingItem,
       isUSSite,
+      bagLoading,
     } = this.props;
+    if (bagLoading) {
+      return (
+        <div className="venmo-wrapper">
+          <LoaderSkelton />
+        </div>
+      );
+    }
+
     if (!isInternationalShipping && isVenmoEnabled && showVenmo && isUSSite) {
       return (
         <div className="venmo-wrapper">
