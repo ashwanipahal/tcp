@@ -6,6 +6,7 @@ import {
   getStoresByCoordinates,
   setFavoriteStoreActn,
   getFavoriteStoreActn,
+  initActions,
 } from './StoreLanding.actions';
 import { setClickAnalyticsData, trackClick } from '../../../../../analytics/actions';
 import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
@@ -126,6 +127,28 @@ export class StoreLanding extends PureComponent {
     );
   }
 }
+
+StoreLanding.getInitActions = () => initActions;
+
+StoreLanding.pageInfo = {
+  pageId: 'storelocator',
+  name: 'storelocator',
+};
+
+StoreLanding.getInitialProps = (reduxProps, pageProps) => {
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'storelocator',
+        pageType: 'companyinfo',
+        pageSection: 'storelocator',
+        pageSubSection: 'storelocator',
+        pageNavigationText: 'header-find a store',
+      },
+    },
+  };
+};
 
 StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,

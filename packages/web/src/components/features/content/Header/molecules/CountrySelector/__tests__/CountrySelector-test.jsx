@@ -38,7 +38,7 @@ describe('Country Selector Component', () => {
     currenciesMap: defaultCurrencies,
     country: 'US',
     currency: 'USD',
-    isModalOpen: false,
+    isModalOpen: true,
     savedCountry: 'US',
     savedCurrency: 'USD',
     savedLanguage: 'en',
