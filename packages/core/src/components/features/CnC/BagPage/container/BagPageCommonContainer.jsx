@@ -165,7 +165,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
-        // fromMiniBag={fromMiniBag}
+        fromMiniBag={fromMiniBag}
         bagLoading={bagLoading}
         isVenmoEnabled={isVenmoEnabled}
         isPayPalEnabled={isPayPalEnabled}
