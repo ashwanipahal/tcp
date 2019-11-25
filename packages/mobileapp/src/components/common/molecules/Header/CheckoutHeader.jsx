@@ -101,7 +101,6 @@ class CheckoutHeader extends React.PureComponent {
                   fontWeight="semibold"
                   text={isExpressCheckoutPage ? expressCheckoutLbl : checkoutHeaderLabel}
                   color="gray.900"
-                  textAlign="center"
                 />
               </CheckoutHeaderTextSection>
             </CheckoutHeaderContainer>

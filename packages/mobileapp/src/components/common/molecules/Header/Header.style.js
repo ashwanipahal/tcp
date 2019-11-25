@@ -137,19 +137,17 @@ export const Touchable = styled.TouchableOpacity`
 `;
 
 export const CheckoutHeaderContainer = styled.View`
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
   background: ${props => props.theme.colorPalette.white};
 `;
 
 export const CheckoutHeaderTextSection = styled.View`
   height: 54px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
 `;
