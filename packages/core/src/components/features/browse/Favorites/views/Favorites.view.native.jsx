@@ -11,7 +11,6 @@ import Constants from '@tcp/core/src/components/common/molecules/Recommendations
 import { ShareDialog } from 'react-native-fbsdk';
 import {
   PageContainer,
-  BrandFilterContainer,
   RowContainer,
   DropDownContainer,
   ShareDropDownContainer,
@@ -263,46 +262,36 @@ class FavoritesView extends React.PureComponent {
   };
 
   renderBrandFilter = () => {
-    const { tcpSelected, gymSelected, labels, isBothTcpAndGymProductAreAvailable } = this.props;
+    const { tcpSelected, gymSelected, isBothTcpAndGymProductAreAvailable } = this.props;
     if (!isBothTcpAndGymProductAreAvailable) {
       return null;
     }
     return (
-      <BrandFilterContainer margins="48px 0 0 0">
-        <BodyCopy
-          dataLocator="fav_brand_title"
-          mobileFontFamily="secondary"
+      <RowContainer margins="12px 0 0 0">
+        <InputCheckbox
+          dataLocator={this.brandOptions[0].dataLocator}
+          execOnChangeByDefault={false}
+          rightText={this.brandOptions[0].brandLabel}
+          isChecked={tcpSelected}
           fontSize="fs14"
-          fontWeight="regular"
-          color="gray.1700"
-          text={labels.lbl_fav_brand}
+          input={{
+            value: this.brandOptions[0].checked,
+            onChange: isChecked => this.onSelectBrandType(this.brandOptions[0].name, isChecked),
+          }}
         />
-        <RowContainer margins="10px 0 0 0">
-          <InputCheckbox
-            dataLocator={this.brandOptions[0].dataLocator}
-            execOnChangeByDefault={false}
-            rightText={this.brandOptions[0].brandLabel}
-            isChecked={tcpSelected}
-            fontSize="fs14"
-            input={{
-              value: this.brandOptions[0].checked,
-              onChange: isChecked => this.onSelectBrandType(this.brandOptions[0].name, isChecked),
-            }}
-          />
-          <InputCheckbox
-            margins="0 0 0 19px"
-            dataLocator={this.brandOptions[1].dataLocator}
-            execOnChangeByDefault={false}
-            rightText={this.brandOptions[1].brandLabel}
-            isChecked={gymSelected}
-            fontSize="fs14"
-            input={{
-              value: this.brandOptions[1].checked,
-              onChange: isChecked => this.onSelectBrandType(this.brandOptions[1].name, isChecked),
-            }}
-          />
-        </RowContainer>
-      </BrandFilterContainer>
+        <InputCheckbox
+          margins="0 0 0 19px"
+          dataLocator={this.brandOptions[1].dataLocator}
+          execOnChangeByDefault={false}
+          rightText={this.brandOptions[1].brandLabel}
+          isChecked={gymSelected}
+          fontSize="fs14"
+          input={{
+            value: this.brandOptions[1].checked,
+            onChange: isChecked => this.onSelectBrandType(this.brandOptions[1].name, isChecked),
+          }}
+        />
+      </RowContainer>
     );
   };
 
@@ -488,6 +477,8 @@ class FavoritesView extends React.PureComponent {
       activeWishList,
       isKeepAliveEnabled,
       outOfStockLabels,
+      resetBrandFilters,
+      isBothTcpAndGymProductAreAvailable,
     } = this.props;
 
     const { selectedShareOption } = this.state;
@@ -534,6 +525,9 @@ class FavoritesView extends React.PureComponent {
             defaultWishList={defaultWishList}
             activeWishList={activeWishList}
             onValueChange={itemValue => {
+              if (resetBrandFilters) {
+                resetBrandFilters();
+              }
               this.handleWishlistClick(itemValue);
             }}
             variation="secondary"
@@ -601,7 +595,7 @@ class FavoritesView extends React.PureComponent {
               isFavorite
               currencySymbol={currencySymbol}
               labelsFilter={labels}
-              labels={labels}
+              labelsFavorite={labels}
               onQuickViewOpenClick={onQuickViewOpenClick}
               selectedColorProductId={selectedColorProductId}
               setLastDeletedItemId={setLastDeletedItemId}
@@ -613,6 +607,7 @@ class FavoritesView extends React.PureComponent {
               labelsPlpTiles={labelsPlpTiles}
               isKeepAliveEnabled={isKeepAliveEnabled}
               outOfStockLabels={outOfStockLabels}
+              isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
             />
           </View>
         )}
@@ -653,6 +648,7 @@ FavoritesView.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   userEmail: PropTypes.string.isRequired,
   sendWishListEmail: PropTypes.func.isRequired,
+  resetBrandFilters: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

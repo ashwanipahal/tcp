@@ -127,24 +127,40 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
+        role="img"
         textAlign="left"
       >
-        <Barcode
-          background="#ffffff"
-          displayValue={true}
-          font="Nunito"
-          fontOptions=""
-          fontSize={20}
-          format="CODE128"
-          height={100}
-          lineColor="#000000"
-          margin={10}
-          renderer="svg"
-          textAlign="center"
-          textMargin={2}
-          textPosition="bottom"
-          width={2}
-        />
+        <Styled(BodyCopy)
+          aria-hidden={true}
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Barcode
+            aria-hidden={true}
+            background="#ffffff"
+            displayValue={true}
+            font="Nunito"
+            fontOptions=""
+            fontSize={20}
+            format="CODE128"
+            height={100}
+            lineColor="#000000"
+            margin={10}
+            renderer="svg"
+            textAlign="center"
+            textMargin={2}
+            textPosition="bottom"
+            width={2}
+          />
+        </Styled(BodyCopy)>
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
@@ -578,24 +594,40 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
+        role="img"
         textAlign="left"
       >
-        <Barcode
-          background="#ffffff"
-          displayValue={true}
-          font="Nunito"
-          fontOptions=""
-          fontSize={20}
-          format="CODE128"
-          height={100}
-          lineColor="#000000"
-          margin={10}
-          renderer="svg"
-          textAlign="center"
-          textMargin={2}
-          textPosition="bottom"
-          width={2}
-        />
+        <Styled(BodyCopy)
+          aria-hidden={true}
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Barcode
+            aria-hidden={true}
+            background="#ffffff"
+            displayValue={true}
+            font="Nunito"
+            fontOptions=""
+            fontSize={20}
+            format="CODE128"
+            height={100}
+            lineColor="#000000"
+            margin={10}
+            renderer="svg"
+            textAlign="center"
+            textMargin={2}
+            textPosition="bottom"
+            width={2}
+          />
+        </Styled(BodyCopy)>
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)
@@ -812,24 +844,40 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
+        role="img"
         textAlign="left"
       >
-        <Barcode
-          background="#ffffff"
-          displayValue={true}
-          font="Nunito"
-          fontOptions=""
-          fontSize={20}
-          format="CODE128"
-          height={100}
-          lineColor="#000000"
-          margin={10}
-          renderer="svg"
-          textAlign="center"
-          textMargin={2}
-          textPosition="bottom"
-          width={2}
-        />
+        <Styled(BodyCopy)
+          aria-hidden={true}
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Barcode
+            aria-hidden={true}
+            background="#ffffff"
+            displayValue={true}
+            font="Nunito"
+            fontOptions=""
+            fontSize={20}
+            format="CODE128"
+            height={100}
+            lineColor="#000000"
+            margin={10}
+            renderer="svg"
+            textAlign="center"
+            textMargin={2}
+            textPosition="bottom"
+            width={2}
+          />
+        </Styled(BodyCopy)>
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
     <Styled(ErrorMessage)

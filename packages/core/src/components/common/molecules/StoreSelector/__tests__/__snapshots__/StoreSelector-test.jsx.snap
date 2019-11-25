@@ -509,6 +509,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -9548,6 +9549,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {

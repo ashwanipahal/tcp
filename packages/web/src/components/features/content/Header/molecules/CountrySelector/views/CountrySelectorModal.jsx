@@ -26,10 +26,11 @@ class CountrySelectorModal extends React.Component {
   }
 
   componentDidMount() {
-    const { getCountryListData, countriesMap } = this.props;
+    const { getCountryListData, countriesMap, loadCountryModuleXData } = this.props;
     if (!countriesMap.length) {
       getCountryListData();
     }
+    loadCountryModuleXData();
   }
 
   handleCountryChange = (event, selectedCountry) => {
@@ -218,6 +219,8 @@ CountrySelectorModal.propTypes = {
   updateCurrency: PropTypes.func.isRequired,
   updatedCountry: PropTypes.string.isRequired,
   updatedCurrency: PropTypes.string.isRequired,
+  loadCountryModuleXData: PropTypes.func.isRequired,
+  getCountryListData: PropTypes.func.isRequired,
 };
 
 CountrySelectorModal.defaultPropTypes = {

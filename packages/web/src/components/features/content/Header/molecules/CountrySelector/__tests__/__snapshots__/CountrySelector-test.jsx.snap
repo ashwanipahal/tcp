@@ -91,6 +91,7 @@ exports[`Country Selector Component renders correctly 1`] = `
         },
       ]
     }
+    loadCountryModuleXData={[Function]}
     noteContent="sdfsdf"
     persistentSubmitErrors={false}
     pure={true}

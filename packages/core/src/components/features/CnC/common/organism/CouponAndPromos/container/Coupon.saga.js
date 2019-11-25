@@ -40,7 +40,7 @@ export function* applyCoupon({ payload }) {
       cartOrderItems.map(tile => {
         const productDetail = getProductDetails(tile);
         const {
-          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
           productInfo: { skuId, upc, productPartNumber },
         } = productDetail;
 
@@ -50,12 +50,12 @@ export function* applyCoupon({ payload }) {
           name,
           price: offerPrice,
           extPrice: offerPrice,
-          sflExtPrice: offerPrice,
           listPrice,
           partNumber: productPartNumber,
           size,
           upc,
           sku: skuId.toString(),
+          quantity: qty,
         };
         productsData.push(prodData);
         return prodData;
