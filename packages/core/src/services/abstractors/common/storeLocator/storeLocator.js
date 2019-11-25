@@ -8,10 +8,6 @@ import {
   getPersonalDataState,
   getUserLoggedInState,
 } from '../../../../components/features/account/User/container/User.selectors';
-import {
-  setFavStoreToLocalStorage,
-  getFavStoreFromLocalStorage,
-} from '../../../../components/features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const DEFAULT_RADIUS = 75;
 const STORE_TYPES = {
@@ -286,11 +282,8 @@ export const getFavoriteStore = (
   { skuId = null, geoLatLang: { lat, long } = {}, variantId, quantity },
   state
 ) => {
-  const favStoreFromStorage = JSON.parse(getFavStoreFromLocalStorage());
   const isUserLoggedIn = getUserLoggedInState(state);
-  const favStoreCondition =
-    favStoreFromStorage === null || Object.keys(favStoreFromStorage).length <= 0;
-  if (isUserLoggedIn && favStoreCondition) {
+  if (isUserLoggedIn) {
     const payloadData = {
       header: {
         action: 'get',
@@ -322,7 +315,7 @@ export const getFavoriteStore = (
       })
       .catch(errorHandler);
   }
-  return favStoreFromStorage;
+  return null;
 };
 
 /**
@@ -398,11 +391,9 @@ export const setFavoriteStore = (storeId, state, key = 'LOCATOR', store = {}) =>
 
     return executeStatefulAPICall(payloadData)
       .then(() => {
-        setFavStoreToLocalStorage(favStore);
         return favStore;
       })
       .catch(errorHandler);
   }
-  setFavStoreToLocalStorage(favStore);
   return favStore;
 };

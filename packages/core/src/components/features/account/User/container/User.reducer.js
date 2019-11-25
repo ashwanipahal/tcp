@@ -107,7 +107,9 @@ const UserReducer = (state = initialState, { type, payload }) => {
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     case USER_CONSTANTS.SET_DEFAULT_STORE:
-      return state.set('defaultStore', payload);
+      return state
+        .set('defaultStore', payload)
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_DEFAULT_STORE_TTL));
     case USER_CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION:
       return state.setIn(['personalData', 'plccCardId'], payload);
     case USER_CONSTANTS.RESPONSE_SET_PLCC_INFORMATION:
