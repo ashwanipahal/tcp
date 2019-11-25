@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
-import { isCanada } from '@tcp/core/src/utils';
+import { isCanada, readCookieMobileApp } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
+import { CART_ITEM_COUNTER, SFL_ITEM_COUNTER } from '@tcp/core/src/utils/cookie.util';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
@@ -56,13 +57,18 @@ export class BagPage extends React.Component {
     this.timer = null;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
 
+    const cartTotalCountCookie = await readCookieMobileApp(CART_ITEM_COUNTER);
+    const cartTotalCount = parseInt(cartTotalCountCookie || 0, 10);
+    const sflTotalCountCookie = await readCookieMobileApp(SFL_ITEM_COUNTER);
+    const sflTotalCount = parseInt(sflTotalCountCookie || 0, 10);
+
     this.setState({
       activeSection:
-        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+        !cartTotalCount && sflTotalCount && isShowSaveForLaterSwitch
           ? BAGPAGE_CONSTANTS.SFL_STATE
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });

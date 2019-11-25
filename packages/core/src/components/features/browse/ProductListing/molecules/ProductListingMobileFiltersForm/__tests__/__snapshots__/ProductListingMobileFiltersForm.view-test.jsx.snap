@@ -1962,8 +1962,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         >
           <Styled(Button)
             buttonVariation="fixed-width"
-            className="gallery-button-left"
+            className="gallery-button-left disable-clear-all-button"
             data-locator="view_gallery_button"
+            disabled={true}
             onClick={[Function]}
             type="button"
           />

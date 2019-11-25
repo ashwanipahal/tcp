@@ -7,7 +7,7 @@ import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
-import style, { customBreadCrumbStyle } from '../styles/CategoryListing.style';
+import style, { customBreadCrumbStyle, seoTextStyle } from '../styles/CategoryListing.style';
 import GlobalNavigationMenuDesktopL2 from '../../../ProductListing/molecules/GlobalNavigationMenuDesktopL2/views';
 import FixedBreadCrumbs from '../../../ProductListing/molecules/FixedBreadCrumbs/views';
 import CategoryPromoImages from '../../molecules/CategoryPromoImages';
@@ -71,6 +71,7 @@ class CategoryListing extends PureComponent {
                     description={seoText}
                     labels={labels}
                     className={`${className} seo-text`}
+                    inheritedStyles={seoTextStyle}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 12 }}>
