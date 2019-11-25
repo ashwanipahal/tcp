@@ -322,7 +322,7 @@ const OutfitDetailsView = ({
   }
 
   let skuId = null;
-  if (typeof selectedSizeName === 'string' && selectedSizeName !== null) {
+  if (typeof selectedSizeName === 'string' && selectedSizeName) {
     skuId = getMapSliceForSizeSkuID(colorProduct, selectedSizeName);
   }
   if (

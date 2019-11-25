@@ -52,7 +52,7 @@ const Product = props => {
   const isShowPriceRange = isShowPriceRangeKillSwitch;
 
   let skuId = null;
-  if (typeof size === 'string' && size !== null) {
+  if (typeof size === 'string' && size) {
     skuId = getMapSliceForSizeSkuID(colorProduct, size);
   }
 

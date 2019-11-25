@@ -207,7 +207,7 @@ class ProductDetailView extends React.PureComponent {
     };
     const keepAlive = isKeepAliveEnabled && currentColorEntry.miscInfo.keepAlive;
 
-    if (size !== null) {
+    if (size) {
       skuId = getMapSliceForSizeSkuID(currentColorEntry, size);
     }
 
