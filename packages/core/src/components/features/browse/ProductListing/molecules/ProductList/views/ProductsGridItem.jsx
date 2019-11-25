@@ -416,13 +416,7 @@ class ProductsGridItem extends React.PureComponent {
     if (productId) {
       const productIdParts = productId.split('_');
       const splitPdpUrl = pdpUrl.split('/p/')[1];
-      pageShortName = `product:${productIdParts[0]}:${splitPdpUrl
-        .replace(productIdParts[0], '')
-        .replace(productIdParts[1], '')
-        .split('-')
-        .join(' ')
-        .trim()
-        .toLowerCase()}`;
+      pageShortName = '';
     }
     const pageName = pageShortName;
     return itemNotAvailable ? (

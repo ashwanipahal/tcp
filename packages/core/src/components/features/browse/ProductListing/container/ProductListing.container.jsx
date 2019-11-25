@@ -288,7 +288,8 @@ function mapStateToProps(state) {
       state,
       productBlocks,
       plpGridPromos,
-      plpHorizontalPromos
+      plpHorizontalPromos,
+      4
     ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),

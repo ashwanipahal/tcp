@@ -73,7 +73,17 @@ const ProductList = props => {
       {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (item && item.itemType === 'gridPromo') {
-          return <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />;
+          return (
+            <div
+              className={
+                item.gridStyle === 'horizontal'
+                  ? `${className} horizontal-promo`
+                  : `${className} vertical-promo product-tile`
+              }
+            >
+              <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+            </div>
+          );
         }
         if (typeof item === 'string') {
           gridIndex = 0;

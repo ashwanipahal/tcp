@@ -1,4 +1,3 @@
-/* eslint-disable */
 import queryString from 'query-string';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { isMobileApp } from '../../../../../utils';
@@ -249,28 +248,33 @@ function getIsShowCategoryGrouping(state) {
   return isL2Category && isNotAppliedSort && isNotAppliedFilter;
 }
 
-export function getProductsAndTitleBlocks(state, productBlocks = [], gridPromo, horizontalPromo) {
+export function getProductsAndTitleBlocks(
+  state,
+  productBlocks = [],
+  gridPromo,
+  horizontalPromo,
+  rowSize
+) {
   const productsAndTitleBlocks = [];
   let lastCategoryName = null;
   const slots = [];
   const horizontalSlots = [];
-  const rowSize = 4;
 
   gridPromo.forEach(promoItem => {
-    console.log('promoItem', promoItem.slot);
+    // console.log('promoItem', promoItem.slot);
     const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
     slots.push(parseInt(slotNumber, 10));
   });
 
-  console.log('slots #$$$## ', slots);
+  // console.log('slots #$$$## ', slots);
 
   horizontalPromo.forEach(promoItem => {
-    console.log('horizontalPromo ', promoItem.slot);
+    // console.log('horizontalPromo ', promoItem.slot);
     const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
     horizontalSlots.push(parseInt(slotNumber, 10));
   });
 
-  console.log('horizontalSlots', horizontalSlots);
+  // console.log('horizontalSlots', horizontalSlots);
 
   let totalItemsAdded = 0;
 
@@ -278,12 +282,6 @@ export function getProductsAndTitleBlocks(state, productBlocks = [], gridPromo, 
   productBlocks.forEach(block => {
     const productsAndTitleBlock = [];
     let promoAddedInCurrentBlock = 0;
-    // let horizontalPromoAddedInCurrentBlock = 0;
-    // For each product in this block try to extract the category name if new
-    // if(productBlocks[blockIndex+1] && typeof productBlocks[blockIndex+1][0] === 'string') {
-    //   // New block is starting after this, in case you want to add a promo at the end, do it
-    //   console.log('New block is starting after this, in case you want to add a promo at the end, do it');
-    // }
     block.forEach((product, index) => {
       const { categoryName } = product.miscInfo;
 
@@ -329,25 +327,17 @@ export function getProductsAndTitleBlocks(state, productBlocks = [], gridPromo, 
       slot => slot < totalItemsAdded + productsAdded && slot > totalItemsAdded
     ).length;
     totalItemsAdded += productsAdded;
-    // console.log('promosAdded', promosAdded);
     totalItemsAdded += promosAdded;
-    // console.log('totalItemsAdded', totalItemsAdded);
-
-    // Check empty space at the end of block
-    // TODO - decide what to do in case there are empty slots and the promo is falling in one of the empty slots
-    // console.log('(productsAdded + promosAdded) % rowSize', (productsAdded + promosAdded) % rowSize);
-    // if((productsAdded + promosAdded) % rowSize > 0) {
-    // Incomplete row
-    // console.log('incomplete row !!!!!!!! ');
-    // console.log('blockIndex', blockIndex);
-    // console.log('productBlocks', productBlocks);
-    // console.log('productBlocks[blockIndex+1]', productBlocks[blockIndex+1]);
-    // console.log('productBlocks[blockIndex+1][0]', productBlocks[blockIndex+1] && productBlocks[blockIndex+1][0]);
-    // if(productBlocks[blockIndex+1] && typeof productBlocks[blockIndex+1][0] === 'string') {
-    //   // New block is starting after this, in case you want to add a promo at the end, do it
-    //   console.log('New block is starting after this, in case you want to add a promo at the end, do it');
-    // }
-    // }
+    // Check if the number of products and the promos count sum
+    // to understand the number of slots blank at the end of the block
+    const numberOfItemsInBlock = productsAdded + promosAdded;
+    const numberOfItemsInLastRow = numberOfItemsInBlock % rowSize;
+    if (numberOfItemsInLastRow !== 0) {
+      // There is space at the end of the block
+      // might be one of these slots were to be filled by promo
+      const emptySpaces = rowSize - numberOfItemsInLastRow;
+      totalItemsAdded += emptySpaces;
+    }
     // push: product block onto matrix
     productsAndTitleBlocks.push(productsAndTitleBlock);
   });

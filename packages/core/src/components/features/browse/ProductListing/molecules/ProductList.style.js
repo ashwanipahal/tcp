@@ -3,17 +3,24 @@ import { css } from 'styled-components';
 export default css`
   display: flex;
   flex-wrap: wrap;
-  &.product-tile {
+  &.product-list.horizontal-promo {
+    width: 100%;
+    background: green;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
+  &.vertical-promo {
+    background: #eeeeee;
+  }
+  &.product-tile,
+  &.promo-div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 10px;
     margin: 0 0 6px 0;
     width: calc(50% - ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS});
-
-    &.promo-div {
-      background: gray;
-    }
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
