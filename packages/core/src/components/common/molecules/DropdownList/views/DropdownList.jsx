@@ -6,30 +6,25 @@ import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Badge from '../../../atoms/Badge';
 
-const itemLists = (lastElementButton, count, index, item, activeValue, clickHandler, labels) => {
+const itemLists = (lastElementButton, count, index, item, activeValue, clickHandler) => {
   const isDisabledClass = item.disabled ? ' dropdown--disabled' : '';
   return (
     <li
       key={item.value}
       tabIndex={-1}
-      className={`${activeValue === item.value ? 'dropdownActiveClass' : ''}${isDisabledClass} ${
-        lastElementButton && index === count - 2 ? 'dropDownItems' : ''
-      }`}
+      className={` ${activeValue === item.value ? 'dropdownActiveClass' : ''}${isDisabledClass} `}
     >
       <BodyCopy
         component="div"
-        className="dropdownliBottomBorder"
+        className={`dropdownliBottomBorder ${
+          lastElementButton && index === count - 2 ? 'no-border' : ''
+        }`}
         role="link"
         key={item.value}
         onClick={e => clickHandler(e, item.value, item.title)}
         onKeyPress={e => clickHandler(e, item.value, item.title)}
       >
         {item.content}
-        {activeValue === item.value && (
-          <Badge className="dropdownActiveIcon" showCheckmark dataLocator="addressbook-default">
-            {getLabelValue(labels, 'lbl_payment_default', 'paymentGC')}
-          </Badge>
-        )}
       </BodyCopy>
     </li>
   );
@@ -54,7 +49,7 @@ const DropdownList = ({
             data-locator={dropDownList}
           >
             {optionsMap.map((item, index) =>
-              itemLists(nthChild, optionsMap.size, index, item, activeValue, clickHandler, labels)
+              itemLists(nthChild, optionsMap.size, index, item, activeValue, clickHandler)
             )}
           </ul>
         </BodyCopy>

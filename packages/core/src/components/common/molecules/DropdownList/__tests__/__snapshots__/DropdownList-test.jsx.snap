@@ -42,12 +42,12 @@ exports[`DropdownList component should renders correctly 1`] = `
         data-locator="drop-down-list"
       >
         <li
-          className=" "
+          className="  "
           key="1"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className="dropdownliBottomBorder"
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -117,12 +117,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
         data-locator="drop-down-list"
       >
         <li
-          className=" "
+          className="  "
           key="1"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className="dropdownliBottomBorder"
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -145,12 +145,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
           </Styled(BodyCopy)>
         </li>
         <li
-          className=" "
+          className="  "
           key="2"
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className="dropdownliBottomBorder"
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -173,12 +173,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
           </Styled(BodyCopy)>
         </li>
         <li
-          className="dropdownActiveClass "
+          className=" dropdownActiveClass "
           key=""
           tabIndex={-1}
         >
           <Styled(BodyCopy)
-            className="dropdownliBottomBorder"
+            className="dropdownliBottomBorder "
             color="text.primary"
             component="div"
             fontFamily="primary"
@@ -198,13 +198,6 @@ exports[`DropdownList component should renders correctly when optional fields ar
                 Test 3
               </p>
             </div>
-            <Styled(Badge)
-              className="dropdownActiveIcon"
-              dataLocator="addressbook-default"
-              showCheckmark={true}
-            >
-              lbl_payment_default
-            </Styled(Badge)>
           </Styled(BodyCopy)>
         </li>
       </ul>

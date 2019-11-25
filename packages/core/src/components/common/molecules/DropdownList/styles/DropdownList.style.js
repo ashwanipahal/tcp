@@ -25,6 +25,7 @@ const dropDownlist = css`
   }
 
   .dropdownActiveClass {
+    background-color: ${props => props.theme.colors.PRIMARY.COLOR1};
     position: relative;
   }
 
@@ -57,11 +58,11 @@ const dropDownlist = css`
     background: ${props => props.theme.colors.PRIMARY.COLOR1};
   }
 
-  .ulBorderWithLastRow li:last-child {
+  .ulBorderWithLastRow li:last-child div {
     border-bottom: none;
   }
 
-  .dropDownItems {
+  .no-border {
     border-bottom: none;
   }
 
