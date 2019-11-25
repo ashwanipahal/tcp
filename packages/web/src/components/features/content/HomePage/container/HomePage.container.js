@@ -31,10 +31,6 @@ HomePageView.getInitActions = () => initActions;
 HomePageView.pageInfo = {
   pageId: 'Home',
   name: 'homepage',
-  pageData: {
-    pageName: 'home page',
-    pageSection: 'homepage',
-  },
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 

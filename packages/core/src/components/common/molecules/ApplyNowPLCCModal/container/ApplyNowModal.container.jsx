@@ -10,6 +10,7 @@ import {
 import CheckoutSelectors from '../../../../features/CnC/Checkout/container/Checkout.selector';
 import CHECKOUT_ACTIONS from '../../../../features/CnC/Checkout/container/Checkout.action';
 import ApplyNowModalWrapper from '../views';
+import BagPageSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   resetPLCCResponse,
   fetchModuleX,
@@ -39,6 +40,8 @@ const mapStateToProps = (state, ownProps) => {
   const { ApplyCardPage = {} } = state;
   const applyCardLabels = getRtpsMessages(state);
   const { rtpsCongratsMsg, rtpsOptOutMsg, rtpsTextTerms } = applyCardLabels;
+  const { products } =
+    (state.AnalyticsDataKey && state.AnalyticsDataKey.clickActionAnalyticsData) || [];
   return {
     isModalOpen: getIsModalOpen(state),
     labels: getLabels(state),
@@ -49,6 +52,7 @@ const mapStateToProps = (state, ownProps) => {
     rtpsTextTerms,
     labelText: ownProps.labelText,
     isRtpsFlow: CheckoutSelectors.getIsRtpsFlow(state),
+    cartOrderItems: BagPageSelectors.getOrderItems(state),
   };
 };
 

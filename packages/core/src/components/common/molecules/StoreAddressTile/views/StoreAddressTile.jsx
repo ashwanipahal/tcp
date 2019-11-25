@@ -300,7 +300,7 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-            clickData={{ customEvents: ['event97'], pageName: 'storelocator:' }}
+            clickData={{ customEvents: ['event97'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </ClickTracker>

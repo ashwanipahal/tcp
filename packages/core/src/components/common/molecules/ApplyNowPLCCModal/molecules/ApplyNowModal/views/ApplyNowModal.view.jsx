@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
 import Modal from '../../../../Modal';
@@ -8,6 +9,7 @@ import withStyles from '../../../../../hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
 import ApplyNowPLCCModal from '../../ApplyNowPLCCModal/views/ApplyNowPLCCModal';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
@@ -25,7 +27,9 @@ const StyledApplyNowModal = ({
   rtpsCongratsMsg,
   rtpsOptOutMsg,
   rtpsTextTerms,
+  cartOrderItems,
 }) => {
+  const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
   return !isPLCCModalOpen ? (
     <Modal
       fixedWidth
@@ -95,9 +99,17 @@ const StyledApplyNowModal = ({
               onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
-              {!isRtpsFlow
-                ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
-                : getLabelValue(labels, 'lbl_PLCC_interested')}
+              <ClickTracker
+                clickData={{
+                  customEvents: ['event47'],
+                  eventName: 'plcc checkout invite accepted',
+                  products: productsData,
+                }}
+              >
+                {!isRtpsFlow
+                  ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
+                  : getLabelValue(labels, 'lbl_PLCC_interested')}
+              </ClickTracker>
             </Button>
           </Col>
         </Row>
@@ -139,7 +151,15 @@ const StyledApplyNowModal = ({
                   closeModal();
                 }}
               >
-                {getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event48'],
+                    eventName: 'plcc checkout invite declined',
+                    products: productsData,
+                  }}
+                >
+                  {getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                </ClickTracker>
               </Anchor>
             </Col>
           )}
