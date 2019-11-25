@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { FULLY_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
@@ -107,6 +109,10 @@ export class ShippingReviewSection extends React.PureComponent {
                 <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
               )}
             </Col>
+            {/* UX timer */}
+            {/* Note: FULLY_VISIBLE applies to checkout page only. If this component needs to
+            be reused on another page, we'll need some way to make the UX timer prop-based. */}
+            <RenderPerf.Measure name={FULLY_VISIBLE} />
           </Row>
         ) : (
           <GenericSkeleton />
