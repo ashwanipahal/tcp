@@ -7,6 +7,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
 import { routerPush } from '../../../../../utils';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 const routesBack = e => {
   e.preventDefault();
@@ -35,6 +36,8 @@ const OutfitDetailsView = ({
   outfitId,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  asPathVal,
+  topPromos,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
   const recommendationAttributes = {
@@ -45,10 +48,14 @@ const OutfitDetailsView = ({
     headerAlignment: 'left',
   };
   return (
-    <>
-      <Row className={className}>
+    <div className={className}>
+      <Row>
         <Col
-          colSize={{ small: 6, medium: 8, large: 12 }}
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
           ignoreGutter={{ small: true }}
           className="outfit-back-button"
         >
@@ -64,6 +71,15 @@ const OutfitDetailsView = ({
             {backLabel}
           </Anchor>
         </Col>
+      </Row>
+      {topPromos && topPromos.length > 0 && (
+        <Row>
+          <Col className="promo-area-top" colSize={{ small: 6, medium: 8, large: 12 }}>
+            <PromoPDPBanners promos={topPromos} asPath={asPathVal} />
+          </Col>
+        </Row>
+      )}
+      <Row>
         <Col
           colSize={{ small: 6, medium: 3, large: 5 }}
           ignoreGutter={{ small: true }}
@@ -119,7 +135,7 @@ const OutfitDetailsView = ({
           />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
