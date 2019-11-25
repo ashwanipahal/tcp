@@ -45,10 +45,10 @@ const SelectBox = ({
     <div className={className}>
       <select
         {...input}
-        id={id || elementID}
+        id={id}
         aria-label={ariaLabel}
         className="select__input"
-        name={name || elementID}
+        name={name}
         value={input.value || placeholder}
         data-locator={dataLocator}
         {...otherProps}
