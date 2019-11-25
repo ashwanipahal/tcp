@@ -24,6 +24,8 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    role="link"
+    tabIndex={0}
     textAlign="left"
   >
     <Styled(BodyCopy)
