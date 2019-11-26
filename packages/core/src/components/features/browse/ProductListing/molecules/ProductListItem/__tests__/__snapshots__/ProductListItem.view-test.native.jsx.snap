@@ -67,7 +67,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderPricesSection
     accessibilityLabel="Price Section"
     hideFavorite={false}
-    isFavorite=""
+    isFavorite={true}
     isLoggedIn={false}
     item={
       Object {
