@@ -27,6 +27,9 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
       ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .customSelectArrow {
+    top: 70%;
+  }
 `;
 
 export default styles;

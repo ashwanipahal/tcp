@@ -1,6 +1,15 @@
 import styled from 'styled-components/native';
 
+const SHADOW = `
+  shadow-opacity: 0.5;
+  shadow-radius: 2px;
+  shadow-color: rgba(163, 162, 162, 0.5);
+  shadow-offset: 1px 0px;
+  elevation:1;
+`;
+
 const MainWrapper = styled.View`
+${SHADOW}
   background-color: ${props => props.theme.colorPalette.white};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
@@ -88,7 +97,7 @@ const ProductListPrice = styled.View`
 `;
 const EditButton = styled.TouchableOpacity`
   align-self: flex-end;
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   border-bottom-color: ${props => props.theme.colorPalette.gray[700]};
   border-bottom-width: 1px;
@@ -109,7 +118,7 @@ const MarginLeft = styled.TouchableOpacity`
 `;
 
 const IconTextEdit = styled.Text`
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   color: ${props => props.theme.colorPalette.gray[800]};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
@@ -136,7 +145,7 @@ const IconTextMoveToBag = styled.Text`
 
 const HeartIcon = styled.TouchableOpacity`
   position: absolute;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   display: flex;
   justify-content: flex-end;

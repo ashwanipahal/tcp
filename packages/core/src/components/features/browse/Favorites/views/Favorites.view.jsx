@@ -322,7 +322,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const {
+      labels,
+      userEmail,
+      activeWishListId,
+      activeWishList,
+      wishlistsSummaries,
+      formErrorMessage,
+    } = this.props;
     const { itemToMove } = this.state;
     if (this.currentPopupName === 'addList') {
       return (
@@ -330,6 +337,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             itemId: itemToMove,
           }}
@@ -345,6 +353,7 @@ class FavoritesView extends React.PureComponent {
           onCloseModal={this.onCloseModal}
           activeWishListId={activeWishListId}
           onDeleteList={this.onDeleteListHandler}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             listName: activeWishList.displayName,
             makeDefaultList: activeWishList.isDefault,
@@ -359,6 +368,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onSubmit={this.onShareListSubmit}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             subject: getLabelValue(labels, 'lbl_fav_subject_default'),
             fromEmail: userEmail,
