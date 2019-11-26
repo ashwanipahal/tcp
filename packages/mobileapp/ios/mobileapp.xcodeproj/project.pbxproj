@@ -13,12 +13,87 @@
 		13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		1668AB1C231EAA8100F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
-		1668AB1E231EAA9F00F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
-		1668AB21231EC92300F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
-		1668AB23231EC93400F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
-		1785A698F3ADA406F7DED8B8 /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A07FDCD59FC34FD36A29F840 /* libPods-mobileapp_preview.a */; };
-		1E20EC55CC56886CF0CFB643 /* libPods-mobileapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F73251E8D3BF0EDEE05FC55C /* libPods-mobileapp.a */; };
+		162BEFFF238D5BD90056246A /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AF23279C35001CC8EF /* gymboree-Info.plist */; };
+		162BF00A238D5E960056246A /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
+		162BF00B238D5ECB0056246A /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
+		162BF00E238D61850056246A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		162BF017238D697A0056246A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		162BF018238D697A0056246A /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		162BF019238D697A0056246A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		162BF01A238D697A0056246A /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		162BF01B238D697A0056246A /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		162BF01C238D697A0056246A /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
+		162BF01D238D697A0056246A /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
+		162BF01E238D697A0056246A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		162BF01F238D697A0056246A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		162BF020238D697A0056246A /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
+		162BF021238D697A0056246A /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
+		162BF022238D697A0056246A /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
+		16C47525238D3DF200B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47526238D3E8C00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47527238D3F6200B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47528238D3F7000B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47529238D3F7E00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752A238D3F8B00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752B238D3F9800B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752C238D3FA500B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752D238D3FAF00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752E238D3FBA00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C4752F238D3FC400B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47530238D3FCF00B6959B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
+		16C47531238D4C3D00B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		16C47532238D4C3D00B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		16C47533238D4C3D00B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		16C47534238D4C3D00B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		16C47535238D4CD200B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C47543238D4E2600B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C47544238D4E2600B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47546238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47547238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47548238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47549238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C4754B238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C4754C238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C4754D238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C4754E238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C4754F238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47550238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47551238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
+		16C47552238D502900B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C47553238D502900B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		16C47554238D502900B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		16C47555238D502900B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		16C47556238D502900B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		16C47557238D504900B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47558238D519800B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47559238D526900B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C4755A238D526900B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		16C4755B238D526900B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		16C4755C238D526900B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		16C4755D238D526900B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		16C4755E238D52A100B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C4755F238D537800B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47560238D538B00B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47561238D539400B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47562238D539C00B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47563238D53A500B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47564238D53AC00B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47565238D53B500B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47566238D53C100B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		16C47567238D53E000B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47568238D53EB00B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C4756A238D53EB00B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		16C4756B238D53EB00B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		16C4756C238D53EB00B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		16C4756D238D53FC00B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
+		16C4756E238D53FC00B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		16C4756F238D53FC00B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		16C47570238D53FC00B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		16C47571238D53FC00B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		16C47572238D53FC00B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47573238D540800B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C47574238D541000B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		2217CA1887DDCECEE46A330F /* libPods-gymboree_dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 556CF40EDAFBA376CB232299 /* libPods-gymboree_dev.a */; };
 		3656A5832337836800EF9714 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
 		3656A5842337836800EF9714 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
 		3656A5852337836800EF9714 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
@@ -53,7 +128,6 @@
 		39B94DB12387BC330068B1E5 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
 		39B94DB22387BC330068B1E5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
 		39B94DB32387BC330068B1E5 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
-		39B94DB42387BC330068B1E5 /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
 		39B94DB52387BC330068B1E5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
 		39B94DB62387BC330068B1E5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		39B94DB72387BC330068B1E5 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
@@ -174,27 +248,8 @@
 		84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677AA9230BCDAF001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677AAA230BCDAF001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
-		84677ACC230BCE0A001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
-		84677ACD230BCE0A001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
-		84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677AD1230BCE0A001F5301 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		84677AD5230BCE0A001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
-		84677AD7230BCE0A001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
-		84677AE8230BCE94001F5301 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
-		84677AE9230BCE94001F5301 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		84677AEA230BCE94001F5301 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		84677AEB230BCE94001F5301 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		84677AEC230BCE94001F5301 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
-		84677AED230BCE94001F5301 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
-		84677AEE230BCE94001F5301 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
-		84677AEF230BCE94001F5301 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
-		84677AF0230BCE94001F5301 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
-		84677AF1230BCE94001F5301 /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
-		84677AF2230BCE94001F5301 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		84677AF3230BCE94001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		84677AF4230BCE94001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
 		84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
@@ -245,16 +300,10 @@
 		8480856922D9B52500D7D25B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
-		898C6AED91BE1EF397F3E1B6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		9557D6C9567C4027023C50E0 /* libPods-gymboree_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656546AD3C9E3C2896742EF9 /* libPods-gymboree_preview.a */; };
-		9597A6D7C6052CCE39182918 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		9A671FDCD9B26E4D3C7CD3CE /* libPods-mobileappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 940963E83C6351A34198F2AF /* libPods-mobileappTests.a */; };
-		B12036FFECC67FF441099A84 /* libPods-gymboree_prod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B22FDB799EFA918D28237F09 /* libPods-gymboree_prod.a */; };
-		C94373134416AE25740033B3 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		CA0946CE2361DA97004810F7 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
-		CA0946D02361DA97004810F7 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
-		CA0946D32361DA97004810F7 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
-		CA0946D52361DA97004810F7 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
+		84FD9D8F3CDEE146BC7C9D17 /* libPods-mobileapp_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3458FE257CEB9CFEEE975849 /* libPods-mobileapp_uat.a */; };
+		898C6AED91BE1EF397F3E1B6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		9A43AF65CEB0F918C7E1C75C /* libPods-gymboree_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AD6E7A45B836C9716B4289 /* libPods-gymboree_uat.a */; };
+		ACB4C22F1276E4FEF77A7CB4 /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF0A086C319E8C773DD5ED3 /* libPods-mobileapp_preview.a */; };
 		CA0946D72361DAF4004810F7 /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA31063A2375C71C00D8D91A /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
 		CA31063B2375C72700D8D91A /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
@@ -264,7 +313,6 @@
 		CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
 		CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
 		CA3106412375C79800D8D91A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
-		CA8FB178237B30AB006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA8FB17A237B30BE006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA8FB17B237B30C3006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
@@ -288,7 +336,8 @@
 		D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		E6B0C5B123279C35001CC8EF /* mobileapp_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */; };
-		E6B0C5B323279C35001CC8EF /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
+		E7EC0A6D2B2169C265D33425 /* libPods-mobileapp_prod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43404C03288D0553F15B9B4E /* libPods-mobileapp_prod.a */; };
+		F2B6002BFA68BAF95F71E250 /* libPods-mobileapp_dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF1125007C369AE8C3BDBC1 /* libPods-mobileapp_dev.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -619,7 +668,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobileapp/Info.plist; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1668AB12231EA3EA00F75A14 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
-		193105CC08D457F30042E50F /* libPods-mobileapp_prod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp_prod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16C47523238D38D500B6959B /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		1A47A2A73434E19E10D0B6B8 /* Pods-mobileapp_preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_preview.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp_preview/Pods-mobileapp_preview.debug.xcconfig"; sourceTree = "<group>"; };
 		1BA035FFC49949A68B7277FF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		308916021A01E020D7F9C646 /* Pods-mobileapp_prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_prod.release.xcconfig"; path = "Target Support Files/Pods-mobileapp_prod/Pods-mobileapp_prod.release.xcconfig"; sourceTree = "<group>"; };
@@ -685,10 +736,11 @@
 		C6CA1EF12B16C58E9F3183A5 /* Pods-mobileapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp/Pods-mobileapp.debug.xcconfig"; sourceTree = "<group>"; };
 		C93E792239664143B1DA0DFB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		CA0946CC2361DA97004810F7 /* raygun4apple.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = raygun4apple.framework; sourceTree = "<group>"; };
-		CA837393027BC60DA129A422 /* Pods-gymboree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree.debug.xcconfig"; path = "Target Support Files/Pods-gymboree/Pods-gymboree.debug.xcconfig"; sourceTree = "<group>"; };
-		CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		CD9D7D04EED7CADB8473342F /* Pods-mobileappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileappTests.release.xcconfig"; path = "Target Support Files/Pods-mobileappTests/Pods-mobileappTests.release.xcconfig"; sourceTree = "<group>"; };
-		D9066CE80372154DD0209284 /* Pods-mobileapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp.release.xcconfig"; path = "Target Support Files/Pods-mobileapp/Pods-mobileapp.release.xcconfig"; sourceTree = "<group>"; };
+		CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CAF1125007C369AE8C3BDBC1 /* libPods-mobileapp_dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp_dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF5A4184221173FF056244AD /* Pods-gymboree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree.release.xcconfig"; path = "Target Support Files/Pods-gymboree/Pods-gymboree.release.xcconfig"; sourceTree = "<group>"; };
+		D3BF31FADD8B52627ED47655 /* Pods-mobileapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp/Pods-mobileapp.debug.xcconfig"; sourceTree = "<group>"; };
+		D67170F8E6BE747F793D5EC2 /* libPods-gymboree_preview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gymboree_preview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -715,8 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				898C6AED91BE1EF397F3E1B6 /* BuildFile in Frameworks */,
-				9A671FDCD9B26E4D3C7CD3CE /* libPods-mobileappTests.a in Frameworks */,
+				898C6AED91BE1EF397F3E1B6 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,7 +775,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E20EC55CC56886CF0CFB643 /* libPods-mobileapp.a in Frameworks */,
+				16C47526238D3E8C00B6959B /* JavaScriptCore.framework in Frameworks */,
+				752D0AD9493E622EDAB29153 /* libPods-mobileapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,8 +784,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94373134416AE25740033B3 /* BuildFile in Frameworks */,
-				9557D6C9567C4027023C50E0 /* libPods-gymboree_preview.a in Frameworks */,
+				16C47530238D3FCF00B6959B /* JavaScriptCore.framework in Frameworks */,
+				D5DCDAFE0BECD2D23871D387 /* libPods-gymboree_preview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,8 +793,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				502D8870B0623D01256B498E /* BuildFile in Frameworks */,
-				1785A698F3ADA406F7DED8B8 /* libPods-mobileapp_preview.a in Frameworks */,
+				16C4752F238D3FC400B6959B /* JavaScriptCore.framework in Frameworks */,
+				ACB4C22F1276E4FEF77A7CB4 /* libPods-mobileapp_preview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,21 +802,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1668AB1C231EAA8100F75A14 /* libART.a in Frameworks */,
-				846779FF230BC69E001F5301 /* JavaScriptCore.framework in Frameworks */,
-				84677A00230BC69E001F5301 /* libRCTBlob.a in Frameworks */,
-				CA0946CE2361DA97004810F7 /* raygun4apple.framework in Frameworks */,
-				84677A01230BC69E001F5301 /* libRCTAnimation.a in Frameworks */,
-				84677A02230BC69E001F5301 /* libReact.a in Frameworks */,
-				84677A03230BC69E001F5301 /* libRCTActionSheet.a in Frameworks */,
-				84677A04230BC69E001F5301 /* libRCTGeolocation.a in Frameworks */,
-				84677A05230BC69E001F5301 /* libRCTImage.a in Frameworks */,
-				84677A06230BC69E001F5301 /* libRCTLinking.a in Frameworks */,
-				84677A07230BC69E001F5301 /* libRCTNetwork.a in Frameworks */,
-				84677A08230BC69E001F5301 /* libRCTSettings.a in Frameworks */,
-				84677A09230BC69E001F5301 /* libRCTText.a in Frameworks */,
-				84677A0A230BC69E001F5301 /* libRCTVibration.a in Frameworks */,
-				84677A0B230BC69E001F5301 /* libRCTWebSocket.a in Frameworks */,
+				16C47527238D3F6200B6959B /* JavaScriptCore.framework in Frameworks */,
+				F2B6002BFA68BAF95F71E250 /* libPods-mobileapp_dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,7 +811,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F423250FA434EB16A1EFB8D /* libPods-mobileapp_int.a in Frameworks */,
+				16C47528238D3F7000B6959B /* JavaScriptCore.framework in Frameworks */,
+				4326923ADFD9064CE157FAE8 /* libPods-mobileapp_int.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,21 +820,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1668AB1E231EAA9F00F75A14 /* libART.a in Frameworks */,
-				84677A8A230BCDAF001F5301 /* JavaScriptCore.framework in Frameworks */,
-				84677A8B230BCDAF001F5301 /* libRCTBlob.a in Frameworks */,
-				CA0946D02361DA97004810F7 /* raygun4apple.framework in Frameworks */,
-				84677A8C230BCDAF001F5301 /* libRCTAnimation.a in Frameworks */,
-				84677A8D230BCDAF001F5301 /* libReact.a in Frameworks */,
-				84677A8E230BCDAF001F5301 /* libRCTActionSheet.a in Frameworks */,
-				84677A8F230BCDAF001F5301 /* libRCTGeolocation.a in Frameworks */,
-				84677A90230BCDAF001F5301 /* libRCTImage.a in Frameworks */,
-				84677A91230BCDAF001F5301 /* libRCTLinking.a in Frameworks */,
-				84677A92230BCDAF001F5301 /* libRCTNetwork.a in Frameworks */,
-				84677A93230BCDAF001F5301 /* libRCTSettings.a in Frameworks */,
-				84677A94230BCDAF001F5301 /* libRCTText.a in Frameworks */,
-				84677A95230BCDAF001F5301 /* libRCTVibration.a in Frameworks */,
-				84677A96230BCDAF001F5301 /* libRCTWebSocket.a in Frameworks */,
+				16C47525238D3DF200B6959B /* JavaScriptCore.framework in Frameworks */,
+				84FD9D8F3CDEE146BC7C9D17 /* libPods-mobileapp_uat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,9 +829,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9E21EC2368920E00365F24 /* raygun4apple.framework in Frameworks */,
-				09165E1006466E4EECC32BE2 /* BuildFile in Frameworks */,
-				3CFB8B8038579CA8EC72490E /* libPods-mobileapp_prod.a in Frameworks */,
+				16C47529238D3F7E00B6959B /* JavaScriptCore.framework in Frameworks */,
+				E7EC0A6D2B2169C265D33425 /* libPods-mobileapp_prod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,21 +838,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1668AB21231EC92300F75A14 /* libART.a in Frameworks */,
-				84677AE8230BCE94001F5301 /* JavaScriptCore.framework in Frameworks */,
-				84677AE9230BCE94001F5301 /* libRCTBlob.a in Frameworks */,
-				CA0946D32361DA97004810F7 /* raygun4apple.framework in Frameworks */,
-				84677AEA230BCE94001F5301 /* libRCTAnimation.a in Frameworks */,
-				84677AEB230BCE94001F5301 /* libReact.a in Frameworks */,
-				84677AEC230BCE94001F5301 /* libRCTActionSheet.a in Frameworks */,
-				84677AED230BCE94001F5301 /* libRCTGeolocation.a in Frameworks */,
-				84677AEE230BCE94001F5301 /* libRCTImage.a in Frameworks */,
-				84677AEF230BCE94001F5301 /* libRCTLinking.a in Frameworks */,
-				84677AF0230BCE94001F5301 /* libRCTNetwork.a in Frameworks */,
-				84677AF1230BCE94001F5301 /* libRCTSettings.a in Frameworks */,
-				84677AF2230BCE94001F5301 /* libRCTText.a in Frameworks */,
-				84677AF3230BCE94001F5301 /* libRCTVibration.a in Frameworks */,
-				84677AF4230BCE94001F5301 /* libRCTWebSocket.a in Frameworks */,
+				16C4752B238D3F9800B6959B /* JavaScriptCore.framework in Frameworks */,
+				2217CA1887DDCECEE46A330F /* libPods-gymboree_dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,8 +847,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9597A6D7C6052CCE39182918 /* BuildFile in Frameworks */,
-				4C0BC58BE8F10F9252C066AF /* libPods-gymboree_int.a in Frameworks */,
+				16C4752C238D3FA500B6959B /* JavaScriptCore.framework in Frameworks */,
+				6ED5B5CEABAB67572AA3C216 /* libPods-gymboree_int.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,21 +856,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1668AB23231EC93400F75A14 /* libART.a in Frameworks */,
-				84677B42230BCF01001F5301 /* JavaScriptCore.framework in Frameworks */,
-				84677B43230BCF01001F5301 /* libRCTBlob.a in Frameworks */,
-				CA0946D52361DA97004810F7 /* raygun4apple.framework in Frameworks */,
-				84677B44230BCF01001F5301 /* libRCTAnimation.a in Frameworks */,
-				84677B45230BCF01001F5301 /* libReact.a in Frameworks */,
-				84677B46230BCF01001F5301 /* libRCTActionSheet.a in Frameworks */,
-				84677B47230BCF01001F5301 /* libRCTGeolocation.a in Frameworks */,
-				84677B48230BCF01001F5301 /* libRCTImage.a in Frameworks */,
-				84677B49230BCF01001F5301 /* libRCTLinking.a in Frameworks */,
-				84677B4A230BCF01001F5301 /* libRCTNetwork.a in Frameworks */,
-				84677B4B230BCF01001F5301 /* libRCTSettings.a in Frameworks */,
-				84677B4C230BCF01001F5301 /* libRCTText.a in Frameworks */,
-				84677B4D230BCF01001F5301 /* libRCTVibration.a in Frameworks */,
-				84677B4E230BCF01001F5301 /* libRCTWebSocket.a in Frameworks */,
+				16C4752D238D3FAF00B6959B /* JavaScriptCore.framework in Frameworks */,
+				9A43AF65CEB0F918C7E1C75C /* libPods-gymboree_uat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,8 +865,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9E21E9236891F600365F24 /* raygun4apple.framework in Frameworks */,
-				B12036FFECC67FF441099A84 /* libPods-gymboree_prod.a in Frameworks */,
+				16C4752E238D3FBA00B6959B /* JavaScriptCore.framework in Frameworks */,
+				5C9E05C7AD77FB9C791DB902 /* libPods-gymboree_prod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,8 +874,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D33E4FA865C87817D5EF5902 /* BuildFile in Frameworks */,
-				0F1D62D32C29321EBB8E7436 /* libPods-gymboree.a in Frameworks */,
+				16C4752A238D3F8B00B6959B /* JavaScriptCore.framework in Frameworks */,
+				4D25F0ACEB1E7E896CCFC965 /* libPods-gymboree.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1019,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16C47523238D38D500B6959B /* libReact-jsi.a */,
 				CA0946CC2361DA97004810F7 /* raygun4apple.framework */,
 				EA08333B231E35DA002F4B8B /* libART.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
@@ -1058,9 +1059,11 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				146833FF1AC3E56700842450 /* React.xcodeproj */,
+				4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */,
+				4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */,
 				1668AB12231EA3EA00F75A14 /* ART.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
-				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -1087,7 +1090,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */,
 				D94ECAAD22D70C2600D9D051 /* fonts */,
 				13B07FAE1A68108700A75B9A /* mobileapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1170,6 +1172,8 @@
 		D94ECAAD22D70C2600D9D051 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */,
+				16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */,
 				368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */,
 				368BE6552373D931001B33E2 /* Nunito-Bold.ttf */,
 				368BE6602373D940001B33E2 /* Nunito.ttf */,
@@ -1502,7 +1506,7 @@
 					};
 					84677A84230BCDAF001F5301 = {
 						DevelopmentTeam = 9N3QW4M4N3;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					84677AB1230BCE0A001F5301 = {
 						DevelopmentTeam = 9N3QW4M4N3;
@@ -1546,6 +1550,14 @@
 				{
 					ProductGroup = 1668AB13231EA3EA00F75A14 /* Products */;
 					ProjectRef = 1668AB12231EA3EA00F75A14 /* ART.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C0F20102348001100FCCD03 /* Products */;
+					ProjectRef = 4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C0F200B2347FFFF00FCCD03 /* Products */;
+					ProjectRef = 4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1903,12 +1915,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA8FB178237B30AB006C733A /* Nunito-ExtraBold.ttf in Resources */,
+				16C47543238D4E2600B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C47544238D4E2600B6959B /* FontAwesome.ttf in Resources */,
 				CA31063C2375C78900D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA31063D2375C78900D8D91A /* Nunito-Bold.ttf in Resources */,
 				CA31063E2375C78900D8D91A /* Montserrat-Bold.ttf in Resources */,
+				162BF00B238D5ECB0056246A /* gymboree_prod-Info.plist in Resources */,
 				CA31063B2375C72700D8D91A /* Nunito.ttf in Resources */,
-				E6B0C5B323279C35001CC8EF /* gymboree_prod-Info.plist in Resources */,
+				16C47546238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				3656A5832337836800EF9714 /* icomoon.ttf in Resources */,
 				D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */,
 				D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */,
@@ -1926,6 +1940,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47573238D540800B6959B /* FontAwesome.ttf in Resources */,
 				3973AC6F2387D12B00538E85 /* Montserrat-Medium.ttf in Resources */,
 				3973AC702387D12B00538E85 /* Nunito-Bold.ttf in Resources */,
 				3973AC712387D12B00538E85 /* Nunito.ttf in Resources */,
@@ -1936,8 +1951,10 @@
 				3973AC762387D12B00538E85 /* Montserrat-Black.ttf in Resources */,
 				3973AC772387D12B00538E85 /* Nunito-SemiBold.ttf in Resources */,
 				3973AC782387D12B00538E85 /* AppCenter-Config.plist in Resources */,
+				16C47551238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				3973AC792387D12B00538E85 /* Images.xcassets in Resources */,
 				3973AC7A2387D12B00538E85 /* Montserrat.ttf in Resources */,
+				162BF00A238D5E960056246A /* gymboree_prod-Info.plist in Resources */,
 				3973AC7B2387D12B00538E85 /* Nunito-Black.ttf in Resources */,
 				3973AC7C2387D12B00538E85 /* icomoon.ttf in Resources */,
 			);
@@ -1947,12 +1964,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47574238D541000B6959B /* FontAwesome.ttf in Resources */,
+				16C47550238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				39B94DAF2387BC330068B1E5 /* Nunito-ExtraBold.ttf in Resources */,
 				39B94DB02387BC330068B1E5 /* Montserrat-Medium.ttf in Resources */,
 				39B94DB12387BC330068B1E5 /* Nunito-Bold.ttf in Resources */,
 				39B94DB22387BC330068B1E5 /* Montserrat-Bold.ttf in Resources */,
 				39B94DB32387BC330068B1E5 /* Nunito.ttf in Resources */,
-				39B94DB42387BC330068B1E5 /* gymboree_prod-Info.plist in Resources */,
 				39B94DB52387BC330068B1E5 /* icomoon.ttf in Resources */,
 				39B94DB62387BC330068B1E5 /* Montserrat-SemiBold.ttf in Resources */,
 				39B94DB72387BC330068B1E5 /* Montserrat-Black.ttf in Resources */,
@@ -1970,6 +1988,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47552238D502900B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C47553238D502900B6959B /* Montserrat-Medium.ttf in Resources */,
+				16C47554238D502900B6959B /* Nunito-Bold.ttf in Resources */,
+				16C47555238D502900B6959B /* Nunito.ttf in Resources */,
+				16C47556238D502900B6959B /* Montserrat-Bold.ttf in Resources */,
 				84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
@@ -1978,6 +2001,7 @@
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
 				84677A1E230BC69E001F5301 /* TCPLaunchScreen.xib in Resources */,
+				16C47547238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677A1F230BC69E001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A5842337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -1987,11 +2011,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47557238D504900B6959B /* FontAwesome.ttf in Resources */,
 				CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */,
 				CA3106412375C79800D8D91A /* Montserrat-Bold.ttf in Resources */,
 				CA31063A2375C71C00D8D91A /* Nunito.ttf in Resources */,
+				16C47548238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677A72230BCD44001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
@@ -2009,6 +2035,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47535238D4CD200B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C47531238D4C3D00B6959B /* Montserrat-Medium.ttf in Resources */,
+				16C47532238D4C3D00B6959B /* Nunito-Bold.ttf in Resources */,
+				16C47533238D4C3D00B6959B /* Nunito.ttf in Resources */,
+				16C47534238D4C3D00B6959B /* Montserrat-Bold.ttf in Resources */,
+				16C47549238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677A9F230BCDAF001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
@@ -2026,15 +2058,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677ACC230BCE0A001F5301 /* Montserrat-SemiBold.ttf in Resources */,
-				84677ACD230BCE0A001F5301 /* Montserrat-Black.ttf in Resources */,
-				84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				162BF017238D697A0056246A /* Nunito-ExtraBold.ttf in Resources */,
+				162BF018238D697A0056246A /* Montserrat-ExtraBold.ttf in Resources */,
+				162BF019238D697A0056246A /* Montserrat-Medium.ttf in Resources */,
+				162BF01A238D697A0056246A /* Nunito-Bold.ttf in Resources */,
+				162BF01B238D697A0056246A /* Nunito.ttf in Resources */,
+				162BF01C238D697A0056246A /* Nunito-SemiBold.ttf in Resources */,
+				162BF01D238D697A0056246A /* Nunito-Black.ttf in Resources */,
+				162BF01E238D697A0056246A /* Montserrat-Bold.ttf in Resources */,
+				162BF01F238D697A0056246A /* FontAwesome.ttf in Resources */,
+				162BF020238D697A0056246A /* Montserrat-SemiBold.ttf in Resources */,
+				162BF021238D697A0056246A /* Montserrat.ttf in Resources */,
+				162BF022238D697A0056246A /* Montserrat-Black.ttf in Resources */,
 				84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */,
 				4C945DCD233E6F5000825846 /* AppCenter-Config.plist in Resources */,
-				84677AD1230BCE0A001F5301 /* BuildFile in Resources */,
-				84677AD5230BCE0A001F5301 /* Montserrat.ttf in Resources */,
 				84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */,
-				84677AD7230BCE0A001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A5872337836800EF9714 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2043,6 +2081,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47559238D526900B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C4755A238D526900B6959B /* Montserrat-Medium.ttf in Resources */,
+				16C4755B238D526900B6959B /* Nunito-Bold.ttf in Resources */,
+				16C4755C238D526900B6959B /* Nunito.ttf in Resources */,
+				16C4755D238D526900B6959B /* Montserrat-Bold.ttf in Resources */,
 				84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */,
@@ -2051,6 +2094,7 @@
 				4C945DCF233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B00230BCE94001F5301 /* Images.xcassets in Resources */,
 				84677B03230BCE94001F5301 /* Montserrat.ttf in Resources */,
+				16C4754C238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B04230BCE94001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A5892337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -2060,6 +2104,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47567238D53E000B6959B /* FontAwesome.ttf in Resources */,
 				CA9FB5A92384569200225466 /* Montserrat-Medium.ttf in Resources */,
 				CA9FB5AA2384569200225466 /* Nunito-Bold.ttf in Resources */,
 				CA9FB5AB2384569200225466 /* Nunito.ttf in Resources */,
@@ -2070,6 +2115,7 @@
 				84677B29230BCECC001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B2B230BCECC001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				4C945DD0233E6F5000825846 /* AppCenter-Config.plist in Resources */,
+				16C4754D238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B2D230BCECC001F5301 /* Images.xcassets in Resources */,
 				84677B30230BCECC001F5301 /* Montserrat.ttf in Resources */,
 				84677B31230BCECC001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2081,6 +2127,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162BF00E238D61850056246A /* Montserrat-Medium.ttf in Resources */,
+				162BEFFF238D5BD90056246A /* gymboree-Info.plist in Resources */,
+				16C47568238D53EB00B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C4756A238D53EB00B6959B /* Nunito-Bold.ttf in Resources */,
+				16C4756B238D53EB00B6959B /* Nunito.ttf in Resources */,
+				16C4756C238D53EB00B6959B /* Montserrat-Bold.ttf in Resources */,
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */,
@@ -2089,6 +2141,7 @@
 				4C945DD1233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B5A230BCF01001F5301 /* Images.xcassets in Resources */,
 				84677B5D230BCF01001F5301 /* Montserrat.ttf in Resources */,
+				16C4754E238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B5E230BCF01001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A58B2337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -2098,11 +2151,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C4756D238D53FC00B6959B /* Nunito-ExtraBold.ttf in Resources */,
+				16C4756E238D53FC00B6959B /* Montserrat-Medium.ttf in Resources */,
+				16C4756F238D53FC00B6959B /* Nunito-Bold.ttf in Resources */,
+				16C47570238D53FC00B6959B /* Nunito.ttf in Resources */,
+				16C47571238D53FC00B6959B /* Montserrat-Bold.ttf in Resources */,
+				16C47572238D53FC00B6959B /* FontAwesome.ttf in Resources */,
 				84677B7F230BCF37001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677B81230BCF37001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B83230BCF37001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B85230BCF37001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				4C945DD2233E6F5000825846 /* AppCenter-Config.plist in Resources */,
+				16C4754F238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
 				84677B8A230BCF37001F5301 /* Montserrat.ttf in Resources */,
 				84677B8B230BCF37001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2114,6 +2174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47558238D519800B6959B /* FontAwesome.ttf in Resources */,
 				CA9FB5BB2384615D00225466 /* Montserrat-Medium.ttf in Resources */,
 				CA9FB5A82384567E00225466 /* Nunito-Bold.ttf in Resources */,
 				CA9FB5A62384562A00225466 /* Nunito.ttf in Resources */,
@@ -2124,6 +2185,7 @@
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
 				4C945DCE233E6F5000825846 /* AppCenter-Config.plist in Resources */,
+				16C4754B238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
 				8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */,
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,
@@ -2853,7 +2915,107 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree_int/Pods-gymboree_int-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree_prod/Pods-gymboree_prod-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84677A20230BC69E001F5301 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		84677A7E230BCD44001F5301 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		84677AAB230BCDAF001F5301 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		84677AD8230BCE0A001F5301 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		8ED59379A207F49A034F0E2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileapp_int-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9822D1FB157902985D8A5D40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileapp_prod-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6C6893068043275068EB682 /* [CP] Copy Pods Resources */ = {
@@ -3084,6 +3246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47566238D53C100B6959B /* raygun4apple.framework in Sources */,
 				41BE15A0238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE1594238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				3973AC6A2387D12B00538E85 /* main.m in Sources */,
@@ -3107,6 +3270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C4755E238D52A100B6959B /* raygun4apple.framework in Sources */,
 				41BE1596238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE158A238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C997225233E5B7500949134 /* main.m in Sources */,
@@ -3130,6 +3294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C4755F238D537800B6959B /* raygun4apple.framework in Sources */,
 				41BE1598238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE158C238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C997227233E5B7500949134 /* main.m in Sources */,
@@ -3141,6 +3306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47560238D538B00B6959B /* raygun4apple.framework in Sources */,
 				41BE1599238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE158D238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C997228233E5B7500949134 /* main.m in Sources */,
@@ -3152,6 +3318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47562238D539C00B6959B /* raygun4apple.framework in Sources */,
 				41BE159B238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE158F238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C99722A233E5B7500949134 /* main.m in Sources */,
@@ -3163,6 +3330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47563238D53A500B6959B /* raygun4apple.framework in Sources */,
 				41BE159C238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE1590238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C99722B233E5B7500949134 /* main.m in Sources */,
@@ -3174,6 +3342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47564238D53AC00B6959B /* raygun4apple.framework in Sources */,
 				41BE159D238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE1591238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C99722C233E5B7500949134 /* main.m in Sources */,
@@ -3185,6 +3354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47565238D53B500B6959B /* raygun4apple.framework in Sources */,
 				41BE159E238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE1592238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C99722D233E5B7500949134 /* main.m in Sources */,
@@ -3196,6 +3366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C47561238D539400B6959B /* raygun4apple.framework in Sources */,
 				41BE159A238BBE11000B8963 /* VenmoPayment.swift in Sources */,
 				41BE158E238BBE11000B8963 /* VenmoPayment.m in Sources */,
 				4C997229233E5B7500949134 /* main.m in Sources */,
@@ -3731,10 +3902,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3750,7 +3921,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -3765,10 +3936,10 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3784,7 +3955,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-stage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

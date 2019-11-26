@@ -102,7 +102,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
     ...other
   } = imgProps;
 
-  const { alt, url } = imgData;
+  const { alt } = imgData;
 
   return (
     <picture>

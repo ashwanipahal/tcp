@@ -10,13 +10,13 @@ PODS:
     - AppCenter/Crashes
     - AppCenterReactNativeShared
     - React
-  - AppCenter/Analytics (2.4.0):
+  - AppCenter/Analytics (2.5.1):
     - AppCenter/Core
-  - AppCenter/Core (2.4.0)
-  - AppCenter/Crashes (2.4.0):
+  - AppCenter/Core (2.5.1)
+  - AppCenter/Crashes (2.5.1):
     - AppCenter/Core
-  - AppCenterReactNativeShared (2.4.0):
-    - AppCenter/Core (= 2.4.0)
+  - AppCenterReactNativeShared (2.6.0):
+    - AppCenter/Core (= 2.5.1)
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
   - Braintree (4.30.2):
@@ -82,7 +82,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - JWT (3.0.0-beta.11):
+  - JWT (3.0.0-beta.12):
     - Base64 (~> 1.1.2)
   - libwebp (1.0.3):
     - libwebp/demux (= 1.0.3)
@@ -374,10 +374,10 @@ PODS:
     - React
   - RNViewShot (2.6.0):
     - React
-  - SDWebImage (5.2.0):
-    - SDWebImage/Core (= 5.2.0)
-  - SDWebImage/Core (5.2.0)
-  - SDWebImageWebPCoder (0.2.4):
+  - SDWebImage (5.3.2):
+    - SDWebImage/Core (= 5.3.2)
+  - SDWebImage/Core (5.3.2)
+  - SDWebImageWebPCoder (0.2.5):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.0)
   - SSZipArchive (2.2.2)
@@ -604,11 +604,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppCenter: 49a9ffe114c00e2bf5374aeda816d47eabf1978a
+  AppCenter: fddcbac6e4baae3d93a196ceb0bfe0e4ce407dec
   appcenter: 4072e79b8d037d99056e6fc6556224b4525b5829
   appcenter-analytics: 94be52eca805d586207d710aac95e0ddca8b3ddb
   appcenter-crashes: 30caece47856aee7c4c7449d4f4dae2d69795bd6
-  AppCenterReactNativeShared: 57a66e6539e9abe6079ba8f93a002bc3f95788cc
+  AppCenterReactNativeShared: d5e360f8a4cb5126d29e31ab98051d2f070ba631
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   Braintree: 9fc21dc2ead57d104c4a0743454308e404217ec7
@@ -621,7 +621,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
+  JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   mPulse: 93ab7ecdc0501ca806b6be642a0725422b9805e1
   Permission-Camera: 731959b8ffb5757e1ee85893fb49c3aa021ef512
@@ -675,8 +675,8 @@ SPEC CHECKSUMS:
   RNSVG: c0ee15672ff52cdbd7bc8d1d8ba488601bd5db02
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   RNViewShot: 05672e0b3c36cd70633466614b4451869a70c6c7
-  SDWebImage: 609192dcf3898c910a2848032372ead951e66364
-  SDWebImageWebPCoder: cc72085bb20368b2f8dbb21b7e355c667e1309b7
+  SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
+  SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   TouchID: ba4c656d849cceabc2e4eef722dea5e55959ecf4
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
