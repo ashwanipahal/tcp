@@ -6848,6 +6848,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .edit-button {
     padding-left: 10px;
   }
+  .padding-top-15 {
+    padding-top: 15px;
+  }
   .padding-top-30 {
     padding-top: 30px;
   }
@@ -7414,6 +7417,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
   .edit-button {
     padding-left: 10px;
+  }
+  .padding-top-15 {
+    padding-top: 15px;
   }
   .padding-top-30 {
     padding-top: 30px;
