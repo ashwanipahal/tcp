@@ -31,7 +31,12 @@ describe('MyRewards container', () => {
     };
 
     const component = shallow(
-      <MyRewardsContainer {...props} onViewCouponDetails={jest.fn()} fetchCoupons={jest.fn()} />
+      <MyRewardsContainer
+        {...props}
+        onViewCouponDetails={jest.fn()}
+        fetchCoupons={jest.fn()}
+        fetchNeedHelpContent={jest.fn()}
+      />
     );
     component.setState({ selectedCoupon: [] });
     expect(component.find(MyRewards)).toHaveLength(1);
@@ -46,7 +51,9 @@ describe('MyRewards container', () => {
       couponsLabels: {},
       labels: {},
     };
-    const component = shallow(<MyRewardsContainer {...props} fetchCoupons={jest.fn()} />);
+    const component = shallow(
+      <MyRewardsContainer {...props} fetchCoupons={jest.fn()} fetchNeedHelpContent={jest.fn()} />
+    );
     expect(component.find(MyRewards)).toHaveLength(1);
     expect(component.find(CouponDetailModal)).toHaveLength(0);
   });
