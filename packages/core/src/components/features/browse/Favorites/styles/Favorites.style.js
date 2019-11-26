@@ -47,6 +47,9 @@ export default css`
         ? `width: 92%;
         margin: auto;`
         : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props => (props.guestAccessKey ? `width: 100%` : '')}
+    }
   }
 
   .filters-only-container {
