@@ -180,7 +180,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { addNewCCState, editMode, editModeSubmissionError } = this.state;
     const isCardDetailEdit = selectedCard && !editMode;
     const { getAddNewCCForm, unsetFormEditState } = this;
-    const { updateCardDetail, toastMessage } = this.props;
+    const { updateCardDetail, toastMessage, editFormCardType } = this.props;
     return (
       <BillingAddressWrapper>
         <CreditCardWrapper pointerEvents={editMode ? 'none' : 'auto'}>
@@ -222,6 +222,7 @@ export class BillingPaymentForm extends React.PureComponent {
             addressForm={getCheckoutBillingAddress(this)}
             errorMessageRef={this.ediCardErrorRef}
             {...{ getDefaultPayment, toastMessage }}
+            cardType={editFormCardType}
           />
         ) : null}
       </BillingAddressWrapper>
