@@ -117,20 +117,29 @@ class ModuleE extends React.PureComponent {
         videoWidth: MODULE_WIDTH,
         videoHeight: MODULE_DEFAULT_HEIGHT,
       };
-
+    const imgData = image || {};
     return (
       <View>
-        <Anchor navigation={navigation} url={singleCTAButton.url}>
+        {imgData && Object.keys(imgData).length > 0 ? (
+          <Anchor navigation={navigation} url={singleCTAButton.url}>
+            <DamImage
+              width={MODULE_WIDTH}
+              height={MODULE_DEFAULT_HEIGHT}
+              url={imgData.url}
+              host={LAZYLOAD_HOST_NAME.HOME}
+              crop={imgData.crop_m}
+              imgConfig={IMG_DATA.carouselImgConfig[0]}
+            />
+          </Anchor>
+        ) : null}
+        {videoData && Object.keys(videoData).length > 0 ? (
           <DamImage
             width={MODULE_WIDTH}
             height={MODULE_DEFAULT_HEIGHT}
-            url={image.url}
             host={LAZYLOAD_HOST_NAME.HOME}
-            crop={image.crop_m}
-            imgConfig={IMG_DATA.carouselImgConfig[0]}
             videoData={videoData}
           />
-        </Anchor>
+        ) : null}
         {carouselCtaType === 'link' ? (
           <FloatingButton>
             <StyledAnchor
@@ -301,11 +310,10 @@ class ModuleE extends React.PureComponent {
               ) : null}
               {videoData && Object.keys(videoData).length > 0 ? (
                 <StyledImage
-                  url={imgData.url}
                   height="202px"
                   width={`${buttonWidth}px`}
                   testID={`${getLocator('moduleE_product_img')}${index}`}
-                  alt={imgData.alt}
+                  videoData={videoData}
                   imgConfig={IMG_DATA.smallImgConfig[0]}
                 />
               ) : null}
