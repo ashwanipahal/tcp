@@ -20,3 +20,10 @@ export const setAddToFavoritePDP = payload => {
     payload,
   };
 };
+
+export const setPDPLoadingState = payload => {
+  return {
+    type: PRODUCTDETAIL_CONSTANTS.SET_PDP_LOADING_STATE,
+    payload,
+  };
+};

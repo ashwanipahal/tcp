@@ -1,5 +1,6 @@
 import throttle from 'lodash/throttle';
 import PropTypes from 'prop-types';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isClient, scrollPage } from '../../../../../utils';
 
@@ -37,8 +38,9 @@ const formatBagProductsData = cartOrderItems => {
     cartOrderItems.map(tile => {
       const productDetail = getProductDetails(tile);
       const {
-        itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-        productInfo: { skuId, upc, productPartNumber },
+        itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
+        productInfo: { skuId, upc, productPartNumber, generalProductId },
+        miscInfo: { store },
       } = productDetail;
 
       const prodData = {
@@ -47,12 +49,16 @@ const formatBagProductsData = cartOrderItems => {
         name,
         price: offerPrice,
         extPrice: offerPrice,
-        sflExtPrice: offerPrice,
+        paidPrice: offerPrice,
         listPrice,
         partNumber: productPartNumber,
         size,
         upc,
         sku: skuId.toString(),
+        pricingState: 'full price',
+        colorId: generalProductId,
+        storeId: store,
+        quantity: qty,
       };
       productsData.push(prodData);
       return prodData;
@@ -61,11 +67,12 @@ const formatBagProductsData = cartOrderItems => {
   return productsData;
 };
 
-const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems) => {
+const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems, fromMiniBag) => {
   const productsData = formatBagProductsData(cartOrderItems);
   setClickAnalyticsDataBag({
     customEvents: ['scView', 'scOpen', 'event80'],
     products: productsData,
+    pageNavigationText: fromMiniBag ? 'header-cart' : '',
   });
 };
 
@@ -114,6 +121,24 @@ const CarouselOptions = {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: breakpoints.values.lg - 1,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: breakpoints.values.sm - 1,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   },
 };
 

@@ -18,6 +18,7 @@
 #import <MPulse/MPulse.h>
 //#import <raygun4apple/raygun4apple_iOS.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "BraintreeCore.h"
 
 
 #define MPULSE_API_KEY @"APZRQ-P5BYB-9WHCK-VARZB-JGTU7"
@@ -83,7 +84,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-
+ [BTAppSwitch setReturnURLScheme:@"com.childrensplace.tcp-ios.payments"];
  
  
   return YES;
@@ -115,9 +116,24 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
 
+  if ([url.scheme localizedCaseInsensitiveCompare:@"com.childrensplace.tcp-ios.payments"] == NSOrderedSame) {
+    return [BTAppSwitch handleOpenURL:url options:options];
+  }
+  
   BOOL handled =  [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options];
   // Add any custom logic here.
   return handled;
+}
+
+// If you support iOS 8, add the following method.
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  if ([url.scheme localizedCaseInsensitiveCompare:@"com.childrensplace.tcp-ios.payments"] == NSOrderedSame) {
+    return [BTAppSwitch handleOpenURL:url sourceApplication:sourceApplication];
+  }
+  return NO;
 }
 
 @end

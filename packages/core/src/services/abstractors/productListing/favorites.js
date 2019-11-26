@@ -88,7 +88,8 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
-  const { assetHost, siteId } = getAPIConfig();
+  const { siteId } = getAPIConfig();
+  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
 
   return executeStatefulAPICall(payload)
     .then(res => {
@@ -116,7 +117,7 @@ export const getUserWishLists = userName => {
             displayName: wishlist.nameIdentifier,
             isDefault: wishlist.status === 'Default',
             itemsCount: wishlist.itemCount,
-            shareableLink: `${assetHost}${siteId}/favorites?wishlistId=${
+            shareableLink: `${assetHost}/${siteId}/favorites?wishlistId=${
               wishlist.giftListExternalIdentifier
             }&guestAccessKey=${wishlist.guestAccessKey}`,
           };

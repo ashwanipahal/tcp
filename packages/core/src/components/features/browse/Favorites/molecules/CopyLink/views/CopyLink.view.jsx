@@ -61,7 +61,7 @@ class CopyLink extends React.PureComponent {
               </BodyCopy>
             </Col>
           </Row>
-          <Row fullBleed className="elem-mb-MED">
+          <Row fullBleed className="elem-mb-XS">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <BodyCopy component="p" fontSize="fs14" fontFamily="secondary" fontWeight="semibold">
                 {getLabelValue(labels, 'lbl_fav_copy_link_heading')}
@@ -78,6 +78,7 @@ class CopyLink extends React.PureComponent {
                 id="shareLink"
                 dataLocator="shareLinkforFav"
                 inputRef={this.copyLinkRef}
+                className="copy-link-textbox"
                 enableSuccessCheck={false}
               />
             </Col>

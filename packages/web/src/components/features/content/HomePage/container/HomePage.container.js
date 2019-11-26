@@ -12,7 +12,18 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   if (!isServer && !state.Layouts.homepage) {
     store.dispatch(fetchPageLayout('homepage'));
   }
-  return pageProps;
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'home page',
+        pageSection: 'homepage',
+        pageSubSection: 'home page',
+        pageType: 'home page',
+        eVar15: 'D-Vo',
+      },
+    },
+  };
 };
 
 HomePageView.getInitActions = () => initActions;
@@ -20,10 +31,6 @@ HomePageView.getInitActions = () => initActions;
 HomePageView.pageInfo = {
   pageId: 'Home',
   name: 'homepage',
-  pageData: {
-    pageName: 'home page',
-    pageSection: 'homepage',
-  },
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 
