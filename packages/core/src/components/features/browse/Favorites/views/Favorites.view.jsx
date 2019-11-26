@@ -297,10 +297,6 @@ class FavoritesView extends React.PureComponent {
   renderModalWrapper = () => {
     const { labels } = this.props;
     const { isOpenModal } = this.state;
-    const modalHeight =
-      this.currentPopupName === 'shareList'
-        ? { minHeight: '850px', height: '850px', maxHeight: '850px' }
-        : { minHeight: '459px', height: '459px', maxHeight: '459px' };
     return (
       <ModalWrapper
         labels={labels}
@@ -309,6 +305,7 @@ class FavoritesView extends React.PureComponent {
         isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
+        heightConfig={{ height: 'auto' }}
         standardHeight
       >
         {this.getCurrentPopUp()}
@@ -325,7 +322,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const {
+      labels,
+      userEmail,
+      activeWishListId,
+      activeWishList,
+      wishlistsSummaries,
+      formErrorMessage,
+    } = this.props;
     const { itemToMove } = this.state;
     if (this.currentPopupName === 'addList') {
       return (
@@ -333,6 +337,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             itemId: itemToMove,
           }}
@@ -348,6 +353,7 @@ class FavoritesView extends React.PureComponent {
           onCloseModal={this.onCloseModal}
           activeWishListId={activeWishListId}
           onDeleteList={this.onDeleteListHandler}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             listName: activeWishList.displayName,
             makeDefaultList: activeWishList.isDefault,
@@ -362,6 +368,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onSubmit={this.onShareListSubmit}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             subject: getLabelValue(labels, 'lbl_fav_subject_default'),
             fromEmail: userEmail,
@@ -415,6 +422,8 @@ class FavoritesView extends React.PureComponent {
     ];
     const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
 
+    const isActiveListHaveLength = activeWishList && activeWishList.items.length !== 0;
+
     const recommendationAttributes = {
       variations: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
@@ -460,18 +469,22 @@ class FavoritesView extends React.PureComponent {
                 colSize={{ small: 2, medium: 6, large: 4 }}
                 offsetLeft={{ small: 4, medium: 2, large: 8 }}
               >
-                <CustomSelect
-                  options={shareOptions}
-                  activeTitle={labels.lbl_fav_share}
-                  clickHandler={(e, value) => this.shareClickHandler(value)}
-                  customSelectClassName="social-share-fav-list"
-                />
+                {isActiveListHaveLength ? (
+                  <CustomSelect
+                    options={shareOptions}
+                    activeTitle={labels.lbl_fav_share}
+                    clickHandler={(e, value) => this.shareClickHandler(value)}
+                    customSelectClassName="social-share-fav-list"
+                  />
+                ) : (
+                  ''
+                )}
               </Col>
             </Row>
           </Col>
         </Row>
 
-        {activeWishList && activeWishList.items.length !== 0 ? (
+        {isActiveListHaveLength ? (
           <>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>

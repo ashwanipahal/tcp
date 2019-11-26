@@ -89,7 +89,7 @@ export const getUserWishLists = userName => {
     webService: endpoints.getListofWishList,
   };
   const { siteId } = getAPIConfig();
-  const assetHost = typeof window !== 'undefined' && window.location.origin;
+  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
 
   return executeStatefulAPICall(payload)
     .then(res => {

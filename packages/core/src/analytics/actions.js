@@ -36,9 +36,6 @@ export function resetClickAnalyticsData() {
 export function setCampaignId(payload) {
   return { type: SET_CAMPAIGN_ID, payload };
 }
-export function setInternalCampaignId(payload) {
-  return { type: SET_INTERNAL_CAMPAIGN_ID, payload };
-}
 
 export function updatePageData(payload) {
   return { type: UPDATE_PAGE_DATA, payload };
