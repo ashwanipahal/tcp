@@ -52,6 +52,8 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       }
       fontSize="fs24"
       isAnimateList={false}
+      isCustomiseListHeight={true}
+      isMoveToList={false}
       isShareOptions={false}
       isWishlist={true}
       itemStyle={
@@ -67,6 +69,7 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       renderItems={[Function]}
       selectedItemFontWeight="semibold"
       selectedValue=""
+      showListSeperator={false}
       variation="secondary"
     />
   </Styled(View)>

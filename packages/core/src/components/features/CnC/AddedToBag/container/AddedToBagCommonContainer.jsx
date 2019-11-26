@@ -26,6 +26,7 @@ type Props = {
   isPayPalWebViewEnable: boolean,
   addedToBagLoaderState: boolean,
   addedToBagInterval: number,
+  totalBagItems: number,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -66,6 +67,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeModal,
       addedToBagLoaderState,
       addedToBagInterval,
+      totalBagItems,
     } = this.props;
     return (
       <AddedToBag
@@ -83,6 +85,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         hideHeader={this.hideHeaderWhilePaypalView}
         addedToBagLoaderState={addedToBagLoaderState}
         addedToBagInterval={addedToBagInterval}
+        totalBagItems={totalBagItems}
       />
     );
   }
@@ -107,6 +110,7 @@ const mapStateToProps = state => {
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
     addedToBagLoaderState: getAddedToBagLoaderState(state),
     addedToBagInterval: getAddedToBagInterval(state),
+    totalBagItems: BagPageSelectors.getTotalItems(state),
   };
 
   if (state.Labels.global) {

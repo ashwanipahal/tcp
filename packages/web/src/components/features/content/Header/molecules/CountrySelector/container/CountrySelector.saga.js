@@ -83,7 +83,7 @@ export function* submitCountrySelectionData({ payload: data }) {
         orderId: '.',
         USA: 'USD',
         CA: 'CAD',
-        URL: 'http://www.childrensplace.com/',
+        URL: '//www.childrensplace.com/',
       },
       webService: addShipToStore,
     };

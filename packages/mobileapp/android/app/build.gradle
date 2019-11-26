@@ -190,7 +190,7 @@ android {
     // Specifies one flavor dimension.
     flavorDimensions "version"
     productFlavors {
-       
+
         tcp {
             // Assigns this product flavor to the "version" flavor dimension.
             // This property is optional if you are using only one dimension.
@@ -317,8 +317,8 @@ dependencies {
     compile project(':react-native-code-push')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    
-
+    implementation 'com.braintreepayments.api:braintree:2.22.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -370,6 +370,6 @@ project.ext.envConfigFiles = [
 
 ]
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); 
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesAppBuildGradle(project)
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
