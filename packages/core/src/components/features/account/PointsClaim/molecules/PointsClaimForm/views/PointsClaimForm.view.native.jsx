@@ -41,6 +41,7 @@ export class PointsClaimForm extends PureComponent {
     this.state = {
       type: TRANSACTION_TYPES.IN_STORE,
     };
+    this.maxDate = new Date();
   }
 
   /**
@@ -141,7 +142,7 @@ export class PointsClaimForm extends PureComponent {
                 component={DateInput}
                 mode="date"
                 display="calendar"
-                maximumDate={new Date()}
+                maximumDate={this.maxDate}
                 dataLocator="points-claim-transactiondate"
               />
             </FieldWrapper>

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Keyboard, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { formatDate, isValidDate } from '@tcp/core/src/utils';
+import { formatDate, isValidDate, isIOS } from '@tcp/core/src/utils';
 import TextBox from '../../../atoms/TextBox';
 
 export class DateInput extends PureComponent {
@@ -37,8 +37,7 @@ export class DateInput extends PureComponent {
    */
   onChangeHandler = (event, date) => {
     this.setState({
-      // eslint-disable-next-line no-unneeded-ternary
-      show: Platform.OS === 'ios' ? true : false,
+      show: isIOS(),
       date,
     });
     const { input } = this.props;
@@ -55,13 +54,8 @@ export class DateInput extends PureComponent {
   };
 
   render() {
-    const { label, mode, display, maximumDate, ...otherProps } = this.props;
+    const { label, mode, display, maximumDate, input, ...otherProps } = this.props;
     const { show, date } = this.state;
-    const {
-      input = {
-        value: '',
-      },
-    } = otherProps;
     return (
       <>
         <TouchableOpacity onPress={this.onTextBoxPress} accessibilityRole="button">
