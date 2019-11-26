@@ -305,6 +305,10 @@ const getLoyaltyPromosState = state => {
   return loyaltyPromo;
 };
 
+const getModulesState = state => {
+  return state.Modules;
+};
+
 export const getPLPTopPromos = createSelector(
   getTopPromosState,
   getLoyaltyPromosState,
@@ -357,7 +361,4 @@ export const getPlpHorizontalPromo = state => {
       })) ||
     []
   );
-};
-const getModulesState = state => {
-  return state.Modules;
 };
