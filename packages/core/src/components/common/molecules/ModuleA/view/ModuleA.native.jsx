@@ -72,6 +72,24 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   );
 };
 
+const renderDamImage = (imgData, videoData, ignoreLazyLoadImage) => {
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <DamImage
+        width={MODULE_WIDTH}
+        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
+        url={imgData.url}
+        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+        crop={imgData.crop_m}
+        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+      />
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <DamImage host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME} videoData={videoData} />
+  ) : null;
+};
+
 const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   let PromoBannerComponent;
   let HeaderComponent;
@@ -81,7 +99,7 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
       headerText,
       promoBanner,
       ribbonBanner,
-      linkedImage: [{ image }],
+      linkedImage: [{ image, video }],
     },
   } = item;
   if (isGymboree()) {
@@ -94,16 +112,15 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
     HeaderConfig = { color: 'text.primary' };
   }
 
+  const imgData = image || {};
+  const videoData = video && {
+    ...video,
+    videoWidth: MODULE_WIDTH,
+    videoHeight: isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT,
+  };
   return (
     <ContainerView>
-      <DamImage
-        width={MODULE_WIDTH}
-        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
-        url={image.url}
-        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
-        crop={image.crop_m}
-        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
-      />
+      {renderDamImage(imgData, videoData, ignoreLazyLoadImage)}
       <HeaderWrapper>
         <HeaderComponent>
           {headerText && (
@@ -205,7 +222,7 @@ const getRibbonPosition = (largeCompImageCarousel, curSlideIndex) => {
   const curCarouselSlide = largeCompImageCarousel && largeCompImageCarousel[curSlideIndex];
   let ribbonPosition = 'left';
 
-  if (curCarouselSlide) {
+  if (curCarouselSlide && curCarouselSlide.ribbonBanner) {
     const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
     const { ribbonPlacement } = ribbonBanner;
 
