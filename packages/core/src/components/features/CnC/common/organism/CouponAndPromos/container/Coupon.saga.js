@@ -176,7 +176,7 @@ export function* removeCoupon({ payload }) {
         excludeCartItems: !fullPageInfo,
       },
     });
-    yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
+    yield put(setStatus({ promoCode: coupon.id, status: BUTTON_LABEL_STATUS.APPLY }));
 
     yield put(hideLoader());
     yield put(setLoaderState(false));

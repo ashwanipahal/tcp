@@ -34,7 +34,11 @@ import {
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
 } from './Favorites.selectors';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import {
+  getUserEmail,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
@@ -151,6 +155,7 @@ class FavoritesContainer extends React.PureComponent {
       router: {
         query: { wishlistId, guestAccessKey },
       },
+      isLoggedIn,
     } = this.props;
     const { selectedColorProductId } = this.state;
 
@@ -190,6 +195,7 @@ class FavoritesContainer extends React.PureComponent {
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
         guestAccessKey={guestAccessKey}
+        isLoggedIn={isLoggedIn}
         {...this.state}
       />
     );
@@ -215,6 +221,7 @@ const mapStateToProps = state => {
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 };
 
@@ -275,6 +282,7 @@ FavoritesContainer.propTypes = {
   userEmail: PropTypes.string.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 FavoritesContainer.defaultProps = {
@@ -290,6 +298,7 @@ FavoritesContainer.defaultProps = {
   outOfStockLabels: {},
   defaultWishList: {},
   wishlistShareStatus: false,
+  isLoggedIn: false,
 };
 
 export default withRouter(
