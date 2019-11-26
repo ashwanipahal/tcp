@@ -29,6 +29,7 @@ exports[`DateInput component should render DatePicker component 1`] = `
         }
       }
       onChangeText={[Function]}
+      placeholderTextColor="black"
       pointerEvents="none"
       secureTextEntry={false}
       showErrorIcon={true}

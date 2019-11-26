@@ -71,6 +71,7 @@ export class DateInput extends PureComponent {
             pointerEvents="none"
             {...otherProps}
             editable={false}
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
         {show && (
