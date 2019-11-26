@@ -119,7 +119,9 @@ class Dropdown extends React.PureComponent {
 
   itemLists = (nav, activeComponent) => {
     return (
-      <li
+      <BodyCopy
+        component="li"
+        onClick={e => this.onClickHandler(e, nav)}
         key={nav.id}
         role="option"
         tabIndex={0}
@@ -134,13 +136,12 @@ class Dropdown extends React.PureComponent {
           textAlign="center"
           fontWeight="extrabold"
           fontSize="fs14"
-          onClick={e => this.onClickHandler(e, nav)}
         >
           <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href} tabIndex={-1}>
             {this.getDisplayName(nav.displayName)}
           </Anchor>
         </BodyCopy>
-      </li>
+      </BodyCopy>
     );
   };
 
