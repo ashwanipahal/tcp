@@ -14,6 +14,7 @@ import constants from '../components/features/account/OrderDetails/OrderDetails.
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const buildId = process.env.NEXT_BUILD_ID || 'version-not-available';
 
 /**
  * This function returns the static files path with the buildId in place
@@ -26,8 +27,7 @@ export const getStaticFilePath = filePath => {
   if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
     return filePath;
   }
-  const staticFileVersion = process.env.NEXT_BUILD_ID || 'version-not-available';
-  return `/static/${staticFileVersion}/${filePath}`;
+  return `/static/${buildId}/${filePath}`;
 };
 
 /**
