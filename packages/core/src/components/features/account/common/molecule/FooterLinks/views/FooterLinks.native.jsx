@@ -2,7 +2,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
@@ -31,14 +30,11 @@ import {
   FavImageWrapper,
   FavtWrapper,
   AnchorStyles,
-  IconStyles,
 } from '../styles/FooterLinks.style.native';
 
 const favIcon = require('../../../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
-const rightIcon = require('../../../../../../../../../mobileapp/src/assets/images/carrot-small-right.png');
-
-const IconView = withStyles(CustomIcon, IconStyles);
+const rightIcon = require('../../../../../../../../../mobileapp/src/assets/images/carrot-right.png');
 
 class FooterLinks extends PureComponent {
   constructor(props) {
@@ -298,7 +294,9 @@ class FooterLinks extends PureComponent {
                 />
               </TextWrapper>
             </FavoritesWrapper>
-            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={6} height={10} />
+            </RightArrowImageContainer>
           </TouchabelContainer>
         );
       } else if (leafLink.url.includes('gift-card')) {
@@ -319,7 +317,7 @@ class FooterLinks extends PureComponent {
               color="gray.900"
             />
             <RightArrowImageContainer>
-              <ImageComp source={rightIcon} width={7} height={10} />
+              <ImageComp source={rightIcon} width={6} height={10} />
             </RightArrowImageContainer>
           </TouchabelContainer>
         );
@@ -373,7 +371,9 @@ class FooterLinks extends PureComponent {
               text={leafLink.text}
               color="gray.900"
             />
-            <IconView name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={6} height={10} />
+            </RightArrowImageContainer>
           </Anchor>
         );
       }

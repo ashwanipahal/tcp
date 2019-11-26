@@ -73,6 +73,7 @@ const PROP_TYPES = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   type: PropTypes.string,
   allowMultipleSelections: PropTypes.bool,
+  isLoadingMore: PropTypes.bool,
 };
 
 class DropdownList extends React.Component {
@@ -144,7 +145,8 @@ class DropdownList extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { optionsMap, highlightedIndex } = this.props;
     if (optionsMap !== nextProps.optionsMap || highlightedIndex !== nextProps.highlightedIndex) {
       // flag that after this component renders the highlighted element should be scrolled into view
@@ -192,6 +194,7 @@ class DropdownList extends React.Component {
       dataLocator,
       labels,
       type,
+      isLoadingMore,
       allowMultipleSelections,
     } = this.props;
     if (optionsMap.length < 0) return null;
@@ -240,6 +243,7 @@ class DropdownList extends React.Component {
                 facetName={facetName}
                 value={item.title}
                 isAutosuggestAnalytics={autosuggestAnalytics}
+                isLoadingMore={isLoadingMore}
                 dataLocator={
                   index === selectedIndex || (isMultipleSElections && selectedIndex[index])
                     ? `${getLocator(
@@ -296,6 +300,7 @@ DropdownList.defaultProps = {
   labels: {},
   type: '',
   allowMultipleSelections: false,
+  isLoadingMore: false,
 };
 
 export default withStyles(DropdownList, DropdownListStyle);

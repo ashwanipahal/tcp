@@ -10,7 +10,7 @@ const GiftCardRow = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
+  margin: 15px 0;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
     ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.XXS}
@@ -18,7 +18,7 @@ const GiftCardRow = styled.View`
 `;
 
 const GiftCardCal = styled.View`
-  flex: 1;
+  flex: ${props => props.flex};
 `;
 
 const GiftBoxText = styled.Text`

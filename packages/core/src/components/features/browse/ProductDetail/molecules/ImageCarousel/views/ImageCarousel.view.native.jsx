@@ -23,6 +23,7 @@ import { DamImage } from '../../../../../../common/atoms';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import OutOfStockWaterMark from '../../OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -38,7 +39,7 @@ class ImageCarousel extends React.PureComponent {
     this.state = {
       activeSlideIndex: 0,
       showModal: false,
-      colorProductId: '',
+      productId: '',
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
@@ -47,7 +48,9 @@ class ImageCarousel extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   // this method set current visible image
@@ -74,11 +77,17 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites } = props;
-    const { colorProductId } = state;
+    const { onAddItemToFavorites, skuId, currentColorEntry } = props;
+    const { colorProductId } = currentColorEntry;
+    const { productId } = state;
     if (props.isLoggedIn && state.showModal) {
-      if (colorProductId !== '') {
-        onAddItemToFavorites({ colorProductId, page: 'PDP' });
+      if (productId !== '') {
+        onAddItemToFavorites({
+          colorProductId: productId,
+          productSkuId: (skuId && skuId.skuId) || null,
+          pdpColorProductId: colorProductId,
+          page: 'PDP',
+        });
       }
       return { showModal: false };
     }
@@ -90,14 +99,20 @@ class ImageCarousel extends React.PureComponent {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
-  onFavorite = colorProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
+  onFavorite = productId => {
+    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry } = this.props;
+    const { colorProductId } = currentColorEntry;
 
     if (!isLoggedIn) {
-      this.setState({ colorProductId });
+      this.setState({ productId });
       this.setState({ showModal: true });
     } else {
-      onAddItemToFavorites({ colorProductId, page: 'PDP' });
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        page: 'PDP',
+      });
     }
   };
 
@@ -144,6 +159,13 @@ class ImageCarousel extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  renderOutOfStockOverlay = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} fontSize="fs24" />
+    ) : null;
+  };
+
   renderNormalImage = imgSource => {
     const { onImageClick } = this.props;
     const { activeSlideIndex } = this.state;
@@ -163,13 +185,15 @@ class ImageCarousel extends React.PureComponent {
           width={imageWidth}
           height={imageHeight}
         />
+        {this.renderOutOfStockOverlay()}
       </ImageTouchableOpacity>
     );
   };
 
   renderFavoriteIcon = () => {
-    const { currentColorEntry, isBundleProduct } = this.props;
+    const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
     const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
@@ -190,7 +214,7 @@ class ImageCarousel extends React.PureComponent {
               color="gray.600"
               dataLocator="pdp_favorite_icon"
               onPress={() => {
-                this.onFavorite(colorProductId);
+                this.onFavorite(productId);
               }}
             />
           )}
@@ -306,6 +330,10 @@ ImageCarousel.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
@@ -319,6 +347,10 @@ ImageCarousel.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   currentColorEntry: '',
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

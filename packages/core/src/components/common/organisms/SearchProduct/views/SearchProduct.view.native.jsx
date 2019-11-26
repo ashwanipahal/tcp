@@ -29,7 +29,8 @@ class SearchProduct extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { searchResults } = nextProps;
     const { searchResults: prevSearchResults, labels: slpLabels } = this.props;
 
@@ -143,7 +144,7 @@ class SearchProduct extends React.PureComponent {
           iconFontName={ICON_FONT_CLASS.Icomoon}
           name={ICON_NAME.search}
           size="fs25"
-          color="blue.500"
+          color="gray.900"
           style={topStyle}
         />
         <TextInput

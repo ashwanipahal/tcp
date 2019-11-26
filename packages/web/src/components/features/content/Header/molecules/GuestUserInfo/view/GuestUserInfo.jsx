@@ -61,6 +61,7 @@ const GuestUserInfo = ({
               }
               fontSizeVariation="large"
               anchorVariation="primary"
+              data-overlayTarget="true"
             >
               Create Account
             </Button>
@@ -75,6 +76,7 @@ const GuestUserInfo = ({
               onClick={LoginLinkClick}
               fontSizeVariation="large"
               anchorVariation="primary"
+              data-overlayTarget="true"
             >
               Login
             </Button>
@@ -91,6 +93,7 @@ const GuestUserInfo = ({
               role="button"
               id={login}
               onClick={LoginLinkClick}
+              data-overlayTarget="true"
             >
               {`Hi, ${userName}`}
             </BodyCopy>
@@ -98,6 +101,7 @@ const GuestUserInfo = ({
             {!isDrawer && (
               <Image
                 alt="user"
+                className="account-info"
                 src={getIconPath('down_arrow_icon')}
                 height="6px"
                 onClick={LoginLinkClick}
@@ -111,14 +115,6 @@ const GuestUserInfo = ({
                   {`$${handleUserRewards(userRewards)} Rewards`}
                 </span>
               </BodyCopy>
-            ) : null}
-            {!isDrawer ? (
-              <Image
-                alt="user"
-                className="usericon"
-                src={getIconPath('user-icon')}
-                onClick={LoginLinkClick}
-              />
             ) : null}
           </ClickTracker>
         </BodyCopy>

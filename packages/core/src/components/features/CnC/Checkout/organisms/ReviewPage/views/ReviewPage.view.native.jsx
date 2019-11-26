@@ -32,18 +32,25 @@ class ReviewPage extends React.PureComponent {
     isPaymentDisabled: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
     isExpressCheckout: PropTypes.bool,
+    bagLoading: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.func.isRequired,
     selectedShipmentId: PropTypes.func.isRequired,
+    setVenmoShippingState: PropTypes.func,
+    setVenmoPickupState: PropTypes.func,
   };
 
   static defaultProps = {
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
     isPaymentDisabled: false,
     isExpressCheckout: false,
   };
 
   componentDidMount() {
-    const { reviewDidMount } = this.props;
+    const { reviewDidMount, setVenmoShippingState, setVenmoPickupState } = this.props;
+    setVenmoShippingState(true);
+    setVenmoPickupState(true);
     reviewDidMount();
   }
 
@@ -112,6 +119,7 @@ class ReviewPage extends React.PureComponent {
       shipmentMethods,
       dispatch,
       selectedShipmentId,
+      bagLoading,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -132,6 +140,7 @@ class ReviewPage extends React.PureComponent {
                   setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
                 isExpressCheckout={isExpressCheckout}
+                bagLoading={bagLoading}
               />
             )}
 
@@ -147,6 +156,7 @@ class ReviewPage extends React.PureComponent {
                   formName={formName}
                   formSection="expressReviewShippingSection"
                   selectedShipmentId={selectedShipmentId}
+                  bagLoading={bagLoading}
                 />
               </FormSection>
             )}
@@ -156,9 +166,10 @@ class ReviewPage extends React.PureComponent {
                 setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
               isExpressCheckout={isExpressCheckout}
+              bagLoading={bagLoading}
             />
           </Container>
-          <CheckoutCartItemList />
+          <CheckoutCartItemList bagLoading={bagLoading} />
           <CnCTemplate
             isReviewPage
             navigation={navigation}

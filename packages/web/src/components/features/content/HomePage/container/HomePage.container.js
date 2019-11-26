@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
@@ -13,7 +12,18 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   if (!isServer && !state.Layouts.homepage) {
     store.dispatch(fetchPageLayout('homepage'));
   }
-  return pageProps;
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'home page',
+        pageSection: 'homepage',
+        pageSubSection: 'home page',
+        pageType: 'home page',
+        eVar15: 'D-Vo',
+      },
+    },
+  };
 };
 
 HomePageView.getInitActions = () => initActions;
@@ -21,10 +31,6 @@ HomePageView.getInitActions = () => initActions;
 HomePageView.pageInfo = {
   pageId: 'Home',
   name: 'homepage',
-  pageData: {
-    pageName: 'home page',
-    pageSection: 'homepage',
-  },
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 
@@ -32,8 +38,10 @@ const mapStateToProps = state => {
   const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+  const seoData = state.SEOData.home;
 
   return {
+    seoData,
     slots: homepageSlots.map(slot => {
       // Logic for accomodating two modules in one slot (Half width modules view)
       const { contentId: slotContent = '' } = slot;
@@ -72,14 +80,6 @@ const mapDispatchToProps = dispatch => {
     setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
   };
 };
-
-/**
- * Hotfix-Aware Component. The use of `withHotfix` is just for making
- * page hotfix-aware.
- */
-HomePageView.displayName = 'HomePage';
-// eslint-disable-next-line no-unused-vars
-const HotfixAwareHomePage = withHotfix(HomePageView);
 
 export default connect(
   mapStateToProps,

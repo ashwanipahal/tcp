@@ -13,19 +13,6 @@ import PromoModules from '../../../../common/organisms/PromoModules';
 
 import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 
-/*
-// Changes as per RWD-9852. Keeping this for future reference.
-import ModuleA from '../../../../common/molecules/ModuleA';
-import ModuleD from '../../../../common/molecules/ModuleD';
-import ModuleG from '../../../../common/molecules/ModuleG';
-import ModuleQ from '../../../../common/molecules/ModuleQ';
-import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock';
-import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
-import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
-import moduleQMock from '../../../../../services/abstractors/common/moduleQ/mock';
-*/
-
-// import ProductList from '../molecules/ProductList/views';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -72,6 +59,8 @@ const ProductListView = ({
   isSearchListing,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  isLoggedIn,
+  isPlcc,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered
@@ -88,7 +77,7 @@ const ProductListView = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+        <Col className="fixed-bread-crumb-height" colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="bread-crumb">
             <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
           </div>
@@ -107,20 +96,13 @@ const ProductListView = ({
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
           {plpTopPromos.length > 0 && (
-            <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+            <PromoModules
+              plpTopPromos={plpTopPromos}
+              asPath={asPathVal}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
+            />
           )}
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area">
-              {/*
-              // Changes as per RWD-9852. Keeping this for future reference.
-              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
-              <ModuleD {...moduleDMock.composites} fullBleed />
-              <ModuleG {...moduleGMock.moduleG.composites} />
-              <ModuleQ {...moduleQMock.moduleQ.composites} />
-              <Recommendations variations="moduleO,moduleP" />
-              */}
-            </div>
-          </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section" id="filterWrapper">
               <ProductListingFiltersForm
@@ -135,6 +117,7 @@ const ProductListView = ({
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
                 isFilterBy={isFilterBy}
+                isLoadingMore={isLoadingMore}
               />
               {/* UX timer */}
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />
@@ -158,6 +141,8 @@ const ProductListView = ({
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
               {...otherProps}
             />
             {/* UX timer */}

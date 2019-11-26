@@ -7,14 +7,20 @@ const initialState = fromJS({
   isFetching: false,
   couponList: [],
   couponsAndOffers: [],
+  isCouponHelpModalOpen: false,
 });
 
-const getDefaultState = state => {
-  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  if (!(state instanceof fromJS)) {
-    return fromJS(state);
+const CouponReducerExtension = (state = initialState, action) => {
+  switch (action.type) {
+    case COUPON_CONSTANTS.TOGGLE_NEED_HELP_MODAL_STATE:
+      return state.set('isCouponHelpModalOpen', !state.get('isCouponHelpModalOpen'));
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (!(state instanceof fromJS)) {
+        return fromJS(state);
+      }
+      return state;
   }
-  return state;
 };
 
 const CouponReducer = (state = initialState, action) => {
@@ -54,7 +60,7 @@ const CouponReducer = (state = initialState, action) => {
     case COUPON_CONSTANTS.RESET_COUPON_REDUCER:
       return initialState;
     default:
-      return getDefaultState(state);
+      return CouponReducerExtension(state, action);
   }
 };
 

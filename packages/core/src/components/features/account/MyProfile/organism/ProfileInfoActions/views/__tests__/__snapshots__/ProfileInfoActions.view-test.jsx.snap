@@ -90,7 +90,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="favStore"
         activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
-        redirectTo="/account"
+        redirectTo="/store-locator"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -291,7 +291,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="favStore"
         activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
-        redirectTo="/account"
+        redirectTo="/store-locator"
       />
     </Styled(Col)>
     <Styled(Col)

@@ -175,6 +175,9 @@ export default css`
 
   .product-tab-list {
     margin-top: 27px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-top: 14px;
+    }
   }
 
   .product-image {

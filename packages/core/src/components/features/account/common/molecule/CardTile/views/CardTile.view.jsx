@@ -301,7 +301,7 @@ class CardTile extends React.Component<Props> {
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
-            message="INVLAID CAPTCHA"
+            message="INVALID CAPTCHA"
           />
         )}
         <div className="cardTile">

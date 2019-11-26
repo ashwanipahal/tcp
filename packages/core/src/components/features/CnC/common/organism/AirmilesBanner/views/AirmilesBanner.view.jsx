@@ -18,7 +18,8 @@ class AirmilesBanner extends React.PureComponent<Props> {
     isValidPromoField: false,
   };
 
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     const { airmilesBannerData } = this.props;
     /* istanbul ignore else */
     if (airmilesBannerData && !!airmilesBannerData.collectorNumber) {
@@ -26,7 +27,8 @@ class AirmilesBanner extends React.PureComponent<Props> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { airmilesBannerData } = this.props;
     const {
       promoField,

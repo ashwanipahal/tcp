@@ -30,6 +30,7 @@ import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import ImageCarousel from '../../ImageCarousel';
 import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
+import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
@@ -37,12 +38,24 @@ const TextProps = {
 
 let renderVariation = false;
 
-const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+const onCTAHandler = (
+  item,
+  selectedColorIndex,
+  onGoToPDPPage,
+  onQuickViewOpenClick,
+  isFavoriteOOS,
+  setLastDeletedItemId
+) => {
   const { productInfo, colorsMap } = item;
   const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
-  if (bundleProduct) {
+  if (isFavoriteOOS) {
+    const {
+      itemInfo: { itemId },
+    } = item;
+    setLastDeletedItemId({ itemId });
+  } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
     onQuickViewOpenClick({
@@ -51,19 +64,29 @@ const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenCl
   }
 };
 
-const renderAddToBagContainer = (
+const getOOSButtonLabel = (isFavorite, outOfStockLabels, labelsPlpTiles) => {
+  return isFavorite ? labelsPlpTiles.lbl_remove : outOfStockLabels.outOfStockCaps;
+};
+
+const renderAddToBagContainer = ({
   item,
   renderPriceOnly,
   selectedColorIndex,
   onQuickViewOpenClick,
   bundleProduct,
   labelsPlpTiles,
-  onGoToPDPPage
-) => {
+  onGoToPDPPage,
+  keepAlive,
+  outOfStockLabels,
+  isFavorite,
+  setLastDeletedItemId,
+}) => {
   if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
+  const isFavoriteOOS = isFavorite && keepAlive;
+
   return (
     <AddToBagContainer>
       <CustomButton
@@ -72,8 +95,22 @@ const renderAddToBagContainer = (
         type="button"
         buttonVariation="variable-width"
         data-locator=""
-        text={buttonLabel}
-        onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
+        disableButton={keepAlive && !isFavorite}
+        text={
+          keepAlive
+            ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels, labelsPlpTiles)
+            : buttonLabel
+        }
+        onPress={() =>
+          onCTAHandler(
+            item,
+            selectedColorIndex,
+            onGoToPDPPage,
+            onQuickViewOpenClick,
+            isFavoriteOOS,
+            setLastDeletedItemId
+          )
+        }
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
         margin="0 6px 0 0"
       />
@@ -81,10 +118,36 @@ const renderAddToBagContainer = (
   );
 };
 
+renderAddToBagContainer.propTypes = {
+  item: PropTypes.shape({}).isRequired,
+  renderPriceOnly: PropTypes.bool.isRequired,
+  selectedColorIndex: PropTypes.number.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  bundleProduct: PropTypes.bool.isRequired,
+  labelsPlpTiles: PropTypes.shape({}).isRequired,
+  onGoToPDPPage: PropTypes.bool.isRequired,
+  keepAlive: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}).isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  setLastDeletedItemId: PropTypes.func.isRequired,
+};
+
 const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
+const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {
+  return (
+    (isKeepAliveEnabled && keepAlive) ||
+    (itemInfo && itemInfo.availability === AVAILABILITY.SOLDOUT)
+  );
+};
+
+const checkEditEnabled = (isFavorite, itemOutOfStock) => {
+  return isFavorite && !itemOutOfStock;
+};
+
+// eslint-disable-next-line complexity
 const ListItem = props => {
   const {
     item,
@@ -108,6 +171,9 @@ const ListItem = props => {
     viaModule,
     isLoggedIn,
     labelsPlpTiles,
+    isKeepAliveEnabled,
+    outOfStockLabels,
+    renderMoveToList,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -116,7 +182,8 @@ const ListItem = props => {
   const { name, bundleProduct } = productInfo;
   const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
-
+  const { keepAlive } = miscInfoData;
+  const itemOutOfStock = isItemOutOfStock(isKeepAliveEnabled, keepAlive, itemInfo);
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
@@ -133,9 +200,11 @@ const ListItem = props => {
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
         isFavorite={isFavorite}
+        keepAlive={itemOutOfStock}
+        outOfStockLabels={outOfStockLabels}
       />
       <RenderBadge2 text={badge2} />
-      {isFavorite && (
+      {checkEditEnabled(isFavorite, itemOutOfStock) && (
         <Anchor
           fontSizeVariation="medium"
           fontFamily="secondary"
@@ -156,7 +225,7 @@ const ListItem = props => {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         setLastDeletedItemId={setLastDeletedItemId}
-        isFavorite={isInDefaultWishlist}
+        isFavorite={isInDefaultWishlist || isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
         item={item}
@@ -181,18 +250,26 @@ const ListItem = props => {
           marginTop={12}
         />
       ) : null}
-      {renderAddToBagContainer(
+      {renderAddToBagContainer({
         item,
         renderPriceOnly,
         selectedColorIndex,
         onQuickViewOpenClick,
         bundleProduct,
         labelsPlpTiles,
-        onGoToPDPPage
-      )}
+        onGoToPDPPage,
+        keepAlive: itemOutOfStock,
+        outOfStockLabels,
+        isFavorite,
+        setLastDeletedItemId,
+      })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
-        <RenderMoveToListOrSeeSuggestedList item={item} labelsPlpTiles={labelsPlpTiles} />
+        <RenderMoveToListOrSeeSuggestedList
+          item={item}
+          labelsPlpTiles={labelsPlpTiles}
+          renderMoveToList={renderMoveToList}
+        />
       )}
     </ListContainer>
   );
@@ -222,6 +299,8 @@ const ImageSection = ({
   onGoToPDPPage,
   productImageWidth,
   isFavorite,
+  keepAlive,
+  outOfStockLabels,
 }) => {
   return (
     <ImageSectionContainer>
@@ -231,6 +310,8 @@ const ImageSection = ({
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
         isFavorite={isFavorite}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     </ImageSectionContainer>
   );
@@ -242,11 +323,19 @@ ImageSection.propTypes = {
   onGoToPDPPage: PropTypes.func.isRequired,
   productImageWidth: PropTypes.number,
   isFavorite: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageSection.defaultProps = {
   productImageWidth: '',
   isFavorite: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -416,7 +505,7 @@ const RenderPricesSection = values => {
                 size="fs21"
                 color="gray.600"
                 onPress={() => {
-                  onFavorite(generalProductId);
+                  onFavorite(generalProductId, itemId);
                 }}
               />
             )}
@@ -509,9 +598,9 @@ const RenderPurchasedQuantity = ({ item }) => {
 };
 
 const onSeeSuggestedHandler = () => {};
-const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
+const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles, renderMoveToList }) => {
   const {
-    itemInfo: { availability },
+    itemInfo: { availability, itemId },
   } = item;
   if (availability && availability === 'SOLDOUT') {
     return (
@@ -530,16 +619,7 @@ const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
   }
 
   return (
-    <RowContainer margins="8px 0 0 0">
-      <BodyCopy
-        color="gray.900"
-        fontFamily="secondary"
-        fontSize="fs14"
-        text="Move to another list "
-        fontWeight="regular"
-      />
-      <CustomIcon name={ICON_NAME.chevronDown} size="fs14" color="gray.600" margins="0 0 0 12px" />
-    </RowContainer>
+    <RowContainer margins="8px 0 0 0">{renderMoveToList && renderMoveToList(itemId)}</RowContainer>
   );
 };
 
@@ -551,6 +631,7 @@ RenderMoveToListOrSeeSuggestedList.propTypes = {
       availability: PropTypes.string,
     }),
   }),
+  renderMoveToList: PropTypes.func.isRequired,
 };
 
 RenderMoveToListOrSeeSuggestedList.defaultProps = {
@@ -631,6 +712,9 @@ ListItem.propTypes = {
   viaModule: PropTypes.string,
   isLoggedIn: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
 };
 
 ListItem.defaultProps = {
@@ -660,6 +744,9 @@ ListItem.defaultProps = {
   viaModule: '',
   isLoggedIn: false,
   labelsPlpTiles: {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ListItem, styles);

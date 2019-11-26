@@ -482,6 +482,18 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  renderSoldOutError = () => {
+    const { keepAlive, outOfStockLabels } = this.props;
+    return keepAlive ? (
+      <BodyCopy
+        text={outOfStockLabels.itemSoldOutMessage}
+        color="red.500"
+        fontFamily="secondary"
+        fontSize="fs10"
+      />
+    ) : null;
+  };
+
   render() {
     const {
       showPickupInfo,
@@ -489,6 +501,7 @@ class ProductPickup extends React.PureComponent {
       labels,
       simplifiedProductPickupView,
       isAnchor,
+      keepAlive,
     } = this.props;
     return (
       <>
@@ -538,6 +551,7 @@ class ProductPickup extends React.PureComponent {
                   <ColumnContainer margins="0 0 0 20px">
                     <RowContainer>{this.renderPickupTitle()}</RowContainer>
                     {showPickupInfo && this.renderPickupInfo()}
+                    {this.renderSoldOutError()}
                   </ColumnContainer>
                 </StoreContainer>
               </>
@@ -556,12 +570,12 @@ class ProductPickup extends React.PureComponent {
               fontFamily="secondary"
               onPress={this.handlePickupModalClick}
               locator="pdp_pick_up_in_store_btn"
-              disabled={isSubmitting}
+              disableButton={keepAlive || isSubmitting}
             />
           </Container>
-        ) : (
+        ) : !keepAlive ? (
           this.renderPickUpInStoreAnchorButton()
-        )}
+        ) : null}
       </>
     );
   }

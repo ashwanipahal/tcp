@@ -69,8 +69,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
             component="div"
             data-locator={`couponDetailModal_${coupon.status}_BarCode`}
             className="couponModal_modalbarcode"
+            aria-label={coupon.id}
+            role="img"
           >
-            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
+            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED" aria-hidden>
               <Barcode value={coupon.id} barcodeId={coupon.id} fontSize={24} />
             </BodyCopy>
           </BodyCopy>

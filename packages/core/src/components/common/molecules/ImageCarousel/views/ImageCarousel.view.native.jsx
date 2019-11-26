@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import { DamImage } from '../../../atoms';
 import { Container, ImageTouchableOpacity } from '../styles/ImageCarousel.style.native';
+import OutOfStockWaterMark from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
 
 class ImageCarousel extends React.PureComponent {
   constructor(props) {
@@ -43,7 +44,14 @@ class ImageCarousel extends React.PureComponent {
   };
 
   renderNormalImage = imgSource => {
-    const { onImageClick, imageWidth, imageHeight, imageUrlKey } = this.props;
+    const {
+      onImageClick,
+      imageWidth,
+      imageHeight,
+      imageUrlKey,
+      keepAlive,
+      outOfStockLabels,
+    } = this.props;
     const { activeSlideIndex } = this.state;
     const { index, item } = imgSource;
     const imgUrl = (item && item[imageUrlKey]) || '';
@@ -61,6 +69,9 @@ class ImageCarousel extends React.PureComponent {
           width={imageWidth}
           height={imageHeight}
         />
+        {keepAlive && (
+          <OutOfStockWaterMark label={outOfStockLabels.outOfStockCaps} fontSize="fs12" />
+        )}
       </ImageTouchableOpacity>
     );
   };
@@ -107,6 +118,10 @@ ImageCarousel.propTypes = {
   getActiveIndex: PropTypes.func,
   setActiveIndex: PropTypes.number,
   imageUrlKey: PropTypes.string,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }),
 };
 
 ImageCarousel.defaultProps = {
@@ -118,6 +133,10 @@ ImageCarousel.defaultProps = {
   getActiveIndex: null,
   setActiveIndex: 0,
   imageUrlKey: 'listingSizeImageUrl',
+  keepAlive: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
 };
 
 export default ImageCarousel;

@@ -10,9 +10,9 @@ const styles = css`
     padding-bottom: 0;
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
-    }
-    .checkoutBtnTracker {
-      flex: none;
+      .checkoutBtnTracker {
+        flex: none;
+      }
     }
     .item-closed {
       .elem-mb-MED {
@@ -177,6 +177,7 @@ export const addedToBagActionsStyles = css`
       flex: 1;
       display: inline-flex;
       margin-bottom: 7px;
+      ${props => (!props.isVenmoEnabled && !props.isPayPalEnabled ? `flex: none;` : '')};
       .paypal-wrapper {
         min-width: auto;
       }
@@ -202,11 +203,31 @@ export const addedToBagActionsStyles = css`
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin-top: 0;
       padding: 0;
+      ${props =>
+        !props.isVenmoEnabled || !props.isPayPalEnabled
+          ? `flex-direction: row;
+          .checkoutBtnTracker {
+            flex: 1;
+            padding-left: 8px;
+          }`
+          : ''};
+      ${props =>
+        !props.isVenmoEnabled && !props.isPayPalEnabled
+          ? `.checkoutBtnTracker {
+              flex: 1;
+              padding-left: 0;
+            }`
+          : ''};
       .checkout {
         height: 42px;
         padding: 12px 0;
       }
+      .paypal-wrapper {
+        min-width: 170px;
+        height: 42px;
+      }
       .venmo-button {
+        min-width: 170px;
         height: 42px;
       }
     }
@@ -229,6 +250,10 @@ export const recommendationStyles = css`
       .recommendations-section-row {
         padding-left: 6px;
       }
+    }
+    .added-to-bag {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;

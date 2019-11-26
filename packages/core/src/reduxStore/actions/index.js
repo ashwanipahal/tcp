@@ -153,7 +153,7 @@ export const fetchPageLayout = (payload, layoutName, clpPage) => {
   return {
     payload,
     layoutName,
-    isClpPage: clpPage.clpPage,
+    isClpPage: clpPage ? clpPage.clpPage : null,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };

@@ -8,8 +8,10 @@ import {
 describe('ConfirmationContainer', () => {
   it('should render correctly', () => {
     const mockedFetchUpdateOrderDetails = jest.fn();
+    const mockedFetchModuleXContent = jest.fn();
     const props = {
       fetchUpdateOrderDetails: mockedFetchUpdateOrderDetails,
+      fetchModuleXContent: mockedFetchModuleXContent,
       orderNumbersByFullfillmentCenter: {
         fullfillmentCenterMap: [
           {
@@ -26,8 +28,10 @@ describe('ConfirmationContainer', () => {
   });
   it('should render correctly with Bopis item', () => {
     const mockedFetchUpdateOrderDetails = jest.fn();
+    const mockedFetchModuleXContent = jest.fn();
     const props = {
       fetchUpdateOrderDetails: mockedFetchUpdateOrderDetails,
+      fetchModuleXContent: mockedFetchModuleXContent,
       orderNumbersByFullfillmentCenter: {
         fullfillmentCenterMap: [
           {

@@ -12,6 +12,7 @@ const OutOfStockWaterMark = ({ label, fontSizes }) => {
         fontSize={fontSizes}
         fontWeight="extrabold"
         color="gray[900]"
+        textAlign="center"
       >
         {label}
       </BodyCopy>

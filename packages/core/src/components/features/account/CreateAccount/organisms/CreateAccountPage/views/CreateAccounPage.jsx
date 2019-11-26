@@ -47,6 +47,16 @@ class CreateAccounPage extends React.Component {
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, error } = this.props;
+    const container = document.getElementById('dialogContent');
+
+    // Scrolling up to see the success end error message
+    if (((!prevProps.isUserLoggedIn && isUserLoggedIn) || error) && container) {
+      container.scrollTo(0, 0);
+    }
+  }
+
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
     createAccountAction(payload);
@@ -107,7 +117,7 @@ class CreateAccounPage extends React.Component {
             initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-            tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
+            tooltipContent={<PasswordRequirement labels={labels.password} />}
             formErrorMessage={formErrorMessage}
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}

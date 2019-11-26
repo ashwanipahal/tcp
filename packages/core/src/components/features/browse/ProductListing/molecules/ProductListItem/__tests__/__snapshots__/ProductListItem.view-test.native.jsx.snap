@@ -39,7 +39,9 @@ exports[`ProductListItem component should render correctly 1`] = `
         "quantityPurchased": 1,
       }
     }
+    keepAlive={false}
     onGoToPDPPage={[MockFunction]}
+    outOfStockLabels={Object {}}
     productImageWidth={false}
     selectedColorIndex={0}
   />
@@ -65,7 +67,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderPricesSection
     accessibilityLabel="Price Section"
     hideFavorite={false}
-    isFavorite=""
+    isFavorite={true}
     isLoggedIn={false}
     item={
       Object {
@@ -293,6 +295,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       }
     }
     labelsPlpTiles={Object {}}
+    renderMoveToList={[Function]}
   />
 </Styled(View)>
 `;

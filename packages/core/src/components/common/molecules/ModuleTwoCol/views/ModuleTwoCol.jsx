@@ -23,7 +23,7 @@ const DynamicColumns = dynamic({
       slots.map(slotData => {
         const Module = modules[slotData.moduleName];
         return (
-          <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col colSize={{ small: 6, medium: slotData.moduleName === 'moduleB' ? 4 : 8, large: 6 }}>
             <Module halfWidth {...slotData} {...others} />
           </Col>
         );

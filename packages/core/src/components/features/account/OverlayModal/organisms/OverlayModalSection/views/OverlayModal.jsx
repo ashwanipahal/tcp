@@ -64,15 +64,24 @@ class OverlayModal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
-    const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
+    const {
+      component: nextTargetComponent,
+      showCondensedHeader: nextCondensedState,
+      isLoggedIn,
+    } = this.props;
+    const {
+      component: prevTargetComponent,
+      showCondensedHeader: prevCondensedState,
+      isLoggedIn: prevLoggedIn,
+    } = prevProps;
     const modal = document.getElementById('dialogContent');
+    const loginStateChanged = !prevLoggedIn && isLoggedIn;
+    const condensedStateChanged = nextCondensedState !== prevCondensedState;
+
     if (nextTargetComponent !== prevTargetComponent) {
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
-    }
-
-    if (nextCondensedState !== prevCondensedState) {
+    } else if (condensedStateChanged || loginStateChanged) {
       this.getCustomStyles({ styleModal: true });
     }
 
@@ -120,64 +129,52 @@ class OverlayModal extends React.Component {
     return '';
   };
 
-  /* set scroll height in mobile view */
-  setInnerScrollHeight = () => {
-    const modal = document.getElementById('dialogContent');
-    /* istanbul ignore else */
-    if (window && window.innerWidth < 767) {
-      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
-      this.bodyContainer.style.overflow = 'hidden';
-    }
-  };
-
   /**
    * Set Left position of modal triangle
    * @param {*} comp
    */
 
   // eslint-disable-next-line complexity
-  styleModalTriangle = ({ comp }) => {
+  styleModalTriangle = comp => {
     const { showCondensedHeader, component } = this.props;
-    if (this.isMobile && component !== 'accountDrawer') return;
+    const isAccountDrawer = component === 'accountDrawer';
+    if (this.isMobile && !isAccountDrawer) return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
     const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos = modalTriangle && window && modalTriangle.getBoundingClientRect().y;
-    /* istanbul ignore else */
-    if (window && window.innerWidth > 767) {
-      if (showCondensedHeader && this.body) {
-        modal.style.height = `${window.innerHeight - 70}px`;
-      } else {
-        modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
-      }
-      this.body.style.overflow = 'hidden';
+
+    if (showCondensedHeader && this.body) {
+      modal.style.height = `${window.innerHeight - 70}px`;
+    } else {
+      modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
     }
-    this.setInnerScrollHeight();
+    this.body.style.overflow = 'hidden';
+
     /* istanbul ignore else */
-    if (
-      !showCondensedHeader &&
-      compRectBoundingX &&
-      compWidth &&
-      modalRectBoundingX &&
-      modalTriangle
-    ) {
+    if ((!showCondensedHeader || this.isMobile) && modal && modalTriangle) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
   };
 
+  modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
+    let compElement = comp;
+    if (!this.isMobile && isAccountDrawer && document.getElementById('account-info-user-points')) {
+      compElement = document.getElementById('account-info-user-points');
+    }
+    this.styleModalTriangle(compElement);
+  };
+
   // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
-    const { component, showCondensedHeader } = this.props;
+    const { component } = this.props;
     const isAccountDrawer = component === 'accountDrawer' || false;
     if (this.isMobile && component !== 'accountDrawer') return;
-    let comp = document.getElementById(component);
-    if (isAccountDrawer && showCondensedHeader) {
-      comp = document.getElementById('condensedLogin');
-    }
+    const comp = document.getElementById(component);
     /* istanbul ignore else */
     if (comp && window) {
       const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;
@@ -187,14 +184,7 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      if (isAccountDrawer) {
-        comp = document.getElementById('account-info-user-points');
-        this.styleModalTriangle({ comp });
-      } else {
-        this.styleModalTriangle({ comp });
-      }
-    } else if (isAccountDrawer) {
-      this.setInnerScrollHeight();
+      this.modalTrianglePositioning({ comp, isAccountDrawer });
     }
   };
 
@@ -239,7 +229,13 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
-      e.stopImmediatePropagation();
+      const nextComponent = e.target;
+      if (
+        nextComponent.hasAttribute('data-overlayTarget') ||
+        nextComponent.closest('[data-overlayTarget]')
+      ) {
+        e.stopImmediatePropagation();
+      }
     }
   }
 
@@ -308,7 +304,7 @@ class OverlayModal extends React.Component {
           <div
             className={`${
               isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
-            } modal__triangle hide-on-mobile ${showCondensedHeader && 'condensed-modal-triangle'}`}
+            } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
             id="modalTriangle"
           />
           <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />

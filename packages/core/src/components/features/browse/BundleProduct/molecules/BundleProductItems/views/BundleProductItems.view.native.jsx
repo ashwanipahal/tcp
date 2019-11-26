@@ -2,9 +2,23 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import OutfitProduct from '@tcp/core/src/components/features/browse/OutfitDetails/molecules/OutfitProduct/OutfitProduct.native';
+import { getMapSliceForColorProductId } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { Container } from '../styles/BundleProductItems.style.native';
 
 class BundleProductItems extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentColorIndex: 0,
+      generalProductId: '',
+    };
+  }
+
+  colorindex = (colorindex, generalProductId) => {
+    this.setState({ currentColorIndex: colorindex, generalProductId });
+  };
+
   /**
    * @function renderItem populates the L1 menu item from the data passed to it
    * @param {object} item Details of the L1 menu item passed from the loop
@@ -12,6 +26,7 @@ class BundleProductItems extends React.PureComponent {
   renderItem = ({ item, index }) => {
     const {
       plpLabels,
+      colorProductId,
       currentBundle,
       handleAddToBag,
       addToFavorites,
@@ -23,8 +38,34 @@ class BundleProductItems extends React.PureComponent {
       addToBagErrorId,
       addToBagError,
       toastMessage,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
+
+    const { currentColorIndex, generalProductId } = this.state;
     const productItem = item.products;
+
+    // eslint-disable-next-line no-shadow
+    const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
+      return (
+        (colorProductId === '' &&
+          colorFitsSizesMap &&
+          colorFitsSizesMap[currentColorIndex].colorProductId) ||
+        colorProductId
+      );
+    };
+
+    const colorProductIdValue =
+      generalProductId === productItem.generalProductId
+        ? getColorProductId(colorProductId, productItem.colorFitsSizesMap, currentColorIndex)
+        : null;
+
+    const colorProduct =
+      productItem &&
+      getMapSliceForColorProductId(productItem.colorFitsSizesMap, colorProductIdValue);
+
     return (
       <OutfitProduct
         toastMessage={toastMessage}
@@ -38,10 +79,16 @@ class BundleProductItems extends React.PureComponent {
           handleAddToBag(addToBagEcom, productItem, productItem.generalProductId, currentState);
         }}
         addToBagError={addToBagErrorId === productItem.generalProductId && addToBagError}
-        addToFavorites={() => {
-          addToFavorites({ colorProductId: productItem.generalProductId });
-        }}
+        addToFavorites={addToFavorites}
         isBundleProduct
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        pageName="BUNDLE"
+        productMiscInfo={colorProduct}
+        favoriteCount={colorProduct.favoritedCount}
+        colorindex={this.colorindex}
       />
     );
   };
@@ -78,12 +125,17 @@ BundleProductItems.propTypes = {
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
   toastMessage: PropTypes.func.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
+  colorProductId: PropTypes.string,
 };
 
 BundleProductItems.defaultProps = {
   labels: {},
   addToBagError: '',
   addToBagErrorId: '',
+  outOfStockLabels: {},
+  colorProductId: '',
 };
 
 export default BundleProductItems;

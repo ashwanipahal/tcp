@@ -37,7 +37,6 @@ import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
-
 // constants
 import constants from '../constants';
 
@@ -57,7 +56,7 @@ function AnalyticsScript() {
 const updatePayload = (req, payload, Component) => {
   let updatedPayload = { ...payload };
   const { pageInfo } = Component;
-  const { staticPage, paramName } = pageInfo || {};
+  const { staticPage, paramName, defaultName } = pageInfo || {};
 
   // This check ensures this block is executed once since Component is not available in first call
   if (pageInfo) {
@@ -69,7 +68,7 @@ const updatePayload = (req, payload, Component) => {
     if (staticPage && paramName) {
       // staticPage - this var will be passed inside component pageinfo
       // paramName - this keyword will have the variable name to page the page url from the request.
-      const dynamicPageName = req.params[paramName] || null;
+      const dynamicPageName = req.params[paramName] ? req.params[paramName] : defaultName;
       if (!constants.staticPagesWithOwnTemplate.includes(dynamicPageName) && dynamicPageName) {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }

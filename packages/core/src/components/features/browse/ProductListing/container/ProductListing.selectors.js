@@ -197,6 +197,10 @@ export const getScrollToTopValue = state => {
   return state.ProductListing.isScrollToTop;
 };
 
+export const getModalState = state => {
+  return state.ProductListing.isKeepModalOpen;
+};
+
 export const getProductsInCurrCategory = state => {
   return state.ProductListing.productsInCurrCategory;
 };
@@ -287,13 +291,46 @@ export const getIsDataLoading = state => {
   return state.ProductListing.isDataLoading;
 };
 
-export const getPLPTopPromos = state => {
+const getTopPromosState = state => {
   const { bannerInfo: { val: { top: topPromos } = {} } = {} } = state.ProductListing;
-  return (
-    (topPromos &&
-      topPromos.map(promoItem => {
-        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
-      })) ||
-    []
-  );
+
+  return topPromos;
 };
+
+const getLoyaltyPromosState = state => {
+  const { bannerInfo: { val: { loyalty: loyaltyPromo } = {} } = {} } = state.ProductListing;
+
+  return loyaltyPromo;
+};
+
+const getModulesState = state => {
+  return state.Modules;
+};
+
+export const getPLPTopPromos = createSelector(
+  getTopPromosState,
+  getLoyaltyPromosState,
+  getModulesState,
+  (topPromos, loyaltyPromo, modules) => {
+    const loyaltyPromos =
+      (loyaltyPromo &&
+        loyaltyPromo.map(loyalPromo => {
+          const loyalPromoModule =
+            loyalPromo.val && loyalPromo.val.cid && modules[loyalPromo.val.cid];
+          if (loyalPromoModule) {
+            loyalPromoModule.userType = loyalPromo.sub;
+          }
+          return loyalPromoModule;
+        })) ||
+      [];
+
+    const promos =
+      (topPromos &&
+        topPromos.map(promoItem => {
+          return promoItem.val && promoItem.val.cid && modules[promoItem.val.cid];
+        })) ||
+      [];
+
+    return loyaltyPromos.concat(promos);
+  }
+);

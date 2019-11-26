@@ -36,6 +36,8 @@ import {
   getShortDescription,
   getGeneralProductId,
   getAlternateSizes,
+  getPLPPromos,
+  getPDPLoadingState,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -47,6 +49,8 @@ import {
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
+import ProductDetailSkeleton from '../molecules/ProductDetailSkeleton';
 
 /**
  * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
@@ -175,6 +179,11 @@ class ProductDetailContainer extends React.PureComponent {
       outOfStockLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      topPromos,
+      middlePromos,
+      bottomPromos,
+      isLoading,
+      router: { asPath: asPathVal },
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -209,8 +218,13 @@ class ProductDetailContainer extends React.PureComponent {
               outOfStockLabels={outOfStockLabels}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              asPathVal={asPathVal}
+              topPromos={topPromos}
+              middlePromos={middlePromos}
+              bottomPromos={bottomPromos}
             />
           ) : null}
+          {isLoading ? <ProductDetailSkeleton /> : null}
         </React.Fragment>
       </>
     );
@@ -219,11 +233,16 @@ class ProductDetailContainer extends React.PureComponent {
 
 ProductDetailContainer.pageInfo = {
   pageId: 'p',
+  pageData: {
+    pageName: 'product',
+    pageSection: 'product',
+  },
 };
 
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
+    isLoading: getPDPLoadingState(state),
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
@@ -246,6 +265,9 @@ function mapStateToProps(state) {
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     isKeepAliveProduct: getIsKeepAliveProduct(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
+    bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
     store: state,
   };
 }

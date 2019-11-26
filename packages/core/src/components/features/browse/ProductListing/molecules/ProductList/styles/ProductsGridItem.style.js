@@ -89,10 +89,13 @@ const styles = css`
     outline: none;
     font-family: ${props => props.theme.typography.fonts.secondary};
     white-space: nowrap;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .move-item-section {
-    min-width: 256px;
+    min-width: 310px;
     border: solid 1px ${props => props.theme.colors.BUTTON.WHITE.BORDER};
     background: ${props => props.theme.colors.WHITE};
     position: absolute;
@@ -100,7 +103,7 @@ const styles = css`
     top: 40px;
 
     &.item__odd {
-      right: 60px;
+      right: 0;
     }
   }
 
@@ -128,11 +131,12 @@ const styles = css`
     text-transform: lowercase;
     display: inline-block;
     padding-right: 2px;
+    padding-top: 3px;
   }
 
-  .wish-list-count,
-  .wish-list-name {
-    font-weight: 800;
+  .default-list-item,
+  .default-list-count {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
 
   .create-new__button {
@@ -164,6 +168,9 @@ const styles = css`
   .wish-list-item__button {
     text-align: left;
     width: 100%;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .edit-fav-item__button {

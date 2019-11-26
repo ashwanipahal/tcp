@@ -234,6 +234,8 @@ class CustomSelect extends React.Component {
     isSortOpenModal: PropTypes.bool,
     onSortSelection: PropTypes.func,
     onFilterSelection: PropTypes.func,
+    onOptionSelected: PropTypes.func,
+    isLoadingMore: PropTypes.bool,
   };
 
   static customSelectCounter = 0;
@@ -256,7 +258,8 @@ class CustomSelect extends React.Component {
     this.customSelectCounter = CustomSelect.customSelectCounter + 1;
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { expanded, optionsMap } = this.props;
     const { highlightedIndex } = this.state;
     if (nextProps.expanded !== expanded || nextProps.disableExpandStateChanges) {
@@ -346,7 +349,7 @@ class CustomSelect extends React.Component {
       optionsMap,
       allowMultipleSelections,
       input: { value },
-      onFilterSelection,
+      onOptionSelected,
       onSortSelection,
     } = this.props;
 
@@ -358,10 +361,13 @@ class CustomSelect extends React.Component {
       const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
       if (allowMultipleSelections && selectedIndex[clickedItemIndex]) {
         this.unsetValue(clickedItemValue); // remove clickedItemValue from this component's selcted values list
+        if (onOptionSelected) {
+          onOptionSelected(true);
+        }
       } else {
         // set the value (or add to the value if multiple selections is on) of this component to clickedItemValue
-        if (onFilterSelection) {
-          onFilterSelection(clickedItemValue);
+        if (onOptionSelected) {
+          onOptionSelected(true);
         } else if (onSortSelection) {
           onSortSelection(clickedItemValue);
         }
@@ -538,6 +544,7 @@ class CustomSelect extends React.Component {
       labels,
       type,
       isSortOpenModal,
+      isLoadingMore,
       ...otherProps
     } = this.props;
 
@@ -566,7 +573,6 @@ class CustomSelect extends React.Component {
     );
     const uniqueId = `custom-select_${this.customSelectCounter}`;
     const errorUniqueId = `error_${uniqueId}`; // Unique Id to connect the error input with its error message. Both needs to be the same. Accessibility requirement. DT-30852
-
     return (
       <div
         role="button"
@@ -602,7 +608,7 @@ class CustomSelect extends React.Component {
               component="span"
               textAlign="center"
               tabIndex={-1}
-              fontSize="fs13"
+              fontSize="fs14"
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
@@ -630,6 +636,7 @@ class CustomSelect extends React.Component {
             allowMultipleSelections={allowMultipleSelections}
             labels={labels}
             type={type}
+            isLoadingMore={isLoadingMore}
           />
         )}
 
@@ -661,5 +668,7 @@ CustomSelect.defaultProps = {
   isSortOpenModal: false,
   onSortSelection: null,
   onFilterSelection: null,
+  onOptionSelected: () => {},
+  isLoadingMore: false,
 };
 export default withStyles(CustomSelect, CustomSelectStyle);

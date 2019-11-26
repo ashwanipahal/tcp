@@ -47,6 +47,7 @@ const ProductCustomizeFormPart = props => {
     onInputSelectionChange,
     toastMessage,
     onCloseClick,
+    isFromBagProductSfl,
     ...otherProps
   } = props;
 
@@ -106,7 +107,7 @@ const ProductCustomizeFormPart = props => {
               fontSize="fs18"
               fontWeight="extrabold"
               text={productInfo.name}
-              spacingStyles="margin-bottom-SM"
+              spacingStyles="padding-bottom-SM"
             />
             <OfferPriceAndBadge3Container>
               <BodyCopy
@@ -159,6 +160,7 @@ const ProductCustomizeFormPart = props => {
           formEnabled={formEnabled}
           toastMessage={toastMessage}
           onCloseClick={onCloseClick}
+          isFromBagProductSfl={isFromBagProductSfl}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>

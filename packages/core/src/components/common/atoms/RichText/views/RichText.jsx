@@ -9,8 +9,8 @@ import styles from '../RichText.style';
 const RichText = ({ className, richTextHtml, dataLocator, isNativeView, actionHandler }) => {
   if (isNativeView) {
     const handleNativeNavigation = node => {
-      if (node.properties && node.properties.dataTarget) {
-        actionHandler(node.properties.dataTarget);
+      if (node.properties) {
+        actionHandler(node.properties.href, node.properties.target, node.properties.dataTarget);
       }
     };
 

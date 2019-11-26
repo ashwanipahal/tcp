@@ -52,7 +52,8 @@ export default css`
   @media ${props => props.theme.mediaQuery.medium} {
     .dropdown-button-container {
       display: inline-block;
-      button {
+      button,
+      .dropdown-items {
         min-width: 162px;
         height: 42px;
       }
@@ -60,7 +61,8 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     .dropdown-button-container {
-      button {
+      button,
+      .dropdown-items {
         min-width: 210px;
         height: 51px;
       }

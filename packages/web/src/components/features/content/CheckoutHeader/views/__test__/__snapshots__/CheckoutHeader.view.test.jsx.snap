@@ -26,7 +26,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
         }
       }
     >
-      <Styled(BrandTabs) />
+      <Connect(Styled(BrandTabs)) />
     </Styled(Col)>
     <Styled(Col)
       className="header-topnav__promo-area"
@@ -156,7 +156,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
         }
       }
     >
-      <Styled(BrandTabs) />
+      <Connect(Styled(BrandTabs)) />
     </Styled(Col)>
     <Styled(Col)
       className="header-topnav__promo-area"

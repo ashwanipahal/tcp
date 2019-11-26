@@ -215,6 +215,7 @@ class GuestBillingForm extends React.Component {
           onVenmoSubmit={handleSubmit}
           venmoError={venmoError}
           isPayPalWebViewEnable={isPayPalWebViewEnable}
+          bagLoading={bagLoading}
         />
       </form>
     );

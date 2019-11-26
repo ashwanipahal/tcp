@@ -15,6 +15,7 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/Produc
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
+import QuickViewSkeleton from '../molecules/QuickViewSkeleton';
 
 class QuickViewModal extends React.Component {
   constructor(props) {
@@ -90,6 +91,7 @@ class QuickViewModal extends React.Component {
     const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
+        dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
         buttonLabel={addToBag}
         quickViewLabels={quickViewLabels}
@@ -115,7 +117,7 @@ class QuickViewModal extends React.Component {
     return (
       productInfo &&
       productInfo.map(({ product }) => {
-        const { colorFitsSizesMap, colorFitSizeDisplayNames } = product;
+        const { colorFitsSizesMap, colorFitSizeDisplayNames, alternateSizes, isGiftCard } = product;
         const formRef = React.createRef();
         this.skuFormRefs.push(formRef);
         const modifiedColorFitsSizesMap = selectedColorProductId
@@ -144,6 +146,8 @@ class QuickViewModal extends React.Component {
             changeQuickViewState={this.changeQuickViewState}
             isQuickView
             marginTopNone
+            alternateSizes={alternateSizes}
+            isGiftCard={isGiftCard}
             {...otherProps}
           />
         );
@@ -198,7 +202,7 @@ class QuickViewModal extends React.Component {
             fontSize="fs22"
           >
             {isLoading ? (
-              <Spinner inheritedStyles={customSpinnerStyle} />
+              <QuickViewSkeleton inheritedStyles={customSpinnerStyle} />
             ) : (
               <React.Fragment>
                 {this.renderProductCustomizeFormPart()}

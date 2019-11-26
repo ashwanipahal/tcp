@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { PropTypes } from 'prop-types';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../atoms/TextBox';
 import CustomButton from '../../atoms/Button';
@@ -173,7 +173,7 @@ class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
-                fontWeight="black"
+                fontWeight="extrabold"
                 text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
               />
               <MessageTextWrapper>

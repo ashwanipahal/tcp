@@ -93,7 +93,6 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       customStyle={Object {}}
       customTextStyle={null}
       disableButton={false}
-      disabled={false}
       fill="BLACK"
       fontFamily="secondary"
       fontSize="fs12"

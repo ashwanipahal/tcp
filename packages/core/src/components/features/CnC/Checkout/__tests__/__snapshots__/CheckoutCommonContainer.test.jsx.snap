@@ -62,6 +62,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   shippingMethod={Object {}}
   shippingProps={
     Object {
+      "dispatch": undefined,
       "isRegisteredUserCallDone": true,
       "shippingDidMount": [Function],
     }

@@ -74,7 +74,7 @@ export const StyledDisableLabels = styled.Text`
   color: ${props => props.theme.colors.TEXT.DARK};
   position: absolute;
   top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  left: -${props => props.theme.spacing.ELEM_SPACING.XS};
   width: 70px;
 `;
 
@@ -92,7 +92,7 @@ export const StyledAnchorCompleted = styled.View`
   position: absolute;
   top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   width: 70px;
-  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  left: -${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 export default {

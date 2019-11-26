@@ -26,6 +26,8 @@ class BundleProductItems extends React.PureComponent {
       outfitLabels,
       isKeepAliveEnabled,
       outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     return (
       <ul className="outfiting-list-container">
@@ -50,14 +52,15 @@ class BundleProductItems extends React.PureComponent {
                   className={`${className} outfiting-list-details`}
                   addToBagError={addToBagErrorId === productItem.generalProductId && addToBagError}
                   isLoggedIn={isLoggedIn}
-                  addToFavorites={() => {
-                    addToFavorites({ colorProductId: productItem.generalProductId });
-                  }}
+                  addToFavorites={addToFavorites}
                   currencySymbol={currencySymbol}
                   currencyAttributes={currencyAttributes}
                   isBundleProduct
                   isKeepAliveEnabled={isKeepAliveEnabled}
                   outOfStockLabels={outOfStockLabels}
+                  AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                  removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                  pageName="BUNDLE"
                 />
               </li>
             );
@@ -88,6 +91,8 @@ BundleProductItems.propTypes = {
   className: PropTypes.string,
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 BundleProductItems.defaultProps = {
@@ -101,6 +106,8 @@ BundleProductItems.defaultProps = {
   pdpLabels: {},
   className: '',
   outOfStockLabels: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(BundleProductItems, styles);

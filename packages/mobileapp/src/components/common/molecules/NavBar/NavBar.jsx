@@ -57,8 +57,8 @@ class NavBar extends React.PureComponent<Props> {
     super(props);
     this.state = { animateCompleteLogo: false };
   }
-
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const { appType } = nextProps;
 

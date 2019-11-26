@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
-import { noop, get } from 'lodash';
+import get from 'lodash/get';
+import noop from 'lodash/noop';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {

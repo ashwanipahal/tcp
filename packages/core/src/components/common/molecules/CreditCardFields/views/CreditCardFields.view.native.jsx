@@ -47,7 +47,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
     }
   }
 
-  componentWillMount() {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount() {
     if (Platform.OS === 'ios') {
       CardIOUtilities.preload();
     }

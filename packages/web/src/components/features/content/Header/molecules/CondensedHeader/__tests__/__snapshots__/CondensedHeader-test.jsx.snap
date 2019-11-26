@@ -44,6 +44,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           className="user-icon-link"
+          data-overlayTarget="true"
           fontSizeVariation="large"
           href="#"
           noLink={true}

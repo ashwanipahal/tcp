@@ -34,6 +34,10 @@ export const getShortDescription = state => {
   return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.shortDescription;
 };
 
+export const getPDPLoadingState = state => {
+  return state.ProductDetail && state.ProductDetail.isLoading;
+};
+
 export const getProductDetailFormValues = state => {
   const generalProductId = getGeneralProductId(state);
   return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
@@ -160,4 +164,25 @@ export const getPDPLabels = state => {
     back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
   };
+};
+
+export const getPLPPromos = (state, type) => {
+  // TODO: Dynamic the productID generation logic
+  let productID = 'global'; // 'global'; '54520|489117';
+  const { Layouts, Modules } = state;
+  let result = null;
+  if (Layouts && Layouts.pdp) {
+    const { pdp } = Layouts;
+    productID = pdp[productID] ? 'global' : '54520|489117';
+    if (pdp[productID]) {
+      const promo = pdp[productID][type] && pdp[productID][type].slots;
+      result =
+        (promo &&
+          promo.map(promoItem => {
+            return (promoItem.contentId && Modules[promoItem.contentId]) || {};
+          })) ||
+        [];
+    }
+  }
+  return result;
 };

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import { FlatList, SafeAreaView, View } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -9,7 +9,7 @@ import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer, ItemCountContainer } from '../styles/ProductList.style.native';
+import { styles, PageContainer, HeaderContainer } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
@@ -38,7 +38,9 @@ class ProductList extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -59,11 +61,19 @@ class ProductList extends React.PureComponent {
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
+  onFavorite = (generalProductId, itemId) => {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      isSearchListing,
+      isFavorite,
+      setLastDeletedItemId,
+    } = this.props;
     if (!isLoggedIn) {
       this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else if (isFavorite) {
+      if (setLastDeletedItemId) setLastDeletedItemId({ itemId });
     } else {
       onAddItemToFavorites({
         colorProductId: generalProductId,
@@ -130,9 +140,11 @@ class ProductList extends React.PureComponent {
       setLastDeletedItemId,
       isLoggedIn,
       labelsPlpTiles,
-      onrenderItemCountView,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      renderMoveToList,
     } = this.props;
-    const { item, index } = itemData;
+    const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -150,32 +162,6 @@ class ProductList extends React.PureComponent {
 
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
-
-    if (index === 0) {
-      return (
-        <ItemCountContainer>
-          <BodyCopy
-            dataLocator="pdp_product_badges"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="semibold"
-            color="gray.900"
-            text={`${onrenderItemCountView()} `}
-          />
-          <BodyCopy
-            dataLocator="pdp_product_badges"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            color="gray.900"
-            text="Items"
-          />
-        </ItemCountContainer>
-      );
-    }
-    if (index === 1) {
-      return <View />;
-    }
     return (
       <ListItem
         item={item}
@@ -194,6 +180,9 @@ class ProductList extends React.PureComponent {
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
+        renderMoveToList={renderMoveToList}
       />
     );
   };
@@ -238,7 +227,10 @@ class ProductList extends React.PureComponent {
    */
   renderHeader = () => {
     const { onRenderHeader } = this.props;
-    return onRenderHeader();
+    if (onRenderHeader) {
+      return <HeaderContainer>{onRenderHeader()}</HeaderContainer>;
+    }
+    return null;
   };
 
   setListRef = ref => {
@@ -259,9 +251,7 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
-    let { products } = this.props;
-    products = products.length > 0 && [products[0], products[1], ...products];
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg, products } = this.props;
     const { logIn } = labelsLogin;
     const { showModal, favorites } = this.state;
     return (
@@ -269,20 +259,22 @@ class ProductList extends React.PureComponent {
         {AddToFavoriteErrorMsg !== '' && (
           <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
         )}
-        <FlatList
-          ref={ref => this.setListRef(ref)}
-          data={products}
-          renderItem={this.renderItemList}
-          keyExtractor={item => item.productInfo.generalProductId}
-          initialNumToRender={4}
-          maxToRenderPerBatch={2}
-          numColumns={2}
-          extraData={this.props}
-          ListFooterComponent={this.renderFooter}
-          ListHeaderComponent={this.renderHeader}
-          stickyHeaderIndices={[0]}
-          columnWrapperStyle={this.getColumnWrapperStyle()}
-        />
+        {products && products.length > 0 && (
+          <FlatList
+            ref={ref => this.setListRef(ref)}
+            data={products}
+            renderItem={this.renderItemList}
+            keyExtractor={item => item.productInfo.generalProductId}
+            initialNumToRender={4}
+            maxToRenderPerBatch={2}
+            numColumns={2}
+            extraData={this.props}
+            ListFooterComponent={this.renderFooter}
+            ListHeaderComponent={this.renderHeader}
+            stickyHeaderIndices={[0]}
+            columnWrapperStyle={this.getColumnWrapperStyle()}
+          />
+        )}
 
         {showModal && (
           <ModalNative
@@ -337,7 +329,6 @@ ProductList.propTypes = {
   unbxdId: PropTypes.string,
   onProductCardHover: PropTypes.func,
   isBopisEnabledForClearance: PropTypes.bool,
-  onrenderItemCountView: PropTypes.number.isRequired,
   onQuickBopisOpenClick: PropTypes.func,
   siblingProperties: PropTypes.shape({
     colorMap: PropTypes.arrayOf(PropTypes.shape({})),
@@ -361,6 +352,9 @@ ProductList.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isSearchListing: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -394,6 +388,9 @@ ProductList.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   isSearchListing: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ProductList, styles);

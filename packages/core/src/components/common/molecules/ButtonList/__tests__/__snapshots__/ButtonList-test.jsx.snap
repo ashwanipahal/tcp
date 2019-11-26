@@ -144,7 +144,7 @@ exports[`ButtonList component renders correctly 1`] = `
 exports[`ButtonList component renders correctly for Dual Variation 1`] = `
 <Fragment>
   <div
-    className=" button-list-wrapper stacked-button-list-wrapper  is-tablet-hidden"
+    className=" button-list-wrapper stacked-button-list-wrapper  is-tablet-hidden is-desktop-hidden "
   >
     <ButtonCTA
       className="stacked-cta-wrapper-class "
@@ -352,7 +352,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
         },
       ]
     }
-    className=" additional-button-list hide-on-small-viewport"
+    className=" additional-button-list is-tablet-visible additional-button-list is-desktop-visible "
     dataLocatorItemPrefix="moduleB_cta_links_"
     dropdownLabel="Shop Now"
   />

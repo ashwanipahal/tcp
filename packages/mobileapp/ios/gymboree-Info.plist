@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0-${APP_ENV}</string>
+	<string>0.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -46,19 +46,32 @@
 				<string>gym</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.childrensplace.tcp-ios.payments</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>yk5X-LiBxTDjh7fLUaPRhDljtJ0UIdsHa1hhW</string>
 	<key>FacebookAppID</key>
 	<string>2346328792295830</string>
 	<key>FacebookDisplayName</key>
 	<string>My Place</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>twitter</string>
+		<string>twitterauth</string>
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+		<string>com.venmo.touch.v2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -79,12 +92,18 @@
 	<string>This app would like to access your camera to attach pictures with your product review.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>icomoon.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
 		<string>FontAwesome.ttf</string>
+		<string>icomoon.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
@@ -92,10 +111,23 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
-		<string>Nunito-ExtraBold.ttf</string>
-		<string>Montserrat-ExtraBold.ttf</string>
-		<string>Montserrat-Bold</string>
-		<string>Montserrat-Medium</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>GymboreeLaunchScreen</string>

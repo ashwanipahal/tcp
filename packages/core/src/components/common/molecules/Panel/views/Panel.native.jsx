@@ -13,11 +13,10 @@ import {
   TextWrapper,
 } from '../Panel.style.native';
 import ImageComp from '../../../atoms/Image';
-import CustomIcon from '../../../atoms/Icon';
-import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 
-const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down-gray.png');
-const upIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-up-gray.png');
+const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-down.png');
+const upIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-up.png');
+const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-right.png');
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
 
@@ -129,13 +128,9 @@ class Panel extends React.PureComponent<Props> {
               {isCardApply && this.getCreditCardApply(title)}
               {isFavorite && this.getFavoriteOverview(title)}
               {!isImageLink && this.getHeaderTitle()}
-              <CustomIcon
-                name={ICON_NAME.chevronRight}
-                size="fs12"
-                color="gray.600"
-                onPress={() => this.toggleView()}
-                isButton
-              />
+              <ImageWrapper>
+                <ImageComp source={rightIcon} width={6} height={10} resizeMode="contain" />
+              </ImageWrapper>
             </TitleContainer>
           </PanelContainer>
         )}
