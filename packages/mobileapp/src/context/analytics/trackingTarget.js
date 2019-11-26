@@ -1,15 +1,5 @@
-import { createMiddleware } from 'redux-beacon';
-import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView, trackClick } from '@tcp/core/src/analytics';
-import logger from '@redux-beacon/logger';
-import { eventMapping } from './eventMapping';
-import {
-  ACPCore,
-  ACPLifecycle,
-  ACPIdentity,
-  ACPSignal,
-  ACPMobileLogLevel,
-} from '@adobe/react-native-acpcore';
-import { ACPAnalytics } from '@adobe/react-native-acpanalytics';
+import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import { ACPCore } from '@adobe/react-native-acpcore';
 
 const app_id = 'dae3661a4c63/7bc47440747f/launch-8ca67ecb0da6-development';
 
