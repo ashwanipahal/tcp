@@ -35,7 +35,7 @@ describe.skip('Order Summary Details component', () => {
       },
     },
   };
-  it('should renders correctly', () => {
+  it.skip('should renders correctly', () => {
     const component = shallow(<PickUpSummaryVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
