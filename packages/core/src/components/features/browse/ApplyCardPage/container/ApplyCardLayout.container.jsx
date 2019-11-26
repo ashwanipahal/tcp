@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import BagPageSelector from '../../../CnC/BagPage/container/BagPage.selectors';
 import ApplyCardLayoutView from '../views';
 import { fetchModuleX, resetPLCCResponse, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -110,6 +111,7 @@ class ApplyCardLayoutContainer extends React.Component {
       isRtpsFlow,
       closePLCCModal,
       togglePLCCModal,
+      cartOrderItems,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
     return (
@@ -135,6 +137,7 @@ class ApplyCardLayoutContainer extends React.Component {
           isRtpsFlow={isRtpsFlow}
           closePLCCModal={closePLCCModal}
           togglePLCCModal={togglePLCCModal}
+          cartOrderItems={cartOrderItems}
         />
         {!isMobileApp() && showAddEditAddressForm ? (
           <AddressVerification onSuccess={this.submitForm} />
@@ -183,6 +186,7 @@ export const mapStateToProps = state => {
     labels: Labels && Labels.global && Labels.global.plccForm,
     userId: getUserId(state),
     isRtpsFlow: CheckoutSelectors.getIsRtpsFlow(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
   };
 };
 

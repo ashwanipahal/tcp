@@ -36,6 +36,7 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
           pageSubSection: pageData,
           pageName: pageData,
           customEvents: ['event116'],
+          eventName: 'loyaltyclick',
         }}
       >
         {text}
@@ -60,6 +61,7 @@ const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
       <ClickTracker
         clickData={{
           pageName: 'shopping bag',
+          eventName: 'loyaltyclick',
           customEvents: ['event117'],
         }}
       >

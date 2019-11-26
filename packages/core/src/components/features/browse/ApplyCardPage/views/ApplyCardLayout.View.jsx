@@ -8,6 +8,7 @@ import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser';
 import constants from '../RewardsCard.constants';
 
 const getApplyCardLayoutView = (
+  cartOrderItems,
   applicationStatus,
   plccData,
   labels,
@@ -65,6 +66,7 @@ const getApplyCardLayoutView = (
       applicationStatus={applicationStatus}
       isRtpsFlow={renderViewInfo.isRtpsFlow}
       closePLCCModal={renderViewInfo.closePLCCModal}
+      cartOrderItems={cartOrderItems}
     />
   );
 };
@@ -83,10 +85,12 @@ const ApplyCardLayoutView = ({
   isRtpsFlow,
   closePLCCModal,
   togglePLCCModal,
+  cartOrderItems,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
       {getApplyCardLayoutView(
+        cartOrderItems,
         applicationStatus,
         plccData,
         labels,
