@@ -67,6 +67,7 @@ const ProductList = props => {
   let gridIndex = 0;
 
   console.log('productsBlock %%%% ', productsBlock);
+  const productTileClass = isSearchListing ? ' product-tile search-product-tile' : ' product-tile';
 
   return (
     <Fragment>
@@ -78,7 +79,7 @@ const ProductList = props => {
               className={
                 item.gridStyle === 'horizontal'
                   ? `${className} horizontal-promo`
-                  : `${className} vertical-promo product-tile`
+                  : `${className} vertical-promo ${productTileClass}`
               }
             >
               <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />

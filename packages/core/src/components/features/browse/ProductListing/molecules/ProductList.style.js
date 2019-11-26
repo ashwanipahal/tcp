@@ -5,13 +5,16 @@ export default css`
   flex-wrap: wrap;
   &.product-list.horizontal-promo {
     width: 100%;
+    margin-right: 20px;
     background: green;
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
   }
   &.vertical-promo {
-    background: #eeeeee;
+    > div {
+      background: #eeeeee;
+    }
   }
   &.product-tile,
   &.promo-div {

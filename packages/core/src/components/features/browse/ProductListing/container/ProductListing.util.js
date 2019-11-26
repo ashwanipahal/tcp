@@ -277,9 +277,11 @@ export function getProductsAndTitleBlocks(
   // console.log('horizontalSlots', horizontalSlots);
 
   let totalItemsAdded = 0;
+  let promosAdded = 0;
 
   // console.log('productBlocks @@@@ ', productBlocks);
-  productBlocks.forEach(block => {
+  // eslint-disable-next-line
+  productBlocks.forEach((block, productBlocksIndex) => {
     const productsAndTitleBlock = [];
     let promoAddedInCurrentBlock = 0;
     block.forEach((product, index) => {
@@ -288,6 +290,7 @@ export function getProductsAndTitleBlocks(
       const indexOfProduct = totalItemsAdded + promoAddedInCurrentBlock + index + 1;
       const slotIndex = slots.indexOf(indexOfProduct);
       if (slotIndex !== -1) {
+        promosAdded += 1;
         productsAndTitleBlock.push({
           itemType: 'gridPromo',
           gridStyle: 'vertical',
@@ -322,22 +325,63 @@ export function getProductsAndTitleBlocks(
     });
 
     const productsAdded = block.length;
-    // console.log('productsAdded', productsAdded);
-    const promosAdded = slots.filter(
-      slot => slot < totalItemsAdded + productsAdded && slot > totalItemsAdded
-    ).length;
+    console.log('productsAdded $$$$ ', productsAdded);
+    // const promosAdded = slots.filter(
+    //   slot => slot < totalItemsAdded + productsAdded && slot > totalItemsAdded
+    // ).length;
     totalItemsAdded += productsAdded;
     totalItemsAdded += promosAdded;
+    console.log('promosAdded #### ', promosAdded);
     // Check if the number of products and the promos count sum
     // to understand the number of slots blank at the end of the block
     const numberOfItemsInBlock = productsAdded + promosAdded;
+    console.log('numberOfItemsInBlock $$$$ ', numberOfItemsInBlock);
     const numberOfItemsInLastRow = numberOfItemsInBlock % rowSize;
-    if (numberOfItemsInLastRow !== 0) {
-      // There is space at the end of the block
-      // might be one of these slots were to be filled by promo
+    console.log('numberOfItemsInLastRow', numberOfItemsInLastRow);
+    console.log('productBlocksIndex+1', productBlocksIndex + 1);
+    // if (numberOfItemsInLastRow !== 0) {
+    // If this is the last block
+    // if(productBlocksIndex+1 === productBlocks.length) {
+    //   console.log('this is the last block');
+    //   // There is space at the end of the block
+    //   // might be one of these slots were to be filled by promo
+    //   const emptySpaces = rowSize - numberOfItemsInLastRow;
+    //   totalItemsAdded += emptySpaces;
+    // } else
+    // if(productBlocks[productBlocksIndex+1] && productBlocks[productBlocksIndex+1][0].miscInfo.categoryName !== lastCategoryName) {
+    //   console.log('not the last block but followed by a string in the next block');
+    //   const emptySpaces = rowSize - numberOfItemsInLastRow;
+    //   totalItemsAdded += emptySpaces;
+    // }
+    // }
+    if (
+      (numberOfItemsInLastRow !== 0 &&
+        (productBlocks[productBlocksIndex + 1] &&
+          productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) ||
+      productBlocksIndex + 1 === productBlocks.length
+    ) {
+      console.log('not the last block but followed by a string in the next block');
       const emptySpaces = rowSize - numberOfItemsInLastRow;
-      totalItemsAdded += emptySpaces;
+      console.log('emptySpaces ###### ', emptySpaces);
+      if (emptySpaces > 0 && emptySpaces < rowSize) {
+        console.log('comes inside');
+        totalItemsAdded += emptySpaces;
+        const indexOfEmptySlot = slots.indexOf(totalItemsAdded);
+        if (indexOfEmptySlot !== -1) {
+          // See if the empty spaces are omitting any promo
+          productsAndTitleBlock.push({
+            itemType: 'gridPromo',
+            gridStyle: 'vertical',
+            itemVal: gridPromo[indexOfEmptySlot],
+          });
+        }
+      } else {
+        console.log('doesnt go inside');
+      }
+      // If this is the last block
     }
+    console.log('totalItemsAdded $$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ', totalItemsAdded);
+
     // push: product block onto matrix
     productsAndTitleBlocks.push(productsAndTitleBlock);
   });
@@ -353,4 +397,36 @@ export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
       key && (key.toLowerCase() === FACETS_FIELD_KEY.sort ? value : value.split(','));
   }); // Fetching Facets and sort key from the URL query string
   return queryParams;
+};
+
+export const getProductsWithPromo = (products, gridPromo, horizontalPromo) => {
+  const slots = [];
+  const horizontalSlots = [];
+
+  gridPromo.forEach(promoItem => {
+    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+    slots.push(parseInt(slotNumber, 10));
+  });
+
+  horizontalPromo.forEach(promoItem => {
+    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+    horizontalSlots.push(parseInt(slotNumber, 10));
+  });
+
+  let promosAdded = 0;
+  const productsAndPromos = [];
+
+  products.forEach((product, index) => {
+    productsAndPromos.push(products[index]);
+    const productSlot = index + promosAdded;
+    if (slots.indexOf(productSlot) !== -1) {
+      promosAdded += 1;
+      productsAndPromos.push({
+        itemType: 'gridPromo',
+        gridStyle: 'vertical',
+        itemVal: gridPromo[slotIndex],
+      });
+    }
+  });
+  return productsAndPromos;
 };

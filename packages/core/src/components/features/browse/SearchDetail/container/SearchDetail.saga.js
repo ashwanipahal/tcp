@@ -1,6 +1,7 @@
 import { call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import makeSearch from '@tcp/core/src/services/abstractors/common/searchBar';
+import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import SLP_CONSTANTS from './SearchDetail.constants';
 import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import {
@@ -34,6 +35,7 @@ const getUrl = url => {
 export function* fetchSlpProducts({ payload }) {
   try {
     const { searchQuery, asPath, formData, url, scrollToTop, isKeepModalOpen } = payload;
+    yield put(loadLayoutData({}, 'searchListingPage'));
     const location = getUrl(url);
     const state = yield select();
     yield put(
@@ -67,6 +69,10 @@ export function* fetchSlpProducts({ payload }) {
         res.loadedProductsPages[0]
       );
     }
+    const { layout, modules } = yield call(instanceProductListing.parsedModuleData, res.bannerInfo);
+    yield put(loadLayoutData(layout, 'productListingPage'));
+    yield put(loadModulesData(modules));
+
     if (res) {
       yield putResolve(setListingFirstProductsPage({ ...res }));
     }

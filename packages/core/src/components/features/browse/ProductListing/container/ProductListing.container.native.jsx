@@ -34,6 +34,8 @@ import {
   getSelectedFilter,
   getPLPTopPromos,
   getLabelsOutOfStock,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -43,6 +45,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+import { getProductsWithPromo } from './ProductListing.util';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -156,6 +159,10 @@ class ProductListingContainer extends React.PureComponent {
 function mapStateToProps(state) {
   const appliedFilters = getAppliedFilters(state);
   const productBlocks = getLoadedProductsPages(state);
+  const plpGridPromos = getPLPGridPromos(state);
+  const plpHorizontalPromo = getPlpHorizontalPromo(state);
+  const products = getAllProductsSelect(state);
+  const productWithGrid = getProductsWithPromo(products, plpGridPromos, plpHorizontalPromo);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -171,7 +178,7 @@ function mapStateToProps(state) {
 
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getAllProductsSelect(state),
+    products: productWithGrid,
     filters,
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),

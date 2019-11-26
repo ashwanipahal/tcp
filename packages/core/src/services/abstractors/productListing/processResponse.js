@@ -339,7 +339,7 @@ const processResponse = (
           grid: [
             {
               typ: 'slot',
-              sub: 'slot_8',
+              sub: 'slot_10',
               val: {
                 cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
                 typ: 'module',
@@ -349,7 +349,7 @@ const processResponse = (
             },
             {
               typ: 'slot',
-              sub: 'slot_16',
+              sub: 'slot_20',
               val: {
                 cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
                 typ: 'module',
@@ -359,7 +359,7 @@ const processResponse = (
             },
             {
               typ: 'slot',
-              sub: 'slot_24',
+              sub: 'slot_30',
               val: {
                 cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
                 typ: 'module',
@@ -432,7 +432,27 @@ const processResponse = (
           },
           {
             typ: 'slot',
+            sub: 'slot_16',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
             sub: 'slot_24',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_32',
             val: {
               cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
               typ: 'module',

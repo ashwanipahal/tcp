@@ -53,14 +53,11 @@ export function* fetchPlpProducts({ payload }) {
         { ...reqObj, location },
         { ...state }
       );
-      console.log('instanceProductListing.parsedModuleData res', res);
-      console.log('instanceProductListing.parsedModuleData res.bannerInfo', res.bannerInfo);
 
       const { layout, modules } = yield call(
         instanceProductListing.parsedModuleData,
         res.bannerInfo
       );
-      console.log('modules', modules);
       yield put(loadLayoutData(layout, 'productListingPage'));
       yield put(loadModulesData(modules));
       yield put(setListingFirstProductsPage({ ...res }));

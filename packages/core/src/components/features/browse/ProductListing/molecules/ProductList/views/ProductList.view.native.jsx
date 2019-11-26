@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
