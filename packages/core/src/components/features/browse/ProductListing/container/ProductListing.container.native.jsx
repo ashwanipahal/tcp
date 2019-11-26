@@ -70,7 +70,7 @@ class ProductListingContainer extends React.PureComponent {
     if (this.state.showCustomLoader && !isDataLoading) {
       setTimeout(() => {
         this.resetCustomLoader();
-      }, 100000);
+      }, 30000);
     }
   }
 

@@ -86,7 +86,8 @@ const onRenderHeader = data => {
     filtersLength,
   } = data;
 
-  const appliedfilters =
+  let appliedfilters = false;
+  appliedfilters =
     filtersLength &&
     Object.keys(filtersLength).some(key => {
       return filtersLength[key] > 0;
@@ -118,7 +119,6 @@ const onRenderHeader = data => {
   );
 };
 
-// eslint-disable-next-line complexity
 const ProductListView = ({
   products,
   filters,
@@ -184,7 +184,10 @@ const ProductListView = ({
     filtersLength,
   };
   return showCustomLoader ? (
-    <PLPGifAnimation url="https://media.giphy.com/media/rIEyYzbMqa7hS/giphy.gif" />
+    <PLPGifAnimation
+      url="https://media.giphy.com/media/rIEyYzbMqa7hS/giphy.gif"
+      navigation={navigation}
+    />
   ) : (
     <ScrollView>
       {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}

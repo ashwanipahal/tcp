@@ -13,7 +13,7 @@ import {
   CloseContainer,
   BagPageContainer,
   ArrowBackIcon,
-  BackContainer,
+  BagPageBackContainer,
 } from './Header.style';
 
 // @flow
@@ -29,7 +29,7 @@ type Props = {
 const closeIcon = require('@tcp/core/src/assets/close.png');
 const tcpIcon = require('../../../../assets/images/tcp/tcpLaunchImage.png');
 const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.png');
-const backicon = require('@tcp/core/src/assets/carrot-large-left.png');
+const backIcon = require('@tcp/core/src/assets/carrot-large-left.png');
 
 /**
  * This component creates Mobile Header.
@@ -45,22 +45,23 @@ class BagPageHeader extends React.PureComponent<Props> {
   };
 
   render() {
-    const { showBrandIcon, showCloseButton, showGobackIcon, navigation } = this.props;
+    const { showBrandIcon, showCloseButton, showGobackIcon } = this.props;
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
         <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
           {showGobackIcon && (
-            <BackContainer position="row">
+            <BagPageBackContainer>
               <TouchableOpacity
                 accessible
                 onPress={this.closeIconAction}
                 accessibilityRole="button"
                 accessibilityLabel="back button"
+                data-locator={getLocator('global_bagpagebackbutton')}
               >
-                <ArrowBackIcon source={backicon} />
+                <ArrowBackIcon source={backIcon} />
               </TouchableOpacity>
-            </BackContainer>
+            </BagPageBackContainer>
           )}
 
           {showBrandIcon && (
