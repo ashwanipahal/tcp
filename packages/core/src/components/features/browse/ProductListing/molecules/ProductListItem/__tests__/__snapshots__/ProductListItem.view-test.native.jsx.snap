@@ -295,6 +295,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       }
     }
     labelsPlpTiles={Object {}}
+    renderMoveToList={[Function]}
   />
 </Styled(View)>
 `;

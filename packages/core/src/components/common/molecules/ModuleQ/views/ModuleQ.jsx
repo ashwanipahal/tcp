@@ -251,7 +251,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-        {showCarousel ? this.getCurrentCtaButton() : null}
+        {showCarousel && !isRelatedOutfit && this.getCurrentCtaButton()}
       </Grid>
     );
   }

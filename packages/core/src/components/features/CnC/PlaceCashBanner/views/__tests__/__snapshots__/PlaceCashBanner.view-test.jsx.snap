@@ -46,7 +46,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
               Array [
                 "fs18",
                 "fs13",
-                "fs26",
+                "fs18",
               ]
             }
             fontWeight="bold"
@@ -65,7 +65,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
               Array [
                 "fs14",
                 "fs10",
-                "fs22",
+                "fs16",
               ]
             }
             fontWeight="regular"

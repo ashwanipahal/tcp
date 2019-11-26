@@ -56,21 +56,23 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               textAlign="center"
             />
             <BodyCopy fontSize="fs14" text={labels.subTitle} />
-            <PlaceCashTncContainer>
-              <BodyCopy text={labels.tnc} fontSize="fs8" />
-              <Anchor
-                fontSizeVariation="small"
-                underline
-                noLink
-                to=""
-                fontSize="fs8"
-                anchorVariation="primary"
-                fontFamily="primary"
-                text={labels.modalLink}
-                dataLocator="detailslink"
-                onPress={e => this.toggleShowDetailModal(e)}
-              />
-            </PlaceCashTncContainer>
+            {!isOrderConfirmation && (
+              <PlaceCashTncContainer>
+                <BodyCopy text={labels.tnc} fontSize="fs8" />
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  noLink
+                  to=""
+                  fontSize="fs8"
+                  anchorVariation="primary"
+                  fontFamily="primary"
+                  text={labels.modalLink}
+                  dataLocator="detailslink"
+                  onPress={e => this.toggleShowDetailModal(e)}
+                />
+              </PlaceCashTncContainer>
+            )}
           </PlaceCashTextWrapper>
           <PlaceCashDetailsModal
             labels={labels}

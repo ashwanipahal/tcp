@@ -51,10 +51,18 @@ const DropDownWishlistItemContainer = styled.TouchableOpacity.attrs({
   flex-direction: row;
 `;
 
+const getAdditionalListItemStyle = props => {
+  const { width } = props;
+  return {
+    ...(width && { width }),
+  };
+};
+
 const SelectedWishlistContainer = styled.View`
   flex-direction: row;
   align-items: center;
   margin-left: 12px;
+  ${getAdditionalListItemStyle}
 `;
 
 const ItemCountContainer = styled.View`
