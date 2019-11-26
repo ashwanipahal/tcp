@@ -130,11 +130,6 @@ export class StoreLanding extends PureComponent {
 
 StoreLanding.getInitActions = () => initActions;
 
-// StoreLanding.pageInfo = {
-//   pageId: 'storelocator',
-//   name: 'storelocator',
-// };
-
 StoreLanding.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
