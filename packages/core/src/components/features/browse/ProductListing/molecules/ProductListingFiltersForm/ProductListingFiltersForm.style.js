@@ -14,23 +14,55 @@ export default css`
       border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
       display: inline-block;
     }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin: 0;
-    }
   }
   .item-common.color-filter-chip {
     margin-bottom: 8px;
     padding-bottom: 0;
+    border: 0;
+    max-width: 31%;
+    min-width: 90px;
+
+    .item-select,
+    .selected-items {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding-left: 22px;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 150px;
+      min-width: 150px;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 22%;
+      min-width: 110px;
+    }
+
+    .selected-items {
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        text-align: left;
+      }
+    }
   }
   .color-filter-chip {
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-right: 0;
       white-space: nowrap;
+      margin-left: 0;
     }
   }
   .color-chip {
     border-radius: 10px;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    height: 19px;
+    width: 19px;
+  }
+  .white-color-class {
+    height: 18px;
+    width: 18px;
   }
   .color-chip[data-colorname='white'] {
     border: 1px solid ${props => props.theme.colors.PRIMARY.DARK};
@@ -55,14 +87,14 @@ export default css`
     vertical-align: top;
     width: 86px;
 
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 60px;
+    }
+
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin-right: 84px;
     }
   }
   .filters-only-container {
@@ -78,6 +110,19 @@ export default css`
     .custom-select-common {
       display: flex;
       border-bottom: none;
+    }
+  }
+  .modal-spacing {
+    margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    margin-top: 22px;
+
+    button {
+      max-width: 164px;
+      height: 42px;
+    }
+
+    .close-button {
+      text-align: right;
     }
   }
 `;

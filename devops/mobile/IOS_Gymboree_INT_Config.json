@@ -218,11 +218,11 @@
       "value": "d248ac8ed345ce5d29c9a6a3791db213"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_TCP",
       "value": "dev1-sp-childrensplace-com800681562071964"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_TCP",
       "value": "ceda813aeaf523b6a80c2d0d15276445"
     },
     {
@@ -250,11 +250,11 @@
       "value": "4c26a092be20e0a237b91e51087453fa"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_GYM",
       "value": "dev1-sp-gymboree-com800681562072181"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_GYM",
       "value": "430282734ccd287f6bc91a5f9a73b482"
     },
     {
@@ -312,6 +312,22 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
     }
   ],
   "signed": true,

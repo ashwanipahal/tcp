@@ -117,6 +117,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
       }
       isAddedToBag={true}
       labels={Object {}}
+      onRequestClose={[MockFunction]}
       showVenmo={false}
     />
     <div
@@ -432,6 +433,7 @@ exports[`Added to Bag View with Multiple Items should render Added to Bag view  
       }
       isAddedToBag={true}
       labels={Object {}}
+      onRequestClose={[MockFunction]}
       showVenmo={false}
     />
     <div

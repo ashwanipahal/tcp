@@ -36,6 +36,8 @@ class FilterModal extends React.PureComponent {
     filteredId: PropTypes.string,
     selectedFilterValue: PropTypes.shape({}).isRequired,
     setSelectedFilter: PropTypes.func.isRequired,
+    isKeepModalOpen: PropTypes.bool,
+    isLoadingMore: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -48,12 +50,15 @@ class FilterModal extends React.PureComponent {
     onFilterSelection: () => {},
     onSortSelection: () => {},
     filteredId: 'ALL',
+    isKeepModalOpen: false,
+    isLoadingMore: false,
   };
 
   constructor(props) {
     super(props);
+    const { isKeepModalOpen } = props;
     this.state = {
-      showModal: false,
+      showModal: isKeepModalOpen,
       language: '',
       showSortModal: false,
     };
@@ -120,7 +125,16 @@ class FilterModal extends React.PureComponent {
       // restore sort if available
       filterData = { ...filterData, sort: language };
     }
-    onSubmit(filterData, false, getProducts, url);
+    if (onSubmit) {
+      onSubmit(filterData, false, getProducts, url, true);
+    }
+
+    if (!filters) {
+      this.setModalVisibilityState(false);
+    }
+  };
+
+  closeModal = () => {
     this.setModalVisibilityState(false);
   };
 
@@ -163,6 +177,7 @@ class FilterModal extends React.PureComponent {
       onFilterSelection,
       filteredId,
       setSelectedFilter,
+      isLoadingMore,
     } = this.props;
     const { showModal, language, showSortModal } = this.state;
     const sortOptions = isFavorite ? sortLabels : getSortOptions(sortLabels);
@@ -212,7 +227,9 @@ class FilterModal extends React.PureComponent {
                   labelsFilter={labelsFilter}
                   filters={filters}
                   onSubmit={filter => {
-                    setSelectedFilter(filter);
+                    if (setSelectedFilter) {
+                      setSelectedFilter(filter);
+                    }
                     this.applyFilters(filter);
                   }}
                   ref={ref => {
@@ -222,6 +239,8 @@ class FilterModal extends React.PureComponent {
                   onFilterSelection={onFilterSelection}
                   filteredId={filteredId}
                   onCloseModal={this.onCloseModal}
+                  closeModal={this.closeModal}
+                  isLoadingMore={isLoadingMore}
                 />
               </ModalContent>
             )}

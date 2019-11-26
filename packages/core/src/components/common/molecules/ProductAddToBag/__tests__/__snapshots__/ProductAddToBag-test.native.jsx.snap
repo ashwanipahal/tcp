@@ -13,6 +13,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   handleFormSubmit={null}
   isBundleProduct={false}
   isErrorMessageDisplayed={false}
+  isFromBagProductSfl={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}

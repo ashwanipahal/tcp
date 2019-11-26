@@ -730,7 +730,7 @@ const getGiftWrapOptions = state => {
 const getSelectedGiftWrapDetails = state => {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   const checkout = orderDetails.get('checkout');
-  const optionId = checkout.getIn(['giftWrap', 'optionId']);
+  const optionId = checkout && checkout.getIn(['giftWrap', 'optionId']);
   const selectedOptionData = getGiftWrapOptions(state);
   if (selectedOptionData.body) {
     const selectedOption = selectedOptionData.body.giftOptions.filter(
@@ -774,6 +774,14 @@ function getInternationalCheckoutUrl(state) {
  * @returns {bool}
  */
 const getIsVenmoEnabled = state => {
+  // Kill switch Handling for mobile app
+  if (isMobileApp()) {
+    return (
+      state[SESSIONCONFIG_REDUCER_KEY] &&
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.VENMO_APP_ENABLED === 'TRUE'
+    );
+  }
+  // Kill switch for mobile web, also checking if on mobile web viewport
   return (
     getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&

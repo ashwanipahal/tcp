@@ -7,7 +7,10 @@ import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/sessio
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -37,6 +40,7 @@ import {
   checkIfSearchResultsAvailable,
   getPDPLabels,
 } from '../container/SearchDetail.selectors';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
@@ -161,6 +165,8 @@ class SearchDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       pdpLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
 
@@ -192,6 +198,8 @@ class SearchDetailContainer extends React.PureComponent {
                 isLoggedIn={isLoggedIn}
                 isSearchListing={true}
                 asPathVal={asPathVal}
+                AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                 {...otherProps}
               />
             ) : (
@@ -232,6 +240,8 @@ class SearchDetailContainer extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               isSearchListing={true}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
           </div>
@@ -297,6 +307,7 @@ function mapStateToProps(state) {
     pdpLabels: getPDPLabels(state),
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
   };
 }
 
@@ -313,6 +324,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddItemToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }

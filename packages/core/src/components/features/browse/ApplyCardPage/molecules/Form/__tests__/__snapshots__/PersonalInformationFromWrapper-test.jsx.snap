@@ -59,13 +59,14 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="contact_information_month"
         >
           <Field
+            aria-label="lbl_PLCC_month"
             className="field_dob"
             component={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-gZMcBi",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -155,7 +156,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-gZMcBi",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -234,13 +235,14 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_day"
         >
           <Field
+            aria-label="lbl_PLCC_day"
             className="field_dob"
             component={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-gZMcBi",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -330,7 +332,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-gZMcBi",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -485,13 +487,14 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_year"
         >
           <Field
+            aria-label="lbl_PLCC_year"
             className="field_dob"
             component={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-gZMcBi",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -581,7 +584,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-gZMcBi",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -995,7 +998,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iwsKbI",
+              "componentId": "sc-dnqmqq",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1138,7 +1141,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-iwsKbI",
+            "styledComponentId": "sc-dnqmqq",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

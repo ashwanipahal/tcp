@@ -13,9 +13,9 @@ export default css`
   }
   .billing-payment-details {
     display: flex;
+    align-items: center;
   }
   .billing-payment-edit {
-    padding-top: 15px;
     padding-left: 25px;
   }
   .paymentMethodHeading {
@@ -126,7 +126,7 @@ export default css`
   }
 
   && .dropdownliBottomBorder {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
     position: relative;
     border: 0px;
   }
@@ -136,8 +136,11 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     width: 93%;
     transform: translateX(-50%);
-    bottom: 2px;
+    bottom: 0px;
     left: 50%;
+  }
+  &&&.dropdownliBottomBorder::after + .dropdownActiveClass {
+    border: 0;
   }
   .dropDownTop {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
@@ -172,6 +175,10 @@ export default css`
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
   }
 
+  .venmo-container {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+
   .addCreditCardBtn {
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
@@ -189,12 +196,13 @@ export default css`
     }
 
     .card-edit-button {
-      @media ${props => props.theme.mediaQuery.medium} {
-        height: 51px;
+      @media ${props => props.theme.mediaQuery.mediumMax} {
+        height: 42px;
         width: 162px;
         margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
       }
       @media ${props => props.theme.mediaQuery.large} {
+        height: 51px;
         width: 210px;
       }
     }
@@ -215,9 +223,9 @@ export default css`
 
     .card-edit-save {
       display: none;
-      background: ${props => props.theme.colors.PRIMARY.BLUE};
+      background: ${props => props.theme.colorPalette.blue.C900};
       &:hover {
-        background: ${props => props.theme.colors.PRIMARY.BLUE};
+        background: ${props => props.theme.colorPalette.blue.C900};
       }
       @media ${props => props.theme.mediaQuery.medium} {
         display: inline-block;

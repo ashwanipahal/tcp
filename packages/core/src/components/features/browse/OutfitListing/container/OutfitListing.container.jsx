@@ -68,6 +68,15 @@ class OutfitListingContainer extends React.PureComponent {
   }
 }
 
+OutfitListingContainer.pageInfo = {
+  pageId: 'outfit',
+  pageData: {
+    pageName: 'outfit',
+    pageSection: 'outfit',
+    pageSubSection: 'outfit',
+  },
+};
+
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),

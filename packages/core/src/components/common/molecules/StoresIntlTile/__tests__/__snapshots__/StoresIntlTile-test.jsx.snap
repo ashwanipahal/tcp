@@ -509,6 +509,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -1256,6 +1257,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -1791,9 +1793,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-VigVT",
+                    "componentId": "sc-gqjmRU",
                     "isStatic": false,
-                    "lastClassName": "cZwfoK",
+                    "lastClassName": "kpKHCY",
                     "rules": Array [
                       "
   ",
@@ -1819,7 +1821,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "Styled(Row)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-VigVT",
+                  "styledComponentId": "sc-gqjmRU",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1830,13 +1832,13 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               fullBleed={true}
             >
               <Row
-                className="sc-VigVT cZwfoK"
+                className="sc-gqjmRU kpKHCY"
                 fullBleed={true}
                 otherprops={Object {}}
                 tagName="div"
               >
                 <div
-                  className="sc-VigVT cZwfoK"
+                  className="sc-gqjmRU kpKHCY"
                   fullBleed={true}
                   otherprops={Object {}}
                 >

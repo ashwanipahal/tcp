@@ -26,7 +26,7 @@ import MyRewardsSkeleton from '../skeleton/MyRewardsSkeleton.view.native';
  * Width can vary as per device width.
  */
 const MODULE_HEIGHT = 220;
-const MODULE_WIDTH = getScreenWidth() - 30;
+const MODULE_WIDTH = getScreenWidth() - 20;
 
 /**
  * This Component return the app reawrd tile

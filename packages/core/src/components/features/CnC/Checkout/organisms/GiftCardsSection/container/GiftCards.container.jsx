@@ -16,9 +16,9 @@ import {
   setOrderBalanceTotal,
   setShowGiftCardForm,
   setHideGiftCardForm,
-  resetAddGiftCardSuccess,
   resetAddGiftCard,
 } from '../../../container/Checkout.action';
+import { resetAddGiftCardSuccess } from '../../../container/Checkout.action.util';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 import { getFormValidationErrorMessages } from '../../../../../account/Account/container/Account.selectors';
 import CHECKOUT_CONSTANTS from '../../../Checkout.constants';
@@ -28,7 +28,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   /* eslint-disable-next-line */
   UNSAFE_componentWillMount() {
     const { getCardListAction } = this.props;
-    getCardListAction();
+    getCardListAction({ ignoreCache: true });
   }
 
   componentDidUpdate(prevProps) {

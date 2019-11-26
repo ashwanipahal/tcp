@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceCashBannerModal should render correctly should match snapshot 1`] = `
+<Styled(Modal)
+  fontSize="fs16"
+  heading="title modal"
+  headingFontFamily="secondary"
+  isOpen={true}
+  onRequestClose={[MockFunction]}
+>
+  <Styled(RichText)
+    source={
+      Object {
+        "html": "<h2>test data</h2>",
+      }
+    }
+  />
+</Styled(Modal)>
+`;

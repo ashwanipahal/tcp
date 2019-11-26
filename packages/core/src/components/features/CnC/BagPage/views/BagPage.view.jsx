@@ -2,6 +2,9 @@ import React from 'react';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import { getSflItemCount, getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getSiteId } from '@tcp/core/src/utils/utils.web';
+
 import withRefWrapper from '../../../../common/hoc/withRefWrapper';
 import withHotfix from '../../../../common/hoc/withHotfix';
 
@@ -39,13 +42,16 @@ class BagPageView extends React.PureComponent {
     if (isClient()) {
       window.addEventListener('beforeunload', BagPageUtils.onPageUnload);
     }
-    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { setVenmoPaymentInProgress } = this.props;
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
+    const siteId = getSiteId() && getSiteId().toUpperCase();
+    const cartTotalCount = getCartItemCount();
+    const sflTotalCount = getSflItemCount(siteId);
     this.setState({
       activeSection:
-        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+        !cartTotalCount && sflTotalCount && isShowSaveForLaterSwitch
           ? BAGPAGE_CONSTANTS.SFL_STATE
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
@@ -151,7 +157,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <>
@@ -173,7 +179,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <div className="recentlyViewed">
@@ -240,7 +246,14 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      handleCartCheckout,
+      isMobile,
+      isBagPage,
+      bagLoading,
+    } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -252,19 +265,14 @@ class BagPageView extends React.PureComponent {
           paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
           isBagPage={isBagPage}
+          bagLoading={bagLoading}
         />
       </div>
     );
   };
 
-  handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
-  };
-
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage, bagLoading } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -303,6 +311,7 @@ class BagPageView extends React.PureComponent {
                 paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
                 isBagPage={isBagPage}
+                bagLoading={bagLoading}
               />
             </Col>
           </Row>
@@ -365,7 +374,7 @@ class BagPageView extends React.PureComponent {
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
               onClick={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE, this);
               }}
             >
               <Heading
@@ -397,7 +406,7 @@ class BagPageView extends React.PureComponent {
                 colSize={{ small: 3, medium: 4, large: 6 }}
                 className="left-sec"
                 onClick={() => {
-                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                  BagPageUtils.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE, this);
                 }}
               >
                 <Heading
@@ -435,10 +444,6 @@ class BagPageView extends React.PureComponent {
     );
   }
 }
-
-BagPageView.defaultProps = {
-  isBagPage: true,
-};
 
 BagPageView.propTypes = BagPageUtils.BagPagePropTypes;
 

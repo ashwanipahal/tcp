@@ -1,5 +1,5 @@
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
-import { LABELS } from '@tcp/core/src/reduxStore/constants';
+import { loadComponentLabelsData, loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS, SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 import {
   setServerErrorCheckout,
@@ -282,7 +282,10 @@ export const routeToPickupPage = () => ({
   type: constants.ROUTE_TO_PICKUP_PAGE,
 });
 
-export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+export const initActions = [
+  loadComponentLabelsData({ category: LABELS.checkout }),
+  loadPageSEOData({ page: SEO_DATA.checkout }),
+];
 
 export const updateShippingAddress = (payload, after) => {
   return {
@@ -462,21 +465,9 @@ export const resetAddGiftCard = payload => {
   };
 };
 
-export const resetAddGiftCardSuccess = payload => {
-  return {
-    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
-    payload,
-  };
-};
-
 export const toggleCheckoutRouting = payload => ({
   payload,
   type: constants.CHECKOUT_ROUTING_DONE,
-});
-
-export const setUpdateFromMSG = payload => ({
-  type: constants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG,
-  payload,
 });
 
 export default {

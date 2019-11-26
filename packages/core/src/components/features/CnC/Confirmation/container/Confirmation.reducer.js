@@ -30,6 +30,7 @@ const initialState = fromJS({
 
     userDetails: {},
   },
+  loading: true,
   aquiredCouponCode: [],
   venmoPaymentConfirmationDisplayed: false,
   updateOrderDetails: null,
@@ -58,7 +59,7 @@ const orderConfirmationReducer = (state = initialState, action) => {
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_ORDER_CONFIRMATION:
       return state.set('orderConfirmation', action.orderConfirmation);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_VALUES_COUPONS_SET:
-      return state.set('aquiredCouponCode', action.couponsInfo);
+      return state.set('loading', false).set('aquiredCouponCode', action.couponsInfo);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_ORDER_PRODUCTS:
       return state.set('orderProducts', action.orderProducts);
     // case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_VENMO_PAYMENT_MESSAGE_DISPLAYED:

@@ -123,6 +123,7 @@ class ModuleA extends React.Component {
             medium: 8,
             large: 12,
           }}
+          className="moduleA_carousel_wrapper"
         >
           <div>
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>

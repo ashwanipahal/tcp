@@ -1,5 +1,5 @@
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
-import { LABELS } from '@tcp/core/src/reduxStore/constants';
+import { loadComponentLabelsData, loadPageSEOData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS, SEO_DATA } from '@tcp/core/src/reduxStore/constants';
 
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
@@ -215,7 +215,10 @@ const resetCartReducer = () => {
   };
 };
 
-const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+const initActions = [
+  loadComponentLabelsData({ category: LABELS.checkout }),
+  loadPageSEOData({ page: SEO_DATA.bag }),
+];
 
 const getSetPayPalWebView = payload => {
   return {

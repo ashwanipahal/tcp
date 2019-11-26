@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { plpRoutingHandling } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
@@ -39,17 +40,17 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 const handleRouteComplete = url => {
   const clearAllFilter =
     localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
-  const params = new URL(document.location).searchParams;
-  const sortParam = params.has('sort');
+  const params = queryString.parse(document.location.search);
+  const sortParam = params.sort !== undefined;
   // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
   const filterParam =
-    params.has(FILTER_CATAGORY) ||
-    params.has(FILTER_COLOR) ||
-    params.has(FILTER_SIZE) ||
-    params.has(FILTER_PRICE_RANGE) ||
-    params.has(FILTER_FIT) ||
-    params.has(FILTER_GENDER) ||
-    params.has(FILTER_AGE);
+    params.FILTER_CATAGORY !== undefined ||
+    params.FILTER_COLOR !== undefined ||
+    params.FILTER_SIZE !== undefined ||
+    params.FILTER_PRICE_RANGE !== undefined ||
+    params.FILTER_FIT !== undefined ||
+    params.FILTER_GENDER !== undefined ||
+    params.FILTER_AGE !== undefined;
 
   /**
    * check if sort or filter param present in PLP page
@@ -122,6 +123,8 @@ const Navigation = props => {
     showCondensedHeader,
     openOverlay,
     isDrawerOpen,
+    isCondensedHeader,
+    accessibilityLabels,
   } = props;
 
   useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
@@ -155,7 +158,10 @@ const Navigation = props => {
       hideNavigationFooter={hideNavigationFooter}
       showCondensedHeader={showCondensedHeader}
     >
-      <nav className={`${className} navigation nav-bar`}>
+      <nav
+        className={`${className} navigation nav-bar`}
+        aria-label={isCondensedHeader && accessibilityLabels.condensed_navigation_aria_label}
+      >
         <NavBar {...props} />
       </nav>
     </Drawer>
@@ -176,6 +182,12 @@ Navigation.propTypes = {
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
+  accessibilityLabels: PropTypes.shape({}).isRequired,
+  isCondensedHeader: PropTypes.bool,
+};
+
+Navigation.defaultProps = {
+  isCondensedHeader: false,
 };
 
 export { Navigation as NavigationVanilla };

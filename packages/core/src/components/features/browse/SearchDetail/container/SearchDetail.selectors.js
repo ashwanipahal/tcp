@@ -154,6 +154,10 @@ export const getIsLoadingMore = state => {
   return state[SLP_PAGE_REDUCER_KEY].isLoadingMore;
 };
 
+export const getModalState = state => {
+  return state[SLP_PAGE_REDUCER_KEY].isKeepModalOpen;
+};
+
 export const checkIfSearchResultsAvailable = state => {
   return state[SLP_PAGE_REDUCER_KEY].isSearchResultsAvailable;
 };

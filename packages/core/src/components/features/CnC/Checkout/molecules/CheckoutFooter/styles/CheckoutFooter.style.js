@@ -39,7 +39,7 @@ const styles = css`
     }
 
     .back-space {
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-left: -7px;
     }
     .back-link {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -73,10 +73,13 @@ const styles = css`
       display: none;
       @media ${props => props.theme.mediaQuery.medium} {
         display: block;
+      }
+      @media ${props => props.theme.mediaQuery.mediumMax} {
         width: 192px;
-        height: 51px;
+        height: 42px;
       }
       @media ${props => props.theme.mediaQuery.large} {
+        height: 51px;
         width: 210px;
       }
     }

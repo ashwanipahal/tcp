@@ -36,6 +36,7 @@ export {
   isMobileApp,
   getIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   resetApiConfig,
@@ -68,6 +69,7 @@ export {
   canUseDOM,
   calculatePriceValue,
   getProductUrlForDAM,
+  isTCP,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

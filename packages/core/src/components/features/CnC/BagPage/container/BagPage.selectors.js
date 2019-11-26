@@ -128,6 +128,9 @@ const getDetailsContentTcpId = state => {
   return content && content.contentId;
 };
 
+const getExitCheckoutAriaLabel = state =>
+  getLabelValue(state.Labels, 'exit_checkout', 'accessibility', 'global');
+
 const getDetailsContentGymId = state => {
   const { referred = [] } = state.Labels.checkout.shipping;
   const content = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
@@ -178,7 +181,7 @@ const getCartStores = state => {
 
 const getCartStoresToJs = createSelector(
   getCartStores,
-  store => JSON.parse(JSON.stringify(store))
+  store => store && JSON.parse(JSON.stringify(store))
 );
 
 const getsflItemsList = state => {
@@ -291,4 +294,5 @@ export default {
   getCartLoadedState,
   isBagRouting,
   getIfEmailSignUpDone,
+  getExitCheckoutAriaLabel,
 };

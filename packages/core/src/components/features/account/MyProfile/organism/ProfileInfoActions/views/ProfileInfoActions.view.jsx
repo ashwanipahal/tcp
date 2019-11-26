@@ -114,7 +114,7 @@ export const ProfileInfoActions = ({
             activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
             activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
-            redirectTo="/account"
+            redirectTo="/store-locator"
             dataLocatorPrefix="favStore"
           />
         </Col>

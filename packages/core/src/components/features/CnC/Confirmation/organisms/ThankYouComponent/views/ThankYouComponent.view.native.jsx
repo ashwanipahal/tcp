@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
 import ConfirmationFulfillmentCenterItemDisplay from '../../ConfirmationFulfillmentCenterItemDisplay';
 import RichText from '../../../../../../common/atoms/RichText';
@@ -82,17 +83,20 @@ const ThankYouComponent = ({
         </>
       )}
       <BorderWrapper />
+      <PlaceCashBanner isOrderConfirmation />
       <BodyCopyWithSpacing
         spacingStyles="margin-top-XL margin-left-XS"
         fontSize="fs16"
         mobilefontFamily="primary"
         text={labels.updateOrderHeading}
       />
-      <Container>
-        <RichTextContainer>
-          <RichText source={{ html: updateOrderDetailsData }} />
-        </RichTextContainer>
-      </Container>
+      {updateOrderDetailsData && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: updateOrderDetailsData }} />
+          </RichTextContainer>
+        </Container>
+      )}
     </>
   );
 };

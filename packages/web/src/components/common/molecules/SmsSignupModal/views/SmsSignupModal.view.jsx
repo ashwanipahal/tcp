@@ -15,6 +15,13 @@ import smsSignupModalStyle from '../SmsSignupModal.style';
 import config from '../Config';
 
 class SmsSignupModal extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFieldEmpty: true,
+    };
+  }
+
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription, trackSubscriptionSuccess } = this.props;
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
@@ -84,6 +91,11 @@ class SmsSignupModal extends React.PureComponent {
     clearSmsSignupForm();
   };
 
+  fieldChange = element => {
+    const isFieldEmpty = !element.currentTarget.value.trim();
+    this.setState({ isFieldEmpty });
+  };
+
   render() {
     const {
       isModalOpen,
@@ -95,6 +107,7 @@ class SmsSignupModal extends React.PureComponent {
       handleSubmit,
     } = this.props;
     const { IMG_DATA } = config;
+    const { isFieldEmpty } = this.state;
     const isGym = isGymboree();
     return (
       <Fragment>
@@ -201,6 +214,7 @@ class SmsSignupModal extends React.PureComponent {
                         dataLocator="sms_address_field"
                         normalize={formatPhoneNumber}
                         enableSuccessCheck={false}
+                        onChange={this.fieldChange}
                       />
 
                       <Field
@@ -223,7 +237,7 @@ class SmsSignupModal extends React.PureComponent {
                     <Row className="button-wrapper-form" fullBleed>
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
-                          disabled={pristine || submitting}
+                          disabled={isFieldEmpty || pristine || submitting}
                           fullWidth
                           buttonVariation="fixed-width"
                           fill="BLUE"

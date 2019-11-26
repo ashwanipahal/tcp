@@ -45,7 +45,7 @@ exports[`EmptyRewards should render correctly 1`] = `
     }
     offsetLeft={
       Object {
-        "large": 4,
+        "large": 5,
         "medium": 2,
         "small": 0,
       }

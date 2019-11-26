@@ -4,25 +4,37 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { PromotionalMessage } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
 import { getPromotionalMessage } from '../../../../../../utils';
 import { BodyCopy } from '../../../../../common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
 import productPriceStyle from './ProductPrice.style';
 
-const getListPricePostFix = (highListPrice, nonUSCA, currencySymbol) => {
+const getListPricePostFix = (highListPrice, nonUSCA) => {
   return highListPrice ? (
     <>
       <span> - </span>
-      <span className="post">{`${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}`}</span>
+      <span className="post">
+        {nonUSCA ? highListPrice.toFixed(2) : <PriceCurrency price={highListPrice} />}
+      </span>
     </>
   ) : (
     ''
   );
 };
 
-const getHighOfferPrice = (highOfferPrice, nonUSCA, currencySymbol) => {
-  return highOfferPrice ? ` - ${nonUSCA ? currencySymbol : ''}${highOfferPrice.toFixed(2)}` : '';
+const getHighOfferPrice = (highOfferPrice, nonUSCA) => {
+  return highOfferPrice ? (
+    <>
+      <span> - </span>
+      <span className="post">
+        {nonUSCA ? highOfferPrice.toFixed(2) : <PriceCurrency price={highOfferPrice} />}
+      </span>
+    </>
+  ) : (
+    ''
+  );
 };
 
 class ProductPrice extends React.Component {
@@ -86,7 +98,6 @@ class ProductPrice extends React.Component {
       currencyAttributes,
       customFonts: { listPriceFont },
     } = this.props;
-    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     if (this.isCurrencyExchangeValid(currencyAttributes)) {
       offerPrice = currencyConversion(offerPrice, currencyAttributes);
       listPrice = currencyConversion(listPrice, currencyAttributes);
@@ -94,8 +105,8 @@ class ProductPrice extends React.Component {
       highListPrice = currencyConversion(highListPrice, currencyAttributes);
     }
     const nonUSCA = currencySymbol === 'CAD' || currencySymbol === 'USD';
-    const listPricePostFix = getListPricePostFix(highListPrice, nonUSCA, currency);
-    const offerPricePostFix = getHighOfferPrice(highOfferPrice, nonUSCA, currency);
+    const listPricePostFix = getListPricePostFix(highListPrice, nonUSCA);
+    const offerPricePostFix = getHighOfferPrice(highOfferPrice, nonUSCA);
     const showBothPrice =
       (offerPrice && offerPrice !== listPrice) ||
       (highOfferPrice && highOfferPrice !== highListPrice);
@@ -109,8 +120,7 @@ class ProductPrice extends React.Component {
             fontWeight="black"
             color="red.500"
           >
-            {currency}
-            {offerPrice.toFixed(2)}
+            <PriceCurrency price={offerPrice} />
             {offerPricePostFix}
           </BodyCopy>
           <div className="list-badge-container">
@@ -123,8 +133,7 @@ class ProductPrice extends React.Component {
               {/* TODO - fix it with bundle {!(isBundleProduct || isBundleList) ? 'Was' : ''}  */}
 
               <span className="pre">
-                {currency}
-                {listPrice.toFixed(2)}
+                <PriceCurrency price={listPrice} />
               </span>
               {listPricePostFix}
             </BodyCopy>
@@ -142,8 +151,7 @@ class ProductPrice extends React.Component {
           fontWeight="black"
           color="red.500"
         >
-          {currency}
-          {offerPrice.toFixed(2)}
+          <PriceCurrency price={offerPrice} />
           {offerPricePostFix}
         </BodyCopy>
       );
@@ -156,8 +164,7 @@ class ProductPrice extends React.Component {
         fontWeight="black"
         color="red.500"
       >
-        {currency}
-        {listPrice.toFixed(2)}
+        <PriceCurrency price={listPrice} />
         {listPricePostFix}
       </BodyCopy>
     );

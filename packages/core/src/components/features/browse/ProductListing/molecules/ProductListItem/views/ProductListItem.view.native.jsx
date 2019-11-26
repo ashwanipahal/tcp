@@ -136,13 +136,10 @@ const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenC
   onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
 };
 
-const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, colorsMap, selectedColorIndex) => {
-  const selectedColorMapData = colorsMap && colorsMap[selectedColorIndex];
+const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {
   return (
     (isKeepAliveEnabled && keepAlive) ||
-    (selectedColorMapData &&
-      selectedColorMapData.itemInfo &&
-      selectedColorMapData.itemInfo.availability === AVAILABILITY.SOLDOUT)
+    (itemInfo && itemInfo.availability === AVAILABILITY.SOLDOUT)
   );
 };
 
@@ -150,6 +147,7 @@ const checkEditEnabled = (isFavorite, itemOutOfStock) => {
   return isFavorite && !itemOutOfStock;
 };
 
+// eslint-disable-next-line complexity
 const ListItem = props => {
   const {
     item,
@@ -175,6 +173,7 @@ const ListItem = props => {
     labelsPlpTiles,
     isKeepAliveEnabled,
     outOfStockLabels,
+    renderMoveToList,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -184,12 +183,7 @@ const ListItem = props => {
   const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
   const { keepAlive } = miscInfoData;
-  const itemOutOfStock = isItemOutOfStock(
-    isKeepAliveEnabled,
-    keepAlive,
-    colorsMap,
-    selectedColorIndex
-  );
+  const itemOutOfStock = isItemOutOfStock(isKeepAliveEnabled, keepAlive, itemInfo);
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
@@ -231,7 +225,7 @@ const ListItem = props => {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         setLastDeletedItemId={setLastDeletedItemId}
-        isFavorite={isInDefaultWishlist}
+        isFavorite={isInDefaultWishlist || isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
         item={item}
@@ -271,7 +265,11 @@ const ListItem = props => {
       })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
-        <RenderMoveToListOrSeeSuggestedList item={item} labelsPlpTiles={labelsPlpTiles} />
+        <RenderMoveToListOrSeeSuggestedList
+          item={item}
+          labelsPlpTiles={labelsPlpTiles}
+          renderMoveToList={renderMoveToList}
+        />
       )}
     </ListContainer>
   );
@@ -507,7 +505,7 @@ const RenderPricesSection = values => {
                 size="fs21"
                 color="gray.600"
                 onPress={() => {
-                  onFavorite(generalProductId);
+                  onFavorite(generalProductId, itemId);
                 }}
               />
             )}
@@ -600,9 +598,9 @@ const RenderPurchasedQuantity = ({ item }) => {
 };
 
 const onSeeSuggestedHandler = () => {};
-const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
+const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles, renderMoveToList }) => {
   const {
-    itemInfo: { availability },
+    itemInfo: { availability, itemId },
   } = item;
   if (availability && availability === 'SOLDOUT') {
     return (
@@ -621,16 +619,7 @@ const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
   }
 
   return (
-    <RowContainer margins="8px 0 0 0">
-      <BodyCopy
-        color="gray.900"
-        fontFamily="secondary"
-        fontSize="fs14"
-        text="Move to another list "
-        fontWeight="regular"
-      />
-      <CustomIcon name={ICON_NAME.chevronDown} size="fs14" color="gray.600" margins="0 0 0 12px" />
-    </RowContainer>
+    <RowContainer margins="8px 0 0 0">{renderMoveToList && renderMoveToList(itemId)}</RowContainer>
   );
 };
 
@@ -642,6 +631,7 @@ RenderMoveToListOrSeeSuggestedList.propTypes = {
       availability: PropTypes.string,
     }),
   }),
+  renderMoveToList: PropTypes.func.isRequired,
 };
 
 RenderMoveToListOrSeeSuggestedList.defaultProps = {
@@ -724,6 +714,7 @@ ListItem.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
 };
 
 ListItem.defaultProps = {
@@ -755,6 +746,7 @@ ListItem.defaultProps = {
   labelsPlpTiles: {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ListItem, styles);

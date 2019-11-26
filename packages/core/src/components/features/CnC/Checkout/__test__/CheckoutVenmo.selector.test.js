@@ -55,6 +55,7 @@ describe('Venmo Checkout Selectors', () => {
     const session = {
       siteDetails: {
         VENMO_ENABLED: 'TRUE',
+        VENMO_APP_ENABLED: 'TRUE',
       },
     };
 

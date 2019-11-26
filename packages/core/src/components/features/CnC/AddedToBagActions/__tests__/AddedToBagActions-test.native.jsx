@@ -48,6 +48,7 @@ describe('AddedToBagActions native component', () => {
     };
     const component = shallow(<AddedToBagActions {...props} />);
     const instance = component.instance();
-    expect(instance.getVenmoPaymentButton()).not.toBeUndefined();
+
+    expect(instance.getVenmoPaypalPaymentButton(true, true)).not.toBeUndefined();
   });
 });

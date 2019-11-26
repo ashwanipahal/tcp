@@ -23,7 +23,9 @@ class ProductBasicInfo extends React.Component {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   title = () => {
@@ -47,15 +49,24 @@ class ProductBasicInfo extends React.Component {
   handleAddToWishlist = () => {
     const {
       onAddItemToFavorites,
+      productInfo: { productId },
       productMiscInfo: { colorProductId },
+      pageName,
+      skuId,
     } = this.props;
 
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+    onAddItemToFavorites({
+      colorProductId: productId,
+      productSkuId: (skuId && skuId.skuId) || null,
+      pdpColorProductId: colorProductId,
+      page: pageName || 'PDP',
+    });
   };
 
   render() {
     const {
       isBundleProduct,
+      asPath,
       pdpUrl,
       badge,
       isGiftCard,
@@ -66,6 +77,7 @@ class ProductBasicInfo extends React.Component {
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
+      AddToFavoriteErrorMsgID,
     } = this.props;
     const isFavorite =
       productMiscInfo.isFavorite ||
@@ -95,7 +107,7 @@ class ProductBasicInfo extends React.Component {
         <div className="information-container">
           <div className="title-wrapper">
             {typeof pdpUrl === 'string' ? (
-              <Anchor to={pdpUrl} className="product-link-title">
+              <Anchor to={pdpUrl} asPath={asPath} className="product-link-title">
                 {title}
               </Anchor>
             ) : (
@@ -134,6 +146,7 @@ class ProductBasicInfo extends React.Component {
 ProductBasicInfo.propTypes = {
   className: PropTypes.string,
   productInfo: PropTypes.shape({}).isRequired,
+  asPath: PropTypes.string,
   pdpUrl: PropTypes.string,
   badge: PropTypes.string,
   isGiftCard: PropTypes.bool.isRequired,
@@ -147,11 +160,13 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
+  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductBasicInfo.defaultProps = {
   className: '',
+  asPath: null,
   pdpUrl: null,
   badge: '',
   isBundleProduct: false,
@@ -163,6 +178,7 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
+  AddToFavoriteErrorMsgID: '',
   removeAddToFavoritesErrorMsg: () => {},
 };
 

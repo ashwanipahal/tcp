@@ -89,7 +89,6 @@ describe('Bag page View', () => {
       showStickyHeaderMob: true,
       activeSection: 'SFL',
     });
-    component.instance().handleChangeActiveSection('BAG');
     component.instance().renderActions();
     component.instance().renderLeftSection();
     expect(component).toMatchSnapshot();

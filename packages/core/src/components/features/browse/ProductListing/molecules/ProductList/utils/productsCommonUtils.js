@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import logger from '@tcp/core/src/utils/loggerInstance';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
 
@@ -123,6 +123,27 @@ export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) 
     selectedProduct ||
     (colorFitsSizesMap && colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null)
   );
+}
+
+/**
+ * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
+ */
+export function getMapSliceForSizeSkuID(colorProduct, size) {
+  let skuId;
+  if (colorProduct && colorProduct.fits && Array.isArray(colorProduct.fits)) {
+    for (let i = 0; i < colorProduct.fits.length; i++) {
+      const fitsMap = colorProduct.fits[i];
+      for (let j = 0; j < fitsMap.sizes.length; j++) {
+        const sizesMap = fitsMap.sizes[j];
+        if (sizesMap.sizeName === size) {
+          skuId = sizesMap;
+          break;
+        }
+      }
+    }
+  }
+
+  return skuId;
 }
 
 /**

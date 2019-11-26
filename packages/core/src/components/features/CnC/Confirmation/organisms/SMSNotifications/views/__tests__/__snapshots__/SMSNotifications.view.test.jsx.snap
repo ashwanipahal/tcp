@@ -2,7 +2,7 @@
 
 exports[`SMSNotificationsVanilla should render correctly 1`] = `
 <div
-  className=" notification-width elem-mt-XL elem-mb-XL"
+  className=" notification-width elem-mt-MED elem-mb-XL"
 >
   <form>
     <Styled(Row)
@@ -37,7 +37,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
           textAlign="center"
         />
         <div
-          className="elem-mt-MED elem-mb-LRG"
+          className="elem-mt-MED elem-mb-MED"
         >
           <Styled(BodyCopy)
             className=""
@@ -63,7 +63,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 6,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -75,19 +75,19 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
         }
         offsetLeft={
           Object {
-            "large": 3,
+            "large": 3.3,
             "medium": 0.5,
           }
         }
         offsetRight={
           Object {
-            "large": 3,
+            "large": 3.3,
             "medium": 0.5,
           }
         }
       >
         <div
-          className="brandWrapper elem-mt-MED"
+          className="brandWrapper"
         >
           <div
             className="childrenPlace"
@@ -99,7 +99,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gqjmRU",
+                    "componentId": "sc-dnqmqq",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -222,7 +222,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gqjmRU",
+                  "styledComponentId": "sc-dnqmqq",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -259,7 +259,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gqjmRU",
+                    "componentId": "sc-dnqmqq",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -382,7 +382,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gqjmRU",
+                  "styledComponentId": "sc-dnqmqq",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -418,7 +418,7 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
 
 exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
 <div
-  className=" notification-width elem-mt-XL elem-mb-XL"
+  className=" notification-width elem-mt-MED elem-mb-XL"
 >
   <form>
     <Styled(Row)
@@ -427,7 +427,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 6,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -445,7 +445,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
         }
         offsetRight={
           Object {
-            "large": 3,
+            "large": 3.3,
             "medium": 0.5,
           }
         }
@@ -458,7 +458,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 6,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -476,7 +476,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
         }
         offsetRight={
           Object {
-            "large": 3,
+            "large": 3.3,
             "medium": 0.5,
           }
         }
@@ -513,7 +513,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 6,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -531,13 +531,13 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
         }
         offsetRight={
           Object {
-            "large": 3,
+            "large": 3.3,
             "medium": 0.5,
           }
         }
       >
         <Styled(BodyCopy)
-          className="elem-mt-XS elem-mb-LRG"
+          className="elem-mt-XS"
           color="text.primary"
           component="p"
           fontFamily="secondary"

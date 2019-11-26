@@ -7,7 +7,7 @@ const initialState = fromJS({
   sfl: [],
   errors: false,
   loaded: false,
-  bagLoading: false,
+  bagLoading: true,
   isRouting: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,

@@ -5,24 +5,6 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
   className=""
 >
   <Styled(Row)
-    className="placeholder sms-sign-up"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <div>
-        SMS SIGN UP
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
     className="smsNotification"
     fullBleed={true}
   >
@@ -136,24 +118,6 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
 <div
   className=""
 >
-  <Styled(Row)
-    className="placeholder sms-sign-up"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <div>
-        SMS SIGN UP
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(Row)
     className="smsNotification"
     fullBleed={true}
@@ -272,24 +236,6 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
   className=""
 >
   <Styled(Row)
-    className="placeholder sms-sign-up"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <div>
-        SMS SIGN UP
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
     className="smsNotification"
     fullBleed={true}
   >
@@ -404,24 +350,6 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
 <div
   className=""
 >
-  <Styled(Row)
-    className="placeholder sms-sign-up"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <div>
-        SMS SIGN UP
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(Row)
     className="smsNotification"
     fullBleed={true}

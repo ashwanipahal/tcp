@@ -118,6 +118,7 @@ describe('ConfirmationReducer', () => {
           userDetails: {},
         },
         venmoPaymentConfirmationDisplayed: false,
+        loading: false,
         aquiredCouponCode: [
           {
             categoryType: 'Marketing_Offers',

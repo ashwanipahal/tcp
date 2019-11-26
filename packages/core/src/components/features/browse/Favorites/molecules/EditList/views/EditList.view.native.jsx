@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -27,10 +28,15 @@ class EditList extends React.PureComponent {
   }
 
   submitHandler = () => {
-    const { handleSubmit, onHandleSubmit } = this.props;
+    const { handleSubmit, onHandleSubmit, activeWishListId } = this.props;
     handleSubmit(data => {
       if (onHandleSubmit) {
-        onHandleSubmit(data);
+        const payload = {
+          wishlistId: activeWishListId,
+          wishlistName: data.listName,
+          setAsDefault: data.default_checkbox,
+        };
+        onHandleSubmit(payload);
       }
     })();
   };
@@ -55,81 +61,86 @@ class EditList extends React.PureComponent {
   };
 
   render() {
-    const { labels, margins, onCloseModal } = this.props;
+    const { labels, margins, onCloseModal, initialValues, isCheckBoxDisabled } = this.props;
     const { isShowRemoveModal } = this.state;
     if (isShowRemoveModal) {
       return this.renderDeleteListPopup();
     }
     return (
-      <Container margins={margins}>
-        <BodyCopy
-          margin="0 0 60px 0"
-          dataLocator="fav_brand_title"
-          mobileFontFamily="secondary"
-          fontSize="fs22"
-          fontWeight="bold"
-          color="gray.900"
-          textAlign="center"
-          text={getLabelValue(labels, 'lbl_fav_edit_list')}
-        />
-        <Field
-          label={getLabelValue(labels, 'lbl_fav_list_name')}
-          name="listName"
-          id="listName"
-          type="text"
-          autoCapitalize="none"
-          component={TextBox}
-          dataLocator="listName"
-          maxLength={50}
-          bottomBorderColor="gray.600"
-        />
-        <RowContainer margins="20px 0 0 0">
-          <Field
-            inputVariation="inputVariation-1"
-            name="default_checkbox"
-            component={InputCheckbox}
-            dataLocator="default_checkbox"
-            disabled={false}
-            rightText={getLabelValue(labels, 'lbl_fav_default_list')}
-            textMargin="4px 0 0 0"
-          />
-          <CustomIcon
-            margins="0 0 0 8px"
-            iconFontName={ICON_FONT_CLASS.Icomoon}
-            name={ICON_NAME.heart}
-            size="fs12"
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <Container margins={margins}>
+          <BodyCopy
+            margin="0 0 60px 0"
+            dataLocator="fav_brand_title"
+            mobileFontFamily="secondary"
+            fontSize="fs22"
+            fontWeight="bold"
             color="gray.900"
+            textAlign="center"
+            text={getLabelValue(labels, 'lbl_fav_edit_list')}
           />
-        </RowContainer>
-        <Button
-          margin="40px 0 0 0"
-          fill="BLUE"
-          type="submit"
-          color="white"
-          onPress={this.submitHandler}
-          text={getLabelValue(labels, 'btn_fav_save')}
-        />
-        <Button
-          margin="24px 0 0 0"
-          fill="WHITE"
-          type="submit"
-          onPress={onCloseModal}
-          text={getLabelValue(labels, 'btn_fav_cancel')}
-        />
-        <Anchor
-          locator="btn_fav_delete_list"
-          accessibilityRole="link"
-          accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
-          text={getLabelValue(labels, 'btn_fav_delete_list')}
-          anchorVariation="custom"
-          colorName="gray.900"
-          fontSizeVariation="large"
-          onPress={this.onDeleteListHandler}
-          centered
-          underline
-          margins="22px 0 0 0"
-        />
-      </Container>
+          <Field
+            label={getLabelValue(labels, 'lbl_fav_list_name')}
+            name="listName"
+            id="listName"
+            type="text"
+            autoCapitalize="none"
+            component={TextBox}
+            dataLocator="listName"
+            maxLength={50}
+            bottomBorderColor="gray.600"
+          />
+          <RowContainer margins="20px 0 0 0">
+            <Field
+              inputVariation="inputVariation-1"
+              name="default_checkbox"
+              component={InputCheckbox}
+              {...initialValues}
+              disabled={isCheckBoxDisabled}
+              dataLocator="default_checkbox"
+              rightText={getLabelValue(labels, 'lbl_fav_default_list')}
+              textMargin="4px 0 0 0"
+            />
+            <CustomIcon
+              margins="0 0 0 8px"
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.heart}
+              size="fs12"
+              color="gray.900"
+            />
+          </RowContainer>
+          <Button
+            margin="40px 0 0 0"
+            fill="BLUE"
+            type="submit"
+            color="white"
+            onPress={this.submitHandler}
+            text={getLabelValue(labels, 'btn_fav_save')}
+          />
+          <Button
+            margin="24px 0 0 0"
+            fill="WHITE"
+            type="submit"
+            onPress={onCloseModal}
+            text={getLabelValue(labels, 'btn_fav_cancel')}
+          />
+          {!isCheckBoxDisabled && (
+            <Anchor
+              locator="btn_fav_delete_list"
+              accessibilityRole="link"
+              accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
+              text={getLabelValue(labels, 'btn_fav_delete_list')}
+              anchorVariation="custom"
+              colorName="gray.900"
+              fontSizeVariation="large"
+              onPress={this.onDeleteListHandler}
+              centered
+              underline
+              margins="22px 0 0 0"
+            />
+          )}
+        </Container>
+      </ScrollView>
     );
   }
 }
@@ -141,6 +152,9 @@ EditList.propTypes = {
   onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func,
   onDeleteList: PropTypes.func,
+  activeWishListId: PropTypes.number.isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
+  isCheckBoxDisabled: PropTypes.bool,
 };
 
 EditList.defaultProps = {
@@ -149,6 +163,7 @@ EditList.defaultProps = {
   margins: null,
   onCloseModal: () => {},
   onDeleteList: () => {},
+  isCheckBoxDisabled: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 
-import { applyCoupon, removeCoupon, setError } from './Coupon.actions';
+import { applyCoupon, removeCoupon, setError, toggleNeedHelpModalState } from './Coupon.actions';
 import {
   getCouponFetchingState,
   getCouponsLabels,
@@ -12,6 +12,7 @@ import {
   getAvailableCouponListState,
   getNeedHelpContent,
   getAllCoupons,
+  getNeedHelpModalState,
 } from './Coupon.selectors';
 import { getGlobalLabels } from '../../../../../account/Account/container/Account.selectors';
 import Coupon from '../views/Coupon.view';
@@ -39,6 +40,8 @@ export class CouponContainer extends React.PureComponent {
       additionalClassNameModal,
       openApplyNowModal,
       navigation,
+      isNeedHelpModalOpen,
+      toggleNeedHelpModal,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
@@ -59,6 +62,8 @@ export class CouponContainer extends React.PureComponent {
             idPrefix={idPrefix}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
+            isNeedHelpModalOpen={isNeedHelpModalOpen}
+            toggleNeedHelpModal={toggleNeedHelpModal}
           />
         )}
 
@@ -158,6 +163,9 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   openApplyNowModal: payload => {
     dispatch(toggleApplyNowModal(payload));
   },
+  toggleNeedHelpModal: () => {
+    dispatch(toggleNeedHelpModalState());
+  },
 });
 
 export const mapStateToProps = state => ({
@@ -168,6 +176,7 @@ export const mapStateToProps = state => ({
   allCouponList: getAllCoupons(state),
   needHelpRichText: getNeedHelpContent(state),
   commonLabels: getGlobalLabels(state),
+  isNeedHelpModalOpen: getNeedHelpModalState(state),
 });
 
 export default connect(

@@ -11,6 +11,12 @@ export default css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: auto;
   }
+
+  &.disable-list-items {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   .selected-items {
     text-transform: capitalize;
     text-align: left;
@@ -27,6 +33,7 @@ export default css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
     padding-bottom: 4px;
     display: flex;
+    background-position: -3px;
 
     span {
       font-weight: ${props => props.theme.fonts.fontWeight.bold};

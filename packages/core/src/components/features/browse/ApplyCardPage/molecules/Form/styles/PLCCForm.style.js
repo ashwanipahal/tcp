@@ -11,7 +11,7 @@ export default styled.div`
   }
 
   .Checkbox__error {
-    padding-left: 12px;
+    padding-left: 37px;
   }
 
   .columnWrapper {

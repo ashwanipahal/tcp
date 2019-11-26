@@ -249,7 +249,7 @@ class ShippingForm extends React.Component {
         ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
         : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
-      <>
+      <div className={className}>
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
@@ -371,9 +371,10 @@ class ShippingForm extends React.Component {
               'checkout'
             )}
             isLoadingShippingMethods={isLoadingShippingMethods}
+            bagLoading={bagLoading}
           />
         </form>
-      </>
+      </div>
     );
   }
 }

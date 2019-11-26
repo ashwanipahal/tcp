@@ -5,19 +5,19 @@ import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
+import PickupPageSkeleton from './PickupPageSkeleton.native';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getNextCTAText from './PickupPage.view.utils';
+import { getNextCTAText, renderSmsUpdatedEnabled } from './PickupPage.view.utils';
 
 import {
   FormStyle,
   Container,
   PickupContainer,
   PickUpForm,
-  SmsSignUpForm,
   EmailSignupForm,
   PickUpAlternateForm,
   PickupError,
@@ -211,6 +211,7 @@ class PickUpFormPart extends React.Component {
       setCheckoutStage,
       checkoutPageEmptyBagLabels,
       cartOrderItemsCount,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated, editPickupError } = this.state;
     if (!dataUpdated) {
@@ -252,50 +253,44 @@ class PickUpFormPart extends React.Component {
                       dataLocator="pickup-title"
                     />
                   )}
-                  <PickUpForm>
-                    <FormSection name="pickUpContact">
-                      {isGuest ? (
-                        <ContactFormFields
-                          className="pickup-contact-guest-form"
-                          showEmailAddress
-                          showPhoneNumber
-                          labels={pickUpLabels}
-                        />
-                      ) : (
-                        <PickupMainContactEditForm
-                          errorMessageRef={ref => {
-                            this.errorMessageRef = ref;
-                          }}
-                          editModeSubmissionError={editPickupError}
-                          dispatch={dispatch}
-                          labels={pickUpLabels}
-                          handleSubmit={handleSubmit}
-                          isEditing={isEditing}
-                          className="pickup-contact-guest-form"
-                          showPhoneNumber
-                          formData={pickUpContact}
-                          onEditModeChange={this.handleEditModeChange}
-                          handleExitEditModeClick={this.handleExitEditModeClick}
-                        />
-                      )}
-                    </FormSection>
-                  </PickUpForm>
-                  {isSmsUpdatesEnabled && (
-                    <SmsSignUpForm>
-                      <FormSection name="smsSignUp">
-                        <SMSFormFields
-                          isOrderUpdateChecked={isOrderUpdateChecked}
-                          formName="checkoutPickup"
-                          formSection="smsSignUp"
-                          altInitValue={currentPhoneNumber}
-                          labels={smsSignUpLabels}
-                          showDefaultCheckbox={false}
-                          variation="secondary"
-                          dispatch={dispatch}
-                          addressPhoneNo={currentPhoneNumber}
-                        />
+                  {bagLoading ? (
+                    <PickupPageSkeleton />
+                  ) : (
+                    <PickUpForm>
+                      <FormSection name="pickUpContact">
+                        {isGuest ? (
+                          <ContactFormFields
+                            className="pickup-contact-guest-form"
+                            showEmailAddress
+                            showPhoneNumber
+                            labels={pickUpLabels}
+                          />
+                        ) : (
+                          <PickupMainContactEditForm
+                            errorMessageRef={ref => {
+                              this.errorMessageRef = ref;
+                            }}
+                            editModeSubmissionError={editPickupError}
+                            dispatch={dispatch}
+                            labels={pickUpLabels}
+                            handleSubmit={handleSubmit}
+                            isEditing={isEditing}
+                            className="pickup-contact-guest-form"
+                            showPhoneNumber
+                            formData={pickUpContact}
+                            onEditModeChange={this.handleEditModeChange}
+                            handleExitEditModeClick={this.handleExitEditModeClick}
+                          />
+                        )}
                       </FormSection>
-                    </SmsSignUpForm>
+                    </PickUpForm>
+                  )}
+                  {renderSmsUpdatedEnabled(
+                    isSmsUpdatesEnabled,
+                    isOrderUpdateChecked,
+                    currentPhoneNumber,
+                    smsSignUpLabels,
+                    dispatch
                   )}
                   {isGuest && !isUsSite && (
                     <EmailSignupForm>
@@ -407,6 +402,7 @@ PickUpFormPart.propTypes = {
   isVenmoShippingDisplayed: PropTypes.bool,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  bagLoading: PropTypes.number.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

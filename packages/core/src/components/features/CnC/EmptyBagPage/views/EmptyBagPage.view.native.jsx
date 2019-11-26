@@ -34,6 +34,7 @@ class EmptyBagPage extends React.PureComponent {
               fontFamily="secondary"
               dataLocator={getLocator('empty_bag_Msg')}
               text={bagLabels.emptySflMsg2}
+              textAlign="center"
             />
           </Text>
         </StyledEmptyBag>

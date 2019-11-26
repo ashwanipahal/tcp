@@ -68,7 +68,7 @@ class SelectWishListDropdown extends React.PureComponent {
         <>
           <div className="choose-list-container">
             <Button className="choose-list-button" onClick={this.openMoveItem}>
-              {activeWishList ? activeWishList.displayName : defaultList.displayName}
+              {(activeWishList && activeWishList.displayName) || ''}
               {showDefaultHeartIcon ? (
                 <Image
                   alt="Default Favourite List"

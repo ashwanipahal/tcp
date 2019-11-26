@@ -13,7 +13,11 @@ import { getCardList } from '../../../account/Payment/container/Payment.saga';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
 import applyInstantCard from '../../../../../services/abstractors/common/PLCC';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import { getErrorMapping, getRtpsPreScreenData } from './ApplyCard.selectors';
+import {
+  getErrorMapping,
+  getRtpsPreScreenData,
+  getApplyCardModuleXComposite,
+} from './ApplyCard.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import { isMobileApp } from '../../../../../utils';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
@@ -29,8 +33,15 @@ const { getCurrentCheckoutStage, getIsRtpsFlow } = CheckoutSelectors;
 
 export function* fetchModuleX({ payload = '' }) {
   try {
-    const result = yield call(getModuleX, payload);
-    yield put(setModuleX(result));
+    const applyCardModuleX = yield select(getApplyCardModuleXComposite);
+    const applyCardModuleXObjLen =
+      applyCardModuleX &&
+      Object.getOwnPropertyNames(applyCardModuleX) &&
+      Object.getOwnPropertyNames(applyCardModuleX).length;
+    if (!applyCardModuleX || !applyCardModuleXObjLen) {
+      const result = yield call(getModuleX, payload);
+      yield put(setModuleX(result));
+    }
   } catch (err) {
     yield null;
   }
