@@ -19,7 +19,9 @@ let apiConfig = null;
  * This function returns the static files path with the buildId in place
  * @param {String} filePath path inside the /static directory
  */
-export const getStaticFilePath = (filePath = '') => {
+export const getStaticFilePath = filePath => {
+  if (!filePath) return filePath;
+
   // Following Regex to test if filePath is absolute and return the same value if true
   if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
     return filePath;

@@ -10,18 +10,14 @@ exports[`BrandTabs component renders correctly with brand-tabs className 1`] = `
       target=""
       to="/"
     >
-      <Styled(Image)
-        src="/static/version-not-available/"
-      />
+      <Styled(Image) />
     </Styled(Anchor)>
     <Styled(Anchor)
       className=""
       target="_blank"
       to="https://www.gymboree.com/"
     >
-      <Styled(Image)
-        src="/static/version-not-available/"
-      />
+      <Styled(Image) />
     </Styled(Anchor)>
   </div>
 </Fragment>

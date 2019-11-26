@@ -33,7 +33,6 @@ exports[`BossBannerView component renders correctly 1`] = `
         alt="Brand"
         className="brand-image"
         data-locator="global_TCPimg"
-        src="/static/version-not-available/"
       />
     </Styled(Col)>
     <Styled(Col)
