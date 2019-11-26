@@ -25,6 +25,7 @@ describe('Coupon saga', () => {
     const payload = { formPromise: {}, formData: {}, source: '' };
     const applyCouponSaga = applyCoupon({ payload });
     applyCouponSaga.next();
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(

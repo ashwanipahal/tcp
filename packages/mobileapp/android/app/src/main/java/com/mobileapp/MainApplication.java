@@ -44,9 +44,9 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
-   
 
-    
+
+
       @Override
       protected String getJSBundleFile(){
         return CodePush.getJSBundleFile();
@@ -56,13 +56,14 @@ public class MainApplication extends Application implements ReactApplication {
       public boolean getUseDeveloperSupport() {
         return BuildConfig.DEBUG;
       }
-       
+
         @Override
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example
           // packages.add(new FBSDKPackage());
+          packages.add(new VenmoPackage());
           packages.add(new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), MainApplication.this, BuildConfig.DEBUG));
           packages.add(new RNFirebaseMessagingPackage());
           packages.add(new RNFirebaseNotificationsPackage());
