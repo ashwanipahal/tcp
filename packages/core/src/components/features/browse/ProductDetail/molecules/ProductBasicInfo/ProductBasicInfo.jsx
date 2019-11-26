@@ -18,7 +18,33 @@ import {
 class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isFavoriteClicked: true,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      productInfo: { productId },
+      productMiscInfo: { colorProductId },
+      pageName,
+      skuId,
+    } = this.props;
+
+    const { isFavoriteClicked } = this.state;
+
+    const { isLoggedIn: checkLoggedin } = prevProps;
+
+    if (isLoggedIn !== checkLoggedin && isFavoriteClicked) {
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        page: pageName || 'PDP',
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -60,6 +86,9 @@ class ProductBasicInfo extends React.Component {
       productSkuId: (skuId && skuId.skuId) || null,
       pdpColorProductId: colorProductId,
       page: pageName || 'PDP',
+    });
+    this.setState({
+      isFavoriteClicked: true,
     });
   };
 
