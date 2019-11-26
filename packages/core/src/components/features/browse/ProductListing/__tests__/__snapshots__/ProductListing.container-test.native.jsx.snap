@@ -92,6 +92,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   productsBlock={Array []}
   removeAddToFavoritesErrorMsg={[Function]}
   renderBrandFilter={null}
+  renderMoveToList={[Function]}
   resetProducts={
     [MockFunction] {
       "calls": Array [

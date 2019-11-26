@@ -52,6 +52,13 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const getVideoUrl = url => {
+  if (url) {
+    return String(url).match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
@@ -1071,10 +1078,10 @@ export const getQueryParamsFromUrl = (url, queryParam) => {
     keyValPairs = queryString.split('&');
     const resultingArray = Object.values(keyValPairs);
 
-    resultingArray.filter(item => {
+    resultingArray.filter((item, index) => {
       const key = item.split('=')[0];
       if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[0].split('=')[1]);
+      params[key].push(resultingArray[index].split('=')[1]);
       return params;
     });
   }
@@ -1163,6 +1170,7 @@ export const validateDiffInDaysNotification = (
 };
 
 export default {
+  getVideoUrl,
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,
