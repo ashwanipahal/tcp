@@ -46,7 +46,8 @@ export default function create(store) {
            to override the pageName value. For instance, onClick event.
          */
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        // We need both the default object and || fallback because Immutable only defaults for `undefined` and not `null`
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
