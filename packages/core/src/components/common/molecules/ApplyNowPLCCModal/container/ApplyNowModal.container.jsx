@@ -10,6 +10,7 @@ import {
 import CheckoutSelectors from '../../../../features/CnC/Checkout/container/Checkout.selector';
 import CHECKOUT_ACTIONS from '../../../../features/CnC/Checkout/container/Checkout.action';
 import ApplyNowModalWrapper from '../views';
+import BagPageSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   resetPLCCResponse,
   fetchModuleX,
@@ -49,6 +50,7 @@ const mapStateToProps = (state, ownProps) => {
     rtpsTextTerms,
     labelText: ownProps.labelText,
     isRtpsFlow: CheckoutSelectors.getIsRtpsFlow(state),
+    cartOrderItems: BagPageSelectors.getOrderItems(state),
   };
 };
 
