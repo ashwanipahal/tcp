@@ -39,7 +39,6 @@ import {
 } from '../context';
 import { getOnNavigationStateChange } from '../navigation/helpers';
 import constants from '../constants/config.constants';
-import { UrbanAirship, UACustomEvent } from 'urbanairship-react-native';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -79,7 +78,6 @@ export class App extends React.PureComponent {
       this.store.dispatch(getUserInfo());
     }
 
-    UrbanAirship.setUserNotificationsEnabled(true);
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
     codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
@@ -92,18 +90,6 @@ export class App extends React.PureComponent {
         envId: RWD_APP_VERSION,
       });
     }
-
-    UrbanAirship.addListener('notificationResponse', response => {
-      console.log('notificationResponse:', JSON.stringify(response));
-    });
-
-    UrbanAirship.addListener('pushReceived', notification => {
-      console.log('pushReceived:', JSON.stringify(notification));
-    });
-
-    UrbanAirship.addListener('deepLink', event => {
-      console.log('deepLink:', JSON.stringify(event));
-    });
   }
 
   setCooKies = () => {

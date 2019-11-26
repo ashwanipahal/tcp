@@ -46,6 +46,9 @@ export default css`
   .edit-button {
     padding-left: 10px;
   }
+  .padding-top-15 {
+    padding-top: 15px;
+  }
   .padding-top-30 {
     padding-top: 30px;
   }
