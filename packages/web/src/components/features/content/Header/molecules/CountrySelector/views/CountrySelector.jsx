@@ -15,6 +15,13 @@ import style from '../styles/CountrySelector.style';
  * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
  */
 class CountrySelector extends React.Component {
+  componentDidMount() {
+    const { loadCountryListData, countriesMap } = this.props;
+    if (!countriesMap.length) {
+      loadCountryListData();
+    }
+  }
+
   loadCountryModuleXData = () => {
     const { getModuleXContent, noteContentId } = this.props;
     getModuleXContent(noteContentId);
@@ -119,6 +126,7 @@ class CountrySelector extends React.Component {
     } = this.props;
     const languages = this.getLanguageMap();
     const flagIconSrc = getFlagIconPath(savedCountry);
+    const selectedCountry = this.getSelectedCountry(savedCountry);
 
     return (
       <div className={`${className} countrySelector`}>
@@ -175,6 +183,7 @@ class CountrySelector extends React.Component {
               width="20px"
               height="20px"
               onClick={this.openModal}
+              alt={selectedCountry && selectedCountry.displayName}
               data-locator={getLocator(
                 showInFooter ? 'footer_country_flag' : 'header_country_flag'
               )}
@@ -199,6 +208,8 @@ class CountrySelector extends React.Component {
                     ? 'countrySelector__locale--selected'
                     : 'countrySelector__locale--disabled'
                 } countrySelector__locale`}
+                aria-label={language.displayName}
+                aria-hidden={language.id !== savedLanguage}
               >
                 {language.id}
               </BodyCopy>

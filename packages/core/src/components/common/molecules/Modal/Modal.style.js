@@ -10,6 +10,9 @@ const ModalStyle = css`
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
     z-index: ${props => props.theme.zindex.zModal};
   }
+  #modalLabel {
+    display: none;
+  }
   div.TCPModal__InnerContent {
     background: ${props => props.theme.colors.WHITE};
     box-sizing: border-box;

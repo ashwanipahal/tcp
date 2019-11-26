@@ -40,6 +40,7 @@ class Modal extends React.PureComponent {
       closeIconLeftAligned,
       ariaLabelledby,
       ariaDescribedby,
+      aria,
       innerContentClassName = '',
       overlayClassName,
       isOpen,
@@ -49,12 +50,15 @@ class Modal extends React.PureComponent {
     return isOpen ? (
       <ReactModal
         {...otherProps}
+        aria-label=""
         overlayClassName={`${className} ${overlayClassName}`}
         aria={{
-          labelledby: ariaLabelledby,
-          describedby: ariaDescribedby,
+          labelledby: ariaLabelledby || aria.ariaLabelledby || 'modalLabel',
+          describedby: ariaDescribedby || aria.ariaDescribedby,
+          modal: true,
         }}
       >
+        <span id="modalLabel">{heading || ariaLabelledby || aria.ariaLabelledby}</span>
         {!fixedWidth && (
           <Grid>
             <Row>
@@ -101,6 +105,11 @@ class Modal extends React.PureComponent {
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
+  aria: PropTypes.shape({}),
+};
+
+Modal.defaultProps = {
+  aria: {},
 };
 
 // TODO removed errorBoundary from modal as its not working properly right now
