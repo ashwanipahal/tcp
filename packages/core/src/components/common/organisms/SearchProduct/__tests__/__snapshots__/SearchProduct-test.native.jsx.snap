@@ -22,7 +22,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
       <Styled(View)>
         <Styled(CustomIcon)
           accessibilityLabel=""
-          color="blue.500"
+          color="gray.900"
           dataLocator=""
           iconFontName="Icomoon"
           isButton={false}

@@ -21,7 +21,7 @@ const BundleProductReducer = (state = initialState, action) => {
       bundleMap = bundleMap.map(bundles => {
         // eslint-disable-next-line no-param-reassign
         bundles.products.colorFitsSizesMap = bundles.products.colorFitsSizesMap.map(item => {
-          if (item.colorDisplayId === action.payload.colorProductId) {
+          if (item.colorProductId === action.payload.pdpColorProductId) {
             // eslint-disable-next-line no-param-reassign
             item = {
               ...item,

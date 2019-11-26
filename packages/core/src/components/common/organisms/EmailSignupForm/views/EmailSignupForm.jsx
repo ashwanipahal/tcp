@@ -81,7 +81,7 @@ class EmailSignupForm extends PureComponent {
       submitting,
       className,
       colProps = {},
-      imageData = {},
+      imageData,
     } = this.props;
     const { left, right } = colProps;
     const { IMG_DATA } = config;

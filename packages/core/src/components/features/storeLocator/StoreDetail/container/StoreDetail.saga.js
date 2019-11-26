@@ -26,7 +26,7 @@ export function* getCurrentStore({ payload }) {
 export function* getNearByStore({ payload }) {
   try {
     const res = yield call(getNearByStoreApi, payload);
-    return yield put(setNearByStore(res));
+    return yield putResolve(setNearByStore(res));
   } catch (err) {
     return yield null;
   }

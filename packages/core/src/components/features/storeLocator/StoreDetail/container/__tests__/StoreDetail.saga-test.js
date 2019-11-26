@@ -40,7 +40,7 @@ describe('StoreDetail saga', () => {
     });
     it('should return correct takeLatest effect', () => {
       const received = nearByStoreGen.next().value;
-      expect(nearByStoreGen.next(received).value).toEqual(put(setNearByStore(received)));
+      expect(nearByStoreGen.next(received).value).toEqual(putResolve(setNearByStore(received)));
     });
   });
   describe('#fetchModuleX', () => {

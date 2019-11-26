@@ -6789,7 +6789,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jbKcbu",
+        "componentId": "sc-dNLxif",
         "isStatic": false,
         "rules": Array [
           "
@@ -6848,8 +6848,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .edit-button {
     padding-left: 10px;
   }
-  .padding-top-15 {
-    padding-top: 15px;
+  .padding-top-30 {
+    padding-top: 30px;
   }
   .padding-top-40 {
     padding-top: 26px;
@@ -6867,6 +6867,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ",
+          [Function],
+          " {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -6894,6 +6900,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -7061,6 +7068,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -7173,7 +7182,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           " {
       .save-for-later-label {
-        left: 7px;
+        left: 3px;
       }
     }
 
@@ -7303,7 +7312,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jbKcbu",
+      "styledComponentId": "sc-dNLxif",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7347,7 +7356,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jbKcbu",
+        "componentId": "sc-dNLxif",
         "isStatic": false,
         "rules": Array [
           "
@@ -7406,8 +7415,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .edit-button {
     padding-left: 10px;
   }
-  .padding-top-15 {
-    padding-top: 15px;
+  .padding-top-30 {
+    padding-top: 30px;
   }
   .padding-top-40 {
     padding-top: 26px;
@@ -7425,6 +7434,12 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ",
+          [Function],
+          " {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -7452,6 +7467,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -7619,6 +7635,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -7731,7 +7749,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           " {
       .save-for-later-label {
-        left: 7px;
+        left: 3px;
       }
     }
 
@@ -7861,7 +7879,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jbKcbu",
+      "styledComponentId": "sc-dNLxif",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

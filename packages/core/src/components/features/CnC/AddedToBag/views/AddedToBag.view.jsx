@@ -96,6 +96,7 @@ class AddedToBag extends React.PureComponent {
           />
           <AddedToBagActions
             labels={labels}
+            onRequestClose={onRequestClose}
             handleCartCheckout={handleCartCheckout}
             showVenmo={false}
             containerId="paypal-button-container-added-to-bag"

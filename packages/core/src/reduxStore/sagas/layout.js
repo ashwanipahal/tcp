@@ -30,7 +30,6 @@ function* fetchPageLayout(action) {
     const { language } = apiConfig;
     const layoutParams = getLayoutParams(page, apiConfig, isClpPage);
     const formattedPage = page && page.match(/-([a-z])/g) ? createLayoutPath(page) : page;
-
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
     const { errorMessage } = layoutData;
     if (!errorMessage) {

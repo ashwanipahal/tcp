@@ -138,7 +138,7 @@ const RecommendationsAbstractor = {
       },
     }).then(result => {
       return RecommendationsAbstractor.parseProductResponse(
-        result.body ? JSON.parse(result.body.content) : []
+        result.body && result.body.content ? JSON.parse(result.body.content) : []
       );
     });
   },

@@ -22,7 +22,8 @@ const mapStateToProps = (state, props) => {
   } = props;
   const urlPath = contentType && createLayoutPath(contentType);
   const { Layouts, Modules } = state;
-  const contentSlots = Layouts && Layouts[urlPath] ? Layouts[urlPath].slots : [];
+  const formattedUrlPath = urlPath && createLayoutPath(urlPath);
+  const contentSlots = Layouts && Layouts[formattedUrlPath] ? Layouts[formattedUrlPath].slots : [];
   return {
     slots: contentSlots.map(slot => {
       const { contentId: slotContent = '' } = slot;

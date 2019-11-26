@@ -17,15 +17,14 @@ HelpCenterView.getInitialProps = async ({ store, isServer, query }, pageProps) =
 };
 
 HelpCenterView.pageInfo = {
-  // pageId: 'Help Center',
   name: constants.HELP_CENTER_HOME_PATH,
   staticPage: true,
   paramName: 'pageName',
   defaultName: constants.HELP_CENTER_HOME_PATH,
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const mapStateToProps = (state, props) => {
-  // TO DO - Replace the mock with the state.
   const {
     router: {
       query: { pageName = constants.HELP_CENTER_HOME_PATH },
@@ -55,7 +54,9 @@ const mapStateToProps = (state, props) => {
               ? Modules[contentId]
               : {
                   ...Modules[contentId],
-                  [placeHolderName]: state[Modules[contentId].moduleClassName][placeHolderName],
+                  [placeHolderName]: Modules[contentId]
+                    ? state[Modules[contentId].moduleClassName][placeHolderName]
+                    : '',
                 }
           );
         });

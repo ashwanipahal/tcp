@@ -18,6 +18,8 @@ import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.select
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
