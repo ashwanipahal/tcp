@@ -1,6 +1,10 @@
 import React from 'react';
 import { Text, Image, View } from 'react-native';
-import { getStyledViewComponent } from './StyleGenerator.native';
+import {
+  getStyledViewComponent,
+  getStyledTextComponent,
+  getStyledImageComponent,
+} from './StyleGenerator.native';
 
 const StyledComponents = {};
 
@@ -16,12 +20,13 @@ const parseStyle = styleString => {
   return StyledComponents;
 };
 
-export const RenderText = props => {
-  const { style, children } = props;
+export const RenderText = (props, className) => {
+  const { children } = props;
   if (!children) {
     return null;
   }
-  return <Text style={{ ...style }}>{children}</Text>;
+  const StyledText = className ? getStyledTextComponent(StyledComponents, className) : Text;
+  return <StyledText>{children}</StyledText>;
 };
 
 export const RenderAnchor = ({ style, children, actionHandler }) => {
@@ -38,8 +43,10 @@ export const RenderAnchor = ({ style, children, actionHandler }) => {
   );
 };
 
-export const RenderImage = ({ style, source, ...otherProps }) => {
-  return <Image url={source} {...otherProps} />;
+export const RenderImage = (props, className) => {
+  const { alt, source } = props;
+  const StyledImage = className ? getStyledImageComponent(StyledComponents, className) : Image;
+  return <StyledImage resizeMode="contain" alt={alt} source={{ uri: source }} />;
 };
 
 export const RenderView = ({ children, className }) => {
@@ -50,11 +57,11 @@ export const RenderView = ({ children, className }) => {
       {children.map(child => {
         switch (child.type.name) {
           case 'Text':
-            return RenderText(child.props);
+            return RenderText(child.props, className);
           case 'div':
             return RenderView(child.props);
           case 'img':
-            return RenderImage(child.props);
+            return RenderImage(child.props, className);
           case 'a':
             return RenderAnchor(child.props);
           default: {
@@ -62,14 +69,12 @@ export const RenderView = ({ children, className }) => {
               parseStyle(child.props.children);
               return null;
             }
-            return RenderText(child.props);
+            return RenderText(child.props, className);
           }
         }
       })}
     </StyledView>
-  ) : (
-    <Text>{children}</Text>
-  );
+  ) : null;
 };
 
 export default {

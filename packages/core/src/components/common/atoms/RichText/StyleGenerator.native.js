@@ -1,15 +1,111 @@
 import styled from 'styled-components/native';
-import { View } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-export const getStyledViewComponent = (StyledStrings, className) => {
+const cssRuleParser = (StyledStrings, className) => {
   if (!StyledStrings[className]) {
+    return ``;
+  }
+  const rules = StyledStrings[className].split(';');
+  return `
+  ${rules.map(rule => {
+    if (rule) {
+      const ruleParams = rule.split(':');
+      const key = ruleParams[0];
+      const val = ruleParams[1];
+
+      return `
+          ${key}: ${val};
+        `;
+    }
+    return null;
+  })}
+  `.replace(/[,]/g, '');
+};
+
+const checkIfClassNameExists = (StyledStrings, classNames) => {
+  if (!classNames) {
+    return false;
+  }
+  const classNamesArray = classNames.split(' ');
+  let classNameExists = false;
+
+  classNamesArray.forEach(className => {
+    if (StyledStrings[className]) {
+      classNameExists = true;
+    }
+  });
+
+  return classNameExists;
+};
+
+export const getStyledViewComponent = (StyledStrings, classNames) => {
+  if (!checkIfClassNameExists(StyledStrings, classNames)) {
     return View;
   }
 
-  const rules = StyledStrings[className].split(';');
+  const classNamesArray = classNames.split(' ');
+  const styledObject = {};
+  classNamesArray.forEach(className => {
+    const ruleTemplateString = cssRuleParser(StyledStrings, className);
 
-  return styled.View`
-    color: red;
-    ${rules.map(rule => `${rule};`)}
-  `;
+    if (!styledObject.final) {
+      styledObject.final = styled.View`
+        ${ruleTemplateString}
+      `;
+    } else {
+      styledObject.final = styled(styledObject.final)`
+        ${ruleTemplateString}
+      `;
+    }
+  });
+
+  return styledObject.final;
+};
+
+export const getStyledTextComponent = (StyledStrings, classNames) => {
+  if (!checkIfClassNameExists(StyledStrings, classNames)) {
+    return Text;
+  }
+
+  const classNamesArray = classNames.split(' ');
+  const styledObject = {};
+  classNamesArray.forEach(className => {
+    const ruleTemplateString = cssRuleParser(StyledStrings, className);
+
+    if (!styledObject.final) {
+      styledObject.final = styled.Text`
+        ${ruleTemplateString}
+      `;
+    } else {
+      styledObject.final = styled(styledObject.final)`
+        ${ruleTemplateString}
+      `;
+    }
+  });
+
+  return styledObject.final;
+};
+
+export const getStyledImageComponent = (StyledStrings, classNames) => {
+  if (!checkIfClassNameExists(StyledStrings, classNames)) {
+    return Image;
+  }
+
+  const classNamesArray = classNames.split(' ');
+  const styledObject = {};
+  classNamesArray.forEach(className => {
+    const ruleTemplateString = cssRuleParser(StyledStrings, className);
+
+    if (!styledObject.final) {
+      styledObject.final = styled.Image`
+        ${ruleTemplateString}
+      `;
+    } else {
+      styledObject.final = styled(styledObject.final)`
+        ${ruleTemplateString}
+      `;
+    }
+  });
+
+  return styledObject.final;
 };
