@@ -100,7 +100,7 @@ export class CreditCardForm extends React.PureComponent {
       value: '',
       title: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
+        <Button fullWidth buttonVariation="variable-width" fill="BLACK">
           {getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC')}
         </Button>
       ),
@@ -207,6 +207,7 @@ export class CreditCardForm extends React.PureComponent {
                   component={AddressDropdown}
                   dataLocator="payment-billingaddressdd"
                   options={this.getAddressOptions()}
+                  labels={labels}
                 />
               </Col>
               <Col

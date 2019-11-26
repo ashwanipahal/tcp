@@ -50,6 +50,12 @@ export const setError = payload => {
   };
 };
 
+export const toggleNeedHelpModalState = () => {
+  return {
+    type: COUPON_CONSTANTS.TOGGLE_NEED_HELP_MODAL_STATE,
+  };
+};
+
 export const clearCouponTTL = () => {
   return {
     type: COUPON_CONSTANTS.CLEAR_COUPON_TTL,

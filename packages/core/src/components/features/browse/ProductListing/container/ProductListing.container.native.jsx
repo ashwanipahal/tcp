@@ -114,6 +114,7 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       onAddItemToFavorites,
       isLoggedIn,
+      isPlcc,
       labelsLogin,
       plpTopPromos,
       isSearchListing,
@@ -147,6 +148,7 @@ class ProductListingContainer extends React.PureComponent {
         onLoadMoreProducts={this.onLoadMoreProducts}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        isPlcc={isPlcc}
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}

@@ -129,13 +129,20 @@ const orderHasShipping = (isOrderHasShipping, labels, shippingTotal) => {
   );
 };
 
+const conditionForSkeleton = (isConfirmationPage, ledgerSummaryData, bagLoading) => {
+  return !isConfirmationPage
+    ? !bagLoading && (ledgerSummaryData && ledgerSummaryData.itemsCount > 0)
+    : true;
+};
+
 const getBody = (
   className,
   ledgerSummaryData,
   labels,
   pageCategory,
   orderLedgerAfterView,
-  bagLoading
+  bagLoading,
+  isConfirmationPage
 ) => {
   const {
     itemsCount,
@@ -155,7 +162,7 @@ const getBody = (
   return (
     <React.Fragment>
       <Grid className={`${''} elem-mb-MED`} data-locator={getLocator('order_ledger_section_label')}>
-        {!bagLoading && (ledgerSummaryData && ledgerSummaryData.itemsCount > 0) ? (
+        {conditionForSkeleton(isConfirmationPage, ledgerSummaryData, bagLoading) ? (
           <>
             <Row
               className="items-total rowMargin"
@@ -198,7 +205,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                   >
                     {`${labels.couponsLabel}:`}
                   </BodyCopy>
@@ -209,7 +216,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                     textAlign="right"
                   >
                     -

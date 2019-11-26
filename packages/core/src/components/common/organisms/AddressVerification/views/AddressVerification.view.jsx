@@ -1,6 +1,7 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { formatAddress } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import Modal from '../../../molecules/Modal';
 import Button from '../../../atoms/Button';
 import TextBox from '../../../atoms/TextBox';
@@ -263,7 +264,8 @@ export class AddressVerification extends React.Component<Props> {
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
             {this.renderSuggestedAddress(verificationResult, suggestedAddress)}
             <div className="addressVerification__ctaContainer">
-              <Button
+              <ClickTracker
+                as={Button}
                 className="addressVerification__cta"
                 buttonVariation="variable-width"
                 fill="BLUE"
@@ -271,7 +273,7 @@ export class AddressVerification extends React.Component<Props> {
                 data-locator="verifyaddress-continuebtn"
               >
                 {verifyAddressLabels.continueCta}
-              </Button>
+              </ClickTracker>
               <Button
                 className="addressVerification__cta"
                 buttonVariation="variable-width"

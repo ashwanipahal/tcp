@@ -5,6 +5,7 @@ const TileWrapper = styled.View`
     ${props => props.theme.spacing.ELEM_SPACING.MED};
   align-items: center;
   width: 100%;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const AbsoluteElement = styled.View`

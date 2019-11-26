@@ -166,7 +166,11 @@ const LoyaltyBannerSection = props => {
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        {isProductDetailView || !bagLoading ? (
+        {(!isConfirmationPage ? (
+          isProductDetailView || !bagLoading
+        ) : (
+          true
+        )) ? (
           <BodyCopy
             className="loyalty-banner-section-wrapper"
             component="div"

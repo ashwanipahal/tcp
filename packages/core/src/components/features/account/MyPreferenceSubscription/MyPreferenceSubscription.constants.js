@@ -23,4 +23,8 @@ export default {
   MARKETING_PREFERENCE_SMS: 'marketingPreferenceSms',
   GYMBOREE_MARKETING_PREFERENCE_SMS: 'marketingPreferenceSms',
   PLACE_REWARDS_PUSH: 'placeRewardsPush',
+  SMS_SUBSCRIPTION_NAVIGATION_TEXT:
+    'my account-my preferences-marketing sms model-subscribe text alert',
+  PUSH_SUBSCRIPTION_NAVIGATION_TEXT:
+    'my account-my preferences-my place rewards push notifications modal-subscribe',
 };

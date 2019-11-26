@@ -36,7 +36,23 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
         onClick={[Function]}
         type="submit"
       >
-        continue
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "scCheckout,event86,event69,event114",
+              ],
+              "eVar65": "checkout:pickup",
+              "pageName": "checkout:pickup",
+              "pageNavigationText": "header-cart",
+              "pageSection": "checkout",
+              "pageSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
+        >
+          continue
+        </Connect(Component)>
       </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>

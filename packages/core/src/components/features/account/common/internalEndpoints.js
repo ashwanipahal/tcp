@@ -70,6 +70,16 @@ const internalEndpoints = {
     link: '/track-order?id=orders&subSection=order-details',
     path: '/track-order',
   },
+
+  rewardsCreditCard: {
+    link: '/account?id=rewardsCreditCard',
+    path: '/rewardsCreditCard',
+  },
+
+  favorites: {
+    link: '/account?id=favorites',
+    path: '/favorites',
+  },
 };
 
 export default internalEndpoints;
