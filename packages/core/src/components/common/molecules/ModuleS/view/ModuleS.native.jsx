@@ -79,33 +79,38 @@ const getLinkedImage = (props, hasRibbon) => {
   } = props;
 
   let hasVideo = false;
+  let videoData = {};
   if (video && video.url) {
     hasVideo = true;
-    video.poster = image ? image.url : '';
-    video.videoWidth = getImageWidth(hasRibbon);
-    video.videoHeight = getImageHeight(hasRibbon, hasVideo);
+    videoData = {
+      ...video,
+      videoWidth: getImageWidth(hasRibbon),
+      videoHeight: getImageHeight(hasRibbon, hasVideo),
+    };
   }
-
-  return link ? (
-    <Anchor url={link.url} navigation={navigation}>
-      <StyledImage
-        width={getImageWidth(hasRibbon)}
-        height={getImageHeight(hasRibbon)}
-        url={image.url}
-        host={LAZYLOAD_HOST_NAME.HOME}
-        imgConfig={image.crop_m || getImageConfig(hasRibbon)}
-      />
-    </Anchor>
-  ) : (
+  const imgData = image || {};
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        <StyledImage
+          width={getImageWidth(hasRibbon)}
+          height={getImageHeight(hasRibbon)}
+          url={imgData.url}
+          host={LAZYLOAD_HOST_NAME.HOME}
+          imgConfig={imgData.crop_m || getImageConfig(hasRibbon)}
+        />
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
     <StyledImage
       width={getImageWidth(hasRibbon)}
       height={getImageHeight(hasRibbon)}
-      url={image.url}
       host={LAZYLOAD_HOST_NAME.HOME}
-      videoData={video}
-      imgConfig={image.crop_m || getImageConfig(hasRibbon)}
+      videoData={videoData}
+      imgConfig={imgData.crop_m || getImageConfig(hasRibbon)}
     />
-  );
+  ) : null;
 };
 
 const ButtonView = props => {

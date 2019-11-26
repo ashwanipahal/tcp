@@ -34,14 +34,17 @@ const renderMedia = ([{ image, link, video }]) => {
 
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
-      <Anchor {...navigationUrl} className="image-link">
-        <DamImage
-          imgData={image}
-          videoData={video}
-          className="image"
-          imgConfigs={IMG_DATA.imgOverlayConfig}
-        />
-      </Anchor>
+      {image ? (
+        <Anchor {...navigationUrl} className="image-link">
+          <DamImage
+            imgData={image}
+            videoData={video}
+            className="image"
+            imgConfigs={IMG_DATA.imgOverlayConfig}
+          />
+        </Anchor>
+      ) : null}
+      {video ? <DamImage videoData={video} className="image" /> : null}
     </div>
   );
 };

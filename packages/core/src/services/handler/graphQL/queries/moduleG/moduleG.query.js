@@ -46,15 +46,6 @@ const buildQuery = ({ slot, contentId }) => `
          title
          target
        }
-       video {
-        url
-        title
-        autoplay
-        controls
-        loop
-        muted
-        inline
-      }
        image {
          url
          alt

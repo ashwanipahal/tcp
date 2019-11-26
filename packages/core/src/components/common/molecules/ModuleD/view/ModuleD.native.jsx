@@ -27,10 +27,10 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   const {
-    item: { image, link, video },
+    item: { image, link = {}, video = {} },
     index,
   } = item;
-
+  const imgData = image || {};
   const anchorEnable = true;
   const videoData = video &&
     video.url && {
@@ -40,21 +40,32 @@ const renderItem = (item, navigation, ignoreLazyLoadImage) => {
     };
   return (
     <Tile tileIndex={index} key={index.toString()}>
-      <Anchor url={link.url} navigation={navigation}>
+      {imgData && Object.keys(imgData).length > 0 ? (
+        <Anchor url={link.url} navigation={navigation}>
+          <DamImage
+            alt={imgData.alt}
+            testID={`${getLocator('moduleD_image')}${index + 1}`}
+            url={imgData.url}
+            crop={imgData.crop_m}
+            height={imageSize}
+            marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
+            width={imageSize}
+            imgConfig={config.IMG_DATA_2.imgConfig[0]}
+            host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+          />
+        </Anchor>
+      ) : null}
+      {videoData && Object.keys(videoData).length > 0 ? (
         <DamImage
-          alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
-          url={image.url}
-          crop={image.crop_m}
+          crop={imgData.crop_m}
           height={imageSize}
           videoData={videoData}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
-          imgConfig={config.IMG_DATA_2.imgConfig[0]}
           host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
         />
-      </Anchor>
-
+      ) : null}
       <Anchor
         testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"

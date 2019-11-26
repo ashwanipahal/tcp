@@ -124,25 +124,36 @@ class ModuleT extends React.PureComponent {
     return (
       <ImageContainer>
         {mediaLinkedList.map(({ image, link, video }, index) => {
-          const videoData = {
-            videoWidth: buttonWidth,
-            videoHeight: 202,
-            ...video,
-          };
-
+          const videoData = video &&
+            video.url && {
+              videoWidth: buttonWidth,
+              videoHeight: 202,
+              ...video,
+            };
+          const imgData = image || {};
           return (
             <ImageWrapper tileIndex={index}>
-              <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+              {imgData && Object.keys(imgData).length > 0 ? (
+                <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+                  <DamImage
+                    url={imgData.url}
+                    height="202px"
+                    width={`${buttonWidth}px`}
+                    testID={`${getLocator('moduleT_product_img')}${index}`}
+                    alt={imgData.alt}
+                    imgConfig={IMG_DATA.promoImgConfig[0]}
+                  />
+                </Anchor>
+              ) : null}
+              {videoData && Object.keys(videoData).length > 0 ? (
                 <DamImage
-                  url={image && image.url}
                   height="202px"
                   width={`${buttonWidth}px`}
                   testID={`${getLocator('moduleT_product_img')}${index}`}
-                  alt={image && image.alt}
-                  imgConfig={IMG_DATA.promoImgConfig[0]}
                   videoData={videoData}
+                  imgConfig={IMG_DATA.promoImgConfig[0]}
                 />
-              </Anchor>
+              ) : null}
             </ImageWrapper>
           );
         })}

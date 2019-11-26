@@ -280,23 +280,35 @@ class ModuleE extends React.PureComponent {
               videoHeight: 202,
               ...video,
             };
+          const imgData = image || {};
           return (
             <ImageWrapper tileIndex={index}>
-              <StyledAnchor
-                url={link ? link.url : ''}
-                navigation={navigation}
-                key={index.toString()}
-              >
+              {imgData && Object.keys(imgData).length > 0 ? (
+                <StyledAnchor
+                  url={link ? link.url : ''}
+                  navigation={navigation}
+                  key={index.toString()}
+                >
+                  <StyledImage
+                    url={imgData.url}
+                    height="202px"
+                    width={`${buttonWidth}px`}
+                    testID={`${getLocator('moduleE_product_img')}${index}`}
+                    alt={imgData.alt}
+                    imgConfig={IMG_DATA.smallImgConfig[0]}
+                  />
+                </StyledAnchor>
+              ) : null}
+              {videoData && Object.keys(videoData).length > 0 ? (
                 <StyledImage
-                  url={image && image.url}
+                  url={imgData.url}
                   height="202px"
                   width={`${buttonWidth}px`}
                   testID={`${getLocator('moduleE_product_img')}${index}`}
-                  alt={image && image.alt}
+                  alt={imgData.alt}
                   imgConfig={IMG_DATA.smallImgConfig[0]}
-                  videoData={videoData}
                 />
-              </StyledAnchor>
+              ) : null}
               <HeaderViewContainer>
                 <LinkText
                   type="heading"

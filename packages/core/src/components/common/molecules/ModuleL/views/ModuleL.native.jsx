@@ -52,6 +52,7 @@ const renderItem = (item, navigation) => {
     videoHeight: 128,
   };
 
+  const imgData = image || {};
   return (
     <Anchor
       url={link.url}
@@ -59,24 +60,34 @@ const renderItem = (item, navigation) => {
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
-        <DamImage
-          url={image.url}
-          width={103}
-          height={128}
-          crop={image.crop_m}
-          testID={`${getLocator('moduleL_image')}${index + 1}`}
-          imgConfig={config.IMG_DATA.crops[0]}
-          alt={image.alt}
-          host={LAZYLOAD_HOST_NAME.HOME}
-          videoData={videoData}
-        />
+        {imgData && Object.keys(imgData).length > 0 ? (
+          <DamImage
+            url={imgData.url}
+            width={103}
+            height={128}
+            crop={imgData.crop_m}
+            testID={`${getLocator('moduleL_image')}${index + 1}`}
+            imgConfig={config.IMG_DATA.crops[0]}
+            alt={imgData.alt}
+            host={LAZYLOAD_HOST_NAME.HOME}
+          />
+        ) : null}
+        {videoData && Object.keys(videoData).length > 0 ? (
+          <DamImage
+            width={103}
+            height={128}
+            testID={`${getLocator('moduleL_image')}${index + 1}`}
+            host={LAZYLOAD_HOST_NAME.HOME}
+            videoData={videoData}
+          />
+        ) : null}
         <MessageContainer>
           <BodyCopyContainer width={width}>
             <BodyCopy
               fontSize="fs20"
               color="gray.900"
               letterSpacing="ls222"
-              text={image.alt}
+              text={imgData.alt}
               fontfamily="primary"
               fontWeight="semibold"
               testID={`${getLocator('moduleL_title')}${index + 1}`}

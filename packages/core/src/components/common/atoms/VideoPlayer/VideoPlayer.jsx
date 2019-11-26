@@ -15,17 +15,39 @@ const parseFileName = url => {
   return urlFragments[urlFragments.length - 1].split('.')[0];
 };
 
+/**
+ * To Generate the unique ids based on the timestap for multiple video players
+ */
+const getUniqueID = () => {
+  return `video_${Date.now() + (Math.random() * 100000).toFixed()}`;
+};
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+const convertNumToBool = val => {
+  return !!parseInt(val, 10);
+};
+
 class VideoPlayer extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      uniqueId: getUniqueID(),
+    };
+  }
   componentDidMount() {
-    const { id, autoplay, url, muted } = this.props;
+    const { id, autoplay, url, muted, loop } = this.props;
+    const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
     });
 
-    const player = cloudinaryCore.videoPlayer(id || 'cld-video-player', {
-      autoplay,
-      muted,
+    const player = cloudinaryCore.videoPlayer(id || uniqueId, {
+      autoplay: convertNumToBool(autoplay),
+      muted: convertNumToBool(muted),
+      loop: convertNumToBool(loop),
     });
 
     player.fluid(true);
@@ -37,28 +59,19 @@ class VideoPlayer extends React.Component {
 
   render() {
     const { id, controls, muted, loop, url, className, autoplay } = this.props;
+    const { uniqueId } = this.state;
 
     if (!url) {
       return null;
     }
 
-    let loopVideo;
-    let mutedVideo;
-    let autoplayVideo;
-
-    if (loop) {
-      loopVideo = 'true';
-    }
-    if (muted) {
-      mutedVideo = '';
-    }
-    if (autoplay) {
-      autoplayVideo = '';
-    }
+    const loopVideo = loop ? convertNumToBool(loop) : false;
+    const mutedVideo = muted ? convertNumToBool(muted) : false;
+    const autoplayVideo = autoplay ? convertNumToBool(autoplay) : false;
 
     return (
       <video
-        id={id || 'cld-video-player'}
+        id={id || uniqueId}
         controls={controls}
         muted={mutedVideo}
         loop={loopVideo}

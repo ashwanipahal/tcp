@@ -155,25 +155,44 @@ class ModuleJ extends React.PureComponent {
     );
   };
 
-  render() {
-    const { selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {} } = this.state;
-    const {
-      navigation,
-      layout,
-      mediaLinkedList,
-      headerText,
-      promoBanner,
-      divTabs,
-      bgColor,
-    } = this.props;
-
+  renderImageContainer = () => {
+    const { mediaLinkedList, navigation, layout } = this.props;
     const videoData = mediaLinkedList[1] &&
       mediaLinkedList[1].video && {
         ...mediaLinkedList[1].video,
         videoWidth: getScreenWidth(),
         videoHeight: 310,
       };
+    const imgData = mediaLinkedList[1] && mediaLinkedList[1].image ? mediaLinkedList[1].image : {};
+    return (
+      <ImageContainer layout={layout}>
+        {imgData && Object.keys(imgData).length > 0 ? (
+          <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
+            <DamImage
+              url={imgData.url}
+              height="310px"
+              width="100%"
+              testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
+              alt={imgData.alt}
+              imgConfig={IMG_DATA.promoImgConfig[0]}
+            />
+          </Anchor>
+        ) : null}
+        {videoData && Object.keys(videoData).length > 0 ? (
+          <DamImage
+            height="310px"
+            width="100%"
+            testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
+            videoData={videoData}
+          />
+        ) : null}
+      </ImageContainer>
+    );
+  };
 
+  render() {
+    const { selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {} } = this.state;
+    const { navigation, layout, headerText, promoBanner, divTabs, bgColor } = this.props;
     return (
       <Container>
         <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
@@ -221,19 +240,7 @@ class ModuleJ extends React.PureComponent {
           testID={getLocator('moduleJ_cta_link')}
         />
 
-        <ImageContainer layout={layout}>
-          <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
-            <DamImage
-              url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
-              height="310px"
-              width="100%"
-              testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
-              alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
-              videoData={videoData}
-              imgConfig={IMG_DATA.promoImgConfig[0]}
-            />
-          </Anchor>
-        </ImageContainer>
+        {this.renderImageContainer()}
 
         {this.renderCarousel()}
 

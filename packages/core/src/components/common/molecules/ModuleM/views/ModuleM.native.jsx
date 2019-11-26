@@ -84,6 +84,35 @@ class ModuleM extends React.PureComponent {
       return { id: `tablList-${index}`, smallCompImage, linkClass };
     });
   };
+  /**
+   * To Create the dam image or video component.
+   */
+  renderDamImage = (link, imgData, videoData, navigation, index, imageDimension) => {
+    const { IMG_DATA } = config;
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <Anchor url={link.url} navigation={navigation}>
+          <StyledDamImage
+            alt={imgData.alt}
+            url={imgData.url}
+            testID={`${getLocator('moduleM_image')}${index}`}
+            height={imageDimension}
+            width={imageDimension}
+            imgData={imgData}
+            imgConfig={IMG_DATA.productImgConfig[0]}
+          />
+        </Anchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <StyledDamImage
+        testID={`${getLocator('moduleM_image')}${index}`}
+        height={imageDimension}
+        width={imageDimension}
+        videoData={videoData}
+      />
+    ) : null;
+  };
 
   render() {
     const { headerText, promoBanner, divTabs, navigation } = this.props;
@@ -148,26 +177,15 @@ class ModuleM extends React.PureComponent {
         {smallCompImage && smallCompImage.length > 0 ? (
           <ImageContainer>
             {smallCompImage.map(({ image, link, video }, index) => {
-              const { IMG_DATA } = config;
               const videoData = video && {
                 ...video,
                 videoWidth: imageDimension,
                 videoHeight: imageDimension,
               };
+              const imgData = image || {};
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
-                  <Anchor url={link.url} navigation={navigation}>
-                    <StyledDamImage
-                      alt={image.alt}
-                      url={image.url}
-                      testID={`${getLocator('moduleM_image')}${index}`}
-                      height={imageDimension}
-                      width={imageDimension}
-                      imgData={image}
-                      imgConfig={IMG_DATA.productImgConfig[0]}
-                      videoData={videoData}
-                    />
-                  </Anchor>
+                  {this.renderDamImage(link, imgData, videoData, navigation, index, imageDimension)}
                   <Anchor
                     url={link.url}
                     navigation={navigation}
