@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { reduxForm, Field, change } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import DateInput from '@tcp/core/src/components/common/molecules/DateInput';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
@@ -137,7 +138,10 @@ export class PointsClaimForm extends PureComponent {
                 id={fieldNames.TRANSACTION_DATE}
                 label={getLabelValue(labels, 'lbl_points_claim_transaction_date', 'myPlaceRewards')}
                 name={fieldNames.TRANSACTION_DATE}
-                component={TextBox}
+                component={DateInput}
+                mode="date"
+                display="calendar"
+                maximumDate={new Date()}
                 dataLocator="points-claim-transactiondate"
               />
             </FieldWrapper>
