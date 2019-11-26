@@ -56,7 +56,7 @@ exports[`OverlayModal should render Overlay correctly 1`] = `
       onClick={[Function]}
     />
     <div
-      className="triangle-theme modal__triangle hide-on-mobile undefined"
+      className="triangle-theme modal__triangle undefined"
       id="modalTriangle"
     />
     <div

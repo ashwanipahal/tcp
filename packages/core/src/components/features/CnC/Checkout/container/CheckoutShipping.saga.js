@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
@@ -10,6 +10,7 @@ import { isCanada } from '../../../../../utils/utils';
 import { redirectToBilling } from './Checkout.saga.util';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
+import { isMobileApp } from '../../../../../utils';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
@@ -60,7 +61,11 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
     const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
     if (isVenmoInProgress && !isVenmoShippingDisplayed) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: recalcFlag });
+      if (!isMobileApp()) {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: recalcFlag });
+      } else if (navigation) {
+        yield put(getSetCheckoutStage(CONSTANTS.REVIEW_DEFAULT_PARAM));
+      }
     } else {
       yield call(redirectToBilling);
     }

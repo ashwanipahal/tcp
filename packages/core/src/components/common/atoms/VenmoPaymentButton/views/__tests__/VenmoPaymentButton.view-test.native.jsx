@@ -47,6 +47,10 @@ describe('Venmo Payment Button', () => {
     preventDefault: jest.fn(),
   };
 
+  const NativeModules = {
+    VenmoPayment: { authorizeVenmoAccount: jest.fn() },
+  };
+
   it('should render correctly', () => {
     const tree = shallow(<VenmoPaymentButton {...props} />);
     expect(tree).toMatchSnapshot();
@@ -88,28 +92,6 @@ describe('Venmo Payment Button', () => {
     componentInstance.handleVenmoInstanceError();
     expect(tree.state('hasVenmoError')).toBe(true);
     expect(handleVenmoClickedError).toHaveBeenCalled();
-  });
-
-  it('calling handleVenmoClick method', () => {
-    const tree = shallow(<VenmoPaymentButton {...props} />);
-    const componentInstance = tree.instance();
-    componentInstance.canCallVenmoApi = jest.fn();
-    componentInstance.venmoInstance = {};
-    componentInstance.handleVenmoClick(e);
-    expect(props.setVenmoPaymentInProgress).toBeCalled();
-  });
-
-  it('calling handleVenmoClick method for OOS Items', () => {
-    const newProps = {
-      ...props,
-      isRemoveOOSItems: true,
-    };
-    const tree = shallow(<VenmoPaymentButton {...newProps} />);
-    const componentInstance = tree.instance();
-    componentInstance.canCallVenmoApi = jest.fn();
-    componentInstance.handleVenmoClick(e);
-    expect(props.setVenmoPaymentInProgress).toBeCalled();
-    expect(props.onVenmoPaymentButtonClick).toBeCalled();
   });
 
   it('calling canCallVenmoApi method', () => {

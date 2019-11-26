@@ -9,6 +9,7 @@ import {
   getPricesWithRange,
   getMapSliceForColorProductId,
   checkIsSelectedSizeDisabled,
+  getMapSliceForSizeSkuID,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 // eslint-disable-next-line complexity
@@ -36,6 +37,7 @@ const Product = props => {
     removeAddToFavoritesErrorMsg,
   } = props;
 
+  const { fit, size } = formValues;
   const productInfo = productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
@@ -49,8 +51,12 @@ const Product = props => {
 
   const isShowPriceRange = isShowPriceRangeKillSwitch;
 
+  let skuId = null;
+  if (typeof size === 'string' && size) {
+    skuId = getMapSliceForSizeSkuID(colorProduct, size);
+  }
+
   if (isShowPriceRange) {
-    const { fit, size } = formValues;
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
     prices = getPricesWithRange(
       productInfo,
@@ -88,6 +94,7 @@ const Product = props => {
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           pageName="PDP"
+          skuId={skuId}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>

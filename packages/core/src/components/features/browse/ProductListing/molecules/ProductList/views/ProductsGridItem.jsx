@@ -79,6 +79,7 @@ class ProductsGridItem extends React.PureComponent {
       getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
       onAddItemToFavorites({
         colorProductId: generalProductId,
+        productSkuId: null,
         page: isSearchListing ? 'SLP' : 'PLP',
       });
       return { generalProductId: '' };
@@ -391,10 +392,6 @@ class ProductsGridItem extends React.PureComponent {
     ) : null;
   };
 
-  getGeneralProductId = generalProductId => {
-    return generalProductId && generalProductId.split('_')[0];
-  };
-
   renderSubmitButton = (keepAlive, itemNotAvailable) => {
     const {
       labels,
@@ -412,10 +409,10 @@ class ProductsGridItem extends React.PureComponent {
       AddToFavoriteErrorMsg && errorProductId === generalProductId ? '' : 'fulfillment-section';
     const isBundleProduct = bundleProduct;
     let pageShortName = '';
-    const productId = this.getGeneralProductId(generalProductId);
+    const productId = generalProductId;
     if (productId) {
       const productIdParts = productId.split('_');
-      const splitPdpUrl = pdpUrl.split('/p/')[1];
+      const splitPdpUrl = pdpUrl && pdpUrl.split('/')[2];
       pageShortName = `product:${productIdParts[0]}:${splitPdpUrl
         .replace(productIdParts[0], '')
         .replace(productIdParts[1], '')

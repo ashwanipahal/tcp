@@ -51,7 +51,6 @@ const ShowHideWrapperStyle = () => `position:relative;`;
 
 const HideShowField = props =>
   `
-  width:${props.theme.spacing.ELEM_SPACING.XL};
   background: ${props.theme.colorPalette.white};
   height:${props.theme.spacing.ELEM_SPACING.MED};
   position: absolute;

@@ -241,7 +241,7 @@ const getColorsMap = ({
         ),
         listPrice: product.min_list_price,
         offerPrice: product.min_offer_price,
-        keepAlive: parseBoolean(extractAttributeValue(product, attributesNames.keepAlive)),
+        keepAlive: parseBoolean(product[attributesNames.keepAlive]),
       },
       color: {
         name: defaultColor,
@@ -374,9 +374,7 @@ export const parseProductInfo = (
             badge3: extractAttributeValue(swatchOfAvailableProduct, attributesNames.merchant),
             listPrice: getListPrice(swatchOfAvailableProduct),
             offerPrice: processHelpers.getOfferPrice(swatchOfAvailableProduct),
-            keepAlive: parseBoolean(
-              extractAttributeValue(swatchOfAvailableProduct, attributesNames.keepAlive)
-            ),
+            keepAlive: parseBoolean(swatchOfAvailableProduct[attributesNames.keepAlive]),
           },
           color: {
             name: colorDetails[1],
