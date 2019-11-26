@@ -28,7 +28,7 @@ class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    const { id, autoplay, url, muted } = this.props;
+    const { autoplay, url, muted } = this.props;
     const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
@@ -48,7 +48,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { id, controls, muted, loop, url, className, autoplay } = this.props;
+    const { controls, muted, loop, url, className, autoplay } = this.props;
     const { uniqueId } = this.state;
 
     if (!url) {
