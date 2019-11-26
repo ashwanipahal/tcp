@@ -134,6 +134,7 @@ class ProductList extends React.PureComponent {
       labelsPlpTiles,
       isKeepAliveEnabled,
       outOfStockLabels,
+      renderMoveToList,
     } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
@@ -173,6 +174,7 @@ class ProductList extends React.PureComponent {
         labelsPlpTiles={labelsPlpTiles}
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
+        renderMoveToList={renderMoveToList}
       />
     );
   };
@@ -344,6 +346,7 @@ ProductList.propTypes = {
   isSearchListing: PropTypes.bool,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -379,6 +382,7 @@ ProductList.defaultProps = {
   isSearchListing: false,
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ProductList, styles);
