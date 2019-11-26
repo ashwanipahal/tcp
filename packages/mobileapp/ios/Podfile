@@ -212,8 +212,6 @@ target 'mobileapp' do
   pod 'Braintree'
   pod 'Braintree/Venmo'
 
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
-
   # target 'mobileappTests' do
   #   inherit! :search_paths
   #   # Pods for testing
