@@ -5,7 +5,8 @@ export default css`
   .selected-image {
     border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   }
-  _:-ms-lang(x),
+  /* stylelint-disable-next-line*/
+  _:-ms-fullscreen,
   .image-wrapper img {
     max-height: 100%;
   }

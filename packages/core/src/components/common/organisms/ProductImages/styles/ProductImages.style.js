@@ -147,7 +147,8 @@ export default css`
       position: unset;
       bottom: initial;
     }
-    _:-ms-lang(x),
+    /* stylelint-disable-next-line */
+    _:-ms-fullscreen,
     .fullSize-image-label {
       margin-top: 95px;
     }

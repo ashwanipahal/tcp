@@ -12,7 +12,8 @@ const styles = css`
     flex-direction: column;
     display: flex;
   }
-  _:-ms-lang(x),
+  /* stylelint-disable-next-line */
+  _:-ms-fullscreen,
   .image-wrapper img {
     max-height: 320px;
   }
