@@ -9,6 +9,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       className="account-info-section"
       color="text.primary"
       component="div"
+      data-overlayTarget="true"
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"

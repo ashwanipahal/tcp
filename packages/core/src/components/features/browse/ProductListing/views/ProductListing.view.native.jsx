@@ -82,10 +82,19 @@ const onRenderHeader = data => {
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   } = data;
+
+  let appliedfilters = false;
+  appliedfilters =
+    filtersLength &&
+    Object.keys(filtersLength).some(key => {
+      return filtersLength[key] > 0;
+    });
+
   return (
     <ListHeaderContainer>
-      {(totalProductsCount > 1 || isFavorite) && (
+      {(totalProductsCount > 1 || appliedfilters || isFavorite) && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -145,6 +154,8 @@ const ProductListView = ({
   isKeepModalOpen,
   labelsFavorite,
   isBothTcpAndGymProductAreAvailable,
+  renderMoveToList,
+  filtersLength,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -169,6 +180,7 @@ const ProductListView = ({
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   };
   return (
     <ScrollView>
@@ -190,6 +202,7 @@ const ProductListView = ({
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             isSearchListing={isSearchListing}
+            renderMoveToList={renderMoveToList}
             {...otherProps}
           />
         )}
@@ -237,6 +250,7 @@ ProductListView.propTypes = {
   isKeepModalOpen: PropTypes.bool,
   labelsFavorite: PropTypes.shape({}),
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
+  renderMoveToList: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -264,6 +278,7 @@ ProductListView.defaultProps = {
   isKeepModalOpen: false,
   labelsFavorite: {},
   isBothTcpAndGymProductAreAvailable: false,
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ProductListView, styles);

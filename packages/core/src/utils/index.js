@@ -39,6 +39,7 @@ export {
   isMobileWeb,
   removeBodyScrollLocks,
   isAndroidWeb,
+  createLayoutPath,
 } from './utils.web';
 
 export {

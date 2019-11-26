@@ -122,6 +122,8 @@ const Navigation = props => {
     showCondensedHeader,
     openOverlay,
     isDrawerOpen,
+    isCondensedHeader,
+    accessibilityLabels,
   } = props;
 
   useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
@@ -155,7 +157,10 @@ const Navigation = props => {
       hideNavigationFooter={hideNavigationFooter}
       showCondensedHeader={showCondensedHeader}
     >
-      <nav className={`${className} navigation nav-bar`}>
+      <nav
+        className={`${className} navigation nav-bar`}
+        aria-label={isCondensedHeader && accessibilityLabels.condensed_navigation_aria_label}
+      >
         <NavBar {...props} />
       </nav>
     </Drawer>
@@ -176,6 +181,12 @@ Navigation.propTypes = {
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
+  accessibilityLabels: PropTypes.shape({}).isRequired,
+  isCondensedHeader: PropTypes.bool,
+};
+
+Navigation.defaultProps = {
+  isCondensedHeader: false,
 };
 
 export { Navigation as NavigationVanilla };
