@@ -90,6 +90,7 @@ class QuickViewModal extends React.Component {
     const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
+        dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
         buttonLabel={addToBag}
         quickViewLabels={quickViewLabels}

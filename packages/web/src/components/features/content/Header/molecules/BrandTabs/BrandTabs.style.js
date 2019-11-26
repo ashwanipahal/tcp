@@ -13,6 +13,10 @@ export default css`
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
+      padding: 8px 15px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
       padding: 8px 20px;
     }
 

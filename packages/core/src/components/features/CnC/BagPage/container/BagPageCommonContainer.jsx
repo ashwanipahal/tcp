@@ -28,7 +28,7 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement, isMobileApp } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
@@ -127,7 +127,10 @@ export class BagPageContainer extends React.Component<Props> {
     } = this.props;
 
     const showAddTobag = false;
-    const fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
     return (
       <BagPage
         isMobile={isMobile}
@@ -186,6 +189,7 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
       pageData: {
         pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         loadAnalyticsOnload: false,

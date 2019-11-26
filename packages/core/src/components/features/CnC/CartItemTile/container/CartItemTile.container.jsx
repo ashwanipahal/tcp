@@ -27,7 +27,6 @@ import {
   getEditableProductInfo,
   getCartToggleError,
   getCartBossBopisToggleError,
-  getCurrencyExchange,
 } from './CartItemTile.selectors';
 import {
   getSaveForLaterSwitch,
@@ -43,6 +42,7 @@ import {
 } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
+import { getCurrencyAttributes } from '../../../browse/ProductDetail/container/ProductDetail.selectors';
 import { addItemsToWishlist } from '../../../browse/Favorites/container/Favorites.actions';
 
 /* eslint-disable no-shadow */
@@ -324,7 +324,7 @@ export function mapStateToProps(state) {
     orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state) || '',
     toggleError: getCartToggleError(state),
     toggleBossBopisError: getCartBossBopisToggleError(state),
-    currencyExchange: getCurrencyExchange(state),
+    currencyExchange: [getCurrencyAttributes(state)],
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
     isMiniBagOpen: getIsMiniBagOpen(state),
     isLoggedIn: getUserLoggedInState(state),

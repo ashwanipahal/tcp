@@ -79,6 +79,7 @@ class ProductsGridItem extends React.PureComponent {
       getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
       onAddItemToFavorites({
         colorProductId: generalProductId,
+        productSkuId: null,
         page: isSearchListing ? 'SLP' : 'PLP',
       });
       return { generalProductId: '' };

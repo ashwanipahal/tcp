@@ -31,6 +31,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         onImageClick={[Function]}
         outOfStockLabels={Object {}}
         removeAddToFavoritesErrorMsg={[Function]}
+        skuId={null}
       />
       <Styled(ProductSummary)
         currencyExchange={1}

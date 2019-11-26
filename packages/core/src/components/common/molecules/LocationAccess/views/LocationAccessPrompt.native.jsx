@@ -42,7 +42,7 @@ const LOCATION_ACCESS_VALUE = 'tcp_location-access-value';
 class LocationAccessPrompt extends React.PureComponent {
   constructor() {
     super();
-    this.state = { isOpenBool: false };
+    this.state = { isModalOpen: false };
   }
 
   /**
@@ -50,32 +50,46 @@ class LocationAccessPrompt extends React.PureComponent {
    */
   componentDidMount() {
     const { isUserLoggedIn } = this.props;
-    if (isUserLoggedIn) {
-      getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
-        if (data === LOCATION_ACCESS_VALUE) {
-          this.setState({ isOpenBool: false });
-        }
-        this.setState({ isOpenBool: true });
-      });
+    this.checkLocationAccess();
+  }
+
+  componentDidUpdate(oldProps) {
+    const { isUserLoggedIn } = this.props;
+    const { isUserLoggedIn: oldIsUserLoggedIn } = oldProps;
+    if (isUserLoggedIn !== oldIsUserLoggedIn) {
+      this.checkLocationAccess();
     }
   }
 
+  checkLocationAccess = () => {
+    const { isUserLoggedIn } = this.props;
+    if (isUserLoggedIn) {
+      getValueFromAsyncStorage(LOCATION_ACCESS_KEY).then(data => {
+        if (data === LOCATION_ACCESS_VALUE) {
+          this.setState({ isModalOpen: false });
+        } else {
+          this.setState({ isModalOpen: true });
+        }
+      });
+    }
+  };
+
   /**
-   * @openModal : To manage the modal state .
+   * @toggleModal : To manage the modal state .
    */
-  openModal = () => {
-    const { isOpenBool } = this.state;
+  toggleModal = () => {
+    const { isModalOpen } = this.state;
     this.setState({
-      isOpenBool: !isOpenBool,
+      isModalOpen: !isModalOpen,
     });
   };
 
   /**
-   * @openModal : To manage the modal state .
+   * @toggleModal : To manage the modal state .
    */
-  androidPermissions = () => {
+  androidPermissions = async () => {
     try {
-      const granted = PermissionsAndroid.request(
+      const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
           title: 'Location Permission',
@@ -90,8 +104,13 @@ class LocationAccessPrompt extends React.PureComponent {
       } else {
         console.log('Location permission denied');
       }
+      this.setState({
+        isModalOpen: false,
+      });
     } catch (err) {
-      console.warn(err);
+      this.setState({
+        isModalOpen: false,
+      });
     }
   };
 
@@ -110,21 +129,21 @@ class LocationAccessPrompt extends React.PureComponent {
    * @requestPermission : To close the modal in android and ios .
    */
   close = () => {
-    this.openModal();
+    this.toggleModal();
     setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
   };
 
   render() {
     const { labels } = this.props;
-    const { isOpenBool } = this.state;
+    const { isModalOpen } = this.state;
 
     return (
-      <ModalNative isOpen={isOpenBool} onRequestClose={this.openModal} customTransparent>
+      <ModalNative isOpen={isModalOpen} onRequestClose={this.toggleModal} customTransparent>
         <ShadowContainer height={HEIGHT}>
           <Container>
             <Wrapper width={PROPMT_WIDTH}>
               <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
-              <Touchable accessibilityRole="button" onPress={this.openModal}>
+              <Touchable accessibilityRole="button" onPress={this.toggleModal}>
                 <StyledImage source={closeImage} width="15px" height="15px" />
               </Touchable>
               <MessageContainer>

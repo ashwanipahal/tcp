@@ -267,7 +267,7 @@ class ProductListingFiltersForm extends React.Component {
         withRef
         forwardRef
         labels={labels}
-        onFilterSelection={onFilterSelection}
+        onChange={onFilterSelection}
       />
     );
   }
