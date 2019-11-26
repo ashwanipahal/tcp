@@ -130,6 +130,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: auto;
     width: 100%;
+    margin-bottom: 33px;
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
