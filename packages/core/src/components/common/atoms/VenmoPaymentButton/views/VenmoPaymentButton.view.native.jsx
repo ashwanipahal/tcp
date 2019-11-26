@@ -103,13 +103,6 @@ export class VenmoPaymentButton extends Component {
       // Condition for bag page reload on registered user, and user logging in from bag page
       this.fetchVenmoClientToken();
     }
-    if (
-      mode === modes.CLIENT_TOKEN &&
-      (prevProps.authorizationKey !== authorizationKey ||
-        prevProps.isNonceNotExpired !== isNonceNotExpired)
-    ) {
-      NativeModules.VenmoPayment.initialize(authorizationKey);
-    }
   };
 
   componentDidMount = () => {
