@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Address component should renders correctly 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -81,11 +82,12 @@ exports[`Address component should renders correctly 1`] = `
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
 
 exports[`Address component should renders correctly when address Line 1 and 2 are not present 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -141,11 +143,12 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
 
 exports[`Address component should renders correctly when city & state are not present 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -225,11 +228,12 @@ exports[`Address component should renders correctly when city & state are not pr
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
 
 exports[`Address component should renders correctly when city is not present 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -309,11 +313,12 @@ exports[`Address component should renders correctly when city is not present 1`]
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
 
 exports[`Address component should renders correctly when optional fields are not present 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -393,11 +398,12 @@ exports[`Address component should renders correctly when optional fields are not
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
 
 exports[`Address component should renders correctly when showName is switched off 1`] = `
-<View
+<Styled(View)
+  spacingStyles="margin-left-XS"
   style={
     Object {
       "maxWidth": 375,
@@ -464,5 +470,5 @@ exports[`Address component should renders correctly when showName is switched of
     text="1234567890"
     textDecoration={null}
   />
-</View>
+</Styled(View)>
 `;
