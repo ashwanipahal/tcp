@@ -19,9 +19,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
       >
         <RichText
           source={{
-            html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${
-              labels.NEED_HELP_RICH_TEXT
-            }</body></html>`,
+            html: labels.NEED_HELP_RICH_TEXT,
           }}
           isApplyDeviceHeight
         />
