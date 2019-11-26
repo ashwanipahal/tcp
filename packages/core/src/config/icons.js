@@ -82,7 +82,7 @@ export default {
   'survey-icon': 'images/survey.png',
   'smiley-icon': 'images/smiley-icon.png',
   'carrot-left': 'images/carrot-left.png',
-  'carrot-left-light-gray': 'images/carrot-left-light-gray.png',
+  'carrot-left-light-gray': 'images/carrot-left-light-gray.svg',
   'add-to-favorite': 'images/add-to-favorite.svg',
   'added-to-favorite': 'images/added-to-favorite.svg',
   'paypal-icon': 'images/paypal.svg',
