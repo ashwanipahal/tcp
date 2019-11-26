@@ -197,7 +197,6 @@ const checkAndLogErrors = (bootstrapData, pageName) => {
       logger.error(`Error occurred in layout query ${layoutErrorMessage}`);
     }
   } catch (e) {
-    console.log(e);
     logger.error(`Error Occurred While Parsing error response`);
   }
 
