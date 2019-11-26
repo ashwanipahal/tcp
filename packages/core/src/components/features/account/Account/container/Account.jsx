@@ -9,7 +9,7 @@ import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
-import RouteTracker from '../../../../../../../web/src/components/common/atoms/RouteTracker';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -41,11 +41,12 @@ export class Account extends React.PureComponent {
   componentDidMount() {
     const { getAccountNavigationAction } = this.props;
     getAccountNavigationAction();
+    this.triggerPageLoadEvent();
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
-    const { isUserLoggedIn, router } = this.props;
+    const { isUserLoggedIn, router, trackPageLoad } = this.props;
 
     if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
       routerPush('/home?target=login', '/home/login');
@@ -60,6 +61,7 @@ export class Account extends React.PureComponent {
 
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
+      this.triggerPageLoadEvent();
     }
   }
 
@@ -86,6 +88,27 @@ export class Account extends React.PureComponent {
     }
     return null;
   }
+
+  triggerPageLoadEvent = () => {
+    const { componentToLoad } = this.state;
+    const { router, trackPageLoad } = this.props;
+
+    trackPageLoad({
+      path: router.asPath,
+      props: {
+        initialProps: {
+          pageProps: {
+            pageData: {
+              pageName: accountPageNameMapping[componentToLoad].pageName,
+              pageSection: 'myplace',
+              pageSubSection: 'myplace',
+              pageType: 'myplace',
+            },
+          },
+        },
+      },
+    });
+  };
 
   /**
    * @function render  Used to render the JSX of the component
@@ -117,7 +140,6 @@ export class Account extends React.PureComponent {
             pageContentRef={this.setPageRef}
             isUserLoggedIn={isUserLoggedIn}
           />
-          {process.env.ANALYTICS && <RouteTracker />}
         </>
       );
     }
@@ -152,6 +174,17 @@ export const mapDispatchToProps = dispatch => {
   return {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
+    },
+    trackPageLoad: payload => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event80'],
+        })
+      );
+      dispatch(trackPageView(payload));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 50);
     },
   };
 };

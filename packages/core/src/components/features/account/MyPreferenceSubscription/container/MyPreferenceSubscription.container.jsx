@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { isMobileApp } from '@tcp/core/src/utils';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import MyPrefrence from '../views';
 import {
   getSmsPhone,
@@ -268,6 +269,7 @@ export class MyPreferenceSubscription extends PureComponent {
       isGymSubscribe,
       isGymAppSubscribe,
       gymSmsPhone,
+      trackSubscriptionEvent,
     } = this.props;
     const { modalVisible, activeModal } = this.state;
 
@@ -285,6 +287,7 @@ export class MyPreferenceSubscription extends PureComponent {
           initialValues={this.initialValuesPreference}
           onSubscribe={this.onSubscribe}
           onUnsubscribe={this.onUnsubscribe}
+          trackSubscriptionEvent={trackSubscriptionEvent}
           urlParams={urlParams}
         />
         {modalVisible && (
@@ -376,6 +379,11 @@ export const mapDispatchToProps = dispatch => {
     },
     submitSubscribeBrand: payload => {
       dispatch(setBrandSubscribeData(payload));
+    },
+    trackSubscriptionEvent: payload => {
+      dispatch(setClickAnalyticsData(payload));
+      dispatch(trackClick());
+      dispatch(setClickAnalyticsData({}));
     },
   };
 };
