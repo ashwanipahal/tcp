@@ -31,8 +31,8 @@ class PlaceCashBanner extends React.PureComponent<Props> {
   render() {
     const { labels, className, isEnabled, isOrderConfirmation } = this.props;
     const { isPlaceCasModalOpen } = this.state;
-    const titleFonts = isOrderConfirmation ? ['fs16', 'fs16', 'fs32'] : ['fs18', 'fs13', 'fs26'];
-    const subTitleFonts = isOrderConfirmation ? ['fs14', 'fs14', 'fs26'] : ['fs14', 'fs10', 'fs22'];
+    const titleFonts = isOrderConfirmation ? ['fs16', 'fs16', 'fs32'] : ['fs18', 'fs13', 'fs18'];
+    const subTitleFonts = isOrderConfirmation ? ['fs14', 'fs14', 'fs26'] : ['fs14', 'fs10', 'fs16'];
     return isEnabled ? (
       <div className={className}>
         <div className="place-cash">

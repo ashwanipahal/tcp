@@ -67,7 +67,7 @@ export class VenmoPaymentButton extends Component {
     if (isAndroid()) {
       this.authorizeVenmoPaymentApp();
     } else {
-      this.paymentVenmo();
+      this.authorizeVenmoPaymentIOSApp();
     }
   };
 
@@ -145,10 +145,11 @@ export class VenmoPaymentButton extends Component {
   };
 
   // iOS Venmo Initialization and authorization
-  paymentVenmo = () => {
+  authorizeVenmoPaymentIOSApp = () => {
     NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
-      if (val) {
-        this.handleVenmoSuccess(val);
+      if (val && val.nonce) {
+        const venmoRespone = { details: { username: val.username }, ...val };
+        this.handleVenmoSuccess(venmoRespone);
       } else {
         this.handleVenmoError(errorMessage);
       }

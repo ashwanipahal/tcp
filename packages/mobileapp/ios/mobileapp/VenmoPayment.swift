@@ -39,6 +39,7 @@
       var result = [String: Any]()
       let deviceData = PPDataCollector.collectPayPalDeviceData();
       var deviceDataString :String?
+      let deviceDataError = "No device data found"
       if let data = deviceData.data(using: .utf8) {
         do {
           let dictonary =  try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
@@ -46,10 +47,10 @@
             deviceDataString = myDict["correlation_id"] as? String
           }
         } catch _ as NSError {
-          deviceDataString = ""
+           resolve(["", deviceDataError])
         }
       } else {
-        deviceDataString = ""
+         resolve(["", deviceDataError])
       }
       
       result["deviceData"] = deviceDataString
