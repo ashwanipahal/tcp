@@ -205,7 +205,7 @@ const getRibbonPosition = (largeCompImageCarousel, curSlideIndex) => {
   const curCarouselSlide = largeCompImageCarousel && largeCompImageCarousel[curSlideIndex];
   let ribbonPosition = 'left';
 
-  if (curCarouselSlide) {
+  if (curCarouselSlide && curCarouselSlide.ribbonBanner) {
     const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
     const { ribbonPlacement } = ribbonBanner;
 
