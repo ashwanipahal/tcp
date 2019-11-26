@@ -39,7 +39,7 @@ class ModalWrapper extends React.PureComponent {
         stickyCloseIcon
         horizontalBar={false}
         inheritedStyles={styles}
-        standardHeight
+        standardHeight={standardHeight}
       >
         {children}
       </Modal>

@@ -297,10 +297,6 @@ class FavoritesView extends React.PureComponent {
   renderModalWrapper = () => {
     const { labels } = this.props;
     const { isOpenModal } = this.state;
-    const modalHeight =
-      this.currentPopupName === 'shareList'
-        ? { minHeight: '850px', height: '850px', maxHeight: '850px' }
-        : { minHeight: '459px', height: '459px', maxHeight: '459px' };
     return (
       <ModalWrapper
         labels={labels}
@@ -309,6 +305,7 @@ class FavoritesView extends React.PureComponent {
         isOpenModal={isOpenModal}
         onCloseModal={this.onCloseModal}
         widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
+        heightConfig={{ height: 'auto' }}
         standardHeight
       >
         {this.getCurrentPopUp()}
