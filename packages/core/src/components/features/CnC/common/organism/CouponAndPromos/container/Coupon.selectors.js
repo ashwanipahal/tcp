@@ -7,6 +7,10 @@ export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
 
+export const getNeedHelpModalState = state => {
+  return state.CouponsAndPromos && state.CouponsAndPromos.get('isCouponHelpModalOpen');
+};
+
 export const getCouponsLabels = state => {
   const {
     checkout: {

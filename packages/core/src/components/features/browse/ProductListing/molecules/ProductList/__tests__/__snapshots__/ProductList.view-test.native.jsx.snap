@@ -52,6 +52,7 @@ exports[`ProductList component should renders correctly 1`] = `
           },
         ],
         "removeAddToFavoritesErrorMsg": [Function],
+        "renderMoveToList": [Function],
         "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",

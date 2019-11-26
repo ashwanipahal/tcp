@@ -61,11 +61,19 @@ class ProductList extends React.PureComponent {
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
+  onFavorite = (generalProductId, itemId) => {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      isSearchListing,
+      isFavorite,
+      setLastDeletedItemId,
+    } = this.props;
     if (!isLoggedIn) {
       this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else if (isFavorite) {
+      if (setLastDeletedItemId) setLastDeletedItemId({ itemId });
     } else {
       onAddItemToFavorites({
         colorProductId: generalProductId,
@@ -134,6 +142,7 @@ class ProductList extends React.PureComponent {
       labelsPlpTiles,
       isKeepAliveEnabled,
       outOfStockLabels,
+      renderMoveToList,
     } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
@@ -173,6 +182,7 @@ class ProductList extends React.PureComponent {
         labelsPlpTiles={labelsPlpTiles}
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
+        renderMoveToList={renderMoveToList}
       />
     );
   };
@@ -344,6 +354,7 @@ ProductList.propTypes = {
   isSearchListing: PropTypes.bool,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -379,6 +390,7 @@ ProductList.defaultProps = {
   isSearchListing: false,
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  renderMoveToList: () => {},
 };
 
 export default withStyles(ProductList, styles);

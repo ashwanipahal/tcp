@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shipping Form should render correctly 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
@@ -97,11 +99,13 @@ exports[`Shipping Form should render correctly 1`] = `
       nextButtonText="lbl_shipping_billingText"
     />
   </form>
-</Fragment>
+</div>
 `;
 
 exports[`Shipping Form should render correctly with logged in user 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
@@ -187,11 +191,13 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
       nextButtonText="lbl_shipping_billingText"
     />
   </form>
-</Fragment>
+</div>
 `;
 
 exports[`Shipping Form should render correctly with logged in user having addresses 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
@@ -307,11 +313,13 @@ exports[`Shipping Form should render correctly with logged in user having addres
       nextButtonText="lbl_shipping_billingText"
     />
   </form>
-</Fragment>
+</div>
 `;
 
 exports[`Shipping Form should render correctly with logged in user having addresses with isAddressModalEmptied false 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
@@ -571,11 +579,13 @@ exports[`Shipping Form should render correctly with logged in user having addres
       nextButtonText="lbl_shipping_billingText"
     />
   </form>
-</Fragment>
+</div>
 `;
 
 exports[`Shipping Form should render correctly with logged in user having addresses with modalType add and state true 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
@@ -666,5 +676,5 @@ exports[`Shipping Form should render correctly with logged in user having addres
       nextButtonText="lbl_shipping_billingText"
     />
   </form>
-</Fragment>
+</div>
 `;

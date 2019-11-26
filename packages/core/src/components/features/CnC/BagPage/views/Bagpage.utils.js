@@ -38,7 +38,7 @@ const formatBagProductsData = cartOrderItems => {
     cartOrderItems.map(tile => {
       const productDetail = getProductDetails(tile);
       const {
-        itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+        itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
         productInfo: { skuId, upc, productPartNumber, generalProductId },
         miscInfo: { store },
       } = productDetail;
@@ -58,6 +58,7 @@ const formatBagProductsData = cartOrderItems => {
         pricingState: 'full price',
         colorId: generalProductId,
         storeId: store,
+        quantity: qty,
       };
       productsData.push(prodData);
       return prodData;
