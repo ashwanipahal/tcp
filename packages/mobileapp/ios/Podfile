@@ -61,7 +61,6 @@ def all_env_pods
   pod 'Braintree/Venmo'
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
-  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
 
   use_native_modules!
 end
