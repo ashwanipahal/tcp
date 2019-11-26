@@ -57,7 +57,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/images/menu.svg"
+          src="/static/version-not-available"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
@@ -84,7 +84,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           alt="The Children's Place"
           className="header-brand__home-logo--brand"
           dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
+          imgSrc="/static/version-not-available/images/tcp-logo.svg"
         />
       </Styled(Col)>
       <Styled(Col)
@@ -127,7 +127,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.svg"
+            src="/static/version-not-available/images/bag.svg"
           />
           <Styled(BodyCopy)
             aria-hidden="true"
@@ -241,7 +241,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/images/menu.svg"
+          src="/static/version-not-available"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
@@ -268,7 +268,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           alt="The Children's Place"
           className="header-brand__home-logo--brand"
           dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
+          imgSrc="/static/version-not-available/images/tcp-logo.svg"
         />
       </Styled(Col)>
       <Styled(Col)
@@ -311,7 +311,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.svg"
+            src="/static/version-not-available/images/bag.svg"
           />
           <Styled(BodyCopy)
             aria-hidden="true"

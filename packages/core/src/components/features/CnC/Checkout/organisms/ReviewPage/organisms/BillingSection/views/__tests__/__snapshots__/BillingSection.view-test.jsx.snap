@@ -659,7 +659,9 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -703,7 +705,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
         >
           <Styled(Image)
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </Styled(ReactTooltip)>

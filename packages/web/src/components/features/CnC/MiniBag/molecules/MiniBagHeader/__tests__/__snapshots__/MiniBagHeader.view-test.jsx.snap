@@ -65,7 +65,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
           alt="Product"
           className="product-image"
           dataLocator="addedtobag-fav-icon"
-          src="/static/images/heart.png"
+          src="/static/version-not-available/images/heart.png"
         />
       </Styled(Anchor)>
         
@@ -73,7 +73,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         alt="Product"
         className="product-image"
         data-locator="addedtobag-bag-icon"
-        src="/static/images/bag-2.svg"
+        src="/static/version-not-available/images/bag-2.svg"
       />
       <Styled(BodyCopy)
         className="cartCount"
@@ -169,7 +169,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           alt="Product"
           className="product-image"
           dataLocator="addedtobag-fav-icon"
-          src="/static/images/heart.png"
+          src="/static/version-not-available/images/heart.png"
         />
       </Styled(Anchor)>
         
@@ -177,7 +177,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         alt="Product"
         className="product-image"
         data-locator="addedtobag-bag-icon"
-        src="/static/images/bag-2.svg"
+        src="/static/version-not-available/images/bag-2.svg"
       />
       <Styled(BodyCopy)
         className="cartCount"

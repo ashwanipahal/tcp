@@ -120,7 +120,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
             <Styled(Image)
               class="elem-pl-XS"
               height="17"
-              src="/static/images/icon-alarm@2x.png"
+              src="/static/version-not-available/images/icon-alarm@2x.png"
               width="17"
             />
             <Field
@@ -231,7 +231,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.png",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -391,7 +393,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.png",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -471,7 +475,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
             <Styled(Image)
               class="elem-pl-XS"
               height="17"
-              src="/static/images/icon-chat@2x.png"
+              src="/static/version-not-available/images/icon-chat@2x.png"
               width="17"
             />
             <Field
@@ -582,7 +586,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.png",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -740,7 +746,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.png",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

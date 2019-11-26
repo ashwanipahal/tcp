@@ -242,7 +242,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -287,7 +289,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -473,7 +475,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -660,7 +664,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -993,7 +999,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1038,7 +1046,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -1224,7 +1232,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1411,7 +1421,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1739,7 +1751,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1925,7 +1939,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2112,7 +2128,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2157,7 +2175,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -2343,7 +2361,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2556,7 +2576,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2744,7 +2766,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2904,7 +2928,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3169,7 +3195,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3355,7 +3383,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3541,7 +3571,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3728,7 +3760,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3773,7 +3807,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -3959,7 +3993,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4172,7 +4208,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4360,7 +4398,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4520,7 +4560,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -4852,7 +4894,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4897,7 +4941,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -5083,7 +5127,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5270,7 +5316,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

@@ -29,6 +29,7 @@ exports[`FooterNavHeader component renders image in header variation correctly 1
 >
   <Styled(Image)
     aria-hidden="true"
+    src="/static/version-not-available"
     tabIndex="-1"
   />
 </Styled(Anchor)>

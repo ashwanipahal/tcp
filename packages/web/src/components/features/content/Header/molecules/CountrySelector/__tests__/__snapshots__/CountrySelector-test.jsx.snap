@@ -123,7 +123,7 @@ exports[`Country Selector Component renders correctly 1`] = `
         data-locator="footer_country_flag"
         height="20px"
         onClick={[Function]}
-        src="/static/images/flags/united-states-of-america.svg"
+        src="/static/version-not-available/images/flags/united-states-of-america.svg"
         width="20px"
       />
     </div>

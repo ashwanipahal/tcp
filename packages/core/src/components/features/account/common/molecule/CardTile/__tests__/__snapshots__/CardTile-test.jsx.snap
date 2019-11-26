@@ -98,7 +98,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
               alt="Amex"
               className="cardTile__img"
               data-locator="Amex"
-              src="/static/images/amex.svg"
+              src="/static/version-not-available/images/amex.svg"
             />
           </div>
         </div>
@@ -241,7 +241,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
               alt="PLACE CARD"
               className="cardTile__img"
               data-locator="PLACE CARD"
-              src="/static/images/TCP-CC.svg"
+              src="/static/version-not-available/images/TCP-CC.svg"
             />
           </div>
         </div>
@@ -401,7 +401,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
               alt="DISC"
               className="cardTile__img"
               data-locator="DISC"
-              src="/static/images/discover.svg"
+              src="/static/version-not-available/images/discover.svg"
             />
           </div>
         </div>
@@ -534,7 +534,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               alt="GC"
               className="cardTile__img"
               data-locator="GC"
-              src="/static/images/TCP-gift.svg"
+              src="/static/version-not-available/images/TCP-gift.svg"
             />
           </div>
         </div>
@@ -690,7 +690,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -851,7 +853,7 @@ exports[`CardTile should render correctly with master card 1`] = `
               alt="MC"
               className="cardTile__img"
               data-locator="MC"
-              src="/static/images/mastercard.svg"
+              src="/static/version-not-available/images/mastercard.svg"
             />
           </div>
         </div>
@@ -995,7 +997,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               alt="GC"
               className="cardTile__img"
               data-locator="GC"
-              src="/static/images/TCP-gift.svg"
+              src="/static/version-not-available/images/TCP-gift.svg"
             />
           </div>
         </div>
@@ -1151,7 +1153,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1295,7 +1299,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
               alt="PLACE CARD"
               className="cardTile__img"
               data-locator="PLACE CARD"
-              src="/static/images/TCP-CC.svg"
+              src="/static/version-not-available/images/TCP-CC.svg"
             />
           </div>
         </div>
@@ -1428,7 +1432,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
               alt="VENMO"
               className="cardTile__img"
               data-locator="VENMO"
-              src="/static/images/venmo.svg"
+              src="/static/version-not-available/images/venmo.svg"
             />
           </div>
         </div>
@@ -1555,7 +1559,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
               alt="Visa"
               className="cardTile__img"
               data-locator="Visa"
-              src="/static/images/visa.svg"
+              src="/static/version-not-available/images/visa.svg"
             />
           </div>
         </div>
@@ -1688,7 +1692,7 @@ exports[`CardTile should show loading 1`] = `
               alt="GC"
               className="cardTile__img"
               data-locator="GC"
-              src="/static/images/TCP-gift.svg"
+              src="/static/version-not-available/images/TCP-gift.svg"
             />
           </div>
         </div>
@@ -1839,7 +1843,9 @@ exports[`CardTile should show loading 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1980,7 +1986,7 @@ exports[`CardTile should show remining balance 1`] = `
               alt="GC"
               className="cardTile__img"
               data-locator="GC"
-              src="/static/images/TCP-gift.svg"
+              src="/static/version-not-available/images/TCP-gift.svg"
             />
           </div>
         </div>
@@ -2131,7 +2137,9 @@ exports[`CardTile should show remining balance 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.png",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

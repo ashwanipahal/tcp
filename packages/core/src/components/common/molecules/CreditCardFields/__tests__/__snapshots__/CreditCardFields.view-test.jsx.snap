@@ -241,7 +241,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   .select__input {
     appearance: none;
     background: url(",
-              "/static/images/carrot-small-down.png",
+              "/static/version-not-available/images/carrot-small-down.png",
               ") no-repeat right 0px bottom
       ",
               [Function],
@@ -299,7 +299,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.png",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -415,7 +417,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   .select__input {
     appearance: none;
     background: url(",
-              "/static/images/carrot-small-down.png",
+              "/static/version-not-available/images/carrot-small-down.png",
               ") no-repeat right 0px bottom
       ",
               [Function],
@@ -473,7 +475,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.png",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -700,7 +704,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.png",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -864,7 +870,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.png",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

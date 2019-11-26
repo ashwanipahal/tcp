@@ -244,7 +244,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                         ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -381,7 +383,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                         ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -705,7 +709,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                         ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -842,7 +848,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                         ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1166,7 +1174,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1303,7 +1313,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                        "/static/version-not-available/images/circle-alert-fill.png",
+                        ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

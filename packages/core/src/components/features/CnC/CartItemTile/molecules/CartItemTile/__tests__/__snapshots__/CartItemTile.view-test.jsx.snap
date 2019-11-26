@@ -20,7 +20,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -461,7 +461,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -898,7 +898,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -1352,7 +1352,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -1789,7 +1789,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -2226,7 +2226,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -2677,7 +2677,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -3140,7 +3140,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -3591,7 +3591,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4054,7 +4054,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4505,7 +4505,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4942,7 +4942,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -5396,7 +5396,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -5850,7 +5850,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -6318,7 +6318,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>

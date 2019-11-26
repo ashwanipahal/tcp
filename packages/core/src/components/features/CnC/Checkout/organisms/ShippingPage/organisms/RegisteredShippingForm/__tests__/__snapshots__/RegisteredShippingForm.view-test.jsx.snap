@@ -984,7 +984,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1371,7 +1373,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1539,7 +1543,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1878,7 +1884,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2046,7 +2054,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2406,7 +2416,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2700,7 +2712,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2868,7 +2882,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3114,7 +3130,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3282,7 +3300,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3528,7 +3548,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3696,7 +3718,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3942,7 +3966,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -4110,7 +4136,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.png",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

@@ -541,7 +541,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               alt="Error"
               className="error-image"
               data-locator="productcustomizeform-error-icon"
-              src="/static/images/alert-triangle.png"
+              src="/static/version-not-available/images/alert-triangle.png"
             />
             <Styled(BodyCopy)
               className="size-error-message"

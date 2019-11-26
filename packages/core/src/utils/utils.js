@@ -19,12 +19,12 @@ let apiConfig = null;
  * This function returns the static files path with the buildId in place
  * @param {String} filePath path inside the /static directory
  */
-export const getStaticFilePath = filePath => {
+export const getStaticFilePath = (filePath = '') => {
   if (filePath.startsWith('http') || filePath.startsWith('//')) {
     return filePath;
   }
-  const buildId = process.env.NEXT_BUILD_ID;
-  return `/static/${buildId}${filePath}`;
+  const staticFileVersion = process.env.NEXT_BUILD_ID || 'version-not-available';
+  return `/static/${staticFileVersion}${filePath}`;
 };
 
 /**
