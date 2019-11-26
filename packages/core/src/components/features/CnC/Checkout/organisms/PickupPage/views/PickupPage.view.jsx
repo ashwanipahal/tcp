@@ -217,6 +217,7 @@ class PickUpFormPart extends React.Component {
       isBagLoaded,
       emailSignUpFlags,
       updateFromMSG,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
 

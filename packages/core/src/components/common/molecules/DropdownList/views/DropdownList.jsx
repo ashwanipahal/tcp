@@ -1,37 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils';
 import styles from '../styles/DropdownList.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
+import Badge from '../../../atoms/Badge';
 
-const itemLists = (item, activeValue, clickHandler) => {
+const itemLists = (lastElementButton, count, index, item, activeValue, clickHandler) => {
   const isDisabledClass = item.disabled ? ' dropdown--disabled' : '';
   return (
     <li
       key={item.value}
       tabIndex={-1}
-      className={`dropdownliBottomBorder ${
-        activeValue === item.value ? 'dropdownActiveClass' : ''
-      }${isDisabledClass}`}
+      className={` ${activeValue === item.value ? 'dropdownActiveClass' : ''}${isDisabledClass} `}
     >
       <BodyCopy
         component="div"
+        className={`dropdownliBottomBorder ${
+          lastElementButton && index === count - 2 ? 'no-border' : ''
+        }`}
         role="link"
         key={item.value}
         onClick={e => clickHandler(e, item.value, item.title)}
         onKeyPress={e => clickHandler(e, item.value, item.title)}
       >
-        <BodyCopy
-          component="div"
-          className={`${activeValue === item.value ? 'dropdownActiveIcon' : ''}`}
-        />
         {item.content}
       </BodyCopy>
     </li>
   );
 };
 
-const DropdownList = ({ className, optionsMap, clickHandler, activeValue, dataLocatorObj }) => {
+const DropdownList = ({
+  className,
+  optionsMap,
+  clickHandler,
+  activeValue,
+  dataLocatorObj,
+  labels,
+}) => {
   const { dropDownList } = dataLocatorObj;
   const nthChild = optionsMap.find(itemValue => itemValue.value === '');
   return (
@@ -42,7 +48,9 @@ const DropdownList = ({ className, optionsMap, clickHandler, activeValue, dataLo
             className={`${nthChild ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}
             data-locator={dropDownList}
           >
-            {optionsMap.map(item => itemLists(item, activeValue, clickHandler))}
+            {optionsMap.map((item, index) =>
+              itemLists(nthChild, optionsMap.size, index, item, activeValue, clickHandler)
+            )}
           </ul>
         </BodyCopy>
       </BodyCopy>

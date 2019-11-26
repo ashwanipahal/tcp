@@ -228,6 +228,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 maxLength="50"

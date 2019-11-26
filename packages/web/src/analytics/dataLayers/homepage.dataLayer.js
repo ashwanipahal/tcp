@@ -32,11 +32,6 @@ export const generateHomePageDataLayer = store => {
         return getSubCategory(store) || '';
       },
     },
-    pageNavigationText: {
-      get() {
-        return store.getState().pageData.pageNavigationText || '';
-      },
-    },
     storeId: {
       get() {
         return getStoreId(store) || '';

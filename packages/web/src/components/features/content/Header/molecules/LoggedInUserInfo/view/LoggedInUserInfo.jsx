@@ -47,6 +47,7 @@ const LoggedInUserInfo = ({
           className="account-info-section"
           onClick={linkClick}
           tabIndex="0"
+          data-overlayTarget="true"
         >
           <BodyCopy className="account-info user-name" component="div" role="button">
             {`Hi, ${handleUserName(userName)}`}

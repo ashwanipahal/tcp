@@ -28,11 +28,13 @@ const LayoutAbstractor = {
           brand,
           country,
           channel,
-          pageName,
+          pageName: pageName && pageName.match(/-([a-z])/g) ? createLayoutPath(pageName) : pageName,
         },
       })
       .then(response => {
-        const result = response.data[pageName || page];
+        const formattedPageName =
+          pageName && pageName.match(/-([a-z])/g) ? createLayoutPath(pageName) : pageName;
+        const result = response.data[formattedPageName || page];
         logger.info('Layout Query Executed Successfully');
         logger.debug('Layout Query Result: ', result);
         return result;

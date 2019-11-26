@@ -10,9 +10,9 @@ class BagPageAnalytics extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    const { setClickAnalyticsDataBag, cartOrderItems } = this.props;
+    const { setClickAnalyticsDataBag, cartOrderItems, fromMiniBag } = this.props;
     if (!this.analyticsFired && cartOrderItems) {
-      BagPageUtils.setBagPageAnalyticsData(setClickAnalyticsDataBag, cartOrderItems);
+      BagPageUtils.setBagPageAnalyticsData(setClickAnalyticsDataBag, cartOrderItems, fromMiniBag);
       this.analyticsFired = true;
     }
   }
@@ -29,6 +29,7 @@ BagPageAnalytics.propTypes = {
   setClickAnalyticsDataBag: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
   isCartLoaded: PropTypes.bool.isRequired,
+  fromMiniBag: PropTypes.bool.isRequired,
 };
 
 export default BagPageAnalytics;

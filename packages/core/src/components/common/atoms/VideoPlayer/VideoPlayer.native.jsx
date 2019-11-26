@@ -42,6 +42,7 @@ class VideoPlayer extends React.Component {
         posterResizeMode="contain"
         muted={muteOption}
         controls={controlsOption}
+        data-setup='{"fluid": true}'
       />
     );
   }
