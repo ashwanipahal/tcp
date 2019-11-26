@@ -11,17 +11,12 @@ import Constants from '@tcp/core/src/components/common/molecules/Recommendations
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const {
-      openCountrySelectorModal,
-      router,
-      pageName,
-      setCampaignId,
-      setInternalCampaignId,
-    } = this.props;
+    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
@@ -35,7 +30,7 @@ class HomePageWrapper extends React.Component {
       setCampaignId(cid[0]);
     }
     if (icid) {
-      setInternalCampaignId(icid[0]);
+      setClickAnalyticsData({ internalCampaignId: icid[0], customEvents: ['event18', 'event80'] });
     }
   }
 
@@ -123,7 +118,6 @@ const HomePageView = dynamic({
       openSmsSignUpModal,
       pageName,
       setCampaignId,
-      setInternalCampaignId,
       seoData,
     } = compProps;
 
@@ -134,7 +128,6 @@ const HomePageView = dynamic({
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
         setCampaignId={setCampaignId}
-        setInternalCampaignId={setInternalCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -160,7 +153,6 @@ HomePageWrapper.propTypes = {
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
-  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -172,7 +164,6 @@ HomePageView.propTypes = {
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
-  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);

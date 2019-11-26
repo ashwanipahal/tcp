@@ -135,10 +135,6 @@ class FavoritesView extends React.PureComponent {
     }
   };
 
-  onCopyLinkHandler = data => {
-    console.tron.log('onCopyLinkHandler:', data);
-  };
-
   onShareListEmailHandler = data => {
     this.onCloseModal();
     const { sendWishListEmail } = this.props;
@@ -230,6 +226,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onHandleSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
         />
       );
     }
@@ -242,6 +239,7 @@ class FavoritesView extends React.PureComponent {
           onCloseModal={this.onCloseModal}
           onDeleteList={this.onDeleteListHandler}
           activeWishListId={activeWishListId}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             listName: activeWishList.displayName,
             isChecked: activeWishList.isDefault,
@@ -256,6 +254,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onHandleSubmit={this.onShareListEmailHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             subject: getLabelValue(labels, 'lbl_fav_subject_default'),
             fromEmail: userEmail,
@@ -265,13 +264,7 @@ class FavoritesView extends React.PureComponent {
     }
 
     if (this.currentPopupName === SHARE_LIST_BY_COPY_LINK) {
-      return (
-        <CopyLink
-          labels={labels}
-          onCopyLink={this.onCopyLinkHandler}
-          onCloseModal={this.onCloseModal}
-        />
-      );
+      return <CopyLink labels={labels} onCloseModal={this.onCloseModal} />;
     }
 
     return null;
@@ -550,6 +543,7 @@ class FavoritesView extends React.PureComponent {
       outOfStockLabels,
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
+      isLoggedIn,
     } = this.props;
 
     const { selectedShareOption } = this.state;
@@ -682,6 +676,7 @@ class FavoritesView extends React.PureComponent {
               outOfStockLabels={outOfStockLabels}
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
+              isLoggedIn={isLoggedIn}
             />
           </View>
         )}
@@ -724,6 +719,7 @@ FavoritesView.propTypes = {
   sendWishListEmail: PropTypes.func.isRequired,
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

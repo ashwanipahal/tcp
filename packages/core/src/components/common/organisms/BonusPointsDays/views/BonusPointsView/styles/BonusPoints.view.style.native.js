@@ -8,3 +8,7 @@ export const RichTextWrapper = styled.View`
     ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 export const contentHeight = { minHeight: 600 };
+
+export const BonusPointsLoaderWrapper = styled.View`
+  height: 156px;
+`;
