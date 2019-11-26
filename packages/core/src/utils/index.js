@@ -50,6 +50,7 @@ export {
   isGymboree,
   isTCP,
   getBrand,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,

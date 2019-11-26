@@ -194,11 +194,7 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
             >
               <Image
-                src={
-                  navigationDrawer.open
-                    ? '/static/images/mobile-close-dark.svg'
-                    : '/static/images/menu.svg'
-                }
+                src={navigationDrawer.open ? getIconPath('mobile-close-dark') : getIconPath('menu')}
                 alt="hamburger menu"
                 role="button"
                 tabIndex="0"

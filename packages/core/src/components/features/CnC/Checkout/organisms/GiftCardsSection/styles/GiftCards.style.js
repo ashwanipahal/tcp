@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const styles = css`
   .new_gift_card_button {
@@ -39,7 +40,7 @@ const styles = css`
     transform: translateX(-50%);
     padding: 3px;
     display: inline-block;
-    background: transparent url(/static/images/circle-alert-fill.svg) no-repeat 0 0;
+    background: transparent url(${getIconPath('circle-alert-fill')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

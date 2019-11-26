@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 
 export default css`
   position: absolute;
@@ -78,7 +79,7 @@ export default css`
     position: absolute;
     top: 17px;
     left: 0;
-    background: url('/static/images/carrot-medium-left-gray.svg');
+    background: url(${getStaticFilePath('/images/carrot-medium-left-gray.svg')});
     width: 10px;
     height: 18px;
   }
