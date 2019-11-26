@@ -15,13 +15,6 @@ import style from '../styles/CountrySelector.style';
  * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
  */
 class CountrySelector extends React.Component {
-  componentDidMount() {
-    const { loadCountryListData, countriesMap } = this.props;
-    if (!countriesMap.length) {
-      loadCountryListData();
-    }
-  }
-
   loadCountryModuleXData = () => {
     const { getModuleXContent, noteContentId } = this.props;
     getModuleXContent(noteContentId);
@@ -123,10 +116,10 @@ class CountrySelector extends React.Component {
       labels: { countrySelector: labelValues },
       noteContent,
       showInFooter,
+      selectedCountryName,
     } = this.props;
     const languages = this.getLanguageMap();
     const flagIconSrc = getFlagIconPath(savedCountry);
-    const selectedCountry = this.getSelectedCountry(savedCountry);
 
     return (
       <div className={`${className} countrySelector`}>
@@ -183,7 +176,7 @@ class CountrySelector extends React.Component {
               width="20px"
               height="20px"
               onClick={this.openModal}
-              alt={selectedCountry && selectedCountry.displayName}
+              alt={selectedCountryName}
               data-locator={getLocator(
                 showInFooter ? 'footer_country_flag' : 'header_country_flag'
               )}
@@ -246,6 +239,7 @@ CountrySelector.propTypes = {
   updateLanguage: PropTypes.func,
   updateCurrency: PropTypes.func,
   updateSiteId: PropTypes.func,
+  selectedCountryName: PropTypes.string.isRequired,
 };
 
 CountrySelector.defaultProps = {
