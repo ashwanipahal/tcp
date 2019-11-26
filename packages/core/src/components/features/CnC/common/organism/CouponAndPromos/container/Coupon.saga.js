@@ -87,9 +87,7 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(
-        setClickAnalyticsData(getTrackingObj(formData, productsData))
-      );
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
       yield put(trackClick('coupon applied success'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
@@ -193,8 +191,8 @@ export function* removeCoupon({ payload }) {
     yield put(setLoaderState(false));
     yield put(
       setClickAnalyticsData({
-        customEvents: ['event16'],
-        pageNavigationText: setNavigationText(formData),
+        pageNavigationText: 'my account-my wallet-remove from bag',
+        eventName: 'walletlinksclickevent',
       })
     );
     yield put(trackClick('coupon removed'));
