@@ -402,7 +402,8 @@ target 'gymboree_int' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
   # target 'mobileappTests' do
