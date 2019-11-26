@@ -94,7 +94,6 @@ class ProductListingContainer extends React.PureComponent {
 
   render() {
     const {
-      productsBlock,
       products,
       currentNavIds,
       navTree,
@@ -124,7 +123,6 @@ class ProductListingContainer extends React.PureComponent {
     return (
       <ProductListing
         margins="0 12px 0 12px"
-        productsBlock={productsBlock}
         products={products}
         filters={filters}
         currentNavIds={currentNavIds}
@@ -179,7 +177,6 @@ function mapStateToProps(state) {
   const filters = updateAppliedFiltersInState(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: productWithGrid,
     filters,
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
@@ -242,7 +239,6 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
-  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
@@ -271,7 +267,6 @@ ProductListingContainer.propTypes = {
 
 ProductListingContainer.defaultProps = {
   products: [],
-  productsBlock: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],

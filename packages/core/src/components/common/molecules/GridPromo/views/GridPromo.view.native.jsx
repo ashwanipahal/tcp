@@ -1,57 +1,136 @@
 import React from 'react';
+import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
-import { ModuleA, ModuleD, ModuleM, ModuleQ } from '@tcp/core/src/components/common/molecules';
-import DivisionTabModule from '@tcp/core/src/components/common/molecules/DivisionTabModule';
-import OutfitCarouselModule from '@tcp/core/src/components/common/molecules/OutfitCarouselModule';
-import JeansModule from '@tcp/core/src/components/common/molecules/JeansModule';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import { Button, BodyCopy } from '../../../atoms';
+import styles from '../styles/GridPromo.style';
+import withStyles from '../../../hoc/withStyles';
 
-const modules = {
-  divisionTabs: DivisionTabModule,
-  outfitCarousel: OutfitCarouselModule,
-  jeans: JeansModule,
-  moduleA: ModuleA,
-  moduleD: ModuleD,
-  moduleG: ModuleG,
-  moduleM: ModuleM,
-  moduleQ: ModuleQ,
+const getSeparatorText = textItems => {
+  const headingLine = textItems && textItems[0] && textItems[0].text;
+  return headingLine && headingLine.split('|');
 };
 
-const PromoModules = ({ plpTopPromos, navigation }) => {
-  const asPath =
-    (navigation && navigation.getParam('url') && navigation.getParam('url').split('?cid=')) || [];
-  const navAsPath = `${asPath[0]}/${asPath[1]}`;
+const GridPromo = props => {
+  const { className, promoObj, variation } = props;
+  const { textItems, subHeadLine, mediaWrapper } = promoObj;
+
+  if (variation === 'blank') {
+    // This is a dummy block for horizontal promo
+    return <Text>Blank</Text>;
+  }
+
+  const headLineParts = getSeparatorText(textItems);
+  const descriptionParts = getSeparatorText(subHeadLine);
+
+  if (variation === 'horizontal') {
+    return (
+      <ImageBackground
+        source={{
+          uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
+        }}
+        style={{
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        {headLineParts.map(line => {
+          return (
+            <BodyCopy
+              color="black"
+              fontFamily="secondary"
+              fontSize="fs24"
+              textAlign="center"
+              text={line}
+            />
+          );
+        })}
+      </ImageBackground>
+    );
+  }
+  // TODO - fix the image path / take it from the CMS directly
   return (
-    plpTopPromos &&
-    plpTopPromos.map(promo => {
-      const { contentId, moduleName, data: slotData, ...others } = promo;
-      const Module = modules[moduleName];
-      return (
-        Module &&
-        promo && (
-          <Module
-            key={contentId}
-            data={promo}
-            asPath={navAsPath}
-            navigation={navigation}
-            ignoreLazyLoadImage
-            {...slotData}
-            {...others}
-          />
-        )
-      );
-    })
+    <ImageBackground
+      source={{
+        uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
+      }}
+      style={{
+        height: '100%',
+        width: '100%',
+      }}
+    >
+      <View>
+        {headLineParts.map(line => {
+          return (
+            <BodyCopy
+              color="black"
+              fontFamily="secondary"
+              fontSize="fs22"
+              textAlign="center"
+              text={line}
+            />
+          );
+        })}
+        <BodyCopy
+          color="black"
+          fontFamily="secondary"
+          fontSize="fs24"
+          textAlign="center"
+          text={textItems && textItems[1] && textItems[1].text}
+        />
+        <BodyCopy
+          color="black"
+          fontFamily="secondary"
+          fontSize="fs24"
+          textAlign="center"
+          text={textItems && textItems[2] && textItems[2].text}
+        />
+        {descriptionParts.map(desc => {
+          return (
+            <BodyCopy
+              color="black"
+              fontFamily="secondary"
+              fontSize="fs22"
+              textAlign="center"
+              text={desc}
+            />
+          );
+        })}
+      </View>
+    </ImageBackground>
   );
 };
 
-PromoModules.propTypes = {
-  asPath: PropTypes.string,
-  plpTopPromos: PropTypes.shape({}),
+GridPromo.propTypes = {
+  className: PropTypes.string,
+  promoObj: PropTypes.shape({
+    textItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+      })
+    ).isRequired,
+    subHeadLine: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+      })
+    ),
+    promoWrapper: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+      })
+    ),
+    mediaWrapper: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+      })
+    ),
+  }).isRequired,
+  variation: PropTypes.string,
 };
 
-PromoModules.defaultProps = {
-  asPath: '',
-  plpTopPromos: [],
+GridPromo.defaultProps = {
+  className: '',
+  variation: 'vertical',
 };
 
-export default PromoModules;
+export default withStyles(GridPromo, styles);
+export { GridPromo as GridPromoVanilla };

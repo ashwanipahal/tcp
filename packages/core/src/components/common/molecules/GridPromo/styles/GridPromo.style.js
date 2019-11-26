@@ -1,9 +1,7 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-const gridPromoStyles = css`
-  .promo-div {
-    text-align: center;
-  }
+export const HorizontalView = styled.View`
+  width: 100%;
+  height: 100;
+  background: yellow;
 `;
-
-export default gridPromoStyles;

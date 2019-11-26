@@ -38,6 +38,8 @@ import {
   getScrollToTopValue,
   getPDPLabels,
   getModalState,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -47,6 +49,7 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { PLPSkeleton } from '../../../../common/atoms/index.native';
+import { getProductsWithPromo } from '../../ProductListing/container/ProductListing.util';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -126,7 +129,6 @@ class SearchDetailContainer extends React.PureComponent {
   render() {
     const {
       formValues,
-      productsBlock,
       products,
       currentNavIds,
       navTree,
@@ -173,7 +175,6 @@ class SearchDetailContainer extends React.PureComponent {
                 initialValues={initialValues}
                 onSubmit={this.onSubmitFilters}
                 products={products}
-                productsBlock={productsBlock}
                 totalProductsCount={totalProductsCount}
                 labels={labels}
                 labelsFilter={labelsFilter}
@@ -214,8 +215,11 @@ class SearchDetailContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
+  const plpGridPromos = getPLPGridPromos(state);
+  const plpHorizontalPromo = getPlpHorizontalPromo(state);
+  const products = getAllProductsSelect(state);
+  const productWithGrid = getProductsWithPromo(products, plpGridPromos, plpHorizontalPromo);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -230,8 +234,7 @@ function mapStateToProps(state) {
   const filters = updateAppliedFiltersInState(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getAllProductsSelect(state),
+    products: productWithGrid,
     filters,
     categoryId: getCategoryId(state),
     loadedProductCount: getLoadedProductsCount(state),
@@ -296,7 +299,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 SearchDetailContainer.propTypes = {
-  productsBlock: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       searchQuery: PropTypes.string,

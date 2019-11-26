@@ -399,6 +399,7 @@ export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
   return queryParams;
 };
 
+// This function is used for mobile app In-grid promo implementation
 export const getProductsWithPromo = (products, gridPromo, horizontalPromo) => {
   const slots = [];
   const horizontalSlots = [];
@@ -413,20 +414,40 @@ export const getProductsWithPromo = (products, gridPromo, horizontalPromo) => {
     horizontalSlots.push(parseInt(slotNumber, 10));
   });
 
-  let promosAdded = 0;
+  let productCount = 0;
   const productsAndPromos = [];
 
-  products.forEach((product, index) => {
-    productsAndPromos.push(products[index]);
-    const productSlot = index + promosAdded;
-    if (slots.indexOf(productSlot) !== -1) {
-      promosAdded += 1;
-      productsAndPromos.push({
-        itemType: 'gridPromo',
-        gridStyle: 'vertical',
-        itemVal: gridPromo[slotIndex],
-      });
-    }
-  });
+  if (products) {
+    products.forEach((product, index) => {
+      const slotNum = slots.indexOf(productCount + 1);
+      if (slotNum !== -1) {
+        productCount += 1;
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'vertical',
+          itemVal: gridPromo[slotNum],
+        });
+      }
+
+      const horizontalSlotIndex = horizontalSlots.indexOf(productCount);
+      if (horizontalSlotIndex !== -1) {
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'horizontal',
+          itemVal: gridPromo[horizontalSlotIndex],
+        });
+
+        // Since horizontal promo occupies two slots, add a dummy blank promo
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'blank',
+          itemVal: gridPromo[horizontalSlotIndex],
+        });
+      }
+      productsAndPromos.push(products[index]);
+      productCount += 1;
+    });
+  }
+  console.log('productsAndPromos', productsAndPromos);
   return productsAndPromos;
 };
