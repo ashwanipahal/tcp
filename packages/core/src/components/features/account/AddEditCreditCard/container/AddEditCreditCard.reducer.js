@@ -1,10 +1,36 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import constants from './AddEditCreditCard.constants';
 
 const initialState = fromJS({
   showNotification: false,
   error: null,
 });
+
+let checkErrorReset = false;
+
+const returnAddEditCreditCardReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_SUBMIT_SUCCEEDED: {
+      if (action.meta.form === constants.FORM_NAME) {
+        checkErrorReset = true;
+      }
+      return state;
+    }
+    case CHANGE: {
+      if (checkErrorReset && action.meta.form === constants.FORM_NAME) {
+        checkErrorReset = false;
+        return state.set('error', null).set('showNotification', false);
+      }
+      return state;
+    }
+    default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
 
 const AddEditCreditCardReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,10 +50,7 @@ const AddEditCreditCardReducer = (state = initialState, action) => {
     case constants.ADD_CREDIT_CARD_RESET_ERROR:
       return state.set('error', null).set('showNotification', false);
     default:
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return returnAddEditCreditCardReducer(state, action);
   }
 };
 

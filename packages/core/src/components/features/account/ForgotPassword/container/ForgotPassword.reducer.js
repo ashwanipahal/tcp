@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import FORGOTPASSWORD_CONSTANTS from '../ForgotPassword.constants';
 
 const initialState = fromJS({
@@ -6,6 +7,31 @@ const initialState = fromJS({
   toggleSuccessfulEmailSection: null,
   error: null,
 });
+let checkErrorReset = false;
+
+const returnForgotPasswordReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_SUBMIT_SUCCEEDED: {
+      if (action.meta.form === FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM) {
+        checkErrorReset = true;
+      }
+      return state;
+    }
+    case CHANGE: {
+      if (checkErrorReset && action.meta.form === FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM) {
+        checkErrorReset = false;
+        return state.set('error', null).set('showNotification', false);
+      }
+      return state;
+    }
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
 
 const ForgotPasswordReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,11 +49,7 @@ const ForgotPasswordReducer = (state = initialState, action) => {
     case FORGOTPASSWORD_CONSTANTS.USER_NOT_AVAILABLE:
       return state.set('error', fromJS(action.payload)).set('showNotification', true);
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return returnForgotPasswordReducer(state, action);
   }
 };
 

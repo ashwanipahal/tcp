@@ -1,5 +1,6 @@
 // @flow
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 
 // TODO - Refactor reducer state (Ajay Saini)
@@ -9,10 +10,18 @@ const initialState = fromJS({
   onAddGiftCardPage: false,
   showNotification: false,
 });
+let checkErrorReset = false;
 
 type Action = {
   payload: {},
   type: string,
+};
+
+const returnAddGiftCardReducer = (state = initialState) => {
+  if (state instanceof Object) {
+    return fromJS(state);
+  }
+  return state;
 };
 
 const AddGiftCardReducer = (state = initialState, action: Action) => {
@@ -33,11 +42,26 @@ const AddGiftCardReducer = (state = initialState, action: Action) => {
         .set('showUpdatedNotification', null)
         .set('onAddGiftCardPage', false)
         .set('error', null);
-    default:
-      if (state instanceof Object) {
-        return fromJS(state);
+
+    case SET_SUBMIT_SUCCEEDED: {
+      if (action.meta.form === constants.ADD_GIFT_CARD_FORM) {
+        checkErrorReset = true;
       }
       return state;
+    }
+    case CHANGE: {
+      if (checkErrorReset && action.meta.form === constants.ADD_GIFT_CARD_FORM) {
+        checkErrorReset = false;
+        return state
+          .set('showNotification', false)
+          .set('showUpdatedNotification', null)
+          .set('onAddGiftCardPage', false)
+          .set('error', null);
+      }
+      return state;
+    }
+    default:
+      return returnAddGiftCardReducer(state);
   }
 };
 

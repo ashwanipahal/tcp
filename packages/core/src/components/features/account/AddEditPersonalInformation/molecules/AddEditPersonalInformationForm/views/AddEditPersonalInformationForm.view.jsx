@@ -20,13 +20,6 @@ import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.co
 import internalEndpoints from '../../../../common/internalEndpoints';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
-const onChangeFormHandler = (dispatch, updateProfileError, personalInfoErrorMessage) => {
-  if (personalInfoErrorMessage) {
-    dispatch(updateProfileError(null));
-    return null;
-  }
-};
-
 export const AddEditPersonalInformationForm = ({
   className,
   labels,
@@ -37,16 +30,12 @@ export const AddEditPersonalInformationForm = ({
   birthYearOptionsMap,
   isEmployee,
   personalInfoErrorMessage,
-  dispatch,
 }) => {
-  // dispatch(initialize('AddEditPersonalInformationForm', addEditFormInitialValues));
-
   return (
     <form
       name={AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM}
       className={className}
       onSubmit={handleSubmit}
-      onChange={onChangeFormHandler(dispatch, updateProfileError, personalInfoErrorMessage)}
       noValidate
     >
       {errorMessage && personalInfoErrorMessage && (

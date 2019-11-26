@@ -1,10 +1,19 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import constants from '../CreateAccount.constants';
 
 const initialState = fromJS({
   error: null,
   isLoading: false,
 });
+let checkErrorReset = false;
+
+const returnCreateAccountReducer = (state = initialState) => {
+  if (state instanceof Object) {
+    return fromJS(state);
+  }
+  return state;
+};
 
 const CreateAccountReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,11 +25,21 @@ const CreateAccountReducer = (state = initialState, action) => {
       return state.set('error', fromJS(action.payload));
     case constants.RESET_CREATE_AN_ACCOUNT_ERR:
       return state.set('error', null);
-    default:
-      if (state instanceof Object) {
-        return fromJS(state);
+    case SET_SUBMIT_SUCCEEDED: {
+      if (action.meta.form === constants.CREATE_ACCOUNT_FORM) {
+        checkErrorReset = true;
       }
       return state;
+    }
+    case CHANGE: {
+      if (checkErrorReset && action.meta.form === constants.CREATE_ACCOUNT_FORM) {
+        checkErrorReset = false;
+        return state.set('error', null);
+      }
+      return state;
+    }
+    default:
+      return returnCreateAccountReducer(state);
   }
 };
 
