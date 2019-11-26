@@ -18,7 +18,7 @@ export default css`
   .dropdown-icon.is-open {
     height: 2px;
     margin-bottom: 3px;
-    background: url(${getIconPath('minuus-icon')});
+    background: url(${getIconPath('minus-icon')});
   }
   .button-panel {
     position: absolute;

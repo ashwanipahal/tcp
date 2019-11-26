@@ -1178,7 +1178,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                  "/static/version-not-available/images/circle-alert-fill.png",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
                   ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1346,7 +1346,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1813,7 +1813,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   }
   .warning-icon {
     background: transparent url(",
-                  "/static/version-not-available/images/circle-alert-fill.png",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
                   ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1981,7 +1981,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;

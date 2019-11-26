@@ -985,7 +985,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1374,7 +1374,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1544,7 +1544,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1885,7 +1885,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -2055,7 +2055,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -2417,7 +2417,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -2713,7 +2713,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -2883,7 +2883,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -3131,7 +3131,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -3301,7 +3301,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -3549,7 +3549,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -3719,7 +3719,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -3967,7 +3967,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -4137,7 +4137,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   }
   & .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;

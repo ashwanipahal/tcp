@@ -245,7 +245,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -384,7 +384,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   }
   & .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -710,7 +710,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   }
   .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -849,7 +849,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   }
   & .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1175,7 +1175,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   }
   .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1314,7 +1314,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   }
   & .warning-icon {
     background: transparent url(",
-                        "/static/version-not-available/images/circle-alert-fill.png",
+                        "/static/version-not-available/images/circle-alert-fill.svg",
                         ") no-repeat 0 0;
     background-size: contain;
     border: none;
