@@ -87,9 +87,9 @@ class LocationAccessPrompt extends React.PureComponent {
   /**
    * @toggleModal : To manage the modal state .
    */
-  androidPermissions = () => {
+  androidPermissions = async () => {
     try {
-      const granted = PermissionsAndroid.request(
+      const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
           title: 'Location Permission',
@@ -104,8 +104,13 @@ class LocationAccessPrompt extends React.PureComponent {
       } else {
         console.log('Location permission denied');
       }
+      this.setState({
+        isModalOpen: false,
+      });
     } catch (err) {
-      console.warn(err);
+      this.setState({
+        isModalOpen: false,
+      });
     }
   };
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../../VideoPlayer';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
-import { cropImageUrl, getAPIConfig } from '../../../../../utils/index.native';
+import { cropImageUrl, getAPIConfig, getVideoUrl } from '../../../../../utils/index.native';
 
 const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
@@ -75,7 +75,38 @@ const DamImage = props => {
     return <VideoPlayer {...videoData} />;
   }
 
+  const RenderVideo = videoProps => {
+    const { video, image } = videoProps;
+    const { autoplay, controls, url: videoUri } = video;
+
+    const options = {
+      autoplay,
+      controls,
+      url: videoUri,
+      image,
+    };
+
+    return <VideoPlayer {...options} />;
+  };
+
   const uri = createURI(props);
+
+  const uriParam = getVideoUrl(uri.uri);
+
+  if (uriParam) {
+    const { uri: videoUri } = uri;
+    const VideoUri = videoUri.replace('/image/', '/video/');
+    const videoDataOptions = {
+      autoplay: false,
+      controls: true,
+      loop: false,
+      muted: true,
+      inline: true,
+      url: VideoUri,
+    };
+
+    return <RenderVideo video={videoDataOptions} />;
+  }
 
   return (
     <ImageComponent

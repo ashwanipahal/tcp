@@ -35,6 +35,15 @@ export default css`
         font-size: ${props => props.theme.typography.fontSizes.fs14};
       }
     }
+    .item-list-common {
+      .item-common {
+        margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+    }
+    .sort-dropdown-wrapper {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
 
   .sort-selector-wrapper {
