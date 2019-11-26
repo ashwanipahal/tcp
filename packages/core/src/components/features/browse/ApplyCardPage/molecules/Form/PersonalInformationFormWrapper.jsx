@@ -40,6 +40,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="month"
                   name="month"
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_month')}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_month')}
                   component={Select}
@@ -57,6 +58,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="date"
                   name="date"
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_day')}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_day')}
                   component={Select}
@@ -74,6 +76,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="year"
                   name="year"
+                  aria-label={getLabelValue(labels, 'lbl_PLCC_year')}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_year')}
                   component={Select}

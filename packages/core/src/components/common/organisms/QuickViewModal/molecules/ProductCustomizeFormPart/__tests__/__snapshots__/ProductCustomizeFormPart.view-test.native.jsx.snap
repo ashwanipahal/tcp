@@ -60,7 +60,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
-          spacingStyles="margin-bottom-SM"
+          spacingStyles="padding-bottom-SM"
           text="Boys Uniform V Neck Sweater"
           textDecoration={null}
         />
