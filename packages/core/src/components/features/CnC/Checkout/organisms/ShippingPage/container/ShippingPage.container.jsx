@@ -83,6 +83,115 @@ class ShippingContainer extends React.Component {
     }
   };
 
+  addNewShippingAddress = () => {
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      addNewShippingAddressData,
+    } = this.props;
+    addNewShippingAddressData({
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
+      },
+    });
+  };
+
+  updateShippingAddress = scopeValue => () => {
+    const scope = scopeValue;
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      formatPayload,
+      verifyAddressAction,
+    } = scope.props;
+    scope.isAddressUpdating = true;
+    scope.submitShippingAddressData = {
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
+      },
+    };
+    const formattedPayload = formatPayload(address);
+    scope.setState({ showAddressVerification: true });
+    return verifyAddressAction(formattedPayload);
+  };
+
+  submitShippingForm = scopeValue => data => {
+    const scope = scopeValue;
+    const {
+      address,
+      shipmentMethods,
+      onFileAddressKey,
+      defaultShipping,
+      saveToAddressBook,
+      smsSignUp = {},
+    } = data;
+    const {
+      isGuest,
+      userAddresses,
+      formatPayload,
+      setVenmoPickupState,
+      hasSetGiftOptions,
+    } = scope.props;
+    let shipAddress = address;
+    if (!isGuest && userAddresses && userAddresses.size > 0 && onFileAddressKey) {
+      shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
+      if (shipAddress) {
+        const { addressLine } = shipAddress;
+        const [addressLine1, addressLine2] = addressLine;
+        shipAddress.addressLine1 = addressLine1;
+        shipAddress.addressLine2 = addressLine2;
+      }
+    }
+    const submitData = {
+      method: {
+        shippingMethodId: shipmentMethods.shippingMethodId,
+      },
+      shipTo: {
+        address: shipAddress,
+        addressId: shipAddress.addressId,
+        emailAddress: shipAddress.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: shipAddress.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: defaultShipping || shipAddress.primary === 'true',
+      },
+      smsInfo: {
+        smsUpdateNumber: smsSignUp.phoneNumber,
+        wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+      },
+      hasSetGiftOptions,
+    };
+    const { handleSubmit, verifyAddressAction } = scope.props;
+    if (!onFileAddressKey) {
+      const formattedPayload = formatPayload(shipAddress);
+      scope.submitData = submitData;
+      scope.setState({ showAddressVerification: true });
+      return verifyAddressAction(formattedPayload);
+    }
+
+    handleSubmit(submitData);
+    return setVenmoPickupState(true);
+  };
+
   render() {
     const { shipmentMethods } = this.props;
     return (
@@ -90,8 +199,11 @@ class ShippingContainer extends React.Component {
         {shipmentMethods && shipmentMethods.length > 0 && (
           <ShippingPage
             {...this.props}
+            updateShippingAddress={this.updateShippingAddress}
+            submitShippingForm={this.submitShippingForm}
             shippingDidUpdate={this.shippingDidUpdate}
             submitVerifiedShippingAddressData={this.submitVerifiedShippingAddressData}
+            addNewShippingAddress={this.addNewShippingAddress}
           />
         )}
       </>
