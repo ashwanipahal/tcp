@@ -1,10 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ErrorFallbackComponent /> renders correctly 1`] = `
-<h1>
+<aside
+  role="alert"
+>
   Something went wrong in--
-  <span />
+  <span>
+    <strong />
+  </span>
   Component.
   <p />
-</h1>
+</aside>
 `;

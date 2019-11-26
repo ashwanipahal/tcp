@@ -15,7 +15,8 @@ const dropDownlist = css`
 
   .dropdownliBottomBorder {
     border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
   }
 
   .dropdownDivOverFlow {
@@ -32,15 +33,13 @@ const dropDownlist = css`
     background-image: url(${activeIcon});
     background-repeat: no-repeat;
     position: absolute;
-    width: 30px;
-    right: 5px;
-    top: 40%;
-    height: 30px;
+    top: 18%;
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .dropDownListwrapper {
     position: relative;
-    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
   }
@@ -59,13 +58,11 @@ const dropDownlist = css`
     background: ${props => props.theme.colors.PRIMARY.COLOR1};
   }
 
-  .ulBorderWithLastRow li:last-child {
-    position: absolute;
-    width: 93%;
-    height: 42px;
-    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-    left: 0;
-    bottom: 0;
+  .ulBorderWithLastRow li:last-child div {
+    border-bottom: none;
+  }
+
+  .no-border {
     border-bottom: none;
   }
 

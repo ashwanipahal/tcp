@@ -164,11 +164,12 @@ export const getPDPLabels = state => {
 
 export const getPLPPromos = (state, type) => {
   // TODO: Dynamic the productID generation logic
-  const productID = 'global'; // 'global'; '54520|489117';
+  let productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
-  if (Layouts && Layouts.pdp && Layouts.pdp[productID]) {
+  if (Layouts && Layouts.pdp) {
     const { pdp } = Layouts;
+    productID = pdp[productID] ? 'global' : '54520|489117';
     if (pdp[productID]) {
       const promo = pdp[productID][type] && pdp[productID][type].slots;
       result =

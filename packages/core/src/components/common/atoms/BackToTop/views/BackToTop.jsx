@@ -44,6 +44,7 @@ class BackToTop extends React.Component {
       <button
         className={`${className} scrollToTopBtn scrollToTopBtn--${showButton ? 'show' : 'hide'}`}
         onClick={this.scrollToTop}
+        aria-label="Scroll to top"
       >
         <span className="scrollToTop__arrowBtn" />
       </button>

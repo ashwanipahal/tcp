@@ -61,10 +61,20 @@ export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
 
 // eslint-disable-next-line complexity
 export function* addItemsToWishlist({ payload }) {
-  const { colorProductId, page } = payload;
+  const { colorProductId, productSkuId, pdpColorProductId, page } = payload;
   const state = yield select();
   const isGuest = !getUserLoggedInState(state);
   const errorMapping = getErrorList(state);
+
+  let skuIdOrProductId;
+
+  if (productSkuId) {
+    skuIdOrProductId = productSkuId;
+  } else if (pdpColorProductId) {
+    skuIdOrProductId = pdpColorProductId;
+  } else {
+    skuIdOrProductId = colorProductId;
+  }
 
   try {
     yield put(setAddToFavoriteErrorState({}));
@@ -73,7 +83,7 @@ export function* addItemsToWishlist({ payload }) {
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: '',
-        skuIdOrProductId: colorProductId,
+        skuIdOrProductId: skuIdOrProductId,
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,
@@ -86,7 +96,7 @@ export function* addItemsToWishlist({ payload }) {
       if (res && res.newItemId) {
         switch (page) {
           case 'PDP':
-            yield put(setAddToFavoritePDP({ colorProductId, res }));
+            yield put(setAddToFavoritePDP({ pdpColorProductId, res }));
             break;
           case 'PLP':
             yield put(setAddToFavorite({ colorProductId, res }));
@@ -95,10 +105,10 @@ export function* addItemsToWishlist({ payload }) {
             yield put(setAddToFavoriteSLP({ colorProductId, res }));
             break;
           case 'OUTFIT':
-            yield put(setAddToFavoriteOUTFIT({ colorProductId, res }));
+            yield put(setAddToFavoriteOUTFIT({ pdpColorProductId, res }));
             break;
           case 'BUNDLE':
-            yield put(setAddToFavoriteBUNDLE({ colorProductId, res }));
+            yield put(setAddToFavoriteBUNDLE({ pdpColorProductId, res }));
             break;
           default:
             break;
