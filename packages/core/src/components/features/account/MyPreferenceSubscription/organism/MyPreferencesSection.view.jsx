@@ -38,13 +38,20 @@ class MyPrefrenceSection extends React.PureComponent {
 
   onChangeCallback = (e, subscribeValue) => {
     e.preventDefault();
-    const { isTcpSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
+    const {
+      isTcpSubscribe,
+      isTcpAppSubscribe,
+      isGymAppSubscribe,
+      trackSubscriptionEvent,
+    } = this.props;
+    let subscriptionType;
     if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
       if (isTcpAppSubscribe) {
         this.onUnsubscribeHandler(subscribeValue);
       } else {
         this.onSubscribeHandler(subscribeValue);
       }
+      subscriptionType = MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH;
     }
     if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
       if (isGymAppSubscribe) {
@@ -52,6 +59,7 @@ class MyPrefrenceSection extends React.PureComponent {
       } else {
         this.onSubscribeHandler(subscribeValue);
       }
+      subscriptionType = MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH;
     }
     if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
       if (isTcpSubscribe) {
@@ -59,10 +67,21 @@ class MyPrefrenceSection extends React.PureComponent {
       } else {
         this.onSubscribeHandler(subscribeValue);
       }
+      subscriptionType = MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS;
     }
     if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
       this.onGymSubscribe(subscribeValue);
+      subscriptionType = MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS;
     }
+
+    trackSubscriptionEvent({
+      eventName: 'preferenceclickevent',
+      pageName: 'myplace:my preference',
+      pageNavigationText:
+        subscriptionType === MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS
+          ? MyPreferenceSubscriptionConstants.SMS_SUBSCRIPTION_NAVIGATION_TEXT
+          : MyPreferenceSubscriptionConstants.PUSH_SUBSCRIPTION_NAVIGATION_TEXT,
+    });
   };
 
   render() {
@@ -266,6 +285,7 @@ MyPrefrenceSection.propTypes = {
   isTcpAppSubscribe: PropTypes.bool,
   isGymAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
+  trackSubscriptionEvent: PropTypes.func,
 };
 
 MyPrefrenceSection.defaultProps = {
@@ -275,6 +295,7 @@ MyPrefrenceSection.defaultProps = {
   isTcpAppSubscribe: false,
   isGymAppSubscribe: false,
   urlParams: {},
+  trackSubscriptionEvent: () => {},
 };
 
 export default reduxForm({

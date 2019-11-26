@@ -67,7 +67,7 @@ export default function create(store) {
          */
         const { pageData, AnalyticsDataKey } = store.getState();
 
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageShortName = clickActionAnalyticsData.pageShortName
           ? clickActionAnalyticsData.pageShortName
           : pageData.pageShortName;
@@ -81,7 +81,7 @@ export default function create(store) {
     pageType: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
           : pageData.pageType;
@@ -103,7 +103,7 @@ export default function create(store) {
     pageSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
@@ -113,7 +113,7 @@ export default function create(store) {
     pageSubSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageSubSection
           ? clickActionAnalyticsData.pageSubSection
           : pageData.pageSubSection;
@@ -184,7 +184,7 @@ export default function create(store) {
     pageNavigationText: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageNavigationText = clickActionAnalyticsData.pageNavigationText
           ? clickActionAnalyticsData.pageNavigationText
           : pageData.pageNavigationText;
