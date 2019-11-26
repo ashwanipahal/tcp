@@ -12,7 +12,7 @@ const LedgerStyle = css`
   }
   .tax-total {
     padding-bottom: 7px;
-    border-bottom: 1px solid ${props => props.theme.colors.BLACK};
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
   }
   .circle-info-image {
     width: 15px;
