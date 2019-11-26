@@ -110,7 +110,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
-      text="add_child_gender_heading"
+      text="lbl_add_child_gender_heading"
       textDecoration={null}
     />
     <Styled(View)>
