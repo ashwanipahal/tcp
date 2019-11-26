@@ -31,6 +31,7 @@ import {
   selectDefaultWishlist,
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
+  getFormErrorLabels,
 } from './Favorites.selectors';
 import {
   getUserEmail,
@@ -140,6 +141,7 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      formErrorMessage,
       isLoggedIn,
     } = this.props;
 
@@ -180,6 +182,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
         {...this.state}
       />
@@ -206,6 +209,7 @@ const mapStateToProps = state => {
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
+    formErrorMessage: getFormErrorLabels(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 };
