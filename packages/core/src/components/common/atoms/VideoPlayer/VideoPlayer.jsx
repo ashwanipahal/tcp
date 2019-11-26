@@ -58,7 +58,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { id, controls, muted, loop, url, className, autoplay } = this.props;
+    const { controls, muted, loop, url, className, autoplay } = this.props;
     const { uniqueId } = this.state;
 
     if (!url) {
