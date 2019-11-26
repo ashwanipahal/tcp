@@ -73,10 +73,15 @@ export function extractExtraImages(
   const colorsImageMap = {};
   // backend send the colors in a very weird format
   let imageExtension = '';
+  let imageName = '';
   if (productImage) {
     const productImageExt = productImage.split('.');
+    // eslint-disable-next-line prefer-destructuring
+    imageName = productImageExt[0];
     imageExtension = productImageExt[productImageExt.length - 1];
   }
+
+  const altImgsName = imageName || altImgs;
 
   try {
     if (rawColors && rawColors !== '') {
@@ -105,7 +110,7 @@ export function extractExtraImages(
           extraImages: parseAltImagesForColor(
             imageBasePath,
             hasShortImage,
-            altImgs,
+            altImgsName,
             getImgPath,
             productImage
           ),
@@ -118,7 +123,7 @@ export function extractExtraImages(
         extraImages: parseAltImagesForColor(
           uniqueId,
           hasShortImage,
-          altImgs,
+          altImgsName,
           getImgPath,
           productImage
         ),

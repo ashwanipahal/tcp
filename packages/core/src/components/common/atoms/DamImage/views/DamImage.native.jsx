@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../../VideoPlayer';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
-import { cropImageUrl, getAPIConfig } from '../../../../../utils/index.native';
+import { cropImageUrl, getAPIConfig, getVideoUrl } from '../../../../../utils/index.native';
 
 const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
@@ -90,13 +90,6 @@ const DamImage = props => {
   };
 
   const uri = createURI(props);
-
-  const getVideoUrl = uriLink => {
-    if (uriLink) {
-      return String(uriLink).match(/\.(mp4|webm|WEBM|MP4)$/g);
-    }
-    return false;
-  };
 
   const uriParam = getVideoUrl(uri.uri);
 

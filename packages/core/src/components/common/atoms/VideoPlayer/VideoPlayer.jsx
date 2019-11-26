@@ -78,7 +78,6 @@ class VideoPlayer extends React.Component {
         loop={loopVideo}
         className={className}
         autoPlay={autoplayVideo}
-        data-setup='{"fluid": true}'
       >
         <track
           src="/static/captions/captions_en.vtt"

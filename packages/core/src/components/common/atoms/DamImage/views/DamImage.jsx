@@ -104,25 +104,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
 
   const { alt, url } = imgData;
 
-  let isVideoUrl = null;
-  let videoDataOptions = {};
-
-  if (url && isProductImage) {
-    isVideoUrl = getVideoUrl(url);
-    if (isVideoUrl) {
-      videoDataOptions = {
-        autoplay: false,
-        controls: true,
-        loop: false,
-        muted: true,
-        inline: true,
-        url: getBreakpointImgUrl('xs', imgProps),
-      };
-    }
-  }
-  return isVideoUrl ? (
-    <RenderVideo video={videoDataOptions} />
-  ) : (
+  return (
     <picture>
       <source
         media={`(min-width: ${breakpoints.values.lg}px)`}
@@ -194,6 +176,17 @@ const DamImage = props => {
     ...other,
   };
 
+  if (getVideoUrl(imgData.url) && isProductImage) {
+    const videoDataOptions = {
+      autoplay: false,
+      controls: true,
+      loop: false,
+      muted: true,
+      inline: true,
+      url: getBreakpointImgUrl('lg', imgProps),
+    };
+    return <RenderVideo video={videoDataOptions} />;
+  }
   if (!link) {
     return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
