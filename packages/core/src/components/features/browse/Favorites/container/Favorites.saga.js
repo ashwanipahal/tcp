@@ -40,14 +40,14 @@ import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDeta
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
 
 export function* loadActiveWishlistByGuestKey({ payload }) {
-  const { wishlistId, guestAccessKey } = payload;
+  const { wishListId, guestAccessKey } = payload;
   try {
     const state = yield select();
     yield put(setLoadingState({ isDataLoading: true }));
     const userName = getUserContactInfo(state) && getUserContactInfo(state).get('firstName');
     const isCanadaCheck = isCanada();
     const wishlistItems = yield call(getWishListbyId, {
-      wishlistId,
+      wishListId,
       userName,
       guestAccessKey,
       isCanada: isCanadaCheck,

@@ -483,7 +483,6 @@ class FavoritesView extends React.PureComponent {
         )}
         {isActiveListHaveLength ? (
           <>
-                      
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <ProductListingFiltersForm

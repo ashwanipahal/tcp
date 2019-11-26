@@ -8,10 +8,17 @@ export default css`
   }
   .heading-wrapper {
     ${props =>
-      props.guestAccessKey ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.MED}` : ''}
+      props.guestAccessKey
+        ? `
+        margin: 0 auto ${props.theme.spacing.ELEM_SPACING.MED};
+        width: 92%;`
+        : ''}
     @media ${props => props.theme.mediaQuery.large} {
       ${props =>
-        props.guestAccessKey ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XXL};` : ''}
+        props.guestAccessKey
+          ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XXL};
+        width: 100%`
+          : ''}
     }
   }
   .favorite-title {
@@ -35,6 +42,11 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin: 0;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    ${props =>
+      props.guestAccessKey
+        ? `width: 92%;
+        margin: auto;`
+        : ''}
   }
 
   .filters-only-container {

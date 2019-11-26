@@ -43,6 +43,11 @@ import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListi
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
 class FavoritesContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.guestAccessKey = '';
+    this.wishListId = '';
+  }
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
@@ -52,19 +57,26 @@ class FavoritesContainer extends React.PureComponent {
   };
 
   componentDidMount() {
-    const {
-      loadWishList,
-      getActiveWishlistGuest,
-      router: {
-        query: { wishlistId, guestAccessKey },
-      },
-    } = this.props;
+    const { loadWishList, getActiveWishlistGuest } = this.props;
     loadWishList({ isDataLoading: true });
-    if (wishlistId && guestAccessKey) {
-      const payload = { wishlistId, guestAccessKey };
-      getActiveWishlistGuest({ wishlistId, guestAccessKey });
+
+    if (!isMobileApp()) {
+      this.wishListId = this.getParameterByName('wishlistId');
+      this.guestAccessKey = this.getParameterByName('guestAccessKey');
+      if (this.wishListId !== '' && this.guestAccessKey !== '') {
+        const { wishListId, guestAccessKey } = this;
+        getActiveWishlistGuest({ wishListId, guestAccessKey });
+      }
     }
   }
+
+  getParameterByName = name => {
+    const location = typeof window !== 'undefined' && window.location && window.location.search;
+    const key = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp(`[\\?&]${key}=([^&#]*)`);
+    const results = regex.exec(location);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
 
   onFilterSelection = filteredId => {
     this.setState({
@@ -152,9 +164,7 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
-      router: {
-        query: { wishlistId, guestAccessKey },
-      },
+      guestAccessKey,
       isLoggedIn,
     } = this.props;
     const { selectedColorProductId } = this.state;
@@ -194,7 +204,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
-        guestAccessKey={guestAccessKey}
+        guestAccessKey={this.guestAccessKey}
         isLoggedIn={isLoggedIn}
         {...this.state}
       />
@@ -301,11 +311,9 @@ FavoritesContainer.defaultProps = {
   isLoggedIn: false,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(FavoritesContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FavoritesContainer);
 
 export { FavoritesContainer as FavoritesContainerVanilla };
