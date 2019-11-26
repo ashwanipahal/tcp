@@ -412,6 +412,8 @@ class FavoritesView extends React.PureComponent {
     ];
     const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
 
+    const isActiveListHaveLength = activeWishList && activeWishList.items.length !== 0;
+
     const recommendationAttributes = {
       variations: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
@@ -457,18 +459,22 @@ class FavoritesView extends React.PureComponent {
                 colSize={{ small: 2, medium: 6, large: 4 }}
                 offsetLeft={{ small: 4, medium: 2, large: 8 }}
               >
-                <CustomSelect
-                  options={shareOptions}
-                  activeTitle={labels.lbl_fav_share}
-                  clickHandler={(e, value) => this.shareClickHandler(value)}
-                  customSelectClassName="social-share-fav-list"
-                />
+                {isActiveListHaveLength ? (
+                  <CustomSelect
+                    options={shareOptions}
+                    activeTitle={labels.lbl_fav_share}
+                    clickHandler={(e, value) => this.shareClickHandler(value)}
+                    customSelectClassName="social-share-fav-list"
+                  />
+                ) : (
+                  ''
+                )}
               </Col>
             </Row>
           </Col>
         </Row>
 
-        {activeWishList && activeWishList.items.length !== 0 ? (
+        {isActiveListHaveLength ? (
           <>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
