@@ -322,7 +322,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, userEmail, activeWishListId, activeWishList, wishlistsSummaries } = this.props;
+    const {
+      labels,
+      userEmail,
+      activeWishListId,
+      activeWishList,
+      wishlistsSummaries,
+      formErrorMessage,
+    } = this.props;
     const { itemToMove } = this.state;
     if (this.currentPopupName === 'addList') {
       return (
