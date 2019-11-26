@@ -49,7 +49,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           color="gray.600"
           dataLocator=""
           iconFontName="Icomoon"
-          isButton={false}
+          isButton={true}
           isDisabled={false}
           margins={null}
           name="scan"
@@ -57,7 +57,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           size="fs25"
           style={
             Object {
-              "marginTop": 10,
+              "marginTop": 5,
             }
           }
         />
