@@ -12,39 +12,20 @@ import AddressVerification from '../../../../../../common/organisms/AddressVerif
 import ModalNative from '../../../../../../common/molecules/Modal';
 import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
 import CONSTANTS from '../../../Checkout.constants';
-import { getAddressInitialValues, isShowVenmoBanner, propsTypes } from './ShippingPage.view.utils';
+import {
+  getAddressInitialValues,
+  isShowVenmoBanner,
+  shippingPropsTypes,
+  shippingDefaultProps,
+  shippingPageGetDerivedStateFromProps,
+} from './ShippingPage.view.utils';
 
 export default class ShippingPage extends React.PureComponent {
-  static propTypes = propsTypes;
+  static propTypes = shippingPropsTypes;
 
-  static defaultProps = {
-    isOrderUpdateChecked: false,
-    addressPhoneNumber: null,
-    address: null,
-    selectedShipmentId: null,
-    isGuest: true,
-    isUsSite: true,
-    orderHasPickUp: false,
-    shipmentMethods: null,
-    defaultShipmentId: null,
-    isGiftServicesChecked: false,
-    userAddresses: null,
-    onFileAddressKey: null,
-    isSaveToAddressBookChecked: false,
-    setAsDefaultShipping: false,
-    saveToAddressBook: false,
-    hasSetGiftOptions: false,
-    updateShippingAddressData: () => {},
-    addNewShippingAddressData: () => {},
-    syncErrors: {},
-    newUserPhoneNo: null,
-    isVenmoPaymentInProgress: false,
-    isVenmoShippingDisplayed: true,
-    setVenmoPickupState: () => {},
-    venmoBannerLabel: {
-      venmoBannerText: '',
-    },
-  };
+  static defaultProps = shippingDefaultProps;
+
+  static getDerivedStateFromProps = shippingPageGetDerivedStateFromProps;
 
   constructor(props) {
     super(props);
@@ -52,26 +33,6 @@ export default class ShippingPage extends React.PureComponent {
       defaultAddressId: null,
       showAddressVerification: false,
     };
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { defaultAddress: prevDefaultAddress } = prevState;
-    const { userAddresses, addEditResponseAddressId } = nextProps;
-    if (
-      userAddresses &&
-      (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
-    ) {
-      const defaultAddress = userAddresses.filter(item => item.primary === 'true');
-      return {
-        defaultAddressId: defaultAddress
-          ? defaultAddress.addressId
-          : userAddresses.get(0).addressId,
-      };
-    }
-    if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
-      return { defaultAddressId: addEditResponseAddressId };
-    }
-    return null;
   }
 
   componentDidUpdate(prevProps) {

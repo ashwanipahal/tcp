@@ -6,94 +6,16 @@ import AddressVerification from '../../../../../../common/organisms/AddressVerif
 import {
   shippingPageGetDerivedStateFromProps,
   getAddressInitialValues,
+  shippingPropsTypes,
+  shippingDefaultProps,
 } from './ShippingPage.view.utils';
 
 export default class ShippingPage extends React.PureComponent {
-  static propTypes = {
-    addressLabels: PropTypes.shape({}).isRequired,
-    isOrderUpdateChecked: PropTypes.bool,
-    isGiftServicesChecked: PropTypes.bool,
-    smsSignUpLabels: PropTypes.shape({}).isRequired,
-    address: PropTypes.shape({}),
-    selectedShipmentId: PropTypes.string,
-    addressPhoneNumber: PropTypes.number,
-    emailSignUpLabels: PropTypes.shape({}).isRequired,
-    isGuest: PropTypes.bool,
-    isUsSite: PropTypes.bool,
-    isSubmitting: PropTypes.bool.isRequired,
-    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-    orderHasPickUp: PropTypes.bool,
-    handleSubmit: PropTypes.func.isRequired,
-    emailSignUpFlags: PropTypes.shape({}).isRequired,
-    shipmentMethods: PropTypes.shape([]),
-    defaultShipmentId: PropTypes.number,
-    loadShipmentMethods: PropTypes.func.isRequired,
-    routeToPickupPage: PropTypes.func.isRequired,
-    isSaveToAddressBookChecked: PropTypes.bool,
-    userAddresses: PropTypes.shape([]),
-    onFileAddressKey: PropTypes.string,
-    isMobile: PropTypes.bool,
-    newUserPhoneNo: PropTypes.number,
-    shippingAddressId: PropTypes.string,
-    setAsDefaultShipping: PropTypes.bool,
-    addNewShippingAddressData: PropTypes.func.isRequired,
-    checkoutRoutingDone: PropTypes.bool,
-    formatPayload: PropTypes.func.isRequired,
-    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
-    verifyAddressAction: PropTypes.func.isRequired,
-    shippingDidUpdate: PropTypes.func.isRequired,
-    saveToAddressBook: PropTypes.bool,
-    toggleCountrySelector: PropTypes.func.isRequired,
-    shippingDidMount: PropTypes.func.isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    syncErrors: PropTypes.shape({}),
-    shippingAddress: PropTypes.shape({}),
-    isVenmoPaymentInProgress: PropTypes.bool,
-    isVenmoShippingDisplayed: PropTypes.bool,
-    setVenmoPickupState: PropTypes.func,
-    shippingPhoneAndEmail: PropTypes.shape({}),
-    ServerErrors: PropTypes.node.isRequired,
-    isRegisteredUserCallDone: PropTypes.bool.isRequired,
-    pageCategory: PropTypes.string,
-    clearCheckoutServerError: PropTypes.func.isRequired,
-    checkoutServerError: PropTypes.shape({}).isRequired,
-    pickUpContactPerson: PropTypes.shape({}).isRequired,
-    hasSetGiftOptions: PropTypes.bool,
-    isLoadingShippingMethods: PropTypes.bool,
-    bagLoading: PropTypes.bool,
-  };
+  static propTypes = shippingPropsTypes;
 
-  static defaultProps = {
-    isOrderUpdateChecked: false,
-    isGiftServicesChecked: false,
-    addressPhoneNumber: null,
-    address: null,
-    selectedShipmentId: null,
-    isGuest: true,
-    isUsSite: true,
-    orderHasPickUp: false,
-    shipmentMethods: null,
-    defaultShipmentId: null,
-    isSaveToAddressBookChecked: false,
-    userAddresses: [],
-    onFileAddressKey: null,
-    isMobile: false,
-    newUserPhoneNo: null,
-    shippingAddressId: null,
-    setAsDefaultShipping: false,
-    saveToAddressBook: false,
-    syncErrors: {},
-    shippingAddress: null,
-    pageCategory: '',
-    isVenmoPaymentInProgress: false,
-    isVenmoShippingDisplayed: true,
-    hasSetGiftOptions: false,
-    setVenmoPickupState: () => {},
-    shippingPhoneAndEmail: null,
-    isLoadingShippingMethods: false,
-    checkoutRoutingDone: false,
-    bagLoading: false,
-  };
+  static defaultProps = shippingDefaultProps;
+
+  static getDerivedStateFromProps = shippingPageGetDerivedStateFromProps;
 
   constructor(props) {
     super(props);
@@ -123,8 +45,6 @@ export default class ShippingPage extends React.PureComponent {
     }
     shippingDidUpdate(prevProps);
   }
-
-  static getDerivedStateFromProps = shippingPageGetDerivedStateFromProps;
 
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError } = this.props;
