@@ -13,6 +13,12 @@ const styles = css`
   }
   .country-selector {
     position: relative;
+    > div {
+      height: auto;
+      > select {
+        margin: 0;
+      }
+    }
   }
   .zip-code {
     @media ${props => props.theme.mediaQuery.smallMax} {
@@ -22,10 +28,12 @@ const styles = css`
   }
   .change-country-link {
     display: none;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
       position: absolute;
       bottom: 0;
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
     }
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
