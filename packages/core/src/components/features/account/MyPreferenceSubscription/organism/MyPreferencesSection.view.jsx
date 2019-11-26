@@ -285,6 +285,7 @@ MyPrefrenceSection.propTypes = {
   isTcpAppSubscribe: PropTypes.bool,
   isGymAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
+  trackSubscriptionEvent: PropTypes.func,
 };
 
 MyPrefrenceSection.defaultProps = {
@@ -294,6 +295,7 @@ MyPrefrenceSection.defaultProps = {
   isTcpAppSubscribe: false,
   isGymAppSubscribe: false,
   urlParams: {},
+  trackSubscriptionEvent: () => {},
 };
 
 export default reduxForm({

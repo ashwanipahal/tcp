@@ -99,7 +99,10 @@ export class Account extends React.PureComponent {
         initialProps: {
           pageProps: {
             pageData: {
-              pageName: accountPageNameMapping[componentToLoad].pageName,
+              pageName:
+                (accountPageNameMapping[componentToLoad] &&
+                  accountPageNameMapping[componentToLoad].pageName) ||
+                '',
               pageSection: 'myplace',
               pageSubSection: 'myplace',
               pageType: 'myplace',
@@ -203,10 +206,12 @@ Account.propTypes = {
   accountNavigation: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
+  trackPageLoad: PropTypes.func,
 };
 
 Account.defaultProps = {
   labels: PropTypes.shape({ addressBook: {}, labels: {}, paymentGC: {}, common: {} }),
+  trackPageLoad: () => {},
 };
 
 export default withRouter(
