@@ -83,6 +83,12 @@ const ImageSectionContainer = styled.View`
   max-height: 205;
 `;
 
+const CloseIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
 const styles = css``;
 
 export {
@@ -102,4 +108,5 @@ export {
   ImageSectionContainer,
   RowContainer,
   OfferPriceAndBadge3View,
+  CloseIconContainer,
 };

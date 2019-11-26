@@ -2,13 +2,13 @@
 import React from 'react';
 import { View, Share, Dimensions } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { ShareDialog } from 'react-native-fbsdk';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { getLoading, getLabelValue } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import { ShareDialog } from 'react-native-fbsdk';
 import {
   PageContainer,
   RowContainer,
@@ -68,6 +68,7 @@ class FavoritesView extends React.PureComponent {
     super(props);
     this.state = {
       isOpenModal: false,
+      seeSuggestedDictionary: {},
     };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
@@ -518,6 +519,46 @@ class FavoritesView extends React.PureComponent {
     ];
   };
 
+  onSeeSuggestedItems = (colorProductId, itemId) => {
+    const { activeWishListId, onReplaceWishlistItem } = this.props;
+    const { seeSuggestedDictionary } = this.state;
+    const { navigation } = this.props;
+
+    const recommendationAttributes = {
+      variation: 'moduleP',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.FAVORITES,
+      partNumber: colorProductId,
+      isHeaderAccordion: true,
+      isSuggestedItem: true,
+      outOfStockColorProductId: colorProductId,
+      onDismissSuggestion: this.onCloseSuggestedModal,
+      onReplaceWishlistItem,
+      suggestedOOSItemId: itemId,
+      activeWishListId,
+    };
+    const suggestedData = {
+      colorProductId,
+      attributes: recommendationAttributes,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
+
+  onCloseSuggestedModal = colorProductId => {
+    const { seeSuggestedDictionary } = this.state;
+    const suggestedData = {
+      colorProductId: null,
+      attributes: null,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
+
   render() {
     const {
       activeWishListProducts,
@@ -546,7 +587,7 @@ class FavoritesView extends React.PureComponent {
       isLoggedIn,
     } = this.props;
 
-    const { selectedShareOption } = this.state;
+    const { selectedShareOption, seeSuggestedDictionary } = this.state;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
@@ -677,6 +718,9 @@ class FavoritesView extends React.PureComponent {
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
+              onSeeSuggestedItems={this.onSeeSuggestedItems}
+              onCloseSuggestedModal={this.onCloseSuggestedModal}
+              seeSuggestedDictionary={seeSuggestedDictionary}
             />
           </View>
         )}
@@ -720,6 +764,8 @@ FavoritesView.propTypes = {
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
+  onLoadRecommendations: PropTypes.func.isRequired,
+  onReplaceWishlistItem: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

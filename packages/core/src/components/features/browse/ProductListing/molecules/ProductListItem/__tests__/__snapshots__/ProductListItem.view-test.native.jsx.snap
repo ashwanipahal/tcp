@@ -10,6 +10,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderTopBadge1
     text=""
   />
+  <RenderCloseIcon />
   <ImageSection
     isFavorite={true}
     item={
@@ -31,8 +32,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -88,8 +91,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -102,10 +107,12 @@ exports[`ProductListItem component should render correctly 1`] = `
         "quantity": 1,
       }
     }
+    itemOutOfStock={false}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
     productInfo={
       Object {
+        "keepAlive": true,
         "name": "tcp",
         "pdpUrl": "",
       }
@@ -145,8 +152,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -156,6 +165,7 @@ exports[`ProductListItem component should render correctly 1`] = `
     onGoToPDPPage={[MockFunction]}
     productInfo={
       Object {
+        "keepAlive": true,
         "name": "tcp",
         "pdpUrl": "",
       }
@@ -199,8 +209,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -226,7 +238,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       margin="0 6px 0 0"
       navigation={Object {}}
       onPress={[Function]}
-      paddings="12px 8px 12px 8px"
+      paddings="12px 4px 12px 4px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -237,6 +249,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       withNoLineHeight={false}
     />
   </Styled(View)>
+  <RenderDismissLink />
   <RenderPurchasedQuantity
     item={
       Object {
@@ -257,8 +270,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -286,8 +301,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -295,6 +312,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       }
     }
     labelsPlpTiles={Object {}}
+    onSeeSuggestedItems={[Function]}
     renderMoveToList={[Function]}
   />
 </Styled(View)>
