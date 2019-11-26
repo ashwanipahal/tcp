@@ -1,8 +1,19 @@
 import { css } from 'styled-components';
 
 export default css`
+  .item-container-inner {
+    min-height: ${props => (props.isPromoAvailable ? '418px' : '')};
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: ${props => (props.isPromoAvailable ? '485.23px' : '')};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      min-height: ${props => (props.isPromoAvailable ? '550.44px' : '')};
+    }
+  }
+
   margin: 0 10px;
   .product-image-container {
+    height: 186px;
     a {
       min-height: 185px;
       display: block;
@@ -22,9 +33,16 @@ export default css`
     }
   }
 
+  @media ${props => props.theme.mediaQuery.medium} {
+    .product-image-container {
+      height: 267px;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     .product-image-container {
+      height: 325px;
       a {
         min-height: 259px;
       }
