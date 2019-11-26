@@ -49,8 +49,15 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
+  .padding-top-30 {
+    padding-top: 30px;
+  }
   .padding-top-40 {
-    padding-top: 41px;
+    padding-top: 26px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: 40px;
+    }
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -59,6 +66,10 @@ export default css`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ${props => props.theme.mediaQuery.large} {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -86,6 +97,7 @@ export default css`
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -229,6 +241,8 @@ export default css`
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -325,7 +339,7 @@ export default css`
     }
     @media ${props => props.theme.mediaQuery.medium} {
       .save-for-later-label {
-        left: 7px;
+        left: 3px;
       }
     }
 

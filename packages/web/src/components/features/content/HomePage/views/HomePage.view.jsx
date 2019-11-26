@@ -11,6 +11,7 @@ import Constants from '@tcp/core/src/components/common/molecules/Recommendations
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
@@ -24,8 +25,12 @@ class HomePageWrapper extends React.Component {
       this.subscriptionPopUpOnPageLoad();
     }
     const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    const icid = getQueryParamsFromUrl(router.asPath, 'icid');
     if (cid) {
       setCampaignId(cid[0]);
+    }
+    if (icid) {
+      setClickAnalyticsData({ internalCampaignId: icid[0], customEvents: ['event18', 'event80'] });
     }
   }
 

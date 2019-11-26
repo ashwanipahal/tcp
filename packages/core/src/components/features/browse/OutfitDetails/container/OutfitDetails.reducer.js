@@ -16,7 +16,7 @@ const OutfitDetailReducer = (state = initialState, action) => {
       outfitDetailsMap.products = outfitDetailsMap.products.map(outfitDetails => {
         // eslint-disable-next-line no-param-reassign
         outfitDetails.colorFitsSizesMap = outfitDetails.colorFitsSizesMap.map(item => {
-          if (item.colorDisplayId === action.payload.colorProductId) {
+          if (item.colorProductId === action.payload.pdpColorProductId) {
             // eslint-disable-next-line no-param-reassign
             item = {
               ...item,
@@ -29,7 +29,7 @@ const OutfitDetailReducer = (state = initialState, action) => {
         return outfitDetails;
       });
 
-      return { ...state, currentOutfit: { ...currentOutfit, products: { ...outfitDetailsMap } } };
+      return { ...state, currentOutfit: outfitDetailsMap };
     default:
       return { ...state };
   }

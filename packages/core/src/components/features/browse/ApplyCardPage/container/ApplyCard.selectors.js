@@ -19,6 +19,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getApplyCardModuleXComposite = state => {
+  return state[APPLY_PLCC_REDUCER_KEY].plccData;
+};
+
 export const isGuest = state => {
   const personalData = state[USER_REDUCER_KEY].get('personalData');
   return personalData && personalData.get('isGuest');

@@ -24,7 +24,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3973AC672387D12B00538E85"
-               BuildableName = "gymboree_preview.app"
+               BuildableName = "Gymboree-Preview.app"
                BlueprintName = "gymboree_preview"
                ReferencedContainer = "container:mobileapp.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3973AC672387D12B00538E85"
-            BuildableName = "gymboree_preview.app"
+            BuildableName = "Gymboree-Preview.app"
             BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>

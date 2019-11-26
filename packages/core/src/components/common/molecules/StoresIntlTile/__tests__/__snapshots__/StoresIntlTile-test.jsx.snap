@@ -509,6 +509,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -1256,6 +1257,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {

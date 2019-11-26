@@ -36,7 +36,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, isEnabled } = this.props;
+    const { labels, isEnabled, isOrderConfirmation } = this.props;
     const { isPlaceCasModalOpen } = this.state;
 
     const imgStyle = {
@@ -50,22 +50,29 @@ class PlaceCashBanner extends React.PureComponent<Props> {
       <PlaceCashContainer>
         <ImageBackground source={{ uri: labels.imgUrl }} style={imgStyle}>
           <PlaceCashTextWrapper>
-            <BodyCopy fontSize="fs22" text={labels.title} />
+            <BodyCopy
+              fontSize={isOrderConfirmation ? 'fs16' : 'fs18'}
+              text={labels.title}
+              textAlign="center"
+            />
             <BodyCopy fontSize="fs14" text={labels.subTitle} />
-            <PlaceCashTncContainer>
-              <BodyCopy text={labels.tnc} fontSize="fs8" />
-              <Anchor
-                fontSizeVariation="small"
-                underline
-                noLink
-                to=""
-                anchorVariation="primary"
-                fontFamily="primary"
-                text={labels.modalLink}
-                dataLocator="detailslink"
-                onPress={e => this.toggleShowDetailModal(e)}
-              />
-            </PlaceCashTncContainer>
+            {!isOrderConfirmation && (
+              <PlaceCashTncContainer>
+                <BodyCopy text={labels.tnc} fontSize="fs8" />
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  noLink
+                  to=""
+                  fontSize="fs8"
+                  anchorVariation="primary"
+                  fontFamily="primary"
+                  text={labels.modalLink}
+                  dataLocator="detailslink"
+                  onPress={e => this.toggleShowDetailModal(e)}
+                />
+              </PlaceCashTncContainer>
+            )}
           </PlaceCashTextWrapper>
           <PlaceCashDetailsModal
             labels={labels}

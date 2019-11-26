@@ -4,7 +4,9 @@ export default css`
   .active {
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
-
+  .sub-menu-outer-container {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
   .group-nav {
     background-color: ${props => props.theme.colorPalette.primary.main};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

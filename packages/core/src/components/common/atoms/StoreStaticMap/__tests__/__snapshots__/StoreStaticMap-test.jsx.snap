@@ -521,6 +521,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -4500,6 +4501,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -8475,6 +8477,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -12454,6 +12457,7 @@ exports[`StoreStaticMap component resize window should update component on windo
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -13206,6 +13210,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {

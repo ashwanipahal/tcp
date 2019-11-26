@@ -20,7 +20,7 @@ const GiftCardBody = styled.View`
 `;
 
 const GiftCardButtonCal = styled.View`
-  width: 50%;
+  width: 66%;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
 `;
 

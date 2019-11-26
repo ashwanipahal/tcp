@@ -85,6 +85,7 @@ export default {
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
+  activeWishListId: PropTypes.number,
 };
 
 export const productGridDefaultProps = {
@@ -107,4 +108,5 @@ export const productGridDefaultProps = {
   outOfStockLabels: {
     outOfStockCaps: '',
   },
+  activeWishListId: '',
 };

@@ -58,7 +58,8 @@ target 'mobileapp_int' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
   # target 'mobileappTests' do
   #   inherit! :search_paths
   #   # Pods for testing
@@ -125,7 +126,8 @@ target 'mobileapp_prod' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
 
@@ -200,8 +202,8 @@ target 'mobileapp' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
@@ -268,7 +270,8 @@ target 'gymboree' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
   # target 'mobileappTests' do
@@ -333,7 +336,8 @@ target 'mobileapp_preview' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
   # target 'mobileappTests' do
@@ -463,7 +467,8 @@ target 'gymboree_prod' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
   # target 'mobileappTests' do
@@ -528,7 +533,8 @@ target 'gymboree_preview' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
+  pod 'Braintree'
+  pod 'Braintree/Venmo'
 
 
   # target 'mobileappTests' do

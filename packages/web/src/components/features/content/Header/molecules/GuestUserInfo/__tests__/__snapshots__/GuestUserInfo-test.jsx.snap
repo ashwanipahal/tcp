@@ -8,6 +8,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     <Styled(Button)
       anchorVariation="primary"
       className="create-account-header-label"
+      data-overlayTarget="true"
       fontSizeVariation="large"
       id="createAccount"
       link={true}
@@ -24,6 +25,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     <Styled(Button)
       anchorVariation="primary"
       className="rightLink login-header-label"
+      data-overlayTarget="true"
       fontSizeVariation="large"
       id="login"
       link={true}
@@ -51,6 +53,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     <Styled(Button)
       anchorVariation="primary"
       className="create-account-header-label"
+      data-overlayTarget="true"
       fontSizeVariation="large"
       id="createAccount"
       link={true}
@@ -67,6 +70,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     <Styled(Button)
       anchorVariation="primary"
       className="rightLink login-header-label"
+      data-overlayTarget="true"
       fontSizeVariation="large"
       id="login"
       link={true}

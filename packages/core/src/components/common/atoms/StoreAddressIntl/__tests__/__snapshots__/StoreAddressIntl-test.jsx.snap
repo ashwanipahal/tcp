@@ -509,6 +509,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {

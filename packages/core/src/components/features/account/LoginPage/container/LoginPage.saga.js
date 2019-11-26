@@ -3,13 +3,14 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
+import CONSTANTS from '../../User/User.constants';
 import {
   setLoginInfo,
   setCheckoutModalMountedState,
   setLoginLoadingState,
 } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { getUserInfo, setUserInfo } from '../../User/container/User.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -33,6 +34,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(
         setClickAnalyticsData({
           eventName: 'login',
+          customEvents: ['event14'],
           pageNavigationText: 'header-log in',
         })
       );
@@ -47,9 +49,8 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         );
       }
       yield put(navigateXHRAction());
-
-      yield take(setUserInfo);
-      yield put(trackClick('login_submit'));
+      yield take(CONSTANTS.SET_USER_INFO);
+      yield put(trackClick({ name: 'login-success', module: 'account' }));
     }
 
     return yield put(setLoginInfo(response));

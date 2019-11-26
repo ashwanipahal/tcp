@@ -26,8 +26,8 @@ class GiftServices extends React.PureComponent {
       cartOrderItems.map(tile => {
         const productDetail = getProductDetails(tile);
         const {
-          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-          productInfo: { skuId, upc, productPartNumber },
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
+          productInfo: { skuId, upc, productPartNumber, generalProductId },
         } = productDetail;
 
         const prodData = {
@@ -36,12 +36,13 @@ class GiftServices extends React.PureComponent {
           name,
           price: offerPrice,
           extPrice: offerPrice,
-          sflExtPrice: offerPrice,
           listPrice,
           partNumber: productPartNumber,
           size,
           upc,
           sku: skuId.toString(),
+          quantity: qty,
+          colorId: generalProductId,
         };
         productsData.push(prodData);
         return prodData;

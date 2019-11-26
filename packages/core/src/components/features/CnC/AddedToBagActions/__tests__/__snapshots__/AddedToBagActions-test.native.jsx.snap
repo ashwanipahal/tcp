@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
-<Styled(View)
-  isPayPalWebViewEnable={false}
->
+<Styled(View)>
   <Styled(View)
     isPayPalWebViewEnable={false}
   >
@@ -30,9 +28,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
 `;
 
 exports[`AddedToBagActions native component AddedToBagActions renders correctly with Venmo Button 1`] = `
-<Styled(View)
-  isPayPalWebViewEnable={false}
->
+<Styled(View)>
   <Styled(View)
     isPayPalWebViewEnable={false}
   >
@@ -55,12 +51,14 @@ exports[`AddedToBagActions native component AddedToBagActions renders correctly 
     </Styled(TouchableOpacity)>
   </Styled(View)>
   <Styled(View)
-    isPayPalWebViewEnable={false}
+    isBottomGap={false}
   >
-    <Styled(View)
-      isPayPalWebViewEnable={false}
-    >
+    <Styled(View)>
+      <Styled(View)
+        isAddedTobag={true}
+      />
       <Styled(TouchableOpacity)
+        isAddedTobag={true}
         onPress={[Function]}
       >
         <Styled(BodyCopy)

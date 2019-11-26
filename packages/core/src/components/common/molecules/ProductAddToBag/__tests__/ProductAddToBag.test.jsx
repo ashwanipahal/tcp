@@ -10,6 +10,7 @@ describe('ProductAddToBagVanilla should render correctly', () => {
     currentProduct: {
       ratingsProductId: '2100622',
       generalProductId: '3000935_IV',
+      name: 'Girl School Uniform',
       colorFitsSizesMap: [
         {
           color: {

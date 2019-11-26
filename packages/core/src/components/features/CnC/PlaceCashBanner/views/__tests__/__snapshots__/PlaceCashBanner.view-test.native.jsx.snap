@@ -22,9 +22,10 @@ exports[`PlaceCashBanner should render correctly should match snapshot 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
-        fontSize="fs22"
+        fontSize="fs18"
         margin={null}
         numberOfLines={null}
+        textAlign="center"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -51,6 +52,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot 1`] = `
           customStyle={Object {}}
           dataLocator="detailslink"
           fontFamily="primary"
+          fontSize="fs8"
           fontSizeVariation="small"
           justifyContent=""
           locator=""

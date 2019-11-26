@@ -596,6 +596,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -1286,6 +1287,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -2062,6 +2064,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fs48": "48px",
             "fs52": "52px",
             "fs64": "64px",
+            "fs8": "8px",
             "fs9": "9px",
           },
           "fontWeights": Object {
@@ -2752,6 +2755,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fs48": "48px",
               "fs52": "52px",
               "fs64": "64px",
+              "fs8": "8px",
               "fs9": "9px",
             },
             "fontWeights": Object {
@@ -3470,6 +3474,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fs48": "48px",
                   "fs52": "52px",
                   "fs64": "64px",
+                  "fs8": "8px",
                   "fs9": "9px",
                 },
                 "fontWeights": Object {
@@ -4320,6 +4325,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fs48": "48px",
                     "fs52": "52px",
                     "fs64": "64px",
+                    "fs8": "8px",
                     "fs9": "9px",
                   },
                   "fontWeights": Object {
@@ -5038,6 +5044,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fs48": "48px",
                       "fs52": "52px",
                       "fs64": "64px",
+                      "fs8": "8px",
                       "fs9": "9px",
                     },
                     "fontWeights": Object {
@@ -5856,6 +5863,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs8": "8px",
           "fs9": "9px",
         },
         "fontWeights": Object {
@@ -6636,6 +6644,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fs48": "48px",
             "fs52": "52px",
             "fs64": "64px",
+            "fs8": "8px",
             "fs9": "9px",
           },
           "fontWeights": Object {
@@ -7329,6 +7338,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fs48": "48px",
               "fs52": "52px",
               "fs64": "64px",
+              "fs8": "8px",
               "fs9": "9px",
             },
             "fontWeights": Object {
@@ -8035,6 +8045,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fs48": "48px",
                   "fs52": "52px",
                   "fs64": "64px",
+                  "fs8": "8px",
                   "fs9": "9px",
                 },
                 "fontWeights": Object {
@@ -8873,6 +8884,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fs48": "48px",
                     "fs52": "52px",
                     "fs64": "64px",
+                    "fs8": "8px",
                     "fs9": "9px",
                   },
                   "fontWeights": Object {
@@ -9579,6 +9591,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fs48": "48px",
                       "fs52": "52px",
                       "fs64": "64px",
+                      "fs8": "8px",
                       "fs9": "9px",
                     },
                     "fontWeights": Object {
