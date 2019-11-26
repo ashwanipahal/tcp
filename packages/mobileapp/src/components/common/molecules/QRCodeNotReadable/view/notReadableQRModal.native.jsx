@@ -34,7 +34,7 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
             </Touchable>
             <MessageContainer>
               <StyledBodyCopy
-                text={labels.lbl_qrscan_no_result || 'No Results or Unreadable Code'}
+                text={labels.lbl_qrscan_no_result}
                 textAlign="center"
                 fontFamily="secondary"
                 fontSize="fs16"
@@ -43,10 +43,7 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
               />
 
               <StyledBodyCopy
-                text={
-                  labels.lbl_qrscan_no_result_help ||
-                  'Scanning code on fabric? Lay flat, smooth wrinkles & rescan.'
-                }
+                text={labels.lbl_qrscan_no_result_help}
                 textAlign="center"
                 fontFamily="secondary"
                 fontSize="fs16"
@@ -54,7 +51,7 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
               />
 
               <StyledButton
-                text={labels.lbl_qrscan_cta_retry || 'RESCAN CODE'}
+                text={labels.lbl_qrscan_cta_retry}
                 fill="WHITE"
                 marginTop="25px"
                 width="260px"

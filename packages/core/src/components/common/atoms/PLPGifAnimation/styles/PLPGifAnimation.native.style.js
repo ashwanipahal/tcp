@@ -15,3 +15,9 @@ export const StyledView = styled.View`
   right: 0;
   top: 0;
 `;
+
+export const CloseIcon = styled.Image`
+  width: 15px;
+  height: 15px;
+  padding: 12px;
+`;

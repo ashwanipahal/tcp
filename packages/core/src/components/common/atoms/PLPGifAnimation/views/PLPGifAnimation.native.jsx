@@ -1,10 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { StyledView } from '../styles/PLPGifAnimation.native.style';
+import { StyledView, CloseIcon } from '../styles/PLPGifAnimation.native.style';
 import { getLocator } from '@tcp/core/src/utils';
 import Image from '../../Image';
 import {
-  CloseIcon,
   CloseIconTouchable,
   CloseContainer,
 } from '../../../../../../../mobileapp/src/components/common/molecules/Header/Header.style';

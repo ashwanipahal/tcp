@@ -68,9 +68,7 @@ class ProductListingContainer extends React.PureComponent {
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
     if (this.state.showCustomLoader && !isDataLoading) {
-      setTimeout(() => {
-        this.resetCustomLoader();
-      }, 10000);
+      this.resetCustomLoader();
     }
   }
 

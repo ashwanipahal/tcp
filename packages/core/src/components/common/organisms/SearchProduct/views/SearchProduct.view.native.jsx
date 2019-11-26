@@ -141,6 +141,7 @@ class SearchProduct extends React.PureComponent {
    */
   renderSearchContainer = () => {
     const topStyle = { marginTop: 10 };
+    const topStyleQRScan = { marginTop: 5 };
     const cancelStyle = { borderWidth: 0, marginTop: 3 };
     const canceTextStyle = { textTransform: 'none', fontWeight: 'normal' };
     const { searchText } = this.state;
@@ -181,7 +182,7 @@ class SearchProduct extends React.PureComponent {
             size="fs25"
             color="gray.600"
             accessibilityLabel="barcode"
-            style={topStyle}
+            style={topStyleQRScan}
             isDisabled={false}
             isButton
           />

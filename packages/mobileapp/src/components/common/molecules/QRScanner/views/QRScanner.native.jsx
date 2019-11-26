@@ -39,27 +39,20 @@ class QRCode extends PureComponent {
     this.setState({ isQRNotReadable: false, isQRActive: true }, () => this.activateQRScanner());
   };
 
-  deActivateQRScanner = () => {
-    this.setState({ isQRActive: false });
-  };
-
   activateQRScanner = () => {
     this.scanner.reactivate();
   };
 
   onSuccess = e => {
-    this.deActivateQRScanner();
-    this.redirectToPLP(e && e.data);
+    this.setState({ isQRActive: false }, () => this.redirectToPLP(e && e.data));
   };
 
   topContent = () => {
     const { qrLabels } = this.props;
     return (
       <>
-        <HelpText>{qrLabels.lbl_qrscanner_help_one || 'Scan Animated Tees & More'}</HelpText>
-        <HelpText>
-          {qrLabels.lbl_qrscanner_help_two || 'Center QR code inside frame to scan.'}
-        </HelpText>
+        <HelpText>{qrLabels.lbl_qrscanner_help_one}</HelpText>
+        <HelpText>{qrLabels.lbl_qrscanner_help_two}</HelpText>
       </>
     );
   };
@@ -85,6 +78,8 @@ class QRCode extends PureComponent {
           reactivate={isQRActive}
           showMarker
           topContent={this.topContent()}
+          reactivateTimeout={2}
+          notAuthorizedView={<HelpText>{qrLabels.lbl_qrscanner_not_authorized}</HelpText>}
         />
       </Modal>
     );
