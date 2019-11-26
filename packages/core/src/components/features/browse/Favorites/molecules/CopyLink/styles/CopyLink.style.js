@@ -6,4 +6,9 @@ export default css`
       color: ${props => props.theme.colors.TEXT.RED};
     }
   }
+  .copy-link-textbox {
+    input[type='text'] {
+      padding-top: 0;
+    }
+  }
 `;

@@ -31,8 +31,13 @@ import {
   selectDefaultWishlist,
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
+  getFormErrorLabels,
 } from './Favorites.selectors';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import {
+  getUserEmail,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
@@ -136,6 +141,8 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      formErrorMessage,
+      isLoggedIn,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -175,6 +182,8 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        formErrorMessage={formErrorMessage}
+        isLoggedIn={isLoggedIn}
         {...this.state}
       />
     );
@@ -200,6 +209,8 @@ const mapStateToProps = state => {
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
+    formErrorMessage: getFormErrorLabels(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 };
 
@@ -259,6 +270,7 @@ FavoritesContainer.propTypes = {
   userEmail: PropTypes.string.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 FavoritesContainer.defaultProps = {
@@ -274,6 +286,7 @@ FavoritesContainer.defaultProps = {
   outOfStockLabels: {},
   defaultWishList: {},
   wishlistShareStatus: false,
+  isLoggedIn: false,
 };
 
 export default connect(

@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   .fixed-bread-crumb-height {
-    min-height: 67px;
+    min-height: 68px;
   }
 
   .bread-crumb,

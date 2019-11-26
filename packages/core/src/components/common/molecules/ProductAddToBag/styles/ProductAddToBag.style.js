@@ -117,6 +117,7 @@ const styles = css`
       border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
       border-top: solid 1px ${props => props.theme.colorPalette.gray[500]};
       width: 100%;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 
       .unavailable-text {
         color: ${props => props.theme.colorPalette.gray[900]};
@@ -130,7 +131,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: auto;
     width: 100%;
-    margin-bottom: 33px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;

@@ -238,9 +238,19 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { item } = this.props;
+    const { item, currencyAttributes } = this.props;
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
-    const priceRange = item && item.productInfo && item.productInfo.priceRange;
+    let priceRange = item && item.productInfo && item.productInfo.priceRange;
+
+    if (priceRange && currencyAttributes && currencyAttributes.exchangevalue) {
+      priceRange = {
+        highListPrice: currencyConversion(priceRange.highListPrice, currencyAttributes),
+        highOfferPrice: currencyConversion(priceRange.highOfferPrice, currencyAttributes),
+        lowListPrice: currencyConversion(priceRange.lowListPrice, currencyAttributes),
+        lowOfferPrice: currencyConversion(priceRange.lowOfferPrice, currencyAttributes),
+      };
+    }
+
     const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection

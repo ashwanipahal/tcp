@@ -77,8 +77,6 @@ const ExistingPLCCUserView = ({
                   pageName: 'checkout:pickup',
                   pageNavigationText: 'header-cart',
                   eVar65: 'checkout:pickup',
-                  eVar12: '09:20:21',
-                  eVar14: 'new',
                 }}
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
