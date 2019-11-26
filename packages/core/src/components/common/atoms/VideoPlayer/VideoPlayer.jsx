@@ -37,7 +37,7 @@ class VideoPlayer extends React.Component {
     };
   }
   componentDidMount() {
-    const { id, autoplay, url, muted, loop } = this.props;
+    const { id, autoplay, url, muted, loop, controls } = this.props;
     const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
@@ -48,6 +48,7 @@ class VideoPlayer extends React.Component {
       autoplay: convertNumToBool(autoplay),
       muted: convertNumToBool(muted),
       loop: convertNumToBool(loop),
+      controls: convertNumToBool(controls),
     });
 
     player.fluid(true);
@@ -58,26 +59,14 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { controls, muted, loop, url, className, autoplay } = this.props;
+    const { id, url, className } = this.props;
     const { uniqueId } = this.state;
 
     if (!url) {
       return null;
     }
-
-    const loopVideo = loop ? convertNumToBool(loop) : false;
-    const mutedVideo = muted ? convertNumToBool(muted) : false;
-    const autoplayVideo = autoplay ? convertNumToBool(autoplay) : false;
-
     return (
-      <video
-        id={id || uniqueId}
-        controls={controls}
-        muted={mutedVideo}
-        loop={loopVideo}
-        className={className}
-        autoPlay={autoplayVideo}
-      >
+      <video id={id || uniqueId} className={className}>
         <track
           src="/static/captions/captions_en.vtt"
           kind="captions"
