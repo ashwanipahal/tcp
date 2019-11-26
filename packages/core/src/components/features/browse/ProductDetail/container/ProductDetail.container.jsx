@@ -38,6 +38,7 @@ import {
   getAlternateSizes,
   getPLPPromos,
   getSizeChartDetails,
+  getPDPLoadingState,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -50,6 +51,7 @@ import {
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
+import ProductDetailSkeleton from '../molecules/ProductDetailSkeleton';
 
 /**
  * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
@@ -181,6 +183,7 @@ class ProductDetailContainer extends React.PureComponent {
       topPromos,
       middlePromos,
       bottomPromos,
+      isLoading,
       router: { asPath: asPathVal },
       sizeChartDetails,
       ...otherProps
@@ -225,6 +228,7 @@ class ProductDetailContainer extends React.PureComponent {
               sizeChartDetails={sizeChartDetails}
             />
           ) : null}
+          {isLoading ? <ProductDetailSkeleton /> : null}
         </React.Fragment>
       </>
     );
@@ -242,6 +246,7 @@ ProductDetailContainer.pageInfo = {
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
+    isLoading: getPDPLoadingState(state),
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
