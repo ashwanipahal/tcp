@@ -148,11 +148,8 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
   const venmoData = yield select(selectors.getVenmoData);
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
-  // Add Venmo Payment method to the registered user account
-  if (isVenmoSaveSelected) {
-    yield call(updateVenmoPaymentInstruction);
-  }
   if (isVenmoInProgress && venmoData) {
+    yield call(updateVenmoPaymentInstruction);
     const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
     const email = yield select(selectors.getVenmoUserEmail);
     venmoPayloadData = {

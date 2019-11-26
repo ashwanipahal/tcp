@@ -189,6 +189,7 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
       pageData: {
         pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         loadAnalyticsOnload: false,

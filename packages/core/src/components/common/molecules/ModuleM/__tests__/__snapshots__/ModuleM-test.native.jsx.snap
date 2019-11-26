@@ -68,7 +68,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           },
         ]
       }
-      renderComponentInNewLine={true}
       useStyle={true}
     />
   </Styled(View)>

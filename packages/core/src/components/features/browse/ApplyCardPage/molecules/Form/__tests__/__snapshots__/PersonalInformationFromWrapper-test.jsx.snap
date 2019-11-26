@@ -59,6 +59,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="contact_information_month"
         >
           <Field
+            aria-label="lbl_PLCC_month"
             className="field_dob"
             component={
               Object {
@@ -234,6 +235,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_day"
         >
           <Field
+            aria-label="lbl_PLCC_day"
             className="field_dob"
             component={
               Object {
@@ -485,6 +487,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_year"
         >
           <Field
+            aria-label="lbl_PLCC_year"
             className="field_dob"
             component={
               Object {

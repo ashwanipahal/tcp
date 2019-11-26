@@ -46,10 +46,7 @@ const styles = css`
   }
   .cartDetailsLink {
     position: ${props => (props.isCarouselView ? 'static' : 'absolute')};
-    font-size: ${props =>
-      props.isCarouselView
-        ? props.theme.typography.fontSizes.fs10
-        : props.theme.typography.fontSizes.fs12};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
     color: ${props => props.theme.colors.TEXT.DARK};
     ${props => (props.isCarouselView ? 'float: left;' : '')}
   }
@@ -59,6 +56,7 @@ const styles = css`
     background: ${props => props.theme.colors.TEXT.DARKERGRAY};
     color: ${props => props.theme.colors.WHITE};
     line-height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
   .couponCard__body {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}

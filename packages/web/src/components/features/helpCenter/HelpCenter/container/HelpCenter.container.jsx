@@ -1,25 +1,38 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import { MODULES_CONSTANT } from '@tcp/core/src/reduxStore/constants';
+import { createLayoutPath } from '@tcp/core/src/utils';
 import HelpCenterView from '../views/HelpCenter.view';
+import constants from '../HelpCenter.constants';
 
-HelpCenterView.getInitialProps = async ({ store, isServer }, pageProps) => {
+HelpCenterView.getInitialProps = async ({ store, isServer, query }, pageProps) => {
   const state = store.getState();
-  if (!isServer && !state.Layouts.helpcenterpage) {
-    store.dispatch(fetchPageLayout('helpcenterpage'));
+  const { pageName = constants.HELP_CENTER_HOME_PATH } = query;
+  const formattedPageName = createLayoutPath(pageName);
+  if (!isServer && !state.Layouts[formattedPageName]) {
+    store.dispatch(fetchPageLayout(pageName));
   }
   return pageProps;
 };
 
 HelpCenterView.pageInfo = {
-  pageId: 'Help Center',
-  name: 'helpcenterpage',
+  name: constants.HELP_CENTER_HOME_PATH,
+  staticPage: true,
+  paramName: 'pageName',
+  defaultName: constants.HELP_CENTER_HOME_PATH,
 };
 
-const mapStateToProps = state => {
-  // TO DO - Replace the mock with the state.
+// eslint-disable-next-line sonarjs/cognitive-complexity
+const mapStateToProps = (state, props) => {
+  const {
+    router: {
+      query: { pageName = constants.HELP_CENTER_HOME_PATH },
+    },
+  } = props;
   const { Layouts, Modules } = state;
-  const helpCenterPageSlots = Layouts.helpcenterpage ? Layouts.helpcenterpage.slots : [];
+  const formattedPageName = createLayoutPath(pageName);
+  const helpCenterPageSlots = Layouts[formattedPageName] ? Layouts[formattedPageName].slots : [];
 
   return {
     slots: helpCenterPageSlots.map(slot => {
@@ -41,7 +54,9 @@ const mapStateToProps = state => {
               ? Modules[contentId]
               : {
                   ...Modules[contentId],
-                  [placeHolderName]: state[Modules[contentId].moduleClassName][placeHolderName],
+                  [placeHolderName]: Modules[contentId]
+                    ? state[Modules[contentId].moduleClassName][placeHolderName]
+                    : '',
                 }
           );
         });
@@ -57,4 +72,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(HelpCenterView);
+export default withRouter(connect(mapStateToProps)(HelpCenterView));

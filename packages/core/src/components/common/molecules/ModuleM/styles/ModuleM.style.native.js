@@ -33,8 +33,10 @@ export const HeaderContainer = styled.View`
 `;
 
 export const SecondHeaderContainer = styled.View`
-  margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.SM};
-  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 12px;
 `;
 
 export const PromoContainer = styled.View`
@@ -74,7 +76,7 @@ export const ImageContainer = styled.View`
 
 export const Tile = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  margin-right: ${props => (getIndexes(props.imageCount).includes(props.tileIndex) ? `0` : `19px`)};
+  margin-right: ${props => (getIndexes(props.imageCount).includes(props.tileIndex) ? `0` : `10px`)};
 `;
 
 export default {

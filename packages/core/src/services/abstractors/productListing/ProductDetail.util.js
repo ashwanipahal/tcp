@@ -301,7 +301,7 @@ const getColorfitsSizesMap = ({
           processHelpers.getProductAttributes().onModelAltImages
         ),
         videoUrl: extractAttributeValue(itemColor, productAttributes.videoUrl),
-        keepAlive: parseBoolean(extractAttributeValue(itemColor, productAttributes.keepAlive)),
+        keepAlive: parseBoolean(itemColor[productAttributes.keepAlive]),
       },
       fits: colorsFitsMap[colorName],
       listPrice:

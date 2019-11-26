@@ -2,6 +2,7 @@
 
 exports[`BackToTop component BackToTop component renders correctly 1`] = `
 <button
+  aria-label="Scroll to top"
   className=" scrollToTopBtn scrollToTopBtn--hide"
   onClick={[Function]}
 >
