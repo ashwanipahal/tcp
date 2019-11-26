@@ -7,6 +7,7 @@ export const QuickViewAddToBagButton = ({
   onClickActn,
   quickViewLabels,
   showAddProductValidation,
+  dataLocator,
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ export const QuickViewAddToBagButton = ({
           </BodyCopy>
         )}
         <Button
+          data-locator={dataLocator || 'SINGLE_QV_ATB'}
           className="add-to-bag-button"
           type="submit"
           buttonVariation="fixed-width"

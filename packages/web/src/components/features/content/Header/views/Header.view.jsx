@@ -145,7 +145,7 @@ class Header extends React.PureComponent {
           labels={labels}
           setClickAnalyticsData={setClickAnalyticsData}
         />
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
+        <OverlayModal showCondensedHeader={showCondensedHeader} isLoggedIn={isLoggedIn} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"

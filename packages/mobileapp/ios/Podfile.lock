@@ -19,6 +19,31 @@ PODS:
     - AppCenter/Core (= 2.4.0)
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
+  - Braintree (4.30.2):
+    - Braintree/Card (= 4.30.2)
+    - Braintree/Core (= 4.30.2)
+    - Braintree/PayPal (= 4.30.2)
+    - Braintree/UI (= 4.30.2)
+  - Braintree/Card (4.30.2):
+    - Braintree/Core
+  - Braintree/Core (4.30.2)
+  - Braintree/PayPal (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.30.2)
+  - Braintree/UI (4.30.2):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/Venmo (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
   - CodePush (5.7.0):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.7)
@@ -367,6 +392,8 @@ DEPENDENCIES:
   - appcenter (from `../../../node_modules/appcenter/ios`)
   - appcenter-analytics (from `../../../node_modules/appcenter-analytics/ios`)
   - appcenter-crashes (from `../../../node_modules/appcenter-crashes/ios`)
+  - Braintree
+  - Braintree/Venmo
   - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -437,6 +464,7 @@ SPEC REPOS:
     - AppCenterReactNativeShared
     - Base64
     - boost-for-react-native
+    - Braintree
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -583,6 +611,7 @@ SPEC CHECKSUMS:
   AppCenterReactNativeShared: 57a66e6539e9abe6079ba8f93a002bc3f95788cc
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  Braintree: 9fc21dc2ead57d104c4a0743454308e404217ec7
   CodePush: d2e54ad42df82a8db65b2d23d8191b950ba945e1
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: 0846affdb2924b01093eb696766ecb0104e409e0
@@ -654,6 +683,6 @@ SPEC CHECKSUMS:
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: 4462b26b0b6bc98476ef4801fbed3d949e3f4430
+PODFILE CHECKSUM: 33ce061ff04279ba22dcc061d9e456f50810b394
 
 COCOAPODS: 1.8.4

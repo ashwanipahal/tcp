@@ -198,6 +198,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       isShowMessage,
       getIsBopisAvailable,
       isGetUserStoresLoaded,
+      handleUpdatePickUpItem,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -209,6 +210,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           isShoppingBag={isShoppingBag}
           store={preferredStore}
           onStoreSelect={handleAddTobag}
+          onStoreUpdate={handleUpdatePickUpItem}
           onPickupRadioBtnToggle={handlePickupRadioBtn}
           isBopisSelected={preferredStore.basicInfo.id === selectedStoreId && !isBossSelected}
           isBossSelected={preferredStore.basicInfo.id === selectedStoreId && isBossSelected}

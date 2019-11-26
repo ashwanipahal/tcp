@@ -46,11 +46,25 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
-  componentDidUpdate = () => {
-    const { errorOnHandleSubmit } = this.props;
-    if (errorOnHandleSubmit) {
-      this.onToastMessage(errorOnHandleSubmit);
+  componentDidUpdate = prevProps => {
+    const {
+      errorOnHandleSubmit,
+      isErrorMessageDisplayed,
+      plpLabels: { errorMessage },
+      toastMessage,
+      displayErrorMessage,
+    } = this.props;
+    const changeInFormValidationError =
+      isErrorMessageDisplayed && isErrorMessageDisplayed !== prevProps.isErrorMessageDisplayed;
+    if (errorOnHandleSubmit || changeInFormValidationError) {
+      if (changeInFormValidationError) {
+        // This is to provide functionality to trigger error from container as well.
+        toastMessage(errorMessage); // calling this method directly as state's showToastMessage is never reset and toast message is not displayed second time
+        return displayErrorMessage(false); // calling this method to call didUpdate when isErrorMessageDisplayed is set true again
+      }
+      return this.onToastMessage(errorOnHandleSubmit);
     }
+    return null;
   };
 
   /**
@@ -81,7 +95,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
         onPress={() => {
           if (fitChanged) {
             displayErrorMessage(fitChanged);
-            toastMessage(errorMessage);
           } else {
             handleFormSubmit();
           }

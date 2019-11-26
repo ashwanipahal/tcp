@@ -970,6 +970,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="container_state"
         >
           <Field
+            aria-label="state"
             className="field stateField"
             component={
               Object {
