@@ -29,7 +29,7 @@ const modules = {
 const userSpecificModuleX = (userType, isPlcc, isLoggedIn) => {
   if (
     (userType === 'plcc' && isPlcc) ||
-    (userType === 'mpr' && isLoggedIn) ||
+    (userType === 'mpr' && !isPlcc && isLoggedIn) ||
     (userType === 'guest' && !isLoggedIn)
   ) {
     return true;
