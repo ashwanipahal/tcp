@@ -19,6 +19,11 @@ import {
   getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag, isFavoriteEdit) => {
+  const updateAddedItem = fromBagPage || isFavoriteEdit;
+  return updateAddedItem ? handleUpdateItem : handleAddToBag;
+};
+
 const ProductCustomizeFormPart = props => {
   const {
     className,
@@ -48,6 +53,7 @@ const ProductCustomizeFormPart = props => {
     quickViewColorSwatchesCss,
     onCloseClick,
     isGiftCard,
+    isFavoriteEdit,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -156,7 +162,12 @@ const ProductCustomizeFormPart = props => {
               plpLabels={plpLabels}
               currentProduct={productInfo}
               errorOnHandleSubmit={addToBagError}
-              handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
+              handleFormSubmit={handleFormSubmit(
+                fromBagPage,
+                handleUpdateItem,
+                handleAddToBag,
+                isFavoriteEdit
+              )}
               fromBagPage={fromBagPage}
               productInfoFromBag={productInfoFromBag}
               customSubmitButtonStyle={customSubmitButtonStyle}
@@ -166,6 +177,7 @@ const ProductCustomizeFormPart = props => {
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
+              isFavoriteEdit={isFavoriteEdit}
             />
           </div>
         </div>
@@ -205,6 +217,7 @@ ProductCustomizeFormPart.propTypes = {
   productInfoFromBag: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func,
   isGiftCard: PropTypes.bool,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -221,6 +234,7 @@ ProductCustomizeFormPart.defaultProps = {
   quickViewColorSwatchesCss: '',
   onCloseClick: () => {},
   isGiftCard: false,
+  isFavoriteEdit: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

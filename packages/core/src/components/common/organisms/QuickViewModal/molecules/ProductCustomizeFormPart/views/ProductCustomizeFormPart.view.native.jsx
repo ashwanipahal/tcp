@@ -22,8 +22,9 @@ import {
   getProductListToPathInMobileApp,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
-const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag) => {
-  return fromBagPage ? handleUpdateItem : handleAddToBag;
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag, isFavoriteEdit) => {
+  const updateAddedItem = fromBagPage || isFavoriteEdit;
+  return updateAddedItem ? handleUpdateItem : handleAddToBag;
 };
 const getPointerEvents = formEnabled => (formEnabled ? 'auto' : 'none');
 const getCurrencySymbol = currency => (currency === 'USD' ? '$' : currency);
@@ -51,7 +52,7 @@ const ProductCustomizeFormPart = props => {
     ...otherProps
   } = props;
 
-  const { fromBagPage, productInfoFromBag } = otherProps;
+  const { fromBagPage, productInfoFromBag, isFavoriteEdit } = otherProps;
 
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const { badge2, listPrice, offerPrice } = prices;
@@ -152,7 +153,12 @@ const ProductCustomizeFormPart = props => {
           onChangeColor={onChangeColor}
           plpLabels={plpLabels}
           currentProduct={productInfo}
-          handleFormSubmit={handleFormSubmit(fromBagPage, handleUpdateItem, handleAddToBag)}
+          handleFormSubmit={handleFormSubmit(
+            fromBagPage,
+            handleUpdateItem,
+            handleAddToBag,
+            isFavoriteEdit
+          )}
           errorOnHandleSubmit={addToBagError}
           fromBagPage={fromBagPage}
           productInfoFromBag={productInfoFromBag}
@@ -161,6 +167,7 @@ const ProductCustomizeFormPart = props => {
           toastMessage={toastMessage}
           onCloseClick={onCloseClick}
           isFromBagProductSfl={isFromBagProductSfl}
+          isFavoriteEdit={isFavoriteEdit}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>
@@ -190,6 +197,7 @@ ProductCustomizeFormPart.propTypes = {
   onInputSelectionChange: PropTypes.func.isRequired,
   toastMessage: PropTypes.func,
   onCloseClick: PropTypes.func,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -198,6 +206,7 @@ ProductCustomizeFormPart.defaultProps = {
   navigation: {},
   toastMessage: () => {},
   onCloseClick: () => {},
+  isFavoriteEdit: false,
 };
 
 export default ProductCustomizeFormPart;

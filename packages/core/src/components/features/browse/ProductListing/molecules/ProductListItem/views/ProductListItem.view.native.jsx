@@ -31,6 +31,7 @@ import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/
 import ImageCarousel from '../../ImageCarousel';
 import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
@@ -38,18 +39,26 @@ const TextProps = {
 
 let renderVariation = false;
 
-const onCTAHandler = (
-  item,
-  selectedColorIndex,
-  onGoToPDPPage,
-  onQuickViewOpenClick,
-  isFavoriteOOS,
-  setLastDeletedItemId
-) => {
+// eslint-disable-next-line complexity
+const onCTAHandler = props => {
+  const {
+    item,
+    selectedColorIndex,
+    onGoToPDPPage,
+    onQuickViewOpenClick,
+    isFavoriteOOS,
+    setLastDeletedItemId,
+    handleAddToBag,
+    addToBagEcom,
+    isFavoriteEdit,
+  } = props;
   const { productInfo, colorsMap } = item;
-  const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { pdpUrl, isGiftCard, bundleProduct, generalProductId } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = item;
   if (isFavoriteOOS) {
     const {
       itemInfo: { itemId },
@@ -58,9 +67,29 @@ const onCTAHandler = (
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
-    onQuickViewOpenClick({
-      colorProductId,
-    });
+    if (skuId && size) {
+      let cartItemInfo = getCartItemInfo(item, {});
+      cartItemInfo = { ...cartItemInfo };
+      if (addToBagEcom) addToBagEcom(cartItemInfo);
+    } else if (isFavoriteEdit) {
+      const { itemId, quantity } = item.itemInfo;
+      onQuickViewOpenClick({
+        colorProductId: colorProductId,
+        orderInfo: {
+          orderItemId: itemId,
+          selectedQty: quantity,
+          selectedColor: color,
+          selectedSize: size,
+          selectedFit: fit,
+          skuId: skuId,
+        },
+        isFavoriteEdit: true,
+      });
+    } else {
+      onQuickViewOpenClick({
+        colorProductId,
+      });
+    }
   }
 };
 
@@ -80,6 +109,7 @@ const renderAddToBagContainer = ({
   outOfStockLabels,
   isFavorite,
   setLastDeletedItemId,
+  addToBagEcom,
 }) => {
   if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
@@ -87,6 +117,15 @@ const renderAddToBagContainer = ({
     : labelsPlpTiles.lbl_add_to_bag;
   const isFavoriteOOS = isFavorite && keepAlive;
 
+  const ctaProps = {
+    item,
+    selectedColorIndex,
+    onGoToPDPPage,
+    onQuickViewOpenClick,
+    isFavoriteOOS,
+    setLastDeletedItemId,
+    addToBagEcom,
+  };
   return (
     <AddToBagContainer>
       <CustomButton
@@ -101,16 +140,7 @@ const renderAddToBagContainer = ({
             ? getOOSButtonLabel(isFavoriteOOS, outOfStockLabels, labelsPlpTiles)
             : buttonLabel
         }
-        onPress={() =>
-          onCTAHandler(
-            item,
-            selectedColorIndex,
-            onGoToPDPPage,
-            onQuickViewOpenClick,
-            isFavoriteOOS,
-            setLastDeletedItemId
-          )
-        }
+        onPress={() => onCTAHandler(ctaProps)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
         margin="0 6px 0 0"
       />
@@ -130,10 +160,18 @@ renderAddToBagContainer.propTypes = {
   outOfStockLabels: PropTypes.shape({}).isRequired,
   isFavorite: PropTypes.bool.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
 };
 
 const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
-  onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
+  const ctaProps = {
+    item,
+    selectedColorIndex,
+    onGoToPDPPage,
+    onQuickViewOpenClick,
+    isFavoriteEdit: true,
+  };
+  onCTAHandler(ctaProps);
 };
 
 const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {
@@ -174,6 +212,7 @@ const ListItem = props => {
     isKeepAliveEnabled,
     outOfStockLabels,
     renderMoveToList,
+    addToBagEcom,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -262,6 +301,7 @@ const ListItem = props => {
         outOfStockLabels,
         isFavorite,
         setLastDeletedItemId,
+        addToBagEcom,
       })}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
@@ -715,6 +755,7 @@ ListItem.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
 };
 
 ListItem.defaultProps = {
@@ -747,6 +788,7 @@ ListItem.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   renderMoveToList: () => {},
+  addToBagEcom: () => {},
 };
 
 export default withStyles(ListItem, styles);

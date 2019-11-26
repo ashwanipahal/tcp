@@ -143,6 +143,7 @@ class ProductList extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       renderMoveToList,
+      addToBagEcom,
     } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
@@ -183,6 +184,7 @@ class ProductList extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         renderMoveToList={renderMoveToList}
+        addToBagEcom={addToBagEcom}
       />
     );
   };
@@ -355,6 +357,7 @@ ProductList.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -391,6 +394,7 @@ ProductList.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   renderMoveToList: () => {},
+  addToBagEcom: () => {},
 };
 
 export default withStyles(ProductList, styles);

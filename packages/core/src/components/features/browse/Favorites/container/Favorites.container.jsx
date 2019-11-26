@@ -40,6 +40,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 class FavoritesContainer extends React.PureComponent {
   state = {
@@ -143,6 +144,7 @@ class FavoritesContainer extends React.PureComponent {
       setListShareSuccess,
       formErrorMessage,
       isLoggedIn,
+      addToBagEcom,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -184,6 +186,7 @@ class FavoritesContainer extends React.PureComponent {
         resetBrandFilters={this.resetBrandFilters}
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
+        addToBagEcom={addToBagEcom}
         {...this.state}
       />
     );
@@ -238,6 +241,9 @@ const mapDispatchToProps = dispatch => {
     updateWishList: payload => {
       dispatch(updateWishListAction(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
   };
 };
 
@@ -271,6 +277,7 @@ FavoritesContainer.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  addToBagEcom: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {

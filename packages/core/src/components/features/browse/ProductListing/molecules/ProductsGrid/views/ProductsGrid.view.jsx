@@ -49,6 +49,7 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: PropTypes.func,
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
+    addToBagEcom: PropTypes.func,
   };
 
   static defaultProps = {
@@ -69,6 +70,7 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: () => {},
     openAddNewList: () => {},
     activeWishListId: '',
+    addToBagEcom: () => {},
   };
 
   constructor(props, context) {

@@ -551,6 +551,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      addToBagEcom,
     } = this.props;
 
     const { selectedShareOption } = this.state;
@@ -684,6 +685,7 @@ class FavoritesView extends React.PureComponent {
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
+              addToBagEcom={addToBagEcom}
             />
           </View>
         )}
@@ -727,6 +729,7 @@ FavoritesView.propTypes = {
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

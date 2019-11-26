@@ -3,6 +3,7 @@
 exports[`ProductListContainer component should render correctly 1`] = `
 <Styled(ProductListView)
   AddToFavoriteErrorMsg=""
+  addToBagEcom={[Function]}
   breadCrumbs={Array []}
   categoryId=""
   currentNavIds={Array []}

@@ -134,6 +134,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return firstSizeName;
   };
 
+  // eslint-disable-next-line complexity
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
     const colorFitsSizesMapEntry = currentProduct
       ? this.getMapSliceForColorProductId(
@@ -145,9 +146,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
     let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
-    const { fromBagPage } = this.props;
+    const { fromBagPage, isFavoriteEdit } = this.props;
 
-    if (fromBagPage) {
+    if (fromBagPage || isFavoriteEdit) {
       const { productInfoFromBag } = this.props;
       initialFormValues = {
         color: productInfoFromBag.selectedColor,
@@ -468,6 +469,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      isFavoriteEdit,
       ...otherProps
     } = this.props;
     const {
@@ -537,6 +539,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        isFavoriteEdit={isFavoriteEdit}
       />
     );
   }

@@ -32,6 +32,7 @@ import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -307,11 +308,20 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick } = this.props;
+    const { onQuickViewOpenClick, item, addToBagEcom } = this.props;
+    const {
+      skuInfo: { skuId, size, fit, color },
+    } = item;
     const { selectedColorProductId } = this.state;
-    onQuickViewOpenClick({
-      colorProductId: selectedColorProductId,
-    });
+    if (skuId && size) {
+      let cartItemInfo = getCartItemInfo(item, {});
+      cartItemInfo = { ...cartItemInfo };
+      if (addToBagEcom) addToBagEcom(cartItemInfo);
+    } else {
+      onQuickViewOpenClick({
+        colorProductId: selectedColorProductId,
+      });
+    }
   };
 
   handleViewBundleClick = () => {
