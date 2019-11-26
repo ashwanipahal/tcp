@@ -31,6 +31,7 @@ import {
   selectDefaultWishlist,
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
+  getFormErrorLabels,
 } from './Favorites.selectors';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -136,6 +137,7 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      formErrorMessage,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -175,6 +177,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        formErrorMessage={formErrorMessage}
         {...this.state}
       />
     );
@@ -200,6 +203,7 @@ const mapStateToProps = state => {
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
+    formErrorMessage: getFormErrorLabels(state),
   };
 };
 
