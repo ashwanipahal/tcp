@@ -11,7 +11,7 @@ import getStandardConfig from '../../../../utils/formValidation/validatorStandar
 import Recaptcha from '../../molecules/recaptcha/recaptcha';
 import Router from 'next/router'; //eslint-disable-line
 import InputCheckbox from '../../atoms/InputCheckbox';
-import constants from '../../../features/account/Payment/AddGiftCard/container/AddGiftCard.container';
+import constants from '../../../features/account/Payment/AddGiftCard/AddGiftCard.constants';
 
 // @flow
 
