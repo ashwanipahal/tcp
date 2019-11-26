@@ -1058,10 +1058,10 @@ export const getQueryParamsFromUrl = (url, queryParam) => {
     keyValPairs = queryString.split('&');
     const resultingArray = Object.values(keyValPairs);
 
-    resultingArray.filter(item => {
+    resultingArray.filter((item, index) => {
       const key = item.split('=')[0];
       if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[0].split('=')[1]);
+      params[key].push(resultingArray[index].split('=')[1]);
       return params;
     });
   }
