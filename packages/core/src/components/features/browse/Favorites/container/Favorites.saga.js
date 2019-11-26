@@ -43,10 +43,8 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   const { wishlistId, guestAccessKey } = payload;
   try {
     const state = yield select();
-
-    // TO DO Fix getUser Selector
-    // const userName = getUserContactInfo(state).get('firstName');
-    const userName = 'sid';
+    yield put(setLoadingState({ isDataLoading: true }));
+    const userName = getUserContactInfo(state) && getUserContactInfo(state).get('firstName');
     const isCanadaCheck = isCanada();
     const wishlistItems = yield call(getWishListbyId, {
       wishlistId,
@@ -57,8 +55,10 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
     });
     yield put(getSetIsWishlistReadOnlyAction(true));
     yield put(setActiveWishlistAction(wishlistItems));
+    yield put(setLoadingState({ isDataLoading: false }));
     return wishlistItems;
   } catch (err) {
+    yield put(setLoadingState({ isDataLoading: false }));
     return [];
   }
 }

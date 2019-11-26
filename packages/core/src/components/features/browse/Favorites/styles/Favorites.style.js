@@ -6,6 +6,14 @@ export default css`
       color: ${props => props.theme.colors.TEXT.LIGHTGRAY};
     }
   }
+  .heading-wrapper {
+    ${props =>
+      props.guestAccessKey ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.MED}` : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props =>
+        props.guestAccessKey ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XXL};` : ''}
+    }
+  }
   .favorite-title {
     padding-bottom: 12px;
     border-bottom: 3px solid black;

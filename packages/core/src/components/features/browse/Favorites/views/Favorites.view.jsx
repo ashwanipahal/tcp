@@ -391,6 +391,8 @@ class FavoritesView extends React.PureComponent {
       onSortSelection,
       defaultWishList,
       isDataLoading,
+      guestAccessKey,
+      activeDisplayName,
     } = this.props;
 
     const shareOptions = [
@@ -421,53 +423,62 @@ class FavoritesView extends React.PureComponent {
 
     const filteredItemsList = this.getFilteredItemsList();
     if (isDataLoading) return '';
+    const myFavLabel = labels.lbl_fav_myFavorites;
     return (
       <div className={className}>
         {this.renderModalWrapper()}
-        <Row fullBleed>
-          <Col
-            colSize={{ small: 6, medium: 8, large: 12 }}
-            ignoreGutter={{ small: true, medium: true, large: true }}
-          >
-            <BodyCopy fontWeight="extrabold" fontSize="fs16" className="favorite-title">
-              {labels.lbl_fav_myFavorites}
-            </BodyCopy>
-          </Col>
-        </Row>
-        <Row fullBleed className="list-selection-row">
-          <Col colSize={{ small: 6, medium: 6, large: 8 }}>
-            <Row fullBleed>
-              <Col colSize={{ small: 6, medium: 5, large: 6 }} offsetLeft={{ medium: 3, large: 6 }}>
-                <SelectWishListDropdown
-                  labels={labels}
-                  wishlistsSummaries={wishlistsSummaries}
-                  createNewWishList={createNewWishList}
-                  getActiveWishlist={this.onDropdownChange}
-                  activeWishList={activeWishList}
-                  defaultWishList={defaultWishList}
-                  openAddNewList={this.handleAddList}
-                  openEditList={this.handleEditList}
-                />
+        <div className="heading-wrapper">
+          <Row fullBleed>
+            <Col
+              colSize={{ small: 6, medium: 8, large: 12 }}
+              ignoreGutter={{ small: true, medium: true, large: true }}
+            >
+              <BodyCopy fontWeight="extrabold" fontSize="fs16" className="favorite-title">
+                {guestAccessKey ? activeDisplayName : myFavLabel}
+              </BodyCopy>
+            </Col>
+          </Row>
+        </div>
+        {!guestAccessKey && (
+          <>
+            <Row fullBleed className="list-selection-row">
+              <Col colSize={{ small: 6, medium: 6, large: 8 }}>
+                <Row fullBleed>
+                  <Col
+                    colSize={{ small: 6, medium: 5, large: 6 }}
+                    offsetLeft={{ medium: 3, large: 6 }}
+                  >
+                    <SelectWishListDropdown
+                      labels={labels}
+                      wishlistsSummaries={wishlistsSummaries}
+                      createNewWishList={createNewWishList}
+                      getActiveWishlist={this.onDropdownChange}
+                      activeWishList={activeWishList}
+                      defaultWishList={defaultWishList}
+                      openAddNewList={this.handleAddList}
+                      openEditList={this.handleEditList}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+              <Col colSize={{ small: 6, medium: 2, large: 4 }}>
+                <Row fullBleed>
+                  <Col
+                    colSize={{ small: 2, medium: 6, large: 4 }}
+                    offsetLeft={{ small: 4, medium: 2, large: 8 }}
+                  >
+                    <CustomSelect
+                      options={shareOptions}
+                      activeTitle={labels.lbl_fav_share}
+                      clickHandler={(e, value) => this.shareClickHandler(value)}
+                      customSelectClassName="social-share-fav-list"
+                    />
+                  </Col>
+                </Row>
               </Col>
             </Row>
-          </Col>
-          <Col colSize={{ small: 6, medium: 2, large: 4 }}>
-            <Row fullBleed>
-              <Col
-                colSize={{ small: 2, medium: 6, large: 4 }}
-                offsetLeft={{ small: 4, medium: 2, large: 8 }}
-              >
-                <CustomSelect
-                  options={shareOptions}
-                  activeTitle={labels.lbl_fav_share}
-                  clickHandler={(e, value) => this.shareClickHandler(value)}
-                  customSelectClassName="social-share-fav-list"
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-
+          </>
+        )}
         {activeWishList && activeWishList.items.length !== 0 ? (
           <>
             <Row fullBleed>

@@ -148,8 +148,10 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      router: {
+        query: { wishlistId, guestAccessKey },
+      },
     } = this.props;
-
     const { selectedColorProductId } = this.state;
 
     return (
@@ -187,6 +189,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        guestAccessKey={guestAccessKey}
         {...this.state}
       />
     );
