@@ -664,6 +664,12 @@ export const constructToPath = url => {
   return toPath;
 };
 
+export const createLayoutPath = path =>
+  path &&
+  path.replace(/-([a-z])/g, g => {
+    return g[1].toUpperCase();
+  });
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -695,4 +701,5 @@ export default {
   enableBodyScroll,
   disableBodyScroll,
   isAndroidWeb,
+  createLayoutPath,
 };

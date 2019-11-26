@@ -39,6 +39,7 @@ export {
   isMobileWeb,
   removeBodyScrollLocks,
   isAndroidWeb,
+  createLayoutPath,
 } from './utils.web';
 
 export {
@@ -52,6 +53,7 @@ export {
   getIconPath,
   getFlagIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   isUsOnly,
