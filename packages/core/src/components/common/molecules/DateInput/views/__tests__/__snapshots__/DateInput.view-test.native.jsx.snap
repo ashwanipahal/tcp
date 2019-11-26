@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateInput component should render DatePicker component 1`] = `
+<Fragment>
+  <TouchableOpacity
+    accessibilityRole="button"
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Styled(TextBox)
+      ariaLabel="input"
+      autoCapitalize="sentences"
+      dataLocator="input-field"
+      editable={false}
+      enableSuccessCheck={false}
+      id="input"
+      input={
+        Object {
+          "value": "",
+        }
+      }
+      keyboardType="default"
+      label="input"
+      marginBottom={true}
+      meta={
+        Object {
+          "error": "",
+          "touched": "",
+        }
+      }
+      onChangeText={[Function]}
+      pointerEvents="none"
+      secureTextEntry={false}
+      showErrorIcon={true}
+      showSuccessCheck={false}
+      successText=""
+      type="text"
+    />
+  </TouchableOpacity>
+</Fragment>
+`;

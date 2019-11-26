@@ -201,9 +201,9 @@ target 'mobileapp' do
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
 
-
-
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
 
   # target 'mobileappTests' do
   #   inherit! :search_paths
