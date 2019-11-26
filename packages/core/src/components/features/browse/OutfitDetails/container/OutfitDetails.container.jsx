@@ -1,5 +1,6 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -8,11 +9,13 @@ import {
   getOutfitProducts,
   getAddedToBagErrorCatId,
   getPDPLabels,
+  getUnavailableCount,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
   getPlpLabels,
   getCurrencyAttributes,
+  getPLPPromos,
 } from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
 import {
@@ -38,6 +41,7 @@ import {
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -95,6 +99,7 @@ class OutfitDetailsContainer extends React.PureComponent {
     const {
       labels,
       outfitImageUrl,
+      unavailableCount,
       outfitProducts,
       plpLabels,
       isPlcc,
@@ -110,8 +115,11 @@ class OutfitDetailsContainer extends React.PureComponent {
       isLoggedIn,
       navigation,
       pdpLabels,
+      toastMessage,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      topPromos,
+      router: { asPath: asPathVal },
     } = this.props;
     const { outfitIdLocal } = this.state;
     if (outfitProducts) {
@@ -119,6 +127,7 @@ class OutfitDetailsContainer extends React.PureComponent {
         <OutfitDetails
           labels={labels}
           outfitImageUrl={outfitImageUrl}
+          unavailableCount={unavailableCount}
           outfitProducts={outfitProducts}
           plpLabels={plpLabels}
           isCanada={isCanada()}
@@ -137,8 +146,11 @@ class OutfitDetailsContainer extends React.PureComponent {
           navigation={navigation}
           outfitId={outfitIdLocal}
           pdpLabels={pdpLabels}
+          toastMessage={toastMessage}
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          asPathVal={asPathVal}
+          topPromos={topPromos}
         />
       );
     }
@@ -148,12 +160,18 @@ class OutfitDetailsContainer extends React.PureComponent {
 
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
+  pageData: {
+    pageName: 'product',
+    pageSection: 'product',
+    pageSubSection: 'product',
+  },
 };
 
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     outfitImageUrl: getOutfitImage(state),
+    unavailableCount: getUnavailableCount(state),
     outfitProducts: getOutfitProducts(state),
     plpLabels: getPlpLabels(state),
     isCanada: isCanada(),
@@ -168,6 +186,7 @@ const mapStateToProps = state => {
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     pdpLabels: getPDPLabels(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
   };
 };
 
@@ -185,6 +204,9 @@ function mapDispatchToProps(dispatch) {
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
@@ -194,6 +216,7 @@ function mapDispatchToProps(dispatch) {
 OutfitDetailsContainer.propTypes = {
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   router: PropTypes.shape({
     query: PropTypes.shape({}),
@@ -212,6 +235,7 @@ OutfitDetailsContainer.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
@@ -219,6 +243,7 @@ OutfitDetailsContainer.propTypes = {
 OutfitDetailsContainer.defaultProps = {
   labels: {},
   outfitImageUrl: '',
+  unavailableCount: 0,
   outfitProducts: null,
   router: {
     query: {},
@@ -234,6 +259,7 @@ OutfitDetailsContainer.defaultProps = {
   isPickupModalOpen: false,
   isLoggedIn: false,
   pdpLabels: {},
+  toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
 };

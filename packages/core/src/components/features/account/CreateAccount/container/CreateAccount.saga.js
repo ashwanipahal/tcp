@@ -1,7 +1,8 @@
-import { takeLatest, call, put, delay } from 'redux-saga/effects';
+import { takeLatest, call, put, delay, take } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
+import CONSTANTS from '../../User/User.constants';
 import { getUserInfo } from '../../User/container/User.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { createAccountErr, setLoadingState } from './CreateAccount.actions';
@@ -30,10 +31,10 @@ export function* createsaga({ payload }) {
     yield put(
       setClickAnalyticsData({
         eventName: 'create account',
+        customEvents: ['event13', 'event14'],
         pageNavigationText: 'header-create account',
       })
     );
-    yield put(trackClick('register_submit'));
     /* istanbul ignore else */
     if (res.body) {
       if (res.body.errors) {
@@ -46,10 +47,14 @@ export function* createsaga({ payload }) {
         yield put(setCreateAccountSuccess(false));
       }
       yield put(navigateXHRAction());
-      return yield put(getUserInfo());
+      yield put(setLoaderState(false));
+      yield put(getUserInfo());
+      // Trgigger analytics event after register user call done
+      yield take(CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE);
+      return yield put(trackClick({ name: 'user_register', module: 'account' }));
     }
     const resErr = getErrorMessage(res);
-    yield put(setLoaderState(false));
+
     return yield put(createAccountErr(resErr));
   } catch (err) {
     const { errorCode, errorMessage } = err;

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getLocator } from '../../../../../utils';
+import { getLocator, isGymboree } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, BodyCopy } from '../../../atoms';
 import {
@@ -85,6 +85,13 @@ class ModuleM extends React.PureComponent {
     });
   };
 
+  getConfig = () => {
+    return {
+      headerfontSize: isGymboree() ? 'fs20' : 'fs32',
+      headerFontWeight: isGymboree() ? 'regular' : 'black',
+    };
+  };
+
   render() {
     const { headerText, promoBanner, divTabs, navigation } = this.props;
     const { currentTabItem } = this.state;
@@ -97,6 +104,7 @@ class ModuleM extends React.PureComponent {
     const { smallCompImage, linkClass } = currentTabData;
     const totalImages = smallCompImage && smallCompImage.length;
     const imageDimension = this.getImageDimension(totalImages);
+    const { headerfontSize, headerFontWeight } = this.getConfig();
     return (
       <Container>
         <HeaderContainer>
@@ -106,10 +114,10 @@ class ModuleM extends React.PureComponent {
               headerText={[headerText[0]]}
               testID={getLocator('moduleM_header_text_0')}
               fontFamily="primary"
-              fontSize="fs32"
+              fontSize={headerfontSize}
               textAlign="center"
               color="text.primary"
-              fontWeight="black"
+              fontWeight={headerFontWeight}
               type="heading"
             />
           )}
@@ -120,7 +128,6 @@ class ModuleM extends React.PureComponent {
               navigation={navigation}
               headerText={[headerText[1]]}
               testID={getLocator('moduleM_header_text_1')}
-              renderComponentInNewLine
               useStyle
             />
           )}

@@ -52,7 +52,7 @@ class SearchDetail extends React.PureComponent {
         dataLocator="slp_store_name_value"
         fontFamily="secondary"
         fontSize="fs16"
-        fontWeight="semibold"
+        fontWeight={suggestion ? 'black' : 'semibold'}
         color={suggestion ? 'blue.800' : 'gray.900'}
         text={text}
       />

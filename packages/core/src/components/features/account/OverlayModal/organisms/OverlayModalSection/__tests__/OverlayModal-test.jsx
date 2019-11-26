@@ -94,6 +94,7 @@ describe('OverlayModal', () => {
     const mockedEvent = {
       target: {
         closest: jest.fn(),
+        hasAttribute: jest.fn(),
       },
       stopImmediatePropagation: jest.fn(),
     };
@@ -121,6 +122,7 @@ describe('OverlayModal', () => {
     const mockedEvent = {
       target: {
         closest: jest.fn(),
+        hasAttribute: jest.fn(),
       },
       stopImmediatePropagation: jest.fn(),
     };

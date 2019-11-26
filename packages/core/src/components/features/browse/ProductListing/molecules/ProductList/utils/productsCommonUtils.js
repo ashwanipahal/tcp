@@ -126,6 +126,27 @@ export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) 
 }
 
 /**
+ * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
+ */
+export function getMapSliceForSizeSkuID(colorProduct, size) {
+  let skuId;
+  if (colorProduct && colorProduct.fits && Array.isArray(colorProduct.fits)) {
+    for (let i = 0; i < colorProduct.fits.length; i++) {
+      const fitsMap = colorProduct.fits[i];
+      for (let j = 0; j < fitsMap.sizes.length; j++) {
+        const sizesMap = fitsMap.sizes[j];
+        if (sizesMap.sizeName === size) {
+          skuId = sizesMap;
+          break;
+        }
+      }
+    }
+  }
+
+  return skuId;
+}
+
+/**
  * @return the element flagged as default (or the first one) on the fits array
  */
 export function getDefaultFitForColorSlice(colorFitsSizesMapEntry, ignoreQtyCheck = false) {

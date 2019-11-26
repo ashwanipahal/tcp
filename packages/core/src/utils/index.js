@@ -39,6 +39,7 @@ export {
   isMobileWeb,
   removeBodyScrollLocks,
   isAndroidWeb,
+  createLayoutPath,
 } from './utils.web';
 
 export {
@@ -81,6 +82,7 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  getStoreHours,
   generateTraceId,
   readCookieMobileApp,
   getStyliticsUserName,

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { createLayoutPath } from '@tcp/core/src/utils';
 import Static from '../views/Static.view';
 
 Static.propTypes = {
@@ -15,7 +16,8 @@ const mapStateToProps = (state, props) => {
   // TO DO - Replace the mock with the state.
   const { urlPath } = props;
   const { Layouts, Modules } = state;
-  const contentSlots = Layouts && Layouts[urlPath] ? Layouts[urlPath].slots : [];
+  const formattedUrlPath = urlPath && createLayoutPath(urlPath);
+  const contentSlots = Layouts && Layouts[formattedUrlPath] ? Layouts[formattedUrlPath].slots : [];
   return {
     slots: contentSlots.map(slot => {
       const { contentId: slotContent = '' } = slot;

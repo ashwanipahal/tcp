@@ -4,6 +4,7 @@ const withTM = require('next-transpile-modules');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withSourceMaps = require('@zeit/next-source-maps');
 const nextBuildId = require('next-build-id');
+const withProgressBar = require('next-progressbar');
 const path = require('path');
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
@@ -90,6 +91,10 @@ if (isAnalyzeBundles) {
     },
     ...buildConfig,
   });
+}
+
+if (!isProductionBuild) {
+  buildConfig = withProgressBar({ ...buildConfig });
 }
 
 module.exports = buildConfig;

@@ -8,6 +8,7 @@ import {
   isStoreSearching,
   getIsGetUserStoresLoaded,
 } from '../../../container/PickUpStoreModal.selectors';
+import { setClickAnalyticsData, trackClick } from '../../../../../../../analytics/actions';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 
@@ -83,12 +84,14 @@ class _PickupStoreList extends React.Component {
     isBopisCtaEnabled: PropTypes.bool.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     defaultStoreName: PropTypes.string,
+    currentProduct: PropTypes.string,
   };
 
   static defaultProps = {
     isBossEnabled: true,
     isBopisEnabled: true,
     defaultStoreName: '',
+    currentProduct: '',
   };
 
   constructor(props) {
@@ -110,6 +113,7 @@ class _PickupStoreList extends React.Component {
       allowBossStoreSearch,
       bopisChangeStore,
       isBopisEnabled,
+      currentProduct,
       ...otherProps
     } = this.props;
 
@@ -153,6 +157,9 @@ class _PickupStoreList extends React.Component {
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}
         isBopisEnabled={isBopisEnabled}
+        currentProduct={currentProduct}
+        setClickAnalyticsData={setClickAnalyticsData}
+        trackClick={trackClick}
         {...otherProps}
       />
     );
@@ -171,5 +178,12 @@ function mapStateToProps(state, ownProps) {
     ...ownProps,
   };
 }
+const mapDispatchToProps = dispatch => ({
+  setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClick: payload => dispatch(trackClick(payload)),
+});
 
-export default connect(mapStateToProps)(_PickupStoreList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_PickupStoreList);
