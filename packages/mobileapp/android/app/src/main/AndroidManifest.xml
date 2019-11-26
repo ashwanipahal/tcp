@@ -47,15 +47,11 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-<<<<<<< HEAD
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-=======
-
-
 
         <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
             android:launchMode="singleTask">
@@ -66,8 +62,6 @@
                 <data android:scheme="${applicationId}.braintree" />
             </intent-filter>
         </activity>
-
->>>>>>> 1c3506eb51df01f917a53a84f37aca11e4353873
     </application>
 
     <uses-feature
