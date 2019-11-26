@@ -79,7 +79,7 @@ const renderHeaderAndBanner = (item, navigation) => {
 /**
  * To Render the Dam Image
  */
-renderDamImage = (link, imgData, videoData, navigation, bannerPosition, moduleHeight) => {
+const renderDamImage = (link, imgData, videoData, navigation, bannerPosition, moduleHeight) => {
   if (imgData && Object.keys(imgData).length > 0) {
     return (
       <Anchor url={link.url} navigation={navigation}>
