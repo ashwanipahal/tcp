@@ -214,6 +214,7 @@ export class DetailedCouponTile extends React.Component {
             error={coupon.error}
             fontWeight="extrabold"
             noBackground
+            isEspot={isPlaceCash}
           />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
