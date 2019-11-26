@@ -88,22 +88,23 @@ const getSwatchImgPath = (id, excludeExtension) => {
   }`;
 };
 
-const getProductImagePath = (id, excludeExtension) => {
+const getProductImagePath = (id, excludeExtension, imageExtension) => {
   const imageName = (id && id.split('_')) || [];
   const imagePath = imageName[0];
+  const extension = imageExtension ? `.${imageExtension}` : '.jpg';
 
   return {
-    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
-    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    125: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : extension}`,
   };
 };
 
-const getImgPath = (id, excludeExtension) => {
+const getImgPath = (id, excludeExtension, imageExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
-    productImages: getProductImagePath(id, excludeExtension),
+    productImages: getProductImagePath(id, excludeExtension, imageExtension),
   };
 };
 
@@ -202,6 +203,7 @@ const getImagePathAttr = isGiftCard => (isGiftCard ? 'prodpartno' : 'imagename')
 
 const getImagesByColor = (itemColor, colorName, getImgPathFunc, isGiftCard, imagesByColor) => {
   const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
+  const imageExtension = itemColor.productimage || '';
   return {
     ...extractExtraImages(
       `${itemColor[imageNameAttr]}#${colorName}`,
@@ -209,7 +211,9 @@ const getImagesByColor = (itemColor, colorName, getImgPathFunc, isGiftCard, imag
       getImgPathFunc,
       false,
       false,
-      isGiftCard
+      isGiftCard,
+      false,
+      imageExtension
     ),
     ...imagesByColor,
   };
