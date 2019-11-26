@@ -2,12 +2,12 @@ import { css } from 'styled-components';
 
 export default css`
   .item-container-inner {
-    height: ${props => (props.isPromoAvailable ? '391px' : '')};
+    height: ${props => (props.isPromoAvailable ? '405px' : '385')};
     @media ${props => props.theme.mediaQuery.medium} {
-      height: ${props => (props.isPromoAvailable ? '512px' : '')};
+      height: ${props => (props.isPromoAvailable ? '505px' : '485')};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      height: ${props => (props.isPromoAvailable ? '604px' : '')};
+      height: ${props => (props.isPromoAvailable ? '577px' : '557')};
     }
   }
 
