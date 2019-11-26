@@ -40,8 +40,6 @@ const mapStateToProps = (state, ownProps) => {
   const { ApplyCardPage = {} } = state;
   const applyCardLabels = getRtpsMessages(state);
   const { rtpsCongratsMsg, rtpsOptOutMsg, rtpsTextTerms } = applyCardLabels;
-  const { products } =
-    (state.AnalyticsDataKey && state.AnalyticsDataKey.clickActionAnalyticsData) || [];
   return {
     isModalOpen: getIsModalOpen(state),
     labels: getLabels(state),

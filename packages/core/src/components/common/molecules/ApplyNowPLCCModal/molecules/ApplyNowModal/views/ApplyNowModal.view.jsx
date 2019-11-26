@@ -101,7 +101,7 @@ const StyledApplyNowModal = ({
             >
               <ClickTracker
                 clickData={{
-                  customEvents: ['event47'],
+                  customEvents: isRtpsFlow ? ['event47'] : [],
                   eventName: 'plcc checkout invite accepted',
                   products: productsData,
                 }}
