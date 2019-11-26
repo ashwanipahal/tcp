@@ -64,7 +64,6 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
-
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -255,6 +254,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
+    const itemColor = currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -363,6 +363,7 @@ class ProductDetailView extends PureComponent {
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
+                color={itemColor}
               />
             </div>
           </Col>

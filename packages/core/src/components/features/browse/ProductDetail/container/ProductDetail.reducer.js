@@ -15,7 +15,7 @@ const ProductDetailReducer = (state = initialState, action) => {
       const productDetailsMap = state.currentProduct;
       // eslint-disable-next-line consistent-return
       productDetailsMap.colorFitsSizesMap = productDetailsMap.colorFitsSizesMap.map(item => {
-        if (item.colorProductId === action.payload.colorProductId) {
+        if (item.colorProductId === action.payload.pdpColorProductId) {
           // eslint-disable-next-line no-param-reassign
           item = {
             ...item,

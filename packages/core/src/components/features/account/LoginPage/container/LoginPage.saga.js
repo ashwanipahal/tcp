@@ -4,14 +4,13 @@ import { setLoginModalMountedState } from '@tcp/core/src/components/features/acc
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import CONSTANTS from '../../User/User.constants';
-
 import {
   setLoginInfo,
   setCheckoutModalMountedState,
   setLoginLoadingState,
 } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { getUserInfo, setUserInfo } from '../../User/container/User.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -34,6 +33,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(setLoginModalMountedState({ state: false }));
       yield put(
         setClickAnalyticsData({
+          eventName: 'login',
           customEvents: ['event14'],
           pageNavigationText: 'header-log in',
         })

@@ -15,7 +15,13 @@ import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
+    const {
+      openCountrySelectorModal,
+      router,
+      pageName,
+      setCampaignId,
+      setInternalCampaignId,
+    } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
@@ -24,8 +30,12 @@ class HomePageWrapper extends React.Component {
       this.subscriptionPopUpOnPageLoad();
     }
     const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    const icid = getQueryParamsFromUrl(router.asPath, 'icid');
     if (cid) {
       setCampaignId(cid[0]);
+    }
+    if (icid) {
+      setInternalCampaignId(icid[0]);
     }
   }
 
@@ -113,6 +123,7 @@ const HomePageView = dynamic({
       openSmsSignUpModal,
       pageName,
       setCampaignId,
+      setInternalCampaignId,
       seoData,
     } = compProps;
 
@@ -123,6 +134,7 @@ const HomePageView = dynamic({
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
         setCampaignId={setCampaignId}
+        setInternalCampaignId={setInternalCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -148,6 +160,7 @@ HomePageWrapper.propTypes = {
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -159,6 +172,7 @@ HomePageView.propTypes = {
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  setInternalCampaignId: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);

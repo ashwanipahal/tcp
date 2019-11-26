@@ -39,6 +39,13 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const getVideoUrl = url => {
+  if (url) {
+    return String(url).match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
@@ -623,6 +630,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
   const staticContentRoute = `${ROUTE_PATH.content.name}/`;
+  const helpCenterRoute = `${ROUTE_PATH.helpCenter.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -643,6 +651,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(staticContentRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
+  }
+  if (url.includes(helpCenterRoute)) {
+    const urlItems = url.split(helpCenterRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.helpCenter.name}?${ROUTE_PATH.helpCenter.param}=${queryParam}`;
   }
   return url;
 };
@@ -1144,6 +1157,7 @@ export const validateDiffInDaysNotification = (
 };
 
 export default {
+  getVideoUrl,
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,

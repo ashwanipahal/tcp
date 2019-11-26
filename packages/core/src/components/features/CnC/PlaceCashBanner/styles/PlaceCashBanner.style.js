@@ -18,11 +18,15 @@ const styles = css`
       letter-spacing: 0.64px;
       color: ${props => props.theme.colors.BLACK};
       margin: 0;
+      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
     &__subTitle {
       letter-spacing: 0.55px;
       color: ${props => props.theme.colors.BLACK};
-      margin: 0 0 8px 0;
+      margin: ${props => `0 0 ${props.theme.spacing.LAYOUT_SPACING.XXS} 0`};
+      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
     &__tnc-text {
       font-size: ${props => props.theme.typography.fontSizes.fs8};
@@ -35,13 +39,15 @@ const styles = css`
       margin: 0 auto;
       line-height: 0.8;
       text-align: center;
+      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
     &__modalLink {
       font-size: ${props => props.theme.typography.fontSizes.fs8};
       padding: 0 2px;
       color: ${props => props.theme.colors.PRIMARY.DARK};
       @media ${props => props.theme.mediaQuery.large} {
-        font-size: ${props => props.theme.typography.fontSizes.fs14};
+        font-size: ${props => props.theme.typography.fontSizes.fs12};
       }
     }
   }

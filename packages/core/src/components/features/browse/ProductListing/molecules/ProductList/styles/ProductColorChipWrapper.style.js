@@ -61,6 +61,7 @@ const styles = css`
       .product-color-chip-image {
         border-radius: 50%;
       }
+      box-shadow: inset 0 0 0 1px ${props => props.theme.colors.WHITE};
     }
     &:focus {
       outline: 0;
