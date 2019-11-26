@@ -261,25 +261,20 @@ export function getProductsAndTitleBlocks(
   const horizontalSlots = [];
 
   gridPromo.forEach(promoItem => {
-    // console.log('promoItem', promoItem.slot);
     const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
     slots.push(parseInt(slotNumber, 10));
   });
 
-  // console.log('slots #$$$## ', slots);
+  console.log('slots', slots);
 
   horizontalPromo.forEach(promoItem => {
-    // console.log('horizontalPromo ', promoItem.slot);
     const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
     horizontalSlots.push(parseInt(slotNumber, 10));
   });
 
-  // console.log('horizontalSlots', horizontalSlots);
-
   let totalItemsAdded = 0;
   let promosAdded = 0;
 
-  // console.log('productBlocks @@@@ ', productBlocks);
   // eslint-disable-next-line
   productBlocks.forEach((block, productBlocksIndex) => {
     const productsAndTitleBlock = [];
@@ -287,8 +282,26 @@ export function getProductsAndTitleBlocks(
     block.forEach((product, index) => {
       const { categoryName } = product.miscInfo;
 
-      const indexOfProduct = totalItemsAdded + promoAddedInCurrentBlock + index + 1;
-      const slotIndex = slots.indexOf(indexOfProduct);
+      // indexOfProduct is all the items added already in the previous iteration
+      // plus the promos added in the current iteration
+      // plus index which would give the current iteration products added
+      const currentSlot = totalItemsAdded + promoAddedInCurrentBlock + index;
+
+      // First add the horizontal/mobile promos as they don't add up to the count
+      // For horizontal / mobile only promo
+      // Also, if slot_6 needs to be added, the slot number has to be 6 since it gets added after 6th product
+      const horizontalSlotIndex = horizontalSlots.indexOf(currentSlot);
+      if (horizontalSlotIndex !== -1) {
+        productsAndTitleBlock.push({
+          itemType: 'gridPromo',
+          gridStyle: 'horizontal',
+          itemVal: horizontalPromo[horizontalSlotIndex],
+        });
+      }
+
+      // If Vertical promo slot_8 needs to be added, the slot number has to be 7
+      // since it occupies space of the 8th product, which is actually slot 7
+      const slotIndex = slots.indexOf(currentSlot + 1);
       if (slotIndex !== -1) {
         promosAdded += 1;
         productsAndTitleBlock.push({
@@ -299,22 +312,7 @@ export function getProductsAndTitleBlocks(
         promoAddedInCurrentBlock += 1;
       }
 
-      // For horizontal / mobile only promo
-      const horizontalSlotIndex = indexOfProduct > 0 && horizontalSlots.indexOf(indexOfProduct - 1);
-      if (horizontalSlotIndex !== -1) {
-        productsAndTitleBlock.push({
-          itemType: 'gridPromo',
-          gridStyle: 'horizontal',
-          itemVal: horizontalPromo[horizontalSlotIndex],
-        });
-        // horizontalPromoAddedInCurrentBlock += 1;
-      }
-
-      // This is to inject Dynamic Marketing Espots into our product Grid
-      // Use this for promo tiles if required later - injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
-
       // push: If we should group and we hit a new category name push on array
-      // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
       const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
       if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
         productsAndTitleBlock.push(categoryName);
@@ -325,20 +323,13 @@ export function getProductsAndTitleBlocks(
     });
 
     const productsAdded = block.length;
-    console.log('productsAdded $$$$ ', productsAdded);
-    // const promosAdded = slots.filter(
-    //   slot => slot < totalItemsAdded + productsAdded && slot > totalItemsAdded
-    // ).length;
-    totalItemsAdded += productsAdded;
-    totalItemsAdded += promosAdded;
-    console.log('promosAdded #### ', promosAdded);
+    totalItemsAdded += productsAdded + promoAddedInCurrentBlock;
     // Check if the number of products and the promos count sum
     // to understand the number of slots blank at the end of the block
-    const numberOfItemsInBlock = productsAdded + promosAdded;
+    const numberOfItemsInBlock = productsAdded + promoAddedInCurrentBlock;
     console.log('numberOfItemsInBlock $$$$ ', numberOfItemsInBlock);
     const numberOfItemsInLastRow = numberOfItemsInBlock % rowSize;
     console.log('numberOfItemsInLastRow', numberOfItemsInLastRow);
-    console.log('productBlocksIndex+1', productBlocksIndex + 1);
     // if (numberOfItemsInLastRow !== 0) {
     // If this is the last block
     // if(productBlocksIndex+1 === productBlocks.length) {
@@ -354,16 +345,21 @@ export function getProductsAndTitleBlocks(
     //   totalItemsAdded += emptySpaces;
     // }
     // }
+    // If there is some empty space in the last row of the block
+    // and the next block starts with a new L3 category,
+    // or if this is the last block of the entire productsBlock that is loaded yet
+    // ie. this is the last row to appear, irrespective of the fact if it is followed by a new L3 or not
+    // check if some slots were supposed to be added in those empty space
     if (
       (numberOfItemsInLastRow !== 0 &&
         (productBlocks[productBlocksIndex + 1] &&
-          productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) ||
+          productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) || // TODO - add null check
       productBlocksIndex + 1 === productBlocks.length
     ) {
       console.log('not the last block but followed by a string in the next block');
       const emptySpaces = rowSize - numberOfItemsInLastRow;
       console.log('emptySpaces ###### ', emptySpaces);
-      if (emptySpaces > 0 && emptySpaces < rowSize) {
+      if (emptySpaces < rowSize) {
         console.log('comes inside');
         totalItemsAdded += emptySpaces;
         const indexOfEmptySlot = slots.indexOf(totalItemsAdded);

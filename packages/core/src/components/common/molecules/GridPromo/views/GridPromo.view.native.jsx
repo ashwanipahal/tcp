@@ -2,8 +2,6 @@ import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button, BodyCopy } from '../../../atoms';
-import styles from '../styles/GridPromo.style';
-import withStyles from '../../../hoc/withStyles';
 
 const getSeparatorText = textItems => {
   const headingLine = textItems && textItems[0] && textItems[0].text;
@@ -132,5 +130,4 @@ GridPromo.defaultProps = {
   variation: 'vertical',
 };
 
-export default withStyles(GridPromo, styles);
-export { GridPromo as GridPromoVanilla };
+export default GridPromo;
