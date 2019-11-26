@@ -42,8 +42,6 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
               "customEvents": Array [
                 "scCheckout,event86,event69,event114",
               ],
-              "eVar12": "09:20:21",
-              "eVar14": "new",
               "eVar65": "checkout:pickup",
               "pageName": "checkout:pickup",
               "pageNavigationText": "header-cart",
