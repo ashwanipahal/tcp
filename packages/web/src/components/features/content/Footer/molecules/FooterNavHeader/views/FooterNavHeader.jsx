@@ -4,6 +4,7 @@ import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getIconPath, isCanada } from '@tcp/core/src/utils';
 import styles from '../FooterNavHeader.style';
+import ClickTracker from '../../../../../../common/atoms/ClickTracker';
 
 const FooterNavHeader = ({
   className,
@@ -15,6 +16,7 @@ const FooterNavHeader = ({
   colNum,
 }) => {
   const formattedSiteId = isCanada() ? '-CA' : '';
+  const pageInfo = 'home page';
   if (!headerAsImage) {
     return (
       <BodyCopy
@@ -33,11 +35,18 @@ const FooterNavHeader = ({
     );
   }
   return (
-    <Anchor
+    <ClickTracker
+      as={Anchor}
       to={titleObj.url}
       aria-label={titleText}
       className={`${className} img-link`}
       dataLocator={`col_heading_${colNum}`}
+      clickData={{
+        eventName: 'loyaltyclick',
+        pageType: pageInfo,
+        pageSection: pageInfo,
+        pageSubSection: pageInfo,
+      }}
     >
       <Image
         tabIndex="-1"
@@ -45,7 +54,7 @@ const FooterNavHeader = ({
         alt={titleObj.image_alt}
         src={getIconPath(`${titleObj.class}${formattedSiteId}`)}
       />
-    </Anchor>
+    </ClickTracker>
   );
 };
 
