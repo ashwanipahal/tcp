@@ -1,11 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HelpCenterViewVanilla should render correctly 1`] = `
-<loading
-  error={[Error: Not supported]}
-  isLoading={false}
-  pastDelay={false}
-  retry={[Function]}
-  timedOut={false}
-/>
+<div>
+  <LoadableComponent
+    appType="tcp"
+    getBootstrapData={[MockFunction]}
+    loadNavigationData={[Function]}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    slotData={Object {}}
+    slot_1={
+      Object {
+        "className": "test",
+      }
+    }
+    slot_2={
+      Object {
+        "className": "test1",
+      }
+    }
+  />
+</div>
 `;
