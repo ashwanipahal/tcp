@@ -756,9 +756,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
           <Connect(Component)
             clickData={
               Object {
-                "customEvents": Array [
-                  "event47",
-                ],
+                "customEvents": Array [],
                 "eventName": "plcc checkout invite accepted",
                 "products": Array [],
               }
