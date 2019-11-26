@@ -76,8 +76,7 @@ export function extractExtraImages(
   let imageName = '';
   if (productImage) {
     const productImageExt = productImage.split('.');
-    // eslint-disable-next-line prefer-destructuring
-    imageName = productImageExt[0];
+    [imageName] = productImageExt;
     imageExtension = productImageExt[productImageExt.length - 1];
   }
 
