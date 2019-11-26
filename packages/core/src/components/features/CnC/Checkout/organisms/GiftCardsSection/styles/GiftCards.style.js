@@ -51,7 +51,8 @@ const styles = css`
     vertical-align: bottom;
   }
   .savetoaccount > label {
-    width: 100%;
+    width: auto;
+    display: flex;
   }
 
   && .card__btn > button,

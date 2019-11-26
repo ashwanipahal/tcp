@@ -43,10 +43,7 @@ const PromotionBanner = props => {
         <FullBleedBannerStyle>
           <RichText
             source={{
-              html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                labels.lbl_fullBleed_banner_boss_text,
-                props
-              )}</body></html>`,
+              html: modifiedBannerText(labels.lbl_fullBleed_banner_boss_text, props),
             }}
           />
         </FullBleedBannerStyle>
@@ -56,10 +53,7 @@ const PromotionBanner = props => {
           <TriangleBannerText>
             <RichText
               source={{
-                html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                  labels.lbl_banner_boss_text,
-                  props
-                )}</body></html>`,
+                html: modifiedBannerText(labels.lbl_banner_boss_text, props),
               }}
             />
           </TriangleBannerText>
