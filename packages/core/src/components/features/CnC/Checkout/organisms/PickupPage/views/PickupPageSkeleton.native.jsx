@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import {
+  ParentWrapper,
   PricePointsWrapper,
   PriceSubText,
   PriceSubText2,
@@ -10,7 +11,7 @@ import {
 
 const PickupPageSkeleton = () => {
   return (
-    <View>
+    <ParentWrapper>
       <PricePointsWrapper>
         <PriceSubText>
           <LoaderSkelton />
@@ -26,7 +27,7 @@ const PickupPageSkeleton = () => {
           <LoaderSkelton />
         </PriceSubText3>
       </PricePointsWrapper>
-    </View>
+    </ParentWrapper>
   );
 };
 
