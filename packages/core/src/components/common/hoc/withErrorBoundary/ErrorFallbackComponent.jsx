@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FallbackErrorComponent = ({ errorMessage, componentName }) => (
-  <h1>
+  <aside role="alert">
     Something went wrong in--
-    <span>{componentName}</span>
+    <span>
+      <strong>{componentName}</strong>
+    </span>
     Component.
     <p>{errorMessage}</p>
-  </h1>
+  </aside>
 );
 
 FallbackErrorComponent.propTypes = {

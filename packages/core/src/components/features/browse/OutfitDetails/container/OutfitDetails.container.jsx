@@ -15,6 +15,7 @@ import { getOutfitDetails } from './OutfitDetails.actions';
 import {
   getPlpLabels,
   getCurrencyAttributes,
+  getPLPPromos,
 } from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
 import {
@@ -40,6 +41,7 @@ import {
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -116,6 +118,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       toastMessage,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      topPromos,
+      router: { asPath: asPathVal },
     } = this.props;
     const { outfitIdLocal } = this.state;
     if (outfitProducts) {
@@ -145,6 +149,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           toastMessage={toastMessage}
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          asPathVal={asPathVal}
+          topPromos={topPromos}
         />
       );
     }
@@ -180,6 +186,7 @@ const mapStateToProps = state => {
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     pdpLabels: getPDPLabels(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
   };
 };
 

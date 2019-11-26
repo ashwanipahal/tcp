@@ -239,6 +239,9 @@ class _PickupStoreSelectionForm extends React.Component {
       getIsBopisAvailable,
       currentProduct,
       pageNameProp,
+      storeSearchCriteria,
+      storeSearchDistance,
+      setClickAnalyticsData,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -269,6 +272,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isGiftCard={isGiftCard}
             storeSearchCriteria={storeSearchCriteria}
             storeSearchDistance={storeSearchDistance}
+            setClickAnalyticsData={setClickAnalyticsData}
           />
         </div>
       )

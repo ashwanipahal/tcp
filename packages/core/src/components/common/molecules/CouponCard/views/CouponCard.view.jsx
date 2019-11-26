@@ -26,7 +26,7 @@ class CouponCard extends React.Component<Props> {
             data-locator={dataLocator}
             className="couponCard__header_text"
             component="p"
-            fontSize="fs12"
+            fontSize="fs10"
             fontFamily="secondary"
           >
             {type}
@@ -37,7 +37,7 @@ class CouponCard extends React.Component<Props> {
             data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
             component="p"
-            fontSize="fs12"
+            fontSize="fs10"
             fontFamily="secondary"
           >
             {labels.EXPIRING_SOON}
@@ -147,7 +147,14 @@ class CouponCard extends React.Component<Props> {
     return (
       <div className={className}>
         <div className={`couponCard__container ${containerOveride}`}>
-          {!isCarouselView && <ErrorMessage error={coupon.error} />}
+          {!isCarouselView && (
+            <ErrorMessage
+              fontSize="fs12"
+              fontWeight="extrabold"
+              error={coupon.error}
+              isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
+            />
+          )}
           <div className="couponCard__container_main">
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
               this.RenderCardHeader(
@@ -209,7 +216,13 @@ class CouponCard extends React.Component<Props> {
               </div>
             </div>
           </div>
-          {isCarouselView && <ErrorMessage className="transparent-box" error={coupon.error} />}
+          {isCarouselView && (
+            <ErrorMessage
+              className="transparent-box"
+              error={coupon.error}
+              isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
+            />
+          )}
         </div>
       </div>
     );

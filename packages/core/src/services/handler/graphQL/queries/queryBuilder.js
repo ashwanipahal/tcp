@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import { importGraphQLQueriesDynamically, getAPIConfig } from '../../../../utils';
 import { ENV_PREVIEW } from '../../../../constants/env.config';
+import { moduleNames } from '../../../config';
 
 /**
  * Builds query for GraphQL service
@@ -37,6 +38,7 @@ const QueryBuilder = {
     }
     return query;
   },
+
   /**
    * Async function which dynamically loads query for a module
    * @param {String} module
@@ -44,7 +46,10 @@ const QueryBuilder = {
    */
   loadModuleQuery: async (module, data) => {
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      return QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
+      const { accountNavigation, navigation } = moduleNames;
+      return module === navigation || module === accountNavigation
+        ? QueryModule.getQuery(data)
+        : QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
     });
   },
   /**

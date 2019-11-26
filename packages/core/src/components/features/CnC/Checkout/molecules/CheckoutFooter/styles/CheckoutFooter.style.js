@@ -39,7 +39,7 @@ const styles = css`
     }
 
     .back-space {
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-left: -7px;
     }
     .back-link {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
