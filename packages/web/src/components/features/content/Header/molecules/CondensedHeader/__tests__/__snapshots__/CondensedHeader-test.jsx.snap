@@ -20,7 +20,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/version-not-available/static/images/grey-menu.svg"
+          src="/static/version-not-available/images/grey-menu.svg"
           tabIndex="0"
         />
       </div>

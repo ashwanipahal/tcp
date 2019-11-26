@@ -26,42 +26,42 @@ const styles = css`
     background-repeat: no-repeat;
   }
   .AppDownload {
-    background-image: url(${getStaticFilePath('/images/download-app.png')});
+    background-image: url(${getStaticFilePath('images/download-app.png')});
   }
   .ProductReview {
-    background-image: url(${getStaticFilePath('/images/review.png')});
+    background-image: url(${getStaticFilePath('images/review.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .FacebookLink {
-    background-image: url(${getStaticFilePath('/images/facebook.png')});
+    background-image: url(${getStaticFilePath('images/facebook.png')});
   }
   .InstagramLink {
-    background-image: url(${getStaticFilePath('/images/instagram.png')});
+    background-image: url(${getStaticFilePath('images/instagram.png')});
   }
   .ChildProfile {
-    background-image: url(${getStaticFilePath('/images/child-birthday-profile.png')});
+    background-image: url(${getStaticFilePath('images/child-birthday-profile.png')});
   }
   .SMSOptIn {
-    background-image: url(${getStaticFilePath('/images/sms.png')});
+    background-image: url(${getStaticFilePath('images/sms.png')});
   }
   .AddMailingAddress {
-    background-image: url(${getStaticFilePath('/images/mailingAddress.png')});
+    background-image: url(${getStaticFilePath('images/mailingAddress.png')});
   }
   .AddFavoriteStore {
-    background-image: url(${getStaticFilePath('/images/store.png')});
+    background-image: url(${getStaticFilePath('images/store.png')});
   }
   .AddShopperType {
-    background-image: url(${getStaticFilePath('/images/survey.png')});
+    background-image: url(${getStaticFilePath('images/survey.png')});
   }
   .AddBirthDate {
-    background-image: url(${getStaticFilePath('/images/birthday.png')});
+    background-image: url(${getStaticFilePath('images/birthday.png')});
   }
   .FeedbackSurvey {
-    background-image: url(${getStaticFilePath('/images/oval.svg')});
+    background-image: url(${getStaticFilePath('images/oval.svg')});
   }
 
   .TwitterLink {
-    background-image: url(${getStaticFilePath('/images/twitter.png')});
+    background-image: url(${getStaticFilePath('images/twitter.png')});
   }
 
   .tileWrapper {

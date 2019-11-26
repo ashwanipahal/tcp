@@ -37,7 +37,7 @@ const styles = css`
     display: inline-block;
     vertical-align: top;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-    background: url(${getStaticFilePath('/images/paypal.svg')}) no-repeat -9px -21px;
+    background: url(${getStaticFilePath('images/paypal.svg')}) no-repeat -9px -21px;
     background-size: 88px 64px;
     width: 71px;
     height: 22px;
@@ -47,7 +47,7 @@ const styles = css`
     display: inline-block;
     vertical-align: top;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-    background: url(${getStaticFilePath('/images/venmo.svg')}) no-repeat -9px -21px;
+    background: url(${getStaticFilePath('images/venmo.svg')}) no-repeat -9px -21px;
     background-size: 88px 64px;
     width: 71px;
     height: 22px;

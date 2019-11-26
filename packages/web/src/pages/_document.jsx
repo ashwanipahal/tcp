@@ -57,8 +57,8 @@ class MyDocument extends Document {
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link rel="icon" href={getStaticFilePath(process.env.RWD_WEB_FAVICON_URL)} />
-          <link href="/static/app.css" rel="stylesheet" />
-          <link href="/static/cld-video-player.min.css" rel="stylesheet" />
+          <link href={getStaticFilePath('app.css')} rel="stylesheet" />
+          <link href={getStaticFilePath('cld-video-player.min.css')} rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
           {/* Empty global object definition for external hotfix sources to append */}
           <HotfixScript />

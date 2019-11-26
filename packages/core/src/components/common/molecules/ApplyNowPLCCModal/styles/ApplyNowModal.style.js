@@ -80,7 +80,7 @@ export const modalStyles = css`
   .header-image {
     display: flex;
     justify-content: center;
-    background: transparent url(${getStaticFilePath('/images/tcp-cc@2x.png')}) no-repeat 0 0;
+    background: transparent url(${getStaticFilePath('images/tcp-cc@2x.png')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 175px;
@@ -94,9 +94,9 @@ export const modalStyles = css`
     justify-content: center;
     background: ${props =>
       props.offerType
-        ? `transparent url(${getStaticFilePath('/images/PLCC_lockup_1_points.svg')}) no-repeat 0 0;`
+        ? `transparent url(${getStaticFilePath('images/PLCC_lockup_1_points.svg')}) no-repeat 0 0;`
         : `transparent url(${getStaticFilePath(
-            '/images/PLCC_lockup_2_points.svg'
+            'images/PLCC_lockup_2_points.svg'
           )}) no-repeat 0 0;`};
 
     background-size: contain;

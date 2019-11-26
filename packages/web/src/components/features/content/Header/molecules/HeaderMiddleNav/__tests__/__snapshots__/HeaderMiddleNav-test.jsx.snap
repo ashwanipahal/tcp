@@ -57,7 +57,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/version-not-available"
+          src="/static/version-not-available/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
@@ -241,7 +241,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/version-not-available"
+          src="/static/version-not-available/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)

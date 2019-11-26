@@ -11,7 +11,7 @@ exports[`BrandTabs component renders correctly with brand-tabs className 1`] = `
       to="/"
     >
       <Styled(Image)
-        src="/static/version-not-available"
+        src="/static/version-not-available/"
       />
     </Styled(Anchor)>
     <Styled(Anchor)
@@ -20,7 +20,7 @@ exports[`BrandTabs component renders correctly with brand-tabs className 1`] = `
       to="https://www.gymboree.com/"
     >
       <Styled(Image)
-        src="/static/version-not-available"
+        src="/static/version-not-available/"
       />
     </Styled(Anchor)>
   </div>

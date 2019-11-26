@@ -157,7 +157,7 @@ const style = css`
   }
 
   .ribbon-container {
-    background: transparent url(${getStaticFilePath('/images/module-a-ribbon-right.png')}) no-repeat
+    background: transparent url(${getStaticFilePath('images/module-a-ribbon-right.png')}) no-repeat
       right 0;
     background-size: 100% auto;
     position: absolute;
@@ -219,8 +219,8 @@ const style = css`
     }
 
     .ribbon-container {
-      background: transparent url(${getStaticFilePath('/images/module-a-ribbon-left.png')})
-        no-repeat 0 0;
+      background: transparent url(${getStaticFilePath('images/module-a-ribbon-left.png')}) no-repeat
+        0 0;
       background-size: 100% auto;
       background-position: right;
       right: auto;
