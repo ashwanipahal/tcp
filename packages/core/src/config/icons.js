@@ -37,7 +37,7 @@ export default {
   down_arrow_icon: 'images/carrot-small-down.png',
   up_arrow_icon: 'images/carrot-small-up.png',
   active_icon: 'images/circle-check.png',
-  'circle-alert-fill': 'images/circle-alert-fill.png',
+  'circle-alert-fill': 'images/circle-alert-fill.svg',
   'circle-check-fill': 'images/circle-check-fill.png',
   'circle-error-fill': 'images/circle-error-fill.png',
   'circle-info-fill': 'images/circle-info-fill.svg',
