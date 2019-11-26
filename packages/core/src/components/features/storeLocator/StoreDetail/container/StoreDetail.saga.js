@@ -1,4 +1,4 @@
-import { call, takeLatest, put, all } from 'redux-saga/effects';
+import { call, takeLatest, put, all, putResolve } from 'redux-saga/effects';
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleXComposite';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 import {
@@ -17,7 +17,7 @@ import {
 export function* getCurrentStore({ payload }) {
   try {
     const res = yield call(getCurrentStoreInfoApi, payload);
-    return yield put(setCurrentStoreInfo(res));
+    return yield putResolve(setCurrentStoreInfo(res));
   } catch (err) {
     return yield null;
   }
@@ -26,7 +26,7 @@ export function* getCurrentStore({ payload }) {
 export function* getNearByStore({ payload }) {
   try {
     const res = yield call(getNearByStoreApi, payload);
-    return yield put(setNearByStore(res));
+    return yield putResolve(setNearByStore(res));
   } catch (err) {
     return yield null;
   }
