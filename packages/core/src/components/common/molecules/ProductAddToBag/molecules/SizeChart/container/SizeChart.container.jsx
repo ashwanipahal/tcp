@@ -3,7 +3,8 @@ import SizeChart from '../views';
 
 class SizeChartContainer extends React.PureComponent {
   render() {
-    return <SizeChart />;
+    const { sizeChartDetails } = this.props;
+    return <SizeChart sizeChartDetails={sizeChartDetails} />;
   }
 }
 

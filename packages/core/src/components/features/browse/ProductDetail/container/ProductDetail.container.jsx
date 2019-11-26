@@ -37,6 +37,7 @@ import {
   getGeneralProductId,
   getAlternateSizes,
   getPLPPromos,
+  getSizeChartDetails,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -181,8 +182,10 @@ class ProductDetailContainer extends React.PureComponent {
       middlePromos,
       bottomPromos,
       router: { asPath: asPathVal },
+      sizeChartDetails,
       ...otherProps
     } = this.props;
+
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
       <>
@@ -219,6 +222,7 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
+              sizeChartDetails={sizeChartDetails}
             />
           ) : null}
         </React.Fragment>
@@ -263,6 +267,7 @@ function mapStateToProps(state) {
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
     middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
+    sizeChartDetails: getSizeChartDetails(state),
     store: state,
   };
 }
@@ -321,6 +326,7 @@ ProductDetailContainer.propTypes = {
   outOfStockLabels: PropTypes.shape({}).isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -345,6 +351,7 @@ ProductDetailContainer.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
 };
 
 export default withIsomorphicRenderer({

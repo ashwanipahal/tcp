@@ -468,6 +468,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      sizeChartDetails,
       ...otherProps
     } = this.props;
     const {
@@ -537,6 +538,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        sizeChartDetails={sizeChartDetails}
       />
     );
   }

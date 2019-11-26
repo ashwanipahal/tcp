@@ -190,12 +190,16 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectSize,
       isDisableZeroInventoryEntries,
       keepAlive,
+      sizeChartDetails,
     } = this.props;
+
     return (
       sizeList &&
       sizeList.size > 0 && (
         <div className="size-selector">
-          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
+            <SizeChart sizeChartDetails={sizeChartDetails} />
+          )}
           <Field
             width={49}
             className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}

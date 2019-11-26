@@ -21,9 +21,18 @@ class SizeChart extends React.Component {
 
   render() {
     const { isOpen } = this.state;
+    const { sizeChartDetails } = this.props;
+    const dataObj = {};
+    if (sizeChartDetails && sizeChartDetails.length) {
+      const values = sizeChartDetails.split('|');
+      for (let indx = 0; indx < values.length; indx++) {
+        dataObj[`data-l${+(indx + 1)}`] = values[indx].toLowerCase();
+      }
+    }
+
     return (
       <>
-        <BodyCopy className="size-chart" onClick={this.toggleModal}>
+        <BodyCopy className="size-chart" {...dataObj} onClick={this.toggleModal}>
           Size Chart
         </BodyCopy>
         <Modal
