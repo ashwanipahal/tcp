@@ -124,14 +124,7 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(
-        setClickAnalyticsData({
-          customEvents: ['event28'],
-          products: productsData,
-          eventName: 'coupon applied',
-          couponCode: coupon.id,
-        })
-      );
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
       yield put(trackClick('coupon applied successfully'));
       yield call(getCartDataSaga, {
         payload: {
