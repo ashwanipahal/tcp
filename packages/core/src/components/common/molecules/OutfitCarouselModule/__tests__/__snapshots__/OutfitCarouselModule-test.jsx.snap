@@ -124,7 +124,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
           link={null}
           textAlign="center"
         >
-          Tropical blush &gt;
+          Tropical blush  &gt;
         </ForwardRef>
       </ForwardRef>
     </div>
@@ -164,7 +164,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
           link={null}
           textAlign="center"
         >
-          Tropical blush &gt;
+          Tropical blush  &gt;
         </ForwardRef>
       </ForwardRef>
     </div>
@@ -204,7 +204,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
           link={null}
           textAlign="center"
         >
-          Tropical blush &gt;
+          Tropical blush  &gt;
         </ForwardRef>
       </ForwardRef>
     </div>
@@ -244,7 +244,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
           link={null}
           textAlign="center"
         >
-          Tropical blush &gt;
+          Tropical blush  &gt;
         </ForwardRef>
       </ForwardRef>
     </div>
