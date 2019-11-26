@@ -25,19 +25,10 @@ const DropDownStyle = css`
   width: ${props => (props.width ? props.width : '100%')};
 `;
 
-const getAdditionalHeaderStyle = props => {
-  const { isWishlist } = props;
-  return {
-    ...(isWishlist && { 'align-self': 'center' }),
-    ...(isWishlist && { 'background-color': 'green' }),
-  };
-};
-
 const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   flex-direction: row;
   align-items: center;
-  ${getAdditionalHeaderStyle}
 `;
 
 const HeaderItemContainer = styled.View`

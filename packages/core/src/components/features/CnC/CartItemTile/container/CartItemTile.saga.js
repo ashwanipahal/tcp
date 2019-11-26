@@ -32,6 +32,7 @@ import {
   clearAddToBagErrorState,
   clearAddToPickupErrorState,
 } from '../../AddedToBag/container/AddedToBag.actions';
+import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
@@ -72,15 +73,13 @@ export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
-        onCartRes: afterRemovingCartItem,
-        recalcRewards: true,
-        isRecalculateTaxes: true,
-        translation: false,
-        excludeCartItems: false,
-      })
-    );
+    yield call(getCartDataSaga, {
+      onCartRes: afterRemovingCartItem,
+      recalcRewards: true,
+      isRecalculateTaxes: true,
+      translation: false,
+      excludeCartItems: false,
+    });
     yield put(setLoaderState(false));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
   } catch (err) {
@@ -187,18 +186,16 @@ export function* updateCartItemSaga({ payload }) {
     if (callBack) {
       callBack();
     }
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
-        recalcRewards: true,
-        isRecalculateTaxes: true,
-        translation: true,
-        excludeCartItems: false,
-      })
-    );
-    yield delay(3000);
-    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
+    yield call(getCartDataSaga, {
+      recalcRewards: true,
+      isRecalculateTaxes: true,
+      translation: true,
+      excludeCartItems: false,
+    });
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setLoaderState(false));
+    yield delay(3000);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
 
@@ -266,6 +263,7 @@ export function* getProductSKUInfoSaga(payload) {
  */
 export function* openPickupModalFromBag(payload) {
   try {
+    yield put(setLoaderState(true));
     const state = yield select();
     const {
       payload: {
@@ -305,8 +303,9 @@ export function* openPickupModalFromBag(payload) {
         isPickUpWarningModal,
       })
     );
+    yield put(setLoaderState(false));
   } catch (err) {
-    console.log(err);
+    yield put(setLoaderState(false));
   }
 }
 

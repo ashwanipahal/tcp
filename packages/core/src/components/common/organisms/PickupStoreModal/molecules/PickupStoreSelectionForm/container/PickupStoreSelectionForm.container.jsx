@@ -3,6 +3,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { propTypes as reduxFormPropTypes, change } from 'redux-form';
+import { setClickAnalyticsData } from '../../../../../../../analytics/actions';
 import { connect } from 'react-redux';
 import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
@@ -523,6 +524,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
         openRestrictedModalForBopis={openRestrictedModalForBopis}
         storeSearchCriteria={storeSearchCriteria}
         storeSearchDistance={storeSearchDistance}
+        setClickAnalyticsData={setClickAnalyticsData}
       />
     );
   }
@@ -532,6 +534,7 @@ function mapStateToProps(state) {
     pageNameProp: getPageName(state),
     storeSearchCriteria: getStoreSearchCriteria(state),
     storeSearchDistance: getStoreSearchDistance(state),
+    setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
   };
 }
 

@@ -86,7 +86,7 @@ export class AddChildBirthdayForm extends PureComponent {
                 placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_month')}
                 component={Select}
                 options={birthMonthOptionsMap}
-                name="userBirthMonth"
+                name="childBirthMonth"
               />
             </InputFieldHalf>
             <InputFieldHalf>
@@ -94,7 +94,7 @@ export class AddChildBirthdayForm extends PureComponent {
                 placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_year')}
                 component={Select}
                 options={birthYearOptionsMap}
-                name="userBirthYear"
+                name="childBirthYear"
               />
             </InputFieldHalf>
           </BirthdayContainer>
@@ -217,8 +217,8 @@ const validateMethod = createValidateMethod(
     'childName',
     'firstName',
     'lastName',
-    'userBirthMonth',
-    'userBirthYear',
+    'childBirthMonth',
+    'childBirthYear',
     'gender',
   ])
 );

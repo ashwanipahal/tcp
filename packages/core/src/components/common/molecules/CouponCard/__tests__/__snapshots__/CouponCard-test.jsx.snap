@@ -7,6 +7,8 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
   >
     <Styled(ErrorMessage)
       error=""
+      fontSize="fs12"
+      fontWeight="extrabold"
       isEspot={false}
     />
     <div
@@ -24,7 +26,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             component="p"
             data-locator="available_PublicValidityLbl"
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs10"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -38,7 +40,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
           component="p"
           data-locator="coupon_available_header_expired"
           fontFamily="secondary"
-          fontSize="fs12"
+          fontSize="fs10"
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"

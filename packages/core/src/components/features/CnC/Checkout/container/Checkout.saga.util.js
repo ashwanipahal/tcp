@@ -17,6 +17,7 @@ import {
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
+import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -114,16 +115,14 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
+    yield call(getCartDataSaga, {
+      isRecalculateTaxes: true,
+      excludeCartItems: false,
+      recalcRewards: false,
+      isCheckoutFlow: true,
+      translation: false,
+    });
     yield put(setLoaderState(false));
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
-        isRecalculateTaxes: true,
-        excludeCartItems: false,
-        recalcRewards: false,
-        isCheckoutFlow: true,
-        translation: false,
-      })
-    );
   } catch (err) {
     yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
