@@ -51,6 +51,9 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     defaultWishList: PropTypes.shape([]),
     activeWishList: PropTypes.shape({}),
     renderItems: PropTypes.func,
+    showListSeperator: PropTypes.bool,
+    isCustomiseListHeight: PropTypes.bool,
+    isMoveToList: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -73,6 +76,9 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     defaultWishList: [],
     activeWishList: {},
     renderItems: null,
+    showListSeperator: false,
+    isCustomiseListHeight: false,
+    isMoveToList: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -107,10 +113,12 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       height: 0,
     };
 
-    const { selectedValue, defaultWishList, isShareOptions, labels } = this.props;
+    const { selectedValue, defaultWishList, isShareOptions, labels, isMoveToList } = this.props;
     let selectedLabelState = '';
     if (isShareOptions) {
       selectedLabelState = selectedValue || labels.lbl_fav_share;
+    } else if (isMoveToList) {
+      selectedLabelState = selectedValue || labels.lbl_fav_moveToAnotherList;
     } else {
       selectedLabelState =
         defaultWishList && defaultWishList.length && defaultWishList[0].displayName;
@@ -170,7 +178,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight, isWishlist, data } = this.props;
+    const { customDropDownHeight, isCustomiseListHeight, data } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -180,7 +188,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       if (calculateHeight > dH) {
         listHeight = dH - 100;
       } else {
-        listHeight = isWishlist && dataLength ? calculateHeight + 100 : calculateHeight;
+        listHeight = isCustomiseListHeight && dataLength ? calculateHeight + 100 : calculateHeight;
       }
       if (customDropDownHeight) {
         listHeight = customDropDownHeight;
@@ -276,6 +284,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       renderItems,
       defaultWishList,
       activeWishList,
+      showListSeperator,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
 
@@ -352,7 +361,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
                     style={{ height: flatListHeight }}
                     ListHeaderComponent={renderHeader}
                     ListFooterComponent={this.handleRenderFooter}
-                    ItemSeparatorComponent={() => !isWishlist && <Separator />}
+                    ItemSeparatorComponent={() => showListSeperator && <Separator />}
                   />
                 )}
               </FlatListWrapper>

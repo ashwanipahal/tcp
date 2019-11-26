@@ -20,14 +20,7 @@ import { getLabelValue } from '../../../../../../../utils';
 class CouponView extends React.PureComponent {
   state = {
     detailStatus: false,
-    helpStatus: false,
     selectedCoupon: {},
-  };
-
-  toggleApplyNowModal = () => {
-    const { openApplyNowModal, navigation } = this.state;
-    navigation.navigate('ApplyNow');
-    openApplyNowModal({ isModalOpen: true });
   };
 
   couponDetailClick = coupon => {
@@ -37,11 +30,9 @@ class CouponView extends React.PureComponent {
     });
   };
 
-  toggleNeedHelpModal = () => {
-    const { helpStatus } = this.state;
-    this.setState({
-      helpStatus: !helpStatus,
-    });
+  toggleCouponNeedHelpModal = () => {
+    const { toggleNeedHelpModal } = this.props;
+    toggleNeedHelpModal();
   };
 
   getHeader = ({ labels }) => {
@@ -68,9 +59,9 @@ class CouponView extends React.PureComponent {
     handleRemoveCoupon,
     handleErrorCoupon,
     detailStatus,
-    helpStatus,
     selectedCoupon,
     showAccordian,
+    isNeedHelpModalOpen,
   }) => {
     return (
       <WrapperStyle>
@@ -79,7 +70,7 @@ class CouponView extends React.PureComponent {
           isFetching={isFetching}
           source="form"
           labels={labels}
-          onNeedHelpTextClick={this.toggleNeedHelpModal}
+          onNeedHelpTextClick={this.toggleCouponNeedHelpModal}
           showAccordian={showAccordian}
         />
         <CouponListContainer>
@@ -105,7 +96,7 @@ class CouponView extends React.PureComponent {
               heading={labels.AVAILABLE_REWARDS_HEADING}
               helpSubHeading="true"
               couponDetailClick={this.couponDetailClick}
-              helpAnchorClick={this.toggleNeedHelpModal}
+              helpAnchorClick={this.toggleCouponNeedHelpModal}
               onApply={handleApplyCouponFromList}
               dataLocator="coupon-cartAvaliableRewards"
               handleErrorCoupon={handleErrorCoupon}
@@ -124,8 +115,8 @@ class CouponView extends React.PureComponent {
         />
         <CouponHelpModal
           labels={labels}
-          openState={helpStatus}
-          onRequestClose={this.toggleNeedHelpModal}
+          openState={isNeedHelpModalOpen}
+          onRequestClose={this.toggleCouponNeedHelpModal}
         />
       </WrapperStyle>
     );
@@ -143,9 +134,10 @@ class CouponView extends React.PureComponent {
       handleErrorCoupon,
       isCheckout,
       showAccordian,
+      isNeedHelpModalOpen,
     } = this.props;
 
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const { detailStatus, selectedCoupon } = this.state;
 
     const header = this.getHeader({ labels });
     const body = this.getContent({
@@ -159,9 +151,9 @@ class CouponView extends React.PureComponent {
       handleErrorCoupon,
       isCheckout,
       detailStatus,
-      helpStatus,
       selectedCoupon,
       showAccordian,
+      isNeedHelpModalOpen,
     });
     const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
@@ -176,14 +168,6 @@ class CouponView extends React.PureComponent {
         ) : (
           <>{body}</>
         )}
-        <View>
-          <Anchor
-            underline
-            fontSizeVariation="large"
-            onPress={this.toggleApplyNowModal}
-            text={getLabelValue(labels, 'applyNowLink')}
-          />
-        </View>
       </View>
     );
   }
