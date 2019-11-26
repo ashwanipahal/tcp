@@ -90,11 +90,13 @@ const ThankYouComponent = ({
         mobilefontFamily="primary"
         text={labels.updateOrderHeading}
       />
-      <Container>
-        <RichTextContainer>
-          <RichText source={{ html: updateOrderDetailsData }} />
-        </RichTextContainer>
-      </Container>
+      {updateOrderDetailsData && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: updateOrderDetailsData }} />
+          </RichTextContainer>
+        </Container>
+      )}
     </>
   );
 };
