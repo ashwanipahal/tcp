@@ -334,34 +334,3 @@ export const getPLPTopPromos = createSelector(
     return loyaltyPromos.concat(promos);
   }
 );
-
-// export const getPLPTopPromos = state => {
-//   const {
-//     bannerInfo: { val: { top: topPromos, loyalty: loyaltyPromo } = {} } = {},
-//   } = state.ProductListing;
-//   const loyaltyPromos =
-//     (loyaltyPromo &&
-//       loyaltyPromo.map(loyalPromo => {
-//         const loyalPromoModule =
-//           loyalPromo.val && loyalPromo.val.cid && state.Modules[loyalPromo.val.cid];
-//         if (loyalPromoModule) {
-//           loyalPromoModule.userType = loyalPromo.sub;
-//         }
-//         return loyalPromoModule;
-//       })) ||
-//     [];
-
-//   const promos =
-//     (topPromos &&
-//       topPromos.map(promoItem => {
-//         return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
-//       })) ||
-//     [];
-
-//   return loyaltyPromos.concat(promos);
-// };
-
-// export const getLoyaltyBanner = state => {
-//   const { loyaltyBanner } = state.ProductListing;
-//   return loyaltyBanner;
-// };
