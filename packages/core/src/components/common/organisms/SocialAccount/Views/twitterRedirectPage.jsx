@@ -62,8 +62,8 @@ const TwitterRedirectPage = () => {
           }
           //Check for dom elements where value is to be set, if not found, set in localstorage
           if (parentTextTokenField) {
-            parentTextTokenField.value = token || '';
-            parentTextVerifierField.value = verifier || '';
+            parentTextTokenField.value = token;
+            parentTextVerifierField.value = verifier;
             parentSetTokenField.click();
             window.close();
           }
