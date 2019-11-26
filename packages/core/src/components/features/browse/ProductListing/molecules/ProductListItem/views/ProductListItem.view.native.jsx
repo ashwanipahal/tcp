@@ -147,6 +147,7 @@ const checkEditEnabled = (isFavorite, itemOutOfStock) => {
   return isFavorite && !itemOutOfStock;
 };
 
+// eslint-disable-next-line complexity
 const ListItem = props => {
   const {
     item,
@@ -224,7 +225,7 @@ const ListItem = props => {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         setLastDeletedItemId={setLastDeletedItemId}
-        isFavorite={isInDefaultWishlist}
+        isFavorite={isInDefaultWishlist || isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
         item={item}
@@ -504,7 +505,7 @@ const RenderPricesSection = values => {
                 size="fs21"
                 color="gray.600"
                 onPress={() => {
-                  onFavorite(generalProductId);
+                  onFavorite(generalProductId, itemId);
                 }}
               />
             )}

@@ -61,11 +61,19 @@ class ProductList extends React.PureComponent {
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
+  onFavorite = (generalProductId, itemId) => {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      isSearchListing,
+      isFavorite,
+      setLastDeletedItemId,
+    } = this.props;
     if (!isLoggedIn) {
       this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else if (isFavorite) {
+      if (setLastDeletedItemId) setLastDeletedItemId({ itemId });
     } else {
       onAddItemToFavorites({
         colorProductId: generalProductId,
