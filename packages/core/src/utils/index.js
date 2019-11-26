@@ -53,6 +53,7 @@ export {
   getIconPath,
   getFlagIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   isUsOnly,

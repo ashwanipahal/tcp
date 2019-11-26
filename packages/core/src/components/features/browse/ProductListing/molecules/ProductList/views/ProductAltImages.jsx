@@ -14,6 +14,8 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 class ProductAltImages extends React.PureComponent {
+  nodes = {};
+
   static propTypes = {
     /** callback for when the shown image changes. Accepts: image index */
     onImageChange: PropTypes.func,
@@ -44,8 +46,6 @@ class ProductAltImages extends React.PureComponent {
     isSoldOut: false,
     soldOutLabel: '',
   };
-
-  nodes = {};
 
   constructor(props, context) {
     super(props, context);
@@ -252,7 +252,7 @@ class ProductAltImages extends React.PureComponent {
     };
     return imageUrls.length < 2 ? (
       <figure
-        className="product-image-container"
+        className="product-image-container full-height"
         itemScope
         itemType="http://schema.org/ImageObject"
       >
@@ -265,6 +265,7 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
+          className="full-height"
         >
           <DamImage
             className="loadImage"

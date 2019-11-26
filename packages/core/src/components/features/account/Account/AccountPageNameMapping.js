@@ -20,7 +20,7 @@ const AccountPageNameMapping = {
     pageName: 'myplace:payment',
   },
   'add-credit-card': {
-    pageName: '',
+    pageName: 'myplace:payment:add credit card',
   },
   'edit-credit-card': {
     pageName: '',

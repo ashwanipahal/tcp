@@ -9,17 +9,6 @@ const getSubCategory = store => {
   return categoryListing[1].displayName;
 };
 
-// const getNavigationText = store => {
-//   const state = store.getState();
-//   return state.ProductListing && state.ProductListing.currentListingSeoKey;
-// };
-
-const getStoreId = store => {
-  const state = store.getState();
-  const defaultStore = state.User && state.User.get('defaultStore');
-  return defaultStore.basicInfo && defaultStore.basicInfo.id;
-};
-
 export const generateHomePageDataLayer = store => {
   return {
     listingCategory: {
@@ -34,7 +23,7 @@ export const generateHomePageDataLayer = store => {
     },
     storeId: {
       get() {
-        return getStoreId(store) || '';
+        return store.getState().APIConfig.storeId || '';
       },
     },
   };

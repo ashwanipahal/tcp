@@ -36,6 +36,7 @@ export {
   isMobileApp,
   getIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   resetApiConfig,
