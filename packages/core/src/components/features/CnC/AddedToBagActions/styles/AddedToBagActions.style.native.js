@@ -74,7 +74,7 @@ export const PaymentsButtonWrapper = styled.View`
 
 export const PaypalPaymentsButtonWrapper = styled.View`
   display: flex;
-  ${props => (props.isAddedTobag ? `` : `flex: 0.5`)};
+  ${props => (props.isAddedTobag ? `flex: 0.8` : `flex: 0.5`)};
   margin-left: ${props => (props.isAddedTobag ? '0' : '10px')};
   margin-right: ${props => (props.isAddedTobag && props.isPayPalEnabled ? '10px' : '0')};
 `;
