@@ -1,7 +1,7 @@
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
-import { setProductDetails } from './ProductDetail.actions';
+import { setProductDetails, setPDPLoadingState } from './ProductDetail.actions';
 import getProductInfoById, {
   layoutResolver,
 } from '../../../../../services/abstractors/productListing/productDetail';
@@ -17,6 +17,7 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     yield put(loadLayoutData({}, pageName));
     yield put(setProductDetails({ product: {} }));
     const state = yield select();
+    yield put(setPDPLoadingState({ isLoading: true }));
     const productDetail = yield call(getProductInfoById, productColorId, state);
     const {
       product: { category },
@@ -39,8 +40,10 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     }
 
     yield put(setProductDetails({ ...productDetail }));
+    yield put(setPDPLoadingState({ isLoading: false }));
   } catch (err) {
     console.log(err);
+    yield put(setPDPLoadingState({ isLoading: false }));
   }
 }
 

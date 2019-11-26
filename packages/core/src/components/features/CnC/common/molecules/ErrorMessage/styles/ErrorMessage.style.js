@@ -19,8 +19,8 @@ export default css`
     background-size: contain;
     flex-shrink: 0;
     border: none;
-    height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    width: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    height: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+    width: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-top: 2px;
   }

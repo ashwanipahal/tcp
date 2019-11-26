@@ -25,10 +25,12 @@ exports[`NavBar component renders correctly 1`] = `
   }
 >
   <nav
+    aria-label={false}
     className="undefined navigation nav-bar"
   >
     <Styled(NavBar)
       closeNavigationDrawer={false}
+      isCondensedHeader={false}
       nav={
         Array [
           Object {
