@@ -24,12 +24,6 @@ class CouponView extends React.PureComponent {
     selectedCoupon: {},
   };
 
-  toggleApplyNowModal = () => {
-    const { openApplyNowModal, navigation } = this.state;
-    navigation.navigate('ApplyNow');
-    openApplyNowModal({ isModalOpen: true });
-  };
-
   couponDetailClick = coupon => {
     this.setState({
       detailStatus: true,
@@ -176,14 +170,6 @@ class CouponView extends React.PureComponent {
         ) : (
           <>{body}</>
         )}
-        <View>
-          <Anchor
-            underline
-            fontSizeVariation="large"
-            onPress={this.toggleApplyNowModal}
-            text={getLabelValue(labels, 'applyNowLink')}
-          />
-        </View>
       </View>
     );
   }
