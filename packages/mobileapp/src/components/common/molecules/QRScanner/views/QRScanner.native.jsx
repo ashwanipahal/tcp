@@ -14,14 +14,16 @@ class QRCode extends PureComponent {
     super(props);
     this.state = {
       isQRNotReadable: false,
+      isQRActive: true,
     };
+    this.scanner = '';
   }
 
   redirectToPLP = data => {
     if (data) {
       const { navigation } = this.props;
       navigation.navigate('ProductListing', {
-        url: '/c?cid=girls-clothing-school-uniforms',
+        url: `/c?cid=${data}`,
         showCustomLoader: true,
       });
     } else {
@@ -30,15 +32,23 @@ class QRCode extends PureComponent {
   };
 
   notReadableQRCode = () => {
-    this.setState({ isQRNotReadable: true });
+    this.setState({ isQRNotReadable: true, isQRActive: false });
   };
 
   closeNotReadableQRCodeModal = () => {
-    this.setState({ isQRNotReadable: false });
+    this.setState({ isQRNotReadable: false, isQRActive: true }, () => this.activateQRScanner());
+  };
+
+  deActivateQRScanner = () => {
+    this.setState({ isQRActive: false });
+  };
+
+  activateQRScanner = () => {
+    this.scanner.reactivate();
   };
 
   onSuccess = e => {
-    // console.log(`Scanned${JSON.stringify(e.data, null, 4)}`);
+    this.deActivateQRScanner();
     this.redirectToPLP(e && e.data);
   };
 
@@ -55,7 +65,7 @@ class QRCode extends PureComponent {
   };
 
   render() {
-    const { isQRNotReadable } = this.state;
+    const { isQRNotReadable, isQRActive } = this.state;
     const { navigation, qrLabels } = this.props;
     return (
       <Modal animationType="fade" transparent={false}>
@@ -67,8 +77,12 @@ class QRCode extends PureComponent {
         />
         <BagPageHeader showGobackIcon navigation={navigation} showCloseButton={false} />
         <QRCodeScanner
+          fadeIn={false}
+          ref={node => {
+            this.scanner = node;
+          }}
           onRead={this.onSuccess}
-          reactivate
+          reactivate={isQRActive}
           showMarker
           topContent={this.topContent()}
         />

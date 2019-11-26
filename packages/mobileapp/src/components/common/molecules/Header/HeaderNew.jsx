@@ -182,12 +182,17 @@ class HeaderNew extends React.PureComponent {
             </RightSection>
           </HeaderContainer>
           {showSearch && (
-            <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+            <SearchBar
+              openSearchProductPage={this.openSearchProductPage}
+              navigation={navigation}
+              labels={slpLabels}
+            />
           )}
           {showSearchModal && (
             <SearchProduct
               closeSearchModal={this.closeSearchProductPage}
               goToSearchResultsPage={this.goToSearchResultsPage}
+              navigation={navigation}
             />
           )}
         </Container>

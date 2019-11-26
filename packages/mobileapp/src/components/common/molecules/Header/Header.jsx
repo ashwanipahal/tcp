@@ -175,6 +175,7 @@ class Header extends React.PureComponent {
           <SearchProduct
             closeSearchModal={this.closeSearchProductPage}
             goToSearchResultsPage={this.goToSearchResultsPage}
+            navigation={navigation}
           />
         )}
       </SearchContainer>

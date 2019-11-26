@@ -117,6 +117,12 @@ class SearchProduct extends React.PureComponent {
     });
   };
 
+  onQRIconFocus = () => {
+    const { navigation } = this.props;
+    navigation.navigate('QRScanner');
+    this.closeModal();
+  };
+
   /**
    * @function clearSearchText
    * clears search text
@@ -169,12 +175,15 @@ class SearchProduct extends React.PureComponent {
           </CloseButton>
         ) : (
           <CustomIcon
+            onPress={this.onQRIconFocus}
             iconFontName={ICON_FONT_CLASS.Icomoon}
             name={ICON_NAME.qrcode}
             size="fs25"
             color="gray.600"
             accessibilityLabel="barcode"
             style={topStyle}
+            isDisabled={false}
+            isButton
           />
         )}
         <Button
