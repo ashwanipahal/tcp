@@ -86,9 +86,10 @@ const AddedToBag = ({
   handleContinueShopping,
   navigation,
   addedToBagInterval,
+  totalBagItems,
 }) => {
   useEffect(() => {
-    if (addedToBagInterval > 0 && openState) {
+    if (addedToBagInterval > 0 && totalBagItems > 0 && openState) {
       setTimeout(() => {
         onRequestClose();
       }, addedToBagInterval);
@@ -183,6 +184,7 @@ AddedToBag.propTypes = {
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   addedToBagInterval: PropTypes.number.isRequired,
+  totalBagItems: PropTypes.number.isRequired,
 };
 
 AddedToBag.defaultProps = {

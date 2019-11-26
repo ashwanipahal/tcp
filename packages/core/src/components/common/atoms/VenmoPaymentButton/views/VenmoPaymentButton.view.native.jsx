@@ -104,6 +104,7 @@ export class VenmoPaymentButton extends Component {
       this.fetchVenmoClientToken();
     }
     if (
+      authorizationKey &&
       mode === modes.CLIENT_TOKEN &&
       (prevProps.authorizationKey !== authorizationKey ||
         prevProps.isNonceNotExpired !== isNonceNotExpired)
