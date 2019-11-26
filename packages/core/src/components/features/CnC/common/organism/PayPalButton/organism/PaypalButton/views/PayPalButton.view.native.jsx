@@ -76,7 +76,7 @@ class PayPalButton extends React.PureComponent {
       const screenHeight = getScreenHeight();
       styles = {
         position: 'absolute',
-        top: isIOS && top ? top : 0,
+        top: 0,
         width: '100%',
         height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
