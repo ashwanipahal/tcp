@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView, StatusBar, Platform } from 'react-native';
+import { View, SafeAreaView, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import ModalNativeHeader from '../../../Modal/view/Modal.native.header';
 import { Button, RichText } from '../../../../atoms';
