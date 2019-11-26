@@ -330,7 +330,7 @@ class HomePageView extends React.PureComponent {
           variation="moduleO,moduleP"
           page="homepageTest"
         />
-        <RichText source={source} />
+        <RichText source={source} isNativeView />
         {apiConfig.previewEnvId === ENV_PREVIEW ? (
           <>
             <TextComponent>Select scheduled preview date</TextComponent>

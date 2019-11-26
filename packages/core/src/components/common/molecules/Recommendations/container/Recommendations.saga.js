@@ -11,7 +11,7 @@ function* fetchRecommendationsData(action) {
 
     yield put(loadRecommendationsData({ reduxKey: payload.reduxKey, result }));
   } catch (e) {
-    logger.log(e);
+    logger.log('Error has occurred: ', e);
   }
 }
 

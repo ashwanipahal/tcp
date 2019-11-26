@@ -1,7 +1,28 @@
 import React from 'react';
 import { Text, Image, View } from 'react-native';
+import { getStyledViewComponent } from './StyleGenerator.native';
 
-export const RenderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
+const StyledComponents = {};
+
+const parseStyle = styleString => {
+  const vacuumString = styleString.join(',').replace(/\s/g, '');
+  const transformedString = vacuumString.slice(0, vacuumString.indexOf('@')).replace(/[.]/g, '');
+  const splitStyleStrings = transformedString.split('}');
+  splitStyleStrings.forEach(str => {
+    const styleConfig = str.split('{').filter(val => val);
+    // eslint-disable-next-line prefer-destructuring
+    if (styleConfig.length) StyledComponents[styleConfig[0]] = styleConfig[1];
+  });
+  return StyledComponents;
+};
+
+export const RenderText = props => {
+  const { style, children } = props;
+  if (!children) {
+    return null;
+  }
+  return <Text style={{ ...style }}>{children}</Text>;
+};
 
 export const RenderAnchor = ({ style, children, actionHandler }) => {
   const actionProps = children[0].props;
@@ -21,14 +42,33 @@ export const RenderImage = ({ style, source, ...otherProps }) => {
   return <Image url={source} {...otherProps} />;
 };
 
-export const RenderView = ({ children }) => {
-  return (
-    <View>
+export const RenderView = ({ children, className }) => {
+  const StyledView = className ? getStyledViewComponent(StyledComponents, className) : View;
+
+  return children ? (
+    <StyledView>
       {children.map(child => {
-        console.log(child);
-        return <Text>{child}</Text>;
+        switch (child.type.name) {
+          case 'Text':
+            return RenderText(child.props);
+          case 'div':
+            return RenderView(child.props);
+          case 'img':
+            return RenderImage(child.props);
+          case 'a':
+            return RenderAnchor(child.props);
+          default: {
+            if (child.type === 'style') {
+              parseStyle(child.props.children);
+              return null;
+            }
+            return RenderText(child.props);
+          }
+        }
       })}
-    </View>
+    </StyledView>
+  ) : (
+    <Text>{children}</Text>
   );
 };
 
