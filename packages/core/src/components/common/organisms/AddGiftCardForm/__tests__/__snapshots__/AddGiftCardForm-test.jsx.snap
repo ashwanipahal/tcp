@@ -159,7 +159,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -341,7 +341,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -667,7 +667,7 @@ exports[`Add gift card form component should render component correctly when isF
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -842,7 +842,7 @@ exports[`Add gift card form component should render component correctly when isF
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1168,7 +1168,7 @@ exports[`Add gift card form component should render component correctly when sav
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1356,7 +1356,7 @@ exports[`Add gift card form component should render component correctly when sav
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1556,7 +1556,7 @@ exports[`Add gift card form component should render component correctly when sav
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -1697,7 +1697,7 @@ exports[`Add gift card form component should render component correctly when sav
   }
   & .warning-icon {
     background: transparent url(",
-              "/static/version-not-available/images/circle-alert-fill.png",
+              "/static/version-not-available/images/circle-alert-fill.svg",
               ") no-repeat 0 0;
     background-size: contain;
     border: none;

@@ -152,7 +152,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -338,7 +338,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -523,7 +523,7 @@ exports[`Coupon component should renders correctly with express checkout 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -709,7 +709,7 @@ exports[`Coupon component should renders correctly with express checkout 1`] = `
   }
   .warning-icon {
     background: transparent url(",
-                "/static/version-not-available/images/circle-alert-fill.png",
+                "/static/version-not-available/images/circle-alert-fill.svg",
                 ") no-repeat 0 0;
     background-size: contain;
     border: none;
