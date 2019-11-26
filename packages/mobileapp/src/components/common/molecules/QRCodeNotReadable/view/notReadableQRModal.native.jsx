@@ -38,7 +38,8 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
                 textAlign="center"
                 fontFamily="secondary"
                 fontSize="fs16"
-                fontWeight="black"
+                marginTop="31px"
+                fontWeight="bold"
               />
 
               <StyledBodyCopy
@@ -57,6 +58,7 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
                 fill="WHITE"
                 marginTop="25px"
                 width="260px"
+                fontWeight="semibold"
                 onPress={() => closeIconAction(onClose)}
               />
             </MessageContainer>

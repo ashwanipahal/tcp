@@ -43,6 +43,7 @@ class QRCode extends PureComponent {
   };
 
   topContent = () => {
+    const { qrLabels } = this.props;
     return (
       <>
         <HelpText>{qrLabels.lbl_qrscanner_help_one || 'Scan Animated Tees & More'}</HelpText>

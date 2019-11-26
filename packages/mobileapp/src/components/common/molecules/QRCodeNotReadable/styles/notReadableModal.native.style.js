@@ -4,7 +4,7 @@ import { Image, BodyCopy, Button } from '../../../../../../../core/src/component
 export const Wrapper = styled.View`
   align-items: center;
   background-color: #ffffff;
-  height: 290px;
+  height: 214px;
   width: ${props => props.width};
   padding: 12px;
 `;
@@ -15,13 +15,12 @@ export const Container = styled.View`
 `;
 
 export const StyledImage = styled(Image)`
-  /* stylelint-disable-next-line */
-  tint-color: black;
-  ${props => (props.marginTop ? `margin-top: ${props.marginTop}` : ``)};
+  margin-top: -15px;
+  margin-right: -5px;
 `;
 
 export const StyledBodyCopy = styled(BodyCopy)`
-  ${props => (props.marginTop ? `margin-top: ${props.marginTop}` : ``)};
+  margin-top: ${props => props.marginTop};
 `;
 
 export const Touchable = styled.TouchableOpacity`
@@ -32,7 +31,7 @@ export const Touchable = styled.TouchableOpacity`
 `;
 
 export const StyledButton = styled(Button)`
-  ${props => (props.marginTop ? `margin-top: ${props.marginTop}` : ``)};
+  margin-top: ${props => props.marginTop};
 `;
 
 export const MessageContainer = styled.View`
