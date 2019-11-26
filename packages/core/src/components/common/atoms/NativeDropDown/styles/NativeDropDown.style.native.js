@@ -9,7 +9,6 @@ const PickerView = styled.View`
 `;
 
 const AndroidPickerView = styled.View`
-  background: ${props => props.theme.colorPalette.text.lightgray};
   width: ${props => props.width || '35%'};
 `;
 

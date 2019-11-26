@@ -103,7 +103,7 @@ export class AddChildBirthdayForm extends PureComponent {
             fontSize="fs10"
             fontWeight="black"
             color="gray.900"
-            text={getLabelValue(addChildBirthdayLabels, 'add_child_gender_heading')}
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_gender_heading')}
             spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
           />
           <BirthdayContainer>
