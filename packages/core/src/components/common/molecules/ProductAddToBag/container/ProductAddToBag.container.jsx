@@ -473,6 +473,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      sizeChartDetails,
       isMultiItemQVModal,
       ...otherProps
     } = this.props;
@@ -543,6 +544,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}
       />

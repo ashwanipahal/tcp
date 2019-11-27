@@ -113,6 +113,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
+    case 'promotion':
+      resolve(require('../services/handler/graphQL/queries/promotion'));
+      break;
     default:
       importOtherGraphQLQueries({
         query,
