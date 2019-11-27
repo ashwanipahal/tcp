@@ -405,6 +405,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       },
     ]
   }
+  quickViewPickup={[Function]}
   selectColor={[Function]}
   selectFit={[Function]}
   selectSize={[Function]}
@@ -948,6 +949,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       },
     ]
   }
+  quickViewPickup={[Function]}
   selectColor={[Function]}
   selectFit={[Function]}
   selectSize={[Function]}

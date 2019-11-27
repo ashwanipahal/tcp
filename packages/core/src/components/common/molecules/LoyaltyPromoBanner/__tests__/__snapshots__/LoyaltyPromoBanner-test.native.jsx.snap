@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyPromoBanner should render correctly 1`] = `
+<View>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation=""
+    colorName={null}
+    customStyle={Object {}}
+    justifyContent=""
+    locator=""
+    margins={null}
+    navigation={Object {}}
+    onPress={null}
+    text=""
+    visible={false}
+  >
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": "",
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+      <Styled(TouchableOpacity)
+        accessibilityLabels="close"
+        accessibilityRole="button"
+        onPress={[Function]}
+      >
+        <Styled(Styled(ImageComp))
+          alt=""
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/close.png",
+            }
+          }
+          url=""
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+  </Styled(Anchor)>
+</View>
+`;
