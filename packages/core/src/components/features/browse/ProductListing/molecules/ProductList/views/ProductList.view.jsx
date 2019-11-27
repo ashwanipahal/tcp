@@ -66,7 +66,6 @@ const ProductList = props => {
   } = props;
   let gridIndex = 0;
 
-  console.log('productsBlock %%%% ', productsBlock);
   const productTileClass = isSearchListing ? ' product-tile search-product-tile' : ' product-tile';
 
   return (

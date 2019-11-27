@@ -45,10 +45,6 @@ const GridPromo = props => {
     );
   }
   // TODO - fix the image path / take it from the CMS directly
-  console.log(
-    'sdfasdf',
-    `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`
-  );
   return (
     <ImageBackground
       source={{

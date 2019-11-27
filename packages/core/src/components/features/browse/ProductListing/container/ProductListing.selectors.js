@@ -78,9 +78,7 @@ export const getAllProductsSelect = createSelector(
   getProductListingState,
   products => {
     const allProducts = products && products.loadedProductsPages;
-    const flatArray = allProducts && flattenArray(allProducts);
-    console.log('flatArray', flatArray);
-    return flatArray;
+    return allProducts && flattenArray(allProducts);
   }
 );
 

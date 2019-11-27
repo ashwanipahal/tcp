@@ -1,4 +1,3 @@
-/* eslint-disable */
 /* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';

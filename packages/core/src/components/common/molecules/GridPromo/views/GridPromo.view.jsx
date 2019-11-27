@@ -11,7 +11,6 @@ const GridPromo = props => {
     promoObj: { textItems, subHeadLine, promoWrapper } = {},
     variation,
   } = props;
-  console.log('promoObj', promoObj);
 
   const headingLine = textItems[0] && textItems[0].text;
   const headLineParts = headingLine.split('|');
