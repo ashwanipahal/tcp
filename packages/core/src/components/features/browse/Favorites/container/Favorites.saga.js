@@ -38,6 +38,8 @@ import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
 import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
+import { isMobileApp } from '../../../../../utils';
+import { setModalState } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 
 export function* loadActiveWishlistByGuestKey({ payload }) {
   const { wishListId, guestAccessKey } = payload;
@@ -276,25 +278,36 @@ export function* deleteWishListItemById({ payload }) {
   }
 }
 
-export function* updateWishListItem(formData) {
-  const { itemId, quantity, color, productInfo } = formData;
-  const state = yield select();
-  const activeWishlistObject =
-    state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
-  const activeWishlistId = activeWishlistObject.id;
-  const variantSelected =
-    productInfo.colorFitsSizesMap &&
-    productInfo.colorFitsSizesMap.find(entry => entry.color.name === color);
-  const uniqueId = (variantSelected && variantSelected.colorDisplayId) || '';
-  yield call(deleteWishListItem, activeWishlistId, itemId);
-  yield call(addItemsToWishlistAbstractor, {
-    wishListId: activeWishlistId,
-    skuIdOrProductId: uniqueId,
-    quantity,
-    isProduct: true,
-    uniqueId,
-  });
-  yield* loadWishlistsSummaries();
+export function* updateWishListItem({ payload }) {
+  try {
+    const { itemId, quantity, color, product, callBack } = payload;
+    const state = yield select();
+    const activeWishlistObject =
+      state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
+    const activeWishlistId = activeWishlistObject.id;
+    const variantSelected =
+      product &&
+      product.colorFitsSizesMap &&
+      product.colorFitsSizesMap.find(entry => entry.color.name === color);
+    const uniqueId = (variantSelected && variantSelected.colorDisplayId) || '';
+    yield call(deleteWishListItem, activeWishlistId, itemId);
+    yield call(addItemsToWishlistAbstractor, {
+      wishListId: activeWishlistId,
+      skuIdOrProductId: uniqueId,
+      quantity,
+      isProduct: true,
+      uniqueId,
+    });
+    yield* loadWishlistsSummaries();
+    if (isMobileApp()) {
+      yield put(setModalState({ isModalOpen: false }));
+    }
+    if (callBack) {
+      callBack();
+    }
+  } catch (err) {
+    yield null;
+  }
 }
 
 export function* sendWishListMail(formData) {

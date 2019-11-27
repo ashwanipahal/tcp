@@ -157,6 +157,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  updateWishListItemFav,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -211,11 +212,16 @@ const ProductListView = ({
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             isSearchListing={isSearchListing}
             renderMoveToList={renderMoveToList}
+            updateWishListItemFav={updateWishListItemFav}
             {...otherProps}
           />
         )}
         {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+        <QuickViewModal
+          navigation={navigation}
+          onPickUpOpenClick={onPickUpOpenClick}
+          updateWishListItemFav={updateWishListItemFav}
+        />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
     </ScrollView>
@@ -260,6 +266,7 @@ ProductListView.propTypes = {
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   renderMoveToList: PropTypes.func,
   addToBagEcom: PropTypes.func,
+  updateWishListItemFav: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -289,6 +296,7 @@ ProductListView.defaultProps = {
   isBothTcpAndGymProductAreAvailable: false,
   renderMoveToList: () => {},
   addToBagEcom: () => {},
+  updateWishListItemFav: () => {},
 };
 
 export default withStyles(ProductListView, styles);

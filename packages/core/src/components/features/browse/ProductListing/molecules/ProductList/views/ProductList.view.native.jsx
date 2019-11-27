@@ -375,6 +375,7 @@ ProductList.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
   addToBagEcom: PropTypes.func,
+  updateWishListItemFav: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -412,6 +413,7 @@ ProductList.defaultProps = {
   outOfStockLabels: {},
   renderMoveToList: () => {},
   addToBagEcom: () => {},
+  updateWishListItemFav: () => {},
 };
 
 export default withStyles(ProductList, styles);

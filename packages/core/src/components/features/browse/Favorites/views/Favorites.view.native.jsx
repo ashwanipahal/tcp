@@ -552,6 +552,7 @@ class FavoritesView extends React.PureComponent {
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
       addToBagEcom,
+      updateWishListItemFav,
     } = this.props;
 
     const { selectedShareOption } = this.state;
@@ -686,6 +687,7 @@ class FavoritesView extends React.PureComponent {
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
               addToBagEcom={addToBagEcom}
+              updateWishListItemFav={updateWishListItemFav}
             />
           </View>
         )}
@@ -730,6 +732,7 @@ FavoritesView.propTypes = {
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
+  updateWishListItemFav: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

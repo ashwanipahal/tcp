@@ -43,7 +43,14 @@ class QuickViewModal extends React.Component {
     if (isLoading) {
       return ' ';
     }
-    return fromBagPage || isFavoriteEdit ? quickViewLabels.editItem : quickViewLabels.addToBag;
+    const { editItem, addToBag, editProduct } = quickViewLabels;
+    let headerText = addToBag;
+    if (fromBagPage) {
+      headerText = editItem;
+    } else if (isFavoriteEdit) {
+      headerText = editProduct;
+    }
+    return headerText;
   };
 
   handleMultipleItemsAddToBagClick(e) {
@@ -127,6 +134,9 @@ class QuickViewModal extends React.Component {
         const errorMessage = !isMultiItemQVModal
           ? addToBagError
           : (product.generalProductId === errorProductId && errMsg) || null;
+        // const currentColorEntry =
+        //   product && getMapSliceForColorProductId(colorFitsSizesMap, product.generalProductId);
+        //   console.log("currentColorEntry current : ", currentColorEntry);
         return (
           <ProductCustomizeFormPart
             productInfo={product}

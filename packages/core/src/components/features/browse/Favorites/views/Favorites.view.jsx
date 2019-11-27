@@ -109,6 +109,7 @@ class FavoritesView extends React.PureComponent {
       outOfStockLabels,
       activeWishList,
       addToBagEcom,
+      updateWishListItemFav,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -132,7 +133,10 @@ class FavoritesView extends React.PureComponent {
             activeWishListId={activeWishList.id}
             addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal selectedColorProductId={selectedColorProductId} />
+          <QuickViewModal
+            selectedColorProductId={selectedColorProductId}
+            updateWishListItemFav={updateWishListItemFav}
+          />
         </>
       )
     );
@@ -578,6 +582,7 @@ FavoritesView.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
   addToBagEcom: PropTypes.func.isRequired,
+  updateWishListItemFav: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

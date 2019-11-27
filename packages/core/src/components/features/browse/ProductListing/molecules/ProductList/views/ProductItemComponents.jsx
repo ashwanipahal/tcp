@@ -343,7 +343,11 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
   if (itemNotAvailable) {
     return null;
   }
-  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
+  const { isFavoriteView, labels, onQuickViewOpenClick, productItem } = props;
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = productItem;
+  const { itemId, quantity, isTCP } = productItem.itemInfo;
   return (
     isFavoriteView && (
       <Anchor
@@ -352,6 +356,15 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
           event.preventDefault();
           onQuickViewOpenClick({
             colorProductId: selectedColorProductId,
+            orderInfo: {
+              orderItemId: itemId,
+              selectedQty: quantity,
+              selectedColor: color.name,
+              selectedSize: size || '',
+              selectedFit: fit || '',
+              skuId: skuId,
+              itemBrand: isTCP ? 'tcp' : 'gym',
+            },
             isFavoriteEdit: true,
           });
         }}

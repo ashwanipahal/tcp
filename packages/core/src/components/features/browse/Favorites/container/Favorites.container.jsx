@@ -16,6 +16,7 @@ import {
   updateWishListAction,
   sendWishListMailAction,
   setWishListShareSuccess,
+  updateWishListItemIdAction,
 } from './Favorites.actions';
 
 import {
@@ -171,6 +172,7 @@ class FavoritesContainer extends React.PureComponent {
       formErrorMessage,
       isLoggedIn,
       addToBagEcom,
+      updateWishListItemFav,
     } = this.props;
     const { selectedColorProductId } = this.state;
 
@@ -213,6 +215,7 @@ class FavoritesContainer extends React.PureComponent {
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
         addToBagEcom={addToBagEcom}
+        updateWishListItemFav={updateWishListItemFav}
         {...this.state}
       />
     );
@@ -271,6 +274,9 @@ const mapDispatchToProps = dispatch => {
     addToBagEcom: payload => {
       dispatch(addToCartEcom(payload));
     },
+    updateWishListItemFav: payload => {
+      dispatch(updateWishListItemIdAction(payload));
+    },
   };
 };
 
@@ -305,6 +311,7 @@ FavoritesContainer.propTypes = {
   setListShareSuccess: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   addToBagEcom: PropTypes.func.isRequired,
+  updateWishListItemFav: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {

@@ -81,7 +81,6 @@ const ProductCustomizeFormPart = props => {
   const apiConfigObj = getAPIConfig();
   const { crossDomain } = apiConfigObj;
   const currentSiteBrand = getBrand();
-  console.log('currentSiteBrand : ', currentSiteBrand);
   const isProductBrandOfSameDomain = !isEmpty(productInfoFromBag)
     ? currentSiteBrand.toUpperCase() === productInfoFromBag.itemBrand.toUpperCase()
     : true;
@@ -208,7 +207,7 @@ ProductCustomizeFormPart.propTypes = {
   isHasPlcc: PropTypes.bool,
   addToBagError: PropTypes.string,
   imageUrl: PropTypes.string,
-  currentColorEntry: PropTypes.func,
+  currentColorEntry: PropTypes.shape({}),
   goToPDPPage: PropTypes.func,
   colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
   formRef: PropTypes.shape({}).isRequired,
@@ -229,7 +228,7 @@ ProductCustomizeFormPart.defaultProps = {
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,
-  currentColorEntry: () => {},
+  currentColorEntry: {},
   goToPDPPage: () => {},
   addToBagError: '',
   imageUrl: '',

@@ -56,9 +56,6 @@ const onCTAHandler = props => {
   const { pdpUrl, isGiftCard, bundleProduct, generalProductId } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
-  const {
-    skuInfo: { skuId, size, fit, color },
-  } = item;
   if (isFavoriteOOS) {
     const {
       itemInfo: { itemId },
@@ -67,29 +64,39 @@ const onCTAHandler = props => {
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
-    if (skuId && size) {
-      let cartItemInfo = getCartItemInfo(item, {});
-      cartItemInfo = { ...cartItemInfo };
-      if (addToBagEcom) addToBagEcom(cartItemInfo);
-    } else if (isFavoriteEdit) {
-      const { itemId, quantity } = item.itemInfo;
-      onQuickViewOpenClick({
-        colorProductId: colorProductId,
-        orderInfo: {
-          orderItemId: itemId,
-          selectedQty: quantity,
-          selectedColor: color,
-          selectedSize: size,
-          selectedFit: fit,
-          skuId: skuId,
-        },
-        isFavoriteEdit: true,
-      });
+    if (isFavoriteEdit) {
+      handleFavoriteEdit(colorProductId, item, addToBagEcom, onQuickViewOpenClick);
     } else {
       onQuickViewOpenClick({
         colorProductId,
       });
     }
+  }
+};
+
+const handleFavoriteEdit = (colorProductId, item, addToBagEcom, onQuickViewOpenClick) => {
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = item;
+  console.tron.log('item : ', item);
+  if (skuId && size) {
+    let cartItemInfo = getCartItemInfo(item, {});
+    cartItemInfo = { ...cartItemInfo };
+    if (addToBagEcom) addToBagEcom(cartItemInfo);
+  } else {
+    const { itemId, quantity } = item.itemInfo;
+    onQuickViewOpenClick({
+      colorProductId: colorProductId,
+      orderInfo: {
+        orderItemId: itemId,
+        selectedQty: quantity,
+        selectedColor: color,
+        selectedSize: size,
+        selectedFit: fit,
+        skuId: skuId,
+      },
+      isFavoriteEdit: true,
+    });
   }
 };
 

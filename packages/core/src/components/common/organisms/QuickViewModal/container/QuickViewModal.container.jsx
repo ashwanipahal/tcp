@@ -34,6 +34,10 @@ import {
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
+import {
+  getMapSliceForColorProductId,
+  getMapSliceForSizeSkuID,
+} from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class QuickViewModalContainer extends React.PureComponent {
   handleAddToBag = () => {
@@ -54,12 +58,14 @@ class QuickViewModalContainer extends React.PureComponent {
       isFromBagProductSfl,
       productInfoFromBag,
       updateCartSflItemAction,
+      isFavoriteEdit,
+      updateWishListItemFav,
     } = this.props;
     const [{ product }] = productInfo;
     const [formValue] = formValues;
     const cartItemInfo = getCartItemInfo(product, formValue);
     const {
-      skuInfo: { skuId, variantNo, variantId },
+      skuInfo: { skuId, variantNo, variantId, color },
     } = cartItemInfo;
     if (isFromBagProductSfl) {
       updateCartSflItemAction({
@@ -78,7 +84,18 @@ class QuickViewModalContainer extends React.PureComponent {
         itemPartNumber: variantId,
         callBack: closeQuickViewModalAction,
       };
-      updateCartItemAction(payload);
+      if (isFavoriteEdit && updateWishListItemFav) {
+        const formData = {
+          itemId: orderItemId,
+          quantity,
+          color: color.name,
+          product,
+          callBack: closeQuickViewModalAction,
+        };
+        updateWishListItemFav(formData);
+      } else {
+        updateCartItemAction(payload);
+      }
     }
   };
 
@@ -173,6 +190,7 @@ QuickViewModalContainer.propTypes = {
   toastMessage: PropTypes.func,
   isFromBagProductSfl: PropTypes.bool,
   updateCartSflItemAction: PropTypes.func.isRequired,
+  updateWishListItemFav: PropTypes.func,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -183,6 +201,7 @@ QuickViewModalContainer.defaultProps = {
   },
   toastMessage: () => {},
   isFromBagProductSfl: false,
+  updateWishListItemFav: () => {},
 };
 
 export default connect(
