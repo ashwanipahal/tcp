@@ -133,8 +133,6 @@ const OutfitDetailsView = props => {
     pdpLabels,
     unavailableCount,
     toastMessage,
-    addToBagError,
-    addToBagErrorId,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
