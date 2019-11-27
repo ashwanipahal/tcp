@@ -272,6 +272,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed,
       keepAlive,
       isFromBagProductSfl,
+      quickViewPickup,
       currentProduct,
       isFavoriteEdit,
     } = this.props;
@@ -301,7 +302,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {!isFavoriteEdit && this.renderUnavailableLink()}
+              {quickViewPickup() && this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,

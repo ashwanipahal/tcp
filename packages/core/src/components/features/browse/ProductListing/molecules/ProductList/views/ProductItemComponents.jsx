@@ -343,14 +343,30 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
   if (itemNotAvailable) {
     return null;
   }
-  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
+  const { isFavoriteView, labels, onQuickViewOpenClick, productItem } = props;
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = productItem;
+  const { itemId, quantity } = productItem.itemInfo;
+  console.log('itemitem : ', productItem);
   return (
     isFavoriteView && (
       <Anchor
         className="edit-fav-item__button"
         handleLinkClick={event => {
           event.preventDefault();
-          onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+          onQuickViewOpenClick({
+            colorProductId: selectedColorProductId,
+            orderInfo: {
+              orderItemId: itemId,
+              selectedQty: quantity,
+              selectedColor: color.name,
+              selectedSize: size,
+              selectedFit: fit,
+              skuId: skuId,
+            },
+            isFavoriteEdit: true,
+          });
         }}
         noLink
       >

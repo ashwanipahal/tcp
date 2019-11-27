@@ -111,7 +111,6 @@ class QuickViewModalContainer extends React.PureComponent {
 function mapStateToProps(state) {
   const productInfo = getProductInfo(state);
   const isMultiItemQVModal = productInfo && productInfo.length > 1;
-
   return {
     isModalOpen: getModalState(state),
     isLoading: getLoadingState(state),

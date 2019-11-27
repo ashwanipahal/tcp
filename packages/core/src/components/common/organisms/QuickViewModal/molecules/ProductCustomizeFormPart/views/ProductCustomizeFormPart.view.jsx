@@ -81,6 +81,7 @@ const ProductCustomizeFormPart = props => {
   const apiConfigObj = getAPIConfig();
   const { crossDomain } = apiConfigObj;
   const currentSiteBrand = getBrand();
+  console.log('currentSiteBrand : ', currentSiteBrand);
   const isProductBrandOfSameDomain = !isEmpty(productInfoFromBag)
     ? currentSiteBrand.toUpperCase() === productInfoFromBag.itemBrand.toUpperCase()
     : true;
@@ -178,6 +179,7 @@ const ProductCustomizeFormPart = props => {
               onCloseClick={onCloseClick}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
               isFavoriteEdit={isFavoriteEdit}
+              isMultiItemQVModal={isMultiItemQVModal}
             />
           </div>
         </div>

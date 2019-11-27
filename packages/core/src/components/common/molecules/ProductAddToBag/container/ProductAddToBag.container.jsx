@@ -434,6 +434,15 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.initialValuesForm.color = selectedColor;
   };
 
+  quickViewPickup = () => {
+    const { isPickup, isMultiItemQVModal, isBundleProduct, isFavoriteEdit } = this.props;
+    const isQuickViewPickup = !isPickup && !isBundleProduct && !isMultiItemQVModal;
+    if (isFavoriteEdit) {
+      return isFavoriteEdit && !isFavoriteEdit;
+    }
+    return isQuickViewPickup;
+  };
+
   /**
    * @function render
    *
@@ -470,6 +479,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       outOfStockLabels,
       isKeepAliveEnabled,
       isFavoriteEdit,
+      isMultiItemQVModal,
       ...otherProps
     } = this.props;
     const {
@@ -540,6 +550,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
         isFavoriteEdit={isFavoriteEdit}
+        isMultiItemQVModal={isMultiItemQVModal}
+        quickViewPickup={this.quickViewPickup}
       />
     );
   }
