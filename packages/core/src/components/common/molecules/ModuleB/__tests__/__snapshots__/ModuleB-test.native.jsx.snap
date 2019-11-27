@@ -35,5 +35,3 @@ exports[`ModuleBVanilla should match snapshot 1`] = `
   </Styled(View)>
 </Styled(View)>
 `;
-
-exports[`ModuleNVanilla should match snapshot 1`] = `<Styled(View) />`;
