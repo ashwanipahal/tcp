@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SiteMapView from '../views';
 import { siteMapData } from './SiteMap.selectors';
+import { fetchSiteMapData } from './SiteMap.actions';
 
 const mapStateToProps = state => {
   return {
@@ -10,6 +11,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getSiteMapData: () => {
+      dispatch(fetchSiteMapData());
+    },
   };
 };
 

@@ -1,1 +1,1 @@
-export { default } from '../components/features/content/SiteMap/views';
+export { default } from '../components/features/content/SiteMap';
