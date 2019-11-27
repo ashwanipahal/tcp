@@ -214,14 +214,16 @@ class PickupStoreListItem extends React.Component {
     updateCartItemStore: PropTypes.bool.isRequired,
     currentProduct: PropTypes.string,
     pageNameProp: PropTypes.string,
-    setClickAnalyticsData: PropTypes.func.isRequired,
-    trackClick: PropTypes.func.isRequired,
+    setClickAnalyticsData: PropTypes.func,
+    trackClick: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     currentProduct: '',
     pageNameProp: '',
+    setClickAnalyticsData: () => {},
+    trackClick: () => {},
   };
 
   constructor(props) {
