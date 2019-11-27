@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { WebView } from 'react-native-webview';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { View, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight, isGymboree } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
@@ -69,14 +70,13 @@ class PayPalButton extends React.PureComponent {
 
   render() {
     const { getPayPalSettings, top, fullWidth } = this.props;
-
     const { showAsModal } = this.state;
     if (showAsModal) {
       const isIOS = Platform.OS === 'ios';
       const screenHeight = getScreenHeight();
       styles = {
         position: 'absolute',
-        top: isIOS && top ? top : 0,
+        top: 0,
         width: '100%',
         height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
@@ -142,4 +142,5 @@ PayPalButton.defaultProps = {
   fullWidth: false,
 };
 
-export default PayPalButton;
+export default gestureHandlerRootHOC(PayPalButton);
+export { PayPalButton as PayPalButtonVanilla };

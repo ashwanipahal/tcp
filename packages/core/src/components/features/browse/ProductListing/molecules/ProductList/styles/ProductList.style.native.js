@@ -6,6 +6,10 @@ const PageContainer = styled.View`
 
 const HeaderContainer = styled.View``;
 
+const GridPromoContainer = styled.View`
+  width: ${props => (props.fullWidth ? '100%' : '48%')};
+`;
+
 const styles = css``;
 
-export { styles, PageContainer, HeaderContainer };
+export { styles, PageContainer, HeaderContainer, GridPromoContainer };

@@ -56,6 +56,7 @@ export class VenmoPaymentButton extends Component {
       mode,
       setVenmoPaymentInProgress,
       isRemoveOOSItems,
+      isNonceNotExpired,
     } = this.props;
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
@@ -64,10 +65,17 @@ export class VenmoPaymentButton extends Component {
       onVenmoPaymentButtonClick(mode);
       setVenmoData({ loading: false });
     }
-    if (isAndroid()) {
-      this.authorizeVenmoPaymentApp();
+    // Cache of 3 hours on venmo authorization, no need to authorize again
+    if (!isNonceNotExpired && this.canCallVenmoApi()) {
+      if (isAndroid()) {
+        this.authorizeVenmoPaymentApp();
+      } else {
+        this.authorizeVenmoPaymentIOSApp();
+      }
     } else {
-      this.authorizeVenmoPaymentIOSApp();
+      // Nonce is already there in the cache, proceed with the callback.
+      onVenmoPaymentButtonClick(mode);
+      setVenmoData({ loading: false });
     }
   };
 

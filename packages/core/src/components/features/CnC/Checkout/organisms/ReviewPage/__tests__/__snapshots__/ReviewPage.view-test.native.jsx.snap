@@ -59,6 +59,7 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
       showAccordian={true}
       showPayPalButton={false}
       showVenmoSubmit={false}
+      venmoPayment={null}
     />
   </ScrollViewMock>
 </Fragment>

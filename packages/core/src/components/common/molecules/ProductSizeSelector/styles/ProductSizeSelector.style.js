@@ -28,15 +28,21 @@ const styles = css`
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding: 4px ${props => props.theme.spacing.ELEM_SPACING.SM};
       border: 1px solid ${props => props.theme.colorPalette.gray[900]};
       display: inline-block;
       text-transform: capitalize;
       font-size: ${props => props.theme.fonts.fontSize.anchor.small}px;
-      color: ${props => props.theme.colorPalette.gray[400]};
+      color: ${props => props.theme.colorPalette.gray[900]};
       border-radius: 6px;
       text-align: center;
       width: 54px;
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding: 3.5px ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        padding: 4px ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
     }
 
     &.item-disabled-option .input-radio-title {

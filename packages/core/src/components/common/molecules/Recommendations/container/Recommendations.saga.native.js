@@ -4,7 +4,7 @@ import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
 import logger from '../../../../../utils/loggerInstance';
 
-function* fetchRecommendationsData(action) {
+export function* fetchRecommendationsData(action) {
   const { payload } = action;
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, payload);
@@ -19,7 +19,7 @@ function* fetchRecommendationsData(action) {
   }
 }
 
-function* RecommendationsSaga() {
+export function* RecommendationsSaga() {
   yield takeEvery(FETCH_RECOMMENDATIONS_DATA, fetchRecommendationsData);
 }
 
