@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
+  .extended-sizes-text {
+    margin-bottom: auto;
+  }
+
   .item-container-inner {
     height: ${props => (props.isPromoAvailable ? '405px' : '385px')};
     @media ${props => props.theme.mediaQuery.medium} {

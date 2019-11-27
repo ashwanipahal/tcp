@@ -72,7 +72,7 @@ const style = css`
     margin: 0 auto;
   }
   .cta-button-text {
-    padding: 11px 0px;
+    width: auto;
   }
 `;
 
