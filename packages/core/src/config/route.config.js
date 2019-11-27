@@ -73,6 +73,11 @@ const ROUTES_LIST = [
     params: ['id', 'subSection', 'orderId'],
   },
   {
+    noSlugPath: 'favorites',
+    path: '/favorites',
+    resolver: '/Favorites',
+  },
+  {
     noSlugPath: 'ds',
     path: '/ds',
     resolver: '/DeltaSyncSamplePage',

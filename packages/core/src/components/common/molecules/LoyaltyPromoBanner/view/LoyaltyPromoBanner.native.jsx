@@ -100,9 +100,7 @@ class LoyaltyPromoBanner extends React.PureComponent {
             <Wrapper>
               <RichText
                 source={{
-                  html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${
-                    richText.text
-                  }</body></html>`,
+                  html: richText.text,
                 }}
               />
               <Touchable
@@ -135,3 +133,4 @@ LoyaltyPromoBanner.defaultProps = {
 };
 
 export default LoyaltyPromoBanner;
+export { LoyaltyPromoBanner as LoyaltyPromoBannerVanilla };

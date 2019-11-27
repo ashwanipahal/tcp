@@ -18,6 +18,9 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
+  .add-to-bag-button.add-to-bag-button {
+    width: 100%;
+  }
   .add-to-bag-button {
     max-width: 450px;
     text-align: center;
@@ -69,6 +72,7 @@ const styles = css`
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+
   .select-value-wrapper {
     display: flex;
     flex: 1;
@@ -131,7 +135,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: auto;
     width: 100%;
-    margin-bottom: 33px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;

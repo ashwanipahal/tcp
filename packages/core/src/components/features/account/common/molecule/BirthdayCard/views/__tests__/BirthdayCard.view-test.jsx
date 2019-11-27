@@ -46,6 +46,6 @@ describe('BirthdayCard', () => {
     const genderIcon = component.find({
       className: 'genderIcon',
     });
-    expect(genderIcon.prop('src')).toBe('/static/images/boy-icon.png');
+    expect(genderIcon.prop('src')).toBe('/static/version-not-available/images/boy-icon.png');
   });
 });

@@ -120,7 +120,7 @@ class PaymentView extends React.Component<Props> {
   };
 
   getCardExpiryText = (labels, selectedCard) => {
-    return selectedCard && selectedCard.expMonth
+    return selectedCard && selectedCard.expMonth && selectedCard.ccType !== 'PLACE CARD'
       ? `${getLabelValue(
           labels,
           'lbl_payment_expDate',

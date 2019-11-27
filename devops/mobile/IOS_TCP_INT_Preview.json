@@ -348,7 +348,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
+        "37cd1e4d-3ead-4ba8-baf6-f86c09ae6589"
       ],
       "isSilent": false
     },
@@ -359,10 +359,10 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "Hockey_Distribution_profile_22-10-2019.mobileprovision",
-      "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
-      "provisioningProfileFileId": "d0979d55-37ae-45f0-af31-6a3a6e836457",
+      "certificateFilename": "Dev-Certificates.p12",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TCPAppInt.mobileprovision",
+      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
+      "provisioningProfileFileId": "0f59cc4c-f591-4df4-96fd-7c2a62691e08",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_preview",

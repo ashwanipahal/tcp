@@ -27,7 +27,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     <img
       alt="Completion"
       className="progress-image"
-      src="/static/images/smiley-icon.png"
+      src="/static/version-not-available/images/smiley-icon.png"
       title="profile completion"
     />
   </div>

@@ -23,36 +23,57 @@ class CancelSearch extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <Image
-          alt="close"
+        <Anchor
           id="close-image"
-          className="close-image icon-small close-image-toggle"
-          onClick={closeSearchBar}
-          src={getIconPath('search-close-icon')}
+          noLink
+          onClick={e => {
+            e.preventDefault();
+            closeSearchBar(e);
+          }}
+          className="close-image close-image-toggle"
           data-locator="close-icon"
-          height="25px"
-        />
-        <span className="search-close-icon-wrapper">
+        >
           <Image
-            alt="mobile-close"
-            id="close-mobile-image"
-            className="close-mobile-image icon-small close-mobile-image-toggle"
-            onClick={cancelSearchBar}
+            alt="close"
+            className="icon-small"
             src={getIconPath('search-close-icon')}
-            data-locator="close-mobile-con"
             height="25px"
           />
-        </span>
-        <BodyCopy
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          className={`${className} cancel-search-label-wrapper`}
+        </Anchor>
+        <Anchor
+          noLink
+          id="close-mobile-image"
+          onClick={e => {
+            e.preventDefault();
+            cancelSearchBar(e);
+          }}
+          className="close-mobile-image search-close-icon-wrapper close-mobile-image-toggle"
+          data-locator="close-mobile-con"
         >
-          <Anchor onClick={closeModalSearch} className="cancel-search-label">
+          <Image
+            alt="mobile-close"
+            className="icon-small "
+            src={getIconPath('search-close-icon')}
+            height="25px"
+          />
+        </Anchor>
+        <Anchor
+          noLink
+          onClick={e => {
+            e.preventDefault();
+            closeModalSearch(e);
+          }}
+          className="cancel-search-label-wrapper"
+        >
+          <BodyCopy
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            className={`${className} cancel-search-label`}
+          >
             {getLabelValue(labels, 'lbl_cancel_search')}
-          </Anchor>
-        </BodyCopy>
+          </BodyCopy>
+        </Anchor>
       </React.Fragment>
     );
   }
