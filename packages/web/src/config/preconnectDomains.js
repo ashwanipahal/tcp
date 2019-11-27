@@ -11,5 +11,4 @@ export default [
   'https://tagtracking.vibescm.com',
   'https://widget-api.stylitics.com',
   'https://dpm.demdex.net',
-  'https://stylitics-ampersand-production.sfo2.cdn.digitaloceanspaces.com',
 ];
