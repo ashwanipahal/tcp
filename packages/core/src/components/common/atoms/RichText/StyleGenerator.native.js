@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 
 const cssRuleParser = (StyledStrings, className) => {
   if (!StyledStrings[className]) {
