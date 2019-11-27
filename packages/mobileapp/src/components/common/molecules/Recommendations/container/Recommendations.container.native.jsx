@@ -5,7 +5,7 @@ import { isPlccUser } from '@tcp/core/src/components/features/account/User/conta
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getProducts,
-  selectSingleSuggestedProduct,
+  getFirstSuggestedProduct,
 } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
 import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   const reduxKey = `${page}_${portalValue || 'global'}_products`;
   return {
     products: ownProps.isSuggestedItem
-      ? selectSingleSuggestedProduct(state)
+      ? getFirstSuggestedProduct(state)
       : getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||

@@ -6,7 +6,7 @@ export const getProducts = (state, reduxKey) => {
   return recommendation && recommendation.get(reduxKey) && recommendation.get(reduxKey).products;
 };
 
-export const selectSingleSuggestedProduct = state => {
+export const getFirstSuggestedProduct = state => {
   const productsObj =
     state[RECOMMENDATIONS_REDUCER_KEY] &&
     state[RECOMMENDATIONS_REDUCER_KEY].get('favorites_global_products');
