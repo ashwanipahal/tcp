@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
-import { change } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';

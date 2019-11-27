@@ -29,13 +29,9 @@ class ShippingContainer extends React.Component {
     return !isSubmitting;
   }
 
-  submitVerifiedShippingAddressData = scopeValue => shippingAddress => {
+  submitVerifiedShippingAddress = scopeValue => shippingAddress => {
     const scope = scopeValue;
-    const {
-      submitVerifiedShippingAddressData,
-      navigation,
-      updateShippingAddressData,
-    } = scope.props;
+    const { submitVerifiedShippingAddressData, navigation, updateShippingAddressData } = this.props;
     scope.setState({ showAddressVerification: false });
     if (scope.isAddressUpdating) {
       scope.isAddressUpdating = false;
@@ -208,7 +204,7 @@ class ShippingContainer extends React.Component {
             updateShippingAddress={this.updateShippingAddress}
             submitShippingForm={this.submitShippingForm}
             shippingDidUpdate={this.shippingDidUpdate}
-            submitVerifiedShippingAddressData={this.submitVerifiedShippingAddressData}
+            submitVerifiedShippingAddressData={this.submitVerifiedShippingAddress}
             addNewShippingAddress={this.addNewShippingAddress}
           />
         }
