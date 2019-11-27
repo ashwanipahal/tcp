@@ -41,7 +41,47 @@ export default function create(store) {
         return `gl:${pageName || ''}`;
       },
     },
-
+    orderId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderId
+          ? clickActionAnalyticsData.orderId
+          : pageData.orderId;
+      },
+    },
+    paymentMethod: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.paymentMethod
+          ? clickActionAnalyticsData.paymentMethod
+          : pageData.paymentMethod;
+      },
+    },
+    orderSubtotal: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderSubtotal
+          ? clickActionAnalyticsData.orderSubtotal
+          : pageData.orderSubtotal;
+      },
+    },
+    billingCountry: {
+      get() {
+        return 'us';
+      },
+    },
+    billingZip: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingZip
+          ? clickActionAnalyticsData.billingZip
+          : pageData.billingZip;
+      },
+    },
     isCurrentRoute: () => false,
 
     pageShortName: {
@@ -87,7 +127,7 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+        return 'us:en';
       },
     },
 
@@ -148,8 +188,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        const { currency = '' } = store.getState().APIConfig;
-        return currency.toUpperCase();
+        return 'USD';
       },
     },
 

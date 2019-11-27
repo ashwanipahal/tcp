@@ -72,32 +72,55 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this);
   };
 
-  setAnalyticsData = (eventsInfo, name) => {
-    const { setClickAnalyticsDataCheckout, cartOrderItems, trackClickAnalytics } = this.props;
+  setAnalyticsData = (eventsInfo, name, additionalData = {}) => {
+    const {
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      trackClickAnalytics,
+      currentStage,
+    } = this.props;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     setClickAnalyticsDataCheckout({
       customEvents: eventsInfo,
       products: productsData,
+      ...additionalData,
     });
-    trackClickAnalytics(name);
+
+    trackClickAnalytics({
+      name: name,
+      module: 'checkout',
+      pageData: {
+        pageName: `checkout:${currentStage.toLowerCase()}`,
+        pageSection: 'checkout',
+        pageType: 'checkout',
+        pageShortName: `checkout:${currentStage.toLowerCase()}`,
+        ...additionalData,
+      },
+    });
   };
 
   handleSubmitShippingSection = payload => {
     const { submitShipping } = this.props;
     const events = ['scCheckout', 'event86', 'event11'];
-    this.setAnalyticsData(events, 'submit shipping');
+    this.setAnalyticsData(events, 'submit_shipping');
     submitShipping(payload);
   };
 
   handleSubmitBillingSection = payload => {
     const { submitBilling } = this.props;
     const events = ['scCheckout', 'event86', 'event12'];
-    this.setAnalyticsData(events, 'submit billing');
+    this.setAnalyticsData(events, 'submit_billing');
     submitBilling(payload);
   };
 
   handleReviewSubmit = payload => {
-    const { submitReview } = this.props;
+    const {
+      submitReview,
+      currentOrderId,
+      paymentMethodId,
+      billingAddress,
+      orderSubTotal,
+    } = this.props;
     const events = [
       'purchase',
       'event5',
@@ -108,7 +131,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       'event79',
       'event99',
     ];
-    this.setAnalyticsData(events, 'submit review');
+    const additionalData = {
+      orderId: currentOrderId,
+      paymentMethod: paymentMethodId,
+      billingZip: billingAddress && billingAddress.zipCode,
+      orderSubtotal: orderSubTotal,
+    };
+    this.setAnalyticsData(events, 'submit_review', additionalData);
     submitReview(payload);
   };
 

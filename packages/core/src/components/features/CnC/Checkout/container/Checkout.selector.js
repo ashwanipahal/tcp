@@ -293,6 +293,11 @@ const getAddressFields = state => {
   return selector(state, 'address');
 };
 
+const getBillingAddressFields = state => {
+  const selector = formValueSelector('checkoutBillingPayment');
+  return selector(state, 'address');
+};
+
 const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
@@ -970,6 +975,7 @@ export default {
   getSelectedShipmentId,
   getSendOrderUpdate,
   getAddressFields,
+  getBillingAddressFields,
   getAddressPhoneNo,
   getSmsSignUpLabels,
   getIsOrderHasPickup,

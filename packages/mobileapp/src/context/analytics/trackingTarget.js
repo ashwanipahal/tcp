@@ -13,6 +13,8 @@ export function trackingTarget(events) {
     if (event.hitType === 'click') {
       const { eventName, name, module, contextData = {} } = event;
       const transformedEvents = transformClickEvent(name, module);
+      console.log('transformedEvents-->', transformedEvents);
+      console.log('contextData-->', contextData);
       if (transformedEvents) {
         ACPCore.trackAction(eventName, { ...transformedEvents, ...contextData });
       }

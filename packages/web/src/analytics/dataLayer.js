@@ -55,7 +55,42 @@ export default function create(store) {
         return `gl:${pageName}`;
       },
     },
-
+    orderId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderId
+          ? clickActionAnalyticsData.orderId
+          : pageData.orderId;
+      },
+    },
+    paymentMethod: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.paymentMethod
+          ? clickActionAnalyticsData.paymentMethod
+          : pageData.paymentMethod;
+      },
+    },
+    billingZip: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingZip
+          ? clickActionAnalyticsData.billingZip
+          : pageData.billingZip;
+      },
+    },
+    orderSubtotal: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderSubtotal
+          ? clickActionAnalyticsData.orderSubtotal
+          : pageData.orderSubtotal;
+      },
+    },
     isCurrentRoute: () => false,
 
     pageShortName: {

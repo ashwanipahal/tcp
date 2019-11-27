@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, change, reduxForm } from 'redux-form';
 import CustomSelect from '@tcp/core/src/components/common/molecules/CustomSelect';
-import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/GiftServices.style';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
@@ -20,55 +18,22 @@ import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 class GiftServices extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { isGiftServicesChecked, initialValues, cartOrderItems } = this.props;
-    const productsData = [];
-    if (cartOrderItems) {
-      cartOrderItems.map(tile => {
-        const productDetail = getProductDetails(tile);
-        const {
-          itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
-          productInfo: { skuId, upc, productPartNumber, generalProductId },
-        } = productDetail;
-
-        const prodData = {
-          color,
-          id: itemId,
-          name,
-          price: offerPrice,
-          extPrice: offerPrice,
-          listPrice,
-          partNumber: productPartNumber,
-          size,
-          upc,
-          sku: skuId.toString(),
-          quantity: qty,
-          colorId: generalProductId,
-        };
-        productsData.push(prodData);
-        return prodData;
-      });
-    }
     this.state = {
       detailStatus: false,
       isChecked: isGiftServicesChecked,
       message: initialValues.message,
-      orderItems: productsData,
     };
   }
 
   handleChange = () => {
-    const { isChecked, orderItems } = this.state;
-    const { dispatch, setClickAnalyticsDataGC } = this.props;
+    const { isChecked } = this.state;
+    const { dispatch, handleAnalytics } = this.props;
     this.setState({
       isChecked: !isChecked,
       message: '',
     });
 
-    setClickAnalyticsDataGC({
-      customEvents: ['event10'],
-      eventName: 'select gift option',
-      products: orderItems,
-    });
+    handleAnalytics();
     /* istanbul ignore else */
     if (!isChecked && dispatch) {
       dispatch(change('GiftServices', `message`, ''));
@@ -166,25 +131,23 @@ class GiftServices extends React.PureComponent {
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="checkbox-header">
-                <ClickTracker name="Gift_Services">
-                  <Field
-                    name="hasGiftWrapping"
-                    component={InputCheckbox}
-                    dataLocator={getLocator('gift_service')}
-                    enableSuccessCheck={false}
-                    onChange={this.handleChange}
-                    className="giftServicesField"
+                <Field
+                  name="hasGiftWrapping"
+                  component={InputCheckbox}
+                  dataLocator={getLocator('gift_service')}
+                  enableSuccessCheck={false}
+                  onChange={this.handleChange}
+                  className="giftServicesField"
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs16"
+                    fontWeight="extrabold"
+                    className="elem-mb-XXS"
                   >
-                    <BodyCopy
-                      fontFamily="secondary"
-                      fontSize="fs16"
-                      fontWeight="extrabold"
-                      className="elem-mb-XXS"
-                    >
-                      {labels.giftServices}
-                    </BodyCopy>
-                  </Field>
-                </ClickTracker>
+                    {labels.giftServices}
+                  </BodyCopy>
+                </Field>
 
                 <BodyCopy
                   fontSize="fs12"
@@ -391,8 +354,7 @@ GiftServices.propTypes = {
   initialValues: PropTypes.shape({}),
   handleToggle: PropTypes.func.isRequired,
   SelectedBrand: PropTypes.string.isRequired,
-  setClickAnalyticsDataGC: PropTypes.func.isRequired,
-  cartOrderItems: PropTypes.shape([]).isRequired,
+  handleAnalytics: PropTypes.func.isRequired,
 };
 
 GiftServices.defaultProps = {

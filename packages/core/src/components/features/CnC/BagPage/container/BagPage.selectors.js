@@ -86,6 +86,10 @@ const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 const getIsPayPalEnabled = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
@@ -295,4 +299,5 @@ export default {
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
 };

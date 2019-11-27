@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import OpenLoginModal from '../../../../../account/LoginPage/views/LoginModal.native';
 import CheckoutConstants from '../../../../Checkout/Checkout.constants';
 import BagConfirmationModal from '../../../../BagPage/views/BagConfirmationModal.view';
@@ -19,10 +20,33 @@ class ModalsCheckout extends React.PureComponent {
       orderHasPickup,
       closeModal,
       isExpressCheckoutPage,
+      setClickAnalyticsDataCheckout,
+      trackClickAnalytics,
+      cartOrderItems,
+      navigation,
     } = this.props;
     if (e) {
       e.preventDefault();
     }
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+    setClickAnalyticsDataCheckout({
+      customEvents: ['scCheckout', 'event86', 'event9'],
+      products: productsData,
+    });
+    const { routeName } = navigation.state;
+
+    trackClickAnalytics({
+      name: 'continue_guest',
+      module: 'checkout',
+      pageData: {
+        pageName: `checkout:${routeName.toLowerCase()}`,
+        pageSection: 'checkout',
+        pageSubSection: 'checkout',
+        pageType: 'checkout',
+        pageShortName: `checkout`,
+      },
+    });
+
     if (isExpressCheckoutPage) {
       this.navigateToCheckout(CheckoutConstants.REVIEW_DEFAULT_PARAM);
     } else if (orderHasPickup) {
@@ -119,6 +143,7 @@ ModalsCheckout.propTypes = {
   deleteConfirmationModalLabels: PropTypes.shape({}).isRequired,
   addItemToSflList: PropTypes.func.isRequired,
   confirmRemoveCartItem: PropTypes.func.isRequired,
+  trackClickAnalytics: PropTypes.func.isRequired,
 };
 
 ModalsCheckout.defaultProps = {
