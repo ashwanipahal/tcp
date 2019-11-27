@@ -14,13 +14,28 @@ import constants from '../components/features/account/OrderDetails/OrderDetails.
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const buildId = process.env.NEXT_BUILD_ID || 'version-not-available';
+
+/**
+ * This function returns the static files path with the buildId in place
+ * @param {String} filePath path inside the /static directory
+ */
+export const getStaticFilePath = filePath => {
+  if (!filePath) return filePath;
+
+  // Following Regex to test if filePath is absolute and return the same value if true
+  if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
+    return filePath;
+  }
+  return `/static/${buildId}/${filePath}`;
+};
 
 /**
  * This function returns the path of icons in static/images folder
  * @param {*} icon | String - Identifier for icons in assets
  */
 export const getIconPath = icon => {
-  return icons[icon];
+  return getStaticFilePath(icons[icon]);
 };
 
 /**
@@ -28,7 +43,7 @@ export const getIconPath = icon => {
  * @param {*} icon | String - Country Code Identifier eg. US for USA
  */
 export const getFlagIconPath = code => {
-  return flagIcons[code];
+  return getStaticFilePath(flagIcons[code]);
 };
 
 /**
@@ -1161,6 +1176,7 @@ export default {
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
