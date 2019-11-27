@@ -107,3 +107,4 @@ SearchBar.defaultProps = {
 };
 
 export default withStyles(SearchBar, styles);
+export { SearchBar as SearchBarVanilla };

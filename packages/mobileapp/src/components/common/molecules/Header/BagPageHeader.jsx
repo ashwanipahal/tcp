@@ -45,55 +45,59 @@ class BagPageHeader extends React.PureComponent<Props> {
   };
 
   render() {
-    const { showBrandIcon, showCloseButton, showGobackIcon } = this.props;
+    const { showBrandIcon, showCloseButton, showGobackIcon, isPayPalWebViewEnable } = this.props;
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
-        <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
-          {showGobackIcon && (
-            <BagPageBackContainer>
-              <TouchableOpacity
-                accessible
-                onPress={this.closeIconAction}
-                accessibilityRole="button"
-                accessibilityLabel="back button"
-                data-locator={getLocator('global_bagpagebackbutton')}
-              >
-                <ArrowBackIcon source={backIcon} />
-              </TouchableOpacity>
-            </BagPageBackContainer>
-          )}
-
-          {showBrandIcon && (
-            <BrandIconSection>
-              <BrandIcon
-                source={isGymboree() ? gymIcon : tcpIcon}
-                data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
-                accessibilityRole="image"
-              />
-            </BrandIconSection>
-          )}
-
-          {showCloseButton && (
-            <CloseContainer>
-              <CloseIconTouchable onPress={this.closeIconAction}>
-                <CloseIcon
-                  source={closeIcon}
-                  data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
+        {!isPayPalWebViewEnable && (
+          <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
+            {showGobackIcon && (
+              <BagPageBackContainer>
+                <TouchableOpacity
+                  accessible
+                  onPress={this.closeIconAction}
                   accessibilityRole="button"
+                  accessibilityLabel="back button"
+                  data-locator={getLocator('global_bagpagebackbutton')}
+                >
+                  <ArrowBackIcon source={backIcon} />
+                </TouchableOpacity>
+              </BagPageBackContainer>
+            )}
+
+            {showBrandIcon && (
+              <BrandIconSection>
+                <BrandIcon
+                  source={isGymboree() ? gymIcon : tcpIcon}
+                  data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
+                  accessibilityRole="image"
                 />
-              </CloseIconTouchable>
-            </CloseContainer>
-          )}
-        </BagPageContainer>
+              </BrandIconSection>
+            )}
+
+            {showCloseButton && (
+              <CloseContainer>
+                <CloseIconTouchable onPress={this.closeIconAction}>
+                  <CloseIcon
+                    source={closeIcon}
+                    data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
+                    accessibilityRole="button"
+                  />
+                </CloseIconTouchable>
+              </CloseContainer>
+            )}
+          </BagPageContainer>
+        )}
       </SafeAreaViewStyle>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    isPayPalWebViewEnable:
+      state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false,
   };
 };
 
