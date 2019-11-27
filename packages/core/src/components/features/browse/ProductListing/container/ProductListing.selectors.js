@@ -334,3 +334,29 @@ export const getPLPTopPromos = createSelector(
     return loyaltyPromos.concat(promos);
   }
 );
+
+export const getPLPGridPromos = state => {
+  const { bannerInfo: { val: { grid: gridPromo } = {} } = {} } = state.ProductListing;
+  return (
+    (gridPromo &&
+      gridPromo.map(promoItem => {
+        const moduleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...moduleInfo, slot: promoItem && promoItem.sub };
+      })) ||
+    []
+  );
+};
+
+export const getPlpHorizontalPromo = state => {
+  const { bannerInfo: { val: { horizontal: horizontalPromo } = {} } = {} } = state.ProductListing;
+  return (
+    (horizontalPromo &&
+      horizontalPromo.map(promoItem => {
+        const horizontalModuleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...horizontalModuleInfo, slot: promoItem && promoItem.sub };
+      })) ||
+    []
+  );
+};

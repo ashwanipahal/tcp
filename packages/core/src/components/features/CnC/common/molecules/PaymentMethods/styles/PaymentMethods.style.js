@@ -16,14 +16,14 @@ const styles = css`
     }
   }
   .payment-method-box .radio-button-checked {
-    top: 8px;
+    top: 4px;
   }
   .payment-method-box .radio-button {
-    top: 7px;
+    top: 4px;
   }
 
   .payment-method-box > label {
-    padding-top: 5px;
+    padding-top: 2px;
     z-index: 1;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       background-color: transparent;
