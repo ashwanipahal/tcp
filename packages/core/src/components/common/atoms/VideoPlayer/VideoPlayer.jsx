@@ -52,7 +52,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { id, url, className } = this.props;
+    const { id, url, className, dataLocator } = this.props;
     const { uniqueId } = this.state;
 
     if (!url) {
@@ -74,6 +74,11 @@ VideoPlayer.propTypes = {
   muted: PropTypes.bool.isRequired,
   className: PropTypes.number.isRequired,
   controls: PropTypes.bool.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+VideoPlayer.defaultProps = {
+  dataLocator: '',
 };
 
 export default withStyles(VideoPlayer, styles);

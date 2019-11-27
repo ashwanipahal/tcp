@@ -162,6 +162,7 @@ class ModuleJ extends React.PureComponent {
     const damImageComp = (
       <DamImage
         url={imgData && imgData.url}
+        videoData={videoData}
         height="310px"
         width="100%"
         testID={`${getLocator('moduleJ_promobanner_img')}${1}`}

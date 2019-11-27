@@ -66,7 +66,7 @@ const renderItem = (item, navigation) => {
           crop={image && image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
           imgConfig={config.IMG_DATA.crops[0]}
-          alt={imgData && imgData.alt}
+          alt={image && image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
         />
         <MessageContainer>
@@ -75,7 +75,7 @@ const renderItem = (item, navigation) => {
               fontSize="fs20"
               color="gray.900"
               letterSpacing="ls222"
-              text={imgData.alt}
+              text={image && image.alt}
               fontfamily="primary"
               fontWeight="semibold"
               testID={`${getLocator('moduleL_title')}${index + 1}`}

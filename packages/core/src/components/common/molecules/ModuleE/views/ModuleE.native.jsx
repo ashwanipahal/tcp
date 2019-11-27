@@ -289,6 +289,7 @@ class ModuleE extends React.PureComponent {
     const damImageComp = (
       <StyledImage
         url={imgData && imgData.url}
+        videoData={videoData}
         height="202px"
         width={`${buttonWidth}px`}
         testID={`${getLocator('moduleE_product_img')}${index}`}

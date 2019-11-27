@@ -185,7 +185,7 @@ const DamImage = props => {
       inline: true,
       url: getBreakpointImgUrl('lg', imgProps),
     };
-    return <RenderVideo video={videoDataOptions} />;
+    return <RenderVideo video={videoDataOptions} dataLocator={dataLocator} />;
   }
   if (!link) {
     return <RenderImage {...imgProps} ref={forwardedRef} />;

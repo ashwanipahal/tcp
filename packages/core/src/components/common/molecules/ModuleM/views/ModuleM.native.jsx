@@ -88,14 +88,15 @@ class ModuleM extends React.PureComponent {
    * To Render the Dam Image or Video Component
    */
   renderDamImage = (link, imgData, videoData, navigation, index, imageDimension) => {
+    const { IMG_DATA } = config;
     const damImageComp = (
       <StyledDamImage
-        alt={imgData.alt}
-        url={imgData.url}
+        alt={imgData && imgData.alt}
+        url={imgData && imgData.url}
         testID={`${getLocator('moduleM_image')}${index}`}
         height={imageDimension}
         width={imageDimension}
-        imgData={imgData}
+        videoData={videoData}
         imgConfig={IMG_DATA.productImgConfig[0]}
       />
     );

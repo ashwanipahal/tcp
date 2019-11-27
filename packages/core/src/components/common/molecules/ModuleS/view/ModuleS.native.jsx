@@ -77,6 +77,7 @@ const renderDamImage = (link, imgData, videoData, navigation, hasRibbon) => {
       height={getImageHeight(hasRibbon)}
       url={imgData && imgData.url}
       host={LAZYLOAD_HOST_NAME.HOME}
+      videoData={videoData}
       imgConfig={imgData && (imgData.crop_m || getImageConfig(hasRibbon))}
     />
   );
