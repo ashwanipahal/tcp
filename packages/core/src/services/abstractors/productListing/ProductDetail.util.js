@@ -362,14 +362,14 @@ const getCategoryValue = baseProduct => {
     categoryPath2_catMap: categoryPath2CatMap,
   } = baseProduct;
   try {
-    if (categoryPath3CatMap) {
-      const [, catPath2, catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
-      categoryId = [catPath2, catPath3].join('|');
+    if (primaryKey) {
+      categoryId = primaryKey;
+    } else if (categoryPath3CatMap) {
+      const [, , catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
+      categoryId = catPath3;
     } else if (categoryPath2CatMap) {
-      categoryId = categoryPath2CatMap[0]
-        .split('|')[0]
-        .split('>')
-        .join('|');
+      const [, catPath2] = categoryPath2CatMap[0].split('|')[0].split('>');
+      categoryId = catPath2;
     }
   } catch (err) {
     categoryId = 'global';
