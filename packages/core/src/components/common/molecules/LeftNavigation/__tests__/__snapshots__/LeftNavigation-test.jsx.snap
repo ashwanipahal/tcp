@@ -1,48 +1,402 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LeftNavigation component LeftNavigation component renders correctly without props 1`] = `
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-EHOje",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .nav-link-wrapper:not(:first-child) {
-    padding: ",
-          [Function],
-          " 0 0;
-  }
-  .navLink {
-    color: ",
-          [Function],
-          ";
-    &__Selected {
-      color: ",
-          [Function],
-          ";
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(LeftNavigation)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-EHOje",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+exports[`LeftNavigation component LeftNavigation component renders correctly with props 1`] = `
+<Fragment>
+  <Styled(Row)
+    className="showonlyInMobile"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Dropdown)
+        isUpperCase={true}
+        options={
+          Array [
+            Object {
+              "__typename": "Link",
+              "component": "help-center-home",
+              "displayName": "Help Center Home",
+              "external": 0,
+              "id": "help-center-home",
+              "target": "",
+              "text": "Help Center Home",
+              "url": "/helpCenter",
+            },
+            Object {
+              "__typename": "Link",
+              "component": "place-rewards",
+              "displayName": "My Place Rewards",
+              "external": 0,
+              "id": "place-rewards",
+              "target": "",
+              "text": "My Place Rewards",
+              "url": "/account/place-rewards",
+            },
+            Object {
+              "__typename": "Link",
+              "component": "my-place-rewards-program",
+              "displayName": "My Place Rewards Program",
+              "external": 0,
+              "id": "my-place-rewards-program",
+              "target": "",
+              "text": "My Place Rewards Program",
+              "url": "/account/favorites",
+            },
+            Object {
+              "__typename": "Link",
+              "component": "extra-points",
+              "displayName": "Earn Extra Points",
+              "external": 0,
+              "id": "extra-points",
+              "target": "",
+              "text": "Earn Extra Points",
+              "url": "/account/extra-points",
+            },
+            Object {
+              "__typename": "Link",
+              "displayName": "My Place Rewards Credit Card",
+              "external": 0,
+              "id": "my-place-rewards-credit-card",
+              "target": "",
+              "text": "My Place Rewards Credit Card",
+              "title": "my-place-rewards-credit-card",
+              "url": "/account/favorites",
+            },
+            Object {
+              "__typename": "Link",
+              "component": "coupons-and-promotions",
+              "displayName": "Coupons and Promotions",
+              "external": 0,
+              "id": "coupons-and-promotions",
+              "target": "",
+              "text": "Coupons and Promotions",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "help-with-my-order",
+              "displayName": "Help With My Order",
+              "external": 0,
+              "id": "help-with-my-order",
+              "target": "",
+              "text": "Help With My Order",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "online-ordering",
+              "displayName": "Online Ordering",
+              "external": 0,
+              "id": "online-ordering",
+              "target": "",
+              "text": "Online Ordering",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "policies",
+              "displayName": "Policies",
+              "external": 0,
+              "id": "policies",
+              "target": "",
+              "text": "Policies",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "terms-and-conditions",
+              "displayName": "Terms and Conditions",
+              "external": 0,
+              "id": "terms-and-conditions",
+              "target": "",
+              "text": "Terms and Conditions",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "mobile-terms-and-conditions",
+              "displayName": "Mobile Terms and Conditions",
+              "external": 0,
+              "id": "mobile-terms-and-conditions",
+              "target": "",
+              "text": "Mobile Terms and Conditions",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "shipping-to-the-U.S.",
+              "displayName": "Shipping to the U.S.",
+              "external": 0,
+              "id": "shipping-to-the-U.S.",
+              "target": "",
+              "text": "Shipping to the U.S.",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "tools",
+              "displayName": "Tools",
+              "external": 0,
+              "id": "tools",
+              "target": "",
+              "text": "Tools",
+              "url": null,
+            },
+            Object {
+              "__typename": "Link",
+              "component": "contact-us",
+              "displayName": "Contact Us",
+              "external": 0,
+              "id": "contact-us",
+              "target": "",
+              "text": "Contact Us",
+              "url": null,
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="showonlyInDesktop"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "medium": 2,
+        }
+      }
+    >
+      <ul
+        className="test"
+      >
+        <li
+          className="nav-link-wrapper"
+          id={0}
+          key="Help Center Home"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/helpCenter"
+            className="navLink"
+            fontSizeVariation="large"
+            to="/helpCenter"
+          >
+            Help Center Home
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={1}
+          key="My Place Rewards"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/place-rewards"
+            className="navLink"
+            fontSizeVariation="large"
+            to="/account/place-rewards"
+          >
+            My Place Rewards
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={2}
+          key="My Place Rewards Program"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/favorites"
+            className="navLink"
+            fontSizeVariation="large"
+            to="/account/favorites"
+          >
+            My Place Rewards Program
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={3}
+          key="Earn Extra Points"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/extra-points"
+            className="navLink__Selected"
+            fontSizeVariation="large"
+            to="/account/extra-points"
+          >
+            Earn Extra Points
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={4}
+          key="My Place Rewards Credit Card"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/favorites"
+            className="navLink"
+            fontSizeVariation="large"
+            to="/account/favorites"
+          >
+            My Place Rewards Credit Card
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={5}
+          key="Coupons and Promotions"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Coupons and Promotions
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={6}
+          key="Help With My Order"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Help With My Order
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={7}
+          key="Online Ordering"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Online Ordering
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={8}
+          key="Policies"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Policies
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={9}
+          key="Terms and Conditions"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Terms and Conditions
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={10}
+          key="Mobile Terms and Conditions"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Mobile Terms and Conditions
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={11}
+          key="Shipping to the U.S."
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Shipping to the U.S.
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={12}
+          key="Tools"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Tools
+          </Styled(Anchor)>
+        </li>
+        <li
+          className="nav-link-wrapper"
+          id={13}
+          key="Contact Us"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath={null}
+            className="navLink"
+            fontSizeVariation="large"
+            to={null}
+          >
+            Contact Us
+          </Styled(Anchor)>
+        </li>
+      </ul>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
 `;
+
+exports[`LeftNavigation component LeftNavigation component renders correctly without props 1`] = `""`;

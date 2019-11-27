@@ -17,7 +17,7 @@ const getNavLink = (data = {}) => {
   return (
     <Anchor
       asPath={navObj.url}
-      to={configureInternalNavigationFromCMSUrl(navObj.url)}
+      to={navObj.url && configureInternalNavigationFromCMSUrl(navObj.url)}
       anchorVariation="primary"
       fontSizeVariation="large"
       className={isSelected ? 'navLink__Selected' : 'navLink'}
@@ -54,7 +54,7 @@ const LeftNavigation = ({ data = [], className, selectedPage, defaultPage }) => 
             {navData.length &&
               navData.map((nav, index) => {
                 const { leafLink: navObj = {} } = nav;
-                const isSelected = navObj.url.includes(selectedPage);
+                const isSelected = navObj.url && navObj.url.includes(selectedPage);
                 return (
                   <li id={index} key={navObj.displayName} className="nav-link-wrapper">
                     {getNavLink({ navObj, isSelected })}
@@ -74,3 +74,4 @@ LeftNavigation.propTypes = {
 };
 
 export default withStyles(LeftNavigation, style);
+export { LeftNavigation as LeftNavigationVanilla };

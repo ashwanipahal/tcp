@@ -1,5 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EmailSignupModal component render confirmation on success email id submit 1`] = `
+<Fragment>
+  <Styled(Grid)>
+    <Styled(Row)
+      className=""
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="img-wrapper"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 4,
+            "small": 4,
+          }
+        }
+        hideCol={
+          Object {
+            "medium": true,
+            "small": true,
+          }
+        }
+        isNotInlineBlock={true}
+      >
+        <WithTheme(DamImage)
+          imgConfigs={
+            Object {
+              "imgConfig": Array [
+                "t_emailSignUpPage_img_m",
+                "t_emailSignUpPage_img_t",
+                "t_emailSignUpPage_img_d",
+              ],
+            }
+          }
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 8,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "large": true,
+          }
+        }
+      >
+        <Styled(SignupConfirm)
+          formViewConfig={Object {}}
+          susbscriptionType="email"
+        />
+        <Styled(Row)
+          className="button-wrapper"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="button-container"
+            colSize={
+              Object {
+                "large": 4,
+                "medium": 4,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(Anchor)
+              asPath="lbl_SignUp_shopNowBtnUrl"
+              target="lbl_SignUp_shopNowBtnUrlTarget"
+              to="lbl_SignUp_shopNowBtnUrl"
+            >
+              <Styled(Button)
+                buttonVariation="fixed-width"
+                className="shop-button"
+                dataLocator="shop_now_btn"
+                fill="BLUE"
+                fullWidth={true}
+                type="submit"
+              >
+                lbl_SignUp_shopNowLabel
+              </Styled(Button)>
+            </Styled(Anchor)>
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</Fragment>
+`;
+
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
   <form>
