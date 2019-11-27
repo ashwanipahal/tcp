@@ -1,14 +1,26 @@
 import React from 'react';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../SiteMap.style';
-import { Heading, Anchor, BodyCopy } from '../../../../../../common/atoms';
+import { Heading, Anchor } from '@tcp/core/src/components/common/atoms';
 
 class SiteMap extends React.PureComponent {
-  constructor(props) {
-    super(props);
+
+  createLink(items, level) {
+      return (
+        <Anchor
+        className={`Link_level_${level}`}
+        to={items.href.replace('/c/', '/c?cid=')}
+        asPath={items.href}
+      >
+        {items.name}
+      </Anchor>
+      if(items.category && items.category.length > 0)
+      {
+        return items.map(item => createLink(items.category, level+1));
+      }
+      )
   }
 
   render() {
@@ -16,8 +28,8 @@ class SiteMap extends React.PureComponent {
     const { content, url, categories } = siteMapData;
 
     return (
-      <div class="site_map_container">
-        <div class="site_map_heading_container">
+      <div className="site_map_container">
+        <div className="site_map_heading_container">
           <Heading component="h5" variant="h5" className="site_map_heading">
             <Anchor
               className="heading_link"
@@ -27,7 +39,9 @@ class SiteMap extends React.PureComponent {
               {content}
             </Anchor>
           </Heading>
-
+        </div>
+        <div className="categories_container">
+          {categories.map(item = createLink(item, 1))}
         </div>
       </div>
     );
