@@ -255,7 +255,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {quickViewPickup && this.renderUnavailableLink()}
+        {quickViewPickup() && this.renderUnavailableLink()}
         {!isFromBagProductSfl && (
           <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
             <BodyCopy

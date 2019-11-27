@@ -16,6 +16,19 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   isFromBagProductSfl={false}
   plpLabels={Object {}}
   quantityList={Array []}
+  quickViewPickup={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   selectedColor={null}
   selectedColorProductId={123}
   selectedFit={null}

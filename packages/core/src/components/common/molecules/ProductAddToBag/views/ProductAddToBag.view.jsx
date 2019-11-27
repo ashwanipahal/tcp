@@ -296,7 +296,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {quickViewPickup && this.renderUnavailableLink()}
+              {quickViewPickup() && this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,
