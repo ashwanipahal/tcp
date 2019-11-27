@@ -105,4 +105,16 @@ describe('ProductListItem component', () => {
   it('should return RenderMoveToListOrSeeSuggestedList component value one', () => {
     expect(component.find('RenderMoveToListOrSeeSuggestedList')).toHaveLength(1);
   });
+
+  it('should return Styled(Anchor) component value one', () => {
+    expect(component.find('Styled(Anchor)')).toHaveLength(1);
+  });
+
+  it('should return Styled(CustomButton) component value one', () => {
+    expect(component.find('Styled(CustomButton)')).toHaveLength(1);
+  });
+
+  it('should return RenderDismissLink component value one', () => {
+    expect(component.find('RenderDismissLink')).toHaveLength(1);
+  });
 });
