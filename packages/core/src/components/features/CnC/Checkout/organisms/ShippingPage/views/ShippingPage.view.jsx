@@ -36,7 +36,6 @@ export default class ShippingPage extends React.PureComponent {
       isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
       onFileAddressKey: prevFileAddressKey,
     } = prevProps;
-
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
       shippingDidMount();
     }
@@ -124,9 +123,6 @@ export default class ShippingPage extends React.PureComponent {
       submitData = this.submitShippingAddressData;
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
-    // if (!checkoutRoutingDone) {
-    //   return <div>Loading....</div>;
-    // }
     return (
       <>
         {((shipmentMethods && shipmentMethods.length > 0) || !checkoutRoutingDone) && (

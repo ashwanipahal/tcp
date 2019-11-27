@@ -1,8 +1,9 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
+import { change } from 'redux-form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ShippingPage from '../views/ShippingPage.view';
+import Shipping from '../views';
 import checkoutUtil from '../../../util/utility';
 
 const { hasPOBox } = checkoutUtil;
@@ -11,6 +12,7 @@ class ShippingContainer extends React.Component {
   static propTypes = {
     shippingDidMount: PropTypes.func.isRequired,
     isRegisteredUserCallDone: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     shipmentMethods: PropTypes.shape({}).isRequired,
 
     addressLabels: PropTypes.shape({}).isRequired,
@@ -193,11 +195,11 @@ class ShippingContainer extends React.Component {
   };
 
   render() {
-    const { shipmentMethods } = this.props;
+    const { shipmentMethods, checkoutRoutingDone } = this.props;
     return (
       <>
-        {shipmentMethods && shipmentMethods.length > 0 && (
-          <ShippingPage
+        {
+          <Shipping
             {...this.props}
             updateShippingAddress={this.updateShippingAddress}
             submitShippingForm={this.submitShippingForm}
@@ -205,7 +207,7 @@ class ShippingContainer extends React.Component {
             submitVerifiedShippingAddressData={this.submitVerifiedShippingAddressData}
             addNewShippingAddress={this.addNewShippingAddress}
           />
-        )}
+        }
       </>
     );
   }
