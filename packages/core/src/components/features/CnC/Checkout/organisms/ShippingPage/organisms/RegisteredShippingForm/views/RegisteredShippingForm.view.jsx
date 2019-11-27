@@ -236,19 +236,7 @@ class RegisteredShippingForm extends React.Component {
             />
           </Col>
         </Row>
-        {isEditing && (
-          <Row fullBleed className="hide-on-desktop">
-            <BodyCopy
-              fontFamily="primary"
-              fontSize="fs28"
-              fontWeight="regular"
-              data-locator="shipping-details"
-              className="elem-mb-XS"
-            >
-              {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
-            </BodyCopy>
-          </Row>
-        )}
+
         <Row fullBleed className="hide-on-mobile">
           <Col colSize={{ small: 6 }} className="shipping-section-header">
             <BodyCopy

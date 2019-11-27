@@ -2,11 +2,12 @@ import { css } from 'styled-components';
 
 const styles = css`
   .new_gift_card_button {
+    white-space: nowrap;
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
-    width: 104%;
+    width: 110%;
   }
   .headsUpMsgBoldTitle {
     font-family: ${props => props.theme.typography.fonts.secondaryFontSemilBoldFamily};
@@ -51,7 +52,8 @@ const styles = css`
     vertical-align: bottom;
   }
   .savetoaccount > label {
-    width: 100%;
+    width: auto;
+    display: flex;
   }
 
   && .card__btn > button,

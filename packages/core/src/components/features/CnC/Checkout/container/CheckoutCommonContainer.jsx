@@ -140,7 +140,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       orderHasShipping,
       routeToPickupPage,
       setCheckoutStage,
-      billingProps,
       router,
       updateShippingMethodSelection,
       updateShippingAddressData,
@@ -188,7 +187,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
         billingProps={{
-          ...billingProps,
           billingDidMount: this.billingDidMount,
           isRegisteredUserCallDone,
         }}

@@ -114,16 +114,11 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
-      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
-      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
-      this.makeApiCall();
-    }
-    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
