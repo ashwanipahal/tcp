@@ -73,7 +73,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ",
+      padding: 4px ",
                     [Function],
                     ";
       border: 1px solid ",
@@ -90,6 +90,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       border-radius: 6px;
       text-align: center;
       width: 54px;
+      @media ",
+                    [Function],
+                    " {
+        padding: 3.5px ",
+                    [Function],
+                    ";
+      }
+      @media ",
+                    [Function],
+                    " {
+        padding: 4px ",
+                    [Function],
+                    ";
+      }
     }
 
     &.item-disabled-option .input-radio-title {
@@ -258,7 +272,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ",
+      padding: 4px ",
                     [Function],
                     ";
       border: 1px solid ",
@@ -275,6 +289,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       border-radius: 6px;
       text-align: center;
       width: 54px;
+      @media ",
+                    [Function],
+                    " {
+        padding: 3.5px ",
+                    [Function],
+                    ";
+      }
+      @media ",
+                    [Function],
+                    " {
+        padding: 4px ",
+                    [Function],
+                    ";
+      }
     }
 
     &.item-disabled-option .input-radio-title {

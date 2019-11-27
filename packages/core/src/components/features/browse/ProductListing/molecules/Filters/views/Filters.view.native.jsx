@@ -210,7 +210,9 @@ class Filters extends React.PureComponent {
       const filterData = filters[key] || [];
 
       // find all the selected items from filters list and map it with filter key present in filterNames
-      const selectedFiltersData = filterData.filter(item => item.isSelected).map(item => item.id);
+      const selectedFiltersData = filterData
+        .filter(item => item.isSelected)
+        .map(item => encodeURIComponent(item.id));
       const result = {};
       result[key] = selectedFiltersData;
       selectedFilters = { ...selectedFilters, ...result };
