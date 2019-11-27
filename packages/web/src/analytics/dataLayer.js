@@ -48,7 +48,7 @@ export default function create(store) {
         const { pageData, AnalyticsDataKey } = store.getState();
         // We need both the default object and || fallback because Immutable only defaults for `undefined` and not `null`
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        const pageName = clickActionAnalyticsData && clickActionAnalyticsData.pageName
+        const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
 
@@ -68,7 +68,7 @@ export default function create(store) {
         const { pageData, AnalyticsDataKey } = store.getState();
 
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        const pageShortName = clickActionAnalyticsData && clickActionAnalyticsData.pageShortName
+        const pageShortName = clickActionAnalyticsData.pageShortName
           ? clickActionAnalyticsData.pageShortName
           : pageData.pageShortName;
         const pageName = clickActionAnalyticsData.pageName
@@ -82,7 +82,7 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData && clickActionAnalyticsData.pageType
+        return clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
           : pageData.pageType;
       },
@@ -104,7 +104,7 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
+        return clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
       },
@@ -114,7 +114,7 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData && clickActionAnalyticsData.pageSubSection
+        return clickActionAnalyticsData.pageSubSection
           ? clickActionAnalyticsData.pageSubSection
           : pageData.pageSubSection;
       },
