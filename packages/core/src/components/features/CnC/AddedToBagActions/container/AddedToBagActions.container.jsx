@@ -18,6 +18,8 @@ import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.select
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
@@ -66,6 +68,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       clearCheckoutServerError,
       isPayPalEnabled,
       setIsPaypalBtnHidden,
+      bagLoading,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -101,6 +104,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         cartOrderItems={cartOrderItems}
         clearCheckoutServerError={clearCheckoutServerError}
         setIsPaypalBtnHidden={setIsPaypalBtnHidden}
+        bagLoading={bagLoading}
         isPayPalEnabled={isPayPalEnabled}
       />
     );
@@ -116,6 +120,7 @@ AddedToBagContainer.propTypes = {
   containerId: PropTypes.string,
   setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 AddedToBagContainer.defaultProps = {
@@ -152,6 +157,7 @@ const mapStateToProps = state => {
     venmoError: checkoutSelectors.getVenmoError(state),
     isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
     cartOrderItems: BagPageSelectors.getOrderItems(state),
+    bagLoading: BagPageSelectors.isBagLoading(state),
     isPayPalEnabled: getIsPayPalEnabled(state),
   };
 };

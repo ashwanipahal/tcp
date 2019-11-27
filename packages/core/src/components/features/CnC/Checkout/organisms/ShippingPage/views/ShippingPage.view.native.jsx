@@ -334,6 +334,8 @@ export default class ShippingPage extends React.PureComponent {
                   syncErrorsObject={syncErrors}
                   newUserPhoneNo={newUserPhoneNo}
                   setCheckoutStage={setCheckoutStage}
+                  isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                  isVenmoShippingDisplayed={isVenmoShippingDisplayed}
                 />
               </ScrollView>
             </>

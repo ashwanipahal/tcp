@@ -33,6 +33,9 @@ const PickupStoreList = props => {
     onStoreUpdate,
     isSearching,
     isUserCartStoreLoaded,
+    currentProduct,
+    setClickAnalyticsData,
+    trackClick,
   } = props;
   const InputCheckBoxComponent = StyledInputCheckbox;
   return (
@@ -51,6 +54,7 @@ const PickupStoreList = props => {
         <PickupStoreListItem
           addItemToCartInPickup={addItemToCartInPickup}
           sameStore={sameStore}
+          currentProduct={currentProduct}
           isShoppingBag={isShoppingBag}
           key={store.basicInfo.id}
           store={store}
@@ -73,6 +77,8 @@ const PickupStoreList = props => {
           isGiftCard={isGiftCard}
           onPickupRadioBtnToggle={onPickupRadioBtnToggle}
           onStoreUpdate={onStoreUpdate}
+          setClickAnalyticsData={setClickAnalyticsData}
+          trackClick={trackClick}
         />
       ))}
       {isSearching || !isUserCartStoreLoaded ? <StoreListItemSkeleton col={20} /> : null}
@@ -149,12 +155,16 @@ PickupStoreList.propTypes = {
   isBossCtaEnabled: PropTypes.bool.isRequired,
   defaultStoreName: PropTypes.string,
   isUserCartStoreLoaded: PropTypes.bool.isRequired,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
+  currentProduct: PropTypes.string,
 };
 
 PickupStoreList.defaultProps = {
   isBossEnabled: true,
   isBopisEnabled: true,
   defaultStoreName: '',
+  currentProduct: '',
 };
 
 export default PickupStoreList;

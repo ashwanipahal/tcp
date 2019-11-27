@@ -110,7 +110,6 @@ class ProductDetailContainer extends React.PureComponent {
       toastMessage,
       isKeepAliveEnabled,
       outOfStockLabels,
-      topPromos,
       middlePromos,
       bottomPromos,
     } = this.props;
@@ -143,7 +142,6 @@ class ProductDetailContainer extends React.PureComponent {
             toastMessage={toastMessage}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
-            topPromos={topPromos}
             middlePromos={middlePromos}
             bottomPromos={bottomPromos}
           />
@@ -175,7 +173,6 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
-    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
     middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
   };

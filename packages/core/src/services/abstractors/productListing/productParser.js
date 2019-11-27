@@ -222,6 +222,7 @@ const getColorsMap = ({
     {
       colorProductId: uniqueId,
       imageName: product.imagename,
+      productImage: product.productimage,
       miscInfo: {
         isClearance: extractAttributeValue(product, attributesNames.clearance),
         isBopisEligible: isBOPIS && !processHelpers.isGiftCard(product),
@@ -241,7 +242,7 @@ const getColorsMap = ({
         ),
         listPrice: product.min_list_price,
         offerPrice: product.min_offer_price,
-        keepAlive: parseBoolean(extractAttributeValue(product, attributesNames.keepAlive)),
+        keepAlive: parseBoolean(product[attributesNames.keepAlive]),
       },
       color: {
         name: defaultColor,
@@ -324,6 +325,7 @@ export const parseProductInfo = (
     bossProductDisabled: isBossProductDisabled(product),
     bossCategoryDisabled: isBopisProductDisabled(product),
   };
+  const imageExtension = product.productimage || '';
   const imagesByColor = extractExtraImages(
     rawColors,
     product.alt_img,
@@ -331,7 +333,8 @@ export const parseProductInfo = (
     uniqueId,
     defaultColor,
     false,
-    hasShortImage
+    hasShortImage,
+    imageExtension
   );
   const colorsMap = getColorsMap({
     uniqueId,
@@ -374,9 +377,7 @@ export const parseProductInfo = (
             badge3: extractAttributeValue(swatchOfAvailableProduct, attributesNames.merchant),
             listPrice: getListPrice(swatchOfAvailableProduct),
             offerPrice: processHelpers.getOfferPrice(swatchOfAvailableProduct),
-            keepAlive: parseBoolean(
-              extractAttributeValue(swatchOfAvailableProduct, attributesNames.keepAlive)
-            ),
+            keepAlive: parseBoolean(swatchOfAvailableProduct[attributesNames.keepAlive]),
           },
           color: {
             name: colorDetails[1],

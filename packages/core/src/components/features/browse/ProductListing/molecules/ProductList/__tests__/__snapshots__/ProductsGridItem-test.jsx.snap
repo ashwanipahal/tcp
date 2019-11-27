@@ -161,14 +161,32 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       <div
         className="fulfillment-section"
       >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          className="added-to-bag"
-          dataLocator="global-addtocart-Button"
-          fill=""
-          fullWidth={true}
-          onClick={[Function]}
-        />
+        <Connect(Component)
+          clickData={
+            Object {
+              "eventName": "cart add",
+              "pageName": "",
+              "pageSection": "product",
+              "pageShortName": "",
+              "pageSubSection": "product",
+              "pageType": "product",
+              "products": Array [
+                Object {
+                  "id": "undefined",
+                },
+              ],
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="added-to-bag"
+            dataLocator="global-addtocart-Button"
+            fill=""
+            fullWidth={true}
+            onClick={[Function]}
+          />
+        </Connect(Component)>
       </div>
     </div>
     <div

@@ -113,8 +113,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             className="details-link"
             dataLocator="detailslink"
             fontSizeVariation="medium"
-            href="#"
-            onClick={[Function]}
+            handleLinkClick={[Function]}
+            noLink={true}
             underline={true}
           >
             lbl_bonusPoints_details
@@ -321,8 +321,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             className="details-link"
             dataLocator="detailslink"
             fontSizeVariation="medium"
-            href="#"
-            onClick={[Function]}
+            handleLinkClick={[Function]}
+            noLink={true}
             underline={true}
           >
             lbl_bonusPoints_details
@@ -529,8 +529,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             className="details-link"
             dataLocator="detailslink"
             fontSizeVariation="medium"
-            href="#"
-            onClick={[Function]}
+            handleLinkClick={[Function]}
+            noLink={true}
             underline={true}
           >
             lbl_bonusPoints_details
@@ -737,8 +737,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             className="details-link"
             dataLocator="detailslink"
             fontSizeVariation="medium"
-            href="#"
-            onClick={[Function]}
+            handleLinkClick={[Function]}
+            noLink={true}
             underline={true}
           >
             lbl_bonusPoints_details
@@ -912,8 +912,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             className="details-link"
             dataLocator="detailslink"
             fontSizeVariation="medium"
-            href="#"
-            onClick={[Function]}
+            handleLinkClick={[Function]}
+            noLink={true}
             underline={true}
           >
             lbl_bonusPoints_details

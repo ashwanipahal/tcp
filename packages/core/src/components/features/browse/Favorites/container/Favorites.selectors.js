@@ -98,3 +98,6 @@ export default fetchCurrencySymbol;
 export const getIsDataLoading = state => {
   return state[FAVORITES_REDUCER_KEY].get('isDataLoading');
 };
+
+export const getFormErrorLabels = state =>
+  state.Labels.global && state.Labels.global.formValidation;

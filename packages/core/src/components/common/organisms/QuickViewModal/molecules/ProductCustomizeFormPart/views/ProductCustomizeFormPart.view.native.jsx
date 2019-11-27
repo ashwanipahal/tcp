@@ -107,7 +107,7 @@ const ProductCustomizeFormPart = props => {
               fontSize="fs18"
               fontWeight="extrabold"
               text={productInfo.name}
-              spacingStyles="margin-bottom-SM"
+              spacingStyles="padding-bottom-SM"
             />
             <OfferPriceAndBadge3Container>
               <BodyCopy

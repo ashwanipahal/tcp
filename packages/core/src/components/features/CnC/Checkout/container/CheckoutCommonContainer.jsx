@@ -166,13 +166,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       updateCheckoutPageData,
       dispatchReviewReduxForm,
       pageData,
-      bagLoading,
       dispatch,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
-    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
+    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount, bagLoading } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
       checkoutProgressBarLabels

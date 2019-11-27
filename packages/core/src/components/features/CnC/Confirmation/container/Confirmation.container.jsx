@@ -103,7 +103,7 @@ class ConfirmationContainer extends React.Component {
           store => store.orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS
         );
       const moduleXId = isBossInList ? updateOrderDetailsBossId : updateOrderDetailsBopisId;
-      fetchUpdateOrderDetails([moduleXId, placeCashConfirmationContentId]);
+      fetchUpdateOrderDetails([moduleXId]);
     }
     // Call for notification adn Subscribe content needs to be removed from SMS component now
     fetchModuleXContent([

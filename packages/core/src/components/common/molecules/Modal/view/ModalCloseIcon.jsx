@@ -23,7 +23,6 @@ const CloseButtonStyle = css`
 const ModalCloseIcon = ({ className, closeFunc, closeIconDataLocator, closeIconLeftAligned }) => (
   <button
     aria-label="close"
-    tabIndex="0"
     className={`${className} ${'alignTop'} ${closeIconLeftAligned ? 'alignLeft' : 'alignRight'}`}
     onClick={e => closeFunc(e)}
     data-locator={closeIconDataLocator}

@@ -141,7 +141,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           />
         </div>
         <Connect(ProductAddToBagContainer)
-          alternateSizes={Object {}}
           colorFitsSizesMap={
             Array [
               Object {

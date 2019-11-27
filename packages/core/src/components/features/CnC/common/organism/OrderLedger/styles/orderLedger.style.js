@@ -3,6 +3,12 @@ import { css } from 'styled-components';
 const LedgerStyle = css`
   background-color: ${props => props.theme.colors.WHITE};
   padding: 23px 1px 21px;
+  padding-bottom: 0;
+  .item-closed {
+    .elem-mb-MED {
+      margin-bottom: 0;
+    }
+  }
 
   .rowMargin {
     margin-bottom: 8px;
@@ -12,7 +18,7 @@ const LedgerStyle = css`
   }
   .tax-total {
     padding-bottom: 7px;
-    border-bottom: 1px solid ${props => props.theme.colors.BLACK};
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
   }
   .circle-info-image {
     width: 15px;

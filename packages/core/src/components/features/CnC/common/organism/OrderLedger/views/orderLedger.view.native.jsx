@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
+import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/skeleton/OrderSummarySkeleton.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -17,6 +18,7 @@ import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import LoyaltyBanner from '../../../../LoyaltyBanner';
 import FreeShippingBanner from '../../../../FreeShippingBanner';
+import { renderCouponsAndSavingsTotal, orderHasShipping } from './orderLedger.util.native';
 
 const popover = message => {
   return (
@@ -86,6 +88,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
     orderBalanceTotal,
     totalOrderSavings,
     isOrderHasShipping,
+    bagLoading,
   } = ledgerSummaryData;
   let fontSize = 'fs13';
   let totalFontSize = 'fs16';
@@ -97,130 +100,37 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
   }
   return (
     <StyledOrderLedger>
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="regular"
-            fontSize={fontSize}
-            text={`${labels.itemsLabel} (${itemsCount}):`}
-          />
-        </Text>
-        <Text>
-          <BodyCopy
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize={fontSize}
-            textAlign="right"
-            text={`${currencySymbol}${subTotal.toFixed(2)}`}
-          />
-        </Text>
-      </StyledRowDataContainer>
-      {couponsTotal ? (
-        <StyledRowDataContainer>
-          <Text>
-            <BodyCopy
-              fontFamily="secondary"
-              textAlign="left"
-              fontWeight="regular"
-              fontSize={fontSize}
-              text={`${labels.couponsLabel}:`}
-            />
-          </Text>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              fontWeight="regular"
-              fontSize={fontSize}
-              textAlign="right"
-              text={`-${currencySymbol}${couponsTotal.toFixed(2)}`}
-            />
-          </Text>
-        </StyledRowDataContainer>
-      ) : null}
-      {savingsTotal ? (
-        <StyledRowDataContainer>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              textAlign="left"
-              fontWeight="regular"
-              fontSize={fontSize}
-              text={`${labels.promotionsLabel}:`}
-            />
-          </Text>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              fontWeight="regular"
-              fontSize={fontSize}
-              textAlign="right"
-              text={`-${currencySymbol}${savingsTotal.toFixed(2)}`}
-            />
-          </Text>
-        </StyledRowDataContainer>
-      ) : null}
-      {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
-      {isOrderHasShipping ? (
-        <StyledRowDataContainer>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              textAlign="left"
-              fontWeight="regular"
-              fontSize={fontSize}
-              text={`${labels.shippingLabel}:`}
-            />
-          </Text>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              fontWeight="regular"
-              fontSize={fontSize}
-              textAlign="right"
-              text={
-                // eslint-disable-next-line no-nested-ternary
-                shippingTotal !== undefined
-                  ? shippingTotal > 0
-                    ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                    : labels.free
-                  : '-'
-              }
-            />
-          </Text>
-        </StyledRowDataContainer>
-      ) : null}
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="regular"
-            fontSize={fontSize}
-            text={`${labels.taxLabel}:`}
-          />
-        </Text>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize={fontSize}
-            textAlign="right"
-            text={`${currencySymbol}${taxesTotal.toFixed(2)}`}
-          />
-        </Text>
-      </StyledRowDataContainer>
-      <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
-      {giftCardsTotal > 0 ? (
-        <React.Fragment>
+      {!bagLoading ? (
+        <>
+          <StyledRowDataContainer>
+            <Text>
+              <BodyCopy
+                fontFamily="secondary"
+                textAlign="left"
+                fontWeight="regular"
+                fontSize={fontSize}
+                text={`${labels.itemsLabel} (${itemsCount}):`}
+              />
+            </Text>
+            <Text>
+              <BodyCopy
+                fontFamily="secondary"
+                fontWeight="regular"
+                fontSize={fontSize}
+                textAlign="right"
+                text={`${currencySymbol}${subTotal.toFixed(2)}`}
+              />
+            </Text>
+          </StyledRowDataContainer>
+          {renderCouponsAndSavingsTotal(
+            couponsTotal,
+            fontSize,
+            labels,
+            currencySymbol,
+            savingsTotal
+          )}
+          {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
+          {orderHasShipping(isOrderHasShipping, fontSize, labels, shippingTotal, currencySymbol)}
           <StyledRowDataContainer>
             <Text>
               <BodyCopy
@@ -229,7 +139,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                 textAlign="left"
                 fontWeight="regular"
                 fontSize={fontSize}
-                text={`${labels.totalLabel}:`}
+                text={`${labels.taxLabel}:`}
               />
             </Text>
             <Text>
@@ -239,85 +149,114 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                 fontWeight="regular"
                 fontSize={fontSize}
                 textAlign="right"
-                text={`${currencySymbol}${grandTotal.toFixed(2)}`}
+                text={`${currencySymbol}${taxesTotal.toFixed(2)}`}
               />
             </Text>
           </StyledRowDataContainer>
+          <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
+          {giftCardsTotal > 0 ? (
+            <React.Fragment>
+              <StyledRowDataContainer>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    textAlign="left"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    text={`${labels.totalLabel}:`}
+                  />
+                </Text>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    textAlign="right"
+                    text={`${currencySymbol}${grandTotal.toFixed(2)}`}
+                  />
+                </Text>
+              </StyledRowDataContainer>
+              <StyledRowDataContainer>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    textAlign="left"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    text={`${labels.giftcardsLabel}:`}
+                  />
+                </Text>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    textAlign="right"
+                    text={`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
+                  />
+                </Text>
+              </StyledRowDataContainer>
+            </React.Fragment>
+          ) : null}
           <StyledRowDataContainer>
             <Text>
               <BodyCopy
                 bodySize="one"
                 fontFamily="secondary"
                 textAlign="left"
-                fontWeight="regular"
-                fontSize={fontSize}
-                text={`${labels.giftcardsLabel}:`}
+                fontWeight="extrabold"
+                fontSize={totalFontSize}
+                text={giftCardsTotal ? `${labels.balanceLabel}:` : totalLabel}
               />
             </Text>
             <Text>
               <BodyCopy
                 bodySize="one"
                 fontFamily="secondary"
-                fontWeight="regular"
-                fontSize={fontSize}
+                fontWeight="extrabold"
+                fontSize={totalFontSize}
                 textAlign="right"
-                text={`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
+                text={`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
               />
             </Text>
           </StyledRowDataContainer>
-        </React.Fragment>
-      ) : null}
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="extrabold"
-            fontSize={totalFontSize}
-            text={giftCardsTotal ? `${labels.balanceLabel}:` : totalLabel}
-          />
-        </Text>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-            fontSize={totalFontSize}
-            textAlign="right"
-            text={`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
-          />
-        </Text>
-      </StyledRowDataContainer>
-      {totalOrderSavings ? (
-        <StyledRowDataContainer>
-          <LabelContainer>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              textAlign="left"
-              fontWeight="regular"
-              fontSize={fontSize}
-              text={`${labels.totalSavingsLabel}`}
-            />
-            <IconContainer>
-              <ReactTooltip withOverlay={false} popover={popover(labels.tooltipText)}>
-                <ImageComp source={IconInfoLogo} height={15} width={15} />
-              </ReactTooltip>
-            </IconContainer>
-          </LabelContainer>
-          <Text>
-            <BodyCopy
-              bodySize="one"
-              fontFamily="secondary"
-              fontWeight="regular"
-              fontSize={fontSize}
-              textAlign="right"
-              text={`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
-            />
-          </Text>
-        </StyledRowDataContainer>
-      ) : null}
+          {totalOrderSavings ? (
+            <StyledRowDataContainer>
+              <LabelContainer>
+                <BodyCopy
+                  bodySize="one"
+                  fontFamily="secondary"
+                  textAlign="left"
+                  fontWeight="regular"
+                  fontSize={fontSize}
+                  text={`${labels.totalSavingsLabel}`}
+                />
+                <IconContainer>
+                  <ReactTooltip withOverlay={false} popover={popover(labels.tooltipText)}>
+                    <ImageComp source={IconInfoLogo} height={15} width={15} />
+                  </ReactTooltip>
+                </IconContainer>
+              </LabelContainer>
+              <Text>
+                <BodyCopy
+                  bodySize="one"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                  fontSize={fontSize}
+                  textAlign="right"
+                  text={`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
+                />
+              </Text>
+            </StyledRowDataContainer>
+          ) : null}
+        </>
+      ) : (
+        <OrderSummarySkeleton />
+      )}
       {renderFreeShippingBanner(pageCategory)}
       {getLoyaltybanner(isConfirmationPage, pageCategory, navigation)}
     </StyledOrderLedger>

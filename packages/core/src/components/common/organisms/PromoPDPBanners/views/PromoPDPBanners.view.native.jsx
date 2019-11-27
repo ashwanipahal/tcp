@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ModuleA, ModuleX } from '@tcp/core/src/components/common/molecules';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 
 const modules = {
   moduleA: ModuleA,
@@ -17,6 +18,13 @@ const PromoPDPBanners = ({ promos, navigation }) => {
     promos.map(promo => {
       const { contentId, moduleName, data: slotData, ...others } = promo;
       const Module = modules[moduleName];
+      if (moduleName === 'moduleX') {
+        return (
+          <Espot
+            richTextHtml={promo.richTextList && promo.richTextList[0] && promo.richTextList[0].text}
+          />
+        );
+      }
       return (
         Module &&
         promo && (

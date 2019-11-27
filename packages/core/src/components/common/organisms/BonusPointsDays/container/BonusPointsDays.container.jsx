@@ -9,6 +9,7 @@ import {
   getBonusDetailsContentId,
   getBonusDetailsData,
   getBonusPointsSwitch,
+  getIsFetching,
 } from './BonusPointsDays.selectors';
 import { isPlccUser } from '../../../../features/account/User/container/User.selectors';
 import BonusPointsView from '../views/BonusPointsView';
@@ -78,6 +79,7 @@ export class BonusPointsDays extends React.Component {
       additionalClassNameModal,
       isDefaultOpen,
       isInternationalShipping,
+      isFetching,
       ...otherProps
     } = this.props;
     return (
@@ -96,6 +98,7 @@ export class BonusPointsDays extends React.Component {
           isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
           isInternationalShipping={isInternationalShipping}
+          isFetching={isFetching}
           {...otherProps}
         />
       )
@@ -113,6 +116,7 @@ export const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     orderId: getCartOrderId(state),
     isInternationalShipping: getIsInternationalShipping(state),
+    isFetching: getIsFetching(state),
   };
 };
 

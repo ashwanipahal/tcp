@@ -24,7 +24,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3973AC672387D12B00538E85"
-               BuildableName = "gymboree_preview.app"
+               BuildableName = "Gymboree-Preview.app"
                BlueprintName = "gymboree_preview"
                ReferencedContainer = "container:mobileapp.xcodeproj">
             </BuildableReference>
@@ -38,6 +38,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -54,11 +56,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3973AC672387D12B00538E85"
-            BuildableName = "gymboree_preview.app"
+            BuildableName = "Gymboree-Preview.app"
             BlueprintName = "gymboree_preview"
             ReferencedContainer = "container:mobileapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

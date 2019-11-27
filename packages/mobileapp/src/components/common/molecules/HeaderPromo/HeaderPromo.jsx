@@ -42,30 +42,37 @@ class HeaderPromo extends React.PureComponent {
    */
   renderView = ({ item }) => {
     return (
-      <MessageContainer
-        accessibilityRole="text"
-        width={MODULE_WIDTH}
-        onPress={() => UrlHandler(item.linkClass.url)}
-      >
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          textAlign="center"
-          fontWeight="black"
-          text={item.textItems[0].text}
-          style={manageTextStyles(item.textItems[0].style)}
-          data-locator={getLocator('global_promobanner_title_0')}
-        />
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          textAlign="center"
-          color="black"
-          fontWeight="regular"
-          text={item.textItems[1].text}
-          data-locator={getLocator('global_promobanner_title_1')}
-        />
-      </MessageContainer>
+      item.textItems &&
+      item.textItems.length && (
+        <MessageContainer
+          accessibilityRole="text"
+          width={MODULE_WIDTH}
+          onPress={() => UrlHandler(item.linkClass.url)}
+        >
+          {item.textItems[0] && (
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              textAlign="center"
+              fontWeight="black"
+              text={item.textItems[0].text}
+              style={manageTextStyles(item.textItems[0].style)}
+              data-locator={getLocator('global_promobanner_title_0')}
+            />
+          )}
+          {item.textItems[1] && (
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              textAlign="center"
+              color="black"
+              fontWeight="regular"
+              text={item.textItems[1].text}
+              data-locator={getLocator('global_promobanner_title_1')}
+            />
+          )}
+        </MessageContainer>
+      )
     );
   };
 
@@ -94,8 +101,7 @@ class HeaderPromo extends React.PureComponent {
         {promoHtmlBannerCarousel && (
           <RichText
             source={{
-              html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${promoHtmlBannerCarousel &&
-                promoHtmlBannerCarousel[0].text}</body></html>`,
+              html: promoHtmlBannerCarousel && promoHtmlBannerCarousel[0].text,
             }}
           />
         )}

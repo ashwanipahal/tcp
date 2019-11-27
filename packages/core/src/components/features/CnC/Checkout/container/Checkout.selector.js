@@ -730,7 +730,7 @@ const getGiftWrapOptions = state => {
 const getSelectedGiftWrapDetails = state => {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   const checkout = orderDetails.get('checkout');
-  const optionId = checkout.getIn(['giftWrap', 'optionId']);
+  const optionId = checkout && checkout.getIn(['giftWrap', 'optionId']);
   const selectedOptionData = getGiftWrapOptions(state);
   if (selectedOptionData.body) {
     const selectedOption = selectedOptionData.body.giftOptions.filter(

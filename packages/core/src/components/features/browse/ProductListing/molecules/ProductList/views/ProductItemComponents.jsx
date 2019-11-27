@@ -259,7 +259,7 @@ export const CreateWishList = props => {
           <li className="wish-list-item">
             {createNewWishListMoveItem ? (
               <Button
-                onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
+                onClick={() => createNewWishListMoveItem({ wisListId: item.id, itemId })}
                 className="wish-list-item__button"
               >
                 {renderWishListItem(item, labels, activeWishListId)}
@@ -276,7 +276,7 @@ export const CreateWishList = props => {
         ))}
       </ul>
       <Button
-        onClick={openAddNewList}
+        onClick={() => openAddNewList(itemId)}
         buttonVariation="fixed-width"
         fill="BLACK"
         data-locator="create-new-wish-list"
@@ -298,13 +298,8 @@ export const ProductSKUInfo = props => {
 
   return (
     <div className="product-sku-info-container">
-      {size && (
-        <span className="size-container">
-          Size
-          {size}
-        </span>
-      )}
-      {size && fit && <i className="separator-bar-icon">|</i>}
+      {size && <span className="size-container">{`Size ${size}`}</span>}
+      {size && fit && <span className="separator-bar-icon"> | </span>}
       {fit && <span className="fit-container">{fit}</span>}
     </div>
   );

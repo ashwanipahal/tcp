@@ -10,11 +10,31 @@ import StyledApplyNowModal from '../../molecules/ApplyNowModal/views/ApplyNowMod
 
 class ApplyNowModalWrapper extends React.Component {
   componentDidMount() {
-    const { labels, fetchModuleXContent, resetPLCCApplicationStatus } = this.props;
-    if (labels && labels.referred) {
+    const {
+      labels,
+      fetchModuleXContent,
+      resetPLCCApplicationStatus,
+      isModalOpen,
+      isPLCCModalOpen,
+    } = this.props;
+
+    if (labels && labels.referred && (isModalOpen || isPLCCModalOpen)) {
       fetchModuleXContent(labels.referred);
     }
     resetPLCCApplicationStatus({ status: null });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isModalOpen, isPLCCModalOpen, labels, fetchModuleXContent } = this.props;
+
+    if (
+      ((!prevProps.isModalOpen && isModalOpen) ||
+        (!prevProps.isPLCCModalOpen && isPLCCModalOpen)) &&
+      labels &&
+      labels.referred
+    ) {
+      fetchModuleXContent(labels.referred);
+    }
   }
 
   setRTPSFlow = () => {
@@ -74,6 +94,7 @@ class ApplyNowModalWrapper extends React.Component {
       rtpsOptOutMsg,
       rtpsTextTerms,
       submitAcceptOrDeclinePlcc,
+      cartOrderItems,
     } = this.props;
     return (
       <div className={className}>
@@ -92,6 +113,7 @@ class ApplyNowModalWrapper extends React.Component {
               rtpsOptOutMsg={rtpsOptOutMsg}
               rtpsTextTerms={rtpsTextTerms}
               submitAcceptOrDeclinePlcc={submitAcceptOrDeclinePlcc}
+              cartOrderItems={cartOrderItems}
             />
           ) : null}
         </React.Fragment>
@@ -117,6 +139,8 @@ ApplyNowModalWrapper.propTypes = {
   setIsRTPSFlow: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool,
   submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
+
+  products: PropTypes.shape([]).isRequired,
 };
 
 ApplyNowModalWrapper.defaultProps = {

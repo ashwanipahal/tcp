@@ -1,1 +1,1 @@
-export { default } from './PromoPDPBanners.view.native';
+export { default } from './PromoPDPBanners.view';

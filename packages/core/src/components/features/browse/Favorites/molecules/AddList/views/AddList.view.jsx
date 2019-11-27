@@ -91,6 +91,7 @@ class AddList extends React.PureComponent {
               >
                 {getLabelValue(labels, 'btn_fav_cancel')}
               </Button>
+              <Field name="itemId" id="itemId" type="hidden" component={TextBox} />
             </Col>
           </Row>
         </form>

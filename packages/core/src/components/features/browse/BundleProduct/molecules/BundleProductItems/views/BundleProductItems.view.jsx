@@ -52,12 +52,7 @@ class BundleProductItems extends React.PureComponent {
                   className={`${className} outfiting-list-details`}
                   addToBagError={addToBagErrorId === productItem.generalProductId && addToBagError}
                   isLoggedIn={isLoggedIn}
-                  addToFavorites={() => {
-                    addToFavorites({
-                      colorProductId: productItem.generalProductId,
-                      page: 'BUNDLE',
-                    });
-                  }}
+                  addToFavorites={addToFavorites}
                   currencySymbol={currencySymbol}
                   currencyAttributes={currencyAttributes}
                   isBundleProduct
@@ -65,6 +60,7 @@ class BundleProductItems extends React.PureComponent {
                   outOfStockLabels={outOfStockLabels}
                   AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                   removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                  pageName="BUNDLE"
                 />
               </li>
             );
