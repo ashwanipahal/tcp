@@ -12,6 +12,11 @@ const styles = css`
     flex-direction: column;
     display: flex;
   }
+  /* stylelint-disable-next-line */
+  _:-ms-fullscreen,
+  .image-wrapper img {
+    max-height: 320px;
+  }
   .image-wrapper {
     display: flex;
     flex-direction: column;
