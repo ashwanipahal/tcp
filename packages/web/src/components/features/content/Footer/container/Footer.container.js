@@ -33,7 +33,10 @@ const mapStateToProps = state => {
       referAFriend: referAFriendButtonLabels,
     } = {},
   } = state.Labels;
-  const { EmailSignUp = {}, SmsSignUp = {} } = state;
+  const {
+    EmailSignUp: { EmailSignupFormReducer: { subscription } = {} } = {},
+    SmsSignUp = { SmsSignupFormReducer: { subscription } },
+  } = state;
 
   return {
     legalLinks: Footer.legalLinks,
@@ -42,8 +45,8 @@ const mapStateToProps = state => {
       connectWithUsLabel,
       links: Footer.socialLinks,
     },
-    smsSubscription: SmsSignUp.subscription,
-    emailSubscription: EmailSignUp.subscription,
+    smsSubscription: subscription,
+    emailSubscription: subscription,
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,

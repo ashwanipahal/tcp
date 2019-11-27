@@ -47,7 +47,7 @@ const mapStateToProps = (state, props) => {
       left: { small: 4, medium: 4, large: 6 },
       right: { small: 6, medium: 8, large: 6 },
     },
-    imageData: mediaWrapper && mediaWrapper.length > 1 ? mediaWrapper[0] : {},
+    imageData: mediaWrapper && mediaWrapper.length > 0 ? mediaWrapper[0] : {},
   };
 };
 
