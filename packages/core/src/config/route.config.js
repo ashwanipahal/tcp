@@ -54,7 +54,11 @@ const ROUTES_LIST = [
     path: '/login',
     resolver: '/login',
   },
-
+  {
+    noSlugPath: 'sitemap',
+    path: '/sitemap',
+    resolver: '/sitemap',
+  },
   {
     noSlugPath: 'instagram',
     path: '/instagram',
