@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Carousel from '../../../../common/molecules/Carousel';
@@ -97,6 +99,9 @@ class BundleProduct extends React.PureComponent {
           <Row className="placeholder-small">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
+              {/* UX timer */}
+              {/* TODO: When this is an actual image, revise timer logic */}
+              <RenderPerf.Measure name={PROMOTION_VISIBLE} />
             </Col>
           </Row>
         </Col>
