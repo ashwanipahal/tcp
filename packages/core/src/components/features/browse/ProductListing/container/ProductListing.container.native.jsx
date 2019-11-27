@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import ProductListing from '../views';
+import { get } from 'lodash';
 import {
   getPlpProducts,
   getMorePlpProducts,
@@ -126,6 +127,7 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       isSearchListing,
       isKeepModalOpen,
+      animationURL,
       ...otherProps
     } = this.props;
 
@@ -162,6 +164,7 @@ class ProductListingContainer extends React.PureComponent {
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}
         showCustomLoader={showCustomLoader}
+        animationURL={animationURL}
         {...otherProps}
       />
     );
@@ -217,6 +220,7 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    animationURL: get(state, 'Labels.Browse.SLP.lbl_animation_plp', ''),
   };
 }
 
@@ -273,6 +277,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
+  animationURL: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -298,6 +303,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
+  animationURL: 'https://i.gifer.com/77Y.gif',
 };
 
 export default connect(

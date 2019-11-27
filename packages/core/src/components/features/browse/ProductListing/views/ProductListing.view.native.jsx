@@ -159,6 +159,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  animationURL,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -186,10 +187,7 @@ const ProductListView = ({
     filtersLength,
   };
   return showCustomLoader ? (
-    <PLPGifAnimation
-      url="https://media.giphy.com/media/rIEyYzbMqa7hS/giphy.gif"
-      navigation={navigation}
-    />
+    <PLPGifAnimation url={animationURL} navigation={navigation} />
   ) : (
     <ScrollView>
       {!isSearchListing && (
