@@ -1,8 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import style from '../styles/ModuleFormWrapper.style';
 
 const returnModule = mod => mod.default;
 const DynamicColumns = dynamic({
@@ -25,12 +23,11 @@ const ModuleFormWrapper = props => {
 };
 
 ModuleFormWrapper.propTypes = {
-  className: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.node),
+  className: PropTypes.string,
 };
 
 ModuleFormWrapper.defaultProps = {
-  children: null,
+  className: '',
 };
 
-export default withStyles(ModuleFormWrapper, style);
+export default ModuleFormWrapper;

@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  padding: 0 15px;
+  &.helpcenter__view {
+    padding: 0 15px;
+  }
 `;

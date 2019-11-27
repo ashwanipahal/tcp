@@ -1,8 +1,24 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import EmailSignupForm from '@tcp/core/src/components/common/organisms/EmailSignupForm/views/EmailSignupForm';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '@tcp/web/src/components/common/molecules/SmsSignupModal/SmsSignupModal.style';
+
+const returnModule = mod => mod.default;
+export const DynamicForm = dynamic({
+  modules: () => ({
+    email_signup: () =>
+      import('@tcp/core/src/components/common/organisms/EmailSignupForm/views').then(returnModule),
+    sms_signup: () =>
+      import('@tcp/core/src/components/common/organisms/SmsSignupForm/views').then(returnModule),
+  }),
+  render: (properties, modules) => {
+    const Module = modules[properties.formType];
+    return <Module {...properties} />;
+  },
+});
 
 class EmailSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {
@@ -54,7 +70,8 @@ class EmailSignupModal extends React.PureComponent {
               : 'sign-up-modal-form-intro-view',
           }}
         >
-          <EmailSignupForm
+          <DynamicForm
+            formType="email_signup"
             {...this.props}
             colProps={{
               left: { small: 4, medium: 4, large: 4 },
@@ -85,4 +102,5 @@ EmailSignupModal.defaultProps = {
   isModalOpen: false,
 };
 
-export default EmailSignupModal;
+export default withStyles(EmailSignupModal, styles);
+export { EmailSignupModal as EmailSignupModalVanilla };

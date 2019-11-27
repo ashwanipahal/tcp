@@ -99,7 +99,11 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
 }
 
 export function* updateShipmentMethodSelection({ payload }) {
-  const addressId = yield select(selectors.getOnFileAddressKey);
+  let addressId = yield select(selectors.getOnFileAddressKey);
+  const currentStage = yield select(selectors.getCurrentCheckoutStage);
+  if (!addressId && currentStage.toLowerCase() === constants.CHECKOUT_STAGES.REVIEW) {
+    addressId = yield select(selectors.getShippingAddressID);
+  }
   const smsSignUp = yield select(selectors.getShippingSmsSignUpFields);
   let transVibesSmsPhoneNo = null;
   if (smsSignUp) {
@@ -115,13 +119,15 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-    yield call(getCartDataSaga, {
-      isRecalculateTaxes: true,
-      excludeCartItems: false,
-      recalcRewards: false,
-      isCheckoutFlow: true,
-      translation: false,
-    });
+    if (!payload.isAddressChange) {
+      yield call(getCartDataSaga, {
+        isRecalculateTaxes: true,
+        excludeCartItems: false,
+        recalcRewards: false,
+        isCheckoutFlow: true,
+        translation: false,
+      });
+    }
     yield put(setLoaderState(false));
   } catch (err) {
     yield put(setLoaderState(false));

@@ -1,10 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HelpCenterViewVanilla should render correctly 1`] = `
-<div>
-  <Styled(BackToView)
-    defaultOpen={true}
-  />
+<div
+  className="undefined helpcenter__view"
+>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    asPath="/home"
+    fontSizeVariation="xlarge"
+    to="/home"
+  >
+    <span
+      className="left-arrow"
+    />
+  </Styled(Anchor)>
   <LoadableComponent
     appType="tcp"
     getBootstrapData={[MockFunction]}

@@ -1,15 +1,23 @@
 import React, { Fragment } from 'react';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, TextBox, DamImage, Anchor } from '@tcp/core/src/components/common/atoms';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
-import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
-import SmsSignupForm from '@tcp/core/src/components/common/organisms/SmsSignupForm/views';
+import dynamic from 'next/dynamic';
+import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { isGymboree } from '@tcp/core/src/utils/utils';
-import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import styles from '../SmsSignupModal.style';
 
+const returnModule = mod => mod.default;
+export const DynamicForm = dynamic({
+  modules: () => ({
+    email_signup: () =>
+      import('@tcp/core/src/components/common/organisms/EmailSignupForm/views').then(returnModule),
+    sms_signup: () =>
+      import('@tcp/core/src/components/common/organisms/SmsSignupForm/views').then(returnModule),
+  }),
+  render: (properties, modules) => {
+    const Module = modules[properties.formType];
+    return <Module {...properties} />;
+  },
+});
 class SmsSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription } = this.props;
@@ -35,16 +43,7 @@ class SmsSignupModal extends React.PureComponent {
   };
 
   render() {
-    const {
-      isModalOpen,
-      className,
-      formViewConfig,
-      subscription,
-      submitting,
-      pristine,
-      handleSubmit,
-    } = this.props;
-    const isGym = isGymboree();
+    const { isModalOpen, className, formViewConfig, subscription } = this.props;
     return (
       <Fragment>
         <Modal
@@ -69,7 +68,8 @@ class SmsSignupModal extends React.PureComponent {
               : 'sign-up-modal-form-intro-view',
           }}
         >
-          <SmsSignupForm
+          <DynamicForm
+            formType="sms_signup"
             {...this.props}
             colProps={{
               left: { small: 4, medium: 4, large: 4 },
@@ -83,35 +83,24 @@ class SmsSignupModal extends React.PureComponent {
 }
 
 SmsSignupModal.propTypes = {
-  buttonConfig: PropTypes.shape({}),
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
   clearSmsSignupForm: PropTypes.func,
   subscription: PropTypes.shape({}),
-  submitSmsSubscription: PropTypes.func,
-  validateSignupSmsPhoneNumber: PropTypes.func,
-  trackSubscriptionSuccess: PropTypes.func,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
   isModalOpen: PropTypes.bool,
   closeModal: PropTypes.func,
   reset: PropTypes.func,
-  handleSubmit: PropTypes.func,
 };
 
 SmsSignupModal.defaultProps = {
-  buttonConfig: {},
   className: '',
   subscription: {},
   isModalOpen: false,
-  submitSmsSubscription: () => {},
-  trackSubscriptionSuccess: () => {},
-  validateSignupSmsPhoneNumber: () => Promise.resolve({}),
   clearSmsSignupForm: () => {},
   closeModal: () => {},
   reset: () => {},
-  handleSubmit: () => {},
 };
 
-export default SmsSignupModal;
+export default withStyles(SmsSignupModal, styles);
+export { SmsSignupModal as SmsSignupModalVanilla };

@@ -58,7 +58,7 @@ exports[`Order Items component should renders correctly 1`] = `
           alt="TCP"
           className="brand-image"
           data-locator="order_item_brand_logo"
-          src="/static/images/tcp-logo.svg"
+          src="/static/version-not-available/images/tcp-logo.svg"
         />
       </Styled(BodyCopy)>
     </Styled(Col)>

@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import BackToView from '@tcp/core/src/components/common/molecules/BackToView';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import styles from '../styles/HelpCenter.style';
 
@@ -27,8 +27,17 @@ const HelpCenterDynamicRender = dynamic({
 const HelpCenterView = props => {
   const { className, labels } = props;
   return (
-    <div className={className}>
-      <BackToView linkText={labels.lbl_helpCenter_continueShopping} defaultOpen />
+    <div className={`${className} helpcenter__view`}>
+      <Anchor
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        title={labels.lbl_helpCenter_continueShopping}
+        to="/home"
+        asPath="/home"
+      >
+        <span className="left-arrow" />
+        {labels.lbl_helpCenter_continueShopping}
+      </Anchor>
       <HelpCenterDynamicRender {...props} />
     </div>
   );

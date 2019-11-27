@@ -8,11 +8,8 @@ describe('ModuleFormWrapper component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('BrandLogo component renders correctly with props', () => {
-    const props = {
-      className: 'test-class',
-    };
-    const component = shallow(<ModuleFormWrapper {...props} />);
-    expect(component.find('.test-class')).toHaveLength(1);
+  it('ModuleFormWrapper component renders correctly', () => {
+    const component = shallow(<ModuleFormWrapper />);
+    expect(component.find('.moduleFormWrapper')).toHaveLength(1);
   });
 });

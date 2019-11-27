@@ -1,289 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SMSSignupModal component renders correctly 1`] = `
-<Fragment>
-  <Styled(Modal)
-    aria={
-      Object {
-        "describedby": "sign-up-modal-form-intro-view",
-      }
+<StyledComponent
+  buttonConfig={Object {}}
+  className=""
+  formViewConfig={Object {}}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cJSrbW",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .alignRight {
+    right: 14px;
+    @media ",
+          [Function],
+          " {
+      right: 16px;
     }
-    className=""
-    closeIconDataLocator="sms_signup_modal_close_btn"
-    colSet={
-      Object {
-        "large": 8,
-        "medium": 6,
-        "small": 6,
-      }
+  }
+  .alignTop {
+    top: 14px;
+    z-index: 1;
+    @media ",
+          [Function],
+          " {
+      top: 16px;
     }
-    contentLabel="undefined undefined"
-    contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "645px",
-        "maxHeight": "645px",
-        "minHeight": "500px",
-      }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(SmsSignupModal)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cJSrbW",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
     }
-    isOpen={false}
-    noPadding={true}
-    onRequestClose={[Function]}
-    overlayClassName="TCPModal__Overlay"
-    widthConfig={
-      Object {
-        "large": "851px",
-        "medium": "458px",
-        "small": "100%",
-      }
+  }
+  forwardedRef={null}
+  isEmailValid={false}
+  subscription={
+    Object {
+      "success": false,
     }
-  >
-    <Styled(ReduxForm)
-      buttonConfig={Object {}}
-      className=""
-      clearSmsSignupForm={[Function]}
-      closeModal={[Function]}
-      colProps={
-        Object {
-          "left": Object {
-            "large": 4,
-            "medium": 4,
-            "small": 4,
-          },
-          "right": Object {
-            "large": 8,
-            "medium": 8,
-            "small": 6,
-          },
-        }
-      }
-      destroyOnUnmount={true}
-      enableReinitialize={false}
-      forceUnregisterOnUnmount={false}
-      form="SmsSignupForm"
-      formViewConfig={Object {}}
-      getFormState={[Function]}
-      handleSubmit={[Function]}
-      initialValues={
-        Object {
-          "signupPhoneNumber": "",
-        }
-      }
-      isEmailValid={false}
-      isModalOpen={false}
-      keepDirtyOnReinitialize={false}
-      persistentSubmitErrors={false}
-      pure={true}
-      reset={[Function]}
-      shouldAsyncValidate={[Function]}
-      shouldError={[Function]}
-      shouldValidate={[Function]}
-      shouldWarn={[Function]}
-      submitAsSideEffect={false}
-      submitSmsSubscription={[Function]}
-      subscription={
-        Object {
-          "success": false,
-        }
-      }
-      touchOnBlur={true}
-      touchOnChange={false}
-      trackSubscriptionSuccess={[Function]}
-      updateUnregisteredFields={false}
-      validateSignupSmsPhoneNumber={[Function]}
-    />
-  </Styled(Modal)>
-</Fragment>
+  }
+/>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 1`] = `
-<Fragment>
-  <Styled(Modal)
-    aria={
-      Object {
-        "describedby": "sign-up-modal-confirm-view",
-      }
+<StyledComponent
+  buttonConfig={Object {}}
+  className=""
+  formViewConfig={Object {}}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cJSrbW",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .alignRight {
+    right: 14px;
+    @media ",
+          [Function],
+          " {
+      right: 16px;
     }
-    className=""
-    closeIconDataLocator="thank_you_modal_close_btn"
-    colSet={
-      Object {
-        "large": 8,
-        "medium": 6,
-        "small": 6,
-      }
+  }
+  .alignTop {
+    top: 14px;
+    z-index: 1;
+    @media ",
+          [Function],
+          " {
+      top: 16px;
     }
-    contentLabel="undefined undefined"
-    contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "645px",
-        "maxHeight": "645px",
-        "minHeight": "500px",
-      }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(SmsSignupModal)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cJSrbW",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
     }
-    isOpen={true}
-    noPadding={true}
-    onRequestClose={[Function]}
-    overlayClassName="TCPModal__Overlay"
-    widthConfig={
-      Object {
-        "large": "851px",
-        "medium": "458px",
-        "small": "100%",
-      }
+  }
+  forwardedRef={null}
+  isEmailValid={true}
+  isModalOpen={true}
+  subscription={
+    Object {
+      "success": true,
     }
-  >
-    <Styled(ReduxForm)
-      buttonConfig={Object {}}
-      className=""
-      clearSmsSignupForm={[Function]}
-      closeModal={[Function]}
-      colProps={
-        Object {
-          "left": Object {
-            "large": 4,
-            "medium": 4,
-            "small": 4,
-          },
-          "right": Object {
-            "large": 8,
-            "medium": 8,
-            "small": 6,
-          },
-        }
-      }
-      destroyOnUnmount={true}
-      enableReinitialize={false}
-      forceUnregisterOnUnmount={false}
-      form="SmsSignupForm"
-      formViewConfig={Object {}}
-      getFormState={[Function]}
-      handleSubmit={[Function]}
-      initialValues={
-        Object {
-          "signupPhoneNumber": "",
-        }
-      }
-      isEmailValid={true}
-      isModalOpen={true}
-      keepDirtyOnReinitialize={false}
-      persistentSubmitErrors={false}
-      pure={true}
-      reset={[Function]}
-      shouldAsyncValidate={[Function]}
-      shouldError={[Function]}
-      shouldValidate={[Function]}
-      shouldWarn={[Function]}
-      submitAsSideEffect={false}
-      submitSmsSubscription={[Function]}
-      subscription={
-        Object {
-          "success": true,
-        }
-      }
-      touchOnBlur={true}
-      touchOnChange={false}
-      trackSubscriptionSuccess={[Function]}
-      updateUnregisteredFields={false}
-      validateSignupSmsPhoneNumber={[Function]}
-    />
-  </Styled(Modal)>
-</Fragment>
+  }
+/>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 2`] = `
-<Fragment>
-  <Styled(Modal)
-    aria={
-      Object {
-        "describedby": "sign-up-modal-form-intro-view",
-      }
+<StyledComponent
+  buttonConfig={Object {}}
+  className=""
+  formViewConfig={Object {}}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cJSrbW",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .alignRight {
+    right: 14px;
+    @media ",
+          [Function],
+          " {
+      right: 16px;
     }
-    className=""
-    closeIconDataLocator="sms_signup_modal_close_btn"
-    colSet={
-      Object {
-        "large": 8,
-        "medium": 6,
-        "small": 6,
-      }
+  }
+  .alignTop {
+    top: 14px;
+    z-index: 1;
+    @media ",
+          [Function],
+          " {
+      top: 16px;
     }
-    contentLabel="undefined undefined"
-    contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "645px",
-        "maxHeight": "645px",
-        "minHeight": "500px",
-      }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(SmsSignupModal)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cJSrbW",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
     }
-    isOpen={true}
-    noPadding={true}
-    onRequestClose={[Function]}
-    overlayClassName="TCPModal__Overlay"
-    widthConfig={
-      Object {
-        "large": "851px",
-        "medium": "458px",
-        "small": "100%",
-      }
+  }
+  forwardedRef={null}
+  isEmailValid={true}
+  isModalOpen={true}
+  subscription={
+    Object {
+      "success": false,
     }
-  >
-    <Styled(ReduxForm)
-      buttonConfig={Object {}}
-      className=""
-      clearSmsSignupForm={[Function]}
-      closeModal={[Function]}
-      colProps={
-        Object {
-          "left": Object {
-            "large": 4,
-            "medium": 4,
-            "small": 4,
-          },
-          "right": Object {
-            "large": 8,
-            "medium": 8,
-            "small": 6,
-          },
-        }
-      }
-      destroyOnUnmount={true}
-      enableReinitialize={false}
-      forceUnregisterOnUnmount={false}
-      form="SmsSignupForm"
-      formViewConfig={Object {}}
-      getFormState={[Function]}
-      handleSubmit={[Function]}
-      initialValues={
-        Object {
-          "signupPhoneNumber": "",
-        }
-      }
-      isEmailValid={true}
-      isModalOpen={true}
-      keepDirtyOnReinitialize={false}
-      persistentSubmitErrors={false}
-      pure={true}
-      reset={[Function]}
-      shouldAsyncValidate={[Function]}
-      shouldError={[Function]}
-      shouldValidate={[Function]}
-      shouldWarn={[Function]}
-      submitAsSideEffect={false}
-      submitSmsSubscription={[Function]}
-      subscription={
-        Object {
-          "success": false,
-        }
-      }
-      touchOnBlur={true}
-      touchOnChange={false}
-      trackSubscriptionSuccess={[Function]}
-      updateUnregisteredFields={false}
-      validateSignupSmsPhoneNumber={[Function]}
-    />
-  </Styled(Modal)>
-</Fragment>
+  }
+/>
 `;
