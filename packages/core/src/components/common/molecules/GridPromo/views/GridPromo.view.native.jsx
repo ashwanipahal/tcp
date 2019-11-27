@@ -14,7 +14,7 @@ const GridPromo = props => {
 
   if (variation === 'blank') {
     // This is a dummy block for horizontal promo
-    return <Text>Blank</Text>;
+    return <Text />;
   }
 
   const headLineParts = getSeparatorText(textItems);
@@ -27,7 +27,6 @@ const GridPromo = props => {
           uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
         }}
         style={{
-          height: '100%',
           width: '100%',
         }}
       >
@@ -46,32 +45,39 @@ const GridPromo = props => {
     );
   }
   // TODO - fix the image path / take it from the CMS directly
+  console.log(
+    'sdfasdf',
+    `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`
+  );
   return (
     <ImageBackground
       source={{
         uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
       }}
       style={{
-        height: '100%',
         width: '100%',
       }}
     >
       <View>
-        {headLineParts.map(line => {
-          return (
-            <BodyCopy
-              color="black"
-              fontFamily="secondary"
-              fontSize="fs22"
-              textAlign="center"
-              text={line}
-            />
-          );
-        })}
+        <View className="headline-wrapper">
+          {headLineParts.map(line => {
+            return (
+              <BodyCopy
+                className={`${className} highlighted-text`}
+                color="black"
+                fontFamily="secondary"
+                fontSize="fs28"
+                fontWeight="black"
+                textAlign="center"
+                text={line}
+              />
+            );
+          })}
+        </View>
         <BodyCopy
           color="black"
           fontFamily="secondary"
-          fontSize="fs24"
+          fontSize="fs18"
           textAlign="center"
           text={textItems && textItems[1] && textItems[1].text}
         />
@@ -87,7 +93,7 @@ const GridPromo = props => {
             <BodyCopy
               color="black"
               fontFamily="secondary"
-              fontSize="fs22"
+              fontSize="fs10"
               textAlign="center"
               text={desc}
             />

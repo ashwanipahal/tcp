@@ -8,7 +8,12 @@ import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer, HeaderContainer } from '../styles/ProductList.style.native';
+import {
+  styles,
+  PageContainer,
+  HeaderContainer,
+  GridPromoContainer,
+} from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
@@ -147,7 +152,12 @@ class ProductList extends React.PureComponent {
     const { item } = itemData;
 
     if (item.itemType === 'gridPromo') {
-      return <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />;
+      const variation = item.gridStyle;
+      return (
+        <GridPromoContainer fullWidth={variation === 'horizontal'}>
+          <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+        </GridPromoContainer>
+      );
     }
 
     const { colorsMap, productInfo } = item;

@@ -265,8 +265,6 @@ export function getProductsAndTitleBlocks(
     slots.push(parseInt(slotNumber, 10));
   });
 
-  console.log('slots', slots);
-
   horizontalPromo.forEach(promoItem => {
     const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
     horizontalSlots.push(parseInt(slotNumber, 10));
@@ -275,6 +273,8 @@ export function getProductsAndTitleBlocks(
   let totalItemsAdded = 0;
   let promosAdded = 0;
 
+  let isL2WithBucket = false;
+  let numberOfItemsInCurrentL2 = 0;
   // eslint-disable-next-line
   productBlocks.forEach((block, productBlocksIndex) => {
     const productsAndTitleBlock = [];
@@ -315,6 +315,8 @@ export function getProductsAndTitleBlocks(
       // push: If we should group and we hit a new category name push on array
       const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
       if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
+        isL2WithBucket = true;
+        numberOfItemsInCurrentL2 = 0;
         productsAndTitleBlock.push(categoryName);
         lastCategoryName = categoryName;
       }
@@ -324,43 +326,27 @@ export function getProductsAndTitleBlocks(
 
     const productsAdded = block.length;
     totalItemsAdded += productsAdded + promoAddedInCurrentBlock;
+    numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
     // Check if the number of products and the promos count sum
     // to understand the number of slots blank at the end of the block
     const numberOfItemsInBlock = productsAdded + promoAddedInCurrentBlock;
-    console.log('numberOfItemsInBlock $$$$ ', numberOfItemsInBlock);
-    const numberOfItemsInLastRow = numberOfItemsInBlock % rowSize;
-    console.log('numberOfItemsInLastRow', numberOfItemsInLastRow);
-    // if (numberOfItemsInLastRow !== 0) {
-    // If this is the last block
-    // if(productBlocksIndex+1 === productBlocks.length) {
-    //   console.log('this is the last block');
-    //   // There is space at the end of the block
-    //   // might be one of these slots were to be filled by promo
-    //   const emptySpaces = rowSize - numberOfItemsInLastRow;
-    //   totalItemsAdded += emptySpaces;
-    // } else
-    // if(productBlocks[productBlocksIndex+1] && productBlocks[productBlocksIndex+1][0].miscInfo.categoryName !== lastCategoryName) {
-    //   console.log('not the last block but followed by a string in the next block');
-    //   const emptySpaces = rowSize - numberOfItemsInLastRow;
-    //   totalItemsAdded += emptySpaces;
-    // }
-    // }
+    const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
+
+    // For L2 with buckets only
     // If there is some empty space in the last row of the block
     // and the next block starts with a new L3 category,
     // or if this is the last block of the entire productsBlock that is loaded yet
     // ie. this is the last row to appear, irrespective of the fact if it is followed by a new L3 or not
     // check if some slots were supposed to be added in those empty space
     if (
-      (numberOfItemsInLastRow !== 0 &&
+      isL2WithBucket &&
+      ((numberOfItemsInLastRow !== 0 &&
         (productBlocks[productBlocksIndex + 1] &&
           productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) || // TODO - add null check
-      productBlocksIndex + 1 === productBlocks.length
+        productBlocksIndex + 1 === productBlocks.length)
     ) {
-      console.log('not the last block but followed by a string in the next block');
       const emptySpaces = rowSize - numberOfItemsInLastRow;
-      console.log('emptySpaces ###### ', emptySpaces);
       if (emptySpaces < rowSize) {
-        console.log('comes inside');
         totalItemsAdded += emptySpaces;
         const indexOfEmptySlot = slots.indexOf(totalItemsAdded);
         if (indexOfEmptySlot !== -1) {
@@ -371,12 +357,9 @@ export function getProductsAndTitleBlocks(
             itemVal: gridPromo[indexOfEmptySlot],
           });
         }
-      } else {
-        console.log('doesnt go inside');
       }
       // If this is the last block
     }
-    console.log('totalItemsAdded $$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ', totalItemsAdded);
 
     // push: product block onto matrix
     productsAndTitleBlocks.push(productsAndTitleBlock);
@@ -444,6 +427,5 @@ export const getProductsWithPromo = (products, gridPromo, horizontalPromo) => {
       productCount += 1;
     });
   }
-  console.log('productsAndPromos', productsAndPromos);
   return productsAndPromos;
 };
