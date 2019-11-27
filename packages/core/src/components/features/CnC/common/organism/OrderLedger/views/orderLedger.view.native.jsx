@@ -153,7 +153,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
               />
             </Text>
           </StyledRowDataContainer>
-          <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
+          <LineComp borderColor="gray.600" marginTop={10} marginBottom={10} />
           {giftCardsTotal > 0 ? (
             <React.Fragment>
               <StyledRowDataContainer>
