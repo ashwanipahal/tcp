@@ -140,4 +140,7 @@ export default css`
       }
     }
   }
+  .dropdownliBottomBorder {
+    border-bottom: 0;
+  }
 `;
