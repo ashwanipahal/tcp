@@ -138,7 +138,7 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
     <Styled(Image)
       alt="Add-to-favorite"
       data-locator="global-favorite-button"
-      src="/static/images/add-to-favorite.svg"
+      src="/static/version-not-available/images/add-to-favorite.svg"
       title="addToFavorite"
     />
   </button>

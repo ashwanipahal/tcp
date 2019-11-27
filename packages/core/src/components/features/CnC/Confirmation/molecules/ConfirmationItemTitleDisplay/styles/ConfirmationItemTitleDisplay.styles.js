@@ -12,6 +12,7 @@ const styles = css`
     }
     margin: 0 auto;
     position: relative;
+    min-height: 60px;
   }
   .confirmation-fullfillment-details {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};

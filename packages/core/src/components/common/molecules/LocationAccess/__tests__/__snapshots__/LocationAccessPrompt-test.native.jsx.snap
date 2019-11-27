@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationAccessPromptVanilla native component should match snapshot 1`] = `
+<ModalNative
+  customTransparent={true}
+  inheritedStyles=""
+  isOpen={false}
+  isOverlay={false}
+  onRequestClose={[Function]}
+>
+  <Styled(View)
+    height={1334}
+  >
+    <Styled(View)>
+      <Styled(View)
+        width={690}
+      >
+        <Styled(Styled(ImageComp))
+          alt=""
+          height="35px"
+          host=""
+          marginTop="15px"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/location.png",
+            }
+          }
+          url=""
+          width="35px"
+        />
+        <Styled(TouchableOpacity)
+          accessibilityRole="button"
+          onPress={[Function]}
+        >
+          <Styled(Styled(ImageComp))
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(TouchableOpacity)>
+        <Styled(View)>
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs18"
+            fontWeight="black"
+            margin={null}
+            marginTop="15px"
+            numberOfLines={null}
+            text="lbl_locationAccess_findItInStoreToday"
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="black"
+            margin={null}
+            marginTop="15px"
+            numberOfLines={null}
+            text="lbl_locationAccess_desc"
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="black"
+            margin={null}
+            numberOfLines={null}
+            text="lbl_locationAccess_coolRight"
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(CustomButton))
+            active={false}
+            buttonVariation="fixed-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill="BLACK"
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            marginTop="12px"
+            navigation={Object {}}
+            onPress={[Function]}
+            paddings="12px 32px 12px 32px"
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text="lbl_locationAccess_turnOnLocation"
+            theme={Object {}}
+            url=""
+            width="260px"
+            withNoLineHeight={false}
+          />
+          <Styled(Styled(Anchor))
+            accessibilityLabel=""
+            anchorVariation=""
+            colorName={null}
+            customStyle={Object {}}
+            fontSizeVariation="large"
+            justifyContent=""
+            locator=""
+            marginBottom="12px"
+            marginTop="18px"
+            margins={null}
+            onPress={[Function]}
+            text="lbl_locationAccess_maybelater"
+            underline={true}
+            visible={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;

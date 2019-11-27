@@ -72,6 +72,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={
@@ -120,6 +121,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={

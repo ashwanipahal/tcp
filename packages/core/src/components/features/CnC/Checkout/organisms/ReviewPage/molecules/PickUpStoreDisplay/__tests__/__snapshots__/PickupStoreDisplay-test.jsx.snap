@@ -12,7 +12,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
     >
       <Styled(Image)
         className="back-link-image"
-        src="/static/images/marker-icon.png"
+        src="/static/version-not-available/images/marker-icon.png"
       />
     </div>
     <div

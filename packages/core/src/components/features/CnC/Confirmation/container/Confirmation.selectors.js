@@ -444,6 +444,19 @@ const getTotalOrderSavings = createSelector(
   }
 );
 
+const getVenmoOrderConfirmationContentId = (state, labelName) => {
+  const { referred = [] } = state.Labels.checkout.orderConfirmation;
+  const content = referred.find(label => label.name === labelName);
+  return content && content.contentId;
+};
+
+const getVenmoOrderConfirmationContent = (state, labelName) => {
+  const showDetailsContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === getVenmoOrderConfirmationContentId(state, labelName)
+  );
+  return showDetailsContent && showDetailsContent.richText;
+};
+
 /* istanbul ignore next */
 const getLedgerSummaryDataConfirmation = state => {
   return {
@@ -507,4 +520,6 @@ export default {
   getConfirmationLblObj,
   getLedgerSummaryDataConfirmation,
   isGymboreeCanadaSite,
+  getVenmoOrderConfirmationContentId,
+  getVenmoOrderConfirmationContent,
 };

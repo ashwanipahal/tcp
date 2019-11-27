@@ -73,7 +73,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
           className="star-image"
           onClick={[Function]}
           role="presentation"
-          src="/static/images/star-filled.svg"
+          src="/static/version-not-available/images/star-filled.svg"
           title="survey completion stage"
         />
         <hr
@@ -82,7 +82,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         <Styled(Image)
           alt="Survey Stage"
           className="star-image"
-          src="/static/images/star.svg"
+          src="/static/version-not-available/images/star.svg"
           title="survey completion stage"
         />
         <hr
@@ -91,7 +91,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         <Styled(Image)
           alt="Survey Stage"
           className="star-image"
-          src="/static/images/circle-check.svg"
+          src="/static/version-not-available/images/circle-check.svg"
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -236,7 +236,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
           className="star-image"
           onClick={[Function]}
           role="presentation"
-          src="/static/images/star-filled.svg"
+          src="/static/version-not-available/images/star-filled.svg"
           title="survey completion stage"
         />
         <hr
@@ -245,7 +245,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         <Styled(Image)
           alt="Survey Stage"
           className="star-image"
-          src="/static/images/star.svg"
+          src="/static/version-not-available/images/star.svg"
           title="survey completion stage"
         />
         <hr
@@ -254,7 +254,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         <Styled(Image)
           alt="Survey Stage"
           className="star-image"
-          src="/static/images/circle-check.svg"
+          src="/static/version-not-available/images/circle-check.svg"
         />
       </Styled(Col)>
     </Styled(Row)>

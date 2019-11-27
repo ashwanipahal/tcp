@@ -6,6 +6,21 @@ export default css`
       color: ${props => props.theme.colors.TEXT.LIGHTGRAY};
     }
   }
+  .heading-wrapper {
+    ${props =>
+      props.guestAccessKey
+        ? `
+        margin: 0 auto ${props.theme.spacing.ELEM_SPACING.MED};
+        width: 92%;`
+        : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props =>
+        props.guestAccessKey
+          ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XXL};
+        width: 100%`
+          : ''}
+    }
+  }
   .favorite-title {
     padding-bottom: 12px;
     border-bottom: 3px solid black;
@@ -27,6 +42,14 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin: 0;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    ${props =>
+      props.guestAccessKey
+        ? `width: 92%;
+        margin: auto;`
+        : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props => (props.guestAccessKey ? `width: 100%` : '')}
+    }
   }
 
   .filters-only-container {
