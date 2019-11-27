@@ -129,8 +129,6 @@ class PaymentItem extends React.Component<Props> {
         {isGiftCard && variation === 'edit' && (
           <RecaptchaWrapper>
             <RecaptchaContainer>
-              {/* <Recaptcha onMessage={onMessage} /> */}
-              {/* <RecaptchaModal /> */}
               {this.recaptchaRender({
                 labels,
                 onMessage,
