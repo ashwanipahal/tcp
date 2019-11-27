@@ -86,11 +86,10 @@ const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
  * @returns {JSX} Notification component with error or success state as provided in the input params.
  */
 const renderNotification = (success, successMsg, error, inputColGrid) => {
-  const error1 = 'hey';
   return (
     (error || success) && (
       <Col {...inputColGrid}>
-        <Notification status={error1 ? 'error' : 'success'} message={error1 || successMsg} />
+        <Notification status={error ? 'error' : 'success'} message={error || successMsg} />
       </Col>
     )
   );

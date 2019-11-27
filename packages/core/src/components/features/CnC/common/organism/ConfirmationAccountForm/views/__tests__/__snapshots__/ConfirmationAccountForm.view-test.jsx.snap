@@ -855,7 +855,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         }
       >
         <Styled(Notification)
-          message="hey"
+          message="error"
           status="error"
         />
       </Styled(Col)>
@@ -4739,8 +4739,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         }
       >
         <Styled(Notification)
-          message="hey"
-          status="error"
+          status="success"
         />
       </Styled(Col)>
       <Styled(Col)
