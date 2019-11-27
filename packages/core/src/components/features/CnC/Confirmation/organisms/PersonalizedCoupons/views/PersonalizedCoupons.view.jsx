@@ -9,7 +9,7 @@ import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
 import styles from '../styles/PersonalizedCoupons.style';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
-export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }) => {
+export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels, isWindowsOS }) => {
   const [selectedCoupon, selectCoupon] = useState(null);
   const [openPrintModal, setPrintModal] = useState(false);
   const [openDetailsModal, setDetailsModal] = useState(false);
@@ -81,6 +81,7 @@ export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }
           onRequestClose={() => setPrintModal(false)}
           labels={couponLabels}
           isConfirmation
+          isWindowsOS={isWindowsOS}
         />
       )}
 

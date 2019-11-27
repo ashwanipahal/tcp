@@ -264,6 +264,10 @@ export const scrollToFirstError = errors => {
   }
 };
 
+export const getIsWindowsOS = () => {
+  return navigator.appVersion.indexOf('Win') !== -1;
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
