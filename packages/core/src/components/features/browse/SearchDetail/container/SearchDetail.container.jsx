@@ -12,6 +12,11 @@ import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../../common/organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -169,6 +174,9 @@ class SearchDetailContainer extends React.PureComponent {
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       setClickAnalyticsDataTracker,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
 
@@ -203,6 +211,9 @@ class SearchDetailContainer extends React.PureComponent {
                 AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                 removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                 setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
+                pageNameProp={pageNameProp}
+                pageSectionProp={pageSectionProp}
+                pageSubSectionProp={pageSubSectionProp}
                 {...otherProps}
               />
             ) : (
@@ -246,6 +257,9 @@ class SearchDetailContainer extends React.PureComponent {
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
+              pageNameProp={pageNameProp}
+              pageSectionProp={pageSectionProp}
+              pageSubSectionProp={pageSubSectionProp}
               {...otherProps}
             />
           </div>
@@ -317,6 +331,9 @@ function mapStateToProps(state) {
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
   };
 }
 

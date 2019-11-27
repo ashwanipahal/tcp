@@ -31,11 +31,20 @@ const redirectToSuggestedUrl = (searchText, url) => {
 
 class SearchListingView extends React.Component {
   componentDidUpdate(prevProps) {
-    const { products, setClickAnalyticsDataTracker } = this.props;
+    const {
+      products,
+      setClickAnalyticsDataTracker,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
+    } = this.props;
     const productsFormatted = this.formatProductsData(products);
     if (prevProps.products !== products && productsFormatted.length) {
       setClickAnalyticsDataTracker({
         products: productsFormatted,
+        pageSection: pageNameProp,
+        pageSubSection: pageSectionProp,
+        pageName: pageSubSectionProp,
         customEvents: ['prodView', 'event1'],
       });
     }
