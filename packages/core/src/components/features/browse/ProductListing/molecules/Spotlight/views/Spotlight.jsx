@@ -1,57 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { requireUrlScript } from '../../../../../../../utils/resourceLoader';
-import { getLocator } from '../../../../../../../utils';
 
 export default class Spotlights extends React.PureComponent {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
   };
 
-  constructor(props, context) {
-    super(props, context);
-
-    this.captureContainerRef = this.captureContainerRef.bind(this);
-
-    this.state = {
-      isLoading: true,
-    };
-  }
-
   componentDidMount = () => {
-    const { spotlightUrl } = this.props;
+    const { spotlightUrl, categoryId } = this.props;
     return requireUrlScript(spotlightUrl).then(() => {
-      this.setState({
-        isLoading: false,
-      });
+      document
+        .querySelector('[data-bv-show="spotlights"]')
+        .setAttribute('data-bv-subject-id', `SL-${categoryId}`);
     });
   };
 
-  captureContainerRef = ref => {
-    const { categoryId } = this.props;
-    this.containerRef = ref;
-    if (
-      window.BV &&
-      // eslint-disable-next-line no-underscore-dangle
-      !(window.BV.Spotlights._renderQueue && window.BV.Spotlights._renderQueue.length > 0)
-    ) {
-      window.BV.Spotlights.render({
-        contentType: 'spotlights',
-        subjectId: `SL-${categoryId}`,
-      });
+  componentWillReceiveProps = nexProps => {
+    const { categoryId } = nexProps;
+    const { categoryId: prevCategoryId } = this.props;
+    if (prevCategoryId !== categoryId) {
+      document
+        .querySelector('[data-bv-show="spotlights"]')
+        .setAttribute('data-bv-subject-id', `SL-${categoryId}`);
     }
   };
 
   render() {
-    const { isLoading } = this.state;
-    if (isLoading) return null;
-    return (
-      <div
-        id="BVSpotlightsContainer"
-        data-locator={getLocator('plp_rating_review')}
-        ref={this.captureContainerRef}
-      />
-    );
+    return <div data-bv-show="spotlights" data-bv-site-id="Spotlights" />;
   }
 }
 
