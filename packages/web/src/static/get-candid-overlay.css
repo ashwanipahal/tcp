@@ -32,8 +32,7 @@ button {
   right: 14px;
 }
 
-#candid-overlay .candid-close,
-#candid-progress .candid-close {
+#candid-overlay .candid-close {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='loyalty-promo-close-btn-icon' viewBox='0 0 25 25' aria-hidden='true'%3E%3Cpath fill='%23FFF' fill-rule='nonzero' d='M14.107 12.5l10.56-10.56A1.136 1.136 0 1 0 23.06.333L12.5 10.893 1.94.333A1.136 1.136 0 1 0 .333 1.94l10.56 10.56L.333 23.06a1.136 1.136 0 1 0 1.607 1.607l10.56-10.56 10.56 10.56c.222.222.513.333.804.333a1.136 1.136 0 0 0 .803-1.94L14.107 12.5z'%3E%3C/path%3E%3C/svg%3E");
   width: 15px;
   height: 15px;
@@ -146,6 +145,10 @@ p.user-bio,
 .candid-wall-load-more {
   background: transparent;
   opacity: 1;
+}
+
+.candid-wall-load-more .candid-wall-overlay-tcp-button-lrg {
+  width: 100%;
 }
 
 /* --------- Product annotation Start ----------- */
@@ -285,8 +288,7 @@ p.user-bio,
     width: 75%;
   }
 
-  #candid-overlay .candid-close,
-  #candid-progress .candid-close {
+  #candid-overlay .candid-close {
     right: 0;
     top: 42px;
     width: 25px;
@@ -342,8 +344,7 @@ p.user-bio,
     margin-top: 25%;
   }
 
-  #candid-overlay .candid-close,
-  #candid-progress .candid-close {
+  #candid-overlay .candid-close {
     right: 0;
     top: -45px;
   }
@@ -394,6 +395,7 @@ p.user-bio,
   .candid-wall-load-more {
     max-width: 210px;
     margin: 27px auto 32px;
+    padding: 0;
   }
 }
 
@@ -433,6 +435,7 @@ p.user-bio,
   .candid-wall-cell {
     width: 164px;
     height: 164px;
+    margin: 0;
     margin-right: 19px;
     margin-bottom: 19px;
   }
@@ -442,7 +445,8 @@ p.user-bio,
   }
 
   .candid-wall-load-more {
-    max-width: 308px;
+    max-width: 347px;
     margin: 5px auto 24px;
+    padding: 0;
   }
 }

@@ -9,6 +9,10 @@ import withStyles from '../../../hoc/withStyles';
 import { getAPIConfig, routerPush, getViewportInfo } from '../../../../../utils';
 import withLazyLoad from '../../../hoc/withLazyLoad';
 
+import config from '../config';
+
+const { carouselConfig } = config;
+
 class GetCandid extends React.PureComponent {
   static propTypes = {
     /* PageType is the page where the getcandid component is being called from */
@@ -42,14 +46,16 @@ class GetCandid extends React.PureComponent {
       },
     } = this.props;
     const { isDesktop, isTablet, width } = getViewportInfo();
-    let candidViewportSetting = { width: 164, height: 188, margin: 19 };
+    let candidViewportSetting = carouselConfig.mobile;
 
     if (isTablet) {
-      candidViewportSetting = { width: 162, height: 188, margin: 30 };
+      candidViewportSetting = carouselConfig.tablet;
     } else if (isDesktop) {
-      candidViewportSetting = { width: 180, height: 205, margin: 18 };
-    } else if (width >= maxViewportWidth) {
-      candidViewportSetting = { width: 210, height: 205, margin: 30 };
+      candidViewportSetting = carouselConfig.desktop;
+    }
+
+    if (width >= maxViewportWidth) {
+      candidViewportSetting = carouselConfig.largeDesktop;
     }
 
     const candidSlot = 'tcp-get-candid-image-container';

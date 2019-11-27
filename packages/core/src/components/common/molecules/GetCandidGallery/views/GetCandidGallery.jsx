@@ -164,8 +164,7 @@ const mapStateToProps = ({ Labels }) => {
     lbl_getCandid_title: getCandidLabelOf('lbl_getCandid_title'),
     lbl_getCandid_titleDescription: getCandidLabelOf('lbl_getCandid_titleDescription'),
     lbl_getCandid_BtnShopNow: getCandidLabelOf('lbl_getCandid_BtnShopNow'),
-    // lbl_getCandid_BtnLoadMore: getCandidLabelOf('lbl_getCandid_BtnLoadMore') || 'LOAD MORE',
-    lbl_getCandid_BtnLoadMore: 'LOAD MORE',
+    lbl_getCandid_BtnLoadMore: getCandidLabelOf('lbl_getCandid_BtnLoadMore'),
     lbl_getCandid_BtnPhoto: getCandidLabelOf('lbl_getCandid_BtnPhoto'),
   };
 
