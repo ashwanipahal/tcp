@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import { BodyCopy, Image } from '../../../../../../common/atoms';
 import { ErrorIcon, ErrorView, ErrorText } from '../styles/ErrorMessage.style.native';
 
@@ -7,20 +8,32 @@ const alertTriangleIcon = require('../../../../../../../assets/alert-triangle.pn
 
 class ErrorMessage extends React.PureComponent {
   render() {
-    const { error, showAccordian, bagPage, fontSize, fontWeight, ...restProps } = this.props;
+    const {
+      error,
+      showAccordian,
+      bagPage,
+      fontSize,
+      fontWeight,
+      isEspot,
+      ...restProps
+    } = this.props;
     return (
       <>
         {!!error && (
           <ErrorView showAccordian={showAccordian} bagPage={bagPage} {...restProps}>
             <Image source={alertTriangleIcon} style={ErrorIcon} />
-            <BodyCopy
-              color="error"
-              fontFamily="secondary"
-              fontSize={fontSize || (bagPage ? 'fs14' : 'fs10')}
-              fontWeight={fontWeight || 'regular'}
-              text={error}
-              style={ErrorText}
-            />
+            {isEspot ? (
+              <Espot richTextHtml={error} />
+            ) : (
+              <BodyCopy
+                color="error"
+                fontFamily="secondary"
+                fontSize={fontSize || (bagPage ? 'fs14' : 'fs10')}
+                fontWeight={fontWeight || 'regular'}
+                text={error}
+                style={ErrorText}
+              />
+            )}
           </ErrorView>
         )}
       </>

@@ -1,42 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal Native should render correctly 1`] = `
-<Component
-  animationType="slide"
-  hardwareAccelerated={false}
-  onRequestClose={[MockFunction]}
-  transparent={false}
-  visible={true}
->
-  <Styled(SafeAreaView)
-    inheritedStyles=""
+<Fragment>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[MockFunction]}
+    transparent={false}
+    visible={true}
   >
-    <KeyboardAvoidingView
-      behavior="padding"
-      enabled={true}
-      keyboardVerticalOffset={64}
+    <Styled(SafeAreaView)
+      inheritedStyles=""
     >
-      <Styled(ScrollViewMock)
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        stickyHeaderIndices={
-          Array [
-            0,
-          ]
-        }
+      <KeyboardAvoidingView
+        behavior="padding"
+        enabled={true}
+        keyboardVerticalOffset={64}
       >
-        <ModalHeaderNative
-          borderColor="black"
-          heading="Modal Heading"
-          horizontalBar={true}
-          inheritedStyles=""
-          isOverlay={false}
-          onRequestClose={[MockFunction]}
-        />
-        <Styled(View) />
-      </Styled(ScrollViewMock)>
-    </KeyboardAvoidingView>
-  </Styled(SafeAreaView)>
-  <Connect(Loader) />
-</Component>
+        <Styled(ScrollViewMock)
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+          stickyHeaderIndices={
+            Array [
+              0,
+            ]
+          }
+        >
+          <ModalHeaderNative
+            borderColor="black"
+            heading="Modal Heading"
+            horizontalBar={true}
+            inheritedStyles=""
+            isOverlay={false}
+            onRequestClose={[MockFunction]}
+          />
+          <Styled(View) />
+        </Styled(ScrollViewMock)>
+      </KeyboardAvoidingView>
+    </Styled(SafeAreaView)>
+    <Connect(Loader) />
+  </Component>
+</Fragment>
 `;

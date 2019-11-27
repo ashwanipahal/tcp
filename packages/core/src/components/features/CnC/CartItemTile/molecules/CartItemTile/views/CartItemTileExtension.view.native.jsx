@@ -200,7 +200,7 @@ const getProductName = (productDetail, showOnReviewPage, navigation, updateAppTy
         fontFamily="secondary"
         fontSize="fs14"
         dataLocator={getLocator('cart_item_title')}
-        fontWeight={['semibold']}
+        fontWeight={['extrabold']}
         text={productDetail.itemInfo.name}
         onPress={() => {
           goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
