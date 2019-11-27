@@ -24,10 +24,6 @@ class Modal extends React.PureComponent {
     }
   }
 
-  getHiddenHeaderId = () => {
-    return `modalLabel_${document.querySelectorAll('.TCPModal__hidden_header_label').length}`;
-  };
-
   render() {
     const { children, ...otherProps } = this.props;
     const {
@@ -50,8 +46,7 @@ class Modal extends React.PureComponent {
       isOpen,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
-
-    const hiddenHeaderLabelId = this.getHiddenHeaderId();
+    const hiddenHeaderUniqueId = `modalLabel_${Date.now()}`;
 
     return isOpen ? (
       <ReactModal
@@ -59,12 +54,12 @@ class Modal extends React.PureComponent {
         aria-label=""
         overlayClassName={`${className} ${overlayClassName}`}
         aria={{
-          labelledby: ariaLabelledby || aria.ariaLabelledby || hiddenHeaderLabelId,
+          labelledby: ariaLabelledby || aria.ariaLabelledby || hiddenHeaderUniqueId,
           describedby: ariaDescribedby || aria.ariaDescribedby,
           modal: true,
         }}
       >
-        <span id={hiddenHeaderLabelId} className="TCPModal__hidden_header_label">
+        <span id={hiddenHeaderUniqueId} className="TCPModal__hidden_header_label">
           {heading || ariaLabelledby || aria.ariaLabelledby}
         </span>
         {!fixedWidth && (
