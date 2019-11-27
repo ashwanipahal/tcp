@@ -68,14 +68,7 @@ class SmsSignupModal extends React.PureComponent {
               : 'sign-up-modal-form-intro-view',
           }}
         >
-          <DynamicForm
-            formType="sms_signup"
-            {...this.props}
-            colProps={{
-              left: { small: 4, medium: 4, large: 4 },
-              right: { small: 6, medium: 8, large: 8 },
-            }}
-          />
+          <DynamicForm formType="sms_signup" {...this.props} />
         </Modal>
       </Fragment>
     );
