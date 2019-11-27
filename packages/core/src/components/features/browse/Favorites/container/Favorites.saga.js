@@ -44,7 +44,8 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   try {
     const state = yield select();
     yield put(setLoadingState({ isDataLoading: true }));
-    const userName = getUserContactInfo(state) && getUserContactInfo(state).get('firstName');
+    const userState = getUserContactInfo(state);
+    const userName = userState && userState.get('firstName');
     const isCanadaCheck = isCanada();
     const wishlistItems = yield call(getWishListbyId, {
       wishListId,

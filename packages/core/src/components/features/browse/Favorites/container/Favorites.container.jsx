@@ -59,7 +59,6 @@ class FavoritesContainer extends React.PureComponent {
 
   componentDidMount() {
     const { loadWishList, getActiveWishlistGuest } = this.props;
-    loadWishList({ isDataLoading: true });
 
     if (!isMobileApp()) {
       this.wishListId = this.getParameterByName('wishlistId');
@@ -68,6 +67,9 @@ class FavoritesContainer extends React.PureComponent {
         const { wishListId, guestAccessKey } = this;
         getActiveWishlistGuest({ wishListId, guestAccessKey });
       }
+    }
+    if (this.wishListId === '' && this.guestAccessKey === '') {
+      loadWishList({ isDataLoading: true });
     }
   }
 
