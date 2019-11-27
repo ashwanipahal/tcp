@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
+import ErrorBoundary from 'react-native-error-boundary';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
@@ -66,6 +67,17 @@ const modulesMap = {
   moduleE: ModuleE,
   moduleG: ModuleG,
 };
+
+const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
+  const modulesMapWithErrorsBoundary = modulesMapObj;
+  const Module = modulesMap[key];
+  modulesMapWithErrorsBoundary[key] = props => (
+    <ErrorBoundary>
+      <Module {...props} />
+    </ErrorBoundary>
+  );
+  return modulesMapWithErrorsBoundary;
+}, {});
 
 const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent {
@@ -190,7 +202,7 @@ class HomePageView extends React.PureComponent {
           />
         </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
-        <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations

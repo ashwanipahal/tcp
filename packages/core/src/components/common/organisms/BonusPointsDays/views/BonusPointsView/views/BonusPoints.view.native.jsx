@@ -7,7 +7,11 @@ import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
 import RichText from '../../../../../atoms/RichText';
-import { RichTextWrapper, contentHeight } from '../styles/BonusPoints.view.style.native';
+import {
+  RichTextWrapper,
+  contentHeight,
+  BonusPointsLoaderWrapper,
+} from '../styles/BonusPoints.view.style.native';
 import constants from '../../../BonusPointsDays.constants';
 
 class BonusPointsView extends React.Component {
@@ -61,6 +65,7 @@ class BonusPointsView extends React.Component {
       orderDetails,
       isBagPage,
       showAccordian,
+      isFetching,
       ...otherProps
     } = this.props;
     const { openModalState } = this.state;
@@ -75,7 +80,7 @@ class BonusPointsView extends React.Component {
             isPlcc={isPlcc}
           />
         )}
-        {bonusData ? (
+        {!isFetching ? (
           <>
             {view !== constants.VIEWS.READ && (
               <BonusPointsSection
@@ -93,7 +98,9 @@ class BonusPointsView extends React.Component {
             )}
           </>
         ) : (
-          <LoaderSkelton width="420px" height="156px" />
+          <BonusPointsLoaderWrapper>
+            <LoaderSkelton />
+          </BonusPointsLoaderWrapper>
         )}
         <Modal
           isOpen={openModalState}
