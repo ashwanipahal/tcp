@@ -20,6 +20,7 @@ const FreeShippingBannerSection = props => {
     },
   ];
   const labelStr = getLabelValue(labels, 'lbl_freeShippingBanner_label');
+  const freeShippingURL = getLabelValue(labels, 'lbl_freeShippingBanner_url_app');
   const freeShippingLabel = labelStr ? mobileHashValues(labelStr, utilArrShippingNew) : false;
 
   return (
@@ -43,6 +44,7 @@ const FreeShippingBannerSection = props => {
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_freeShippingBanner_details')}
               underline
+              url={freeShippingURL}
             />
           </AnchorWrapper>
         </FreeShippingLabel>

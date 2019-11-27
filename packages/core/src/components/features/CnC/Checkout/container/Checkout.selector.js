@@ -40,6 +40,7 @@ import {
   isVenmoNonceActive,
   isVenmoPaymentAvailable,
   getVenmoUserName,
+  getVenmoPayment,
 } from './CheckoutVenmo.selector';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
@@ -1047,4 +1048,5 @@ export default {
   getIfCheckoutRoutingDone,
   getShowRTPSOnBilling,
   getshowRTPSOnReview,
+  getVenmoPayment,
 };
