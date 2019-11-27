@@ -2,23 +2,29 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LoyaltyPromoBannerVanilla } from '../view/LoyaltyPromoBanner.native';
 
-describe('LoyaltyPromoBannerVanilla native component', () => {
+describe('LoyaltyPromoBanner', () => {
   let component;
   const props = {
     navigation: {},
-    richTextList: [
-      {
-        richText: { text: '' },
-        link: {},
-      },
-    ],
+    data: {
+      richTextList: [{ richText: { text: 'dummy' }, link: { url: '/test' } }],
+    },
   };
+
   beforeEach(() => {
     component = shallow(<LoyaltyPromoBannerVanilla {...props} />);
   });
 
-  it('should match snapshot', () => {
+  it('should be defined', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('should render correctly', () => {
     expect(component).toMatchSnapshot();
+  });
+  it('should call correctly', () => {
+    component.instance().validateView();
+    expect(component.state('bannerClosed')).toBe(true);
   });
 
   it('should return Styled(Anchor) component value one', () => {
