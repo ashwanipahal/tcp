@@ -35,6 +35,8 @@ import {
   getLabels,
   getIsFilterBy,
   getPLPTopPromos,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
   getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
@@ -181,6 +183,8 @@ class ProductListingContainer extends React.PureComponent {
       currencyAttributes,
       currency,
       plpTopPromos,
+      plpGridPromos,
+      plpHorizontalPromos,
       router: { asPath: asPathVal },
       isSearchListing,
       navigation,
@@ -227,6 +231,8 @@ class ProductListingContainer extends React.PureComponent {
         currency={currency}
         currencyAttributes={currencyAttributes}
         plpTopPromos={plpTopPromos}
+        plpGridPromos={plpGridPromos}
+        plpHorizontalPromos={plpHorizontalPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
         navigation={navigation}
@@ -271,9 +277,17 @@ function mapStateToProps(state) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
     }
   }
+  const plpHorizontalPromos = getPlpHorizontalPromo(state);
+  const plpGridPromos = getPLPGridPromos(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
+    productsBlock: getProductsAndTitleBlocks(
+      state,
+      productBlocks,
+      plpGridPromos,
+      plpHorizontalPromos,
+      4
+    ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
@@ -308,6 +322,8 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
+    plpGridPromos: getPLPGridPromos(state),
+    plpHorizontalPromos: getPlpHorizontalPromo(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
@@ -376,6 +392,8 @@ ProductListingContainer.propTypes = {
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
@@ -406,6 +424,8 @@ ProductListingContainer.defaultProps = {
   closeQuickViewModalAction: () => {},
   navigationData: null,
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
 };
