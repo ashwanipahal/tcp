@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinnerView Native Componenet should match snapshot 1`] = `
+<Styled(View)>
+  <AnimatedComponent
+    style={
+      Object {
+        "height": 0,
+        "width": 0,
+      }
+    }
+  />
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 8,
+          "width": 8,
+        },
+        Object {
+          "left": 0,
+          "top": 0,
+        },
+      ]
+    }
+  />
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 8,
+          "marginLeft": 10,
+          "width": 8,
+        },
+        Object {
+          "left": 0,
+          "top": 0,
+        },
+      ]
+    }
+  />
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 8,
+          "marginLeft": 17,
+          "width": 8,
+        },
+      ]
+    }
+  />
+</Styled(View)>
+`;

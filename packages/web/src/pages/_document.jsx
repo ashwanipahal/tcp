@@ -62,7 +62,7 @@ class MyDocument extends Document {
           <link href="/static/cld-video-player.min.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
           {preconnectDomains.map(domain => (
-            <link href={domain} rel="preconnect" crossOrigin />
+            <link href={domain} rel="preconnect" crossOrigin="anonymous" />
           ))}
           {/* Empty global object definition for external hotfix sources to append */}
           <HotfixScript />
