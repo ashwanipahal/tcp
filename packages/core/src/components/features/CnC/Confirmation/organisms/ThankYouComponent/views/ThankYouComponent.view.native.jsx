@@ -27,6 +27,8 @@ const ThankYouComponent = ({
   isShowBopisMessage,
   isShowMixedMessage,
   labels,
+  venmoOrderConfirmationContent,
+  isVenmoPaymentInProgress,
 }) => {
   return (
     <>
@@ -90,11 +92,28 @@ const ThankYouComponent = ({
         mobilefontFamily="primary"
         text={labels.updateOrderHeading}
       />
-      <Container>
-        <RichTextContainer>
-          <RichText source={{ html: updateOrderDetailsData }} />
-        </RichTextContainer>
-      </Container>
+      {updateOrderDetailsData && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: updateOrderDetailsData }} />
+          </RichTextContainer>
+        </Container>
+      )}
+      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
+        <BodyCopyWithSpacing
+          spacingStyles="margin-top-XL margin-left-XS"
+          fontSize="fs16"
+          mobilefontFamily="primary"
+          text={labels.venmoHeading}
+        />
+      )}
+      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: venmoOrderConfirmationContent }} />
+          </RichTextContainer>
+        </Container>
+      )}
     </>
   );
 };
@@ -131,6 +150,7 @@ ThankYouComponent.propTypes = {
   isShowShippingMessage: PropTypes.bool,
   isShowBopisMessage: PropTypes.bool,
   isShowMixedMessage: PropTypes.bool,
+  venmoOrderConfirmationContent: PropTypes.shape({}),
 };
 ThankYouComponent.defaultProps = {
   isGuest: true,
@@ -139,5 +159,6 @@ ThankYouComponent.defaultProps = {
   isShowShippingMessage: false,
   isShowBopisMessage: false,
   isShowMixedMessage: false,
+  venmoOrderConfirmationContent: null,
 };
 export default ThankYouComponent;
