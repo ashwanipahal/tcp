@@ -62,24 +62,6 @@ class ModuleA extends React.Component {
 
     return ribbonAlignedClass;
   };
-  /**
-   * To Render the Dam image or video component.
-   */
-  renderDamImage = (SlideComponent, linkedImage, i, imageConfig) => {
-    if (linkedImage.image && Object.keys(linkedImage.image).length > 0) {
-      return (
-        <SlideComponent
-          imgData={linkedImage.image}
-          imgConfigs={imageConfig}
-          data-locator={`${getLocator('moduleA_image')}${i}`}
-        />
-      );
-    }
-    return linkedImage.video && Object.keys(linkedImage.video).length > 0 ? (
-      <DamImage videoData={linkedImage.video} data-locator={`${getLocator('moduleA_image')}${i}`} />
-    ) : null;
-  };
-
   render() {
     const {
       largeCompImageCarousel,
@@ -156,7 +138,12 @@ class ModuleA extends React.Component {
                 const SlideComponent = getSlideComponent(i);
                 return (
                   <div key={i.toString()} className="banner-slide">
-                    {this.renderDamImage(SlideComponent, linkedImage, i, imageConfig)}
+                    <SlideComponent
+                      imgData={linkedImage.image}
+                      imgConfigs={imageConfig}
+                      data-locator={`${getLocator('moduleA_image')}${i}`}
+                      videoData={linkedImage.video}
+                    />
                     <div className="banner-content">
                       {headerText && (
                         <LinkText

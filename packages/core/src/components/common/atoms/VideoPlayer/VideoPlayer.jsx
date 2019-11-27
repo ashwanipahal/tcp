@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cloudinary from 'cloudinary-core';
 import cloudinaryVideoPlayer from 'cloudinary-video-player'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, convertNumToBool } from '@tcp/core/src/utils';
 import styles from './VideoPlayer.style';
 
 /**
@@ -20,13 +20,6 @@ const parseFileName = url => {
  */
 const getUniqueID = () => {
   return `video_${Date.now() + (Math.random() * 100000).toFixed()}`;
-};
-/**
- * To convert from string to number.
- * @param {*} val
- */
-const convertNumToBool = val => {
-  return !!parseInt(val, 10);
 };
 
 class VideoPlayer extends React.Component {
@@ -66,25 +59,8 @@ class VideoPlayer extends React.Component {
       return null;
     }
     return (
-      <video id={id || uniqueId} className={className}>
-        <track
-          src="/static/captions/captions_en.vtt"
-          kind="captions"
-          srcLang="en"
-          label="english_captions"
-        />
-        <track
-          src="/static/captions/captions_fr.vtt"
-          kind="captions"
-          srcLang="fr"
-          label="french_captions"
-        />
-        <track
-          src="/static/captions/captions_es.vtt"
-          kind="captions"
-          srcLang="es"
-          label="spanish_captions"
-        />
+      <video id={id || uniqueId} className={className} dataLocator={`${dataLocator}_video`}>
+        <track kind="captions" />
       </video>
     );
   }

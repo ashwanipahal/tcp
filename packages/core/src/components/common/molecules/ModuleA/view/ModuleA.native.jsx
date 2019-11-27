@@ -73,21 +73,17 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
 };
 
 const renderDamImage = (imgData, videoData, ignoreLazyLoadImage) => {
-  if (imgData && Object.keys(imgData).length > 0) {
-    return (
-      <DamImage
-        width={MODULE_WIDTH}
-        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
-        url={imgData.url}
-        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
-        crop={imgData.crop_m}
-        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
-      />
-    );
-  }
-  return videoData && Object.keys(videoData).length > 0 ? (
-    <DamImage host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME} videoData={videoData} />
-  ) : null;
+  return (
+    <DamImage
+      width={MODULE_WIDTH}
+      height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
+      url={imgData && imgData.url}
+      host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+      crop={imgData && imgData.crop_m}
+      videoData={videoData}
+      imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+    />
+  );
 };
 
 const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
@@ -111,8 +107,6 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
     HeaderComponent = ContainerView;
     HeaderConfig = { color: 'text.primary' };
   }
-
-  const imgData = image || {};
   const videoData = video && {
     ...video,
     videoWidth: MODULE_WIDTH,
@@ -120,7 +114,7 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   };
   return (
     <ContainerView>
-      {renderDamImage(imgData, videoData, ignoreLazyLoadImage)}
+      {renderDamImage(image, videoData, ignoreLazyLoadImage)}
       <HeaderWrapper>
         <HeaderComponent>
           {headerText && (

@@ -102,6 +102,33 @@ class ModuleE extends React.PureComponent {
   };
 
   /**
+   * To Render the Dam Image or Video Component
+   */
+  renderDamImage = (singleCTAButton, imgData, videoData, navigation) => {
+    const damImageComp = (
+      <DamImage
+        width={MODULE_WIDTH}
+        videoData={videoData}
+        height={MODULE_DEFAULT_HEIGHT}
+        url={imgData.url}
+        host={LAZYLOAD_HOST_NAME.HOME}
+        crop={imgData.crop_m}
+        imgConfig={IMG_DATA.carouselImgConfig[0]}
+      />
+    );
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <Anchor navigation={navigation} url={singleCTAButton.url}>
+          {damImageComp}
+        </Anchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <React.Fragment>{damImageComp}</React.Fragment>
+    ) : null;
+  };
+
+  /**
    * This renderView method return the images .
    *  @naviagtion is used to navigate the page.
    *  @carouselCtaType is used to manage the type of carouselCtabuttons .
@@ -120,26 +147,7 @@ class ModuleE extends React.PureComponent {
     const imgData = image || {};
     return (
       <View>
-        {imgData && Object.keys(imgData).length > 0 ? (
-          <Anchor navigation={navigation} url={singleCTAButton.url}>
-            <DamImage
-              width={MODULE_WIDTH}
-              height={MODULE_DEFAULT_HEIGHT}
-              url={imgData.url}
-              host={LAZYLOAD_HOST_NAME.HOME}
-              crop={imgData.crop_m}
-              imgConfig={IMG_DATA.carouselImgConfig[0]}
-            />
-          </Anchor>
-        ) : null}
-        {videoData && Object.keys(videoData).length > 0 ? (
-          <DamImage
-            width={MODULE_WIDTH}
-            height={MODULE_DEFAULT_HEIGHT}
-            host={LAZYLOAD_HOST_NAME.HOME}
-            videoData={videoData}
-          />
-        ) : null}
+        {this.renderDamImage(singleCTAButton, imgData, videoData, navigation)}
         {carouselCtaType === 'link' ? (
           <FloatingButton>
             <StyledAnchor
@@ -275,6 +283,32 @@ class ModuleE extends React.PureComponent {
   };
 
   /**
+   * To Render the Styled Image or Video Component
+   */
+  renderStyledDamImage = (link, imgData, videoData, navigation, index) => {
+    const damImageComp = (
+      <StyledImage
+        url={imgData && imgData.url}
+        height="202px"
+        width={`${buttonWidth}px`}
+        testID={`${getLocator('moduleE_product_img')}${index}`}
+        alt={imgData && imgData.alt}
+        imgConfig={IMG_DATA.smallImgConfig[0]}
+      />
+    );
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <StyledAnchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+          {damImageComp}
+        </StyledAnchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <React.Fragment>{damImageComp}</React.Fragment>
+    ) : null;
+  };
+
+  /**
    * This method return the renderMediaLinkedImage method to manage all product image with cropping rule .
    *  @naviagtion is used to navigate the page.
    */
@@ -289,34 +323,9 @@ class ModuleE extends React.PureComponent {
               videoHeight: 202,
               ...video,
             };
-          const imgData = image || {};
           return (
             <ImageWrapper tileIndex={index}>
-              {imgData && Object.keys(imgData).length > 0 ? (
-                <StyledAnchor
-                  url={link ? link.url : ''}
-                  navigation={navigation}
-                  key={index.toString()}
-                >
-                  <StyledImage
-                    url={imgData.url}
-                    height="202px"
-                    width={`${buttonWidth}px`}
-                    testID={`${getLocator('moduleE_product_img')}${index}`}
-                    alt={imgData.alt}
-                    imgConfig={IMG_DATA.smallImgConfig[0]}
-                  />
-                </StyledAnchor>
-              ) : null}
-              {videoData && Object.keys(videoData).length > 0 ? (
-                <StyledImage
-                  height="202px"
-                  width={`${buttonWidth}px`}
-                  testID={`${getLocator('moduleE_product_img')}${index}`}
-                  videoData={videoData}
-                  imgConfig={IMG_DATA.smallImgConfig[0]}
-                />
-              ) : null}
+              {this.renderStyledDamImage(link, image, videoData, navigation, index)}
               <HeaderViewContainer>
                 <LinkText
                   type="heading"

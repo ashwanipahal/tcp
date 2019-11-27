@@ -159,7 +159,7 @@ const DamImage = props => {
   } = props;
 
   if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} />;
+    return <RenderVideo video={videoData} image={imgData} dataLocator={dataLocator} />;
   }
 
   const imgProps = {

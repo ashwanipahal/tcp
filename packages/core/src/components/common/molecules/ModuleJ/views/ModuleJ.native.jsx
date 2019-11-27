@@ -155,6 +155,32 @@ class ModuleJ extends React.PureComponent {
     );
   };
 
+  /**
+   * To Render the Dam Image or Video Component
+   */
+  renderDamImage = (mediaLinkedList, imgData, videoData, navigation) => {
+    const damImageComp = (
+      <DamImage
+        url={imgData && imgData.url}
+        height="310px"
+        width="100%"
+        testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
+        alt={imgData && imgData.alt}
+        imgConfig={IMG_DATA.promoImgConfig[0]}
+      />
+    );
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
+          {damImageComp}
+        </Anchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <React.Fragment>{damImageComp}</React.Fragment>
+    ) : null;
+  };
+
   renderImageContainer = () => {
     const { mediaLinkedList, navigation, layout } = this.props;
     const videoData = mediaLinkedList[1] &&
@@ -166,26 +192,7 @@ class ModuleJ extends React.PureComponent {
     const imgData = mediaLinkedList[1] && mediaLinkedList[1].image ? mediaLinkedList[1].image : {};
     return (
       <ImageContainer layout={layout}>
-        {imgData && Object.keys(imgData).length > 0 ? (
-          <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
-            <DamImage
-              url={imgData.url}
-              height="310px"
-              width="100%"
-              testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
-              alt={imgData.alt}
-              imgConfig={IMG_DATA.promoImgConfig[0]}
-            />
-          </Anchor>
-        ) : null}
-        {videoData && Object.keys(videoData).length > 0 ? (
-          <DamImage
-            height="310px"
-            width="100%"
-            testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
-            videoData={videoData}
-          />
-        ) : null}
+        {this.renderDamImage(mediaLinkedList, imgData, videoData, navigation)}
       </ImageContainer>
     );
   };

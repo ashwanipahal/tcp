@@ -85,32 +85,29 @@ class ModuleM extends React.PureComponent {
     });
   };
   /**
-   * To Create the dam image or video component.
+   * To Render the Dam Image or Video Component
    */
   renderDamImage = (link, imgData, videoData, navigation, index, imageDimension) => {
-    const { IMG_DATA } = config;
+    const damImageComp = (
+      <StyledDamImage
+        alt={imgData.alt}
+        url={imgData.url}
+        testID={`${getLocator('moduleM_image')}${index}`}
+        height={imageDimension}
+        width={imageDimension}
+        imgData={imgData}
+        imgConfig={IMG_DATA.productImgConfig[0]}
+      />
+    );
     if (imgData && Object.keys(imgData).length > 0) {
       return (
         <Anchor url={link.url} navigation={navigation}>
-          <StyledDamImage
-            alt={imgData.alt}
-            url={imgData.url}
-            testID={`${getLocator('moduleM_image')}${index}`}
-            height={imageDimension}
-            width={imageDimension}
-            imgData={imgData}
-            imgConfig={IMG_DATA.productImgConfig[0]}
-          />
+          {damImageComp}
         </Anchor>
       );
     }
     return videoData && Object.keys(videoData).length > 0 ? (
-      <StyledDamImage
-        testID={`${getLocator('moduleM_image')}${index}`}
-        height={imageDimension}
-        width={imageDimension}
-        videoData={videoData}
-      />
+      <React.Fragment>{damImageComp}</React.Fragment>
     ) : null;
   };
 

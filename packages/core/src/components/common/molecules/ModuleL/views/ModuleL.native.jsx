@@ -51,8 +51,6 @@ const renderItem = (item, navigation) => {
     videoWidth: 103,
     videoHeight: 128,
   };
-
-  const imgData = image || {};
   return (
     <Anchor
       url={link.url}
@@ -60,27 +58,17 @@ const renderItem = (item, navigation) => {
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
-        {imgData && Object.keys(imgData).length > 0 ? (
-          <DamImage
-            url={imgData.url}
-            width={103}
-            height={128}
-            crop={imgData.crop_m}
-            testID={`${getLocator('moduleL_image')}${index + 1}`}
-            imgConfig={config.IMG_DATA.crops[0]}
-            alt={imgData.alt}
-            host={LAZYLOAD_HOST_NAME.HOME}
-          />
-        ) : null}
-        {videoData && Object.keys(videoData).length > 0 ? (
-          <DamImage
-            width={103}
-            height={128}
-            testID={`${getLocator('moduleL_image')}${index + 1}`}
-            host={LAZYLOAD_HOST_NAME.HOME}
-            videoData={videoData}
-          />
-        ) : null}
+        <DamImage
+          url={image && image.url}
+          videoData={videoData}
+          width={103}
+          height={128}
+          crop={image && image.crop_m}
+          testID={`${getLocator('moduleL_image')}${index + 1}`}
+          imgConfig={config.IMG_DATA.crops[0]}
+          alt={imgData && imgData.alt}
+          host={LAZYLOAD_HOST_NAME.HOME}
+        />
         <MessageContainer>
           <BodyCopyContainer width={width}>
             <BodyCopy

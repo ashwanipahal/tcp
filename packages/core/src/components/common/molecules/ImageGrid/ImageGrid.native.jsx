@@ -37,7 +37,6 @@ const ImageGrid = props => {
                     gutter={gutter}
                     url={imgData.url}
                     alt={imgData.alt || imgData.title}
-                    videoData={videoData}
                     imgConfigs={IMG_DATA.imgConfig[0]}
                   />
                 </Anchor>

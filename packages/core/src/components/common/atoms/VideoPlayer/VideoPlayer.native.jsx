@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Video from 'react-native-video';
-import { getScreenWidth } from '@tcp/core/src/utils';
-
-const convertNumToBool = val => {
-  return !!parseInt(val, 10);
-};
+import { getScreenWidth, convertNumToBool } from '@tcp/core/src/utils';
 
 class VideoPlayer extends React.Component {
   render() {

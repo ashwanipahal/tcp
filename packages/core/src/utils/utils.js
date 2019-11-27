@@ -1156,6 +1156,14 @@ export const validateDiffInDaysNotification = (
   return false;
 };
 
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+export const convertNumToBool = val => {
+  return !!parseInt(val, 10);
+};
+
 export default {
   getVideoUrl,
   getOrderStatusForNotification,
@@ -1205,4 +1213,5 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
+  convertNumToBool,
 };

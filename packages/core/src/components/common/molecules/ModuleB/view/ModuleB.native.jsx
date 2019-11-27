@@ -80,41 +80,31 @@ const renderHeaderAndBanner = (item, navigation) => {
  * To Render the Dam Image
  */
 const renderDamImage = (link, imgData, videoData, navigation, bannerPosition, moduleHeight) => {
-  if (imgData && Object.keys(imgData).length > 0) {
-    return (
-      <Anchor url={link.url} navigation={navigation}>
-        <DamImage
-          width={MODULE_WIDTH}
-          videoData={videoData}
-          height={moduleHeight}
-          url={imgData.url}
-          host={LAZYLOAD_HOST_NAME.HOME}
-          alt={imgData.alt}
-          crop={imgData.crop_m}
-          imgConfig={
-            bannerPosition === bannerPositionTypes.overlay
-              ? IMG_DATA.imgOverlayConfig[0]
-              : IMG_DATA.imgDefaultConfig[0]
-          }
-        />
-      </Anchor>
-    );
-  }
-  return videoData && Object.keys(videoData).length > 0 ? (
+  const damImageComp = (
     <DamImage
       width={MODULE_WIDTH}
       videoData={videoData}
       height={moduleHeight}
-      url={imgData.url}
+      url={imgData && imgData.url}
       host={LAZYLOAD_HOST_NAME.HOME}
-      alt={imgData.alt}
-      crop={imgData.crop_m}
+      alt={imgData && imgData.alt}
+      crop={imgData && imgData.crop_m}
       imgConfig={
         bannerPosition === bannerPositionTypes.overlay
           ? IMG_DATA.imgOverlayConfig[0]
           : IMG_DATA.imgDefaultConfig[0]
       }
     />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
   ) : null;
 };
 
