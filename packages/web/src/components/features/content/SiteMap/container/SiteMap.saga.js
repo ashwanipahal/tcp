@@ -1,5 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import sitemapAbstractor from '@tcp/core/src/services/abstractors/common/sitemap';
+import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '@tcp/core/src/services/api.constants';
 
@@ -20,12 +22,14 @@ export function* fetchSitemapData() {
     const sitemapData = result.data.siteMap;
     yield put(setSiteMapData(sitemapData));
   } catch (err) {
+    logger.error(err);
     yield null;
   }
 }
 
 function* SiteMapSaga() {
-  yield takeLatest(SITEMAP_CONSTANTS.FETCH_SITEMAP_DATA, fetchSitemapData);
+  const cachedSiteMapData = validateReduxCache(fetchSitemapData);
+  yield takeLatest(SITEMAP_CONSTANTS.FETCH_SITEMAP_DATA, cachedSiteMapData);
 }
 
 export default SiteMapSaga;

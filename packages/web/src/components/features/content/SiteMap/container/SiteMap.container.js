@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import SiteMapView from '../views';
-import { siteMapData } from './SiteMap.selectors';
+import { getSiteMapData } from './SiteMap.selectors';
 import { fetchSiteMapData } from './SiteMap.actions';
 
 const mapStateToProps = state => {
   return {
-    siteMapData: siteMapData(state),
+    siteMapData: getSiteMapData(state),
   };
 };
 

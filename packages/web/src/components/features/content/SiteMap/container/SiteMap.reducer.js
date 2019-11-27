@@ -1,4 +1,5 @@
 import SITEMAP_CONSTANTS from './SiteMap.constants';
+import { DEFAULT_REDUCER_KEY, setCacheTTL } from '@tcp/core/src/utils/cache.util';
 
 const initialState = {
   siteMapData: {},
@@ -10,6 +11,7 @@ const SiteMapReducer = (state = initialState, action) => {
       return {
         ...state,
         siteMapData: { ...action.payload },
+        [DEFAULT_REDUCER_KEY]: setCacheTTL(),
       };
     default:
       return state;
