@@ -145,7 +145,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     <Styled(Styled(View))>
       <Styled(View)>
         <Styled(ImageComp)
-          alt=""
+          alt="Bag Icon"
           height="25px"
           host=""
           source={

@@ -59,7 +59,11 @@ export class PasswordField extends React.PureComponent {
               aligned="right"
               minWidth="330px"
             >
-              <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+              <Image
+                className="tcp_carousel__play tooltip"
+                src={getIconPath('info-icon')}
+                alt="Info"
+              />
             </ReactTooltip>
           )}
           <Anchor

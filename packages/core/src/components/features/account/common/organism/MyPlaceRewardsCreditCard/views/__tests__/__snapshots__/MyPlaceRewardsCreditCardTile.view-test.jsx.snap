@@ -34,6 +34,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
         textAlign="left"
       >
         <Styled(Image)
+          alt="Credit Card Brand"
           className="elem-mr-XS"
           src="/static/version-not-available/images/visa.svg"
         />

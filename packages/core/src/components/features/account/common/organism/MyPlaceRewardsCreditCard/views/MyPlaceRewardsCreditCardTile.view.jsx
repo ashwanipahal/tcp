@@ -47,6 +47,7 @@ export const MyPlaceRewardsCreditCardTile = ({
                 <Image
                   className="elem-mr-XS"
                   src={getIconPath(cardIconMapping[myPlaceRewardCard.ccBrand])}
+                  alt="Credit Card Brand"
                 />
                 <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
                   <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>

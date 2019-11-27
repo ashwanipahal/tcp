@@ -149,7 +149,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
   />
   <Styled(View)>
     <Styled(ImageComp)
-      alt=""
+      alt="PLCC Lookup Points"
       height="60px"
       host=""
       source={
@@ -163,7 +163,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
   </Styled(View)>
   <Styled(View)>
     <Styled(ImageComp)
-      alt=""
+      alt="Benefit"
       height="600px"
       host=""
       source={
