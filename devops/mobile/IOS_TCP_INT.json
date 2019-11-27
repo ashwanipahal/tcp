@@ -314,6 +314,14 @@
       "value": ".gymboree.com"
     },
     {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "vhndEXepnCyqDvbXY6Uiqw"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
       "name": "RWD_APP_STYLITICS_USERNAME_TCP",
       "value": "thechildrensplace"
     },
