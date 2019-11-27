@@ -44,6 +44,12 @@ const styles = css`
   .product-details-card-container {
     display: none;
   }
+  .edit-form-css {
+    .color-selector {
+      margin-bottom: 32px;
+    }
+  }
+
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
