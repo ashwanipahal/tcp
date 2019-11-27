@@ -1,5 +1,10 @@
-import { setPickupInitialValues, setShippingAddress } from '../ShippingPage.view.utils';
+import {
+  setPickupInitialValues,
+  setShippingAddress,
+  isShowVenmoBanner,
+} from '../ShippingPage.view.utils';
 import { getSiteId } from '../../../../../../../../utils/utils.web';
+import CONSTANTS from '../../../../Checkout.constants';
 
 jest.mock('../../../../../../../../utils/utils.web', () => ({
   getSiteId: jest.fn(),
@@ -31,5 +36,15 @@ describe('Shipping Page Util', () => {
       zipCode: '07307',
     };
     expect(setShippingAddress(shippingAddress, shippingPhoneAndEmail)).not.toBeUndefined();
+  });
+
+  it('calling isShowVenmoBanner method', () => {
+    const props = {
+      isVenmoPaymentInProgress: true,
+      isVenmoPickupDisplayed: false,
+      isVenmoShippingDisplayed: false,
+    };
+    const currentSection = 'shipping';
+    expect(isShowVenmoBanner(currentSection, props)).toBeTruthy();
   });
 });
