@@ -36,32 +36,18 @@ const Abstractor = {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
       .then(response => response.data)
-      .then(Abstractor.processData)
-      .then(processedData => Abstractor.setDataInCache(processedData, brand));
+      .then(Abstractor.processData);
   },
-  setDataInCache: (data, brand) => {
-    const {
-      CACHE_EXP_MODIFIER,
-      CACHE_EXP_TIME,
-      CACHE_IDENTIFIER: cacheKey,
-    } = DEFAULT_XAPP_CONFIG_TTL;
-    const CACHE_IDENTIFIER = getCacheKeyForRedis(Abstractor.createCacheKey(cacheKey, brand));
-    if (!isMobileApp()) {
-      setDataInRedis({
-        data,
-        CACHE_IDENTIFIER,
-        CACHE_EXP_MODIFIER,
-        CACHE_EXP_TIME,
-      });
-    }
-    return data;
-  },
-  getDataFromCache: brand => {
+  getDataFromCache: configOptions => {
     if (isMobileApp()) {
       return null;
     }
     const { CACHE_IDENTIFIER } = DEFAULT_XAPP_CONFIG_TTL;
-    const cacheKey = getCacheKeyForRedis(Abstractor.createCacheKey(CACHE_IDENTIFIER, brand));
+    const { RWD_WEB_ENV_ID = '' } = process.env;
+    const { brandIdCMS, siteIdCMS, channelId } = configOptions;
+    const cacheKey = getCacheKeyForRedis(
+      `${CACHE_IDENTIFIER}:${brandIdCMS}-${siteIdCMS}-${channelId}__${RWD_WEB_ENV_ID.toLowerCase()}`
+    );
     return getDataFromRedis(cacheKey);
   },
   getMock: () => {
@@ -75,6 +61,5 @@ const Abstractor = {
     xappConfig.IS_DATA_FROM_REDIS = false;
     return xappConfig;
   },
-  createCacheKey: (cacheKey, brand) => `${cacheKey}${brand ? brand.brandIdCMS : ''}`,
 };
 export default Abstractor;

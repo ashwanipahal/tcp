@@ -52,22 +52,6 @@ function* bootstrap(params) {
   const cachedData = {};
   let modulesList = modules;
 
-  Object.keys(CACHED_KEYS).forEach(async item => {
-    const globalRedisClient = global.redisClient;
-    if (globalRedisClient && globalRedisClient.connected) {
-      let cachedLabels;
-      try {
-        cachedLabels = await getDataFromRedis(item);
-      } catch (err) {
-        logger.error(err);
-      }
-      if (cachedLabels) {
-        modulesList = modules && modules.filter(key => key !== 'labels');
-        cachedData.labels = cachedLabels;
-      }
-    }
-  });
-
   try {
     if (siteConfig) {
       const { country, currency, language } = apiConfig;
@@ -87,19 +71,40 @@ function* bootstrap(params) {
       if (language) {
         yield put(setLanguage(language));
       }
-      const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+      const xappConfig = yield call(
+        xappAbstractor.getData,
+        GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE,
+        apiConfig
+      );
       yield put(loadXappConfigData(xappConfig));
 
       const { brandIdCMS } = getAPIConfig();
       const xappConfigOtherBrand = yield call(
         xappAbstractor.getData,
         GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE,
-        brandIdCMS === API_CONFIG.TCP_CONFIG_OPTIONS.brandIdCMS
-          ? API_CONFIG.GYM_CONFIG_OPTIONS
-          : API_CONFIG.TCP_CONFIG_OPTIONS
+        apiConfig
       );
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
+    Object.keys(CACHED_KEYS).forEach(async item => {
+      const globalRedisClient = global.redisClient;
+      if (globalRedisClient && globalRedisClient.connected) {
+        let cachedLabels;
+        try {
+          const { brandIdCMS, siteIdCMS, channelId, language, envId } = getAPIConfig();
+          const cacheIdentifier = `${
+            CACHED_KEYS[item]
+          }:${brandIdCMS}-${siteIdCMS}-${channelId}-${language}__${envId.toLowerCase()}`;
+          cachedLabels = await getDataFromRedis(cacheIdentifier);
+        } catch (err) {
+          logger.error(err);
+        }
+        if (cachedLabels) {
+          modulesList = modules && modules.filter(key => key !== 'labels');
+          cachedData.labels = cachedLabels;
+        }
+      }
+    });
     const state = yield select();
     const result = yield call(
       bootstrapAbstractor,
