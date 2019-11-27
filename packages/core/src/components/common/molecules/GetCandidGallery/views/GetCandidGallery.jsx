@@ -7,7 +7,7 @@ import { BodyCopy, Button } from '../../../atoms';
 import style from '../styles/GetCandidGallery.style';
 import withStyles from '../../../hoc/withStyles';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
-import { getAPIConfig, getLabelValue } from '../../../../../utils';
+import { getAPIConfig, getLabelValue, getViewportInfo, isGymboree } from '../../../../../utils';
 
 const CANDID_GALLERY_CONTAINER_ID = 'tcp-get-candid-image-container';
 
@@ -56,13 +56,16 @@ class GetCandidGallery extends React.Component {
   injectGetCandidWallTemplate = () => {
     const { labels } = this.props;
     const script = document.createElement('script');
+
     script.id = 'mediaTemplate';
     script.type = 'text/x-jsrender';
     script.innerHTML = `
       <div class="candid-wall-cell">
           <div class="candid-wall-overlay"></div>
           <div class="candid-wall-overlay-text">
-              <div>${labels.lbl_getCandid_BtnShopNow}</div>
+              <button class="candid-wall-overlay-tcp-button-lrg ${
+                isGymboree() ? 'button-gymboree' : ''
+              }">${labels.lbl_getCandid_BtnShopNow}</button>
           </div>
           <a class='media' data-media-index='{{> Index }}'>
           <img data-original="{{> Media.Images.LowResolution.Url }}"
@@ -81,6 +84,8 @@ class GetCandidGallery extends React.Component {
   };
 
   initGetCandid = () => {
+    const { labels } = this.props;
+    const { isDesktop } = getViewportInfo();
     const apiKey = this.apiConfig.CANDID_API_KEY;
     // DOC: https://support.getcandid.com/support/solutions/articles/5000524031-widget-properties
     // Load All js file in following order.
@@ -95,14 +100,24 @@ class GetCandidGallery extends React.Component {
       Promise.resolve()
     );
 
-    allJsFileLoadPromise.then(() => {
-      window.candid.wall(`#${CANDID_GALLERY_CONTAINER_ID}`, {
-        id: apiKey,
-        cluster: 'prod-2',
+    let candidSetting = {
+      id: apiKey,
+      scroll: false,
+      loadMoreHtml: `<button class="candid-wall-overlay-tcp-button-lrg ${
+        isGymboree() ? 'button-gymboree' : ''
+      }">${labels.lbl_getCandid_BtnLoadMore}</button>`,
+    };
+
+    if (isDesktop) {
+      candidSetting = {
+        ...candidSetting,
         layoutMode: 'packery',
         layout: 'isotope-packery',
-        tag: 'gallery',
-      });
+      };
+    }
+
+    allJsFileLoadPromise.then(() => {
+      window.candid.wall(`#${CANDID_GALLERY_CONTAINER_ID}`, candidSetting);
     });
   };
 
@@ -149,6 +164,8 @@ const mapStateToProps = ({ Labels }) => {
     lbl_getCandid_title: getCandidLabelOf('lbl_getCandid_title'),
     lbl_getCandid_titleDescription: getCandidLabelOf('lbl_getCandid_titleDescription'),
     lbl_getCandid_BtnShopNow: getCandidLabelOf('lbl_getCandid_BtnShopNow'),
+    // lbl_getCandid_BtnLoadMore: getCandidLabelOf('lbl_getCandid_BtnLoadMore') || 'LOAD MORE',
+    lbl_getCandid_BtnLoadMore: 'LOAD MORE',
     lbl_getCandid_BtnPhoto: getCandidLabelOf('lbl_getCandid_BtnPhoto'),
   };
 

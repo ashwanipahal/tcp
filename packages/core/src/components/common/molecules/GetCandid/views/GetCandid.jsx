@@ -1,11 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
 import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
-import { getAPIConfig, routerPush } from '../../../../../utils';
+import { getAPIConfig, routerPush, getViewportInfo } from '../../../../../utils';
 import withLazyLoad from '../../../hoc/withLazyLoad';
 
 class GetCandid extends React.PureComponent {
@@ -35,16 +36,32 @@ class GetCandid extends React.PureComponent {
   }
 
   componentDidMount() {
+    const {
+      theme: {
+        breakpoints: { maxWidth: maxViewportWidth },
+      },
+    } = this.props;
+    const { isDesktop, isTablet, width } = getViewportInfo();
+    let candidViewportSetting = { width: 164, height: 188, margin: 19 };
+
+    if (isTablet) {
+      candidViewportSetting = { width: 162, height: 188, margin: 30 };
+    } else if (isDesktop) {
+      candidViewportSetting = { width: 180, height: 205, margin: 18 };
+    } else if (width >= maxViewportWidth) {
+      candidViewportSetting = { width: 210, height: 205, margin: 30 };
+    }
+
     const candidSlot = 'tcp-get-candid-image-container';
     const apiKey = this.candidConfig.CANDID_API_KEY;
-
-    const pageTag = 'homepage';
 
     requireNamedOnlineModule('getCandid').then(() => {
       window.candid.init({
         id: apiKey,
-        tag: pageTag,
         containerId: candidSlot,
+        height: 205,
+        useDescription: false,
+        ...candidViewportSetting,
         ready: () => this.setState({ getCandidDataLoaded: true }),
       });
     });
@@ -167,5 +184,5 @@ export const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(withLazyLoad(GetCandid), style));
+export default connect(mapStateToProps)(withStyles(withLazyLoad(withTheme(GetCandid)), style));
 export { GetCandid as GetCandidVanilla };
