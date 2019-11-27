@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchBar native should render correctly onclick function check onSearchFocus 1`] = `
-<View
+<Styled(View)
   labels={[Function]}
   openSearchProductPage={
     [MockFunction] {
@@ -21,6 +21,7 @@ exports[`SearchBar native should render correctly onclick function check onSearc
   <Styled(TouchableOpacity)
     activeOpacity={1}
     onPress={[Function]}
+    width="95%"
   >
     <Styled(CustomIcon)
       accessibilityLabel=""
@@ -46,24 +47,30 @@ exports[`SearchBar native should render correctly onclick function check onSearc
       text="lbl_looking_for"
       textDecoration={null}
     />
-    <Styled(CustomIcon)
-      accessibilityLabel=""
-      color="gray.600"
-      dataLocator=""
-      iconFontName="Icomoon"
-      isButton={false}
-      isDisabled={false}
-      margins={null}
-      name="scan"
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
       onPress={[Function]}
-      size="fs16"
-    />
+      width="50px"
+    >
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.600"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins={null}
+        name="scan"
+        onPress={[Function]}
+        size="fs16"
+      />
+    </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>
-</View>
+</Styled(View)>
 `;
 
 exports[`SearchBar native should render correctly should match snapshot 1`] = `
-<View
+<Styled(View)
   labels={[Function]}
   openSearchProductPage={null}
   showCustomizedSearch={false}
@@ -71,6 +78,7 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
   <Styled(TouchableOpacity)
     activeOpacity={1}
     onPress={[Function]}
+    width="95%"
   >
     <Styled(CustomIcon)
       accessibilityLabel=""
@@ -96,24 +104,30 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
       text="lbl_looking_for"
       textDecoration={null}
     />
-    <Styled(CustomIcon)
-      accessibilityLabel=""
-      color="gray.600"
-      dataLocator=""
-      iconFontName="Icomoon"
-      isButton={false}
-      isDisabled={false}
-      margins={null}
-      name="scan"
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
       onPress={[Function]}
-      size="fs16"
-    />
+      width="50px"
+    >
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.600"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins={null}
+        name="scan"
+        onPress={[Function]}
+        size="fs16"
+      />
+    </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>
-</View>
+</Styled(View)>
 `;
 
 exports[`SearchBar native should render correctly with passed props render showCustomizedSearch on validation false 1`] = `
-<View
+<Styled(View)
   labels={
     Object {
       "lbl_looking_for": "I am Looking For",
@@ -125,6 +139,7 @@ exports[`SearchBar native should render correctly with passed props render showC
   <Styled(TouchableOpacity)
     activeOpacity={1}
     onPress={[Function]}
+    width="95%"
   >
     <Styled(CustomIcon)
       accessibilityLabel=""
@@ -150,20 +165,26 @@ exports[`SearchBar native should render correctly with passed props render showC
       text="I am Looking For"
       textDecoration={null}
     />
-    <Styled(CustomIcon)
-      accessibilityLabel=""
-      color="gray.600"
-      dataLocator=""
-      iconFontName="Icomoon"
-      isButton={false}
-      isDisabled={false}
-      margins={null}
-      name="scan"
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
       onPress={[Function]}
-      size="fs16"
-    />
+      width="50px"
+    >
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.600"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins={null}
+        name="scan"
+        onPress={[Function]}
+        size="fs16"
+      />
+    </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>
-</View>
+</Styled(View)>
 `;
 
 exports[`SearchBar native should render correctly with passed props render showCustomizedSearch on validation true 1`] = `
