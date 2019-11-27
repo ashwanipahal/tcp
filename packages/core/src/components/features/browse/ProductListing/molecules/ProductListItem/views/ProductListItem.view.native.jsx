@@ -5,6 +5,7 @@ import get from 'lodash/get';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -24,6 +25,8 @@ import {
   RowContainer,
   OfferPriceAndBadge3View,
   CloseIconContainer,
+  SuggestedContainer,
+  SeeSuggestedContainer,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -93,11 +96,11 @@ const renderAddToBagContainer = (props, keepAlive) => {
   if (renderVariation && renderPriceOnly) return null;
   let buttonLabel = '';
   if (isSuggestedItem) {
-    buttonLabel = 'Add to Favorites';
+    buttonLabel = getLabelValue(labelsPlpTiles, 'lbl_add_to_favorites');
   } else if (bundleProduct) {
-    buttonLabel = labelsPlpTiles.lbl_plpTiles_shop_collection;
+    buttonLabel = getLabelValue(labelsPlpTiles, 'lbl_plpTiles_shop_collection');
   } else {
-    buttonLabel = labelsPlpTiles.lbl_add_to_bag;
+    buttonLabel = getLabelValue(labelsPlpTiles, 'lbl_add_to_bag');
   }
   const isFavoriteOOS = isFavorite && keepAlive;
 
@@ -247,6 +250,7 @@ const ListItem = props => {
         productInfo={productInfo}
         colorsMap={colorMapData}
       />
+      <RenderSuggestedLabel isSuggestedItem={isSuggestedItem} labelsPlpTiles={labelsPlpTiles} />
       <RenderColorSwitch
         colorsMap={colorMapData}
         setSelectedColorIndex={setSelectedColorIndex}
@@ -266,6 +270,7 @@ const ListItem = props => {
         isSuggestedItem={isSuggestedItem}
         outOfStockColorProductId={outOfStockColorProductId}
         onDismissSuggestion={onDismissSuggestion}
+        labelsPlpTiles={labelsPlpTiles}
       />
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && (
@@ -299,7 +304,30 @@ const RenderCloseIcon = ({ isSuggestedItem, outOfStockColorProductId, onDismissS
   return null;
 };
 
-const RenderDismissLink = ({ isSuggestedItem, outOfStockColorProductId, onDismissSuggestion }) => {
+const RenderSuggestedLabel = ({ isSuggestedItem, labelsPlpTiles }) => {
+  if (isSuggestedItem) {
+    return (
+      <SuggestedContainer>
+        <BodyCopy
+          dataLocator="plp_offer_price"
+          mobileFontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="extrabold"
+          color="white"
+          text={getLabelValue(labelsPlpTiles, 'lbl_suggested')}
+        />
+      </SuggestedContainer>
+    );
+  }
+  return null;
+};
+
+const RenderDismissLink = ({
+  isSuggestedItem,
+  outOfStockColorProductId,
+  onDismissSuggestion,
+  labelsPlpTiles,
+}) => {
   if (isSuggestedItem) {
     return (
       <Anchor
@@ -310,7 +338,7 @@ const RenderDismissLink = ({ isSuggestedItem, outOfStockColorProductId, onDismis
         anchorVariation="custom"
         onPress={() => onDismissSuggestion(outOfStockColorProductId)}
         dataLocator=""
-        text="Dismiss"
+        text={getLabelValue(labelsPlpTiles, 'lbl_dismiss')}
         colorName="gray.900"
         justifyContent="flex-start"
       />
@@ -664,23 +692,23 @@ const RenderMoveToListOrSeeSuggestedList = ({
   } = item;
   if (availability && availability === 'SOLDOUT') {
     return (
-      <Anchor
-        fontSizeVariation="large"
-        fontFamily="secondary"
-        underline
-        anchorVariation="custom"
-        onPress={() => onSeeSuggestedHandler(item, onSeeSuggestedItems)}
-        dataLocator=""
-        text={labelsPlpTiles.lbl_see_suggested_items}
-        colorName="gray.900"
-        justifyContent="flex-start"
-      />
+      <SeeSuggestedContainer>
+        <Anchor
+          fontSizeVariation="large"
+          fontFamily="secondary"
+          underline
+          anchorVariation="custom"
+          onPress={() => onSeeSuggestedHandler(item, onSeeSuggestedItems)}
+          dataLocator=""
+          text={labelsPlpTiles.lbl_see_suggested_items}
+          colorName="gray.900"
+          justifyContent="flex-start"
+        />
+      </SeeSuggestedContainer>
     );
   }
 
-  return (
-    <RowContainer margins="8px 0 0 0">{renderMoveToList && renderMoveToList(itemId)}</RowContainer>
-  );
+  return <RowContainer>{renderMoveToList && renderMoveToList(itemId)}</RowContainer>;
 };
 
 RenderMoveToListOrSeeSuggestedList.propTypes = {

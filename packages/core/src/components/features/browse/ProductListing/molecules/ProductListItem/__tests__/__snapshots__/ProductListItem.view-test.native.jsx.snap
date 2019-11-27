@@ -173,6 +173,9 @@ exports[`ProductListItem component should render correctly 1`] = `
     selectedColorIndex={0}
     text="tcp"
   />
+  <RenderSuggestedLabel
+    labelsPlpTiles={Object {}}
+  />
   <RenderColorSwitch
     colorsMap={
       Array [
@@ -222,6 +225,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomButton)
+      accessibilityLabel="lbl_add_to_bag"
       active={false}
       buttonVariation="variable-width"
       color=""
@@ -242,14 +246,16 @@ exports[`ProductListItem component should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_add_to_bag"
       theme={Object {}}
       type="button"
       url=""
       withNoLineHeight={false}
     />
   </Styled(View)>
-  <RenderDismissLink />
+  <RenderDismissLink
+    labelsPlpTiles={Object {}}
+  />
   <RenderPurchasedQuantity
     item={
       Object {
