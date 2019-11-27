@@ -1,5 +1,6 @@
 /* stylelint-disable */
 import styled from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 
 export default styled.div`
   display: flex;
@@ -19,7 +20,7 @@ export default styled.div`
   }
 
   .header-image {
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(${getStaticFilePath('images/tcp-cc@2x.png')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 211px;

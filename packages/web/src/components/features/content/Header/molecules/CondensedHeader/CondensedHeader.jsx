@@ -127,9 +127,7 @@ class CondensedHeader extends React.PureComponent {
   };
 
   getImgSrc = navigationDrawer => {
-    return navigationDrawer.open
-      ? '/static/images/mobile-close-dark.svg'
-      : '/static/images/grey-menu.svg';
+    return navigationDrawer.open ? getIconPath('mobile-close-dark') : getIconPath('grey-menu');
   };
 
   render() {

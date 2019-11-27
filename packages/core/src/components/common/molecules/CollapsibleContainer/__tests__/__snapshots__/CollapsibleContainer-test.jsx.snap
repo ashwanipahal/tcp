@@ -12,7 +12,7 @@ exports[`CollapsibleContainer should render correctly 1`] = `
   >
     <Styled(Image)
       className="collapsible-icon"
-      src="/static/images/carrot-small-down.png"
+      src="/static/version-not-available/images/carrot-small-down.png"
     />
     <div>
       <div>

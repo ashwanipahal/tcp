@@ -258,7 +258,6 @@ export const getWishListbyId = ({
   }
 
   const { isUSStore } = getAPIConfig();
-
   return executeStatefulAPICall(payload)
     .then(res => {
       if (responseContainsErrors(res)) {

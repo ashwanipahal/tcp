@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BillingPage from '../views';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
-
+import { getAddressListState } from '../../../../../account/AddressBook/container/AddressBook.selectors';
+import { getCardListFetchingState } from '../../../../../account/Payment/container/Payment.selectors';
 import { getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
-
 import CheckoutActions from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
@@ -40,6 +40,12 @@ export const mapStateToProps = state => {
     isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
     venmoError: CheckoutSelectors.getVenmoError(state),
     isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
+    shippingAddress: CheckoutSelectors.getShippingAddress(state),
+    billingData: CheckoutSelectors.getBillingValues(state),
+    userAddresses: getAddressListState(state),
+    creditFieldLabels: CheckoutSelectors.getCreditFieldLabels(state),
+    isFetching: getCardListFetchingState(state),
+    bagLoading: BagPageSelectors.isBagLoading(state),
   };
 };
 
