@@ -60,7 +60,7 @@ export default css`
     }
 
     .TextBox__input {
-      border-bottom: 1px solid #c3c3c3;
+      border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     }
   }
 
