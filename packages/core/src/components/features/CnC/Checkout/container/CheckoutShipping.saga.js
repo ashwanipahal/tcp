@@ -5,7 +5,7 @@ import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
-import CHECKOUT_ACTIONS, { setShippingLoadingState } from './Checkout.action';
+import CHECKOUT_ACTIONS, { setShippingLoadingState, getSetCheckoutStage } from './Checkout.action';
 import { isCanada } from '../../../../../utils/utils';
 import { redirectToBilling } from './Checkout.saga.util';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';

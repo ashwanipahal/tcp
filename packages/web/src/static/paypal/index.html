@@ -38,23 +38,23 @@
             disallowed: [paypal && paypal.FUNDING.CREDIT],
           },
           payment: function() {
-            window.postMessage('payment');
+            window.ReactNativeWebView.postMessage('payment');
             return new Promise(resolve => {
               const key = getUrlVars()['key'];
               resolve(key);
             });
           },
           onAuthorize: function(data, actions) {
-            window.postMessage('onAuthorize');
+            window.ReactNativeWebView.postMessage('onAuthorize');
           },
           onCancel: function(data, actions) {
             return new Promise(resolve => {
-              window.postMessage('onCancel');
+              window.ReactNativeWebView.postMessage('onCancel');
               resolve(true);
             });
           },
           onError: function() {
-            window.postMessage('onError');
+            window.ReactNativeWebView.postMessage('onError');
           },
         },
         '#paypal-button'

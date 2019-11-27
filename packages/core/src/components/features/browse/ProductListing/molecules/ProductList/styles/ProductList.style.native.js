@@ -10,6 +10,10 @@ const RecommendationContainer = styled.View`
 
 const HeaderContainer = styled.View``;
 
+const GridPromoContainer = styled.View`
+  width: ${props => (props.fullWidth ? '100%' : '48%')};
+`;
+
 const styles = css``;
 
-export { styles, PageContainer, HeaderContainer, RecommendationContainer };
+export { styles, PageContainer, HeaderContainer, GridPromoContainer, RecommendationContainer };
