@@ -6,6 +6,10 @@ export default css`
   input {
     background-color: ${props => props.theme.colorPalette.gray[300]};
   }
+  .billing-items {
+    display: flex;
+    justify-content: space-between;
+  }
   .sub-heading {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

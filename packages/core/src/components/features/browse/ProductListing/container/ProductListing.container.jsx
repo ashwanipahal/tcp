@@ -112,16 +112,11 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
-      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
-      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
-      this.makeApiCall();
-    }
-    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
@@ -182,6 +177,7 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       slpLabels,
       isLoggedIn,
+      isPlcc,
       currencyAttributes,
       currency,
       plpTopPromos,
@@ -227,6 +223,7 @@ class ProductListingContainer extends React.PureComponent {
         sortLabels={sortLabels}
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
+        isPlcc={isPlcc}
         currency={currency}
         currencyAttributes={currencyAttributes}
         plpTopPromos={plpTopPromos}

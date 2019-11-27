@@ -12,6 +12,7 @@ exports[`ConfirmationView should render correctly 1`] = `
       isShowBopisMessage={false}
       isShowMixedMessage={false}
       isShowShippingMessage={false}
+      venmoOrderConfirmationContent={null}
     />
   </Styled(View)>
   <CnCCommonTemplate
@@ -19,11 +20,13 @@ exports[`ConfirmationView should render correctly 1`] = `
     isConfirmationPage={true}
     isGuest={true}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     navigation={null}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -66,6 +69,7 @@ exports[`ConfirmationView should render correctly 2`] = `
           ],
         }
       }
+      venmoOrderConfirmationContent={null}
     />
   </Styled(View)>
   <CnCCommonTemplate
@@ -73,11 +77,13 @@ exports[`ConfirmationView should render correctly 2`] = `
     isConfirmationPage={true}
     isGuest={true}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     navigation={null}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -115,6 +121,7 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
           ],
         }
       }
+      venmoOrderConfirmationContent={null}
     />
   </Styled(View)>
   <CnCCommonTemplate
@@ -122,11 +129,13 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
     isConfirmationPage={true}
     isGuest={true}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={true}
     navigation={null}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={Object {}}
   />
 </Styled(ScrollViewMock)>
 `;

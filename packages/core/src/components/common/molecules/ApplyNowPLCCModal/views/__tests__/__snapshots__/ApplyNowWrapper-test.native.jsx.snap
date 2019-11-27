@@ -2,7 +2,9 @@
 
 exports[`ApplyNowWrapper should render correctly 1`] = `
 <SafeAreaView>
-  <View>
+  <View
+    style={Object {}}
+  >
     <ModalHeaderNative
       customHeaderMargin="25px 25px 0 25px"
       fontSize="fs14"
@@ -22,7 +24,9 @@ exports[`ApplyNowWrapper should render correctly 1`] = `
 
 exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
 <SafeAreaView>
-  <View>
+  <View
+    style={Object {}}
+  >
     <ModalHeaderNative
       customHeaderMargin="25px 25px 0 25px"
       fontSize="fs14"
@@ -251,7 +255,9 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
 
 exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is true 1`] = `
 <SafeAreaView>
-  <View>
+  <View
+    style={Object {}}
+  >
     <Styled(View) />
     <Styled(ScrollViewMock)>
       <Styled(View)>
