@@ -97,7 +97,16 @@ export class OutfitCarouselModule extends PureComponent {
                   fontSizeVariation="small"
                   dataLocator="dummy-datalocator"
                 >
-                  {link.text ? `${link.text} >` : ''}
+                  <BodyCopy
+                    component="pre"
+                    fontFamily="secondary"
+                    fontSize="fs10"
+                    fontWeight="normal"
+                    lineHeight="14px"
+                    textAlign="center"
+                  >
+                    {link.text ? `${link.text}  >` : ''}
+                  </BodyCopy>
                 </Anchor>
               </div>
             );
@@ -107,6 +116,5 @@ export class OutfitCarouselModule extends PureComponent {
     );
   }
 }
-
 export { OutfitCarouselModule as OutfitCarouselModuleVanilla };
 export default withStyles(OutfitCarouselModule, styles);

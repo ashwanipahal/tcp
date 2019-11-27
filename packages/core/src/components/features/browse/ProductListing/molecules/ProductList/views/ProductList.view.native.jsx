@@ -1,19 +1,23 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView, Text } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer, HeaderContainer } from '../styles/ProductList.style.native';
+import {
+  styles,
+  PageContainer,
+  HeaderContainer,
+  GridPromoContainer,
+} from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import GridPromo from '../../../../../../common/molecules/GridPromo';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
@@ -146,6 +150,16 @@ class ProductList extends React.PureComponent {
       addToBagEcom,
     } = this.props;
     const { item } = itemData;
+
+    if (item.itemType === 'gridPromo') {
+      const variation = item.gridStyle;
+      return (
+        <GridPromoContainer fullWidth={variation === 'horizontal'}>
+          <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+        </GridPromoContainer>
+      );
+    }
+
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -266,7 +280,10 @@ class ProductList extends React.PureComponent {
             ref={ref => this.setListRef(ref)}
             data={products}
             renderItem={this.renderItemList}
-            keyExtractor={item => item.productInfo.generalProductId}
+            keyExtractor={item =>
+              (item.productInfo && item.productInfo.generalProductId) ||
+              (item.itemVal && item.itemVal.slot)
+            }
             initialNumToRender={4}
             maxToRenderPerBatch={2}
             numColumns={2}

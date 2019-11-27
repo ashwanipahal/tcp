@@ -54,3 +54,4 @@ PromoPDPBanners.defaultProps = {
 };
 
 export default PromoPDPBanners;
+export { PromoPDPBanners as PromoPDPBannersVanilla };

@@ -10,6 +10,7 @@ import {
   createNewWishListMoveItemAction,
   deleteWishListAction,
   getActiveWishlistAction,
+  getActiveWishlistGuestAction,
   createNewWishListAction,
   setLastDeletedItemIdAction,
   updateWishListAction,
@@ -43,6 +44,11 @@ import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/sessi
 import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 class FavoritesContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.guestAccessKey = '';
+    this.wishListId = '';
+  }
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
@@ -52,9 +58,28 @@ class FavoritesContainer extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { loadWishList } = this.props;
-    loadWishList({ isDataLoading: true });
+    const { loadWishList, getActiveWishlistGuest } = this.props;
+
+    if (!isMobileApp()) {
+      this.wishListId = this.getParameterByName('wishlistId');
+      this.guestAccessKey = this.getParameterByName('guestAccessKey');
+      if (this.wishListId !== '' && this.guestAccessKey !== '') {
+        const { wishListId, guestAccessKey } = this;
+        getActiveWishlistGuest({ wishListId, guestAccessKey });
+      }
+    }
+    if (this.wishListId === '' && this.guestAccessKey === '') {
+      loadWishList({ isDataLoading: true });
+    }
   }
+
+  getParameterByName = name => {
+    const location = typeof window !== 'undefined' && window.location && window.location.search;
+    const key = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp(`[\\?&]${key}=([^&#]*)`);
+    const results = regex.exec(location);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
 
   onFilterSelection = filteredId => {
     this.setState({
@@ -142,11 +167,11 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      guestAccessKey,
       formErrorMessage,
       isLoggedIn,
       addToBagEcom,
     } = this.props;
-
     const { selectedColorProductId } = this.state;
 
     return (
@@ -184,6 +209,7 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        guestAccessKey={this.guestAccessKey}
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
         addToBagEcom={addToBagEcom}
@@ -226,6 +252,7 @@ const mapDispatchToProps = dispatch => {
     deleteWishList: wishListId => {
       dispatch(deleteWishListAction(wishListId));
     },
+    getActiveWishlistGuest: payload => dispatch(getActiveWishlistGuestAction(payload)),
     getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
     createNewWishList: formData => {
       dispatch(createNewWishListAction(formData));

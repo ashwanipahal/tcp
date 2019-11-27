@@ -9,6 +9,8 @@ const OutfitCarouselStyle = css`
   .subheading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-align: center;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .carousel-image {
     margin: 0 auto 16px;
@@ -30,6 +32,10 @@ const OutfitCarouselStyle = css`
     .slick-list {
       margin: 0 38px;
     }
+    .subheading {
+      padding-left: 190px;
+      padding-right: 190px;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .slick-slide > div {
@@ -46,6 +52,8 @@ const OutfitCarouselStyle = css`
     }
     .subheading {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+      padding-left: 290px;
+      padding-right: 290px;
     }
     .carousel-image {
       margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.LRG};
