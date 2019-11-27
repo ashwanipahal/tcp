@@ -146,7 +146,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
           onPress={this.switchToTCP}
           name="tcpBrand"
         >
-          <Image source={source} />
+          <Image source={source} alt="The Children's Place" />
         </TCPIcon>
       </Animated.View>
     );
@@ -178,7 +178,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
           onPress={this.switchToGymboree}
           name="gymboreeBrand"
         >
-          <Image source={source} />
+          <Image source={source} alt="Gymboree" />
         </GymIcon>
       </Animated.View>
     );

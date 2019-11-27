@@ -121,7 +121,7 @@ const renderRecommendationView = (props, variation) => {
             />
             <ImageStyleWrapper>
               <Anchor onPress={() => setIsAccordionOpen(!isAccordionOpen)}>
-                <Image source={isAccordionOpen ? upIcon : downIcon} />
+                <Image source={isAccordionOpen ? upIcon : downIcon} alt="Dropdown" />
               </Anchor>
             </ImageStyleWrapper>
           </AccordionContainer>

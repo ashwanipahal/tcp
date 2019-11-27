@@ -109,6 +109,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
           <Image
             className="print-icon-img"
             src={printIcon}
+            alt="Print Icon"
             onClick={() => {
               printCoupon(coupon);
             }}
@@ -130,6 +131,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
             <Image
               className={showDetail ? 'up-arrow' : 'down-arrow'}
               src={carrotIcon}
+              alt="Dropdown"
               width="7px"
               height="10px"
             />
