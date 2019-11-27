@@ -5,7 +5,11 @@
 export const account = {
   manage_plcc:
     'pageName, prop2, prop4, prop5, prop6, prop27, prop29, eVar1, eVar7, eVar8, eVar10, eVar13, eVar29, eVar31, eVar32, eVar65, eVar74, eVar93, currencyCode, events',
-  'login-success': 'prop21, prop27, eVar10, eVar13, eVar31, eVar32, eVar93, events, currencyCode',
+  order_tracking:
+    'pageName, prop2, prop4, prop5, prop6, prop27, prop29, eVar1, eVar7, eVar8, eVar10, eVar13, eVar28, eVar29, eVar31, eVar32, eVar65, eVar74, eVar93, events',
+  login_success: 'prop21, prop27, eVar10, eVar13, eVar31, eVar32, eVar93, events, currencyCode',
+  register_success:
+    'prop21, prop27, eVar10, eVar13, eVar31, eVar32, eVar93, eVar33, events, currencyCode',
 };
 
 export default account;

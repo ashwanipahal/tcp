@@ -49,7 +49,7 @@ describe('dataLayer', () => {
   });
 
   it('pageShortName should return correctly', () => {
-    expect(datalayer.pageShortName).toBe('gl:test');
+    expect(datalayer.pageShortName).toBe('test');
   });
 
   it('pageType should return correctly', () => {
@@ -72,8 +72,8 @@ describe('dataLayer', () => {
     expect(datalayer.pageSection).toBe('myplace');
   });
 
-  it('pageSubSubSection should return correctly', () => {
-    expect(datalayer.pageSubSubSection).toBe('myplace');
+  it('pageSubSection should return correctly', () => {
+    expect(datalayer.pageSubSection).toBe('myplace');
   });
 
   it('customerType should return correctly', () => {

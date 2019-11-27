@@ -175,13 +175,109 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
-        buttonVariation="fixed-width"
-        color=""
-        customStyle={Object {}}
-        customTextStyle={null}
-        disableButton={false}
+      <Connect(ClickTracker)
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "active": false,
+              "buttonVariation": "fixed-width",
+              "color": "",
+              "customStyle": Object {},
+              "customTextStyle": null,
+              "disableButton": false,
+              "fill": "",
+              "fullWidth": "",
+              "iconColor": "gray.800",
+              "iconName": "chevron-down",
+              "iconSize": "fs12",
+              "locator": "",
+              "navigation": Object {},
+              "onPress": null,
+              "paddings": "12px 32px 12px 32px",
+              "selected": false,
+              "selectedIcon": "chevron-up",
+              "showIcon": false,
+              "text": "",
+              "theme": Object {},
+              "url": "",
+              "withNoLineHeight": false,
+            },
+            "attrs": Array [],
+            "displayName": "Styled(CustomButton)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid ",
+                [Function],
+                ";
+  opacity: ",
+                [Function],
+                ";
+
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+
+  ",
+                [Function],
+                ";
+
+  ",
+                [Function],
+                "
+
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        clickData={
+          Object {
+            "customEvents": "event113",
+            "pageName": "myplace:rewardscreditcard",
+            "pageSection": "myplace",
+            "pageSubSection": "myplace",
+            "pageType": "myplace",
+          }
+        }
         fill="WHITE"
         fullWidth=""
         iconColor="gray.800"

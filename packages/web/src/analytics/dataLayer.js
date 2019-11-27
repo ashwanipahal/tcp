@@ -96,7 +96,7 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+        return 'US:en';
       },
     },
 
@@ -104,13 +104,13 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData.pageSection
+        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
       },
     },
 
-    pageSubSubSection: {
+    pageSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
