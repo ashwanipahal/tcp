@@ -84,7 +84,7 @@ export const getAddressInitialValues = scope => {
   };
 };
 
-export const propsTypes = {
+export const shippingPropsTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool,
   isSubmitting: PropTypes.bool.isRequired,
@@ -128,4 +128,42 @@ export const propsTypes = {
   venmoBannerLabel: PropTypes.shape({
     venmoBannerText: PropTypes.string,
   }),
+};
+
+export const shippingDefaultProps = {
+  isOrderUpdateChecked: false,
+  isGiftServicesChecked: false,
+  addressPhoneNumber: null,
+  address: null,
+  selectedShipmentId: null,
+  isGuest: true,
+  isUsSite: true,
+  orderHasPickUp: false,
+  shipmentMethods: null,
+  defaultShipmentId: null,
+  isSaveToAddressBookChecked: false,
+  onFileAddressKey: null,
+  isMobile: false,
+  newUserPhoneNo: null,
+  shippingAddressId: null,
+  setAsDefaultShipping: false,
+  saveToAddressBook: false,
+  syncErrors: {},
+  shippingAddress: null,
+  pageCategory: '',
+  isVenmoPaymentInProgress: false,
+  isVenmoShippingDisplayed: true,
+  hasSetGiftOptions: false,
+  setVenmoPickupState: () => {},
+  shippingPhoneAndEmail: null,
+  isLoadingShippingMethods: false,
+  checkoutRoutingDone: false,
+  bagLoading: false,
+
+  userAddresses: null,
+  updateShippingAddressData: () => {},
+  addNewShippingAddressData: () => {},
+  venmoBannerLabel: {
+    venmoBannerText: '',
+  },
 };
