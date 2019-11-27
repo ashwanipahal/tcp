@@ -10,6 +10,7 @@ const initialState = fromJS({
   currency: '',
   siteId: '',
   moduleXContent: '',
+  countryName: '',
 });
 
 const CountrySelectorReducer = (state = initialState, action) => {
@@ -26,6 +27,8 @@ const CountrySelectorReducer = (state = initialState, action) => {
       return state.set('siteId', action.siteId);
     case GLOBAL_CONSTANT.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', action.payload);
+    case GLOBAL_CONSTANT.SET_COUNTRY_NAME:
+      return state.set('countryName', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

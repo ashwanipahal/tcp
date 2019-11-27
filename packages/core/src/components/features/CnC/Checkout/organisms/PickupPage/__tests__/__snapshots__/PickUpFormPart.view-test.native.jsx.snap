@@ -150,6 +150,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       showAccordian={true}
       showPayPalButton={false}
       showVenmoSubmit={false}
+      venmoPayment={null}
     />
   </ScrollViewMock>
 </Fragment>
@@ -305,6 +306,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       showAccordian={true}
       showPayPalButton={false}
       showVenmoSubmit={false}
+      venmoPayment={null}
     />
   </ScrollViewMock>
 </Fragment>
@@ -410,6 +412,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       showAccordian={true}
       showPayPalButton={false}
       showVenmoSubmit={false}
+      venmoPayment={null}
     />
   </ScrollViewMock>
 </Fragment>

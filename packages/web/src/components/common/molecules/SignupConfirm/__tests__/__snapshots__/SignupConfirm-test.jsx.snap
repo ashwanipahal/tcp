@@ -48,7 +48,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     aria-hidden="true"
     className="confirmation-image"
     data-locator="sms_icon"
-    src="/static/images/chat.svg"
+    src="/static/version-not-available/images/chat.svg"
   />
   <Styled(BodyCopy)
     className="first-label"
