@@ -242,6 +242,7 @@ class _PickupStoreSelectionForm extends React.Component {
       storeSearchCriteria,
       storeSearchDistance,
       setClickAnalyticsData,
+      trackClick,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -273,6 +274,7 @@ class _PickupStoreSelectionForm extends React.Component {
             storeSearchCriteria={storeSearchCriteria}
             storeSearchDistance={storeSearchDistance}
             setClickAnalyticsData={setClickAnalyticsData}
+            trackClick={trackClick}
           />
         </div>
       )
