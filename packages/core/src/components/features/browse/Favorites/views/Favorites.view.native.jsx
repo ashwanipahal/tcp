@@ -135,10 +135,6 @@ class FavoritesView extends React.PureComponent {
     }
   };
 
-  onCopyLinkHandler = data => {
-    console.tron.log('onCopyLinkHandler:', data);
-  };
-
   onShareListEmailHandler = data => {
     this.onCloseModal();
     const { sendWishListEmail } = this.props;
@@ -223,13 +219,21 @@ class FavoritesView extends React.PureComponent {
   };
 
   getCurrentPopUp = () => {
-    const { labels, activeWishListId, activeWishList, wishlistsSummaries, userEmail } = this.props;
+    const {
+      labels,
+      activeWishListId,
+      activeWishList,
+      wishlistsSummaries,
+      userEmail,
+      formErrorMessage,
+    } = this.props;
     if (this.currentPopupName === ADD_LIST) {
       return (
         <AddList
           labels={labels}
           onHandleSubmit={this.onAddNewListHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
         />
       );
     }
@@ -242,6 +246,7 @@ class FavoritesView extends React.PureComponent {
           onCloseModal={this.onCloseModal}
           onDeleteList={this.onDeleteListHandler}
           activeWishListId={activeWishListId}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             listName: activeWishList.displayName,
             isChecked: activeWishList.isDefault,
@@ -256,6 +261,7 @@ class FavoritesView extends React.PureComponent {
           labels={labels}
           onHandleSubmit={this.onShareListEmailHandler}
           onCloseModal={this.onCloseModal}
+          formErrorMessage={formErrorMessage}
           initialValues={{
             subject: getLabelValue(labels, 'lbl_fav_subject_default'),
             fromEmail: userEmail,
@@ -265,13 +271,7 @@ class FavoritesView extends React.PureComponent {
     }
 
     if (this.currentPopupName === SHARE_LIST_BY_COPY_LINK) {
-      return (
-        <CopyLink
-          labels={labels}
-          onCopyLink={this.onCopyLinkHandler}
-          onCloseModal={this.onCloseModal}
-        />
-      );
+      return <CopyLink labels={labels} onCloseModal={this.onCloseModal} />;
     }
 
     return null;

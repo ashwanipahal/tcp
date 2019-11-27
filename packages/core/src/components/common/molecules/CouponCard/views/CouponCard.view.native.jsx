@@ -192,7 +192,10 @@ export class CouponCard extends React.Component<Props> {
     }
     return (
       <View>
-        <ErrorMessage error={coupon.error} />
+        <ErrorMessage
+          error={coupon.error}
+          isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
+        />
         <WrapperStyle>
           <Container>
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
