@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutfitProductSkeletonVanilla OutfitProductSkeletonVanilla should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="product-detail-skeleton-wrapper"
+    fullBleed={true}
+  >
+    <div
+      className="product-main-image"
+    >
+      <SkeletonLine />
+    </div>
+    <div
+      className="product-overview-wrapper-main"
+    >
+      <div
+        className="product-overview-wrapper"
+      >
+        <div
+          className="product-overview-detail-wrapper"
+        >
+          <div
+            className="product-image"
+          >
+            <SkeletonLine />
+          </div>
+          <div
+            className="product-title-price-wrapper"
+          >
+            <div
+              className="product-title"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-price"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-color"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-size"
+            >
+              <SkeletonLine />
+            </div>
+          </div>
+        </div>
+        <div
+          className="product-add-to-bag"
+        >
+          <SkeletonLine />
+        </div>
+      </div>
+      <div
+        className="product-overview-wrapper"
+      >
+        <div
+          className="product-overview-detail-wrapper"
+        >
+          <div
+            className="product-image"
+          >
+            <SkeletonLine />
+          </div>
+          <div
+            className="product-title-price-wrapper"
+          >
+            <div
+              className="product-title"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-price"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-color"
+            >
+              <SkeletonLine />
+            </div>
+            <div
+              className="product-size"
+            >
+              <SkeletonLine />
+            </div>
+          </div>
+        </div>
+        <div
+          className="product-add-to-bag"
+        >
+          <SkeletonLine />
+        </div>
+      </div>
+    </div>
+  </Styled(Row)>
+</div>
+`;
