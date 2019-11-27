@@ -196,13 +196,11 @@ const processResponse = (
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
   if (isClient() && res.body.redirect && typeof window !== 'undefined') {
-    let redirectUrl = res.body.redirect.value;
+    const redirectUrl = res.body.redirect.value;
     try {
       // If domain matches try routing within the site else page reload is fine
       if (redirectUrl.indexOf(window.location.hostname) > -1) {
-        const urlPrefix = window.location.protocol + window.location.hostname;
-        redirectUrl = redirectUrl.replace(urlPrefix, ''); // get the part of the URL after the domain
-        window.location.pathname = redirectUrl; // try and avoid a hard reload
+        routerPush(redirectUrl, redirectUrl, { shallow: true }); // try and avoid a hard reload
       } else {
         window.location.assign(redirectUrl);
       }
