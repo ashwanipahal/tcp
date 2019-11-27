@@ -133,7 +133,9 @@ exports[`GiftServices component renders correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.svg",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -412,7 +414,7 @@ exports[`GiftServices component renders correctly 1`] = `
               alt="Brand"
               className="brand-image"
               data-locator="logo-TCP"
-              src="/static/images/tcp-logo.svg"
+              src="/static/version-not-available/images/tcp-logo.svg"
             />
           </Styled(BodyCopy)>
         </Field>
@@ -592,7 +594,7 @@ exports[`GiftServices component renders correctly 1`] = `
               alt="Brand"
               className="brand-image"
               data-locator="logo-gymboree"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
             />
           </Styled(BodyCopy)>
         </Field>

@@ -240,8 +240,8 @@ exports[`ModuleE component Should render component 1`] = `
           carouselConfig={
             Object {
               "autoplay": true,
-              "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-              "customArrowRight": "/static/images/right-carousel-carrot.svg",
+              "customArrowLeft": "/static/version-not-available/images/right-carousel-carrot.svg",
+              "customArrowRight": "/static/version-not-available/images/right-carousel-carrot.svg",
               "dataLocatorCarousel": "carousel_banner",
               "dataLocatorPause": undefined,
               "dataLocatorPlay": undefined,

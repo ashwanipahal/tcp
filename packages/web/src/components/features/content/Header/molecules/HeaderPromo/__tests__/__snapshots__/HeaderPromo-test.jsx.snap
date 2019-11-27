@@ -28,7 +28,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         >
           <Styled(Image)
             alt=""
-            src="/static/images/clock-icon.svg"
+            src="/static/version-not-available/images/clock-icon.svg"
           />
         </div>
         <div
@@ -97,7 +97,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         >
           <Styled(Image)
             alt=""
-            src="/static/images/dollar-sign-icon.svg"
+            src="/static/version-not-available/images/dollar-sign-icon.svg"
           />
         </div>
         <div
@@ -166,7 +166,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         >
           <Styled(Image)
             alt=""
-            src="/static/images/at-icon.svg"
+            src="/static/version-not-available/images/at-icon.svg"
           />
         </div>
         <div
@@ -270,7 +270,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       >
         <Styled(Image)
           alt=""
-          src="/static/images/clock-icon.svg"
+          src="/static/version-not-available/images/clock-icon.svg"
         />
       </div>
       <div
@@ -329,7 +329,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       >
         <Styled(Image)
           alt=""
-          src="/static/images/dollar-sign-icon.svg"
+          src="/static/version-not-available/images/dollar-sign-icon.svg"
         />
       </div>
       <div
@@ -388,7 +388,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       >
         <Styled(Image)
           alt=""
-          src="/static/images/at-icon.svg"
+          src="/static/version-not-available/images/at-icon.svg"
         />
       </div>
       <div
