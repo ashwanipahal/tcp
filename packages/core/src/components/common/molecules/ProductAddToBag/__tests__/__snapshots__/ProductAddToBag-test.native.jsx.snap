@@ -16,6 +16,19 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   isFromBagProductSfl={false}
   plpLabels={Object {}}
   quantityList={Array []}
+  quickViewPickup={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   selectedColor={null}
   selectedColorProductId={123}
   selectedFit={null}
@@ -137,17 +150,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       selectedItem=""
     />
   </Styled(View)>
-  <Connect(ProductPickupContainer)
-    formName="ProductAddToBag-"
-    isAnchor={true}
-    miscInfo={null}
-    productInfo={
-      Object {
-        "generalProductId": "",
-      }
-    }
-    sizeUnavailable=""
-  />
   <Styled(View)
     margins="16px 0 16px 0"
     style={
