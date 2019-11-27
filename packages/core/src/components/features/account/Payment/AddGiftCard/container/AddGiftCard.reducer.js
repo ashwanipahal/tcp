@@ -29,13 +29,13 @@ type Action = {
 const resetErrorReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SUBMIT_SUCCEEDED: {
-      if (action.meta.form === constants.ADD_GIFT_CARD_FORM) {
+      if (action.meta.form === ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM) {
         checkErrorReset = true;
       }
       return state;
     }
     case CHANGE: {
-      if (checkErrorReset && action.meta.form === constants.ADD_GIFT_CARD_FORM) {
+      if (checkErrorReset && action.meta.form === ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM) {
         checkErrorReset = false;
         return state
           .set('showNotification', false)
