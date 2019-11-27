@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import ModalNativeHeader from '../../../Modal/view/Modal.native.header';
 import { Button, RichText } from '../../../../atoms';
@@ -17,11 +17,20 @@ import {
   RTPSHeader,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
+import { getScreenHeight } from '../../../../../../utils/utils.app';
 import ApplyCardLayoutView from '../../../../../features/browse/ApplyCardPage';
 
 const headerImage = require('../../../../../../assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../assets/PLCC_lockup_2_points.png');
 const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_points.png');
+
+const viewHeight =
+  Platform.OS === 'android'
+    ? {
+        height: getScreenHeight(),
+        paddingBottom: 30,
+      }
+    : {};
 
 /**
  * @class - ApplyNowModalWrapper
@@ -132,7 +141,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return isPLCCModalOpen || isModalOpen ? (
       <SafeAreaView>
-        <View>
+        <View style={viewHeight}>
           {this.getModalHeader()}
           {isPLCCModalOpen && (
             <ApplyCardLayoutView
