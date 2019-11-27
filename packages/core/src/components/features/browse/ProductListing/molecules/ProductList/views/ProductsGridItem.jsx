@@ -617,7 +617,6 @@ class ProductsGridItem extends React.PureComponent {
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
     const videoUrl = getVideoUrl(curentColorEntry);
-    const productItem = this.props.item;
     return (
       <li
         className={className}
@@ -658,7 +657,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels, productItem },
+            { onQuickViewOpenClick, isFavoriteView, labels },
             selectedColorProductId,
             itemNotAvailable
           )}
