@@ -37,7 +37,7 @@ export function* logoutSaga() {
         })
       );
       yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-      yield put(getCouponList());
+      yield put(getCouponList({ ignoreCache: true }));
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
