@@ -1,177 +1,174 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmailSignupModal component renders correctly 1`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="email_signup_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(EmailSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid={false}
-  subscription={
-    Object {
-      "success": false,
+    isOpen={false}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      closeModal={[Function]}
+      formType="email_signup"
+      formViewConfig={Object {}}
+      isEmailValid={false}
+      isModalOpen={false}
+      reset={[Function]}
+      subscription={
+        Object {
+          "success": false,
+        }
+      }
+    />
+  </Styled(Modal)>
+</Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="email_signup_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(EmailSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid="invalid"
-  isModalOpen={true}
-  isSubscriptionValid={
-    Object {
-      "success": true,
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      closeModal={[Function]}
+      formType="email_signup"
+      formViewConfig={Object {}}
+      isEmailValid="invalid"
+      isModalOpen={true}
+      isSubscriptionValid={
+        Object {
+          "success": true,
+        }
+      }
+      reset={[Function]}
+      subscription={Object {}}
+    />
+  </Styled(Modal)>
+</Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="email_signup_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(EmailSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid="valid"
-  isModalOpen={true}
-  isSubscriptionValid={
-    Object {
-      "success": false,
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      closeModal={[Function]}
+      formType="email_signup"
+      formViewConfig={Object {}}
+      isEmailValid="valid"
+      isModalOpen={true}
+      isSubscriptionValid={
+        Object {
+          "success": false,
+        }
+      }
+      reset={[Function]}
+      subscription={Object {}}
+    />
+  </Styled(Modal)>
+</Fragment>
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SmsSignupModal from '../views/SmsSignupModal.view';
+import { SmsSignupModalVanilla } from '../views/SmsSignupModal.view';
 
 describe('SMSSignupModal component', () => {
   it('renders correctly', () => {
@@ -11,7 +11,7 @@ describe('SMSSignupModal component', () => {
       subscription: { success: false },
       isEmailValid: false,
     };
-    const component = shallow(<SmsSignupModal {...props} />);
+    const component = shallow(<SmsSignupModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -23,7 +23,7 @@ describe('SMSSignupModal component', () => {
       subscription: { success: true },
       isEmailValid: true,
     };
-    const component = shallow(<SmsSignupModal {...props} />);
+    const component = shallow(<SmsSignupModalVanilla {...props} />);
     component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe('SMSSignupModal component', () => {
       subscription: { success: false },
       isEmailValid: true,
     };
-    const component = shallow(<SmsSignupModal {...props} />);
+    const component = shallow(<SmsSignupModalVanilla {...props} />);
     component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });

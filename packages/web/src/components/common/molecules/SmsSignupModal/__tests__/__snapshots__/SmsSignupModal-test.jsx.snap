@@ -1,177 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SMSSignupModal component renders correctly 1`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="sms_signup_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(SmsSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid={false}
-  subscription={
-    Object {
-      "success": false,
+    isOpen={false}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      clearSmsSignupForm={[Function]}
+      closeModal={[Function]}
+      formType="sms_signup"
+      formViewConfig={Object {}}
+      isEmailValid={false}
+      isModalOpen={false}
+      reset={[Function]}
+      subscription={
+        Object {
+          "success": false,
+        }
+      }
+    />
+  </Styled(Modal)>
+</Fragment>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 1`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-confirm-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="thank_you_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(SmsSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid={true}
-  isModalOpen={true}
-  subscription={
-    Object {
-      "success": true,
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      clearSmsSignupForm={[Function]}
+      closeModal={[Function]}
+      formType="sms_signup"
+      formViewConfig={Object {}}
+      isEmailValid={true}
+      isModalOpen={true}
+      reset={[Function]}
+      subscription={
+        Object {
+          "success": true,
+        }
+      }
+    />
+  </Styled(Modal)>
+</Fragment>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 2`] = `
-<StyledComponent
-  buttonConfig={Object {}}
-  className=""
-  formViewConfig={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cJSrbW",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .alignRight {
-    right: 14px;
-    @media ",
-          [Function],
-          " {
-      right: 16px;
+<Fragment>
+  <Styled(Modal)
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
     }
-  }
-  .alignTop {
-    top: 14px;
-    z-index: 1;
-    @media ",
-          [Function],
-          " {
-      top: 16px;
+    className=""
+    closeIconDataLocator="sms_signup_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(SmsSignupModal)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cJSrbW",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "645px",
+        "maxHeight": "645px",
+        "minHeight": "500px",
+      }
     }
-  }
-  forwardedRef={null}
-  isEmailValid={true}
-  isModalOpen={true}
-  subscription={
-    Object {
-      "success": false,
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "100%",
+      }
     }
-  }
-/>
+  >
+    <LoadableComponent
+      buttonConfig={Object {}}
+      className=""
+      clearSmsSignupForm={[Function]}
+      closeModal={[Function]}
+      formType="sms_signup"
+      formViewConfig={Object {}}
+      isEmailValid={true}
+      isModalOpen={true}
+      reset={[Function]}
+      subscription={
+        Object {
+          "success": false,
+        }
+      }
+    />
+  </Styled(Modal)>
+</Fragment>
 `;
