@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   ${props =>
-    props.isBossSelected || props.isBopisSelected
+    props.selectedStoreId === props.store.basicInfo.id
       ? `border: 2px solid ${props.theme.colorPalette.gray['800']};`
       : `border: 1px solid ${props.theme.colorPalette.gray['800']};`};
 
