@@ -5,6 +5,7 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CountrySelector from '../../Header/molecules/CountrySelector';
+import { readCookie, setCookie, isClient } from '@tcp/core/src/utils';
 
 import {
   FooterMiddleMobile,
@@ -41,9 +42,43 @@ class Footer extends React.Component {
         navigator &&
         navigator.geolocation)
     ) {
-      navigator.geolocation.getCurrentPosition(() => {});
+      this.getPosition();
     }
   }
+
+  getPosition = () => {
+    const isSafariBrowser =
+      navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+    if (isSafariBrowser) {
+      const latitude = this.getSessionStorage('Latitude');
+      const longitude = this.getSessionStorage('Longitude');
+      if (!latitude && !longitude) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          this.setSessionStorage({ key: 'Latitude', value: pos.coords.latitude });
+          this.setSessionStorage({ key: 'Longitude', value: pos.coords.longitude });
+        });
+      } else {
+        navigator.geolocation.getCurrentPosition(() => {});
+      }
+    }
+  };
+
+  setSessionStorage = arg => {
+    const { key, value } = arg;
+    if (isClient()) {
+      return window.sessionStorage.setItem(key, value);
+    } else {
+      return setCookie(arg);
+    }
+  };
+
+  getSessionStorage = key => {
+    if (isClient()) {
+      return window.sessionStorage.getItem(key);
+    } else {
+      return readCookie(key);
+    }
+  };
 
   render() {
     const { props } = this;
