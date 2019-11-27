@@ -58,6 +58,7 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
         isOrderPending={false}
         isShowBopisMessage={false}
         isShowShippingMessage={true}
+        isVenmoPaymentInProgress={false}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
@@ -165,6 +166,7 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         isOrderPending={false}
         isShowBopisMessage={false}
         isShowShippingMessage={false}
+        isVenmoPaymentInProgress={true}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
@@ -278,6 +280,7 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
         isOrderPending={false}
         isShowBopisMessage={true}
         isShowShippingMessage={false}
+        isVenmoPaymentInProgress={true}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
@@ -404,6 +407,7 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
         isOrderPending={false}
         isShowBopisMessage={true}
         isShowShippingMessage={true}
+        isVenmoPaymentInProgress={false}
         orderNumbersByFullfillmentCenter={
           Object {
             "fullfillmentCenterMap": Array [
