@@ -65,7 +65,6 @@ class GetCandid extends React.PureComponent {
       window.candid.init({
         id: apiKey,
         containerId: candidSlot,
-        height: 205,
         useDescription: false,
         ...candidViewportSetting,
         ready: () => this.setState({ getCandidDataLoaded: true }),
