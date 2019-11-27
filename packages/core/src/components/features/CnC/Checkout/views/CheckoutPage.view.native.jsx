@@ -187,7 +187,12 @@ class CheckoutPage extends React.PureComponent {
           />
         );
       case CONFIRMATION:
-        return <Confirmation navigation={navigation} />;
+        return (
+          <Confirmation
+            navigation={navigation}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+          />
+        );
       default:
         return null;
     }

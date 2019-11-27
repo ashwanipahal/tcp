@@ -53,6 +53,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     showPayPalButton={false}
     showVenmoSubmit={false}
     venmoError=""
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -251,6 +252,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     showPayPalButton={false}
     showVenmoSubmit={false}
     venmoError=""
+    venmoPayment={null}
   />
 </Fragment>
 `;

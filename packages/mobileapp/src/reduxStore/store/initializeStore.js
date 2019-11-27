@@ -8,34 +8,32 @@ import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 
 import globalReducers from '../reducers';
 import rootSaga from '../sagas/sagas';
-import createAnalyticsMiddleware from '../middlewares/analytics';
-import createDataLayer from '../../context/analytics/dataLayer';
+
+let store;
 
 export const initializeStore = initialState => {
-  const sagaMonitor = Reactotron.createSagaMonitor();
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-
-  const middlewares = [sagaMiddleware, createAnalyticsMiddleware()];
-
-  const enhancers = [
-    applyMiddleware(...middlewares),
-    __DEV__ && Reactotron.createEnhancer(),
-    cacheEnhancerMiddleware(),
-  ];
-  /* eslint-disable  */
-
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const sagaMiddleware = createSagaMiddleware();
 
   // eslint-disable-next-line no-underscore-dangle
-
-  const store = createStore(globalReducers, initialState, composeEnhancers(...enhancers));
+  const composeEnhancers = (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+  if (__DEV__) {
+    store = createStore(
+      globalReducers,
+      initialState,
+      composeEnhancers(applyMiddleware(sagaMiddleware), Reactotron.createEnhancer())
+    );
+  } else {
+    store = createStore(
+      globalReducers,
+      initialState,
+      composeEnhancers(applyMiddleware(sagaMiddleware), cacheEnhancerMiddleware())
+    );
+  }
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
 
   // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
   setStoreRef(store);
-
-  global._dataLayer = createDataLayer(store);
 
   const persistor = persistStore(store);
   return { store, persistor };

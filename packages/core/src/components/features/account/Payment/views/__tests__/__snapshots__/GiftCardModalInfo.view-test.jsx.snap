@@ -50,7 +50,7 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
         <Styled(Image)
           className="deleteCardModal__img"
           data-locator="deletegcmodalicon"
-          src="/static/images/TCP-gift.svg"
+          src="/static/version-not-available/images/TCP-gift.svg"
         />
       </Styled(BodyCopy)>
     </Styled(Col)>
