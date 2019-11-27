@@ -16,10 +16,11 @@ const LinkImageIcon = props => {
     imageWidth,
     imageHeight,
     name,
+    isGiftCard,
   } = props;
 
   const imageCompAccessibilityRole = `image ${name}`;
-  const imgConfig = 'w_50,h_50,c_thumb,g_auto:0';
+  const imgConfig = isGiftCard ? 'w_125' : 'w_50,h_50,c_thumb,g_auto:0';
   return (
     <ImageTouchableOpacity
       onPress={onPress}
@@ -60,6 +61,7 @@ LinkImageIcon.propTypes = {
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,
   name: PropTypes.string,
+  isGiftCard: PropTypes.bool,
 };
 
 LinkImageIcon.defaultProps = {
@@ -73,6 +75,7 @@ LinkImageIcon.defaultProps = {
   imageWidth: null,
   imageHeight: null,
   name: '',
+  isGiftCard: false,
 };
 
 export default withStyles(LinkImageIcon);
