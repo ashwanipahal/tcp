@@ -10,7 +10,7 @@ import {
   resetPlpProducts,
   setFilter,
 } from './ProductListing.actions';
-import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { processBreadCrumbs } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -158,7 +158,6 @@ class ProductListingContainer extends React.PureComponent {
 
 function mapStateToProps(state) {
   const appliedFilters = getAppliedFilters(state);
-  const productBlocks = getLoadedProductsPages(state);
   const plpGridPromos = getPLPGridPromos(state);
   const plpHorizontalPromo = getPlpHorizontalPromo(state);
   const products = getAllProductsSelect(state);
