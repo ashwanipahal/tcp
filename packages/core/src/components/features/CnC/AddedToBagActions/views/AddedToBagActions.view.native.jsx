@@ -42,6 +42,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
             isVenmoProgress: true,
           })
         }
+        onError={venmoErrorMessage =>
+          handleCartCheckout({
+            isVenmoProgress: false,
+            venmoErrorMessage: venmoErrorMessage,
+          })
+        }
       />
     );
   };
