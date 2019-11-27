@@ -308,6 +308,14 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "gEzYmTNVR3IdQgwiw2T0xQ"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
     }
   ],
   "signed": true,
@@ -337,7 +345,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "1881e243-2da4-473b-a5d7-e19e845f9519"
+        "c6d91041-0ebb-48cd-b8e9-f71470f2f6dd"
       ],
       "isSilent": false
     },
