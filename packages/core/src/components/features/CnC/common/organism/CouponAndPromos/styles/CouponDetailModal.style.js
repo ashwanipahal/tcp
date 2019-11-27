@@ -100,7 +100,7 @@ const CouponDetailModalStyle = css`
   }
   @media print {
     .couponModal_modalTitle {
-      padding-top: ${props => (props.isWindowsOS ? '200px' : '0')};
+      padding-top: 100px;
     }
   }
 `;
