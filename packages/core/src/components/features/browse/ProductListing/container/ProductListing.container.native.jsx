@@ -162,18 +162,25 @@ function mapStateToProps(state) {
   const plpGridPromos = getPLPGridPromos(state);
   const plpHorizontalPromo = getPlpHorizontalPromo(state);
   const products = getAllProductsSelect(state);
-  const productWithGrid = getProductsWithPromo(products, plpGridPromos, plpHorizontalPromo);
 
   // eslint-disable-next-line
   let filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
 
+  const productWithGrid = getProductsWithPromo(
+    products,
+    plpGridPromos,
+    plpHorizontalPromo,
+    filterCount
+  );
   const filters = updateAppliedFiltersInState(state);
 
   return {
