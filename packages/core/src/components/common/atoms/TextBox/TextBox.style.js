@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const textboxStyles = css`
   position: relative;
@@ -104,7 +105,7 @@ const textboxStyles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(${getIconPath('circle-alert-fill')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

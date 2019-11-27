@@ -640,6 +640,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1027,6 +1028,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1089,6 +1091,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1440,6 +1443,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1823,6 +1827,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -2407,6 +2412,7 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -2427,6 +2433,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;

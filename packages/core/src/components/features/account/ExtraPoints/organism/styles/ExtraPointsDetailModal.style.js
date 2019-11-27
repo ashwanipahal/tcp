@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 
 const CouponDetailModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
@@ -34,44 +35,44 @@ const CouponDetailModalStyle = css`
   }
 
   .AppDownload {
-    background-image: url('/static/images/download-app.png');
+    background-image: url(${getStaticFilePath('images/download-app.png')});
   }
   .ProductReview {
-    background-image: url('/static/images/review.png');
+    background-image: url(${getStaticFilePath('images/review.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .FacebookLink {
-    background-image: url('/static/images/facebook.png');
+    background-image: url(${getStaticFilePath('images/facebook.png')});
   }
   .InstagramLink {
-    background-image: url('/static/images/instagram.png');
+    background-image: url(${getStaticFilePath('images/instagram.png')});
   }
   .ChildProfile {
-    background-image: url('/static/images/child-birthday-profile.png');
+    background-image: url(${getStaticFilePath('images/child-birthday-profile.png')});
   }
   .SMSOptIn {
-    background-image: url('/static/images/sms.png');
+    background-image: url(${getStaticFilePath('images/sms.png')});
   }
   .AddMailingAddress {
-    background-image: url('/static/images/mailingAddress.png');
+    background-image: url(${getStaticFilePath('images/mailingAddress.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .AddFavoriteStore {
-    background-image: url('/static/images/store.png');
+    background-image: url(${getStaticFilePath('images/store.png')});
   }
   .AddShopperType {
-    background-image: url('/static/images/survey.png');
+    background-image: url(${getStaticFilePath('images/survey.png')});
   }
   .AddBirthDate {
-    background-image: url('/static/images/birthday.png');
+    background-image: url(${getStaticFilePath('images/birthday.png')});
   }
 
   .FeedbackSurvey {
-    background-image: url('/static/images/oval.svg');
+    background-image: url(${getStaticFilePath('images/oval.svg')});
   }
 
   .TwitterLink {
-    background-image: url('/static/images/twitter.png');
+    background-image: url(${getStaticFilePath('images/twitter.png')});
   }
 `;
 

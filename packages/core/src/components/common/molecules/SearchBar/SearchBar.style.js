@@ -61,7 +61,7 @@ export default css`
       display: none;
     }
 
-    .icon-small.close-image-mobile {
+    .close-image-mobile {
       display: inline-block;
       padding-left: 0;
       width: 12px;
@@ -351,7 +351,7 @@ export default css`
       cursor: pointer;
     }
 
-    .icon-small.close-image-toggle {
+    .close-image-toggle {
       display: inline-block;
       height:12px;
       width:12px;
