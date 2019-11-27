@@ -273,9 +273,7 @@ function mapStateToProps(state) {
   }
 
   const plpHorizontalPromos = getPlpHorizontalPromo(state);
-  console.log('plpHorizontalPromos', plpHorizontalPromos);
   const plpGridPromos = getPLPGridPromos(state);
-  console.log('plpGridPromos', plpGridPromos);
 
   return {
     productsBlock: getProductsAndTitleBlocks(
