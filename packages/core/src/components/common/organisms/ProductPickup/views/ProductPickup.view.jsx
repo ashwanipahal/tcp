@@ -472,6 +472,8 @@ class ProductPickup extends React.PureComponent {
       isOutfitVariant,
       keepAlive,
       productInfo,
+      userDefaultStore,
+      isSkuResolved,
     } = this.props;
     const { pageName } = this.getPageName(productInfo);
     return (
@@ -549,7 +551,7 @@ class ProductPickup extends React.PureComponent {
                     disabled={keepAlive || isSubmitting}
                     onClick={this.handlePickupModalClick}
                   >
-                    {showPickupInfo
+                    {showPickupInfo && userDefaultStore && isSkuResolved
                       ? labels.lbl_Product_pickup_PICKUP_IN_STORE
                       : labels.lbl_Product_pickup_FIND_STORE}
                   </Button>
