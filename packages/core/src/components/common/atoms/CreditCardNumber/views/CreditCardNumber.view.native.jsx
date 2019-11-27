@@ -23,3 +23,4 @@ CreditCardNumber.propTypes = {
 };
 
 export default CreditCardNumber;
+export { CreditCardNumber as CreditCardNumberVanilla };

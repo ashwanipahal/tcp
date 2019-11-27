@@ -83,3 +83,4 @@ class SpinnerView extends React.Component {
 }
 
 export default SpinnerView;
+export { SpinnerView as SpinnerViewVanilla };

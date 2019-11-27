@@ -42,4 +42,22 @@ describe('StoreHours component', () => {
     const component = shallow(<StoreHours {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('should return Styled(View) component value one', () => {
+    const props = {
+      theme,
+      title: '',
+    };
+    const component = shallow(<StoreHours {...props} />);
+    expect(component.find('Styled(View)')).toHaveLength(1);
+  });
+
+  it('should return Styled(Text) component value one', () => {
+    const props = {
+      theme,
+      title: '',
+    };
+    const component = shallow(<StoreHours {...props} />);
+    expect(component.find('Styled(Text)')).toHaveLength(1);
+  });
 });
