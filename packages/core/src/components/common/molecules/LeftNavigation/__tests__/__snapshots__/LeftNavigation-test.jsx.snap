@@ -21,12 +21,11 @@ exports[`LeftNavigation component LeftNavigation component renders correctly wit
   .navLink {
     color: ",
           [Function],
-          "
-
+          ";
     &__Selected {
       color: ",
           [Function],
-          "
+          ";
     }
   }
 ",
