@@ -107,7 +107,7 @@ export class CreditCardTextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="16px" height="14px" />
+              <Image source={errorIcon} alt="Error" width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
@@ -169,6 +169,7 @@ export class CreditCardTextBox extends React.Component {
           <ImageWrapper>
             <Image
               source={getCardTypeImgUrl(cardType)}
+              alt=""
               width="40"
               height="30"
               resizeMode="contain"

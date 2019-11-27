@@ -9,7 +9,7 @@ const ErrorDisplay = ({ error }) => {
   if (!error) return null;
   return (
     <ErrorContainer>
-      <Image source={errorIcon} style={errorIconStyle} />
+      <Image source={errorIcon} alt="Error" style={errorIconStyle} />
       <TextWrapper>
         <BodyCopy
           fontWeight="extrabold"
