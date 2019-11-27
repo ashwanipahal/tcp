@@ -2,7 +2,7 @@
 
 exports[`Spotlight component should renders correctly 1`] = `
 <div
-  data-locator="plp_rating_review_text"
-  id="BVSpotlightsContainer"
+  data-bv-show="spotlights"
+  data-bv-site-id="Spotlights"
 />
 `;
