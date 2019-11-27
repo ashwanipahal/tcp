@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Heading, Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
+import { Anchor, Heading, Col, Row } from '@tcp/core/src/components/common/atoms';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../SiteMap.style';
@@ -13,11 +13,7 @@ class SiteMap extends React.PureComponent {
 
   printCurrentLink = (items, level) => {
     return (
-      <Anchor
-        className={`Link_level_${level}`}
-        to={items.href.replace('/c/', '/c?cid=')}
-        asPath={items.href}
-      >
+      <Anchor className={`Link_level_${level}`} to={items.href} asPath={items.href}>
         {items.name}
       </Anchor>
     );
