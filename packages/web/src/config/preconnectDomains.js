@@ -1,0 +1,15 @@
+export default [
+  'https://refer.childrensplace.com',
+  'https://search.unbxd.io',
+  'https://origin.xtlo.net',
+  'https://s.go-mpulse.net',
+  'https://assets.adobedtm.com',
+  'https://cdn.quantummetric.com',
+  'https://tcp-sync.quantummetric.com',
+  'https://universal.iperceptions.com',
+  'https://tagtracking.vibescm.com',
+  'https://widget-api.stylitics.com',
+  'https://dpm.demdex.net',
+  'https://theplace.com',
+  'https://stylitics-ampersand-production.sfo2.cdn.digitaloceanspaces.com',
+];
