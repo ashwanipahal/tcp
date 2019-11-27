@@ -62,7 +62,6 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         noLink={true}
       >
         <Styled(Image)
-          alt="Product"
           className="product-image"
           dataLocator="addedtobag-fav-icon"
           src="/static/version-not-available/images/heart.png"
@@ -70,7 +69,6 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       </Styled(Anchor)>
         
       <Styled(Image)
-        alt="Product"
         className="product-image"
         data-locator="addedtobag-bag-icon"
         src="/static/version-not-available/images/bag-2.svg"
@@ -166,7 +164,6 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         noLink={true}
       >
         <Styled(Image)
-          alt="Product"
           className="product-image"
           dataLocator="addedtobag-fav-icon"
           src="/static/version-not-available/images/heart.png"
@@ -174,7 +171,6 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
       </Styled(Anchor)>
         
       <Styled(Image)
-        alt="Product"
         className="product-image"
         data-locator="addedtobag-bag-icon"
         src="/static/version-not-available/images/bag-2.svg"

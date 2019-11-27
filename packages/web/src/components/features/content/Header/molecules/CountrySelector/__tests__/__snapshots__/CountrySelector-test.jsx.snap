@@ -129,6 +129,8 @@ exports[`Country Selector Component renders correctly 1`] = `
     </div>
     <div>
       <Styled(BodyCopy)
+        aria-hidden={false}
+        aria-label="English"
         className="countrySelector__locale--selected countrySelector__locale"
         color="text.primary"
         component="span"
@@ -145,6 +147,8 @@ exports[`Country Selector Component renders correctly 1`] = `
         en
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
+        aria-hidden={true}
+        aria-label="Spanish"
         className="countrySelector__locale--disabled countrySelector__locale"
         color="text.primary"
         component="span"
