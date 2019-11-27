@@ -166,6 +166,7 @@ const ProductCustomizeFormPart = props => {
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
+              isMultiItemQVModal={isMultiItemQVModal}
             />
           </div>
         </div>

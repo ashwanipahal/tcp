@@ -160,6 +160,7 @@ const ProductCustomizeFormPart = props => {
           formEnabled={formEnabled}
           toastMessage={toastMessage}
           onCloseClick={onCloseClick}
+          isMultiItemQVModal={isMultiItemQVModal}
           isFromBagProductSfl={isFromBagProductSfl}
         />
       </MultiItemQVWrapper>
