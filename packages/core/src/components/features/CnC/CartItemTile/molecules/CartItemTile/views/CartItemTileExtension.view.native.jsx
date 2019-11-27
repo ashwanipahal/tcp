@@ -188,7 +188,7 @@ const heartIcon = (isBagPageSflSection, handleAddToWishlist) => {
         handleAddToWishlist();
       }}
     >
-      <Image data-locator="heartIcon" source={heart} height={13} width={15} />
+      <Image data-locator="heartIcon" source={heart} alt="Heart Icon" height={13} width={15} />
     </HeartIcon>
   );
 };
@@ -445,7 +445,13 @@ const onSwipeComplete = (props, swipe) => {
 const renderImage = ({ icon, dataLocator, iconText }) => {
   return (
     <>
-      <Image data-locator={dataLocator} source={icon} height={IconHeight} width={IconWidth} />
+      <Image
+        data-locator={dataLocator}
+        source={icon}
+        alt=""
+        height={IconHeight}
+        width={IconWidth}
+      />
       <IconTextMoveToBag>{iconText}</IconTextMoveToBag>
     </>
   );

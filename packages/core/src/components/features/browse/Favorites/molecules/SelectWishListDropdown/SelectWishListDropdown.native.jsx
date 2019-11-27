@@ -322,7 +322,11 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
               />
             )}
           </HeaderContainer>
-          <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
+          <Image
+            source={dropDownIsOpen ? upIcon : downIcon}
+            alt="Dropdown"
+            style={arrowImageStyle}
+          />
         </Row>
 
         <Modal visible={dropDownIsOpen} transparent>

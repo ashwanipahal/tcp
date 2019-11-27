@@ -675,6 +675,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
           }
         >
           <Styled(Image)
+            alt="Info"
             height="15"
             src="/static/version-not-available/images/info-icon.png"
             width="15"

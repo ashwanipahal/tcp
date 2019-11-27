@@ -147,7 +147,7 @@ class ProductDetailView extends PureComponent {
     return productInfo.isGiftCard ? (
       <div className="go-back-container">
         <button type="button" onClick={this.onGoBack} className="button-go-back">
-          <Image src={getIconPath('medium-left-arrow')} />
+          <Image src={getIconPath('medium-left-arrow')} alt="Previous" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
             {pdpLabels.back}
           </BodyCopy>

@@ -159,6 +159,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           }
         >
           <ForwardRef
+            alt="Info"
             height="15"
             src="/static/version-not-available/images/info-icon.png"
             width="15"
@@ -457,6 +458,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           }
         >
           <ForwardRef
+            alt="Info"
             height="15"
             src="/static/version-not-available/images/info-icon.png"
             width="15"
@@ -1225,6 +1227,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
+                alt="Info"
                 height="15"
                 src="/static/version-not-available/images/info-icon.png"
                 width="15"
@@ -1860,6 +1863,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
+                alt="Info"
                 height="15"
                 src="/static/version-not-available/images/info-icon.png"
                 width="15"

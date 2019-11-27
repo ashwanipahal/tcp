@@ -67,7 +67,7 @@ class ProductDetailDescription extends React.PureComponent {
           />
           <ImageStyleWrapper>
             <Anchor onPress={this.handleAccordionToggle}>
-              <Image source={isAccordionOpen ? upIcon : downIcon} />
+              <Image source={isAccordionOpen ? upIcon : downIcon} alt="Dropdown" />
             </Anchor>
           </ImageStyleWrapper>
         </StyleProductDescription>

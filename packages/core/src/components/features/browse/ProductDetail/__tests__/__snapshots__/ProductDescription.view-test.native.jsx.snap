@@ -33,6 +33,7 @@ exports[`ProductDetailDescriptionView component should renders correctly 1`] = `
         visible={false}
       >
         <Image
+          alt="Dropdown"
           source={
             Object {
               "testUri": "../../../../core/src/assets/carrot-small-down.png",
@@ -78,6 +79,7 @@ exports[`ProductDetailDescriptionView native should render correctly should matc
         visible={false}
       >
         <Image
+          alt="Dropdown"
           source={
             Object {
               "testUri": "../../../../core/src/assets/carrot-small-down.png",

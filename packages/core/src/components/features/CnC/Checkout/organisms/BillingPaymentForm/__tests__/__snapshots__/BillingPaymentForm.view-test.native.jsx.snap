@@ -389,7 +389,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           withPointer={true}
         >
           <ForwardRef
-            alt=""
+            alt="Info"
             height={15}
             host=""
             marginTop={17}
@@ -791,7 +791,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           withPointer={true}
         >
           <ForwardRef
-            alt=""
+            alt="Info"
             height={15}
             host=""
             marginTop={17}
@@ -1387,7 +1387,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               withPointer={true}
             >
               <Styled(ImageComp)
-                alt=""
+                alt="Info"
                 height={15}
                 host=""
                 marginTop={17}
@@ -1771,7 +1771,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               withPointer={true}
             >
               <Styled(ImageComp)
-                alt=""
+                alt="Info"
                 height={15}
                 host=""
                 marginTop={17}
