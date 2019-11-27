@@ -11,6 +11,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     },
     selectedColorProductId: 123,
     fromBagPage: true,
+    quickViewPickup: jest.fn(),
   };
 
   beforeEach(() => {

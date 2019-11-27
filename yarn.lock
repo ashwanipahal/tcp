@@ -18112,11 +18112,6 @@ open@^6.1.0, open@^6.2.0, open@^6.3.0, open@^6.4.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opencollective-postinstall@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
-  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
-
 opener@^1.4.3, opener@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
@@ -20546,6 +20541,11 @@ react-native-easy-toast@1.2.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-error-boundary@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-error-boundary/-/react-native-error-boundary-1.0.3.tgz#de5cdfa27e3fdfd3e56debb866b14ddf0f173ffc"
+  integrity sha512-m2TYjscsZxsWStllEfZ2CTuQ7TSGtjmnMmrS7vlxY1Udfr/ICgwCSw3XQlZJNf9bNkU4NoKh28AaAc1MW+o3LA==
+
 react-native-fast-image@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-7.0.2.tgz#e06b21f42f4a9786eaa86f3db35d919070fb8403"
@@ -20555,14 +20555,6 @@ react-native-fbsdk@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.1.1.tgz#91a787a046bc90d29907a2269321191cd301517c"
   integrity sha512-1hlOeQ8rXOYXd7/XKvKXKOsURxHi4EbHWCZO1aIWQWO6pdyK1i/56KuC9KDTGo8TjNTFfA/2H5vJCG040gI75Q==
-
-react-native-firebase@^5.5.6:
-  version "5.5.6"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.6.tgz#17b34ec0d5dc39afaaf0e159fd160f6339e0f707"
-  integrity sha512-AdbpGwKEEiMFgaRar9WOPc8Li4sfxR//WOyNQzxYsQ1fpARC908j7feqy2gu73SLqk4wzIrnlfJWakOe0/Bclg==
-  dependencies:
-    opencollective-postinstall "^2.0.0"
-    prop-types "^15.7.2"
 
 react-native-geolocation-service@^3.1.0:
   version "3.1.0"
@@ -24701,11 +24693,6 @@ upper-case@^1.0.3, upper-case@^1.1.0, upper-case@^1.1.1, upper-case@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/upper-case/-/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
   integrity sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
-
-urbanairship-react-native@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/urbanairship-react-native/-/urbanairship-react-native-5.0.0.tgz#f684f84be393869e05d72e540253b2e7fe4c4f57"
-  integrity sha512-hxDYaszpN9ezKjWzRn1M6Usmk+Ot13FZwhTigGFfLn/jV7IoZtV7Eu5tWhzW2RGbIZ4Lb6n4l9+/qIyPXzjOkQ==
 
 uri-js@^4.2.2:
   version "4.2.2"
