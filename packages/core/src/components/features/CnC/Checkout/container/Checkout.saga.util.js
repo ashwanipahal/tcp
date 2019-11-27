@@ -46,20 +46,6 @@ import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 
-export const pickUpRouting = ({
-  getIsShippingRequired,
-  isVenmoInProgress,
-  isVenmoPickupDisplayed,
-}) => {
-  if (getIsShippingRequired) {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
-  } else {
-    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-  }
-};
-
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
   const selectedAddressId = yield select(selectors.getOnFileAddressKey);
@@ -132,6 +118,7 @@ export function* updateShipmentMethodSelection({ payload }) {
 }
 
 export function* updateShippingAddress({ payload, after }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -159,7 +146,9 @@ export function* updateShippingAddress({ payload, after }) {
       nickName: selectedAddress.nickName,
     },
   });
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   if (after) {
     after();
   }
@@ -167,6 +156,7 @@ export function* updateShippingAddress({ payload, after }) {
 }
 
 export function* addNewShippingAddress({ payload }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount },
   } = payload;
@@ -194,7 +184,9 @@ export function* addNewShippingAddress({ payload }) {
     },
     true
   );
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   yield put(setOnFileAddressKey(addAddressResponse.payload));
 }
 

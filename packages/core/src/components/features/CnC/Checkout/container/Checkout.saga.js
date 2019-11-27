@@ -39,7 +39,6 @@ import {
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
-  pickUpRouting,
   callPickupSubmitMethod,
   callUpdateRTPS,
   handleServerSideErrorAPI,
@@ -49,7 +48,7 @@ import {
   shouldInvokeReviewCartCall,
   redirectFromExpress,
 } from './Checkout.saga.util';
-import { submitEmailSignup } from './CheckoutExtended.saga.util';
+import { submitEmailSignup, pickUpRouting } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -99,14 +98,17 @@ function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
     const { navigation } = payload;
+    const isGuestUser = yield select(isGuest);
     yield put(setLoaderState(true));
     yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
     yield put(setLoaderState(false));
 
     if (result.addressId) {
-      yield call(getAddressList);
-      yield call(getCardList, { ignoreCache: true });
+      if (!isGuestUser) {
+        yield call(getAddressList);
+        yield call(getCardList, { ignoreCache: true });
+      }
       if (!isMobileApp()) {
         const getIsShippingRequired = yield select(getIsOrderHasShipping);
         const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
@@ -338,6 +340,7 @@ function* loadExpressCheckout(isRecalcRewards, section, navigation, isPaypalPost
 
 function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation /* isVenmo */) {
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const isGuestUser = yield select(isGuest);
   // const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   // if (isVenmo) {
   //   const venmoData = getLocalStorage(VENMO_STORAGE_KEY);
@@ -381,7 +384,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation
     pendingPromises.push(
       call(loadExpressCheckout, isRecalcRewards, section, navigation, isPaypalPostBack)
     );
-  } else {
+  } else if (!isGuestUser) {
     pendingPromises.push(call(getAddressList));
   }
 
@@ -622,7 +625,9 @@ function* submitShipping({
   // REVIEW: the true indicates to load the reward data for user.
   // But how can the reward points change here?
   yield select(selectors.getSmsNumberForOrderUpdates);
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
 }
 
 export function* submitBillingSection(action) {
