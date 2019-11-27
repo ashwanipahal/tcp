@@ -35,14 +35,10 @@ const mapStateToProps = (state, props) => {
   const { SmsSignupFormReducer: { subscription } = {} } = state.SmsSignUp;
   const { mediaWrapper } = props;
   return {
-    formViewConfig: state.Labels.global.emailSignup,
+    formViewConfig: state.Labels.global.smsSignup,
     subscription,
     ...props,
     noModal: true,
-    colProps: {
-      left: { small: 4, medium: 4, large: 6 },
-      right: { small: 6, medium: 8, large: 6 },
-    },
     imageData: mediaWrapper && mediaWrapper.length > 0 ? mediaWrapper[0] : {},
   };
 };

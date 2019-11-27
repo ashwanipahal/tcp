@@ -81,6 +81,17 @@ class SmsSignupForm extends React.PureComponent {
     this.setState({ isFieldEmpty });
   };
 
+  getImageData = () => {
+    const { imageData, formViewConfig } = this.props;
+
+    return imageData && Object.keys(imageData).length > 0
+      ? imageData
+      : {
+          url: formViewConfig.lbl_SignUp_imageSrc,
+          alt: formViewConfig.lbl_SignUp_imageAlt,
+        };
+  };
+
   render() {
     const {
       className,
@@ -89,11 +100,11 @@ class SmsSignupForm extends React.PureComponent {
       submitting,
       pristine,
       handleSubmit,
-      colProps,
       imageData,
+      noModal,
     } = this.props;
-    const { left, right } = colProps;
-    const { IMG_DATA } = config;
+    const { left, right } = noModal ? config.pageColProps : config.modalColProps;
+    const { IMG_DATA_MODAL, IMG_DATA_PAGE } = config;
     const { isFieldEmpty } = this.state;
     const isGym = isGymboree();
     return (
@@ -108,15 +119,8 @@ class SmsSignupForm extends React.PureComponent {
                 className="img-wrapper"
               >
                 <DamImage
-                  imgConfigs={IMG_DATA.imgConfig}
-                  imgData={
-                    imageData && Object.keys(imageData).length > 0
-                      ? imageData
-                      : {
-                          url: formViewConfig.lbl_SignUp_imageSrc,
-                          alt: formViewConfig.lbl_SignUp_imageAlt,
-                        }
-                  }
+                  imgConfigs={noModal ? IMG_DATA_PAGE : IMG_DATA_MODAL}
+                  imgData={this.getImageData()}
                 />
               </Col>
               <Col
@@ -160,15 +164,8 @@ class SmsSignupForm extends React.PureComponent {
                   className="img-wrapper"
                 >
                   <DamImage
-                    imgConfigs={IMG_DATA.imgConfig}
-                    imgData={
-                      imageData && Object.keys(imageData).length > 0
-                        ? imageData
-                        : {
-                            url: formViewConfig.lbl_SignUp_imageSrc,
-                            alt: formViewConfig.lbl_SignUp_imageAlt,
-                          }
-                    }
+                    imgConfigs={noModal ? IMG_DATA_PAGE : IMG_DATA_MODAL}
+                    imgData={this.getImageData()}
                   />
                 </Col>
                 <Col colSize={right}>

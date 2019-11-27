@@ -24,20 +24,26 @@ const HelpCenterDynamicRender = dynamic({
   },
 });
 
+const BackButton = ({ labels }) => {
+  return (
+    <Anchor
+      fontSizeVariation="xlarge"
+      anchorVariation="secondary"
+      title={labels.lbl_helpCenter_continueShopping}
+      to="/home"
+      asPath="/home"
+    >
+      <span className="left-arrow" />
+      {labels.lbl_helpCenter_continueShopping}
+    </Anchor>
+  );
+};
+
 const HelpCenterView = props => {
   const { className, labels } = props;
   return (
     <div className={`${className} helpcenter__view`}>
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        title={labels.lbl_helpCenter_continueShopping}
-        to="/home"
-        asPath="/home"
-      >
-        <span className="left-arrow" />
-        {labels.lbl_helpCenter_continueShopping}
-      </Anchor>
+      <BackButton labels={labels} />
       <HelpCenterDynamicRender {...props} />
     </div>
   );

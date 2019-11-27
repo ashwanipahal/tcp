@@ -14,6 +14,13 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       >
         <Styled(Col)
           className="img-wrapper"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
           hideCol={
             Object {
               "medium": true,
@@ -24,11 +31,13 @@ exports[`EmailSignupModal component renders correctly 1`] = `
         >
           <WithTheme(DamImage)
             imgConfigs={
-              Array [
-                "t_emailSignUp_img_m",
-                "t_emailSignUp_img_t",
-                "t_emailSignUp_img_d",
-              ]
+              Object {
+                "imgConfig": Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -38,7 +47,15 @@ exports[`EmailSignupModal component renders correctly 1`] = `
             }
           />
         </Styled(Col)>
-        <Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
           <Styled(SignupFormIntro)
             formViewConfig={Object {}}
           />
@@ -434,6 +451,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       >
         <Styled(Col)
           className="img-wrapper"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
           hideCol={
             Object {
               "medium": true,
@@ -444,11 +468,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
         >
           <WithTheme(DamImage)
             imgConfigs={
-              Array [
-                "t_emailSignUp_img_m",
-                "t_emailSignUp_img_t",
-                "t_emailSignUp_img_d",
-              ]
+              Object {
+                "imgConfig": Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -458,7 +484,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
             }
           />
         </Styled(Col)>
-        <Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
           <Styled(SignupFormIntro)
             formViewConfig={Object {}}
           />
@@ -854,6 +888,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       >
         <Styled(Col)
           className="img-wrapper"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
           hideCol={
             Object {
               "medium": true,
@@ -864,11 +905,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
         >
           <WithTheme(DamImage)
             imgConfigs={
-              Array [
-                "t_emailSignUp_img_m",
-                "t_emailSignUp_img_t",
-                "t_emailSignUp_img_d",
-              ]
+              Object {
+                "imgConfig": Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -878,7 +921,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
             }
           />
         </Styled(Col)>
-        <Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
           <Styled(SignupFormIntro)
             formViewConfig={Object {}}
           />

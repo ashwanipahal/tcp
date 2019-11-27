@@ -16,14 +16,7 @@ import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const {
-      openCountrySelectorModal,
-      router,
-      pageName,
-      setCampaignId,
-      openEmailSignUpModal,
-    } = this.props;
-    openEmailSignUpModal();
+    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }

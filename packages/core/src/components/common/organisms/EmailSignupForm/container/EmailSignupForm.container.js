@@ -43,10 +43,6 @@ const mapStateToProps = (state, props) => {
     isEmailValid,
     ...props,
     noModal: true,
-    colProps: {
-      left: { small: 4, medium: 4, large: 6 },
-      right: { small: 6, medium: 8, large: 6 },
-    },
     imageData: mediaWrapper && mediaWrapper.length > 0 ? mediaWrapper[0] : {},
   };
 };

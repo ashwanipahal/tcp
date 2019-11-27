@@ -22,7 +22,7 @@ class Content extends React.Component {
         store.dispatch(fetchPageLayout(urlPath));
       }
     }
-    return { formattedUrlPath };
+    return { urlPath };
   }
 
   render() {

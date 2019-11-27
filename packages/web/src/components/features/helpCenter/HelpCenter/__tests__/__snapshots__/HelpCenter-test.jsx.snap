@@ -4,16 +4,9 @@ exports[`HelpCenterViewVanilla should render correctly 1`] = `
 <div
   className="undefined helpcenter__view"
 >
-  <Styled(Anchor)
-    anchorVariation="secondary"
-    asPath="/home"
-    fontSizeVariation="xlarge"
-    to="/home"
-  >
-    <span
-      className="left-arrow"
-    />
-  </Styled(Anchor)>
+  <BackButton
+    labels={Object {}}
+  />
   <LoadableComponent
     appType="tcp"
     getBootstrapData={[MockFunction]}
