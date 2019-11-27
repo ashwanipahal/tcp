@@ -218,7 +218,7 @@ const newArrivalItem = item => (item.itemTCPProductInd || '').toLowerCase() === 
 const getFinalPDPUrl = item => {
   const { siteId } = getAPIConfig();
   let pdpURL;
-  if (item.productURL.includes(siteId)) {
+  if (item.productURL.indexOf(`/${siteId}/`) !== -1) {
     pdpURL = item.productURL.replace(`/${siteId}`, '');
   }
   return pdpURL;
