@@ -267,6 +267,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed,
       keepAlive,
       isFromBagProductSfl,
+      quickViewPickup,
       currentProduct,
     } = this.props;
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -295,7 +296,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {this.renderUnavailableLink()}
+              {quickViewPickup() && this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,
