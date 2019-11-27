@@ -1055,7 +1055,7 @@ export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
 };
 
-export const getQueryParamsFromUrl = (url, queryParam) => {
+export const getQueryParamsFromUrl = url => {
   let queryString = url || '';
   let keyValPairs = [];
   const params = {};
@@ -1072,7 +1072,7 @@ export const getQueryParamsFromUrl = (url, queryParam) => {
       return params;
     });
   }
-  return params[queryParam];
+  return params;
 };
 
 /**

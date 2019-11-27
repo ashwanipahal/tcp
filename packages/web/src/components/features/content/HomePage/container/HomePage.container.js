@@ -20,7 +20,6 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
         pageSection: 'homepage',
         pageSubSection: 'home page',
         pageType: 'home page',
-        eVar15: 'D-Vo',
       },
     },
   };

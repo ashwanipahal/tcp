@@ -10,6 +10,7 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import { setProp } from '@tcp/core/src/analytics/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -24,13 +25,18 @@ class HomePageWrapper extends React.Component {
     if (pageName === 'homepage') {
       this.subscriptionPopUpOnPageLoad();
     }
-    const cid = getQueryParamsFromUrl(router.asPath, 'cid');
-    const icid = getQueryParamsFromUrl(router.asPath, 'icid');
-    if (cid) {
-      setCampaignId(cid[0]);
+    const queryParams = getQueryParamsFromUrl(router.asPath);
+    const queryParamsArray = ['cid', 'icid'];
+    setProp('eVar22', queryParams[queryParamsArray[0]][0]);
+    setProp('eVar15', 'D-Vo');
+    if (queryParams[queryParamsArray[0]]) {
+      setCampaignId(queryParams[queryParamsArray[0]][0]);
     }
-    if (icid) {
-      setClickAnalyticsData({ internalCampaignId: icid[0], customEvents: ['event18', 'event80'] });
+    if (queryParams[queryParamsArray[1]]) {
+      setClickAnalyticsData({
+        internalCampaignId: queryParams[queryParamsArray[1]][0],
+        customEvents: ['event18', 'event80'],
+      });
     }
   }
 
