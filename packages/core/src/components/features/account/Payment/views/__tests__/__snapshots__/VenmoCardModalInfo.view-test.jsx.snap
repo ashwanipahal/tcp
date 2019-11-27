@@ -13,6 +13,7 @@ exports[`VenmoCardModalInfo Component should render correctly 1`] = `
   >
      
     <Styled(Image)
+      alt="Venmo Acceptance Mark"
       className="deleteCardModal__img"
       src="/static/version-not-available/images/venmo.svg"
     />

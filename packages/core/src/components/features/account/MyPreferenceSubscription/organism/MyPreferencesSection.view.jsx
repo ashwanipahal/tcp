@@ -167,6 +167,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     width="17"
                     height="17"
                     src={getIconPath('icon-alarm')}
+                    alt="Alarm Icon"
                   />
                   <Field
                     name={MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE}
@@ -230,7 +231,13 @@ class MyPrefrenceSection extends React.PureComponent {
                   >
                     {getLabelValue(labels, 'lbl_prefrence_text_text')}
                   </BodyCopy>
-                  <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
+                  <Image
+                    class="elem-pl-XS"
+                    width="17"
+                    height="17"
+                    src={getIconPath('icon-chat')}
+                    alt="Chat Icon"
+                  />
 
                   <Field
                     name={MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE}

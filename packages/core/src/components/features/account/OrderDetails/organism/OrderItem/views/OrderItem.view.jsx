@@ -36,7 +36,7 @@ const OrderItems = ({ className, ...otherProps }) => {
       <Row fullBleed>
         <Col colSize={{ large: 2, medium: 2, small: 2 }}>
           <BodyCopy component="div">
-            <Image src={imagePath} data-locator="order_item_image" />
+            <Image src={imagePath} alt="Order Item" data-locator="order_item_image" />
           </BodyCopy>
           <BodyCopy component="div">
             {itemBrand === 'TCP' && (
