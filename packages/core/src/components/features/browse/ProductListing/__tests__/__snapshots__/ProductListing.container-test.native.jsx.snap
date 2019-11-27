@@ -3,6 +3,7 @@
 exports[`ProductListContainer component should render correctly 1`] = `
 <Styled(ProductListView)
   AddToFavoriteErrorMsg=""
+  animationURL="https://i.gifer.com/77Y.gif"
   breadCrumbs={Array []}
   categoryId=""
   currentNavIds={Array []}

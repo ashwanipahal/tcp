@@ -62,4 +62,5 @@ NativeModules.RNCNetInfo = {
   removeListeners: jest.fn(),
 };
 
+// Mock permission for react-native modules
 NativeModules.RNPermissions = {};
