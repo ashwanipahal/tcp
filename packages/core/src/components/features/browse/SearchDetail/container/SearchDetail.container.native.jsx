@@ -162,7 +162,8 @@ class SearchDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isSearchResultsAvailable || isLoadingMore ? (
           <View>
-            {this.searchQuery && products && products.length > 0 ? (
+            {(this.searchQuery && (products && products.length > 0)) ||
+            (filtersLength && Object.keys(filtersLength).length > 0) ? (
               <SearchDetail
                 margins="0 12px 0 12px"
                 filters={filters}
