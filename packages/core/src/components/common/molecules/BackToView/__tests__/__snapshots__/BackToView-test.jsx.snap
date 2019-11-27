@@ -1,43 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LeftNavigation component LeftNavigation component renders correctly without props 1`] = `
+exports[`BackToView component BackToView component renders correctly without props 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-EHOje",
-        "isStatic": false,
+        "componentId": "sc-kgoBCf",
+        "isStatic": true,
         "rules": Array [
           "
   ",
-          "
-  .nav-link-wrapper:not(:first-child) {
-    padding: ",
-          [Function],
-          " 0 0;
-  }
-  .navLink {
-    color: ",
-          [Function],
-          "
-
-    &__Selected {
-      color: ",
-          [Function],
-          "
-    }
-  }
-",
           ";
 ",
         ],
       },
-      "displayName": "Styled(LeftNavigation)",
+      "displayName": "Styled(BackToView)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-EHOje",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

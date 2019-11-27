@@ -3,6 +3,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import BackToView from '@tcp/core/src/components/common/molecules/BackToView';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import styles from '../styles/HelpCenter.style';
 
@@ -19,14 +20,15 @@ const HelpCenterDynamicRender = dynamic({
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;
-    return <PageSlots slots={slots} modules={modules} />;
+    return <PageSlots slots={slots} modules={modules} {...slotData} />;
   },
 });
 
 const HelpCenterView = props => {
-  const { className } = props;
+  const { className, labels } = props;
   return (
     <div className={className}>
+      <BackToView linkText={labels.lbl_helpCenter_continueShopping} defaultOpen />
       <HelpCenterDynamicRender {...props} />
     </div>
   );
@@ -35,10 +37,12 @@ const HelpCenterView = props => {
 HelpCenterView.propTypes = {
   slotData: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}),
 };
 
 HelpCenterView.defaultProps = {
   slotData: {},
+  labels: {},
 };
 
 export default withStyles(errorBoundary(HelpCenterView), styles);

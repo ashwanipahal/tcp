@@ -2,9 +2,13 @@
 
 exports[`HelpCenterViewVanilla should render correctly 1`] = `
 <div>
+  <Styled(BackToView)
+    defaultOpen={true}
+  />
   <LoadableComponent
     appType="tcp"
     getBootstrapData={[MockFunction]}
+    labels={Object {}}
     loadNavigationData={[Function]}
     navigation={
       Object {
