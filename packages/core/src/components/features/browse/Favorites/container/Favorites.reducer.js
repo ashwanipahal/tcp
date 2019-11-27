@@ -7,7 +7,7 @@ const initialState = fromJS({
   wishlistsSummaries: [],
   activeWishList: null,
   lastDeletedItemId: '',
-  isDataLoading: false,
+  isDataLoading: true,
   isAddToFavError: '',
   isWishListShared: false,
 });

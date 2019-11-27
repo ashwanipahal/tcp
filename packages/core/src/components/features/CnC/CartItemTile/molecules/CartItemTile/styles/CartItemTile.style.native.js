@@ -110,7 +110,8 @@ const BtnWrapper = styled.View`
   justify-content: center;
   width: 60%;
   text-align: center;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const MarginLeft = styled.TouchableOpacity`

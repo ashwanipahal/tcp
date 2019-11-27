@@ -40,21 +40,28 @@ class Modal extends React.PureComponent {
       closeIconLeftAligned,
       ariaLabelledby,
       ariaDescribedby,
+      aria,
       innerContentClassName = '',
       overlayClassName,
       isOpen,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
+    const hiddenHeaderUniqueId = `modalLabel_${Date.now()}`;
 
     return isOpen ? (
       <ReactModal
         {...otherProps}
+        aria-label=""
         overlayClassName={`${className} ${overlayClassName}`}
         aria={{
-          labelledby: ariaLabelledby,
-          describedby: ariaDescribedby,
+          labelledby: ariaLabelledby || aria.ariaLabelledby || hiddenHeaderUniqueId,
+          describedby: ariaDescribedby || aria.ariaDescribedby,
+          modal: true,
         }}
       >
+        <span id={hiddenHeaderUniqueId} className="TCPModal__hidden_header_label">
+          {heading || ariaLabelledby || aria.ariaLabelledby}
+        </span>
         {!fixedWidth && (
           <Grid>
             <Row>
@@ -101,6 +108,11 @@ class Modal extends React.PureComponent {
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
+  aria: PropTypes.shape({}),
+};
+
+Modal.defaultProps = {
+  aria: {},
 };
 
 // TODO removed errorBoundary from modal as its not working properly right now

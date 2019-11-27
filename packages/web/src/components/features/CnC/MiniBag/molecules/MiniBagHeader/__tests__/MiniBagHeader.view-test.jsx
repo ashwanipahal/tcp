@@ -11,6 +11,7 @@ describe('MiniBagHeader component', () => {
         subTotal: 'total',
         points: 'points',
         inRewards: 'rewards',
+        accessibility: {},
       },
       userName: 'User',
       cartItemCount: '12',
@@ -27,6 +28,7 @@ describe('MiniBagHeader component', () => {
         subTotal: 'total',
         points: 'points',
         inRewards: 'rewards',
+        accessibility: {},
       },
 
       cartItemCount: '12',
