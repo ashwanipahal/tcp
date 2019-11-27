@@ -12,12 +12,13 @@ import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 // For SSR perf timing
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, getStaticFilePath } from '@tcp/core/src/utils';
 import langMap from '../config/languageMap';
+import preconnectDomains from '../config/preconnectDomains';
 import RenderPerf from '../components/common/molecules/RenderPerf';
 // External Style Sheet
 const CSSOverride = () => {
-  return <link href={process.env.RWD_WEB_CSS_OVERRIDE_URL} rel="stylesheet" />;
+  return <link href={getStaticFilePath(process.env.RWD_WEB_CSS_OVERRIDE_URL)} rel="stylesheet" />;
 };
 
 function HotfixScript() {
@@ -56,10 +57,13 @@ class MyDocument extends Document {
       <Html lang={langMap[language] || 'en'}>
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
-          <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
-          <link href="/static/app.css" rel="stylesheet" />
-          <link href="/static/cld-video-player.min.css" rel="stylesheet" />
+          <link rel="icon" href={getStaticFilePath(process.env.RWD_WEB_FAVICON_URL)} />
+          <link href={getStaticFilePath('app.css')} rel="stylesheet" />
+          <link href={getStaticFilePath('cld-video-player.min.css')} rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
+          {preconnectDomains.map(domain => (
+            <link href={domain} rel="preconnect" crossOrigin="anonymous" />
+          ))}
           {/* Empty global object definition for external hotfix sources to append */}
           <HotfixScript />
         </Head>

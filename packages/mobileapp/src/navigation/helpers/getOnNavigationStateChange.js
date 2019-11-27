@@ -1,26 +1,26 @@
-import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
-import { getActiveRoute } from './getActiveRoute';
+import { TRACK_PAGE_VIEW, TRACK_CLICK } from '@tcp/core/src/analytics';
+import { getActiveRouteName } from './getActiveRouteName';
+/*eslint-disable */
 
-/**
- * This function will be called on every route change in app and will trigger the page load event
- * with currentScreen name and pageData if available in route params.
- * @param { store } store - current store object
- * @param { context } context - context object
- */
-export function getOnNavigationStateChange({ store, context }) {
+export function getOnNavigationStateChange(store) {
   return {
     onNavigationStateChange: (prevState, currentState, action) => {
-      const currentScreen = getActiveRoute(currentState);
-      const prevScreen = getActiveRoute(prevState);
-      if (prevScreen.routeName !== currentScreen.routeName) {
+      const currentScreen = getActiveRouteName(currentState);
+      const prevScreen = getActiveRouteName(prevState);
+      if (prevScreen !== currentScreen) {
         // change the tracker here to use other Mobile analytics SDK.
         store.dispatch({
           type: TRACK_PAGE_VIEW,
           payload: {
-            currentScreen: currentScreen.routeName,
-            pageData: currentScreen.params && currentScreen.params.pageData,
+            previousScreen: prevScreen,
+            currentScreen,
+            // appState: store.getState(),
+            navState: currentState,
           },
         });
+        __DEV__
+          ? console.info(`%cNow navigating to: ${currentScreen}`, 'background: #333; color: #fff')
+          : null;
       }
     },
   };

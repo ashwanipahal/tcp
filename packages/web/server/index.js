@@ -28,6 +28,7 @@ const {
   preRouteSlugs,
 } = require('@tcp/core/src/config/route.config');
 const redis = require('async-redis');
+const { join } = require('path');
 
 const {
   settingHelmetConfig,
@@ -208,6 +209,16 @@ const renderAndCache = async (app, req, res, resolver, params) => {
 };
 
 app.prepare().then(() => {
+  // static files path - ignore version and serve file from the directory
+  // this is being done to avoid serving stale files from Akamai - add version numbers to static files
+  server.get(
+    '/static/:buildId?/*.(css|js|jpeg|jpg|svg|png|gif|ttf|woff|woff2|eot|otf)',
+    (req, res) => {
+      const filePath = join(__dirname, '..', 'src/static', `${req.params[0]}.${req.params[1]}`);
+      res.sendFile(filePath);
+    }
+  );
+
   // Looping through the routes and providing the corresponding resolver route
   ROUTES_LIST.forEach(route => {
     const routeWithSlug = preRouteSlugs.join('') + route.path;
