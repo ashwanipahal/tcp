@@ -10,7 +10,7 @@ const ModalStyle = css`
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
     z-index: ${props => props.theme.zindex.zModal};
   }
-  #modalLabel {
+  .TCPModal__hidden_header_label {
     display: none;
   }
   div.TCPModal__InnerContent {
