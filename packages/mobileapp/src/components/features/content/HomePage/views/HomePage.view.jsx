@@ -1,7 +1,11 @@
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
+// import { Box, Text } from '@fabulas/astly';
+// import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
+
 import queryString from 'query-string';
+
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -30,10 +34,12 @@ import {
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
 import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
+// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
+// import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import {
   HeaderPromoContainer,
