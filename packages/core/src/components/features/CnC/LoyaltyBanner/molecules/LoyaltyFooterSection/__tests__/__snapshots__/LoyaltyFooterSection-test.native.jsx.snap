@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyFooterSection isProductDetailView && isGuest should render correctly 1`] = `
+<View
+  className=" footer-wrapper"
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      className="createAccount"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      text="CreateAccountAction"
+      underline={true}
+      visible={false}
+    />
+    <Styled(View) />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      className="logIn"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      text="loginAction"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`LoyaltyFooterSection isProductDetailView && plcc && isGuest should render correctly 1`] = `
+<View
+  className=" footer-wrapper"
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      className="applyNow"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      text="ApplyNowAction"
+      underline={true}
+      visible={false}
+    />
+    <Styled(View) />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      className="learnMore"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      text="LearnMoreAction"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`LoyaltyFooterSection isProductDetailView should render correctly 1`] = `
+<View
+  className=" footer-wrapper"
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+    <Styled(View) />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="text.primary"
+      dataLocator=""
+      fontSize="fs9"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`LoyaltyFooterSection should render correctly 1`] = `
+<View
+  className=" footer-wrapper"
+>
+  <Styled(View) />
+</View>
+`;
+
+exports[`LoyaltyFooterSection should render correctly if show modal 1`] = `
+<View
+  className=" footer-wrapper"
+>
+  <Styled(View)>
+    <ModalNative
+      fontSize="fs16"
+      heading=" "
+      headingFontFamily="secondary"
+      horizontalBar={true}
+      inheritedStyles=""
+      isOpen={true}
+      isOverlay={false}
+      onRequestClose={[Function]}
+    >
+      <View />
+    </ModalNative>
+  </Styled(View)>
+</View>
+`;

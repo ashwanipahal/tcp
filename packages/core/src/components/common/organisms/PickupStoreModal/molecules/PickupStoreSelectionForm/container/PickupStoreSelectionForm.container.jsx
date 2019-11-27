@@ -3,7 +3,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { propTypes as reduxFormPropTypes, change } from 'redux-form';
-import { setClickAnalyticsData } from '../../../../../../../analytics/actions';
+import { setClickAnalyticsData, trackClick } from '../../../../../../../analytics/actions';
 import { connect } from 'react-redux';
 import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
@@ -475,6 +475,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
       openRestrictedModalForBopis,
       storeSearchCriteria,
       storeSearchDistance,
+      setClickAnalyticsDataDispatch,
+      trackClickDispatch,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
@@ -524,18 +526,26 @@ class PickupStoreSelectionFormContainer extends React.Component {
         openRestrictedModalForBopis={openRestrictedModalForBopis}
         storeSearchCriteria={storeSearchCriteria}
         storeSearchDistance={storeSearchDistance}
-        setClickAnalyticsData={setClickAnalyticsData}
+        setClickAnalyticsData={setClickAnalyticsDataDispatch}
+        trackClick={trackClickDispatch}
       />
     );
   }
 }
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     pageNameProp: getPageName(state),
     storeSearchCriteria: getStoreSearchCriteria(state),
     storeSearchDistance: getStoreSearchDistance(state),
-    setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
   };
-}
+};
 
-export default connect(mapStateToProps)(PickupStoreSelectionFormContainer);
+const mapDispatchToProps = dispatch => ({
+  setClickAnalyticsDataDispatch: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClickDispatch: payload => dispatch(trackClick(payload)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PickupStoreSelectionFormContainer);

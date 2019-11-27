@@ -1,1 +1,1 @@
-export { default } from '../views';
+export { default } from './Favorites.container';
