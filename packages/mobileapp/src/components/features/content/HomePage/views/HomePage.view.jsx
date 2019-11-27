@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-// import { Box, Text } from '@fabulas/astly';
-// import {LazyloadScrollView} from 'react-native-lazyload-deux';
+import ErrorBoundary from 'react-native-error-boundary';
 import { Button } from '@tcp/core/src/components/common/atoms';
 
 import queryString from 'query-string';
@@ -34,12 +33,10 @@ import {
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
 import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
-// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
-// import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import {
   HeaderPromoContainer,
@@ -66,6 +63,17 @@ const modulesMap = {
   moduleE: ModuleE,
   moduleG: ModuleG,
 };
+
+const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
+  const modulesMapWithErrorsBoundary = modulesMapObj;
+  const Module = modulesMap[key];
+  modulesMapWithErrorsBoundary[key] = props => (
+    <ErrorBoundary>
+      <Module {...props} />
+    </ErrorBoundary>
+  );
+  return modulesMapWithErrorsBoundary;
+}, {});
 
 const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent {
@@ -190,7 +198,7 @@ class HomePageView extends React.PureComponent {
           />
         </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
-        <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations
           navigation={navigation}
