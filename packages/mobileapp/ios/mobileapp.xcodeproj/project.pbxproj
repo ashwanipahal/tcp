@@ -93,7 +93,7 @@
 		16C47572238D53FC00B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47573238D540800B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47574238D541000B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		2217CA1887DDCECEE46A330F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		2217CA1887DDCECEE46A330F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2BCCB2BBDB5252B7AB582232 /* libPods-mobileapp_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE3286F55C040E4667E957A /* libPods-mobileapp_int.a */; };
 		3351837FB28E8E4DAD8DA8BC /* libPods-gymboree_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E82BBF7461A7C1A9646777BF /* libPods-gymboree_preview.a */; };
 		3656A5832337836800EF9714 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
@@ -212,7 +212,7 @@
 		84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677A76230BCD44001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677A77230BCD44001F5301 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		84677A77230BCD44001F5301 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -263,12 +263,12 @@
 		8480856922D9B52500D7D25B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
-		84FD9D8F3CDEE146BC7C9D17 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		898C6AED91BE1EF397F3E1B6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		9A43AF65CEB0F918C7E1C75C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		84FD9D8F3CDEE146BC7C9D17 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		898C6AED91BE1EF397F3E1B6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		9A43AF65CEB0F918C7E1C75C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A9B1DD75B4BA920EE121F880 /* libPods-gymboree_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C40AD178382E82A7AACC6753 /* libPods-gymboree_int.a */; };
 		AC3892B34C1D2E669CF59232 /* libPods-gymboree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6A72B8494E5EAC3994A2D1 /* libPods-gymboree.a */; };
-		ACB4C22F1276E4FEF77A7CB4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		ACB4C22F1276E4FEF77A7CB4 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		CA0946D72361DAF4004810F7 /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA31063A2375C71C00D8D91A /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
 		CA31063B2375C72700D8D91A /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
@@ -299,7 +299,7 @@
 		D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		E6B0C5B123279C35001CC8EF /* mobileapp_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */; };
-		E7EC0A6D2B2169C265D33425 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		E7EC0A6D2B2169C265D33425 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EB01F59E7036ADCBCD647853 /* libPods-mobileapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 872335379EE324A5B0FB972D /* libPods-mobileapp.a */; };
 /* End PBXBuildFile section */
 
@@ -738,7 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				898C6AED91BE1EF397F3E1B6 /* BuildFile in Frameworks */,
+				898C6AED91BE1EF397F3E1B6 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,7 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C4752F238D3FC400B6959B /* JavaScriptCore.framework in Frameworks */,
-				ACB4C22F1276E4FEF77A7CB4 /* BuildFile in Frameworks */,
+				ACB4C22F1276E4FEF77A7CB4 /* (null) in Frameworks */,
 				5C658802DBEE101155B3D33B /* libPods-mobileapp_preview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,7 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C47525238D3DF200B6959B /* JavaScriptCore.framework in Frameworks */,
-				84FD9D8F3CDEE146BC7C9D17 /* BuildFile in Frameworks */,
+				84FD9D8F3CDEE146BC7C9D17 /* (null) in Frameworks */,
 				6D40DB93D473EF097D9197A5 /* libPods-mobileapp_uat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,7 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C47529238D3F7E00B6959B /* JavaScriptCore.framework in Frameworks */,
-				E7EC0A6D2B2169C265D33425 /* BuildFile in Frameworks */,
+				E7EC0A6D2B2169C265D33425 /* (null) in Frameworks */,
 				121AA507054B8AF4343D8D48 /* libPods-mobileapp_prod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,7 +813,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C4752B238D3F9800B6959B /* JavaScriptCore.framework in Frameworks */,
-				2217CA1887DDCECEE46A330F /* BuildFile in Frameworks */,
+				2217CA1887DDCECEE46A330F /* (null) in Frameworks */,
 				52E2F8A3A812AE2049914EAC /* libPods-gymboree_dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,7 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C4752D238D3FAF00B6959B /* JavaScriptCore.framework in Frameworks */,
-				9A43AF65CEB0F918C7E1C75C /* BuildFile in Frameworks */,
+				9A43AF65CEB0F918C7E1C75C /* (null) in Frameworks */,
 				15C2498280EC058B1A775501 /* libPods-gymboree_uat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2009,7 +2009,7 @@
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A76230BCD44001F5301 /* Images.xcassets in Resources */,
 				4C945DCB233E6F5000825846 /* AppCenter-Config.plist in Resources */,
-				84677A77230BCD44001F5301 /* BuildFile in Resources */,
+				84677A77230BCD44001F5301 /* (null) in Resources */,
 				84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */,
 				84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */,
@@ -4110,7 +4110,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
@@ -4128,10 +4128,11 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4145,9 +4146,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
