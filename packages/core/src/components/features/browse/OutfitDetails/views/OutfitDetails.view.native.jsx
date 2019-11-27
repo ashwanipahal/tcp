@@ -9,6 +9,7 @@ import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import { getMapSliceForColorProductId } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { OUTFIT_LISTING_FORM } from '../../../../../constants/reducer.constants';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -189,7 +190,13 @@ const OutfitDetailsView = props => {
         />
       </RecommendationWrapper>
 
-      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      {isPickupModalOpen ? (
+        <PickupStoreModal
+          navigation={navigation}
+          isNotProductAddToBag
+          reduxFormName={OUTFIT_LISTING_FORM}
+        />
+      ) : null}
     </ScrollViewContainer>
   );
 };

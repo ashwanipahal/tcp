@@ -35,7 +35,7 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import { OUTFIT_LISTING_FORM } from '../../../../../constants/reducer.constants';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -88,7 +88,7 @@ class OutfitDetailsContainer extends React.PureComponent {
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
     const formValues = getAddedToBagFormValues(
       currentState,
-      `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+      `${OUTFIT_LISTING_FORM}-${generalProductId}`
     );
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo };
