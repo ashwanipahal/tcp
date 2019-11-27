@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
-
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
 import RichText from '../../../../../atoms/RichText';
-import { RichTextWrapper, contentHeight } from '../styles/BonusPoints.view.style.native';
+import {
+  RichTextWrapper,
+  contentHeight,
+  BonusPointsLoaderWrapper,
+} from '../styles/BonusPoints.view.style.native';
 import constants from '../../../BonusPointsDays.constants';
 
 class BonusPointsView extends React.Component {
@@ -61,6 +65,7 @@ class BonusPointsView extends React.Component {
       orderDetails,
       isBagPage,
       showAccordian,
+      isFetching,
       ...otherProps
     } = this.props;
     const { openModalState } = this.state;
@@ -75,19 +80,27 @@ class BonusPointsView extends React.Component {
             isPlcc={isPlcc}
           />
         )}
-        {view !== constants.VIEWS.READ && (
-          <BonusPointsSection
-            labels={labels.global.bonusPoints}
-            bonusData={bonusData}
-            toggleBonusPointsModal={this.toggleBonusPointsModal}
-            getBonusDaysData={getBonusDaysData}
-            orderDetails={orderDetails}
-            isPlcc={isPlcc}
-            isBagPage={isBagPage}
-            bagBonusLabels={labels.checkout.bagBonusPoints}
-            showAccordian={showAccordian}
-            {...otherProps}
-          />
+        {!isFetching ? (
+          <>
+            {view !== constants.VIEWS.READ && (
+              <BonusPointsSection
+                labels={labels.global.bonusPoints}
+                bonusData={bonusData}
+                toggleBonusPointsModal={this.toggleBonusPointsModal}
+                getBonusDaysData={getBonusDaysData}
+                orderDetails={orderDetails}
+                isPlcc={isPlcc}
+                isBagPage={isBagPage}
+                bagBonusLabels={labels.checkout.bagBonusPoints}
+                showAccordian={showAccordian}
+                {...otherProps}
+              />
+            )}
+          </>
+        ) : (
+          <BonusPointsLoaderWrapper>
+            <LoaderSkelton />
+          </BonusPointsLoaderWrapper>
         )}
         <Modal
           isOpen={openModalState}

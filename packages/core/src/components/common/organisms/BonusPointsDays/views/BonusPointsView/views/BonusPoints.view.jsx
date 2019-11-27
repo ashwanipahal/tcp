@@ -71,11 +71,12 @@ class BonusPointsView extends React.Component {
       orderDetails,
       showAccordian,
       isDefaultOpen,
+      isFetching,
       ...otherProps
     } = this.props;
     return (
       <>
-        {bonusData ? (
+        {!isFetching ? (
           view === constants.VIEWS.EDIT && (
             <div className={className}>
               <BonusPointsSection
