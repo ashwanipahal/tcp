@@ -34,6 +34,10 @@ export const getShortDescription = state => {
   return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.shortDescription;
 };
 
+export const getPDPLoadingState = state => {
+  return state.ProductDetail && state.ProductDetail.isLoading;
+};
+
 export const getProductDetailFormValues = state => {
   const generalProductId = getGeneralProductId(state);
   return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);

@@ -7065,6 +7065,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .sflActions {
+    white-space: nowrap;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -7635,6 +7636,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .sflActions {
+    white-space: nowrap;
     text-decoration: underline;
     cursor: pointer;
   }

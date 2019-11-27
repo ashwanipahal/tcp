@@ -73,4 +73,35 @@ describe('ConfirmationOrderNumberDisplayVanilla', () => {
     const tree = shallow(<ConfirmationOrderNumberDisplayVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render correctly with default', () => {
+    const props = {
+      center: {
+        storeName: 'union',
+        storeLink: { asPath: '/', to: '/' },
+        address: {
+          addressLine1: '1123 ab',
+          addressLine2: 'adf',
+          city: 'AC',
+          state: 'AD',
+          zipCode: '10001',
+        },
+        shippingFullname: 'name',
+        todayOpenRange: '',
+        tomorrowOpenRange: '',
+        phoneNumber: 23456789023,
+        orderType: '',
+        orderDate: {
+          toLocaleDateString: jest.fn(),
+        },
+        productsCount: 2,
+        orderTotal: 23,
+        bossMaxDate: '',
+        bossMinDate: '',
+      },
+      labels: {},
+      isGuest: false,
+    };
+    const tree = shallow(<ConfirmationOrderNumberDisplayVanilla {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

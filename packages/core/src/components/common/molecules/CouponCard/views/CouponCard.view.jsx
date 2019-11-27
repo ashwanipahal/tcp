@@ -219,6 +219,7 @@ class CouponCard extends React.Component<Props> {
           {isCarouselView && (
             <ErrorMessage
               className="transparent-box"
+              fontSize="fs10"
               error={coupon.error}
               isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
             />

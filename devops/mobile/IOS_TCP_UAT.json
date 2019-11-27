@@ -310,6 +310,14 @@
       "value": ".gymboree.com"
     },
     {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "gEzYmTNVR3IdQgwiw2T0xQ"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
       "name": "RWD_APP_STYLITICS_USERNAME_TCP",
       "value": "thechildrensplace"
     },
@@ -340,7 +348,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
+        "064fbaa4-11d8-431d-bdb6-97b8738ae0e3"
       ],
       "isSilent": false
     },
@@ -352,9 +360,9 @@
     "xcode": {
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "Hockey_Distribution_profile_22-10-2019.mobileprovision",
-      "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
-      "provisioningProfileFileId": "d0979d55-37ae-45f0-af31-6a3a6e836457",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATStage.mobileprovision",
+      "certificateFileId": "bf74bb9c-df52-49ab-a7d7-6040542a6ef2",
+      "provisioningProfileFileId": "86c75568-d841-44a5-a73c-a419306b47cd",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_uat",

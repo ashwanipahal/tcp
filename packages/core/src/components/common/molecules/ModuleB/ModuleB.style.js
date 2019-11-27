@@ -79,6 +79,11 @@ export default css`
         height: 295px;
       }
     }
+    .banner-bottom-variation {
+      .promo-banner {
+        padding-top: 16px;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
