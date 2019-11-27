@@ -30,13 +30,13 @@ export function productLink(loadedProductCount, pdpUrl, event) {
 }
 
 export function ProductTitle(values) {
-  const { name, pdpUrl, loadedProductCount, children } = values;
+  const { name, pdpUrl, loadedProductCount, isProductBrandOfSameSiteBrand, children } = values;
   const pdpToPath = getProductListToPath(pdpUrl);
   return (
     <div className="product-title-container">
       <Anchor
         handleLinkClick={e => productLink(loadedProductCount, pdpUrl, e)}
-        to={pdpToPath}
+        to={isProductBrandOfSameSiteBrand ? pdpToPath : pdpUrl}
         asPath={pdpUrl}
         inheritedStyles="product-title-content"
       >
