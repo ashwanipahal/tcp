@@ -5,9 +5,9 @@ import handler from '../../../handler';
  * Abstractor layer for getting sitemap data
  */
 const Abstractor = {
-  getData: (module, data) => {
+  getData: data => {
     return handler
-      .fetchModuleDataFromGraphQL({ name: module, data })
+      .fetchModuleDataFromGraphQL({ data })
       .then(response => {
         return response.data.siteMap;
       })

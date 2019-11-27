@@ -13,13 +13,23 @@ class SiteMap extends React.PureComponent {
     }
   }
 
-  render() {
-    const { className, siteMapData } = this.props;
-    // const { content, url, categories } = siteMapData;
-
+  createLink = (items, level) => {
     return (
-      <div className={`${className} ${site_map_container}`}>
-        SITEMAP
+      <Anchor
+        className={`Link_level_${level}`}
+        to={items.href.replace('/c/', '/c?cid=')}
+        asPath={items.href}
+      >
+        {items.name}
+      </Anchor>
+    );
+  };
+
+  render() {
+    const { className } = this.props;
+    return (
+      <div className={`${className} site_map_container`}>
+        Sitemap
         {/* <div className="site_map_heading_container">
           <Heading component="h5" variant="h5" className="site_map_heading">
             <Anchor
@@ -30,7 +40,9 @@ class SiteMap extends React.PureComponent {
               {content}
             </Anchor>
           </Heading>
-
+        </div>
+        <div className="categories_container">
+          {categories.map(item => createLink(item, 1))}
         </div> */}
       </div>
     );
