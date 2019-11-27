@@ -103,7 +103,7 @@ class Header extends React.PureComponent {
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
     return (
-      <header className={className}>
+      <header className={`${className} header-global`}>
         {topPromoBanner ? (
           <LoyaltyPromoBanner
             richTextList={[{ richText: topPromoBanner[0], link: null }]}
