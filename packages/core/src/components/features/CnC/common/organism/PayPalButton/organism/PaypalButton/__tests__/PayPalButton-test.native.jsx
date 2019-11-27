@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PayPalButton from '../views/PayPalButton.view.native';
+import { PayPalButtonVanilla } from '../views/PayPalButton.view.native';
 
 describe('PayPalButton component', () => {
   let component;
@@ -26,7 +26,7 @@ describe('PayPalButton component', () => {
       paypalAuthorizationHandle: jest.fn(),
       clearPaypalSettings: jest.fn(),
     };
-    component = shallow(<PayPalButton {...props} />);
+    component = shallow(<PayPalButtonVanilla {...props} />);
   });
 
   it('PayPalButton component renders correctly', () => {

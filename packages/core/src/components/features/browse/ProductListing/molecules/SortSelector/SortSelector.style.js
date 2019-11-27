@@ -101,8 +101,9 @@ export default css`
       background: none;
     }
     .item-highlighted {
-      background: url(${selectedIcon}) no-repeat left top -${props => props.theme.spacing.ELEM_SPACING.XXS};
-      background-size: 25px 25px;
+      background: url(${selectedIcon}) no-repeat left
+        ${props => props.theme.spacing.ELEM_SPACING.XS} top 0;
+      background-size: 18px 18px;
       padding-bottom: 0;
     }
   }

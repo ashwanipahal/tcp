@@ -316,7 +316,13 @@ export class BagPage extends React.Component {
   };
 
   render() {
-    const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      navigation,
+      orderItemsCount,
+      isShowSaveForLaterSwitch,
+    } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems, isPayPalWebViewEnable } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection, showCondensedHeader, height } = this.state;
@@ -342,17 +348,19 @@ export class BagPage extends React.Component {
                   <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
                 )}
               </HeadingViewStyle>
-              <SflHeadingViewStyle
-                onPress={() => {
-                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
-                }}
-              >
-                {isSFLStage ? (
-                  <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
-                ) : (
-                  <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
-                )}
-              </SflHeadingViewStyle>
+              {isShowSaveForLaterSwitch && (
+                <SflHeadingViewStyle
+                  onPress={() => {
+                    this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                  }}
+                >
+                  {isSFLStage ? (
+                    <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
+                  ) : (
+                    <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
+                  )}
+                </SflHeadingViewStyle>
+              )}
             </BagHeaderRow>
           </AnimatedBagHeaderMain>
           {this.showNotification()}
