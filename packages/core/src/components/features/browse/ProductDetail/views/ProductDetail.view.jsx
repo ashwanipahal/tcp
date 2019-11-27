@@ -43,6 +43,39 @@ class ProductDetailView extends PureComponent {
       renderReceiveProps: false,
     };
   }
+  componentDidMount() {
+    const {
+      store: {
+        pageData: { pageName, pageSection, pageSubSection },
+      },
+    } = this.props;
+    const { productInfo, setClickAnalyticsData } = this.props;
+    const productsFormatted = this.formatProductsData(productInfo);
+    if (productsFormatted) {
+      setClickAnalyticsData({
+        pageName,
+        pageSection,
+        pageSubSection,
+        products: productsFormatted,
+        customEvents: ['prodView', 'event1'],
+      });
+    }
+  }
+
+  formatProductsData = product => {
+    const colorName = product.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = product.generalProductId.split('_')[0];
+    return {
+      colorId: product.generalProductId,
+      color: colorName,
+      id: productId,
+      price: product.listPrice,
+      rating: product.ratings,
+      reviews: product.reviewsCount,
+    };
+  };
 
   onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {

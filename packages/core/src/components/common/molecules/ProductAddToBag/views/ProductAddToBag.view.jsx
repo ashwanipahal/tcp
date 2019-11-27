@@ -322,6 +322,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     pageSection: 'product',
                     pageSubSection: 'product',
                     products: [{ id: `${productId}` }],
+                    customEvents: ['event61', 'event77'],
                   }}
                 >
                   <Button

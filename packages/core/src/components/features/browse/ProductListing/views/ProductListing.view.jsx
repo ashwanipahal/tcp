@@ -30,6 +30,27 @@ import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 // Minimum number of product results worth measuring with a UX timer
 const MINIMUM_RESULTS_TO_MEASURE = 3;
 
+const formatProductsData = products => {
+  return products.map((tile, index) => {
+    const {
+      productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
+      miscInfo: { categoryName },
+    } = tile;
+    const productId = generalProductId && generalProductId.split('_')[0];
+    const productName = name;
+    return {
+      id: productId,
+      colorId: generalProductId,
+      name: productName,
+      price: offerPrice,
+      listPrice: listPrice,
+      extPrice: priceRange.lowOfferPrice,
+      position: index + 1,
+      type: categoryName,
+    };
+  });
+};
+
 const ProductListView = ({
   className,
   productsBlock,
@@ -61,8 +82,16 @@ const ProductListView = ({
   removeAddToFavoritesErrorMsg,
   isLoggedIn,
   isPlcc,
+  pageItems,
+  products,
+  store,
+  setClickAnalyticsData,
+  pageNameProp,
+  pageSectionProp,
+  pageSubSectionProp,
   ...otherProps
 }) => {
+  // const productsData = BagPageUtils.formatBagProductsData(products);
   // State needed to trigger UX timer once initial product results have rendered
   const [resultsExist, setResultsExist] = useState(false);
 
@@ -73,6 +102,13 @@ const ProductListView = ({
       setResultsExist(true);
     }
   }, [productsBlock.length]);
+
+  useEffect(() => {
+    const productsFormatted = formatProductsData(products);
+    if (products.length) {
+      setClickAnalyticsData({ products: productsFormatted });
+    }
+  }, [products.length]);
 
   return (
     <div className={className}>
@@ -143,6 +179,9 @@ const ProductListView = ({
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               isLoggedIn={isLoggedIn}
               isPlcc={isPlcc}
+              pageNameProp={pageNameProp}
+              pageSectionProp={pageNameProp}
+              pageSubSectionProp={pageNameProp}
               {...otherProps}
             />
             {/* UX timer */}

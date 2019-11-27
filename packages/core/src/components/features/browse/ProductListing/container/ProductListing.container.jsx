@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
@@ -7,11 +8,17 @@ import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../../common/organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 import {
   openQuickViewWithValues,
   closeQuickViewModal,
@@ -191,6 +198,9 @@ class ProductListingContainer extends React.PureComponent {
       navigation,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -237,6 +247,10 @@ class ProductListingContainer extends React.PureComponent {
         navigation={navigation}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        setClickAnalyticsData={setClickAnalyticsData}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
         {...otherProps}
       />
     ) : (
@@ -249,6 +263,10 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         categoryId={categoryId}
         plpTopPromos={plpTopPromos}
+        setClickAnalyticsData={setClickAnalyticsData}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
       />
     );
   }
@@ -291,7 +309,6 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      // TODO - change after site id comes for us or ca
       sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
@@ -316,6 +333,9 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
   };
 }
 
@@ -344,6 +364,7 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
+    setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
   };
 }
 

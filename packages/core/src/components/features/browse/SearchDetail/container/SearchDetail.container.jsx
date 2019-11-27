@@ -5,6 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
+import { setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import {
@@ -167,6 +168,7 @@ class SearchDetailContainer extends React.PureComponent {
       pdpLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      setClickAnalyticsDataTracker,
       ...otherProps
     } = this.props;
 
@@ -200,6 +202,7 @@ class SearchDetailContainer extends React.PureComponent {
                 asPathVal={asPathVal}
                 AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                 removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
                 {...otherProps}
               />
             ) : (
@@ -242,6 +245,7 @@ class SearchDetailContainer extends React.PureComponent {
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
               {...otherProps}
             />
           </div>
@@ -253,6 +257,11 @@ class SearchDetailContainer extends React.PureComponent {
 
 SearchDetailContainer.pageInfo = {
   pageId: 'search',
+  pageData: {
+    pageName: 'search',
+    pageSection: 'search',
+    pageSubSection: 'search',
+  },
 };
 
 SearchDetailContainer.getInitActions = () => initActions;
@@ -328,6 +337,7 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    setClickAnalyticsDataTracker: payload => dispatch(setClickAnalyticsData(payload)),
   };
 }
 

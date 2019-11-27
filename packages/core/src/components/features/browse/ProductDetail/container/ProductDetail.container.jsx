@@ -7,6 +7,7 @@ import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -184,6 +185,7 @@ class ProductDetailContainer extends React.PureComponent {
       bottomPromos,
       isLoading,
       router: { asPath: asPathVal },
+      setClickAnalyticsDataTracker,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -222,6 +224,7 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
+              setClickAnalyticsData={setClickAnalyticsDataTracker}
             />
           ) : null}
           {isLoading ? <ProductDetailSkeleton /> : null}
@@ -236,6 +239,7 @@ ProductDetailContainer.pageInfo = {
   pageData: {
     pageName: 'product',
     pageSection: 'product',
+    pageSubSection: 'product',
   },
 };
 
@@ -289,6 +293,7 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    setClickAnalyticsDataTracker: payload => dispatch(setClickAnalyticsData(payload)),
   };
 }
 
