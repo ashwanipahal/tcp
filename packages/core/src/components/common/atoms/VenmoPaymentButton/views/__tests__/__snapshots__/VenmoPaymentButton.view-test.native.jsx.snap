@@ -8,7 +8,7 @@ exports[`Venmo Payment Button should render correctly 1`] = `
     onPress={[Function]}
   >
     <Styled(ImageComp)
-      alt=""
+      alt="Venmo"
       height="15px"
       host=""
       source={

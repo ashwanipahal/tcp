@@ -154,6 +154,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       <Touchable accessibilityRole="button" onPress={this.pause}>
         <Image
           source={pauseIcon}
+          alt="Pause Button"
           height={playIconHeight}
           width={playIconWidth}
           testID={getLocator(carouselConfig.dataLocatorPause)}
@@ -163,6 +164,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       <Touchable accessibilityRole="button" onPress={this.play}>
         <Image
           source={playIcon}
+          alt="Play Button"
           height={playIconHeight}
           width={playIconWidth}
           testID={getLocator(carouselConfig.dataLocatorPlay)}

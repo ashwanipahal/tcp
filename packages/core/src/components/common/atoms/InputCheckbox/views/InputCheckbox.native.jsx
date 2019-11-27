@@ -89,7 +89,7 @@ class InputCheckBox extends React.Component {
     const source = isChecked ? checkedIcon : uncheckedIcon;
     return (
       <StyledImage>
-        <Image source={source} height="25px" width="25px" />
+        <Image source={source} alt="Checkbox" height="25px" width="25px" />
       </StyledImage>
     );
   }
@@ -180,7 +180,7 @@ class InputCheckBox extends React.Component {
           {isError ? (
             <StyledErrorWrapper>
               <StyledErrorIcon>
-                <Image source={errorIcon} width="16px" height="14px" />
+                <Image source={errorIcon} alt="Erro" width="16px" height="14px" />
               </StyledErrorIcon>
 
               <BodyCopy

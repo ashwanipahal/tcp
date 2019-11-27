@@ -84,7 +84,7 @@ exports[`Selectbox component renders correctly for error 1`] = `
       spacingStyles="margin-right-XS"
     >
       <Styled(ImageComp)
-        alt=""
+        alt="Error"
         height="14px"
         host=""
         source={

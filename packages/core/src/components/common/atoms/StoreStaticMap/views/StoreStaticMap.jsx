@@ -56,7 +56,9 @@ const mapConfig = ({ storesList, centeredStore, defaultZoom, centeredStoreId }) 
   return config;
 };
 
-const renderForMobileApp = mapImageUrl => <Image url={mapImageUrl} height="400px" width="100%" />;
+const renderForMobileApp = mapImageUrl => (
+  <Image url={mapImageUrl} alt="Map" height="400px" width="100%" />
+);
 
 /**
  *
