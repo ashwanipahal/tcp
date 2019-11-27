@@ -64,7 +64,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
           <Styled(Image)
             className="elem-pr-SM"
             height="30"
-            src="/static/images/sms-disabled.svg"
+            src="/static/version-not-available/images/sms-disabled.svg"
             width="30"
           />
           <Styled(BodyCopy)
@@ -94,7 +94,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
           <Styled(Image)
             className="elem-pr-SM"
             height="30"
-            src="/static/images/push-disabled.svg"
+            src="/static/version-not-available/images/push-disabled.svg"
             width="30"
           />
           <Styled(BodyCopy)

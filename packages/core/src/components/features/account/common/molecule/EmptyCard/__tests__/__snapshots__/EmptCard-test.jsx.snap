@@ -19,7 +19,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         alt="credit card icon"
         className="emptyCard__img"
         data-locator="payment-GC-Icon"
-        src="/static/images/credit-card.png"
+        src="/static/version-not-available/images/credit-card.png"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -126,7 +126,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         alt="credit card icon"
         className="emptyCard__img"
         data-locator="payment-CC-Icon"
-        src="/static/images/credit-card.png"
+        src="/static/version-not-available/images/credit-card.png"
       />
     </Styled(Col)>
     <Styled(Col)
