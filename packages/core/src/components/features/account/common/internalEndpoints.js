@@ -78,7 +78,7 @@ const internalEndpoints = {
 
   favorites: {
     link: '/account?id=favorites',
-    path: '/favorites',
+    path: '/account/favorites',
   },
 };
 
