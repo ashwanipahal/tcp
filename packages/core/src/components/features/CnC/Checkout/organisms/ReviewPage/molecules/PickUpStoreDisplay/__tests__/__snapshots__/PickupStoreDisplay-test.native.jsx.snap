@@ -4,7 +4,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
 <Styled(View)>
   <Styled(View)>
     <Styled(ImageComp)
-      alt=""
+      alt="Pickup Icon"
       height="25px"
       host=""
       source={

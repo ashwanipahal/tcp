@@ -88,7 +88,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
             </InputContainer>
             <IconContainer>
               <ReactTooltip withOverlay={false} popover={this.popover(labels.collectorFlyout)}>
-                <Image source={infoIcon} height={15} width={15} />
+                <Image source={infoIcon} alt="Info" height={15} width={15} />
               </ReactTooltip>
             </IconContainer>
           </InputField>
@@ -110,7 +110,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
             </InputContainer>
             <IconContainer>
               <ReactTooltip withOverlay={false} popover={this.popover(labels.offerFlyout)}>
-                <Image source={infoIcon} height={15} width={15} />
+                <Image source={infoIcon} alt="Info" height={15} width={15} />
               </ReactTooltip>
             </IconContainer>
           </InputField>

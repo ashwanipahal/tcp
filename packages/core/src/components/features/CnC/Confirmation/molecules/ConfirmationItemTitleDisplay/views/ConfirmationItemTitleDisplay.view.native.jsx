@@ -163,7 +163,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
           {storeName && (
             <IconContainer>
               <ReactTooltip withOverlay={false} popover={infoMsg} height={150}>
-                <Image source={IconInfoLogo} height={20} width={20} />
+                <Image source={IconInfoLogo} alt="Info" height={20} width={20} />
               </ReactTooltip>
             </IconContainer>
           )}

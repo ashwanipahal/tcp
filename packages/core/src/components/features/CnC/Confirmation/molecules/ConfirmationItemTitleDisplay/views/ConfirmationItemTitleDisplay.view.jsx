@@ -114,7 +114,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels, className }) => {
           <div className="confirmation-fullfillment-details">
             {storeName && (
               <ReactTooltip fontFamily="secondary" message={infoMsg} aligned="right">
-                <Image height="20" width="20" src={getIconPath('info-icon')} />
+                <Image height="20" width="20" src={getIconPath('info-icon')} alt="Info" />
               </ReactTooltip>
             )}
           </div>

@@ -232,7 +232,7 @@ export class CreateAccountForm extends React.Component {
                 width={300}
                 textAlign="left"
               >
-                <Image source={IconInfoLogo} height={12} width={12} />
+                <Image source={IconInfoLogo} alt="Info" height={12} width={12} />
               </ReactTooltip>
             </IconContainer>
 
