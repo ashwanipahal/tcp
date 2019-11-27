@@ -10,6 +10,7 @@ import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   PaymentContainer,
@@ -24,9 +25,38 @@ import {
 } from '../styles/PaymentItem.style.native';
 
 class PaymentItem extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      setRecaptchaModalMountedState: false,
+    };
+  }
+
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
   handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
     onGetBalanceCard({ formData, card });
   };
+
+  recaptchaRender({ setRecaptchaModalMountedState, onMessage }) {
+    return (
+      <React.Fragment>
+        {setRecaptchaModalMountedState && (
+          <RecaptchaModal
+            onMessage={onMessage}
+            setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+            toggleRecaptchaModal={this.setRecaptchaModalMountState}
+            onClose={this.onClose}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
 
   render() {
     const {
@@ -39,6 +69,7 @@ class PaymentItem extends React.Component<Props> {
       card,
       labels,
     } = this.props;
+    const { setRecaptchaModalMountedState } = this.state;
     const variation = paymentInfo && paymentInfo.variation && paymentInfo.variation.toLowerCase();
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
@@ -98,7 +129,13 @@ class PaymentItem extends React.Component<Props> {
         {isGiftCard && variation === 'edit' && (
           <RecaptchaWrapper>
             <RecaptchaContainer>
-              <Recaptcha onMessage={onMessage} />
+              {/* <Recaptcha onMessage={onMessage} /> */}
+              {/* <RecaptchaModal /> */}
+              {this.recaptchaRender({
+                labels,
+                onMessage,
+                setRecaptchaModalMountedState,
+              })}
             </RecaptchaContainer>
             <Field
               label=""
@@ -116,9 +153,7 @@ class PaymentItem extends React.Component<Props> {
                   fill="BLUE"
                   text={getLabelValue(labels, 'lbl_overview_check_balance')}
                   width="190px"
-                  onPress={handleSubmit(formData =>
-                    this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
-                  )}
+                  onPress={e => this.setRecaptchaModalMountState(e)}
                 />
               </CheckBalanceContainer>
             )}
