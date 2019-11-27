@@ -129,3 +129,4 @@ ModalsCheckout.defaultProps = {
 };
 
 export default ModalsCheckout;
+export { ModalsCheckout as ModalsCheckoutVanilla };

@@ -76,3 +76,16 @@ export function isVenmoPaymentAvailable(state) {
   const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
+
+export function getVenmoPayment(state) {
+  const isNonceNotExpired = isVenmoNonceNotExpired(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData(state);
+  const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
+  return {
+    ccBrand: venmoConstants.VENMO,
+    ccType: venmoConstants.VENMO,
+    userName,
+    isVenmoPaymentSelected: venmoPaymentInProgress && isNonceNotExpired,
+  };
+}

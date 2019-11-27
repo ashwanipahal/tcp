@@ -1,3 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModuleNVanilla should match snapshot 1`] = `<Styled(View) />`;
+exports[`ModuleBVanilla should match snapshot 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={null}
+      text=""
+      url="/c/girl-t-shirts"
+      visible={false}
+    >
+      <Styled(DamImage)
+        alt="Graphic Tees"
+        checkBrand=""
+        crop="c_crop,g_face:center,q_auto:best,w_347,h_295"
+        height={295}
+        host="lazyload-home"
+        imgConfig="t_mod_B_img_default_m"
+        isProductImage={false}
+        itemBrand=""
+        source=""
+        swatchConfig=""
+        url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
+        videoData={null}
+        width={726}
+      />
+    </Styled(Anchor)>
+  </Styled(View)>
+</Styled(View)>
+`;

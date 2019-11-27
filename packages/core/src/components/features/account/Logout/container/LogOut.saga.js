@@ -10,7 +10,7 @@ import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.actio
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 import {
   resetWalletAppState,
-  clearCouponTTL,
+  getCouponList,
 } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
@@ -37,7 +37,7 @@ export function* logoutSaga() {
         })
       );
       yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-      yield put(clearCouponTTL());
+      yield put(getCouponList({ ignoreCache: true }));
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
