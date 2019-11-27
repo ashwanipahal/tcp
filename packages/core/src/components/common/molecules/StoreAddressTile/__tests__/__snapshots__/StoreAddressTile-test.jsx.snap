@@ -426,6 +426,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -875,6 +876,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -1326,6 +1328,7 @@ exports[`StoreAddressTile component Details should render details view with clic
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -1798,6 +1801,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -2237,6 +2241,7 @@ exports[`StoreAddressTile component Details should render details view with set 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
