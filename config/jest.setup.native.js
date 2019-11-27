@@ -55,3 +55,5 @@ NativeModules.RNCNetInfo = {
   addListener: jest.fn(),
   removeListeners: jest.fn(),
 };
+
+NativeModules.RNPermissions = {};

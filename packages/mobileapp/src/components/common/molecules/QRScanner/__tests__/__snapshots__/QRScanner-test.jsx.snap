@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QRScanner should render correctly 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={false}
+  visible={true}
+>
+  <NotReadableModal
+    isOpen={false}
+    labels={true}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onClose={[Function]}
+  />
+  <Connect(BagPageHeader)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    showCloseButton={false}
+    showGobackIcon={true}
+  />
+  <QRCodeScanner
+    cameraProps={Object {}}
+    cameraType="back"
+    checkAndroid6Permissions={false}
+    fadeIn={false}
+    notAuthorizedView={<ForwardRef />}
+    onRead={[Function]}
+    pendingAuthorizationView={
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+        >
+          ...
+        </Text>
+      </View>
+    }
+    permissionDialogMessage="Need camera permission"
+    permissionDialogTitle="Info"
+    reactivate={true}
+    reactivateTimeout={2}
+    showMarker={true}
+    topContent={
+      <React.Fragment>
+        <ForwardRef />
+        <ForwardRef />
+      </React.Fragment>
+    }
+    vibrate={true}
+  />
+</Component>
+`;
+
+exports[`QRScanner should render with QR invalid modal 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={false}
+  visible={true}
+>
+  <NotReadableModal
+    isOpen={true}
+    labels={true}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onClose={[Function]}
+  />
+  <Connect(BagPageHeader)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    showCloseButton={false}
+    showGobackIcon={true}
+  />
+  <QRCodeScanner
+    cameraProps={Object {}}
+    cameraType="back"
+    checkAndroid6Permissions={false}
+    fadeIn={false}
+    notAuthorizedView={<ForwardRef />}
+    onRead={[Function]}
+    pendingAuthorizationView={
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+        >
+          ...
+        </Text>
+      </View>
+    }
+    permissionDialogMessage="Need camera permission"
+    permissionDialogTitle="Info"
+    reactivate={true}
+    reactivateTimeout={2}
+    showMarker={true}
+    topContent={
+      <React.Fragment>
+        <ForwardRef />
+        <ForwardRef />
+      </React.Fragment>
+    }
+    vibrate={true}
+  />
+</Component>
+`;
+
+exports[`QRScanner should render with inactive state of QR camera 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={false}
+  visible={true}
+>
+  <NotReadableModal
+    isOpen={false}
+    labels={true}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onClose={[Function]}
+  />
+  <Connect(BagPageHeader)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    showCloseButton={false}
+    showGobackIcon={true}
+  />
+  <QRCodeScanner
+    cameraProps={Object {}}
+    cameraType="back"
+    checkAndroid6Permissions={false}
+    fadeIn={false}
+    notAuthorizedView={<ForwardRef />}
+    onRead={[Function]}
+    pendingAuthorizationView={
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+        >
+          ...
+        </Text>
+      </View>
+    }
+    permissionDialogMessage="Need camera permission"
+    permissionDialogTitle="Info"
+    reactivate={false}
+    reactivateTimeout={2}
+    showMarker={true}
+    topContent={
+      <React.Fragment>
+        <ForwardRef />
+        <ForwardRef />
+      </React.Fragment>
+    }
+    vibrate={true}
+  />
+</Component>
+`;
+
+exports[`QRScanner should render without QR invalid modal 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={false}
+  visible={true}
+>
+  <NotReadableModal
+    isOpen={false}
+    labels={true}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onClose={[Function]}
+  />
+  <Connect(BagPageHeader)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    showCloseButton={false}
+    showGobackIcon={true}
+  />
+  <QRCodeScanner
+    cameraProps={Object {}}
+    cameraType="back"
+    checkAndroid6Permissions={false}
+    fadeIn={false}
+    notAuthorizedView={<ForwardRef />}
+    onRead={[Function]}
+    pendingAuthorizationView={
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+        >
+          ...
+        </Text>
+      </View>
+    }
+    permissionDialogMessage="Need camera permission"
+    permissionDialogTitle="Info"
+    reactivate={true}
+    reactivateTimeout={2}
+    showMarker={true}
+    topContent={
+      <React.Fragment>
+        <ForwardRef />
+        <ForwardRef />
+      </React.Fragment>
+    }
+    vibrate={true}
+  />
+</Component>
+`;

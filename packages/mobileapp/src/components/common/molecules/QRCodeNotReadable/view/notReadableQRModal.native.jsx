@@ -68,12 +68,17 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
 
 NotReadableModal.propTypes = {
   onClose: PropTypes.func,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
 };
 
 NotReadableModal.defaultProps = {
   onClose: () => {},
+  labels: {
+    lbl_qrscan_no_result: '',
+    lbl_qrscan_no_result_help: '',
+    lbl_qrscan_cta_retry: '',
+  },
 };
 
 export default NotReadableModal;
-export { NotReadableModal as PLPGifAnimationVanilla };
+export { NotReadableModal as NotReadableModalVanilla };

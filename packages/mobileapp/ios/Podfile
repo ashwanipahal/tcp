@@ -67,6 +67,8 @@ end
 
 target 'mobileapp' do
   all_env_pods
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
 end
 
 target 'mobileapp_dev' do
