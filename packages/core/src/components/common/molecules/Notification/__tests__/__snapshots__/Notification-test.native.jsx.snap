@@ -16,7 +16,7 @@ exports[`Notification Component should render notification component with status
     status="info"
   >
     <Styled(ImageComp)
-      alt=""
+      alt="Info"
       height="25px"
       host=""
       source={
@@ -57,7 +57,7 @@ exports[`Notification Component should render notification component with status
     status="success"
   >
     <Styled(ImageComp)
-      alt=""
+      alt="Success"
       height="25px"
       host=""
       source={
@@ -79,7 +79,7 @@ exports[`Notification Component should render notification component with status
     status="success"
   >
     <Styled(ImageComp)
-      alt=""
+      alt="Success"
       height="25px"
       host=""
       source={

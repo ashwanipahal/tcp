@@ -128,7 +128,7 @@ class ModuleG extends React.PureComponent {
             >
               <span className="shopall_footerlink">{currentSingleCTAButton.title}</span>
               <span className="right_chevron_arrow">
-                <Image src={getIconPath('smallright')} />
+                <Image src={getIconPath('smallright')} alt="Right Icon" />
               </span>
             </Anchor>
           </Col>
@@ -304,7 +304,7 @@ class ModuleG extends React.PureComponent {
 
           <div className="focusAreaView">
             <span className="focusArea-plus">
-              {showPlusButton ? <Image src={getIconPath('plus-icon')} /> : null}
+              {showPlusButton ? <Image src={getIconPath('plus-icon')} alt="Plus Icon" /> : null}
             </span>
           </div>
           {/* carousel bottom */}

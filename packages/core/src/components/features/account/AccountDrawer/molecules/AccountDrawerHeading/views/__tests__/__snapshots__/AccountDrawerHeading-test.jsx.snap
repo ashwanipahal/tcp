@@ -6,6 +6,7 @@ exports[`AccountDrawerHeading should render correctly 1`] = `
 >
   <span>
     <Styled(Image)
+      alt="User Icon"
       src="/static/version-not-available/images/user-icon.png"
     />
     <span
