@@ -5,7 +5,7 @@ import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
 import { setHeaderlinks, setEspots } from './HomePage.actions';
 
 // TODO: Move it to _APP.js SAGA
-function* fetchTaxonomy() {
+export function* fetchTaxonomy() {
   // eslint-disable-next-line no-console
   console.log('fetchTaxonomy');
   try {
@@ -31,7 +31,7 @@ function* fetchTaxonomy() {
   }
 }
 
-function* fetchEspot({ payload }) {
+export function* fetchEspot({ payload }) {
   // TODO:  move it to common ??
   // eslint-disable-next-line no-console
   console.log('fetchEspot');
