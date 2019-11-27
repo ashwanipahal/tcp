@@ -61,7 +61,7 @@ const ProductCustomizeFormPart = props => {
     ...prices,
     isCanada,
     inheritedStyles: customPriceStyles,
-    customFonts: { listPriceFont: 'fs14' },
+    customFonts: { listPriceFont: 'fs14', offerPriceFont: 'fs22' },
     isPlcc: isHasPlcc,
     isInternationalShipping,
   };
