@@ -65,6 +65,9 @@ class Recommendations extends Component {
     window.removeEventListener('load', loadRecommendations);
   }
 
+  isPromoAvailable = products =>
+    products.map(product => product.productInfo && product.productInfo.promotionalMessage);
+
   loadVariation(variation) {
     const {
       products,
@@ -79,7 +82,7 @@ class Recommendations extends Component {
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
-
+    const isPromoAvailable = this.isPromoAvailable(products);
     return products.map((product, index) => {
       const { generalProductId } = product;
 
@@ -100,6 +103,7 @@ class Recommendations extends Component {
           currencySymbol={currency}
           currencyExchange={currencyAttributes.exchangevalue}
           viaModule={RECOMMENDATION}
+          isPromoAvailable={isPromoAvailable}
         />
       );
     });
