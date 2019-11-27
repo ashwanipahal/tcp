@@ -1,6 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
-import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import {

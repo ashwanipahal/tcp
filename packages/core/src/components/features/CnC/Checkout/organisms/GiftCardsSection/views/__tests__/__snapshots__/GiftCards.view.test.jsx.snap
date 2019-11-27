@@ -825,7 +825,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 6,
           "medium": 4,
           "small": 4,
         }

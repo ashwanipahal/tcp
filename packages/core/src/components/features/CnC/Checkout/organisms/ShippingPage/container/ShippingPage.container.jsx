@@ -58,7 +58,11 @@ class ShippingContainer extends React.Component {
   shippingDidUpdate = prevProps => {
     const { address } = this.props;
     const { selectedShipmentId, updateShippingMethodSelection, shippingAddressId } = this.props;
-    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
+    const {
+      address: prevAddress,
+      selectedShipmentId: prevSelectedShipmentId,
+      onFileAddressKey,
+    } = prevProps;
     if (address && prevAddress) {
       const {
         address: { addressLine1, addressLine2 },
@@ -74,9 +78,9 @@ class ShippingContainer extends React.Component {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
-
+    const isAddressChange = onFileAddressKey !== shippingAddressId;
     if (shippingAddressId && selectedShipmentId !== prevSelectedShipmentId) {
-      updateShippingMethodSelection({ id: selectedShipmentId });
+      updateShippingMethodSelection({ id: selectedShipmentId, isAddressChange });
     }
     const { shipmentMethods: prevShipmentMethods } = prevProps;
     const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;
