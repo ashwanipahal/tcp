@@ -76,6 +76,8 @@ const ProductListView = ({
   currency,
   isLoadingMore,
   plpTopPromos,
+  plpGridPromos,
+  plpHorizontalPromos,
   asPathVal,
   isSearchListing,
   AddToFavoriteErrorMsg,
@@ -173,6 +175,8 @@ const ProductListView = ({
               currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
+              plpGridPromos={plpGridPromos}
+              plpHorizontalPromos={plpHorizontalPromos}
               getProducts={getProducts}
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
@@ -240,6 +244,8 @@ ProductListView.propTypes = {
   ),
   asPathVal: PropTypes.string,
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
@@ -266,6 +272,8 @@ ProductListView.defaultProps = {
   plpTopPromos: [],
   asPathVal: '',
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
 };

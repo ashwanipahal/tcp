@@ -64,7 +64,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         }
       >
         <Styled(BodyCopy)
-          className="extended-sizes-text"
+          className="extended-sizes-text elem-mb-SM"
           color="text.primary"
           component="p"
           dataLocator="global-Extended-sizes-text"

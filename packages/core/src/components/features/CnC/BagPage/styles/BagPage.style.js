@@ -22,6 +22,8 @@ const styles = css`
   }
 
   .cartPageTitleHeader {
+    display: flex;
+    justify-content: center;
     @media ${props => props.theme.mediaQuery.medium} {
       pointer-events: none;
     }

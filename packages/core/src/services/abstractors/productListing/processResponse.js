@@ -196,7 +196,17 @@ const processResponse = (
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
   if (isClient() && res.body.redirect && typeof window !== 'undefined') {
-    window.location.href = res.body.redirect.value;
+    const redirectUrl = res.body.redirect.value;
+    try {
+      // If domain matches try routing within the site else page reload is fine
+      if (redirectUrl.indexOf(window.location.hostname) > -1) {
+        routerPush(redirectUrl, redirectUrl, { shallow: true }); // try and avoid a hard reload
+      } else {
+        window.location.assign(redirectUrl);
+      }
+    } catch (e) {
+      logger.error(e);
+    }
   }
 
   if (!isMobileApp() && filterSortView && !isLazyLoading) {

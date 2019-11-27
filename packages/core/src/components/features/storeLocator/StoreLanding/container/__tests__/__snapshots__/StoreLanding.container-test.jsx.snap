@@ -35,10 +35,10 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   }
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
-  markerIcon="/static/images/marker-icon.png"
+  markerIcon="/static/version-not-available/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
-  searchIcon="/static/images/search-icon.svg"
+  searchIcon="/static/version-not-available/images/search-icon.svg"
 />
 `;
 
@@ -77,10 +77,10 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   }
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
-  markerIcon="/static/images/marker-icon.png"
+  markerIcon="/static/version-not-available/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
-  searchIcon="/static/images/search-icon.svg"
+  searchIcon="/static/version-not-available/images/search-icon.svg"
 />
 `;
 
@@ -119,10 +119,10 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
   }
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
-  markerIcon="/static/images/marker-icon.png"
+  markerIcon="/static/version-not-available/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
-  searchIcon="/static/images/search-icon.svg"
+  searchIcon="/static/version-not-available/images/search-icon.svg"
 />
 `;
 
@@ -154,10 +154,10 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
   }
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
-  markerIcon="/static/images/marker-icon.png"
+  markerIcon="/static/version-not-available/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
-  searchIcon="/static/images/search-icon.svg"
+  searchIcon="/static/version-not-available/images/search-icon.svg"
 />
 `;
 
@@ -177,9 +177,9 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
   getFavoriteStore={[MockFunction]}
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
-  markerIcon="/static/images/marker-icon.png"
+  markerIcon="/static/version-not-available/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
-  searchIcon="/static/images/search-icon.svg"
+  searchIcon="/static/version-not-available/images/search-icon.svg"
 />
 `;

@@ -42,6 +42,8 @@ class ProductsGrid extends React.Component {
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
     isSearchListing: PropTypes.bool,
+    plpGridPromos: PropTypes.shape({}),
+    plpHorizontalPromos: PropTypes.shape({}),
     // showQuickViewForProductId: PropTypes.string,
     getProducts: PropTypes.func,
     asPathVal: PropTypes.string,
@@ -63,6 +65,8 @@ class ProductsGrid extends React.Component {
     currency: 'USD',
     isLoggedIn: false,
     isSearchListing: false,
+    plpGridPromos: {},
+    plpHorizontalPromos: {},
     getProducts: () => {},
     asPathVal: '',
     AddToFavoriteErrorMsg: '',
@@ -108,38 +112,6 @@ class ProductsGrid extends React.Component {
     }
   }
 
-  pickUpIconClick = (...args) => {
-    this.setState(
-      {
-        // TODO - fix this - This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: false,
-      },
-      () => {
-        const { onPickUpOpenClick } = this.props;
-        if (onPickUpOpenClick) {
-          onPickUpOpenClick(...args);
-        }
-      }
-    );
-  };
-
-  quickViewOpenClick = (...args) => {
-    this.setState(
-      {
-        // This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: true,
-      },
-      () => {
-        const { onQuickViewOpenClick } = this.props;
-        if (onQuickViewOpenClick) {
-          onQuickViewOpenClick(...args);
-        }
-      }
-    );
-  };
-
   addRemoveScrollListeners(eventName, isAddEvent = true) {
     const throttleTime = 100;
     const throttleParam = { trailing: true, leading: true };
@@ -178,6 +150,8 @@ class ProductsGrid extends React.Component {
       onAddItemToFavorites,
       isLoggedIn,
       isSearchListing,
+      plpGridPromos,
+      plpHorizontalPromos,
       // showQuickViewForProductId,
       getProducts,
       asPathVal,
@@ -226,6 +200,8 @@ class ProductsGrid extends React.Component {
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
                         isSearchListing={isSearchListing}
+                        plpGridPromos={plpGridPromos}
+                        plpHorizontalPromos={plpHorizontalPromos}
                         getProducts={getProducts}
                         asPathVal={asPathVal}
                         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
