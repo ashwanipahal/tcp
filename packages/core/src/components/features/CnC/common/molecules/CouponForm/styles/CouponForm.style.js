@@ -58,6 +58,10 @@ export default css`
     .success__checkmark {
       visibility: hidden;
     }
+
+    .TextBox__input {
+      border-bottom: 1px solid #c3c3c3;
+    }
   }
 
   .coupon_error_message {
