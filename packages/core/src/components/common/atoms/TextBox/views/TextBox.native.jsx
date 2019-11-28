@@ -213,7 +213,7 @@ export class TextBox extends React.Component {
           </View>
         ) : (
           <View>
-            {this.renderTextBox({ elemValue, isFocused, others })}
+            {this.renderTextBox({ elemValue, isFocused, ...others })}
             {!this.validateInputSuccess() && (
               <StyledTextBoxWrapper marginBottom={marginBottom}>
                 {this.getErrorMsg()}
