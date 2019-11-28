@@ -105,7 +105,7 @@ const renderAddNewGiftButton = (
           colSize={{
             small: 4,
             medium: 4,
-            large: isFromReview && isExpressCheckout ? 5 : 3,
+            large: isFromReview && isExpressCheckout ? 6 : 3,
           }}
         >
           <Button

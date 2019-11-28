@@ -125,6 +125,13 @@ export const setCountry = payload => {
   };
 };
 
+export const setCountryName = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_COUNTRY_NAME,
+  };
+};
+
 export const setCurrency = payload => {
   return {
     payload,

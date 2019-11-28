@@ -156,7 +156,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -329,7 +331,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -536,7 +540,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -717,7 +723,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -775,7 +783,7 @@ exports[`AddressFields component should render correctly 1`] = `
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -833,7 +841,9 @@ exports[`AddressFields component should render correctly 1`] = `
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1325,7 +1335,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1392,7 +1404,7 @@ exports[`AddressFields component should render correctly 1`] = `
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -1450,7 +1462,9 @@ exports[`AddressFields component should render correctly 1`] = `
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1639,7 +1653,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1794,7 +1810,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1989,7 +2007,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2162,7 +2182,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2369,7 +2391,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2550,7 +2574,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2608,7 +2634,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -2666,7 +2692,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3158,7 +3186,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3225,7 +3255,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -3283,7 +3313,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3488,7 +3520,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3661,7 +3695,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3868,7 +3904,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4049,7 +4087,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4107,7 +4147,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -4165,7 +4205,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4657,7 +4699,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4724,7 +4768,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -4782,7 +4826,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4987,7 +5033,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5160,7 +5208,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5367,7 +5417,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5548,7 +5600,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5606,7 +5660,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -5664,7 +5718,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5911,7 +5967,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5974,7 +6032,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
+                "/static/version-not-available/images/carrot-small-down.png",
                 ") no-repeat right 0px bottom
       ",
                 [Function],
@@ -6032,7 +6090,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -6236,7 +6296,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -6409,7 +6471,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

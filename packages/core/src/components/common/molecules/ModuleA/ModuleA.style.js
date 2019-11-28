@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
@@ -156,7 +157,8 @@ const style = css`
   }
 
   .ribbon-container {
-    background: transparent url('/static/images/module-a-ribbon-right.png') no-repeat right 0;
+    background: transparent url(${getStaticFilePath('images/module-a-ribbon-right.png')}) no-repeat
+      right 0;
     background-size: 100% auto;
     position: absolute;
     background-position: left;
@@ -217,7 +219,8 @@ const style = css`
     }
 
     .ribbon-container {
-      background: transparent url('/static/images/module-a-ribbon-left.png') no-repeat 0 0;
+      background: transparent url(${getStaticFilePath('images/module-a-ribbon-left.png')}) no-repeat
+        0 0;
       background-size: 100% auto;
       background-position: right;
       right: auto;
