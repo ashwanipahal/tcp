@@ -387,7 +387,7 @@ class StoreAddressTile extends PureComponent {
       </Button>
     );
   }
-  /* eslint-disable-next-line complexity */
+
   getStoreAddress() {
     const { store, variation, isFavorite, labels } = this.props;
     const { address, phone } = store.basicInfo;
