@@ -37,7 +37,6 @@ const fetchBootstrapData = async (
         },
       }
     : {};
-
   /**
    * Sets up query params for global modules requests - (labels, header, footer, navigation)
    */

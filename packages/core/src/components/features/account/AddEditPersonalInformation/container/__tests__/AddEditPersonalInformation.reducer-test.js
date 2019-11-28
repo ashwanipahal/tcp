@@ -1,4 +1,6 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
+import constants from '../../AddEditPersonalInformation.constants';
 import UpdateProfileReducer from '../AddEditPersonalInformation.reducer';
 import { updateProfileSuccess, updateProfileError } from '../AddEditPersonalInformation.actions';
 
@@ -24,5 +26,49 @@ describe('UpdateProfile Reducer', () => {
     const state = UpdateProfileReducer(initialState, updateProfileError('error'));
     expect(state.get('success')).toBeNull();
     expect(state.get('error')).toBe('error');
+  });
+
+  it('should call SET_SUBMIT_SUCCEEDED ', () => {
+    const checkErrorReset = false;
+    expect(
+      UpdateProfileReducer(initialState, {
+        type: SET_SUBMIT_SUCCEEDED,
+        meta: {
+          form: constants.ADD_PROFILE_INFORMATION_FORM,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE  ', () => {
+    let checkErrorReset = false;
+
+    const checkErrorResetValue = UpdateProfileReducer(initialState, {
+      type: SET_SUBMIT_SUCCEEDED,
+      meta: {
+        form: constants.ADD_PROFILE_INFORMATION_FORM,
+      },
+    });
+    checkErrorReset = checkErrorResetValue;
+    expect(
+      UpdateProfileReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: constants.ADD_PROFILE_INFORMATION_FORM,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE but not change error ', () => {
+    const checkErrorReset = false;
+    expect(
+      UpdateProfileReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: constants.ADD_PROFILE_INFORMATION_FORM,
+        },
+      })
+    ).toEqual(initialState);
   });
 });

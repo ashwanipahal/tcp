@@ -229,3 +229,31 @@ export const getPDPLabels = state => {
     recentlyViewed: getLabelValue(state.Labels, 'lbl_recently_viewed', 'PDP', 'Browse'),
   };
 };
+
+export const getPLPGridPromos = state => {
+  const { bannerInfo: { val: { grid: gridPromo } = {} } = {} } = state.SearchListingPage;
+  return (
+    (gridPromo &&
+      gridPromo.map(promoItem => {
+        const moduleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...moduleInfo, slot: promoItem && promoItem.sub };
+      })) ||
+    []
+  );
+};
+
+export const getPlpHorizontalPromo = state => {
+  const {
+    bannerInfo: { val: { horizontal: horizontalPromo } = {} } = {},
+  } = state.SearchListingPage;
+  return (
+    (horizontalPromo &&
+      horizontalPromo.map(promoItem => {
+        const horizontalModuleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...horizontalModuleInfo, slot: promoItem && promoItem.sub };
+      })) ||
+    []
+  );
+};

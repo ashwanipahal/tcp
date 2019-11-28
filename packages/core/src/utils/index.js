@@ -50,6 +50,7 @@ export {
   isGymboree,
   isTCP,
   getBrand,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
@@ -91,4 +92,5 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   plpRoutingHandling,
+  convertNumToBool,
 } from './utils';
