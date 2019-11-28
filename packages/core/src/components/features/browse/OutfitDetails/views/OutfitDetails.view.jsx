@@ -115,6 +115,7 @@ const OutfitDetailsView = ({
                     currencyAttributes={currencyAttributes}
                     AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                     removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                    pageName="OUTFIT"
                   />
                 </li>
               ))}
