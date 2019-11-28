@@ -6,8 +6,10 @@ import { StyledTextInput } from '../TextArea.style.native';
 describe('TextArea component', () => {
   let component;
   let onChangeSpy;
+  let onBlurSpy;
   beforeEach(() => {
     onChangeSpy = jest.fn();
+    onBlurSpy = jest.fn();
     const props = {
       id: 'input',
       name: 'input',
@@ -17,6 +19,7 @@ describe('TextArea component', () => {
       input: {
         value: 'foo',
         onChange: onChangeSpy,
+        onBlur: onBlurSpy,
       },
     };
 
@@ -28,7 +31,6 @@ describe('TextArea component', () => {
   });
 
   it('should renders correctly in case of error', () => {
-    component.find(StyledTextInput).prop('onFocus')();
     component.setProps({
       meta: { touched: true, error: 'error' },
     });
@@ -38,5 +40,10 @@ describe('TextArea component', () => {
   it('onChangeText should call input.onChange', () => {
     component.find(StyledTextInput).prop('onChangeText')('test');
     expect(onChangeSpy).toHaveBeenCalledWith('test');
+  });
+
+  it('onBlur should call input.onBlur', () => {
+    component.find(StyledTextInput).prop('onBlur')();
+    expect(onBlurSpy).toHaveBeenCalled();
   });
 });

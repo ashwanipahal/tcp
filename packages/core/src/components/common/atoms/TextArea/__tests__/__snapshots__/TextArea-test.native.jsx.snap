@@ -23,7 +23,7 @@ exports[`TextArea component should renders correctly 1`] = `
     name="input"
     numberOfLines={4}
     onBlur={[Function]}
-    onChangeText={[MockFunction]}
+    onChangeText={[Function]}
     onEndEditing={[Function]}
     onFocus={[Function]}
     returnKeyType="next"
@@ -55,11 +55,41 @@ exports[`TextArea component should renders correctly in case of error 1`] = `
     name="input"
     numberOfLines={4}
     onBlur={[Function]}
-    onChangeText={[MockFunction]}
+    onChangeText={[Function]}
     onEndEditing={[Function]}
     onFocus={[Function]}
     returnKeyType="next"
     value="foo"
   />
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-right-XS"
+    >
+      <Styled(ImageComp)
+        alt=""
+        height="14px"
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/alert-triangle.png",
+          }
+        }
+        url=""
+        width="16px"
+      />
+    </Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="error"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="error"
+      textDecoration={null}
+    />
+  </Styled(View)>
 </View>
 `;

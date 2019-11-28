@@ -31,7 +31,15 @@ const TextArea = ({
 
   const onBlurHandler = () => {
     setFocused(false);
-    input.onBlur();
+    if (input.onBlur) {
+      input.onBlur();
+    }
+  };
+
+  const onChangeHandler = text => {
+    if (input.onChange) {
+      input.onChange(text);
+    }
   };
 
   return (
@@ -50,7 +58,7 @@ const TextArea = ({
         id={id}
         name={name}
         value={input.value}
-        onChangeText={input.onChange}
+        onChangeText={onChangeHandler}
         multiline
         numberOfLines={4}
         onFocus={onFocusHandler}
