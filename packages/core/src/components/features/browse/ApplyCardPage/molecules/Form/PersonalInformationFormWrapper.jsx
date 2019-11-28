@@ -100,6 +100,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
               name="ssNumber"
               maxLength="4"
               id="ssNumber"
+              type="password"
               data-locator={getLocator('plcc_SSN')}
             />
           </Col>
