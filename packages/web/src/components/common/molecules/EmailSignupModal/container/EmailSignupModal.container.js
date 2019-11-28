@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { trackPageView, setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
-
 import {
   submitEmailSignup,
   validateEmail,
   clearEmailSignupForm,
-  toggleEmailSignupModal,
-} from './EmailSignupModal.actions';
+} from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.actions';
+import { toggleEmailSignupModal } from './EmailSignupModal.actions';
 import SignupModalView from '../views/EmailSignupModal.view';
 
 export const mapDispatchToProps = dispatch => {
@@ -49,12 +48,15 @@ const mapStateToProps = (state, props) => {
       ...state.Labels.global.emailSignup,
     };
   }
-  const { EmailSignUp = {} } = state;
+  const {
+    EmailSignupModalReducer: { isModalOpen } = {},
+    EmailSignupFormReducer: { subscription, isEmailValid } = {},
+  } = state.EmailSignUp;
   return {
     formViewConfig,
-    subscription: EmailSignUp.subscription,
-    isEmailValid: EmailSignUp.isEmailValid,
-    isModalOpen: EmailSignUp.isModalOpen,
+    subscription,
+    isEmailValid,
+    isModalOpen,
     ...props,
   };
 };

@@ -40,8 +40,12 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * This method is called once we get error or user interupted the venmo authorization flow.
    */
   onVenmoPaymentButtonError = e => {
-    const { setVenmoProgress } = this.props;
+    const { setVenmoProgress, onError } = this.props;
     setVenmoProgress(false); // Cancelling venmo progress on error
+    // onError Callback on error scenario
+    if (onError && e && e.error && e.error.message) {
+      onError(e.error.message);
+    }
     logger.error(e);
   };
 
