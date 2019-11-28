@@ -27,5 +27,13 @@ export default css`
         color: ${props => props.theme.colors.PRIMARY.GRAY['900']};
       }
     }
+
+    li {
+      padding-left: 15px;
+
+      ul {
+        padding-left: 20px;
+      }
+    }
   }
 `;
