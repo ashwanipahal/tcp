@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FadeInViewVanilla Native component should match snapshot 1`] = `
+<AnimatedComponent
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Styled(View) />
+</AnimatedComponent>
+`;
