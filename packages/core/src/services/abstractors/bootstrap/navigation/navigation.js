@@ -44,12 +44,39 @@ const Abstractor = {
   getMock: () => {
     return Abstractor.processData(mock.data.navigation);
   },
+  processSubCategoryName: (l1Name = '', subCatName = '') => {
+    const indexOfPipe = subCatName.indexOf('|');
+    let labelToPrint = subCatName;
+    if (indexOfPipe !== -1) {
+      const splittedSubCatName = subCatName.split('|');
+      const smallCaseL1Name = l1Name ? l1Name.toLowerCase() : '';
+      const smallCaseSubCatName = splittedSubCatName[0] ? splittedSubCatName[0].toLowerCase() : '';
+      if (smallCaseL1Name === smallCaseSubCatName) {
+        [, labelToPrint] = splittedSubCatName;
+      } else {
+        [labelToPrint] = splittedSubCatName;
+      }
+    }
+    return labelToPrint;
+  },
   processData: navLinkList => {
     return navLinkList.map(listItem => {
+      const { categoryContent } = listItem;
+      categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
+      categoryContent.asPath = Abstractor.constructAsPathForUrl(listItem.categoryContent);
+
       const subCategories = {};
       const hasL2 = listItem.subCategories && listItem.subCategories.length;
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
+        const updatedL2Name = Abstractor.processSubCategoryName(
+          categoryContent.name,
+          subCat.categoryContent.name
+        );
+        subCat.categoryContent = {
+          ...subCat.categoryContent,
+          name: updatedL2Name,
+        };
         const category = subCat.categoryContent.groupIdentifierName || UNIDENTIFIED_GROUP;
         const order = subCat.categoryContent.groupIdentifierSequence || 0;
         const label = subCat.categoryContent.groupIdentifierName || '';
@@ -76,10 +103,6 @@ const Abstractor = {
         subCategories[category].items.push(subCat);
         return subCategory;
       });
-
-      const { categoryContent } = listItem;
-      categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
-      categoryContent.asPath = Abstractor.constructAsPathForUrl(listItem.categoryContent);
 
       return {
         categoryContent,

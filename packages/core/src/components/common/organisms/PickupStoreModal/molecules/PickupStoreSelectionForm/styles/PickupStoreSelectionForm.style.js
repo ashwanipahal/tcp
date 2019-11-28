@@ -19,9 +19,11 @@ export default css`
   .zipcode-field {
     margin-right: 3px;
   }
-  .warning-cancel-wrapper {
+  .alignCenter {
     display: flex;
     justify-content: center;
+  }
+  .padding-top {
     padding-top: 24px;
   }
   @media ${props => props.theme.mediaQuery.medium} {
