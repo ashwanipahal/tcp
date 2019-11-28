@@ -20,6 +20,7 @@ import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
+import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
