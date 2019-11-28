@@ -13,8 +13,7 @@ export default css`
 
   margin: 0 10px;
   .product-image-container {
-    height: 186px;
-    width: 149px;
+    height: auto;
     a {
       min-height: 185px;
       display: block;
@@ -36,16 +35,14 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     .product-image-container {
-      height: 267px;
-      width: 214px;
+      height: auto;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
     margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     .product-image-container {
-      height: 325px;
-      width: 261px;
+      height: auto;
       a {
         min-height: 259px;
       }

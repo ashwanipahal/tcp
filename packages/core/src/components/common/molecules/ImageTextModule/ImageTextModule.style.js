@@ -71,9 +71,6 @@ const style = css`
   .bg-wrapper {
     margin: 0 auto;
   }
-  .cta-button-text {
-    width: auto;
-  }
 `;
 
 export { ContentContainer, BgWrapper, style };

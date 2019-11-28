@@ -201,11 +201,6 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
       role="none"
     >
       {menuItems.map(item => {
-        const indexOfPipe = item.categoryContent.name.indexOf('|');
-        let labelToPrint = item.categoryContent.name;
-        if (indexOfPipe !== -1) {
-          labelToPrint = labelToPrint.slice(0, indexOfPipe);
-        }
         const isActive = activeCategoryIds && item.categoryContent.id === activeCategoryIds[1];
         // let className = cssClassName('sub-menu-category-item ');
         const activeClassName = cssClassName('navigation-level-two-link ', { active: isActive });
@@ -227,7 +222,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                   asPath={asPathConstructor(item.url)}
                   data-locator={`${getLocator('plp_left_Nav_L2')}`}
                 >
-                  {labelToPrint}
+                  {item.categoryContent.name}
                 </Anchor>
                 {!isTopNav && isActive && (
                   <L3

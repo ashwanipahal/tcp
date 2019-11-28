@@ -160,7 +160,6 @@ export default css`
 
     .stacked-button .cta-button-text,
     .stacked-button button {
-      width: 140px;
       white-space: nowrap;
     }
 
@@ -173,7 +172,6 @@ export default css`
 
     .scroll-button button,
     .scroll-button .cta-button-text {
-      width: 140px;
       white-space: nowrap;
     }
 
