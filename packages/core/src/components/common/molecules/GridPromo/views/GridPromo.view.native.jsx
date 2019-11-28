@@ -52,6 +52,8 @@ const GridPromo = props => {
       }}
       style={{
         width: '100%',
+        flex: 1,
+        justifyContent: 'center',
       }}
     >
       <View>
