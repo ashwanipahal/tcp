@@ -42,6 +42,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
             isVenmoProgress: true,
           })
         }
+        onError={venmoErrorMessage =>
+          handleCartCheckout({
+            isVenmoProgress: false,
+            venmoErrorMessage: venmoErrorMessage,
+          })
+        }
       />
     );
   };
@@ -212,7 +218,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, showAddTobag, isVenmoEnabled, isPayPalWebViewEnable, navigation } = this.props;
+    const {
+      labels,
+      showAddTobag,
+      isVenmoEnabled,
+      isPayPalWebViewEnable,
+      navigation,
+      closeModal,
+    } = this.props;
     const { venmoEnable } = this.state;
     const isVenmoFlag = isVenmoEnabled && venmoEnable;
     const showVenmoPayPalButton = this.showVenmoPaypalButton();
