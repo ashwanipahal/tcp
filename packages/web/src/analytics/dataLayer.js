@@ -233,5 +233,11 @@ export default function create(store) {
         return store.getState();
       },
     },
+    brandId: {
+      get() {
+        const { brandId = '' } = store.getState().APIConfig;
+        return brandId.toUpperCase();
+      },
+    },
   });
 }
