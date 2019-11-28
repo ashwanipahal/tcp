@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
 import Modal from '../../../../Modal';
@@ -8,6 +9,7 @@ import withStyles from '../../../../../hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
 import ApplyNowPLCCModal from '../../ApplyNowPLCCModal/views/ApplyNowPLCCModal';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
@@ -21,24 +23,41 @@ const StyledApplyNowModal = ({
   closeModal,
   labels,
   plccBenefitsList,
+  isRtpsFlow,
+  rtpsCongratsMsg,
+  rtpsOptOutMsg,
+  rtpsTextTerms,
+  cartOrderItems,
 }) => {
+  const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
   return !isPLCCModalOpen ? (
     <Modal
       fixedWidth
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      heading={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="464px"
-      minHeight="646px"
+      standardHeight
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
+      shouldCloseOnEsc={!isRtpsFlow}
     >
       <div className="Modal__Content__Wrapper">
+        <BodyCopy
+          component="h2"
+          color="gray.900"
+          fontFamily="secondary"
+          fontSize="fs36"
+          textAlign="center"
+          fontWeight="black"
+          className="apply-now-heading"
+        >
+          {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+        </BodyCopy>
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
@@ -61,10 +80,12 @@ const StyledApplyNowModal = ({
               fontSize="fs14"
               textAlign="center"
               data-locator={getLocator('ship_to_text_2')}
-              className="header__greeting"
+              className={`header__greeting ${isRtpsFlow ? 'elem-mb-LRG' : ''}`}
             >
               {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             </BodyCopy>
+
+            {isRtpsFlow && <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />}
           </Col>
         </Row>
 
@@ -78,29 +99,78 @@ const StyledApplyNowModal = ({
               onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
-              {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
+              <ClickTracker
+                clickData={{
+                  customEvents: isRtpsFlow ? ['event47'] : [],
+                  eventName: 'plcc checkout invite accepted',
+                  products: productsData,
+                }}
+              >
+                {!isRtpsFlow
+                  ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
+                  : getLabelValue(labels, 'lbl_PLCC_interested')}
+              </ClickTracker>
             </Button>
           </Col>
         </Row>
         <Row className="learn_more_link_wrapper">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 10, medium: 8, small: 6 }}
-            data-locator="plcc_modal_learn_more_link"
-            aria-label="learn_more_link"
-            className="learn_more_link"
-          >
-            <Anchor
-              url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
-              fontSizeVariation="large"
-              anchorVariation="secondary"
-              underline
-              target="_blank"
+          {!isRtpsFlow ? (
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 10, medium: 8, small: 6 }}
+              data-locator="plcc_modal_learn_more_link"
+              aria-label="learn_more_link"
+              className="learn_more_link"
             >
-              {getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
-            </Anchor>
-          </Col>
+              <Anchor
+                url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
+                fontSizeVariation="large"
+                anchorVariation="secondary"
+                underline
+                target="_blank"
+              >
+                {getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
+              </Anchor>
+            </Col>
+          ) : (
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 10, medium: 8, small: 6 }}
+              data-locator="plcc_modal_no_thanks_link"
+              aria-label="no_thanks_link"
+              className="learn_more_link"
+            >
+              <Anchor
+                fontSizeVariation="large"
+                anchorVariation="secondary"
+                underline
+                noLink
+                target="_blank"
+                handleLinkClick={e => {
+                  e.preventDefault();
+                  closeModal();
+                }}
+              >
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event48'],
+                    eventName: 'plcc checkout invite declined',
+                    products: productsData,
+                  }}
+                >
+                  {getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                </ClickTracker>
+              </Anchor>
+            </Col>
+          )}
         </Row>
+        {isRtpsFlow && (
+          <Row>
+            <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+              <RichText className="opt_out_msg" richTextHtml={rtpsOptOutMsg} />
+            </Col>
+          </Row>
+        )}
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
@@ -153,6 +223,13 @@ const StyledApplyNowModal = ({
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
+        {isRtpsFlow && (
+          <Row>
+            <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+              <RichText className="text-terms" richTextHtml={rtpsTextTerms} />
+            </Col>
+          </Row>
+        )}
       </div>
     </Modal>
   ) : (
@@ -160,6 +237,7 @@ const StyledApplyNowModal = ({
       className={className}
       isPLCCModalOpen={isPLCCModalOpen}
       closePLCCModal={closePLCCModal}
+      isRtpsFlow={isRtpsFlow}
     />
   );
 };
@@ -172,6 +250,10 @@ StyledApplyNowModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
+  rtpsCongratsMsg: PropTypes.string.isRequired,
+  rtpsOptOutMsg: PropTypes.string.isRequired,
+  rtpsTextTerms: PropTypes.string.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
     apply_now_header: PropTypes.string.isRequired,
     apply_now_subheader: PropTypes.string.isRequired,

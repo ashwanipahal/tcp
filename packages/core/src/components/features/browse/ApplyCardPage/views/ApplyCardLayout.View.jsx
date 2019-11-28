@@ -8,6 +8,7 @@ import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser';
 import constants from '../RewardsCard.constants';
 
 const getApplyCardLayoutView = (
+  cartOrderItems,
   applicationStatus,
   plccData,
   labels,
@@ -22,15 +23,21 @@ const getApplyCardLayoutView = (
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
-  if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
+  if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
     return (
       <ApplicationInProgress
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
@@ -43,6 +50,9 @@ const getApplyCardLayoutView = (
         isPLCCModalFlow={isPLCCModalFlow}
         approvedPLCCData={renderViewInfo.approvedPLCCData}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
+        closePLCCModal={renderViewInfo.closePLCCModal}
       />
     );
   }
@@ -54,6 +64,9 @@ const getApplyCardLayoutView = (
       onSubmit={submitPLCCForm}
       initialValues={renderViewInfo.profileInfo}
       applicationStatus={applicationStatus}
+      isRtpsFlow={renderViewInfo.isRtpsFlow}
+      closePLCCModal={renderViewInfo.closePLCCModal}
+      cartOrderItems={cartOrderItems}
     />
   );
 };
@@ -69,10 +82,15 @@ const ApplyCardLayoutView = ({
   profileInfo,
   approvedPLCCData,
   resetPLCCApplicationStatus,
+  isRtpsFlow,
+  closePLCCModal,
+  togglePLCCModal,
+  cartOrderItems,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
       {getApplyCardLayoutView(
+        cartOrderItems,
         applicationStatus,
         plccData,
         labels,
@@ -84,6 +102,9 @@ const ApplyCardLayoutView = ({
           profileInfo,
           approvedPLCCData,
           resetPLCCApplicationStatus,
+          isRtpsFlow,
+          closePLCCModal,
+          togglePLCCModal,
         }
       )}
     </ApplyRewardsCreditCardStyle>
@@ -101,6 +122,9 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

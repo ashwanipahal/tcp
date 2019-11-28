@@ -15,6 +15,7 @@ const LOGINPAGE_CONSTANTS = {
     FORGOT_PASSWORD: 'forgotPassword',
     RESET_PASSWORD: 'resetPassword',
   },
+  SET_LOGIN_LOADING_STATE: 'SET_LOGIN_LOADING_STATE',
 };
 
 export default LOGINPAGE_CONSTANTS;

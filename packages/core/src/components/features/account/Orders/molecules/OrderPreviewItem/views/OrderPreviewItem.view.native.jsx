@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, DamImage } from '@tcp/core/src/components/common/atoms';
 
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 
@@ -13,7 +13,6 @@ import {
   OrderItemContent,
   ItemContentWrapper,
 } from '../styles/OrderPreviewItem.style.native';
-import endpoints from '../../../../../../../service/endpoint';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -23,6 +22,19 @@ const tcpImage = require('../../../../../../../assets/tcp-logo.png');
  * can be passed in the component.
  * @param otherProps - otherProps object used pass params to other component
  */
+
+/**
+ * This function component use for return the OrderItems
+ * can be passed in the component.
+ * @param otherProps - otherProps object used pass params to other component
+ */
+
+const checkBrand = itemBrand => {
+  if (itemBrand === 'TCP') {
+    return 'tcp';
+  }
+  return 'gym';
+};
 
 const OrderPreviewItem = ({ className, ...otherProps }) => {
   /**
@@ -46,7 +58,16 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
     <>
       <OrderItemContainer>
         <OrderItemImage>
-          <ImageStyle source={{ uri: endpoints.global.baseURI + imagePath }} />
+          {imagePath && (
+            <ImageStyle>
+              <DamImage
+                isProductImage
+                checkBrand={checkBrand(itemBrand)}
+                url={`${imagePath}`.split(checkBrand(itemBrand))[1]}
+                resizeMode="contain"
+              />
+            </ImageStyle>
+          )}
           {itemBrand === 'TCP' && <ImageBrandTCPStyle source={tcpImage} />}
           {itemBrand === 'GYM' && <ImageBrandStyle source={gymboreeImage} />}
         </OrderItemImage>

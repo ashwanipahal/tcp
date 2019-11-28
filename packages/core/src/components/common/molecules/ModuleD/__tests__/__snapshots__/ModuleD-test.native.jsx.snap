@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleDNative should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <PromoBanner
+      promoBanner={Array []}
+      testID="moduleD_promobanner"
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      testID="moduleD_button"
+      text=""
+      theme={Object {}}
+      url=""
+      width="225px"
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

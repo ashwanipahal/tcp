@@ -19,6 +19,7 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
         <CouponInfo>
           <TitleWrapper>
             <BodyCopy
+              fontFamily="secondary"
               fontSize="fs10"
               fontWeight="black"
               title={coupon.title}

@@ -1,0 +1,87 @@
+/*  -------------------- Dots Customization Start -------------------- */
+.flexslider {
+  margin-bottom: 0;
+}
+
+.flex-control-nav li {
+  margin: 0 2px;
+}
+.flexslider .flex-control-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0;
+}
+
+.boxed-slider.flexslider .flex-control-paging li a {
+  width: 6px;
+  height: 6px;
+  background-color: #575757;
+  border-width: 0;
+  transform-origin: center;
+  box-shadow: none;
+}
+
+.boxed-slider.flexslider .flex-control-paging li a:hover {
+  background-color: #575757;
+}
+
+.boxed-slider.flexslider .flex-control-paging li a.flex-active {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border: 1px solid #575757;
+}
+
+li.fade-hover:hover .media-container:before {
+  box-shadow: none;
+}
+
+.item-likes {
+  text-shadow: none;
+}
+
+.item-by .avatar img {
+  display: none;
+}
+
+.item-by .avatar img[src*='imgix'] {
+  visibility: hidden;
+}
+
+/*  -------------------- Dots Customization End -------------------- */
+
+/* --------------------- Arrows -------------------- */
+.boxed-slider.flexslider .flex-direction-nav a.flex-next,
+.boxed-slider.flexslider .flex-direction-nav a.flex-prev {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='52' viewBox='0 0 15 52'%3E%3Cpath fill='%231A1A1A' fill-rule='nonzero' d='M14.887 1.462a1 1 0 0 0-1.774-.923l-13 25a1 1 0 0 0 0 .923l13 25a1 1 0 1 0 1.774-.923L2.127 26l12.76-24.538z'/%3E%3C/svg%3E")
+    0 0 no-repeat;
+  height: 52px;
+  opacity: 1;
+}
+
+/* -------------------- */
+
+li.fade-hover:hover .media-container {
+  box-shadow: none;
+}
+
+@media (max-width: 1023px) {
+  .flex-direction-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-viewport {
+    margin-left: 43px;
+    margin-right: 43px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .flex-viewport {
+    margin-left: 55px;
+    margin-right: 55px;
+  }
+}

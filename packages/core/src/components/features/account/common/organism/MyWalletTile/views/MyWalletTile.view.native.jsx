@@ -55,6 +55,7 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
         <CouponWrapper>
           <View>
             <BodyCopy
+              fontFamily="secondary"
               fontSize="fs14"
               fontWeight="semibold"
               data-locator={walletDataLocator}

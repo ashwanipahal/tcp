@@ -5,6 +5,7 @@ const styles = css`
 
   .fav-icon-wrapper {
     text-align: right;
+    display: grid;
   }
   .item-container-inner {
     height: 100%;
@@ -17,7 +18,9 @@ const styles = css`
       margin-top: 12px;
     }
   }
-
+  .favorite-count {
+    text-align: center;
+  }
   .clear-button {
     border: none;
     background: transparent;
@@ -30,9 +33,11 @@ const styles = css`
     height: 18px;
     cursor: pointer;
   }
+  .list-price-container {
+    padding-right: 10px;
+  }
   .list-price {
     text-decoration: line-through;
-    padding-right: 10px;
   }
   .product-title-container {
     box-sizing: border-box;
@@ -42,7 +47,11 @@ const styles = css`
 
   .added-to-bag {
     width: 100%;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    &:focus {
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
+    }
     &:hover:not([disabled]) {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
@@ -53,6 +62,9 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.mediumMax} {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
   }
 
@@ -80,10 +92,13 @@ const styles = css`
     outline: none;
     font-family: ${props => props.theme.typography.fonts.secondary};
     white-space: nowrap;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .move-item-section {
-    min-width: 256px;
+    min-width: 310px;
     border: solid 1px ${props => props.theme.colors.BUTTON.WHITE.BORDER};
     background: ${props => props.theme.colors.WHITE};
     position: absolute;
@@ -91,7 +106,7 @@ const styles = css`
     top: 40px;
 
     &.item__odd {
-      right: 60px;
+      right: 0;
     }
   }
 
@@ -119,11 +134,12 @@ const styles = css`
     text-transform: lowercase;
     display: inline-block;
     padding-right: 2px;
+    padding-top: 3px;
   }
 
-  .wish-list-count,
-  .wish-list-name {
-    font-weight: 800;
+  .default-list-item,
+  .default-list-count {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
 
   .create-new__button {
@@ -155,6 +171,9 @@ const styles = css`
   .wish-list-item__button {
     text-align: left;
     width: 100%;
+    &:focus {
+      background: transparent;
+    }
   }
 
   .edit-fav-item__button {
@@ -171,20 +190,26 @@ const styles = css`
   }
 
   .loyalty-text-container {
+    visibility: hidden;
     color: ${props =>
       props.isPlcc
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    overflow: hidden;
+    height: 20px;
+    span {
+      visibility: visible;
+    }
   }
-
   .empty-color-chips-container {
     min-height: 35px;
   }
 
   .product-image-container {
     position: relative;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 320px;
+    }
   }
 
   .extended-sizes-text {
@@ -204,13 +229,14 @@ const styles = css`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(224, 224, 224, 0.6);
-    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.7);
     justify-content: center;
     align-items: center;
     display: flex;
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
-    font-weight: ${props => props.theme.fonts.fontWeight.black};
+  }
+
+  .container-price {
+    white-space: nowrap;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -220,6 +246,7 @@ const styles = css`
 
     .container-price {
       margin-top: 4px;
+      height: 47px;
     }
     .product-title-container {
       height: 47px;

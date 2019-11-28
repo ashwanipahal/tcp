@@ -8,6 +8,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -59,6 +60,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -124,6 +126,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -173,6 +176,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -547,6 +551,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -621,6 +626,7 @@ exports[`AddressFields component should render correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -673,6 +679,7 @@ exports[`AddressFields component should render correctly 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -728,6 +735,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -779,6 +787,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -844,6 +853,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -893,6 +903,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1267,6 +1278,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1341,6 +1353,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1393,6 +1406,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1448,6 +1462,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1499,6 +1514,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1564,6 +1580,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1613,6 +1630,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -1987,6 +2005,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2061,6 +2080,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -2113,6 +2133,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2168,6 +2189,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2219,6 +2241,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2284,6 +2307,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2333,6 +2357,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",
@@ -2462,6 +2487,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -2536,6 +2562,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -2588,6 +2615,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
           "ariaLabel": "input",
+          "autoCapitalize": "sentences",
           "dataLocator": "input-field",
           "enableSuccessCheck": false,
           "id": "input",

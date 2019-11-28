@@ -21,7 +21,6 @@ exports[`Gift Cards Container should render Gift Card view section 1`] = `
   giftCardList={Array []}
   handleRemoveGiftCard={[MockFunction]}
   hideAddGiftCard={[MockFunction]}
-  isGuestUser={[Function]}
   labels={Object {}}
   onAddGiftCardClick={[Function]}
   onClearError={[Function]}

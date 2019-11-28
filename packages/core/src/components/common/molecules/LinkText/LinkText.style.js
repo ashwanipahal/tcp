@@ -71,6 +71,7 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -127,6 +128,36 @@ export default css`
     text-align: center;
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+  .spaced_text_regular_black {
+    display: block;
+    color: ${props => props.theme.colorPalette.primary};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    letter-spacing: 2px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props =>
+      props.theme.isGymboree
+        ? props.theme.typography.fontSizes.fs20
+        : props.theme.typography.fontSizes.fs14};
+    font-weight: normal;
+    text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props =>
+        props.theme.isGymboree
+          ? props.theme.typography.fontSizes.fs32
+          : props.theme.typography.fontSizes.fs20};
     }
   }
 `;

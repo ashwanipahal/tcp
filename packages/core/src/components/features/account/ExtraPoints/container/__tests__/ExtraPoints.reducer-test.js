@@ -9,6 +9,7 @@ describe('ExtraPointsReducer', () => {
 
     const initialState = fromJS({
       promoListDetails: null,
+      isFetching: false,
     });
     expect(
       ExtraPointsReducer(initialState, {
@@ -18,12 +19,14 @@ describe('ExtraPointsReducer', () => {
     ).toEqual(
       fromJS({
         promoListDetails: promoList,
+        isFetching: false,
       })
     );
   });
   it('should return default content  data', () => {
     const initialState = fromJS({
       promoListDetails: null,
+      isFetching: false,
     });
     expect(
       ExtraPointsReducer(initialState, {
@@ -33,6 +36,7 @@ describe('ExtraPointsReducer', () => {
     ).toEqual(
       fromJS({
         promoListDetails: null,
+        isFetching: false,
       })
     );
   });

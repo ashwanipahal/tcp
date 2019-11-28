@@ -3,15 +3,18 @@
 exports[`BonusPointsViewVanilla should render correctly 1`] = `
 <Fragment>
   <div
-    className="bonusPointsDaysWrapper elem-mb-MED "
+    className="bonusPointsDaysWrapper elem-mb-MED  "
   >
     <div
       className=""
     >
       <Styled(BonusPointsSection)
         bonusData={Object {}}
+        bonusDetailsData="hello"
         getBonusDaysData={[Function]}
         isDefaultOpen={false}
+        isInternationalShipping={false}
+        isPlcc={false}
         orderDetails={Object {}}
         toggleBonusPointsModal={[Function]}
       />

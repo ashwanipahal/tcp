@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import constants from './AddEditAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
 import {
@@ -7,13 +8,15 @@ import {
 } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
+import { clearUserInfo } from '../../../../features/account/User/container/User.actions';
 
 export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
-
+  yield put(setLoaderState(true));
   try {
     const res = yield call(addAddress, updatedPayload);
+    yield put(setLoaderState(false));
     if (!addToAddressBook) {
       return res;
     }
@@ -24,13 +27,16 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
         })
       );
       yield put(clearGetAddressListTTL());
+      yield put(clearUserInfo());
       return yield put(addAddressSuccess(res.body));
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {
     if (!addToAddressBook) {
+      yield put(setLoaderState(false));
       throw err;
     }
+    yield put(setLoaderState(false));
     let error = {};
     /* istanbul ignore else */
     error = err;
@@ -41,12 +47,14 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
 export function* updateAddressPut({ payload }, fromCheckout) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
+  yield put(setLoaderState(true));
   try {
     const res = yield call(
       updateAddress,
       updatedPayload,
       fromCheckout && fromCheckout.profileUpdate
     );
+    yield put(setLoaderState(false));
     if (res) {
       yield put(
         setAddressBookNotification({
@@ -54,15 +62,17 @@ export function* updateAddressPut({ payload }, fromCheckout) {
         })
       );
       yield put(clearGetAddressListTTL());
+      yield put(clearUserInfo());
       const putRes = yield put(addAddressSuccess(res.body));
       if (fromCheckout) {
         return res.body;
       }
       return putRes;
     }
-    return yield put(addAddressFail(res.body));
+    return yield res.body;
   } catch (err) {
     let error = {};
+    yield put(setLoaderState(false));
     if (err instanceof Error) {
       error = err.response.body;
     }

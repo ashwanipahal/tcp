@@ -52,10 +52,11 @@ class ModuleT extends React.PureComponent {
     const { className, ctaItems, ctaType, mediaLinkedList } = this.props;
     const { ctaTypes, IMG_DATA } = config;
     const promoMediaLinkedList = mediaLinkedList || [];
-    const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
-    const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
+    const { image: promoImage1, link: promoLink1, video: promoVideo1 } =
+      promoMediaLinkedList[0] || {};
+    const { image: promoImage2, link: promoLink2, video: promoVideo2 } =
+      promoMediaLinkedList[1] || {};
     const buttonListCtaType = ctaTypes[ctaType];
-
     return (
       <Grid className={`${className} moduleT`}>
         <div className="smallOnlyView">
@@ -79,12 +80,13 @@ class ModuleT extends React.PureComponent {
               medium: true,
             }}
           >
-            {promoImage1 && (
+            {(promoImage1 || promoVideo1) && (
               <DamImage
                 imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage1}
                 data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
                 link={promoLink1}
+                videoData={promoVideo1}
               />
             )}
           </Col>
@@ -121,12 +123,13 @@ class ModuleT extends React.PureComponent {
               medium: true,
             }}
           >
-            {promoImage2 && (
+            {(promoImage2 || promoVideo2) && (
               <DamImage
                 imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleT_promobanner_img')}${2}`}
                 link={promoLink2}
+                videoData={promoVideo2}
               />
             )}
           </Col>
@@ -138,6 +141,8 @@ class ModuleT extends React.PureComponent {
               buttonListVariation={buttonListCtaType}
               dataLocatorDivisionImages={getLocator('moduleT_cta_image')}
               dataLocatorTextCta={getLocator('moduleT_cta_links')}
+              className="button-list-container-alternate"
+              btnCompClass="btn-list-color"
             />
           )}
         </div>
@@ -171,6 +176,7 @@ ModuleT.propTypes = {
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
+      video: PropTypes.object,
     })
   ),
   ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

@@ -21,6 +21,14 @@ const Container = styled.View`
   ${getAdditionalStyle}
 `;
 
+const AnchorContainer = styled.View`
+  flex-direction: row;
+`;
+
+const AnchorStyle = {
+  flexDirection: 'row',
+};
+
 const styles = css``;
 
-export { styles, PageContainer, Container };
+export { styles, PageContainer, Container, AnchorContainer, AnchorStyle };

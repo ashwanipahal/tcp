@@ -60,35 +60,11 @@ const OfferPriceAndBadge3Container = styled.View`
   flex-direction: row;
 `;
 
-// Color is hard code as not in the style guide
-const ListPrice = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs15};
-  color: ${props => props.theme.colorPalette.red[500]};
-  line-height: 22;
-  font-weight: ${props => props.theme.typography.fontWeights.black};
-`;
-
-const ListOfferPrice = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs10};
-  color: ${props => props.theme.colorPalette.gray[800]};
-  line-height: 12;
-  text-decoration-line: line-through;
-`;
-
-// Color is hard code as not in the style guide
-const Badge3Text = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs10};
-  color: #c01f1f;
-  line-height: 12;
-  font-weight: ${props => props.theme.typography.fontWeights.semibold};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+const OfferPriceAndBadge3View = styled.View`
+  height: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const TitleContainer = styled.TouchableOpacity`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   height: 32;
 `;
 
@@ -107,6 +83,29 @@ const ImageSectionContainer = styled.View`
   max-height: 205;
 `;
 
+const CloseIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const SuggestedContainer = styled.View`
+  background: ${props => props.theme.colorPalette.gray[800]};
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  width: 100px;
+  margin-top: 6px;
+`;
+
+const SeeSuggestedContainer = styled.View`
+  height: 36;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 const styles = css``;
 
 export {
@@ -119,13 +118,14 @@ export {
   Badge2Text,
   PricesSection,
   OfferPriceAndBadge3Container,
-  ListPrice,
-  ListOfferPrice,
-  Badge3Text,
   TitleContainer,
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
+  CloseIconContainer,
+  SuggestedContainer,
+  SeeSuggestedContainer,
 };

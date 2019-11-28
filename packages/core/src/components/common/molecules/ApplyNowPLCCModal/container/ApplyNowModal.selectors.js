@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import { APPLY_NOW_MODAL_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 
 export const getApplyNowModalState = state => {
@@ -17,3 +18,16 @@ export const getIsPLCCModalOpen = state => {
 export const getLabels = state => {
   return state.Labels.global && state.Labels.global.plccForm;
 };
+
+export const applyCardLabels = state => state.ApplyCardPage && state.ApplyCardPage.plccData;
+
+export const getRtpsMessages = createSelector(
+  applyCardLabels,
+  labels => {
+    return {
+      rtpsCongratsMsg: labels && labels.rtps_congralutaions_msg,
+      rtpsOptOutMsg: labels && labels.rtps_opt_out_notice,
+      rtpsTextTerms: labels && labels.rtps_text_terms,
+    };
+  }
+);

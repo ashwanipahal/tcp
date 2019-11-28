@@ -17,4 +17,8 @@ const ShippingFormWrapper = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export { EmailSignUpWrapper, EmailSignUpForm, ShippingFormWrapper };
+const ShippingLoaderWrapper = styled.View`
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+export { EmailSignUpWrapper, EmailSignUpForm, ShippingFormWrapper, ShippingLoaderWrapper };

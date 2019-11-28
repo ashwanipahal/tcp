@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components/native';
 
+const getAdditionalStyle = props => {
+  const { margin, width } = props;
+  return {
+    ...(margin && { margin }),
+    ...(width && { width }),
+  };
+};
+
 const ImageTouchableOpacity = styled.TouchableOpacity`
   justify-content: center;
 `;
@@ -19,8 +27,13 @@ const ReviewAndRatingContainer = styled.View`
   flex-direction: row;
 `;
 
-const OfferPriceAndBadge3Container = styled.View`
+const RowContainer = styled.View`
   flex-direction: row;
+  ${getAdditionalStyle}
+`;
+
+const EmptyView = styled.View`
+  ${getAdditionalStyle};
 `;
 
 const styles = css``;
@@ -28,8 +41,9 @@ const styles = css``;
 export {
   styles,
   Container,
+  RowContainer,
   ReviewAndRatingContainer,
   BazarVoiceContainer,
-  OfferPriceAndBadge3Container,
   ImageTouchableOpacity,
+  EmptyView,
 };

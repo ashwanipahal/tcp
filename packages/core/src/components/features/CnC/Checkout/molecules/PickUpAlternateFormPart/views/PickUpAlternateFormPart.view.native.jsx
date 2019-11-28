@@ -19,7 +19,14 @@ import {
 
 class PickUpAlternateFormPart extends React.PureComponent {
   render() {
-    const { isCondensed, showNoteOnToggle, isAlternateUpdateChecked, labels } = this.props;
+    const {
+      isCondensed,
+      showNoteOnToggle,
+      isAlternateUpdateChecked,
+      labels,
+      isHasPickUpAlternatePerson,
+      isExpressCheckout,
+    } = this.props;
     return (
       <AlternateWrapper dataLocator="alternate-View">
         <FieldWrapper>
@@ -28,6 +35,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
             component={InputCheckbox}
             dataLocator="Alternate-checkbox"
             enableSuccessCheck={false}
+            isChecked={isHasPickUpAlternatePerson}
           />
           <BodyCopy
             fontFamily="secondary"
@@ -58,6 +66,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
               showEmailAddress
               isCondensed={isCondensed}
               labels={labels}
+              isExpressCheckout={isExpressCheckout}
             />
           )}
         </AlternateFieldWrapper>
@@ -71,11 +80,15 @@ PickUpAlternateFormPart.propTypes = {
   isCondensed: PropTypes.bool,
   showNoteOnToggle: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  isHasPickUpAlternatePerson: PropTypes.bool,
+  isExpressCheckout: PropTypes.bool,
 };
 PickUpAlternateFormPart.defaultProps = {
   isCondensed: false,
   showNoteOnToggle: false,
   isAlternateUpdateChecked: false,
+  isExpressCheckout: false,
+  isHasPickUpAlternatePerson: false,
 };
 
 export default withStyles(PickUpAlternateFormPart, Style);

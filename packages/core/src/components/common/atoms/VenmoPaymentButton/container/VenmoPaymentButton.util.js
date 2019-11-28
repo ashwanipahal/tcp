@@ -17,3 +17,17 @@ export const VENMO_USER_STATES = {
   GUEST: 'G',
   REGISTERED: 'R',
 };
+
+/**
+ * Venmo Mock Data to test venmo functionality without venmo app
+ */
+export const VENMO_MOCK_DATA = {
+  details: { username: 'gagandsb' },
+  username: 'gagandsb',
+  deviceData: '523d2ff2f87421afab351d7447afafab',
+  error: null,
+  nonce: 'fake-venmo-account-nonce', // Lower Environment Nonce provided by Venmo
+  supportedByBrowser: true,
+  timestamp: Date.now(),
+  type: 'VenmoAccount',
+};

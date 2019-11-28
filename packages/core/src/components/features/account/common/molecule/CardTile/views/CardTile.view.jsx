@@ -240,8 +240,8 @@ class CardTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             aria-describedby={creditCardId}
-            to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
-            asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
+            to={`/account?id=payment&subSection=edit-credit-card&creditCardId=${creditCardId}`}
+            asPath={`/account/payment/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
@@ -277,7 +277,7 @@ class CardTile extends React.Component<Props> {
         <img
           className="cardTile__img"
           data-locator={card.ccBrand}
-          alt={card.ccType}
+          alt={card.ccBrand || card.ccType}
           src={cardIcon}
         />
       </div>
@@ -301,7 +301,7 @@ class CardTile extends React.Component<Props> {
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
-            message="INVLAID CAPTCHA"
+            message="INVALID CAPTCHA"
           />
         )}
         <div className="cardTile">

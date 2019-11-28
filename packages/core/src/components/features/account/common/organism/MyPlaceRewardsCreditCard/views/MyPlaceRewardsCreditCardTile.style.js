@@ -4,10 +4,7 @@ const styles = css`
   height: 100%;
   .cardDetailsWrapper {
     display: flex;
-  }
-  .cardDescriptionWrapper {
-    display: flex;
-    flex-direction: column;
+    align-items: center;
   }
 
   .container-top {

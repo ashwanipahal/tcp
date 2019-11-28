@@ -9,23 +9,32 @@ export default css`
     display: block;
   }
 
-  .get-candid-main-heading {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  #tcp-get-candid-image-container {
+    max-width: 1056px;
+    margin: 0 auto;
+  }
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  @media ${props => props.theme.mediaQuery.xlarge} {
+    #tcp-get-candid-image-container {
+      max-width: 1280px;
+      margin: 0 auto;
     }
+  }
 
+  .get-candid-main-heading {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 
   .get-candid-heading-desc {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
@@ -36,35 +45,36 @@ export default css`
       justify-content: center;
       width: 100%;
     }
-    margin: 17px auto;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin: 17px auto;
-    }
+    margin: 17px auto 32px;
   }
 
   .gellary-button-right {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-left: 7px;
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-left: 6px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: 210px;
+      margin-left: 6px;
     }
   }
 
   .gallery-button-left {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: 210px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

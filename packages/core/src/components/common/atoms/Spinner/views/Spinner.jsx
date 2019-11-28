@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/Spinner';
+import styles from '../styles/Spinner.style';
 
 const Spinner = ({ className }) => {
   return (

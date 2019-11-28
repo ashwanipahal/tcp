@@ -7,6 +7,8 @@ import UnderlineStyle from '../styles/OrdersList.style.native';
 import RecentOrders from '../molecules/RecentOrders';
 import PastOrders from '../molecules/PastOrders';
 import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
+import RecentOrdersSkeleton from '../skeleton/RecentOrdersSkeleton.view.native';
+import OrderPreviewItemsListSkeleton from '../skeleton/OrderPreviewItemsListSkeleton.view.native';
 
 export const OrdersList = ({
   labels,
@@ -15,6 +17,8 @@ export const OrdersList = ({
   handleComponentChange,
   componentProps,
   orderItems,
+  isMostRecentOrderFetching,
+  isMostRecentOrderDetailFetching,
 }) => {
   return (
     <React.Fragment>
@@ -26,14 +30,18 @@ export const OrdersList = ({
         />
       </StyledHeading>
       <UnderlineStyle />
-      <RecentOrders
-        labels={labels}
-        ordersListItems={ordersListItems}
-        navigation={navigation}
-        handleComponentChange={handleComponentChange}
-        componentProps={componentProps}
-      />
-      {orderItems && orderItems.length > 0 && (
+      {isMostRecentOrderFetching && <RecentOrdersSkeleton labels={labels} />}
+      {!isMostRecentOrderFetching && (
+        <RecentOrders
+          labels={labels}
+          ordersListItems={ordersListItems}
+          navigation={navigation}
+          handleComponentChange={handleComponentChange}
+          componentProps={componentProps}
+        />
+      )}
+      {isMostRecentOrderDetailFetching && <OrderPreviewItemsListSkeleton />}
+      {!isMostRecentOrderDetailFetching && orderItems && orderItems.length > 0 && (
         <OrderPreviewItemsList
           labels={labels}
           navigation={navigation}
@@ -61,10 +69,14 @@ OrdersList.propTypes = {
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
   orderItems: PropTypes.shape([]).isRequired,
+  isMostRecentOrderFetching: PropTypes.bool,
+  isMostRecentOrderDetailFetching: PropTypes.bool,
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
+  isMostRecentOrderFetching: false,
+  isMostRecentOrderDetailFetching: false,
 };
 
 export default OrdersList;

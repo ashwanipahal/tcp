@@ -13,7 +13,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -44,7 +44,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -57,7 +57,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/images/menu.svg"
+          src="/static/version-not-available/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
@@ -84,14 +84,14 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           alt="The Children's Place"
           className="header-brand__home-logo--brand"
           dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
+          imgSrc="/static/version-not-available/images/tcp-logo.svg"
         />
       </Styled(Col)>
       <Styled(Col)
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -107,9 +107,11 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         <GuestUserInfo
           createAccount="createAccount"
           isDrawer={false}
+          isRememberedUser={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -125,7 +127,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.svg"
+            src="/static/version-not-available/images/bag.svg"
           />
           <Styled(BodyCopy)
             aria-hidden="true"
@@ -195,7 +197,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -226,7 +228,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -239,7 +241,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/images/menu.svg"
+          src="/static/version-not-available/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
@@ -266,14 +268,14 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           alt="The Children's Place"
           className="header-brand__home-logo--brand"
           dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
+          imgSrc="/static/version-not-available/images/tcp-logo.svg"
         />
       </Styled(Col)>
       <Styled(Col)
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -289,9 +291,11 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         <GuestUserInfo
           createAccount="createAccount"
           isDrawer={false}
+          isRememberedUser={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -307,7 +311,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.svg"
+            src="/static/version-not-available/images/bag.svg"
           />
           <Styled(BodyCopy)
             aria-hidden="true"

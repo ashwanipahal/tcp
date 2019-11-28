@@ -125,6 +125,13 @@ export const setCountry = payload => {
   };
 };
 
+export const setCountryName = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_COUNTRY_NAME,
+  };
+};
+
 export const setCurrency = payload => {
   return {
     payload,
@@ -149,13 +156,42 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
-export const fetchPageLayout = (payload, layoutName) => {
+export const fetchPageLayout = (payload, layoutName, clpPage) => {
   return {
     payload,
     layoutName,
+    isClpPage: clpPage ? clpPage.clpPage : null,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };
+
+export const getSetTcpSegment = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.GET_SET_TCP_SEGMENT,
+});
+
+export const SetTcpSegmentMethodCall = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL,
+});
+
+export const setPreviewDate = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_PREVIEW_DATE,
+  };
+};
+
+export const setSubNavigationData = (payload, name) => ({
+  payload,
+  name,
+  type: GLOBAL_CONSTANTS.SET_SUB_NAVIGATION_DATA,
+});
+
+export const getSubNavigationData = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.GET_SUB_NAVIGATION_DATA,
+});
 
 export default {
   loadLayoutData,
@@ -171,4 +207,8 @@ export default {
   setCurrency,
   setLanguage,
   setBossBopisFlags,
+  getSetTcpSegment,
+  SetTcpSegmentMethodCall,
+  setPreviewDate,
+  setSubNavigationData,
 };

@@ -130,8 +130,8 @@ export class GooglePlacesInput extends PureComponent {
         />
         {touched && !active && error ? (
           <StyledErrorWrapper>
-            <ViewWithSpacing spacingStyles="margin-right-XXXS">
-              <Image source={errorIcon} width="15px" height="15px" />
+            <ViewWithSpacing spacingStyles="margin-right-XS">
+              <Image source={errorIcon} width="16px" height="14px" />
             </ViewWithSpacing>
             <BodyCopy
               mobilefontFamily={['secondary']}

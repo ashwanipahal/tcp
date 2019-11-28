@@ -25,6 +25,7 @@ const styles = css`
     border-radius: 50%;
     line-height: 25px;
     position: relative;
+    cursor: pointer;
 
     .input-radio-title {
       line-height: 0px;
@@ -109,6 +110,9 @@ const styles = css`
         width: 19px;
         height: 19px;
       }
+    }
+    .input-radio-icon-checked + .input-radio-title .color-image.error {
+      border: 12px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
 
     @media ${props => props.theme.mediaQuery.large} {

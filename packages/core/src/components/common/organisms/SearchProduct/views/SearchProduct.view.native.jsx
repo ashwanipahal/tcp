@@ -29,7 +29,8 @@ class SearchProduct extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { searchResults } = nextProps;
     const { searchResults: prevSearchResults, labels: slpLabels } = this.props;
 
@@ -39,12 +40,18 @@ class SearchProduct extends React.PureComponent {
       const lookingForData = autosuggestList.find(data => data.heading === lookingForLabel);
       const { suggestions } = lookingForData;
 
+      const suggestionsCapitalize = suggestions.map(obj => {
+        const newObj = { ...obj };
+        newObj.text = obj.text.charAt(0).toUpperCase() + obj.text.slice(1).toLowerCase();
+        return newObj;
+      });
+
       const listData =
-        suggestions.length > 0
+        suggestionsCapitalize.length > 0
           ? [
               {
                 title: lookingForLabel,
-                data: suggestions,
+                data: suggestionsCapitalize,
               },
             ]
           : [];
@@ -137,7 +144,7 @@ class SearchProduct extends React.PureComponent {
           iconFontName={ICON_FONT_CLASS.Icomoon}
           name={ICON_NAME.search}
           size="fs25"
-          color="blue.500"
+          color="gray.900"
           style={topStyle}
         />
         <TextInput

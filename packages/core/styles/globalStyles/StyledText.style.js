@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { isAndroid } from '../../src/utils/index.native';
+import { isAndroid, isIOS } from '../../src/utils/index.native';
 
 /* This css add font logic to android platform for different type of font families
  *
@@ -29,8 +29,28 @@ const androidFontStyles = css`
       : ''};
 `;
 
-const StyledText = styled.Text`
-  ${androidFontStyles}
+const iosFontStyles = css`
+  ${props =>
+    isIOS() && props.fontWeight && props.fontFamily
+      ? `
+      font-family: ${props.theme.typography.iosFonts[props.fontFamily]}-${
+          props.theme.typography.fontWeightsNames[props.fontWeight]
+        };
+      font-weight: ${props.theme.typography.fontWeights[props.fontWeight]};
+     `
+      : ''};
+  ${props =>
+    isIOS() && (!props.fontWeight || props.fontWeight === 'regular') && props.fontFamily
+      ? `
+      font-family: ${props.theme.typography.iosFonts[props.fontFamily]};
+      font-weight: normal;
+      `
+      : ''};
 `;
 
-export { androidFontStyles, StyledText };
+const StyledText = styled.Text`
+  ${androidFontStyles}
+  ${iosFontStyles}
+`;
+
+export { androidFontStyles, iosFontStyles, StyledText };

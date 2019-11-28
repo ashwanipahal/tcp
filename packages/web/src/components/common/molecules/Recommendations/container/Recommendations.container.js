@@ -15,8 +15,10 @@ import { openQuickViewWithValues } from '@tcp/core/src/components/common/organis
 import RecommendationsView from '../Recommendations';
 
 const mapStateToProps = (state, ownProps) => {
+  const { page, portalValue } = ownProps;
+  const reduxKey = `${page}_${portalValue || 'global'}_products`;
   return {
-    products: getProducts(state),
+    products: getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
@@ -26,16 +28,19 @@ const mapStateToProps = (state, ownProps) => {
     ctaText: getLabelValue(state.Labels, 'CTA_TEXT', 'recommendations', 'global'),
     ctaTitle: getLabelValue(state.Labels, 'CTA_TITLE', 'recommendations', 'global'),
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
+    ariaPrevious: getLabelValue(state.Labels, 'previousButton', 'accessibility', 'global'),
+    ariaNext: getLabelValue(state.Labels, 'nextIconButton', 'accessibility', 'global'),
     loadedProductCount: getLoadedProductsCount(state),
     labels: getLabelsProductListing(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
+    reduxKey,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadRecommendations: () => dispatch(fetchRecommendationsData()),
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
     },

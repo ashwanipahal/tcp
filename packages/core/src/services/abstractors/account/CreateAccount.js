@@ -14,7 +14,7 @@ export const createAccountApi = payload => {
       phone1: payload.phoneNumber,
       rememberCheck: payload.rememberMe || false,
       rememberMe: payload.rememberMe || false,
-      response: 'no_response::false:false',
+      response: payload.emailValidationStatus,
       xCreditCardId: '',
       zipCode: payload.noCountryZip || payload.zipCode,
       catalogId: apiConfig.catalogId,
@@ -22,6 +22,9 @@ export const createAccountApi = payload => {
       storeId: apiConfig.storeId,
     },
   };
+  if (payload.userId) {
+    payloadData.body.userId = payload.userId;
+  }
   return executeStatefulAPICall(payloadData)
     .then(res => {
       if (!res) {

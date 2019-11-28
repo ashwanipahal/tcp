@@ -8,7 +8,8 @@ export default css`
     }
   }
   .top-badge-container,
-  .product-wishlist-container,
+  .extended-sizes-text,
+  .fav-icon-wrapper,
   .product-title-container,
   .color-chips-container,
   .loyalty-text-container {
@@ -30,6 +31,7 @@ export default css`
   }
   .container-price {
     text-align: left;
+    min-height: 50px;
   }
 
   @media ${props => props.theme.mediaQuery.large} {

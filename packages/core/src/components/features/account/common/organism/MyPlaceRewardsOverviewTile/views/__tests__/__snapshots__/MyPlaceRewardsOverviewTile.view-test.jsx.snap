@@ -10,7 +10,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   title="lbl_overview_myPlaceRewardsHeading"
 >
   <section
-    className="elem-pb-MED "
+    className="elem-pb-LRG"
   >
     <Styled(BodyCopy)
       className="elem-mb-LRG"
@@ -60,7 +60,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   title="lbl_overview_myPlaceRewardsHeading"
 >
   <section
-    className="elem-pb-MED bordered"
+    className="elem-pb-LRG"
   >
     <Styled(BodyCopy)
       className="elem-mb-LRG"

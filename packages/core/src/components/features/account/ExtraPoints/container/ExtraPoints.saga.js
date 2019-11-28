@@ -1,10 +1,11 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import EXTRA_POINTS_CONSTANTS from '../ExtraPoints.constants';
-import { setPromoList } from './ExtraPoints.actions';
+import { setPromoList, showLoader } from './ExtraPoints.actions';
 import { getPromoList } from '../../../../../services/abstractors/common/PromoList';
 
 export function* fetchPromoList({ payload }) {
   try {
+    yield put(showLoader());
     const result = yield call(getPromoList, payload);
     yield put(setPromoList(result));
   } catch (err) {

@@ -76,7 +76,7 @@ class RegisteredShippingForm extends React.Component {
   }
 
   getAddressOptions = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, labels } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
@@ -93,7 +93,7 @@ class RegisteredShippingForm extends React.Component {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: '+Add New Address',
+      label: getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout'),
       content: '',
       primary: false,
     });
@@ -146,7 +146,8 @@ class RegisteredShippingForm extends React.Component {
   toggleModal = ({ type, open }) => {
     const { setEditState } = this.props;
     this.setState({ modalState: open, modalType: type });
-    setEditState(open);
+    // type: edit/add address form flag
+    setEditState(open, type);
   };
 
   onAddressDropDownChange = itemValue => {
@@ -318,8 +319,10 @@ class RegisteredShippingForm extends React.Component {
             onValueChange={itemValue => {
               this.onAddressDropDownChange(itemValue);
             }}
+            addAddress={() => {
+              this.onAddressDropDownChange('');
+            }}
             variation="secondary"
-            showButton={false}
             selectedValue={onFileAddressKey}
           />
         </View>

@@ -1,5 +1,6 @@
-const buildQuery = ({ brand, country, channel }) => `
-  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
+const buildQuery = ({ brand, country, channel, lang }) => `
+  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+    errorMessage
     categoryContent {
       description
       catgroupId
@@ -10,6 +11,7 @@ const buildQuery = ({ brand, country, channel }) => `
       longDescription
       seoTitle
       seoMetaDesc
+      sizeChartSelection
       mainCategory {
         set {
           key
@@ -17,6 +19,10 @@ const buildQuery = ({ brand, country, channel }) => `
         }
         sizesRange {
           text
+        }
+        promoBadge {
+          text
+          style
         }
         categoryLayout {
           name
@@ -48,6 +54,24 @@ const buildQuery = ({ brand, country, channel }) => `
                 target
               }
             }
+            textBanner {
+              link {
+                url
+                text
+                title
+                target
+                external
+                action
+              }
+              textItems {
+                text
+                style
+              }
+              set {
+                key
+                val
+              }
+            }
           }
         }
       }
@@ -68,6 +92,7 @@ const buildQuery = ({ brand, country, channel }) => `
         catgroupId
         seoTitle
         seoMetaDesc
+        sizeChartSelection
         mainCategory {
           promoBadge {
             text
@@ -90,6 +115,7 @@ const buildQuery = ({ brand, country, channel }) => `
           catgroupId
           seoTitle
           seoMetaDesc
+          sizeChartSelection
         }
       }
     }

@@ -2,23 +2,10 @@
 
 exports[`BossBanner Component should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs12"
-      fontWeight={
-        Array [
-          "semibold",
-        ]
-      }
-      margin={null}
-      numberOfLines={null}
-      text="abc"
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(Text)>
+  <Connect(PromotionBannerContainer)
+    bossBanner={true}
+    fullBleed={true}
+  />
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""

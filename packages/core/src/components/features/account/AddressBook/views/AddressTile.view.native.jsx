@@ -79,7 +79,7 @@ class AddressBookTile extends React.Component<Props> {
               </Badge>
             )}
             {address.xcont_isDefaultBilling === 'true' && (
-              <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
+              <Badge showCheckmark dataLocator="addressbook-defbillinglabel" lightGrayColor>
                 {getLabelValue(labels, 'ACC_LBL_DEFAULT_BILLING', 'addressBook')}
               </Badge>
             )}
@@ -96,6 +96,7 @@ class AddressBookTile extends React.Component<Props> {
                   fontSizeVariation="small"
                   underline
                   anchorVariation="primary"
+                  justifyContent="flex-end"
                   onPress={this.handleDefaultLinkClick}
                   noLink
                   to="/#"

@@ -62,4 +62,25 @@ export default css`
     right: 0;
     top: 64px;
   }
+  .notification-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      align-items: center;
+    }
+  }
+  .notification-text {
+    display: block;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline;
+    }
+  }
+  .notification-text-link {
+    margin-left: 0;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
 `;

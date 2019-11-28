@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
@@ -8,17 +10,40 @@ import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
+import CHECKOUT_ACTIONS, {
+  setVenmoPaymentInProgress,
+} from '../../Checkout/container/Checkout.action';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
+  };
+
+  /**
+   * @description - onCartCheckout method will check for selected checkout method
+   * @param {object} payload - checkout payload for app and web
+   */
+  onCartCheckout = payload => {
+    const { handleCartCheckout, setVenmoInProgress, toastMessage } = this.props;
+    if (payload && !payload.isVenmoProgress) {
+      setVenmoInProgress(false);
+    }
+    if (payload && payload.venmoErrorMessage) {
+      toastMessage(payload.venmoErrorMessage);
+    } else {
+      handleCartCheckout(payload);
+    }
   };
 
   render() {
     const {
       labels,
       showAddTobag,
-      handleCartCheckout,
       isEditingItem,
       isInternationalShipping,
       isVenmoEnabled,
@@ -30,16 +55,32 @@ export class AddedToBagContainer extends React.Component<Props> {
       isBagPageStickyHeader,
       closeModal,
       isUSSite,
+      getPayPalSettings,
       containerId,
+      hideHeader,
       checkoutServerError,
+      isPayPalWebViewEnable,
       venmoError,
+      orderId,
+      isPayPalHidden,
+      payPalTop,
+      paypalButtonHeight,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      clearCheckoutServerError,
+      isPayPalEnabled,
+      setIsPaypalBtnHidden,
+      bagLoading,
     } = this.props;
     return (
       <AddedToBagActionsView
         labels={labels}
         onClickViewBag={this.onClickViewBag}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        handleCartCheckout={this.onCartCheckout}
         isEditingItem={isEditingItem}
         isInternationalShipping={isInternationalShipping}
         isVenmoEnabled={isVenmoEnabled}
@@ -51,9 +92,25 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeModal={closeModal}
         isUSSite={isUSSite}
         inheritedStyles={inheritedStyles}
+        getPayPalSettings={getPayPalSettings}
         containerId={containerId}
+        hideHeader={hideHeader}
         checkoutServerError={checkoutServerError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         venmoError={venmoError}
+        orderId={orderId}
+        isPayPalHidden={isPayPalHidden}
+        payPalTop={payPalTop}
+        paypalButtonHeight={paypalButtonHeight}
+        isAddedToBag={isAddedToBag}
+        isBagPage={isBagPage}
+        isMiniBag={isMiniBag}
+        setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
+        cartOrderItems={cartOrderItems}
+        clearCheckoutServerError={clearCheckoutServerError}
+        setIsPaypalBtnHidden={setIsPaypalBtnHidden}
+        bagLoading={bagLoading}
+        isPayPalEnabled={isPayPalEnabled}
       />
     );
   }
@@ -66,6 +123,9 @@ AddedToBagContainer.propTypes = {
   isNoNEmptyBag: PropTypes.number.isRequired,
   isBagPageStickyHeader: PropTypes.bool,
   containerId: PropTypes.string,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 AddedToBagContainer.defaultProps = {
@@ -78,6 +138,17 @@ const mapDispatchToProps = dispatch => {
     handleCartCheckout: payload => {
       dispatch(bagPageActions.startCheckout(payload));
     },
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+    setClickAnalyticsDataCheckout: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+    clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
+    setIsPaypalBtnHidden: payload => {
+      dispatch(bagPageActions.setIsPaypalBtnHidden(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 };
 
@@ -86,9 +157,16 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    getPayPalSettings: checkoutSelectors.getPayPalSettings(state),
     isUSSite: isUsSite(state),
     checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
+    isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    orderId: getCartOrderId(state),
     venmoError: checkoutSelectors.getVenmoError(state),
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
+    cartOrderItems: BagPageSelectors.getOrderItems(state),
+    bagLoading: BagPageSelectors.isBagLoading(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
   };
 };
 

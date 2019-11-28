@@ -76,6 +76,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
               fontSize="fs14"
               text={getLabelValue(labels, 'lbl_overview_defaultShipingAddress')}
               color="black"
+              fontWeight="extrabold"
             />
           </View>
           <View style={RightContainer}>
@@ -101,11 +102,12 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             showCountry={false}
             customStyle={BodyCopyStyle}
             showName={false}
+            showPhone={false}
           />
         ) : (
           <BodyCopy
-            fontSize="fs13"
-            fontFamily="primary"
+            fontSize="fs14"
+            fontFamily="secondary"
             fontWeight="regular"
             text={getLabelValue(labels, 'lbl_overview_addressNotAdded')}
           />
@@ -119,6 +121,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
               fontSize="fs14"
               text={getLabelValue(labels, 'lbl_overview_defaultBillingAddress')}
               color="black"
+              fontWeight="extrabold"
             />
           </View>
           <View style={RightContainer}>
@@ -146,11 +149,12 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             showCountry={false}
             customStyle={BodyCopyStyle}
             showName={false}
+            showPhone={false}
           />
         ) : (
           <BodyCopy
-            fontSize="fs13"
-            fontFamily="primary"
+            fontSize="fs14"
+            fontFamily="secondary"
             fontWeight="regular"
             text={getLabelValue(labels, 'lbl_overview_addressNotAdded')}
           />

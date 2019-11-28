@@ -19,3 +19,9 @@ export const setOrdersList = payload => {
     payload,
   };
 };
+
+export const showLoader = () => {
+  return {
+    type: constants.SHOW_LOADER,
+  };
+};

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpCenterViewVanilla should render correctly 1`] = `
+<div
+  className="undefined helpcenter__view"
+>
+  <BackButton
+    labels={Object {}}
+  />
+  <LoadableComponent
+    appType="tcp"
+    getBootstrapData={[MockFunction]}
+    labels={Object {}}
+    loadNavigationData={[Function]}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    slotData={Object {}}
+    slot_1={
+      Object {
+        "className": "test",
+      }
+    }
+    slot_2={
+      Object {
+        "className": "test1",
+      }
+    }
+  />
+</div>
+`;

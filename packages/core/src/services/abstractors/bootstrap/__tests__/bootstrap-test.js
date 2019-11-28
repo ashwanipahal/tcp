@@ -1,4 +1,4 @@
-import bootstrap, { retrieveCachedData } from '../bootstrap';
+import bootstrap, { retrieveCachedData, shouldInitiateSSRCall } from '../bootstrap';
 import labelsMock from '../labels/mock';
 import headerMock from '../header/mock';
 import footerMock from '../footer/mock';
@@ -52,5 +52,11 @@ describe('retrieveCachedData', () => {
       ...cachedData,
     };
     expect(bootstrapData[key]).toEqual(retrieveCachedData({ cachedData, key, bootstrapData }));
+  });
+});
+
+describe('shouldInitiateSSRCall', () => {
+  it('shouldInitiateSSRCall - default', () => {
+    expect(shouldInitiateSSRCall('/us/c/boys-outfits', 'bot')).toBeFalsy();
   });
 });

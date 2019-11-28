@@ -1,14 +1,8 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import CategoryListingRoot from '../styles/CategoryListing.style.native';
 
 class CategoryListing extends PureComponent {
-  componentDidMount() {
-    const { getLayout } = this.props;
-    getLayout('boy', 'categoryListingPage');
-  }
-
   render() {
     return (
       <CategoryListingRoot>
@@ -37,10 +31,6 @@ class CategoryListing extends PureComponent {
     );
   }
 }
-
-CategoryListing.propTypes = {
-  getLayout: PropTypes.func.isRequired,
-};
 
 export default CategoryListing;
 export { CategoryListing as CategoryListingVanilla };

@@ -13,3 +13,8 @@ export const createAccountErr = payload => ({
 export const resetCreateAccountErr = () => ({
   type: CREATE_ACCOUNT_CONSTANTS.RESET_CREATE_AN_ACCOUNT_ERR,
 });
+
+export const setLoadingState = payload => ({
+  type: CREATE_ACCOUNT_CONSTANTS.SET_LOADING_STATE,
+  payload,
+});

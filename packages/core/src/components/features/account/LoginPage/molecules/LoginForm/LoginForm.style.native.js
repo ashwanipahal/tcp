@@ -60,6 +60,7 @@ const ForgotHeading = props => {
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
   text-align: center;
+  font-family: ${typography.fonts.secondary};
   `;
 };
 
@@ -84,6 +85,7 @@ const getHeadingStyle = props => {
   font-weight: ${typography.fontWeights.semibold};
   align-self: center;
   text-transform: capitalize;
+  font-family: ${typography.fonts.secondary};
   `;
 };
 
@@ -107,6 +109,7 @@ const getSubHeadingSectionStyle = props => {
   align-self: center;
   padding:14px 0 ${props.theme.spacing.LAYOUT_SPACING.XS};
   text-align: center;
+  font-family: ${typography.fonts.secondary};
   `;
 };
 

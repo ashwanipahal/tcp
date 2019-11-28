@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceCashBannerModal should render correctly should match snapshot 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="detailmodalcrossicon"
+  customWrapperClassName=""
+  fixedWidth={true}
+  heading="title modal"
+  heightConfig={
+    Object {
+      "height": "90%",
+    }
+  }
+  isOpen={true}
+  maxWidth="500px"
+  minHeight="90%"
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <Styled(RichText)
+    richTextHtml="<h2>test data</h2>"
+  />
+</Styled(Modal)>
+`;

@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PointsHistory from '../views';
 import PointsHistoryList from '../views/PointsHistoryList.view';
-import { getPointHistoryState, getCommonLabels } from './PointsHistory.selectors';
+import {
+  getPointHistoryState,
+  getCommonLabels,
+  getPointHistoryDataFetchingState,
+} from './PointsHistory.selectors';
 import { getPointsHistoryList } from './PointsHistory.actions';
 import { resetState } from '../../../../PointsClaim/container/PointsClaim.actions';
 import {
@@ -33,6 +37,7 @@ export class PointsHistoryContainer extends React.PureComponent {
    */
   render() {
     const { labels, pointHistory, showFullHistory, ...otherprops } = this.props;
+
     if (showFullHistory) {
       return <PointsHistoryList pointHistory={pointHistory} labels={labels} {...otherprops} />;
     }
@@ -59,6 +64,7 @@ const mapStateToProps = state => {
     showSuccess: getSuccess(state),
     showError: getError(state),
     claimPointsErrorMessage: getPointsClaimErrorMessage(state),
+    isFetching: getPointHistoryDataFetchingState(state),
   };
 };
 
@@ -74,6 +80,7 @@ PointsHistoryContainer.propTypes = {
   resetStateAction: PropTypes.func,
   showSuccess: PropTypes.string,
   showError: PropTypes.string,
+  isFetching: PropTypes.bool,
 };
 
 PointsHistoryContainer.defaultProps = {
@@ -84,6 +91,7 @@ PointsHistoryContainer.defaultProps = {
   resetStateAction: () => {},
   showSuccess: '',
   showError: '',
+  isFetching: false,
 };
 
 export default connect(

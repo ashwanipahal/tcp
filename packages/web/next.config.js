@@ -1,9 +1,19 @@
 // This will only read from system vars and ./.env
 require('dotenv').config();
 const withTM = require('next-transpile-modules');
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const withSourceMaps = require('@zeit/next-source-maps');
+const nextBuildId = require('next-build-id');
+const withProgressBar = require('next-progressbar');
 const path = require('path');
+const webpack = require('webpack');
 
-module.exports = withTM({
+const isProductionBuild = process.env.NODE_ENV === 'production';
+const isSourceMapsEnabled = process.env.SOURCE_MAPS_ENABLED === 'true';
+const isAnalyzeBundles = process.env.ANALYZE_BUNDLES === 'true';
+
+let buildConfig = withTM({
+  generateBuildId: () => process.env.RWD_WEB_BUILD_ID || nextBuildId({ dir: __dirname }),
   transpileModules: ['@tcp', '../core/+/*.+.js'],
   useFileSystemPublicRoutes: false,
   // This is to supply build-time environment vars to both server and client files:
@@ -19,12 +29,17 @@ module.exports = withTM({
     ANALYTICS_SCRIPT_URL:
       '//assets.adobedtm.com/launch-EN2ad1a963f240455f9fff064520345530-development.min.js',
   },
-  webpack(config, { isServer }) {
+  webpack(config, { buildId, isServer }) {
     const newConfig = config;
     newConfig.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+    newConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NEXT_BUILD_ID': JSON.stringify(buildId),
+      })
+    );
     newConfig.module.rules.forEach(rule => {
       const newRule = rule;
       if (newRule.use && newRule.use.loader === 'next-babel-loader') {
@@ -56,3 +71,36 @@ module.exports = withTM({
     return newConfig;
   },
 });
+
+if (isProductionBuild && isSourceMapsEnabled) {
+  buildConfig = withSourceMaps(buildConfig);
+}
+
+if (isAnalyzeBundles) {
+  const BUNDLE_ANALYZER_PATH = './bundle-sizes/bundles';
+  const analyzerCommonOptions = {
+    analyzerMode: 'static',
+    openAnalyzer: false,
+  };
+  buildConfig = withBundleAnalyzer({
+    analyzeServer: true,
+    analyzeBrowser: true,
+    bundleAnalyzerConfig: {
+      server: {
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/server.html`,
+      },
+      browser: {
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/client.html`,
+      },
+    },
+    ...buildConfig,
+  });
+}
+
+if (!isProductionBuild) {
+  buildConfig = withProgressBar({ ...buildConfig });
+}
+
+module.exports = buildConfig;

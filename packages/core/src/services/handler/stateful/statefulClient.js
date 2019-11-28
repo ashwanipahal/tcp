@@ -56,7 +56,10 @@ const generateSessionId = apiConfig => {
  */
 const getRequestParams = (apiConfig, reqObj) => {
   const { domain, catalogId, storeId, langId, isMobile } = apiConfig;
-  const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
+  let deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
+  if (isMobileApp()) {
+    deviceType = 'App';
+  }
   const requestUrl = `${domain}${reqObj.webService.URI}`;
 
   const reqHeaders = {

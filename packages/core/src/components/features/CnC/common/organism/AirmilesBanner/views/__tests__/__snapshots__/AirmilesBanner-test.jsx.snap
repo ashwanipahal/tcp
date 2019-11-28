@@ -98,7 +98,7 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gzVnrw",
+                  "componentId": "sc-dnqmqq",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -226,7 +226,9 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -241,7 +243,7 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gzVnrw",
+                "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -380,7 +382,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gzVnrw",
+                  "componentId": "sc-dnqmqq",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -508,7 +510,9 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -523,7 +527,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gzVnrw",
+                "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -607,7 +611,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gzVnrw",
+                  "componentId": "sc-dnqmqq",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -735,7 +739,9 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -750,7 +756,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gzVnrw",
+                "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -786,7 +792,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gzVnrw",
+                  "componentId": "sc-dnqmqq",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -914,7 +920,9 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -929,7 +937,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gzVnrw",
+                "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1068,7 +1076,7 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gzVnrw",
+                  "componentId": "sc-dnqmqq",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1196,7 +1204,9 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1211,7 +1221,7 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gzVnrw",
+                "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initIntlCheckoutAction } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
+import CheckoutActions from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
 import selectors from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import InternationalCheckoutPage from '../views/InternationalCheckoutPage.view';
 
@@ -61,7 +61,7 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     initIntlCheckout: () => {
-      dispatch(initIntlCheckoutAction());
+      dispatch(CheckoutActions.initIntlCheckoutAction());
     },
   };
 };

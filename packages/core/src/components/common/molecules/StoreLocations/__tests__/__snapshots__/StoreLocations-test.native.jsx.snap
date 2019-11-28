@@ -17,6 +17,7 @@ exports[`StoreLocations component StoreLocations component renders correctly wit
     locator=""
     navigation={Object {}}
     onPress={null}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}

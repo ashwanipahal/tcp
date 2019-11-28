@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsTopSection component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_app_settings_title"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        accessibilityLabel="close"
+        accessibilityRole="button"
+        onPress={[MockFunction]}
+      >
+        <Styled(Image)
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/close.png",
+            }
+          }
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(LineComp)
+    borderColor="black"
+    borderWidth={2}
+    marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
+    marginTop={5}
+  />
+</Styled(View)>
+`;

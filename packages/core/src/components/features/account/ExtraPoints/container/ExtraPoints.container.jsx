@@ -7,8 +7,13 @@ import {
   getCommonLabels,
   getEarnExtraPointsLabels,
   getEarnedPointsNotificationState,
+  getEarnExtraPointsFetchingState,
 } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.selectors';
-import { getExtraPointsTilesContentId, getPromoListDetails } from './ExtraPoints.selectors';
+import {
+  getExtraPointsTilesContentId,
+  getPromoListDetails,
+  getPromoListDetailsFetchingState,
+} from './ExtraPoints.selectors';
 
 import {
   getEarnExtraPointsList,
@@ -65,6 +70,8 @@ export class ExtraPointsContainer extends PureComponent {
       earnExtraPointsLabels,
       handleComponentChange,
       promoListData,
+      isEarnExtraPointsFetching,
+      isPromoListFetching,
     } = this.props;
     const { selectedActivity } = this.state;
     return (
@@ -77,6 +84,8 @@ export class ExtraPointsContainer extends PureComponent {
           onViewActivityDetails={this.handlePopupEarnPointsDetails}
           handleComponentChange={handleComponentChange}
           promoListData={promoListData}
+          isEarnExtraPointsFetching={isEarnExtraPointsFetching}
+          isPromoListFetching={isPromoListFetching}
         />
         {selectedActivity && (
           <ExtraPointsDetailModal
@@ -112,6 +121,8 @@ const mapStateToProps = state => {
     earnedPointsNotification: getEarnedPointsNotificationState(state),
     extraPointsTilesContentIds: getExtraPointsTilesContentId(state),
     promoListData: getPromoListDetails(state),
+    isEarnExtraPointsFetching: getEarnExtraPointsFetchingState(state),
+    isPromoListFetching: getPromoListDetailsFetchingState(state),
   };
 };
 
@@ -126,6 +137,8 @@ ExtraPointsContainer.propTypes = {
   extraPointsTilesContentIds: PropTypes.shape([]),
   fetchExtraPointsModuleContent: PropTypes.func.isRequired,
   promoListData: PropTypes.shape([]),
+  isEarnExtraPointsFetching: PropTypes.bool,
+  isPromoListFetching: PropTypes.bool,
 };
 
 ExtraPointsContainer.defaultProps = {
@@ -136,6 +149,8 @@ ExtraPointsContainer.defaultProps = {
   handleComponentChange: () => {},
   extraPointsTilesContentIds: [],
   promoListData: [],
+  isEarnExtraPointsFetching: false,
+  isPromoListFetching: false,
 };
 
 export default connect(

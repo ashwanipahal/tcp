@@ -102,6 +102,48 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
   return sflObject;
 }
 
+/**
+ * @function updateSflItem
+ * @summary This API is used to remove an item from the sfl item list
+ * @param {String} oldProductCatEntryId - CatEntryId of the sfl item that needs to be deleted
+ * @param {String} newProductCatEntryId - CatEntryId of the sfl item that needs to be added
+ * @param {Boolean} isRememberedUser - Is the user remembered
+ * @param {Boolean} isRegistered - Is the user registered
+ * @param {Object} imageGenerator - Image generator
+ * @param {String} currencyCode - Currency code
+ * @return Updated SFL items list
+ */
+export function updateSflItem(
+  oldProductCatEntryId,
+  newProductCatEntryId,
+  isRememberedUser,
+  isRegistered,
+  imageGenerator,
+  currencyCode,
+  isCanada
+) {
+  const payload = {
+    body: {
+      delCatentryId: oldProductCatEntryId,
+      catentryId: newProductCatEntryId,
+      isRememberedUser,
+      isRegistered,
+    },
+    webService: endpoints.updateSflItem,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return formatSflItems(res.body.sflItems, imageGenerator, currencyCode, isCanada);
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export function addItemToSflList(
   catEntryId,
   isRememberedUser,
@@ -173,4 +215,5 @@ export default {
   addItemToSflList,
   deriveSflItemAvailability,
   getSflItems,
+  updateSflItem,
 };

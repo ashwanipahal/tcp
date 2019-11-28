@@ -5,8 +5,13 @@ export default css`
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -44,6 +49,16 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
+  .padding-top-30 {
+    padding-top: 30px;
+  }
+  .padding-top-40 {
+    padding-top: 26px;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-top: 40px;
+    }
+  }
   .padding-bottom-20 {
     padding-bottom: 20px;
   }
@@ -51,6 +66,10 @@ export default css`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    @media ${props => props.theme.mediaQuery.large} {
+      justify-content: space-between;
+    }
   }
 
   .color-fit-size-separator {
@@ -78,6 +97,7 @@ export default css`
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
   }
@@ -169,7 +189,7 @@ export default css`
     }
 
     .product-detail-section {
-      display: flex;
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -183,6 +203,7 @@ export default css`
   }
 
   .sflActions {
+    white-space: nowrap;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -221,6 +242,8 @@ export default css`
     }
 
     .bag-product-detail-wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
       width: 100%;
       .color-fit-size-separator {
@@ -310,6 +333,17 @@ export default css`
       }
     }
 
+    @media ${props => props.theme.mediaQuery.mobile} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+
     .price-label {
       margin-left: 122px;
     }
@@ -346,9 +380,13 @@ export default css`
     padding-bottom: 0px;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
@@ -380,7 +418,7 @@ export default css`
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -398,5 +436,12 @@ export default css`
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+  .sfl-fav-image {
+    cursor: pointer;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

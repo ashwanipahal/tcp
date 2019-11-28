@@ -22,7 +22,6 @@ describe('Query Builder', () => {
 
   getAPIConfig.mockImplementation(() => ({
     isPreviewEnv: undefined,
-    previewToken: undefined,
     previewDate: undefined,
   }));
 
@@ -76,25 +75,20 @@ describe('Query Builder', () => {
   it('addPreviewQueryMeta', async () => {
     getAPIConfig.mockImplementation(() => ({
       isPreviewEnv: true,
-      previewToken: 'TEST',
       previewDate: '23102019',
-      previewDateEnv: '23102019',
     }));
     const query = await QueryBuilder.loadModuleQuery('layout', { path: 'homepage' });
     expect(query).toContain('is_preview');
-    expect(query).toContain('preview_token');
     expect(query).toContain('preview_date');
   });
 
   it('addPreviewQueryMeta | no date or token', async () => {
     getAPIConfig.mockImplementation(() => ({
       isPreviewEnv: true,
-      previewToken: undefined,
       previewDate: undefined,
     }));
     const query = await QueryBuilder.loadModuleQuery('layout', { path: 'homepage' });
     expect(query).toContain('is_preview');
-    expect(query).not.toContain('preview_token');
     expect(query).not.toContain('preview_date');
   });
 });

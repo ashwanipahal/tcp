@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../utils';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const downArrowIcon = getIconPath('down_arrow_icon');
 
@@ -22,7 +22,6 @@ const selectStyles = css`
     border-radius: 0;
     color: ${props =>
       props.disabled ? props.theme.colorPalette.gray[600] : props.theme.colors.TEXTBOX.COLOR};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
@@ -36,6 +35,11 @@ const selectStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
+
+    ${props =>
+      props.input.value
+        ? `font-size: ${props.theme.typography.fontSizes.fs16};`
+        : `font-size: ${props.theme.typography.fontSizes.fs13};`};
   }
 
   .select__label {
@@ -53,7 +57,7 @@ const selectStyles = css`
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(${getIconPath('circle-alert-fill')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

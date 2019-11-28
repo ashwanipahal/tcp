@@ -6,21 +6,71 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={10}
   />
   <Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
+      <Styled(CustomIcon)
+        accessibilityLabel=""
         color="gray.500"
-        dataLocator="pdp_write_review_icon"
-        fontSize="fs22"
-        fontWeight="regular"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        text="* * * * *"
-        textDecoration={null}
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins="0 0 0 0"
+        name="star-filled"
+        onPress={[Function]}
+        size="fs14"
+      />
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.500"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins="0 0 0 4px"
+        name="star-filled"
+        onPress={[Function]}
+        size="fs14"
+      />
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.500"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins="0 0 0 4px"
+        name="star-filled"
+        onPress={[Function]}
+        size="fs14"
+      />
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.500"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins="0 0 0 4px"
+        name="star-filled"
+        onPress={[Function]}
+        size="fs14"
+      />
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.500"
+        dataLocator=""
+        iconFontName="Icomoon"
+        isButton={false}
+        isDisabled={false}
+        margins="0 0 0 4px"
+        name="star-filled"
+        onPress={[Function]}
+        size="fs14"
       />
       <Styled(BodyCopy)
         accessibilityText=""
@@ -28,13 +78,16 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
         dataLocator="pdp_write_review_icon"
         fontSize="fs12"
         fontWeight="regular"
-        margin="0 0 0 20px"
+        margin="0 0 0 12px"
         mobileFontFamily="secondary"
         numberOfLines={null}
         text="(0)"
         textDecoration={null}
       />
     </Styled(View)>
+    <Styled(View)
+      width="30%"
+    />
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="custom"
@@ -43,10 +96,11 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
       customStyle={Object {}}
       fontSizeVariation="medium"
       href="#"
+      justifyContent=""
       locator="pdp_anchor_complete_the_look"
       margins={null}
       onPress={[Function]}
-      text="Complete The Look"
+      text=""
       underline={true}
       visible={false}
     />
@@ -55,6 +109,8 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={0}
   />
   <Styled(BodyCopy)
@@ -93,7 +149,6 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     text="$NaN"
     textDecoration={null}
   />
-  <Styled(View) />
   <Styled(PromotionalMessage)
     dataLocator="pdp_loyalty_text"
     fontSize="fs12"
@@ -106,6 +161,8 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={12}
   />
 </Styled(View)>

@@ -106,6 +106,7 @@ exports[`ProductCustomizeFormPartContainer component should renders correctly 1`
     ]
   }
   currency=""
+  currencyAttributes={Object {}}
   currencyExchange={1}
   currentColorEntry={
     Object {

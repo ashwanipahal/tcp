@@ -17,6 +17,12 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
         id="input"
         keyboardType="default"
         maxLength={16}
+        meta={
+          Object {
+            "error": "food",
+            "touched": "foo",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
@@ -65,7 +71,7 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
         <Styled(View)>
           <Styled(ImageComp)
             alt=""
-            height="15px"
+            height="14px"
             host=""
             source={
               Object {
@@ -73,21 +79,17 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
               }
             }
             url=""
-            width="15px"
+            width="16px"
           />
         </Styled(View)>
         <Styled(BodyCopy)
           accessibilityText=""
           color="error"
           dataLocator=""
+          fontFamily="secondary"
           fontSize="fs12"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           margin={null}
-          mobilefontFamily={
-            Array [
-              "secondary",
-            ]
-          }
           numberOfLines={null}
           text="food"
           textDecoration={null}
@@ -115,6 +117,12 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
         id="input"
         keyboardType="default"
         maxLength={16}
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
@@ -180,6 +188,12 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
         id="input"
         keyboardType="default"
         maxLength={16}
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
@@ -245,6 +259,12 @@ exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
         id="input"
         keyboardType="default"
         maxLength={16}
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}

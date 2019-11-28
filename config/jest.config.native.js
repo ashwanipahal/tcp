@@ -47,6 +47,7 @@ module.exports = {
     '/pages/',
     '/__mocks__/',
     '/features/account/LoginPage/container/loginUtils/keychain.utils.native.js',
+    '/common/atoms/Toast/views/Toast.native.jsx',
     '/common/atoms/Swipeable',
     '/PickupStoreModal/',
   ],

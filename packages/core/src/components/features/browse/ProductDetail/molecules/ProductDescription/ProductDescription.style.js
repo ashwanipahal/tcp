@@ -80,7 +80,7 @@ export default css`
       max-height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
     .show-more-expanded {
-      max-height: initial;
+      max-height: 100%;
       overflow: visible;
     }
     .button-wrapper {

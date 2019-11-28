@@ -22,7 +22,7 @@ export const AppAnimationConfig = {
   PeekABooViewMinHeight: 0,
   PeekABooLogoMaxHeight: 80,
   PeekABooLogoMaxWidth: 100,
-  AnimationDelay: 1000,
+  AnimationDelay: 500,
   AppSplashMaxWidth: getScreenWidth() / 2,
 };
 

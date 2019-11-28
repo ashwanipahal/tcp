@@ -56,7 +56,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
         <BodyCopy
           fontWeight="regular"
           fontSize="fs14"
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           text={`${getLabelValue(
             labels,
             'lbl_overview_profileInfoMember'
@@ -68,11 +68,12 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
         <BodyCopy
           fontWeight="regular"
           fontSize="fs14"
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           text={getLabelValue(labels, 'lbl_overview_profileInfoEmailAddress')}
           color="gray.900"
         />
         <BodyCopy
+          fontFamily="secondary"
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}

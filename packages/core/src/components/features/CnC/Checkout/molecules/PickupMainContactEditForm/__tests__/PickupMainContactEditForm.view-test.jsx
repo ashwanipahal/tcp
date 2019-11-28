@@ -56,6 +56,8 @@ describe('PickupMainContactEditFormVanilla component', () => {
     const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
     component.instance().renderSectionTitle();
     component.find(Anchor).simulate('click', { preventDefault: jest.fn() });
+    component.instance().pickupEditSubmit({ pickUpContact: {} });
+    component.instance().SaveButton();
     expect(component).toMatchSnapshot();
   });
 });

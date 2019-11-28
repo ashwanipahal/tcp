@@ -13,7 +13,7 @@ const ErrorDisplay = ({ error }) => {
       <TextWrapper>
         <BodyCopy
           fontWeight="extrabold"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs10"
           text={error}
           color="error"

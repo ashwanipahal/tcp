@@ -4,24 +4,24 @@ export const BRAND_CONFIG = {
 };
 
 const canonicalUrlsConfig = context => {
-  const { brand, path } = context;
+  const { brand, path, withCountry } = context;
 
   return [
     {
       id: 'en-us',
-      canonicalUrl: `https://www.${BRAND_CONFIG[brand]}/us/${path}`,
+      canonicalUrl: `https://www.${BRAND_CONFIG[brand]}${!withCountry ? '/us/' : ''}${path}`,
     },
     {
       id: 'es-us',
-      canonicalUrl: `https://es.${BRAND_CONFIG[brand]}/us/${path}`,
+      canonicalUrl: `https://es.${BRAND_CONFIG[brand]}${!withCountry ? '/us/' : ''}${path}`,
     },
     {
       id: 'en-ca',
-      canonicalUrl: `https://www.${BRAND_CONFIG[brand]}/ca/${path}`,
+      canonicalUrl: `https://www.${BRAND_CONFIG[brand]}${!withCountry ? '/ca/' : ''}${path}`,
     },
     {
       id: 'fr-ca',
-      canonicalUrl: `https://fr.${BRAND_CONFIG[brand]}/ca/${path}`,
+      canonicalUrl: `https://fr.${BRAND_CONFIG[brand]}${!withCountry ? '/ca/' : ''}${path}`,
     },
   ];
 };

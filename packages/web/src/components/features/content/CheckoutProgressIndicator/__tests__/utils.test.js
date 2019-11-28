@@ -27,12 +27,4 @@ describe('isOrderHasPickup', () => {
     const cartItems = fromJS({});
     expect(utils.getAvailableStages(cartItems)).toStrictEqual(['billing', 'review']);
   });
-
-  it('routeToStage', () => {
-    expect(utils.routeToStage('pickup', [], true, 'pickup')).toBe();
-  });
-
-  it('routeToStage', () => {
-    expect(utils.routeToStage('pickup', undefined, true, 'shipping')).toBe();
-  });
 });

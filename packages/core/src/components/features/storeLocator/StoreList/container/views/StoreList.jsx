@@ -110,7 +110,8 @@ class StoreList extends Component {
 
     const stores = [];
 
-    if (storeListUS.length > 0 && storeListCA.length > 0) {
+    /* If any country array have states the dropdown should render */
+    if (storeListUS.length || storeListCA.length) {
       this.constructor.pushStore(storeListUS, stores);
       this.constructor.pushDisabled(stores);
       this.constructor.pushStore(storeListCA, stores);

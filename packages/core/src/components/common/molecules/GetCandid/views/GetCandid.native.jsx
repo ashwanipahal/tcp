@@ -101,17 +101,17 @@ class GetCandid extends React.Component {
           {labels.lbl_getCandid_title && (
             <>
               <Title
-                mobileFontFamily="primary"
+                fontFamily="primary"
                 fontSize="fs20"
-                fontWeight="semibold"
                 color="gray.900"
+                fontWeight="medium"
                 marginBottom="12px"
                 text={labels.lbl_getCandid_title}
                 textAlign="center"
-                letterSpacing="ls167"
+                letterSpacing="ls2"
               />
               <BodyCopy
-                mobileFontFamily="primary"
+                fontFamily="primary"
                 fontSize="fs14"
                 fontWeight="regular"
                 color="gray.900"
@@ -131,6 +131,7 @@ class GetCandid extends React.Component {
                 fontFamily="secondary"
                 color="gray.900"
                 anchorVariation="primary"
+                fontSizeVariation="large"
                 noLink
                 dataLocator=""
                 text={labels.lbl_getCandid_btnSeeMore}

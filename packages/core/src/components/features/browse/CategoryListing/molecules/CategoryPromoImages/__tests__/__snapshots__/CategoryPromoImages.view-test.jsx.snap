@@ -1,0 +1,868 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductPickupVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="image-variant-wrapper clp-desktop-view"
+  >
+    <div
+      className="image-variant-wrapper"
+    >
+      <ImageComponent
+        className="image-tile-desktop-4-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "Test Tiles",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Test Tiles",
+            "url": "/Module-H_TCP_ybjasx.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img4_d",
+          ]
+        }
+        imgRef={null}
+        key="Category 1"
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 1",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-4-up"
+        titleClass="image-title-4-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-4-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy2",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy2",
+            "url": "/Module-H_Gymboree_oyndtj.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img4_d",
+          ]
+        }
+        imgRef={null}
+        key="Category 2"
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 2",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-4-up"
+        titleClass="image-title-4-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-4-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img4_d",
+          ]
+        }
+        imgRef={null}
+        key=""
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-4-up"
+        titleClass="image-title-4-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-4-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "new image",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "new image",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img4_d",
+          ]
+        }
+        imgRef={null}
+        key="Category 4"
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 4",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-4-up"
+        titleClass="image-title-4-up"
+      />
+    </div>
+    <div
+      className="image-variant-wrapper"
+    >
+      <ImageComponent
+        className="image-tile-desktop-3-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "Test Tiles",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Test Tiles",
+            "url": "/Module-H_TCP_ybjasx.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img6_d",
+          ]
+        }
+        imgRef={null}
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 1",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-3-up"
+        titleClass="image-title-3-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-3-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy2",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy2",
+            "url": "/Module-H_Gymboree_oyndtj.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img6_d",
+          ]
+        }
+        imgRef={null}
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 2",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-3-up"
+        titleClass="image-title-3-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-3-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img6_d",
+          ]
+        }
+        imgRef={null}
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-3-up"
+        titleClass="image-title-3-up"
+      />
+      <ImageComponent
+        className="image-tile-desktop-3-up"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "new image",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "new image",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img6_d",
+          ]
+        }
+        imgRef={null}
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 4",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-3-up"
+        titleClass="image-title-3-up"
+      />
+    </div>
+    <div
+      className="image-variant-wrapper"
+    >
+      <HeroImageComponent
+        className="image-tile-full-bleed"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "Test Tiles",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Test Tiles",
+            "url": "/Module-H_TCP_ybjasx.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img1_d",
+          ]
+        }
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 1",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-fullBleed"
+        titleClass="image-title-fullBleed"
+      />
+      <HeroImageComponent
+        className="image-tile-full-bleed"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy2",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy2",
+            "url": "/Module-H_Gymboree_oyndtj.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img1_d",
+          ]
+        }
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 2",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-fullBleed"
+        titleClass="image-title-fullBleed"
+      />
+      <HeroImageComponent
+        className="image-tile-full-bleed"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "dummy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "dummy",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img1_d",
+          ]
+        }
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-fullBleed"
+        titleClass="image-title-fullBleed"
+      />
+      <HeroImageComponent
+        className="image-tile-full-bleed"
+        image={
+          Object {
+            "__typename": "Image",
+            "alt": "new image",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "new image",
+            "url": "/top_view_Module_B_fdvbd5.jpg",
+          }
+        }
+        imgDataConfig={
+          Array [
+            "t_clp_img2_m",
+            "t_clp_img2_t",
+            "t_clp_img1_d",
+          ]
+        }
+        link={
+          Object {
+            "__typename": "Link",
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Category 4",
+            "title": "",
+            "url": "/dummy",
+          }
+        }
+        linkClass="image-link-fullBleed"
+        titleClass="image-title-fullBleed"
+      />
+    </div>
+  </div>
+  <div
+    className="image-variant-wrapper clp-mobile-tab-view"
+  >
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "Test Tiles",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "Test Tiles",
+          "url": "/Module-H_TCP_ybjasx.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 1",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy2",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy2",
+          "url": "/Module-H_Gymboree_oyndtj.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 2",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "new image",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "new image",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 4",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "Test Tiles",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "Test Tiles",
+          "url": "/Module-H_TCP_ybjasx.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 1",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy2",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy2",
+          "url": "/Module-H_Gymboree_oyndtj.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 2",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "new image",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "new image",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 4",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "Test Tiles",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "Test Tiles",
+          "url": "/Module-H_TCP_ybjasx.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 1",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy2",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy2",
+          "url": "/Module-H_Gymboree_oyndtj.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 2",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "dummy",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "dummy",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+    <ImageComponent
+      className="image-tile-desktop-2-up"
+      image={
+        Object {
+          "__typename": "Image",
+          "alt": "new image",
+          "crop_d": "",
+          "crop_m": "",
+          "crop_t": "",
+          "title": "new image",
+          "url": "/top_view_Module_B_fdvbd5.jpg",
+        }
+      }
+      imgDataConfig={
+        Array [
+          "t_clp_img2_m",
+          "t_clp_img2_t",
+          "t_clp_img2_d",
+        ]
+      }
+      imgRef={null}
+      link={
+        Object {
+          "__typename": "Link",
+          "action": "",
+          "external": 0,
+          "target": "",
+          "text": "Category 4",
+          "title": "",
+          "url": "/dummy",
+        }
+      }
+      linkClass="image-link-2-up"
+      titleClass="image-title-2-up"
+    />
+  </div>
+</div>
+`;

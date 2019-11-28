@@ -18,6 +18,7 @@ import StoreLocations from './StoreLocations';
 import StoreSelector from './StoreSelector';
 import StoresIntlTile from './StoresIntlTile';
 import StoresCountryTile from './StoresCountryTile';
+import PriceCurrency from './PriceCurrency';
 
 export {
   AccordionHeader,
@@ -40,4 +41,5 @@ export {
   StoreSelector,
   StoresIntlTile,
   StoresCountryTile,
+  PriceCurrency,
 };

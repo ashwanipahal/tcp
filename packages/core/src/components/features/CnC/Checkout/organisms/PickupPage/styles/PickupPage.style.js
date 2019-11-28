@@ -59,12 +59,33 @@ const styles = css`
   .pickUpAlternate-container {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
-  .buttonContainer {
+  .editFormActionsContainer {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 45px;
-    margin-top: 71px;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+
+    .edit-pickup-error {
+      padding-top: 0;
+      @media ${props => props.theme.mediaQuery.medium} {
+        justify-content: flex-end;
+      }
+      span {
+        font-size: ${props => props.theme.typography.fontSizes.fs12};
+        font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+      }
+      img {
+        padding-left: 0;
+      }
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
+
   .updateButton {
     margin-left: 30px;
   }

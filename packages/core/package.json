@@ -10,7 +10,6 @@
   "dependencies": {
     "apisauce": "^1.0.2",
     "async-redis": "^1.1.7",
-    "aws-appsync": "^1.7.2",
     "aws-appsync-react": "1.2.7",
     "bunyan": "^1.8.12",
     "express-device": "^0.4.2",
@@ -44,7 +43,7 @@
   "peerDependencies": {
     "flow-bin": "^0.82.0",
     "flow-typed": "^2.5.1",
-    "react": "16.5.0",
+    "react": "16.9.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",

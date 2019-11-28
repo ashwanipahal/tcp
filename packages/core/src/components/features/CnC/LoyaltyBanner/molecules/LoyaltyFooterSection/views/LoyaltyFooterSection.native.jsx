@@ -3,8 +3,11 @@ import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
-import { Anchor } from '../../../../../../common/atoms';
-import { FooterLinksSection, LearnMoreWrapper } from '../styles/LoyaltyFooterSection.style.native';
+import { Anchor, BodyCopy } from '../../../../../../common/atoms';
+import {
+  FooterLinksSection,
+  SizeBetweenWrapper,
+} from '../styles/LoyaltyFooterSection.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import LoginPageContainer from '../../../../../account/LoginPage';
 import CreateAccount from '../../../../../account/CreateAccount';
@@ -64,37 +67,49 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
-  renderApplyNowLink = labels => {
+  renderApplyNowLink = text => {
+    const { openApplyNowModal, navigation, closeAddedToBagModal } = this.props;
     return (
       <Anchor
         className="applyNow"
         fontSizeVariation="medium"
         anchorVariation="primary"
-        text={labels.applyNow}
+        text={text}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+          closeAddedToBagModal();
+        }}
       />
     );
   };
 
-  renderLearnMoreLink = labels => {
+  renderLearnMoreLink = text => {
+    const { openApplyNowModal, navigation, closeAddedToBagModal } = this.props;
     return (
       <Anchor
         className="learnMore"
         fontSizeVariation="medium"
         anchorVariation="primary"
-        text={labels.learnMore}
+        text={text}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: true });
+          closeAddedToBagModal();
+        }}
       />
     );
   };
 
-  renderCreateAccountLink = labels => {
+  renderCreateAccountLink = text => {
     return (
       <Anchor
         className="createAccount"
         fontSizeVariation="medium"
         anchorVariation="primary"
-        text={labels.createMyPlaceRewardsAccount}
+        text={text}
         underline
         onPress={e =>
           this.toggleModal({
@@ -113,13 +128,13 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     toggleLogin();
   };
 
-  renderLoginLink = labels => {
+  renderLoginLink = text => {
     return (
       <Anchor
         className="logIn"
         fontSizeVariation="medium"
         anchorVariation="primary"
-        text={labels.logIn}
+        text={text}
         underline
         onPress={e =>
           this.toggleModal({
@@ -134,155 +149,84 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     );
   };
 
-  applyNowLearnMoreLinks = labels => {
-    return (
-      <FooterLinksSection>
-        {this.renderApplyNowLink(labels)}
-        <LearnMoreWrapper>{this.renderLearnMoreLink(labels)}</LearnMoreWrapper>
-      </FooterLinksSection>
-    );
-  };
-
-  LearnMoreLink = labels => {
-    return <FooterLinksSection>{this.renderLearnMoreLink(labels)}</FooterLinksSection>;
-  };
-
-  createAccLogInLinks = labels => {
-    return (
-      <FooterLinksSection>
-        {this.renderCreateAccountLink(labels)}
-        <LearnMoreWrapper>{this.renderLoginLink(labels)}</LearnMoreWrapper>
-      </FooterLinksSection>
-    );
-  };
-
-  productDetailViewFooter = (labels, isProductDetailView, isGuest, isPlcc) => {
-    return (
-      <>
-        {isProductDetailView && (
-          <>
-            {isGuest && this.createAccLogInLinks(labels)}
-            {!isGuest && (
-              <>
-                {!isPlcc && this.applyNowLearnMoreLinks(labels)}
-                {isPlcc && this.LearnMoreLink(labels)}
-              </>
-            )}
-          </>
-        )}
-      </>
-    );
-  };
-
-  addedToBagPageLinks = (labels, isGuest, isPlcc) => {
-    return (
-      <>
-        {isGuest && this.createAccLogInLinks(labels)}
-        {!isGuest && (
-          <>
-            {!isPlcc && this.applyNowLearnMoreLinks(labels)}
-            {isPlcc && this.LearnMoreLink(labels)}
-          </>
-        )}
-      </>
-    );
-  };
-
-  renderConfirmationAndBagLinks = (
-    labels,
-    isConfirmationPage,
-    isPlcc,
-    isGuest,
-    earnedRewardAvailable
-  ) => {
-    return (
-      <>
-        {!isConfirmationPage && (
-          <>
-            {!isPlcc && this.applyNowLearnMoreLinks(labels)}
-            {isPlcc && this.LearnMoreLink(labels)}
-          </>
-        )}
-        {isConfirmationPage && isGuest && earnedRewardAvailable && this.createAccLogInLinks(labels)}
-      </>
-    );
+  getLinkWithName = (props, action, text) => {
+    let returnLink;
+    switch (action) {
+      case 'ApplyNowAction':
+        returnLink = this.renderApplyNowLink(text);
+        break;
+      case 'LearnMoreAction':
+        returnLink = this.renderLearnMoreLink(text);
+        break;
+      case 'CreateAccountAction':
+        returnLink = this.renderCreateAccountLink(text);
+        break;
+      case 'loginAction':
+        returnLink = this.renderLoginLink(text);
+        break;
+      default:
+        break;
+    }
+    return returnLink;
   };
 
   render() {
-    const {
-      labels,
-      className,
-      isProductDetailView,
-      isGuest,
-      isPlcc,
-      isReviewPage,
-      isConfirmationPage,
-      isAddedToBagPage,
-      earnedRewardAvailable,
-      toggleLogin,
-    } = this.props;
+    const { className, footerLabels } = this.props;
     const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     return (
-      <View className={`${className} footerWrapper`}>
-        {isProductDetailView &&
-          this.productDetailViewFooter(labels, isProductDetailView, isGuest, isPlcc)}
-        {isAddedToBagPage && this.addedToBagPageLinks(labels, isGuest, isPlcc)}
-        {!isProductDetailView && !isAddedToBagPage && (
-          <>
-            {!isReviewPage &&
-              this.renderConfirmationAndBagLinks(
-                labels,
-                isConfirmationPage,
-                isPlcc,
-                isGuest,
-                earnedRewardAvailable,
-                toggleLogin
-              )}
-            {isReviewPage && isPlcc && this.LearnMoreLink(labels)}
-          </>
-        )}
-        {showModal && (
-          <ModalNative
-            isOpen={showModal}
-            onRequestClose={this.toggleModal}
-            heading={modalHeaderLbl}
-            headingFontFamily="secondary"
-            fontSize="fs16"
-            horizontalBar={horizontalBar}
-          >
-            <View>
-              {this.renderComponent({
-                getComponentId,
-              })}
-            </View>
-          </ModalNative>
-        )}
+      <View className={`${className} footer-wrapper`}>
+        <FooterLinksSection>
+          {!!footerLabels.link1Prefix && (
+            <BodyCopy
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              fontSize="fs9"
+              text={footerLabels.link1Prefix}
+              color="text.primary"
+            />
+          )}
+          {!!footerLabels.link1Action &&
+            this.getLinkWithName(this.props, footerLabels.link1Action, footerLabels.link1Text)}
+          {!!footerLabels.link1Action && !!footerLabels.link2Action && <SizeBetweenWrapper />}
+          {!!footerLabels.link2Prefix && (
+            <BodyCopy
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              fontSize="fs9"
+              text={footerLabels.link2Prefix}
+              color="text.primary"
+            />
+          )}
+          {!!footerLabels.link2Action &&
+            this.getLinkWithName(this.props, footerLabels.link2Action, footerLabels.link2Text)}
+          {showModal && (
+            <ModalNative
+              isOpen={showModal}
+              onRequestClose={this.toggleModal}
+              heading={modalHeaderLbl}
+              headingFontFamily="secondary"
+              fontSize="fs16"
+              horizontalBar={horizontalBar}
+            >
+              <View>
+                {this.renderComponent({
+                  getComponentId,
+                })}
+              </View>
+            </ModalNative>
+          )}
+        </FooterLinksSection>
       </View>
     );
   }
 }
 
 LoyaltyFooterSection.propTypes = {
-  labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
-  isPlcc: PropTypes.bool,
-  isGuest: PropTypes.bool,
-  isReviewPage: PropTypes.bool,
-  isProductDetailView: PropTypes.bool,
-  isConfirmationPage: PropTypes.bool,
-  earnedRewardAvailable: PropTypes.bool,
-  isAddedToBagPage: PropTypes.bool,
 };
 
 LoyaltyFooterSection.defaultProps = {
   className: '',
-  isPlcc: false,
-  isGuest: false,
-  isReviewPage: false,
-  isProductDetailView: false,
-  isConfirmationPage: false,
-  earnedRewardAvailable: false,
-  isAddedToBagPage: false,
 };
 
 export default withStyles(LoyaltyFooterSection, Styles);

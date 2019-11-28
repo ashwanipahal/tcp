@@ -18,6 +18,7 @@ jest.mock('../../../../utils', () => ({
   isClient: jest.fn(),
   isMobileApp: jest.fn(),
   routerPush: jest.fn(),
+  isCanada: jest.fn(),
 }));
 
 describe('product Listing', () => {

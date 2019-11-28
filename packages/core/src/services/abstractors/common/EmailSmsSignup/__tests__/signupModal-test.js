@@ -11,7 +11,7 @@ describe('SignupModalAbstractor', () => {
   });
 
   test('Signup modal Abstractor SMS subscription ', () => {
-    return SignupModalAbstractor.subscribeSms('4083067249').then(data => {
+    return SignupModalAbstractor.subscribeSms({ footerTopSmsSignup: '4083067249' }).then(data => {
       expect(data.success).toBeTruthy();
     });
   });

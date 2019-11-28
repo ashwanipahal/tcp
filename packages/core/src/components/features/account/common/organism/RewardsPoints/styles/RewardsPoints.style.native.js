@@ -22,8 +22,8 @@ const RewardStyle = () => {
 const ProgressBarStyle = props => {
   const { theme } = props;
   return `
-  height: ${props.theme.spacing.ELEM_SPACING.SM};
-  border-radius: ${props.theme.spacing.ELEM_SPACING.XXS};
+  height: 10px;
+  border-radius: ${props.theme.spacing.ELEM_SPACING.XS};
   background-color: ${
     props.plccUser
       ? props.theme.colorPalette.userTheme.plccLight

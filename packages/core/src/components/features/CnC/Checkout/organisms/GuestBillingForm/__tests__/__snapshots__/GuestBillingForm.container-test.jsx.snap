@@ -2,6 +2,7 @@
 
 exports[`BillingPageContainer should render correctly 1`] = `
 <ReduxForm
+  bagLoading={false}
   billingData={
     Object {
       "address": Object {
@@ -65,6 +66,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
   labels={Object {}}
   navigation={null}
   onSubmit={[Function]}
+  onSubmitFail={[Function]}
   orderHasShipping={true}
   paymentMethodId={null}
   persistentSubmitErrors={false}
@@ -88,6 +90,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
 
 exports[`BillingPageContainer should render correctly if billing data is present 1`] = `
 <ReduxForm
+  bagLoading={false}
   billingData={
     Object {
       "address": Object {},
@@ -129,6 +132,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
   labels={Object {}}
   navigation={null}
   onSubmit={[Function]}
+  onSubmitFail={[Function]}
   orderHasShipping={true}
   paymentMethodId={null}
   persistentSubmitErrors={false}

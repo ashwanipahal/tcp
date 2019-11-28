@@ -16,7 +16,6 @@ import {
 import {
   Container,
   HeaderContainer,
-  SafeAreaViewStyle,
   CartIconView,
   Touchable,
   LeftSection,
@@ -24,6 +23,7 @@ import {
   RightSection,
   TitleText,
   CartCountContainer,
+  SafeAreaViewStyle,
 } from './HeaderNew.style';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import { ArrowBackIconPLP } from '../../../features/content/Navigation/molecules/NavMenuLevel2/NavMenuLevel2.style';
@@ -40,7 +40,7 @@ const CART_ITEM_COUNTER = 'cartItemsCount';
  * 3. To show the welcome text for guest user
  *     and shoe the name fro register user
  */
-class HeaderNew extends React.PureComponent<Props> {
+class HeaderNew extends React.PureComponent {
   static propTypes = {
     title: PropTypes.string,
     showSearch: PropTypes.bool,

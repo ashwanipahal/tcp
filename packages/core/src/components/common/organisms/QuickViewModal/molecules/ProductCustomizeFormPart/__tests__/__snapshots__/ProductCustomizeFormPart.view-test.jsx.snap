@@ -25,6 +25,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               }
             }
             isProductImage={true}
+            lazyLoad={false}
           />
           <Styled(Anchor)
             className="link-redirect"
@@ -67,11 +68,11 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={
@@ -116,11 +117,11 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={
@@ -243,6 +244,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               },
             ]
           }
+          currencyExchange=""
           currentProduct={
             Object {
               "alternateSizes": Object {},
@@ -421,17 +423,19 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               [Function],
               " {
     .add-to-bag-button {
-      width: 243px;
+      width: 343px;
     }
   }
 ",
             ]
           }
           errorOnHandleSubmit=""
+          onCloseClick={[Function]}
           plpLabels={Object {}}
           quickViewColorSwatchesCss=""
           showAddToBagCTA={true}
           showColorChips={true}
+          sizeChartLinkVisibility={2}
         />
       </div>
     </div>

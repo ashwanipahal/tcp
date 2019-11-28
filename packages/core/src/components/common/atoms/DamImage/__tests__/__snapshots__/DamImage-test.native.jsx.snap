@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DamImageCompVanilla should pass source value 1`] = `
+<Image
+  accessibilityLabel=""
+  accessibilityRole="image"
+  defaultSource={
+    Object {
+      "testUri": "../../../../core/src/assets/img-placeholder.png",
+    }
+  }
+  host=""
+  source={
+    Object {
+      "uri": "https://test1.theplace.com/image/upload//",
+    }
+  }
+/>
+`;
+
+exports[`DamImageCompVanilla should render correctly 1`] = `
+<Image
+  accessibilityLabel=""
+  accessibilityRole="image"
+  defaultSource={
+    Object {
+      "testUri": "../../../../core/src/assets/img-placeholder.png",
+    }
+  }
+  host=""
+  source={
+    Object {
+      "uri": "https://test1.theplace.com/image/upload//",
+    }
+  }
+/>
+`;

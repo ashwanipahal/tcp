@@ -173,8 +173,7 @@ export const isSearch = () => {
 export const matchValue = (isSearchPage, location) => {
   const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
   const params = isSearchPage ? '/search/' : categoryParam;
-  const pathname = isMobileApp() ? location : window.location.pathname;
-  return matchPath(pathname, params);
+  return matchPath(location, params);
 };
 
 export const getCategoryKey = (isSearchPage, match) => {
@@ -239,7 +238,7 @@ export const getBreadCrumb = categoryNameList => {
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
 function getIsShowCategoryGrouping(state) {
-  const isL2Category = state.ProductListing.get('breadCrumbTrail').length === 2;
+  const isL2Category = state.ProductListing.breadCrumbTrail.length === 2;
   // const isNotAppliedSort = !state.productListing.appliedSortId;
   const isNotAppliedSort = !null;
   const appliedFilters = state.ProductListing.appliedFiltersIds;
@@ -249,30 +248,123 @@ function getIsShowCategoryGrouping(state) {
   return isL2Category && isNotAppliedSort && isNotAppliedFilter;
 }
 
-export function getProductsAndTitleBlocks(state, productBlocks = []) {
+// eslint-disable-next-line
+export function getProductsAndTitleBlocks(
+  state,
+  productBlocks = [],
+  gridPromo,
+  horizontalPromo,
+  rowSize,
+  filterCount
+) {
   const productsAndTitleBlocks = [];
   let lastCategoryName = null;
+  const slots = [];
+  const horizontalSlots = [];
 
-  productBlocks.forEach(block => {
+  // If filters are applied, do not consider the promos even if they are configured
+  if (filterCount === 0) {
+    gridPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      slots.push(parseInt(slotNumber, 10));
+    });
+
+    horizontalPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      horizontalSlots.push(parseInt(slotNumber, 10));
+    });
+  }
+
+  let totalItemsAdded = 0;
+  let promosAdded = 0;
+
+  let isL2WithBucket = false;
+  let numberOfItemsInCurrentL2 = 0;
+  // eslint-disable-next-line
+  productBlocks.forEach((block, productBlocksIndex) => {
     const productsAndTitleBlock = [];
-    // For each product in this block try to extract the category name if new
-    block.forEach(product => {
+    let promoAddedInCurrentBlock = 0;
+    block.forEach((product, index) => {
       const { categoryName } = product.miscInfo;
 
-      // This is to inject Dynamic Marketing Espots into our product Grid
-      // Use this for promo tiles if required later - injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
+      // indexOfProduct is all the items added already in the previous iteration
+      // plus the promos added in the current iteration
+      // plus index which would give the current iteration products added
+      const currentSlot = totalItemsAdded + promoAddedInCurrentBlock + index;
+
+      // First add the horizontal/mobile promos as they don't add up to the count
+      // For horizontal / mobile only promo
+      // Also, if slot_6 needs to be added, the slot number has to be 6 since it gets added after 6th product
+      const horizontalSlotIndex = horizontalSlots.indexOf(currentSlot);
+      if (horizontalSlotIndex !== -1) {
+        productsAndTitleBlock.push({
+          itemType: 'gridPromo',
+          gridStyle: 'horizontal',
+          itemVal: horizontalPromo[horizontalSlotIndex],
+        });
+      }
+
+      // If Vertical promo slot_8 needs to be added, the slot number has to be 7
+      // since it occupies space of the 8th product, which is actually slot 7
+      const slotIndex = slots.indexOf(currentSlot + 1);
+      if (slotIndex !== -1) {
+        promosAdded += 1;
+        productsAndTitleBlock.push({
+          itemType: 'gridPromo',
+          gridStyle: 'vertical',
+          itemVal: gridPromo[slotIndex],
+        });
+        promoAddedInCurrentBlock += 1;
+      }
 
       // push: If we should group and we hit a new category name push on array
-      // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
-      const shouldGroup =
-        state.ProductListing.get('breadCrumbTrail') && getIsShowCategoryGrouping(state);
+      const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
       if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
+        isL2WithBucket = true;
+        numberOfItemsInCurrentL2 = 0;
         productsAndTitleBlock.push(categoryName);
         lastCategoryName = categoryName;
       }
       // push: product onto block
       productsAndTitleBlock.push(product);
     });
+
+    const productsAdded = block.length;
+    totalItemsAdded += productsAdded + promoAddedInCurrentBlock;
+    numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
+    // Check if the number of products and the promos count sum
+    // to understand the number of slots blank at the end of the block
+    const numberOfItemsInBlock = productsAdded + promoAddedInCurrentBlock;
+    const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
+
+    // For L2 with buckets only
+    // If there is some empty space in the last row of the block
+    // and the next block starts with a new L3 category,
+    // or if this is the last block of the entire productsBlock that is loaded yet
+    // ie. this is the last row to appear, irrespective of the fact if it is followed by a new L3 or not
+    // check if some slots were supposed to be added in those empty space
+    if (
+      isL2WithBucket &&
+      ((numberOfItemsInLastRow !== 0 &&
+        (productBlocks[productBlocksIndex + 1] &&
+          productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) || // TODO - add null check
+        productBlocksIndex + 1 === productBlocks.length)
+    ) {
+      const emptySpaces = rowSize - numberOfItemsInLastRow;
+      if (emptySpaces < rowSize) {
+        totalItemsAdded += emptySpaces;
+        const indexOfEmptySlot = slots.indexOf(totalItemsAdded);
+        if (indexOfEmptySlot !== -1) {
+          // See if the empty spaces are omitting any promo
+          productsAndTitleBlock.push({
+            itemType: 'gridPromo',
+            gridStyle: 'vertical',
+            itemVal: gridPromo[indexOfEmptySlot],
+          });
+        }
+      }
+      // If this is the last block
+    }
 
     // push: product block onto matrix
     productsAndTitleBlocks.push(productsAndTitleBlock);
@@ -289,4 +381,58 @@ export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
       key && (key.toLowerCase() === FACETS_FIELD_KEY.sort ? value : value.split(','));
   }); // Fetching Facets and sort key from the URL query string
   return queryParams;
+};
+
+// This function is used for mobile app In-grid promo implementation
+export const getProductsWithPromo = (products, gridPromo, horizontalPromo, filterCount) => {
+  const slots = [];
+  const horizontalSlots = [];
+
+  if (filterCount === 0) {
+    gridPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      slots.push(parseInt(slotNumber, 10));
+    });
+
+    horizontalPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      horizontalSlots.push(parseInt(slotNumber, 10));
+    });
+  }
+
+  let productCount = 0;
+  const productsAndPromos = [];
+
+  if (products) {
+    products.forEach((product, index) => {
+      const slotNum = slots.indexOf(productCount + 1);
+      if (slotNum !== -1) {
+        productCount += 1;
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'vertical',
+          itemVal: gridPromo[slotNum],
+        });
+      }
+
+      const horizontalSlotIndex = horizontalSlots.indexOf(productCount);
+      if (horizontalSlotIndex !== -1) {
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'horizontal',
+          itemVal: gridPromo[horizontalSlotIndex],
+        });
+
+        // Since horizontal promo occupies two slots, add a dummy blank promo
+        productsAndPromos.push({
+          itemType: 'gridPromo',
+          gridStyle: 'blank',
+          itemVal: gridPromo[horizontalSlotIndex],
+        });
+      }
+      productsAndPromos.push(products[index]);
+      productCount += 1;
+    });
+  }
+  return productsAndPromos;
 };

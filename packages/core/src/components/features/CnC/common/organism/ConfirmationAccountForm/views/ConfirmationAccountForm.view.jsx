@@ -20,6 +20,7 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import { getIconPath } from '@tcp/core/src/utils';
 import PasswordRequirement from '@tcp/core/src/components/features/account/ResetPassword/molecules/PasswordRequirement';
 import styles from '../styles/ConfirmationAccountForm.style';
+import { scrollToFirstError } from '../../../../Checkout/util/utility';
 
 /**
  * @function renderTooltip
@@ -84,10 +85,12 @@ const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
  * @param {String} error
  * @returns {JSX} Notification component with error or success state as provided in the input params.
  */
-const renderNotification = (success, successMsg, error) => {
+const renderNotification = (success, successMsg, error, inputColGrid) => {
   return (
     (error || success) && (
-      <Notification status={error ? 'error' : 'success'} message={error || successMsg} />
+      <Col {...inputColGrid}>
+        <Notification status={error ? 'error' : 'success'} message={error || successMsg} />
+      </Col>
     )
   );
 };
@@ -147,13 +150,18 @@ const ConfirmationCreateAccountForm = ({
 
   return (
     <div className={`${className} elem-pt-MED`}>
-      {renderNotification(createAccountSuccess, lblSucccessMsg, createAccountError)}
       <BodyCopy className="heading" fontSize="fs26" color="gray[900]" textAlign="center">
         {lblHeading}
       </BodyCopy>
       <form onSubmit={handleSubmit(formSubmit)}>
         <Row fullBleed className="row-form-wrapper">
           {renderEmailAddress(emailAddress, inputColGrid, lblEmailAddress)}
+          {renderNotification(
+            createAccountSuccess,
+            lblSucccessMsg,
+            createAccountError,
+            inputColGrid
+          )}
           {isPromptForUserDetails && (
             <Col {...inputColGrid}>
               <Field
@@ -267,7 +275,7 @@ const ConfirmationCreateAccountForm = ({
               />
             </Col>
           )}
-          <Col className="elem-pt-XXL elem-pb-XXL" {...inputColGrid}>
+          <Col className="elem-pt-XXL elem-pb-XXL i-agree-checkbox" {...inputColGrid}>
             <Field
               name="iAgree"
               component={InputCheckbox}
@@ -367,6 +375,7 @@ const withReduxForm = reduxForm({
   form: 'ConfirmationCreateAccountForm', // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(ConfirmationCreateAccountForm);
 
 export default withStyles(withReduxForm, styles);

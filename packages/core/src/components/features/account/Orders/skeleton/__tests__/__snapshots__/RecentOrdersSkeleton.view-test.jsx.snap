@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentOrdersSkeleton component should renders correctly 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-kGXeez",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .order-total {
+    text-align: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      text-align: right;
+    }
+  }
+
+  .order-item-header {
+    padding-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding-top: ",
+          [Function],
+          ";
+    }
+  }
+
+  .order-item-value {
+    padding-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding-bottom: ",
+          [Function],
+          ";
+    }
+  }
+
+  .order-item-bottom {
+    padding-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      padding-bottom: ",
+          [Function],
+          ";
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(RecentOrdersSkeleton)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-kGXeez",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

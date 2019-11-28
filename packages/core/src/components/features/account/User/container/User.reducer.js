@@ -5,6 +5,7 @@ import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.uti
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
   personalData: null,
+  isRemembered: null,
   airmiles: null,
   rewards: null,
   survey: null,
@@ -57,6 +58,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
             isExpressEligible: payload.isExpressEligible,
             associateId: payload.associateId,
             hobbies: payload.hobbies,
+            plccCardId: payload.plccCardId,
+            plccCardNumber: payload.plccCardNumber,
           })
         )
         .set(

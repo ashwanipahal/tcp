@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import { Grid } from '../../../../../../common/molecules';
 import { getLabelValue } from '../../../../../../../utils';
@@ -24,6 +25,7 @@ import PLCCTimeoutInterimModal from '../../Modals/PLCCTmeoutInterimModal';
 import { getPageViewGridRowSize, fetchPLCCFormErrors } from '../../../utils/utility';
 import Notification from '../../../../../../common/molecules/Notification';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 const handleSubmitFail = errors => {
   const formattedErrors = fetchPLCCFormErrors(errors);
@@ -70,6 +72,10 @@ class PLCCForm extends React.PureComponent {
 
   componentDidMount() {
     this.bindIdleVerification();
+    const { isPLCCModalFlow } = this.props;
+    if (!isPLCCModalFlow) {
+      window.scrollTo(0, 0);
+    }
   }
 
   componentDidUpdate() {
@@ -169,9 +175,13 @@ class PLCCForm extends React.PureComponent {
       isPLCCModalFlow,
       applicationStatus,
       invalid,
+      isRtpsFlow,
+      closePLCCModal,
+      cartOrderItems,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     const bagItems = getCartItemCount();
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
       <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
         <form onSubmit={handleSubmit}>
@@ -183,15 +193,17 @@ class PLCCForm extends React.PureComponent {
                 creditCardHeader={plccData && plccData.credit_card_header}
               />
             </Row>
-            <Row fullBleed>
-              <Col
-                key="Prescreen_code_link"
-                data-locator="Prescreen_code_link"
-                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
-              >
-                <PrescreenCode labels={labels} />
-              </Col>
-            </Row>
+            {!isRtpsFlow && (
+              <Row fullBleed>
+                <Col
+                  key="Prescreen_code_link"
+                  data-locator="Prescreen_code_link"
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+                >
+                  <PrescreenCode labels={labels} />
+                </Col>
+              </Row>
+            )}
             <ContactInformationFormWrapper
               labels={labels}
               dispatch={dispatch}
@@ -282,7 +294,13 @@ class PLCCForm extends React.PureComponent {
                   colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
                   className="submit_button_plcc_form_container"
                 >
-                  <Button
+                  <ClickTracker
+                    as={Button}
+                    clickData={{
+                      customEvents: ['event49'],
+                      eventName: 'credit application submitted',
+                      products: productsData,
+                    }}
                     buttonVariation="fixed-width"
                     fill="BLUE"
                     type="submit"
@@ -292,7 +310,7 @@ class PLCCForm extends React.PureComponent {
                     disabled={invalid}
                   >
                     {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
-                  </Button>
+                  </ClickTracker>
                 </Col>
               </Row>
               <Row fullBleed>
@@ -304,7 +322,9 @@ class PLCCForm extends React.PureComponent {
                   <BodyCopy
                     fontFamily="secondary"
                     component="div"
-                    onClick={backToHome}
+                    onClick={() =>
+                      isRtpsFlow || isPLCCModalFlow ? closePLCCModal() : backToHome()
+                    }
                     textAlign="center"
                     tabIndex="0"
                   >
@@ -327,6 +347,8 @@ class PLCCForm extends React.PureComponent {
             time={120}
             isTimedOutModalActive={isTimedOutModalActive}
             handleFormReset={this.handleFormReset}
+            isRtpsFlow={isRtpsFlow}
+            closePLCCModal={closePLCCModal}
           />
         ) : null}
       </StyledPLCCFormWrapper>
@@ -355,6 +377,8 @@ PLCCForm.propTypes = {
     plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
   invalid: PropTypes.bool,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 PLCCForm.defaultProps = {

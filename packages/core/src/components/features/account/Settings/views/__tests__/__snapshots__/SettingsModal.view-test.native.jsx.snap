@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsModal component should renders correctly 1`] = `
+<SafeAreaView>
+  <Styled(View)
+    spacingStyles="margin-left-LRG margin-right-LRG margin-bottom-SM margin-top-SM"
+  >
+    <SettingsTopSection
+      labels={Object {}}
+      onRequestClose={[Function]}
+    />
+  </Styled(View)>
+  <SettingsView
+    isUserLoggedIn={false}
+    labels={Object {}}
+  />
+</SafeAreaView>
+`;

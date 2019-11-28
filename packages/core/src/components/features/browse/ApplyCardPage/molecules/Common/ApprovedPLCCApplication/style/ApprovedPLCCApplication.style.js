@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 
 export default styled.div`
   padding-top: 24px;
@@ -82,7 +83,7 @@ export default styled.div`
   }
 
   .header-image {
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(${getStaticFilePath('images/tcp-cc@2x.png')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 259px;
@@ -123,10 +124,14 @@ export default styled.div`
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin: 21px 0;
     width: 227px;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
+    text-align: center;
   }
 
   .promo-image {
-    background: transparent url('/static/images/promo.png') no-repeat 0 0;
+    background: transparent url(${getStaticFilePath('images/promo.png')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 157px;

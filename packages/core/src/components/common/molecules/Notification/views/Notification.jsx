@@ -43,7 +43,10 @@ const Notification = ({ className, status, alt, message, children, scrollIntoVie
   }, []);
 
   return (
-    <div className={`${className} elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG`}>
+    <div
+      className={`${className} elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG`}
+      role="alert"
+    >
       <img alt={imageAlt} src={imageSrc} className="notification__image elem-mr-MED" />
       <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
         {message}

@@ -20,6 +20,7 @@ const BonusPointsAvailability = ({
   getBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
+  isPlaceRewardsPage,
 }) => {
   return (
     bonusPoints && (
@@ -48,7 +49,7 @@ const BonusPointsAvailability = ({
                 color="black"
                 id={index}
                 data-locator={item.dataLocator}
-                className={btnClass}
+                className={`${btnClass} ${isPlaceRewardsPage ? 'pointerEventsNone' : ''}`}
                 onClick={() =>
                   applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
                 }
@@ -66,11 +67,13 @@ const BonusPointsAvailability = ({
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
   className: PropTypes.string,
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
   className: '',
   bonusPoints: [{ disabled: false, buttonText: '' }],
+  isPlaceRewardsPage: false,
 };
 
 export default withStyles(BonusPointsAvailability, styles);

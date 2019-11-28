@@ -79,6 +79,7 @@ const ImgView = props => {
         link={imageDetails.link}
         data-locator={getLocator('moduleS_large_img')}
         imgConfigs={imageConfig}
+        videoData={imageDetails.video}
       />
     )
   );

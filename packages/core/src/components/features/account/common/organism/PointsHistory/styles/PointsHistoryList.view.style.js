@@ -9,6 +9,7 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
+    word-wrap: break-word;
   }
 `;
 

@@ -39,6 +39,10 @@ const styles = css`
     justify-content: center;
   }
 
+  .addressTile__makedefaultcheck {
+    letter-spacing: normal;
+  }
+
   .default-address-label {
     display: flex;
     flex-direction: column;

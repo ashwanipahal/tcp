@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/GuestMprPlccSection.style';
 import { BodyCopy, Row, Col } from '../../../../../../common/atoms';
@@ -15,7 +16,6 @@ const GuestMprPlccSection = props => {
     estimatedSubtotal,
     descriptionLabel,
     remainingPlcc,
-    getCurrencySymbol,
   } = props;
   return (
     <div className={`${className} body`}>
@@ -83,8 +83,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="semibold"
                 >
-                  {getCurrencySymbol}
-                  {currentSubtotal.toFixed(2)}
+                  <PriceCurrency price={currentSubtotal} />
                 </BodyCopy>
               </Col>
             )}
@@ -116,8 +115,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="extrabold"
                 >
-                  {getCurrencySymbol}
-                  {estimatedSubtotal.toFixed(2)}
+                  <PriceCurrency price={estimatedSubtotal} />
                 </BodyCopy>
               </Col>
             )}
@@ -138,7 +136,6 @@ GuestMprPlccSection.propTypes = {
   subHeadingLabel: PropTypes.string,
   descriptionLabel: PropTypes.string,
   remainingPlcc: PropTypes.number,
-  getCurrencySymbol: PropTypes.string,
 };
 
 GuestMprPlccSection.defaultProps = {
@@ -150,7 +147,6 @@ GuestMprPlccSection.defaultProps = {
   subHeadingLabel: '',
   descriptionLabel: '',
   remainingPlcc: 0,
-  getCurrencySymbol: '',
 };
 
 export default withStyles(GuestMprPlccSection, Styles);

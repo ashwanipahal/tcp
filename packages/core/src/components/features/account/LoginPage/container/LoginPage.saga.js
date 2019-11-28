@@ -1,15 +1,22 @@
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, putResolve, put, select, take } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
+import CONSTANTS from '../../User/User.constants';
+import {
+  setLoginInfo,
+  setCheckoutModalMountedState,
+  setLoginLoadingState,
+} from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { getUserInfo } from '../../User/container/User.actions';
+import { getUserInfo, setUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
 import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
+import { getFavoriteStoreActn } from '../../../storeLocator/StoreLanding/container/StoreLanding.actions';
 
 const errorLabel = 'Error in API';
 
@@ -18,10 +25,20 @@ const notIsLocalHost = siteOrigin => {
 };
 
 export function* loginSaga({ payload, afterLoginHandler }) {
+  yield put(setLoginLoadingState({ isLoading: true }));
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      yield put(setLoginLoadingState({ isLoading: false }));
       yield put(getUserInfo());
+      yield put(setLoginModalMountedState({ state: false }));
+      yield put(
+        setClickAnalyticsData({
+          eventName: 'login',
+          customEvents: ['event14'],
+          pageNavigationText: 'header-log in',
+        })
+      );
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
       } else {
@@ -33,18 +50,20 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         );
       }
       yield put(navigateXHRAction());
-      // Provide check for current page and depending on that make Cart or OrderDetails call.
-      return yield put(
-        BAG_PAGE_ACTIONS.getCartData({
-          isRecalculateTaxes: false,
-          excludeCartItems: true,
-          recalcRewards: false,
-          translation: false,
-        })
-      );
+
+      // Trgigger analytics event after set user data
+      yield take(CONSTANTS.SET_USER_INFO);
+      yield put(trackClick({ name: 'user_login', module: 'account' }));
     }
-    return yield put(setLoginInfo(response));
+
+    yield putResolve(setLoginInfo(response));
+    return yield put(
+      getFavoriteStoreActn({
+        ignoreCache: true,
+      })
+    );
   } catch (err) {
+    yield put(setLoginLoadingState({ isLoading: false }));
     const { errorCode, errorMessage, errorResponse } = err;
     yield put(
       setLoginInfo({

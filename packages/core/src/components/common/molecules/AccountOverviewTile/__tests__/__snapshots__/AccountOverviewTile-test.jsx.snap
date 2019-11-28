@@ -68,10 +68,6 @@ exports[`AccordionList component renders correctly AccountOverviewTile 1`] = `
       test
     </Styled(Anchor)>
   </Styled(BodyCopy)>
-  <Connect(ApplyNowModalWrapper)
-    noLink={true}
-    step={2}
-  />
 </Styled(BodyCopy)>
 `;
 
@@ -139,9 +135,5 @@ exports[`AccordionList component renders empty correctly AccountOverviewTile 1`]
       to=""
     />
   </Styled(BodyCopy)>
-  <Connect(ApplyNowModalWrapper)
-    noLink={true}
-    step={2}
-  />
 </Styled(BodyCopy)>
 `;

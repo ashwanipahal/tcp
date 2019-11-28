@@ -43,9 +43,12 @@ exports[`Module R Component renders correctly 1`] = `
       tabItems={
         Array [
           Object {
-            "category": Object {
-              "cat_id": "49007",
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47503>47544",
+              },
+            ],
             "singleCTAButton": Object {
               "action": "",
               "external": 0,
@@ -59,9 +62,12 @@ exports[`Module R Component renders correctly 1`] = `
             },
           },
           Object {
-            "category": Object {
-              "cat_id": "47502>47535>54071",
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47502>47535>54071",
+              },
+            ],
             "singleCTAButton": Object {
               "action": "",
               "external": 0,
@@ -75,9 +81,12 @@ exports[`Module R Component renders correctly 1`] = `
             },
           },
           Object {
-            "category": Object {
-              "cat_id": "47503>47544",
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "49007",
+              },
+            ],
             "singleCTAButton": Object {
               "action": "",
               "external": 0,
@@ -91,9 +100,12 @@ exports[`Module R Component renders correctly 1`] = `
             },
           },
           Object {
-            "category": Object {
-              "cat_id": "47501>47526",
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47501>47526",
+              },
+            ],
             "singleCTAButton": Object {
               "action": "",
               "external": 0,

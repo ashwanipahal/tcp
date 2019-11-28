@@ -8,6 +8,7 @@ const getActiveTitle = (options, value) => {
 };
 
 export const AddressDropdown = ({
+  labels,
   options,
   input,
   selectListTitle,
@@ -16,6 +17,7 @@ export const AddressDropdown = ({
 }) => {
   return (
     <CustomSelect
+      labels={labels}
       options={options}
       activeValue={input.value}
       activeTitle={getActiveTitle(options, input.value)}

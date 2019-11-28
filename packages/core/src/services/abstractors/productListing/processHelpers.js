@@ -1,9 +1,9 @@
 import { FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -78,13 +78,21 @@ function convertToColorArray(colorSwatches, id, color) {
 const getAppliedFilters = (filters, filterIds) => {
   const appliedFilters = {};
   const facetKeys = filterIds ? Object.keys(filterIds) : [];
+
   facetKeys.forEach(facetKey => {
     if (isUnbxdFacetKey(facetKey)) {
+      const modifiedFacetKeys = filterIds[facetKey].map(value => {
+        return decodeURIComponent(value);
+      });
+      const modifiedFilterIds = {
+        ...filterIds,
+        [facetKey]: modifiedFacetKeys,
+      };
       // for facets having facetName as key
       appliedFilters[facetKey] = !filters[facetKey]
         ? []
         : filters[facetKey]
-            .filter(item => filterIds[facetKey].indexOf(item.id) > -1)
+            .filter(item => modifiedFilterIds[facetKey].indexOf(item.id) > -1)
             .map(item => item.id);
     }
   });
@@ -127,6 +135,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagUSStore',
         matchingFamily: 'TCPMatchingFamilyUSStore',
         keepAlive: 'TCPOutOfStockFlagUSStore',
+        bundleChecklist: 'TCPKitUSStore',
+        bundleGrouping: 'TCPGroupingUSStore',
       }
     : {
         merchant: 'TCPMerchantTagCanadaStore',
@@ -143,6 +153,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagCAStore',
         matchingFamily: 'TCPMatchingFamilyCAStore',
         keepAlive: 'TCPOutOfStockFlagCanadaStore',
+        bundleChecklist: 'TCPKitCanadaStore',
+        bundleGrouping: 'TCPGroupingCanadaStore',
       };
 };
 const indexBasedOnShopByColor = (

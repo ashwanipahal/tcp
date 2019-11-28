@@ -8,6 +8,7 @@ import {
   enableBodyScroll,
   disableBodyScroll,
   removeBodyScrollLocks,
+  isAndroidWeb,
 } from '@tcp/core/src/utils';
 import { Row } from '@tcp/core/src/components/common/atoms';
 import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
@@ -53,13 +54,31 @@ class Drawer extends React.Component {
     this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
   }
 
+  componentDidMount() {
+    if (this.drawerRef && isAndroidWeb()) {
+      this.drawerRef.addEventListener('touchstart', this.handleInputBlur);
+    }
+  }
+
   componentDidUpdate() {
     this.init();
   }
 
   componentWillUnmount() {
+    if (this.drawerRef && isAndroidWeb()) {
+      this.drawerRef.removeEventListener('touchstart', this.handleInputBlur);
+    }
     enableBodyScroll(this.scrollTargetElement);
   }
+
+  /**
+   * To hide the keyboard in case user scrolls through navigation menu.
+   */
+  handleInputBlur = () => {
+    if (document.activeElement.nodeName === 'INPUT') {
+      document.activeElement.blur();
+    }
+  };
 
   init = () => {
     const { open, renderOverlay } = this.props;
@@ -88,7 +107,9 @@ class Drawer extends React.Component {
     if (
       open &&
       this.drawerRef &&
-      !this.drawerRef.contains(e.target) &&
+      (!this.drawerRef.contains(e.target) ||
+        (e.target.closest('.footer-middle') &&
+          !e.target.classList.contains('navigation-footer'))) &&
       typeof close === 'function'
     ) {
       close();
@@ -113,6 +134,34 @@ class Drawer extends React.Component {
     }
   };
 
+  renderAccountInfoSectionInDrawer = () => {
+    const {
+      id,
+      close,
+      userName,
+      userPoints,
+      userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
+      openOverlay,
+    } = this.props;
+    return id === 'l1_drawer' ? (
+      <Row>
+        <AccountInfoSection
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          openOverlay={openOverlay}
+          userNameClick={userNameClick}
+          onLinkClick={onLinkClick}
+          closeDrawer={close}
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+        />
+      </Row>
+    ) : null;
+  };
+
   /* Style for drawer to make it scrollable within */
   getDrawerStyle = () => {
     if (window) {
@@ -121,6 +170,7 @@ class Drawer extends React.Component {
       const middleNav = document.getElementsByClassName('header-middle-nav')[0];
       const condensedHeader = document.getElementById('condensedHeader');
       const userInfo = document.getElementById('sideNavUserInfo');
+      const darkOverlay = document.getElementsByClassName('dark-overlay')[0];
       const userInfoHeight = userInfo ? userInfo.getBoundingClientRect().height : null;
       const wHeight = window.innerHeight;
       const {
@@ -144,6 +194,8 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
+        darkOverlay.style.top = `${headerHeight}px`;
+
         this.disableScroll(drawer);
       }
     }
@@ -153,13 +205,6 @@ class Drawer extends React.Component {
     const {
       children,
       className,
-      userName,
-      userPoints,
-      userRewards,
-      userNameClick,
-      onLinkClick,
-      triggerLoginCreateAccount,
-      openOverlay,
       small,
       medium,
       large,
@@ -188,7 +233,7 @@ class Drawer extends React.Component {
     const classToShowOnViewports = showOnViewport({ small, medium, large });
 
     return (
-      <div className={className} ref={this.setDrawerRef}>
+      <div className={className} ref={this.setDrawerRef} id="drawer-wrapper">
         {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
         // User will have to handle display of this element with CSS
         isDrawerNotRequiredOnAllViewports(small, medium, large) && (
@@ -199,17 +244,7 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
-              <Row>
-                <AccountInfoSection
-                  userName={userName}
-                  userPoints={userPoints}
-                  userRewards={userRewards}
-                  openOverlay={openOverlay}
-                  userNameClick={userNameClick}
-                  onLinkClick={onLinkClick}
-                  triggerLoginCreateAccount={triggerLoginCreateAccount}
-                />
-              </Row>
+              {this.renderAccountInfoSectionInDrawer()}
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}

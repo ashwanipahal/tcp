@@ -45,6 +45,47 @@ function createThemeColorPalette(colors = {}) {
     },
   } = colors;
 
+  const {
+    BUTTON = {
+      WHITE: {
+        NORMAL: '#ffffff',
+        BORDER: '#9B9B9B',
+        HOVER: '#f3f3f3',
+        FOCUS: '#d8d8d8',
+        ALT_HOVER: '#f2f9fe',
+        ALT_FOCUS: '#e2ecf3',
+        TEXT: '#595959',
+      },
+      BLUE: {
+        NORMAL: '#2e6a91',
+        BORDER: '#2e6a91',
+        HOVER: '#1f4862',
+        FOCUS: '#1f4862',
+        ALT_HOVER: '#1f4862',
+        ALT_FOCUS: '#1f4862',
+        TEXT: '#fff',
+      },
+      RED: {
+        NORMAL: '#ffffff',
+        BORDER: '#c84747',
+        HOVER: '#f3d7d7',
+        FOCUS: '#e19999',
+        ALT_HOVER: '#e19999',
+        ALT_FOCUS: '#e19999',
+        TEXT: '#c84747',
+      },
+      BLACK: {
+        NORMAL: '#1a1a1a',
+        BORDER: '#1a1a1a',
+        HOVER: '#595959',
+        FOCUS: '#595959',
+        ALT_HOVER: '#ffffff',
+        ALT_FOCUS: '#ffffff',
+        TEXT: '#ffffff',
+      },
+    },
+  } = colors;
+
   return {
     white,
     black,
@@ -61,6 +102,7 @@ function createThemeColorPalette(colors = {}) {
     pink,
     blue,
     userTheme,
+    BUTTON,
   };
 }
 

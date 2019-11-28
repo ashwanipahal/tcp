@@ -1,7 +1,11 @@
 import { css } from 'styled-components';
 
 export default css`
-  border: 1px solid ${props => props.theme.colorPalette.gray['800']};
+  ${props =>
+    props.selectedStoreId === props.store.basicInfo.id
+      ? `border: 2px solid ${props.theme.colorPalette.gray['800']};`
+      : `border: 1px solid ${props.theme.colorPalette.gray['800']};`};
+
   padding: 0 15px 12px 10px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -41,6 +45,23 @@ export default css`
   .PickupRadioBtn {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .promotional-banner .banner-wrapper {
+        margin-top: 5px;
+        padding-left: 0;
+      }
+
+      .boss-extra-details {
+        white-space: nowrap;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      .promotional-banner {
+        display: flex;
+      }
+    }
   }
   .storeInfoWrapper div:nth-child(2) {
     justify-content: normal;

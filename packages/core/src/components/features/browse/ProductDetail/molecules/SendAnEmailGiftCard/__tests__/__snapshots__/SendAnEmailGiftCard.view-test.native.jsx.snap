@@ -17,6 +17,7 @@ exports[`SendAnEmailGiftCard component should renders correctly 1`] = `
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}

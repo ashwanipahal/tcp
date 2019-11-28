@@ -1,39 +1,87 @@
 import React, { PureComponent, Fragment } from 'react';
-import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
+import { getCategoryIds, getImagesGrids, getSeoText, getCategoryName } from '../utils/utility';
+import { getLabels } from './CategoryListing.selectors';
 
 export class CategoryListingContainer extends PureComponent {
-  pageInfo = {
-    name: 'categoryListingPage',
+  static getInitialProps = async ({ props }) => {
+    const {
+      getLayout,
+      router: { asPath },
+    } = props;
+
+    await getLayout(getCategoryName(asPath));
   };
 
+  componentDidUpdate(prevProps) {
+    const {
+      getLayout,
+      router: { asPath },
+    } = this.props;
+
+    const {
+      router: { asPath: prevAsPath },
+    } = prevProps;
+    if (getCategoryName(prevAsPath) !== getCategoryName(asPath)) {
+      getLayout(getCategoryName(asPath));
+    }
+  }
+
   render() {
-    const { getLayout } = this.props;
+    const {
+      layouts,
+      Modules,
+      navigationData,
+      router: { asPath },
+    } = this.props;
+
+    const categoryListingSlots =
+      (layouts[getCategoryName(asPath)] && layouts[getCategoryName(asPath)].slots) || [];
+
+    const categoryIds = getCategoryIds(categoryListingSlots);
+    const categoryPromoModules = getImagesGrids(categoryIds, Modules);
+    const seoText = getSeoText(navigationData, getCategoryName(asPath));
     return (
       <Fragment>
-        <CategoryListing getLayout={getLayout} />
+        <CategoryListing
+          {...this.props}
+          seoText={seoText}
+          categoryPromoModules={categoryPromoModules}
+        />
       </Fragment>
     );
   }
 }
 
-CategoryListingContainer.propTypes = {
-  getLayout: PropTypes.func.isRequired,
-};
-
-CategoryListingContainer.defaultProps = {};
-
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    layouts: state.Layouts || {},
+    Modules: state.Modules || {},
+    navigationData: (state.Navigation && state.Navigation.navigationData) || [],
+    labels: getLabels(state),
+  };
 };
 
 export const mapDispatchToProps = dispatch => ({
-  getLayout: (pageName, layoutName) => dispatch(fetchPageLayout(pageName, layoutName)),
+  getLayout: (pageName, layoutName) =>
+    dispatch(fetchPageLayout(pageName, layoutName, { clpPage: true })),
 });
 
-export default connect(
+CategoryListingContainer.propTypes = {
+  categoryListingSlots: PropTypes.shape([]).isRequired,
+  Modules: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
+  layouts: PropTypes.shape({}).isRequired,
+  navigationData: PropTypes.shape([]).isRequired,
+  getLayout: PropTypes.func.isRequired,
+};
+
+export default withIsomorphicRenderer({
+  WrappedComponent: CategoryListingContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(CategoryListingContainer);
+  mapDispatchToProps,
+});

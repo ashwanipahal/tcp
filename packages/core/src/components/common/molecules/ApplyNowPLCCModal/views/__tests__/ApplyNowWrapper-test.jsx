@@ -14,6 +14,9 @@ describe('ApplyNowModalWrapper component', () => {
     fetchModuleXContent: jest.fn(),
     resetPLCCApplicationStatus: jest.fn(),
     isPLCCModalOpen: true,
+    isRtpsFlow: true,
+    setIsRTPSFlow: jest.fn(),
+    submitAcceptOrDeclinePlcc: jest.fn(),
   };
 
   it('should renders correctly', () => {

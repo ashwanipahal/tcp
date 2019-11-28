@@ -2,8 +2,9 @@
 
 exports[`RichText should render correctly 1`] = `
 <WebView
+  actionHandler={[Function]}
+  cacheEnabled={true}
   domStorageEnabled={false}
-  isApplyDeviceHeight={false}
   isNativeView={false}
   javaScriptEnabled={false}
   originWhitelist={
@@ -11,12 +12,17 @@ exports[`RichText should render correctly 1`] = `
       "*",
     ]
   }
-  source="<div><p>Hello <b>World</b></p><br /></div>"
+  source={
+    Object {
+      "html": "<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </head><body>undefined</body></html>",
+    }
+  }
   style={
     Object {
       "backgroundColor": "transparent",
     }
   }
   thirdPartyCookiesEnabled={false}
+  useSharedProcessPool={true}
 />
 `;

@@ -16,7 +16,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 0 15px 0 6px;
+      padding: 0 15px 0 9px;
     }
   }
 
@@ -53,13 +53,11 @@ export default css`
   .header-topnav__track-order {
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
-    padding-top: 9px;
     width: 40%;
     display: none;
 
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
-      padding-top: 14px;
       width: 25%;
     }
 

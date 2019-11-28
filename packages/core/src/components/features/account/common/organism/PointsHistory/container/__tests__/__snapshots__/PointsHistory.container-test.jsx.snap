@@ -4,6 +4,7 @@ exports[`PointsHistoryContainer View should render PointsHistory container Corre
 <PointsHistory
   className=""
   getPointsHistoryAction={[Function]}
+  isFetching={false}
   labels={[Function]}
   pointHistory={[Function]}
   resetStateAction={[Function]}
@@ -24,6 +25,7 @@ exports[`PointsHistoryContainer View should render PointsHistoryContainer Correc
 <PointsHistory
   className=""
   getPointsHistoryAction={[Function]}
+  isFetching={false}
   labels={[Function]}
   pointHistory={[Function]}
   resetStateAction={[Function]}

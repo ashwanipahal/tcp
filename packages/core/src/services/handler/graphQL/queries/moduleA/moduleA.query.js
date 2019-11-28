@@ -1,5 +1,5 @@
-const buildQuery = ({ slot, contentId }) => `
-  ${slot}: moduleById(id: "${contentId}") {
+const buildQuery = ({ slot, contentId, lang }) => `
+  ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
 	contentId
 	name
 	type
@@ -7,6 +7,7 @@ const buildQuery = ({ slot, contentId }) => `
     val
     key
   }
+  errorMessage
 	composites {
 		largeCompImageCarousel {
 			headerText {
@@ -58,7 +59,16 @@ const buildQuery = ({ slot, contentId }) => `
           crop_d
           crop_t
           crop_m
-				}
+        }
+        video{
+          url
+          title
+          autoplay
+          controls
+          loop
+          muted
+          inline
+        }
 			}
 		}
 

@@ -50,12 +50,9 @@ export const addAddress = args => {
     });
 };
 
-export const updateAddress = (args, profileUpdate) => {
+export const updateAddress = args => {
   const apiConfig = getAPIConfig();
-  const additionalHeaders = {};
-  if (profileUpdate !== undefined) {
-    additionalHeaders.profileUpdate = profileUpdate;
-  }
+
   let body = {
     addressLine: [args.address1, args.address2, ''],
     attributes: [
@@ -92,8 +89,8 @@ export const updateAddress = (args, profileUpdate) => {
     header: {
       'X-Cookie': apiConfig.cookie,
       isRest: true,
+      profileUpdate: true,
       nickName: args.nickName,
-      ...additionalHeaders,
     },
     body,
   };

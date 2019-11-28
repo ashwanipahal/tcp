@@ -9,6 +9,8 @@ import {
   getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
 import {
   getUserLoggedInState,
   isPlccUser,
@@ -44,6 +46,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
+    openModalApplyNowModal: payload => dispatch(toggleApplyNowModal(payload)),
   };
 };
 

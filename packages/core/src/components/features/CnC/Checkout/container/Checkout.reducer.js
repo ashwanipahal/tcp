@@ -1,6 +1,4 @@
 import { fromJS } from 'immutable';
-import { setLocalStorage } from '../../../../../utils/localStorageManagement';
-import { constants as venmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import CheckoutConstants from '../Checkout.constants';
 
 const initialState = fromJS({
@@ -44,6 +42,8 @@ const initialState = fromJS({
   },
   uiFlags: {
     stage: CheckoutConstants.CHECKOUT_STAGES.SHIPPING,
+    routingDone: false,
+    orderUpdateViaMsg: false,
     stageChangeCount: 0,
     isGiftOptionsEnabled: true,
     isPLCCPaymentEnabled: false,
@@ -61,6 +61,7 @@ const initialState = fromJS({
     paymentError: null,
     addressError: null,
     checkoutServerError: null,
+    isRTPSFlow: false,
   },
 });
 
@@ -80,28 +81,15 @@ function venmoFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'venmoData'], action.payload);
     case CheckoutConstants.SET_VENMO_DATA: {
       const venmoData = mergedVenmoDetails(checkout, action.payload);
-      setLocalStorage({ key: venmoConstants.VENMO_STORAGE_KEY, value: JSON.stringify(venmoData) });
       return checkout.setIn(['values', 'venmoData'], venmoData);
     }
     case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_INPROGRESS_KEY,
-        value: action.payload,
-      });
       return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
     }
     case CheckoutConstants.SET_VENMO_PICKUP_MESSAGE_STATE: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_PICKUP_BANNER,
-        value: action.payload,
-      });
       return checkout.setIn(['uiFlags', 'venmoPickupMessageDisplayed'], action.payload);
     }
     case CheckoutConstants.SET_VENMO_SHIPPING_MESSAGE_STATE: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_SHIPPING_BANNER,
-        value: action.payload,
-      });
       return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
     }
     case CheckoutConstants.SET_VENMO_PAYMENT_OPTION_SAVE: {
@@ -116,6 +104,14 @@ function paypalReducer(checkout, action) {
   switch (action.type) {
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
       return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
+    case CheckoutConstants.SET_IS_RTPS_FLOW:
+      return checkout.setIn(['uiFlags', 'isRTPSFlow'], action.payload);
+    case CheckoutConstants.CHECKOUT_ROUTING_DONE:
+      return checkout.setIn(['uiFlags', 'routingDone'], action.payload);
+    case CheckoutConstants.CHECKOUT_VALUES_SET_GIFTWRAP:
+      return checkout.setIn(['values', 'giftWrap'], action.payload);
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_PICKUP_UPDATE_FOR_MSG:
+      return checkout.setIn(['values', 'orderUpdateViaMsg'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }
@@ -167,10 +163,6 @@ function uiFlagReducer(checkout, action) {
     //   return merge(uiFlags, { isPLCCPaymentEnabled: action.isPLCCPaymentEnabled });
     case CheckoutConstants.CHECKOUT_FLAGS_SET_LOAD_METHODS:
       return checkout.setIn(['uiFlags', 'isLoadingShippingMethods'], action.isLoading);
-    // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
-    //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
-    // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
-    //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
     case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':

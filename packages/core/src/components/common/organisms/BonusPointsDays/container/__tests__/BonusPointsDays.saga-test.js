@@ -50,7 +50,8 @@ describe('BonusPointsDays saga', () => {
       const response = {
         error: 'Error in API applyBonusDaysData',
       };
-      const putDescriptor = bonusDaysGen.throw(response).value;
+      let putDescriptor = bonusDaysGen.throw(response).value;
+      putDescriptor = bonusDaysGen.next(false).value;
       expect(putDescriptor).toEqual(put(setBonusDaysError(response)));
     });
   });

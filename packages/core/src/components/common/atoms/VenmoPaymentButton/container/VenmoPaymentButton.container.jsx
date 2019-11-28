@@ -40,8 +40,12 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * This method is called once we get error or user interupted the venmo authorization flow.
    */
   onVenmoPaymentButtonError = e => {
-    const { setVenmoProgress } = this.props;
+    const { setVenmoProgress, onError } = this.props;
     setVenmoProgress(false); // Cancelling venmo progress on error
+    // onError Callback on error scenario
+    if (onError && e && e.error && e.error.message) {
+      onError(e.error.message);
+    }
     logger.error(e);
   };
 
@@ -77,7 +81,7 @@ const mapStateToProps = state => {
     mode: venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN,
     authorizationKey,
     isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),
-    venmoData: selectors.getVenmoData(),
+    venmoData: selectors.getVenmoData(state),
     venmoClientTokenData,
     allowNewBrowserTab: true,
     isGuest: isGuestUser(state),

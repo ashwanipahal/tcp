@@ -1,3 +1,4 @@
+import { isGymboree } from '@tcp/core/src/utils/utils';
 import { executeExternalAPICall, executeStatefulAPICall } from '../../../handler';
 import { getAPIConfig } from '../../../../utils';
 
@@ -35,11 +36,19 @@ const Abstractor = {
    */
   subscribeSms: (payload = '') => {
     const { ACQUISITION_ID } = getAPIConfig();
+    const { isTextOptInSecondBrand } = payload;
+    const brandGYM = !!(isGymboree() || isTextOptInSecondBrand);
+    const brandTCP = !!(!isGymboree() || isTextOptInSecondBrand);
+
+    let subscriptionBrands = brandTCP ? 'TCP' : '';
+    if (brandGYM) {
+      subscriptionBrands = subscriptionBrands ? `${subscriptionBrands},GYM` : 'GYM';
+    }
 
     const body = {
       acquisition_id: ACQUISITION_ID,
       mobile_phone: {
-        mdn: payload.replace(/\D/g, ''),
+        mdn: payload.footerTopSmsSignup.replace(/\D/g, ''),
       },
       custom_fields: {
         src_cd: '1',
@@ -50,6 +59,9 @@ const Abstractor = {
     const reqObj = {
       webService: endpoints.addSmsSignup,
       body,
+      header: {
+        brandSubscribe: subscriptionBrands,
+      },
     };
 
     return executeStatefulAPICall(reqObj)

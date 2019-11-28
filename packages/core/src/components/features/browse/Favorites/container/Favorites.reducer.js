@@ -7,7 +7,9 @@ const initialState = fromJS({
   wishlistsSummaries: [],
   activeWishList: null,
   lastDeletedItemId: '',
-  isDataLoading: false,
+  isDataLoading: true,
+  isAddToFavError: '',
+  isWishListShared: false,
 });
 
 const getDefaultState = state => {
@@ -31,6 +33,12 @@ const FavoritesReducer = (state = initialState, action) => {
       return state.set('lastDeletedItemId', payload);
     case FAVORITES_CONSTANTS.FAVORITES_SET_LOADING:
       return state.set('isDataLoading', payload.isDataLoading);
+    case FAVORITES_CONSTANTS.SET_FAVORITES_ERROR:
+      return state.set('isAddToFavError', payload.errorMessage);
+    case FAVORITES_CONSTANTS.REMOVE_FAVORITES_ERROR:
+      return state.set('isAddToFavError', payload);
+    case FAVORITES_CONSTANTS.FAVORITES_SET_WISHLIST_SHARE_SUCCESS:
+      return state.set('isWishListShared', payload);
     default:
       return getDefaultState(state);
   }

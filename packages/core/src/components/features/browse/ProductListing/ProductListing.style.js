@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
+  .fixed-bread-crumb-height {
+    min-height: 68px;
+  }
+
   .bread-crumb,
   .filter-area {
     padding-top: 20px;
@@ -43,6 +47,7 @@ export default css`
     }
   }
   .render-mobile-view {
+    position: relative;
     width: auto;
     padding: 0;
 
@@ -53,6 +58,10 @@ export default css`
       .filter-row {
         width: auto;
       }
+    }
+    .filter-row {
+      margin: 0;
+      padding-bottom: 0;
     }
   }
 

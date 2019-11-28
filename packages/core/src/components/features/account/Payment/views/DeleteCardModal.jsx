@@ -131,7 +131,7 @@ class DeleteCardModal extends React.Component {
         heading={heading}
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
-        maxWidth="690px"
+        widthConfig={{ small: '100%', medium: '546px', large: '690px' }}
         minHeight="340px"
       >
         {showUpdatedNotificationOnModal && (

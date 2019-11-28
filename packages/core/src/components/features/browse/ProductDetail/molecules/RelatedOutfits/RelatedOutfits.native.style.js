@@ -13,4 +13,8 @@ export const ImageStyleWrapper = styled.View`
   align-items: center;
 `;
 
+export const OutfitWrapper = styled.View`
+  margin-left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export default { StyleRelatedOutfits, ImageStyleWrapper };

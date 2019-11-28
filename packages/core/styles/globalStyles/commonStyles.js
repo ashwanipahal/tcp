@@ -88,6 +88,10 @@ export default css`
     display: block;
   }
 
+  .pointerEventsNone {
+    pointer-events: none;
+  }
+
   .visually-hidden {
     position: absolute;
     white-space: nowrap;
@@ -181,6 +185,9 @@ export default css`
   .full-width {
     width: 100%;
     display: inline-block;
+  }
+  .full-height {
+    height: 100%;
   }
   .img-placeholder {
     width: 100%;

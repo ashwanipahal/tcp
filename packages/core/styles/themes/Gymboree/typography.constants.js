@@ -29,9 +29,21 @@ export const TEXT_ALIGNS = { left: 'left', center: 'center', right: 'right' };
 
 export const FONT_WEIGHTS = {
   regular: '400',
+  medium: '500',
   semibold: '600',
+  bold: '700',
   extrabold: '800',
   black: '900',
+};
+
+export const FONT_WEIGHT_NAMES = {
+  regular: 'Regular',
+  medium: 'Medium',
+  semibold: 'SemiBold',
+  semiBold: 'SemiBold',
+  extrabold: 'ExtraBold',
+  bold: 'Bold',
+  black: 'Black',
 };
 
 export const FONT_SIZES = {
@@ -56,4 +68,5 @@ export const FONT_SIZES = {
   fs12: '12px',
   fs10: '10px',
   fs9: '9px',
+  fs8: '8px',
 };

@@ -1,11 +1,14 @@
 import { css } from 'styled-components';
 
 export default css`
-  .placeholder div {
-    background: #d8d8d8;
-    padding: 10px 0;
-    margin-bottom: 5px;
-    text-align: center;
+  .product-grid-block-container {
+    width: calc(100% + 20px);
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: calc(100% + 36px);
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: calc(100% + 26px);
+    }
   }
   .product-tile-wrapper {
     width: 100%;
@@ -16,6 +19,20 @@ export default css`
   }
   .filter-and-sort-form-container .desktop-dropdown {
     display: none;
+  }
+  .filter-and-sort-form-container .render-mobile-view {
+    position: relative;
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+  .filter-and-sort-form-container .filter-row {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-left: 0;
+    }
   }
   .searched-label {
     display: block;
@@ -28,17 +45,16 @@ export default css`
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
     text-align: center;
-    width: calc(50% - 10px);
+    width: calc(50% - 20px);
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: 10px;
-      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 35px 0
-        ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 35px 0 0;
       width: calc(33.3% - 36px);
     }
     @media ${props => props.theme.mediaQuery.large} {
       padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 26px 0 0;
       margin-bottom: 60px;
-      width: calc(20% - 21px);
+      width: calc(20% - 26px);
     }
   }
   .container-price {
@@ -55,9 +71,6 @@ export default css`
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .empty-searched-label {
       display: block;
-    }
-    .search-product-tile:nth-child(2n) {
-      padding-right: 0;
     }
     .filter-row {
       margin-left: 0;
@@ -89,9 +102,6 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .search-product-tile:nth-child(3n) {
-      padding-right: 0;
-    }
     .searched-label {
       padding-bottom: 28px;
     }
@@ -124,9 +134,6 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .show-items-count-section {
       display: none;
-    }
-    .search-product-tile:nth-child(5n) {
-      padding-right: 0;
     }
     .render-mobile-view {
       display: none;
@@ -171,27 +178,37 @@ export default css`
   .item-title {
     width: 100%;
   }
+
+  .empty-search-inputBox-col {
+    position: relative;
+    width: initial;
+  }
+
   .empty-search-inputBox-container {
     position: relative;
     width: 240px;
     height: 40px;
   }
+
   .empty-search-input {
     position: absolute;
     width: 240px;
     height: 40px;
     padding-left: 20px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-radius: 20px;
     background-color: ${props => props.theme.colorPalette.gray[300]};
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
+    box-sizing: border-box;
   }
+
   .empty-search-image {
     position: absolute;
     float: none;
     top: calc(0% - -12px);
     width: 20px;
     height: 20px;
-    right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .suggestion-label {
@@ -205,9 +222,7 @@ export default css`
   .empty-searched-label {
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
-  .empty-search-inputBox-col {
-    width: 240px;
-  }
+
   .empty-search-tips-title {
     margin-bottom: 8px;
   }

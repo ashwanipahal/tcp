@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepIndicatorVanilla should render correctly 1`] = `
+<li
+  className=" stepIndicatorList active"
+>
+  <span
+    className="white-dot "
+  />
+  <Styled(BodyCopy)
+    className="stageName"
+    color="text.primary"
+    component="span"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    shipping
+  </Styled(BodyCopy)>
+</li>
+`;
+
+exports[`StepIndicatorVanilla should render correctly if isPending 1`] = `
+<li
+  className=" stepIndicatorList pending"
+>
+  <span
+    className="pending-background "
+  />
+  <Styled(BodyCopy)
+    className="stageName"
+    color="text.primary"
+    component="span"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight=""
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    shipping
+  </Styled(BodyCopy)>
+</li>
+`;
+
+exports[`StepIndicatorVanilla should render correctly if props isComplete 1`] = `
+<li
+  className=" stepIndicatorList completed"
+>
+  <span
+    className="white-background "
+  />
+  <button
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <Styled(BodyCopy)
+      className="stageName"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      shipping
+    </Styled(BodyCopy)>
+  </button>
+</li>
+`;

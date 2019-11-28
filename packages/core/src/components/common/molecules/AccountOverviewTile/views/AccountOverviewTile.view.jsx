@@ -4,7 +4,6 @@ import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
 import styles from '../styles/AccountOverviewTile.style';
-import ApplyNowModal from '../../ApplyNowPLCCModal';
 
 export const AccountOverviewTile = ({
   title,
@@ -49,7 +48,6 @@ export const AccountOverviewTile = ({
           {ctaTitle}
         </Anchor>
       </BodyCopy>
-      <ApplyNowModal noLink step={2} />
     </BodyCopy>
   );
 };

@@ -26,6 +26,8 @@ import config, {
   MODULE_WITH_RIBBON_HEIGHT,
   TEXT_COLOR_WHITE,
   TEXT_COLOR_GYM,
+  MODULE_GYM_HEIGHT,
+  MODULE_TCP_HEIGHT,
 } from '../ModuleS.config';
 
 /**
@@ -53,12 +55,42 @@ const getImageWidth = hasRibbon => {
  * Height is fixed for mobile : TCP & Gymb
  * Width can vary as per device width.
  */
-const getImageHeight = hasRibbon => {
+const getImageHeight = (hasRibbon, hasVideo = false) => {
   if (hasRibbon) {
     return MODULE_WITH_RIBBON_HEIGHT;
   }
 
+  if (hasVideo) {
+    return isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT;
+  }
+
   return '';
+};
+
+/**
+ * To Render the Dam Image or Video Component
+ */
+const renderDamImage = (link, imgData, videoData, navigation, hasRibbon) => {
+  const damImageComp = (
+    <StyledImage
+      width={getImageWidth(hasRibbon)}
+      height={getImageHeight(hasRibbon)}
+      url={imgData && imgData.url}
+      host={LAZYLOAD_HOST_NAME.HOME}
+      videoData={videoData}
+      imgConfig={imgData && (imgData.crop_m || getImageConfig(hasRibbon))}
+    />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
+  ) : null;
 };
 
 /**
@@ -69,27 +101,21 @@ const getImageHeight = hasRibbon => {
 const getLinkedImage = (props, hasRibbon) => {
   const {
     navigation,
-    linkedImage: [{ image, link }],
+    linkedImage: [{ image, link, video }],
   } = props;
 
-  return link ? (
-    <Anchor url={link.url} navigation={navigation}>
-      <StyledImage
-        width={getImageWidth(hasRibbon)}
-        height={getImageHeight(hasRibbon)}
-        url={image.url}
-        host={LAZYLOAD_HOST_NAME.HOME}
-        imgConfig={image.crop_m || getImageConfig(hasRibbon)}
-      />
-    </Anchor>
-  ) : (
-    <StyledImage
-      width={getImageWidth(hasRibbon)}
-      height={getImageHeight(hasRibbon)}
-      url={image.url}
-      host={LAZYLOAD_HOST_NAME.HOME}
-      imgConfig={image.crop_m || getImageConfig(hasRibbon)}
-    />
+  let hasVideo = false;
+  let videoData = {};
+  if (video && video.url) {
+    hasVideo = true;
+    videoData = {
+      ...video,
+      videoWidth: getImageWidth(hasRibbon),
+      videoHeight: getImageHeight(hasRibbon, hasVideo),
+    };
+  }
+  return (
+    <React.Fragment>{renderDamImage(link, image, videoData, navigation, hasRibbon)}</React.Fragment>
   );
 };
 
@@ -208,6 +234,9 @@ getLinkedImage.propTypes = {
           text: PropTypes.string,
           title: PropTypes.string,
           target: PropTypes.string,
+        }),
+        video: PropTypes.shape({
+          url: PropTypes.string,
         }),
       })
     )

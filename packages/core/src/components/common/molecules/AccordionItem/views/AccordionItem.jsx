@@ -13,6 +13,8 @@ type Props = {
   index: number,
   children: Node,
   activeClass: string,
+  appliedFilterComponent: Object[],
+  filterLength: number,
 };
 
 /**
@@ -32,6 +34,8 @@ const AccordionItem = ({
   index,
   children,
   activeClass,
+  appliedFilterComponent,
+  filterLength,
 }: Props) => {
   return (
     <Fragment>
@@ -40,6 +44,8 @@ const AccordionItem = ({
         titleText={titleText}
         updateAccordionState={updateAccordionState}
         index={index}
+        appliedFilterComponent={appliedFilterComponent}
+        filterLength={filterLength}
       />
       {children}
     </Fragment>

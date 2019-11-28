@@ -36,7 +36,10 @@ export {
   getDirections,
   enableBodyScroll,
   disableBodyScroll,
+  isMobileWeb,
   removeBodyScrollLocks,
+  isAndroidWeb,
+  createLayoutPath,
 } from './utils.web';
 
 export {
@@ -47,9 +50,11 @@ export {
   isGymboree,
   isTCP,
   getBrand,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   isUsOnly,
@@ -79,8 +84,13 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  getStoreHours,
   generateTraceId,
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,
+  calculatePriceValue,
+  getProductUrlForDAM,
+  plpRoutingHandling,
+  convertNumToBool,
 } from './utils';

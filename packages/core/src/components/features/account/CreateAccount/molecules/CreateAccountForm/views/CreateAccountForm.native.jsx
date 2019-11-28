@@ -92,7 +92,9 @@ class CreateAccountForm extends PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_createAccount_emailAddress', 'registration')}
             name="emailAddress"
             id="emailAddress"
+            autoCapitalize="none"
             type="text"
+            keyboardType="email-address"
             component={TextBox}
             dataLocator="emailAddress"
           />
@@ -100,7 +102,9 @@ class CreateAccountForm extends PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_createAccount_confirmEmail', 'registration')}
             name="confirmEmailAddress"
             id="confirmEmailAddress"
+            autoCapitalize="none"
             type="text"
+            keyboardType="email-address"
             component={TextBox}
             dataLocator="confirmEmailAddress"
           />

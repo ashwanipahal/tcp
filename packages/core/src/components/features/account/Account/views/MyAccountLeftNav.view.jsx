@@ -63,7 +63,7 @@ const renderSubSections = navObj => {
 const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }) => {
   return (
     <React.Fragment>
-      <ul className={className}>
+      <ul className={className} role="navigation">
         {navData &&
           navData.map(nav => {
             return (

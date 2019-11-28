@@ -36,7 +36,7 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly 1`] = `
     <Styled(ConfirmationItemDisplay)>
       <Styled(Anchor)
         asPath="/track-order/undefined/undefined"
-        to="/track-order?id=orders&subSection=order-details&orderId=undefined&email=undefined"
+        to="/track-order?id=orders&subSection=order-details&orderId=undefined&emailAddress=undefined"
         underline={true}
       />
     </Styled(ConfirmationItemDisplay)>
@@ -44,7 +44,9 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly 1`] = `
     <Styled(ConfirmationItemDisplay)
       boldFont={true}
     >
-      undefined 23.34
+      <Connect(PriceCurrency)
+        price={23.34}
+      />
     </Styled(ConfirmationItemDisplay)>
   </div>
 </div>
@@ -96,7 +98,61 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly with BOPI
     <Styled(ConfirmationItemDisplay)
       boldFont={true}
     >
-      undefined 23.00
+      <Connect(PriceCurrency)
+        price={23}
+      />
+    </Styled(ConfirmationItemDisplay)>
+  </div>
+</div>
+`;
+
+exports[`ConfirmationOrderNumberDisplayVanilla should render correctly with default 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="confirmation-item-count"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    2 undefined
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="confirmation-fullfillment-type"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <div
+    className="confirmation-order-details-wrapper"
+  >
+    <Styled(ConfirmationItemDisplay)>
+      <Styled(Anchor)
+        asPath="/account/orders/order-details/undefined"
+        to="/account?id=orders&subSection=order-details&orderId=undefined"
+        underline={true}
+      />
+    </Styled(ConfirmationItemDisplay)>
+    <Styled(ConfirmationItemDisplay) />
+    <Styled(ConfirmationItemDisplay)
+      boldFont={true}
+    >
+      <Connect(PriceCurrency)
+        price={23}
+      />
     </Styled(ConfirmationItemDisplay)>
   </div>
 </div>

@@ -3,6 +3,7 @@ import constants from '../RewardsCard.constants';
 const initialState = {
   contact_information_disclaimer: '',
   pre_screen_code: '',
+  plccEligible: false,
 };
 
 const ApplyCardReducer = (state = initialState, action) => {
@@ -22,6 +23,16 @@ const ApplyCardReducer = (state = initialState, action) => {
         ...state,
         applicationStatus: action.payload.status,
         approvedPLCCData: action.payload,
+      };
+    case constants.SET_PLCC_ELIGIBLE:
+      return {
+        ...state,
+        plccEligible: action.payload,
+      };
+    case constants.SET_PLCC_PRESCREEN_CODE:
+      return {
+        ...state,
+        pre_screen_code: action.payload,
       };
     default:
       return state;

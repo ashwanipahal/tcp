@@ -12,6 +12,11 @@ const styles = css`
     flex-direction: column;
     display: flex;
   }
+  /* stylelint-disable-next-line */
+  _:-ms-fullscreen,
+  .image-wrapper img {
+    max-height: 320px;
+  }
   .image-wrapper {
     display: flex;
     flex-direction: column;
@@ -39,10 +44,15 @@ const styles = css`
   .product-details-card-container {
     display: none;
   }
+  .edit-form-css {
+    .color-selector {
+      margin-bottom: 32px;
+    }
+  }
+
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
-    z-index: 1;
   }
   .price-container {
     display: inline-flex;
@@ -71,7 +81,8 @@ const styles = css`
     @media ${props.theme.mediaQuery.medium} {
       padding:${props.theme.spacing.ELEM_SPACING.SM} 0;
       border: 1px solid ${props.theme.colors.BORDER.NORMAL};
-      margin-bottom: ${props.theme.spacing.ELEM_SPACING.MED};
+      margin-bottom: ${props.theme.spacing.ELEM_SPACING.XS};
+      margin-top: ${props.theme.spacing.ELEM_SPACING.XS};
     }
   `
         : `
@@ -89,7 +100,6 @@ const styles = css`
     right: 0px;
     bottom: 0px;
     background-color: ${props.theme.colorPalette.gray[500]};
-    z-index: 1300;
     opacity: 0.25;
     pointer-events: none;
   `}
@@ -157,7 +167,7 @@ export const customPriceStyles = css`
 export const customSubmitButtonStyle = css`
   @media ${props => props.theme.mediaQuery.large} {
     .add-to-bag-button {
-      width: 243px;
+      width: 343px;
     }
   }
 `;

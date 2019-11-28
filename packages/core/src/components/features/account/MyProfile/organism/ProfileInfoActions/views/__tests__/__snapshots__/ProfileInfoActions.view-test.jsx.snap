@@ -58,7 +58,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState=""
         activityDescription="lbl_profile_mailingAddressDescription"
-        activityIcon="/static/images/mailingAddress.jpg"
+        activityIcon="/static/version-not-available/images/mailingAddress.jpg"
         activityId="mailingAddress"
         activityTitle="lbl_profile_mailingAddressActivityTitle"
         dataLocatorPrefix="email"
@@ -86,11 +86,11 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState=""
         activityDescription="lbl_profile_favStoreDescription"
-        activityIcon="/static/images/store.png"
+        activityIcon="/static/version-not-available/images/store.png"
         activityId="favStore"
         activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
-        redirectTo="/account"
+        redirectTo="/store-locator"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -106,7 +106,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState=""
         activityDescription="lbl_profile_userBirthdayDescription"
-        activityIcon="/static/images/birthday.jpg"
+        activityIcon="/static/version-not-available/images/birthday.jpg"
         activityId="userBirthday"
         activityTitle="lbl_profile_userBirthdayActivityTitle"
         dataLocatorPrefix="birthday"
@@ -134,7 +134,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState=""
         activityDescription="lbl_profile_aboutYourselfDescription"
-        activityIcon="/static/images/survey.png"
+        activityIcon="/static/version-not-available/images/survey.png"
         activityId="aboutYourself"
         activityTitle="lbl_profile_surveyActivityTitle"
         dataLocatorPrefix="survey"
@@ -259,7 +259,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState="lbl_profile_profileActivityCompleted"
         activityDescription="lbl_profile_mailingAddressDescription"
-        activityIcon="/static/images/mailingAddress.jpg"
+        activityIcon="/static/version-not-available/images/mailingAddress.jpg"
         activityId="mailingAddress"
         activityTitle="lbl_profile_mailingAddressActivityTitle"
         dataLocatorPrefix="email"
@@ -287,11 +287,11 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState="lbl_profile_profileActivityCompleted"
         activityDescription="lbl_profile_favStoreDescription"
-        activityIcon="/static/images/store.png"
+        activityIcon="/static/version-not-available/images/store.png"
         activityId="favStore"
         activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
-        redirectTo="/account"
+        redirectTo="/store-locator"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -307,7 +307,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState="lbl_profile_profileActivityCompleted"
         activityDescription="lbl_profile_userBirthdayDescription"
-        activityIcon="/static/images/birthday.jpg"
+        activityIcon="/static/version-not-available/images/birthday.jpg"
         activityId="userBirthday"
         activityTitle="lbl_profile_userBirthdayActivityTitle"
         dataLocatorPrefix="birthday"
@@ -335,7 +335,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityCompletionState="lbl_profile_profileActivityCompleted"
         activityDescription="lbl_profile_aboutYourselfDescription"
-        activityIcon="/static/images/survey.png"
+        activityIcon="/static/version-not-available/images/survey.png"
         activityId="aboutYourself"
         activityTitle="lbl_profile_surveyActivityTitle"
         dataLocatorPrefix="survey"

@@ -1,8 +1,14 @@
 import styled from 'styled-components/native';
 
-const RichTextWrapper = styled.View`
+export const RichTextWrapper = styled.View`
   height: 100%;
   font-size: ${props => props.theme.typography.fontSizes.fs14};
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.spacing.ELEM_SPACING.MED} 0
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
-export default RichTextWrapper;
+export const contentHeight = { minHeight: 600 };
+
+export const BonusPointsLoaderWrapper = styled.View`
+  height: 156px;
+`;

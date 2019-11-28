@@ -117,11 +117,12 @@ export const CreditCardFields = ({
                 placeholder={creditFieldLabels.cvvCode}
                 name="cvvCode"
                 id="cvvCode"
+                type="tel"
                 component={TextBox}
                 dataLocator="cvvTxtBox"
                 maxLength="4"
                 enableSuccessCheck={false}
-                autocomplete="noautocomplete"
+                autoComplete="off"
               />
               <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
               <span className="cvv-icon">{cvvInfo}</span>

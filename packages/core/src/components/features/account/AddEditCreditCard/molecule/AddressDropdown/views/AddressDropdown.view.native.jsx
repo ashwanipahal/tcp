@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, View, Modal, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Badge from '@tcp/core/src/components/common/atoms/Badge';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import { getScreenHeight } from '@tcp/core/src/utils/index.native';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -14,10 +15,19 @@ import {
   Separator,
   FlatList,
   AddNewAddressWrapper,
+  BadgeWrapper,
+  AddNewButton,
 } from '../styles/AddressDropdown.style.native';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../../../assets/carrot-small-up.png');
+
+const additionalItemStyle = {
+  marginLeft: -16,
+  marginRight: -16,
+  paddingLeft: 4,
+  paddingRight: 4,
+};
 
 /**
  * This is a AddressDropdown component. Styling of drop down and its item
@@ -92,10 +102,14 @@ export class AddressDropdown extends React.PureComponent<Props> {
   componentDidUpdate(prevProps) {
     if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
     const { selectedValue, data } = this.props;
+    let selectedLabelState;
     if (prevProps.selectedValue !== selectedValue) {
-      const selectedAddress = data.filter(item => item.id === selectedValue);
-      const selectedLabelState =
-        selectedAddress && selectedAddress.length && selectedAddress[0].label;
+      // Added empty check for 'Add New Address CTA', as it doesn't have any key/id.
+      let selectedAddress = data.filter(item => item.id === selectedValue);
+      if (selectedAddress && !selectedAddress.length) {
+        selectedAddress = data.filter(item => item.id === '');
+      }
+      selectedLabelState = selectedAddress && selectedAddress.length && selectedAddress[0].label;
       this.updateState({ selectedLabelState });
     }
   }
@@ -160,13 +174,15 @@ export class AddressDropdown extends React.PureComponent<Props> {
     const { label } = item;
     const { showButton, disableBtn } = this.props;
     return showButton ? (
-      <Button
-        fullWidth
-        fill="BLUE"
-        text={label}
-        onPress={this.openAddressBook}
-        disableButton={disableBtn}
-      />
+      <AddNewButton>
+        <Button
+          fullWidth
+          fill="BLACK"
+          text={label}
+          onPress={this.openAddressBook}
+          disableButton={disableBtn}
+        />
+      </AddNewButton>
     ) : (
       <AddNewAddressWrapper onPress={this.openAddressBook}>
         <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />
@@ -179,15 +195,24 @@ export class AddressDropdown extends React.PureComponent<Props> {
     return useCustomContent ? (
       content
     ) : (
-      <Address
-        address={content}
-        showCountry={false}
-        showPhone={false}
-        className="CreditCardForm__address"
-        dataLocatorPrefix="payment"
-        showName
-        showDefaultText={item && item.primary}
-      />
+      <>
+        {item && item.primary && (
+          <BadgeWrapper>
+            <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
+              DEFAULT
+            </Badge>
+          </BadgeWrapper>
+        )}
+        <Address
+          address={content}
+          showCountry={false}
+          showPhone={false}
+          className="CreditCardForm__address"
+          dataLocatorPrefix="payment"
+          showName
+          showDefaultText={item && item.primary}
+        />
+      </>
     );
   };
 
@@ -197,7 +222,10 @@ export class AddressDropdown extends React.PureComponent<Props> {
   dropDownLayout = ({ item }) => {
     const { itemStyle } = this.props;
     return (
-      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
+      <DropDownItemContainer
+        onPress={() => this.onDropDownItemClick(item)}
+        style={{ ...itemStyle, ...additionalItemStyle }}
+      >
         {item.id ? this.getContext(item) : this.renderButton({ item })}
       </DropDownItemContainer>
     );

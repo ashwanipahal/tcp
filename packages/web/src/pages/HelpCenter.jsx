@@ -1,1 +1,1 @@
-export { default } from '@tcp/core/src/components/common/organisms/HelpCenter/container';
+export { default } from '../components/features/helpCenter/HelpCenter/container';

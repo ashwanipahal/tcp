@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpCenterModuleTwoCol component HelpCenterModuleTwoCol component renders correctly without props 1`] = `
+<Styled(Row)
+  className="undefined helpCenterModuleTwoCol"
+>
+  <LoadableComponent />
+</Styled(Row)>
+`;

@@ -1,15 +1,13 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { isAndroid } from '../../../../../../../utils/index.native';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreListContainer from '../../PickupStoreList';
@@ -27,16 +25,20 @@ import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
 class PickupStoreSelectionForm extends React.PureComponent<Props> {
   componentDidMount() {
-    const { onSearch, openRestrictedModalForBopis } = this.props;
-    if (openRestrictedModalForBopis) {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
       onSearch();
     }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
   }
 
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
-      submitting,
       isSearchOnlyInCartStores,
       onCloseClick,
       addToCartError,
@@ -87,12 +89,12 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
   displayErrorCopy() {
     const { error, onCloseClick } = this.props;
     return error ? (
-      <div className="error-box-bopis">
+      <>
         <BodyCopyWithSpacing fontSize="fs14" fontWeight="semibold" color="red.500" text={error} />
         <Button onPress={onCloseClick} type="button" className="button-cancel">
           Cancel
         </Button>
-      </div>
+      </>
     ) : null;
   }
 
@@ -102,26 +104,13 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       pristine,
       submitting,
       storeSearchError,
-      PickupSkuFormValues,
-      colorFitsSizesMap,
       isSkuResolved,
-      onCloseClick,
       handleSubmit,
       onSearch,
+      PickupSkuFormValues,
       selectedValue,
     } = this.props;
-
-    let disableButton = pristine;
-
-    const formExists = Object.entries(PickupSkuFormValues).length === 0;
-
-    const { color, Fit, Size } = PickupSkuFormValues;
-
-    const enableButton = formExists ? pristine : true;
-
-    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
-
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -146,7 +135,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
-              selectedValue={selectedValue}
+              selectedValue={selectedValue && selectedValue.toString()}
               onValueChange={itemValue => {
                 const { onQuantityChange, form } = this.props;
                 if (onQuantityChange) {
@@ -157,7 +146,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           </DistanceCol>
         </Row>
         <Button
-          margin="16px 0 20px 0"
+          margin={isAndroid() ? '16px 0 35px 0' : '16px 0 25px 0'}
           color="white"
           fill="BLUE"
           text="Search"
@@ -204,15 +193,20 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       isBossSelected,
       isShowMessage,
       getIsBopisAvailable,
+      isGetUserStoresLoaded,
+      handleUpdatePickUpItem,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <PickupStoreListItem
           sameStore={sameStore}
           isShoppingBag={isShoppingBag}
           store={preferredStore}
           onStoreSelect={handleAddTobag}
+          onStoreUpdate={handleUpdatePickUpItem}
           onPickupRadioBtnToggle={handlePickupRadioBtn}
           isBopisSelected={preferredStore.basicInfo.id === selectedStoreId && !isBossSelected}
           isBossSelected={preferredStore.basicInfo.id === selectedStoreId && isBossSelected}

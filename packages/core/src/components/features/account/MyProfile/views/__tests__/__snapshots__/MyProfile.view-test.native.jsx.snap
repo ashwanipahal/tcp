@@ -9,6 +9,8 @@ exports[`Myprofile should render correctly 1`] = `
     borderColor="black"
     borderWidth={1}
     marginBottom={28}
+    marginLeft={0}
+    marginRight={0}
     marginTop={0}
   />
   <ProfileInformation

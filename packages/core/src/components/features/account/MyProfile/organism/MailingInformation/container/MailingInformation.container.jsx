@@ -25,9 +25,7 @@ export class MailingInformationContainer extends PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
   }
 
   componentDidUpdate() {
@@ -61,6 +59,7 @@ export class MailingInformationContainer extends PureComponent {
         ...address.address,
         firstName: address.firstName,
         lastName: address.lastName,
+        country: isCanada() ? 'CA' : 'US',
       },
     };
   };

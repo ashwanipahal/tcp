@@ -1,34 +1,64 @@
-import React from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { PureComponent } from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
 import { getLabelValue } from '@tcp/core/src/utils';
 import WalletLayout from '../styles/Wallet.style.native';
 import MyRewards from '../../common/organism/MyRewards';
+import AccountNumber from '../../common/organism/AccountNumber';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
+import FooterLinks from '../../common/molecule/FooterLinks';
+import GuestLoginOverview from '../../common/molecule/GuestLoginModule';
 
-export const WalletView = ({ labels, commonLabels, ...props }) => {
-  return (
-    <View>
-      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-        <WalletLayout>
-          <RewardsPoints tableView />
-          <PageHeadingWithLinks
-            heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
-            programDetailsCta={getLabelValue(
-              labels,
-              'lbl_my_rewards_program_details',
-              'placeRewards'
-            )}
-            termsConditionCta={getLabelValue(commonLabels, 'lbl_common_tnc')}
-          >
-            <MyRewards labels={labels} view="all" {...props} />
-          </PageHeadingWithLinks>
-        </WalletLayout>
-      </ScrollView>
-    </View>
-  );
-};
+class WalletView extends PureComponent {
+  render() {
+    const {
+      labels,
+      commonLabels,
+      overViewLabels,
+      isUserLoggedIn,
+      navigation,
+      openApplyNowModal,
+      footerLinks,
+      ...props
+    } = this.props;
+    return (
+      <>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+          <WalletLayout>
+            {isUserLoggedIn ? (
+              <>
+                <RewardsPoints tableView />
+                <PageHeadingWithLinks
+                  heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
+                  noTopPadding
+                  noCTA
+                >
+                  <AccountNumber />
+                  <MyRewards labels={labels} view="all" {...props} />
+                </PageHeadingWithLinks>
+              </>
+            ) : null}
+            <GuestLoginOverview
+              isUserLoggedIn={isUserLoggedIn}
+              labels={{ ...labels, ...commonLabels, ...overViewLabels }}
+              navigation={navigation}
+            />
+            {footerLinks && footerLinks.length > 0 ? (
+              <FooterLinks
+                isUserLoggedIn={isUserLoggedIn}
+                labels={{ ...labels, ...commonLabels, ...overViewLabels }}
+                navigation={navigation}
+                openApplyNowModal={openApplyNowModal}
+                footerLinks={footerLinks}
+              />
+            ) : null}
+          </WalletLayout>
+        </ScrollView>
+      </>
+    );
+  }
+}
 
 WalletView.propTypes = {
   labels: PropTypes.shape({
@@ -41,6 +71,11 @@ WalletView.propTypes = {
     }),
   }),
   commonLabels: PropTypes.shape({}),
+  overViewLabels: PropTypes.shape({}),
+  navigation: PropTypes.func,
+  isUserLoggedIn: PropTypes.string.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
+  footerLinks: PropTypes.shape([]),
 };
 
 WalletView.defaultProps = {
@@ -54,6 +89,9 @@ WalletView.defaultProps = {
     },
   },
   commonLabels: {},
+  overViewLabels: {},
+  navigation: () => {},
+  footerLinks: [],
 };
 
 export default WalletView;

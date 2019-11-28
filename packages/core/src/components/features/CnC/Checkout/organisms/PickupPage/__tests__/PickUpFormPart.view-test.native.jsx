@@ -9,6 +9,8 @@ describe('PickUpFormPart component', () => {
       initialValues: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       className: '',
       isSmsUpdatesEnabled: false,
       isGuest: false,
@@ -31,6 +33,8 @@ describe('PickUpFormPart component', () => {
   it('should renders correctly props  present ', () => {
     const props = {
       initialValues: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
       className: '',
@@ -56,6 +60,8 @@ describe('PickUpFormPart component', () => {
   it(' should renders correctly props with state update ', () => {
     const props = {
       initialValues: {},
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickUpLabels: {},
       smsSignUpLabels: {},
       className: '',

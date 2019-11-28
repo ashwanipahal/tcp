@@ -33,8 +33,19 @@ export const ProfileInfoActionTile = ({
         resizeMode="contain"
       />
       <View>
-        <BodyCopy textAlign="center" fontSize="fs16" fontWeight="semibold" text={titleToShow} />
-        <BodyCopy textAlign="center" fontSize="fs14" text={activityDescription} />
+        <BodyCopy
+          textAlign="center"
+          fontSize="fs16"
+          fontFamily="secondary"
+          fontWeight="semibold"
+          text={titleToShow}
+        />
+        <BodyCopy
+          textAlign="center"
+          fontSize="fs14"
+          fontFamily="secondary"
+          text={activityDescription}
+        />
       </View>
     </ProfileInfoActionTileWrapper>
   );

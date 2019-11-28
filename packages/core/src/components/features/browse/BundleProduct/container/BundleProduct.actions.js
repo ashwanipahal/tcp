@@ -20,3 +20,23 @@ export const setBundleDetails = payload => {
     payload,
   };
 };
+
+export const clearBundleState = () => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.CLEAR_BUNDLE_DETAILS,
+    payload: {},
+  };
+};
+export const setAddToFavoriteBUNDLE = payload => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};
+
+export const setLoadingState = payload => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.SET_LOADING_STATE,
+    payload,
+  };
+};

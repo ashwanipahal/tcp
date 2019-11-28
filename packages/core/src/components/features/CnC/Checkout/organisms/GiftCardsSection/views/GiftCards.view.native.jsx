@@ -14,6 +14,7 @@ import GiftCardTileView from '../../../molecules/GiftCardTile';
 import CustomButton from '../../../../../../common/atoms/Button';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm.native';
 import { propTypes, defaultProps, GiftCardSectionHeading } from './GiftCards.view.utils';
+import GiftCardSkeleton from '../skeleton/GiftCardSkeleton.view.native';
 
 class GiftCards extends React.PureComponent {
   constructor(props) {
@@ -23,9 +24,10 @@ class GiftCards extends React.PureComponent {
     };
   }
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, state) {
     const { orderBalanceTotal } = nextProps;
-    if (orderBalanceTotal) {
+    const { orderBalanceTotalState } = state;
+    if (orderBalanceTotal !== orderBalanceTotalState) {
       return { orderBalanceTotal };
     }
     return null;
@@ -130,6 +132,37 @@ class GiftCards extends React.PureComponent {
     );
   }
 
+  renderApplyGiftCards = (
+    appliedGiftCards,
+    handleRemoveGiftCard,
+    labels,
+    giftCardErrors,
+    toastMessage,
+    isExpressCheckout,
+    isFromReview
+  ) => {
+    return (
+      appliedGiftCards &&
+      appliedGiftCards.size > 0 &&
+      appliedGiftCards.map(cardData => {
+        return (
+          <GiftCardBody>
+            <GiftCardTileView
+              cardData={cardData}
+              handleRemoveGiftCard={handleRemoveGiftCard}
+              labels={labels}
+              isGiftCardApplied
+              giftCardErrors={giftCardErrors}
+              toastMessage={toastMessage}
+              isExpressCheckout={isExpressCheckout}
+              isFromReview={isFromReview}
+            />
+          </GiftCardBody>
+        );
+      })
+    );
+  };
+
   renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
     return (
       <>
@@ -194,6 +227,7 @@ class GiftCards extends React.PureComponent {
       enableAddGiftCard,
       isFromReview,
       isExpressCheckout,
+      isFetching,
     } = this.props;
     const { orderBalanceTotal } = this.state;
     const checkAddNewButton = this.checkAddNew(enableAddGiftCard, isFromReview, isExpressCheckout);
@@ -232,24 +266,15 @@ class GiftCards extends React.PureComponent {
 
           {this.renderNoApplied(labels, isFromReview, appliedGiftCards)}
 
-          {appliedGiftCards &&
-            appliedGiftCards.size > 0 &&
-            appliedGiftCards.map(cardData => {
-              return (
-                <GiftCardBody>
-                  <GiftCardTileView
-                    cardData={cardData}
-                    handleRemoveGiftCard={handleRemoveGiftCard}
-                    labels={labels}
-                    isGiftCardApplied
-                    giftCardErrors={giftCardErrors}
-                    toastMessage={toastMessage}
-                    isExpressCheckout={isExpressCheckout}
-                    isFromReview={isFromReview}
-                  />
-                </GiftCardBody>
-              );
-            })}
+          {this.renderApplyGiftCards(
+            appliedGiftCards,
+            handleRemoveGiftCard,
+            labels,
+            giftCardErrors,
+            toastMessage,
+            isExpressCheckout,
+            isFromReview
+          )}
 
           {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
@@ -261,7 +286,8 @@ class GiftCards extends React.PureComponent {
             this.getHeading
           )}
 
-          {(!isFromReview || isExpressCheckout) &&
+          {!isFetching ? (
+            (!isFromReview || isExpressCheckout) &&
             giftCardList &&
             giftCardList.size > 0 &&
             giftCardList.map(cardData => {
@@ -279,7 +305,12 @@ class GiftCards extends React.PureComponent {
                   />
                 </GiftCardBody>
               );
-            })}
+            })
+          ) : (
+            <>
+              <GiftCardSkeleton />
+            </>
+          )}
           {checkAddNewButton && this.renderAddNewGiftButton()}
           {enableAddGiftCard && this.renderAddGiftCard()}
         </Container>

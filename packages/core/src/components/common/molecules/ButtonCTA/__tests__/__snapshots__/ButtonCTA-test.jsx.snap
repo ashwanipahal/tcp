@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button CTA component renders correctly 1`] = `
-<Styled(Anchor)
+<Styled(Styled(Anchor))
   asPath="/test"
   className="ctaClassName"
   dataLocator="undefined-link"
   key="test_key"
+  role="button"
   title="title"
   to="/test"
 >
-  <Styled(Button)
+  <Styled(BodyCopy)
     buttonVariation="fixed-width"
-    className="dropdown-items"
+    className="dropdown-items cta-button-text"
+    component="span"
   >
     text
-  </Styled(Button)>
-</Styled(Anchor)>
+  </Styled(BodyCopy)>
+</Styled(Styled(Anchor))>
 `;

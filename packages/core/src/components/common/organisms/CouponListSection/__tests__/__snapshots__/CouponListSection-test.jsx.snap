@@ -141,7 +141,9 @@ exports[`CouponList component should renders applied list 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <div>
+  <div
+    className="cart-show-more-btn"
+  >
     <Styled(Anchor)
       anchorVariation="primary"
       dataLocator="cartShowLessButton"
@@ -330,7 +332,9 @@ exports[`CouponList component should renders available list 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <div>
+  <div
+    className="cart-show-more-btn"
+  >
     <Styled(Anchor)
       anchorVariation="primary"
       dataLocator="cartShowLessButton"

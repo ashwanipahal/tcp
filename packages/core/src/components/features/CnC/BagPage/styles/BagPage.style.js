@@ -7,12 +7,23 @@ const styles = css`
     background: #fff;
   }
   .order-summary {
+    padding-bottom: 0;
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 16px 0;
+      .checkoutBtnTracker {
+        flex: none;
+      }
+    }
+    .item-closed {
+      .elem-mb-MED {
+        margin-bottom: 0;
+      }
     }
   }
 
   .cartPageTitleHeader {
+    display: flex;
+    justify-content: center;
     @media ${props => props.theme.mediaQuery.medium} {
       pointer-events: none;
     }
@@ -128,6 +139,10 @@ const styles = css`
       font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
+
+  .recentlyViewed {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
 `;
 
 export const addedToBagActionsStyles = css`
@@ -149,6 +164,29 @@ export const addedToBagActionsStyles = css`
 
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
+    margin-top: 7px;
+    float: right;
+    width: 324px;
+    padding: 0 3px 0 13px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 366px;
+    }
+    .checkout {
+      height: 42px;
+      padding: 12px 0;
+    }
+    .paypal-venmo {
+      flex: 1;
+      display: inline-flex;
+      margin-bottom: 7px;
+      ${props => (!props.isVenmoEnabled && !props.isPayPalEnabled ? `flex: none;` : '')};
+      .paypal-wrapper {
+        min-width: auto;
+      }
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   .checkout-sticky-header {
@@ -164,12 +202,61 @@ export const addedToBagActionsStyles = css`
     padding: 0 13px 0;
     box-sizing: border-box;
     margin-top: 35px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-top: 0;
+      padding: 0;
+      ${props =>
+        !props.isVenmoEnabled || !props.isPayPalEnabled
+          ? `flex-direction: row;
+          .checkoutBtnTracker {
+            flex: 1;
+            padding-left: 8px;
+          }`
+          : ''};
+      ${props =>
+        !props.isVenmoEnabled && !props.isPayPalEnabled
+          ? `.checkoutBtnTracker {
+              flex: 1;
+              padding-left: 0;
+            }`
+          : ''};
+      .checkout {
+        height: 42px;
+        padding: 12px 0;
+      }
+      .paypal-wrapper {
+        min-width: 170px;
+        height: 42px;
+      }
+      .venmo-button {
+        min-width: 170px;
+        height: 42px;
+      }
+    }
   }
 
   button.checkout {
     width: 100%;
     margin: 0 0 10px 0;
     padding: 16px 0;
+  }
+`;
+
+export const recommendationStyles = css`
+  && .slick-list {
+    margin-right: 0;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    &.recommendations-tile {
+      .recommendations-section-row {
+        padding-left: 6px;
+      }
+    }
+    .added-to-bag {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
 `;
 

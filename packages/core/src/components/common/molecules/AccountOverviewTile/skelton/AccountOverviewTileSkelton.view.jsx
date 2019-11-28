@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 
-import styles from './AccountOverviewTileSkelton.style';
+import styles from '../styles/AccountOverviewTileSkelton.style';
 
 const AccountOverviewTileSkelton = ({ className }) => {
   return (

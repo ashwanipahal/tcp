@@ -29,9 +29,9 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
       <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
         {getLabelValue(ordersLabels, 'lbl_orderDetails_billing')}
       </BodyCopy>
-      {card.cardType && (
-        <BodyCopy component="div">
-          <Row fullBleed className="elem-mb-XS">
+      <BodyCopy component="div">
+        <Row fullBleed className="elem-mb-XS">
+          {card && (
             <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
               <Image
                 src={getIconPath(cardIconMapping[card.cardType.toUpperCase()])}
@@ -45,28 +45,28 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
                   : card.endingNumbers}
               </BodyCopy>
             </Col>
+          )}
+          {appliedGiftCards &&
+            appliedGiftCards.length > 0 &&
+            appliedGiftCards.map(giftCard => {
+              return (
+                <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
+                  <Image
+                    src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
+                    className="elem-mr-XS"
+                  />
+                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                    {`${getLabelValue(
+                      ordersLabels,
+                      'lbl_orders_ending'
+                    )} ${giftCard.endingNumbers.slice(-4)}`}
+                  </BodyCopy>
+                </Col>
+              );
+            })}
+        </Row>
+      </BodyCopy>
 
-            {appliedGiftCards &&
-              appliedGiftCards.length > 0 &&
-              appliedGiftCards.map(giftCard => {
-                return (
-                  <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
-                    <Image
-                      src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
-                      className="elem-mr-XS"
-                    />
-                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                      {`${getLabelValue(
-                        ordersLabels,
-                        'lbl_orders_ending'
-                      )} ${giftCard.endingNumbers.slice(-4)}`}
-                    </BodyCopy>
-                  </Col>
-                );
-              })}
-          </Row>
-        </BodyCopy>
-      )}
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
         <Address address={billing.billingAddress} showCountry={false} showPhone={false} />
       </BodyCopy>

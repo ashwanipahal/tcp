@@ -11,34 +11,21 @@ exports[`ProfileInformation component should render correctly 1`] = `
       className="profileInfoCol"
       colSize={
         Object {
-          "large": 5,
-          "medium": 5,
+          "large": 6,
+          "medium": 4,
           "small": 6,
         }
       }
     >
-      <Styled(BodyCopy)
-        className="elem-mb-MED"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        <Connect(MyFavoriteStoreContainer)
-          isMyPreferences={true}
-        />
-      </Styled(BodyCopy)>
+      <Connect(MyFavoriteStoreContainer)
+        isMyPreferences={true}
+      />
     </Styled(Col)>
     <Styled(Col)
       className="profileInfoCol"
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
         }
@@ -66,7 +53,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hide-on-mobile elem-pt-LRG elem-pb-LRG"
+    className="hide-on-mobile hide-on-tablet elem-pt-LRG elem-pb-LRG"
     fullBleed={true}
   >
     <Styled(Col)
@@ -74,6 +61,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       colSize={
         Object {
           "large": 12,
+          "medium": 4,
         }
       }
     />

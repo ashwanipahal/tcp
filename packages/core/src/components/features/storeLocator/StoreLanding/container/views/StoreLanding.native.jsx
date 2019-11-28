@@ -1,14 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, ScrollView } from 'react-native';
-import {
-  isCanada,
-  getAPIConfig,
-  navigateToNestedRoute,
-  getLabelValue,
-  isGymboree,
-  mapHandler,
-} from '@tcp/core/src/utils';
+import { isCanada, getAPIConfig, getLabelValue, isGymboree, mapHandler } from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
@@ -51,7 +44,7 @@ export class StoreLanding extends PureComponent {
   openStoreDetails = store => {
     const { fetchCurrentStore, navigation, labels } = this.props;
     fetchCurrentStore(store);
-    navigateToNestedRoute(navigation, 'HomeStack', 'StoreDetails', {
+    navigation.navigate('StoreDetails', {
       title: getLabelValue(labels, 'lbl_storedetail_storedetailTxt'),
     });
   };

@@ -45,11 +45,13 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         className="details"
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
         text="lbl_freeShippingBanner_details"
         underline={true}
+        url="lbl_freeShippingBanner_url_app"
         visible={false}
       />
     </Styled(View)>

@@ -27,6 +27,7 @@ import {
   getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
 import PaymentView from '../views/PaymentView';
+import CardViewSkeleton from '../skeleton/CardViewSkeleton.view';
 
 import utils from '../../../../../utils';
 
@@ -44,7 +45,10 @@ export class PaymentContainer extends React.Component {
   }
 
   addNewCreditCard = () => {
-    utils.routerPush('/account?id=add-credit-card', '/account/payment/add-credit-card');
+    utils.routerPush(
+      '/account?id=payment&subSection=add-credit-card',
+      '/account/payment/add-credit-card'
+    );
   };
 
   render() {
@@ -64,10 +68,14 @@ export class PaymentContainer extends React.Component {
       showNotificationCaptcha,
       paymentBannerRichText,
       labels,
+      isFetching,
     } = this.props;
 
     const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
 
+    if (isFetching) {
+      return <CardViewSkeleton labels={labels} />;
+    }
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -142,6 +150,7 @@ const mapStateToProps = state => {
 
 PaymentContainer.defaultProps = {
   clearPaymentNotification: null,
+  isFetching: false,
 };
 
 PaymentContainer.propTypes = {
@@ -165,6 +174,7 @@ PaymentContainer.propTypes = {
   clearPaymentNotification: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
   resetSuccessNotification: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
 };
 export default connect(
   mapStateToProps,

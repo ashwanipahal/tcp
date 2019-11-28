@@ -5,5 +5,6 @@ const PAGES = {
   PRODUCT_LISTING_PAGE: 'c',
   OUTFIT: 'outfit',
   PRODUCT_DESCRIPTION_PAGE: 'p',
+  ACCOUNT_PAGE: 'Account',
 };
 export default PAGES;

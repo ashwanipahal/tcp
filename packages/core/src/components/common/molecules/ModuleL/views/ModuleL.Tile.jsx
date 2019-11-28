@@ -14,7 +14,7 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
-const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }) => {
+const ModuleLTile = ({ tileData: { image, link, styled, video }, index, tileColor = {} }) => {
   const { url: ctaUrl, target, title, actualUrl } = link;
 
   let to = actualUrl;
@@ -39,6 +39,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
               imgConfigs={config.IMG_DATA.crops}
               className="moduleL__tile-image"
               data-locator={`${getLocator('moduleL_image')}${index + 1}`}
+              videoData={video}
             />
           </div>
           <div className="moduleL__tile-text">

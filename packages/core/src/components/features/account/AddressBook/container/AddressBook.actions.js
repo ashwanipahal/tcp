@@ -5,9 +5,10 @@ export const getAddressList = payload => ({
   payload,
 });
 
-export const setAddressList = addressList => ({
+export const setAddressList = (addressList, fromProfile) => ({
   type: ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST,
   addressList,
+  fromProfile,
 });
 
 export const loadAddAddressComponent = () => ({
@@ -32,6 +33,9 @@ export const updateAddressListOnDelete = payload => ({
 export const updateAddressListOnDeleteErr = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR,
   payload,
+});
+export const clearErrorState = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.CLEAR_ERROR_STATE,
 });
 
 export const deleteAddress = payload => ({

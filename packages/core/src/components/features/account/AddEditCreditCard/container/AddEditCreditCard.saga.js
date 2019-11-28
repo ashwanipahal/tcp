@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import constants from './AddEditCreditCard.constants';
 import { addCreditCardSuccess, addCreditCardError } from './AddEditCreditCard.actions';
 import { addCreditCard, updateCreditCard } from '../../../../../services/abstractors/account';
@@ -12,6 +13,7 @@ import {
 import { clearCardListTTL } from '../../Payment/container/Payment.actions';
 
 export function* addCreditCardSaga({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const { address, cardType, onFileAddressKey, isDefault, ...otherPayloadProps } = payload;
     const ccBook = yield select(getCreditDebitCards);
@@ -45,16 +47,19 @@ export function* addCreditCardSaga({ payload }) {
     yield put(clearGetAddressListTTL());
     yield put(clearCardListTTL());
     yield put(getAddressList());
+    yield put(setLoaderState(false));
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
+    yield put(setLoaderState(false));
     error = err;
     return yield put(addCreditCardError(error.response.body.errors[0]));
   }
 }
 
 export function* updateCreditCardSaga({ payload }, fromCheckout) {
+  yield put(setLoaderState(true));
   try {
     const { address, cardType, onFileAddressKey, ...otherPayloadProps } = payload;
     const addressList = yield select(getAddressListState);
@@ -84,8 +89,10 @@ export function* updateCreditCardSaga({ payload }, fromCheckout) {
     yield put(clearGetAddressListTTL());
     yield put(clearCardListTTL());
     yield put(getAddressList());
+    yield put(setLoaderState(false));
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
+    yield put(setLoaderState(false));
     if (fromCheckout) {
       throw err;
     }

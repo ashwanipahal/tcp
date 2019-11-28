@@ -45,7 +45,7 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.large} {
     padding: 0;
-    color: ${props => props.theme.colorPalette.text.hint};
+    color: ${props => props.theme.colorPalette.text.primary};
     span {
       display: inline;
     }

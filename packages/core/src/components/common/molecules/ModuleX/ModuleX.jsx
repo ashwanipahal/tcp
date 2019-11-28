@@ -8,7 +8,6 @@ const ModuleX = props => {
     richTextList: [{ text }],
     dataLocator,
   } = props;
-
   return (
     <RichText
       className={`${className} moduleX`}

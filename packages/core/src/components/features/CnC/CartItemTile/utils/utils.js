@@ -41,9 +41,9 @@ export const filterBopisProducts = orderItems => {
  * @param {object} exchangeRate object having current exchange rate available
  */
 export const currencyConversion = (price, exchangeRate) => {
-  const { exchangevalue, merchantMargin, exchangeRoundMethod } = exchangeRate;
+  const { exchangevalue, merchantMargin, roundMethod } = exchangeRate;
   let newPrice = price * exchangevalue * merchantMargin;
-  newPrice = exchangeRoundMethod ? parseFloat(newPrice.toFixed(exchangeRoundMethod)) : newPrice;
+  newPrice = roundMethod ? parseFloat(newPrice.toFixed(roundMethod)) : newPrice;
   return newPrice;
 };
 

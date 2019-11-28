@@ -18,13 +18,14 @@ class PayPalButton extends React.Component {
   }
 
   renderPayPalButton = () => {
-    const { containerId, height, initalizePayPalButton, isQualifedOrder } = this.props;
+    const { containerId, height, initalizePayPalButton, isQualifedOrder, paypalEnv } = this.props;
     const element = document.querySelector(`#${containerId}`);
     if (element && !element.hasChildNodes()) {
       initalizePayPalButton({
         containerId,
         height,
         isQualifedOrder,
+        paypalEnv,
       });
     }
   };
@@ -60,6 +61,7 @@ PayPalButton.propTypes = {
   initalizePayPalButton: PropTypes.func.isRequired,
   isQualifedOrder: PropTypes.bool.isRequired,
   isAddToBagModal: PropTypes.bool,
+  paypalEnv: PropTypes.string.isRequired,
 };
 
 export default errorBoundary(PayPalButton);

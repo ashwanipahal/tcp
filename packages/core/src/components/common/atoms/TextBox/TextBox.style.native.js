@@ -24,12 +24,17 @@ const StyledTextBox = styled.TextInput`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: 0;
   padding-left: 0;
+  border-bottom-color: ${props =>
+    props.meta.touched && props.meta.error
+      ? props.theme.colorPalette.error
+      : props.theme.colorPalette.gray[600]};
 `;
 
 const StyledLabel = styled.Text`
   position: absolute;
   left: 0;
   top: ${props => (!props.isFocused ? props.theme.spacing.ELEM_SPACING.MED : '0')};
+  font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props =>
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14
@@ -43,7 +48,7 @@ const StyledLabel = styled.Text`
 `;
 
 const StyledErrorIcon = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const StyledSuccessCheck = styled.View`

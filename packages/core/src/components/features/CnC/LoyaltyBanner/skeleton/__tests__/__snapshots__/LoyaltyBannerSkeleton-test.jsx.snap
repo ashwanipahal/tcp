@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner Skeleton Loyalty Banner Skeleton should render properly 1`] = `
+<div
+  className="sample-className"
+>
+  <div
+    className="loyalty-banner-section-wrapper"
+  >
+    <div
+      className="loyalty-banner-header-footer"
+    >
+      <SkeletonLine />
+    </div>
+    <div
+      className="loyalty-banner-content"
+    >
+      <SkeletonLine />
+    </div>
+    <div
+      className="loyalty-banner-header-footer"
+    >
+      <SkeletonLine />
+    </div>
+  </div>
+</div>
+`;

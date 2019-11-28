@@ -68,7 +68,6 @@ exports[`MiniBag template should render correctly 1`] = `
   />
   <Styled(MiniBagBody)
     cartItemCount={0}
-    currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}
     onLinkClick={[Function]}

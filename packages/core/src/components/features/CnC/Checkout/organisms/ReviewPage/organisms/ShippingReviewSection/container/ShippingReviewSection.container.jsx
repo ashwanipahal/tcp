@@ -6,60 +6,92 @@ import CHECKOUT_SELECTOR from '../../../../../container/Checkout.selector';
 import CONSTANTS from '../../../../../Checkout.constants';
 import { updateShipmentMethodSelection } from '../../../../../container/Checkout.action';
 
-export const ShippingReviewContainer = ({
-  shippingAddress,
-  shippingMethod,
-  onEdit,
-  labels,
-  isGiftOptionsEnabled,
-  giftWrappingDisplayName,
-  isExpressCheckout,
-  shipmentMethods,
-  formName,
-  formSection,
-  updateShippingMethodSelection,
-  expressReviewShippingSectionId,
-}) => {
-  return (
-    <ShippingReviewSection
-      shippingAddress={shippingAddress}
-      shippingMethod={shippingMethod}
-      onEdit={onEdit}
-      labels={labels}
-      isGiftOptionsEnabled={isGiftOptionsEnabled}
-      giftWrappingDisplayName={giftWrappingDisplayName}
-      isExpressCheckout={isExpressCheckout}
-      shipmentMethods={shipmentMethods}
-      formName={formName}
-      formSection={formSection}
-      updateShippingMethodSelection={updateShippingMethodSelection}
-      expressReviewShippingSectionId={expressReviewShippingSectionId}
-    />
-  );
-};
+export class ShippingReviewContainer extends React.PureComponent {
+  static propTypes = {
+    shippingAddress: PropTypes.shape({}).isRequired,
+    shippingMethod: PropTypes.shape({}).isRequired,
+    onEdit: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}),
+    isGiftOptionsEnabled: PropTypes.bool.isRequired,
+    giftWrappingDisplayName: PropTypes.string.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    shipmentMethods: PropTypes.shape({}).isRequired,
+    formName: PropTypes.string,
+    formSection: PropTypes.string,
+    updateShippingMethodSelection: PropTypes.func.isRequired,
+    expressReviewShippingSectionId: PropTypes.shape({}),
+    dispatch: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool,
+    checkoutRoutingDone: PropTypes.bool,
+  };
 
-ShippingReviewContainer.propTypes = {
-  shippingAddress: PropTypes.shape({}).isRequired,
-  shippingMethod: PropTypes.shape({}).isRequired,
-  onEdit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}),
-  isGiftOptionsEnabled: PropTypes.bool.isRequired,
-  giftWrappingDisplayName: PropTypes.string.isRequired,
-  isExpressCheckout: PropTypes.bool,
-  shipmentMethods: PropTypes.shape({}).isRequired,
-  formName: PropTypes.string,
-  formSection: PropTypes.string,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
-  expressReviewShippingSectionId: PropTypes.shape({}),
-};
+  static defaultProps = {
+    labels: {},
+    isExpressCheckout: false,
+    formName: '',
+    formSection: '',
+    expressReviewShippingSectionId: {},
+    bagLoading: false,
+    checkoutRoutingDone: false,
+  };
 
-ShippingReviewContainer.defaultProps = {
-  labels: {},
-  isExpressCheckout: false,
-  formName: '',
-  formSection: '',
-  expressReviewShippingSectionId: {},
-};
+  componentDidUpdate(prevProps) {
+    const {
+      updateShippingMethodSelection,
+      expressReviewShippingSectionId,
+      isExpressCheckout,
+    } = this.props;
+    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
+    if (
+      isExpressCheckout &&
+      prevexpressReviewShippingSectionId.shippingMethodId &&
+      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
+      expressReviewShippingSectionId.shippingMethodId !==
+        prevexpressReviewShippingSectionId.shippingMethodId
+    ) {
+      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
+    }
+  }
+
+  render() {
+    const {
+      shippingAddress,
+      shippingMethod,
+      onEdit,
+      labels,
+      isGiftOptionsEnabled,
+      giftWrappingDisplayName,
+      isExpressCheckout,
+      shipmentMethods,
+      formName,
+      formSection,
+      updateShippingMethodSelection,
+      expressReviewShippingSectionId,
+      dispatch,
+      bagLoading,
+      checkoutRoutingDone,
+    } = this.props;
+    return (
+      <ShippingReviewSection
+        shippingAddress={shippingAddress}
+        checkoutRoutingDone={checkoutRoutingDone}
+        shippingMethod={shippingMethod}
+        onEdit={onEdit}
+        labels={labels}
+        isGiftOptionsEnabled={isGiftOptionsEnabled}
+        giftWrappingDisplayName={giftWrappingDisplayName}
+        isExpressCheckout={isExpressCheckout}
+        shipmentMethods={shipmentMethods}
+        dispatch={dispatch}
+        formName={formName}
+        formSection={formSection}
+        updateShippingMethodSelection={updateShippingMethodSelection}
+        expressReviewShippingSectionId={expressReviewShippingSectionId}
+        bagLoading={bagLoading}
+      />
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {

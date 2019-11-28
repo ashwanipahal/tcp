@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_overview_myPlaceRewardsCardHeading"
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <Styled(Styled(View))
+    spacingStyles="margin-top-XS"
+  >
+    <Styled(ImageComp)
+      alt=""
+      height={30}
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/visa-small.png",
+        }
+      }
+      url=""
+      width={50}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="padding-left-XS"
+      text="lbl_overview_card_ending 1111"
+      textDecoration={null}
+    />
+  </Styled(Styled(View))>
+  <Styled(Styled(View))
+    spacingStyles="margin-top-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="25% OFF"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text=" your kids’ birthdays!"
+      textDecoration={null}
+    />
+  </Styled(Styled(View))>
+  <Styled(View)
+    spacingStyles="margin-top-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="EARN DOUBLE POINTS"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="when you check out using your card"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG"
+      text="EXCLUSIVE BONUS EVENTS"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXXS margin-bottom-XXXL"
+      text="Tripe points, double rewards & more!"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-LRG margin-bottom-XXS"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="MANAGE YOUR CARD"
+      theme={Object {}}
+      url=""
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`MyPlaceRewardsCreditCardTile component should render empty state correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_overview_myPlaceRewardsCardHeading"
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    text="Add your card to:"
+    textDecoration={null}
+  />
+  <Styled(View)
+    spacingStyles="margin-top-XXXS"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="• Earn 2 pints for every $1 spent"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="• Get 25% off birthday savings"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="• Check out even faster"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-LRG margin-bottom-XXXL"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="gray"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator="orders-shop-now-btn"
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="ADD YOUR CARD"
+      theme={Object {}}
+      url=""
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-XXXL"
+    text="Don’t have a My Place Rewards Credit Card?"
+    textDecoration={null}
+  />
+  <Styled(View)
+    spacingStyles="margin-top-LRG margin-bottom-XXS"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_overview_applyOrAcceptOffer"
+      theme={Object {}}
+      url=""
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

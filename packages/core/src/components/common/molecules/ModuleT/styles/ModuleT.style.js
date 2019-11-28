@@ -51,7 +51,6 @@ export default css`
       margin-right: 0;
     }
   }
-
   .button-list-container {
     ${props =>
       props.theme.isGymboree
@@ -74,5 +73,9 @@ export default css`
         color: ${props.theme.colorPalette.black};
       }
     `}
+  }
+
+  .btn-list-color {
+    color: ${props => props.theme.colorPalette.text.primary};
   }
 `;

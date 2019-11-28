@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Anchor } from '../../../atoms';
@@ -135,6 +136,18 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  small_white_text_semibold: props => (
+    <BodyCopy
+      color="white"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="semibold"
+      textAlign="center"
+      lineHeight="20px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
   medium_text_semibold: props => (
     <BodyCopy
       color="gray.900"
@@ -157,6 +170,16 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  extra_large_white_text_black: props => (
+    <BodyCopy
+      color="white"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      fontWeight="black"
+      {...props}
+    />
+  ),
   extra_large_text_regular: props => (
     <BodyCopy
       color="gray.900"
@@ -164,6 +187,17 @@ export const bodyCopyStyles = {
       fontSize="fs48"
       textAlign="center"
       lineHeight="47px"
+      {...props}
+    />
+  ),
+  large_text_bold: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="regular"
+      textAlign="center"
+      letterSpacing="ls2"
       {...props}
     />
   ),
@@ -198,6 +232,71 @@ export const bodyCopyStyles = {
       color="white"
       mobilefontFamily="secondary"
       fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
+  medium_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs20"
+      textAlign="center"
+      lineHeight="20px"
+      fontWeight="medium"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+
+  spaced_text_only_mobile: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="medium"
+      fontSize="fs20"
+      textAlign="center"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  percentage_inline_promo_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="black"
+      fontSize="fs48"
+      textAlign="center"
+      {...props}
+    />
+  ),
+
+  spaced_text_regular_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="medium"
+      fontSize="fs20"
+      textAlign="center"
+      {...props}
+    />
+  ),
+  large_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  percentage_inline_promo: props => (
+    <BodyCopy
+      color="white"
+      fontFamily="primary"
+      fontWeight="black"
+      fontSize="fs48"
       textAlign="center"
       {...props}
     />

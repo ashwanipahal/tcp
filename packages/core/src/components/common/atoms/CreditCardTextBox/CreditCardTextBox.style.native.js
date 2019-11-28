@@ -22,7 +22,7 @@ const ImageWrapper = styled.View`
   border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 const StyledErrorIcon = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 export {
   StyledTextBox,

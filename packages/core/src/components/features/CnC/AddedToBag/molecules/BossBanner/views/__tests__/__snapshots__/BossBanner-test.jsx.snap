@@ -3,49 +3,10 @@
 exports[`BossBannerView component renders correctly 1`] = `
 <Fragment>
   <styled.div>
-    <Styled(Row)
-      className="banner"
-    >
-      <Styled(Col)
-        className="pickUp"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        key="productDetails"
-        textAlign="center"
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="p"
-          dataLocator="addedtobag-bossbanner"
-          fontFamily="primary"
-          fontSize="fs12"
-          fontWeight={
-            Array [
-              "semibold",
-            ]
-          }
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="center"
-        >
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<span className=\\"spanNoRush\\">PICK UP IN STORE AND SAVE AN EXTRA 5%</span>",
-              }
-            }
-          />
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
+    <Connect(PromotionBannerContainer)
+      bossBanner={true}
+      fullBleed={true}
+    />
     <Styled(Row)
       className="bossText"
     >

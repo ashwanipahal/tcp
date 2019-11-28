@@ -7,6 +7,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
     error=""
     fontSize=""
     fontWeight=""
+    isEspot={false}
   />
   <Styled(View)>
     <Styled(View)>
@@ -70,6 +71,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
                 dataLocator=""
                 fontFamily="secondary"
                 fontSizeVariation="small"
+                justifyContent=""
                 locator=""
                 margins={null}
                 noLink={true}
@@ -98,6 +100,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               locator=""
               navigation={Object {}}
               onPress={[Function]}
+              paddings="12px 32px 12px 32px"
               selected={false}
               selectedIcon="chevron-up"
               showIcon={false}

@@ -1,5 +1,6 @@
 const buildQuery = ({ brand, country, channel }) => `
 accountNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
+  errorMessage
   subSections {
     subSections {
       leafLink {

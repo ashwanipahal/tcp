@@ -82,10 +82,7 @@ describe('badge util test', () => {
         glowInTheDark: 'itemTCPGlowInDarkUSStore',
         limitedQuantity: 'inventoryMessageUSStore',
       };
-      expect(extractPrioritizedBadge(product, siteAttributes)).toEqual({
-        defaultBadge: '',
-        matchBadge: false,
-      });
+      expect(extractPrioritizedBadge(product, siteAttributes)).toEqual({});
     });
   });
 });

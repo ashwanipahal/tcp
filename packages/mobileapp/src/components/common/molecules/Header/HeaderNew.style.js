@@ -47,7 +47,7 @@ const getSafeAreaStyle = props => {
   `;
 };
 
-export const SafeAreaViewStyle = styled.SafeAreaView`
+export const SafeAreaViewStyle = styled.View`
   ${getSafeAreaStyle}
   ${getAdditionalStyle}
 `;
@@ -84,7 +84,11 @@ export const CartIconView = styled.Image`
   height: 30px;
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
-
+export const ArrowBackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
 export const Touchable = styled.TouchableOpacity`
   flex-direction: row;
   height: 36;

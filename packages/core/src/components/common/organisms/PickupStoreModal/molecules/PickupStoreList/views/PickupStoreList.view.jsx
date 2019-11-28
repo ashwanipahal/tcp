@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import InputCheckbox from '../../../../../atoms/InputCheckbox';
 import StoreListItemSkeleton from '../../../atoms/StoreListItemSkeleton';
+import StyledInputCheckbox from '../styles';
 
 const PickupStoreList = props => {
   const {
@@ -32,24 +32,29 @@ const PickupStoreList = props => {
     onPickupRadioBtnToggle,
     onStoreUpdate,
     isSearching,
+    isUserCartStoreLoaded,
+    currentProduct,
+    setClickAnalyticsData,
+    trackClick,
   } = props;
-
+  const InputCheckBoxComponent = StyledInputCheckbox;
   return (
     <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-        <InputCheckbox
+        <InputCheckBoxComponent
           checkBoxLabel
           execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
           isPickUpStoreView
         >
           {BOPIS_FILTER_LABEL}
-        </InputCheckbox>
+        </InputCheckBoxComponent>
       )}
       {derivedStoresList.map(store => (
         <PickupStoreListItem
           addItemToCartInPickup={addItemToCartInPickup}
           sameStore={sameStore}
+          currentProduct={currentProduct}
           isShoppingBag={isShoppingBag}
           key={store.basicInfo.id}
           store={store}
@@ -72,9 +77,11 @@ const PickupStoreList = props => {
           isGiftCard={isGiftCard}
           onPickupRadioBtnToggle={onPickupRadioBtnToggle}
           onStoreUpdate={onStoreUpdate}
+          setClickAnalyticsData={setClickAnalyticsData}
+          trackClick={trackClick}
         />
       ))}
-      {isSearching ? <StoreListItemSkeleton col={20} /> : ''}
+      {isSearching || !isUserCartStoreLoaded ? <StoreListItemSkeleton col={20} /> : null}
     </>
   );
 };
@@ -147,12 +154,17 @@ PickupStoreList.propTypes = {
   isBopisCtaEnabled: PropTypes.bool.isRequired,
   isBossCtaEnabled: PropTypes.bool.isRequired,
   defaultStoreName: PropTypes.string,
+  isUserCartStoreLoaded: PropTypes.bool.isRequired,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
+  currentProduct: PropTypes.string,
 };
 
 PickupStoreList.defaultProps = {
   isBossEnabled: true,
   isBopisEnabled: true,
   defaultStoreName: '',
+  currentProduct: '',
 };
 
 export default PickupStoreList;

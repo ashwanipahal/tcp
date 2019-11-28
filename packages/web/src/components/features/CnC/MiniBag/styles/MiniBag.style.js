@@ -44,5 +44,10 @@ const styles = css`
     min-height: unset;
   }
 `;
+export const customStyles = css`
+  .spinner-overlay {
+    position: absolute;
+  }
+`;
 
 export default styles;

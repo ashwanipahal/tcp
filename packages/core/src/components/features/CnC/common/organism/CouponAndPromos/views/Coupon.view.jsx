@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import CouponSkeleton from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/skeleton/CouponSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Col from '../../../../../../common/atoms/Col';
@@ -11,6 +12,7 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
+
 // import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 class CouponView extends React.PureComponent<Props> {
@@ -18,7 +20,6 @@ class CouponView extends React.PureComponent<Props> {
     super(props);
     this.state = {
       detailStatus: false,
-      helpStatus: false,
       selectedCoupon: {},
     };
   }
@@ -30,11 +31,9 @@ class CouponView extends React.PureComponent<Props> {
     });
   };
 
-  toggleNeedHelpModal = () => {
-    const { helpStatus } = this.state;
-    this.setState({
-      helpStatus: !helpStatus,
-    });
+  toggleCouponNeedHelpModal = () => {
+    const { toggleNeedHelpModal } = this.props;
+    toggleNeedHelpModal();
   };
 
   getHeader = ({ labels }) => {
@@ -58,10 +57,10 @@ class CouponView extends React.PureComponent<Props> {
     handleRemoveCoupon,
     handleErrorCoupon,
     detailStatus,
-    helpStatus,
     selectedCoupon,
     additionalClassName,
     idPrefix,
+    isNeedHelpModalOpen,
   }) => {
     return (
       <div className={className}>
@@ -70,7 +69,7 @@ class CouponView extends React.PureComponent<Props> {
           isFetching={isFetching}
           source="form"
           labels={labels}
-          onNeedHelpTextClick={this.toggleNeedHelpModal}
+          onNeedHelpTextClick={this.toggleCouponNeedHelpModal}
           additionalClassNameModal={additionalClassName}
           idPrefix={idPrefix}
         />
@@ -89,7 +88,7 @@ class CouponView extends React.PureComponent<Props> {
               additionalClassNameModal={additionalClassName}
             />
           )}
-          {availableCouponList && (
+          {availableCouponList && availableCouponList.size > 0 ? (
             <CouponListSection
               labels={labels}
               isFetching={isFetching}
@@ -98,11 +97,18 @@ class CouponView extends React.PureComponent<Props> {
               heading={labels.AVAILABLE_REWARDS_HEADING}
               helpSubHeading="true"
               couponDetailClick={this.couponDetailClick}
-              helpAnchorClick={this.toggleNeedHelpModal}
+              helpAnchorClick={this.toggleCouponNeedHelpModal}
               onApply={handleApplyCouponFromList}
               dataLocator="coupon-cartAvaliableRewards"
               handleErrorCoupon={handleErrorCoupon}
               additionalClassNameModal={additionalClassName}
+            />
+          ) : (
+            <CouponSkeleton
+              className
+              heading={labels.AVAILABLE_REWARDS_HEADING}
+              couponList={availableCouponList}
+              labels={labels}
             />
           )}
           {/* UX timer for coupons list visibility */}
@@ -121,17 +127,16 @@ class CouponView extends React.PureComponent<Props> {
           />
           <CouponHelpModal
             labels={labels}
-            openState={helpStatus}
+            openState={isNeedHelpModalOpen}
             coupon={selectedCoupon}
             onRequestClose={() => {
-              this.setState({
-                helpStatus: false,
-              });
+              this.toggleCouponNeedHelpModal();
             }}
             heading="Help Modal"
             additionalClassNameModal={additionalClassName}
           />
         </div>
+
         {/* <ApplyNowModal /> */}
       </div>
     );
@@ -151,8 +156,9 @@ class CouponView extends React.PureComponent<Props> {
       showAccordian,
       additionalClassNameModal,
       idPrefix,
+      isNeedHelpModalOpen,
     } = this.props;
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const { detailStatus, selectedCoupon } = this.state;
     const header = this.getHeader({ labels });
     const body = additionalClassName =>
       this.getContent({
@@ -166,10 +172,10 @@ class CouponView extends React.PureComponent<Props> {
         handleRemoveCoupon,
         handleErrorCoupon,
         detailStatus,
-        helpStatus,
         selectedCoupon,
         additionalClassName,
         idPrefix,
+        isNeedHelpModalOpen,
       });
     const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (

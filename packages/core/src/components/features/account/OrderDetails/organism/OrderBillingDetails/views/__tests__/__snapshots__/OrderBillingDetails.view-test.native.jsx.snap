@@ -41,7 +41,6 @@ exports[`Order Billing Details component should renders correctly with credit ca
   </Styled(View)>
   <Address
     className="elem-mb-SM elem-mt-SM"
-    customStyle={Object {}}
     dataLocatorPrefix="address"
     fontSize="fs14"
     regularName={true}
@@ -94,7 +93,6 @@ exports[`Order Billing Details component should renders correctly with venmo car
   </Styled(View)>
   <Address
     className="elem-mb-SM elem-mt-SM"
-    customStyle={Object {}}
     dataLocatorPrefix="address"
     fontSize="fs14"
     regularName={true}

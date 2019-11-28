@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';

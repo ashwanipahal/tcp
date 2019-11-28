@@ -77,8 +77,40 @@ const renderHeaderAndBanner = (item, navigation) => {
 };
 
 /**
- * @function renderImageComponent
- * renders image component with header and banner
+ * To Render the Dam Image
+ */
+const renderDamImage = (link, imgData, videoData, navigation, bannerPosition, moduleHeight) => {
+  const damImageComp = (
+    <DamImage
+      width={MODULE_WIDTH}
+      videoData={videoData}
+      height={moduleHeight}
+      url={imgData && imgData.url}
+      host={LAZYLOAD_HOST_NAME.HOME}
+      alt={imgData && imgData.alt}
+      crop={imgData && imgData.crop_m}
+      imgConfig={
+        bannerPosition === bannerPositionTypes.overlay
+          ? IMG_DATA.imgOverlayConfig[0]
+          : IMG_DATA.imgDefaultConfig[0]
+      }
+    />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
+  ) : null;
+};
+
+/**
+ * @function renderMediaComponent
+ * renders Media component with header and banner
  * handles bannerPosition - top/bottom/overlay
  * display header and banner as overlay over image if bannerPosition is overlay
  *
@@ -86,39 +118,32 @@ const renderHeaderAndBanner = (item, navigation) => {
  * @param {*} navigation
  * @returns
  */
-const renderImageComponent = (item, navigation) => {
+const renderMediaComponent = (item, navigation) => {
   const {
     item: {
-      linkedImage: [{ image, link }],
+      linkedImage: [{ image, link, video }],
     },
     bannerPosition,
   } = item;
-
   // set module height as same as screen width to make it a square for bannerPosition as overlay
   const moduleHeight =
     bannerPosition === bannerPositionTypes.overlay
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
+  const videoData = video &&
+    video.url && {
+      videoWidth: MODULE_WIDTH,
+      videoHeight: moduleHeight,
+      ...video,
+    };
+  const imgData = image || {};
+
   return (
     <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
         ? renderHeaderAndBanner(item, navigation)
         : null}
-      <Anchor url={link.url} navigation={navigation}>
-        <DamImage
-          width={MODULE_WIDTH}
-          height={moduleHeight}
-          url={image.url}
-          host={LAZYLOAD_HOST_NAME.HOME}
-          alt={image.alt}
-          crop={image.crop_m}
-          imgConfig={
-            bannerPosition === bannerPositionTypes.overlay
-              ? IMG_DATA.imgOverlayConfig[0]
-              : IMG_DATA.imgDefaultConfig[0]
-          }
-        />
-      </Anchor>
+      {renderDamImage(link, imgData, videoData, navigation, bannerPosition, moduleHeight)}
       {bannerPosition === bannerPositionTypes.bottom
         ? renderHeaderAndBanner(item, navigation)
         : null}
@@ -163,7 +188,7 @@ const ModuleB = (props: Props) => {
 
   return largeCompImage ? (
     <Container>
-      {renderImageComponent(
+      {renderMediaComponent(
         { item: largeCompImage[0], bannerPosition: bannerPositionInterpreted },
         navigation
       )}

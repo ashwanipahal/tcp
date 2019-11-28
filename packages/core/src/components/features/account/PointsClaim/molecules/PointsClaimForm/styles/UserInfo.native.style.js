@@ -29,5 +29,23 @@ const UserIDValues = styled.View`
   width: 60%;
   align-self: flex-end;
 `;
+const UserInfoValuesForEmail = styled.View`
+  width: 60%;
+  align-self: flex-start;
+`;
 
-export { UserInfoRow, UserInfoLabels, UserInfoValues, UserIDValues, UserIDLabels };
+const UserInfoLabelsForEmail = styled.View`
+  width: 35%;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  align-self: flex-start;
+`;
+
+export {
+  UserInfoRow,
+  UserInfoLabels,
+  UserInfoValues,
+  UserIDValues,
+  UserIDLabels,
+  UserInfoValuesForEmail,
+  UserInfoLabelsForEmail,
+};

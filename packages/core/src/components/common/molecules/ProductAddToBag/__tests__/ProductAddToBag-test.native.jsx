@@ -6,9 +6,12 @@ import { ProductAddToBagVanilla } from '../views/ProductAddToBag.view.native';
 describe('ProductAddToBagVanilla native should render correctly', () => {
   let wrapper;
   const props = {
-    currentProduct: null,
+    currentProduct: {
+      generalProductId: '',
+    },
     selectedColorProductId: 123,
     fromBagPage: true,
+    quickViewPickup: jest.fn(),
   };
 
   beforeEach(() => {

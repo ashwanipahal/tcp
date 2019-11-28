@@ -4,6 +4,7 @@ import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../SocialMediaLinks.style';
 
@@ -23,18 +24,21 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         {connectWithUsLabel}
       </BodyCopy>
       <div className="social-media-pallete">
-        {links.map((link, index) => {
-          return (
-            <Anchor to={link.url} target={link.target}>
-              <Image
-                className="social-media-icon"
-                data-locator={`${getLocator('social_media_links')}${index}`}
-                src={getIconPath(link.class)}
-                alt={link.title}
-              />
-            </Anchor>
-          );
-        })}
+        {links.map((link, index) => (
+          <ClickTracker
+            as={Anchor}
+            to={link.url}
+            target={link.target}
+            clickData={{ customEvents: ['event84'] }}
+          >
+            <Image
+              className="social-media-icon"
+              data-locator={`${getLocator('social_media_links')}${index}`}
+              src={getIconPath(link.class)}
+              alt={link.title}
+            />
+          </ClickTracker>
+        ))}
       </div>
     </div>
   </React.Fragment>

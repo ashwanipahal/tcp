@@ -4,7 +4,7 @@ import { routerPush } from '../../../../../utils';
  * Populate the calendar dates
  */
 export const calendarYearsMap = () => {
-  const yearOptionsMap = [{ id: 'Yyyy', displayName: 'Yyyy' }];
+  const yearOptionsMap = [];
   const nowYear = new Date().getFullYear();
   let i = nowYear - 17;
   while (i >= nowYear - 110) {
@@ -18,7 +18,7 @@ export const calendarYearsMap = () => {
  * Populate the calendar days with appended 0 for single digit dates
  */
 export const calendarDaysMap = () => {
-  const dayOptionsMap = [{ id: 'Dd', displayName: 'Dd' }];
+  const dayOptionsMap = [];
   let i = 1;
   while (i < 32) {
     let num = '';

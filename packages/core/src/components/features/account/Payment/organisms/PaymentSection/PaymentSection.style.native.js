@@ -22,8 +22,8 @@ const ModalHeading = styled.Text`
 
 const ModalViewWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
 

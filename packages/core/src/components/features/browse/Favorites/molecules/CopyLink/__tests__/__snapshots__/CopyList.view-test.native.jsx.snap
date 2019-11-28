@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductItemsVanilla should render correctly 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="fav_brand_title"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin="0 30px 0 30px"
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="lbl_fav_share_list_msg"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="60px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="lbl_fav_copyLink"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="WHITE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="24px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="btn_fav_cancel"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+</Styled(View)>
+`;

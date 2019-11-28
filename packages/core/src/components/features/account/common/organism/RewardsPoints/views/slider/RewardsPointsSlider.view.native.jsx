@@ -28,30 +28,27 @@ const RewardsPointsSlider = ({
         <PointHeadingWrapper />
         <CurrentPointsWrapper>
           <BodyCopy
-            fontSize="fs14"
+            fontSize="fs13"
             fontFamily="secondary"
+            fontWeight="regular"
             text={`${getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}: `}
           />
-          <BodyCopy
-            text={currentPoints}
-            fontWeight="black"
-            fontFamily="secondary"
-            fontSize="fs14"
-          />
+          <BodyCopy text={currentPoints} fontWeight="bold" fontFamily="secondary" fontSize="fs13" />
         </CurrentPointsWrapper>
         <RewardWrapper>
           <BodyCopy
             text={`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
             fontFamily="secondary"
-            fontSize="fs14"
+            fontSize="fs13"
+            fontWeight="regular"
           />
           {totalRewards && (
             <BodyCopy
               text={`${getLabelValue(labels, 'lbl_rewardPoints_currency')} ${totalRewards &&
                 Math.trunc(totalRewards)} `}
               fontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="black"
+              fontSize="fs13"
+              fontWeight="bold"
             />
           )}
         </RewardWrapper>
@@ -62,15 +59,16 @@ const RewardsPointsSlider = ({
 
         <RewardWrapper>
           <BodyCopy
-            fontSize="fs14"
+            fontSize="fs13"
             fontFamily="secondary"
+            fontWeight="regular"
             text={`${getLabelValue(labels, 'lbl_rewardPoints_nextReward')}: `}
           />
           <BodyCopy
             text={pointsToNextReward}
-            fontWeight="black"
+            fontWeight="bold"
             fontFamily="secondary"
-            fontSize="fs14"
+            fontSize="fs13"
           />
         </RewardWrapper>
       </RewardsPointsView>

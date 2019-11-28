@@ -11,6 +11,7 @@ import getStandardConfig from '../../../../utils/formValidation/validatorStandar
 import Recaptcha from '../../molecules/recaptcha/recaptcha';
 import Router from 'next/router'; //eslint-disable-line
 import InputCheckbox from '../../atoms/InputCheckbox';
+import constants from '../../../features/account/Payment/AddGiftCard/AddGiftCard.constants';
 
 // @flow
 
@@ -113,25 +114,29 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   renderSaveToAccount = labels => {
     const { saveToAccountEnabled, isRow } = this.props;
     return (
-      !saveToAccountEnabled &&
       isRow && (
-        <Row fullBleed className="elem-mb-XL elem-mt-MED savetoaccount">
-          <Field
-            dataLocator="gift-card-checkbox-field"
-            name="saveToAccount"
-            component={InputCheckbox}
-            className="save-to-account"
-            onChange={this.handleChange}
-          >
-            <BodyCopy
-              dataLocator="gift-card-sav-to-account-heading-lbl"
-              fontSize="fs16"
-              fontFamily="secondary"
-              fontWeight="regular"
+        <Row
+          fullBleed
+          className={`elem-mb-XL savetoaccount ${saveToAccountEnabled ? 'elem-mt-MED' : ''}`}
+        >
+          {saveToAccountEnabled && (
+            <Field
+              dataLocator="gift-card-checkbox-field"
+              name="saveToAccount"
+              component={InputCheckbox}
+              className="save-to-account"
+              onChange={this.handleChange}
             >
-              {getLabelValue(labels, 'lbl_payment_saveToAccount')}
-            </BodyCopy>
-          </Field>
+              <BodyCopy
+                dataLocator="gift-card-sav-to-account-heading-lbl"
+                fontSize="fs16"
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
+                {getLabelValue(labels, 'lbl_payment_saveToAccount')}
+              </BodyCopy>
+            </Field>
+          )}
         </Row>
       )
     );
@@ -227,6 +232,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               className="giftCardNumber"
               onChange={this.handleChange}
               id="giftCardNumber"
+              autoComplete="off"
             />
           </Col>
           {!isRow && (
@@ -239,6 +245,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 dataLocator="gift-card-pinnumberfield"
                 onChange={this.handleChange}
                 id="cardPin"
+                autoComplete="off"
               />
             </Col>
           )}
@@ -255,6 +262,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 className="cardPin"
                 onChange={this.handleChange}
                 id="cardPin"
+                autoComplete="off"
               />
             </Col>
           </Row>
@@ -295,7 +303,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddGiftCardForm', // a unique identifier for this form
+  form: constants.ADD_GIFT_CARD_FORM, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
 })(AddGiftCardForm);

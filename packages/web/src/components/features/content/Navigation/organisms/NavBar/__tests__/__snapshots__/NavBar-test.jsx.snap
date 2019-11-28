@@ -122,6 +122,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- girl"
       dataLocator="l1menu_link_0"
       index={0}
       key="l1menu_link_0"
@@ -1106,6 +1107,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- girl"
           categoryLayout={
             Array [
               Object {
@@ -2227,6 +2229,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- toddler girl"
       dataLocator="l1menu_link_1"
       index={1}
       key="l1menu_link_1"
@@ -3064,6 +3067,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- toddler girl"
           categoryLayout={
             Array [
               Object {
@@ -3994,6 +3998,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- boy"
       dataLocator="l1menu_link_2"
       index={2}
       key="l1menu_link_2"
@@ -4976,6 +4981,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- boy"
           categoryLayout={
             Array [
               Object {
@@ -6051,6 +6057,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- toddler boy"
       dataLocator="l1menu_link_3"
       index={3}
       key="l1menu_link_3"
@@ -6904,6 +6911,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- toddler boy"
           categoryLayout={
             Array [
               Object {
@@ -7850,6 +7858,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- baby"
       dataLocator="l1menu_link_4"
       index={4}
       key="l1menu_link_4"
@@ -8446,6 +8455,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- baby"
           categoryLayout={
             Array [
               Object {
@@ -9135,6 +9145,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- shoes"
       dataLocator="l1menu_link_5"
       index={5}
       key="l1menu_link_5"
@@ -9394,6 +9405,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- shoes"
           categoryLayout={
             Array [
               Object {
@@ -9746,6 +9758,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- accessories"
       dataLocator="l1menu_link_6"
       index={6}
       key="l1menu_link_6"
@@ -10185,6 +10198,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- accessories"
           categoryLayout={
             Array [
               Object {
@@ -10660,6 +10674,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- clearance"
       dataLocator="l1menu_link_7"
       index={7}
       key="l1menu_link_7"
@@ -10687,6 +10702,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- clearance"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={7}
@@ -10726,6 +10742,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- tiny collections"
       dataLocator="l1menu_link_8"
       index={8}
       key="l1menu_link_8"
@@ -10794,6 +10811,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- tiny collections"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={8}
@@ -10869,6 +10887,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- mini me shop"
       dataLocator="l1menu_link_9"
       index={9}
       key="l1menu_link_9"
@@ -10975,6 +10994,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- mini me shop"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={9}
@@ -11088,6 +11108,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- americana shop"
       dataLocator="l1menu_link_10"
       index={10}
       key="l1menu_link_10"
@@ -11137,6 +11158,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- americana shop"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={10}
@@ -11198,6 +11220,7 @@ exports[`NavBar component renders correctly 1`] = `
           "seoUrl": null,
         }
       }
+      clickData="hamburger- unicorns dinos and more!"
       dataLocator="l1menu_link_11"
       index={11}
       key="l1menu_link_11"
@@ -11361,6 +11384,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="hamburger- unicorns dinos and more!"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={11}

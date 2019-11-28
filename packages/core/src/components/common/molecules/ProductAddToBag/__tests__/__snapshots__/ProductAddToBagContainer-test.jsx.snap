@@ -308,6 +308,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       "ratingsProductId": "2100622",
     }
   }
+  displayATBErrorMessage={[Function]}
   displayErrorMessage={[Function]}
   fitChanged={true}
   fitList={
@@ -337,6 +338,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       },
     }
   }
+  isATBErrorMessageDisplayed={true}
   isErrorMessageDisplayed={false}
   onQuantityChange={[Function]}
   quantityList={
@@ -403,6 +405,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       },
     ]
   }
+  quickViewPickup={[Function]}
   selectColor={[Function]}
   selectFit={[Function]}
   selectSize={[Function]}
@@ -849,6 +852,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       "ratingsProductId": "2100622",
     }
   }
+  displayATBErrorMessage={[Function]}
   displayErrorMessage={[Function]}
   fitChanged={true}
   fitList={
@@ -878,6 +882,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       },
     }
   }
+  isATBErrorMessageDisplayed={true}
   isErrorMessageDisplayed={false}
   onQuantityChange={[Function]}
   quantityList={
@@ -944,6 +949,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       },
     ]
   }
+  quickViewPickup={[Function]}
   selectColor={[Function]}
   selectFit={[Function]}
   selectSize={[Function]}

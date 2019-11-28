@@ -7,8 +7,10 @@ import {
 import {
   getCardListState,
   checkbalanceValue,
+  getCardListFetchingState,
 } from '@tcp/core/src/components/features/account/Payment/container/Payment.selectors';
 import PaymentTileComponent from '../views';
+import PaymentOverviewTileSkeleton from '../skeleton/PaymentOverviewTileSkeleton.view.native';
 
 export class PaymentTile extends React.Component<Props> {
   componentDidMount() {
@@ -17,6 +19,10 @@ export class PaymentTile extends React.Component<Props> {
   }
 
   render() {
+    const { isFetching } = this.props;
+    if (isFetching) {
+      return <PaymentOverviewTileSkeleton />;
+    }
     return <PaymentTileComponent {...this.props} />;
   }
 }
@@ -36,6 +42,7 @@ const mapStateToProps = state => {
   return {
     cardList: getCardListState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
+    isFetching: getCardListFetchingState(state),
   };
 };
 

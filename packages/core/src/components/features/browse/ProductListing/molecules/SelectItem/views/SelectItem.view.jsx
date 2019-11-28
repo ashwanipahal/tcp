@@ -53,6 +53,7 @@ class SelectItem extends React.PureComponent {
     title: PropTypes.string.isRequired,
     query: PropTypes.string.isRequired,
     dataLocator: PropTypes.string.isRequired,
+    isLoadingMore: PropTypes.bool,
   };
 
   constructor(props) {
@@ -107,10 +108,11 @@ class SelectItem extends React.PureComponent {
       content,
       query,
       dataLocator,
+      isLoadingMore,
     } = this.props;
     return (
       <li
-        className={className}
+        className={isLoadingMore ? `${className} disable-list-items` : className}
         unbxdparam_facetname={facetName}
         unbxdParam_facetValue={value}
         unbxdAttr={isAutosuggestAnalytics ? 'autosuggest' : null}
@@ -138,6 +140,7 @@ class SelectItem extends React.PureComponent {
 }
 SelectItem.defaultProps = {
   docType: '',
+  isLoadingMore: false,
 };
 
 export default withStyles(SelectItem, SelectItemStyle);

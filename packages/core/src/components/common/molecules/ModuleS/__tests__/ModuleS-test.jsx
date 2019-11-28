@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ModuleS from '../view/ModuleS';
-import mock from '../../../../../services/abstractors/common/moduleS/mock-v1';
+import { mockV1 } from '../../../../../services/abstractors/common/moduleS/mock';
 
 describe('ModuleS Componenet', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<ModuleS {...mock.moduleS.composites} />);
+    wrapper = shallow(<ModuleS {...mockV1.moduleS.composites} />);
   });
 
   it('should match snapshot', () => {

@@ -7,8 +7,8 @@ import style from '../LoadedProductsCount.style';
 
 class LoadedProductsCount extends React.PureComponent {
   render() {
-    const { className, totalProductsCount, showingItemsLabel } = this.props;
-    const showingXItems = showingItemsLabel.lbl_showing_x_items;
+    const { className, totalProductsCount, showingItemsLabel, isFavoriteView } = this.props;
+    const showingXItems = !isFavoriteView ? showingItemsLabel.lbl_showing_x_items : '';
     const ItemLabel = showingItemsLabel.lbl_item;
     const ItemsLabel = showingItemsLabel.lbl_items;
     return (
@@ -37,12 +37,14 @@ LoadedProductsCount.propTypes = {
   className: PropTypes.string,
   totalProductsCount: PropTypes.number,
   showingItemsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFavoriteView: PropTypes.bool,
 };
 
 LoadedProductsCount.defaultProps = {
   className: '',
   totalProductsCount: 0,
   showingItemsLabel: {},
+  isFavoriteView: false,
 };
 
 export default withStyles(errorBoundary(LoadedProductsCount), style);

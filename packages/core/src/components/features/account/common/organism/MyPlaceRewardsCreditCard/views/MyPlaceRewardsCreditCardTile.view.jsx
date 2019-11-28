@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import utils from '@tcp/core/src/utils';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue, getLabelsBasedOnPattern } from '@tcp/core/src/utils/utils';
 import styles from './MyPlaceRewardsCreditCardTile.style';
 import { getIconPath } from '../../../../../../../utils';
 import { Row, Col, BodyCopy, Image } from '../../../../../../common/atoms';
@@ -13,10 +13,6 @@ import internalEndpoints from '../../../internalEndpoints';
 import { cardIconMapping } from '../../../molecule/CardTile/views/CardTile.utils';
 import externalEndpoints from '../../../externalEndpoints';
 
-const getAddYourCardToLabels = labels => {
-  return Object.keys(labels).filter(labelKey => /lbl_overview_addYourCardToPoint/.test(labelKey));
-};
-
 export const MyPlaceRewardsCreditCardTile = ({
   className,
   labels,
@@ -24,7 +20,7 @@ export const MyPlaceRewardsCreditCardTile = ({
   openModal,
 }) => {
   const cardEnrolled = myPlaceRewardCard && myPlaceRewardCard.ccType;
-  const addYourCardLabelKeys = getAddYourCardToLabels(labels);
+  const addYourCardLabelKeys = getLabelsBasedOnPattern(labels, 'lbl_overview_addYourCardToPoint');
   return (
     <AccountOverviewTile
       target="new"
@@ -52,19 +48,10 @@ export const MyPlaceRewardsCreditCardTile = ({
                   className="elem-mr-XS"
                   src={getIconPath(cardIconMapping[myPlaceRewardCard.ccBrand])}
                 />
-                <BodyCopy component="div" className="cardDescriptionWrapper">
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                    <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
-                    <span> </span>
-                    <span>{myPlaceRewardCard.accountNo.slice(-4)}</span>
-                  </BodyCopy>
-                  <BodyCopy fontSize="fs10" fontFamily="secondary">
-                    <span>{getLabelValue(labels, 'lbl_overview_expires')}</span>
-                    <span> </span>
-                    <span>{`0${myPlaceRewardCard.expMonth.trim()}`.slice(-2)}</span>
-                    <span>/</span>
-                    <span>{myPlaceRewardCard.expYear.slice(-2)}</span>
-                  </BodyCopy>
+                <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                  <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
+                  <span> </span>
+                  <span>{myPlaceRewardCard.accountNo.slice(-4)}</span>
                 </BodyCopy>
               </BodyCopy>
               <BodyCopy component="div">
@@ -148,8 +135,7 @@ export const MyPlaceRewardsCreditCardTile = ({
 MyPlaceRewardsCreditCardTile.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({
-    lbl_overview_paymentHeading: PropTypes.string,
-    lbl_overview_paymentCTA: PropTypes.string,
+    lbl_overview_manageYourCard: PropTypes.string,
   }),
   myPlaceRewardCard: PropTypes.shape({}),
   openModal: PropTypes.func.isRequired,
@@ -158,8 +144,7 @@ MyPlaceRewardsCreditCardTile.propTypes = {
 MyPlaceRewardsCreditCardTile.defaultProps = {
   className: '',
   labels: {
-    lbl_overview_paymentHeading: '',
-    lbl_overview_paymentCTA: '',
+    lbl_overview_manageYourCard: '',
   },
   myPlaceRewardCard: {},
 };

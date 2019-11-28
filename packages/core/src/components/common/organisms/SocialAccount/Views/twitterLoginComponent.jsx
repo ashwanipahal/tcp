@@ -164,7 +164,7 @@ class TwitterLoginComponent extends React.Component {
                       className="social-account-icon"
                       width={15}
                       height={15}
-                      src={getIconPath('close-icon')}
+                      src={getIconPath('close-cross')}
                       data-locator="facebookCrossIcon"
                       onClick={this.logout}
                     />

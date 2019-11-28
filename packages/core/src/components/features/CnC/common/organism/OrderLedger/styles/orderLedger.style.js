@@ -3,6 +3,12 @@ import { css } from 'styled-components';
 const LedgerStyle = css`
   background-color: ${props => props.theme.colors.WHITE};
   padding: 23px 1px 21px;
+  padding-bottom: 0;
+  .item-closed {
+    .elem-mb-MED {
+      margin-bottom: 0;
+    }
+  }
 
   .rowMargin {
     margin-bottom: 8px;
@@ -12,7 +18,7 @@ const LedgerStyle = css`
   }
   .tax-total {
     padding-bottom: 7px;
-    border-bottom: 1px solid ${props => props.theme.colors.BLACK};
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
   }
   .circle-info-image {
     width: 15px;
@@ -40,6 +46,9 @@ const LedgerStyle = css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy5}px;
     font-weight: ${props => props.theme.fonts.fontWeight.bold};
     line-height: ${props => props.theme.fonts.lineHeight.normal};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    }
   }
 
   .order-ledger-header {
@@ -104,6 +113,20 @@ const LedgerStyle = css`
         padding: 14px 14px;
       }
     }
+  }
+
+  .orderLedgerLoyalty {
+    ${props =>
+      props.pageCategory === 'confirmation'
+        ? `
+        @media ${props.theme.mediaQuery.medium} {
+          display: none;
+        }
+        @media ${props.theme.mediaQuery.large} {
+          display: none;
+        }
+        `
+        : ''}
   }
 `;
 

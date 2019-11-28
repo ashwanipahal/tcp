@@ -13,6 +13,14 @@ const ROUTE_PATH = {
     name: '/search',
     param: 'sq',
   },
+  content: {
+    name: '/content',
+    param: 'contentType',
+  },
+  helpCenter: {
+    name: '/help-center',
+    param: 'pageName',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 
@@ -65,6 +73,11 @@ const ROUTES_LIST = [
     params: ['id', 'subSection', 'orderId'],
   },
   {
+    noSlugPath: 'favorites',
+    path: '/favorites',
+    resolver: '/Favorites',
+  },
+  {
     noSlugPath: 'ds',
     path: '/ds',
     resolver: '/DeltaSyncSamplePage',
@@ -82,7 +95,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'c',
     path: '/c/:cid',
-    resolver: '/ListingPage',
+    resolver: '/ProductListing',
     params: ['cid'],
   },
   {
@@ -136,7 +149,7 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'checkout',
-    path: '/checkout/:section',
+    path: '/checkout/:section?',
     resolver: '/Checkout',
     params: ['section'],
   },

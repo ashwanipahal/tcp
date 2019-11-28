@@ -48,6 +48,9 @@ const OPTIMIZELY_HEADER_PREFIX = 'x-flag-';
 const PREVIEW_RES_HEADER_KEY = 'x-akamai-staging';
 const PREVIEW_REQ_HEADER_KEY = 'is_preview';
 
+// List for static pages that will not be rendered at server side
+const staticPagesWithOwnTemplate = ['mystyleplace', 'international-stores'];
+
 export default {
   brand,
   defaultDeviceType,
@@ -57,4 +60,5 @@ export default {
   PREVIEW_REQ_HEADER_KEY,
   sites,
   keyboard,
+  staticPagesWithOwnTemplate,
 };

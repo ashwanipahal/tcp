@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import { BodyCopy, Image } from '../../../../../../../../common/atoms';
 import {
   getTranslatedMomentDate,
@@ -21,6 +22,7 @@ import {
   StoreDetailsWrapper,
   TooltipWrapper,
   ContainerView,
+  SkeletonWrapper,
 } from '../styles/CheckoutCartItemsList.style.native';
 import CollapsibleContainer from '../../../../../../../../common/molecules/CollapsibleContainer';
 
@@ -61,6 +63,7 @@ class CheckoutCartItemsList extends Component {
     labels: PropTypes.shape({}),
     bagPageLabels: PropTypes.shape({}),
     gettingSortedItemList: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool.isRequired,
   };
 
   /**
@@ -148,7 +151,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${today}${storeTodayOpenRange}`}
+                text={`${today}: ${storeTodayOpenRange}`}
               />
             )}
             {storeTomorrowOpenRange && (
@@ -156,7 +159,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${tomorrow}${storeTomorrowOpenRange}`}
+                text={`${tomorrow}: ${storeTomorrowOpenRange}`}
               />
             )}
             {storePhoneNumber && (
@@ -164,7 +167,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${phone}${storePhoneNumber}`}
+                text={`${phone}: ${storePhoneNumber}`}
               />
             )}
           </>
@@ -309,7 +312,7 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   renderItems() {
-    const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
+    const { items, currencySymbol, gettingSortedItemList, labels, bagLoading } = this.props;
     const apiConfig = getAPIConfig();
     const bopisDate =
       apiConfig &&
@@ -368,12 +371,18 @@ class CheckoutCartItemsList extends Component {
     } = CheckoutConstants;
     const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
     if (orderBucket) {
-      return (
+      return !bagLoading ? (
         <ContainerView>
           {orderTypeList.map((item, index) =>
             this.renderOrderItems(item, orderBucket[item], index)
           )}
         </ContainerView>
+      ) : (
+        <>
+          <SkeletonWrapper>
+            <GenericSkeleton />
+          </SkeletonWrapper>
+        </>
       );
     }
     return {};

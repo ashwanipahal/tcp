@@ -1,11 +1,9 @@
 /* istanbul ignore file */
 import React from 'react';
-import { mount } from 'enzyme';
-import Theme from '@tcp/core/styles/themes';
-import { ThemeProvider } from 'styled-components';
-import StoreAddressTile from '../views/StoreAddressTile';
+import { shallow } from 'enzyme';
 import labelsMock from '../__mocks__/labels.mock';
 import storeMock from '../__mocks__/store.mock';
+import { StoreAddressTileVanilla } from '../views/StoreAddressTile';
 
 const labels = labelsMock.StoreLocator;
 const storeMockNotGym = { ...storeMock };
@@ -38,49 +36,29 @@ describe('StoreAddressTile component', () => {
 
   describe('Details', () => {
     it('should render details view', () => {
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...props} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...props} />);
+      expect(component).toMatchSnapshot();
     });
     it('should render details view - with titleClickCb', () => {
       const titleClickCb = jest.fn();
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...props} titleClickCb={titleClickCb} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...props} titleClickCb={titleClickCb} />);
+      expect(component).toMatchSnapshot();
     });
     it('should render details view with clickable title', () => {
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...props} titleClickCb={() => {}} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...props} titleClickCb={() => {}} />);
+      expect(component).toMatchSnapshot();
     });
     it('should render details view with set fav button', () => {
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...props} showSetFavorite />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...props} showSetFavorite />);
+      expect(component).toMatchSnapshot();
     });
     it('should render details view with fav store', () => {
       const testProps = {
         ...props,
         isFavorite: true,
       };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} />);
+      expect(component).toMatchSnapshot();
     });
   });
   describe('Listing', () => {
@@ -89,12 +67,8 @@ describe('StoreAddressTile component', () => {
         ...props,
         variation: 'listing',
       };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} />);
+      expect(component).toMatchSnapshot();
     });
     it('should render listing view with index', () => {
       const testProps = {
@@ -103,12 +77,8 @@ describe('StoreAddressTile component', () => {
         storeIndex: 1,
       };
       const storeMockData = { ...props.store, hours: { ...props.store.hours, regularHours: [] } };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} store={storeMockData} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} store={storeMockData} />);
+      expect(component).toMatchSnapshot();
     });
     it('should render listing view with fav store', () => {
       const testProps = {
@@ -117,12 +87,8 @@ describe('StoreAddressTile component', () => {
         storeIndex: 2,
         isFavorite: true,
       };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} />);
+      expect(component).toMatchSnapshot();
     });
 
     it('should not render gymboree store', () => {
@@ -131,12 +97,8 @@ describe('StoreAddressTile component', () => {
         store: storeMockNotGym,
         variation: 'listing',
       };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} />);
+      expect(component).toMatchSnapshot();
     });
   });
 
@@ -146,12 +108,8 @@ describe('StoreAddressTile component', () => {
         ...props,
         variation: 'listing-header',
       };
-      const component = mount(
-        <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
-        </ThemeProvider>
-      );
-      expect(component.html()).toMatchSnapshot();
+      const component = shallow(<StoreAddressTileVanilla {...testProps} />);
+      expect(component).toMatchSnapshot();
     });
   });
 });

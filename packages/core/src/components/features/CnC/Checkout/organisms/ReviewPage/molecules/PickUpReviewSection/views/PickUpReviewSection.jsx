@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection } from 'redux-form';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
@@ -24,39 +26,56 @@ export class PickUpReviewSection extends React.PureComponent {
    * Stores are sorted on the basis on orderType
    */
 
+  getPickUpData = pickupItems => {
+    const bossStartDate = pickupItems[0].bossStartDate
+      ? pickupItems[0].bossStartDate
+      : pickupItems[1].bossStartDate;
+
+    const bossEndDate = pickupItems[0].bossEndDate
+      ? pickupItems[0].bossEndDate
+      : pickupItems[1].bossEndDate;
+
+    const bossItems =
+      pickupItems[0].orderType === ORDER_ITEM_TYPE.BOSS
+        ? pickupItems[0].storeItemsCount
+        : pickupItems[1].storeItemsCount;
+
+    const bopisItems =
+      pickupItems[0].orderType === ORDER_ITEM_TYPE.BOPIS
+        ? pickupItems[0].storeItemsCount
+        : pickupItems[1].storeItemsCount;
+    return { bossStartDate, bossEndDate, bossItems, bopisItems };
+  };
+
   generateStoreDetails = pickupData => {
-    const stores = [];
-    const pickupItems = [...pickupData];
-    const MIX = 'MIX';
-    if (pickupItems.length === 1) {
-      stores.push(pickupItems[0]);
-    } else if (
-      pickupItems[0].orderType !== pickupItems[1].orderType &&
-      pickupItems[0].storeId === pickupItems[1].storeId
-    ) {
-      pickupItems[0].bossStartDate = pickupItems[0].bossStartDate
-        ? pickupItems[0].bossStartDate
-        : pickupItems[1].bossStartDate;
-      pickupItems[0].bossEndDate = pickupItems[0].bossEndDate
-        ? pickupItems[0].bossEndDate
-        : pickupItems[1].bossEndDate;
-      pickupItems[0].bossItems =
-        pickupItems[0].orderType === ORDER_ITEM_TYPE.BOSS
-          ? pickupItems[0].storeItemsCount
-          : pickupItems[1].storeItemsCount;
-      pickupItems[0].bopisItems =
-        pickupItems[0].orderType === ORDER_ITEM_TYPE.BOPIS
-          ? pickupItems[0].storeItemsCount
-          : pickupItems[1].storeItemsCount;
-      pickupItems[0].orderType = MIX;
-      stores.push(pickupItems[0]);
-    } else {
-      if (pickupItems[0].orderType !== pickupItems[1].orderType) {
-        this.sortPickupItems(pickupItems);
+    if (pickupData) {
+      const stores = [];
+      const pickupItems = [...pickupData];
+      const MIX = 'MIX';
+      if (pickupItems.length === 1) {
+        stores.push(pickupItems[0]);
+      } else if (
+        pickupItems[0].orderType !== pickupItems[1].orderType &&
+        pickupItems[0].storeId === pickupItems[1].storeId
+      ) {
+        const { bossStartDate, bossEndDate, bossItems, bopisItems } = this.getPickUpData(
+          pickupItems
+        );
+        pickupItems[0].bossStartDate = bossStartDate;
+        pickupItems[0].bossEndDate = bossEndDate;
+        pickupItems[0].bossItems = bossItems;
+        pickupItems[0].bopisItems = bopisItems;
+        pickupItems[0].orderType = MIX;
+        stores.push(pickupItems[0]);
+      } else {
+        if (pickupItems[0].orderType !== pickupItems[1].orderType) {
+          this.sortPickupItems(pickupItems);
+        }
+        stores.push(...pickupItems);
       }
-      stores.push(...pickupItems);
+      return stores;
     }
-    return stores;
+    return null;
   };
 
   sortPickupItems = pickupItems => {
@@ -84,6 +103,8 @@ export class PickUpReviewSection extends React.PureComponent {
       isAlternateUpdateChecked,
       isExpressCheckout,
       pickUpContactAlternate,
+      bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -91,19 +112,21 @@ export class PickUpReviewSection extends React.PureComponent {
       lbl_review_sectionPickupText: text,
       lbl_review_sectionPickupAlternateHeading: alternate,
     } = labels;
-    const pickupStores = [...cartStores]
-      .filter(store => store.stLocId !== 'ECOM')
-      .map(store => {
-        return {
-          storeId: store.stLocId,
-          store: store.storeName,
-          storeAddress: store.address,
-          storeItemsCount: store.itemsCount,
-          bossStartDate: store.bossStartDate,
-          bossEndDate: store.bossEndDate,
-          orderType: store.orderType,
-        };
-      });
+    const pickupStores =
+      cartStores &&
+      [...cartStores]
+        .filter(store => store.stLocId !== 'ECOM')
+        .map(store => {
+          return {
+            storeId: store.stLocId,
+            store: store.storeName,
+            storeAddress: store.address,
+            storeItemsCount: store.itemsCount,
+            bossStartDate: store.bossStartDate,
+            bossEndDate: store.bossEndDate,
+            orderType: store.orderType,
+          };
+        });
     const stores = this.generateStoreDetails(pickupStores);
     return (
       <div className={className} dataLocator="review-pickup-section">
@@ -130,77 +153,99 @@ export class PickUpReviewSection extends React.PureComponent {
             )}
           </Col>
         </Row>
-        <Row fullBleed className="row-two">
-          {stores.map((store, index) => {
-            return (
-              store && (
-                <Col
-                  key={store.storeId}
-                  colSize={{ small: 6, medium: 4, large: 5 }}
-                  className={`col-${index}`}
-                >
-                  <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
-                </Col>
-              )
-            );
-          })}
-        </Row>
-        <Row fullBleed>
-          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 6 }}>
-            <BodyCopy
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="pickupTitle"
-              fontWeight="extrabold"
-              color="gray.900"
-            >
-              {title}
-            </BodyCopy>
-            <PickUpContactDisplay
-              formData={
-                typeof pickUpContactPerson.firstName !== 'undefined'
-                  ? pickUpContactPerson
-                  : pickUpContactAlternate.pickUpContact
-              }
-            />
-          </Col>
-          {!isExpressCheckout && isHasPickUpAlternatePerson && (
-            <Col
-              className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 6 }}
-            >
-              <BodyCopy
-                fontSize="fs16"
-                fontFamily="secondary"
-                className="pickupTitle"
-                fontWeight="extrabold"
-                color="gray.900"
+        {!bagLoading && checkoutRoutingDone ? (
+          <>
+            <Row fullBleed className="row-two">
+              {stores.map((store, index) => {
+                return (
+                  store && (
+                    <Col
+                      key={store.storeId}
+                      colSize={{ small: 6, medium: 4, large: 5 }}
+                      className={`col-${index}`}
+                    >
+                      <PickupStoreDisplay
+                        labels={labels}
+                        orderType={store.orderType}
+                        store={store}
+                      />
+                    </Col>
+                  )
+                );
+              })}
+            </Row>
+            <Row fullBleed>
+              <Col
+                className="pickupContactPersonContainer"
+                colSize={{ small: 6, medium: 4, large: 6 }}
               >
-                {alternate}
-              </BodyCopy>
-              <PickUpContactDisplay formData={pickUpAlternatePerson} />
-            </Col>
-          )}
-          {isExpressCheckout && (
-            <Col
-              className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 6 }}
-            >
-              <div className="pickUpAlternate-container">
-                <FormSection name="pickUpAlternateExpress">
-                  <PickUpAlternateFormPart
-                    isAlternateUpdateChecked={isAlternateUpdateChecked}
-                    showNoteOnToggle
-                    formName="checkoutPickup"
-                    formSection="pickUpAlternate"
-                    labels={pickUpLabels}
-                    isExpressCheckout={isExpressCheckout}
-                  />
-                </FormSection>
-              </div>
-            </Col>
-          )}
-        </Row>
+                <BodyCopy
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  className="pickupTitle"
+                  fontWeight="extrabold"
+                  color="gray.900"
+                >
+                  {title}
+                </BodyCopy>
+                <PickUpContactDisplay
+                  formData={
+                    typeof pickUpContactPerson.firstName !== 'undefined'
+                      ? pickUpContactPerson
+                      : pickUpContactAlternate.pickUpContact
+                  }
+                />
+              </Col>
+              {!isExpressCheckout && isHasPickUpAlternatePerson && (
+                <Col
+                  className="pickupContactAlternateContainer"
+                  colSize={{ small: 6, medium: 4, large: 6 }}
+                >
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontFamily="secondary"
+                    className="pickupTitle"
+                    fontWeight="extrabold"
+                    color="gray.900"
+                  >
+                    {alternate}
+                  </BodyCopy>
+                  <PickUpContactDisplay formData={pickUpAlternatePerson} />
+                </Col>
+              )}
+              {isExpressCheckout && (
+                <Col
+                  className="pickupContactAlternateContainer"
+                  colSize={{ small: 6, medium: 4, large: 6 }}
+                >
+                  <div className="pickUpAlternate-container">
+                    <FormSection name="pickUpAlternateExpress">
+                      <PickUpAlternateFormPart
+                        isAlternateUpdateChecked={isAlternateUpdateChecked}
+                        showNoteOnToggle
+                        formName="checkoutPickup"
+                        formSection="pickUpAlternate"
+                        labels={pickUpLabels}
+                        isExpressCheckout={isExpressCheckout}
+                      />
+                    </FormSection>
+                  </div>
+                </Col>
+              )}
+            </Row>
+          </>
+        ) : (
+          <>
+            <Row>
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <LoaderSkelton width="100px" height="100px" />
+              </Col>
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <GenericSkeleton />
+              </Col>
+            </Row>
+          </>
+        )}
       </div>
     );
   }
@@ -230,6 +275,8 @@ PickUpReviewSection.propTypes = {
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 PickUpReviewSection.defaultProps = {
@@ -249,6 +296,8 @@ PickUpReviewSection.defaultProps = {
     emailAddress: '',
   },
   isExpressCheckout: false,
+  bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(PickUpReviewSection, styles);

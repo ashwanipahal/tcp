@@ -6,7 +6,7 @@ exports[`RibbonComponent should call the getConfig getImgPath 1`] = `
 >
   <styled.div
     height="70"
-    imgPath="/static/images/module-s-right-ribbon.png"
+    imgPath="/static/version-not-available/images/module-s-right-ribbon.png"
     width="200"
   >
     <Styled(Styled(PromoBanner))
@@ -40,7 +40,7 @@ exports[`RibbonComponent should match snapshot 1`] = `
 >
   <styled.div
     height="70"
-    imgPath="/static/images/module-s-left-ribbon.png"
+    imgPath="/static/version-not-available/images/module-s-left-ribbon.png"
     width="200"
   >
     <Styled(Styled(PromoBanner))
@@ -51,14 +51,14 @@ exports[`RibbonComponent should match snapshot 1`] = `
               "target": "",
               "text": "Girls",
               "title": "Girls",
-              "url": "/c/girls-clothes",
+              "url": "/c/girls-clothess1",
             },
             "ribbonClass": "ribbon-color-cherry",
             "ribbonPlacement": "left",
             "textItems": Array [
               Object {
-                "style": "style1",
-                "text": "20% OFF",
+                "style": "style10",
+                "text": "20% OF",
               },
             ],
           },

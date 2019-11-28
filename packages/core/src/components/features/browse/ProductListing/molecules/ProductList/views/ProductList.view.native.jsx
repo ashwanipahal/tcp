@@ -1,16 +1,38 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, SafeAreaView, Text } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer } from '../styles/ProductList.style.native';
+import {
+  styles,
+  PageContainer,
+  HeaderContainer,
+  RecommendationContainer,
+  GridPromoContainer,
+} from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
+import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../../common/molecules/Modal/index';
+import LoginPageContainer from '../../../../../account/LoginPage/index';
+import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
+import GridPromo from '../../../../../../common/molecules/GridPromo';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+      favorites: true,
+      colorProductId: '',
+    };
+  }
 
   componentDidUpdate(prevProps) {
     const isScrollToTopValue = get(this.props, 'scrollToTop');
@@ -20,17 +42,65 @@ class ProductList extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites, getProducts, navigation, isSearchListing } = props;
+    const { colorProductId } = state;
+    if (props.isLoggedIn && state.showModal) {
+      this.categoryUrl = navigation && navigation.getParam('url');
+      getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
+      if (colorProductId !== '') {
+        onAddItemToFavorites({ colorProductId, page: isSearchListing ? 'SLP' : 'PLP' });
+      }
+      return { showModal: false, colorProductId: '' };
+    }
+    return null;
+  }
+
   // eslint-disable-next-line
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = item => {};
+  onFavorite = (generalProductId, itemId) => {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      isSearchListing,
+      isFavorite,
+      setLastDeletedItemId,
+    } = this.props;
+    if (!isLoggedIn) {
+      this.setState({ colorProductId: generalProductId });
+      this.setState({ showModal: true });
+    } else if (isFavorite) {
+      if (setLastDeletedItemId) setLastDeletedItemId({ itemId });
+    } else {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
+    }
+  };
 
-  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, name) => {
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+      favorites: false,
+    }));
+  };
+
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo) => {
     const { title, onGoToPDPPage, isFavorite } = this.props;
+    const { name } = productInfo;
     const productTitle = isFavorite ? name : title;
     if (onGoToPDPPage) {
-      onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex);
+      onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex, productInfo);
     }
   };
 
@@ -46,6 +116,42 @@ class ProductList extends React.PureComponent {
     );
   };
 
+  renderComponent = ({ isUserLoggedIn, favorites }) => {
+    let componentContainer = null;
+    if (!isUserLoggedIn) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          isUserLoggedIn={isUserLoggedIn}
+          showLogin={this.showloginModal}
+          variation={favorites && 'favorites'}
+        />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
+  };
+
+  checkAndRenderSuggestedItem = item => {
+    const { seeSuggestedDictionary } = this.props;
+    const suggestedItem = {
+      status: false,
+      attributes: null,
+    };
+    const skuInfoColorProductId = get(item, 'skuInfo.colorProductId', null);
+    const outOfStockProduct =
+      skuInfoColorProductId &&
+      seeSuggestedDictionary &&
+      seeSuggestedDictionary[skuInfoColorProductId];
+    const outOfStockColorProductId = outOfStockProduct && outOfStockProduct.colorProductId;
+    const suggestedAttributes = outOfStockProduct && outOfStockProduct.attributes;
+
+    if (outOfStockColorProductId && outOfStockColorProductId === skuInfoColorProductId) {
+      suggestedItem.status = true;
+      suggestedItem.attributes = suggestedAttributes;
+    }
+    return suggestedItem;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -59,8 +165,31 @@ class ProductList extends React.PureComponent {
       onQuickViewOpenClick,
       isFavorite,
       setLastDeletedItemId,
+      isLoggedIn,
+      labelsPlpTiles,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      renderMoveToList,
+      onSeeSuggestedItems,
     } = this.props;
     const { item } = itemData;
+    const suggestedItem = this.checkAndRenderSuggestedItem(item);
+    if (suggestedItem.status) {
+      return (
+        <RecommendationContainer>
+          <Recommendations {...suggestedItem.attributes} />
+        </RecommendationContainer>
+      );
+    }
+
+    if (item.itemType === 'gridPromo') {
+      const variation = item.gridStyle;
+      return (
+        <GridPromoContainer fullWidth={variation === 'horizontal'}>
+          <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+        </GridPromoContainer>
+      );
+    }
 
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
@@ -70,6 +199,7 @@ class ProductList extends React.PureComponent {
     // get product color and price info of default zero index item
     const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
     const { badge1, badge2 } = currentColorMiscInfo;
+
     // get default top badge data
     let topBadge;
     if (colorsMap) {
@@ -94,6 +224,12 @@ class ProductList extends React.PureComponent {
         onQuickViewOpenClick={onQuickViewOpenClick}
         isFavorite={isFavorite}
         setLastDeletedItemId={setLastDeletedItemId}
+        isLoggedIn={isLoggedIn}
+        labelsPlpTiles={labelsPlpTiles}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
+        renderMoveToList={renderMoveToList}
+        onSeeSuggestedItems={onSeeSuggestedItems}
       />
     );
   };
@@ -138,7 +274,10 @@ class ProductList extends React.PureComponent {
    */
   renderHeader = () => {
     const { onRenderHeader } = this.props;
-    return onRenderHeader();
+    if (onRenderHeader) {
+      return <HeaderContainer>{onRenderHeader()}</HeaderContainer>;
+    }
+    return null;
   };
 
   setListRef = ref => {
@@ -159,22 +298,53 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products } = this.props;
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg, products } = this.props;
+    const { logIn } = labelsLogin;
+    const { showModal, favorites } = this.state;
     return (
-      <FlatList
-        ref={ref => this.setListRef(ref)}
-        data={products}
-        renderItem={this.renderItemList}
-        keyExtractor={item => item.productInfo.generalProductId}
-        initialNumToRender={4}
-        maxToRenderPerBatch={2}
-        numColumns={2}
-        extraData={this.props}
-        ListFooterComponent={this.renderFooter}
-        ListHeaderComponent={this.renderHeader}
-        stickyHeaderIndices={[0]}
-        columnWrapperStyle={this.getColumnWrapperStyle()}
-      />
+      <>
+        {AddToFavoriteErrorMsg !== '' && (
+          <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+        )}
+        {products && products.length > 0 && (
+          <FlatList
+            ref={ref => this.setListRef(ref)}
+            data={products}
+            renderItem={this.renderItemList}
+            keyExtractor={item =>
+              (item.productInfo && item.productInfo.generalProductId) ||
+              (item.itemVal && item.itemVal.slot)
+            }
+            initialNumToRender={4}
+            maxToRenderPerBatch={2}
+            numColumns={2}
+            extraData={this.props}
+            ListFooterComponent={this.renderFooter}
+            ListHeaderComponent={this.renderHeader}
+            stickyHeaderIndices={[0]}
+            columnWrapperStyle={this.getColumnWrapperStyle()}
+          />
+        )}
+
+        {showModal && (
+          <ModalNative
+            isOpen={showModal}
+            onRequestClose={this.toggleModal}
+            heading={logIn}
+            headingFontFamily="secondary"
+            fontSize="fs16"
+          >
+            <SafeAreaView>
+              <ModalViewWrapper>
+                {this.renderComponent({
+                  isLoggedIn,
+                  favorites,
+                })}
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
+      </>
     );
   };
 
@@ -226,6 +396,18 @@ ProductList.propTypes = {
   setListRef: PropTypes.func,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsPlpTiles: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  isSearchListing: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
+  onSeeSuggestedItems: PropTypes.func,
+  seeSuggestedDictionary: PropTypes.shape({}),
+  isSuggestedItem: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -251,6 +433,20 @@ ProductList.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   isFavorite: false,
+  isLoggedIn: false,
+  labelsLogin: {
+    logIn: '',
+  },
+  labelsPlpTiles: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  isSearchListing: false,
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
+  renderMoveToList: () => {},
+  onSeeSuggestedItems: () => {},
+  seeSuggestedDictionary: null,
+  isSuggestedItem: false,
 };
 
 export default withStyles(ProductList, styles);

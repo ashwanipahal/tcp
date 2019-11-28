@@ -6,6 +6,7 @@ exports[`OverlayModal View should render correctly 1`] = `
   closeOverlay={[Function]}
   color={null}
   component="login"
+  labels={Object {}}
   openState={true}
   variation="primary"
 />

@@ -35,6 +35,7 @@ const getHeadingStyle = props => {
   font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
   padding-bottom: ${props.theme.spacing.ELEM_SPACING.XS};
+  font-family: ${typography.fonts.secondary};
   `;
 };
 

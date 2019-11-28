@@ -2,6 +2,8 @@ import { css } from 'styled-components';
 
 const styles = css`
   div.TCPModal__InnerContent {
+    height: 90vh;
+
     .close-modal {
       height: 14px;
       right: 0px;
@@ -16,7 +18,7 @@ const styles = css`
     font-family: Nunito;
     max-height: 760px;
 
-    padding: 0px 14px;
+    padding: 0 14px 17px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0px 24px;

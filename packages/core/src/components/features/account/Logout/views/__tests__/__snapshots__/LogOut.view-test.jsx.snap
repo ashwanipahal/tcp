@@ -12,6 +12,7 @@ exports[`LogOutView Page should render correctly 1`] = `
     nohover={true}
     onClick={[Function]}
     type="button"
+    underline={false}
   >
     hello
   </Styled(Button)>

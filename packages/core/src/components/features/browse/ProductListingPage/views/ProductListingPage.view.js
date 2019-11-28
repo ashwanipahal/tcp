@@ -5,7 +5,6 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import { getImgPath } from '../../ProductListingPage/util/utility';
 import { parseProductFromAPI } from '../../ProductListingPage/container/ProductListingPage.dataMassage';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductTile from '../molecules/ProductTile.view';
 
 export class ProductListView extends React.Component {
@@ -73,7 +72,6 @@ export class ProductListView extends React.Component {
               );
             })}
         </Row>
-        <AddedToBagContainer />
       </ProductListingPageStyle>
     );
   }

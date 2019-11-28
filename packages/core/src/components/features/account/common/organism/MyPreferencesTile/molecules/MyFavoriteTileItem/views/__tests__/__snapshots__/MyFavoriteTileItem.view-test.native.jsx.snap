@@ -25,6 +25,7 @@ exports[`MyFavoriteTileItem component should render correctly 1`] = `
         customStyle={Object {}}
         dataLocator=""
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         noLink={true}

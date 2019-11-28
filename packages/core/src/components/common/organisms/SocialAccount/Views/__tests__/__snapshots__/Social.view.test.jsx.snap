@@ -6,9 +6,18 @@ exports[`ForgotPasswordView component should renders correctly 1`] = `
     className=""
     data-selector="analytics-social-account"
   >
-    <p
+    <Styled(BodyCopy)
       className="social-accounts__subTitle"
+      color="text.primary"
+      component="p"
       data-locator="mypreference-socialaccountheader"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     />
     <ul />
   </section>

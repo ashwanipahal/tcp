@@ -14,6 +14,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
       variant="h4"
     />
     <Styled(Row)
+      className="recommendations-section-row"
       fullBleed={true}
     >
       <Styled(Col)
@@ -40,6 +41,11 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
             currencyExchange={1}
             currencySymbol="USD"
             isPerfectBlock={true}
+            isPromoAvailable={
+              Array [
+                undefined,
+              ]
+            }
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -85,6 +91,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       variant="h4"
     />
     <Styled(Row)
+      className="recommendations-section-row"
       fullBleed={true}
     >
       <Styled(Col)
@@ -111,6 +118,11 @@ exports[`Recommendations Module O show button variation Recommendations Module O
             currencyExchange={1}
             currencySymbol="USD"
             isPerfectBlock={true}
+            isPromoAvailable={
+              Array [
+                undefined,
+              ]
+            }
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -180,6 +192,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
       variant="h4"
     />
     <Styled(Row)
+      className="recommendations-section-row"
       fullBleed={true}
     >
       <Styled(Col)
@@ -206,6 +219,11 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
             currencyExchange={1}
             currencySymbol="USD"
             isPerfectBlock={true}
+            isPromoAvailable={
+              Array [
+                undefined,
+              ]
+            }
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -251,6 +269,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
       variant="h4"
     />
     <Styled(Row)
+      className="recommendations-section-row"
       fullBleed={true}
     >
       <Styled(Col)
@@ -277,6 +296,11 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
             currencyExchange={1}
             currencySymbol="USD"
             isPerfectBlock={true}
+            isPromoAvailable={
+              Array [
+                undefined,
+              ]
+            }
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",

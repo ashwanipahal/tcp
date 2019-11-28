@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 const EarnExtraPointsWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  justify-content: center;
 `;
 
 const EarnExtraPointsHeading = styled.View`

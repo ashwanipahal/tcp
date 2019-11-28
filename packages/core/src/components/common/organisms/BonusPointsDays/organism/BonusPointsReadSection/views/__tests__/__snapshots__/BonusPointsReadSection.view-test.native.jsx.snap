@@ -24,6 +24,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
         customStyle={Object {}}
         dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}

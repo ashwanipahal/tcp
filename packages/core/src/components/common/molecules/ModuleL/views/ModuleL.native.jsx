@@ -42,10 +42,15 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color: { color: tileBgColor } = {} },
+    item: { image, link, video, color: { color: tileBgColor } = {} },
     index,
   } = item;
 
+  const videoData = video && {
+    ...video,
+    videoWidth: 103,
+    videoHeight: 128,
+  };
   return (
     <Anchor
       url={link.url}
@@ -54,13 +59,14 @@ const renderItem = (item, navigation) => {
     >
       <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
         <DamImage
-          url={image.url}
+          url={image && image.url}
+          videoData={videoData}
           width={103}
           height={128}
-          crop={image.crop_m}
+          crop={image && image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
           imgConfig={config.IMG_DATA.crops[0]}
-          alt={image.alt}
+          alt={image && image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
         />
         <MessageContainer>
@@ -69,7 +75,7 @@ const renderItem = (item, navigation) => {
               fontSize="fs20"
               color="gray.900"
               letterSpacing="ls222"
-              text={image.alt}
+              text={image && image.alt}
               fontfamily="primary"
               fontWeight="semibold"
               testID={`${getLocator('moduleL_title')}${index + 1}`}

@@ -55,9 +55,12 @@ export default {
           text: {
             text: 'GIRL',
           },
-          category: {
-            cat_id: '49007',
-          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '47503>47544',
+            },
+          ],
           singleCTAButton: {
             url: dummyUrl,
             text: 'SHOP ALL',
@@ -71,9 +74,12 @@ export default {
           text: {
             text: 'TODDLER GIRL',
           },
-          category: {
-            cat_id: '47502>47535>54071',
-          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '47502>47535>54071',
+            },
+          ],
           singleCTAButton: {
             url: dummyUrl,
             text: 'SHOP ALL',
@@ -87,9 +93,12 @@ export default {
           text: {
             text: 'BOY',
           },
-          category: {
-            cat_id: '47503>47544',
-          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '49007',
+            },
+          ],
           singleCTAButton: {
             url: dummyUrl,
             text: 'SHOP ALL',
@@ -103,9 +112,12 @@ export default {
           text: {
             text: 'TODDLER BOY',
           },
-          category: {
-            cat_id: '47501>47526',
-          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '47501>47526',
+            },
+          ],
           singleCTAButton: {
             url: dummyUrl,
             text: 'SHOP ALL',

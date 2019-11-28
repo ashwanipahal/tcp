@@ -26,7 +26,7 @@ exports[`LoginTopSectionVanilla component should hide modal header and rule 1`] 
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator=""
-      fontFamily="primary"
+      fontFamily="secondary"
       fontSize="fs28"
       fontWeight="black"
       margin={null}
@@ -64,6 +64,8 @@ exports[`LoginTopSectionVanilla component should hide modal header and rule 1`] 
     borderColor={null}
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={25}
     small={true}
   />
@@ -101,6 +103,8 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     borderColor={null}
     borderWidth={0.65}
     marginBottom={17}
+    marginLeft={0}
+    marginRight={0}
     marginTop={30}
   />
   <Styled(Text)>
@@ -109,6 +113,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
@@ -119,6 +124,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
@@ -135,6 +141,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       customStyle={Object {}}
       fontSizeVariation="medium"
       id="forgotPasswordForm"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -146,6 +153,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       accessibilityText=""
       component="span"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs12"
       margin={null}
       numberOfLines={null}
@@ -157,6 +165,8 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     borderColor={null}
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={25}
   />
 </View>

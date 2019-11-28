@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { logoutSaga, LogOutPageSaga } from '../LogOut.saga';
-import { resetUserInfo } from '../../../User/container/User.actions';
+import { navigateXHRAction } from '../../../NavigateXHR/container/NavigateXHR.action';
 import LOGOUT_CONSTANTS from '../../LogOut.constants';
 
 describe('LoginPage saga', () => {
@@ -16,9 +16,17 @@ describe('LoginPage saga', () => {
         statusCode: 200,
       };
       global.window = Object.create(window);
-      const putDescriptor = logoutGen.next(response).value;
-      logoutGen.next();
-      expect(putDescriptor).toEqual(put(resetUserInfo(response)));
+      logoutGen.next(response);
+      const putDescriptor = logoutGen.next().value;
+      expect(putDescriptor).toEqual(
+        put(
+          navigateXHRAction({
+            headers: {
+              actionTaken: 'logout',
+            },
+          })
+        )
+      );
     });
   });
 

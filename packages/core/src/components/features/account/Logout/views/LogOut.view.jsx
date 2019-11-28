@@ -22,7 +22,7 @@ class LogOutView extends React.Component {
   }
 
   render() {
-    const { className, labels } = this.props;
+    const { className, underline, labels } = this.props;
     return (
       <React.Fragment className={className}>
         <Button
@@ -30,6 +30,7 @@ class LogOutView extends React.Component {
           nohover
           type="button"
           link
+          underline={underline}
           className="elem-pb-SM"
           fontSizeVariation="large"
           anchorVariation="primary"
@@ -45,6 +46,11 @@ LogOutView.propTypes = {
   className: PropTypes.string.isRequired,
   triggerLogout: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  underline: PropTypes.bool,
+};
+
+LogOutView.defaultProps = {
+  underline: false,
 };
 
 export default LogOutView;

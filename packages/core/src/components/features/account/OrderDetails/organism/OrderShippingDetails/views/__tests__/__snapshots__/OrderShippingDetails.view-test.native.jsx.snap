@@ -19,7 +19,6 @@ exports[`Order Shipping Details component should renders correctly with BOSS/BOP
     />
     <Address
       className="elem-mb-SM elem-mt-XXS"
-      customStyle={Object {}}
       dataLocatorPrefix="address"
       fontSize="fs14"
       regularName={true}
@@ -79,7 +78,6 @@ exports[`Order Shipping Details component should renders correctly with ECOM ord
         }
       }
       className="elem-mb-SM elem-mt-XXS"
-      customStyle={Object {}}
       dataLocatorPrefix="address"
       fontSize="fs14"
       regularName={true}

@@ -11,6 +11,7 @@ import PointsClaimPage from '../PointsClaim';
 import MyFavorite from '../../browse/Favorites/container/Favorites.container';
 import Orders from '../Orders';
 import OrderDetails from '../OrderDetails';
+import MyPlaceRewardsCreditCardContainer from '../MyPlaceRewardsCreditCard';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
@@ -26,6 +27,7 @@ const AccountComponentNativeMapping = {
   myFavoritePageMobile: MyFavorite,
   myOrdersPageMobile: Orders,
   orderDetailsPageMobile: OrderDetails,
+  myPlaceRewardsCCPageMobile: MyPlaceRewardsCreditCardContainer,
 };
 
 export default AccountComponentNativeMapping;

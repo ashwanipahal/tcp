@@ -79,6 +79,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
           anchorVariation=""
           colorName={null}
           customStyle={Object {}}
+          justifyContent=""
           locator=""
           margins={null}
           onPress={null}
@@ -294,6 +295,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly without shipping f
           anchorVariation=""
           colorName={null}
           customStyle={Object {}}
+          justifyContent=""
           locator=""
           margins={null}
           onPress={null}

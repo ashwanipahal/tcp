@@ -1,9 +1,11 @@
-import React from 'react';
+/* eslint-disable max-lines */
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { isClient } from '@tcp/core/src/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
@@ -13,13 +15,11 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
-import { getLocator, routerPush, getIconPath } from '../../../../../utils';
+import { routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
-
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -28,23 +28,19 @@ import {
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
-class ProductDetailView extends React.Component {
+class ProductDetailView extends PureComponent {
   constructor(props) {
     super(props);
     this.formValues = null;
     const {
-      productInfo,
-      productInfo: { colorFitsSizesMap },
+      productInfo: { colorFitsSizesMap, generalProductId, offerPrice },
     } = this.props;
     this.state = {
-      currentColorEntry: getMapSliceForColorProductId(
-        colorFitsSizesMap,
-        productInfo.generalProductId
-      ),
-      currentGiftCardValue: productInfo.offerPrice,
+      currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, generalProductId) || {},
+      currentGiftCardValue: offerPrice,
       renderReceiveProps: false,
-      initialValues: {},
     };
   }
 
@@ -52,9 +48,14 @@ class ProductDetailView extends React.Component {
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
+    const { currentGiftCardValue } = this.state;
     this.setState({
       currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e),
       renderReceiveProps: true,
+      currentGiftCardValue:
+        (getMapSliceForColor(colorFitsSizesMap, e) &&
+          getMapSliceForColor(colorFitsSizesMap, e).offerPrice) ||
+        currentGiftCardValue,
     });
     this.formValues = {
       Fit: selectedFit,
@@ -63,15 +64,14 @@ class ProductDetailView extends React.Component {
       Quantity: selectedQuantity,
     };
   };
-
-  setInitialValues = initialValues => {
-    this.setState({
-      initialValues,
-    });
-  };
-
-  onChangeSize = e => {
+  onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
+    this.formValues = {
+      Fit: selectedFit,
+      Size: e,
+      color: selectedColor,
+      Quantity: selectedQuantity,
+    };
   };
 
   onGoBack = e => {
@@ -82,44 +82,52 @@ class ProductDetailView extends React.Component {
     }
   };
 
-  getProductSummary = () => {
+  getProductSummary = keepAlive => {
     const {
       productDetails,
       productInfo,
       currency,
       pdpLabels,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
-    const selectedColorProductId = currentColorEntry.colorProductId;
-
+    const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
+    const { isGiftCard } = productInfo;
     return (
       <div className="product-summary-wrapper">
         <Product
-          isGiftCard={productInfo.isGiftCard}
+          {...otherProps}
+          isGiftCard={isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
-          {...otherProps}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
+          className="hide-on-mobile"
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
-        {productInfo.isGiftCard ? (
+        {isGiftCard ? (
           <div className="product-price-desktop-view">
             <ProductPrice
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
-              isGiftCard={productInfo.isGiftCard}
+              currencyAttributes={currencyAttributes}
+              isGiftCard={isGiftCard}
             />
           </div>
         ) : null}
-        {productInfo.isGiftCard ? (
+        {isGiftCard ? (
           <Row fullBleed className="placeholder">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="product-detail-section">{pdpLabels.promoArea}</div>
@@ -146,7 +154,7 @@ class ProductDetailView extends React.Component {
         </button>
       </div>
     ) : (
-      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" isPDPPage />
     );
   };
 
@@ -156,20 +164,40 @@ class ProductDetailView extends React.Component {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency, currencyExchange } = this.props;
+    const { productInfo, currency, currencyAttributes } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
         <ProductPrice
           listPrice={parseInt(currentGiftCardValue, 10)}
           offerPrice={parseInt(currentGiftCardValue, 10)}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           currencySymbol={currency}
         />
       </div>
     ) : null;
   };
 
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
+    const { breadCrumbs } = this.props;
+    if (breadCrumbs) {
+      const category = breadCrumbs.map((crumb, index) => {
+        const { displayName } = crumb;
+        const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
+        return displayName + separationChar;
+      });
+      return category.join('');
+    }
+    return '';
+  };
+
+  renderPromoBanner = promoBanners => {
+    const { asPathVal } = this.props;
+    return <PromoPDPBanners promos={promoBanners} asPath={asPathVal} />;
+  };
+
+  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -180,20 +208,34 @@ class ProductDetailView extends React.Component {
       productInfo,
       plpLabels,
       pdpLabels,
+      outOfStockLabels,
       handleAddToBag,
       addToBagError,
       alternateSizes,
+      isKeepAliveEnabled,
+      currency,
+      currencyAttributes,
+      onAddItemToFavorites,
+      isLoggedIn,
+      topPromos,
+      middlePromos,
+      bottomPromos,
+      sizeChartDetails,
+      ...otherProps
     } = this.props;
-    const currentProduct = productDetails && productDetails.get('currentProduct');
+
+    const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
-    const { currentColorEntry, renderReceiveProps, initialValues } = this.state;
-    const selectedColorProductId = currentColorEntry.colorProductId;
-
+    const { currentColorEntry, renderReceiveProps } = this.state;
+    const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
+    const keepAlive =
+      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+    const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
-        imagesByColor: productInfo.imagesByColor,
+        imagesByColor,
         curentColorEntry: currentColorEntry,
         isAbTestActive: false,
         isFullSet: true,
@@ -203,23 +245,47 @@ class ProductDetailView extends React.Component {
     const { isGiftCard } = productInfo;
     const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
+    const categoryId = this.getCatIdForRecommendation();
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
+      categoryName: categoryId,
+      partNumber: itemPartNumber,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
+
+    const itemColor = currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>{this.getBreadCrumb()}</Col>
         </Row>
-        <Row className="placeholder product-detail-image-wrapper">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area-1">{pdpLabels.promoArea1}</div>
-          </Col>
-        </Row>
+        {topPromos && topPromos.length > 0 && (
+          <Row>
+            <Col className="promo-area-top" colSize={{ small: 6, medium: 8, large: 12 }}>
+              {this.renderPromoBanner(topPromos)}
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
-              <div className="product-summary-mobile-view">{this.getProductSummary()}</div>
+              <div className="product-summary-mobile-view">{this.getProductSummary(keepAlive)}</div>
             ) : null}
           </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+            <Product
+              {...otherProps}
+              isGiftCard={isGiftCard}
+              productDetails={productDetails}
+              currencySymbol={currency}
+              selectedColorProductId={selectedColorProductId}
+              currencyAttributes={currencyAttributes}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              reviewOnTop
+            />
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}
@@ -230,7 +296,9 @@ class ProductDetailView extends React.Component {
               currentProduct={currentProduct}
               onChangeColor={this.onChangeColor}
               currentColorEntry={currentColorEntry}
-              initialValues={initialValues}
+              initialValues={this.formValues}
+              keepAlive={keepAlive}
+              outOfStockLabels={outOfStockLabels}
             />
           </Col>
           <Col
@@ -239,9 +307,12 @@ class ProductDetailView extends React.Component {
             colSize={{ small: 6, medium: 4, large: 5 }}
           >
             <div className={isGiftCard ? 'product-summary-desktop-view' : ''}>
-              {this.getProductSummary()}
+              {this.getProductSummary(keepAlive)}
             </div>
             {this.getProductPriceForGiftCard()}
+            {middlePromos && middlePromos.length > 0 && (
+              <div className="promo-area-middle">{this.renderPromoBanner(middlePromos)}</div>
+            )}
             {currentProduct && (
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}
@@ -254,10 +325,12 @@ class ProductDetailView extends React.Component {
                 selectedColorProductId={selectedColorProductId}
                 renderReceiveProps={renderReceiveProps}
                 initialFormValues={this.formValues}
-                getProductInitialValues={this.setInitialValues}
                 isPDP
                 alternateSizes={alternateSizes}
                 sizeChartLinkVisibility={sizeChartLinkVisibility}
+                isKeepAliveEnabled={isKeepAliveEnabled}
+                outOfStockLabels={outOfStockLabels}
+                sizeChartDetails={sizeChartDetails}
               />
             )}
 
@@ -266,35 +339,33 @@ class ProductDetailView extends React.Component {
                 productInfo={productInfo}
                 formName={`ProductAddToBag-${productInfo.generalProductId}`}
                 miscInfo={currentColorEntry.miscInfo}
+                keepAlive={keepAlive}
+                outOfStockLabels={outOfStockLabels}
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            <div className="fulfillment-section">
-              <FulfillmentSection
-                btnClassName="added-to-bag"
-                dataLocator={getLocator('global_addtocart_Button')}
-                buttonLabel={plpLabels.addToBag}
-                currentProduct={currentProduct}
-              />
-            </div>
-            {<LoyaltyBanner isProductDetailView />}
+            {<LoyaltyBanner pageCategory="isProductDetailView" />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.promoArea3}</div>
-          </Col>
-        </Row>
+        {bottomPromos && bottomPromos.length > 0 && (
+          <Row>
+            <Col className="promo-area-bottom" colSize={{ small: 6, medium: 8, large: 12 }}>
+              {this.renderPromoBanner(bottomPromos)}
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
               <ProductDescription
                 productId={itemPartNumber}
+                productInfo={productInfo}
                 isShowMore={false}
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
+                color={itemColor}
               />
             </div>
           </Col>
@@ -306,14 +377,22 @@ class ProductDetailView extends React.Component {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.youMayAlsoLike}</div>
+            <div className={`${className} product-description-list`}>
+              <Recommendations {...recommendationAttributes} />
+            </div>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.recentlyViewed}</div>
+            <div className="product-detail-section">
+              <Recommendations
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+                {...recommendationAttributes}
+              />
+            </div>
           </Col>
         </Row>
         <Row className="placeholder">
@@ -331,7 +410,6 @@ class ProductDetailView extends React.Component {
             />
           </Col>
         </Row>
-        <AddedToBagContainer />
       </div>
     );
   }
@@ -346,10 +424,10 @@ ProductDetailView.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  breadCrumbs: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -358,6 +436,13 @@ ProductDetailView.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  outOfStockLabels: PropTypes.shape({
+    outOfStockCaps: PropTypes.string,
+  }).isRequired,
+  isKeepAliveEnabled: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
 };
 
 ProductDetailView.defaultProps = {
@@ -365,7 +450,7 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   shortDescription: '',
-  breadCrumbs: {},
+  breadCrumbs: [],
   currency: '',
   plpLabels: {
     lbl_sort: '',
@@ -374,9 +459,12 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  currencyExchange: 1,
   isLoggedIn: false,
   alternateSizes: {},
+  isKeepAliveEnabled: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

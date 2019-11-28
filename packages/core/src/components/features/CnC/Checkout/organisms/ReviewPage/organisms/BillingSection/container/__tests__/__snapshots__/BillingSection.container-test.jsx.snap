@@ -6,23 +6,7 @@ exports[`Gift Cards Container should render Gift Card view section 1`] = `
   appliedGiftCards={Immutable.List []}
   card={null}
   cvvCodeInfoContentId={[Function]}
-  getCVVCodeInfo={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Array [
-            [Function],
-          ],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  getCVVCodeInfo={[MockFunction]}
   labels={Object {}}
   saveVenmoPaymentOption={[Function]}
 />

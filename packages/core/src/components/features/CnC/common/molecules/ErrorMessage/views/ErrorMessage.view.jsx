@@ -2,31 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import style from '../styles/ErrorMessage.style';
-import { getIconPath } from '../../../../../../../utils';
-
-const alertTriangleIcon = getIconPath('alert-triangle');
 
 class ErrorMessage extends React.PureComponent {
   render() {
-    const { error, alt, className, fontSize, fontWeight } = this.props;
+    const { error, className, fontSize, fontWeight, isEspot } = this.props;
     return (
       <>
         {error && (
-          <div className={className}>
-            <Image alt={alt} src={alertTriangleIcon} />
-            <BodyCopy
-              component="span"
-              color="error"
-              fontFamily="secondary"
-              fontWeight={fontWeight}
-              fontSize={fontSize}
-              aria-live="assertive"
-              role="alert"
-            >
-              {error}
-            </BodyCopy>
+          <div className={className} role="alert">
+            <div className="warning-icon" aria-disabled="true" />
+            {isEspot ? (
+              <Espot richTextHtml={error} />
+            ) : (
+              <BodyCopy
+                component="span"
+                color="error"
+                fontFamily="secondary"
+                fontWeight={fontWeight}
+                fontSize={fontSize}
+                aria-live="assertive"
+                role="alert"
+              >
+                {error}
+              </BodyCopy>
+            )}
           </div>
         )}
       </>
@@ -36,7 +38,6 @@ class ErrorMessage extends React.PureComponent {
 
 ErrorMessage.propTypes = {
   error: PropTypes.string,
-  alt: PropTypes.string,
   className: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
@@ -44,7 +45,6 @@ ErrorMessage.propTypes = {
 
 ErrorMessage.defaultProps = {
   error: '',
-  alt: 'error',
   className: '',
   fontSize: 'fs10',
   fontWeight: 'normal',

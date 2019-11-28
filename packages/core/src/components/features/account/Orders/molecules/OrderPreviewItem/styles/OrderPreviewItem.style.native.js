@@ -8,7 +8,6 @@ const OrderItemContainer = styled.View`
 `;
 
 const OrderItemImage = styled.View`
-  display: flex;
   align-items: center;
   width: 33%;
 `;
@@ -22,19 +21,22 @@ const ItemContentWrapper = styled(ViewWithSpacing)`
   flex-direction: row;
 `;
 
-const ImageStyle = styled.Image`
-  width: 100%;
-  max-height: 130px;
+const ImageStyle = styled.View`
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: 100px;
+  width: 100px;
 `;
 
 const ImageBrandStyle = styled.Image`
   width: 100%;
-  max-height: 24px;
+  height: 24px;
 `;
+
 const ImageBrandTCPStyle = styled.Image`
   width: 64px;
-  max-height: 24px;
+  height: 24px;
 `;
+
 export {
   ImageStyle,
   ImageBrandStyle,

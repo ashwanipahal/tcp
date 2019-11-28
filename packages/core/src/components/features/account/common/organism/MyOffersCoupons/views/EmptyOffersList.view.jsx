@@ -36,7 +36,7 @@ export const EmptyOffersList = ({ className, commonLabels, closedOverlay }) => {
       </BodyCopy>
       <BodyCopy component="div" className="coupon_viewall_tile elem-mb-LRG">
         <Button
-          className="coupon_button_black"
+          className="coupon_button_black shop-btn"
           buttonVariation="variable-width"
           type="submit"
           onClick={goToHomePage}

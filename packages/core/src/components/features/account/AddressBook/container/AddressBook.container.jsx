@@ -7,6 +7,7 @@ import {
   deleteAddress,
   setDeleteModalMountedState,
   setAddressBookNotification,
+  clearErrorState,
 } from './AddressBook.actions';
 import AddressView from '../views/AddressView';
 import {
@@ -22,11 +23,7 @@ import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actio
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    // addresslist can be updated from User profile info API call but that contains only US profile addresses
-    // but in addressList page we need to show all the addresses so need to make fresh API call
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
   }
 
   componentWillUnmount() {
@@ -47,6 +44,7 @@ export class AddressBookContainer extends React.Component<Props> {
       labels,
       addressLabels,
       verificationResult,
+      clearNotificationError,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -58,6 +56,7 @@ export class AddressBookContainer extends React.Component<Props> {
           showUpdatedNotification={showUpdatedNotification}
           onDeleteAddress={onDeleteAddress}
           deleteModalMountedState={deleteModalMountedState}
+          clearNotificationError={clearNotificationError}
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           addressLabels={addressLabels}
@@ -89,6 +88,9 @@ export const mapDispatchToProps = dispatch => {
           status: '',
         })
       );
+    },
+    clearNotificationError: () => {
+      dispatch(clearErrorState());
     },
   };
 };

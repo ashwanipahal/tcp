@@ -7,6 +7,7 @@ const HeadingTextStyle = styled.Text`
   top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   font-size: ${props => props.theme.typography.fontSizes.fs16};
   font-weight: 600;
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
 
 const WrapperStyle = styled.View`
@@ -19,10 +20,12 @@ const EmptyCCLabelStyle = styled.Text`
   font-size: ${props => props.theme.typography.fontSizes.fs14};
   font-weight: bold;
   top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
 
 const DescriptionEmptyCCStyle = styled.Text`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
 
 const ButtonWrapperStyle = styled.View`

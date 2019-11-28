@@ -58,7 +58,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </BodyCopy>
         <BodyCopy
           component="div"
-          fontSize="fs22"
+          fontSize={['fs18', 'fs22', 'fs22']}
           fontWeight="extrabold"
           fontFamily="secondary"
           textAlign="center"
@@ -70,7 +70,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
 
         <BodyCopy
           component="div"
-          fontSize="fs22"
+          fontSize={['fs14', 'fs22', 'fs22']}
           fontWeight="semibold"
           fontFamily="secondary"
           textAlign="center"
@@ -84,7 +84,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
             to={ctaRedirect(activeActivity).to}
             asPath={ctaRedirect(activeActivity).path}
             anchorVariation="button"
-            buttonVariation="fixed-width"
+            buttonVariation="variable-width"
             fullWidth
             fill="BLUE"
             centered

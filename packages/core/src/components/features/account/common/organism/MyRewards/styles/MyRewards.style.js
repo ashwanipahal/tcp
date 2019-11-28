@@ -7,6 +7,7 @@ const styles = css`
       props.view === 'all'
         ? props.theme.spacing.ELEM_SPACING.MED
         : props.theme.spacing.ELEM_SPACING.XL};
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props =>
         props.view === 'all'
@@ -21,9 +22,18 @@ const styles = css`
     }
   }
 
+  .my-reward-styling {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+
   .no-rewards-msg {
     text-align: center;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
   }
 
   .shop-now-btn-wrapper {
@@ -36,16 +46,6 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-    }
-    @media ${props => props.theme.mediaQuery.xlarge} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-    }
-  }
-
-  .anchor-wrapper {
-    text-align: center;
   }
 
   .rewards-container {
@@ -53,7 +53,7 @@ const styles = css`
     grid-template-columns: 100%;
     grid-row-gap: 24px;
     grid-auto-rows: minmax(345px, auto);
-    align-items: baseline;
+    align-items: stretch;
 
     @media ${props => props.theme.mediaQuery.medium} {
       grid-template-columns: repeat(2, calc(50% - 15px));

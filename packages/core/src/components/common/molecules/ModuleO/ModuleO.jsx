@@ -65,8 +65,8 @@ const ModuleO = props => {
         isEvenElement={isEvenElement}
         gridIndex={gridIndex}
         isPLPredesign
-        isKeepAliveKillSwitch={false}
         labels={labels}
+        isKeepAliveKillSwitch={false}
         hideImageCarousel
       />
     </ul>

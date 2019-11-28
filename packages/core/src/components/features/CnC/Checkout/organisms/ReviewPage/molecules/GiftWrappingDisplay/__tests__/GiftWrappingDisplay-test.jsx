@@ -13,6 +13,21 @@ describe('GiftWrappingDisplay component', () => {
     const props = {
       labels: {
         lbl_review_sectionShippingGiftServiceTitle: 'title',
+        lbl_review_sectionAnchor: 'edit',
+      },
+      displayName: 'Free',
+      className: '',
+      isExpressCheckout: true,
+      onEdit: jest.fn(),
+    };
+    const component = shallow(<GiftWrappingDisplayanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+  it('should renders correctly props with expresscheckout', () => {
+    const props = {
+      labels: {
+        lbl_review_sectionShippingGiftServiceTitle: 'title',
+        lbl_review_sectionAnchor: 'edit',
       },
       displayName: 'Free',
       className: '',

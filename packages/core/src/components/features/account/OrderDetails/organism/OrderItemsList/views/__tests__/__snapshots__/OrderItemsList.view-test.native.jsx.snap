@@ -67,6 +67,8 @@ exports[`Order Items component should renders correctly 1`] = `
     borderColor="gray.1600"
     borderWidth={0.5}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={32}
   />
 </Fragment>

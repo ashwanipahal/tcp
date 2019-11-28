@@ -34,7 +34,7 @@ const OrderPreviewItem = ({ ...otherProps }) => {
       {!!otherProps && (
         <BodyCopy className={className} component="div">
           <Row className="row-stlyler">
-            <Col className="elem-pt-XL" colSize={{ large: 2, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 2, medium: 2, small: 2 }}>
               <BodyCopy component="div" className="image-sizing">
                 <Image src={imagePath} className="image-sizing" data-locator="order_item_image" />
               </BodyCopy>
@@ -107,7 +107,7 @@ const OrderPreviewItem = ({ ...otherProps }) => {
                     className="itemInfo_details_items_leftMargin"
                     fontFamily="secondary"
                   >
-                    {trackingInfo[0].status}
+                    {trackingInfo && trackingInfo[0].status}
                   </BodyCopy>
                 </span>
               </BodyCopy>

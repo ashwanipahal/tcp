@@ -20,6 +20,11 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
 import ForgotPasswordView from '../views/ForgotPassword.view';
 
 class ForgotPasswordContainer extends React.PureComponent {
+  componentWillUnmount() {
+    const { resetForm } = this.props;
+    if (resetForm) resetForm();
+  }
+
   render() {
     const {
       resetForgotPasswordErrorResponse,

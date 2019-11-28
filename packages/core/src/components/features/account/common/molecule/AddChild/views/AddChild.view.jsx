@@ -15,6 +15,7 @@ import styles from '../styles/AddChild.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import endpoints from '../../../externalEndpoints';
+import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 
 export class AddChildBirthdayForm extends React.PureComponent {
   static propTypes = {
@@ -101,8 +102,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                       addChildBirthdayLabels,
                       'lbl_add_child_birthday_month'
                     )}
-                    name="userBirthMonth"
-                    id="userBirthMonth"
+                    name="childBirthMonth"
+                    id="childBirthMonth"
                     component={SelectBox}
                     options={birthMonthOptionsMap}
                     dataLocator="childBirthdayMonthDD"
@@ -114,8 +115,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                       addChildBirthdayLabels,
                       'lbl_add_child_birthday_year'
                     )}
-                    name="userBirthYear"
-                    id="userBirthYear"
+                    name="childBirthYear"
+                    id="childBirthYear"
                     component={SelectBox}
                     options={birthYearOptionsMap}
                     dataLocator="childBirthdayYearDD"
@@ -287,14 +288,14 @@ const validateMethod = createValidateMethod(
     'childName',
     'firstName',
     'lastName',
-    'userBirthMonth',
-    'userBirthYear',
+    'childBirthMonth',
+    'childBirthYear',
     'gender',
   ])
 );
 
 export default reduxForm({
-  form: 'AddChildBirthdayForm', // a unique identifier for this form
+  form: constants.ADD_CHILD_BIRTHDAY_FORM, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(AddChildBirthdayForm, styles));

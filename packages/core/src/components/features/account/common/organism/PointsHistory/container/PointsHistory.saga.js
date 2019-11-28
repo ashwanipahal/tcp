@@ -1,12 +1,13 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import POINTSHISTORY_CONSTANTS from '../PointsHistory.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';
-import { setPointsHistoryList, setModuleX } from './PointsHistory.actions';
+import { setPointsHistoryList, setModuleX, showLoader } from './PointsHistory.actions';
 import { getModuleX } from '../../../../../../../services/abstractors/common/moduleX';
 import { getPointsHistoryData } from '../../../../../../../services/abstractors/account/PointsHistory';
 
 export function* getPointsHistoryListSaga() {
   try {
+    yield put(showLoader());
     const pointsHistoryData = yield call(getPointsHistoryData);
     yield put(setPointsHistoryList(pointsHistoryData));
   } catch (err) {

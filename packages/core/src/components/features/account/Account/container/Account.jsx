@@ -9,6 +9,7 @@ import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -18,7 +19,7 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * @param {router} router Router object to get the query key
  */
 
-const excludeRouteMapping = ['order-details'];
+const excludeRouteMapping = ['/TrackOrder'];
 
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
@@ -40,20 +41,36 @@ export class Account extends React.PureComponent {
   componentDidMount() {
     const { getAccountNavigationAction } = this.props;
     getAccountNavigationAction();
+    this.triggerPageLoadEvent();
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
-    const { isUserLoggedIn } = this.props;
+    const { isUserLoggedIn, router, trackPageLoad } = this.props;
 
-    if (isUserLoggedIn === false && !excludeRouteMapping.includes(componentToLoad)) {
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
       routerPush('/home?target=login', '/home/login');
+    }
+
+    if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
+      this.activePageRef.blur();
+      setTimeout(() => {
+        this.activePageRef.focus({ preventScroll: true });
+      }, 100);
     }
 
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
+      this.triggerPageLoadEvent();
     }
   }
+
+  /**
+   * Set the wrapper ref
+   */
+  setPageRef = ref => {
+    this.activePageRef = ref;
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
@@ -71,6 +88,30 @@ export class Account extends React.PureComponent {
     }
     return null;
   }
+
+  triggerPageLoadEvent = () => {
+    const { componentToLoad } = this.state;
+    const { router, trackPageLoad } = this.props;
+
+    trackPageLoad({
+      path: router.asPath,
+      props: {
+        initialProps: {
+          pageProps: {
+            pageData: {
+              pageName:
+                (accountPageNameMapping[componentToLoad] &&
+                  accountPageNameMapping[componentToLoad].pageName) ||
+                '',
+              pageSection: 'myplace',
+              pageSubSection: 'myplace',
+              pageType: 'myplace',
+            },
+          },
+        },
+      },
+    });
+  };
 
   /**
    * @function render  Used to render the JSX of the component
@@ -91,15 +132,18 @@ export class Account extends React.PureComponent {
     // _app.jsx itself.
     if (typeof labels === 'object' && isUserLoggedIn !== null) {
       return (
-        <MyAccountLayout
-          mainContent={AccountComponentMapping[componentToLoad]}
-          active={activeComponent}
-          activeSubComponent={componentToLoad}
-          navData={navData}
-          router={router}
-          labels={labels}
-          isUserLoggedIn={isUserLoggedIn}
-        />
+        <>
+          <MyAccountLayout
+            mainContent={AccountComponentMapping[componentToLoad]}
+            active={activeComponent}
+            activeSubComponent={componentToLoad}
+            navData={navData}
+            router={router}
+            labels={labels}
+            pageContentRef={this.setPageRef}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        </>
       );
     }
 
@@ -119,15 +163,32 @@ Account.getInitialProps = (reduxProps, pageProps) => {
           ? accountPageNameMapping[componentToLoad].pageName
           : '',
         pageSection: 'myplace',
+        pageSubSection: 'myplace',
+        loadAnalyticsOnload: false,
       },
     },
   };
+};
+
+Account.pageInfo = {
+  pageId: 'Account',
 };
 
 export const mapDispatchToProps = dispatch => {
   return {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
+    },
+    trackPageLoad: payload => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event80'],
+        })
+      );
+      dispatch(trackPageView(payload));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 50);
     },
   };
 };
@@ -146,10 +207,12 @@ Account.propTypes = {
   accountNavigation: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
+  trackPageLoad: PropTypes.func,
 };
 
 Account.defaultProps = {
   labels: PropTypes.shape({ addressBook: {}, labels: {}, paymentGC: {}, common: {} }),
+  trackPageLoad: () => {},
 };
 
 export default withRouter(

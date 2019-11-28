@@ -11,25 +11,11 @@ import {
   ViewBagButton,
   StyledSupportMsg,
 } from '../styles/EmptyBagPage.style.native';
-import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 
 class EmptyBagPage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { applyCard: false };
-  }
-
-  toggleApplyNowModal = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
-  };
-
   render() {
-    const { isUserLoggedIn, bagLabels, ...otherProps } = this.props;
+    const { isUserLoggedIn, bagLabels, openModalApplyNowModal, ...otherProps } = this.props;
     const { navigation, isBagPageSflSection } = otherProps;
-    const { applyCard } = this.state;
 
     if (isBagPageSflSection) {
       return (
@@ -48,6 +34,7 @@ class EmptyBagPage extends React.PureComponent {
               fontFamily="secondary"
               dataLocator={getLocator('empty_bag_Msg')}
               text={bagLabels.emptySflMsg2}
+              textAlign="center"
             />
           </Text>
         </StyledEmptyBag>
@@ -70,9 +57,8 @@ class EmptyBagPage extends React.PureComponent {
           text="Apply Now"
           underline
           fontSizeVariation="large"
-          onPress={this.toggleApplyNowModal}
+          onPress={() => openModalApplyNowModal({ isModalOpen: true })}
         />
-        <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
         <ViewBagButton
           onPress={() => {
             navigation.navigate(!isUserLoggedIn ? 'LoginPageContainer' : 'Home');
@@ -118,6 +104,7 @@ EmptyBagPage.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  openModalApplyNowModal: PropTypes.func.isRequired,
 };
 
 export default withNavigation(withStyle(EmptyBagPage, style));

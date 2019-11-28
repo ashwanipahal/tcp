@@ -114,7 +114,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -242,7 +242,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -257,7 +259,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -287,7 +289,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -345,7 +347,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -473,7 +475,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -488,7 +492,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -530,7 +534,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -560,7 +564,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -660,7 +664,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -683,7 +689,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -751,10 +757,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
 <div
   className=" elem-pt-MED"
 >
-  <Styled(Notification)
-    message="error"
-    status="error"
-  />
   <Styled(BodyCopy)
     className="heading"
     color="gray[900]"
@@ -836,6 +838,34 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Notification)
+          message="error"
+          status="error"
+        />
+      </Styled(Col)>
+      <Styled(Col)
         className="password-container"
         colSize={
           Object {
@@ -865,7 +895,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -993,7 +1023,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1008,7 +1040,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1038,7 +1070,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -1096,7 +1128,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1224,7 +1256,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1239,7 +1273,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1281,7 +1315,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -1311,7 +1345,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1411,7 +1445,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1434,7 +1470,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1611,7 +1647,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1739,7 +1775,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1754,7 +1792,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1797,7 +1835,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1925,7 +1963,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1940,7 +1980,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1984,7 +2024,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2112,7 +2152,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2127,7 +2169,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2157,7 +2199,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -2215,7 +2257,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2343,7 +2385,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2358,7 +2402,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2428,7 +2472,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2556,7 +2600,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2571,7 +2617,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2616,7 +2662,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2744,7 +2790,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2759,7 +2807,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -2774,7 +2822,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         />
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -2804,7 +2852,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2904,7 +2952,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2927,7 +2977,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3041,7 +3091,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3169,7 +3219,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3184,7 +3236,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3227,7 +3279,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3355,7 +3407,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3370,7 +3424,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3413,7 +3467,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3541,7 +3595,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3556,7 +3612,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3600,7 +3656,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3728,7 +3784,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3743,7 +3801,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -3773,7 +3831,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -3831,7 +3889,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -3959,7 +4017,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -3974,7 +4034,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4044,7 +4104,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4172,7 +4232,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4187,7 +4249,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4232,7 +4294,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4360,7 +4422,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4375,7 +4439,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4390,7 +4454,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         />
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -4420,7 +4484,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4520,7 +4584,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -4543,7 +4609,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4611,9 +4677,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
 <div
   className=" elem-pt-MED"
 >
-  <Styled(Notification)
-    status="success"
-  />
   <Styled(BodyCopy)
     className="heading"
     color="gray[900]"
@@ -4695,6 +4758,33 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Notification)
+          status="success"
+        />
+      </Styled(Col)>
+      <Styled(Col)
         className="password-container"
         colSize={
           Object {
@@ -4724,7 +4814,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -4852,7 +4942,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -4867,7 +4959,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -4897,7 +4989,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             >
               <Styled(Image)
                 className="tcp_carousel__play tooltip"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
               />
             </Styled(ReactTooltip)>
           </div>
@@ -4955,7 +5047,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-dnqmqq",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -5083,7 +5175,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -5098,7 +5192,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-dnqmqq",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -5140,7 +5234,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -5170,7 +5264,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -5270,7 +5364,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -5293,7 +5389,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

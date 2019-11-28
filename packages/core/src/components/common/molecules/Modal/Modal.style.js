@@ -10,6 +10,9 @@ const ModalStyle = css`
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
     z-index: ${props => props.theme.zindex.zModal};
   }
+  .TCPModal__hidden_header_label {
+    display: none;
+  }
   div.TCPModal__InnerContent {
     background: ${props => props.theme.colors.WHITE};
     box-sizing: border-box;
@@ -21,12 +24,12 @@ const ModalStyle = css`
     overflow-y: auto;
     height: 100%;
     width: ${props => (props.fixedWidth ? '100%' : '')};
-    width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
       min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
       width: ${props => (props.widthConfig ? props.widthConfig.medium : '')};
+      max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
@@ -34,6 +37,13 @@ const ModalStyle = css`
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
+
+    ${props =>
+      props.standardHeight
+        ? `@media ${props.theme.mediaQuery.medium} {
+      max-height:90%
+    } `
+        : ''}
   }
   .Modal_Heading {
     font-family: ${props => props.theme.typography.fonts.secondary};

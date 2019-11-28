@@ -8,6 +8,9 @@ const styles = css`
   .row-padding {
     padding-bottom: 9px;
   }
+  .bag-points {
+    padding-bottom: 0;
+  }
   .divided-line {
     height: 1px;
     background-color: ${props => props.theme.colors.PRIMARY.DARK};

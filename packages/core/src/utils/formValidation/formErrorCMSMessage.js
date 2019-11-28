@@ -66,6 +66,7 @@ const formErrorCMSMessage = {
   lbl_storelanding_invalidAddressError:
     'The value entered in the street address has special character.',
   lbl_err_prefix: 'ERROR:',
+  lbl_fav_list_name_nonempty: 'List Name can not empty',
 };
 
 export default formErrorCMSMessage;

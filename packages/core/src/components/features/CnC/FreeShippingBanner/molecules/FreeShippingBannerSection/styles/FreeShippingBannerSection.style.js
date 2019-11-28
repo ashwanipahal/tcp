@@ -4,15 +4,24 @@ const Styles = css`
   .free-shipping-banner-section-wrapper {
     display: flex;
     justify-content: center;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
+      ${props => props.theme.spacing.ELEM_SPACING.SM};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
       font-size: ${props => props.theme.typography.fontSizes.fs12};
+      display: inline-block;
+      text-align: center;
+      span:not(.free-shipping-details) {
+        display: inherit;
+        vertical-align: top;
+      }
     }
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs14};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+
   .shippingNew {
     color: ${props => props.theme.colorPalette.blue[800]};
   }

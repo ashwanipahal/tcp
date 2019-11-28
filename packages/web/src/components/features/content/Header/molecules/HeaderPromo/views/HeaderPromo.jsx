@@ -8,6 +8,8 @@ import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import ModuleX from '@tcp/core/src/components/common/molecules/ModuleX';
+
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
 
 import headerPromoStyles from '../HeaderPromo.style';
@@ -28,9 +30,14 @@ const renderMobileMarkup = (dataPromo, className) => {
             to={promoItem.linkClass.url}
             target={promoItem.linkClass.target}
           >
-            <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
-              <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
-            </div>
+            {promoItem.linkClass.class && (
+              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
+                <Image
+                  src={getIconPath(promoItem.linkClass.class)}
+                  alt={promoItem.linkClass.title}
+                />
+              </div>
+            )}
             <div className="header-promo-item__content">
               {promoItem.textItems[0] && (
                 <BodyCopy
@@ -78,12 +85,14 @@ const renderDesktopMarkup = (dataPromo, className) => {
               to={promoItem.linkClass.url}
               target={promoItem.linkClass.target}
             >
-              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
-                <Image
-                  src={getIconPath(promoItem.linkClass.class)}
-                  alt={promoItem.linkClass.title}
-                />
-              </div>
+              {promoItem.linkClass.class && (
+                <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
+                  <Image
+                    src={getIconPath(promoItem.linkClass.class)}
+                    alt={promoItem.linkClass.title}
+                  />
+                </div>
+              )}
               <div className="header-promo-item__content">
                 {promoItem.textItems[0] && (
                   <BodyCopy
@@ -114,22 +123,38 @@ const renderDesktopMarkup = (dataPromo, className) => {
   );
 };
 
-const HeaderPromo = ({ className, dataPromo, mobileMarkup }) => {
+const renderHtmlPromoBannerData = (dataHtmlPromo, className) => {
+  return dataHtmlPromo ? <ModuleX className={className} richTextList={[dataHtmlPromo[0]]} /> : null;
+};
+
+const renderHeaderPromoMarkup = (mobileMarkup, wrapperClass, dataTextPromo, dataHtmlPromo) => {
+  if (mobileMarkup) {
+    return dataTextPromo
+      ? renderMobileMarkup(dataTextPromo, wrapperClass)
+      : renderHtmlPromoBannerData(dataHtmlPromo, wrapperClass);
+  }
+  return dataTextPromo
+    ? renderDesktopMarkup(dataTextPromo, wrapperClass)
+    : renderHtmlPromoBannerData(dataHtmlPromo, wrapperClass);
+};
+
+const HeaderPromo = ({ className, mobileMarkup, dataTextPromo, dataHtmlPromo }) => {
   const wrapperClass = mobileMarkup ? 'header__promo-area--mobile' : 'header__promo-area--desktop';
 
   return (
     <div className={`header-promo__container ${className} content-wrapper`}>
-      {mobileMarkup && renderMobileMarkup(dataPromo, wrapperClass)}
-      {!mobileMarkup && renderDesktopMarkup(dataPromo, wrapperClass)}
+      {renderHeaderPromoMarkup(mobileMarkup, wrapperClass, dataTextPromo, dataHtmlPromo)}
     </div>
   );
 };
 
 HeaderPromo.propTypes = {
   className: PropTypes.string,
-  dataPromo: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+  dataTextPromo: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
     .isRequired,
   mobileMarkup: PropTypes.bool,
+  dataHtmlPromo: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+    .isRequired,
 };
 
 HeaderPromo.defaultProps = {

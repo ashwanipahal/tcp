@@ -32,6 +32,7 @@ describe('FilterModal is shown', () => {
       navigation: {
         getParam: () => '',
       },
+      setSelectedFilter: jest.fn(),
     });
 
     wrapper.instance().setState({ showSortModal: false });

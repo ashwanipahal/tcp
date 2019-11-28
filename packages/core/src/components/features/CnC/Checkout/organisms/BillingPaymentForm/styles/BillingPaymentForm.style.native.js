@@ -74,6 +74,16 @@ const DefaultPaymentWrapper = styled.View`
   flex-direction: row;
   margin-top: ${props => (props.isSpace ? props.theme.spacing.ELEM_SPACING.LRG : '0')};
 `;
+
+const PayPalTextContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+const SkeletonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 200px;
+`;
+
 export {
   CvvCode,
   CvvTextboxStyle,
@@ -92,4 +102,6 @@ export {
   PaymentMethodMainWrapper,
   PaymentMethodImage,
   DefaultPaymentWrapper,
+  PayPalTextContainer,
+  SkeletonWrapper,
 };

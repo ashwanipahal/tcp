@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getOrdersListState } from './Orders.selectors';
-import { getAllItems } from '../../OrderDetails/container/OrderDetails.selectors';
+import { getOrdersListState, getOrderListFetchingState } from './Orders.selectors';
+import {
+  getAllItems,
+  getOrderDetailsDataFetchingState,
+} from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
 import { getOrderDetails } from '../../OrderDetails/container/OrderDetails.actions';
 import { getLabels } from '../../Account/container/Account.selectors';
-import { API_CONFIG } from '../../../../../services/config';
 
 /**
  * This component will render OrdersContainer component
@@ -16,8 +18,14 @@ import { API_CONFIG } from '../../../../../services/config';
  */
 export class OrdersContainer extends PureComponent {
   componentDidMount() {
-    const { fetchOrders } = this.props;
+    const { fetchOrders, ordersListItems, getOrderDetailsAction } = this.props;
     fetchOrders(getSiteId());
+    if (ordersListItems && ordersListItems.orders && ordersListItems.orders.length > 0) {
+      const payload = {
+        orderId: ordersListItems.orders[0].orderNumber,
+      };
+      getOrderDetailsAction(payload);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -53,22 +61,23 @@ export class OrdersContainer extends PureComponent {
       handleComponentChange,
       componentProps,
       orderItems,
+      isMostRecentOrderFetching,
+      isMostRecentOrderDetailFetching,
     } = this.props;
-    const siteId = getSiteId();
     const ordersListItemData = ordersListItems && ordersListItems.orders;
 
     return (
-      siteId !== API_CONFIG.siteIds.ca && (
-        <OrderListComponent
-          labels={labels}
-          onFilterLink={this.filterLinkHandler}
-          ordersListItems={ordersListItemData}
-          navigation={navigation}
-          handleComponentChange={handleComponentChange}
-          componentProps={componentProps}
-          orderItems={orderItems}
-        />
-      )
+      <OrderListComponent
+        labels={labels}
+        onFilterLink={this.filterLinkHandler}
+        ordersListItems={ordersListItemData}
+        navigation={navigation}
+        handleComponentChange={handleComponentChange}
+        componentProps={componentProps}
+        orderItems={orderItems}
+        isMostRecentOrderFetching={isMostRecentOrderFetching}
+        isMostRecentOrderDetailFetching={isMostRecentOrderDetailFetching}
+      />
     );
   }
 }
@@ -77,6 +86,8 @@ export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
   orderItems: getAllItems(state),
+  isMostRecentOrderFetching: getOrderListFetchingState(state),
+  isMostRecentOrderDetailFetching: getOrderDetailsDataFetchingState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -97,6 +108,8 @@ OrdersContainer.propTypes = {
   componentProps: PropTypes.shape({}),
   orderItems: PropTypes.shape([]),
   getOrderDetailsAction: PropTypes.func.isRequired,
+  isMostRecentOrderFetching: PropTypes.bool,
+  isMostRecentOrderDetailFetching: PropTypes.bool,
 };
 
 OrdersContainer.defaultProps = {
@@ -105,6 +118,8 @@ OrdersContainer.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
   orderItems: [],
+  isMostRecentOrderFetching: false,
+  isMostRecentOrderDetailFetching: false,
 };
 
 export default connect(

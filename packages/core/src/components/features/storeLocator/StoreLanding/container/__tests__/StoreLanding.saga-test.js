@@ -40,7 +40,9 @@ describe('Store Locator saga', () => {
     };
 
     test('default', () => {
-      const generator = fetchLocationStoresSaga({ payload });
+      const generator = fetchLocationStoresSaga({
+        payload,
+      });
       expect(generator.next().value).toEqual(call(getLocationStores, payload));
       expect(generator.next().value).toEqual(put(setStoresByCoordinates([])));
     });
@@ -56,10 +58,11 @@ describe('Store Locator saga', () => {
     };
 
     test('default', () => {
-      const generator = getFavoriteStoreSaga({ payload });
+      const generator = getFavoriteStoreSaga({
+        payload,
+      });
       expect(generator.next().value).toEqual(select());
       expect(typeof generator.next().value).toEqual('object');
-      expect(generator.next().value).toEqual(null);
     });
   });
 
@@ -76,7 +79,9 @@ describe('Store Locator saga', () => {
     };
 
     test('default', () => {
-      const generator = setFavoriteStoreSaga({ payload });
+      const generator = setFavoriteStoreSaga({
+        payload,
+      });
       expect(generator.next().value).toEqual(select());
       expect(typeof generator.next().value).toEqual('object');
       expect(generator.next().value).toEqual(undefined);

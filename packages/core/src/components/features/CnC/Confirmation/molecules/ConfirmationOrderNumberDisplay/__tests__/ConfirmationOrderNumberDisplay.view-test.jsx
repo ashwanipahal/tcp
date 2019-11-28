@@ -3,9 +3,13 @@ import { shallow } from 'enzyme';
 import { ConfirmationOrderNumberDisplayVanilla } from '../views/ConfirmationOrderNumberDisplay.view';
 import { getDateInformation } from '../../../../../../../utils';
 
-jest.mock('../../../../../../../utils', () => ({
-  getDateInformation: jest.fn(),
-}));
+jest.mock('../../../../../../../utils', () => {
+  const originalModule = jest.requireActual('@tcp/core/src/utils');
+  return {
+    ...originalModule,
+    getDateInformation: jest.fn(),
+  };
+});
 
 describe('ConfirmationOrderNumberDisplayVanilla', () => {
   it('should render correctly', () => {
@@ -55,6 +59,37 @@ describe('ConfirmationOrderNumberDisplayVanilla', () => {
         tomorrowOpenRange: '',
         phoneNumber: 23456789023,
         orderType: 'BOPIS',
+        orderDate: {
+          toLocaleDateString: jest.fn(),
+        },
+        productsCount: 2,
+        orderTotal: 23,
+        bossMaxDate: '',
+        bossMinDate: '',
+      },
+      labels: {},
+      isGuest: false,
+    };
+    const tree = shallow(<ConfirmationOrderNumberDisplayVanilla {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render correctly with default', () => {
+    const props = {
+      center: {
+        storeName: 'union',
+        storeLink: { asPath: '/', to: '/' },
+        address: {
+          addressLine1: '1123 ab',
+          addressLine2: 'adf',
+          city: 'AC',
+          state: 'AD',
+          zipCode: '10001',
+        },
+        shippingFullname: 'name',
+        todayOpenRange: '',
+        tomorrowOpenRange: '',
+        phoneNumber: 23456789023,
+        orderType: '',
         orderDate: {
           toLocaleDateString: jest.fn(),
         },

@@ -5,6 +5,7 @@ import {
   getGiftCardProducts,
   addCartEcomItem,
   addCartBopisItem,
+  addMultipleProductsInEcom,
 } from '../AddedToBag';
 
 jest.mock('../../../handler/handler', () => ({
@@ -101,5 +102,26 @@ describe('AddedToBag', () => {
     };
     executeStatefulAPICall.mockImplementation(() => Promise.reject(result));
     addCartBopisItem().catch(val => expect(val).toMatchObject(result));
+  });
+  it('#addMultipleProductsInEcom', () => {
+    const params = [];
+    const res = {
+      body: {
+        orderId: [{}],
+        orderItemId: [{}],
+      },
+    };
+    executeStatefulAPICall.mockImplementation(() => Promise.reject(res));
+    addMultipleProductsInEcom(params).then(val => expect(val).toMatchObject(res));
+  });
+  it('#addMultipleProductsInEcom error', () => {
+    const params = [];
+    const result = {
+      error: {
+        orderItemId: [{}],
+      },
+    };
+    executeStatefulAPICall.mockImplementation(() => Promise.reject(result));
+    addMultipleProductsInEcom(params).catch(val => expect(val).toMatchObject(result));
   });
 });

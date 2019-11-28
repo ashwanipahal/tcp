@@ -5,6 +5,7 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
@@ -19,6 +20,7 @@ exports[`PersonalInformationDisplay should render empty correctly 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs16"
     margin={null}
     numberOfLines={null}

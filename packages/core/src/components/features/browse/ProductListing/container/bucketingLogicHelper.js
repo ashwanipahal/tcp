@@ -65,8 +65,7 @@ class BucketingBL {
   getMatchPath = (isSearchPage, location) => {
     const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
     const params = isSearchPage ? '/search/' : categoryParam;
-    const pathname = isMobileApp() ? location.pathname : window.location.pathname;
-    return matchPath(pathname, params);
+    return matchPath(location.pathname, params);
   };
 
   // TODO: need to check why some of the lines are commented in the existing code

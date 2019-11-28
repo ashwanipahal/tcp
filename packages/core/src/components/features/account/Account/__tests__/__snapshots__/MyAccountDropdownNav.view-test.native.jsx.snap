@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAccountDropdownNav should render correctly 1`] = `
+<View
+  className=""
+  component="Account"
+  handleComponentChange={[Function]}
+  navData={
+    Array [
+      Object {
+        "component": "overview",
+      },
+    ]
+  }
+>
+  <Styled(DropDown)
+    arrowImageStyle={
+      Object {
+        "position": "absolute",
+        "right": 20,
+      }
+    }
+    bounces={false}
+    data={
+      Array [
+        Object {
+          "component": "overview",
+        },
+      ]
+    }
+    dropDownItemFontWeight="regular"
+    dropDownStyle={
+      Object {
+        "border": 1,
+        "height": 49,
+      }
+    }
+    isAnimateList={true}
+    itemStyle={
+      Object {
+        "color": "gray.800",
+        "height": 49,
+      }
+    }
+    onValueChange={[Function]}
+    openDropdownOnLoad={false}
+    selectedItemFontWeight="black"
+    selectedValue="Account"
+    variation="primary"
+  />
+</View>
+`;

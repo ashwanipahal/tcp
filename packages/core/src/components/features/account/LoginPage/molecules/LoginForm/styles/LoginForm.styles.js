@@ -14,5 +14,9 @@ const styles = css`
     color: ${props => props.theme.colorPalette.red[500]};
   }
 `;
-
+export const customSpinnerStyle = css`
+  .spinner-overlay {
+    position: absolute;
+  }
+`;
 export default styles;

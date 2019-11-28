@@ -19,7 +19,7 @@ import AddChildBirthdayForm from '../../../molecule/AddChild';
 export const InfoMessage = ({ labels, spacingStyles }) => (
   <BodyCopyWithSpacing
     fontSize="fs14"
-    mobileFontFamily="secondary"
+    fontFamily="secondary"
     spacingStyles={spacingStyles}
     text={getLabelValue(labels, 'lbl_profile_birthday_saving_info')}
   />
@@ -171,7 +171,7 @@ class BirthdaySavingsList extends PureComponent {
           {removeModal && (
             <View>
               <BodyCopyWithSpacing
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
                 text={getLabelValue(labels, 'lbl_profile_removeInfoText').replace(

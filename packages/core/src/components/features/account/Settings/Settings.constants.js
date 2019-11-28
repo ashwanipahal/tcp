@@ -1,0 +1,6 @@
+const SETTINGS_CONSTANTS = {
+  SETTINGS_FACE_ID: 'FaceID',
+  SETTINGS_TOUCH_ID: 'TouchID',
+};
+
+export default SETTINGS_CONSTANTS;

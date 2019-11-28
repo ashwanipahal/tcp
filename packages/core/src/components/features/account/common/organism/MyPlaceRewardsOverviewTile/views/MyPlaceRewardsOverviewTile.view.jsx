@@ -39,7 +39,7 @@ export const MyPlaceRewardsOverviewTile = ({
       ctaLink="/account?id=place-rewards"
       ctaPath="/account/place-rewards"
     >
-      <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
+      <section className="elem-pb-LRG">
         <BodyCopy
           className="elem-mb-LRG"
           fontSize="fs14"

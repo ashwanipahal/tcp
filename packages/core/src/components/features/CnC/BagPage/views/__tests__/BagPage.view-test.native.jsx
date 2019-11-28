@@ -186,4 +186,12 @@ describe('AddedToBagActions native component', () => {
     component.instance().renderPickupModal();
     expect(spyRenderModals).toHaveBeenCalled();
   });
+  it('should call renderRecommendations', () => {
+    props1.orderItemsCount = 0;
+    props1.sflItems = { size: 2 };
+    const component = shallow(<BagPage {...props1} />);
+    const spyOpenModal = jest.spyOn(component.instance(), 'renderRecommendations');
+    component.instance().renderRecommendations();
+    expect(spyOpenModal).toHaveBeenCalled();
+  });
 });

@@ -184,9 +184,9 @@ exports[`InfoMessage component should render correctly 1`] = `
 <Styled(Styled(BodyCopy))
   accessibilityText=""
   dataLocator=""
+  fontFamily="secondary"
   fontSize="fs14"
   margin={null}
-  mobileFontFamily="secondary"
   numberOfLines={null}
   spacingStyles=""
   text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"

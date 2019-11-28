@@ -70,18 +70,28 @@ export default {
     },
     promoTextBannerCarousel: {
       composites: {
+        displayPromo: 'none',
+        promoRichText: [
+          {
+            link: { url: 'https://www.google.com' },
+            richText: { text: '<h3> this is my rich</h3>' },
+          },
+          {
+            link: { url: 'https://www.google.com' },
+            richText: { text: '<h3> this is my rich2</h3>' },
+          },
+        ],
         promoTextBanner: [
           {
             linkClass: {
-              url:
-                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062411_boss',
+              url: '/c/boys',
               title: '',
               target: '',
               external: 0,
               class: 'header__promo-text-banner1',
               __typename: 'LinkClass',
             },
-            textLines: [
+            textItems: [
               {
                 text: 'NEED IT NOW?',
                 style: 'style2',
@@ -99,15 +109,14 @@ export default {
           },
           {
             linkClass: {
-              url:
-                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062419_boss',
+              url: 'https://www.childrensplace.com/us/home',
               title: '',
               target: '',
               external: 0,
               class: 'header__promo-text-banner',
               __typename: 'LinkClass',
             },
-            textLines: [
+            textItems: [
               {
                 text: 'EARN PLACE CASH!',
                 style: 'style2',
@@ -125,15 +134,14 @@ export default {
           },
           {
             linkClass: {
-              url:
-                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062419_boss',
+              url: 'https://www.childrensplace.com/us/home',
               title: '',
               target: '',
               external: 0,
               class: 'header__promo-text-banner',
               __typename: 'LinkClass',
             },
-            textLines: [
+            textItems: [
               {
                 text: 'NEED IT NOW?',
                 style: 'style3',

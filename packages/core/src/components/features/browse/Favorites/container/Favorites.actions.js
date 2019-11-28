@@ -14,6 +14,20 @@ export const setWishlistState = payload => {
   };
 };
 
+export const setAddToFavoriteErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.SET_FAVORITES_ERROR,
+    payload,
+  };
+};
+
+export const removeAddToFavoriteErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.REMOVE_FAVORITES_ERROR,
+    payload,
+  };
+};
+
 export const getSetWishlistsSummariesAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST,
@@ -32,6 +46,13 @@ export const getActiveWishlistAction = wishListId => {
   return {
     type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST,
     wishListId,
+  };
+};
+
+export const getActiveWishlistGuestAction = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST_GUEST,
+    payload,
   };
 };
 
@@ -59,6 +80,13 @@ export const deleteWishListAction = payload => {
 export const setLastDeletedItemIdAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.DELETE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
+export const setReplaceWishlistItem = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM,
     payload,
   };
 };
@@ -115,6 +143,13 @@ export const getSetActiveWishlistAction = activeWishlist => {
 export const setLoadingState = payload => {
   return {
     type: FAVORITES_CONSTANTS.FAVORITES_SET_LOADING,
+    payload,
+  };
+};
+
+export const setWishListShareSuccess = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_WISHLIST_SHARE_SUCCESS,
     payload,
   };
 };

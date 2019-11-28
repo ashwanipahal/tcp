@@ -5,6 +5,11 @@ const errorViewPaddingTop = ({ bagPage }) => {
     ${bagPage ? '22px' : '6px'}
   `;
 };
+
+const errorViewBackgroundColor = props => {
+  return `${props.showAccordian ? props.theme.colors.WHITE : props.theme.colors.PRIMARY.PALEGRAY}`;
+};
+
 export const ErrorView = styled.View`
   display: flex;
   padding: ${props =>
@@ -17,7 +22,7 @@ export const ErrorView = styled.View`
   flex-direction: row;
   justify-content: center;
   background-color: ${props =>
-    props.showAccordian ? props.theme.colors.WHITE : props.theme.colors.PRIMARY.PALEGRAY};
+    props.backgroundColor ? props.backgroundColor(props) : errorViewBackgroundColor(props)};
 `;
 
 export const ErrorIcon = {

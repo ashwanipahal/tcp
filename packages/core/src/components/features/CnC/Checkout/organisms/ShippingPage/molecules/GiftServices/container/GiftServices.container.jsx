@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { change } from 'redux-form';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import GiftServices from '../views/GiftServices.view';
 import {
   getGiftServicesLabels,
@@ -13,6 +14,7 @@ import {
 } from './GiftServices.selector';
 import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 import { isGymboree, isCanada } from '../../../../../../../../../utils';
+import BagPageSelector from '../../../../../../BagPage/container/BagPage.selectors';
 
 class GiftServicesContainer extends React.PureComponent {
   constructor(props) {
@@ -48,6 +50,7 @@ class GiftServicesContainer extends React.PureComponent {
     if (dispatch) {
       dispatch(change('GiftServices', `brand`, brandName));
       dispatch(change('GiftServices', `optionId`, 'standard'));
+      dispatch(change('GiftServices', `message`, ''));
     }
     this.setState({ brandState: brandName });
   };
@@ -63,6 +66,8 @@ class GiftServicesContainer extends React.PureComponent {
       giftWrap,
       currencySymbol,
       detailsRichTextGymboree,
+      setClickAnalyticsDataGC,
+      cartOrderItems,
     } = this.props;
     if (!isCanada()) {
       const optionId = giftWrap ? giftWrap.get('optionId') : '';
@@ -89,6 +94,8 @@ class GiftServicesContainer extends React.PureComponent {
               currencySymbol={currencySymbol}
               handleToggle={this.handleToggle}
               SelectedBrand={SelectedBrand}
+              setClickAnalyticsDataGC={setClickAnalyticsDataGC}
+              cartOrderItems={cartOrderItems}
             />
           )}
         </>
@@ -107,12 +114,22 @@ GiftServicesContainer.propTypes = {
   giftWrap: PropTypes.shape.isRequired,
   currencySymbol: PropTypes.string,
   detailsRichTextGymboree: PropTypes.shape.isRequired,
+  setClickAnalyticsDataGC: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 GiftServicesContainer.defaultProps = {
   dispatch: () => {},
   formName: '',
   formSection: '',
   currencySymbol: '$',
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    setClickAnalyticsDataGC: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+  };
 };
 
 export const mapStateToProps = state => ({
@@ -122,6 +139,10 @@ export const mapStateToProps = state => ({
   giftWrapOptions: getGiftWrapOptions(state),
   giftWrap: getInitialGiftWrapOptions(state),
   currencySymbol: getCurrencySymbol(state),
+  cartOrderItems: BagPageSelector.getOrderItems(state) || [],
 });
 
-export default connect(mapStateToProps)(GiftServicesContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GiftServicesContainer);

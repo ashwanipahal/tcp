@@ -11,7 +11,15 @@ const Skeleton = ({ row, col, width, height, rowProps, colProps, ...otherprops }
         return (
           <Row key={rIndex.toString()} rowProps={rowProps}>
             {Array.from({ length: col }).map((cItem, index) => {
-              return <Col key={index.toString()} width={width} height={height} {...otherprops} />;
+              return (
+                <Col
+                  key={index.toString()}
+                  width={width}
+                  height={height}
+                  colProps={colProps}
+                  {...otherprops}
+                />
+              );
             })}
           </Row>
         );

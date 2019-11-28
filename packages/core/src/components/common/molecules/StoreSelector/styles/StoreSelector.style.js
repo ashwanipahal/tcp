@@ -128,7 +128,7 @@ export default css`
 
   .store-selector-icon {
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    background: #ffffff;
+    background: ${props => props.theme.colors.WHITE};
     position: absolute;
     top: -24px;
     left: 50%;

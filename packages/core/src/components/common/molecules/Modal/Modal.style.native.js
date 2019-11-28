@@ -1,6 +1,16 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
+const getAdditionalStyle = props => {
+  const { margins, paddings, modalHeadingMargin, childrenMargins } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(paddings && { padding: paddings }),
+    ...(modalHeadingMargin && { margin: modalHeadingMargin }),
+    ...(childrenMargins && { margin: childrenMargins }),
+  };
+};
+
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   ${props =>
@@ -29,7 +39,7 @@ const ModalCustomWrapper = styled.SafeAreaView`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-const ModalHeading = styled.Text`
+const ModalHeading = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
   ${props =>
@@ -37,7 +47,8 @@ const ModalHeading = styled.Text`
       ? `
       position: relative;
   `
-      : ``}
+      : ``};
+  ${getAdditionalStyle};
 `;
 
 const LineWrapper = styled.View`
@@ -63,6 +74,12 @@ const RowWrapper = styled.View`
       margin: 14px 14px 0 14px
       `
       : ``}
+  ${props =>
+    props.customHeaderMargin
+      ? `
+      margin: ${props.customHeaderMargin}
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`
@@ -80,6 +97,17 @@ const Heading = styled.View`
   background-color: ${props => props.theme.colors.WHITE};
 `;
 
+const ViewContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+const ScrollView = styled.ScrollView`
+  ${getAdditionalStyle};
+`;
+
+const ChildrenContainer = styled.View`
+  ${getAdditionalStyle};
+`;
+
 export {
   StyledCrossImage,
   ImageWrapper,
@@ -89,4 +117,7 @@ export {
   RowWrapper,
   ModalCustomWrapper,
   Heading,
+  ViewContainer,
+  ScrollView,
+  ChildrenContainer,
 };

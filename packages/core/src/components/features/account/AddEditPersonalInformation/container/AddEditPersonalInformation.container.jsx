@@ -123,8 +123,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       associateId,
       airMilesAccountNumber,
       isEmployee: !!associateId,
-      userBirthMonth: birthdayArray[0],
-      userBirthYear: birthdayArray[1],
+      userBirthMonth: birthdayArray[0] || '',
+      userBirthYear: birthdayArray[1] || '',
     };
   };
 

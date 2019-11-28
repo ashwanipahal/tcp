@@ -5,12 +5,15 @@ const styles = css`
     display: flex;
   }
 
+  .addressVerification {
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+  }
+
   .addressVerification__section {
     border-bottom: 1px solid;
-    margin-left: 0;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
+    border-color: ${props => props.theme.colors.PRIMARY.GRAY};
   }
 
   .addressVerification__section--noBorder {
@@ -18,15 +21,14 @@ const styles = css`
   }
 
   .addressVerification__ctaContainer {
-    margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-    }
+    margin: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
+      ${props => props.theme.spacing.LAYOUT_SPACING.LRG}
+      ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   }
 
   .addressVerification__cta {
     width: 100%;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     font-weight: ${props => props.theme.fonts.fontWeight.normal};
   }
 `;

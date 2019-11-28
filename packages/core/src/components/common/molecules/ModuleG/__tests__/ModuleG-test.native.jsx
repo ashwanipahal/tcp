@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import moduleGMockData from '../../../../../services/abstractors/common/moduleG/mock';
-import { ModuleGVanilla } from '../views/ModuleG.native';
+import ModuleG from '../container/ModuleG.container';
 
 describe('ModuleGVanilla', () => {
   let ModuleGComponent;
 
   beforeEach(() => {
-    ModuleGComponent = shallow(<ModuleGVanilla {...moduleGMockData.moduleG.composites} />);
+    ModuleGComponent = shallow(<ModuleG {...moduleGMockData.moduleG.composites} />);
   });
 
   it('ModuleG should be defined', () => {

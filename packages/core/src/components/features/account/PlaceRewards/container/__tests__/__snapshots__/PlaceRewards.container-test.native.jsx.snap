@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlaceRewardsContainer should render correctly 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<PlaceRewardsView
+  commonLabels={
+    Object {
+      "common": Object {},
+      "myPlaceRewards": Object {},
+    }
+  }
+  labels={
+    Object {
+      "common": Object {},
+      "myPlaceRewards": Object {},
+    }
+  }
+/>
 `;

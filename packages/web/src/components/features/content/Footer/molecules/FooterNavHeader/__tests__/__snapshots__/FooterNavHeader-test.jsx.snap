@@ -21,9 +21,112 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
 `;
 
 exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
-<Styled(Anchor)
+<Connect(Component)
   aria-label="Title"
+  as={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  font-family: ",
+          [Function],
+          ";
+  color: inherit;
+
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+
+  .left-arrow {
+    border: solid ",
+          [Function],
+          ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Anchor)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
   className="footer-nav-header img-link"
+  clickData={
+    Object {
+      "eventName": "loyaltyclick",
+      "pageSection": "home page",
+      "pageSubSection": "home page",
+      "pageType": "home page",
+    }
+  }
   dataLocator="col_heading_3"
   to=""
 >
@@ -31,7 +134,7 @@ exports[`FooterNavHeader component renders image in header variation correctly 1
     aria-hidden="true"
     tabIndex="-1"
   />
-</Styled(Anchor)>
+</Connect(Component)>
 `;
 
 exports[`FooterNavHeader component renders subheader variation correctly 1`] = `

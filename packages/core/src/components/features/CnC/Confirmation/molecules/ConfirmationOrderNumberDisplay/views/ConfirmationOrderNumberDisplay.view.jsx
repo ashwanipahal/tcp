@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getDateInformation } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import CONFIRMATION_CONSTANTS from '../../../Confirmation.constants';
-import { getDateInformation } from '../../../../../../../utils';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -10,6 +11,26 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import internalEndpoints from '../../../../../account/common/internalEndpoints';
 
 const { orderPage, trackOrder } = internalEndpoints;
+
+const getBossDate = (isBoss, bossDate) => {
+  return isBoss ? bossDate : '';
+};
+const renderDate = (orderType, bossDate, bopisDate) => {
+  const isBoss = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS;
+  const isBopis = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOPIS;
+  const date = isBopis ? bopisDate : getBossDate(isBoss, bossDate);
+  return (
+    <BodyCopy
+      fontSize="fs22"
+      fontFamily="secondary"
+      fontWeight="extrabold"
+      className="confirmation-fullfillment-type"
+      textAlign="center"
+    >
+      {date}
+    </BodyCopy>
+  );
+};
 
 /**
  * @function ConfirmationOrderNumberDisplay
@@ -26,8 +47,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
     productsCount,
     encryptedEmailAddress,
   } = center;
-  const isBoss = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS;
-  const isBopis = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOPIS;
+
   const today = getDateInformation('', false);
   const bossStartDate = bossMinDate ? getDateInformation(bossMinDate) : '';
   const bossEndDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
@@ -46,34 +66,13 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
       >
         {`${productsCount} ${productsCount > 1 ? labels.items : labels.item}`}
       </BodyCopy>
-      {isBoss && (
-        <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-        >
-          {bossDate}
-        </BodyCopy>
-      )}
-      {isBopis && (
-        <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-        >
-          {bopisDate}
-        </BodyCopy>
-      )}
+      {renderDate(orderType, bossDate, bopisDate)}
       <div className="confirmation-order-details-wrapper">
         <ConfirmationItemDisplay title={labels.orderNumber}>
           {isGuest ? (
             <Anchor
               underline
-              to={`${trackOrder.link}&orderId=${orderNumber}&email=${encryptedEmailAddress}`}
+              to={`${trackOrder.link}&orderId=${orderNumber}&emailAddress=${encryptedEmailAddress}`}
               asPath={`${trackOrder.path}/${orderNumber}/${encryptedEmailAddress}`}
             >
               {orderNumber}
@@ -93,7 +92,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            {`${labels.currencySign} ${orderTotal.toFixed(2)}`}
+            <PriceCurrency price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

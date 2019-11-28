@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 const getSelectedAddress = (addressList, onFileAddressKey, shippingAddressId) => {
   let selectedAddress = null;
@@ -46,9 +46,10 @@ const onSaveBtnClick = ({
   addNewShippingAddress,
   modalState,
   isEditing,
+  afterAddressUpdate,
 }) => {
   if (((modalState && modalType === 'edit') || isEditing) && updateShippingAddress) {
-    updateShippingAddress();
+    updateShippingAddress(afterAddressUpdate);
   }
   if (modalState && modalType === 'add' && addNewShippingAddress) {
     addNewShippingAddress();

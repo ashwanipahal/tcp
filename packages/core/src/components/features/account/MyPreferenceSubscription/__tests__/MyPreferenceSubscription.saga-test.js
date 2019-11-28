@@ -17,6 +17,7 @@ describe('getSubscribeStoreSaga saga', () => {
     beforeEach(() => {
       gen = getSubscribeStoreSaga({});
       gen.next();
+      gen.next();
     });
 
     it('should dispatch setSubscribeStore action for response', () => {
@@ -37,7 +38,8 @@ describe('getSubscribeStoreSaga saga', () => {
         smsPhone: '2012386357',
         smsSubscriptionState: 'ATTEMPTED',
       };
-      const putDescriptor = gen.next(subscribeStoreData).value;
+      gen.next(subscribeStoreData);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(setSubscribeStore(subscribeStoreData)));
     });
   });
@@ -63,9 +65,11 @@ describe('getSubscribeStoreSaga saga', () => {
     beforeEach(() => {
       gen = setSubscribeStoreSaga(data);
       gen.next();
+      gen.next();
     });
 
     it('should dispatch setSubscribeStore action for response', () => {
+      gen.next();
       const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(
         put(

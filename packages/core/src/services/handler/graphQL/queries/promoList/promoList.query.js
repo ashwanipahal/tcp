@@ -3,6 +3,7 @@ ${slot || `promoList`}: moduleById(id: "${contentId || cid}") {
     contentId
     name
     type
+    errorMessage
     composites {
       promoListWrapper {
         class {

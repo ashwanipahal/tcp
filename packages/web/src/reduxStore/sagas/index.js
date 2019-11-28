@@ -31,6 +31,7 @@ import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
+import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import QuickViewSaga from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.saga';
 import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
@@ -69,8 +70,8 @@ import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/S
 import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
 import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import BundleProductSaga from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.saga';
-import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
-import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
+import EmailSignupForm from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.saga';
+import SmsSignupForm from '@tcp/core/src/components/common/organisms/SmsSignupForm/container/SmsSignupForm.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
 
 export default function* rootSaga() {
@@ -93,8 +94,8 @@ export default function* rootSaga() {
     AddressVerificationSaga(),
     PaymentSaga(),
     TrackOrderSaga(),
-    EmailSignupSaga(),
-    SmsSignupSaga(),
+    EmailSignupForm(),
+    SmsSignupForm(),
     DeleteCardSaga(),
     GiftCardBalanceSaga(),
     DefaultPaymentSaga(),
@@ -147,5 +148,6 @@ export default function* rootSaga() {
     StoresInternationalSaga(),
     StoreListSaga(),
     BundleProductSaga(),
+    NavigationSaga(),
   ]);
 }

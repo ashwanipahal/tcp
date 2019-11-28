@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { DamImage } from '../../../../../../common/atoms';
 
 const getImageStyle = props => {
   const { width, height, resizeMode, borderRadius } = props;
@@ -29,7 +30,7 @@ const ImageTouchableOpacity = styled.TouchableOpacity`
   ${getImageBorderStyle}
 `;
 
-const ImageComp = styled.Image`
+const ImageComp = styled(DamImage)`
   ${getImageStyle}
 `;
 

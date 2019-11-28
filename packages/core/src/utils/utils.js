@@ -14,13 +14,28 @@ import constants from '../components/features/account/OrderDetails/OrderDetails.
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const buildId = process.env.NEXT_BUILD_ID || 'version-not-available';
+
+/**
+ * This function returns the static files path with the buildId in place
+ * @param {String} filePath path inside the /static directory
+ */
+export const getStaticFilePath = filePath => {
+  if (!filePath) return filePath;
+
+  // Following Regex to test if filePath is absolute and return the same value if true
+  if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
+    return filePath;
+  }
+  return `/static/${buildId}/${filePath}`;
+};
 
 /**
  * This function returns the path of icons in static/images folder
  * @param {*} icon | String - Identifier for icons in assets
  */
 export const getIconPath = icon => {
-  return icons[icon];
+  return getStaticFilePath(icons[icon]);
 };
 
 /**
@@ -28,7 +43,7 @@ export const getIconPath = icon => {
  * @param {*} icon | String - Country Code Identifier eg. US for USA
  */
 export const getFlagIconPath = code => {
-  return flagIcons[code];
+  return getStaticFilePath(flagIcons[code]);
 };
 
 /**
@@ -39,6 +54,13 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const getVideoUrl = url => {
+  if (url) {
+    return String(url).match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
@@ -46,6 +68,13 @@ export const isMobileApp = () => {
 export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
+
+export const plpRoutingHandling = filterId => {
+  const getFilterHeight = filterId.offsetHeight;
+  const getFilterOffSet = filterId.offsetTop;
+  window.scrollTo(0, getFilterOffSet - getFilterHeight);
+  localStorage.removeItem('handleRemoveFilter');
+};
 
 /**
  * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
@@ -454,6 +483,9 @@ export const getErrorSelector = (state, labels, errorKey) => {
     if (errorParameters) {
       return getLabelValue(labels, `${errorKey}_${errorParameters}`);
     }
+    if (`${errorKey}_${errorCode}` === getLabelValue(labels, `${errorKey}_${errorCode}`)) {
+      return 'Oops... an error occured.';
+    }
     return getLabelValue(labels, `${errorKey}_${errorCode}`);
   }
   return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
@@ -612,6 +644,8 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const plpRoute = `${ROUTE_PATH.plp.name}/`;
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
+  const staticContentRoute = `${ROUTE_PATH.content.name}/`;
+  const helpCenterRoute = `${ROUTE_PATH.helpCenter.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -627,6 +661,16 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(searchRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  if (url.includes(staticContentRoute)) {
+    const urlItems = url.split(staticContentRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
+  }
+  if (url.includes(helpCenterRoute)) {
+    const urlItems = url.split(helpCenterRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.helpCenter.name}?${ROUTE_PATH.helpCenter.param}=${queryParam}`;
   }
   return url;
 };
@@ -845,11 +889,11 @@ export const getStoreHours = (
     const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
     const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
     if (!isPastStoreHours(selectedDateToHour, currentDate)) {
-      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+      return `${openUntilLabel} ${toTimeString(selectedDateToHour, true)}`;
     }
     const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
     // Handle the other scenarion
-    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+    return `${opensAtLabel} ${toTimeString(selectedDateFromHour, true)}`;
   } catch (err) {
     // Show empty incase no data found.
     return '';
@@ -1018,8 +1062,129 @@ export const getStyliticsRegion = () => {
   return styliticsRegionGYM;
 };
 
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
+export const getProductUrlForDAM = uniqueId => {
+  return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
+export const getQueryParamsFromUrl = (url, queryParam) => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter((item, index) => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[index].split('=')[1]);
+      return params;
+    });
+  }
+  return params[queryParam];
+};
+
+/**
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
+ */
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
+/**
+ * @description - This method calculate Price based on the given value
+ */
+export const calculatePriceValue = (
+  price,
+  currencySymbol = '$',
+  currencyExchangeValue = 1,
+  defaultReturn = 0
+) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchangeValue).toFixed(2)}`;
+  }
+  return priceValue;
+};
+export const orderStatusMapperForNotification = {
+  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING]: 'lbl_global_yourOrderIsProcessing',
+  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_orders_statusOrderShipped',
+  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_orders_statusOrderPartiallyShipped',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_orders_statusItemsReadyForPickup',
+  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
+  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
+  [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
+  /* Status added for BOSS */
+  [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
+};
+
+/**
+ * @function getOrderStatusForNotification
+ * @summary
+ * @param {String} status -
+ * @return orderStatus
+ */
+export const getOrderStatusForNotification = status => {
+  const orderStatus =
+    orderStatusMapperForNotification[status] ||
+    orderStatusMapperForNotification[status.toLowerCase()] ||
+    status;
+
+  return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
+};
+
+/**
+ * @function validateDiffInDaysNotification
+ * @summary
+ * @param {Date}  orderDateParam
+ * @return true if date false between limit range
+ */
+export const validateDiffInDaysNotification = (
+  orderDateParam,
+  limitOfDaysToDisplayNotification
+) => {
+  let orderDate = orderDateParam;
+  orderDate = moment(orderDate, 'MMM DD, YYYY');
+  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+export const convertNumToBool = val => {
+  return !!parseInt(val, 10);
+};
+
 export default {
+  getVideoUrl,
+  getOrderStatusForNotification,
+  validateDiffInDaysNotification,
   getPromotionalMessage,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
@@ -1055,8 +1220,14 @@ export default {
   stringify,
   readCookieMobileApp,
   changeImageURLToDOM,
+  getStoreHours,
   generateTraceId,
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
+  getLabelsBasedOnPattern,
+  calculatePriceValue,
+  getProductUrlForDAM,
+  convertNumToBool,
 };

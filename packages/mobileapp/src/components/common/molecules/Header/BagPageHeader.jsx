@@ -34,34 +34,36 @@ const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.
  *     and shoe the name fro register user
  */
 class BagPageHeader extends React.PureComponent<Props> {
-  render() {
+  closeIconAction = () => {
     const { navigation } = this.props;
+    navigation.goBack();
+  };
 
+  render() {
+    const { isPayPalWebViewEnable } = this.props;
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
-        <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
-          <BrandIconSection>
-            <BrandIcon
-              source={isGymboree() ? gymIcon : tcpIcon}
-              data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
-              accessibilityRole="image"
-            />
-          </BrandIconSection>
-          <CloseContainer>
-            <CloseIconTouchable
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              <CloseIcon
-                source={closeIcon}
-                data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
-                accessibilityRole="button"
+        {!isPayPalWebViewEnable && (
+          <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
+            <BrandIconSection>
+              <BrandIcon
+                source={isGymboree() ? gymIcon : tcpIcon}
+                data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
+                accessibilityRole="image"
               />
-            </CloseIconTouchable>
-          </CloseContainer>
-        </BagPageContainer>
+            </BrandIconSection>
+            <CloseContainer>
+              <CloseIconTouchable onPress={this.closeIconAction}>
+                <CloseIcon
+                  source={closeIcon}
+                  data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
+                  accessibilityRole="button"
+                />
+              </CloseIconTouchable>
+            </CloseContainer>
+          </BagPageContainer>
+        )}
       </SafeAreaViewStyle>
     );
   }
@@ -70,6 +72,8 @@ class BagPageHeader extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    isPayPalWebViewEnable:
+      state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false,
   };
 };
 

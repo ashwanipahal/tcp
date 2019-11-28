@@ -10,7 +10,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
-      fontWeight="extrabold"
+      fontWeight="bold"
       margin={null}
       numberOfLines={null}
       text="Earn Extra Points"
@@ -23,6 +23,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       customStyle={Object {}}
       data-locator="earnExtraPointsViewAll"
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -58,7 +59,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         renderItem={[Function]}
         showDots={true}
         variation="show-arrow"
-        width={720}
+        width={775}
       />
     </View>
   </Styled(View)>

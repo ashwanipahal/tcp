@@ -15,3 +15,7 @@ export const getExtraPointsTilesContentId = state => {
 export const getPromoListDetails = state => {
   return state[EXTRA_POINTS_REDUCER_KEY].get('promoListDetails');
 };
+
+export const getPromoListDetailsFetchingState = state => {
+  return state[EXTRA_POINTS_REDUCER_KEY].get('isFetching');
+};

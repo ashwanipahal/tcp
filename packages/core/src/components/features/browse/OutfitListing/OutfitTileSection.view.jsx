@@ -1,9 +1,10 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import OutfitTileSectionStyle from './OutfitTileSection.style';
+import OutfitTileSectionStyle, { outFitSkeletonCss } from './OutfitTileSection.style';
 import withStyles from '../../../common/hoc/withStyles';
 import BodyCopy from '../../../common/atoms/BodyCopy';
 import OutfitTile from './OutfitTile';
+import { Skeleton } from '../../../common/atoms';
 
 const getOutfitTile = (outfitTile, asPath, labels, className) => {
   return (
@@ -15,8 +16,13 @@ const getOutfitTile = (outfitTile, asPath, labels, className) => {
 };
 
 const OutfitTileSection = props => {
-  const { className, asPath, outfitDetails, labels } = props;
-
+  const {
+    className,
+    asPath,
+    outfitDetails,
+    outfitDetails: { isFetchingDataForOutfit },
+    labels,
+  } = props;
   const outfitTile = outfitDetails[asPath];
 
   return (
@@ -31,6 +37,13 @@ const OutfitTileSection = props => {
       </BodyCopy>
       <div className={`${className} outfit-section-wrapper`}>
         {getOutfitTile(outfitTile, asPath, labels)}
+        {isFetchingDataForOutfit ? (
+          <Skeleton
+            col={6}
+            inheritedStyles={outFitSkeletonCss}
+            rowProps={{ justifyContent: 'space-around', marginTop: '10px' }}
+          />
+        ) : null}
       </div>
     </div>
   );

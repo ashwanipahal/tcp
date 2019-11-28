@@ -5,6 +5,8 @@ exports[`InputCheckbox component should render correctly 1`] = `
   borderColor="#ff0000"
   borderWidth={0.65}
   marginBottom={0}
+  marginLeft={0}
+  marginRight={0}
   marginTop={0}
 />
 `;

@@ -22,7 +22,7 @@ export const getPayloadCookieArray = cookie => {
   });
 };
 
-export const NavigateXHR = cookie => {
+export const NavigateXHR = (cookie, headers = {}) => {
   const { crossDomain } = getAPIConfig();
   const webServiceEndPoints = Object.assign({}, endpoints.navigateXHR);
   webServiceEndPoints.URI = `${crossDomain}/api/${endpoints.navigateXHR.URI}`;
@@ -32,6 +32,7 @@ export const NavigateXHR = cookie => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      ...headers,
     },
     credentials: 'include',
     body: JSON.stringify({ cookie: getPayloadCookieArray(cookie) }),

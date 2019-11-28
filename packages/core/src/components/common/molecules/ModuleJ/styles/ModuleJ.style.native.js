@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { Image } from '../../../atoms';
+import { DamImage } from '../../../atoms';
 import ProductTabList from '../../../organisms/ProductTabList';
 
 export const Container = styled.View`
@@ -16,7 +16,7 @@ export const ImageSlideWrapper = styled.View`
   flex-direction: row;
 `;
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled(DamImage)`
   /* stylelint-disable-next-line */
   resize-mode: contain;
 `;

@@ -1,13 +1,23 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { Image, BodyCopy } from '../../../../../../common/atoms';
 import Styles from '../styles/CreateAccountTopSection.style';
 import { getIconPath, isCanada } from '../../../../../../../utils';
 
+/**
+ * @param {string} props : props for CustomIcon
+ * @return {JSX} IconClass : Return jsx icon component
+ * @desc This method based on the props generate icon component.
+ */
+const showForgotPassword = showForgotPasswordForm => {
+  showForgotPasswordForm();
+};
+
 const CreateAccountTopSection = props => {
-  const { labels } = props;
+  const { labels, showForgotPasswordForm } = props;
   return (
     <BodyCopy component="div" className="elem-pr-XS elem-pl-XS">
       {!isCanada() && (
@@ -30,7 +40,7 @@ const CreateAccountTopSection = props => {
         )}
         <BodyCopy className="elem-pb-XS" fontFamily="secondary" fontSize="fs13" textAlign="center">
           <span>{getLabelValue(labels, 'lbl_createAccount_createA', 'registration')}</span>
-          <BodyCopy component="span" color="gray.700">
+          <BodyCopy component="span" fontFamily="secondary" fontWeight="semibold" color="gray.800">
             {getLabelValue(labels, 'lbl_createAccount_myPlaceRewards', 'registration')}
           </BodyCopy>
           <span>{getLabelValue(labels, 'lbl_createAccount_earnPoints', 'registration')}</span>
@@ -63,7 +73,16 @@ const CreateAccountTopSection = props => {
           <p>{getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}</p>
           <p>{getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}</p>
           <BodyCopy component="div" fontFamily="secondary" fontSize="fs12" textAlign="center">
-            {getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
+            <Anchor
+              underline
+              className="reset-password"
+              onClick={e => {
+                e.preventDefault();
+                showForgotPassword(showForgotPasswordForm);
+              }}
+            >
+              {getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
+            </Anchor>
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>
@@ -72,6 +91,7 @@ const CreateAccountTopSection = props => {
 };
 
 CreateAccountTopSection.propTypes = {
+  showForgotPasswordForm: PropTypes.func,
   labels: PropTypes.shape({
     heading: PropTypes.string,
     subHeading: PropTypes.string,
@@ -80,6 +100,7 @@ CreateAccountTopSection.propTypes = {
 };
 
 CreateAccountTopSection.defaultProps = {
+  showForgotPasswordForm: () => {},
   labels: {
     heading: 'Welcome Back',
     subHeading: 'Log in to earn points for MY PLACE REWARDS ',

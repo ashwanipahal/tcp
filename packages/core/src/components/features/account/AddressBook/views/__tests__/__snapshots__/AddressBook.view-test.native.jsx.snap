@@ -20,6 +20,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
         },
         "addresses": Array [],
         "deleteModalMountedState": false,
+        "isFetching": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",
@@ -54,6 +55,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
     }
   }
   forwardedRef={null}
+  isFetching={false}
   labels={Object {}}
   onDefaultShippingAddressClick={[Function]}
   setDeleteModalMountState={[Function]}
@@ -95,6 +97,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
         },
         "addresses": Array [],
         "deleteModalMountedState": false,
+        "isFetching": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",
@@ -129,6 +132,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
     }
   }
   forwardedRef={null}
+  isFetching={false}
   labels={Object {}}
   onDefaultShippingAddressClick={[Function]}
   setDeleteModalMountState={[Function]}

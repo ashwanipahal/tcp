@@ -26,6 +26,7 @@ export function* getSearchResult({ payload }) {
       response.autosuggestList[1].suggestions.length < 1 &&
       response.autosuggestProducts.length < 1
     ) {
+      yield put(setSearchResult(response));
       yield put(setShowMoreProductFlag(false));
     } else {
       yield put(setSearchResult(response));

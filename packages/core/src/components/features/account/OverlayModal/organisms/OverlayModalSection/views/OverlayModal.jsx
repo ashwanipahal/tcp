@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
+import { Modal } from '@tcp/core/src/components/common/molecules';
+import { getViewportInfo, isMobileWeb, isCanada, getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
-import { scrollPage } from '../../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
@@ -12,6 +14,10 @@ const propTypes = {
   color: PropTypes.shape({}),
   componentProps: PropTypes.shape({}).isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({
+    lbl_login_loginCTA: PropTypes.string,
+    lbl_login_createAccountCTA: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
@@ -19,7 +25,13 @@ const defaultProps = {
   closeOverlay: () => {},
   className: '',
   color: '',
+  labels: PropTypes.shape({
+    lbl_login_loginCTA: '',
+    lbl_login_createAccountCTA: '',
+  }),
 };
+
+const TAB_KEY = 9;
 
 class OverlayModal extends React.Component {
   constructor(props) {
@@ -32,7 +44,9 @@ class OverlayModal extends React.Component {
     this.bodyContainer = bodyContainer;
     const [body] = document.getElementsByTagName('body');
     this.body = body;
+    this.isMobile = getViewportInfo().isMobile && isMobileWeb();
     this.handleWindowClick = this.handleWindowClick.bind(this);
+    this.keydownInOverlay = this.keydownInOverlay.bind(this);
   }
 
   componentDidMount() {
@@ -41,23 +55,46 @@ class OverlayModal extends React.Component {
     this.overlayElement.classList.add('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.addEventListener('mousedown', this.handleWindowClick);
+      this.body.addEventListener('click', this.handleWindowClick);
     }
     this.getCustomStyles({ styleModal: true });
+    if (this.modalRef) {
+      this.modalRef.focus({ preventScroll: true });
+    }
   }
 
   componentDidUpdate(prevProps) {
-    const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
-    const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
+    const {
+      component: nextTargetComponent,
+      showCondensedHeader: nextCondensedState,
+      isLoggedIn,
+    } = this.props;
+    const {
+      component: prevTargetComponent,
+      showCondensedHeader: prevCondensedState,
+      isLoggedIn: prevLoggedIn,
+    } = prevProps;
     const modal = document.getElementById('dialogContent');
+    const loginStateChanged = !prevLoggedIn && isLoggedIn;
+    const condensedStateChanged = nextCondensedState !== prevCondensedState;
+
     if (nextTargetComponent !== prevTargetComponent) {
-      scrollPage();
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
+    } else if (condensedStateChanged || loginStateChanged) {
+      this.getCustomStyles({ styleModal: true });
     }
 
-    if (nextCondensedState !== prevCondensedState) {
-      this.getCustomStyles({ styleModal: true });
+    this.isMobile = getViewportInfo().isMobile && isMobileWeb();
+
+    if (!this.isMobile) {
+      modal.addEventListener('keydown', this.keydownInOverlay);
+    }
+
+    if (this.isMobile && nextTargetComponent === 'accountDrawer') {
+      document
+        .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+        .forEach(element => element.setAttribute('aria-hidden', 'true'));
     }
 
     return null;
@@ -70,11 +107,27 @@ class OverlayModal extends React.Component {
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.removeEventListener('mousedown', this.handleWindowClick);
-      this.body.style['overflow-y'] = 'auto';
+      this.body.removeEventListener('click', this.handleWindowClick);
+      this.body.style['overflow-y'] = '';
     }
+    const modal = document.getElementById('dialogContent');
+    modal.removeEventListener('keydown', this.keydownInOverlay);
     this.resetBodyScrollStyles();
+    document
+      .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+      .forEach(element => element.removeAttribute('aria-hidden'));
   }
+
+  getHeading = () => {
+    const { labels, component, componentProps } = this.props;
+    if (component === 'login' && componentProps.currentForm !== 'forgotPassword') {
+      return getLabelValue(labels, 'lbl_login_loginCTA');
+    }
+    if (component === 'createAccount') {
+      return getLabelValue(labels, 'lbl_login_createAccountCTA');
+    }
+    return '';
+  };
 
   /**
    * Set Left position of modal triangle
@@ -82,46 +135,45 @@ class OverlayModal extends React.Component {
    */
 
   // eslint-disable-next-line complexity
-  styleModalTriangle = ({ comp }) => {
-    const { showCondensedHeader } = this.props;
+  styleModalTriangle = comp => {
+    const { showCondensedHeader, component } = this.props;
+    const isAccountDrawer = component === 'accountDrawer';
+    if (this.isMobile && !isAccountDrawer) return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
     const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos = modalTriangle && window && modalTriangle.getBoundingClientRect().y;
-    /* istanbul ignore else */
-    if (window && window.innerWidth > 767) {
-      if (showCondensedHeader && this.body) {
-        modal.style.height = `${window.innerHeight - 70}px`;
-      } else {
-        modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
-      }
-      this.body.style.overflow = 'hidden';
+
+    if (showCondensedHeader && this.body) {
+      modal.style.height = `${window.innerHeight - 70}px`;
+    } else {
+      modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
     }
+    this.body.style.overflow = 'hidden';
 
     /* istanbul ignore else */
-    /* set scroll height in mobile view */
-    if (window && window.innerWidth < 767) {
-      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
-      this.bodyContainer.style.overflow = 'hidden';
-    }
-    /* istanbul ignore else */
-    if (
-      !showCondensedHeader &&
-      compRectBoundingX &&
-      compWidth &&
-      modalRectBoundingX &&
-      modalTriangle
-    ) {
-      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+    if ((!showCondensedHeader || this.isMobile) && modal && modalTriangle) {
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
   };
 
+  modalTrianglePositioning = ({ comp, isAccountDrawer }) => {
+    let compElement = comp;
+    if (!this.isMobile && isAccountDrawer && document.getElementById('account-info-user-points')) {
+      compElement = document.getElementById('account-info-user-points');
+    }
+    this.styleModalTriangle(compElement);
+  };
+
+  // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
     const { component } = this.props;
+    const isAccountDrawer = component === 'accountDrawer' || false;
+    if (this.isMobile && component !== 'accountDrawer') return;
     const comp = document.getElementById(component);
     /* istanbul ignore else */
     if (comp && window) {
@@ -132,7 +184,7 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.styleModalTriangle({ comp });
+      this.modalTrianglePositioning({ comp, isAccountDrawer });
     }
   };
 
@@ -140,7 +192,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style['overflow-y'] = 'auto';
+      this.body.style['overflow-y'] = '';
     }
     this.resetBodyScrollStyles();
   };
@@ -157,8 +209,17 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = '';
+    this.bodyContainer.style.overflow = 'visible';
   };
+
+  /**
+   * Bind Tab key Down
+   */
+  keydownInOverlay(event) {
+    if (event.keyCode === TAB_KEY) {
+      scopeTab(this.modalRef, event);
+    }
+  }
 
   handleWindowClick(e) {
     /* istanbul ignore else */
@@ -168,6 +229,13 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
+      const nextComponent = e.target;
+      if (
+        nextComponent.hasAttribute('data-overlayTarget') ||
+        nextComponent.closest('[data-overlayTarget]')
+      ) {
+        e.stopImmediatePropagation();
+      }
     }
   }
 
@@ -181,8 +249,48 @@ class OverlayModal extends React.Component {
       showCondensedHeader,
     } = this.props;
 
-    return (
-      <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
+    const modalHeading = {
+      className: 'Modal_Heading_Overlay',
+    };
+
+    const headingForMobile = this.getHeading();
+    const headingProps = headingForMobile
+      ? {
+          heading: headingForMobile,
+          headingStyle: modalHeading,
+        }
+      : {};
+
+    return this.isMobile && component !== 'accountDrawer' ? (
+      <div>
+        <Modal
+          contentRef={this.setModalRef}
+          isOpen
+          className={className}
+          overlayClassName="TCPModal__Overlay"
+          onRequestClose={this.closeModal}
+          noPadding
+          id="modalWrapper"
+          widthConfig={{ small: '100%' }}
+          heightConfig={{ minHeight: '500px' }}
+          {...headingProps}
+        >
+          <div
+            id="dialogContent"
+            className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+          >
+            <ModalContent className="modal__content" {...componentProps} />
+          </div>
+        </Modal>
+      </div>
+    ) : (
+      <div
+        className={className}
+        id="modalWrapper"
+        color={color}
+        ref={this.setModalRef}
+        tabIndex="-1"
+      >
         <div
           id="dialogContent"
           className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
@@ -194,11 +302,12 @@ class OverlayModal extends React.Component {
             onClick={this.closeModal}
           />
           <div
-            className={`modal__triangle hide-on-mobile ${showCondensedHeader &&
-              'condensed-modal-triangle'}`}
+            className={`${
+              isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
+            } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
             id="modalTriangle"
           />
-          <div className="modal__bar hide-on-mobile" />
+          <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
           <ModalContent className="modal__content" {...componentProps} />
         </div>
       </div>

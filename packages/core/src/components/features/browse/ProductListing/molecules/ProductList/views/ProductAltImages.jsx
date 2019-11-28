@@ -11,8 +11,11 @@ import { getProductListToPath } from '../utils/productsCommonUtils';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
 import { Anchor, DamImage } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 class ProductAltImages extends React.PureComponent {
+  nodes = {};
+
   static propTypes = {
     /** callback for when the shown image changes. Accepts: image index */
     onImageChange: PropTypes.func,
@@ -30,6 +33,7 @@ class ProductAltImages extends React.PureComponent {
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
+    keepAlive: PropTypes.bool.isRequired,
     isSoldOut: PropTypes.bool,
     soldOutLabel: PropTypes.string,
   };
@@ -42,8 +46,6 @@ class ProductAltImages extends React.PureComponent {
     isSoldOut: false,
     soldOutLabel: '',
   };
-
-  nodes = {};
 
   constructor(props, context) {
     super(props, context);
@@ -228,8 +230,8 @@ class ProductAltImages extends React.PureComponent {
   }
 
   renderSoldOutSection = () => {
-    const { isSoldOut, soldOutLabel } = this.props;
-    return isSoldOut ? <div className="sold-out-section">{soldOutLabel}</div> : null;
+    const { isSoldOut, keepAlive, soldOutLabel } = this.props;
+    return isSoldOut || keepAlive ? <OutOfStockWaterMark label={soldOutLabel} /> : null;
   };
 
   renderImageContent() {
@@ -246,11 +248,11 @@ class ProductAltImages extends React.PureComponent {
     const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
       alt: productName,
-      url: imageUrls[0],
+      url: imageUrls[currentIndex],
     };
     return imageUrls.length < 2 ? (
       <figure
-        className="product-image-container"
+        className="product-image-container full-height"
         itemScope
         itemType="http://schema.org/ImageObject"
       >
@@ -263,14 +265,17 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
+          className="full-height"
         >
           <DamImage
+            className="loadImage"
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
+            lazyLoad={false}
           />
+          {this.renderSoldOutSection()}
         </Anchor>
-        {this.renderSoldOutSection()}
       </figure>
     ) : (
       <figure
@@ -299,12 +304,14 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
         >
-          <img
-            src={imageUrls[currentIndex]}
-            data-locator={getLocator('global_productimg_imagelink')}
-            alt={productName}
-            itemProp="contentUrl"
+          <DamImage
+            className="loadImage"
+            dataLocator={getLocator('global_productimg_imagelink')}
+            imgData={imgData}
+            isProductImage
+            lazyLoad={false}
           />
+          {this.renderSoldOutSection()}
         </Anchor>
         <button
           data-locator={getLocator('global_imagecursors_arrows')}
@@ -314,7 +321,6 @@ class ProductAltImages extends React.PureComponent {
         >
           next
         </button>
-        {this.renderSoldOutSection()}
       </figure>
     );
   }

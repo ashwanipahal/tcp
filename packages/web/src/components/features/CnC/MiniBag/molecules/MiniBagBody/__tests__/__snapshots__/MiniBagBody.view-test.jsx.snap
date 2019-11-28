@@ -32,11 +32,10 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
@@ -58,6 +57,7 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -78,11 +78,15 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />
@@ -124,11 +128,10 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
@@ -150,6 +153,7 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -170,11 +174,15 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />
@@ -216,11 +224,10 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            noLink={true}
             onClick={[Function]}
-            to="/bag"
             underline={true}
           >
             View bag (1)
@@ -229,24 +236,6 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
-  <Styled(Row)
-    className="mainWrapper"
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(ErrorMessage)
-        className="error_box minibag-error"
-        error="something went wrong"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(BodyCopy)
     className="viewBagAndProduct"
     color="text.primary"
@@ -260,6 +249,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -280,11 +270,15 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />

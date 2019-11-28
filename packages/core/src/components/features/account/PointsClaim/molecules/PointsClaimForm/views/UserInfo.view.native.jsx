@@ -7,6 +7,8 @@ import {
   UserInfoValues,
   UserIDValues,
   UserIDLabels,
+  UserInfoValuesForEmail,
+  UserInfoLabelsForEmail,
 } from '../styles/UserInfo.native.style';
 import { BodyCopy } from '../../../../../../common/atoms';
 
@@ -74,7 +76,7 @@ export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
         </UserInfoValues>
       </UserInfoRow>
       <UserInfoRow>
-        <UserInfoLabels>
+        <UserInfoLabelsForEmail>
           <BodyCopy
             text={getLabelValue(labels, 'lbl_points_claim_email', 'myPlaceRewards')}
             fontFamily="secondary"
@@ -82,8 +84,8 @@ export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
             color="gray.900"
             fontWeight="extrabold"
           />
-        </UserInfoLabels>
-        <UserInfoValues>
+        </UserInfoLabelsForEmail>
+        <UserInfoValuesForEmail>
           <BodyCopy
             text={userInfoData.emailAddress}
             mobileFontFamily="secondary"
@@ -91,7 +93,7 @@ export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
             fontWeight="regular"
             color="gray.900"
           />
-        </UserInfoValues>
+        </UserInfoValuesForEmail>
       </UserInfoRow>
     </>
   );

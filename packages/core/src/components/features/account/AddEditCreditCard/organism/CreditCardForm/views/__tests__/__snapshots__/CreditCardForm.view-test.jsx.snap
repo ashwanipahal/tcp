@@ -90,6 +90,36 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     lbl_payment_billingAddress
   </Styled(Heading)>
   <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator="payment-billingaddressLbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_payment_ccAdressSelect
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
   >
@@ -107,6 +137,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+            "profile": Object {},
+          }
+        }
         name="onFileAddressKey"
         options={
           Immutable.List [
@@ -130,7 +167,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
-                fill="BLUE"
+                fill="BLACK"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
@@ -140,7 +177,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             },
           ]
         }
-        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -318,6 +354,36 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     lbl_payment_billingAddress
   </Styled(Heading)>
   <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator="payment-billingaddressLbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_payment_ccAdressSelect
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
   >
@@ -335,6 +401,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+            "profile": Object {},
+          }
+        }
         name="onFileAddressKey"
         options={
           Immutable.List [
@@ -358,7 +431,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
-                fill="BLUE"
+                fill="BLACK"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
@@ -368,7 +441,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             },
           ]
         }
-        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)

@@ -3,7 +3,6 @@
 exports[`Shipping Page should render correctly 1`] = `
 <Fragment>
   <ReduxForm
-    addNewShippingAddress={[Function]}
     address={
       Object {
         "addressLine1": "pob",
@@ -12,8 +11,15 @@ exports[`Shipping Page should render correctly 1`] = `
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -22,6 +28,10 @@ exports[`Shipping Page should render correctly 1`] = `
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": null,
         "saveToAddressBook": false,
@@ -33,6 +43,7 @@ exports[`Shipping Page should render correctly 1`] = `
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -43,7 +54,7 @@ exports[`Shipping Page should render correctly 1`] = `
     loadShipmentMethods={[Function]}
     newUserPhoneNo={null}
     onFileAddressKey={null}
-    onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -56,7 +67,11 @@ exports[`Shipping Page should render correctly 1`] = `
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -67,22 +82,17 @@ exports[`Shipping Page should render correctly 1`] = `
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
-    updateShippingAddress={[Function]}
     updateUnregisteredFields={false}
     userAddresses={Immutable.List []}
     validate={[Function]}
   />
-  <Connect(Styled(AddressVerification))
-    onError={[Function]}
-    onSuccess={[Function]}
-  />
+  <Connect(Styled(AddressVerification)) />
 </Fragment>
 `;
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
 <Fragment>
   <ReduxForm
-    addNewShippingAddress={[Function]}
     address={
       Object {
         "addressLine1": "pob 123",
@@ -91,9 +101,16 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultAddressId="34789"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -102,6 +119,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -113,6 +134,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -120,26 +142,10 @@ exports[`Shipping Page should render correctly with component did update and get
     isVenmoPaymentInProgress={false}
     isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
-    loadShipmentMethods={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "formName": "checkoutShipping",
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    loadShipmentMethods={[MockFunction]}
     newUserPhoneNo={null}
     onFileAddressKey={null}
-    onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -152,7 +158,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -163,7 +173,6 @@ exports[`Shipping Page should render correctly with component did update and get
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
-    updateShippingAddress={[Function]}
     updateUnregisteredFields={false}
     userAddresses={
       Immutable.List [
@@ -184,17 +193,13 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     validate={[Function]}
   />
-  <Connect(Styled(AddressVerification))
-    onError={[Function]}
-    onSuccess={[Function]}
-  />
+  <Connect(Styled(AddressVerification)) />
 </Fragment>
 `;
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
 <Fragment>
   <ReduxForm
-    addNewShippingAddress={[Function]}
     address={
       Object {
         "addressLine1": "pob 123",
@@ -203,9 +208,16 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultAddressId="123"
     defaultShipmentId={null}
     destroyOnUnmount={true}
+    emailSignUpFlags={
+      Object {
+        "emailSignUpTCP": true,
+      }
+    }
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -214,6 +226,10 @@ exports[`Shipping Page should render correctly with component did update and get
       Object {
         "address": Object {
           "country": "US",
+        },
+        "emailSignUp": Object {
+          "emailSignUp": true,
+          "emailSignUpGYM": undefined,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -225,6 +241,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isAddNewAddress={false}
     isGiftServicesChecked={false}
     isGuest={true}
+    isLoadingShippingMethods={false}
     isMobile={false}
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
@@ -232,26 +249,10 @@ exports[`Shipping Page should render correctly with component did update and get
     isVenmoPaymentInProgress={false}
     isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
-    loadShipmentMethods={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "formName": "checkoutShipping",
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    loadShipmentMethods={[MockFunction]}
     newUserPhoneNo={null}
     onFileAddressKey={null}
-    onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -264,7 +265,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -275,7 +280,6 @@ exports[`Shipping Page should render correctly with component did update and get
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
-    updateShippingAddress={[Function]}
     updateUnregisteredFields={false}
     userAddresses={
       Immutable.List [
@@ -296,9 +300,6 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     validate={[Function]}
   />
-  <Connect(Styled(AddressVerification))
-    onError={[Function]}
-    onSuccess={[Function]}
-  />
+  <Connect(Styled(AddressVerification)) />
 </Fragment>
 `;

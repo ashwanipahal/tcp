@@ -29,7 +29,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bZQynM",
+              "componentId": "sc-EHOje",
               "isStatic": false,
               "rules": Array [
                 "
@@ -157,7 +157,9 @@ exports[`LoginForm component should renders correctly 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -172,7 +174,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bZQynM",
+            "styledComponentId": "sc-EHOje",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -195,7 +197,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-cSHVUG",
+              "componentId": "sc-iwsKbI",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +252,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-cSHVUG",
+            "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -290,7 +292,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gzVnrw",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -390,7 +392,9 @@ exports[`LoginForm component should renders correctly 1`] = `
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -413,7 +417,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gzVnrw",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -494,7 +498,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -502,6 +506,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;
 
@@ -551,7 +556,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bZQynM",
+              "componentId": "sc-EHOje",
               "isStatic": false,
               "rules": Array [
                 "
@@ -679,7 +684,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -694,7 +701,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bZQynM",
+            "styledComponentId": "sc-EHOje",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -717,7 +724,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-cSHVUG",
+              "componentId": "sc-iwsKbI",
               "isStatic": false,
               "rules": Array [
                 "
@@ -772,7 +779,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-cSHVUG",
+            "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -813,7 +820,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gzVnrw",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -913,7 +920,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -936,7 +945,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gzVnrw",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1017,7 +1026,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -1025,5 +1034,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;

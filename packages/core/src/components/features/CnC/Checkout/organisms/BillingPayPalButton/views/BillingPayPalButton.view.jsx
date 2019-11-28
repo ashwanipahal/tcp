@@ -21,17 +21,28 @@ export class BillingPayPalButton extends React.PureComponent {
 
     return (
       <div className={className}>
-        <div className="payment-paypal-container hide-on-desktop hide-on-tablet">
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            dataLocator="completePurchaseLblÎ"
-            className="paypal-complete-purchase"
-          >
-            {labels.continueWithPayPal}
-          </BodyCopy>
-          <PayPalButton className="billing-payPal-button" containerId={containerId} isBillingPage />
+        <div className="payment-paypal-container">
+          <div className="hide-on-desktop hide-on-tablet">
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              dataLocator="completePurchaseLbl"
+              className="paypal-complete-purchase"
+            >
+              {labels.continueWithPayPal}
+            </BodyCopy>
+            <PayPalButton
+              className="billing-payPal-button"
+              containerId={containerId}
+              isBillingPage
+            />
+          </div>
+          <div className="hide-on-mobile">
+            <BodyCopy fontFamily="secondary" fontSize="fs16" dataLocator="completePurchaseLbl">
+              {labels.payPalLongText}
+            </BodyCopy>
+          </div>
         </div>
       </div>
     );

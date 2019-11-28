@@ -52,14 +52,9 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             className="coupon_list"
           >
             <ForwardRef
-              className="available_coupon"
-              couponDetailClick={[Function]}
+              className={true}
               couponList={Immutable.List []}
-              dataLocator="coupon-cartAvaliableRewards"
               heading="Available"
-              helpAnchorClick={[Function]}
-              helpSubHeading="true"
-              isFetching={false}
               labels={
                 Object {
                   "APPLIED_REWARDS_HEADING": "Applied",
@@ -91,7 +86,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
                 }
               }
               onRequestClose={[Function]}
-              openState={false}
             />
           </div>
         </div>
@@ -172,6 +166,15 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
           <div
             className="coupon_list"
           >
+            <ForwardRef
+              className={true}
+              labels={
+                Object {
+                  "addressBook": Object {},
+                  "common": Object {},
+                }
+              }
+            />
             <Measure
               name="promotion_visible"
             />
@@ -196,7 +199,6 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
                 }
               }
               onRequestClose={[Function]}
-              openState={false}
             />
           </div>
         </div>

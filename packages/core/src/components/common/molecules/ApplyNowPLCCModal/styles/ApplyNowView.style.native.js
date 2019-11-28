@@ -70,6 +70,10 @@ export const HeaderContainer = styled.View`
   justify-content: center;
 `;
 
+export const RTPSHeader = styled.View`
+  height: 54px;
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -81,4 +85,5 @@ export default {
   Container,
   StyledImage,
   HeaderContainer,
+  RTPSHeader,
 };

@@ -1,15 +1,9 @@
 import React from 'react';
 import { change, Field } from 'redux-form';
-import {
-  BodyCopy,
-  Col,
-  Heading,
-  Row,
-  SelectBox,
-  TextBox,
-} from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Col, Heading, Row, TextBox } from '@tcp/core/src/components/common/atoms';
 import { getAddressFromPlace } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
+import Select from '../../../../../common/atoms/Select';
 import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
@@ -181,20 +175,13 @@ class ContactInformationFormWrapper extends React.Component {
                 key="container_state"
                 colSize={{ large: 6, medium: 4, small: 3 }}
               >
-                <BodyCopy
-                  component="span"
-                  fontSize="fs12"
-                  fontFamily="secondary"
-                  fontWeight="extrabold"
-                  className="free_dropdown_label columnWrapper"
-                >
-                  {getLabelValue(labels, 'lbl_PLCCForm_state')}
-                </BodyCopy>
                 <Field
                   id="statewocountry"
                   name="statewocountry"
-                  component={SelectBox}
-                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_statePlaceholder')}
+                  component={Select}
+                  aria-label={getLabelValue(labels, 'lbl_PLCCForm_state')}
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_state')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator={getLocator('plcc_state')}
                   className="field stateField"

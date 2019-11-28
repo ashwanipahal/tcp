@@ -10,11 +10,11 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   />
   <Styled(Notification)
     alt="lbl_earnExtraPoints_imageAlt"
-    className="elem-mt-MED"
+    className="elem-mt-MED notification-wrapper"
     status="info"
   >
     <Styled(BodyCopy)
-      className="elem-mr-LRG"
+      className="elem-mr-LRG notification-text"
       color="text.primary"
       component="span"
       dataLocator="earnextrapoints-notificationdate"
@@ -29,7 +29,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       09/17/19
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className={null}
+      className="notification-text"
       color="text.primary"
       component="span"
       dataLocator="earnextrapoints-notificationtext"
@@ -46,7 +46,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       asPath="/account/place-rewards/points-history"
-      className="elem-ml-XS"
+      className="notification-text-link"
       dataLocator="view-points-history"
       fontSizeVariation="large"
       to="/account?id=place-rewards&subSection=points-history"

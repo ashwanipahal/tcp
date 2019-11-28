@@ -64,8 +64,8 @@ const ModuleP = props => {
         isMatchingFamily={false}
         siblingProperties={siblingProperties}
         isEvenElement={isEvenElement}
-        gridIndex={gridIndex}
         isPLPredesign
+        gridIndex={gridIndex}
         isKeepAliveKillSwitch={false}
         labels={labels}
         viaModule={viaModule}

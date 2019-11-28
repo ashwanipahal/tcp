@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAddToBagVanilla should render correctly should call modifiedBannerText 1`] = `
+<Fragment>
+  <Styled(View)>
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "PICK UP IN STORE AND SAVE AN EXTRA 5%",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": "EXTRA 5% OFF",
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;

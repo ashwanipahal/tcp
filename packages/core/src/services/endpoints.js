@@ -362,7 +362,7 @@ const endpoints = {
   },
   getStyliticsProductViewById: {
     method: API_METHODS.GET,
-    URI: 'https://widget-api-staging.stylitics.com/api/outfits',
+    URI: 'https://widget-api.stylitics.com/api/outfits',
   },
   getDetailedOrderHistory: {
     method: 'GET',
@@ -423,6 +423,22 @@ const endpoints = {
   getInstagramAccessToken: {
     method: 'GET',
     URI: 'v2/instagram/accessToken',
+  },
+  userGroup: {
+    method: 'PUT',
+    URI: 'v2/account/userGroup',
+  },
+  updateRTPSdata: {
+    method: 'POST',
+    URI: 'v2/ads_dms/constructOLPS',
+  },
+  prescreenApplication: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processPreScreenAcceptance',
+  },
+  processPreScreenOffer: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processMadeOffer',
   },
 };
 export default endpoints;

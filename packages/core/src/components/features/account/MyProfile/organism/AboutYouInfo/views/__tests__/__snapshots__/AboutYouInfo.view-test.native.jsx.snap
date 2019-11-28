@@ -7,6 +7,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou-updateinfo"
   handleComponentChange={[Function]}
+  isPageNavigation={false}
   title="More About You"
 >
   <Styled(Styled(BodyCopy))

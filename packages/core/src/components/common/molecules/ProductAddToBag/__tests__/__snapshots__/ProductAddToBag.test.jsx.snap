@@ -11,9 +11,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >
@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kAzzGY",
+                  "componentId": "sc-dxgOiQ",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -62,6 +62,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -71,7 +73,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ",
+      padding: 4px ",
                     [Function],
                     ";
       border: 1px solid ",
@@ -82,12 +84,26 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       font-size: ",
                     [Function],
                     "px;
-      border-radius: 6px;
-      margin-bottom: ",
+      color: ",
                     [Function],
                     ";
+      border-radius: 6px;
       text-align: center;
       width: 54px;
+      @media ",
+                    [Function],
+                    " {
+        padding: 3.5px ",
+                    [Function],
+                    ";
+      }
+      @media ",
+                    [Function],
+                    " {
+        padding: 4px ",
+                    [Function],
+                    ";
+      }
     }
 
     &.item-disabled-option .input-radio-title {
@@ -138,7 +154,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kAzzGY",
+                "styledComponentId": "sc-dxgOiQ",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -162,21 +178,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             width={49}
           />
         </div>
-        <p
-          className="size-unavailable"
-        >
-          <span
-            className="unavailable-text"
-          />
-          <span
-            className="size-find-in-store"
-          >
-            <Connect(Styled(FulfillmentSection))
-              isAnchor={true}
-              title="Find In Store"
-            />
-          </span>
-        </p>
         <div
           className="qty-selector"
         >
@@ -209,9 +210,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >
@@ -228,7 +229,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-kAzzGY",
+                  "componentId": "sc-dxgOiQ",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -260,6 +261,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -269,7 +272,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ",
+      padding: 4px ",
                     [Function],
                     ";
       border: 1px solid ",
@@ -280,12 +283,26 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       font-size: ",
                     [Function],
                     "px;
-      border-radius: 6px;
-      margin-bottom: ",
+      color: ",
                     [Function],
                     ";
+      border-radius: 6px;
       text-align: center;
       width: 54px;
+      @media ",
+                    [Function],
+                    " {
+        padding: 3.5px ",
+                    [Function],
+                    ";
+      }
+      @media ",
+                    [Function],
+                    " {
+        padding: 4px ",
+                    [Function],
+                    ";
+      }
     }
 
     &.item-disabled-option .input-radio-title {
@@ -336,7 +353,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-kAzzGY",
+                "styledComponentId": "sc-dxgOiQ",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -360,6 +377,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             width={49}
           />
           <Styled(BodyCopy)
+            aria-live="assertive"
             className="size-error"
             color="text.primary"
             component="div"
@@ -369,13 +387,14 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            role="alert"
             textAlign="left"
           >
             <Styled(Image)
               alt="Error"
               className="error-image"
               data-locator="productcustomizeform-error-icon"
-              src="/static/images/alert-triangle.png"
+              src="/static/version-not-available/images/alert-triangle.png"
             />
             <Styled(BodyCopy)
               className="size-error-message"
@@ -393,21 +412,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </div>
-        <p
-          className="size-unavailable"
-        >
-          <span
-            className="unavailable-text"
-          />
-          <span
-            className="size-find-in-store"
-          >
-            <Connect(Styled(FulfillmentSection))
-              isAnchor={true}
-              title="Find In Store"
-            />
-          </span>
-        </p>
         <div
           className="qty-selector"
         >

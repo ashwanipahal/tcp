@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Platform } from 'react-native';
 
 const styles = css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
@@ -52,7 +53,7 @@ export const AddressCol = styled.View`
 `;
 export const DistanceCol = styled.View`
   width: 30%;
-  margin-top: 5px;
+  margin-top: ${Platform.OS === 'ios' ? '5' : '3'};
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   color: ${props => props.theme.colorPalette.gray[900]};
 `;

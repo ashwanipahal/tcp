@@ -13,6 +13,7 @@ describe('addAddressGet saga', () => {
       addAddressGetGeneration = addAddressGet({ payload });
       addAddressGetGeneration.next();
       addAddressGetGeneration.next();
+      addAddressGetGeneration.next();
     });
 
     it('should dispatch addAddressSuccess action for success resposnse', () => {
@@ -22,14 +23,17 @@ describe('addAddressGet saga', () => {
       };
       addAddressGetGeneration.next(response);
       addAddressGetGeneration.next();
-      const putDescriptor = addAddressGetGeneration.next().value;
-      expect(putDescriptor).toEqual(put(addAddressSuccess()));
+      addAddressGetGeneration.next();
+      addAddressGetGeneration.next();
+      const putDescriptor1 = addAddressGetGeneration.next().value;
+      expect(putDescriptor1).toEqual(put(addAddressSuccess()));
     });
 
     it('should dispatch addAddressFail action if response is fail two', () => {
-      const putDescriptor = addAddressGetGeneration.throw({
+      addAddressGetGeneration.throw({
         response: { body: { errors: ['test'] } },
-      }).value;
+      });
+      const putDescriptor = addAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressFail('test')));
     });
   });
@@ -43,6 +47,7 @@ describe('addAddressGet saga', () => {
       updateAddressGetGeneration = updateAddressPut({ payload });
       updateAddressGetGeneration.next();
       updateAddressGetGeneration.next();
+      updateAddressGetGeneration.next();
     });
 
     it('should dispatch addAddressSuccess action for success resposnse', () => {
@@ -52,18 +57,22 @@ describe('addAddressGet saga', () => {
       };
       updateAddressGetGeneration.next(response);
       updateAddressGetGeneration.next();
+      updateAddressGetGeneration.next();
+      updateAddressGetGeneration.next();
       const putDescriptor = updateAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressSuccess()));
     });
 
     it('should dispatch addAddressFail action if response is fail', () => {
+      updateAddressGetGeneration.next();
       const errorBody = {};
       const error = {
         body: {
           errors: errorBody,
         },
       };
-      const putDescriptor = updateAddressGetGeneration.throw(error).value;
+      updateAddressGetGeneration.throw(error);
+      const putDescriptor = updateAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressFail(errorBody)));
     });
   });

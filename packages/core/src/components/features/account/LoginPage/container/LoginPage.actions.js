@@ -14,7 +14,12 @@ export const setLoginModalMountedState = payload => {
     payload,
   };
 };
-
+export const setLoginLoadingState = payload => {
+  return {
+    payload,
+    type: LOGINPAGE_CONSTANTS.SET_LOGIN_LOADING_STATE,
+  };
+};
 export const resetLoginInfo = payload => {
   return {
     type: LOGINPAGE_CONSTANTS.RESET_LOGIN_INFO,

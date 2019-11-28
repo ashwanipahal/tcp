@@ -45,9 +45,6 @@ export default css`
       display: none;
     }
   }
-  .product-image{
-    padding-left:12px;
-  }
 
   .condensed-brand-logo {
     height: 25px;
@@ -84,6 +81,7 @@ export default css`
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
+    max-width: 1010px;
 
     .nav-bar-l1-item {
       color: ${props => props.theme.colorPalette.gray[900]};

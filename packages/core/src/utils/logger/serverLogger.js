@@ -68,7 +68,7 @@ class ServerLogger {
         const formattedSrcData = getFormattedSrcData(src);
 
         process.stdout.write(
-          `${time} ${formattedProcessID} | [${name}] - ${formattedMessage}| ${formattedSrcData} : [${formatterLogLevel}]`
+          `${time} ${formattedProcessID} | [${name}] - ${formattedMessage}| ${formattedSrcData} : [${formatterLogLevel}]\n`
         );
         return true;
       },

@@ -5,22 +5,20 @@ import {
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+import { submitEmailSignup } from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.actions';
+import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import {
-  toggleEmailSignupModal,
-  submitEmailSignup,
-} from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
-
-import {
-  toggleSmsSignupModal,
   submitSmsSignup,
   clearSmsSignupForm,
-} from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
+} from '@tcp/core/src/components/common/organisms/SmsSignupForm/container/SmsSignupForm.actions';
+import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import LinkConfig from '../../../../../config/footerLinkActionMapping.config';
 import FooterView from '../views';
+import { isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } from './Footer.selectors';
 
 const mapStateToProps = state => {
   const { Footer } = state;
@@ -35,7 +33,10 @@ const mapStateToProps = state => {
       referAFriend: referAFriendButtonLabels,
     } = {},
   } = state.Labels;
-  const { EmailSignUp = {}, SmsSignUp = {} } = state;
+  const {
+    EmailSignUp: { EmailSignupFormReducer: { subscription } = {} } = {},
+    SmsSignUp = { SmsSignupFormReducer: { subscription } },
+  } = state;
 
   return {
     legalLinks: Footer.legalLinks,
@@ -44,8 +45,8 @@ const mapStateToProps = state => {
       connectWithUsLabel,
       links: Footer.socialLinks,
     },
-    smsSubscription: SmsSignUp.subscription,
-    emailSubscription: EmailSignUp.subscription,
+    smsSubscription: subscription,
+    emailSubscription: subscription,
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
@@ -57,6 +58,8 @@ const mapStateToProps = state => {
     loginModalMountedState: loginModalOpenState(state),
     isLoggedIn: getUserLoggedInState(state),
     linkConfig: LinkConfig,
+    isLocationEnabledForLoggedInUser: isLocationEnabledForLoggedInUser(state),
+    isLocationEnabledForGuest: isLocationEnabledForGuest(state),
   };
 };
 

@@ -338,6 +338,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
         ]
       }
       height={300}
+      onSnapToItem={[Function]}
       overlap={true}
       renderItem={[Function]}
       showDots={true}

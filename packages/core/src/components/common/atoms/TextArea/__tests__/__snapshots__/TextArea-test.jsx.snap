@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea component renders correctly 1`] = `
+<label
+  className="asdfasdf input-fields-wrapper"
+  htmlFor="abcd"
+>
+  <textarea
+    aria-describedby="textarea__error__undefined"
+    aria-label=""
+    aria-required={false}
+    className="TextArea__input"
+    data-locator=""
+    id="abcd"
+    placeholder=""
+    value="hello sonar"
+  />
+  <Styled(BodyCopy)
+    className="TextArea__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <div
+    className="TextArea__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      id="textarea__error__undefined"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      role="alert"
+      textAlign="left"
+    />
+  </div>
+</label>
+`;

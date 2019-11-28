@@ -38,11 +38,16 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     .coupon_error_message {
-      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       img {
         padding-top: 0;
         padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
       }
+    }
+  }
+  .available_coupon {
+    .cart-show-more-btn {
+      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     }
   }
 `;

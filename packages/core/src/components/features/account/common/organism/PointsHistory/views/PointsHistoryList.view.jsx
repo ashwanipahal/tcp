@@ -5,6 +5,7 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/PointsHistoryList.view.style';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
+import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
@@ -18,6 +19,7 @@ const PointsHistoryList = ({
   showSuccess,
   showError,
   claimPointsErrorMessage,
+  isFetching,
 }) => {
   return (
     <div className={className}>
@@ -41,7 +43,7 @@ const PointsHistoryList = ({
       )}
       {pointHistory && pointHistory.length && (
         <Row fullBleed className="elem-mb-SM elem-mt-SM">
-          <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+          <Col colSize={{ large: 4, medium: 2, small: 2 }}>
             <BodyCopy
               data-locator="pointshistoryorderdatelbl"
               fontFamily="secondary"
@@ -68,18 +70,20 @@ const PointsHistoryList = ({
               fontFamily="secondary"
               className="list-fontsizes"
               fontWeight="semibold"
-              textAlign={['left', 'left', 'center']}
+              textAlign="left"
             >
               {getLabelValue(labels, 'lbl_common_points_earned')}
             </BodyCopy>
           </Col>
         </Row>
       )}
-      {pointHistory &&
+      {isFetching && <PointHistoryViewSkeleton isPointHistoryPage />}
+      {!isFetching &&
+        pointHistory &&
         pointHistory.length &&
         pointHistory.map(pointHistoryRow => (
           <Row fullBleed className="elem-mb-SM">
-            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistoryorderdate"
                 fontFamily="secondary"
@@ -140,6 +144,7 @@ PointsHistoryList.propTypes = {
   showSuccess: PropTypes.string,
   showError: PropTypes.string,
   claimPointsErrorMessage: PropTypes.string,
+  isFetching: PropTypes.bool,
 };
 
 PointsHistoryList.defaultProps = {
@@ -154,6 +159,7 @@ PointsHistoryList.defaultProps = {
   showSuccess: '',
   showError: '',
   claimPointsErrorMessage: '',
+  isFetching: false,
 };
 
 export default withStyles(PointsHistoryList, styles);

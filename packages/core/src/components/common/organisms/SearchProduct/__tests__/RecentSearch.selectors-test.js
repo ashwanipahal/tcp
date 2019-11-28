@@ -1,15 +1,14 @@
-import { fromJS } from 'immutable';
 import getRecentSearchesData from '../RecentSearches.selectors';
 import { RECENT_SEARCH_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
 describe('#getAppType selector', () => {
   let storeState;
   beforeEach(() => {
-    const initialState = fromJS({
+    const initialState = {
       searchTermList: [],
-    });
+    };
 
-    const state = initialState.set('searchTermList', [{ text: 'Shoes' }]);
+    const state = { ...initialState, searchTermList: [{ text: 'Shoes' }] };
     storeState = {
       [RECENT_SEARCH_REDUCER_KEY]: state,
     };

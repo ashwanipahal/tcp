@@ -34,36 +34,6 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="variable-width"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="place-cash-banner"
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className="place-cash-banner-text"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
-      >
-        Place Cash Banner
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
     className="variable-width "
     fullBleed={true}
   >
@@ -114,6 +84,10 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(PlaceCashBanner))
+    className="variable-width"
+    isOrderConfirmation={true}
+  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}
@@ -208,36 +182,6 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="variable-width"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="place-cash-banner"
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className="place-cash-banner-text"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
-      >
-        Place Cash Banner
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
     className="variable-width "
     fullBleed={true}
   >
@@ -288,6 +232,10 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(PlaceCashBanner))
+    className="variable-width"
+    isOrderConfirmation={true}
+  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}

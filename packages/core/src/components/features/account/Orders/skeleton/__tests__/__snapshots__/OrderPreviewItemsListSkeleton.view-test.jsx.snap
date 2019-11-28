@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderPreviewItemsListSkeleton component should renders correctly 1`] = `
+<Styled(Row)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 2,
+        "small": 2,
+      }
+    }
+  >
+    <SkeletonLine
+      height="300px"
+      width="100%"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="elem-ml-MED"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 5,
+        "small": 4,
+      }
+    }
+  >
+    <SkeletonLine
+      className="elem-mb-MED"
+      height="40px"
+      width="100%"
+    />
+    <SkeletonLine
+      className="elem-mb-XS"
+      height="20px"
+      width="50%"
+    />
+    <SkeletonLine
+      height="20px"
+      width="75%"
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

@@ -41,7 +41,11 @@ class AwsAppSyncClient extends AWSAppSync {
    */
   static clientOptions() {
     const apiConfigObj = getAPIConfig();
-    logger.info('GraphQL Endpoint ------------ ', apiConfigObj.graphql_endpoint_url);
+    logger.info(
+      'GraphQL Endpoint ------------ ',
+      apiConfigObj.graphql_endpoint_url,
+      ` - ${apiConfigObj.graphql_api_key}`
+    );
     return {
       url: apiConfigObj.graphql_endpoint_url,
       region: apiConfigObj.graphql_reqion,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { BOPIS_PRODUCT_INFO_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import { handleGenericKeyDown } from '../../../../../../../utils';
+import { handleGenericKeyDown, getPromotionalMessage } from '../../../../../../../utils';
 import cssClassName from '../../../../../../../utils/cssClassName';
 import {
   ENTER_KEY_CODE,
@@ -15,7 +15,7 @@ import { Row, Col, DamImage } from '../../../../../atoms';
 import PickupProductFormPartStyling from '../styles/PickupProductFormPart.style';
 import withStyles from '../../../../../hoc/withStyles';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
-
+import { PromotionalMessage } from '../../../../../../features/browse/ProductListing/molecules/ProductList/views/ProductItemComponents';
 /**
  * @method ProductPricesBopisSection this method component to display
  *  offer price and list price
@@ -134,7 +134,10 @@ class PickupProductFormPart extends React.Component {
       offerPrice,
       className,
       colorFitSizeDisplayNames,
-      currencyExchange,
+      currencyAttributes,
+      promotionalMessage,
+      promotionalPLCCMessage,
+      isHasPlcc,
     } = this.props;
 
     const altImageText = `Image for product ${name}`;
@@ -181,7 +184,7 @@ class PickupProductFormPart extends React.Component {
                     currencySymbol={currencySymbol}
                     listPrice={listPrice}
                     offerPrice={offerPrice}
-                    currencyExchange={currencyExchange}
+                    currencyAttributes={currencyAttributes}
                   />
                 </div>
               </BodyCopy>
@@ -198,6 +201,32 @@ class PickupProductFormPart extends React.Component {
                 >
                   {EDIT}
                 </Anchor>
+              </div>
+            )}
+            {/* this is only for desktop and tablet viewport */}
+            {promotionalMessage && (
+              <div className="promotionMsgContainer hide-on-mobile">
+                <PromotionalMessage
+                  text={getPromotionalMessage(isHasPlcc, {
+                    promotionalMessage,
+                    promotionalPLCCMessage,
+                  })}
+                />
+              </div>
+            )}
+          </Col>
+        </Row>
+        {/* this is only for mobile viewport */}
+        <Row fullBleed className="hide-on-desktop hide-on-tablet">
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+            {promotionalMessage && (
+              <div className="promotionMsgContainer">
+                <PromotionalMessage
+                  text={getPromotionalMessage(isHasPlcc, {
+                    promotionalMessage,
+                    promotionalPLCCMessage,
+                  })}
+                />
               </div>
             )}
           </Col>

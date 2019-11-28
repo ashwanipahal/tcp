@@ -33,6 +33,7 @@ describe('Delete Address Modal', () => {
     const tree = shallow(
       <DeleteAddressModalVanilla
         data={data}
+        clearNotificationError={() => {}}
         setDeleteModalMountState={mockedCloseModal}
         labels={{ addressBook: {}, common: {} }}
       />

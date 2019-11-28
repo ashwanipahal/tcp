@@ -8,6 +8,12 @@ export default css`
   overflow: hidden;
   position: relative;
 
+  .moduleH_carousel_wrapper {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 100%;
+    }
+  }
+
   img {
     height: 425px;
     @media ${props => props.theme.mediaQuery.medium} {
@@ -77,7 +83,7 @@ export default css`
 
   .moduleH__listItem-partial {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }

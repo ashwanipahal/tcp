@@ -8,6 +8,7 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
+  fetchModuleX,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -21,8 +22,11 @@ import {
   checkbalanceValue,
   getShowNotificationCaptchaState,
   getLabels,
+  getPaymentBannerRichTextSelector,
+  getPaymentBannerContentId,
 } from './Payment.selectors';
 import PaymentView from '../views/PaymentView';
+import CardViewSkeleton from '../skeleton/CardViewSkeleton.view.native';
 
 export class PaymentContainer extends React.Component<Props> {
   static propTypes = {
@@ -42,6 +46,7 @@ export class PaymentContainer extends React.Component<Props> {
     showNotificationCaptcha: PropTypes.bool,
     clearPaymentNotification: PropTypes.func,
     labels: PropTypes.shape({}),
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -61,11 +66,13 @@ export class PaymentContainer extends React.Component<Props> {
     showNotificationCaptcha: '',
     clearPaymentNotification: () => {},
     labels: {},
+    isFetching: false,
   };
 
   componentDidMount() {
-    const { getCardListAction } = this.props;
+    const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
+    getPaymentBannerRichText(paymentBannerContentId);
   }
 
   componentWillUnmount() {
@@ -94,7 +101,13 @@ export class PaymentContainer extends React.Component<Props> {
       setDefaultPaymentMethod,
       showNotificationCaptcha,
       labels,
+      paymentBannerRichText,
+      isFetching,
     } = this.props;
+    const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
+    if (isFetching) {
+      return <CardViewSkeleton labels={updatedLabels} />;
+    }
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -103,7 +116,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updatedLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -141,6 +154,9 @@ export const mapDispatchToProps = dispatch => {
         })
       );
     },
+    getPaymentBannerRichText: cid => {
+      dispatch(fetchModuleX(cid));
+    },
   };
 };
 
@@ -157,6 +173,8 @@ const mapStateToProps = state => {
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
     labels: getLabels(state),
+    paymentBannerContentId: getPaymentBannerContentId(state),
+    paymentBannerRichText: getPaymentBannerRichTextSelector(state),
   };
 };
 

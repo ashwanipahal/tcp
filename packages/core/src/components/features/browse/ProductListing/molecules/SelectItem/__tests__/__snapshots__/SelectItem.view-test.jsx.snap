@@ -33,6 +33,12 @@ exports[`Select Item is shown should render select item  1`] = `
           ";
     width: auto;
   }
+
+  &.disable-list-items {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   .selected-items {
     text-transform: capitalize;
     text-align: left;
@@ -51,7 +57,7 @@ exports[`Select Item is shown should render select item  1`] = `
 
   .item-select {
     background: url(",
-          "/static/images/circle-check-no-circle.svg",
+          "/static/version-not-available/images/circle-check-no-circle.svg",
           ") no-repeat left top;
     background-size: 18px 18px;
     margin-bottom: ",
@@ -59,6 +65,7 @@ exports[`Select Item is shown should render select item  1`] = `
           ";
     padding-bottom: 4px;
     display: flex;
+    background-position: -3px;
 
     span {
       font-weight: ",
@@ -70,7 +77,7 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           " {
       background: url(",
-          "/static/images/circle-check-no-circle.svg",
+          "/static/version-not-available/images/circle-check-no-circle.svg",
           ") no-repeat left top;
       background-size: 18px 18px;
       margin-bottom: ",

@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ListItem from '../../../features/browse/ProductListing/molecules/ProductListItem';
 import { getMapSliceForColorProductId } from '../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
@@ -31,6 +30,8 @@ const ModuleP = props => {
     onQuickViewOpenClick,
     item,
     viaModule,
+    labels,
+    ...otherProps
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -54,27 +55,28 @@ const ModuleP = props => {
     promotionalPLCCMessage,
   });
 
+  const { isSuggestedItem } = { ...otherProps };
   return (
-    <View>
-      <ListItem
-        paddings="12px 0 12px 12px"
-        item={item}
-        isMatchingFamily={isMatchingFamily}
-        badge1={topBadge}
-        badge2={badge2}
-        isPlcc={isPlcc}
-        loyaltyPromotionMessage={loyaltyPromotionMessage}
-        onAddToBag={onAddToBag}
-        onFavorite={onFavorite}
-        currencyExchange={currencyExchange}
-        currencySymbol={currencySymbol}
-        onGoToPDPPage={onOpenPDPPageHandler(props)}
-        onQuickViewOpenClick={onQuickViewOpenClick}
-        fullWidth
-        productImageWidth={PRODUCT_IMAGE_WIDTH}
-        viaModule={viaModule}
-      />
-    </View>
+    <ListItem
+      paddings={isSuggestedItem ? '12px 0 12px 0' : '12px 0 12px 12px'}
+      item={item}
+      isMatchingFamily={isMatchingFamily}
+      badge1={topBadge}
+      badge2={badge2}
+      isPlcc={isPlcc}
+      loyaltyPromotionMessage={loyaltyPromotionMessage}
+      onAddToBag={onAddToBag}
+      onFavorite={onFavorite}
+      currencyExchange={currencyExchange}
+      currencySymbol={currencySymbol}
+      onGoToPDPPage={onOpenPDPPageHandler(props)}
+      onQuickViewOpenClick={onQuickViewOpenClick}
+      fullWidth
+      productImageWidth={PRODUCT_IMAGE_WIDTH}
+      viaModule={viaModule}
+      labelsPlpTiles={labels}
+      {...otherProps}
+    />
   );
 };
 
@@ -86,6 +88,10 @@ ModuleP.propTypes = {
   onQuickViewOpenClick: PropTypes.func,
   item: PropTypes.shape({}).isRequired,
   viaModule: PropTypes.string,
+  labels: PropTypes.shape({
+    lbl_plpTiles_shop_collection: PropTypes.string,
+    lbl_add_to_bag: PropTypes.string,
+  }).isRequired,
 };
 
 ModuleP.defaultProps = {

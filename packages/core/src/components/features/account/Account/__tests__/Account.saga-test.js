@@ -13,7 +13,7 @@ describe('Account Navigation List saga', () => {
       accountListGen.next();
     });
     // TODO - Rewrite Test cases to include Integration testing of Saga and Abstractor
-    it('should dispatch setAccountNavigationList action for success resposnse', () => {
+    it('should dispatch setAccountNavigationList action for success response', () => {
       const response = {
         body: {
           contact: [],

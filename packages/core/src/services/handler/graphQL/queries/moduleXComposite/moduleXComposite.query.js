@@ -1,10 +1,13 @@
 let compositeQuery = '';
-const buildQuery = ({ cids }) => {
+const buildQuery = ({ cids, lang }) => {
   cids.map(item => {
-    compositeQuery += `${item.name}: moduleById(id: "${item.contentId}") {
+    compositeQuery += `${item.name}: moduleById(id: "${item.contentId}" ${
+      lang ? `, lang: ${lang}` : ``
+    }) {
     contentId
     name
     type
+    errorMessage
     composites {
       richTextList {
         text

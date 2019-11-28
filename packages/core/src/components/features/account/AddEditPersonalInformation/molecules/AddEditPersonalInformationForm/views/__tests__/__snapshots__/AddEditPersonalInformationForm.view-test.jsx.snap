@@ -30,7 +30,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -158,7 +158,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -173,7 +175,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -203,7 +205,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -331,7 +333,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -346,7 +350,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -384,7 +388,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -512,7 +516,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -527,7 +533,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -571,7 +577,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -699,7 +705,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -714,7 +722,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -804,7 +812,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -820,9 +828,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -834,6 +839,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -861,7 +870,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -924,7 +935,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -940,9 +951,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -954,6 +962,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -981,7 +993,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1062,7 +1076,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-iwsKbI",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1162,7 +1176,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1185,7 +1201,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1289,7 +1305,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1417,7 +1433,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1432,7 +1450,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1462,7 +1480,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1590,7 +1608,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1605,7 +1625,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1643,7 +1663,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1771,7 +1791,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1786,7 +1808,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1830,7 +1852,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1958,7 +1980,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1973,7 +1997,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2063,7 +2087,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -2079,9 +2103,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2093,6 +2114,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2120,7 +2145,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2182,7 +2209,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -2198,9 +2225,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     color: ",
                     [Function],
                     ";
-    font-size: ",
-                    [Function],
-                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2212,6 +2236,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2239,7 +2267,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2319,7 +2349,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-iwsKbI",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2419,7 +2449,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2442,7 +2474,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

@@ -34,6 +34,18 @@ exports[`CustomSelect component should renders correctly 1`] = `
     tabIndex="0"
     textAlign="left"
   >
+    <Styled(BodyCopy)
+      className="customSelectArrow down"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
     Please select list item
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -65,6 +77,19 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     onClick={[Function]}
     tabIndex="0"
     textAlign="left"
-  />
+  >
+    <Styled(BodyCopy)
+      className="customSelectArrow down"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;

@@ -6,6 +6,7 @@ import constants from './StyliticsProductTabList.constants';
 import {
   styliticsProductTabListDataFail,
   styliticsProductTabListDataSuccess,
+  isFetchingDataForOutfit,
 } from './StyliticsProductTabList.actions';
 
 export function* fetchStyliticsProductTabListData({ payload }) {
@@ -36,14 +37,17 @@ export function* fetchStyliticsProductTabListData({ payload }) {
 export function* fetchStyliticsProductTabListDataforOutfit({ payload }) {
   const { categoryId } = payload;
   try {
-    const res = yield call(styliticsProductListing.getOutfit, payload);
+    yield put(isFetchingDataForOutfit(true));
+    const res = yield call(styliticsProductListing.getData, payload);
     if (res) {
-      return yield put(
+      yield put(
         styliticsProductTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
       );
+      return yield put(isFetchingDataForOutfit(false));
     }
     throw new Error();
   } catch (err) {
+    yield put(isFetchingDataForOutfit(false));
     return yield put(
       styliticsProductTabListDataFail({ [categoryId]: [], errors: { [categoryId]: true } })
     );

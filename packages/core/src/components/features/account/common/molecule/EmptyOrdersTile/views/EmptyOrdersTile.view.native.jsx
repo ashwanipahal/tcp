@@ -10,7 +10,7 @@ const EmptyOrdersTile = ({ labels, navigation }) => {
   return (
     <>
       <BodyCopy
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
         data-locator="no_rewards_msg"

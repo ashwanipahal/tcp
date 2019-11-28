@@ -80,7 +80,7 @@ exports[`N component renders correctly 1`] = `
       className="ModuleN_Button"
     >
       <Styled(ButtonList)
-        buttonListVariation="dropdownButtonCTA"
+        buttonListVariation="stackedCTAList"
         buttonsData={
           Array [
             Object {

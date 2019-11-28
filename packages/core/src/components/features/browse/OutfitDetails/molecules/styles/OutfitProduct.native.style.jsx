@@ -5,16 +5,17 @@ export const OutfitProductContainer = styled.View`
   border-top-color: ${props => props.theme.colorPalette.gray[500]};
   flex-direction: row;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  width: 100%;
 `;
 
 export const DetailsContainer = styled.View`
-  width: 50%;
-  padding-left: 10px;
+  width: 55%;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const ImageContainer = styled.View`
-  width: 50%;
-  padding-right: 10px;
+  width: 30%;
+  align-items: center;
 `;
 
 export const DiscountedPriceContainer = styled.View`
@@ -22,7 +23,8 @@ export const DiscountedPriceContainer = styled.View`
 `;
 
 export const FavoriteView = styled.View`
-  width: 25px;
+  width: 15%;
+  align-items: center;
 `;
 
 export const OutfitProductWrapper = styled.View`

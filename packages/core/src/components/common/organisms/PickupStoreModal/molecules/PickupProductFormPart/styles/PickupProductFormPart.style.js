@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
+  &.item-product-container + form {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+
   .product-title {
     margin-bottom: 7px;
   }
@@ -13,6 +17,26 @@ export default css`
     margin-right: 14px;
   }
 
+  .promotionMsgContainer {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XL}
+      ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+    }
+    .loyalty-text-container {
+      color: ${props => props.theme.colorPalette.black};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      font-weight: ${props => props.theme.typography.fontWeights.regular};
+      span {
+        color: ${props =>
+          props.isHasPlcc
+            ? props.theme.colorPalette.userTheme.plcc
+            : props.theme.colorPalette.userTheme.mpr};
+        font-weight: ${props => props.theme.typography.fontWeights.black};
+      }
+    }
+  }
   .product-color,
   .product-values,
   .product-key {

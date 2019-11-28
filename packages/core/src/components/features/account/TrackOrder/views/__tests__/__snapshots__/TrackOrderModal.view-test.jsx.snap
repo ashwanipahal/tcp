@@ -9,9 +9,9 @@ exports[`TrackOrderModal component should renders correctly 1`] = `
   fixedWidth={true}
   isOpen={true}
   maxWidth="450px"
-  minHeight="576px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
+  standardHeight={true}
 >
   <Styled(TrackOrderView)
     errorMessage={null}

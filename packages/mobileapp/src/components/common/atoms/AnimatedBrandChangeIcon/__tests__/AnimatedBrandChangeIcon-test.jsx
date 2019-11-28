@@ -4,8 +4,14 @@ import AnimatedBrandChangeIcon from '../AnimatedBrandChangeIcon';
 
 describe('Animated Brand Change Icon Native', () => {
   let component;
+  const props = {
+    labels: {
+      theChildrensplace: 'The Childrens Place Link',
+      gymboreeLink: 'Gymboree Link',
+    },
+  };
   beforeEach(() => {
-    component = shallow(<AnimatedBrandChangeIcon />);
+    component = shallow(<AnimatedBrandChangeIcon {...props} />);
   });
 
   it('should render correctly', () => {

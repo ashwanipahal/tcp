@@ -25,6 +25,7 @@ const MyAccountLayoutView = props => {
     router,
     labels,
     isUserLoggedIn,
+    pageContentRef,
   } = props;
   return (
     <div className={className}>
@@ -50,14 +51,18 @@ const MyAccountLayoutView = props => {
             />
           </Col>
 
-          <Col colSize={{ large: 10, medium: 8, small: 6 }}>
-            <MainContent router={router} labels={labels} />
+          <Col colSize={{ large: 10, medium: 8, small: 6 }} role="main">
+            <div ref={pageContentRef} tabIndex={-1} className="no-outline">
+              <MainContent router={router} labels={labels} />
+            </div>
           </Col>
         </Row>
       ) : (
         <Row>
-          <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-            <MainContent router={router} labels={labels} />
+          <Col colSize={{ large: 12, medium: 8, small: 6 }} role="main">
+            <div ref={pageContentRef} tabIndex={-1} className="no-outline">
+              <MainContent router={router} labels={labels} />
+            </div>
           </Col>
         </Row>
       )}
@@ -74,6 +79,7 @@ MyAccountLayoutView.propTypes = {
   router: PropTypes.shape({}),
   labels: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
+  pageContentRef: PropTypes.func,
 };
 
 MyAccountLayoutView.defaultProps = {
@@ -84,6 +90,7 @@ MyAccountLayoutView.defaultProps = {
   className: '',
   router: {},
   labels: {},
+  pageContentRef: () => {},
 };
 
 export default withStyles(MyAccountLayoutView, styles);
