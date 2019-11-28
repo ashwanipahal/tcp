@@ -49,9 +49,9 @@ const Abstractor = {
     let labelToPrint = subCatName;
     if (indexOfPipe !== -1) {
       const splittedSubCatName = subCatName.split('|');
-      const smallCasel1Name = l1Name ? l1Name.toLowerCase() : '';
+      const smallCaseL1Name = l1Name ? l1Name.toLowerCase() : '';
       const smallCaseSubCatName = splittedSubCatName[0] ? splittedSubCatName[0].toLowerCase() : '';
-      if (smallCasel1Name === smallCaseSubCatName) {
+      if (smallCaseL1Name === smallCaseSubCatName) {
         [, labelToPrint] = splittedSubCatName;
       } else {
         [labelToPrint] = splittedSubCatName;
@@ -62,7 +62,6 @@ const Abstractor = {
   processData: navLinkList => {
     return navLinkList.map(listItem => {
       const { categoryContent } = listItem;
-      const l1CategoryName = categoryContent ? categoryContent.name : '';
       categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
       categoryContent.asPath = Abstractor.constructAsPathForUrl(listItem.categoryContent);
 
@@ -70,10 +69,14 @@ const Abstractor = {
       const hasL2 = listItem.subCategories && listItem.subCategories.length;
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
-        subCat.categoryContent.name = Abstractor.processSubCategoryName(
-          l1CategoryName,
-          subCategory.categoryContent.name
+        const updatedL2Name = Abstractor.processSubCategoryName(
+          categoryContent.name,
+          subCat.categoryContent.name
         );
+        subCat.categoryContent = {
+          ...subCat.categoryContent,
+          name: updatedL2Name,
+        };
         const category = subCat.categoryContent.groupIdentifierName || UNIDENTIFIED_GROUP;
         const order = subCat.categoryContent.groupIdentifierSequence || 0;
         const label = subCat.categoryContent.groupIdentifierName || '';
