@@ -1,5 +1,3 @@
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
-import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import { generateClickHandlerDataLayer } from './dataLayers';
 

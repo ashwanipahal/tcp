@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 
 describe('clickHandler.dataLayer', () => {
   let datalayer;
+  let defaultData;
   beforeEach(() => {
     const store = {
       getState: () => {
@@ -30,38 +31,38 @@ describe('clickHandler.dataLayer', () => {
     };
 
     datalayer = { ...generateClickHandlerDataLayer(store) };
-    console.log('---------datalayer---------', datalayer.eventData);
+    defaultData = datalayer.eventData.get();
   });
 
   it('customEvents should returned correctly', () => {
-    expect(datalayer.eventData.customEvents).toBe(['event80']);
+    expect(defaultData.customEvents).toEqual(['event80']);
   });
 
   it('products should returned correctly', () => {
-    expect(datalayer.eventData.products).toBe('products');
+    expect(defaultData.products).toBe('products');
   });
 
   it('eventName should returned correctly', () => {
-    expect(datalayer.eventData.eventName).toBe('test');
+    expect(defaultData.eventName).toBe('test');
   });
 
   it('couponCode should returned correctly', () => {
-    expect(datalayer.eventData.couponCode).toBe('coupon');
+    expect(defaultData.couponCode).toBe('coupon');
   });
 
   it('storeSearchCriteria should returned correctly', () => {
-    expect(datalayer.eventData.storeSearchCriteria).toBe('test search');
+    expect(defaultData.storeSearchCriteria).toBe('test search');
   });
 
   it('storeSearchDistance should returned correctly', () => {
-    expect(datalayer.eventData.storeSearchDistance).toBe('10');
+    expect(defaultData.storeSearchDistance).toBe('10');
   });
 
   it('internalCampaignId should returned correctly', () => {
-    expect(datalayer.eventData.internalCampaignId).toBe('icid');
+    expect(defaultData.internalCampaignId).toBe('icid');
   });
 
   it('socialNetwork should returned correctly', () => {
-    expect(datalayer.eventData.socialNetwork).toBe('twitter');
+    expect(defaultData.socialNetwork).toBe('twitter');
   });
 });
