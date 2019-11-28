@@ -38,7 +38,6 @@ import selectors, {
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
-import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   getUserPhoneNumber,
   getIsRegisteredUserCallDone,
