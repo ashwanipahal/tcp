@@ -125,7 +125,6 @@ const OutfitDetailsView = ({
 
   return (
     <Row className={className}>
-      {/* {JSON.stringify(images)} */}
       <Col
         colSize={{ small: 6, medium: 3, large: 4 }}
         ignoreGutter={{ small: true }}
