@@ -362,6 +362,7 @@ const getCategoryValue = baseProduct => {
     categoryPath2_catMap: categoryPath2CatMap,
   } = baseProduct;
   try {
+    // @TODO name of primaryKey may change in future, so this might need updation
     if (primaryKey) {
       categoryId = primaryKey;
     } else if (categoryPath3CatMap) {
