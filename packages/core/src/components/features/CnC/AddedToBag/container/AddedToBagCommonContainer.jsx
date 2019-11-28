@@ -63,6 +63,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       navigation,
       isInternationalShipping,
       isPayPalWebViewEnable,
+      isPayPalButtonRendered,
       router,
       closeModal,
       addedToBagLoaderState,
@@ -82,6 +83,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.closeModal}
         navigation={navigation}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        isPayPalButtonRendered={isPayPalButtonRendered}
         hideHeader={this.hideHeaderWhilePaypalView}
         addedToBagLoaderState={addedToBagLoaderState}
         addedToBagInterval={addedToBagInterval}
@@ -108,6 +110,7 @@ const mapStateToProps = state => {
     quantity: getQuantityValue(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    isPayPalButtonRendered: BagPageSelectors.isPayPalButtonRenderDone(state),
     addedToBagLoaderState: getAddedToBagLoaderState(state),
     addedToBagInterval: getAddedToBagInterval(state),
     totalBagItems: BagPageSelectors.getTotalItems(state),

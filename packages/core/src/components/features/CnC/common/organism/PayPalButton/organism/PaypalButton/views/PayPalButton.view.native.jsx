@@ -26,6 +26,7 @@ class PayPalButton extends React.PureComponent {
       navigation,
       setVenmoState,
       closeModal,
+      isRenderDone,
     } = this.props;
 
     switch (event.nativeEvent.data) {
@@ -46,6 +47,9 @@ class PayPalButton extends React.PureComponent {
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });
+        break;
+      case 'loadSuccess':
+        isRenderDone(true);
         break;
       default:
         payPalWebViewHandle(false);
