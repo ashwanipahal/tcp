@@ -11,6 +11,7 @@ import getStandardConfig from '../../../../utils/formValidation/validatorStandar
 import Recaptcha from '../../molecules/recaptcha/recaptcha';
 import Router from 'next/router'; //eslint-disable-line
 import InputCheckbox from '../../atoms/InputCheckbox';
+import constants from '../../../features/account/Payment/AddGiftCard/AddGiftCard.constants';
 
 // @flow
 
@@ -302,7 +303,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddGiftCardForm', // a unique identifier for this form
+  form: constants.ADD_GIFT_CARD_FORM, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
 })(AddGiftCardForm);
