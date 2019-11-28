@@ -160,7 +160,7 @@ export default css`
 
     .stacked-button .cta-button-text,
     .stacked-button button {
-      width: 140px;
+      width: 172px;
       white-space: nowrap;
     }
 
@@ -173,7 +173,7 @@ export default css`
 
     .scroll-button button,
     .scroll-button .cta-button-text {
-      width: 140px;
+      width: 172px;
       white-space: nowrap;
     }
 
@@ -236,7 +236,7 @@ export default css`
       .cta-button-text,
       button {
         white-space: normal;
-        width: 110px;
+        width: ${props => (props.buttonsData.length === 6 ? '110px' : '134px')};
       }
     }
 

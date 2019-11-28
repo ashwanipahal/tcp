@@ -52,7 +52,7 @@ export default css`
     padding: 0 12px;
     ${props =>
       props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
-    display: inline;
+    display: ${props => (props.layout !== 'alt' ? 'inline' : 'flow-root')};
     @media ${props => props.theme.mediaQuery.large} {
       padding: 0 20px;
     }
