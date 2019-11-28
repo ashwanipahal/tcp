@@ -203,6 +203,7 @@ export default css`
   }
 
   .sflActions {
+    white-space: nowrap;
     text-decoration: underline;
     cursor: pointer;
   }

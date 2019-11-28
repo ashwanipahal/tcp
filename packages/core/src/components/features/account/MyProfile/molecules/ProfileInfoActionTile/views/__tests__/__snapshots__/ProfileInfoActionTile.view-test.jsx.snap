@@ -88,7 +88,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
     alt="test"
     className="activity-complete-icon"
     data-locator="ChkmarkIcon"
-    src="/static/images/done.png"
+    src="/static/version-not-available/images/done.png"
     title="test"
   />
   <Styled(BodyCopy)

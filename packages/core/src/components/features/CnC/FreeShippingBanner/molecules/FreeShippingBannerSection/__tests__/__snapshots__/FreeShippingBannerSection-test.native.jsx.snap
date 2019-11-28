@@ -51,6 +51,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         onPress={null}
         text="lbl_freeShippingBanner_details"
         underline={true}
+        url="lbl_freeShippingBanner_url_app"
         visible={false}
       />
     </Styled(View)>
