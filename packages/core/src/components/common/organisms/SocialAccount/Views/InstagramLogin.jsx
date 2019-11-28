@@ -57,7 +57,7 @@ export class InstagramLoginComponent extends React.Component {
           apiConfig.instakey
         }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=code`,
         '_blank',
-        'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
+        'noopener,toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
       );
     }
   };

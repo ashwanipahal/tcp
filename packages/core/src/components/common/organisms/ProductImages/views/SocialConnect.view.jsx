@@ -26,21 +26,21 @@ class SocialConnect extends React.PureComponent {
     const shareUrl = window.location.href;
     const url = `//twitter.com/share?text=&url=${encodeURIComponent(shareUrl)}&hashtags=`;
 
-    window.open(url);
+    window.open(url, '_blank', 'noopener');
   };
 
   handlePinterestShare = () => {
     const shareUrl = window.location.href;
     const url = `http://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    window.open(url, '_blank', 'noopener');
   };
 
   handleFacebookShare = () => {
     const shareUrl = window.location.href;
     const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    window.open(url, '_blank', 'noopener');
   };
 
   render() {
@@ -56,6 +56,7 @@ class SocialConnect extends React.PureComponent {
               onClick={this.handleTwitterShare}
               className="icon-twitter"
               title="Twitter"
+              rel="noopener"
             >
               <Image
                 alt="twitter"

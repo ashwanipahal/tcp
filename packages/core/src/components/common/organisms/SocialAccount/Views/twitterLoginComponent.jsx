@@ -59,7 +59,7 @@ class TwitterLoginComponent extends React.Component {
     window.open(
       `${getLocationOrigin()}/${getSiteId()}${config.ACCOUNT_REDIRECT.TWITTER}`,
       '_blank',
-      'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
+      'noopener,toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
     );
   };
 

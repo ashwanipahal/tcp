@@ -573,7 +573,9 @@ export const scrollToParticularElement = element => {
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
   return window.open(
-    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+    '_blank',
+    'noopener'
   );
 };
 

@@ -12,7 +12,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = e => {
     e.preventDefault();
     const { labels } = this.props;
-    window.open(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank');
+    window.open(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank', 'noopener');
   };
 
   render() {
