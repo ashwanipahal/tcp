@@ -102,7 +102,7 @@ class ProductSummary extends React.PureComponent {
             <BodyCopy
               margin="0 0 0 12px"
               dataLocator="pdp_write_review_icon"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               color="gray.900"
@@ -144,7 +144,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_product_badges"
           margin="16px 0 0 0"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
           color="gray.900"
@@ -164,7 +164,7 @@ class ProductSummary extends React.PureComponent {
       <BodyCopy
         margin="4px 0 0 0"
         dataLocator="pdp_current_product_price"
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs22"
         fontWeight="black"
         color="red.600"
@@ -179,7 +179,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_discounted_percentage"
           margin="0 0 0 10px"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="red.600"
@@ -195,7 +195,7 @@ class ProductSummary extends React.PureComponent {
       return (
         <BodyCopy
           dataLocator="pdp_discounted_product_price"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="gray.800"
@@ -212,7 +212,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_discounted_product_price"
           textDecoration="line-through"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="gray.800"
@@ -288,7 +288,7 @@ class ProductSummary extends React.PureComponent {
           <BodyCopy
             dataLocator="pdp_product_titles"
             margin={badge1Value !== '' ? '0px' : '16px 0 0 0'}
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs18"
             fontWeight="extrabold"
             color="gray.900"
