@@ -47,7 +47,6 @@
 		16C47534238D4C3D00B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
 		16C47535238D4CD200B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		16C47543238D4E2600B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
-		16C47544238D4E2600B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47546238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
 		16C47547238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
 		16C47548238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
@@ -65,7 +64,6 @@
 		16C47555238D502900B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
 		16C47556238D502900B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
 		16C47557238D504900B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		16C47558238D519800B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47559238D526900B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		16C4755A238D526900B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
 		16C4755B238D526900B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
@@ -1902,7 +1900,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C47543238D4E2600B6959B /* Nunito-ExtraBold.ttf in Resources */,
-				16C47544238D4E2600B6959B /* FontAwesome.ttf in Resources */,
 				CA31063C2375C78900D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA31063D2375C78900D8D91A /* Nunito-Bold.ttf in Resources */,
 				CA31063E2375C78900D8D91A /* Montserrat-Bold.ttf in Resources */,
@@ -2160,7 +2157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16C47558238D519800B6959B /* FontAwesome.ttf in Resources */,
 				CA9FB5BB2384615D00225466 /* Montserrat-Medium.ttf in Resources */,
 				CA9FB5A82384567E00225466 /* Nunito-Bold.ttf in Resources */,
 				CA9FB5A62384562A00225466 /* Nunito.ttf in Resources */,

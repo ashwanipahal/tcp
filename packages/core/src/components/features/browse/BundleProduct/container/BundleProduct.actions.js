@@ -33,3 +33,10 @@ export const setAddToFavoriteBUNDLE = payload => {
     payload,
   };
 };
+
+export const setLoadingState = payload => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.SET_LOADING_STATE,
+    payload,
+  };
+};
