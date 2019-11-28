@@ -133,6 +133,8 @@ const OutfitDetailsView = props => {
     pdpLabels,
     unavailableCount,
     toastMessage,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -166,6 +168,8 @@ const OutfitDetailsView = props => {
             toastMessage,
             currentColorIndex,
             setCurrentColorIndex,
+            AddToFavoriteErrorMsg,
+            removeAddToFavoritesErrorMsg,
           })
         }
       />
