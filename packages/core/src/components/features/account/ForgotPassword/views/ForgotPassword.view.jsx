@@ -12,6 +12,7 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import Notification from '../../../../common/molecules/Notification';
+import constants from '../ForgotPassword.constants';
 
 class ForgotPasswordView extends React.Component<Props, State> {
   static propTypes = {
@@ -181,7 +182,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
 const validateMethod = createValidateMethod(getStandardConfig(['Email']));
 
 export default reduxForm({
-  form: 'ForgotPasswordView',
+  form: constants.FORGOT_PASSWORD_FORM,
   enableReinitialize: true,
   ...validateMethod, // a unique identifier for this form
 })(withStyles(ForgotPasswordView, styles));

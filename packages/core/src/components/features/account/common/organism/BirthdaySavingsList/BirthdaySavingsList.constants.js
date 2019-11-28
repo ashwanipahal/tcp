@@ -17,6 +17,7 @@ const CONSTANTS = {
     EDIT: 'edit',
     READ: 'read',
   },
+  ADD_CHILD_BIRTHDAY_FORM: 'AddChildBirthdayForm',
 };
 
 export default CONSTANTS;
