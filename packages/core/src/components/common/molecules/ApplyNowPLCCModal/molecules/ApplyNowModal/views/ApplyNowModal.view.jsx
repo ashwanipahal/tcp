@@ -64,7 +64,7 @@ const StyledApplyNowModal = ({
             colSize={{ large: 12, medium: 8, small: 6 }}
             className="submit_button_plcc_form_container"
           >
-            <div className="header-image" />
+            <div className="header-image" aria-hidden />
           </Col>
         </Row>
         <Row fullBleed className="submit_plcc_form">
