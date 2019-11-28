@@ -101,14 +101,7 @@ class ProductDetailDescription extends React.PureComponent {
   }
 
   render() {
-    const {
-      longDescription,
-      productId,
-      shortDescription,
-      className,
-      pdpLabels,
-      color,
-    } = this.props;
+    const { longDescription, shortDescription, className, pdpLabels, color } = this.props;
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
