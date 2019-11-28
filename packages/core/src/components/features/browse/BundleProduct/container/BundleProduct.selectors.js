@@ -169,3 +169,7 @@ export const getOutfitLabels = state => {
 export const getAddedToBagErrorCatId = state => {
   return state.AddedToBagReducer.get('errorCatId');
 };
+
+export const getLoadingState = state => {
+  return state.BundleProduct && state.BundleProduct.isLoading;
+};
