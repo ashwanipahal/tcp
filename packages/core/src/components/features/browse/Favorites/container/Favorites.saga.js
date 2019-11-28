@@ -64,9 +64,10 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   }
 }
 
+/* eslint-disable sonarjs/cognitive-complexity */
 // eslint-disable-next-line complexity
 export function* addItemsToWishlist({ payload }) {
-  const { colorProductId, productSkuId, pdpColorProductId, page } = payload;
+  const { colorProductId, activeWishListId, productSkuId, pdpColorProductId, page } = payload;
   const state = yield select();
   const isGuest = !getUserLoggedInState(state);
   const errorMapping = getErrorList(state);
@@ -82,12 +83,12 @@ export function* addItemsToWishlist({ payload }) {
   }
 
   try {
-    yield put(setAddToFavoriteErrorState({}));
+    yield put(setAddToFavoriteErrorState({ errorMessage: '' }));
     if (isGuest) {
       yield put(setLoginModalMountedState({ state: true }));
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
-        wishListId: '',
+        wishListId: activeWishListId || '',
         skuIdOrProductId: skuIdOrProductId,
         quantity: 1,
         isProduct: true,
@@ -259,7 +260,7 @@ export function* updateExistingWishList({ payload: formData }) {
   }
 }
 
-export function* deleteWishListItemById({ payload }) {
+export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false) {
   try {
     const state = yield select();
     const activeWishlistObject =
@@ -270,7 +271,9 @@ export function* deleteWishListItemById({ payload }) {
       throw deleteItemResponse;
     }
     yield put(setDeletedItemAction(payload.itemId));
-    yield* loadWishlistsSummaries(activeWishlistId);
+    if (!isByPallLoadSummary) {
+      yield* loadWishlistsSummaries(activeWishlistId);
+    }
   } catch (err) {
     yield null;
   }
@@ -334,6 +337,19 @@ export function* sendWishListMail(formData) {
   }
 }
 
+export function* replaceWishlistItem(payload) {
+  try {
+    yield* deleteWishListItemById(payload, true);
+    yield* addItemsToWishlist(payload);
+    const {
+      payload: { activeWishListId },
+    } = payload;
+    yield* loadWishlistsSummaries(activeWishListId);
+  } catch (err) {
+    yield null;
+  }
+}
+
 function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
   yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
@@ -349,6 +365,7 @@ function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.DELETE_WISHLIST_ITEM, deleteWishListItemById);
   yield takeLatest(FAVORITES_CONSTANTS.UPDATE_WISHLIST_ITEM, updateWishListItem);
   yield takeLatest(FAVORITES_CONSTANTS.SEND_WISHLIST_EMAIL, sendWishListMail);
+  yield takeLatest(FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM, replaceWishlistItem);
 }
 
 export default FavoriteSaga;

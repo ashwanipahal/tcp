@@ -270,16 +270,5 @@ const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProdu
 };
 
 export const getSizeChartDetails = state => {
-  const breadCrumbs = processBreadCrumbs(state.ProductDetail && state.ProductDetail.breadCrumbs);
-  const navigationTree = state.Navigation && state.Navigation.navigationData;
-  const isBundleProduct =
-    state.ProductDetail &&
-    state.ProductDetail.currentProduct &&
-    state.ProductDetail.currentProduct.bundleProducts &&
-    state.ProductDetail.currentProduct.bundleProducts.length > 0;
-  const categoryPathMap =
-    state.ProductDetail &&
-    state.ProductDetail.currentProduct &&
-    state.ProductDetail.currentProduct.categoryPathMap;
-  return fetchSizeChartDetails(navigationTree, breadCrumbs, categoryPathMap, isBundleProduct);
+  return [];
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
@@ -17,6 +18,7 @@ import {
   sendWishListMailAction,
   setWishListShareSuccess,
   updateWishListItemIdAction,
+  setReplaceWishlistItem,
 } from './Favorites.actions';
 
 import {
@@ -140,6 +142,20 @@ class FavoritesContainer extends React.PureComponent {
     }
   };
 
+  onLoadRecommendations = payload => {
+    const { loadRecommendations } = this.props;
+    if (loadRecommendations) {
+      loadRecommendations(payload);
+    }
+  };
+
+  onReplaceWishlistItem = data => {
+    const { replaceWishlistItem } = this.props;
+    if (replaceWishlistItem) {
+      replaceWishlistItem(data);
+    }
+  };
+
   render() {
     const {
       wishlistsSummaries,
@@ -175,7 +191,6 @@ class FavoritesContainer extends React.PureComponent {
       updateWishListItemFav,
     } = this.props;
     const { selectedColorProductId } = this.state;
-
     return (
       <Favorites
         wishlistsSummaries={wishlistsSummaries}
@@ -216,6 +231,8 @@ class FavoritesContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         addToBagEcom={addToBagEcom}
         updateWishListItemFav={updateWishListItemFav}
+        onLoadRecommendations={this.onLoadRecommendations}
+        onReplaceWishlistItem={this.onReplaceWishlistItem}
         {...this.state}
       />
     );
@@ -277,6 +294,8 @@ const mapDispatchToProps = dispatch => {
     updateWishListItemFav: payload => {
       dispatch(updateWishListItemIdAction(payload));
     },
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
+    replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
   };
 };
 
@@ -312,6 +331,8 @@ FavoritesContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   addToBagEcom: PropTypes.func.isRequired,
   updateWishListItemFav: PropTypes.func.isRequired,
+  loadRecommendations: PropTypes.func.isRequired,
+  replaceWishlistItem: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
