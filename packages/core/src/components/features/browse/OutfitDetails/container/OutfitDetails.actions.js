@@ -20,3 +20,10 @@ export const setAddToFavoriteOUTFIT = payload => {
     payload,
   };
 };
+
+export const setLoadingState = payload => {
+  return {
+    type: OUTFIT_DETAILS_CONSTANTS.SET_LOADING_STATE,
+    payload,
+  };
+};
