@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import CONSTANTS from '../../../Checkout.constants';
 import { getSiteId } from '../../../../../../../utils';
 
-const setPickupInitialValues = pickUpContactPerson => {
+export const setPickupInitialValues = pickUpContactPerson => {
   return {
     firstName: pickUpContactPerson.firstName,
     lastName: pickUpContactPerson.lastName,
