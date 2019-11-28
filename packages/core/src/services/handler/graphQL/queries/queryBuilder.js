@@ -46,8 +46,8 @@ const QueryBuilder = {
    */
   loadModuleQuery: async (module, data) => {
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      const { accountNavigation, navigation } = moduleNames;
-      return module === navigation || module === accountNavigation
+      const { accountNavigation, navigation, subNavigation } = moduleNames;
+      return module === navigation || module === accountNavigation || module === subNavigation
         ? QueryModule.getQuery(data)
         : QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
     });
