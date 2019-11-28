@@ -49,6 +49,13 @@ export const getActiveWishlistAction = wishListId => {
   };
 };
 
+export const getActiveWishlistGuestAction = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST_GUEST,
+    payload,
+  };
+};
+
 export const createNewWishListAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST,

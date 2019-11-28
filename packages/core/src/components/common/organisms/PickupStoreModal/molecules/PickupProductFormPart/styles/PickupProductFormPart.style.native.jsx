@@ -23,6 +23,11 @@ export const OfferPriceAndBadge2Container = styled.View`
   flex-direction: row;
 `;
 
+export const PromotionalMsgContainer = styled.View`
+  flex-direction: row;
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+`;
+
 export const ModalButton = styled.View`
   align-items: flex-start;
   margin-top: 28px;

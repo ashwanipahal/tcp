@@ -15,6 +15,7 @@ import styles from '../styles/AddChild.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import endpoints from '../../../externalEndpoints';
+import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 
 export class AddChildBirthdayForm extends React.PureComponent {
   static propTypes = {
@@ -294,7 +295,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddChildBirthdayForm', // a unique identifier for this form
+  form: constants.ADD_CHILD_BIRTHDAY_FORM, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(AddChildBirthdayForm, styles));

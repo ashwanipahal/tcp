@@ -26,7 +26,7 @@ const styles = css`
     margin: 0 auto 8px;
   }
   .overlap {
-    z-index: 9;
+    z-index: 1;
   }
 
   .overlay {

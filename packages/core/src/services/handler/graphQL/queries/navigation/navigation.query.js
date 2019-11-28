@@ -11,6 +11,7 @@ const buildQuery = ({ brand, country, channel, lang }) => `
       longDescription
       seoTitle
       seoMetaDesc
+      sizeChartSelection
       mainCategory {
         set {
           key
@@ -91,6 +92,7 @@ const buildQuery = ({ brand, country, channel, lang }) => `
         catgroupId
         seoTitle
         seoMetaDesc
+        sizeChartSelection
         mainCategory {
           promoBadge {
             text
@@ -113,6 +115,7 @@ const buildQuery = ({ brand, country, channel, lang }) => `
           catgroupId
           seoTitle
           seoMetaDesc
+          sizeChartSelection
         }
       }
     }

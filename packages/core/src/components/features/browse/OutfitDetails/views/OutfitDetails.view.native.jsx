@@ -38,6 +38,8 @@ const renderItem = ({
   navigation,
   isLoggedIn,
   toastMessage,
+  addToBagError,
+  addToBagErrorId,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
   currentColorIndex,
@@ -74,6 +76,7 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      addToBagError={addToBagErrorId === item.generalProductId && addToBagError}
       toastMessage={toastMessage}
       AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
       removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
@@ -130,6 +133,8 @@ const OutfitDetailsView = props => {
     pdpLabels,
     unavailableCount,
     toastMessage,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -163,6 +168,8 @@ const OutfitDetailsView = props => {
             toastMessage,
             currentColorIndex,
             setCurrentColorIndex,
+            AddToFavoriteErrorMsg,
+            removeAddToFavoritesErrorMsg,
           })
         }
       />
@@ -209,6 +216,8 @@ OutfitDetailsView.propTypes = {
   toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  addToBagError: PropTypes.string,
+  addToBagErrorId: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -227,6 +236,8 @@ OutfitDetailsView.defaultProps = {
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  addToBagError: '',
+  addToBagErrorId: '',
 };
 
 export default OutfitDetailsView;

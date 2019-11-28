@@ -19,6 +19,22 @@ import {
   BUTTON_LABEL_STATUS,
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
+const getTrackingObj = (formData, productsData) => {
+  return {
+    customEvents: ['event28'],
+    products: productsData,
+    eventName:
+      formData.analyticsData && formData.analyticsData.eventName
+        ? formData.analyticsData.eventName
+        : 'coupon applied',
+    couponCode: coupon.id,
+    pageNavigationText:
+      formData.analyticsData && formData.analyticsData.pageNavigationText
+        ? formData.analyticsData.pageNavigationText
+        : null,
+  };
+};
+
 export function* applyCoupon({ payload }) {
   const {
     formData,
@@ -72,14 +88,7 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(
-        setClickAnalyticsData({
-          customEvents: ['event28'],
-          products: productsData,
-          eventName: 'coupon applied',
-          couponCode: coupon.id,
-        })
-      );
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
       yield put(trackClick('coupon applied success'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
@@ -116,14 +125,7 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(
-        setClickAnalyticsData({
-          customEvents: ['event28'],
-          products: productsData,
-          eventName: 'coupon applied',
-          couponCode: coupon.id,
-        })
-      );
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
       yield put(trackClick('coupon applied successfully'));
       yield call(getCartDataSaga, {
         payload: {
@@ -181,6 +183,13 @@ export function* removeCoupon({ payload }) {
 
     yield put(hideLoader());
     yield put(setLoaderState(false));
+    yield put(
+      setClickAnalyticsData({
+        pageNavigationText: 'my account-my wallet-remove from bag',
+        eventName: 'walletlinksclickevent',
+      })
+    );
+    yield put(trackClick('coupon removed'));
     resolve();
   } catch (e) {
     yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
