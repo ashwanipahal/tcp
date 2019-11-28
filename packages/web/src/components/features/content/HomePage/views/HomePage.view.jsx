@@ -33,7 +33,7 @@ class HomePageWrapper extends React.Component {
     const { setCampaignId } = this.props;
     const queryParams = getQueryParamsFromUrl(router.asPath);
     const queryParamsConst = ['cid'];
-    setProp('eVar22', queryParams[queryParamsConst[0]]);
+    setProp('eVar22', queryParams[queryParamsConst[0]] || '');
     setProp('eVar15', 'D-Vo');
     if (queryParams[queryParamsConst[0]]) {
       setCampaignId(queryParams[queryParamsConst[0]]);
@@ -41,8 +41,20 @@ class HomePageWrapper extends React.Component {
     if (queryParams[queryParamsConst[1]]) {
       setClickAnalyticsData({
         customEvents: ['event18', 'event80'],
+        products: this.productObjForHomeAnalytics,
       });
     }
+  };
+
+  productObjForHomeAnalytics = () => {
+    const aTags = document.getElementsByTagName('a') || [];
+    const icidLinks = [];
+    for (let i = 0; i < aTags.length; i += 1) {
+      if (aTags[i].href.indexOf('icid') > -1) {
+        icidLinks.push(getParam('icid', aTags[i].href));
+      }
+    }
+    return icidLinks.length > 0 ? icidLinks : [];
   };
 
   subscriptionPopUpOnPageLoad = () => {
