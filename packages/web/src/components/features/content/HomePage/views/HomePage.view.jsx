@@ -17,7 +17,7 @@ import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
+    const { openCountrySelectorModal, router, pageName } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
@@ -25,20 +25,25 @@ class HomePageWrapper extends React.Component {
     if (pageName === 'homepage') {
       this.subscriptionPopUpOnPageLoad();
     }
+    this.sHomePageAnalyticsVal(router);
+  }
+
+  // For Setting the Home Page Analytics Data.
+  sHomePageAnalyticsVal = router => {
+    const { setCampaignId } = this.props;
     const queryParams = getQueryParamsFromUrl(router.asPath);
-    const queryParamsArray = ['cid', 'icid'];
-    setProp('eVar22', queryParams[queryParamsArray[0]]);
+    const queryParamsConst = ['cid'];
+    setProp('eVar22', queryParams[queryParamsConst[0]]);
     setProp('eVar15', 'D-Vo');
-    if (queryParams[queryParamsArray[0]]) {
-      setCampaignId(queryParams[queryParamsArray[0]]);
+    if (queryParams[queryParamsConst[0]]) {
+      setCampaignId(queryParams[queryParamsConst[0]]);
     }
-    if (queryParams[queryParamsArray[1]]) {
+    if (queryParams[queryParamsConst[1]]) {
       setClickAnalyticsData({
-        internalCampaignId: queryParams[queryParamsArray[1]],
         customEvents: ['event18', 'event80'],
       });
     }
-  }
+  };
 
   subscriptionPopUpOnPageLoad = () => {
     const { openEmailSignUpModal, openSmsSignUpModal } = this.props;
