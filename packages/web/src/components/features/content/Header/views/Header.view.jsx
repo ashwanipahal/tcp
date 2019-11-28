@@ -126,7 +126,7 @@ class Header extends React.PureComponent {
           {skipNavigation}
         </Anchor>
 
-        {/* <HeaderMiddleNav
+        <HeaderMiddleNav
           openNavigationDrawer={openNavigationDrawer}
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
@@ -144,7 +144,7 @@ class Header extends React.PureComponent {
           store={favStore}
           labels={labels}
           setClickAnalyticsData={setClickAnalyticsData}
-        /> */}
+        />
         <OverlayModal showCondensedHeader={showCondensedHeader} isLoggedIn={isLoggedIn} />
         <HeaderPromo
           mobileMarkup
