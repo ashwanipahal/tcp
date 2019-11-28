@@ -4,6 +4,10 @@ const PageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+const RecommendationContainer = styled.View`
+  width: 48%;
+`;
+
 const HeaderContainer = styled.View``;
 
 const GridPromoContainer = styled.View`
@@ -12,4 +16,4 @@ const GridPromoContainer = styled.View`
 
 const styles = css``;
 
-export { styles, PageContainer, HeaderContainer, GridPromoContainer };
+export { styles, PageContainer, HeaderContainer, GridPromoContainer, RecommendationContainer };
