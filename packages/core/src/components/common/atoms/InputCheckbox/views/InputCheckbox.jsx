@@ -32,7 +32,7 @@ const InputCheckbox = ({
 
   return (
     <React.Fragment>
-      <label htmlFor={input.name} className={className}>
+      <label htmlFor={input.name} className={`${className} input-checkbox-wrapper`}>
         <input
           {...input}
           id={input.name}
