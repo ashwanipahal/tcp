@@ -248,27 +248,32 @@ function getIsShowCategoryGrouping(state) {
   return isL2Category && isNotAppliedSort && isNotAppliedFilter;
 }
 
+// eslint-disable-next-line
 export function getProductsAndTitleBlocks(
   state,
   productBlocks = [],
   gridPromo,
   horizontalPromo,
-  rowSize
+  rowSize,
+  filterCount
 ) {
   const productsAndTitleBlocks = [];
   let lastCategoryName = null;
   const slots = [];
   const horizontalSlots = [];
 
-  gridPromo.forEach(promoItem => {
-    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
-    slots.push(parseInt(slotNumber, 10));
-  });
+  // If filters are applied, do not consider the promos even if they are configured
+  if (filterCount === 0) {
+    gridPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      slots.push(parseInt(slotNumber, 10));
+    });
 
-  horizontalPromo.forEach(promoItem => {
-    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
-    horizontalSlots.push(parseInt(slotNumber, 10));
-  });
+    horizontalPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      horizontalSlots.push(parseInt(slotNumber, 10));
+    });
+  }
 
   let totalItemsAdded = 0;
   let promosAdded = 0;
@@ -379,19 +384,21 @@ export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
 };
 
 // This function is used for mobile app In-grid promo implementation
-export const getProductsWithPromo = (products, gridPromo, horizontalPromo) => {
+export const getProductsWithPromo = (products, gridPromo, horizontalPromo, filterCount) => {
   const slots = [];
   const horizontalSlots = [];
 
-  gridPromo.forEach(promoItem => {
-    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
-    slots.push(parseInt(slotNumber, 10));
-  });
+  if (filterCount === 0) {
+    gridPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      slots.push(parseInt(slotNumber, 10));
+    });
 
-  horizontalPromo.forEach(promoItem => {
-    const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
-    horizontalSlots.push(parseInt(slotNumber, 10));
-  });
+    horizontalPromo.forEach(promoItem => {
+      const slotNumber = (promoItem.slot && promoItem.slot.split('slot_')[1]) || '';
+      horizontalSlots.push(parseInt(slotNumber, 10));
+    });
+  }
 
   let productCount = 0;
   const productsAndPromos = [];
