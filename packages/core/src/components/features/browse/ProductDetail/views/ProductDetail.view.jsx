@@ -54,7 +54,7 @@ class ProductDetailView extends PureComponent {
     if (productsFormatted) {
       setClickAnalyticsData({
         pageType: 'product',
-        pageName,
+        pageName: 'product',
         pageSection,
         pageSubSection,
         products: productsFormatted,

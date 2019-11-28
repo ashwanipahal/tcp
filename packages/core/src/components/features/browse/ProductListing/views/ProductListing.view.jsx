@@ -108,8 +108,6 @@ const ProductListView = ({
     const productsFormatted = formatProductsData(products);
     if (products.length) {
       setClickAnalyticsData({
-        pageType: 'browse',
-        pageName: 'browse',
         products: productsFormatted,
       });
     }
