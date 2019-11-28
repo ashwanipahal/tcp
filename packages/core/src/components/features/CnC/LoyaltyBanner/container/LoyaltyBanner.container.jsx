@@ -37,6 +37,7 @@ export const LoyaltyBannerContainer = ({
   openApplyNowModal,
   footerLabels,
   navigation,
+  cartOrderItems,
 }) => {
   const {
     estimatedRewards,
@@ -68,6 +69,7 @@ export const LoyaltyBannerContainer = ({
       footerLabels={footerLabels}
       navigation={navigation}
       bagLoading={bagLoading}
+      cartOrderItems={cartOrderItems}
     />
   );
 };
@@ -131,6 +133,7 @@ export const mapStateToProps = (state, ownProps) => {
     isInternationalShipping: getIsInternationalShipping(state),
     footerLabels: getFooterLabels(state, ownProps.pageCategory, isGuestState, isPlccState),
     bagLoading: BagPageSelector.isBagLoading(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
   };
 };
 

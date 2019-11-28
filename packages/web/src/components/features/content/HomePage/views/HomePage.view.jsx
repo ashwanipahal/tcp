@@ -27,14 +27,14 @@ class HomePageWrapper extends React.Component {
     }
     const queryParams = getQueryParamsFromUrl(router.asPath);
     const queryParamsArray = ['cid', 'icid'];
-    setProp('eVar22', queryParams[queryParamsArray[0]][0]);
+    setProp('eVar22', queryParams[queryParamsArray[0]]);
     setProp('eVar15', 'D-Vo');
     if (queryParams[queryParamsArray[0]]) {
-      setCampaignId(queryParams[queryParamsArray[0]][0]);
+      setCampaignId(queryParams[queryParamsArray[0]]);
     }
     if (queryParams[queryParamsArray[1]]) {
       setClickAnalyticsData({
-        internalCampaignId: queryParams[queryParamsArray[1]][0],
+        internalCampaignId: queryParams[queryParamsArray[1]],
         customEvents: ['event18', 'event80'],
       });
     }
