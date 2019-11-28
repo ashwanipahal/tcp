@@ -51,6 +51,22 @@ class ShippingContainer extends React.Component {
     });
   };
 
+  callUpdateShippingMethod = ({
+    shippingAddressId,
+    prevSelectedShipmentId,
+    selectedShipmentId,
+    updateShippingMethodSelection,
+    isAddressChange,
+  }) => {
+    if (
+      shippingAddressId &&
+      prevSelectedShipmentId &&
+      selectedShipmentId !== prevSelectedShipmentId
+    ) {
+      updateShippingMethodSelection({ id: selectedShipmentId, isAddressChange });
+    }
+  };
+
   shippingDidUpdate = prevProps => {
     const { address } = this.props;
     const { selectedShipmentId, updateShippingMethodSelection, shippingAddressId } = this.props;
@@ -75,9 +91,13 @@ class ShippingContainer extends React.Component {
       }
     }
     const isAddressChange = onFileAddressKey !== shippingAddressId;
-    if (shippingAddressId && selectedShipmentId !== prevSelectedShipmentId) {
-      updateShippingMethodSelection({ id: selectedShipmentId, isAddressChange });
-    }
+    this.callUpdateShippingMethod({
+      shippingAddressId,
+      prevSelectedShipmentId,
+      selectedShipmentId,
+      updateShippingMethodSelection,
+      isAddressChange,
+    });
     const { shipmentMethods: prevShipmentMethods } = prevProps;
     const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;
     if (nextShipmentMethods && prevShipmentMethods !== nextShipmentMethods) {
@@ -195,7 +215,6 @@ class ShippingContainer extends React.Component {
   };
 
   render() {
-    const { shipmentMethods, checkoutRoutingDone } = this.props;
     return (
       <>
         {
