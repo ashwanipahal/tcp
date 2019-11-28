@@ -152,9 +152,21 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
+import SmsSignupFormReducer from '@tcp/core/src/components/common/organisms/SmsSignupForm/container/SmsSignupForm.reducer';
+import EmailSignupFormReducer from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.reducer';
+import EmailSignupModalReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
-import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
+import SmsSignupModalReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
+
+const EmailSignupReducers = combineReducers({
+  EmailSignupModalReducer,
+  EmailSignupFormReducer,
+});
+
+const SmsSignupReducers = combineReducers({
+  SmsSignupModalReducer,
+  SmsSignupFormReducer,
+});
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
 const filteredProductListingPageReducer = createFilteredReducer(
@@ -224,9 +236,9 @@ export default combineReducers({
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   form: reduxFormReducer,
-  [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
+  [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducers,
   [COUNTRY_SELECTOR_REDUCER_KEY]: CountrySelectorReducer,
-  [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
+  [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducers,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,

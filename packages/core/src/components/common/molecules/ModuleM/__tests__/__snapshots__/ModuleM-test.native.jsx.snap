@@ -155,16 +155,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -229,16 +219,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Toddler Girl alt",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Toddler Girl title",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -303,16 +283,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Boy",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Boy",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -377,16 +347,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Toddler Boy alt",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Toddler Boy title",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -451,16 +411,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Baby",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Baby",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -525,16 +475,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -599,16 +539,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""
@@ -673,16 +603,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           height={228}
           host=""
           imgConfig="t_mod_M_img_product_m"
-          imgData={
-            Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            }
-          }
           isProductImage={false}
           itemBrand=""
           source=""

@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import SmsSignupSaga, { subscribeSms } from '../container/SmsSignupModal.saga';
-import { smsSignupStatus } from '../container/SmsSignupModal.actions';
-import SMSSIGNUP_CONSTANTS from '../container/SmsSignupModal.constants';
+import SmsSignupSaga, { subscribeSms } from '../container/SmsSignupForm.saga';
+import { smsSignupStatus } from '../container/SmsSignupForm.actions';
+import SMSSIGNUP_CONSTANTS from '../container/SmsSignupForm.constants';
 
 describe('subscribeSms', () => {
   let subscribeSmsGen;

@@ -70,6 +70,7 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   isTCP,
+  convertNumToBool,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
