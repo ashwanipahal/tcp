@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FastImageNative should render correctly 1`] = `
+<FastImage
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "http://fake-url",
+    }
+  }
+  style={Object {}}
+/>
+`;
