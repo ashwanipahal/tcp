@@ -82,6 +82,7 @@ class BillingPage extends React.PureComponent {
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       isPayPalWebViewEnable,
       isFetching,
+      onVenmoError,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -123,6 +124,7 @@ class BillingPage extends React.PureComponent {
                 isVenmoPaymentInProgress={isVenmoPaymentInProgress}
                 isVenmoEnabled={isVenmoEnabled}
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
+                onVenmoError={onVenmoError}
               />
             ) : (
               <BillingPaymentForm
@@ -145,6 +147,7 @@ class BillingPage extends React.PureComponent {
                 isVenmoPaymentInProgress={isVenmoPaymentInProgress}
                 isVenmoEnabled={isVenmoEnabled}
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
+                onVenmoError={onVenmoError}
               />
             )}
           </Container>

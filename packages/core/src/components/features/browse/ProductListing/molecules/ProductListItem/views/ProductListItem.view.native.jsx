@@ -54,7 +54,7 @@ const onCTAHandler = props => {
     onReplaceWishlistItem,
   } = props;
   const { productInfo, colorsMap } = item;
-  const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { pdpUrl, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex || 0]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
   if (isSuggestedItem && onReplaceWishlistItem) {
@@ -73,7 +73,7 @@ const onCTAHandler = props => {
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
-  } else if (!isGiftCard) {
+  } else {
     onQuickViewOpenClick({
       colorProductId,
     });
