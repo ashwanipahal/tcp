@@ -45,6 +45,21 @@ class ProductDetailDescription extends React.PureComponent {
     this.setState({ isAccordionOpen: !isAccordionOpen });
   };
 
+  componentDidUpdate = (prevProps, prevState) => {
+    const { scrollToAccordionBottom } = this.props;
+    const { isAccordionOpen } = this.state;
+    const { isAccordionOpen: prevValue } = prevState;
+    if (isAccordionOpen && !prevValue) {
+      setTimeout(() => {
+        this.accordionView.measure((x, y, width, height, pageX, pageY) => {
+          if (scrollToAccordionBottom) {
+            scrollToAccordionBottom(x, y, width, height, pageX, pageY);
+          }
+        });
+      }, 0);
+    }
+  };
+
   renderLongDescription = longDescription => {
     const longDescriptionText = longDescription.replace(/<\/li>/g, '');
     return longDescriptionText.split('<li>');
@@ -55,7 +70,12 @@ class ProductDetailDescription extends React.PureComponent {
     const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isAccordionOpen } = this.state;
     return (
-      <PageContainer margins={margins}>
+      <PageContainer
+        ref={ref => {
+          this.accordionView = ref;
+        }}
+        margins={margins}
+      >
         <StyleProductDescription onPress={this.handleAccordionToggle}>
           <BodyCopy
             fontFamily="secondary"

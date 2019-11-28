@@ -25,12 +25,33 @@ class ProductBundle extends React.PureComponent {
     super(props);
     this.state = {
       showCarousel: false,
+      currentScrollValue: 0,
     };
   }
 
   onImageClick = () => {
     const { showCarousel } = this.state;
     this.setState({ showCarousel: !showCarousel });
+  };
+
+  scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
+    const headerHeight = 100;
+    const footerHeight = 100;
+    const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
+    const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
+    const scrollToBottom = height > availableSpaceInBottom;
+    const { currentScrollValue } = this.state;
+    if (scrollToBottom) {
+      this.scrollView.scrollTo({
+        x: 0,
+        y: currentScrollValue + (height - availableSpaceInBottom),
+        animated: true,
+      });
+    }
+  };
+
+  handleScroll = event => {
+    this.setState({ currentScrollValue: event.nativeEvent.contentOffset.y });
   };
 
   render() {
@@ -80,7 +101,12 @@ class ProductBundle extends React.PureComponent {
         isHeaderAccordion: true,
       };
       return (
-        <ScrollView>
+        <ScrollView
+          ref={ref => {
+            this.scrollView = ref;
+          }}
+          onScroll={this.handleScroll}
+        >
           {AddToFavoriteErrorMsg !== '' && (
             <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
           )}
@@ -110,6 +136,7 @@ class ProductBundle extends React.PureComponent {
               longDescription={longDescription}
               isShowMore={false}
               pdpLabels={pdpLabels}
+              scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             <BundleProductItems
               currentBundle={currentBundle}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { getScreenHeight } from '@tcp/core/src/utils/index.native';
 // import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -49,6 +50,7 @@ class ProductDetailView extends React.PureComponent {
       selectedColorProductId,
       showCompleteTheLook: false,
       size: '',
+      currentScrollValue: 0,
     };
   }
 
@@ -150,6 +152,26 @@ class ProductDetailView extends React.PureComponent {
     }
   };
 
+  scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
+    const headerHeight = 100;
+    const footerHeight = 100;
+    const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
+    const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
+    const scrollToBottom = height > availableSpaceInBottom;
+    const { currentScrollValue } = this.state;
+    if (scrollToBottom) {
+      this.scrollView.scrollTo({
+        x: 0,
+        y: currentScrollValue + (height - availableSpaceInBottom),
+        animated: true,
+      });
+    }
+  };
+
+  handleScroll = event => {
+    this.setState({ currentScrollValue: event.nativeEvent.contentOffset.y });
+  };
+
   render() {
     const {
       currentProduct,
@@ -212,7 +234,13 @@ class ProductDetailView extends React.PureComponent {
     }
 
     return (
-      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
+      <LazyloadScrollView
+        ref={ref => {
+          this.scrollView = ref;
+        }}
+        name={LAZYLOAD_HOST_NAME.PDP}
+        onScroll={this.handleScroll}
+      >
         <PageContainer>
           <Margin>
             <ImageCarousel
@@ -284,6 +312,7 @@ class ProductDetailView extends React.PureComponent {
               longDescription={longDescription}
               isShowMore={false}
               pdpLabels={pdpLabels}
+              scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             {!currentProduct.isGiftCard ? (
               <RelatedOutfits
