@@ -35,7 +35,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       >
         <Styled(Image)
           className="elem-mr-XS"
-          src="/static/images/visa.svg"
+          src="/static/version-not-available/images/visa.svg"
         />
         <Styled(BodyCopy)
           className={null}

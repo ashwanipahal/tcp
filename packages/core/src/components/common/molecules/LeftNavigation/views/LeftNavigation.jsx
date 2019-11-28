@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Dropdown from '@tcp/core/src/components/common/molecules/Dropdown';
 import style from '../styles/LeftNavigation.style';
@@ -12,9 +13,15 @@ import Col from '../../../atoms/Col';
  * @param {data} data Each Link data is passed in nav Object
  */
 const getNavLink = (data = {}) => {
-  const { navObj = {} } = data;
+  const { navObj = {}, isSelected } = data;
   return (
-    <Anchor asPath={navObj.url} to={navObj.url} anchorVariation="primary" fontSizeVariation="large">
+    <Anchor
+      asPath={navObj.url}
+      to={navObj.url && configureInternalNavigationFromCMSUrl(navObj.url)}
+      anchorVariation="primary"
+      fontSizeVariation="large"
+      className={isSelected ? 'navLink__Selected' : 'navLink'}
+    >
       {navObj.displayName}
     </Anchor>
   );
@@ -27,7 +34,7 @@ const getNavLink = (data = {}) => {
  * @param {data} data navigation data
  */
 
-const LeftNavigation = ({ data = [], className }) => {
+const LeftNavigation = ({ data = [], className, selectedPage, defaultPage }) => {
   const navData = Object.assign(data);
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
   let activeLink = [];
@@ -47,9 +54,10 @@ const LeftNavigation = ({ data = [], className }) => {
             {navData.length &&
               navData.map((nav, index) => {
                 const { leafLink: navObj = {} } = nav;
+                const isSelected = navObj.url && navObj.url.includes(selectedPage);
                 return (
                   <li id={index} key={navObj.displayName} className="nav-link-wrapper">
-                    {getNavLink({ navObj })}
+                    {getNavLink({ navObj, isSelected })}
                   </li>
                 );
               })}
@@ -66,3 +74,4 @@ LeftNavigation.propTypes = {
 };
 
 export default withStyles(LeftNavigation, style);
+export { LeftNavigation as LeftNavigationVanilla };

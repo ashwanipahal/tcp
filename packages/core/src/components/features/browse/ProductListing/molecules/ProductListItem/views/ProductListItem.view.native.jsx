@@ -47,7 +47,7 @@ const onCTAHandler = (
   setLastDeletedItemId
 ) => {
   const { productInfo, colorsMap } = item;
-  const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { pdpUrl, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
   if (isFavoriteOOS) {
@@ -57,7 +57,7 @@ const onCTAHandler = (
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
-  } else if (!isGiftCard) {
+  } else {
     onQuickViewOpenClick({
       colorProductId,
     });

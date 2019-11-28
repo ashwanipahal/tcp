@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getStaticFilePath } from '@tcp/core/src/utils';
 
 const styles = css`
   .payment-method-box {
@@ -15,14 +16,14 @@ const styles = css`
     }
   }
   .payment-method-box .radio-button-checked {
-    top: 8px;
+    top: 4px;
   }
   .payment-method-box .radio-button {
-    top: 7px;
+    top: 4px;
   }
 
   .payment-method-box > label {
-    padding-top: 5px;
+    padding-top: 2px;
     z-index: 1;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       background-color: transparent;
@@ -36,7 +37,7 @@ const styles = css`
     display: inline-block;
     vertical-align: top;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-    background: url('/static/images/paypal.svg') no-repeat -9px -21px;
+    background: url(${getStaticFilePath('images/paypal.svg')}) no-repeat -9px -21px;
     background-size: 88px 64px;
     width: 71px;
     height: 22px;
@@ -46,7 +47,7 @@ const styles = css`
     display: inline-block;
     vertical-align: top;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-    background: url('/static/images/venmo.svg') no-repeat -9px -21px;
+    background: url(${getStaticFilePath('images/venmo.svg')}) no-repeat -9px -21px;
     background-size: 88px 64px;
     width: 71px;
     height: 22px;

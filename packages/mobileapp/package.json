@@ -20,7 +20,6 @@
     "@react-native-community/async-storage": "^1.6.2",
     "@react-native-community/cli": "^2.9.0",
     "@react-native-community/netinfo": "^4.4.0",
-    "@redux-beacon/logger": "^1.0.0",
     "@tcp/core": "*",
     "apisauce": "^1.0.2",
     "apollo-cache-inmemory": "^1.6.3",
@@ -79,9 +78,7 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
-    "redux-beacon": "^2.1.0",
     "redux-cache": "^0.3.0",
-    "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.4",
     "redux-ignore": "^1.2.5",
     "redux-persist": "^6.0.0",
@@ -90,7 +87,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
-    "superagent-jsonp": "^0.2.1"
+    "superagent-jsonp": "^0.2.1",
+    "@react-native-community/datetimepicker": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -104,16 +102,13 @@
     "react-test-renderer": "16.9.0",
     "reactotron-core-client": "^2.8.3",
     "reactotron-react-native": "^3.6.5",
-    "reactotron-redux": "^3.1.1",
-    "reactotron-redux-saga": "^4.2.2"
+    "reactotron-redux": "^3.1.1"
   },
   "jest": {
     "preset": "react-native"
   },
   "workspaces": {
     "nohoist": [
-      "**/redux-beacon",
-      "**/redux-beacon/**",
       "**/raygun4js",
       "**/raygun4js/**",
       "**/react-native-fast-image",

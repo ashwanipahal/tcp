@@ -31,17 +31,22 @@ const renderMedia = ([{ image, link, video }]) => {
   const navigationUrl = link;
   navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
   navigationUrl.asPath = link.url;
-
+  const damImageComp = (
+    <DamImage
+      imgData={image}
+      videoData={video}
+      className="image"
+      imgConfigs={IMG_DATA.imgOverlayConfig}
+    />
+  );
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
-      <Anchor {...navigationUrl} className="image-link">
-        <DamImage
-          imgData={image}
-          videoData={video}
-          className="image"
-          imgConfigs={IMG_DATA.imgOverlayConfig}
-        />
-      </Anchor>
+      {image ? (
+        <Anchor {...navigationUrl} className="image-link">
+          {damImageComp}
+        </Anchor>
+      ) : null}
+      {video ? <React.Fragment>{damImageComp}</React.Fragment> : null}
     </div>
   );
 };
