@@ -193,7 +193,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -227,7 +227,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -643,7 +643,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -677,7 +677,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -1095,7 +1095,7 @@ exports[`StoreAddressTile component Details should render details view with clic
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -1129,7 +1129,7 @@ exports[`StoreAddressTile component Details should render details view with clic
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -1545,7 +1545,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -1579,7 +1579,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -1605,7 +1605,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             <Styled(Image)
               alt="Your Store"
               className="favorite-store-icon"
-              src="/static/images/star.png"
+              src="/static/version-not-available/images/star.png"
               title="Your Store"
             />
             <Styled(BodyCopy)
@@ -2008,7 +2008,7 @@ exports[`StoreAddressTile component Details should render details view with set 
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -2042,7 +2042,7 @@ exports[`StoreAddressTile component Details should render details view with set 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -2523,7 +2523,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
           <Styled(Image)
             alt="Gymboree"
             className="brand-store__image"
-            src="/static/images/gymboree-logo.svg"
+            src="/static/version-not-available/images/gymboree-logo.svg"
             title="Gymboree Store"
           />
           <Styled(BodyCopy)
@@ -2562,7 +2562,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
         <Styled(Image)
           alt="Gymboree"
           className="brand-store__image"
-          src="/static/images/gymboree-logo.svg"
+          src="/static/version-not-available/images/gymboree-logo.svg"
           title="Gymboree Store"
         />
         <Styled(BodyCopy)
@@ -3454,7 +3454,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -4023,7 +4023,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -4250,7 +4250,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         <Styled(Image)
           alt="Your Store"
           className="favorite-store-icon"
-          src="/static/images/star.png"
+          src="/static/version-not-available/images/star.png"
           title="Your Store"
         />
         <Styled(BodyCopy)
@@ -4582,7 +4582,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)

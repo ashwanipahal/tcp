@@ -15,34 +15,3 @@ function getIsShowCategoryGrouping(state) {
 
   return isL2Category && isNotAppliedSort && isNotAppliedFilter;
 }
-
-export function getProductsAndTitleBlocks(state, productBlocks = []) {
-  const productsAndTitleBlocks = [];
-  let lastCategoryName = null;
-
-  productBlocks.forEach(block => {
-    const productsAndTitleBlock = [];
-    // For each product in this block try to extract the category name if new
-    block.forEach(product => {
-      const { categoryName } = product.miscInfo;
-
-      // This is to inject Dynamic Marketing Espots into our product Grid
-      // Use this for promo tiles if required later - injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
-
-      // push: If we should group and we hit a new category name push on array
-      // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
-      const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
-      if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
-        productsAndTitleBlock.push(categoryName);
-        lastCategoryName = categoryName;
-      }
-      // push: product onto block
-      productsAndTitleBlock.push(product);
-    });
-
-    // push: product block onto matrix
-    productsAndTitleBlocks.push(productsAndTitleBlock);
-  });
-
-  return productsAndTitleBlocks;
-}

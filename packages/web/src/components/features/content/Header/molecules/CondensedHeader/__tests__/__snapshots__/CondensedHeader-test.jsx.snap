@@ -20,7 +20,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           role="button"
-          src="/static/images/grey-menu.svg"
+          src="/static/version-not-available/images/grey-menu.svg"
           tabIndex="0"
         />
       </div>
@@ -28,7 +28,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         alt="The Children's Place"
         className="condensed-brand-logo"
         dataLocator="global_TCPlink"
-        imgSrc="/static/images/tcp-logo.svg"
+        imgSrc="/static/version-not-available/images/tcp-logo.svg"
       />
       <div
         className="condensed-header-icons"
@@ -55,7 +55,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             className="rightLink userIcon"
             data-locator="user-icon"
             id="condensedLogin"
-            src="/static/images/user-icon-blue.svg"
+            src="/static/version-not-available/images/user-icon-blue.svg"
           />
         </Styled(Anchor)>
         <Styled(Anchor)
@@ -72,7 +72,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             alt="cart"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag-icon-blue.svg"
+            src="/static/version-not-available/images/bag-icon-blue.svg"
           />
           <Styled(BodyCopy)
             aria-hidden="true"

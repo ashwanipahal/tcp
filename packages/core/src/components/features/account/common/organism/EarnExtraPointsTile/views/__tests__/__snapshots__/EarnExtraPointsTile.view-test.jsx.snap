@@ -70,8 +70,8 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
       carouselConfig={
         Object {
           "arrow": "small",
-          "customArrowLeft": "/static/images/smallright.svg",
-          "customArrowRight": "/static/images/smallright.svg",
+          "customArrowLeft": "/static/version-not-available/images/smallright.svg",
+          "customArrowRight": "/static/version-not-available/images/smallright.svg",
           "type": "light",
         }
       }
@@ -145,8 +145,8 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
       carouselConfig={
         Object {
           "arrow": "small",
-          "customArrowLeft": "/static/images/smallright.svg",
-          "customArrowRight": "/static/images/smallright.svg",
+          "customArrowLeft": "/static/version-not-available/images/smallright.svg",
+          "customArrowRight": "/static/version-not-available/images/smallright.svg",
           "type": "light",
         }
       }

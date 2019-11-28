@@ -121,6 +121,7 @@ const ConfirmationView = ({
             updateOrderDetailsData={updateOrderDetailsData}
             orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
             isBossInList={isBossInList}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
           {isVenmoPaymentInProgress && (
             <VenmoConfirmation
