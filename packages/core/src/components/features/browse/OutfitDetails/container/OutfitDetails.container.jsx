@@ -10,6 +10,7 @@ import {
   getAddedToBagErrorCatId,
   getPDPLabels,
   getUnavailableCount,
+  getLoadingState,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
@@ -45,6 +46,7 @@ import {
 } from '../../Favorites/container/Favorites.actions';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
+import OutfitProductSkeleton from '../molecules/OutfitProductSkeleton';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -125,43 +127,46 @@ class OutfitDetailsContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       isKeepAliveEnabled,
       outOfStockLabels,
+      isLoading,
     } = this.props;
     const { outfitIdLocal } = this.state;
-    if (outfitProducts) {
-      return (
-        <OutfitDetails
-          labels={labels}
-          outfitImageUrl={outfitImageUrl}
-          unavailableCount={unavailableCount}
-          outfitProducts={outfitProducts}
-          plpLabels={plpLabels}
-          isCanada={isCanada()}
-          isPlcc={isPlcc}
-          isInternationalShipping={isInternationalShipping}
-          currencySymbol={priceCurrency}
-          currencyAttributes={currencyAttributes}
-          handleAddToBag={this.handleAddToBag}
-          addToBagEcom={addToBagEcom}
-          currentState={currentState}
-          addToBagError={addToBagError}
-          addToBagErrorId={addToBagErrorId}
-          isPickupModalOpen={isPickupModalOpen}
-          addToFavorites={addToFavorites}
-          isLoggedIn={isLoggedIn}
-          navigation={navigation}
-          outfitId={outfitIdLocal}
-          pdpLabels={pdpLabels}
-          toastMessage={toastMessage}
-          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-          asPathVal={asPathVal}
-          topPromos={topPromos}
-          isKeepAliveEnabled={isKeepAliveEnabled}
-          outOfStockLabels={outOfStockLabels}
-        />
-      );
-    }
-    return null;
+    return (
+      <React.Fragment>
+        {outfitProducts ? (
+          <OutfitDetails
+            labels={labels}
+            outfitImageUrl={outfitImageUrl}
+            unavailableCount={unavailableCount}
+            outfitProducts={outfitProducts}
+            plpLabels={plpLabels}
+            isCanada={isCanada()}
+            isPlcc={isPlcc}
+            isInternationalShipping={isInternationalShipping}
+            currencySymbol={priceCurrency}
+            currencyAttributes={currencyAttributes}
+            handleAddToBag={this.handleAddToBag}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            addToBagError={addToBagError}
+            addToBagErrorId={addToBagErrorId}
+            isPickupModalOpen={isPickupModalOpen}
+            addToFavorites={addToFavorites}
+            isLoggedIn={isLoggedIn}
+            navigation={navigation}
+            outfitId={outfitIdLocal}
+            pdpLabels={pdpLabels}
+            toastMessage={toastMessage}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            asPathVal={asPathVal}
+            topPromos={topPromos}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+          />
+        ) : null}
+        {isLoading ? <OutfitProductSkeleton /> : null}
+      </React.Fragment>
+    );
   }
 }
 
@@ -178,6 +183,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     outfitImageUrl: getOutfitImage(state),
+    isLoading: getLoadingState(state),
     unavailableCount: getUnavailableCount(state),
     outfitProducts: getOutfitProducts(state),
     plpLabels: getPlpLabels(state),
