@@ -340,16 +340,16 @@ export const WishListIcon = (
 };
 
 export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
-  if (itemNotAvailable && !isFavoriteView) {
+  if (itemNotAvailable) {
     return null;
   }
   const { isFavoriteView, labels, onQuickViewOpenClick, productItem } = props;
-  const {
-    skuInfo: { skuId, size, fit, color },
-  } = productItem;
-  const { itemId, quantity, isTCP } = productItem.itemInfo;
-  return (
-    isFavoriteView && (
+  if (isFavoriteView) {
+    const {
+      skuInfo: { skuId, size, fit, color },
+    } = productItem;
+    const { itemId, quantity, isTCP } = productItem.itemInfo;
+    return (
       <Anchor
         className="edit-fav-item__button"
         handleLinkClick={event => {
@@ -372,8 +372,9 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
       >
         {labels.lbl_fav_edit}
       </Anchor>
-    )
-  );
+    );
+  }
+  return null;
 };
 
 ProductSKUInfo.propTypes = {
