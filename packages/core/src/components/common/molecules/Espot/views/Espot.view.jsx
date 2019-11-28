@@ -64,14 +64,14 @@ class Espot extends PureComponent {
     const { assetHost } = getAPIConfig();
 
     if (externalUrl.test(link)) {
-      openWindow(link, '_blank', 'noopener');
+      window.open(link, '_blank', 'noopener');
     } else {
       switch (target) {
         case '_self':
           this.richTextInternalRoute(link);
           break;
         case '_blank':
-          openWindow(`${assetHost}${link}`, '_blank', 'noopener');
+          window.open(`${assetHost}${link}`, '_blank', 'noopener');
           break;
         default:
           break;
