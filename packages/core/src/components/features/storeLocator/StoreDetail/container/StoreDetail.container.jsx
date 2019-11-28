@@ -52,7 +52,6 @@ export class StoreDetailContainer extends PureComponent {
 
   componentDidMount() {
     const { getModuleX, referredContentList } = this.props;
-
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
   }
@@ -119,7 +118,7 @@ export class StoreDetailContainer extends PureComponent {
       storeId,
       fetchCurrentStoreInfo,
     } = this.props;
-    fetchCurrentStoreInfo(storeId);
+    if (!isMobileApp()) fetchCurrentStoreInfo(storeId);
     const store = formatStore(currentStoreInfo);
     if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
       const { basicInfo } = store;
