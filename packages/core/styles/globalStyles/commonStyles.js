@@ -22,7 +22,7 @@ export default css`
     .couponModal_print {
       display: none !important;
     }
-    .non-checkout-pages {
+    .content-wrapper {
       display: none;
     }
   }
