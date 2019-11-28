@@ -477,11 +477,16 @@ class PickupStoreSelectionFormContainer extends React.Component {
       storeSearchDistance,
       setClickAnalyticsDataDispatch,
       trackClickDispatch,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
+    console.log('PickupStoreSelectionForm');
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
       <PickupStoreSelectionForm
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
         onSearch={this.onSearch}
         pageNameProp={pageNameProp}
         isPickUpWarningModal={isPickUpWarningModal}
