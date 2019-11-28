@@ -1,13 +1,9 @@
 import React from 'react';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import ProductDetailWrapper, {
-  ProductCompleteWrapper,
-  ProductCompleteDetailWrapper,
-  ImageWrapper,
-} from '../styles/OutfitProductSkeleton.style.native';
+import ProductDetailWrapper from '../styles/ProductDetailSkeleton.style.native';
 
-const OutfitProductSkeleton = () => {
+const ProductDetailSkeleton = () => {
   return (
     <ProductDetailWrapper>
       <ViewWithSpacing spacingStyles="margin-bottom-MED">
@@ -17,22 +13,10 @@ const OutfitProductSkeleton = () => {
         <LoaderSkelton width="100%" height="30px" />
       </ViewWithSpacing>
       <ViewWithSpacing spacingStyles="margin-bottom-MED">
-        <ProductCompleteWrapper>
-          <ImageWrapper>
-            <LoaderSkelton width="100%" height="100px" />
-          </ImageWrapper>
-          <ProductCompleteDetailWrapper>
-            <ViewWithSpacing spacingStyles="margin-bottom-MED">
-              <LoaderSkelton width="100%" height="30px" />
-            </ViewWithSpacing>
-            <ViewWithSpacing spacingStyles="margin-bottom-MED">
-              <LoaderSkelton width="100%" height="30px" />
-            </ViewWithSpacing>
-          </ProductCompleteDetailWrapper>
-        </ProductCompleteWrapper>
+        <LoaderSkelton width="100%" height="40px" />
       </ViewWithSpacing>
       <ViewWithSpacing spacingStyles="margin-bottom-MED">
-        <LoaderSkelton width="100%" height="20px" />
+        <LoaderSkelton width="30%" height="20px" />
       </ViewWithSpacing>
       <ViewWithSpacing spacingStyles="margin-bottom-MED">
         <LoaderSkelton width="100%" height="40px" />
@@ -46,4 +30,4 @@ const OutfitProductSkeleton = () => {
     </ProductDetailWrapper>
   );
 };
-export default OutfitProductSkeleton;
+export default ProductDetailSkeleton;
