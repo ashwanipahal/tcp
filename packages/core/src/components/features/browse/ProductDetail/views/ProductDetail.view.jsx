@@ -220,6 +220,7 @@ class ProductDetailView extends PureComponent {
       topPromos,
       middlePromos,
       bottomPromos,
+      sizeChartDetails,
       ...otherProps
     } = this.props;
 
@@ -329,6 +330,7 @@ class ProductDetailView extends PureComponent {
                 sizeChartLinkVisibility={sizeChartLinkVisibility}
                 isKeepAliveEnabled={isKeepAliveEnabled}
                 outOfStockLabels={outOfStockLabels}
+                sizeChartDetails={sizeChartDetails}
               />
             )}
 
@@ -440,6 +442,7 @@ ProductDetailView.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
 };
 
 ProductDetailView.defaultProps = {
@@ -461,6 +464,7 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

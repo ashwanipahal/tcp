@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
+  ButtonWrapperAddedToBag,
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,
@@ -20,7 +21,6 @@ import PayPalButton from '../../common/organism/PayPalButton';
 class AddedToBagActions extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    this.changeVenmoState = this.changeVenmoState.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
     this.state = {
@@ -47,16 +47,26 @@ class AddedToBagActions extends React.PureComponent<Props> {
   };
 
   getPaypalButton = (addWrapper, fullWidth) => {
-    const { getPayPalSettings, payPalTop, navigation, orderId, isPayPalEnabled } = this.props;
-    const Component = () => {};
+    const {
+      getPayPalSettings,
+      payPalTop,
+      navigation,
+      orderId,
+      isPayPalEnabled,
+      isPayPalWebViewEnable,
+      hideHeader,
+      fromAddedToBagModal,
+    } = this.props;
     if (orderId && isPayPalEnabled) {
       if (addWrapper) {
         return (
-          <PaypalPaymentsButtonWrapper>
+          <PaypalPaymentsButtonWrapper isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <PayPalButton
               getPayPalSettings={getPayPalSettings}
               navigation={navigation}
-              setVenmoState={this.changeVenmoState}
+              setVenmoState={() => {
+                if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+              }}
               closeModal={this.closeModal}
               top={payPalTop}
               fullWidth
@@ -68,7 +78,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <PayPalButton
             getPayPalSettings={getPayPalSettings}
             navigation={navigation}
-            setVenmoState={this.changeVenmoState}
+            setVenmoState={() => {
+              if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+            }}
             closeModal={this.closeModal}
             top={payPalTop}
             fullWidth
@@ -83,11 +95,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
   /**
    * @description - render paypal and venmo CTAs
    */
-  getVenmoPaypalPaymentButton(isVenmoFlag, showVenmoPayPalButton) {
+  getVenmoPaypalPaymentButton(isVenmoFlag, showVenmoPayPalButton, isPayPalWebViewEnable) {
     return (
       isVenmoFlag &&
       showVenmoPayPalButton && (
-        <VenmoPaypalWrapper>
+        <VenmoPaypalWrapper isPayPalWebViewEnable={isPayPalWebViewEnable}>
           {this.getPaypalButton(true, true)}
           <PaymentsButtonWrapper>{this.getVenmoButton()}</PaymentsButtonWrapper>
         </VenmoPaypalWrapper>
@@ -100,12 +112,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
     if (close) {
       closeModal();
     }
-  };
-
-  changeVenmoState = isVenmoEnable => {
-    const { hideHeader } = this.props;
-    this.setState({ venmoEnable: isVenmoEnable });
-    hideHeader(!isVenmoEnable);
   };
 
   /**
@@ -131,7 +137,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return this.isAnyOneEnabled(isVenmoFlag, isPayPalEnabled) && !showVenmoPayPalButton;
   };
 
-  render() {
+  getRowOneButtons = () => {
     const {
       labels,
       showAddTobag,
@@ -141,53 +147,36 @@ class AddedToBagActions extends React.PureComponent<Props> {
       closeModal,
       isNoNEmptyBag,
       fromAddedToBagModal,
-      getPayPalSettings,
-      orderId,
-      payPalTop,
       isVenmoEnabled,
       isPayPalEnabled,
+      isPayPalWebViewEnable,
     } = this.props;
 
     const { venmoEnable } = this.state;
     const isVenmoFlag = isVenmoEnabled && venmoEnable;
     const showVenmoPayPalButton = this.showVenmoPaypalButton();
-    return (
-      <ActionsWrapper>
-        {showAddTobag && (
-          <ButtonWrapper isPayPalWebViewEnable={!isVenmoFlag && !showAddTobag}>
-            <ViewBagButton
-              onPress={() => {
-                navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
-                if (closeModal) {
-                  closeModal();
-                }
-              }}
-            >
-              <BodyCopy
-                textTransform="uppercase"
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs13"
-                text={labels.viewBag && labels.viewBag.toUpperCase()}
-              />
-            </ViewBagButton>
-          </ButtonWrapper>
-        )}
-        {(isNoNEmptyBag || fromAddedToBagModal) && (
-          <ButtonViewWrapper
-            isBottomGap={this.isBottomGap(isVenmoFlag, showVenmoPayPalButton, showAddTobag)}
+
+    if (isNoNEmptyBag || fromAddedToBagModal) {
+      return (
+        <ButtonViewWrapper
+          isBottomGap={this.isBottomGap(isVenmoFlag, showVenmoPayPalButton, showAddTobag)}
+          isPayPalWebViewEnable={isPayPalWebViewEnable}
+        >
+          <ButtonWrapper
+            isBothDisabled={this.isAnyOneEnabled(isVenmoFlag, isPayPalEnabled)}
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
           >
-            <ButtonWrapper isBothDisabled={this.isAnyOneEnabled(isVenmoFlag, isPayPalEnabled)}>
-              {!showVenmoPayPalButton && (
-                <PaypalPaymentsButtonWrapper
-                  isAddedTobag={showAddTobag}
-                  isPayPalEnabled={isPayPalEnabled}
-                >
-                  {this.getPaypalButton(false, !fromAddedToBagModal)}
-                  {!showAddTobag && this.getVenmoButton()}
-                </PaypalPaymentsButtonWrapper>
-              )}
+            {!showVenmoPayPalButton && (
+              <PaypalPaymentsButtonWrapper
+                isAddedTobag={showAddTobag}
+                isPayPalEnabled={isPayPalEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
+              >
+                {this.getPaypalButton(false, !fromAddedToBagModal)}
+                {!showAddTobag && this.getVenmoButton()}
+              </PaypalPaymentsButtonWrapper>
+            )}
+            {!isPayPalWebViewEnable && (
               <CheckoutButton
                 isHalf={this.isCheckoutButtonHalf(
                   isVenmoFlag,
@@ -213,10 +202,49 @@ class AddedToBagActions extends React.PureComponent<Props> {
                   text={labels.checkout && labels.checkout.toUpperCase()}
                 />
               </CheckoutButton>
-            </ButtonWrapper>
-          </ButtonViewWrapper>
+            )}
+          </ButtonWrapper>
+        </ButtonViewWrapper>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  render() {
+    const { labels, showAddTobag, isVenmoEnabled, isPayPalWebViewEnable, navigation } = this.props;
+    const { venmoEnable } = this.state;
+    const isVenmoFlag = isVenmoEnabled && venmoEnable;
+    const showVenmoPayPalButton = this.showVenmoPaypalButton();
+    return (
+      <ActionsWrapper isPayPalWebViewEnable={isPayPalWebViewEnable}>
+        {showAddTobag && !isPayPalWebViewEnable && (
+          <ButtonWrapperAddedToBag isPayPalWebViewEnable={!isVenmoFlag && !showAddTobag}>
+            <ViewBagButton
+              onPress={() => {
+                navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
+                if (closeModal) {
+                  closeModal();
+                }
+              }}
+            >
+              <BodyCopy
+                textTransform="uppercase"
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={labels.viewBag && labels.viewBag.toUpperCase()}
+              />
+            </ViewBagButton>
+          </ButtonWrapperAddedToBag>
         )}
-        {this.getVenmoPaypalPaymentButton(isVenmoFlag, showVenmoPayPalButton)}
+        {this.getRowOneButtons()}
+        {this.getVenmoPaypalPaymentButton(
+          isVenmoFlag,
+          showVenmoPayPalButton,
+          isPayPalWebViewEnable
+        )}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );

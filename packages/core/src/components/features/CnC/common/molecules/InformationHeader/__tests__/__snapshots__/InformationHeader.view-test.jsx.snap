@@ -18,7 +18,7 @@ exports[`InformationHeader Component InformationHeader should render correctly 1
     <Styled(Image)
       alt="closeIcon"
       className="tick-icon"
-      src="/static/images/circle-check-fill.png"
+      src="/static/version-not-available/images/circle-check-fill.png"
     />
     <Styled(BodyCopy)
       className={null}
