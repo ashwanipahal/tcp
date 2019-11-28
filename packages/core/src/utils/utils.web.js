@@ -572,13 +572,26 @@ export const scrollToParticularElement = element => {
 
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
-  return window.open(
+  return openWindow(
     `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
-    '_blank',
-    'noopener'
+    '_blank'
   );
 };
 
+export const openWindow = (url, target = '_blank', attrs = '') => {
+  try {
+    let windowAttributes = attrs;
+    if (target === '_blank') {
+      windowAttributes = windowAttributes.concat('noopener');
+    }
+    logger.info(
+      `Opening ${url} in window with target=${target} and attributes=${windowAttributes}`
+    );
+    window.open(url, target, updatedAttrs);
+  } catch (e) {
+    logger.error(e);
+  }
+};
 /**
  * To Identify whether the device is ios for web.
  */

@@ -10,7 +10,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import config from './config';
-import { getSiteId, getLocationOrigin } from '../../../../../utils/utils.web';
+import { getSiteId, getLocationOrigin, openWindow } from '../../../../../utils/utils.web';
 import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
@@ -52,7 +52,7 @@ export class InstagramLoginComponent extends React.Component {
       };
       this.saveAccountInfo({ socialAccInfo });
     } else {
-      window.open(
+      openWindow(
         `${config.AUTH_URL.INSTAGRAM}?client_id=${
           apiConfig.instakey
         }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=code`,

@@ -32,6 +32,7 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
+import { openWindow } from '../../../../../utils/utils.web';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -115,7 +116,7 @@ export class StoreDetailContainer extends PureComponent {
     if (isMobileApp()) {
       this.mapHandler(store);
     } else {
-      window.open(
+      openWindow(
         `${
           googleMapConstants.OPEN_STORE_DIR_WEB
         }${addressLine1},%20${city},%20${state},%20${zipCode}`,

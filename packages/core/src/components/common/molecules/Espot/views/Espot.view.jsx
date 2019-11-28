@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import { getAPIConfig, routerPush } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { openWindow } from '../../../../../utils/utils.web';
 
 class Espot extends PureComponent {
   /**
@@ -63,14 +64,14 @@ class Espot extends PureComponent {
     const { assetHost } = getAPIConfig();
 
     if (externalUrl.test(link)) {
-      window.open(link, '_blank', 'noopener');
+      openWindow(link, '_blank', 'noopener');
     } else {
       switch (target) {
         case '_self':
           this.richTextInternalRoute(link);
           break;
         case '_blank':
-          window.open(`${assetHost}${link}`, '_blank', 'noopener');
+          openWindow(`${assetHost}${link}`, '_blank', 'noopener');
           break;
         default:
           break;

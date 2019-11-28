@@ -19,6 +19,7 @@ import EditList from '../molecules/EditList/views';
 import ShareList from '../molecules/ShareList/views';
 import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
+import { openWindow } from '../../../../../utils/utils.web';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -66,7 +67,7 @@ class FavoritesView extends React.PureComponent {
     const { facebookShareURL } = getAPIConfig();
     const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   shareClickHandler = value => {
