@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { setNeedHelpModalState } from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import {
   getComponent,
   getVariation,
@@ -49,6 +50,7 @@ export const OverlayModal = ({
   isLoggedIn,
   showCondensedHeader,
   labels,
+  setNeedHelpModal,
 }) => {
   return (
     <OverlayModalComponent
@@ -62,6 +64,7 @@ export const OverlayModal = ({
       isLoggedIn={isLoggedIn}
       showCondensedHeader={showCondensedHeader}
       labels={labels}
+      setNeedHelpModal={setNeedHelpModal}
     />
   );
 };
@@ -83,6 +86,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     closeOverlay: () => {
       dispatch(closeOverlayModal());
+    },
+    setNeedHelpModal: payload => {
+      dispatch(setNeedHelpModalState(payload));
     },
   };
 };

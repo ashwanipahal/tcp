@@ -36,6 +36,7 @@ const OverlayModal = ({
   isLoggedIn,
   showCondensedHeader,
   labels,
+  setNeedHelpModal,
 }) => {
   const ModalContent = OverlayModalComponentMapping[component];
   return openState && ModalContent ? (
@@ -51,6 +52,7 @@ const OverlayModal = ({
       isLoggedIn={isLoggedIn}
       showCondensedHeader={showCondensedHeader}
       labels={labels}
+      setNeedHelpModal={setNeedHelpModal}
     />
   ) : null;
 };

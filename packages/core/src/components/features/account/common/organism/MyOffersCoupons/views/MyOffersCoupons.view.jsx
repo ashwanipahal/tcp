@@ -21,7 +21,6 @@ class MyOffersCouponView extends PureComponent {
     super(props);
     this.state = {
       detailStatus: false,
-      helpStatus: false,
       selectedCoupon: {},
     };
   }
@@ -41,12 +40,9 @@ class MyOffersCouponView extends PureComponent {
    * This function will handle click to open help detail modal
    * @param {} -
    */
-  toggleNeedHelpModal = e => {
-    e.preventDefault();
-    const { helpStatus } = this.state;
-    this.setState({
-      helpStatus: !helpStatus,
-    });
+  toggleCouponNeedHelpModal = () => {
+    const { toggleNeedHelpModal } = this.props;
+    toggleNeedHelpModal();
   };
 
   /**
@@ -120,7 +116,7 @@ class MyOffersCouponView extends PureComponent {
                   coupon={coupon}
                   handleErrorCoupon={handleErrorCoupon}
                   couponDetailClick={this.couponDetailClick}
-                  helpAnchorClick={this.toggleNeedHelpModal}
+                  helpAnchorClick={this.toggleCouponNeedHelpModal}
                   onApply={handleApplyCouponFromList}
                   onRemove={handleRemoveCoupon}
                   isCarouselView={isCarouselView}
@@ -168,8 +164,9 @@ class MyOffersCouponView extends PureComponent {
       handleApplyCouponFromList,
       allCouponList,
       className,
+      isNeedHelpModalOpen,
     } = this.props;
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const { detailStatus, selectedCoupon } = this.state;
     const couponListSize = allCouponList && allCouponList.size;
     return (
       <>
@@ -245,7 +242,7 @@ class MyOffersCouponView extends PureComponent {
                     fontSize="fs10"
                     fontFamily="secondary"
                     dataLocator="couponcard-helpApplyingPlaceCashlink"
-                    onClick={this.toggleNeedHelpModal}
+                    onClick={this.toggleCouponNeedHelpModal}
                   >
                     {getLabelValue(commonLabels, 'lbl_my_rewards_helpLink', 'placeRewards')}
                   </Anchor>
@@ -268,12 +265,10 @@ class MyOffersCouponView extends PureComponent {
         />
         <CouponHelpModal
           labels={labels}
-          openState={helpStatus}
+          openState={isNeedHelpModalOpen}
           coupon={selectedCoupon}
           onRequestClose={() => {
-            this.setState({
-              helpStatus: false,
-            });
+            this.toggleCouponNeedHelpModal();
           }}
           heading="Help Modal"
         />

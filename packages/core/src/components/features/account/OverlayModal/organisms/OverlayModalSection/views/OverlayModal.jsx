@@ -101,6 +101,8 @@ class OverlayModal extends React.Component {
   }
 
   componentWillUnmount() {
+    const { setNeedHelpModal } = this.props;
+    setNeedHelpModal(false);
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto';
     /* istanbul ignore else */
