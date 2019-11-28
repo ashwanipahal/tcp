@@ -17,6 +17,7 @@ describe('Country Selector reducer', () => {
     currency: '',
     siteId: '',
     moduleXContent: '',
+    countryName: '',
   });
 
   it('should return default state', () => {

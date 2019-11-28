@@ -14,6 +14,7 @@ import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordReq
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ChangePasswordForm.style';
+import constants from '../../../ChangePassword.constants';
 
 export const ChangePasswordForm = ({
   className,
@@ -24,7 +25,12 @@ export const ChangePasswordForm = ({
   changeErrorMessage,
 }) => {
   return (
-    <form name="ChangePasswordForm" noValidate onSubmit={handleSubmit} className={className}>
+    <form
+      name={constants.CHANGE_PASSWORD_FORM}
+      noValidate
+      onSubmit={handleSubmit}
+      className={className}
+    >
       {errorMessage && changeErrorMessage && (
         <Notification
           className="elem-mt-MED"
@@ -159,7 +165,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'ChangePasswordForm', // a unique identifier for this form
+  form: constants.CHANGE_PASSWORD_FORM, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(ChangePasswordForm, styles));

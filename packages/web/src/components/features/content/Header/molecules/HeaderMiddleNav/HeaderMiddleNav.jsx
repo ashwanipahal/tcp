@@ -194,11 +194,7 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
             >
               <Image
-                src={
-                  navigationDrawer.open
-                    ? '/static/images/mobile-close-dark.svg'
-                    : '/static/images/menu.svg'
-                }
+                src={navigationDrawer.open ? getIconPath('mobile-close-dark') : getIconPath('menu')}
                 alt="hamburger menu"
                 role="button"
                 tabIndex="0"
@@ -220,12 +216,14 @@ class HeaderMiddleNav extends React.PureComponent {
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
               <StoreLocatorLink store={store} labels={storeLabel} />
-              <BrandLogo
-                alt={config[brand] && config[brand].alt}
-                className="header-brand__home-logo--brand"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+              {config[brand] && (
+                <BrandLogo
+                  alt={config[brand].alt}
+                  className="header-brand__home-logo--brand"
+                  dataLocator={config[brand].dataLocator}
+                  imgSrc={config[brand].imgSrc}
+                />
+              )}
             </Col>
             <Col
               colSize={{
