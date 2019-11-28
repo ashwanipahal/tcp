@@ -15,7 +15,7 @@ const styles = css`
   .fulfillment-section {
     margin-top: auto;
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 12px;
+      margin-top: 6px;
     }
   }
   .favorite-count {
@@ -209,6 +209,12 @@ const styles = css`
     position: relative;
     @media ${props => props.theme.mediaQuery.large} {
       max-height: 320px;
+    }
+  }
+
+  .full-height {
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 300px;
     }
   }
 
