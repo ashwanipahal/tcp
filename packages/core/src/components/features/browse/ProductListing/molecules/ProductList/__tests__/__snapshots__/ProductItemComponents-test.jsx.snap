@@ -179,6 +179,21 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 </Styled(BodyCopy)>
 `;
 
-exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `null`;
+exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
+<React.Fragment>
+  <ForwardRef
+    className="loyalty-text-container"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+</React.Fragment>
+`;
 
 exports[`ProductItemComponents component productLink called correctly 1`] = `undefined`;
