@@ -5,6 +5,7 @@ import withStyles from '../../../hoc/withStyles.native';
 import {
   PromotionalMessageContainer,
   PromotionalText,
+  AppendedTextInMessageColor,
 } from '../styles/PromotionalMessage.style.native';
 
 export const getFormattedLoyaltyText = text => {
@@ -15,7 +16,7 @@ export const getFormattedLoyaltyText = text => {
     .split('on');
 };
 
-const PromotionalMessage = ({ text, isPlcc, marginTop, dataLocator, fontSize }) => {
+const PromotionalMessage = ({ text, isPlcc, marginTop, dataLocator, fontSize, isFullMessage }) => {
   return (
     <PromotionalMessageContainer
       marginTop={marginTop}
@@ -31,6 +32,18 @@ const PromotionalMessage = ({ text, isPlcc, marginTop, dataLocator, fontSize }) 
       >
         {text && getFormattedLoyaltyText(text)[0]}
       </PromotionalText>
+      {isFullMessage ? (
+        <PromotionalText
+          isPlcc={isPlcc}
+          accessibilityRole="text"
+          numberOfLines={2}
+          fontSize={fontSize}
+        >
+          <AppendedTextInMessageColor>
+            {text && getFormattedLoyaltyText(text)[1]}
+          </AppendedTextInMessageColor>
+        </PromotionalText>
+      ) : null}
     </PromotionalMessageContainer>
   );
 };
