@@ -8,6 +8,7 @@ jest.mock('../../../../../../utils', () => ({
   isClient: jest.fn(),
   getIconPath: jest.fn(),
   routerPush: jest.fn(),
+  getViewportInfo: () => ({ isDesktop: true, isTablet: false, width: 1440 }),
 }));
 
 window.candid = {};
@@ -17,6 +18,7 @@ describe('GetCandidVanilla component', () => {
   const props = {
     applicationStatus: 'PENDING',
     disclaimersData: {},
+    theme: { breakpoints: { maxWidth: 1440 } },
     labels: {
       global: {
         getCandid: {},

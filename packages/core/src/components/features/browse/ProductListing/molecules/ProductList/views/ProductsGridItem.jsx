@@ -473,10 +473,7 @@ class ProductsGridItem extends React.PureComponent {
             buttonVariation="fixed-width"
             dataLocator={getLocator('global_addtocart_Button')}
             onClick={
-              // eslint-disable-next-line no-nested-ternary
-              isGiftCard
-                ? () => {} // TODO Gift Card Quick View Modal
-                : isShowQuickView && !isBundleProduct
+              isShowQuickView && !isBundleProduct
                 ? this.handleQuickViewOpenClick
                 : this.handleViewBundleClick
             }

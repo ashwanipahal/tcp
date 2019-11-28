@@ -9,6 +9,18 @@ export default css`
     display: block;
   }
 
+  #tcp-get-candid-image-container {
+    max-width: 1056px;
+    margin: 0 auto;
+  }
+
+  @media ${props => props.theme.mediaQuery.xlarge} {
+    #tcp-get-candid-image-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+  }
+
   .get-candid-main-heading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
@@ -33,11 +45,7 @@ export default css`
       justify-content: center;
       width: 100%;
     }
-    margin: 17px auto;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin: 17px auto;
-    }
+    margin: 17px auto 32px;
   }
 
   .gellary-button-right {

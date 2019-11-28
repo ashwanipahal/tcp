@@ -18,21 +18,40 @@ const ImageGrid = props => {
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
         {mediaList &&
-          mediaList.map(({ image, link }, index) => {
-            return (
-              <Anchor url={link.url} navigation={navigation}>
-                <ImageGridItem
-                  testID={`${dataLocator}_${index}`}
-                  width={imgWidth}
-                  height={imgHeight}
-                  crop={image.crop_m}
-                  gutter={gutter}
-                  url={image.url}
-                  alt={image.alt || image.title}
-                  imgConfigs={IMG_DATA.imgConfig[0]}
-                />
-              </Anchor>
-            );
+          mediaList.map(({ image, link, video }, index) => {
+            const imgData = image || {};
+            const videoData = video &&
+              video.url && {
+                ...video,
+                videoWidth: imgWidth,
+                videoHeight: imgHeight,
+              };
+            if (imgData && Object.keys(imgData).length > 0) {
+              return (
+                <Anchor url={link.url} navigation={navigation}>
+                  <ImageGridItem
+                    testID={`${dataLocator}_${index}`}
+                    width={imgWidth}
+                    height={imgHeight}
+                    crop={imgData.crop_m}
+                    gutter={gutter}
+                    url={imgData.url}
+                    alt={imgData.alt || imgData.title}
+                    imgConfigs={IMG_DATA.imgConfig[0]}
+                  />
+                </Anchor>
+              );
+            }
+            return videoData && Object.keys(videoData).length > 0 ? (
+              <ImageGridItem
+                testID={`${dataLocator}_${index}`}
+                width={imgWidth}
+                height={imgHeight}
+                crop={imgData.crop_m}
+                gutter={gutter}
+                videoData={videoData}
+              />
+            ) : null;
           })}
       </ImageGridContainer>
     </Wrapper>

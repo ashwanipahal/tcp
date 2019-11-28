@@ -53,7 +53,7 @@ const onCTAHandler = props => {
     isFavoriteEdit,
   } = props;
   const { productInfo, colorsMap } = item;
-  const { pdpUrl, isGiftCard, bundleProduct, generalProductId } = productInfo;
+  const { pdpUrl, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
   if (isFavoriteOOS) {
@@ -63,28 +63,7 @@ const onCTAHandler = props => {
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
-  } else if (!isGiftCard) {
-    if (isFavoriteEdit) {
-      handleFavoriteEdit(colorProductId, item, addToBagEcom, onQuickViewOpenClick);
-    } else {
-      onQuickViewOpenClick({
-        colorProductId,
-      });
-    }
-  }
-};
-
-const handleFavoriteEdit = (colorProductId, item, addToBagEcom, onQuickViewOpenClick) => {
-  const {
-    skuInfo: { skuId, size, fit, color },
-  } = item;
-  console.tron.log('item : ', item);
-  if (skuId && size) {
-    let cartItemInfo = getCartItemInfo(item, {});
-    cartItemInfo = { ...cartItemInfo };
-    if (addToBagEcom) addToBagEcom(cartItemInfo);
   } else {
-    const { itemId, quantity } = item.itemInfo;
     onQuickViewOpenClick({
       colorProductId: colorProductId,
       orderInfo: {
