@@ -13,6 +13,9 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 12px;
+    }
   }
 
   .clear-button {
@@ -189,6 +192,7 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
+      margin-bottom: 4px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
