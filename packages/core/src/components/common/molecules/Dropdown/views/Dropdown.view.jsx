@@ -4,6 +4,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/Dropdown.style';
 import withStyles from '../../../hoc/withStyles';
 import Anchor from '../../../atoms/Anchor';
+import { routerPush } from '../../../../../utils';
 
 class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -84,6 +85,7 @@ class Dropdown extends React.PureComponent {
   onClickHandler = (e, nav) => {
     this.updateState(nav);
     this.toggleHandler();
+    routerPush(nav.href, nav.url);
   };
 
   // Validating and returning if displayname needs to be on caps
@@ -131,15 +133,13 @@ class Dropdown extends React.PureComponent {
         aria-selected={activeComponent === nav.component}
       >
         <BodyCopy
-          component="div"
           role="link"
           textAlign="center"
           fontWeight="extrabold"
           fontSize="fs14"
+          className="dropdownAnchorColor"
         >
-          <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href} tabIndex={-1}>
-            {this.getDisplayName(nav.displayName)}
-          </Anchor>
+          {this.getDisplayName(nav.displayName)}
         </BodyCopy>
       </BodyCopy>
     );
