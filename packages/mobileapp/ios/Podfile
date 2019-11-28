@@ -46,7 +46,7 @@ def all_env_pods
   pod 'mPulse'
 
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
-
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"

@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const JeansModuleStyles = css`
   position: relative;
@@ -149,7 +150,7 @@ const JeansModuleStyles = css`
       border-radius: 30px;
       margin-left: 6px;
       background-color: white;
-      background-image: url(/static/images/carrot-left-light-gray.svg);
+      background-image: url(${getIconPath('carrot-left-light-gray')});
       background-repeat: no-repeat;
       background-position: center center;
       align-content: center;

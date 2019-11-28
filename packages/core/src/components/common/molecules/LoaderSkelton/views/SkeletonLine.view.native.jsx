@@ -71,3 +71,4 @@ FadeInView.defaultProps = {
 };
 
 export default FadeInView;
+export { FadeInView as FadeInViewVanilla };

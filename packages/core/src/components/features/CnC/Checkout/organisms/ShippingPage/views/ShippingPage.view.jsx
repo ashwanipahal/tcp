@@ -334,6 +334,7 @@ export default class ShippingPage extends React.PureComponent {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
+    const isAddressChange = onFileAddressKey !== shippingAddressId;
     if (onFileAddressKey !== prevFileAddressKey) {
       this.getShipmentMethods(prevProps);
     }
@@ -342,7 +343,7 @@ export default class ShippingPage extends React.PureComponent {
       prevSelectedShipmentId &&
       selectedShipmentId !== prevSelectedShipmentId
     ) {
-      updateShippingMethodSelection({ id: selectedShipmentId });
+      updateShippingMethodSelection({ id: selectedShipmentId, isAddressChange: isAddressChange });
     }
   };
 
