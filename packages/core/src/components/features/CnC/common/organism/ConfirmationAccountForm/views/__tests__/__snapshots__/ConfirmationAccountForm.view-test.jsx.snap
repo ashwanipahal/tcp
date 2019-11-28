@@ -534,7 +534,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -757,10 +757,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
 <div
   className=" elem-pt-MED"
 >
-  <Styled(Notification)
-    message="error"
-    status="error"
-  />
   <Styled(BodyCopy)
     className="heading"
     color="gray[900]"
@@ -840,6 +836,34 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             test@childrensplace.com
           </Styled(BodyCopy)>
         </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Notification)
+          message="error"
+          status="error"
+        />
       </Styled(Col)>
       <Styled(Col)
         className="password-container"
@@ -1291,7 +1315,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -2798,7 +2822,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         />
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -4430,7 +4454,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         />
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,
@@ -4653,9 +4677,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
 <div
   className=" elem-pt-MED"
 >
-  <Styled(Notification)
-    status="success"
-  />
   <Styled(BodyCopy)
     className="heading"
     color="gray[900]"
@@ -4735,6 +4756,33 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             test@childrensplace.com
           </Styled(BodyCopy)>
         </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Notification)
+          status="success"
+        />
       </Styled(Col)>
       <Styled(Col)
         className="password-container"
@@ -5186,7 +5234,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="elem-pt-XXL elem-pb-XXL"
+        className="elem-pt-XXL elem-pb-XXL i-agree-checkbox"
         colSize={
           Object {
             "large": 6,

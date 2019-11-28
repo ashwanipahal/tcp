@@ -43,7 +43,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
 				link {
 					url
 					text
@@ -65,7 +65,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
 			}
 		}
 
