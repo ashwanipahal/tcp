@@ -480,7 +480,6 @@ class PickupStoreSelectionFormContainer extends React.Component {
       setFavoriteStore,
       getDefaultStore,
     } = this.props;
-    console.log('PickupStoreSelectionForm');
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
