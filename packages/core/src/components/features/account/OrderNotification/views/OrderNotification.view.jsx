@@ -3,9 +3,19 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, getOrderStatusForNotification } from '@tcp/core/src/utils/utils';
+import { routerPush } from '@tcp/core/src/utils';
 import internalEndpoints from '../../common/internalEndpoints';
 import constants from '../../OrderDetails/OrderDetails.constants';
 import styles from '../styles/OrderNotification.style';
+
+const handleClick = (e, closedOverlay, orderNumber) => {
+  e.preventDefault();
+  closedOverlay();
+  routerPush(
+    `${internalEndpoints.orderPage.link}&orderId=${orderNumber}`,
+    `${internalEndpoints.orderPage.path}/${orderNumber}`
+  );
+};
 
 /**
  * This function component use for Order Notification
@@ -44,9 +54,7 @@ const OrderNotification = ({ className, labels, order, closedOverlay }) => {
                 anchorVariation="primary"
                 fontSize="fs12"
                 dataLocator="order-number-value"
-                onClick={() => closedOverlay()}
-                to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
-                asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
+                onClick={e => handleClick(e, closedOverlay, order.orderNumber)}
                 fontFamily="secondary"
                 className="view-order-link"
               >
@@ -57,9 +65,7 @@ const OrderNotification = ({ className, labels, order, closedOverlay }) => {
                 anchorVariation="secondary"
                 underline
                 className="view-order-link elem-ml-LRG"
-                onClick={() => closedOverlay()}
-                to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
-                asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
+                onClick={e => handleClick(e, closedOverlay, order.orderNumber)}
               >
                 {getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
               </Anchor>
@@ -75,10 +81,8 @@ const OrderNotification = ({ className, labels, order, closedOverlay }) => {
                     fontSizeVariation="medium"
                     anchorVariation="secondary"
                     underline
-                    href={order.orderTrackingUrl}
-                    onClick={() => closedOverlay()}
                     className="view-order-link"
-                    to={order.orderTrackingUrl}
+                    url={order.orderTrackingUrl}
                     target="_blank"
                   >
                     {order.orderTracking}
