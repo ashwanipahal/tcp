@@ -93,7 +93,6 @@ const ProductListView = ({
   pageSubSectionProp,
   ...otherProps
 }) => {
-  // const productsData = BagPageUtils.formatBagProductsData(products);
   // State needed to trigger UX timer once initial product results have rendered
   const [resultsExist, setResultsExist] = useState(false);
 
