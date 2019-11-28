@@ -133,13 +133,15 @@ class Dropdown extends React.PureComponent {
         aria-selected={activeComponent === nav.component}
       >
         <BodyCopy
+          component="div"
           role="link"
           textAlign="center"
           fontWeight="extrabold"
           fontSize="fs14"
-          className="dropdownAnchorColor"
         >
-          {this.getDisplayName(nav.displayName)}
+          <Anchor className="dropdownAnchorColor" tabIndex={-1}>
+            {this.getDisplayName(nav.displayName)}
+          </Anchor>
         </BodyCopy>
       </BodyCopy>
     );
