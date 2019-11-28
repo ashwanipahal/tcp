@@ -7,7 +7,6 @@ import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.sele
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
-import { getProductsAndTitleBlocks } from '../../ProductListing/container/ProductListing.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
@@ -25,7 +24,6 @@ import {
 import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
-  getLoadedProductsPages,
   getTotalProductsCount,
   getCurrentSearchForText,
   getLabels,
