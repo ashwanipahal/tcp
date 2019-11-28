@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { calculatePriceValue } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/common/molecules/ImageCarousel';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
 import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
@@ -131,7 +131,8 @@ const renderFavoriteSection = (
   setShowModal,
   isLoggedIn,
   favoriteCount,
-  handleAddToFavorites
+  handleAddToFavorites,
+  skuId
 ) => {
   return (
     <FavoriteView accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
@@ -149,7 +150,7 @@ const renderFavoriteSection = (
           size="fs25"
           color="gray.600"
           isButton
-          onPress={() => handleAddToFavorites()}
+          onPress={() => handleAddToFavorites(skuId)}
         />
       )}
       <BodyCopy
@@ -271,6 +272,8 @@ const OutfitDetailsView = ({
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [selectedSizeName, setSelectedSizeName] = useState('');
   const [isFaviconClicked, setFaviconClicked] = useState(false);
+  const [clickedproductId, setClickedproductId] = useState('');
+  const [skuDetails, setSkuDetails] = useState(null);
 
   const usePrevious = value => {
     const ref = useRef();
@@ -281,7 +284,6 @@ const OutfitDetailsView = ({
   };
 
   const prevLoggedIn = usePrevious(isLoggedIn);
-  const prevProductId = usePrevious(productMiscInfo);
 
   useEffect(() => {
     if (prevLoggedIn !== isLoggedIn && isFaviconClicked) {
@@ -289,18 +291,20 @@ const OutfitDetailsView = ({
       setFaviconClicked(false);
       addToFavorites({
         colorProductId: outfitProduct.productId,
-        productSkuId: (skuId && skuId.skuId) || null,
+        productSkuId: (skuDetails && skuDetails.skuId) || null,
         pdpColorProductId: colorProduct.colorProductId,
         page: pageName || 'OUTFIT',
       });
     }
-
+    setIsAddedToFav(
+      productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist || false
+    );
     return () => {
       if (typeof removeAddToFavoritesErrorMsg === 'function') {
         removeAddToFavoritesErrorMsg('');
       }
     };
-  }, []);
+  }, [isLoggedIn, productMiscInfo]);
 
   const { colorFitsSizesMap, promotionalMessage, promotionalPLCCMessage, name } = outfitProduct;
 
@@ -327,12 +331,7 @@ const OutfitDetailsView = ({
   if (typeof selectedSizeName === 'string' && selectedSizeName) {
     skuId = getMapSliceForSizeSkuID(colorProduct, selectedSizeName);
   }
-  if (
-    (productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist) &&
-    !isAddedToFav
-  ) {
-    setIsAddedToFav(productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist);
-  }
+
   const { miscInfo } = colorProduct;
 
   const { listPrice, offerPrice } = prices;
@@ -359,14 +358,16 @@ const OutfitDetailsView = ({
     0
   );
 
-  const handleAddToFavorites = () => {
+  const handleAddToFavorites = productSkuId => {
     if (isLoggedIn) {
       addToFavorites({
         colorProductId: outfitProduct.productId,
-        productSkuId: (skuId && skuId.skuId) || null,
+        productSkuId: (productSkuId && productSkuId.skuId) || null,
         pdpColorProductId: colorProduct.colorProductId,
         page: pageName || 'OUTFIT',
       });
+      setClickedproductId(outfitProduct.productId);
+      setSkuDetails(skuId);
     } else {
       setShowModal(true);
       setFaviconClicked(true);
@@ -384,7 +385,7 @@ const OutfitDetailsView = ({
 
   return (
     <OutfitProductWrapper>
-      {AddToFavoriteErrorMsg !== 'undefined' && AddToFavoriteErrorMsg !== '' && (
+      {AddToFavoriteErrorMsg !== '' && clickedproductId === outfitProduct.productId && (
         <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
       )}
       <OutfitProductContainer>
@@ -469,7 +470,8 @@ const OutfitDetailsView = ({
           setShowModal,
           isLoggedIn,
           favoriteCount,
-          handleAddToFavorites
+          handleAddToFavorites,
+          skuId
         )}
       </OutfitProductContainer>
       {renderAddToBagContainer(

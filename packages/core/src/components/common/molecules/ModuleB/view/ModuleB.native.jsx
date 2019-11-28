@@ -77,6 +77,38 @@ const renderHeaderAndBanner = (item, navigation) => {
 };
 
 /**
+ * To Render the Dam Image
+ */
+const renderDamImage = (link, imgData, videoData, navigation, bannerPosition, moduleHeight) => {
+  const damImageComp = (
+    <DamImage
+      width={MODULE_WIDTH}
+      videoData={videoData}
+      height={moduleHeight}
+      url={imgData && imgData.url}
+      host={LAZYLOAD_HOST_NAME.HOME}
+      alt={imgData && imgData.alt}
+      crop={imgData && imgData.crop_m}
+      imgConfig={
+        bannerPosition === bannerPositionTypes.overlay
+          ? IMG_DATA.imgOverlayConfig[0]
+          : IMG_DATA.imgDefaultConfig[0]
+      }
+    />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
+  ) : null;
+};
+
+/**
  * @function renderMediaComponent
  * renders Media component with header and banner
  * handles bannerPosition - top/bottom/overlay
@@ -93,41 +125,25 @@ const renderMediaComponent = (item, navigation) => {
     },
     bannerPosition,
   } = item;
-
   // set module height as same as screen width to make it a square for bannerPosition as overlay
   const moduleHeight =
     bannerPosition === bannerPositionTypes.overlay
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
-
   const videoData = video &&
     video.url && {
       videoWidth: MODULE_WIDTH,
       videoHeight: moduleHeight,
       ...video,
     };
+  const imgData = image || {};
 
   return (
     <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
         ? renderHeaderAndBanner(item, navigation)
         : null}
-      <Anchor url={link.url} navigation={navigation}>
-        <DamImage
-          width={MODULE_WIDTH}
-          videoData={videoData}
-          height={moduleHeight}
-          url={image.url}
-          host={LAZYLOAD_HOST_NAME.HOME}
-          alt={image.alt}
-          crop={image.crop_m}
-          imgConfig={
-            bannerPosition === bannerPositionTypes.overlay
-              ? IMG_DATA.imgOverlayConfig[0]
-              : IMG_DATA.imgDefaultConfig[0]
-          }
-        />
-      </Anchor>
+      {renderDamImage(link, imgData, videoData, navigation, bannerPosition, moduleHeight)}
       {bannerPosition === bannerPositionTypes.bottom
         ? renderHeaderAndBanner(item, navigation)
         : null}

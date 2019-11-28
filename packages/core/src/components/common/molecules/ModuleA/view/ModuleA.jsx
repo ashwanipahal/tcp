@@ -53,7 +53,7 @@ class ModuleA extends React.Component {
     const curCarouselSlide = largeCompImageCarousel[curSlideIndex];
     let ribbonAlignedClass = '';
 
-    if (curCarouselSlide) {
+    if (curCarouselSlide && curCarouselSlide.ribbonBanner) {
       const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
       if (ribbonBanner.ribbonPlacement === 'left') {
         ribbonAlignedClass = 'left-aligned-ribbon';
@@ -62,7 +62,6 @@ class ModuleA extends React.Component {
 
     return ribbonAlignedClass;
   };
-
   render() {
     const {
       largeCompImageCarousel,
@@ -143,6 +142,7 @@ class ModuleA extends React.Component {
                       imgData={linkedImage.image}
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
+                      videoData={linkedImage.video}
                     />
                     <div className="banner-content">
                       {headerText && (
