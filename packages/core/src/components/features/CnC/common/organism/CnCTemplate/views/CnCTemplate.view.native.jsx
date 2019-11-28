@@ -156,7 +156,7 @@ const CnCCommonTemplate = ({
             pageCategory={pageCategory}
             showAccordian
           />
-          {venmoPayment && venmoPayment.isVenmoPaymentSelected && (
+          {venmoPayment && venmoPayment.userName && (
             <VenmoPaidContainer>
               <VenmoPaidTextContainer>
                 <BodyCopy
