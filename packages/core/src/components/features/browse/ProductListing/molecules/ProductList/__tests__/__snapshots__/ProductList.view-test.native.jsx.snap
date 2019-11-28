@@ -60,6 +60,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "siblingProperties": "",
         "title": "",
         "unbxdId": "",
+        "updateWishListItemFav": [Function],
       }
     }
     horizontal={false}

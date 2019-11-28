@@ -340,7 +340,7 @@ export const WishListIcon = (
 };
 
 export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
-  if (itemNotAvailable) {
+  if (itemNotAvailable && !isFavoriteView) {
     return null;
   }
   const { isFavoriteView, labels, onQuickViewOpenClick, productItem } = props;

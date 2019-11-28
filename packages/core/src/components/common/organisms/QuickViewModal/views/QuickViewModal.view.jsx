@@ -134,9 +134,6 @@ class QuickViewModal extends React.Component {
         const errorMessage = !isMultiItemQVModal
           ? addToBagError
           : (product.generalProductId === errorProductId && errMsg) || null;
-        // const currentColorEntry =
-        //   product && getMapSliceForColorProductId(colorFitsSizesMap, product.generalProductId);
-        //   console.log("currentColorEntry current : ", currentColorEntry);
         return (
           <ProductCustomizeFormPart
             productInfo={product}

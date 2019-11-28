@@ -92,7 +92,9 @@ class QuickViewModalContainer extends React.PureComponent {
           product,
           callBack: closeQuickViewModalAction,
         };
-        updateWishListItemFav(formData);
+        setTimeout(() => {
+          updateWishListItemFav(formData);
+        }, 160);
       } else {
         updateCartItemAction(payload);
       }

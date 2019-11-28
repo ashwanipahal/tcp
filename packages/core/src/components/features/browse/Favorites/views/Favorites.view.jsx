@@ -133,10 +133,7 @@ class FavoritesView extends React.PureComponent {
             activeWishListId={activeWishList.id}
             addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal
-            selectedColorProductId={selectedColorProductId}
-            updateWishListItemFav={updateWishListItemFav}
-          />
+          <QuickViewModal updateWishListItemFav={updateWishListItemFav} />
         </>
       )
     );

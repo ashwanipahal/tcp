@@ -52,6 +52,7 @@ class ProductsGrid extends React.Component {
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
     addToBagEcom: PropTypes.func,
+    isFavoriteView: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -75,6 +76,7 @@ class ProductsGrid extends React.Component {
     openAddNewList: () => {},
     activeWishListId: '',
     addToBagEcom: () => {},
+    isFavoriteView: false,
   };
 
   constructor(props, context) {

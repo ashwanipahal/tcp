@@ -308,15 +308,21 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick, item, addToBagEcom } = this.props;
-    const {
-      skuInfo: { skuId, size, fit, color },
-    } = item;
+    const { onQuickViewOpenClick, item, addToBagEcom, isFavoriteView } = this.props;
     const { selectedColorProductId } = this.state;
-    if (skuId && size) {
-      let cartItemInfo = getCartItemInfo(item, {});
-      cartItemInfo = { ...cartItemInfo };
-      if (addToBagEcom) addToBagEcom(cartItemInfo);
+    if (isFavoriteView) {
+      const {
+        skuInfo: { skuId, size, fit, color },
+      } = item;
+      if (skuId && size) {
+        let cartItemInfo = getCartItemInfo(item, {});
+        cartItemInfo = { ...cartItemInfo };
+        if (addToBagEcom) addToBagEcom(cartItemInfo);
+      } else {
+        onQuickViewOpenClick({
+          colorProductId: selectedColorProductId,
+        });
+      }
     } else {
       onQuickViewOpenClick({
         colorProductId: selectedColorProductId,

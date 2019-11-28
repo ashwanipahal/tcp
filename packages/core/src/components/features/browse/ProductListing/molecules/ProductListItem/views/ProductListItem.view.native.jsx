@@ -51,6 +51,7 @@ const onCTAHandler = props => {
     handleAddToBag,
     addToBagEcom,
     isFavoriteEdit,
+    isFavorite,
   } = props;
   const { productInfo, colorsMap } = item;
   const { pdpUrl, bundleProduct } = productInfo;
@@ -63,18 +64,59 @@ const onCTAHandler = props => {
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
+  } else if (isFavorite) {
+    handleFavoriteAddOrEdit(
+      colorProductId,
+      item,
+      addToBagEcom,
+      onQuickViewOpenClick,
+      isFavoriteEdit
+    );
   } else {
     onQuickViewOpenClick({
+      colorProductId,
+    });
+  }
+};
+
+const handleFavoriteAddOrEdit = (
+  colorProductId,
+  item,
+  addToBagEcom,
+  onQuickViewOpenClick,
+  isFavoriteEdit
+) => {
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = item;
+  const { itemId, quantity } = item.itemInfo;
+  const orderInfo = {
+    orderItemId: itemId,
+    selectedQty: quantity,
+    selectedColor: color,
+    selectedSize: size,
+    selectedFit: fit,
+    skuId: skuId,
+  };
+  if (skuId && size) {
+    let cartItemInfo = getCartItemInfo(item, {});
+    cartItemInfo = { ...cartItemInfo };
+    if (isFavoriteEdit) {
+      onQuickViewOpenClick({
+        colorProductId: colorProductId,
+        orderInfo: orderInfo,
+        isFavoriteEdit: true,
+      });
+    } else if (addToBagEcom) addToBagEcom(cartItemInfo);
+  } else if (isFavoriteEdit) {
+    onQuickViewOpenClick({
       colorProductId: colorProductId,
-      orderInfo: {
-        orderItemId: itemId,
-        selectedQty: quantity,
-        selectedColor: color,
-        selectedSize: size,
-        selectedFit: fit,
-        skuId: skuId,
-      },
+      orderInfo: orderInfo,
       isFavoriteEdit: true,
+    });
+  } else {
+    onQuickViewOpenClick({
+      colorProductId,
     });
   }
 };
@@ -111,6 +153,7 @@ const renderAddToBagContainer = ({
     isFavoriteOOS,
     setLastDeletedItemId,
     addToBagEcom,
+    isFavorite,
   };
   return (
     <AddToBagContainer>
@@ -156,6 +199,7 @@ const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenC
     onGoToPDPPage,
     onQuickViewOpenClick,
     isFavoriteEdit: true,
+    isFavorite: true,
   };
   onCTAHandler(ctaProps);
 };

@@ -38,8 +38,6 @@ import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
 import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
-import { isMobileApp } from '../../../../../utils';
-import { setModalState } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 
 export function* loadActiveWishlistByGuestKey({ payload }) {
   const { wishListId, guestAccessKey } = payload;
@@ -299,9 +297,6 @@ export function* updateWishListItem({ payload }) {
       uniqueId,
     });
     yield* loadWishlistsSummaries();
-    if (isMobileApp()) {
-      yield put(setModalState({ isModalOpen: false }));
-    }
     if (callBack) {
       callBack();
     }
