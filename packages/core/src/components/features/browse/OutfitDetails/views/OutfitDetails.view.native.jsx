@@ -44,6 +44,8 @@ const renderItem = ({
   removeAddToFavoritesErrorMsg,
   currentColorIndex,
   setCurrentColorIndex,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   // eslint-disable-next-line no-shadow
   const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
@@ -85,6 +87,8 @@ const renderItem = ({
       colorindex={colorIndex => {
         getColorindex(colorIndex, setCurrentColorIndex);
       }}
+      isKeepAliveEnabled={isKeepAliveEnabled}
+      outOfStockLabels={outOfStockLabels}
     />
   );
 };
@@ -135,6 +139,8 @@ const OutfitDetailsView = props => {
     toastMessage,
     AddToFavoriteErrorMsg,
     removeAddToFavoritesErrorMsg,
+    isKeepAliveEnabled,
+    outOfStockLabels,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -170,6 +176,8 @@ const OutfitDetailsView = props => {
             setCurrentColorIndex,
             AddToFavoriteErrorMsg,
             removeAddToFavoritesErrorMsg,
+            isKeepAliveEnabled,
+            outOfStockLabels,
           })
         }
       />

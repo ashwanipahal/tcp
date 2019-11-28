@@ -91,6 +91,8 @@ export const getDefaultImage = state => {
   const firstColor =
     state.ProductDetail.currentProduct &&
     state.ProductDetail.currentProduct.colorFitsSizesMap &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0] &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0].color &&
     state.ProductDetail.currentProduct.colorFitsSizesMap[0].color.name;
   return (
     firstColor &&

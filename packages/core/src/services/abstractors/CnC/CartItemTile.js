@@ -670,33 +670,34 @@ export const getCurrentOrderFormatter = (
   ) {
     Object.values(orderDetailsResponse.mixOrderDetails.data).forEach(store => {
       if (store.orderType !== 'ECOM') {
+        const { shippingAddressDetails = {} } = store;
         usersOrder.stores.push({
-          stLocId: store.shippingAddressDetails.stLocId || '',
+          stLocId: shippingAddressDetails.stLocId || '',
           itemsCount: store.itemsCount,
-          storeName: capitalize(store.shippingAddressDetails.storeName),
+          storeName: capitalize(shippingAddressDetails.storeName),
           orderType: store.orderType,
           address: {
-            addressId: store.shippingAddressDetails.addressId,
-            addessKey: store.shippingAddressDetails.addressNickName,
-            address: capitalize(store.shippingAddressDetails.address),
-            addressLine1: capitalize(store.shippingAddressDetails.addressLine1),
-            addressLine2: capitalize(store.shippingAddressDetails.addressLine2),
-            addressLine3: capitalize(store.shippingAddressDetails.addressLine3),
-            city: capitalize(store.shippingAddressDetails.city),
-            state: capitalize(store.shippingAddressDetails.state),
-            country: capitalize(store.shippingAddressDetails.country),
-            zipCode: store.shippingAddressDetails.zipCode,
+            addressId: shippingAddressDetails.addressId,
+            addessKey: shippingAddressDetails.addressNickName,
+            address: capitalize(shippingAddressDetails.address),
+            addressLine1: capitalize(shippingAddressDetails.addressLine1),
+            addressLine2: capitalize(shippingAddressDetails.addressLine2),
+            addressLine3: capitalize(shippingAddressDetails.addressLine3),
+            city: capitalize(shippingAddressDetails.city),
+            state: capitalize(shippingAddressDetails.state),
+            country: capitalize(shippingAddressDetails.country),
+            zipCode: shippingAddressDetails.zipCode,
           },
           bossStartDate:
             store.orderType === ORDER_ITEM_TYPE.BOSS
-              ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
+              ? getDateInformation(shippingAddressDetails.bossMinDate, false)
               : null,
           bossEndDate:
             store.orderType === ORDER_ITEM_TYPE.BOSS
-              ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
+              ? getDateInformation(shippingAddressDetails.bossMaxDate, false)
               : null,
-          storeHours: store.shippingAddressDetails.storeHours,
-          isStoreBOSSEligible: parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible),
+          storeHours: shippingAddressDetails.storeHours,
+          isStoreBOSSEligible: parseBoolean(shippingAddressDetails.isStoreBOSSEligible),
         });
       }
     });

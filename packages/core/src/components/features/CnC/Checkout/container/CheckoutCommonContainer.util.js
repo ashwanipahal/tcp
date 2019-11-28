@@ -1,5 +1,10 @@
 import { submit } from 'redux-form';
-import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
+import {
+  setClickAnalyticsData,
+  trackClick,
+  updatePageData,
+  trackPageView,
+} from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
   submitShippingSection,
   submitPickupSection,
@@ -33,7 +38,6 @@ import selectors, {
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
-import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   getUserPhoneNumber,
   getIsRegisteredUserCallDone,
@@ -189,6 +193,9 @@ export const mapDispatchToProps = dispatch => {
     },
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
+    trackPageViewCheckout: payload => {
+      dispatch(trackPageView(payload));
     },
     dispatch,
   };
