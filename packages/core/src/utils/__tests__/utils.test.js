@@ -15,6 +15,7 @@ import {
 } from '../utils';
 import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
 import constants from '../../components/features/account/OrderDetails/OrderDetails.constants';
+import { openWindow } from '../utils.web';
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
@@ -377,5 +378,21 @@ describe('getOrderStatusForNotification', () => {
   it('status Not Matched', () => {
     const returnValue = getOrderStatusForNotification('Not Matched');
     expect(returnValue).toEqual(returnValue);
+  });
+});
+
+describe('openWindow', () => {
+  const sampleUrl = 'https://example.com';
+  it('should open given url in a new window if _blank is passed', () => {
+    const windowSpy = jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
+    openWindow(sampleUrl);
+    expect(window.open).toHaveBeenCalled();
+    expect(window.open).toBeCalledWith(sampleUrl, '_blank', 'noopener');
+  });
+  it('should open given url in same window if _self is passed', () => {
+    const windowSpy = jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
+    openWindow(sampleUrl, '_self');
+    expect(window.open).toHaveBeenCalled();
+    expect(window.open).toBeCalledWith(sampleUrl, '_self', '');
   });
 });

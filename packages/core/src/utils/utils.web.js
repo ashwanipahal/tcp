@@ -7,7 +7,7 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -578,19 +578,20 @@ export const getDirections = address => {
   );
 };
 
+/**
+ * openWindow - opens a window with the URL and attributes passed in
+ * @param {string} arg url - URL to open,
+ * @param {string} arg target - where to open the new window; defaults to _blank
+ * @param {string} arg attrs - what attributes to pass to window.open; defaults to empty string
+ * @return {Object} Object handle for the new window
+ */
 export const openWindow = (url, target = '_blank', attrs = '') => {
-  try {
-    let windowAttributes = attrs;
-    if (target === '_blank') {
-      windowAttributes = windowAttributes.concat('noopener');
-    }
-    logger.info(
-      `Opening ${url} in window with target=${target} and attributes=${windowAttributes}`
-    );
-    window.open(url, target, updatedAttrs);
-  } catch (e) {
-    logger.error(e);
+  let windowAttributes = attrs;
+  if (target === '_blank') {
+    windowAttributes = windowAttributes.concat('noopener');
   }
+  logger.info(`Opening ${url} in window with target=${target} and attributes=${windowAttributes}`);
+  return window.open(url, target, windowAttributes);
 };
 /**
  * To Identify whether the device is ios for web.
