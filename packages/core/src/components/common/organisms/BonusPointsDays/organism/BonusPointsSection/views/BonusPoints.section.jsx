@@ -190,11 +190,14 @@ const getContent = ({
       <Anchor
         fontSizeVariation="medium"
         underline
-        href="#"
         anchorVariation="primary"
         dataLocator="detailslink"
         className="details-link"
-        onClick={e => toggleBonusPointsModal(e)}
+        noLink
+        handleLinkClick={e => {
+          e.preventDefault();
+          toggleBonusPointsModal(e);
+        }}
       >
         {getLabelValue(labels, 'lbl_bonusPoints_details')}
       </Anchor>

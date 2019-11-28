@@ -158,6 +158,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
       onPickUpOpenClick: jest.fn(),
       orderId: 123,
       removeCartItem: jest.fn(),
+      onQuickViewOpenClick: jest.fn(),
     };
   });
 
@@ -309,5 +310,32 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     instance.componentDidUpdate({ toggleBossBopisError: null });
     jest.runAllTimers();
     expect(props.onPickUpOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Quick View Modal for Ecom item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = false;
+    props.productDetail.miscInfo.orderItemType = 'ECOM';
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(props.onQuickViewOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Quick View Modal for SFL item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = true;
+    props.productDetail.miscInfo.orderItemType = null;
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(props.onQuickViewOpenClick).toHaveBeenCalled();
+  });
+
+  it('should open Pickup Modal for BOSS item', () => {
+    const pickupHandler = jest.fn();
+    props.isBagPageSflSection = false;
+    props.productDetail.miscInfo.orderItemType = 'BOSS';
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
+    expect(pickupHandler).toHaveBeenCalled();
   });
 });

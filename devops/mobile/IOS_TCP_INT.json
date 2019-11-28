@@ -218,11 +218,11 @@
       "value": "d248ac8ed345ce5d29c9a6a3791db213"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_TCP",
       "value": "dev1-sp-childrensplace-com800681562071964"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_TCP",
       "value": "ceda813aeaf523b6a80c2d0d15276445"
     },
     {
@@ -250,11 +250,11 @@
       "value": "4c26a092be20e0a237b91e51087453fa"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_GYM",
       "value": "dev1-sp-gymboree-com800681562072181"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_GYM",
       "value": "430282734ccd287f6bc91a5f9a73b482"
     },
     {
@@ -314,6 +314,14 @@
       "value": ".gymboree.com"
     },
     {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "vhndEXepnCyqDvbXY6Uiqw"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
       "name": "RWD_APP_STYLITICS_USERNAME_TCP",
       "value": "thechildrensplace"
     },
@@ -344,7 +352,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
+        "646b5ec2-377d-45da-a130-472c3014c6c0"
       ],
       "isSilent": false
     },
@@ -355,10 +363,10 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "Hockey_Distribution_profile_22-10-2019.mobileprovision",
-      "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
-      "provisioningProfileFileId": "d0979d55-37ae-45f0-af31-6a3a6e836457",
+      "certificateFilename": "Dev-Certificates.p12",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TCPAppInt.mobileprovision",
+      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
+      "provisioningProfileFileId": "0f59cc4c-f591-4df4-96fd-7c2a62691e08",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_int",

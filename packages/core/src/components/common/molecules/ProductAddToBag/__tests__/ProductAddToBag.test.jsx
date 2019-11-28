@@ -7,9 +7,11 @@ describe('ProductAddToBagVanilla should render correctly', () => {
   let wrapper;
 
   const props = {
+    quickViewPickup: jest.fn(),
     currentProduct: {
       ratingsProductId: '2100622',
       generalProductId: '3000935_IV',
+      name: 'Girl School Uniform',
       colorFitsSizesMap: [
         {
           color: {

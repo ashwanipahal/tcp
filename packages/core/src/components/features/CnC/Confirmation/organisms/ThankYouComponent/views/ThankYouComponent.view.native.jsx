@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
 import ConfirmationFulfillmentCenterItemDisplay from '../../ConfirmationFulfillmentCenterItemDisplay';
 import RichText from '../../../../../../common/atoms/RichText';
@@ -26,6 +27,8 @@ const ThankYouComponent = ({
   isShowBopisMessage,
   isShowMixedMessage,
   labels,
+  venmoOrderConfirmationContent,
+  isVenmoPaymentInProgress,
 }) => {
   return (
     <>
@@ -82,17 +85,35 @@ const ThankYouComponent = ({
         </>
       )}
       <BorderWrapper />
+      <PlaceCashBanner isOrderConfirmation />
       <BodyCopyWithSpacing
         spacingStyles="margin-top-XL margin-left-XS"
         fontSize="fs16"
         mobilefontFamily="primary"
         text={labels.updateOrderHeading}
       />
-      <Container>
-        <RichTextContainer>
-          <RichText source={{ html: updateOrderDetailsData }} />
-        </RichTextContainer>
-      </Container>
+      {updateOrderDetailsData && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: updateOrderDetailsData }} />
+          </RichTextContainer>
+        </Container>
+      )}
+      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
+        <BodyCopyWithSpacing
+          spacingStyles="margin-top-XL margin-left-XS"
+          fontSize="fs16"
+          mobilefontFamily="primary"
+          text={labels.venmoHeading}
+        />
+      )}
+      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: venmoOrderConfirmationContent }} />
+          </RichTextContainer>
+        </Container>
+      )}
     </>
   );
 };
@@ -129,6 +150,7 @@ ThankYouComponent.propTypes = {
   isShowShippingMessage: PropTypes.bool,
   isShowBopisMessage: PropTypes.bool,
   isShowMixedMessage: PropTypes.bool,
+  venmoOrderConfirmationContent: PropTypes.shape({}),
 };
 ThankYouComponent.defaultProps = {
   isGuest: true,
@@ -137,5 +159,6 @@ ThankYouComponent.defaultProps = {
   isShowShippingMessage: false,
   isShowBopisMessage: false,
   isShowMixedMessage: false,
+  venmoOrderConfirmationContent: null,
 };
 export default ThankYouComponent;

@@ -16,8 +16,8 @@ import CHECKOUT_ACTIONS, {
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
   getSetIsBillingVisitedActn,
-  setUpdateFromMSG,
 } from './Checkout.action';
+import { setUpdateFromMSG } from './Checkout.action.util';
 import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
@@ -238,15 +238,6 @@ export const mapStateToProps = state => {
       bagLoading: BagPageSelector.isBagLoading(state),
       hasSetGiftOptions,
     },
-    billingProps: {
-      labels: getBillingLabels(state),
-      shippingAddress: getShippingAddress(state),
-      billingData: getBillingValues(state),
-      userAddresses: getAddressListState(state),
-      creditFieldLabels: getCreditFieldLabels(state),
-      isFetching: getCardListFetchingState(state),
-      bagLoading: BagPageSelector.isBagLoading(state),
-    },
     activeStep: getCheckoutStage(state),
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
@@ -284,6 +275,7 @@ export const mapStateToProps = state => {
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
     pickUpAlternatePerson: getPickupAltValues(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
     isHasPickUpAlternatePerson: isPickupAlt(state),
     pickUpContactPerson: getPickupValues(state),
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),

@@ -39,7 +39,7 @@ export const EmptyRewards = ({ labels }) => {
           large: 2,
           medium: 4,
         }}
-        offsetLeft={{ large: 4, small: 0, medium: 2 }}
+        offsetLeft={{ large: 5, small: 0, medium: 2 }}
         className="shop-now-btn-wrapper"
       >
         <Button

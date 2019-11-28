@@ -8,7 +8,7 @@ import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecu
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
-import { getIconPath, getLocator } from '../../../../../utils';
+import { getIconPath, getLocator, getVideoUrl } from '../../../../../utils';
 import SocialConnect from './SocialConnect.view';
 import OutOfStockWaterMarkView from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
 
@@ -145,12 +145,14 @@ class ProductImages extends React.Component {
                 {images &&
                   images.map(image => {
                     const { superSizeImageUrl } = image;
+                    const isVideoUrl = getVideoUrl(superSizeImageUrl);
+                    const checkZoomEnabled = isVideoUrl ? false : !isGiftCard && isZoomEnabled;
                     return (
                       <ProductDetailImage
                         imageUrl={image && image[imageSizePropertyName]}
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
-                        isZoomEnabled={!isGiftCard && isZoomEnabled}
+                        isZoomEnabled={checkZoomEnabled}
                         onOpenSimpleFullSize={onCloseClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}

@@ -25,7 +25,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bZQynM",
+            "componentId": "sc-EHOje",
             "isStatic": false,
             "rules": Array [
               "
@@ -153,7 +153,9 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
               ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.svg",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -168,7 +170,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "displayName": "Styled(TextBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-bZQynM",
+          "styledComponentId": "sc-EHOje",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -190,7 +192,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bZQynM",
+            "componentId": "sc-EHOje",
             "isStatic": false,
             "rules": Array [
               "
@@ -318,7 +320,9 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
               ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+              "/static/version-not-available/images/circle-alert-fill.svg",
+              ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -333,7 +337,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "displayName": "Styled(TextBox)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-bZQynM",
+          "styledComponentId": "sc-EHOje",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],

@@ -199,14 +199,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { colorFitsSizesMap, item } = this.props;
-    const {
-      selectedColor,
-      selectedFit,
-      selectedQuantity,
-      isErrorMessageDisplayed,
-      fitChanged,
-    } = this.state;
+    const { colorFitsSizesMap } = this.props;
+    const { selectedColor, selectedFit, isErrorMessageDisplayed, fitChanged } = this.state;
     const labels = {};
 
     // const colorList = this.getColorOptions(colorFitsSizesMap);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { BodyCopy, Anchor, DamImage } from '../../../../../atoms';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
@@ -47,7 +47,6 @@ const ProductCustomizeFormPart = props => {
     productInfoFromBag,
     quickViewColorSwatchesCss,
     onCloseClick,
-    alternateSizes,
     isGiftCard,
     ...otherProps
   } = props;
@@ -62,7 +61,7 @@ const ProductCustomizeFormPart = props => {
     ...prices,
     isCanada,
     inheritedStyles: customPriceStyles,
-    customFonts: { listPriceFont: 'fs14' },
+    customFonts: { listPriceFont: 'fs14', offerPriceFont: 'fs22' },
     isPlcc: isHasPlcc,
     isInternationalShipping,
   };
@@ -166,8 +165,8 @@ const ProductCustomizeFormPart = props => {
               formEnabled={formEnabled}
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
-              alternateSizes={alternateSizes}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
+              isMultiItemQVModal={isMultiItemQVModal}
             />
           </div>
         </div>
@@ -206,7 +205,6 @@ ProductCustomizeFormPart.propTypes = {
   quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func,
-  alternateSizes: PropTypes.shape({}),
   isGiftCard: PropTypes.bool,
 };
 
@@ -223,7 +221,6 @@ ProductCustomizeFormPart.defaultProps = {
   imageUrl: '',
   quickViewColorSwatchesCss: '',
   onCloseClick: () => {},
-  alternateSizes: {},
   isGiftCard: false,
 };
 

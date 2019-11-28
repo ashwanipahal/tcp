@@ -105,11 +105,6 @@ const ConfirmationView = ({
   }
   return (
     <div className={className}>
-      <Row fullBleed className="placeholder sms-sign-up">
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>SMS SIGN UP</div>
-        </Col>
-      </Row>
       {renderSMSNotification(labels, isGymboreeCanadaSite)}
 
       <Row fullBleed className="thank-you-component">
@@ -126,6 +121,7 @@ const ConfirmationView = ({
             updateOrderDetailsData={updateOrderDetailsData}
             orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
             isBossInList={isBossInList}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
           {isVenmoPaymentInProgress && (
             <VenmoConfirmation

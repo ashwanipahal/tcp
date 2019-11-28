@@ -65,6 +65,9 @@ class Recommendations extends Component {
     window.removeEventListener('load', loadRecommendations);
   }
 
+  isPromoAvailable = products =>
+    products.map(product => product.productInfo && product.productInfo.promotionalMessage);
+
   loadVariation(variation) {
     const {
       products,
@@ -79,7 +82,7 @@ class Recommendations extends Component {
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
-
+    const isPromoAvailable = this.isPromoAvailable(products);
     return products.map((product, index) => {
       const { generalProductId } = product;
 
@@ -100,6 +103,7 @@ class Recommendations extends Component {
           currencySymbol={currency}
           currencyExchange={currencyAttributes.exchangevalue}
           viaModule={RECOMMENDATION}
+          isPromoAvailable={isPromoAvailable}
         />
       );
     });
@@ -195,16 +199,12 @@ class Recommendations extends Component {
   }
 
   render() {
-    const {
-      className,
-      variations,
-      accessibility: { previousButton, nextIconButton } = {},
-    } = this.props;
+    const { className, variations, ariaPrevious, ariaNext } = this.props;
 
     config.CAROUSEL_OPTIONS.prevArrow = (
       <button
         type="button"
-        aria-label={previousButton}
+        aria-label={ariaPrevious}
         data-locator="moduleO_left_arrow"
         className="slick-prev"
       />
@@ -212,7 +212,7 @@ class Recommendations extends Component {
     config.CAROUSEL_OPTIONS.nextArrow = (
       <button
         type="button"
-        aria-label={nextIconButton}
+        aria-label={ariaNext}
         data-locator="moduleO_right_arrow"
         className="slick-prev"
       />
@@ -260,14 +260,9 @@ Recommendations.propTypes = {
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
-  accessibility: PropTypes.shape({
-    previousButton: PropTypes.string,
-    nextIconButton: PropTypes.string,
-  }),
 };
 
 Recommendations.defaultProps = {
-  accessibility: {},
   priceOnly: false,
   showButton: false,
   ctaText: '',

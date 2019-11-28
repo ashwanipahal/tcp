@@ -3,10 +3,16 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { propTypes as reduxFormPropTypes, change } from 'redux-form';
+import { setClickAnalyticsData, trackClick } from '../../../../../../../analytics/actions';
 import { connect } from 'react-redux';
 import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
 import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
+import {
+  getPageName,
+  getStoreSearchCriteria,
+  getStoreSearchDistance,
+} from './PickupStoreSelectionForm.selectors';
 import {
   getSkuId,
   getVariantId,
@@ -464,14 +470,22 @@ class PickupStoreSelectionFormContainer extends React.Component {
       cartBopisStoresList,
       isGetUserStoresLoaded,
       error,
+      currentProduct,
+      pageNameProp,
       openRestrictedModalForBopis,
+      storeSearchCriteria,
+      storeSearchDistance,
+      setClickAnalyticsDataDispatch,
+      trackClickDispatch,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
       <PickupStoreSelectionForm
         onSearch={this.onSearch}
+        pageNameProp={pageNameProp}
         isPickUpWarningModal={isPickUpWarningModal}
+        currentProduct={currentProduct}
         renderVariationText={this.renderVariationText}
         getPreferredStoreData={this.getPreferredStoreData}
         isGetUserStoresLoaded={isGetUserStoresLoaded}
@@ -510,9 +524,28 @@ class PickupStoreSelectionFormContainer extends React.Component {
         onQuantityChange={this.quantityChange}
         initialValues={this.initialValues}
         openRestrictedModalForBopis={openRestrictedModalForBopis}
+        storeSearchCriteria={storeSearchCriteria}
+        storeSearchDistance={storeSearchDistance}
+        setClickAnalyticsData={setClickAnalyticsDataDispatch}
+        trackClick={trackClickDispatch}
       />
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    pageNameProp: getPageName(state),
+    storeSearchCriteria: getStoreSearchCriteria(state),
+    storeSearchDistance: getStoreSearchDistance(state),
+  };
+};
 
-export default connect()(PickupStoreSelectionFormContainer);
+const mapDispatchToProps = dispatch => ({
+  setClickAnalyticsDataDispatch: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClickDispatch: payload => dispatch(trackClick(payload)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PickupStoreSelectionFormContainer);

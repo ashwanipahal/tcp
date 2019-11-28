@@ -28,7 +28,7 @@ const renderBrand = ({ saved, labels, inputColGrid, handleChange, isGymboreeChec
   return (
     !saved && (
       <Col {...inputColGrid}>
-        <div className="brandWrapper elem-mt-MED">
+        <div className="brandWrapper">
           <div className="childrenPlace">
             <Field
               name="brandTCP"
@@ -106,10 +106,10 @@ const SMSNotifications = ({
   };
 
   const inputColGrid = {
-    offsetLeft: { large: smsNotificationSuccess ? 3.5 : 3, medium: 0.5 },
-    offsetRight: { large: 3, medium: 0.5 },
+    offsetLeft: { large: smsNotificationSuccess ? 3.5 : 3.3, medium: 0.5 },
+    offsetRight: { large: 3.3, medium: 0.5 },
     ignoreGutter: { small: true },
-    colSize: { small: 6, large: 6, medium: 8 },
+    colSize: { small: 6, large: 5, medium: 8 },
   };
   const buttonColGrid = {
     offsetLeft: { large: 4.3, medium: 2.3 },
@@ -123,7 +123,7 @@ const SMSNotifications = ({
   const isGymboreeCheckBoxShow = isCanada && isTCP;
 
   return (
-    <div className={`${className} notification-width elem-mt-XL elem-mb-XL`}>
+    <div className={`${className} notification-width elem-mt-MED elem-mb-XL`}>
       <form onSubmit={handleSubmit(formSubmit)}>
         <Row fullBleed>
           {smsNotificationError && (
@@ -150,7 +150,7 @@ const SMSNotifications = ({
               >
                 {labels.textAlertHeading}
               </BodyCopy>
-              <div className="elem-mt-MED elem-mb-LRG">
+              <div className="elem-mt-MED elem-mb-MED">
                 <BodyCopy
                   fontSize={['fs16', 'fs16', 'fs18']}
                   fontFamily="secondary"
@@ -191,7 +191,7 @@ const SMSNotifications = ({
               <BodyCopy
                 fontSize={['fs14', 'fs14', 'fs16']}
                 fontFamily="secondary"
-                className="elem-mt-XS elem-mb-LRG"
+                className="elem-mt-XS"
               >
                 <RichText richTextHtml={subscribeSuccessMsg} dataLocator="success-message" />
               </BodyCopy>

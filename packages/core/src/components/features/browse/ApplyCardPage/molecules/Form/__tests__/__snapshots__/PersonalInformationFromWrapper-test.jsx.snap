@@ -59,6 +59,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="contact_information_month"
         >
           <Field
+            aria-label="lbl_PLCC_month"
             className="field_dob"
             component={
               Object {
@@ -78,7 +79,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -136,7 +137,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -234,6 +237,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_day"
         >
           <Field
+            aria-label="lbl_PLCC_day"
             className="field_dob"
             component={
               Object {
@@ -253,7 +257,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -311,7 +315,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -485,6 +491,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="personal_info_year"
         >
           <Field
+            aria-label="lbl_PLCC_year"
             className="field_dob"
             component={
               Object {
@@ -504,7 +511,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -562,7 +569,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1123,7 +1132,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

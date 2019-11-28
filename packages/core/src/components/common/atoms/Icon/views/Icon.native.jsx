@@ -1,7 +1,8 @@
 import React from 'react';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import { PropTypes } from 'prop-types';
-import { get, noop } from 'lodash';
+import get from 'lodash/get';
+import noop from 'lodash/noop';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import { setTestId, getLocator } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles.native';

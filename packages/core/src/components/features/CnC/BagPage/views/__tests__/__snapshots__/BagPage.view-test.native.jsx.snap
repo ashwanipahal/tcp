@@ -25,11 +25,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
     <Styled(ScrollViewMock)
@@ -39,19 +34,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       viewHeight="65%"
     >
       <Styled(View)>
-        <Connect(ProductTileWrapperContainer)
-          bagLabels={
-            Object {
-              "bagHeading": "test",
-              "checkout": "",
-              "savedLaterButton": "savedLaterButton",
-              "tagLine": "tagline",
-              "viewBag": "",
-            }
-          }
-          navigation={[MockFunction]}
-          pageView="myBag"
-        />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -72,23 +55,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         navigation={[MockFunction]}
       />
     </Styled(ScrollViewMock)>
-  </Styled(View)>
-  <Styled(View)>
-    <Connect(AddedToBagContainer)
-      hideHeader={[Function]}
-      isNoNEmptyBag={false}
-      labels={
-        Object {
-          "bagHeading": "test",
-          "checkout": "",
-          "savedLaterButton": "savedLaterButton",
-          "tagLine": "tagline",
-          "viewBag": "",
-        }
-      }
-      navigation={[MockFunction]}
-      payPalTop={30}
-    />
   </Styled(View)>
 </Fragment>
 `;
@@ -116,11 +82,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
     <Styled(ScrollViewMock)
@@ -144,6 +105,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -193,11 +155,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
     <Styled(ScrollViewMock)
@@ -221,6 +178,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -268,11 +226,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
     <Styled(ScrollViewMock)
@@ -309,6 +262,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             />
           </Styled(View)>
         </Styled(View)>
+        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Connect(CouponContainer)
             showAccordian={false}

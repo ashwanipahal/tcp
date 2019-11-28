@@ -12,6 +12,10 @@ import {
 } from '../../../../../utils/utils';
 import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
+const getOdmLoading = state => {
+  return state.Confirmation && state.Confirmation.get('loading');
+};
+
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
 };
@@ -440,6 +444,19 @@ const getTotalOrderSavings = createSelector(
   }
 );
 
+const getVenmoOrderConfirmationContentId = (state, labelName) => {
+  const { referred = [] } = state.Labels.checkout.orderConfirmation;
+  const content = referred.find(label => label.name === labelName);
+  return content && content.contentId;
+};
+
+const getVenmoOrderConfirmationContent = (state, labelName) => {
+  const showDetailsContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === getVenmoOrderConfirmationContentId(state, labelName)
+  );
+  return showDetailsContent && showDetailsContent.richText;
+};
+
 /* istanbul ignore next */
 const getLedgerSummaryDataConfirmation = state => {
   return {
@@ -460,6 +477,7 @@ const getLedgerSummaryDataConfirmation = state => {
 };
 
 export default {
+  getOdmLoading,
   getOrderConfirmation,
   getOrderEmailAddress,
   getCurrentSiteId,
@@ -502,4 +520,6 @@ export default {
   getConfirmationLblObj,
   getLedgerSummaryDataConfirmation,
   isGymboreeCanadaSite,
+  getVenmoOrderConfirmationContentId,
+  getVenmoOrderConfirmationContent,
 };

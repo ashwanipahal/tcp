@@ -13,3 +13,10 @@ export const setCurrentOutfitAction = currentOutfit => {
     type: OUTFIT_DETAILS_CONSTANTS.SET_OUTFIT_PRODUCTS,
   };
 };
+
+export const setAddToFavoriteOUTFIT = payload => {
+  return {
+    type: OUTFIT_DETAILS_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};

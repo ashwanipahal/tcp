@@ -120,15 +120,14 @@ class CondensedHeader extends React.PureComponent {
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
+          isCondensedHeader
         />
       </div>
     ) : null;
   };
 
   getImgSrc = navigationDrawer => {
-    return navigationDrawer.open
-      ? '/static/images/mobile-close-dark.svg'
-      : '/static/images/grey-menu.svg';
+    return navigationDrawer.open ? getIconPath('mobile-close-dark') : getIconPath('grey-menu');
   };
 
   render() {
@@ -234,6 +233,7 @@ class CondensedHeader extends React.PureComponent {
                     textAlign="right"
                     className="username"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
+                    data-overlayTarget="true"
                   >
                     <Image
                       alt={accountIconButton}
@@ -251,6 +251,7 @@ class CondensedHeader extends React.PureComponent {
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
+                  data-overlayTarget="true"
                 >
                   <Image
                     alt={accountIconButton}

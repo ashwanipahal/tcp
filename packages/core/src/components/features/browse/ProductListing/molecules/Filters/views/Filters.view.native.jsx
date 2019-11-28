@@ -135,6 +135,7 @@ class Filters extends React.PureComponent {
     const { selectedIndex } = this.state;
     const { displayName, isSelected } = item;
     const selectedState = isFavorite ? selectedIndex === index : isSelected;
+    const isDisabled = item.disabled || isLoadingMore;
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
@@ -145,7 +146,7 @@ class Filters extends React.PureComponent {
         selected={selectedState}
         data-locator=""
         accessibilityLabel={displayName}
-        disableButton={isLoadingMore}
+        disableButton={isDisabled}
       />
     );
   };
@@ -209,7 +210,9 @@ class Filters extends React.PureComponent {
       const filterData = filters[key] || [];
 
       // find all the selected items from filters list and map it with filter key present in filterNames
-      const selectedFiltersData = filterData.filter(item => item.isSelected).map(item => item.id);
+      const selectedFiltersData = filterData
+        .filter(item => item.isSelected)
+        .map(item => encodeURIComponent(item.id));
       const result = {};
       result[key] = selectedFiltersData;
       selectedFilters = { ...selectedFilters, ...result };

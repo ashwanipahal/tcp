@@ -160,7 +160,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         >
           <ForwardRef
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </ForwardRef>
@@ -377,6 +377,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -457,7 +458,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
         >
           <ForwardRef
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </ForwardRef>
@@ -674,6 +675,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -736,6 +738,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -801,6 +804,7 @@ exports[`ButtonList component renders correctly with venmoError 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1045,7 +1049,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-kAzzGY",
+                "componentId": "sc-jzJRlG",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1173,7 +1177,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1188,7 +1194,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-kAzzGY",
+              "styledComponentId": "sc-jzJRlG",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1220,7 +1226,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             >
               <Styled(Image)
                 height="15"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
                 width="15"
               />
             </Styled(ReactTooltip)>
@@ -1339,7 +1345,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1433,6 +1441,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1675,7 +1684,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-kAzzGY",
+                "componentId": "sc-jzJRlG",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1803,7 +1812,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1818,7 +1829,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-kAzzGY",
+              "styledComponentId": "sc-jzJRlG",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1850,7 +1861,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             >
               <Styled(Image)
                 height="15"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
                 width="15"
               />
             </Styled(ReactTooltip)>
@@ -1969,7 +1980,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2063,6 +2076,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2085,6 +2099,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2170,6 +2185,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -2232,6 +2248,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}

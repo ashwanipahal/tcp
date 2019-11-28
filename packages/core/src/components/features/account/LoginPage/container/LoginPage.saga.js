@@ -1,8 +1,9 @@
-import { call, takeLatest, put, select, take } from 'redux-saga/effects';
+import { call, takeLatest, putResolve, put, select, take } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
+import CONSTANTS from '../../User/User.constants';
 import {
   setLoginInfo,
   setCheckoutModalMountedState,
@@ -15,6 +16,7 @@ import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
 import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
+import { getFavoriteStoreActn } from '../../../storeLocator/StoreLanding/container/StoreLanding.actions';
 
 const errorLabel = 'Error in API';
 
@@ -33,6 +35,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(
         setClickAnalyticsData({
           eventName: 'login',
+          customEvents: ['event14'],
           pageNavigationText: 'header-log in',
         })
       );
@@ -48,11 +51,17 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       }
       yield put(navigateXHRAction());
 
-      yield take(setUserInfo);
-      yield put(trackClick('login_submit'));
+      // Trgigger analytics event after set user data
+      yield take(CONSTANTS.SET_USER_INFO);
+      yield put(trackClick({ name: 'user_login', module: 'account' }));
     }
 
-    return yield put(setLoginInfo(response));
+    yield putResolve(setLoginInfo(response));
+    return yield put(
+      getFavoriteStoreActn({
+        ignoreCache: true,
+      })
+    );
   } catch (err) {
     yield put(setLoginLoadingState({ isLoading: false }));
     const { errorCode, errorMessage, errorResponse } = err;

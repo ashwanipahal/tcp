@@ -83,28 +83,58 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
           link={null}
           textAlign="left"
         >
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            data-locator="mprcc-applyCTA"
-            fill="BLUE"
-            fontSize="fs14"
-            fontWeight="semibold"
-            type="submit"
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event112",
+                ],
+                "eventName": "loyaltyclick",
+                "pageName": "myplace:rewardscreditcard",
+                "pageSection": "myplace",
+                "pageSubSection": "myplace",
+                "pageType": "myplace",
+              }
+            }
           >
-            lbl_PLCCModal_applyNowCTA
-          </Styled(Button)>
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            className="elem-mt-MED"
-            data-locator="mprcc-managecreditcardCTA"
-            fill="WHITE"
-            fontSize="fs14"
-            fontWeight="semibold"
-            onClick={[Function]}
-            type="submit"
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              data-locator="mprcc-applyCTA"
+              fill="BLUE"
+              fontSize="fs14"
+              fontWeight="semibold"
+              type="submit"
+            >
+              lbl_PLCCModal_applyNowCTA
+            </Styled(Button)>
+          </Connect(Component)>
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event113",
+                ],
+                "eventName": "loyaltyclick",
+                "pageName": "myplace:rewardscreditcard",
+                "pageSection": "myplace",
+                "pageSubSection": "myplace",
+                "pageType": "myplace",
+              }
+            }
           >
-            lbl_PLCCForm_manageCreditCardAccount
-          </Styled(Button)>
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="elem-mt-MED"
+              data-locator="mprcc-managecreditcardCTA"
+              fill="WHITE"
+              fontSize="fs14"
+              fontWeight="semibold"
+              onClick={[Function]}
+              type="submit"
+            >
+              lbl_PLCCForm_manageCreditCardAccount
+            </Styled(Button)>
+          </Connect(Component)>
         </Styled(BodyCopy)>
         <Styled(BodyCopy)
           className="benefits-text"

@@ -2,7 +2,7 @@
 /* dummy plp page | TODO: eslint fixes*/
 
 import React from 'react';
-import { Text, FlatList, Image, View, Picker } from 'react-native';
+import { Text, Image, View, Picker } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import endpoints from '../../../../../service/endpoint';
@@ -27,7 +27,7 @@ class ProductTile extends React.Component {
 
   render() {
     const { quantity, storeId, brand } = this.state;
-    const { item, addToBagEcom, addToBagBossBopis, navigation } = this.props;
+    const { item, addToBagEcom, addToBagBossBopis } = this.props;
 
     const { colorFitsSizesMap, imagesByColor } = item;
     const { color, fits, hasFits } = colorFitsSizesMap[0];

@@ -12,6 +12,26 @@ import internalEndpoints from '../../../../../account/common/internalEndpoints';
 
 const { orderPage, trackOrder } = internalEndpoints;
 
+const getBossDate = (isBoss, bossDate) => {
+  return isBoss ? bossDate : '';
+};
+const renderDate = (orderType, bossDate, bopisDate) => {
+  const isBoss = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS;
+  const isBopis = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOPIS;
+  const date = isBopis ? bopisDate : getBossDate(isBoss, bossDate);
+  return (
+    <BodyCopy
+      fontSize="fs22"
+      fontFamily="secondary"
+      fontWeight="extrabold"
+      className="confirmation-fullfillment-type"
+      textAlign="center"
+    >
+      {date}
+    </BodyCopy>
+  );
+};
+
 /**
  * @function ConfirmationOrderNumberDisplay
  * @description renders the order number component.
@@ -27,8 +47,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
     productsCount,
     encryptedEmailAddress,
   } = center;
-  const isBoss = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS;
-  const isBopis = orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOPIS;
+
   const today = getDateInformation('', false);
   const bossStartDate = bossMinDate ? getDateInformation(bossMinDate) : '';
   const bossEndDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
@@ -47,28 +66,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
       >
         {`${productsCount} ${productsCount > 1 ? labels.items : labels.item}`}
       </BodyCopy>
-      {isBoss && (
-        <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-        >
-          {bossDate}
-        </BodyCopy>
-      )}
-      {isBopis && (
-        <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-        >
-          {bopisDate}
-        </BodyCopy>
-      )}
+      {renderDate(orderType, bossDate, bopisDate)}
       <div className="confirmation-order-details-wrapper">
         <ConfirmationItemDisplay title={labels.orderNumber}>
           {isGuest ? (

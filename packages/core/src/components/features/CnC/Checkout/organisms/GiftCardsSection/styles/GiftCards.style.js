@@ -1,12 +1,14 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const styles = css`
   .new_gift_card_button {
+    white-space: nowrap;
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
-    width: 104%;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    width: 110%;
   }
   .headsUpMsgBoldTitle {
     font-family: ${props => props.theme.typography.fonts.secondaryFontSemilBoldFamily};
@@ -39,7 +41,7 @@ const styles = css`
     transform: translateX(-50%);
     padding: 3px;
     display: inline-block;
-    background: transparent url(/static/images/circle-alert-fill.svg) no-repeat 0 0;
+    background: transparent url(${getIconPath('circle-alert-fill')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -51,15 +53,15 @@ const styles = css`
     vertical-align: bottom;
   }
   .savetoaccount > label {
-    width: 100%;
+    width: auto;
+    display: flex;
   }
 
   && .card__btn > button,
   && .card__btn--medium > button,
   .new_gift_card_button,
   .error-box {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-      ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    padding: 10px ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
 
   && .card__btn--medium {

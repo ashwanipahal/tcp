@@ -3,7 +3,6 @@ import { WebView } from 'react-native-webview';
 import { Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import Image from '@tcp/core/src/components/common/atoms/Image';
-
 import { PropTypes } from 'prop-types';
 
 /**
@@ -20,17 +19,34 @@ class RichText extends PureComponent {
 
   renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
 
+  renderAnchor = ({ style, children }) => {
+    const { actionHandler } = this.props;
+    const actionProps = children[0].props;
+    return (
+      <Text
+        style={{ ...style }}
+        onPress={() =>
+          actionHandler(actionProps.href, actionProps.target, actionProps['data-target'])
+        }
+      >
+        {children}
+      </Text>
+    );
+  };
+
   renderWebView = () => {
     const {
       javaScriptEnabled,
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
+      source,
+      ...others
     } = this.props;
     const screenHeight = Math.round(Dimensions.get('window').height);
     const style = { backgroundColor: 'transparent' };
     const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
-
+    const { html } = source;
     return (
       <WebView
         style={isApplyDeviceHeight ? styleWithHeight : style}
@@ -38,7 +54,10 @@ class RichText extends PureComponent {
         javaScriptEnabled={javaScriptEnabled}
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-        {...this.props}
+        source={{
+          html: `<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </head><body>${html}</body></html>`,
+        }}
+        {...others}
       />
     );
   };
@@ -63,6 +82,10 @@ class RichText extends PureComponent {
             p: props => this.renderText(props),
             b: props => this.renderText(props),
             img: props => this.renderImage(props),
+            h3: props => this.renderText(props),
+            ul: props => this.renderText(props),
+            a: props => this.renderAnchor(props),
+            li: props => this.renderText(props),
           }}
         />
       </View>

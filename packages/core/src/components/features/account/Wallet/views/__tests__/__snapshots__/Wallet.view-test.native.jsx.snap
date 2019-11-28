@@ -8,12 +8,14 @@ exports[`Wallet should render correctly 1`] = `
   >
     <Styled(View)>
       <GuestLoginOverview
+        hideLogoutText={false}
         labels={
           Object {
             "common": Object {},
             "myPlaceRewards": Object {},
           }
         }
+        loggedInWrapperStyle={Object {}}
         navigation={[Function]}
       />
     </Styled(View)>

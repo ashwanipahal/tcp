@@ -7,6 +7,8 @@ const buildQuery = ({ page, brand, country, channel, lang }) => `
     errorMessage
     path
     pageTitle
+    copyBody
+    copyTitle
     keywords
     description
     robotsInfo

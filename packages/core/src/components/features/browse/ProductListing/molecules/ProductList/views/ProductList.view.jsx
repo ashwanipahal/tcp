@@ -7,7 +7,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
-
+import GridPromo from '../../../../../../common/molecules/GridPromo';
 /**
  * Hotfix-Aware Component. The use `withHotfix` below is just for
  * making the cart page hotfix-aware.
@@ -61,13 +61,30 @@ const ProductList = props => {
     asPathVal,
     AddToFavoriteErrorMsg,
     removeAddToFavoritesErrorMsg,
+    openAddNewList,
+    activeWishListId,
   } = props;
   let gridIndex = 0;
+
+  const productTileClass = isSearchListing ? ' product-tile search-product-tile' : ' product-tile';
 
   return (
     <Fragment>
       {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
+        if (item && item.itemType === 'gridPromo') {
+          return (
+            <div
+              className={
+                item.gridStyle === 'horizontal'
+                  ? `${className} horizontal-promo`
+                  : `${className} vertical-promo ${productTileClass}`
+              }
+            >
+              <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+            </div>
+          );
+        }
         if (typeof item === 'string') {
           gridIndex = 0;
         } else if (isGridItem(item)) {
@@ -132,6 +149,8 @@ const ProductList = props => {
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              openAddNewList={openAddNewList}
+              activeWishListId={activeWishListId}
             />
           </div>
         );
@@ -179,10 +198,14 @@ ProductList.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   isKeepAliveEnabled: PropTypes.bool,
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
   getProducts: PropTypes.func,
   asPathVal: PropTypes.string,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  openAddNewList: PropTypes.func,
+  activeWishListId: PropTypes.number,
 };
 
 ProductList.defaultProps = {
@@ -214,10 +237,14 @@ ProductList.defaultProps = {
   outOfStockLabels: {},
   isKeepAliveEnabled: false,
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
   getProducts: () => {},
   asPathVal: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  openAddNewList: () => {},
+  activeWishListId: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);

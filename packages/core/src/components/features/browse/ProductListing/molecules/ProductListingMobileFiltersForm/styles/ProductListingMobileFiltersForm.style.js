@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   &.available-filters-sorting-container {
@@ -189,6 +190,13 @@ export default css`
     .color-chip {
       border-radius: 10px;
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      height: 19px;
+      width: 19px;
+    }
+
+    .white-color-class {
+      height: 18px;
+      width: 18px;
     }
 
     .color-chip[data-colorname='white'] {
@@ -208,7 +216,7 @@ export default css`
   li.item-common {
     height: 23px;
     min-width: 140px;
-    width: 45%;
+    width: 47%;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-right: auto;
     border-radius: 6px;
@@ -235,13 +243,36 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       width: 31%;
-    }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      .item-select {
-        padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
+      margin-right: 10px;
     }
   }
+
+  li.item-common.color-filter-chip {
+    margin-right: 10px;
+  }
+
+  li.item-common.color-filter-chip:nth-child(3n) {
+    margin-right: 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: 10px;
+    }
+  }
+
+  li.item-common.size-detail-chips:nth-child(2n) {
+    margin-right: 4px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: 10px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    li.item-common.size-detail-chips:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
   &.mobile-sort-container {
     padding: 0;
 
@@ -326,6 +357,11 @@ export default css`
       padding-bottom: 0;
     }
 
+    .disable-clear-all-button {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
     @media ${props => props.theme.mediaQuery.mediumMax} {
       margin-top: 0;
       padding: 0;
@@ -347,27 +383,27 @@ export default css`
   }
 
   .open-filter-button {
-    background: url('/static/images/carrot-small-up.png') no-repeat;
+    background: url(${getIconPath('up_arrow_icons')}) no-repeat;
     background-position: 95% 18px;
     background-color: #eeeeee;
     font-size: ${props => props.theme.typography.fontSizes.fs16};
 
     &.open-filter-button-expanded {
-      background: url('/static/images/carrot-small-down.png') no-repeat;
+      background: url(${getIconPath('down_arrow_icon')}) no-repeat;
       background-position: 95% 18px;
 
       &:hover:not([disabled]) {
-        background: url('/static/images/carrot-small-down.png') no-repeat;
+        background: url(${getIconPath('down_arrow_icon')}) no-repeat;
         background-position: 95% 18px;
         background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       }
     }
+  }
 
-    &:hover:not([disabled]) {
-      background: url(/static/images/carrot-small-up.png) no-repeat;
-      background-position: 95% 18px;
-      background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-    }
+  .open-filter-button.close-filter-button {
+    background: url(${getIconPath('down_arrow_icon')}) no-repeat;
+    background-position: 95% 18px;
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
 `;
 

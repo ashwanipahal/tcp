@@ -10,12 +10,14 @@ const ProductDetailReducer = (state = initialState, action) => {
   switch (type) {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
       return { ...state, currentProduct: { ...payload.product }, breadCrumbs: payload.breadCrumbs };
+    case PRODUCTDETAIL_CONSTANTS.SET_PDP_LOADING_STATE:
+      return { ...state, ...payload };
     case PRODUCTDETAIL_CONSTANTS.SET_ADD_TO_FAVORITE:
       // eslint-disable-next-line no-case-declarations
       const productDetailsMap = state.currentProduct;
       // eslint-disable-next-line consistent-return
       productDetailsMap.colorFitsSizesMap = productDetailsMap.colorFitsSizesMap.map(item => {
-        if (item.colorProductId === action.payload.colorProductId) {
+        if (item.colorProductId === action.payload.pdpColorProductId) {
           // eslint-disable-next-line no-param-reassign
           item = {
             ...item,

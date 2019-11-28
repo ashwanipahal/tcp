@@ -228,22 +228,30 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 maxLength="50"
                 autoComplete="off"
               />
             </form>
-            <Image
-              alt="search"
+            <Anchor
               id="search-image-typeAhead"
-              className="search-image-typeAhead icon-small"
-              onClick={this.initiateSearch}
-              src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+              noLink
+              onClick={e => {
+                e.preventDefault();
+                this.initiateSearch(e);
+              }}
+              className="search-image-typeAhead"
               data-locator="search-icon"
-              height="25px"
-            />
-
+            >
+              <Image
+                alt="search"
+                className="icon-small"
+                src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                height="25px"
+              />
+            </Anchor>
             <CancelSearch
               closeSearchBar={closeSearchBar}
               closeModalSearch={closeModalSearch}

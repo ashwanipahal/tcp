@@ -32,6 +32,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     isPayPalWebViewEnable={false}
     nextButtonText=""
@@ -85,7 +86,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
         >
           <ForwardRef
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </ForwardRef>
@@ -140,6 +141,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    bagLoading={false}
     hideBackLink={true}
     isPayPalWebViewEnable={false}
     nextButtonText=""

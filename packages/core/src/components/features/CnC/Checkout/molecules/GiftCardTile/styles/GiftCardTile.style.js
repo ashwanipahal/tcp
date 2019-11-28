@@ -50,6 +50,7 @@ const styles = css`
     margin-right: 0;
     display: inline-block;
     align-items: center;
+    width: calc(100% - 177px);
   }
 
   .available_giftCards_text {

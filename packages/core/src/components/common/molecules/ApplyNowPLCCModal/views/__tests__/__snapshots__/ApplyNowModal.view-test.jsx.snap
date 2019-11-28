@@ -109,7 +109,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   .header-image {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(",
+      "/static/version-not-available/images/tcp-cc@2x.png",
+      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 175px;
@@ -150,7 +152,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       width: 355px;
       text-align: left;
       ::before {
-        content: url('/static/images/confirmation_check.svg');
+        content: url(",
+      "/static/version-not-available/images/confirmation_check.svg",
+      ");
         display: inline-block;
         height: 10px;
         width: 10px;
@@ -291,7 +295,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCC_interested
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event47",
+                ],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_interested
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
@@ -323,7 +339,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           target="_blank"
           underline={true}
         >
-          lbl_PLCC_noThanks
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event48",
+                ],
+                "eventName": "plcc checkout invite declined",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_noThanks
+          </Connect(Component)>
         </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
@@ -550,7 +578,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   .header-image {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(",
+      "/static/version-not-available/images/tcp-cc@2x.png",
+      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 175px;
@@ -591,7 +621,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       width: 355px;
       text-align: left;
       ::before {
-        content: url('/static/images/confirmation_check.svg');
+        content: url(",
+      "/static/version-not-available/images/confirmation_check.svg",
+      ");
         display: inline-block;
         height: 10px;
         width: 10px;
@@ -729,7 +761,17 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCCModal_applyNowCTA
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCCModal_applyNowCTA
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>

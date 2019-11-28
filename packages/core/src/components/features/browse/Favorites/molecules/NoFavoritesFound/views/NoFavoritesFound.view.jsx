@@ -11,7 +11,6 @@ const renderText = (headerText, bodyText) => {
         fontWeight="extrabold"
         fontSize="fs22"
         aria-hidden="true"
-        tabIndex="-1"
         textAlign="center"
       >
         {headerText}
@@ -21,7 +20,6 @@ const renderText = (headerText, bodyText) => {
         fontFamily="secondary"
         fontSize="fs16"
         aria-hidden="true"
-        tabIndex="-1"
         textAlign="center"
       >
         {bodyText}

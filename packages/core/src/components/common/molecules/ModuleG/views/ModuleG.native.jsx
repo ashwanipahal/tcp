@@ -356,7 +356,6 @@ class ModuleG extends React.PureComponent {
           {this.renderSecondCarousel(!dataStatus, secondCarouseProductList)}
         </View>
         {this.renderbuttonContainer(productExists, selectedSingleCTAButton)}
-        <QuickViewModal />
       </Container>
     );
   };

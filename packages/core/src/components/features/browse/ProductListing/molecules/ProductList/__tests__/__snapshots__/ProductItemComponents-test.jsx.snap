@@ -46,7 +46,9 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
       link={null}
       textAlign="left"
     >
-      12.00
+      <Connect(PriceCurrency)
+        price={12}
+      />
     </ForwardRef>
     <ForwardRef
       className="merchant-tag elem-ml-XXXS"
@@ -136,7 +138,7 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
     <Styled(Image)
       alt="Add-to-favorite"
       data-locator="global-favorite-button"
-      src="/static/images/add-to-favorite.svg"
+      src="/static/version-not-available/images/add-to-favorite.svg"
       title="addToFavorite"
     />
   </button>

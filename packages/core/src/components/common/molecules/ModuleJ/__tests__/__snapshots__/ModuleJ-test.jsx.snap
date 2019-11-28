@@ -8,7 +8,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-dxgOiQ",
+        "componentId": "sc-ckVGcZ",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-dxgOiQ",
+      "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -281,8 +281,8 @@ exports[`ModuleJ component renders correctly 1`] = `
         carouselConfig={
           Object {
             "autoplay": false,
-            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "customArrowLeft": "/static/version-not-available/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/version-not-available/images/right-carousel-carrot.svg",
             "variation": "big-arrows",
           }
         }

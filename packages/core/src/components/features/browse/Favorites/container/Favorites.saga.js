@@ -14,6 +14,7 @@ import {
   setDeletedItemAction,
   setLoadingState,
   setAddToFavoriteErrorState,
+  setWishListShareSuccess,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
@@ -35,32 +36,50 @@ import { isCanada } from '../../../../../utils';
 import { setAddToFavorite } from '../../ProductListing/container/ProductListing.actions';
 import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail.actions';
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
+import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
+import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
 
-export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
+export function* loadActiveWishlistByGuestKey({ payload }) {
+  const { wishListId, guestAccessKey } = payload;
   try {
     const state = yield select();
-    const userName = getUserContactInfo(state).get('firstName');
+    yield put(setLoadingState({ isDataLoading: true }));
+    const userState = getUserContactInfo(state);
+    const userName = userState && userState.get('firstName');
     const isCanadaCheck = isCanada();
-
     const wishlistItems = yield call(getWishListbyId, {
       wishListId,
       userName,
       guestAccessKey,
       isCanada: isCanadaCheck,
+      imageGenerator: processHelperUtil.getImgPath,
     });
-    getSetIsWishlistReadOnlyAction(true);
-    getSetActiveWishlistAction(wishlistItems);
+    yield put(getSetIsWishlistReadOnlyAction(true));
+    yield put(setActiveWishlistAction(wishlistItems));
+    yield put(setLoadingState({ isDataLoading: false }));
     return wishlistItems;
   } catch (err) {
+    yield put(setLoadingState({ isDataLoading: false }));
     return [];
   }
 }
 
+// eslint-disable-next-line complexity
 export function* addItemsToWishlist({ payload }) {
-  const { colorProductId, page } = payload;
+  const { colorProductId, productSkuId, pdpColorProductId, page } = payload;
   const state = yield select();
   const isGuest = !getUserLoggedInState(state);
   const errorMapping = getErrorList(state);
+
+  let skuIdOrProductId;
+
+  if (productSkuId) {
+    skuIdOrProductId = productSkuId;
+  } else if (pdpColorProductId) {
+    skuIdOrProductId = pdpColorProductId;
+  } else {
+    skuIdOrProductId = colorProductId;
+  }
 
   try {
     yield put(setAddToFavoriteErrorState({}));
@@ -69,7 +88,7 @@ export function* addItemsToWishlist({ payload }) {
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: '',
-        skuIdOrProductId: colorProductId,
+        skuIdOrProductId: skuIdOrProductId,
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,
@@ -82,13 +101,19 @@ export function* addItemsToWishlist({ payload }) {
       if (res && res.newItemId) {
         switch (page) {
           case 'PDP':
-            yield put(setAddToFavoritePDP({ colorProductId, res }));
+            yield put(setAddToFavoritePDP({ pdpColorProductId, res }));
             break;
           case 'PLP':
             yield put(setAddToFavorite({ colorProductId, res }));
             break;
           case 'SLP':
             yield put(setAddToFavoriteSLP({ colorProductId, res }));
+            break;
+          case 'OUTFIT':
+            yield put(setAddToFavoriteOUTFIT({ pdpColorProductId, res }));
+            break;
+          case 'BUNDLE':
+            yield put(setAddToFavoriteBUNDLE({ pdpColorProductId, res }));
             break;
           default:
             break;
@@ -156,7 +181,7 @@ export function* loadWishlistsSummaries(config) {
   }
 }
 
-export function* createNewWishList(formData) {
+export function* createNewWishList({ payload: formData }) {
   try {
     const createdWishListResponse = yield call(
       createWishList,
@@ -181,14 +206,14 @@ export function* createNewWishListMoveItem({ payload: formData }) {
     }
     const payload = {
       toWishListId: formData.wisListId || createdWishListResponse.id,
-      itemId: formData.id,
+      itemId: formData.itemId,
     };
     const state = yield select();
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
     const activeWishlistItem = activeWishlistObject.items.find(
-      item => item.itemInfo.itemId === formData.id
+      item => item.itemInfo.itemId === formData.itemId
     );
     const itemMovedResponse = yield call(
       moveItemToNewWishList,
@@ -205,7 +230,7 @@ export function* createNewWishListMoveItem({ payload: formData }) {
   }
 }
 
-export function* deleteWishListById(wishListId) {
+export function* deleteWishListById({ payload: wishListId }) {
   try {
     const deleteWishListResponse = yield call(deleteWishList, wishListId);
     if (!deleteWishListResponse.success) {
@@ -217,7 +242,7 @@ export function* deleteWishListById(wishListId) {
   }
 }
 
-export function* updateExistingWishList(formData) {
+export function* updateExistingWishList({ payload: formData }) {
   try {
     const updateWishListResponse = yield call(
       updateWishlistName,
@@ -278,7 +303,12 @@ export function* sendWishListMail(formData) {
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
-    const { shareToEmailAddresses, shareFromEmailAddresses, shareSubject, shareMessage } = formData;
+    const {
+      shareToEmailAddresses,
+      shareFromEmailAddresses,
+      shareSubject,
+      shareMessage,
+    } = formData.payload;
     const emailSentResponse = yield call(
       shareWishlistByEmail,
       activeWishlistId,
@@ -287,8 +317,9 @@ export function* sendWishListMail(formData) {
       shareSubject,
       shareMessage
     );
-    if (!emailSentResponse.successful) {
-      throw emailSentResponse;
+
+    if (emailSentResponse.successful) {
+      yield put(setWishListShareSuccess(true));
     }
   } catch (err) {
     yield null;
@@ -299,6 +330,10 @@ function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
   yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
   yield takeLatest(FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST, loadActiveWishlist);
+  yield takeLatest(
+    FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST_GUEST,
+    loadActiveWishlistByGuestKey
+  );
   yield takeLatest(FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST, createNewWishList);
   yield takeLatest(FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST_MOVE_ITEM, createNewWishListMoveItem);
   yield takeLatest(FAVORITES_CONSTANTS.DELETE_WISHLIST, deleteWishListById);

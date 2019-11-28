@@ -3,12 +3,17 @@ import PropTypes from 'prop-types';
 import { isCanada } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import CouponDetailModal from '../../../../common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
-import { ModalTextWrapper, CouponSectionWrapper } from '../styles/PersonalizedCoupons.style.native';
+import {
+  ModalTextWrapper,
+  CouponSectionWrapper,
+  SkeletonWrapper,
+} from '../styles/PersonalizedCoupons.style.native';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
-export const PersonalizedCoupons = ({ coupons, couponLabels, labels }) => {
+export const PersonalizedCoupons = ({ coupons, couponLabels, labels, couponLoading }) => {
   const [selectedCoupon, selectCoupon] = useState(null);
   const [openPrintModal, setPrintModal] = useState(false);
   const [openDetailsModal, setDetailsModal] = useState(false);
@@ -42,67 +47,78 @@ export const PersonalizedCoupons = ({ coupons, couponLabels, labels }) => {
       couponsList.filter(coupon => coupon.categoryType !== CONSTANTS.LOYALITY_OFFERS);
   }
 
-  return couponsList ? (
-    <CouponSectionWrapper>
-      <BodyCopy
-        mobilefontFamily="secondary"
-        fontSize="fs12"
-        color="gray[800]"
-        textAlign="center"
-        text={labels.heading1}
-      />
-      <BodyCopy
-        mobilefontFamily="secondary"
-        fontSize="fs12"
-        color="gray[800]"
-        textAlign="center"
-        text={labels.heading2}
-      />
-      {couponsList.map(coupon => (
-        <PersonalizedCoupon
-          key={coupon.code}
-          coupon={coupon}
-          printCoupon={printCoupon}
-          detailCoupon={detailCoupon}
-          labels={labels}
+  const renderCoupons = () => {
+    return couponsList ? (
+      <CouponSectionWrapper>
+        <BodyCopy
+          mobilefontFamily="secondary"
+          fontSize="fs12"
+          color="gray[800]"
+          textAlign="center"
+          text={labels.heading1}
         />
-      ))}
-      {selectedCoupon && (
-        <CouponDetailModal
-          coupon={selectedCoupon}
-          openState={openPrintModal}
-          onRequestClose={() => setPrintModal(false)}
-          labels={couponLabels}
-          isConfirmation
+        <BodyCopy
+          mobilefontFamily="secondary"
+          fontSize="fs12"
+          color="gray[800]"
+          textAlign="center"
+          text={labels.heading2}
         />
-      )}
+        {couponsList.map(coupon => (
+          <PersonalizedCoupon
+            key={coupon.code}
+            coupon={coupon}
+            printCoupon={printCoupon}
+            detailCoupon={detailCoupon}
+            labels={labels}
+          />
+        ))}
+        {selectedCoupon && (
+          <CouponDetailModal
+            coupon={selectedCoupon}
+            openState={openPrintModal}
+            onRequestClose={() => setPrintModal(false)}
+            labels={couponLabels}
+            isConfirmation
+          />
+        )}
 
-      {selectedCoupon && (
-        <Modal
-          isOpen={openDetailsModal}
-          onRequestClose={() => setDetailsModal(false)}
-          horizontalBar={false}
-          heading=" "
-          headingFontFamily="secondary"
-          headingFontWeight="semibold"
-        >
-          <ModalTextWrapper>
-            <BodyCopy
-              mobilefontFamily="secondary"
-              fontSize="fs14"
-              color="gray[900]"
-              text={selectedCoupon.legalText}
-            />
-          </ModalTextWrapper>
-        </Modal>
-      )}
-    </CouponSectionWrapper>
-  ) : null;
+        {selectedCoupon && (
+          <Modal
+            isOpen={openDetailsModal}
+            onRequestClose={() => setDetailsModal(false)}
+            horizontalBar={false}
+            heading=" "
+            headingFontFamily="secondary"
+            headingFontWeight="semibold"
+          >
+            <ModalTextWrapper>
+              <BodyCopy
+                mobilefontFamily="secondary"
+                fontSize="fs14"
+                color="gray[900]"
+                text={selectedCoupon.legalText}
+              />
+            </ModalTextWrapper>
+          </Modal>
+        )}
+      </CouponSectionWrapper>
+    ) : null;
+  };
+
+  return !couponLoading ? (
+    renderCoupons()
+  ) : (
+    <SkeletonWrapper>
+      <GenericSkeleton />
+    </SkeletonWrapper>
+  );
 };
 
 PersonalizedCoupons.propTypes = {
   coupons: PropTypes.shape([]).isRequired,
   couponLabels: PropTypes.shape({}),
+  couponLoading: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
     heading1: PropTypes.string,
     heading2: PropTypes.string,

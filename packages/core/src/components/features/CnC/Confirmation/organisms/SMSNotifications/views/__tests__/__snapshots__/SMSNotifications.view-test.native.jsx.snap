@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SMSNotificationsVanilla should render correctly 1`] = `
+<Styled(View)
+  spacingStyles="margin-top-SM margin-bottom-LRG"
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    className=""
+    dataLocator="join-our-text-alerts"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator="special-promos-new-arrivals"
+      fontFamily="secondary"
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        className="children-place-checkbox"
+        component={[Function]}
+        dataLocator="children-place-checkbox"
+        enableSuccessCheck={false}
+        name="brandTCP"
+        onChange={[Function]}
+      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator="children-place-label"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        className="gymboree-checkbox"
+        component={[Function]}
+        dataLocator="gymboree-checkbox"
+        enableSuccessCheck={false}
+        name="brandGYM"
+        onChange={[Function]}
+      />
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          dataLocator="gymboree-label"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          spacingStyles="padding-left-XXS"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
+<Styled(View)
+  spacingStyles="margin-top-SM margin-bottom-LRG"
+>
+  <ErrorMessage
+    bagPage={false}
+    error="test"
+    fontSize=""
+    fontWeight=""
+    showAccordian={true}
+  />
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      data-locator="ChkmarkIcon"
+      height="25px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/done.png",
+        }
+      }
+      url=""
+      width="25px"
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator="join-our-text-alerts"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <RichText
+      actionHandler={[Function]}
+      dataLocator="success-message"
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

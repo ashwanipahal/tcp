@@ -6,7 +6,7 @@ import { FlatList, Text, Dimensions, Share, SafeAreaView } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -39,7 +39,7 @@ class ImageCarousel extends React.PureComponent {
     this.state = {
       activeSlideIndex: 0,
       showModal: false,
-      colorProductId: '',
+      productId: '',
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
@@ -48,7 +48,9 @@ class ImageCarousel extends React.PureComponent {
 
   componentWillUnmount() {
     const { removeAddToFavoritesErrorMsg } = this.props;
-    removeAddToFavoritesErrorMsg('');
+    if (typeof removeAddToFavoritesErrorMsg === 'function') {
+      removeAddToFavoritesErrorMsg('');
+    }
   }
 
   // this method set current visible image
@@ -75,11 +77,17 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites } = props;
-    const { colorProductId } = state;
-    if (props.isLoggedIn && state.showModal) {
-      if (colorProductId !== '') {
-        onAddItemToFavorites({ colorProductId, page: 'PDP' });
+    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn } = props;
+    const { colorProductId } = currentColorEntry;
+    const { productId, showModal } = state;
+    if (isLoggedIn && showModal) {
+      if (productId !== '') {
+        onAddItemToFavorites({
+          colorProductId: productId,
+          productSkuId: (skuId && skuId.skuId) || null,
+          pdpColorProductId: colorProductId,
+          page: 'PDP',
+        });
       }
       return { showModal: false };
     }
@@ -91,14 +99,20 @@ class ImageCarousel extends React.PureComponent {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
-  onFavorite = colorProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
+  onFavorite = productId => {
+    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry } = this.props;
+    const { colorProductId } = currentColorEntry;
 
     if (!isLoggedIn) {
-      this.setState({ colorProductId });
+      this.setState({ productId });
       this.setState({ showModal: true });
     } else {
-      onAddItemToFavorites({ colorProductId, page: 'PDP' });
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        page: 'PDP',
+      });
     }
   };
 
@@ -177,8 +191,9 @@ class ImageCarousel extends React.PureComponent {
   };
 
   renderFavoriteIcon = () => {
-    const { currentColorEntry, isBundleProduct } = this.props;
+    const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
     const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
@@ -199,7 +214,7 @@ class ImageCarousel extends React.PureComponent {
               color="gray.600"
               dataLocator="pdp_favorite_icon"
               onPress={() => {
-                this.onFavorite(colorProductId);
+                this.onFavorite(productId);
               }}
             />
           )}

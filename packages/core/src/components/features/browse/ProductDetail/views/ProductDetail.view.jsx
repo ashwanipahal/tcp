@@ -28,6 +28,7 @@ import {
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 class ProductDetailView extends PureComponent {
   constructor(props) {
@@ -63,7 +64,6 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
-
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -192,6 +192,11 @@ class ProductDetailView extends PureComponent {
     return '';
   };
 
+  renderPromoBanner = promoBanners => {
+    const { asPathVal } = this.props;
+    return <PromoPDPBanners promos={promoBanners} asPath={asPathVal} />;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const {
@@ -212,6 +217,10 @@ class ProductDetailView extends PureComponent {
       currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      topPromos,
+      middlePromos,
+      bottomPromos,
+      sizeChartDetails,
       ...otherProps
     } = this.props;
 
@@ -246,16 +255,19 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
+    const itemColor = currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>{this.getBreadCrumb()}</Col>
         </Row>
-        <Row className="placeholder product-detail-image-wrapper">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area-1">{pdpLabels.promoArea1}</div>
-          </Col>
-        </Row>
+        {topPromos && topPromos.length > 0 && (
+          <Row>
+            <Col className="promo-area-top" colSize={{ small: 6, medium: 8, large: 12 }}>
+              {this.renderPromoBanner(topPromos)}
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
@@ -298,6 +310,9 @@ class ProductDetailView extends PureComponent {
               {this.getProductSummary(keepAlive)}
             </div>
             {this.getProductPriceForGiftCard()}
+            {middlePromos && middlePromos.length > 0 && (
+              <div className="promo-area-middle">{this.renderPromoBanner(middlePromos)}</div>
+            )}
             {currentProduct && (
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}
@@ -315,6 +330,7 @@ class ProductDetailView extends PureComponent {
                 sizeChartLinkVisibility={sizeChartLinkVisibility}
                 isKeepAliveEnabled={isKeepAliveEnabled}
                 outOfStockLabels={outOfStockLabels}
+                sizeChartDetails={sizeChartDetails}
               />
             )}
 
@@ -332,20 +348,24 @@ class ProductDetailView extends PureComponent {
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.promoArea3}</div>
-          </Col>
-        </Row>
+        {bottomPromos && bottomPromos.length > 0 && (
+          <Row>
+            <Col className="promo-area-bottom" colSize={{ small: 6, medium: 8, large: 12 }}>
+              {this.renderPromoBanner(bottomPromos)}
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
               <ProductDescription
                 productId={itemPartNumber}
+                productInfo={productInfo}
                 isShowMore={false}
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
+                color={itemColor}
               />
             </div>
           </Col>
@@ -422,6 +442,7 @@ ProductDetailView.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
 };
 
 ProductDetailView.defaultProps = {
@@ -443,6 +464,7 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

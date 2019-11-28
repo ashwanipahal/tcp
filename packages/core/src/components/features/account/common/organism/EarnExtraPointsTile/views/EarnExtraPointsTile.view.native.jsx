@@ -22,7 +22,7 @@ import {
  * Width can vary as per device width.
  */
 const MODULE_HEIGHT = 220;
-const MODULE_WIDTH = getScreenWidth() - 30;
+const MODULE_WIDTH = getScreenWidth() + 25;
 
 /**
  * Module width on Account Overview Tile

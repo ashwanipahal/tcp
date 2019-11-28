@@ -291,12 +291,71 @@ export const getIsDataLoading = state => {
   return state.ProductListing.isDataLoading;
 };
 
-export const getPLPTopPromos = state => {
+const getTopPromosState = state => {
   const { bannerInfo: { val: { top: topPromos } = {} } = {} } = state.ProductListing;
+
+  return topPromos;
+};
+
+const getLoyaltyPromosState = state => {
+  const { bannerInfo: { val: { loyalty: loyaltyPromo } = {} } = {} } = state.ProductListing;
+
+  return loyaltyPromo;
+};
+
+const getModulesState = state => {
+  return state.Modules;
+};
+
+export const getPLPTopPromos = createSelector(
+  getTopPromosState,
+  getLoyaltyPromosState,
+  getModulesState,
+  (topPromos, loyaltyPromo, modules) => {
+    const loyaltyPromos =
+      (loyaltyPromo &&
+        loyaltyPromo.map(loyalPromo => {
+          const loyalPromoModule =
+            loyalPromo.val && loyalPromo.val.cid && modules[loyalPromo.val.cid];
+          if (loyalPromoModule) {
+            loyalPromoModule.userType = loyalPromo.sub;
+          }
+          return loyalPromoModule;
+        })) ||
+      [];
+
+    const promos =
+      (topPromos &&
+        topPromos.map(promoItem => {
+          return promoItem.val && promoItem.val.cid && modules[promoItem.val.cid];
+        })) ||
+      [];
+
+    return loyaltyPromos.concat(promos);
+  }
+);
+
+export const getPLPGridPromos = state => {
+  const { bannerInfo: { val: { grid: gridPromo } = {} } = {} } = state.ProductListing;
   return (
-    (topPromos &&
-      topPromos.map(promoItem => {
-        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+    (gridPromo &&
+      gridPromo.map(promoItem => {
+        const moduleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...moduleInfo, slot: promoItem && promoItem.sub };
+      })) ||
+    []
+  );
+};
+
+export const getPlpHorizontalPromo = state => {
+  const { bannerInfo: { val: { horizontal: horizontalPromo } = {} } = {} } = state.ProductListing;
+  return (
+    (horizontalPromo &&
+      horizontalPromo.map(promoItem => {
+        const horizontalModuleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...horizontalModuleInfo, slot: promoItem && promoItem.sub };
       })) ||
     []
   );

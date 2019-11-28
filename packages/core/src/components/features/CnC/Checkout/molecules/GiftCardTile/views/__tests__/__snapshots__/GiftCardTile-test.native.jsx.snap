@@ -4,7 +4,9 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={2}
+      >
         <Styled(Text)>
           <Styled(Styled(BodyCopy))
             accessibilityText=""
@@ -20,7 +22,9 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           />
         </Styled(Text)>
       </Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={1}
+      >
         <Styled(CustomButton)
           active={false}
           buttonVariation="fixed-width"
@@ -57,7 +61,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={2}
+      >
         <Styled(Text)>
           <Styled(Styled(BodyCopy))
             accessibilityText=""
@@ -73,7 +79,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           />
         </Styled(Text)>
       </Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={1}
+      >
         <Styled(CustomButton)
           active={false}
           buttonVariation="fixed-width"
@@ -110,7 +118,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={2}
+      >
         <Styled(Text)>
           <Styled(Styled(BodyCopy))
             accessibilityText=""
@@ -126,7 +136,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           />
         </Styled(Text)>
       </Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={1}
+      >
         <Styled(CustomButton)
           active={false}
           buttonVariation="fixed-width"
@@ -163,7 +175,9 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={2}
+      >
         <Styled(Text)>
           <Styled(Styled(BodyCopy))
             accessibilityText=""
@@ -179,7 +193,9 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           />
         </Styled(Text)>
       </Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={1}
+      >
         <Styled(CustomButton)
           active={false}
           buttonVariation="fixed-width"
@@ -216,7 +232,9 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={2}
+      >
         <Styled(Text)>
           <Styled(Styled(BodyCopy))
             accessibilityText=""
@@ -232,7 +250,9 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           />
         </Styled(Text)>
       </Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        flex={1}
+      >
         <Styled(CustomButton)
           active={false}
           buttonVariation="fixed-width"

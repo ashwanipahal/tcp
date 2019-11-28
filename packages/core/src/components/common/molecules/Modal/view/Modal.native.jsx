@@ -61,52 +61,61 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
   }
 
   return (
-    <Modal
-      transparent={customTransparent || false}
-      visible={isOpen}
-      animationType={animationType}
-      onRequestClose={onRequestClose}
-    >
-      {!customTransparent && (
-        <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
-          <KeyboardAvoidingView
-            behavior={behavior}
-            keyboardVerticalOffset={keyboardVerticalOffset}
-            enabled
-          >
-            <Component
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              stickyHeaderIndices={[0]}
-              margins={margins}
-              paddings={paddings}
+    <>
+      {isOpen && (
+        <Modal
+          transparent={customTransparent || false}
+          visible={isOpen}
+          animationType={animationType}
+          onRequestClose={onRequestClose}
+        >
+          {!customTransparent && (
+            <ModalCustomWrapper
+              transparentModal={transparentModal}
+              inheritedStyles={inheritedStyles}
             >
-              <ModalNativeHeader
-                heading={heading}
-                onRequestClose={onRequestClose}
-                headingAlign={headingAlign}
-                headingFontFamily={headingFontFamily}
-                headerStyle={headerStyle}
-                headingFontWeight={headingFontWeight}
-                fontSize={fontSize}
-                iconType={iconType}
-                fullWidth={fullWidth}
-                stickyCloseIcon={stickyCloseIcon}
-                horizontalBar={horizontalBar}
-                borderColor={borderColor}
-                rightAlignCrossIcon={rightAlignCrossIcon}
-                customHeaderMargin={customHeaderMargin}
-                modalHeadingMargin={modalHeadingMargin}
-              />
+              <KeyboardAvoidingView
+                behavior={behavior}
+                keyboardVerticalOffset={keyboardVerticalOffset}
+                enabled
+              >
+                <Component
+                  showsVerticalScrollIndicator={false}
+                  keyboardShouldPersistTaps="handled"
+                  stickyHeaderIndices={[0]}
+                  margins={margins}
+                  paddings={paddings}
+                >
+                  <ModalNativeHeader
+                    heading={heading}
+                    onRequestClose={onRequestClose}
+                    headingAlign={headingAlign}
+                    headingFontFamily={headingFontFamily}
+                    headerStyle={headerStyle}
+                    headingFontWeight={headingFontWeight}
+                    fontSize={fontSize}
+                    iconType={iconType}
+                    fullWidth={fullWidth}
+                    stickyCloseIcon={stickyCloseIcon}
+                    horizontalBar={horizontalBar}
+                    borderColor={borderColor}
+                    rightAlignCrossIcon={rightAlignCrossIcon}
+                    customHeaderMargin={customHeaderMargin}
+                    modalHeadingMargin={modalHeadingMargin}
+                  />
 
-              <ChildrenContainer childrenMargins={childrenMargins}>{children}</ChildrenContainer>
-            </Component>
-          </KeyboardAvoidingView>
-        </ModalCustomWrapper>
+                  <ChildrenContainer childrenMargins={childrenMargins}>
+                    {children}
+                  </ChildrenContainer>
+                </Component>
+              </KeyboardAvoidingView>
+            </ModalCustomWrapper>
+          )}
+          {customTransparent && children}
+          <Loader />
+        </Modal>
       )}
-      {customTransparent && children}
-      <Loader />
-    </Modal>
+    </>
   );
 };
 

@@ -14,7 +14,7 @@ import styles from './ProductDetailImage.style';
 import { getLocator } from '../../../../utils';
 
 const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) => {
-  const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
+  const [isImageLoaded] = useBooleanState(false);
   const imgData = {
     alt: imageName,
     url: imageUrl,

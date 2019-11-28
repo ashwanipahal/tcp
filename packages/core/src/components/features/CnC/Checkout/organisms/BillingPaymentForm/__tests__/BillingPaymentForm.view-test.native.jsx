@@ -200,13 +200,6 @@ describe('ButtonList component', () => {
     instance.getAddNewCCForm({ onCardFocus, editMode: true });
     expect(spyGetCreditListView).toHaveBeenCalled();
   });
-  it('renders correctly with method getCheckoutBillingAddress with editmode', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyGetCreditListView = jest.spyOn(instance, 'getCheckoutBillingAddress');
-    instance.getCheckoutBillingAddress({ editMode: true });
-    expect(spyGetCreditListView).toHaveBeenCalled();
-  });
 
   it('renders correctly with method unsetFormEditState', () => {
     const component = shallow(<BillingPaymentForm {...props} />);

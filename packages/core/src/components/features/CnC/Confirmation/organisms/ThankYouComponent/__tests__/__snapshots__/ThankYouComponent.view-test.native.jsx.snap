@@ -53,6 +53,9 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
     textDecoration={null}
   />
   <Styled(View) />
+  <Connect(Styled(PlaceCashBanner))
+    isOrderConfirmation={true}
+  />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
@@ -136,6 +139,9 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
     textDecoration={null}
   />
   <Styled(View) />
+  <Connect(Styled(PlaceCashBanner))
+    isOrderConfirmation={true}
+  />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""

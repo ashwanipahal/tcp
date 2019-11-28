@@ -17,6 +17,7 @@ import {
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
+import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -98,7 +99,11 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
 }
 
 export function* updateShipmentMethodSelection({ payload }) {
-  const addressId = yield select(selectors.getOnFileAddressKey);
+  let addressId = yield select(selectors.getOnFileAddressKey);
+  const currentStage = yield select(selectors.getCurrentCheckoutStage);
+  if (!addressId && currentStage.toLowerCase() === constants.CHECKOUT_STAGES.REVIEW) {
+    addressId = yield select(selectors.getShippingAddressID);
+  }
   const smsSignUp = yield select(selectors.getShippingSmsSignUpFields);
   let transVibesSmsPhoneNo = null;
   if (smsSignUp) {
@@ -114,16 +119,16 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-    yield put(setLoaderState(false));
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
+    if (!payload.isAddressChange) {
+      yield call(getCartDataSaga, {
         isRecalculateTaxes: true,
         excludeCartItems: false,
         recalcRewards: false,
         isCheckoutFlow: true,
         translation: false,
-      })
-    );
+      });
+    }
+    yield put(setLoaderState(false));
   } catch (err) {
     yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
@@ -344,7 +349,7 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoInProgress) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
@@ -357,16 +362,23 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
   }
 }
 
-export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+export const makeUpdateRTPSCall = (
+  pageName,
+  isPaypalPostBack,
+  isExpressCheckoutEnabled,
+  isVenmoInProgress
+) => {
   const { BILLING } = constants.CHECKOUT_STAGES;
-  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+  return (
+    pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled) || isVenmoInProgress
+  );
 };
 
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CheckoutFooter.style';
 import PayPalButton from '../../../../common/organism/PayPalButton';
@@ -8,6 +9,18 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CheckoutFooter extends React.PureComponent {
+  renderSkeleton = (showVenmoSubmit, showPayPalButton) => {
+    return (
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
+    );
+  };
+
   renderNextButton = () => {
     const {
       showVenmoSubmit,
@@ -16,25 +29,31 @@ class CheckoutFooter extends React.PureComponent {
       ariaLabelNextButton,
       nextHandler,
       nextButtonText,
+      bagLoading,
     } = this.props;
-    return (
-      !showVenmoSubmit &&
-      !showPayPalButton && (
-        <Button
-          disabled={disableNext}
-          aria-label={ariaLabelNextButton}
-          type="submit"
-          className="footer-button footer-button-mob"
-          fontSize="fs14"
-          fontWeight="extrabold"
-          buttonVariation="variable-width"
-          fill="BLUE"
-          onClick={nextHandler}
-          dataLocator="reviewBtn"
-        >
-          {nextButtonText}
-        </Button>
-      )
+    return !showVenmoSubmit && !showPayPalButton && !bagLoading ? (
+      <Button
+        disabled={disableNext}
+        aria-label={ariaLabelNextButton}
+        type="submit"
+        className="footer-button footer-button-mob"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        buttonVariation="variable-width"
+        fill="BLUE"
+        onClick={nextHandler}
+        dataLocator="reviewBtn"
+      >
+        {nextButtonText}
+      </Button>
+    ) : (
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
     );
   };
 
@@ -57,6 +76,7 @@ class CheckoutFooter extends React.PureComponent {
       continueWithText,
       onVenmoSubmit,
       venmoError,
+      bagLoading,
     } = this.props;
     return (
       <div className={className}>
@@ -99,7 +119,7 @@ class CheckoutFooter extends React.PureComponent {
               />
             </div>
           )}
-          {!showVenmoSubmit && !showPayPalButton && (
+          {!showVenmoSubmit && !showPayPalButton && !bagLoading ? (
             <Button
               disabled={disableDesktopOnlyNext || disableNext}
               aria-label={ariaLabelNextButton}
@@ -114,6 +134,8 @@ class CheckoutFooter extends React.PureComponent {
             >
               {nextButtonText}
             </Button>
+          ) : (
+            this.renderSkeleton()
           )}
         </div>
       </div>

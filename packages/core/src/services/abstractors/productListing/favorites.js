@@ -88,7 +88,8 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
-  const { assetHost, siteId } = getAPIConfig();
+  const { siteId } = getAPIConfig();
+  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
 
   return executeStatefulAPICall(payload)
     .then(res => {
@@ -248,7 +249,6 @@ export const getWishListbyId = ({
   }
 
   const { isUSStore } = getAPIConfig();
-
   return executeStatefulAPICall(payload)
     .then(res => {
       if (responseContainsErrors(res)) {

@@ -6,4 +6,5 @@ export default {
   UPDATE_USER_ADDRESS_REQ: 'UPDATE_USER_ADDRESS_REQ',
   COUNTRY_US: 'US',
   COUNTRY_CA: 'CA',
+  ADDRESS_FORM: 'AddressForm',
 };

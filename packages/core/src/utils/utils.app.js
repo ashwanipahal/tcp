@@ -113,6 +113,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
+    case 'promotion':
+      resolve(require('../services/handler/graphQL/queries/promotion'));
+      break;
     default:
       importOtherGraphQLQueries({
         query,
@@ -166,6 +169,9 @@ export const importGraphQLQueriesDynamically = query => {
         break;
       case 'moduleJeans':
         resolve(require('../services/handler/graphQL/queries/moduleJeans'));
+        break;
+      case 'promoContent':
+        resolve(require('../services/handler/graphQL/queries/promoContent'));
         break;
       default:
         importMoreGraphQLQueries({

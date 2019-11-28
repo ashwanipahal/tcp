@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   &.modal {
@@ -77,24 +78,24 @@ export default css`
   }
 
   .open-filter-button {
-    background: url('/static/images/carrot-small-up.png') no-repeat;
+    background: url(${getIconPath('up_arrow_icon')}) no-repeat;
     background-position: 95% 18px;
     background-color: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER};
     font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
 
     &.open-filter-button-expanded {
-      background: url('/static/images/carrot-small-down.png') no-repeat;
+      background: url(${getIconPath('down_arrow_icon')}) no-repeat;
       background-position: 95% 18px;
 
       &:hover:not([disabled]) {
-        background: url('/static/images/carrot-small-down.png') no-repeat;
+        background: url(${getIconPath('down_arrow_icon')}) no-repeat;
         background-position: 95% 18px;
         background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       }
     }
 
     &:hover:not([disabled]) {
-      background: url(/static/images/carrot-small-up.png) no-repeat;
+      background: url(${getIconPath('up_arrow_icon')}) no-repeat;
       background-position: 95% 18px;
       background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }

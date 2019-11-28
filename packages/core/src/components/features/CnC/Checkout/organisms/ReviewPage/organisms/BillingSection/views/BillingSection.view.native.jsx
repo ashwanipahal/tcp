@@ -5,6 +5,7 @@ import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import GenericSkeleton from '@tcp/core/src/components/common/molecules/GenericSkeleton/GenericSkeleton.view.native';
 import GiftCardsContainer from '../../../../GiftCardsSection';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 
@@ -20,6 +21,7 @@ import {
   CVVInfo,
   PaymentMethodWrapper,
   PaymentMethodImage,
+  SkeletonWrapper,
   SaveVenmoDetails,
 } from '../styles/BillingSection.style.native';
 
@@ -143,6 +145,7 @@ export class BillingSection extends PureComponent {
       cvvCodeRichText,
       isBillingVisited,
       isPaymentDisabled,
+      bagLoading,
       venmoPayment: { isVenmoPaymentSelected },
     } = this.props;
     return (
@@ -198,7 +201,15 @@ export class BillingSection extends PureComponent {
             {getCvvField({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited })}
           </PaymentMethodWrapper>
         )}
-        {!isPaymentDisabled && isVenmoPaymentSelected && this.getVenmoBillingView()}
+        {!bagLoading ? (
+          <>{!isPaymentDisabled && isVenmoPaymentSelected && this.getVenmoBillingView()}</>
+        ) : (
+          <>
+            <SkeletonWrapper>
+              <GenericSkeleton />
+            </SkeletonWrapper>
+          </>
+        )}
         <GiftCardsContainer isFromReview />
       </Fragment>
     );
@@ -220,6 +231,7 @@ BillingSection.propTypes = {
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
+  bagLoading: PropTypes.bool.isRequired,
   venmoPayment: PropTypes.shape({}),
   saveVenmoPaymentOption: PropTypes.func,
 };
