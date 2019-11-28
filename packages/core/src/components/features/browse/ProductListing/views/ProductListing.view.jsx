@@ -107,7 +107,11 @@ const ProductListView = ({
   useEffect(() => {
     const productsFormatted = formatProductsData(products);
     if (products.length) {
-      setClickAnalyticsData({ products: productsFormatted });
+      setClickAnalyticsData({
+        pageType: 'browse',
+        pageName: 'browse',
+        products: productsFormatted,
+      });
     }
   }, [products.length]);
 
