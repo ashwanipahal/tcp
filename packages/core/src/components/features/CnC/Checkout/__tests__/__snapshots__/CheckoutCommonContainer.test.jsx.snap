@@ -37,6 +37,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       ],
     }
   }
+  currentStage="shipping"
   formatPayload={[Function]}
   isExpressCheckout={false}
   isRegisteredUserCallDone={true}

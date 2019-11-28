@@ -84,6 +84,13 @@ export const setLastDeletedItemIdAction = payload => {
   };
 };
 
+export const setReplaceWishlistItem = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
 export const setDeletedItemAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.DELETED_WISHLIST_ITEM,
