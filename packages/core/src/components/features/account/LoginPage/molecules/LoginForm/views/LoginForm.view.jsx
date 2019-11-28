@@ -104,6 +104,7 @@ class LoginForm extends React.PureComponent<Props> {
               className="elem-mb-SM"
               tooltipContent={tooltipContent}
               onChange={this.resetError}
+              tooltipAriaLabel={getLabelValue(labels, 'lbl_password_tooltip', 'accessibility')}
             />
             <BodyCopy component="div">
               <Field

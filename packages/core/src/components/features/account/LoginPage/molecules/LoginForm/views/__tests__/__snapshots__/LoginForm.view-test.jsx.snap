@@ -272,6 +272,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
+        tooltipAriaLabel="lbl_password_tooltip"
       />
       <Styled(BodyCopy)
         className={null}
@@ -800,6 +801,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
+        tooltipAriaLabel="lbl_password_tooltip"
       />
       <Styled(BodyCopy)
         className={null}
