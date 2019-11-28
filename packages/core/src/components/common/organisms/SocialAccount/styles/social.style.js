@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 // need to handle for direction props.
 
@@ -10,34 +11,34 @@ const socialStyle = css`
   .Facebook-icon--enable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/facebook@2x.png') no-repeat;
+    background: url(${getIconPath('facebook-color-icon')}) no-repeat;
   }
   .Instagram-icon--enable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/instagram@2x.png') no-repeat;
+    background: url(${getIconPath('instagram-color-icon')}) no-repeat;
   }
   .Instagram-icon--disable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/instagram-fade@2x.png') no-repeat;
+    background: url(${getIconPath('instagram-fade-color-icon')}) no-repeat;
   }
 
   .Twitter-icon--enable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/twitter@2x.png') no-repeat;
+    background: url(${getIconPath('twitter-color-icon')}) no-repeat;
   }
   .Twitter-icon--disable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/twitter-fade@2x.png') no-repeat;
+    background: url(${getIconPath('twitter-fade-color-icon')}) no-repeat;
   }
 
   .Facebook-icon--disable {
     width: 62px;
     height: 55px;
-    background: url('/static/images/facebook-fade@2x.png') no-repeat;
+    background: url(${getIconPath('facebook-fade-color-icon')}) no-repeat;
   }
 
   .social-accounts__align {

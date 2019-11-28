@@ -61,7 +61,7 @@ const SelectBox = ({
             return (
               <option
                 value={option.id || option.get('id')}
-                id={option.id || option.get('id')}
+                id={`${elementID}_${option.id || option.get('id')}`} // When month and day dropdown is on same page id from 10 - 12 was getting duplicate
                 key={option.id || option.get('id')}
               >
                 {option.displayName || option.get('displayName')}

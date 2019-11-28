@@ -37,8 +37,8 @@ exports[`ProductImages component should renders correctly 1`] = `
           carouselConfig={
             Object {
               "autoplay": false,
-              "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-              "customArrowRight": "/static/images/right-carousel-carrot.svg",
+              "customArrowLeft": "/static/version-not-available/images/right-carousel-carrot.svg",
+              "customArrowRight": "/static/version-not-available/images/right-carousel-carrot.svg",
             }
           }
           inheritedStyles={
@@ -57,7 +57,7 @@ exports[`ProductImages component should renders correctly 1`] = `
   .slick-disabled {
     pointer-events: none;
     background-image: url(",
-              "/static/images/right-disable-carousel-carrot.svg",
+              "/static/version-not-available/images/right-disable-carousel-carrot.svg",
               ");
   }
   @media ",
@@ -126,7 +126,7 @@ exports[`ProductImages component should renders correctly 1`] = `
             <Styled(Image)
               className="icon-expand"
               height="25px"
-              src="/static/images/icon-expand.svg"
+              src="/static/version-not-available/images/icon-expand.svg"
             />
             <Styled(BodyCopy)
               className={null}

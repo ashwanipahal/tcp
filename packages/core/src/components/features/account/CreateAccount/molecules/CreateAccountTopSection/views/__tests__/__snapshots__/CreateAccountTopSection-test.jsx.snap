@@ -40,7 +40,7 @@ exports[`Create Account component should renders correctly 1`] = `
       <Styled(Image)
         alt="My Place Rewards"
         className="tcp_carousel__play"
-        src="/static/images/my-place-rewards.png"
+        src="/static/version-not-available/images/my-place-rewards.png"
       />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>

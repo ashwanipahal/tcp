@@ -20,7 +20,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -461,7 +461,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -898,7 +898,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -1160,23 +1160,31 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               </Styled(BodyCopy)>
             </div>
           </div>
-          <Styled(BodyCopy)
+          <Styled(Anchor)
             className="padding-left-10 responsive-edit-css"
-            color="text.primary"
-            component="div"
             dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
+            noLink={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
-            tabIndex="0"
-            textAlign="left"
-          />
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1352,7 +1360,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -1789,7 +1797,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -2226,7 +2234,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -2677,7 +2685,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -3140,7 +3148,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -3591,7 +3599,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4054,7 +4062,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4505,7 +4513,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -4942,7 +4950,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -5204,23 +5212,31 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               </Styled(BodyCopy)>
             </div>
           </div>
-          <Styled(BodyCopy)
+          <Styled(Anchor)
             className="padding-left-10 responsive-edit-css"
-            color="text.primary"
-            component="div"
             dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
+            noLink={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
-            tabIndex="0"
-            textAlign="left"
-          />
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5396,7 +5412,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -5658,23 +5674,31 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               </Styled(BodyCopy)>
             </div>
           </div>
-          <Styled(BodyCopy)
+          <Styled(Anchor)
             className="padding-left-10 responsive-edit-css"
-            color="text.primary"
-            component="div"
             dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
+            noLink={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
-            tabIndex="0"
-            textAlign="left"
-          />
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5850,7 +5874,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -6112,23 +6136,31 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               </Styled(BodyCopy)>
             </div>
           </div>
-          <Styled(BodyCopy)
+          <Styled(Anchor)
             className="padding-left-10 responsive-edit-css"
-            color="text.primary"
-            component="div"
             dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
+            noLink={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
-            tabIndex="0"
-            textAlign="left"
-          />
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -6318,7 +6350,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
-        src="/static/images/large.png"
+        src="/static/version-not-available/images/large.png"
         tabIndex="0"
       />
     </div>
@@ -6592,23 +6624,31 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               </Styled(BodyCopy)>
             </div>
           </div>
-          <Styled(BodyCopy)
+          <Styled(Anchor)
             className="padding-left-10 responsive-edit-css"
-            color="text.primary"
-            component="div"
             dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
+            noLink={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
-            tabIndex="0"
-            textAlign="left"
-          />
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)

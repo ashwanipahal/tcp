@@ -107,18 +107,23 @@ class MiniBagHeader extends React.Component {
             )}
           </Col>
           <Col className="subHeaderTextIcon" colSize={{ small: 2, medium: 2, large: 3 }}>
-            <Anchor className="favIcon" fontSizeVariation="small" anchorVariation="primary" noLink>
+            <Anchor
+              className="favIcon"
+              fontSizeVariation="small"
+              anchorVariation="primary"
+              noLink
+              title={labels.accessibility.favoriteIconButton}
+            >
               <Image
-                alt="Product"
+                alt={labels.accessibility.favoriteIconButton}
                 className="product-image"
                 src={getIconPath('fav-icon')}
                 dataLocator="addedtobag-fav-icon"
               />
             </Anchor>
             {'  '}
-
             <Image
-              alt="Product"
+              alt={labels.accessibility.cartIconButton}
               className="product-image"
               src={getIconPath(`cart-icon-${cartItemCount ? cartItemCount.toString().length : 1}`)}
               data-locator="addedtobag-bag-icon"
