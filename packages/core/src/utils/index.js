@@ -92,4 +92,5 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   plpRoutingHandling,
+  convertNumToBool,
 } from './utils';

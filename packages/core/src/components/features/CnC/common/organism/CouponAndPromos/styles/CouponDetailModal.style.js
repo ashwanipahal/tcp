@@ -98,6 +98,11 @@ const CouponDetailModalStyle = css`
     margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0px
       ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
   }
+  @media print {
+    .couponModal_modalTitle {
+      padding-top: 100px;
+    }
+  }
 `;
 
 export default CouponDetailModalStyle;

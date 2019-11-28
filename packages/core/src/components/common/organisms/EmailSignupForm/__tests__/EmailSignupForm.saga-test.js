@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import { subscribeEmailAddress } from '@tcp/core/src/components/features/CnC/Checkout/container/CheckoutExtended.saga.util';
-import EmailSignupSaga, { subscribeEmail, verifyEmail } from '../container/EmailSignupModal.saga';
-import { setEmailValidationStatus } from '../container/EmailSignupModal.actions';
-import EMAILSIGNUP_CONSTANTS from '../container/EmailSignupModal.constants';
+import EmailSignupSaga, { subscribeEmail, verifyEmail } from '../container/EmailSignupForm.saga';
+import { setEmailValidationStatus } from '../container/EmailSignupForm.actions';
+import EMAILSIGNUP_CONSTANTS from '../container/EmailSignupForm.constants';
 
 describe('subscribeEmail', () => {
   let subscribeEmailGen;

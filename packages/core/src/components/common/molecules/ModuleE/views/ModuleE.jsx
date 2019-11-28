@@ -250,7 +250,7 @@ const ModuleE = props => {
             }}
           >
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
-              {largeCompImageSimpleCarousel.map(({ image, singleCTAButton }, index) => {
+              {largeCompImageSimpleCarousel.map(({ image, video, singleCTAButton }, index) => {
                 const { url, text, target } = singleCTAButton || {};
                 return (
                   <div>
@@ -260,6 +260,7 @@ const ModuleE = props => {
                       dataLocator={`${getLocator('moduleE_carousel_image_img')}${index + 1}`}
                       className="module-e-img-full-width"
                       link={singleCTAButton}
+                      videoData={video}
                     />
                     {carouselCtaType === 'link' && singleCTAButton && (
                       <Anchor
@@ -339,7 +340,7 @@ const ModuleE = props => {
                 large: true,
               }}
             >
-              {divCTALinks.map(({ image, link, styled }, index) => {
+              {divCTALinks.map(({ image, link, video, styled }, index) => {
                 const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
 
                 return (
@@ -360,6 +361,7 @@ const ModuleE = props => {
                         dataLocator={`${getLocator('moduleE_small_img')}${index + 1}`}
                         className="module-e-img-full-width"
                         link={link}
+                        videoData={video}
                       />
 
                       <LinkText
