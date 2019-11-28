@@ -31,6 +31,7 @@ export const awsAppSync = {
 export const moduleNames = {
   accountNavigation: 'AccountNavigation',
   navigation: 'navigation',
+  subNavigation: 'subNavigation',
 };
 
 // TODO - to move it in env config file
