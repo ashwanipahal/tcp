@@ -43,7 +43,8 @@ const CouponDetailModalStyle = css`
     background-image: url(${getStaticFilePath('images/review.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .FacebookLink. .Gymboree_FacebookLink {
+  .FacebookLink,
+  .Gymboree_FacebookLink {
     background-image: url(${getStaticFilePath('images/facebook.png')});
   }
   .InstagramLink,
