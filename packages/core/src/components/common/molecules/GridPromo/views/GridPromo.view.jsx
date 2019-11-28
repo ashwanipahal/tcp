@@ -5,12 +5,7 @@ import styles from '../styles/GridPromo.style';
 import withStyles from '../../../hoc/withStyles';
 
 const GridPromo = props => {
-  const {
-    className,
-    promoObj,
-    promoObj: { textItems, subHeadLine, promoWrapper } = {},
-    variation,
-  } = props;
+  const { className, promoObj: { textItems, subHeadLine, promoWrapper } = {}, variation } = props;
 
   const headingLine = textItems[0] && textItems[0].text;
   const headLineParts = headingLine.split('|');
