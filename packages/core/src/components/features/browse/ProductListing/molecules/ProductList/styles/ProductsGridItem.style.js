@@ -204,6 +204,9 @@ const styles = css`
 
   .product-image-container {
     position: relative;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 320px;
+    }
   }
 
   .extended-sizes-text {

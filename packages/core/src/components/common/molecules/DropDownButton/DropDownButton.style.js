@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   &.dropdown-button-wrapper {
@@ -8,7 +9,7 @@ export default css`
     position: relative;
   }
   .dropdown-icon {
-    background: url('/static/images/plus.svg');
+    background: url(${getIconPath('plus-icon')});
     width: 10px;
     height: 10px;
     display: inline-block;
@@ -17,7 +18,7 @@ export default css`
   .dropdown-icon.is-open {
     height: 2px;
     margin-bottom: 3px;
-    background: url('/static/images/minus.svg');
+    background: url(${getIconPath('minus-icon')});
   }
   .button-panel {
     position: absolute;

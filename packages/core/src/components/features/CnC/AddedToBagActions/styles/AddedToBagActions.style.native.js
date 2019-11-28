@@ -8,16 +8,33 @@ const applyPositionClassStyle = `
   z-index:997;
 `;
 
+const payPalDynamicStyle = props => {
+  if (props.isPayPalWebViewEnable) {
+    return `
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:997;
+    margin:0px;
+    padding:0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top: 0px;
+    `;
+  }
+  return '';
+};
+
 export const ActionsWrapper = styled.View`
-  ${props =>
-    props.isPayPalWebViewEnable
-      ? applyPositionClassStyle
-      : `
-    display: flex;
-  `}
+  display: flex;
+  ${payPalDynamicStyle}
 `;
 
-export const ButtonWrapper = styled.View`
+export const ButtonWrapperAddedToBag = styled.View`
   ${props =>
     props.isPayPalWebViewEnable
       ? applyPositionClassStyle
@@ -29,14 +46,18 @@ export const ButtonWrapper = styled.View`
 `}
 `;
 
+export const ButtonWrapper = styled.View`
+  margin: 0 10px;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: ${props => (props.isBothDisabled ? 'row' : 'column')};
+  ${payPalDynamicStyle}
+`;
+
 export const ButtonViewWrapper = styled.View`
-  ${props =>
-    props.isPayPalWebViewEnable
-      ? applyPositionClassStyle
-      : `
   position: relative;
-  bottom: ${props.isBottomGap ? '25px' : '0px'};
-  `}
+  bottom: ${props => (props.isBottomGap ? '25px' : '0px')};
+  ${payPalDynamicStyle}
 `;
 
 export const ViewBagButton = styled.TouchableOpacity`
@@ -74,9 +95,10 @@ export const PaymentsButtonWrapper = styled.View`
 
 export const PaypalPaymentsButtonWrapper = styled.View`
   display: flex;
-  ${props => (props.isAddedTobag ? `` : `flex: 0.5`)};
+  ${props => (props.isAddedTobag ? `flex: 0.8` : `flex: 0.5`)};
   margin-left: ${props => (props.isAddedTobag ? '0' : '10px')};
   margin-right: ${props => (props.isAddedTobag && props.isPayPalEnabled ? '10px' : '0')};
+  ${payPalDynamicStyle}
 `;
 
 export const VenmoPaypalWrapper = styled.View`
@@ -85,9 +107,11 @@ export const VenmoPaypalWrapper = styled.View`
   padding-bottom: 10px;
   margin-right: 10px;
   margin-left: 10px;
+  ${payPalDynamicStyle}
 `;
 
 export default {
+  ButtonWrapperAddedToBag,
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,
