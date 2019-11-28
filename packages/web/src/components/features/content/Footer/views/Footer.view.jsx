@@ -5,7 +5,8 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CountrySelector from '../../Header/molecules/CountrySelector';
-import { readCookie, setCookie, isClient } from '@tcp/core/src/utils';
+import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
+import { isClient } from '@tcp/core/src/utils';
 
 import {
   FooterMiddleMobile,

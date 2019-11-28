@@ -30,7 +30,6 @@ const ModuleP = props => {
     labels,
     className,
     viaModule,
-    isPromoAvailable,
   } = props;
   return (
     <ul>
