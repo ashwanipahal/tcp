@@ -335,7 +335,7 @@ class _PickupStoreSelectionForm extends React.Component {
       <form onSubmit={handleSubmit(onSearch)}>
         {isPickUpWarningModal && (
           <div className={className}>
-            <div className="warning-cancel-wrapper">
+            <div className="alignCenter padding-top">
               <BodyCopy
                 className="item-unavailable"
                 fontFamily="secondary"
@@ -345,7 +345,7 @@ class _PickupStoreSelectionForm extends React.Component {
                 {PICKUP_LABELS.ITEM_UNAVAILABLE}
               </BodyCopy>
             </div>
-            <div className="warning-cancel-wrapper">
+            <div className="padding-top alignCenter">
               <Button
                 onClick={onCloseClick}
                 buttonVariation="variable-width"
