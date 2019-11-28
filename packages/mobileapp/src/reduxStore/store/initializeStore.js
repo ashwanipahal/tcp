@@ -11,15 +11,7 @@ import createAnalyticsMiddleware from '../middlewares/analytics';
 import createDataLayer from '../../context/analytics/dataLayer';
 
 export const initializeStore = initialState => {
-  let sagaMiddleware;
-
-  if (__DEV__) {
-    const sagaMonitor = Reactotron.createSagaMonitor();
-    sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-  } else {
-    sagaMiddleware = createSagaMiddleware();
-  }
-
+  const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware, createAnalyticsMiddleware()];
 
   const enhancers = __DEV__
