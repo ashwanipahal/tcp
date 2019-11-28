@@ -1,6 +1,5 @@
 import React from 'react';
 import rg4js from 'raygun4js';
-import env from 'react-native-config';
 import { useInfoState } from '../index';
 
 export { ErrorReportProvider, useErrorReporter };

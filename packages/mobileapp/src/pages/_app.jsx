@@ -1,12 +1,10 @@
 import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
-import { Provider } from 'react-redux';
 import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PropTypes } from 'prop-types';
-import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import {
@@ -25,7 +23,6 @@ import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
 import AppSplash from '../navigation/AppSplash';
-import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
@@ -160,7 +157,7 @@ export class App extends React.PureComponent {
   };
 
   render() {
-    const { appType, context } = this.props;
+    const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>

@@ -8,17 +8,7 @@ import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
-import { filterParams, clearAll } from '../../../../../constants/constants';
-
-const {
-  FILTER_CATAGORY,
-  FILTER_COLOR,
-  FILTER_SIZE,
-  FILTER_PRICE_RANGE,
-  FILTER_FIT,
-  FILTER_GENDER,
-  FILTER_AGE,
-} = filterParams;
+import { clearAll } from '../../../../../constants/constants';
 
 const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 /**
@@ -43,6 +33,7 @@ const handleRouteComplete = url => {
   const params = queryString.parse(document.location.search);
   const sortParam = params.sort !== undefined;
   // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
+  //eslint-
   const filterParam =
     params.FILTER_CATAGORY !== undefined ||
     params.FILTER_COLOR !== undefined ||

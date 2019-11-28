@@ -1,15 +1,17 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { ThemeProvider } from '@fabulas/astly';
+import { Provider as ReduxProvider } from 'react-redux';
 import { InfoProvider } from './info';
 import { PermissionProvider } from './permissions';
-import { ThemeProvider } from '@fabulas/astly';
 import { ErrorBoundary, ErrorReportProvider } from './logging';
 import { LocationProvider } from './location';
-import { Provider as ReduxProvider } from 'react-redux';
 import { initializeStore } from '../reduxStore/store/initializeStore';
 
 export const { store } = initializeStore();
 
 export function AppProvider(props) {
+  const { children } = props;
   return (
     <InfoProvider>
       <PermissionProvider>
@@ -17,7 +19,7 @@ export function AppProvider(props) {
           <LocationProvider>
             <ReduxProvider store={store}>
               <ErrorReportProvider>
-                <ErrorBoundary>{props.children}</ErrorBoundary>
+                <ErrorBoundary>{children}</ErrorBoundary>
               </ErrorReportProvider>
             </ReduxProvider>
           </LocationProvider>
@@ -26,3 +28,7 @@ export function AppProvider(props) {
     </InfoProvider>
   );
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
