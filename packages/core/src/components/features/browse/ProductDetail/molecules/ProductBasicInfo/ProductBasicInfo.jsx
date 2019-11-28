@@ -18,7 +18,34 @@ import {
 class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      clickedProdutId: '',
+      errorProductId: '',
+    };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      productInfo: { productId },
+      productMiscInfo: { colorProductId },
+      pageName,
+      skuId,
+    } = props;
+
+    const { clickedProdutId } = state;
+
+    if (isLoggedIn && clickedProdutId === productId) {
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        page: pageName || 'PDP',
+      });
+      return { clickedProdutId: '' };
+    }
+    return null;
   }
 
   componentWillUnmount() {
@@ -37,7 +64,7 @@ class ProductBasicInfo extends React.Component {
       <BodyCopy
         className={`product-title ${className}`}
         fontSize="fs18"
-        component="p"
+        component="h1"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
@@ -61,6 +88,10 @@ class ProductBasicInfo extends React.Component {
       pdpColorProductId: colorProductId,
       page: pageName || 'PDP',
     });
+    this.setState({
+      clickedProdutId: productId,
+      errorProductId: productId,
+    });
   };
 
   render() {
@@ -72,13 +103,14 @@ class ProductBasicInfo extends React.Component {
       isGiftCard,
       className,
       // isShowFavoriteCount,
-      productInfo: { ratingsProductId },
+      productInfo: { ratingsProductId, productId },
       keepAlive,
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
       AddToFavoriteErrorMsgID,
     } = this.props;
+    const { errorProductId } = this.state;
     const isFavorite =
       productMiscInfo.isFavorite ||
       (productMiscInfo.miscInfo && productMiscInfo.miscInfo.isInDefaultWishlist);
@@ -97,7 +129,8 @@ class ProductBasicInfo extends React.Component {
             {outOfStockLabels.itemSoldOutMessage}
           </BodyCopy>
         )}
-        {AddToFavoriteErrorMsg && (
+
+        {AddToFavoriteErrorMsg && errorProductId === productId && (
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}

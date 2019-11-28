@@ -25,6 +25,12 @@ const styles = css`
     }
   }
 
+  .i-agree-checkbox {
+    .Checkbox__error {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0 0;
+    }
+  }
+
   .password-container {
     position: relative;
 
