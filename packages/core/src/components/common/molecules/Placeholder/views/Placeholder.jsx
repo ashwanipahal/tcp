@@ -9,9 +9,16 @@ const RenderDynamicModule = dynamic({
       import('@tcp/core/src/components/common/molecules/LeftNavigation').then(returnModule),
   }),
   render: (properties, modules) => {
-    const { className, val } = properties;
+    const { className, val, selectedPage, pageName } = properties;
     const Module = modules[val];
-    return <Module data={properties[val]} className={className} />;
+    return (
+      <Module
+        data={properties[val]}
+        className={className}
+        selectedPage={selectedPage}
+        defaultPage={pageName}
+      />
+    );
   },
 });
 const Placeholder = props => {

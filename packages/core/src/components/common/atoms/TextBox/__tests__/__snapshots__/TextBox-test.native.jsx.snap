@@ -11,13 +11,16 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={false}
         error="food"
         id="input"
         keyboardType="default"
+        label="input"
         meta={
           Object {
             "error": "food",
@@ -28,23 +31,10 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "autoCapitalize": "sentences",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showSuccessCheck": false,
-            "successText": "",
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showSuccessCheck={false}
+        successText=""
         type="text"
         value="foo"
       />
@@ -64,13 +54,16 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={true}
         error=""
         id="input"
         keyboardType="default"
+        label="input"
         meta={
           Object {
             "error": "",
@@ -81,23 +74,10 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "autoCapitalize": "sentences",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": true,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showSuccessCheck": false,
-            "successText": "",
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showSuccessCheck={false}
+        successText=""
         type="text"
         value="foo"
       />
@@ -134,13 +114,16 @@ exports[`Textbox component renders correctly 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         autoCapitalize="sentences"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={false}
         error=""
         id="input"
         keyboardType="default"
+        label="input"
         meta={
           Object {
             "error": "",
@@ -151,23 +134,10 @@ exports[`Textbox component renders correctly 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "autoCapitalize": "sentences",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showSuccessCheck": false,
-            "successText": "",
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showSuccessCheck={false}
+        successText=""
         type="text"
         value="foo"
       />
