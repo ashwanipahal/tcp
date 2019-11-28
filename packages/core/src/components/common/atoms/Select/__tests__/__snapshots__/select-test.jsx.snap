@@ -17,14 +17,14 @@ exports[`Selectbox component renders correctly 1`] = `
     value="hello"
   >
     <option
-      id="US"
+      id="abcd_US"
       key="US"
       value="US"
     >
       United States
     </option>
     <option
-      id="CA"
+      id="abcd_CA"
       key="CA"
       value="CA"
     >
@@ -59,14 +59,14 @@ exports[`Selectbox component renders correctly with disabled props 1`] = `
     value="hello"
   >
     <option
-      id="US"
+      id="abcd_US"
       key="US"
       value="US"
     >
       United States
     </option>
     <option
-      id="CA"
+      id="abcd_CA"
       key="CA"
       value="CA"
     >
@@ -106,14 +106,14 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       first name for user
     </option>
     <option
-      id="US"
+      id="abcd_US"
       key="US"
       value="US"
     >
       United States
     </option>
     <option
-      id="CA"
+      id="abcd_CA"
       key="CA"
       value="CA"
     >
@@ -165,14 +165,14 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     value=""
   >
     <option
-      id="US"
+      id="abcd_US"
       key="US"
       value="US"
     >
       United States
     </option>
     <option
-      id="CA"
+      id="abcd_CA"
       key="CA"
       value="CA"
     >

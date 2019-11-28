@@ -20,6 +20,9 @@ export const getMiniBagLoaderState = state => {
   return state.PageLoader.miniBagLoaderState;
 };
 
+export const getAccessibilityLabels = state =>
+  (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {};
+
 export const getLabelsMiniBag = state => {
   return {
     createAccount: getLabelValue(state.Labels, 'lbl_miniBag_createAccount', 'minibag', 'global'),
