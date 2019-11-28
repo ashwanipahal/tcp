@@ -70,8 +70,7 @@ const Abstractor = {
       const hasL2 = listItem.subCategories && listItem.subCategories.length;
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
-        console.log(subCategory);
-        subCat.name = Abstractor.processSubCategoryName(
+        subCat.categoryContent.name = Abstractor.processSubCategoryName(
           l1CategoryName,
           subCategory.categoryContent.name
         );
