@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import TextBox from '../../../../../../common/atoms/TextBox';
 
 const getAdditionalStyle = props => {
   const { margins } = props;
@@ -17,10 +18,5 @@ const RowContainer = styled.View`
   align-items: center;
   ${getAdditionalStyle};
 `;
-const InputBoxWrapper = styled.TextInput`
-  height: 146px;
-  width: 100%;
-  border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
-`;
 
-export { Container, RowContainer, InputBoxWrapper };
+export { Container, RowContainer };

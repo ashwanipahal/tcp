@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea component should renders correctly 1`] = `
+<View>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XS"
+    text="input"
+    textDecoration={null}
+  />
+  <Styled(TextInput)
+    autoCapitalize="sentences"
+    id="input"
+    keyboardType="default"
+    multiline={true}
+    name="input"
+    numberOfLines={4}
+    onBlur={[Function]}
+    onChangeText={[MockFunction]}
+    onEndEditing={[Function]}
+    onFocus={[Function]}
+    returnKeyType="next"
+    value="foo"
+  />
+</View>
+`;
+
+exports[`TextArea component should renders correctly in case of error 1`] = `
+<View>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XS"
+    text="input"
+    textDecoration={null}
+  />
+  <Styled(TextInput)
+    autoCapitalize="sentences"
+    id="input"
+    keyboardType="default"
+    multiline={true}
+    name="input"
+    numberOfLines={4}
+    onBlur={[Function]}
+    onChangeText={[MockFunction]}
+    onEndEditing={[Function]}
+    onFocus={[Function]}
+    returnKeyType="next"
+    value="foo"
+  />
+</View>
+`;
