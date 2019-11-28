@@ -22,6 +22,7 @@ export const updateAnalyticsData = (props, prevProps) => {
     const pageDataUpdated = {
       pageName: `${checkoutName}:${currentSection}`,
       pageSection: checkoutName,
+      pageSubSection: checkoutName,
       pageType: checkoutName,
       pageShortName: `${checkoutName}:${currentSection}`,
       loadAnalyticsOnload: false,

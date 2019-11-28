@@ -1,5 +1,10 @@
 import { submit } from 'redux-form';
-import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
+import {
+  setClickAnalyticsData,
+  trackClick,
+  updatePageData,
+  trackPageView,
+} from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
   submitShippingSection,
   submitPickupSection,
@@ -189,6 +194,9 @@ export const mapDispatchToProps = dispatch => {
     },
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
+    trackPageViewCheckout: payload => {
+      dispatch(trackPageView(payload));
     },
     dispatch,
   };

@@ -19,6 +19,7 @@ describe('Bag page Container', () => {
     initCheckoutSectionPage: jest.fn(),
     router: { query: {} },
     checkoutServerError: true,
+    currentStage: 'shipping',
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
