@@ -398,11 +398,6 @@ class ProductDetailView extends PureComponent {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
-          </Col>
-        </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
