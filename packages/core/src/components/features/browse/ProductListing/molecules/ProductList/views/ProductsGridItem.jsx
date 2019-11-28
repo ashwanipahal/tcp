@@ -54,10 +54,13 @@ class ProductsGridItem extends React.PureComponent {
         productInfo: { pdpUrl },
       },
     } = props;
-    const isTCP = props.item && props.item.itemInfo ? props.item.itemInfo.isTCP : true;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      props.item && props.item.itemInfo
+        ? props.item.itemInfo.isTCP
+        : currentSiteBrand.toUpperCase() === 'TCP';
     const apiConfigObj = getAPIConfig();
     const { crossDomain } = apiConfigObj;
-    const currentSiteBrand = getBrand();
     const itemBrand = isTCP ? 'TCP' : 'GYM';
     const isProductBrandOfSameSiteBrand =
       currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();

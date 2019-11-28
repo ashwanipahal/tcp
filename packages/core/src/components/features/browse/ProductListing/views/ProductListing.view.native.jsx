@@ -157,6 +157,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  updateAppTypeHandler,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -211,6 +212,7 @@ const ProductListView = ({
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             isSearchListing={isSearchListing}
             renderMoveToList={renderMoveToList}
+            updateAppTypeHandler={updateAppTypeHandler}
             {...otherProps}
           />
         )}

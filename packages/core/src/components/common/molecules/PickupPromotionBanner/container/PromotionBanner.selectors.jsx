@@ -1,5 +1,8 @@
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+
 const getPickupPromotionBannerLabels = state => {
-  return state.Labels.global.bossPromotions;
+  const labelValue = state.Labels && state.Labels.global && state.Labels.global.bossPromotions;
+  return labelValue || {};
 };
 
 export default {

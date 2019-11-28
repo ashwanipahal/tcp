@@ -592,6 +592,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      updateAppTypeHandler,
     } = this.props;
 
     const { selectedShareOption, seeSuggestedDictionary } = this.state;
@@ -728,6 +729,7 @@ class FavoritesView extends React.PureComponent {
               onSeeSuggestedItems={this.onSeeSuggestedItems}
               onCloseSuggestedModal={this.onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
+              updateAppTypeHandler={updateAppTypeHandler}
             />
           </View>
         )}

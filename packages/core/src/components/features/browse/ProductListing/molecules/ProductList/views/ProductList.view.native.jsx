@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView, Text } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import { getBrand } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
@@ -20,6 +21,7 @@ import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
 import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import GridPromo from '../../../../../../common/molecules/GridPromo';
+import { APP_TYPE } from '../../../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.constants';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
@@ -95,11 +97,28 @@ class ProductList extends React.PureComponent {
     }));
   };
 
-  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo) => {
-    const { title, onGoToPDPPage, isFavorite } = this.props;
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo, item) => {
+    const { title, onGoToPDPPage, isFavorite, updateAppTypeHandler } = this.props;
     const { name } = productInfo;
+    const currentAppBrand = getBrand();
+    const {
+      productInfo: { productPartNumber },
+    } = item;
+    const isTCP = item.itemInfo ? item.itemInfo.isTCP : currentAppBrand.toUpperCase() === 'TCP';
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    const isProductBrandOfSameSiteBrand = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
     const productTitle = isFavorite ? name : title;
-    if (onGoToPDPPage) {
+    if (!isProductBrandOfSameSiteBrand) {
+      updateAppTypeHandler({
+        type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
+        params: {
+          title,
+          pdpUrl: pdpUrl,
+          selectedColorProductId: selectedColorIndex,
+          reset: true,
+        },
+      });
+    } else if (onGoToPDPPage) {
       onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex, productInfo);
     }
   };
