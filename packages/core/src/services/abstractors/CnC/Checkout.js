@@ -828,7 +828,7 @@ export function submitOrder(
   smsOrderInfo,
   currentLanguage,
   venmoPayloadData = {},
-  errorsMapping
+  errorsMapping = {}
 ) {
   const payload = {
     body: {
