@@ -72,6 +72,7 @@ export {
   isTCP,
   formatDate,
   isValidDate,
+  convertNumToBool,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

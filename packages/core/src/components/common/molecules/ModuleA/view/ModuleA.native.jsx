@@ -72,6 +72,20 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   );
 };
 
+const renderDamImage = (imgData, videoData, ignoreLazyLoadImage) => {
+  return (
+    <DamImage
+      width={MODULE_WIDTH}
+      height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
+      url={imgData && imgData.url}
+      host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+      crop={imgData && imgData.crop_m}
+      videoData={videoData}
+      imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+    />
+  );
+};
+
 const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   let PromoBannerComponent;
   let HeaderComponent;
@@ -81,7 +95,7 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
       headerText,
       promoBanner,
       ribbonBanner,
-      linkedImage: [{ image }],
+      linkedImage: [{ image, video }],
     },
   } = item;
   if (isGymboree()) {
@@ -93,17 +107,14 @@ const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
     HeaderComponent = ContainerView;
     HeaderConfig = { color: 'text.primary' };
   }
-
+  const videoData = video && {
+    ...video,
+    videoWidth: MODULE_WIDTH,
+    videoHeight: isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT,
+  };
   return (
     <ContainerView>
-      <DamImage
-        width={MODULE_WIDTH}
-        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
-        url={image.url}
-        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
-        crop={image.crop_m}
-        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
-      />
+      {renderDamImage(image, videoData, ignoreLazyLoadImage)}
       <HeaderWrapper>
         <HeaderComponent>
           {headerText && (
