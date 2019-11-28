@@ -3,7 +3,7 @@
 exports[`InputCheckbox component should render correctly 1`] = `
 <Fragment>
   <label
-    className="sample-class input-checkbox-wrapper"
+    className="sample-class"
   >
     <input
       aria-describedby="checkbox__error__undefined"
