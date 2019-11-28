@@ -117,6 +117,33 @@ class ModuleT extends React.PureComponent {
   }
 
   /**
+   * To Render the Dam Image or Video Component
+   */
+  renderDamImage = (link, imgData, videoData, navigation, index) => {
+    const damImageComp = (
+      <DamImage
+        url={imgData && imgData.url}
+        videoData={videoData}
+        height="202px"
+        width={`${buttonWidth}px`}
+        testID={`${getLocator('moduleT_product_img')}${index}`}
+        alt={imgData && imgData.alt}
+        imgConfig={IMG_DATA.promoImgConfig[0]}
+      />
+    );
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+          {damImageComp}
+        </Anchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <React.Fragment>{damImageComp}</React.Fragment>
+    ) : null;
+  };
+
+  /**
    * This method return the renderMediaLinkedImage method to manage all product image with cropping rule .
    *  @naviagtion is used to navigate the page.
    */
@@ -124,25 +151,15 @@ class ModuleT extends React.PureComponent {
     return (
       <ImageContainer>
         {mediaLinkedList.map(({ image, link, video }, index) => {
-          const videoData = {
-            videoWidth: buttonWidth,
-            videoHeight: 202,
-            ...video,
-          };
-
+          const videoData = video &&
+            video.url && {
+              videoWidth: buttonWidth,
+              videoHeight: 202,
+              ...video,
+            };
           return (
             <ImageWrapper tileIndex={index}>
-              <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
-                <DamImage
-                  url={image && image.url}
-                  height="202px"
-                  width={`${buttonWidth}px`}
-                  testID={`${getLocator('moduleT_product_img')}${index}`}
-                  alt={image && image.alt}
-                  imgConfig={IMG_DATA.promoImgConfig[0]}
-                  videoData={videoData}
-                />
-              </Anchor>
+              {this.renderDamImage(link, image, videoData, navigation, index)}
             </ImageWrapper>
           );
         })}

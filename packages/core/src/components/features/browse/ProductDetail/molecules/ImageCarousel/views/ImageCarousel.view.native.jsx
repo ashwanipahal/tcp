@@ -6,7 +6,7 @@ import { FlatList, Text, Dimensions, Share, SafeAreaView } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -77,10 +77,10 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites, skuId, currentColorEntry } = props;
+    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn } = props;
     const { colorProductId } = currentColorEntry;
-    const { productId } = state;
-    if (props.isLoggedIn && state.showModal) {
+    const { productId, showModal } = state;
+    if (isLoggedIn && showModal) {
       if (productId !== '') {
         onAddItemToFavorites({
           colorProductId: productId,

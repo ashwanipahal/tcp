@@ -204,20 +204,15 @@ export const layoutResolver = async ({ category, pageName }) => {
         category,
       },
     };
-    let {
+    const {
       data: { contentLayout },
     } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig });
-    if (!(contentLayout && contentLayout.length)) {
-      ({
-        data: { contentLayout },
-      } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig, category: 'global' }));
-    }
     const moduleObjects = [];
     contentLayout.forEach(data => {
       const dataItems = data.items;
       layout[data.key] = dataItems;
       Object.keys(dataItems).forEach(item => {
-        const slotItems = dataItems[item].slots;
+        const slotItems = !!dataItems[item] && dataItems[item].slots;
         if (typeof slotItems === 'object') {
           moduleObjects.push(...slotItems);
         }
