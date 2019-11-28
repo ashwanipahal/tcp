@@ -24,3 +24,7 @@ export const ImageStyleWrapper = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export const PageContainer = styled.View``;
+
+export const Container = styled.View``;
