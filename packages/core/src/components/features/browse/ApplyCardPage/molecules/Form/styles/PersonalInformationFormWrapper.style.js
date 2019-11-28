@@ -14,6 +14,21 @@ export default styled.div`
     height: auto;
   }
 
+  .row-personal-information {
+    fieldset.date_of_birth {
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} and ${props =>
+  props.theme.mediaQuery.largeMax} {
+      .contact_information_form:nth-of-type(2) {
+        margin-top: 12px;
+      }
+    }
+  }
+
   .table_contact_month {
     .select__input {
       font-size: ${props => props.theme.typography.fontSizes.fs13};
