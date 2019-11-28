@@ -37,7 +37,7 @@ const GridPromo = props => {
                 className={`${className} highlighted-text`}
                 color="black"
                 fontFamily="secondary"
-                fontSize="fs36"
+                fontSize={['fs28', 'fs32', 'fs36']}
                 fontWeight="black"
                 textAlign="center"
               >
@@ -49,13 +49,19 @@ const GridPromo = props => {
         })}
       </div>
       <div className="middle-text-wrapper">
-        <BodyCopy color="white" fontFamily="secondary" fontSize="fs24" textAlign="center">
+        <BodyCopy
+          color="white"
+          fontFamily="secondary"
+          fontSize={['fs18', 'fs20', 'fs24']}
+          fontWeight="black"
+          textAlign="center"
+        >
           {textItems && textItems[1] && textItems[1].text}
         </BodyCopy>
         <BodyCopy
           color="white"
           fontFamily="secondary"
-          fontSize="fs24"
+          fontSize={['fs18', 'fs20', 'fs24']}
           fontWeight="black"
           textAlign="center"
         >
@@ -65,7 +71,12 @@ const GridPromo = props => {
       <div className="description-wrapper">
         {descriptionParts.map(description => {
           return (
-            <BodyCopy color="white" fontFamily="secondary" fontSize="fs12" textAlign="center">
+            <BodyCopy
+              color="white"
+              fontFamily="secondary"
+              fontSize={['fs10', 'fs12', 'fs12']}
+              textAlign="center"
+            >
               {description}
             </BodyCopy>
           );

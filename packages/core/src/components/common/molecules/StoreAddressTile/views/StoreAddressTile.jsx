@@ -40,6 +40,9 @@ class StoreAddressTile extends PureComponent {
       locatorGetDirections,
       openStoreDirections,
       variation,
+      store: {
+        basicInfo: { storeName },
+      },
       isFavorite,
       showSetFavorite,
     } = this.props;
@@ -50,6 +53,10 @@ class StoreAddressTile extends PureComponent {
             buttonVariation="fixed-width"
             fill="BLUE"
             type="button"
+            aria-label={`${getLabelValue(
+              labels,
+              'lbl_storelanding_getdirections_link'
+            )} for ${storeName}`}
             data-locator={locatorGetDirections}
             onClick={openStoreDirections}
           >

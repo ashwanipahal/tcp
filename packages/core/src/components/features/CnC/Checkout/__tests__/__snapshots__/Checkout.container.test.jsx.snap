@@ -17,6 +17,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
     }
   }
   currentPhoneNumber=""
+  currentStage="shipping"
   formatPayload={[Function]}
   initialValues={Object {}}
   isExpressCheckout={false}
@@ -78,6 +79,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
     }
   }
   currentPhoneNumber=""
+  currentStage="shipping"
   formatPayload={[Function]}
   initialValues={Object {}}
   isExpressCheckout={false}

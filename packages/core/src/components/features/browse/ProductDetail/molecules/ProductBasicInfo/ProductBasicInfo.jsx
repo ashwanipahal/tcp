@@ -64,7 +64,7 @@ class ProductBasicInfo extends React.Component {
       <BodyCopy
         className={`product-title ${className}`}
         fontSize="fs18"
-        component="p"
+        component="h1"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
