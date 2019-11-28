@@ -52,31 +52,23 @@ export class StoreDetailContainer extends PureComponent {
 
   componentDidMount() {
     const { getModuleX, referredContentList } = this.props;
+
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (snapshot !== null) {
-      this.loadCurrentStoreInitialInfo();
-    }
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  getSnapshotBeforeUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { currentStoreInfo, formatStore, isUserLoggedIn, storeId } = this.props;
     const prevStore = formatStore(prevProps.currentStoreInfo);
     const newStore = formatStore(currentStoreInfo);
     if (
+      prevProps.storeId !== storeId ||
       (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
         (newStore.basicInfo !== undefined && newStore.basicInfo.id) ||
-      prevProps.isUserLoggedIn !== isUserLoggedIn ||
-      prevProps.storeId !== storeId
+      prevProps.isUserLoggedIn !== isUserLoggedIn
     ) {
-      return true;
+      this.loadCurrentStoreInitialInfo();
     }
-    return null;
   }
 
   openMoreStores = () => {
@@ -177,14 +169,6 @@ export class StoreDetailContainer extends PureComponent {
     ) : null;
   }
 }
-
-StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
-  if (!isServer) {
-    const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-    store.dispatch(getCurrentStoreInfo(storeId));
-  }
-  return pageProps;
-};
 
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),

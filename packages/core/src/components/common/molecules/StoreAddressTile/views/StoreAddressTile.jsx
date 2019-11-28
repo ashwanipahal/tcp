@@ -5,7 +5,6 @@ import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common
 import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import style, {
   TileHeader,
   TileFooter,
@@ -13,6 +12,9 @@ import style, {
   FavStore,
 } from '../styles/StoreAddressTile.style';
 import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
+
+const storeAddressText = (city, state, zipCode) =>
+  city && state && zipCode ? `${city}, ${state}, ${zipCode}` : '';
 
 class StoreAddressTile extends PureComponent {
   getIsFavStoreIcon() {
@@ -388,7 +390,7 @@ class StoreAddressTile extends PureComponent {
       variation === detailsType && store.distance
         ? `${store.distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
         : null;
-    const cityTxt = city && state && zipCode ? `${city}, ${state}, ${zipCode}` : '';
+    const cityTxt = storeAddressText(city, state, zipCode);
 
     return (
       <div className="address-wrapper">
