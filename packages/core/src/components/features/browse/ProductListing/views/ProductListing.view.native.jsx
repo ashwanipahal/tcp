@@ -160,6 +160,7 @@ const ProductListView = ({
   renderMoveToList,
   filtersLength,
   animationURL,
+  resetCustomLoader,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -187,7 +188,12 @@ const ProductListView = ({
     filtersLength,
   };
   return showCustomLoader ? (
-    <PLPGifAnimation url={animationURL} navigation={navigation} />
+    <PLPGifAnimation
+      url={animationURL}
+      navigation={navigation}
+      resetCustomLoader={resetCustomLoader}
+      isOpen={showCustomLoader}
+    />
   ) : (
     <ScrollView>
       {!isSearchListing && (

@@ -166,6 +166,7 @@ class ProductListingContainer extends React.PureComponent {
         isKeepModalOpen={isKeepModalOpen}
         showCustomLoader={showCustomLoader}
         animationURL={animationURL}
+        resetCustomLoader={this.resetCustomLoader}
         {...otherProps}
       />
     );
@@ -304,7 +305,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
-  animationURL: 'https://i.gifer.com/77Y.gif',
+  animationURL: '',
 };
 
 export default connect(
