@@ -215,6 +215,15 @@ const getClearanceItem = item => (item.itemTCPProductInd || '').toLowerCase() ==
 
 const newArrivalItem = item => (item.itemTCPProductInd || '').toLowerCase() === 'new arrivals';
 
+const getFinalPDPUrl = item => {
+  const { siteId } = getAPIConfig();
+  let pdpURL;
+  if (item.productURL.indexOf(`/${siteId}/`) !== -1) {
+    pdpURL = item.productURL.replace(`/${siteId}`, '');
+  }
+  return pdpURL;
+};
+
 /**
  * @function getWishListbyId
  * @param {String} wishListId - Id of the wishlist you are moving the item from
@@ -292,7 +301,7 @@ export const getWishListbyId = ({
                 generalProductId: item.parentProductId,
                 name: item.productName,
                 isGiftCard: item.isGiftCard !== '0',
-                pdpUrl: item.productURL,
+                pdpUrl: getFinalPDPUrl(item),
                 listPrice: item.ListPrice,
                 offerPrice: isCanada ? item.OfferPriceCAD : item.OfferPriceUS,
               },

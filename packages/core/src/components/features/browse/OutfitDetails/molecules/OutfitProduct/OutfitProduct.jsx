@@ -155,12 +155,14 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <DamImage
-              className="full-size-desktop-image"
-              imgData={imgData}
-              itemProp="contentUrl"
-              isProductImage
-            />
+            <Anchor to={pdpToPath} asPath={outfitProduct.pdpUrl}>
+              <DamImage
+                className="full-size-desktop-image"
+                imgData={imgData}
+                itemProp="contentUrl"
+                isProductImage
+              />
+            </Anchor>
             {renderOutOfStock(keepAlive, outOfStockLabels)}
           </BodyCopy>
 
