@@ -79,4 +79,56 @@ describe('Bag page Container', () => {
       ).toEqual({ a: 1, address1: 'test', address2: 'test', zip: 123 });
     });
   });
+
+  describe('getAnalyticsEvents function', () => {
+    const newprops = {
+      labels: {},
+      initCheckout: jest.fn(),
+      clearCheckoutServerError: jest.fn(),
+      fetchNeedHelpContent: jest.fn(),
+      setVenmoPickupState: jest.fn(),
+      setVenmoShippingState: jest.fn(),
+      markBagPageRoutingDone: jest.fn(),
+      getUserInformation: jest.fn(),
+      isPickupModalOpen: jest.fn(),
+      isRegisteredUserCallDone: true,
+      initCheckoutSectionPage: jest.fn(),
+      router: { query: {} },
+      checkoutServerError: true,
+    };
+    it('getAnalyticsEvents function for pickup', () => {
+      const tree = shallow(<CheckoutContainer currentStage="pickup" {...newprops} />);
+      const data = tree.instance().getAnalyticsEvents();
+      expect(data).toEqual(['scCheckout', 'event86', 'event69']);
+    });
+    it('getAnalyticsEvents function for shipping', () => {
+      const tree = shallow(<CheckoutContainer currentStage="shipping" {...newprops} />);
+      const data = tree.instance().getAnalyticsEvents();
+      expect(data).toEqual(['scCheckout', 'event86', 'event9']);
+    });
+    it('getAnalyticsEvents function for billing', () => {
+      const tree = shallow(<CheckoutContainer currentStage="billing" {...newprops} />);
+      const data = tree.instance().getAnalyticsEvents();
+      expect(data).toEqual(['scCheckout', 'event86', 'event11']);
+    });
+    it('getAnalyticsEvents function for review', () => {
+      const tree = shallow(<CheckoutContainer currentStage="review" {...newprops} />);
+      const data = tree.instance().getAnalyticsEvents();
+      expect(data).toEqual(['scCheckout', 'event86', 'event12']);
+    });
+    it('getAnalyticsEvents function for confirmation', () => {
+      const tree = shallow(<CheckoutContainer currentStage="confirmation" {...newprops} />);
+      const data = tree.instance().getAnalyticsEvents();
+      expect(data).toEqual([
+        'purchase',
+        'event5',
+        'event6',
+        'event7',
+        'event22',
+        'event78',
+        'event79',
+        'event99',
+      ]);
+    });
+  });
 });
