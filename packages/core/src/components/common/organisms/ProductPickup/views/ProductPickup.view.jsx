@@ -478,8 +478,6 @@ class ProductPickup extends React.PureComponent {
       isOutfitVariant,
       keepAlive,
       productInfo,
-      userDefaultStore,
-      isSkuResolved,
     } = this.props;
     const { pageName } = this.getPageName(productInfo);
     return (
