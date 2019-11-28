@@ -154,7 +154,7 @@ export default css`
     position: absolute;
     width: 100%;
     height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    bottom: 58px;
+    bottom: 70px;
     z-index: 1;
     margin-bottom: 6px;
   }

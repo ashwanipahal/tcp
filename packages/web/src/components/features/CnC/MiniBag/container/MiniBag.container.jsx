@@ -20,6 +20,7 @@ import {
   getIsCartItemsSFL,
   getCartItemsSflError,
   getMiniBagLoaderState,
+  getAccessibilityLabels,
 } from './MiniBag.selectors';
 import {
   getCurrentPointsState,
@@ -116,7 +117,10 @@ export class MiniBagContainer extends React.PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    labels: getLabelsMiniBag(state),
+    labels: {
+      ...getLabelsMiniBag(state),
+      accessibility: getAccessibilityLabels(state),
+    },
     totalItems: getTotalItemCount(state),
     subTotal: getGrandTotal(state),
     currentPoints: getCurrentPointsState(state),

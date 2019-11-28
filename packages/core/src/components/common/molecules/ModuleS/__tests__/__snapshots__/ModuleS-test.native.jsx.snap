@@ -27,7 +27,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       source=""
       swatchConfig=""
       url="https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png"
-      videoData={null}
+      videoData={Object {}}
       width={750}
     />
   </Styled(Anchor)>
