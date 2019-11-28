@@ -27,7 +27,10 @@ import {
 import {
   getIsInternationalShipping,
   getCurrentCurrency,
+  getIsKeepAliveProduct,
+  getIsKeepAliveProductApp,
 } from '../../../../../reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
@@ -126,6 +129,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       topPromos,
       router: { asPath: asPathVal },
+      isKeepAliveEnabled,
+      outOfStockLabels,
       isLoading,
     } = this.props;
     const { outfitIdLocal } = this.state;
@@ -159,6 +164,8 @@ class OutfitDetailsContainer extends React.PureComponent {
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             asPathVal={asPathVal}
             topPromos={topPromos}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
           />
         ) : null}
         {isLoading ? <OutfitProductSkeleton /> : null}
@@ -197,6 +204,10 @@ const mapStateToProps = state => {
     pdpLabels: getPDPLabels(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    isKeepAliveEnabled: isMobileApp()
+      ? getIsKeepAliveProductApp(state)
+      : getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 };
 
@@ -248,6 +259,8 @@ OutfitDetailsContainer.propTypes = {
   toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -272,6 +285,8 @@ OutfitDetailsContainer.defaultProps = {
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withIsomorphicRenderer({
