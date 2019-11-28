@@ -36,26 +36,26 @@ const CouponDetailModalStyle = css`
 
   .AppDownload,
   .Gymboree_AppDownload {
-    background-image: url('/static/images/download-app.png');
+    background-image: url(${getStaticFilePath('images/download-app.png')});
   }
   .ProductReview,
   .Gymboree_ProductReview {
-    background-image: url('/static/images/review.png');
+    background-image: url(${getStaticFilePath('images/review.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .FacebookLink. .Gymboree_FacebookLink {
-    background-image: url('/static/images/facebook.png');
+    background-image: url(${getStaticFilePath('images/facebook.png')});
   }
   .InstagramLink,
   .Gymboree_InstagramLink {
-    background-image: url('/static/images/instagram.png');
+    background-image: url(${getStaticFilePath('images/instagram.png')});
   }
   .ChildProfile {
     background-image: url(${getStaticFilePath('images/child-birthday-profile.png')});
   }
   .SMSOptIn,
   .Gymboree_SMSOptIn {
-    background-image: url('/static/images/sms.png');
+    background-image: url(${getStaticFilePath('images/sms.png')});
   }
   .AddMailingAddress {
     background-image: url(${getStaticFilePath('images/mailingAddress.png')});
@@ -77,7 +77,7 @@ const CouponDetailModalStyle = css`
 
   .TwitterLink,
   .Gymboree_TwitterLink {
-    background-image: url('/static/images/twitter.png');
+    background-image: url(${getStaticFilePath('images/twitter.png')});
   }
 `;
 
