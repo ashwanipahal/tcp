@@ -1,4 +1,6 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
+import constants from '../AddEditCreditCard.constants';
 import AddEditCreditCardReducer from '../AddEditCreditCard.reducer';
 import { addCreditCardSuccess, addCreditCardError } from '../AddEditCreditCard.actions';
 
@@ -45,5 +47,61 @@ describe('AddEditCreditCardReducer reducer', () => {
         error: null,
       })
     );
+  });
+
+  it('should call SET_SUBMIT_SUCCEEDED ', () => {
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    const checkErrorReset = false;
+    expect(
+      AddEditCreditCardReducer(initialState, {
+        type: SET_SUBMIT_SUCCEEDED,
+        meta: {
+          form: constants.FORM_NAME,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE  ', () => {
+    let checkErrorReset = false;
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+
+    const checkErrorResetValue = AddEditCreditCardReducer(initialState, {
+      type: SET_SUBMIT_SUCCEEDED,
+      meta: {
+        form: constants.FORM_NAME,
+      },
+    });
+    checkErrorReset = checkErrorResetValue;
+    expect(
+      AddEditCreditCardReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: constants.FORM_NAME,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE but not change error ', () => {
+    const checkErrorReset = false;
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    expect(
+      AddEditCreditCardReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: constants.FORM_NAME,
+        },
+      })
+    ).toEqual(initialState);
   });
 });

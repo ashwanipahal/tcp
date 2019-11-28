@@ -3,7 +3,15 @@ import { css } from 'styled-components';
 export default css`
   display: flex;
   flex-wrap: wrap;
-  &.product-tile {
+  &.product-list.horizontal-promo {
+    width: 100%;
+    background: #eeeeee;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
+  &.product-tile,
+  &.promo-div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

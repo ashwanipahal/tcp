@@ -57,7 +57,13 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   render() {
-    const { productInfo, formRef, currencyAttributes, onCloseClick, isMultiItemQVModal } = this.props;
+    const {
+      productInfo,
+      formRef,
+      currencyAttributes,
+      onCloseClick,
+      isMultiItemQVModal,
+    } = this.props;
     const { currentColorEntry, formEnabled } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&

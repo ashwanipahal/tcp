@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const iconSpacing = '15px';
 
@@ -117,7 +118,7 @@ const StyledModal = css`
     }
   }
   .modal__closeIcon {
-    background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
+    background: transparent url(${getIconPath('modal-close')}) no-repeat 0 0;
     border: none;
     cursor: pointer;
     position: absolute;

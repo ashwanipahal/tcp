@@ -147,6 +147,11 @@ export default css`
       position: unset;
       bottom: initial;
     }
+    /* stylelint-disable-next-line */
+    _:-ms-fullscreen,
+    .fullSize-image-label {
+      margin-top: 95px;
+    }
   }
 `;
 

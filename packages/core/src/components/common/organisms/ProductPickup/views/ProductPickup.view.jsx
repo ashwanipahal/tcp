@@ -8,6 +8,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
+import { getIconPath } from '@tcp/core/src/utils';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
@@ -263,6 +264,11 @@ class ProductPickup extends React.PureComponent {
     }
   };
 
+  showFindInStore = () => {
+    const { userDefaultStore, showPickupInfo, isSkuResolved } = this.props;
+    return showPickupInfo && userDefaultStore && isSkuResolved;
+  };
+
   /**
    * @method handleChangeStoreOnKeyPress
    * handles the change store modal when Enter key is pressed post tabbing on the link
@@ -472,6 +478,8 @@ class ProductPickup extends React.PureComponent {
       isOutfitVariant,
       keepAlive,
       productInfo,
+      userDefaultStore,
+      isSkuResolved,
     } = this.props;
     const { pageName } = this.getPageName(productInfo);
     return (
@@ -504,7 +512,7 @@ class ProductPickup extends React.PureComponent {
                   <img
                     className="shipping-icon"
                     alt="shipping-icon"
-                    src="/static/images/fast-shipping.svg"
+                    src={getIconPath('fast-shipping')}
                   />
                   <div className="shipping-text-section">
                     <BodyCopy
@@ -527,7 +535,7 @@ class ProductPickup extends React.PureComponent {
                     <img
                       className="pickup-icon"
                       alt="pickup-icon"
-                      src="/static/images/marker-icon.svg"
+                      src={getIconPath('marker-icon')}
                     />
                   </div>
                   <div className="pickup-details">
@@ -549,7 +557,7 @@ class ProductPickup extends React.PureComponent {
                     disabled={keepAlive || isSubmitting}
                     onClick={this.handlePickupModalClick}
                   >
-                    {showPickupInfo
+                    {this.showFindInStore()
                       ? labels.lbl_Product_pickup_PICKUP_IN_STORE
                       : labels.lbl_Product_pickup_FIND_STORE}
                   </Button>

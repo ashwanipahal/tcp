@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardNumber component should renders correctly when cardType is present 1`] = `
+<View>
+  <CreditCardTextBox
+    ariaLabel="input"
+    cardType="VISA"
+    className=""
+    customStyle={Object {}}
+    dataLocator="input-field"
+    enableSuccessCheck={false}
+    id="input"
+    isEdit={true}
+    keyboardType="default"
+    label="input"
+    maxLength={16}
+    meta={
+      Object {
+        "error": "",
+        "touched": "",
+      }
+    }
+    secureTextEntry={false}
+    showErrorIcon={true}
+    type="text"
+    val=""
+  />
+</View>
+`;

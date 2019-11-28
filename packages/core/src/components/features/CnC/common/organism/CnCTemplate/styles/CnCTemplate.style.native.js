@@ -98,6 +98,16 @@ export const ButtonWrapper = styled.View`
   ${applyPositionClassStyle}
 `;
 
+export const VenmoPaidContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const VenmoPaidTextContainer = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export default {
   ButtonWrapper,
   CheckoutButton,
@@ -110,4 +120,6 @@ export default {
   CnContainer,
   CnContent,
   PayPalButtonContainer,
+  VenmoPaidContainer,
+  VenmoPaidTextContainer,
 };
