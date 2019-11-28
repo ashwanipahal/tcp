@@ -48,6 +48,10 @@ const propConversion = {
  * This function will return dataLayer key corresponding to event key
  */
 const getConversionKey = key => {
+  if (staticConversion[key]) {
+    return staticConversion[key];
+  }
+
   if (/eVar/.test(key)) {
     return varConversion[key];
   }
@@ -64,9 +68,6 @@ const getConversionKey = key => {
  */
 const getConversionValue = key => {
   /* eslint-disable */
-  if (staticConversion[key]) {
-    return staticConversion[key];
-  }
   const dataLayer = global._dataLayer;
   const dataLayerKey = getConversionKey(key);
   return get(dataLayer, dataLayerKey, '');

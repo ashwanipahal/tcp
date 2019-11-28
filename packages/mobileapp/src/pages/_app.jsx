@@ -20,7 +20,6 @@ import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
-import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
@@ -161,6 +160,7 @@ export class App extends React.PureComponent {
 
   render() {
     const { appType, context } = this.props;
+    const { device, platform, location } = context;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
@@ -173,7 +173,10 @@ export class App extends React.PureComponent {
           )}
 
           <AppNavigator
-            {...getOnNavigationStateChange(this.store)}
+            {...getOnNavigationStateChange({
+              store: this.store,
+              context: { device, platform, location },
+            })}
             ref={navigatorRef => {
               NavigationService.setTopLevelNavigator(navigatorRef);
             }}
