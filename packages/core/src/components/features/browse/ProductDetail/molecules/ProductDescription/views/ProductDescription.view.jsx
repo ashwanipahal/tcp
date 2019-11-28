@@ -29,7 +29,7 @@ class ProductDetailDescription extends React.PureComponent {
     let generalProductId = '';
     let pageName = '';
     let pageShortName = '';
-    const productName = productInfo && productInfo.name.toLowerCase();
+    const productName = productInfo && productInfo.name && productInfo.name.toLowerCase();
     if (productId) {
       generalProductId = productId && productId.split('_')[0];
       pageName = `product:${generalProductId}:${productName}`;
@@ -101,14 +101,7 @@ class ProductDetailDescription extends React.PureComponent {
   }
 
   render() {
-    const {
-      longDescription,
-      productId,
-      shortDescription,
-      className,
-      pdpLabels,
-      color,
-    } = this.props;
+    const { longDescription, shortDescription, className, pdpLabels, color } = this.props;
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
@@ -182,7 +175,7 @@ class ProductDetailDescription extends React.PureComponent {
                   data-locator={getLocator('pdp_product_part_number')}
                 >
                   {PartNumber}
-                  {colorSlice.colorDisplayId}
+                  {colorSlice && colorSlice.colorDisplayId}
                 </BodyCopy>
               </div>
             )}
@@ -194,7 +187,7 @@ class ProductDetailDescription extends React.PureComponent {
                 data-locator={getLocator('pdp_product_part_number')}
               >
                 {PartNumber}
-                {colorSlice.colorDisplayId}
+                {colorSlice && colorSlice.colorDisplayId}
               </BodyCopy>
             )}
           </div>

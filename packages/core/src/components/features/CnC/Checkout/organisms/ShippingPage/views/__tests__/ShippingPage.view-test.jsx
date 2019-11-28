@@ -27,13 +27,15 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      submitShippingForm: () => {},
+      updateShippingAddress: () => {},
+      submitVerifiedShippingAddressData: () => {},
       shippingAddress: {
         addressLine1: '',
       },
       emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);
   });
@@ -53,6 +55,10 @@ describe('Shipping Page', () => {
       handleSubmit: () => {},
       selectedShipmentId: '334',
       shippingAddressId: '123',
+      submitShippingForm: () => {},
+      updateShippingAddress: () => {},
+      submitVerifiedShippingAddressData: () => {},
+
       shippingAddress: {
         addressLine1: '',
       },
@@ -72,10 +78,10 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      shippingDidUpdate: () => {},
       emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
     tree.setProps({
       address: {
         addressLine1: 'pob 123',
@@ -83,8 +89,6 @@ describe('Shipping Page', () => {
       },
       selectedShipmentId: '336',
     });
-    expect(mockedloadShipmentMethods).toBeCalled();
-    expect(mockedupdateShippingMethodSelection).toBeCalled();
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);
   });
@@ -99,7 +103,9 @@ describe('Shipping Page', () => {
     const props = {
       address,
       checkoutRoutingDone: false,
-
+      submitShippingForm: () => {},
+      updateShippingAddress: () => {},
+      submitVerifiedShippingAddressData: () => {},
       shipmentMethods: [{}],
       addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
@@ -125,10 +131,10 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      shippingDidUpdate: () => {},
       emailSignUpFlags: { emailSignUpTCP: true },
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
     tree.setProps({
       address: {
         addressLine1: 'pob 123',
@@ -138,8 +144,6 @@ describe('Shipping Page', () => {
       shippingAddressId: '123',
     });
     tree.setState({ defaultAddressId: '34567' });
-    expect(mockedloadShipmentMethods).toBeCalled();
-    expect(mockedupdateShippingMethodSelection).toBeCalled();
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);
   });
@@ -153,6 +157,9 @@ describe('Shipping Page', () => {
       addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
+      submitShippingForm: () => {},
+      updateShippingAddress: () => {},
+      submitVerifiedShippingAddressData: () => {},
       selectedShipmentId: '334',
       shippingAddress: {
         addressLine1: '',
@@ -171,6 +178,7 @@ describe('Shipping Page', () => {
       ]),
       formatPayload: () => {},
       shippingDidMount: () => {},
+      shippingDidUpdate: () => {},
       emailSignUpFlags: { emailSignUpTCP: true },
       addEditResponseAddressId: '34789',
     };
@@ -193,6 +201,9 @@ describe('Shipping Page', () => {
       addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
+      updateShippingAddress: () => {},
+      submitShippingForm: () => {},
+      submitVerifiedShippingAddressData: () => {},
       formatPayload: () => {},
       selectedShipmentId: '334',
       shippingAddress: {
@@ -212,7 +223,6 @@ describe('Shipping Page', () => {
       ]),
       addEditResponseAddressId: '34789',
       isGuest: false,
-      updateShippingAddress: mockedupdateShippingAddressData,
       addNewShippingAddress: mockedaddNewShippingAddressData,
       updateShippingAddressData: mockedupdateShippingAddressData,
       addNewShippingAddressData: mockedaddNewShippingAddressData,
@@ -220,17 +230,12 @@ describe('Shipping Page', () => {
       setAsDefaultShipping: true,
       saveToAddressBook: true,
       verifyAddressAction: () => {},
+      shippingDidUpdate: () => {},
       shippingDidMount: () => {},
       emailSignUpFlags: { emailSignUpGYM: true },
     };
 
     const tree = shallow(<ShippingPage {...props} />);
     tree.setState({ isAddNewAddress: false });
-    tree.instance().updateShippingAddress();
-    tree.instance().addNewShippingAddress();
-    expect(mockedaddNewShippingAddressData).toBeCalled();
-    tree
-      .instance()
-      .submitShippingData({ address, shipmentMethods: {}, smsSignUp: {}, onFileAddressKey: '123' });
   });
 });

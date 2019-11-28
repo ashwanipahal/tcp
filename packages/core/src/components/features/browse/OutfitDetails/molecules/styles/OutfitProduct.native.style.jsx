@@ -9,15 +9,16 @@ export const OutfitProductContainer = styled.View`
 `;
 
 export const DetailsContainer = styled.View`
-  width: 55%;
+  width: 60%;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const ImageContainer = styled.View`
-  width: 30%;
+  width: 40%;
+`;
+export const ImageWrapper = styled.View`
   align-items: center;
 `;
-
 export const DiscountedPriceContainer = styled.View`
   flex-direction: row;
 `;
