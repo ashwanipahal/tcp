@@ -101,6 +101,7 @@ class GuestLoginOverview extends PureComponent {
           showLogin={this.showloginModal}
           navigation={navigation}
           onRequestClose={this.toggleModal}
+          updateHeader={this.updateHeader}
         />
       );
     }
