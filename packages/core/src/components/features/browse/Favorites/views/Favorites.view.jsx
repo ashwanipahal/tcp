@@ -70,9 +70,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   shareClickHandler = value => {
-    if (value === 'Email') {
+    const { labels } = this.props;
+    if (value === labels.lbl_fav_email) {
       this.handleShareList();
-    } else if (value === 'Copy Link') {
+    } else if (value === labels.lbl_fav_copyLink) {
       this.handleCopyLink();
     } else {
       this.handleFacebookShare();
