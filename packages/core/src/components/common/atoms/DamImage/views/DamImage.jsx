@@ -176,7 +176,7 @@ const DamImage = props => {
     ...other,
   };
 
-  if (getVideoUrl(imgData && imgData.url) && isProductImage) {
+  if (imgData && imgData.url && getVideoUrl(imgData.url) && isProductImage) {
     const videoDataOptions = {
       autoplay: false,
       controls: true,
