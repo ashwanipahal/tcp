@@ -92,7 +92,7 @@ class ProductSummary extends React.PureComponent {
   };
 
   renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels } = this.props;
+    const { isGiftCard, pdpLabels, isBundleProduct } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
     if (!isGiftCard) {
       return (
@@ -109,7 +109,7 @@ class ProductSummary extends React.PureComponent {
               text="(0)"
             />
           </ReviewAndRatingContainer>
-          {this.renderWriteAReviewAnchor(writeAReview)}
+          {!isBundleProduct && this.renderWriteAReviewAnchor(writeAReview)}
           {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
         </BazarVoiceContainer>
       );
