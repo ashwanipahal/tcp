@@ -77,6 +77,7 @@ export class OrderNotification extends PureComponent {
       orderSTH,
       orderBOPIS,
       orderBOSS,
+      closedOverlay,
     } = this.props;
 
     const { STHEnabled, BOSSEnabled, BOPISEnabled } = this.state;
@@ -90,6 +91,7 @@ export class OrderNotification extends PureComponent {
                 labels={labels}
                 orderLabels={orderLabels}
                 separator={BOSSEnabled || STHEnabled}
+                closedOverlay={closedOverlay}
               />
             )}
 
@@ -99,6 +101,7 @@ export class OrderNotification extends PureComponent {
                 labels={labels}
                 orderLabels={orderLabels}
                 separator={STHEnabled}
+                closedOverlay={closedOverlay}
               />
             )}
             {STHEnabled && (
@@ -107,6 +110,7 @@ export class OrderNotification extends PureComponent {
                 orderLabels={orderLabels}
                 labels={labels}
                 separator={false}
+                closedOverlay={closedOverlay}
               />
             )}
           </>
