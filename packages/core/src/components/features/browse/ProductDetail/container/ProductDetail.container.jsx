@@ -7,7 +7,7 @@ import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
-import { setClickAnalyticsData } from '../../../../../analytics/actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -186,7 +186,7 @@ class ProductDetailContainer extends React.PureComponent {
       bottomPromos,
       isLoading,
       router: { asPath: asPathVal },
-      setClickAnalyticsDataTracker,
+      trackPageLoad,
       sizeChartDetails,
       ...otherProps
     } = this.props;
@@ -227,7 +227,7 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
-              setClickAnalyticsData={setClickAnalyticsDataTracker}
+              trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
             />
           ) : null}
@@ -244,6 +244,7 @@ ProductDetailContainer.pageInfo = {
     pageName: 'product',
     pageSection: 'product',
     pageSubSection: 'product',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -298,7 +299,32 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
-    setClickAnalyticsDataTracker: payload => dispatch(setClickAnalyticsData(payload)),
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 

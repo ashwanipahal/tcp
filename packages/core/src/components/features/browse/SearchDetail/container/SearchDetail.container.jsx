@@ -4,7 +4,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
-import { setClickAnalyticsData } from '../../../../../analytics/actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../../ProductListing/container/ProductListing.util';
 import {
@@ -174,7 +174,6 @@ class SearchDetailContainer extends React.PureComponent {
       pdpLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
-      setClickAnalyticsDataTracker,
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,
@@ -211,10 +210,10 @@ class SearchDetailContainer extends React.PureComponent {
                 asPathVal={asPathVal}
                 AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                 removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-                setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
                 pageNameProp={pageNameProp}
                 pageSectionProp={pageSectionProp}
                 pageSubSectionProp={pageSubSectionProp}
+                trackPageLoad={trackPageLoad}
                 {...otherProps}
               />
             ) : (
@@ -257,10 +256,10 @@ class SearchDetailContainer extends React.PureComponent {
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-              setClickAnalyticsDataTracker={setClickAnalyticsDataTracker}
               pageNameProp={pageNameProp}
               pageSectionProp={pageSectionProp}
               pageSubSectionProp={pageSubSectionProp}
+              trackPageLoad={trackPageLoad}
               {...otherProps}
             />
           </div>
@@ -276,6 +275,7 @@ SearchDetailContainer.pageInfo = {
     pageName: 'search',
     pageSection: 'search',
     pageSubSection: 'search',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -364,7 +364,32 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
-    setClickAnalyticsDataTracker: payload => dispatch(setClickAnalyticsData(payload)),
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 

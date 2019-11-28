@@ -49,33 +49,35 @@ class ProductDetailView extends PureComponent {
         pageData: { pageName, pageSection, pageSubSection },
       },
     } = this.props;
-    const { productInfo, setClickAnalyticsData } = this.props;
+    const { productInfo, trackPageLoad } = this.props;
     const productsFormatted = this.formatProductsData(productInfo);
     if (productsFormatted) {
-      setClickAnalyticsData({
+      trackPageLoad({
         pageType: 'product',
         pageName: 'product',
-        pageSection,
-        pageSubSection,
+        pageSection: 'product',
+        pageSubSection: 'product',
         products: productsFormatted,
-        customEvents: ['prodView', 'event1'],
+        customEvents: ['event74', 'event76', 'event95'],
       });
     }
   }
 
   formatProductsData = product => {
+    const productData = [];
     const colorName = product.colorFitsSizesMap.map(productTile => {
       return productTile.color.name || '';
     });
     const productId = product.generalProductId.split('_')[0];
-    return {
+    productData.push({
       colorId: product.generalProductId,
       color: colorName,
       id: productId,
       price: product.listPrice,
       rating: product.ratings,
       reviews: product.reviewsCount,
-    };
+    });
+    return productData;
   };
 
   onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {

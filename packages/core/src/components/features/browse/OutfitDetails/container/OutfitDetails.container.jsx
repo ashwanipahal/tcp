@@ -4,6 +4,11 @@ import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/co
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
+  trackPageView,
+  setClickAnalyticsData,
+  updatePageData,
+} from '../../../../../analytics/actions';
+import {
   getLabels,
   getOutfitImage,
   getOutfitProducts,
@@ -120,6 +125,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       topPromos,
       router: { asPath: asPathVal },
+      trackPageLoad,
+      // updatePageDataAnalytics,
     } = this.props;
     const { outfitIdLocal } = this.state;
     if (outfitProducts) {
@@ -151,6 +158,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           asPathVal={asPathVal}
           topPromos={topPromos}
+          trackPageLoad={trackPageLoad}
+          // updatePageDataAnalytics={updatePageDataAnalytics}
         />
       );
     }
@@ -161,9 +170,10 @@ class OutfitDetailsContainer extends React.PureComponent {
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
   pageData: {
-    pageName: 'product',
-    pageSection: 'product',
-    pageSubSection: 'product',
+    pageName: 'outfit',
+    pageSection: 'outfit',
+    pageSubSection: 'outfit',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -209,6 +219,35 @@ function mapDispatchToProps(dispatch) {
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    // updatePageDataAnalytics: payload => {
+    //   dispatch(updatePageData(payload));
+    // },
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
     },
   };
 }

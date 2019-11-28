@@ -33,19 +33,20 @@ class SearchListingView extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       products,
-      setClickAnalyticsDataTracker,
+      trackPageLoad,
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,
     } = this.props;
     const productsFormatted = this.formatProductsData(products);
     if (prevProps.products !== products && productsFormatted.length) {
-      setClickAnalyticsDataTracker({
+      trackPageLoad({
         products: productsFormatted,
-        pageSection: pageNameProp,
-        pageSubSection: pageSectionProp,
-        pageName: pageSubSectionProp,
-        customEvents: ['prodView', 'event1'],
+        pageType: 'search',
+        pageName: 'search',
+        pageSection: 'search',
+        pageSubSection: 'search',
+        customEvents: ['prodView', 'event1', 'event80', 'event83', 'event93'],
       });
     }
   }

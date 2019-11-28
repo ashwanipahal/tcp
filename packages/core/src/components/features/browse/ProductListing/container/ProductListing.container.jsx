@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
-import { setClickAnalyticsData } from '../../../../../analytics/actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import {
   removeAddToFavoriteErrorState,
@@ -200,6 +200,7 @@ class ProductListingContainer extends React.PureComponent {
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,
+      trackPageLoad,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -252,6 +253,7 @@ class ProductListingContainer extends React.PureComponent {
         pageNameProp={pageNameProp}
         pageSectionProp={pageSectionProp}
         pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
         {...otherProps}
       />
     ) : (
@@ -268,6 +270,7 @@ class ProductListingContainer extends React.PureComponent {
         pageNameProp={pageNameProp}
         pageSectionProp={pageSectionProp}
         pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
       />
     );
   }
@@ -279,6 +282,7 @@ ProductListingContainer.pageInfo = {
     pageName: 'browse',
     pageSection: 'browse',
     pageSubSection: 'browse',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -375,7 +379,33 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
-    setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+    // setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 

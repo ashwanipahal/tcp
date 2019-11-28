@@ -91,6 +91,7 @@ const ProductListView = ({
   pageNameProp,
   pageSectionProp,
   pageSubSectionProp,
+  trackPageLoad,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered
@@ -107,9 +108,13 @@ const ProductListView = ({
   useEffect(() => {
     const productsFormatted = formatProductsData(products);
     if (products.length) {
-      setClickAnalyticsData({
+      trackPageLoad({
         pageType: 'browse',
+        pageName: 'browse',
+        pageSection: 'browse',
+        pageSubSection: 'browse',
         products: productsFormatted,
+        // customEvents: ['prodView', 'event1'],
       });
     }
   }, [products.length]);
