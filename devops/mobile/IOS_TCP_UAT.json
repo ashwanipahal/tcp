@@ -359,9 +359,9 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
+      "certificateFilename": "Dev-Certificates.p12",
       "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATStage.mobileprovision",
-      "certificateFileId": "bf74bb9c-df52-49ab-a7d7-6040542a6ef2",
+      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
       "provisioningProfileFileId": "86c75568-d841-44a5-a73c-a419306b47cd",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
