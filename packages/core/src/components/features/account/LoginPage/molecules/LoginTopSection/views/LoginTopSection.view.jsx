@@ -93,6 +93,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             src={getIconPath('my-place-rewards')}
             className="logo elem-mb-LRG"
             data-locator="login-mprbanner"
+            alt={getLabelValue(labels, 'my_place_rewards', 'accessibility')}
           />
         </BodyCopy>
       )}
@@ -136,6 +137,11 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
                 underline
                 textAlign="center"
                 noLink
+                aria-label={`${getLabelValue(
+                  labels,
+                  'lbl_login_Description_clickhere',
+                  'login'
+                )} ${getLabelValue(labels, 'lbl_login_Description_heading_3', 'login')}`}
                 onClick={e => {
                   e.preventDefault();
                   showForgotPassword(showForgotPasswordForm);
