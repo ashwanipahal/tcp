@@ -35,7 +35,7 @@
                     android:host="test5.childrensplace.com"
                     android:pathPrefix="/us/change-password"
                     android:scheme="https" />
-                
+
                 <data
                     android:host="test6.gymboree.com"
                     android:pathPrefix="/us/change-password"
@@ -48,11 +48,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
         <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
             android:launchMode="singleTask">
