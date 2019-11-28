@@ -5,6 +5,7 @@ import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common
 import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import style, {
   TileHeader,
   TileFooter,
@@ -122,18 +123,20 @@ class StoreAddressTile extends PureComponent {
       dataLocatorKey,
     } = this.props;
     return (
-      <div className="store-details-header">
-        {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
-        {titleClickCb && (
-          <button
-            className="store-name store-name--details-btn"
-            onClick={titleClickCb}
-            data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
-          >
-            {storeName}
-          </button>
-        )}
-      </div>
+      storeName && (
+        <div className="store-details-header">
+          {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
+          {titleClickCb && (
+            <button
+              className="store-name store-name--details-btn"
+              onClick={titleClickCb}
+              data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
+            >
+              {storeName}
+            </button>
+          )}
+        </div>
+      )
     );
   }
 
@@ -375,7 +378,7 @@ class StoreAddressTile extends PureComponent {
       </Button>
     );
   }
-
+  /* eslint-disable-next-line complexity */
   getStoreAddress() {
     const { store, variation, isFavorite, labels } = this.props;
     const { address, phone } = store.basicInfo;
@@ -385,6 +388,7 @@ class StoreAddressTile extends PureComponent {
       variation === detailsType && store.distance
         ? `${store.distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
         : null;
+    const cityTxt = city && state && zipCode ? `${city}, ${state}, ${zipCode}` : '';
 
     return (
       <div className="address-wrapper">
@@ -395,7 +399,7 @@ class StoreAddressTile extends PureComponent {
           fontFamily="secondary"
           className="address-details"
         >
-          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map(
+          {[addressLine1, cityTxt, phone, distance].map(
             (item, i) =>
               item && (
                 <BodyCopy
