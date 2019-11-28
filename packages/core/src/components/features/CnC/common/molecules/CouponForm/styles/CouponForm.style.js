@@ -58,6 +58,10 @@ export default css`
     .success__checkmark {
       visibility: hidden;
     }
+
+    .TextBox__input {
+      border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    }
   }
 
   .coupon_error_message {

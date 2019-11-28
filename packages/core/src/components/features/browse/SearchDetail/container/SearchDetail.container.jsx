@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
@@ -6,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
-import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
+import { getProductsAndTitleBlocks } from '../../ProductListing/container/ProductListing.util';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -39,7 +38,9 @@ import {
   getIsLoadingMore,
   checkIfSearchResultsAvailable,
   getPDPLabels,
-} from '../container/SearchDetail.selectors';
+  getPlpHorizontalPromo,
+  getPLPGridPromos,
+} from './SearchDetail.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -49,7 +50,7 @@ import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 import {
   getCurrentCurrency,
   getCurrencyAttributes,
-} from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+} from '../../ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
   static pageProps = {
@@ -196,7 +197,7 @@ class SearchDetailContainer extends React.PureComponent {
                 currency={currency}
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
-                isSearchListing={true}
+                isSearchListing
                 asPathVal={asPathVal}
                 AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                 removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
@@ -238,7 +239,7 @@ class SearchDetailContainer extends React.PureComponent {
               currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
-              isSearchListing={true}
+              isSearchListing
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
@@ -261,18 +262,29 @@ function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
 
-  // eslint-disable-next-line
-  let filtersLength = {};
+  const filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
 
+  const plpHorizontalPromos = getPlpHorizontalPromo(state);
+  const plpGridPromos = getPLPGridPromos(state);
+
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
+    productsBlock: getProductsAndTitleBlocks(
+      state,
+      productBlocks,
+      plpGridPromos,
+      plpHorizontalPromos,
+      5,
+      filterCount
+    ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     categoryId: getCategoryId(state),

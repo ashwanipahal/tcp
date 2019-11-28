@@ -40,7 +40,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     alt="user"
     className="usericon"
     onClick={[Function]}
-    src="/static/images/user-icon.png"
+    src="/static/version-not-available/images/user-icon.png"
   />
 </Fragment>
 `;
@@ -85,7 +85,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
     alt="user"
     className="usericon"
     onClick={[Function]}
-    src="/static/images/user-icon.png"
+    src="/static/version-not-available/images/user-icon.png"
   />
 </Fragment>
 `;
