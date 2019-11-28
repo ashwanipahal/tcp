@@ -262,13 +262,14 @@ function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
 
-  // eslint-disable-next-line
-  let filtersLength = {};
+  const filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
 
@@ -281,7 +282,8 @@ function mapStateToProps(state) {
       productBlocks,
       plpGridPromos,
       plpHorizontalPromos,
-      5
+      5,
+      filterCount
     ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),

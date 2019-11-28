@@ -1162,6 +1162,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         name="ssNumber"
         placeholder="ssn"
         title="ssn"
+        type="password"
       />
     </Styled(Col)>
   </Styled(Row)>
