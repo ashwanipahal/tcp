@@ -21,6 +21,7 @@ import {
   getCurrencyAttributes,
   getAlternateSizes,
   getPLPPromos,
+  getPDPLoadingState,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -40,6 +41,7 @@ import {
 
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
+import ProductDetailSkeleton from '../molecules/ProductDetailSkeleton';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -112,6 +114,7 @@ class ProductDetailContainer extends React.PureComponent {
       outOfStockLabels,
       middlePromos,
       bottomPromos,
+      isLoading,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -145,9 +148,8 @@ class ProductDetailContainer extends React.PureComponent {
             middlePromos={middlePromos}
             bottomPromos={bottomPromos}
           />
-        ) : (
-          <Spinner />
-        )}
+        ) : null}
+        {isLoading ? <ProductDetailSkeleton /> : null}
       </React.Fragment>
     );
   }
@@ -156,6 +158,7 @@ class ProductDetailContainer extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
+    isLoading: getPDPLoadingState(state),
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
