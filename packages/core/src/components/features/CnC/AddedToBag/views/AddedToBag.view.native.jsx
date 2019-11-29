@@ -192,6 +192,7 @@ AddedToBag.propTypes = {
   navigation: PropTypes.shape({}),
   addedToBagInterval: PropTypes.number.isRequired,
   totalBagItems: PropTypes.number.isRequired,
+  pointsSummary: PropTypes.number.isRequired,
 };
 
 AddedToBag.defaultProps = {
