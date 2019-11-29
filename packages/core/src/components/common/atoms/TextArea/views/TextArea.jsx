@@ -27,7 +27,7 @@ type Props = {
   input: any,
 };
 
-const TextArea = ({
+export const TextArea = ({
   className,
   id,
   ariaLabel,
@@ -99,4 +99,3 @@ TextArea.defaultProps = {
 };
 
 export default withStyles(TextArea, StyledTextArea);
-export { TextArea as TextAreaVanilla };
