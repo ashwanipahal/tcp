@@ -89,6 +89,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
     error="test"
     fontSize=""
     fontWeight=""
+    isEspot={false}
     showAccordian={true}
   />
   <Styled(View)>

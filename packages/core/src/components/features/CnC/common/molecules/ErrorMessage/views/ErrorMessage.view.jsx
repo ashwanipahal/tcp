@@ -41,6 +41,7 @@ ErrorMessage.propTypes = {
   className: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  isEspot: PropTypes.bool,
 };
 
 ErrorMessage.defaultProps = {
@@ -48,6 +49,7 @@ ErrorMessage.defaultProps = {
   className: '',
   fontSize: 'fs10',
   fontWeight: 'normal',
+  isEspot: false,
 };
 
 export default withStyles(ErrorMessage, style);

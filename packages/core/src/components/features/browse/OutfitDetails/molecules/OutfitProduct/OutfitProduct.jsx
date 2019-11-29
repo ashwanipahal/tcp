@@ -62,7 +62,7 @@ const OutfitDetailsView = ({
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   const keepAlive = isKeepAliveEnabled && colorProduct.miscInfo.keepAlive;
 
-  const onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
+  const onChangeColor = e => {
     colorProduct = getMapSliceForColor(colorFitsSizesMap, e);
   };
 

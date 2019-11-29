@@ -68,23 +68,16 @@ export class ThemeWrapper extends React.PureComponent {
     );
   }
 }
-
 ThemeWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
   appType: PropTypes.string.isRequired,
   updateAppTypeHandler: PropTypes.func,
-  switchBrand: PropTypes.func,
-  resetReduxStoreData: PropTypes.func,
   appParms: PropTypes.shape({}),
-  isLoaded: PropTypes.bool,
 };
 
 ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
-  switchBrand: null,
-  resetReduxStoreData: null,
   appParms: {},
-  isLoaded: false,
 };
 
 const mapStateToProps = (state, ownProps) => {
