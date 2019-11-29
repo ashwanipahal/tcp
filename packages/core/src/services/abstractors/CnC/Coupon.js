@@ -13,6 +13,21 @@ export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
     },
   };
 
+  const setPlaceCashError = ({ err: errorObj }) => {
+    const placeCash = CheckoutConstants.PLACE_CASH;
+
+    const err = errorObj;
+    const isPlaceCashError =
+      err.response.body &&
+      err.response.body.errors &&
+      err.response.body.errors[0].errorParameters[1] === placeCash;
+    if (isPlaceCashError) {
+      err.response.body.errors[0].errorCode = CheckoutConstants.PLACE_CASH_ERROR;
+      err.response.body.errors[0].errorKey = CheckoutConstants.PLACE_CASH_ERROR;
+    }
+    return isPlaceCashError;
+  };
+
   return executeStatefulAPICall(payload, ({ err }) => {
     const isPlaceCashError = setPlaceCashError({ err });
     const error = getFormattedError(err, errorsMapping);
@@ -28,21 +43,6 @@ export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
     };
     throw new SubmissionError(error.errorMessages);
   });
-};
-
-const setPlaceCashError = ({ err: errorObj }) => {
-  const placeCash = CheckoutConstants.PLACE_CASH;
-
-  const err = errorObj;
-  const isPlaceCashError =
-    err.response.body &&
-    err.response.body.errors &&
-    err.response.body.errors[0].errorParameters[1] === placeCash;
-  if (isPlaceCashError) {
-    err.response.body.errors[0].errorCode = CheckoutConstants.PLACE_CASH_ERROR;
-    err.response.body.errors[0].errorKey = CheckoutConstants.PLACE_CASH_ERROR;
-  }
-  return isPlaceCashError;
 };
 
 export const removeCouponOrPromo = ({ couponCode = '' }) => {

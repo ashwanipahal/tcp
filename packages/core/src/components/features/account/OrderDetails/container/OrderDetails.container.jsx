@@ -17,6 +17,21 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  */
 export class OrderDetailsContainer extends PureComponent {
   componentDidMount() {
+    this.setOrderUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { getOrderDetailsAction, orderId, emailAddress, orderDetailsData } = this.props;
+    const payload = {
+      orderId,
+      emailAddress,
+    };
+    if (prevProps.orderId !== orderId && orderId !== orderDetailsData.orderNumber) {
+      getOrderDetailsAction(payload);
+    }
+  }
+
+  setOrderUpdate = () => {
     const { getOrderDetailsAction, orderId, emailAddress, orderDetailsData } = this.props;
     const payload = {
       orderId,
@@ -29,7 +44,7 @@ export class OrderDetailsContainer extends PureComponent {
     ) {
       getOrderDetailsAction(payload);
     }
-  }
+  };
 
   /**
    * @function render  Used to render the JSX of the component

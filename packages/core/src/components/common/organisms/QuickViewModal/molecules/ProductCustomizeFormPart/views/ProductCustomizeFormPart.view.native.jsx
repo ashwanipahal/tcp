@@ -162,6 +162,7 @@ const ProductCustomizeFormPart = props => {
           onCloseClick={onCloseClick}
           isMultiItemQVModal={isMultiItemQVModal}
           isFromBagProductSfl={isFromBagProductSfl}
+          hideAlternateSizes
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>
@@ -191,6 +192,7 @@ ProductCustomizeFormPart.propTypes = {
   onInputSelectionChange: PropTypes.func.isRequired,
   toastMessage: PropTypes.func,
   onCloseClick: PropTypes.func,
+  isFromBagProductSfl: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -199,6 +201,7 @@ ProductCustomizeFormPart.defaultProps = {
   navigation: {},
   toastMessage: () => {},
   onCloseClick: () => {},
+  isFromBagProductSfl: false,
 };
 
 export default ProductCustomizeFormPart;
