@@ -3,6 +3,11 @@ import React from 'react';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
 import ProductAddToBag from '../views/ProductAddToBag.view';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 
 /**
  * This class is a container of Product Add to bag view
@@ -25,7 +30,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
-      keepAlive: this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
+      keepAlive:
+        this.initialColorFitsSizesMapEntry &&
+        this.initialColorFitsSizesMapEntry.miscInfo &&
+        this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
     };
   }
 
@@ -134,6 +142,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return firstSizeName;
   };
 
+  getColor = colorFitsSizesMapEntry => {
+    return (
+      colorFitsSizesMapEntry && colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name
+    );
+  };
+
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
     const colorFitsSizesMapEntry = currentProduct
       ? this.getMapSliceForColorProductId(
@@ -159,15 +173,16 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name,
+        name: this.getColor(colorFitsSizesMapEntry),
       },
-      Fit: colorFitsSizesMapEntry.hasFits
-        ? {
-            name: !initialFormValues
-              ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitName
-              : initialFormValues.Fit,
-          }
-        : null,
+      Fit:
+        colorFitsSizesMapEntry && colorFitsSizesMapEntry.hasFits
+          ? {
+              name: !initialFormValues
+                ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitName
+                : initialFormValues.Fit,
+            }
+          : null,
       Size: {
         name: currentProduct.isGiftCard
           ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
@@ -475,6 +490,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isKeepAliveEnabled,
       sizeChartDetails,
       isMultiItemQVModal,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
     const {
@@ -547,13 +565,24 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
       />
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
+  };
+}
+
 /* Export container */
 
-export default connect()(ProductAddToBagContainer);
+export default connect(mapStateToProps)(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

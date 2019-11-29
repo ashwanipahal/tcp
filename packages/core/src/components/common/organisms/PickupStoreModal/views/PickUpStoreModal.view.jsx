@@ -434,6 +434,8 @@ class PickUpStoreModalView extends React.Component {
       openRestrictedModalForBopis,
       isGetUserStoresLoaded,
       toastMessage,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -505,8 +507,12 @@ class PickUpStoreModalView extends React.Component {
           onCloseClick={this.onCloseClick}
           navigation={navigation}
           toastMessage={toastMessage}
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
         />
         <PickupStoreSelectionFormContainer
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
           isGetUserStoresLoaded={isGetUserStoresLoaded}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           maxAllowedStoresInCart={maxAllowedStoresInCart}

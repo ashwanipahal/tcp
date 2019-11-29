@@ -91,6 +91,8 @@ export const getDefaultImage = state => {
   const firstColor =
     state.ProductDetail.currentProduct &&
     state.ProductDetail.currentProduct.colorFitsSizesMap &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0] &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0].color &&
     state.ProductDetail.currentProduct.colorFitsSizesMap[0].color.name;
   return (
     firstColor &&
@@ -195,14 +197,23 @@ const getRefinedNavTreeL2orL3 = (catId, navigationTree) => {
   return navigationTree.find(L2 => L2.categoryContent.id === catId);
 };
 
+const getCatMapL1Params = catMapL1 => {
+  const menuItems = [];
+  const mainObj = catMapL1 && catMapL1.subCategories;
+  Object.keys(mainObj).forEach(key => {
+    menuItems.push(mainObj[key].items);
+  });
+  return menuItems.flat(2);
+};
+
 const getNavTreeFromCatMap = (navTree, categoryPath) => {
   if (!categoryPath) return '';
   const catMapL1Id = categoryPath[0] && categoryPath[0].split('|')[0].split('>')[0];
   const catMapL2Id = categoryPath[0] && categoryPath[0].split('|')[0].split('>')[1];
   const catMapL3Id = (categoryPath[0] && categoryPath[0].split('|')[0].split('>')[2]) || null;
   const catMapL1 = catMapL1Id && getRefinedNavTree(catMapL1Id, navTree);
-  const catMapL2 =
-    catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1.subCategories.Categories.items);
+  const catMapL1Params = getCatMapL1Params(catMapL1);
+  const catMapL2 = catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params);
   return (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2.subCategories)) || catMapL2;
 };
 
@@ -220,7 +231,10 @@ const getNavTreeFromBreadCrumb = (breadCrumbs, categoryPath, navTree) => {
   const l3CatFromString =
     navTree &&
     navTree.subCategories &&
-    navTree.subCategories.Categories.items.find(cat => cat.id === l3String);
+    navTree.subCategories.map(navMap => {
+      return navMap.items.find(cat => cat.id === l3String);
+    });
+
   return (
     (l3CatFromString && l3CatFromString.categoryContent.sizeChartSelection) ||
     (navTree && navTree.categoryContent && navTree.categoryContent.sizeChartSelection) ||
@@ -236,7 +250,10 @@ const fetchL2andL3Category = (navTree, breadCrumbs, isBundleProduct, categoryPat
     l2Cat =
       tree &&
       tree.subCategories &&
-      tree.subCategories.Categories.items.find(cat => cat.id === breadCrumbs[1].categoryId);
+      tree.subCategories.map(navMap => {
+        return navMap.items.find(cat => cat.id === breadCrumbs[1].categoryId);
+      });
+
     l3Cat =
       breadCrumbs[2] &&
       l2Cat &&

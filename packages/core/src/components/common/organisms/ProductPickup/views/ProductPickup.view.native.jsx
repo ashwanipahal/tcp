@@ -451,7 +451,7 @@ class ProductPickup extends React.PureComponent {
     return (
       <UnavailableLink>
         <BodyCopyWithSpacing
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="semibold"
           fontSize="fs12"
           color="black"
