@@ -265,6 +265,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Connect(CouponContainer)
+            pageName="shopping bag"
             showAccordian={false}
           />
         </Styled(View)>

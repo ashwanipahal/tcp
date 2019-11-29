@@ -125,7 +125,7 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return 'us:en';
+        return 'US:en';
       },
     },
 
