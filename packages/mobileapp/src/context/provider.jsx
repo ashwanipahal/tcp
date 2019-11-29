@@ -4,6 +4,7 @@ import { ThemeProvider } from '@fabulas/astly';
 import { Provider as ReduxProvider } from 'react-redux';
 import { InfoProvider } from './info';
 import { PermissionProvider } from './permissions';
+// eslint-disable-next-line
 import { ErrorBoundary, ErrorReportProvider } from './logging';
 import { LocationProvider } from './location';
 import { initializeStore } from '../reduxStore/store/initializeStore';

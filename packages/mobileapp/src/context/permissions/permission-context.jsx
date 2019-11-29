@@ -14,7 +14,7 @@ async function getInitialContextState({ platform }) {
   }
   return {};
 }
-
+// eslint-disable-next-line
 function PermissionProvider({ children, ...props }) {
   const info = useInfoState();
   const [state, setState] = React.useState(null);
@@ -41,6 +41,7 @@ function PermissionProvider({ children, ...props }) {
 }
 
 function usePermissionState() {
+  // eslint-disable-next-line
   let context = React.useContext(PermissionContext);
   if (context === undefined) {
     throw new Error('usePermissionState must be used within a PermissionProvider');

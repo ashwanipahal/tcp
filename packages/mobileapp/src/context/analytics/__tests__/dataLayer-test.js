@@ -1,5 +1,5 @@
-import createDataLayer from '../dataLayer';
 import { fromJS } from 'immutable';
+import createDataLayer from '../dataLayer';
 
 describe('dataLayer', () => {
   let datalayer;
