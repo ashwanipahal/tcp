@@ -23,7 +23,7 @@ describe('transformEvents', () => {
   });
 
   it('transformClickEvent should return object if mapping is present for name and module', () => {
-    const t = transformClickEvent('login-success', 'account');
+    const t = transformClickEvent('login_success', 'account');
     expect(Object.keys(t).length).toBeGreaterThan(1);
   });
 
