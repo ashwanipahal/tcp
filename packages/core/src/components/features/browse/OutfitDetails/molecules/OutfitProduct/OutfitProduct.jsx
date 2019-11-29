@@ -105,12 +105,14 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <DamImage
-              className="full-size-desktop-image"
-              imgData={imgData}
-              itemProp="contentUrl"
-              isProductImage
-            />
+            <Anchor to={pdpToPath} asPath={outfitProduct.pdpUrl}>
+              <DamImage
+                className="full-size-desktop-image"
+                imgData={imgData}
+                itemProp="contentUrl"
+                isProductImage
+              />
+            </Anchor>
             {renderOutOfStock(keepAlive, outOfStockLabels)}
           </BodyCopy>
 
@@ -190,7 +192,7 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
-  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
@@ -211,6 +213,7 @@ OutfitDetailsView.defaultProps = {
   addToBagError: false,
   isLoggedIn: false,
   isBundleProduct: false,
+  isKeepAliveEnabled: false,
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
