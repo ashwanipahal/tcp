@@ -15,7 +15,7 @@ import {
   StyledImage,
   HeaderContainer,
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
-import ClickTracker from '../../../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
+import ClickTracker from '../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');

@@ -1,6 +1,7 @@
 import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import {
   generateBrowseDataLayer,
   generateHomePageDataLayer,
@@ -128,9 +129,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store.getState().User.getIn(['personalData', 'isGuest'])
-          ? 'no rewards:guest'
-          : 'no rewards:logged in';
+        return getUserLoggedInState(store.getState()) ? 'no rewards:logged in' : 'no rewards:guest';
       },
     },
 

@@ -14,6 +14,7 @@ describe('dataLayer', () => {
             pageName: 'test',
             pageType: 'myplace',
             pageSection: 'myplace',
+            pageSubSection: 'myplace',
           },
           APIConfig: {
             storeId: '10551',
@@ -49,7 +50,7 @@ describe('dataLayer', () => {
   });
 
   it('pageShortName should return correctly', () => {
-    expect(datalayer.pageShortName).toBe('test');
+    expect(datalayer.pageShortName).toBe('gl:test');
   });
 
   it('pageType should return correctly', () => {

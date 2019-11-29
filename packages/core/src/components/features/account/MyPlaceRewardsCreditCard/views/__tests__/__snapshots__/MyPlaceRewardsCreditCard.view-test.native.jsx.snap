@@ -279,23 +279,12 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
           }
         }
         fill="WHITE"
-        fullWidth=""
-        iconColor="gray.800"
-        iconName="chevron-down"
-        iconSize="fs12"
-        locator=""
-        navigation={Object {}}
+        module="account"
+        name="manage_plcc"
         onPress={[Function]}
-        paddings="12px 32px 12px 32px"
-        selected={false}
-        selectedIcon="chevron-up"
-        showIcon={false}
         text="lbl_PLCCForm_manageCreditCardAccount"
-        theme={Object {}}
         type="submit"
-        url=""
         width="100%"
-        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
