@@ -15,6 +15,7 @@ import {
   getAddedToBagErrorCatId,
   getPDPLabels,
   getUnavailableCount,
+  getLoadingState,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
@@ -31,7 +32,10 @@ import {
 import {
   getIsInternationalShipping,
   getCurrentCurrency,
+  getIsKeepAliveProduct,
+  getIsKeepAliveProductApp,
 } from '../../../../../reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
@@ -47,6 +51,7 @@ import {
 } from '../../Favorites/container/Favorites.actions';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
+import OutfitProductSkeleton from '../molecules/OutfitProductSkeleton';
 
 class OutfitDetailsContainer extends React.PureComponent {
   static getInitialProps = async ({ props, query, isServer }) => {
@@ -125,45 +130,50 @@ class OutfitDetailsContainer extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       topPromos,
       router: { asPath: asPathVal },
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      isLoading,
       trackPageLoad,
-      // updatePageDataAnalytics,
     } = this.props;
     const { outfitIdLocal } = this.state;
-    if (outfitProducts) {
-      return (
-        <OutfitDetails
-          labels={labels}
-          outfitImageUrl={outfitImageUrl}
-          unavailableCount={unavailableCount}
-          outfitProducts={outfitProducts}
-          plpLabels={plpLabels}
-          isCanada={isCanada()}
-          isPlcc={isPlcc}
-          isInternationalShipping={isInternationalShipping}
-          currencySymbol={priceCurrency}
-          currencyAttributes={currencyAttributes}
-          handleAddToBag={this.handleAddToBag}
-          addToBagEcom={addToBagEcom}
-          currentState={currentState}
-          addToBagError={addToBagError}
-          addToBagErrorId={addToBagErrorId}
-          isPickupModalOpen={isPickupModalOpen}
-          addToFavorites={addToFavorites}
-          isLoggedIn={isLoggedIn}
-          navigation={navigation}
-          outfitId={outfitIdLocal}
-          pdpLabels={pdpLabels}
-          toastMessage={toastMessage}
-          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-          asPathVal={asPathVal}
-          topPromos={topPromos}
-          trackPageLoad={trackPageLoad}
-          // updatePageDataAnalytics={updatePageDataAnalytics}
-        />
-      );
-    }
-    return null;
+    return (
+      <React.Fragment>
+        {outfitProducts ? (
+          <OutfitDetails
+            labels={labels}
+            outfitImageUrl={outfitImageUrl}
+            unavailableCount={unavailableCount}
+            outfitProducts={outfitProducts}
+            plpLabels={plpLabels}
+            isCanada={isCanada()}
+            isPlcc={isPlcc}
+            isInternationalShipping={isInternationalShipping}
+            currencySymbol={priceCurrency}
+            currencyAttributes={currencyAttributes}
+            handleAddToBag={this.handleAddToBag}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            addToBagError={addToBagError}
+            addToBagErrorId={addToBagErrorId}
+            isPickupModalOpen={isPickupModalOpen}
+            addToFavorites={addToFavorites}
+            isLoggedIn={isLoggedIn}
+            navigation={navigation}
+            outfitId={outfitIdLocal}
+            pdpLabels={pdpLabels}
+            toastMessage={toastMessage}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            asPathVal={asPathVal}
+            topPromos={topPromos}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+            trackPageLoad={trackPageLoad}
+          />
+        ) : null}
+        {isLoading ? <OutfitProductSkeleton /> : null}
+      </React.Fragment>
+    );
   }
 }
 
@@ -181,6 +191,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     outfitImageUrl: getOutfitImage(state),
+    isLoading: getLoadingState(state),
     unavailableCount: getUnavailableCount(state),
     outfitProducts: getOutfitProducts(state),
     plpLabels: getPlpLabels(state),
@@ -197,6 +208,10 @@ const mapStateToProps = state => {
     pdpLabels: getPDPLabels(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    isKeepAliveEnabled: isMobileApp()
+      ? getIsKeepAliveProductApp(state)
+      : getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 };
 
@@ -220,9 +235,6 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
-    // updatePageDataAnalytics: payload => {
-    //   dispatch(updatePageData(payload));
-    // },
     trackPageLoad: payload => {
       const { products } = payload;
       dispatch(
@@ -277,6 +289,8 @@ OutfitDetailsContainer.propTypes = {
   toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -301,6 +315,8 @@ OutfitDetailsContainer.defaultProps = {
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withIsomorphicRenderer({

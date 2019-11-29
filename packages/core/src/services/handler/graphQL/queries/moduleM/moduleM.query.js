@@ -59,6 +59,15 @@ const buildQuery = ({ slot, contentId, lang }) => `
             alt
             title
           }
+          video{
+            url
+            title
+            autoplay
+            controls
+            loop
+            muted
+            inline
+          }
         }
         linkClass {
           class
