@@ -7,11 +7,6 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../SiteMap.style';
 
 class SiteMap extends React.PureComponent {
-  componentDidMount() {
-    const { getSiteMapData } = this.props;
-    getSiteMapData();
-  }
-
   render() {
     const { className, siteMapData } = this.props;
     const { categories, content } = siteMapData;

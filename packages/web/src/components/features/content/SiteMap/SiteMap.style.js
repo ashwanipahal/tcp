@@ -15,6 +15,7 @@ export default css`
       margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
+
   .siteMap_heading {
     text-transform: uppercase;
   }
@@ -25,8 +26,8 @@ export default css`
     justify-content: space-between;
   }
 
-  ol {
-    margin: 0;
+  .level-one-container {
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
     padding: 0;
     width: 100%;
 
@@ -38,7 +39,7 @@ export default css`
       width: 33%;
     }
 
-    h4 {
+    .level-one-title {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
       text-transform: uppercase;
 
@@ -47,7 +48,7 @@ export default css`
       }
     }
 
-    h5 {
+    .level-two-title {
       margin: 0;
       background: url(${getIconPath('down-arrow-sitemap')}) no-repeat left 7px;
       background-size: 8px;
@@ -55,16 +56,16 @@ export default css`
     }
   }
 
-  ul {
+  .level-two-container {
     margin: 0 0 10px 0;
     padding: 0 0 0 10px;
     list-style-type: none;
-  }
 
-  ul > li {
-    color: ${props => props.theme.colors.PRIMARY.GRAY['400']};
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
-    line-height: 1.36;
-    margin: 5px 0 0 15px;
+    .level-three-container {
+      color: ${props => props.theme.colors.PRIMARY.GRAY['400']};
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      line-height: 1.36;
+      margin: 5px 0 0 15px;
+    }
   }
 `;
