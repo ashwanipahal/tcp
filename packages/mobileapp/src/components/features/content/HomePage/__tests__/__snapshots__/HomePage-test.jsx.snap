@@ -37,6 +37,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleR": [Function],
         "moduleS": [Function],
         "moduleT": [Function],
+        "moduleX": [Function],
       }
     }
     navigation={
