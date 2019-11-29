@@ -1,5 +1,4 @@
 import React from 'react';
-import { List } from 'immutable';
 import { shallow } from 'enzyme';
 import PaymentOverviewTileSkelton from '../../skelton/PaymentOverviewTileSkelton.view.native';
 

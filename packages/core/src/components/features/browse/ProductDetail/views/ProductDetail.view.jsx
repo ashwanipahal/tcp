@@ -44,6 +44,38 @@ class ProductDetailView extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { productInfo, trackPageLoad } = this.props;
+    const productsFormatted = this.formatProductsData(productInfo);
+    if (productsFormatted) {
+      trackPageLoad({
+        pageType: 'product',
+        pageName: 'product',
+        pageSection: 'product',
+        pageSubSection: 'product',
+        products: productsFormatted,
+        customEvents: ['event74', 'event76', 'event95'],
+      });
+    }
+  }
+
+  formatProductsData = product => {
+    const productData = [];
+    const colorName = product.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = product.generalProductId.split('_')[0];
+    productData.push({
+      colorId: product.generalProductId,
+      color: colorName,
+      id: productId,
+      price: product.listPrice,
+      rating: product.ratings,
+      reviews: product.reviewsCount,
+    });
+    return productData;
+  };
+
   onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {
       productInfo: { colorFitsSizesMap },
@@ -64,6 +96,7 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
+
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -231,7 +264,10 @@ class ProductDetailView extends PureComponent {
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const keepAlive =
-      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+      isKeepAliveEnabled &&
+      currentColorEntry &&
+      currentColorEntry.miscInfo &&
+      currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -255,7 +291,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
-    const itemColor = currentColorEntry.color.name;
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -395,11 +431,6 @@ class ProductDetailView extends PureComponent {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
-          </Col>
-        </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
@@ -443,6 +474,11 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -464,7 +500,12 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
   sizeChartDetails: [],
+  asPathVal: '',
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

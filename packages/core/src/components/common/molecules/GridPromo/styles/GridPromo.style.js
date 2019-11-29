@@ -19,6 +19,7 @@ const stylesGridPromo = css`
     .middle-text-wrapper {
       padding-bottom: 30px;
     }
+
     .description-wrapper {
       padding-bottom: 24px;
     }

@@ -46,6 +46,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   isKeepModalOpen={false}
   isLoadingMore={false}
   isLoggedIn={false}
+  isPlcc={false}
   isSearchListing={false}
   labels={Object {}}
   labelsFavorite={Object {}}

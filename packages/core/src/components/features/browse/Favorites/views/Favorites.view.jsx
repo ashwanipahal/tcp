@@ -70,9 +70,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   shareClickHandler = value => {
-    if (value === 'Email') {
+    const { labels } = this.props;
+    if (value === labels.lbl_fav_email) {
       this.handleShareList();
-    } else if (value === 'Copy Link') {
+    } else if (value === labels.lbl_fav_copyLink) {
       this.handleCopyLink();
     } else {
       this.handleFacebookShare();
@@ -575,6 +576,14 @@ FavoritesView.propTypes = {
   sendWishListEmail: PropTypes.func.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
+  guestAccessKey: PropTypes.string,
+  activeDisplayName: PropTypes.string,
+  activeWishListId: PropTypes.string,
+  updateWishList: PropTypes.func,
+  resetBrandFilters: PropTypes.func,
+  formErrorMessage: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -586,6 +595,14 @@ FavoritesView.defaultProps = {
   defaultWishList: {},
   wishlistShareStatus: false,
   setListShareSuccess: () => {},
+  updateWishList: () => {},
+  isBothTcpAndGymProductAreAvailable: false,
+  isDataLoading: false,
+  guestAccessKey: '',
+  activeDisplayName: '',
+  resetBrandFilters: () => {},
+  formErrorMessage: {},
+  activeWishListId: '',
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

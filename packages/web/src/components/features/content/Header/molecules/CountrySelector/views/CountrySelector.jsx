@@ -21,7 +21,7 @@ class CountrySelector extends React.Component {
   };
 
   openModal = () => {
-    const { countriesMap, toggleModal } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
   };
 

@@ -84,6 +84,13 @@ export const setLastDeletedItemIdAction = payload => {
   };
 };
 
+export const setReplaceWishlistItem = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
 export const setDeletedItemAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.DELETED_WISHLIST_ITEM,
@@ -143,6 +150,20 @@ export const setLoadingState = payload => {
 export const setWishListShareSuccess = payload => {
   return {
     type: FAVORITES_CONSTANTS.FAVORITES_SET_WISHLIST_SHARE_SUCCESS,
+    payload,
+  };
+};
+
+export const setMaximumProductAddedErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.MAXIMUM_PRODUCT_ADDED_ERROR,
+    payload,
+  };
+};
+
+export const resetMaximumProductAddedErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.RESET_MAXIMUM_PRODUCT_ADDED_ERROR,
     payload,
   };
 };
