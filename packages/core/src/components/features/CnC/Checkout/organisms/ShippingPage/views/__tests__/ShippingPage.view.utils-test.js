@@ -3,8 +3,6 @@ import {
   setShippingAddress,
   isShowVenmoBanner,
 } from '../ShippingPage.view.utils';
-import { getSiteId } from '../../../../../../../../utils/utils.web';
-import CONSTANTS from '../../../../Checkout.constants';
 
 jest.mock('../../../../../../../../utils/utils.web', () => ({
   getSiteId: jest.fn(),

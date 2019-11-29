@@ -276,7 +276,6 @@ export function getProductsAndTitleBlocks(
   }
 
   let totalItemsAdded = 0;
-  let promosAdded = 0;
 
   let isL2WithBucket = false;
   let numberOfItemsInCurrentL2 = 0;
@@ -308,7 +307,6 @@ export function getProductsAndTitleBlocks(
       // since it occupies space of the 8th product, which is actually slot 7
       const slotIndex = slots.indexOf(currentSlot + 1);
       if (slotIndex !== -1) {
-        promosAdded += 1;
         productsAndTitleBlock.push({
           itemType: 'gridPromo',
           gridStyle: 'vertical',
@@ -334,7 +332,6 @@ export function getProductsAndTitleBlocks(
     numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
     // Check if the number of products and the promos count sum
     // to understand the number of slots blank at the end of the block
-    const numberOfItemsInBlock = productsAdded + promoAddedInCurrentBlock;
     const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
 
     // For L2 with buckets only
