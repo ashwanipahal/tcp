@@ -1,4 +1,5 @@
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+/*eslint-disable */
 import { getActiveRoute } from './getActiveRoute';
 
 /**

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, FlatList } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import ModuleO from '@tcp/core/src/components/common/molecules/ModuleO';
 import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
@@ -84,8 +84,8 @@ const ButtonView = buttonProps => {
   );
 };
 
-const renderHeader = (props, variation, isAccordionOpen, setIsAccordionOpen) => {
-  const { moduleOHeaderLabel, modulePHeaderLabel, isHeaderAccordion, isSuggestedItem } = props;
+const renderHeader = (prop, variation, isAccordionOpen, setIsAccordionOpen) => {
+  const { moduleOHeaderLabel, modulePHeaderLabel, isHeaderAccordion, isSuggestedItem } = prop;
   const params = config.params[variation];
   const headerLabel =
     variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
