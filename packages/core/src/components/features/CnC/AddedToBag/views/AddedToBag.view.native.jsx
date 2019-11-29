@@ -69,13 +69,19 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
   return <RowWrapper />;
 };
 
-const getProductsWrapper = (addedToBagData, labels, quantity) => {
+const getProductsWrapper = (addedToBagData, labels, quantity, pointsSummary) => {
   if (Array.isArray(addedToBagData)) {
     return addedToBagData.map(item => {
       return <ProductInformation data={item} labels={labels} />;
     });
   }
-  return <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />;
+  return (
+    <ProductInformation
+      data={{ ...addedToBagData, ...pointsSummary }}
+      labels={labels}
+      quantity={quantity}
+    />
+  );
 };
 
 const resetCounter = ({ totalItems, totalBagItems }) => {
@@ -94,20 +100,17 @@ const AddedToBag = ({
   addedToBagInterval,
   totalBagItems,
   isPayPalButtonRendered,
+  isPayPalEnabled,
+  pointsSummary,
 }) => {
   const [counter, setCounter] = useState(0);
   const [resetTimer, resetTimerStatus] = useState(false);
   const [totalItems, setTotalItems] = useState(totalBagItems);
+  const payPalFlag = isPayPalEnabled ? isPayPalButtonRendered : true;
   useEffect(() => {
-    if (
-      counter === 0 &&
-      addedToBagInterval > 0 &&
-      totalBagItems > 0 &&
-      openState &&
-      isPayPalButtonRendered
-    ) {
+    if (counter === 0 && addedToBagInterval > 0 && totalBagItems > 0 && openState && payPalFlag) {
       timer = setTimeout(() => {
-        onRequestClose();
+        // onRequestClose();
       }, addedToBagInterval);
       setCounter(counter + 1);
       setTotalItems(totalBagItems);
@@ -154,7 +157,7 @@ const AddedToBag = ({
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
           <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            {getProductsWrapper(addedToBagData, labels, quantity)}
+            {getProductsWrapper(addedToBagData, labels, quantity, pointsSummary)}
             <AddedToBagViewPoints labels={labels} />
             <AddedToBagActions
               labels={labels}
@@ -211,6 +214,7 @@ AddedToBag.propTypes = {
   navigation: PropTypes.shape({}),
   addedToBagInterval: PropTypes.number.isRequired,
   totalBagItems: PropTypes.number.isRequired,
+  pointsSummary: PropTypes.number.isRequired,
 };
 
 AddedToBag.defaultProps = {

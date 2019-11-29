@@ -80,7 +80,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               navigation={navigation}
               setVenmoState={() => {
                 if (fromAddedToBagModal) {
-                  resetTimerStatus(isPayPalWebViewEnable);
+                  resetTimerStatus(true);
                   hideHeader(!isPayPalWebViewEnable);
                 }
               }}
@@ -98,8 +98,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
           navigation={navigation}
           setVenmoState={() => {
             const buyModal = fromAddedToBagModal;
+            console.log('PayPalButton 2', isPayPalWebViewEnable);
             if (buyModal) {
-              resetTimerStatus(isPayPalWebViewEnable);
+              resetTimerStatus(true);
               hideHeader(!isPayPalWebViewEnable);
             }
           }}
