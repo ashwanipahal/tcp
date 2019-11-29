@@ -9,6 +9,7 @@ import { getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import CheckoutActions from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 class BillingPageContainer extends React.Component {
   componentWillUnmount() {
@@ -18,8 +19,17 @@ class BillingPageContainer extends React.Component {
     }
   }
 
+  /**
+   * @description - Error notification for venmo authorization
+   */
+  onVenmoError = payload => {
+    if (payload && payload.venmoErrorMessage) {
+      toastMessage(payload.venmoErrorMessage);
+    }
+  };
+
   render() {
-    return <BillingPage {...this.props} />;
+    return <BillingPage onVenmoError={this.onVenmoError} {...this.props} />;
   }
 }
 
@@ -27,6 +37,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
       dispatch(CheckoutActions.updateCardData(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };

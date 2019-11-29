@@ -204,7 +204,7 @@ export class DetailedCouponTile extends React.Component {
                 role="img"
               >
                 <BodyCopy component="div" aria-hidden>
-                  <Barcode value={coupon.id} barcodeId={coupon.id} aria-hidden />
+                  <Barcode value={coupon.id} barcodeId={coupon.id} />
                 </BodyCopy>
               </BodyCopy>
             )}

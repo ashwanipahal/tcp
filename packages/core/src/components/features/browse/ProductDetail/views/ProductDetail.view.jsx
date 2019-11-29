@@ -231,7 +231,10 @@ class ProductDetailView extends PureComponent {
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const keepAlive =
-      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+      isKeepAliveEnabled &&
+      currentColorEntry &&
+      currentColorEntry.miscInfo &&
+      currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -255,7 +258,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
-    const itemColor = currentColorEntry.color.name;
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -393,11 +396,6 @@ class ProductDetailView extends PureComponent {
                 {...recommendationAttributes}
               />
             </div>
-          </Col>
-        </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
           </Col>
         </Row>
         <Row>

@@ -40,6 +40,8 @@ const OutfitDetailsView = ({
   removeAddToFavoritesErrorMsg,
   asPathVal,
   topPromos,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
   const recommendationAttributes = {
@@ -115,6 +117,9 @@ const OutfitDetailsView = ({
                     currencyAttributes={currencyAttributes}
                     AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                     removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                    pageName="OUTFIT"
+                    isKeepAliveEnabled={isKeepAliveEnabled}
+                    outOfStockLabels={outOfStockLabels}
                   />
                 </li>
               ))}
@@ -172,6 +177,8 @@ OutfitDetailsView.propTypes = {
   outfitId: PropTypes.string,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -189,6 +196,8 @@ OutfitDetailsView.defaultProps = {
   outfitId: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);
