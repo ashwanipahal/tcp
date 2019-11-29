@@ -134,7 +134,16 @@ class StoreAddressTile extends PureComponent {
     return (
       storeName && (
         <div className="store-details-header">
-          {!titleClickCb && <h1 className="store-name store-name--details">{storeName}</h1>}
+          {!titleClickCb && (
+            <BodyCopy
+              className="store-name store-name--details"
+              fontSize="fs16"
+              component="h1"
+              fontWeight="extrabold"
+            >
+              {storeName}
+            </BodyCopy>
+          )}
           {titleClickCb && (
             <button
               className="store-name store-name--details-btn"

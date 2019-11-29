@@ -497,11 +497,20 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
     <div
       className="store-details-header"
     >
-      <h1
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h1>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -1399,11 +1408,20 @@ exports[`StoreAddressTile component Details should render details view with fav 
     <div
       className="store-details-header"
     >
-      <h1
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h1>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -1862,11 +1880,20 @@ exports[`StoreAddressTile component Details should render details view with set 
     <div
       className="store-details-header"
     >
-      <h1
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h1>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
