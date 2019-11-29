@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import ForgotPasswordReducer from '../ForgotPassword.reducer';
 import FORGOTPASSWORD_CONSTANTS from '../../ForgotPassword.constants';
 
@@ -60,5 +61,35 @@ describe('ForgotPasswordReducer List reducer', () => {
         payload: err,
       })
     ).toEqual(fromJS({ toggleSuccessfulEmailSection: true }));
+  });
+
+  it('should call SET_SUBMIT_SUCCEEDED ', () => {
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    expect(
+      ForgotPasswordReducer(initialState, {
+        type: SET_SUBMIT_SUCCEEDED,
+        meta: {
+          form: FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE but not change error ', () => {
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    expect(
+      ForgotPasswordReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM,
+        },
+      })
+    ).toEqual(initialState);
   });
 });

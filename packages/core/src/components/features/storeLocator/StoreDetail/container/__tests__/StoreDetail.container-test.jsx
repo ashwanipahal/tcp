@@ -57,6 +57,7 @@ describe('Store Detail Page', () => {
     formatStore: store => ({ test: store }),
     nearByStores: [],
     loadNearByStoreInfo: jest.fn(),
+    fetchCurrentStoreInfo: jest.fn(),
   };
   it('should render StoreDetail', () => {
     const component = shallow(<StoreDetailContainer {...props} />);
@@ -70,6 +71,7 @@ describe('Store Detail Page', () => {
       formatStore: store => ({ key: store }),
       nearByStores: [],
       loadNearByStoreInfo: jest.fn(),
+      fetchCurrentStoreInfo: jest.fn(),
     };
     const component = shallow(<StoreDetailContainer {...prop} />);
     expect(component.is(StoreDetail)).toBeTruthy();

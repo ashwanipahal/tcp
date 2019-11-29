@@ -9,6 +9,7 @@ import { getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import CheckoutActions from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 class BillingPageContainer extends React.Component {
   componentWillUnmount() {
@@ -18,8 +19,18 @@ class BillingPageContainer extends React.Component {
     }
   }
 
+  /**
+   * @description - Error notification for venmo authorization
+   */
+  onVenmoError = payload => {
+    const { toastMessage } = this.props;
+    if (payload && payload.venmoErrorMessage) {
+      toastMessage(payload.venmoErrorMessage);
+    }
+  };
+
   render() {
-    return <BillingPage {...this.props} />;
+    return <BillingPage onVenmoError={this.onVenmoError} {...this.props} />;
   }
 }
 
@@ -27,6 +38,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
       dispatch(CheckoutActions.updateCardData(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };
@@ -54,11 +68,13 @@ BillingPageContainer.propTypes = {
   clearCheckoutServerError: PropTypes.func.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
   isPayPalHidden: PropTypes.bool,
+  toastMessage: PropTypes.func,
 };
 
 BillingPageContainer.defaultProps = {
   getCVVCodeInfo: null,
   isPayPalHidden: false,
+  toastMessage: () => {},
 };
 
 export default connect(

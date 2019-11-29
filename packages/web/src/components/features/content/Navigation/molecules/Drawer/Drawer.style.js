@@ -98,6 +98,10 @@ export default css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    border-radius: 0px;
+  }
+  .input-checkbox-wrapper {
+    display: flex;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .tcp-drawer__isOpen {
