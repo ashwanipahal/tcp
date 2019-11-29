@@ -220,7 +220,7 @@ export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
 export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
 
-// Category List Reducer
+// Site Map Reducer
 export const SITEMAP_REDUCER_KEY = 'SiteMapReducer';
 export const SITEMAP_ACTION_PATTERN = '@@SiteMap-';
 
