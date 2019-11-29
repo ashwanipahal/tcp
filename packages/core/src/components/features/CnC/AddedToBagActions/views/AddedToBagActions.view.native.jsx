@@ -52,7 +52,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
     );
   };
 
-  getPaypalButton = (addWrapper) => {
+  getPaypalButton = addWrapper => {
     const {
       getPayPalSettings,
       payPalTop,
@@ -92,10 +92,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
           fullWidth
         />
       );
-
     }
     return null;
-
   };
 
   /**
@@ -214,7 +212,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
       );
     }
     return null;
-
   };
 
   render() {
@@ -277,10 +274,10 @@ AddedToBagActions.propTypes = {
 
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
-  closeModal: () => { },
+  closeModal: () => {},
   fromAddedToBagModal: false,
   payPalTop: 0,
-  hideHeader: () => { },
+  hideHeader: () => {},
 };
 
 export default AddedToBagActions;

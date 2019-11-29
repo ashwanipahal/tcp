@@ -29,7 +29,6 @@ export function* getChildrenSaga() {
     );
   } catch (err) {
     yield put(setLoaderState(false));
-    console.log("Error: error in fetching user's children birthday savings list");
   }
 }
 

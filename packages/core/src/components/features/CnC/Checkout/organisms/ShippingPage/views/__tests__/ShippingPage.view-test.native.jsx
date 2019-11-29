@@ -14,14 +14,14 @@ describe('Shipping Page', () => {
       address,
       addressLabels: {},
       shipmentMethods: [{}],
-      loadShipmentMethods: () => { },
-      formatPayload: () => { },
-      verifyAddressAction: () => { },
+      loadShipmentMethods: () => {},
+      formatPayload: () => {},
+      verifyAddressAction: () => {},
       shippingLabels: {
         sectionHeader: '',
       },
-      initShippingPage: () => { },
-      shippingDidMount: () => { },
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       handleSubmit: mockedhandleSubmit,
       navigation: {
         state: {
@@ -51,9 +51,9 @@ describe('Shipping Page', () => {
     };
     const mockedloadShipmentMethods = jest.fn();
     const props = {
-      shippingDidUpdate: () => { },
-      initShippingPage: () => { },
-      shippingDidMount: () => { },
+      shippingDidUpdate: () => {},
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       shippingLabels: {
@@ -95,14 +95,14 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
-      shippingDidUpdate: () => { },
+      shippingDidUpdate: () => {},
       loadShipmentMethods: mockedloadShipmentMethods,
-      handleSubmit: () => { },
-      formatPayload: () => { },
-      shippingDidMount: () => { },
+      handleSubmit: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
-      verifyAddressAction: () => { },
+      verifyAddressAction: () => {},
       userAddresses: new List([
         {
           addressId: '123',
@@ -137,12 +137,12 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
-      shippingDidUpdate: () => { },
+      shippingDidUpdate: () => {},
       loadShipmentMethods: mockedloadShipmentMethods,
-      handleSubmit: () => { },
-      formatPayload: () => { },
-      verifyAddressAction: () => { },
-      shippingDidMount: () => { },
+      handleSubmit: () => {},
+      formatPayload: () => {},
+      verifyAddressAction: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
       userAddresses: new List([
@@ -181,10 +181,10 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
-      shippingDidUpdate: () => { },
+      shippingDidUpdate: () => {},
       shipmentMethods: [{}],
       addressLabels: {},
-      handleSubmit: () => { },
+      handleSubmit: () => {},
       verifyAddressAction: mockedupdateShippingAddressData,
       selectedShipmentId: '334',
       userAddresses: new List([
@@ -208,8 +208,8 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
-      shippingDidMount: () => { },
-      formatPayload: () => { },
+      shippingDidMount: () => {},
+      formatPayload: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);

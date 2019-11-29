@@ -406,6 +406,7 @@ ProductListingContainer.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {

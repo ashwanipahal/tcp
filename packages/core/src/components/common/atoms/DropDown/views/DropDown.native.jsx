@@ -16,7 +16,7 @@ import {
   HeaderItemContainer,
   FlatListWrapper,
   TouchableOpacityWrapper,
-  OverLayViewWrapper,
+  OverLayView,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -334,7 +334,7 @@ class DropDown extends React.PureComponent<Props> {
             height={getScreenHeight()}
             paddingTop={flatListTop}
           >
-            <OverLayViewWrapper
+            <OverLayView
               ref={ref => {
                 this.overlayMarker = ref;
               }}
@@ -356,7 +356,7 @@ class DropDown extends React.PureComponent<Props> {
                   />
                 )}
               </FlatListWrapper>
-            </OverLayViewWrapper>
+            </OverLayView>
           </TouchableOpacityWrapper>
         </Modal>
       </View>

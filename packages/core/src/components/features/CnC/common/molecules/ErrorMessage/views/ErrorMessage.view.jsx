@@ -16,20 +16,19 @@ class ErrorMessage extends React.PureComponent {
             <div className="warning-icon" aria-disabled="true" />
             {isEspot ? (
               <Espot richTextHtml={error} />
-            ) :
-              (
-                <BodyCopy
-                  component="span"
-                  color="error"
-                  fontFamily="secondary"
-                  fontWeight={fontWeight}
-                  fontSize={fontSize}
-                  aria-live="assertive"
-                  role="alert"
-                >
-                  {error}
-                </BodyCopy>
-              )}
+            ) : (
+              <BodyCopy
+                component="span"
+                color="error"
+                fontFamily="secondary"
+                fontWeight={fontWeight}
+                fontSize={fontSize}
+                aria-live="assertive"
+                role="alert"
+              >
+                {error}
+              </BodyCopy>
+            )}
           </div>
         )}
       </>

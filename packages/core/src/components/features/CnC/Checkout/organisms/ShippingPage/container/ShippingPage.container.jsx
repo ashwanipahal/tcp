@@ -40,7 +40,7 @@ class ShippingContainer extends React.Component {
     onFileAddressKey: null,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
-  }
+  };
 
   componentDidMount() {
     const { shippingDidMount } = this.props;

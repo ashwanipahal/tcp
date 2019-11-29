@@ -209,6 +209,8 @@ ProductListView.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -237,6 +239,8 @@ ProductListView.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

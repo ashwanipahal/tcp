@@ -41,13 +41,6 @@ const Row = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const OverLayView = styled.View`
-  flex-direction: row;
-  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
-  border-top-width: 1px;
-  margin-top: -1px;
-`;
-
 const DropDownItemContainer = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
@@ -120,7 +113,11 @@ const getAdditionalStyleOverlayWrapper = props => {
   };
 };
 
-const OverLayViewWrapper = styled.OverLayView`
+const OverLayView = styled.View`
+  flex-direction: row;
+  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+  border-top-width: 1px;
+  margin-top: -1px;
   ${getAdditionalStyleOverlayWrapper}
 `;
 
@@ -137,5 +134,4 @@ export {
   FlatListWrapper,
   HeaderItemContainer,
   TouchableOpacityWrapper,
-  OverLayViewWrapper,
 };

@@ -51,6 +51,8 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: PropTypes.func,
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
+    isFavoriteView: PropTypes.bool,
+    removeFavItem: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -73,6 +75,7 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: () => {},
     openAddNewList: () => {},
     activeWishListId: '',
+    isFavoriteView: false,
   };
 
   constructor(props, context) {

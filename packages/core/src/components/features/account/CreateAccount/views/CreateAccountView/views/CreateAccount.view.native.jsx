@@ -45,12 +45,12 @@ class CreateAccount extends React.Component<Props> {
     hideShowPwd: '',
     labels: PropTypes.shape({}),
     error: {},
-    onAlreadyHaveAnAccountClick: () => { },
-    onRequestClose: () => { },
+    onAlreadyHaveAnAccountClick: () => {},
+    onRequestClose: () => {},
     userplccCardNumber: '',
     userplccCardId: '',
-    toastMessage: () => { },
-    updateHeader: () => { },
+    toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {

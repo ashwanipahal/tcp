@@ -43,7 +43,6 @@ describe('Venmo Payment Button', () => {
     setVenmoDataAction: jest.fn(),
   };
 
-
   it('should render correctly', () => {
     const tree = shallow(<VenmoPaymentButton {...props} />);
     expect(tree).toMatchSnapshot();

@@ -40,7 +40,6 @@ describe('UpdateProfile Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-
     expect(
       UpdateProfileReducer(initialState, {
         type: CHANGE,
