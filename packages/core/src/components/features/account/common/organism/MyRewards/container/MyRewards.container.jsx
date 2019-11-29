@@ -41,6 +41,7 @@ export class MyRewardsContainer extends PureComponent {
     toggleNeedHelpModal: PropTypes.func.isRequired,
     needHelpRichText: PropTypes.string,
     fetchNeedHelpContent: PropTypes.func.isRequired,
+    needHelpContentId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -51,6 +52,7 @@ export class MyRewardsContainer extends PureComponent {
     isApplyingOrRemovingCoupon: false,
     isNeedHelpModalOpen: false,
     needHelpRichText: '',
+    needHelpContentId: '',
   };
 
   constructor(props) {
@@ -136,7 +138,7 @@ export class MyRewardsContainer extends PureComponent {
           openState={isNeedHelpModalOpen}
           coupon={selectedCoupon}
           onRequestClose={() => {
-            this.props.toggleNeedHelpModal();
+            toggleNeedHelpModal();
           }}
           heading="Help Modal"
         />

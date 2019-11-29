@@ -404,6 +404,7 @@ MyPreferenceSubscription.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({}),
   }),
+  trackSubscriptionEvent: PropTypes.func,
 };
 
 MyPreferenceSubscription.defaultProps = {
@@ -417,6 +418,7 @@ MyPreferenceSubscription.defaultProps = {
   smsPhone: '',
   gymSmsPhone: '',
   router: {},
+  trackSubscriptionEvent: () => {},
 };
 
 export default connect(

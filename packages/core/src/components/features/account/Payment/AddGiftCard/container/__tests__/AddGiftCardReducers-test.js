@@ -81,7 +81,6 @@ describe('AddGiftCard Reducer', () => {
   });
 
   it('should call SET_SUBMIT_SUCCEEDED ', () => {
-    const checkErrorReset = false;
     expect(
       AddGiftCardReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -93,15 +92,12 @@ describe('AddGiftCard Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-
-    const checkErrorResetValue = AddGiftCardReducer(initialState, {
+    AddGiftCardReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       AddGiftCardReducer(initialState, {
         type: CHANGE,
@@ -113,7 +109,6 @@ describe('AddGiftCard Reducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     expect(
       AddGiftCardReducer(initialState, {
         type: CHANGE,

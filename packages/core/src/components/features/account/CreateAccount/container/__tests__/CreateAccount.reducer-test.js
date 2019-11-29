@@ -25,7 +25,6 @@ describe('CreateAccount Reducer', () => {
   });
 
   it('should call SET_SUBMIT_SUCCEEDED ', () => {
-    const checkErrorReset = false;
     expect(
       CreateAccountReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -37,15 +36,12 @@ describe('CreateAccount Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-
-    const checkErrorResetValue = CreateAccountReducer(initialState, {
+    CreateAccountReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: constants.CREATE_ACCOUNT_FORM,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       CreateAccountReducer(initialState, {
         type: CHANGE,
@@ -57,7 +53,6 @@ describe('CreateAccount Reducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     expect(
       CreateAccountReducer(initialState, {
         type: CHANGE,
