@@ -32,13 +32,14 @@ class Barcode extends PureComponent {
   render() {
     const { barcodeId, renderer, value } = this.props;
     if (renderer === 'svg') {
-      return <svg ref={this.barCodeRef} id={barcodeId} />;
+      return <svg ref={this.barCodeRef} id={barcodeId} role="img" />;
     }
     if (renderer === 'canvas') {
       return <canvas ref={this.barCodeRef} id={barcodeId} />;
     }
     if (renderer === 'img') {
-      return <img ref={this.barCodeRef} id={barcodeId} alt={value} />;
+      // eslint-disable-next-line jsx-a11y/no-redundant-roles
+      return <img ref={this.barCodeRef} id={barcodeId} alt={value} role="img" />;
     }
 
     return null;

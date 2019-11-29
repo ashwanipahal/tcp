@@ -169,6 +169,7 @@ const ProductCustomizeFormPart = props => {
           isMultiItemQVModal={isMultiItemQVModal}
           isFromBagProductSfl={isFromBagProductSfl}
           isFavoriteEdit={isFavoriteEdit}
+          hideAlternateSizes
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>

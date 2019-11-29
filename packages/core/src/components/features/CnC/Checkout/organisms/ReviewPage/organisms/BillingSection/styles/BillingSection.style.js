@@ -16,6 +16,19 @@ export default css`
     line-height: 0.94;
   }
 
+  .card-skeleton-wrapper {
+    width: 300px;
+    height: 25px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 180px;
+      height: 25px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 300px;
+      height: 25px;
+    }
+  }
+
   .cardImage-card-number {
     padding: 7px 10px;
   }

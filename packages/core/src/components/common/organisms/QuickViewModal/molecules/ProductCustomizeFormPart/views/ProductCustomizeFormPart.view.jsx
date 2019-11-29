@@ -179,6 +179,7 @@ const ProductCustomizeFormPart = props => {
               sizeChartLinkVisibility={sizeChartLinkVisibility}
               isFavoriteEdit={isFavoriteEdit}
               isMultiItemQVModal={isMultiItemQVModal}
+              hideAlternateSizes
             />
           </div>
         </div>
