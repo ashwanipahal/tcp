@@ -110,7 +110,7 @@ const AddedToBag = ({
   useEffect(() => {
     if (counter === 0 && addedToBagInterval > 0 && totalBagItems > 0 && openState && payPalFlag) {
       timer = setTimeout(() => {
-        // onRequestClose();
+        onRequestClose();
       }, addedToBagInterval);
       setCounter(counter + 1);
       setTotalItems(totalBagItems);
