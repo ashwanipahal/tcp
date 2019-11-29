@@ -196,19 +196,19 @@ android {
             // This property is optional if you are using only one dimension.
             dimension "version"
             applicationIdSuffix ".tcp.dev"
-            versionNameSuffix "-TCP"
-            versionName = '1.0.0'
+            versionNameSuffix "-DEV"
+            versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
 
         }
         gymboree {
             dimension "version"
             applicationIdSuffix ".gymboree.dev"
-            versionNameSuffix "-GYMBOREE"
-            versionName = '1.0.0'
+            versionNameSuffix "-DEV"
+            versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpInt {
@@ -255,10 +255,10 @@ android {
             // This property is optional if you are using only one dimension.
             dimension "version"
             applicationIdSuffix ".tcp.uat"
-            versionNameSuffix "-UAT"
-            versionName = 'My Place'
+            versionNameSuffix "-tcpUAT"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", '""'
+            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
 
 
         }
@@ -266,10 +266,10 @@ android {
         gymboreeUat {
             dimension "version"
             applicationIdSuffix ".gymboree.uat"
-            versionNameSuffix "-UAT"
-            versionName = 'Gymboree'
+            versionNameSuffix "-gymboreeUAT"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", '""'
+            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
         }
 
         tcpProd {
