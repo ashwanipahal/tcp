@@ -29,7 +29,6 @@ describe('UpdateProfile Reducer', () => {
   });
 
   it('should call SET_SUBMIT_SUCCEEDED ', () => {
-    const checkErrorReset = false;
     expect(
       UpdateProfileReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -41,15 +40,12 @@ describe('UpdateProfile Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-
-    const checkErrorResetValue = UpdateProfileReducer(initialState, {
+    UpdateProfileReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: constants.ADD_PROFILE_INFORMATION_FORM,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       UpdateProfileReducer(initialState, {
         type: CHANGE,
@@ -61,7 +57,6 @@ describe('UpdateProfile Reducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     expect(
       UpdateProfileReducer(initialState, {
         type: CHANGE,

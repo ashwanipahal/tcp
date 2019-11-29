@@ -54,7 +54,6 @@ describe('AddEditCreditCardReducer reducer', () => {
       showNotification: false,
       error: null,
     });
-    const checkErrorReset = false;
     expect(
       AddEditCreditCardReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -66,19 +65,17 @@ describe('AddEditCreditCardReducer reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
     const initialState = fromJS({
       showNotification: false,
       error: null,
     });
 
-    const checkErrorResetValue = AddEditCreditCardReducer(initialState, {
+    AddEditCreditCardReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: constants.FORM_NAME,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       AddEditCreditCardReducer(initialState, {
         type: CHANGE,
@@ -90,7 +87,6 @@ describe('AddEditCreditCardReducer reducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     const initialState = fromJS({
       showNotification: false,
       error: null,

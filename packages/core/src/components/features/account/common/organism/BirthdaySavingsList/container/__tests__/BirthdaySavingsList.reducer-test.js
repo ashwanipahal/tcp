@@ -56,7 +56,6 @@ describe('BirthdaySavingsListReducer', () => {
   });
 
   it('should call SET_SUBMIT_SUCCEEDED ', () => {
-    const checkErrorReset = false;
     expect(
       BirthdaySavingsListReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -68,15 +67,12 @@ describe('BirthdaySavingsListReducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-
-    const checkErrorResetValue = BirthdaySavingsListReducer(initialState, {
+    BirthdaySavingsListReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: constants.ADD_CHILD_BIRTHDAY_FORM,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       BirthdaySavingsListReducer(initialState, {
         type: CHANGE,
@@ -88,7 +84,6 @@ describe('BirthdaySavingsListReducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     expect(
       BirthdaySavingsListReducer(initialState, {
         type: CHANGE,

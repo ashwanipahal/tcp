@@ -29,7 +29,6 @@ describe('ChangePassword Reducer', () => {
   });
 
   it('should call SET_SUBMIT_SUCCEEDED ', () => {
-    const checkErrorReset = false;
     expect(
       ChangePasswordReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -41,15 +40,12 @@ describe('ChangePassword Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-
-    const checkErrorResetValue = ChangePasswordReducer(initialState, {
+    ChangePasswordReducer(initialState, {
       type: SET_SUBMIT_SUCCEEDED,
       meta: {
         form: constants.CHANGE_PASSWORD_FORM,
       },
     });
-    checkErrorReset = checkErrorResetValue;
     expect(
       ChangePasswordReducer(initialState, {
         type: CHANGE,
@@ -61,7 +57,6 @@ describe('ChangePassword Reducer', () => {
   });
 
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     expect(
       ChangePasswordReducer(initialState, {
         type: CHANGE,
