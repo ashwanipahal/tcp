@@ -260,6 +260,8 @@ Recommendations.propTypes = {
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
+  ariaPrevious: PropTypes.string,
+  ariaNext: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -279,6 +281,8 @@ Recommendations.defaultProps = {
   partNumber: '',
   categoryName: '',
   headerAlignment: '',
+  ariaPrevious: '',
+  ariaNext: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

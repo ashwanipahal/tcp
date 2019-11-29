@@ -26,6 +26,14 @@ export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn, dataLocator 
 QuickViewAddToBagButton.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   onClickActn: PropTypes.func.isRequired,
+  dataLocator: PropTypes.string,
 };
 
+QuickViewAddToBagButton.defaultProps = {
+  dataLocator: '',
+};
+
+QuickViewAddToBagButton.defaultProps = {
+  dataLocator: '',
+};
 export default QuickViewAddToBagButton;

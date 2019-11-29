@@ -43,14 +43,6 @@ describe('Venmo Payment Button', () => {
     setVenmoDataAction: jest.fn(),
   };
 
-  const e = {
-    preventDefault: jest.fn(),
-  };
-
-  const NativeModules = {
-    VenmoPayment: { authorizeVenmoAccount: jest.fn() },
-  };
-
   it('should render correctly', () => {
     const tree = shallow(<VenmoPaymentButton {...props} />);
     expect(tree).toMatchSnapshot();
