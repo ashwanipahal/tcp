@@ -83,6 +83,29 @@ const ImageSectionContainer = styled.View`
   max-height: 205;
 `;
 
+const CloseIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const SuggestedContainer = styled.View`
+  background: ${props => props.theme.colorPalette.gray[800]};
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  width: 100px;
+  margin-top: 6px;
+`;
+
+const SeeSuggestedContainer = styled.View`
+  height: 36;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 const styles = css``;
 
 export {
@@ -102,4 +125,7 @@ export {
   ImageSectionContainer,
   RowContainer,
   OfferPriceAndBadge3View,
+  CloseIconContainer,
+  SuggestedContainer,
+  SeeSuggestedContainer,
 };

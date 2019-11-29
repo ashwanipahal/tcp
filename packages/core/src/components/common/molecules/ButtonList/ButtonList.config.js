@@ -5,7 +5,7 @@ export default {
       className: 'stacked-button',
       ctaVariation: 'fixed-width',
     },
-    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 4,
     noCurveMobile: true,
   },
   scrollCTAList: {
@@ -14,7 +14,7 @@ export default {
       className: 'scroll-button',
       ctaVariation: 'variable-width',
     },
-    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 4,
     MIN_NO_OF_BUTTONS_TO_SCROLL: 3,
   },
   imageCTAList: {
@@ -22,7 +22,7 @@ export default {
     ctaInfo: {
       className: 'image-cta',
     },
-    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 4,
     MIN_NO_OF_BUTTONS_TO_SCROLL: 4,
   },
   linkCTAList: {
