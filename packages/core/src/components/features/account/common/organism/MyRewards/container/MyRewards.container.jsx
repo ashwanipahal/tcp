@@ -37,6 +37,10 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: PropTypes.func,
     toastMessage: PropTypes.func,
     isApplyingOrRemovingCoupon: PropTypes.bool,
+    isNeedHelpModalOpen: PropTypes.bool,
+    toggleNeedHelpModal: PropTypes.func.isRequired,
+    needHelpRichText: PropTypes.string,
+    fetchNeedHelpContent: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -45,6 +49,8 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: () => {},
     toastMessage: () => {},
     isApplyingOrRemovingCoupon: false,
+    isNeedHelpModalOpen: false,
+    needHelpRichText: '',
   };
 
   constructor(props) {

@@ -29,6 +29,7 @@ class VideoPlayer extends React.Component {
       uniqueId: getUniqueID(),
     };
   }
+
   componentDidMount() {
     const { id, autoplay, url, muted, loop, controls } = this.props;
     const { uniqueId } = this.state;

@@ -5,4 +5,4 @@ const CouponText = styled.View`
   height: 80px;
 `;
 
-export { CouponText };
+export default { CouponText };

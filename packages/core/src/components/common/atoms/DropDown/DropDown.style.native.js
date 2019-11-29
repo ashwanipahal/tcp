@@ -99,6 +99,31 @@ const FlatListWrapper = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
+const getAdditionalStyleWrapper = props => {
+  const { left, height, paddingTop } = props;
+  return {
+    ...(left && { left }),
+    ...(height && { height }),
+    ...(paddingTop && { paddingTop }),
+  };
+};
+
+const TouchableOpacityWrapper = styled.TouchableOpacity`
+  ${getAdditionalStyleWrapper}
+`;
+
+const getAdditionalStyleOverlayWrapper = props => {
+  const { top, width } = props;
+  return {
+    ...(top && { top }),
+    ...(width && { width }),
+  };
+};
+
+const OverLayViewWrapper = styled.OverLayView`
+  ${getAdditionalStyleOverlayWrapper}
+`;
+
 export {
   DropDownStyle,
   HeaderContainer,
@@ -111,4 +136,6 @@ export {
   SelectedLabelView,
   FlatListWrapper,
   HeaderItemContainer,
+  TouchableOpacityWrapper,
+  OverLayViewWrapper,
 };
