@@ -199,6 +199,7 @@ const getContent = ({
         fontSizeVariation="medium"
         underline
         href="#"
+        title=""
         anchorVariation="primary"
         dataLocator="detailslink"
         className="details-link"
