@@ -743,7 +743,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       <ForwardRef
                         alt="info"
                         className="circle-info-image"
-                        src="/static/images/info-icon.png"
+                        src="/static/version-not-available/images/info-icon.png"
                       />
                     </ForwardRef>
                   </ForwardRef>
@@ -1304,7 +1304,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       <ForwardRef
                         alt="info"
                         className="circle-info-image"
-                        src="/static/images/info-icon.png"
+                        src="/static/version-not-available/images/info-icon.png"
                       />
                     </ForwardRef>
                   </ForwardRef>

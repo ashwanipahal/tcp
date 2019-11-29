@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalsCheckoutVanilla should render correctly 1`] = `
+<Fragment>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    openState={false}
+    setLoginModalMountState={[MockFunction]}
+    variation="checkout"
+  />
+  <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
+    isOpen={false}
+    labels={Object {}}
+  />
+  <ItemDeleteConfirmationModal
+    confirmRemoveCartItem={[Function]}
+    isOpen={false}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`ModalsCheckoutVanilla should render correctly when express checkout page 1`] = `
+<Fragment>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    openState={false}
+    setLoginModalMountState={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    variation="checkout"
+  />
+  <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
+    isOpen={true}
+    labels={
+      Object {
+        "confirmationText": undefined,
+      }
+    }
+    removeUnqualifiedItemsAndCheckout={[Function]}
+  />
+  <ItemDeleteConfirmationModal
+    confirmRemoveCartItem={[Function]}
+    isOpen={false}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`ModalsCheckoutVanilla should render correctly when shipping checkout page 1`] = `
+<Fragment>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    openState={false}
+    setLoginModalMountState={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    variation="checkout"
+  />
+  <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
+    isOpen={true}
+    labels={
+      Object {
+        "confirmationText": undefined,
+      }
+    }
+    removeUnqualifiedItemsAndCheckout={[Function]}
+  />
+  <ItemDeleteConfirmationModal
+    confirmRemoveCartItem={[Function]}
+    isOpen={false}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`ModalsCheckoutVanilla should render correctly with modal editing item 1`] = `
+<Fragment>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    openState={false}
+    setLoginModalMountState={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    variation="checkout"
+  />
+  <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
+    isOpen={true}
+    labels={
+      Object {
+        "confirmationText": undefined,
+      }
+    }
+    removeUnqualifiedItemsAndCheckout={[Function]}
+  />
+  <ItemDeleteConfirmationModal
+    confirmRemoveCartItem={[Function]}
+    isOpen={false}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;

@@ -9,6 +9,8 @@ const OutfitDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case OUTFIT_DETAIL_CONSTANTS.SET_OUTFIT_PRODUCTS:
       return { ...state, currentOutfit: action.currentOutfit };
+    case OUTFIT_DETAIL_CONSTANTS.SET_LOADING_STATE:
+      return { ...state, ...action.payload };
     case OUTFIT_DETAIL_CONSTANTS.SET_ADD_TO_FAVORITE:
       // eslint-disable-next-line no-case-declarations
       const outfitDetailsMap = state.currentOutfit;

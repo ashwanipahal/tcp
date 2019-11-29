@@ -17,6 +17,7 @@ const styles = css`
     border: 1px solid ${props => props.theme.colorPalette.gray[1300]};
     border-top: none;
     padding: 16px 12px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,6 +31,7 @@ const styles = css`
       flex-basis: 40%;
       align-self: flex-end;
       max-height: 42px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     .sub-header-pickup {
       display: inline;

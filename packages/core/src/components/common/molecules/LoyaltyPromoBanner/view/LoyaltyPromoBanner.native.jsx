@@ -133,3 +133,4 @@ LoyaltyPromoBanner.defaultProps = {
 };
 
 export default LoyaltyPromoBanner;
+export { LoyaltyPromoBanner as LoyaltyPromoBannerVanilla };

@@ -19,6 +19,13 @@ export default css`
   .zipcode-field {
     margin-right: 3px;
   }
+  .alignCenter {
+    display: flex;
+    justify-content: center;
+  }
+  .padding-top {
+    padding-top: 24px;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .find-store-label {
       margin-top: 12px;

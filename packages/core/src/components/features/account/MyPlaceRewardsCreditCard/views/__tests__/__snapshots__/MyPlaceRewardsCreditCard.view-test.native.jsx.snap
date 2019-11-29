@@ -63,34 +63,6 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
     spacingStyles="margin-top-LRG margin-bottom-LRG"
   >
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
-        buttonVariation="fixed-width"
-        color="white"
-        customStyle={Object {}}
-        customTextStyle={null}
-        disableButton={false}
-        fill="BLUE"
-        fullWidth=""
-        iconColor="gray.800"
-        iconName="chevron-down"
-        iconSize="fs12"
-        locator=""
-        navigation={Object {}}
-        onPress={[Function]}
-        paddings="12px 32px 12px 32px"
-        selected={false}
-        selectedIcon="chevron-up"
-        showIcon={false}
-        text="lbl_PLCCModal_applyNowCTA"
-        theme={Object {}}
-        type="submit"
-        url=""
-        width="100%"
-        withNoLineHeight={false}
-      />
-    </Styled(View)>
-    <Styled(View)>
       <Connect(ClickTracker)
         as={
           Object {
@@ -192,13 +164,42 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
             ],
           }
         }
-        fill="WHITE"
+        color="white"
+        fill="BLUE"
         module="account"
         name="manage_plcc"
         onPress={[Function]}
-        text="lbl_PLCCForm_manageCreditCardAccount"
+        text="lbl_PLCCModal_applyNowCTA"
         type="submit"
         width="100%"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
+        fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_PLCCForm_manageCreditCardAccount"
+        theme={Object {}}
+        type="submit"
+        url=""
+        width="100%"
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

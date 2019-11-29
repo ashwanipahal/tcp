@@ -46,7 +46,7 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
-    const { isUserLoggedIn, router, trackPageLoad } = this.props;
+    const { isUserLoggedIn, router } = this.props;
 
     if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
       routerPush('/home?target=login', '/home/login');
@@ -163,6 +163,7 @@ Account.getInitialProps = (reduxProps, pageProps) => {
           ? accountPageNameMapping[componentToLoad].pageName
           : '',
         pageSection: 'myplace',
+        pageSubSection: 'myplace',
         loadAnalyticsOnload: false,
       },
     },

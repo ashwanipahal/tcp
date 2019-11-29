@@ -178,6 +178,8 @@ class ProductPickupContainer extends React.PureComponent {
     isOutfitVariant: PropTypes.bool,
     keepAlive: PropTypes.bool,
     outOfStockLabels: PropTypes.shape({}),
+    promotionalMessage: PropTypes.string,
+    promotionalPLCCMessage: PropTypes.string,
   };
 
   static defaultProps = {
@@ -230,6 +232,8 @@ class ProductPickupContainer extends React.PureComponent {
     isOutfitVariant: false,
     keepAlive: false,
     outOfStockLabels: {},
+    promotionalMessage: '',
+    promotionalPLCCMessage: '',
   };
 
   constructor(props, context) {
@@ -525,6 +529,8 @@ class ProductPickupContainer extends React.PureComponent {
       isOutfitVariant,
       keepAlive,
       outOfStockLabels,
+      promotionalMessage,
+      promotionalPLCCMessage,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -570,6 +576,8 @@ class ProductPickupContainer extends React.PureComponent {
         isStoreAndProductBossEligible={isStoreAndProductBossEligible}
         keepAlive={keepAlive}
         outOfStockLabels={outOfStockLabels}
+        promotionalMessage={promotionalMessage}
+        promotionalPLCCMessage={promotionalPLCCMessage}
       />
     );
   }

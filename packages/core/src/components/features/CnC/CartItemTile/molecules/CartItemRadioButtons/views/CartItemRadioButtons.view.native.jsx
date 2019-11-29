@@ -109,7 +109,14 @@ class CartItemRadioButtons extends PureComponent {
    * @memberof CartItemRadioButtons
    */
   renderBossBanner = (isBossItem, onlineClearanceMessage) => {
-    return isBossItem && !onlineClearanceMessage ? <PickupPromotionBanner bossBanner /> : null;
+    const {
+      productDetail: {
+        itemInfo: { itemBrand },
+      },
+    } = this.props;
+    return isBossItem && !onlineClearanceMessage ? (
+      <PickupPromotionBanner bossBanner itemBrand={itemBrand} />
+    ) : null;
   };
 
   renderStore = () => {

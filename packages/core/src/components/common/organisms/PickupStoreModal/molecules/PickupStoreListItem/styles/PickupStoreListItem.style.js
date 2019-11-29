@@ -1,7 +1,11 @@
 import { css } from 'styled-components';
 
 export default css`
-  border: 1px solid ${props => props.theme.colorPalette.gray['800']};
+  ${props =>
+    props.selectedStoreId === props.store.basicInfo.id
+      ? `border: 2px solid ${props.theme.colorPalette.gray['800']};`
+      : `border: 1px solid ${props.theme.colorPalette.gray['800']};`};
+
   padding: 0 15px 12px 10px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

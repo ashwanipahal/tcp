@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
-
 import Reactotron from 'reactotron-react-native';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
@@ -12,19 +11,15 @@ import createAnalyticsMiddleware from '../middlewares/analytics';
 import createDataLayer from '../../context/analytics/dataLayer';
 
 export const initializeStore = initialState => {
-  const sagaMonitor = Reactotron.createSagaMonitor();
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-
+  const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware, createAnalyticsMiddleware()];
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-    __DEV__ && Reactotron.createEnhancer(),
-    cacheEnhancerMiddleware(),
-  ];
-  /* eslint-disable  */
+  const enhancers = __DEV__
+    ? [applyMiddleware(...middlewares), Reactotron.createEnhancer()]
+    : [applyMiddleware(...middlewares), cacheEnhancerMiddleware()];
 
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  /* eslint-disable */
+  const composeEnhancers = (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
   // eslint-disable-next-line no-underscore-dangle
 

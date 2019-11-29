@@ -69,6 +69,7 @@ exports[`Shipping Form should render correctly 1`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -129,6 +130,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -205,6 +207,7 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;

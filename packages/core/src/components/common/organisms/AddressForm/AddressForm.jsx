@@ -17,6 +17,7 @@ import {
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
+import constants from '../AddEditAddress/container/AddEditAddress.constants';
 
 export class AddressForm extends React.PureComponent {
   static propTypes = {
@@ -251,6 +252,6 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddressForm', // a unique identifier for this form
+  form: constants.ADDRESS_FORM, // a unique identifier for this form
   ...validateMethod,
 })(AddressForm);

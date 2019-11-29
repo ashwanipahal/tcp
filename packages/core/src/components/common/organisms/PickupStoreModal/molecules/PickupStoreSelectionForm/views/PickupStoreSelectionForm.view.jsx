@@ -81,12 +81,15 @@ class _PickupStoreSelectionForm extends React.Component {
       isBossSelected,
       isShowMessage,
       currentProduct,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
-
     return submitting ? (
       <Spinner />
     ) : (
       <PickupStoreListContainer
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
         isShoppingBag={isShoppingBag}
         currentProduct={currentProduct}
         onStoreSelect={handleAddTobag}
@@ -242,6 +245,9 @@ class _PickupStoreSelectionForm extends React.Component {
       storeSearchCriteria,
       storeSearchDistance,
       setClickAnalyticsData,
+      trackClick,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -273,6 +279,9 @@ class _PickupStoreSelectionForm extends React.Component {
             storeSearchCriteria={storeSearchCriteria}
             storeSearchDistance={storeSearchDistance}
             setClickAnalyticsData={setClickAnalyticsData}
+            trackClick={trackClick}
+            setFavoriteStore={setFavoriteStore}
+            getDefaultStore={getDefaultStore}
           />
         </div>
       )
@@ -327,12 +336,34 @@ class _PickupStoreSelectionForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit, isPickUpWarningModal, onSearch } = this.props;
+    const { className, handleSubmit, isPickUpWarningModal, onSearch, onCloseClick } = this.props;
 
     return (
       <form onSubmit={handleSubmit(onSearch)}>
         {isPickUpWarningModal && (
-          <BodyCopy className="item-unavailable">{PICKUP_LABELS.ITEM_UNAVAILABLE}</BodyCopy>
+          <div className={className}>
+            <div className="alignCenter padding-top">
+              <BodyCopy
+                className="item-unavailable"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs14"
+              >
+                {PICKUP_LABELS.ITEM_UNAVAILABLE}
+              </BodyCopy>
+            </div>
+            <div className="padding-top alignCenter">
+              <Button
+                onClick={onCloseClick}
+                buttonVariation="variable-width"
+                type="button"
+                fill="BLUE"
+                className="button-cancel"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
         )}
         {!isPickUpWarningModal && this.displayStoreSearchComp()}
       </form>
