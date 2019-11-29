@@ -66,14 +66,13 @@ class DeleteList extends React.PureComponent {
 DeleteList.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string,
-  handleSubmit: PropTypes.func,
-  onHandleSubmit: PropTypes.func.isRequired,
   hideDeleteModal: PropTypes.func.isRequired,
+  onDeleteList: PropTypes.func,
 };
 DeleteList.defaultProps = {
   labels: {},
   className: '',
-  handleSubmit: () => {},
+  onDeleteList: () => {},
 };
 
 export default DeleteList;
