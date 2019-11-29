@@ -15,5 +15,4 @@ const StoreDetail = ({ router }) => {
 StoreDetail.propTypes = {
   router: PropTypes.shape({}).isRequired,
 };
-
 export default withRouter(StoreDetail);

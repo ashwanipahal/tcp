@@ -168,7 +168,9 @@ export class BillingSection extends PureComponent {
                       {!bagLoading && checkoutRoutingDone ? (
                         <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
                       ) : (
-                        <LoaderSkelton width="300px" height="25px" />
+                        <div className="card-skeleton-wrapper">
+                          <LoaderSkelton />
+                        </div>
                       )}
                     </BodyCopy>
                   </Fragment>
