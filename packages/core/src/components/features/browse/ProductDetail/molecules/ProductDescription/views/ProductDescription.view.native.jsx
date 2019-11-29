@@ -51,6 +51,7 @@ class ProductDetailDescription extends React.PureComponent {
     const { isAccordionOpen: prevValue } = prevState;
     if (isAccordionOpen && !prevValue) {
       setTimeout(() => {
+        /* measure fun calculate the height, width and offset x y value of element  */
         this.accordionView.measure((x, y, width, height, pageX, pageY) => {
           if (scrollToAccordionBottom) {
             scrollToAccordionBottom(x, y, width, height, pageX, pageY);

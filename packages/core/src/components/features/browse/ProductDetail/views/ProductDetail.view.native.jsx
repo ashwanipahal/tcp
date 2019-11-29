@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { getScreenHeight } from '@tcp/core/src/utils/index.native';
+import { LAZYLOAD_HOST_NAME, scrollToViewBottom } from '@tcp/core/src/utils';
+// import { getScreenHeight } from '@tcp/core/src/utils/index.native';
 // import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -50,8 +50,8 @@ class ProductDetailView extends React.PureComponent {
       selectedColorProductId,
       showCompleteTheLook: false,
       size: '',
-      currentScrollValue: 0,
     };
+    this.currentScrollValue = 0;
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -153,23 +153,18 @@ class ProductDetailView extends React.PureComponent {
   };
 
   scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
-    const headerHeight = 100;
-    const footerHeight = 100;
-    const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
-    const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
-    const scrollToBottom = height > availableSpaceInBottom;
-    const { currentScrollValue } = this.state;
-    if (scrollToBottom) {
-      this.scrollView.scrollTo({
-        x: 0,
-        y: currentScrollValue + (height - availableSpaceInBottom),
-        animated: true,
-      });
-    }
+    scrollToViewBottom({
+      width,
+      height,
+      pageX,
+      pageY,
+      callBack: this.scrollView,
+      currentScrollValue: this.currentScrollValue,
+    });
   };
 
   handleScroll = event => {
-    this.setState({ currentScrollValue: event.nativeEvent.contentOffset.y });
+    this.currentScrollValue = event.nativeEvent.contentOffset.y;
   };
 
   render() {

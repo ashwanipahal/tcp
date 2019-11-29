@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
 // import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView } from 'react-native';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
+import { LAZYLOAD_HOST_NAME, getLoading, scrollToViewBottom } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
@@ -25,8 +25,8 @@ class ProductBundle extends React.PureComponent {
     super(props);
     this.state = {
       showCarousel: false,
-      currentScrollValue: 0,
     };
+    this.currentScrollValue = 0;
   }
 
   onImageClick = () => {
@@ -35,23 +35,18 @@ class ProductBundle extends React.PureComponent {
   };
 
   scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
-    const headerHeight = 100;
-    const footerHeight = 100;
-    const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
-    const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
-    const scrollToBottom = height > availableSpaceInBottom;
-    const { currentScrollValue } = this.state;
-    if (scrollToBottom) {
-      this.scrollView.scrollTo({
-        x: 0,
-        y: currentScrollValue + (height - availableSpaceInBottom),
-        animated: true,
-      });
-    }
+    scrollToViewBottom({
+      width,
+      height,
+      pageX,
+      pageY,
+      callBack: this.scrollView,
+      currentScrollValue: this.currentScrollValue,
+    });
   };
 
   handleScroll = event => {
-    this.setState({ currentScrollValue: event.nativeEvent.contentOffset.y });
+    this.currentScrollValue = event.nativeEvent.contentOffset.y;
   };
 
   render() {
