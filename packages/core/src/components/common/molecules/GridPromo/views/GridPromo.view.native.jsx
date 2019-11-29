@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
-import { Button, BodyCopy } from '../../../atoms';
+import { BodyCopy } from '../../../atoms';
 
 const getSeparatorText = textItems => {
   const headingLine = (textItems && textItems[0] && textItems[0].text) || '';
@@ -19,16 +19,22 @@ const GridPromo = props => {
 
   const headLineParts = getSeparatorText(textItems);
   const descriptionParts = getSeparatorText(subHeadLine);
+  const imageStyle = {
+    width: '100%',
+    flex: 1,
+    justifyContent: 'center',
+  };
 
   if (variation === 'horizontal') {
+    const imageBgStyles = {
+      width: '100%',
+    };
     return (
       <ImageBackground
         source={{
           uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
         }}
-        style={{
-          width: '100%',
-        }}
+        style={imageBgStyles}
       >
         {headLineParts.map(line => {
           return (
@@ -50,11 +56,7 @@ const GridPromo = props => {
       source={{
         uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
       }}
-      style={{
-        width: '100%',
-        flex: 1,
-        justifyContent: 'center',
-      }}
+      style={imageStyle}
     >
       <View>
         <View className="headline-wrapper">

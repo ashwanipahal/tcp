@@ -9,12 +9,7 @@ import {
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import {
-  routeToStoreDetails,
-  routerPush,
-  fetchStoreIdFromUrlPath,
-  isMobileApp,
-} from '../../../../../utils';
+import { routeToStoreDetails, routerPush, isMobileApp } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -199,6 +194,8 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
+  storeId: PropTypes.string,
+  fetchCurrentStoreInfo: PropTypes.func,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -220,6 +217,8 @@ StoreDetailContainer.defaultProps = {
   getModuleX: () => null,
   referredContentList: [],
   getRichContent: () => null,
+  storeId: null,
+  fetchCurrentStoreInfo: () => {},
 };
 
 const mapStateToProps = state => {

@@ -118,6 +118,7 @@ const ThankYouComponent = ({
   );
 };
 ThankYouComponent.propTypes = {
+  isVenmoPaymentInProgress: PropTypes.bool.isRequired,
   /** Flag indicates whether the user is a guest */
   isGuest: PropTypes.bool,
 

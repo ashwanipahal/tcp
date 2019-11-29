@@ -38,7 +38,6 @@ export function* getChildrenSaga() {
     yield put(trackClick({ name: 'birthday_success', module: 'account' }));
   } catch (err) {
     yield put(setLoaderState(false));
-    console.log("Error: error in fetching user's children birthday savings list");
   }
 }
 

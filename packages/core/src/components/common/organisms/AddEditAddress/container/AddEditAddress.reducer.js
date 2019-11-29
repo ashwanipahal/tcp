@@ -18,6 +18,13 @@ let checkErrorReset = false;
  * @return {state} return final state of the reducer.
  */
 
+const defaultStateReducer = (state = initialState) => {
+  if (state instanceof Object) {
+    return fromJS(state);
+  }
+  return state;
+};
+
 const resetErrorReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SUBMIT_SUCCEEDED: {
@@ -43,13 +50,6 @@ const resetErrorReducer = (state = initialState, action) => {
  * @param {state} state provide initial state to this function.
  * @return {state} return final state of the reducer.
  */
-
-const defaultStateReducer = (state = initialState) => {
-  if (state instanceof Object) {
-    return fromJS(state);
-  }
-  return state;
-};
 
 const AddAddressReducer = (state = initialState, action) => {
   switch (action.type) {

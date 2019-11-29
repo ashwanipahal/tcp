@@ -1,4 +1,3 @@
-import { Map, fromJS } from 'immutable';
 import HomepageReducer from '../container/HomePage.reducer';
 // import { getAccountNavigationList } from '../container/Account.actions';
 import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
