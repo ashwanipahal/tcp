@@ -74,6 +74,10 @@ class PaymentItem extends React.Component<Props> {
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
         const value = get(event, 'nativeEvent.data', '');
+        handleSubmit(formData =>
+          this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
+        )();
+        this.setRecaptchaModalMountState();
         change('recaptchaToken', value);
       }
     };
