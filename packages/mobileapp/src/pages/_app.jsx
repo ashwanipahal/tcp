@@ -157,7 +157,8 @@ export class App extends React.PureComponent {
   };
 
   render() {
-    const { appType } = this.props;
+    const { appType, context } = this.props;
+    const { device, platform, location } = context;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
@@ -170,7 +171,10 @@ export class App extends React.PureComponent {
           )}
 
           <AppNavigator
-            {...getOnNavigationStateChange(this.store)}
+            {...getOnNavigationStateChange({
+              store: this.store,
+              context: { device, platform, location },
+            })}
             ref={navigatorRef => {
               NavigationService.setTopLevelNavigator(navigatorRef);
             }}
@@ -190,12 +194,15 @@ export class App extends React.PureComponent {
 App.propTypes = {
   appType: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
+  context: PropTypes.shape({}).isRequired,
 };
 
 App.defaultProps = {
   appType: APP_TYPE.TCP,
 };
 
+// @anup_mankar to look into this assignment
+// eslint-disable-next-line no-class-assign
 App = codePush(App);
 
 function RenderApp(props) {
@@ -209,8 +216,8 @@ function RenderApp(props) {
     location,
     error,
   };
-  // console.log(context);
-  const { appName } = context.device;
+  const { device } = context;
+  const { appName } = device;
   const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
 
   return <App context={context} appType={appType} {...props} />;

@@ -282,6 +282,7 @@ Recommendations.defaultProps = {
   categoryName: '',
   headerAlignment: '',
   ariaPrevious: '',
+  ariaNext: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

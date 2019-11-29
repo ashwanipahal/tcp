@@ -28,6 +28,7 @@ class SizeChart extends React.Component {
           <Anchor
             nolink
             href="#"
+            title=""
             accessibilityRole="link"
             accessibilityLabel="Size Chart"
             text="Size Chart"

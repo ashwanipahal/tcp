@@ -33,7 +33,7 @@ const handleRouteComplete = url => {
   const params = queryString.parse(document.location.search);
   const sortParam = params.sort !== undefined;
   // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
-  //eslint-
+  // eslint-
   const filterParam =
     params.FILTER_CATAGORY !== undefined ||
     params.FILTER_COLOR !== undefined ||

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, View, Modal, TouchableOpacity } from 'react-native';
+import { Image, View, Modal } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getScreenHeight } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import {
   DropDownStyle,
   Row,
-  OverLayView,
   HeaderContainer,
   DropDownItemContainer,
   Separator,
@@ -16,6 +15,8 @@ import {
   SelectedLabelView,
   HeaderItemContainer,
   FlatListWrapper,
+  TouchableOpacityWrapper,
+  OverLayViewWrapper,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -323,28 +324,27 @@ class DropDown extends React.PureComponent<Props> {
         )}
 
         <Modal visible={dropDownIsOpen} transparent>
-          <TouchableOpacity
+          <TouchableOpacityWrapper
             accessible
             accessibilityLabel="Tap to close it"
             accessibilityRole="none"
             onPress={this.closeDropDown}
             activeOpacity={1}
-            style={{
-              left: this.rowFrame.x,
-              height: getScreenHeight(),
-              paddingTop: flatListTop,
-            }}
+            left={this.rowFrame.x ? this.rowFrame.x : 0}
+            height={getScreenHeight()}
+            paddingTop={flatListTop}
           >
-            <OverLayView
+            <OverLayViewWrapper
               ref={ref => {
                 this.overlayMarker = ref;
               }}
-              style={{
-                top,
-                width: this.rowFrame.width,
-              }}
+              top={top}
+              width={this.rowFrame.width ? this.rowFrame.width : 0}
             >
-              <FlatListWrapper width={this.rowFrame.width} height={flatListHeight}>
+              <FlatListWrapper
+                width={this.rowFrame.width ? this.rowFrame.width : 0}
+                height={flatListHeight}
+              >
                 {dropDownIsOpen && (
                   <FlatList
                     data={data}
@@ -356,8 +356,8 @@ class DropDown extends React.PureComponent<Props> {
                   />
                 )}
               </FlatListWrapper>
-            </OverLayView>
-          </TouchableOpacity>
+            </OverLayViewWrapper>
+          </TouchableOpacityWrapper>
         </Modal>
       </View>
     );
