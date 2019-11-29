@@ -355,6 +355,9 @@ class ProductInformation extends PureComponent {
       isBagPageSflSection,
       orderId,
       handleAddToWishlist,
+      isLoggedIn,
+      showLoginModal,
+      toggleLoginModal,
     } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
     const isECOMOrder = isEcomOrder(orderItemType);
@@ -424,6 +427,7 @@ class ProductInformation extends PureComponent {
               )}
               {showOnReviewPage &&
                 CartItemTileExtension.heartIcon(isBagPageSflSection, handleAddToWishlist)}
+              {CartItemTileExtension.renderModal(isLoggedIn, toggleLoginModal, showLoginModal)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -537,6 +541,9 @@ ProductInformation.propTypes = {
     errorMessage: PropTypes.string,
   }),
   handleAddToWishlist: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  showLoginModal: PropTypes.bool.isRequired,
+  toggleLoginModal: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {

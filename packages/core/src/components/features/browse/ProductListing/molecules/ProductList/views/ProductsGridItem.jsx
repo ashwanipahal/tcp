@@ -413,6 +413,9 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       isShowQuickView,
       AddToFavoriteErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     const { errorProductId } = this.state;
     const fulfilmentSection =
@@ -449,11 +452,11 @@ class ProductsGridItem extends React.PureComponent {
         <ClickTracker
           clickData={{
             eventName: 'cart add',
-            pageType: 'product',
-            pageSection: 'product',
-            pageSubSection: 'product',
+            pageType: pageNameProp,
+            pageSection: pageSectionProp,
+            pageSubSection: pageSubSectionProp,
             pageShortName,
-            pageName,
+            pageName: pageNameProp,
             products: [{ id: `${productId}` }],
           }}
         >
@@ -463,10 +466,7 @@ class ProductsGridItem extends React.PureComponent {
             buttonVariation="fixed-width"
             dataLocator={getLocator('global_addtocart_Button')}
             onClick={
-              // eslint-disable-next-line no-nested-ternary
-              isGiftCard
-                ? () => {} // TODO Gift Card Quick View Modal
-                : isShowQuickView && !isBundleProduct
+              isShowQuickView && !isBundleProduct
                 ? this.handleQuickViewOpenClick
                 : this.handleViewBundleClick
             }

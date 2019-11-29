@@ -313,7 +313,7 @@ export class BillingPaymentForm extends React.PureComponent {
       isPayPalEnabled,
       bagLoading,
       isVenmoEnabled,
-      venmoError,
+      onVenmoError,
     } = this.props;
     const paymentMethods = getPaymentMethods(labels);
     const creditCardList = getCreditCardList({ cardList });
@@ -408,7 +408,7 @@ export class BillingPaymentForm extends React.PureComponent {
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
-          venmoError={venmoError}
+          onVenmoError={onVenmoError}
         />
       </>
     );
@@ -422,6 +422,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(BillingPaymentForm);
 export { BillingPaymentForm as BillingPaymentFormVanilla };
