@@ -77,6 +77,7 @@ export default css`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   .locations-title {
+    font-size: 1.17em;
     font-family: ${props => props.theme.fonts.primaryFontFamily};
     color: ${props => props.theme.colors.TEXT.DARK};
     text-transform: uppercase;
