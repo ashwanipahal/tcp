@@ -3,14 +3,14 @@ import { WebView } from 'react-native-webview';
 import PropTypes from 'prop-types';
 
 const patchPostMessageJsCode = `(${String(() => {
-  const originalPostMessage = window.postMessage;
+  const originalPostMessage = window.ReactNativeWebView.postMessage;
   const patchedPostMessage = (message, targetOrigin, transfer) => {
     originalPostMessage(message, targetOrigin, transfer);
   };
   patchedPostMessage.toString = () => {
-    return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+    return String(Object.hasOwnProperty).replace('hasOwnProperty', 'ReactNativeWebView');
   };
-  window.postMessage = patchedPostMessage;
+  window.ReactNativeWebView.postMessage = patchedPostMessage;
 })})();`;
 
 const generateTheWebViewContent = siteKey => {
@@ -21,9 +21,9 @@ const generateTheWebViewContent = siteKey => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" >
                 <script src="https://recaptcha.google.com/recaptcha/api.js"></script>
                 <script type="text/javascript"> var onloadCallback = function() { };
-                  var onDataCallback = function(response) { console.log(response); window.postMessage(response);  };
-                  var onDataExpiredCallback = function(error) {  window.postMessage("expired"); };
-                  var onDataErrorCallback = function(error) {  window.postMessage("error"); }
+                  var onDataCallback = function(response) { console.log(response); window.ReactNativeWebView.postMessage(response);  };
+                  var onDataExpiredCallback = function(error) {  window.ReactNativeWebView.postMessage("expired"); };
+                  var onDataErrorCallback = function(error) {  window.ReactNativeWebView.postMessage("error"); }
                 </script>
             </head>
             <body style="padding: 0; margin: 0;">

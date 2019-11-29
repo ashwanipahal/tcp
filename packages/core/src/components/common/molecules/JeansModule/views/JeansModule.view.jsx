@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/JeansModule.style';
 import { Carousel } from '../..';
 import { Anchor, DamImage, BodyCopy, Image } from '../../../atoms';
 import theme from '../../../../../../styles/themes/TCP';
-import { getIconPath } from '../../../../../utils';
 
 const { breakpoints } = theme;
 
@@ -123,7 +123,7 @@ export class JeansModule extends PureComponent {
                             <div className="text-line">
                               <Image
                                 className="done-button"
-                                src="/static/images/confirmation_check.svg"
+                                src={getIconPath('confirmation-check')}
                               />
                               <BodyCopy
                                 className="text-item"
@@ -139,7 +139,7 @@ export class JeansModule extends PureComponent {
                         })}
                         <Image
                           className={`${imageStyled[0].styled.style} plus-icon`}
-                          src="/static/images/plus.png"
+                          src={getIconPath('plus-icon')}
                         />
                       </div>
                       <Anchor

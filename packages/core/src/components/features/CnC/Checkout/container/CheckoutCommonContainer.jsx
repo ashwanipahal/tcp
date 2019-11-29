@@ -37,8 +37,21 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-    const { isRegisteredUserCallDone, router, initCheckout, navigation, isRTPSFlow } = this.props;
+    const {
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+      cartOrderItems: prevCartOrderItems,
+    } = prevProps;
+    const {
+      isRegisteredUserCallDone,
+      router,
+      initCheckout,
+      navigation,
+      isRTPSFlow,
+      cartOrderItems,
+      setClickAnalyticsDataCheckout,
+      trackPageViewCheckout,
+      currentStage,
+    } = this.props;
     /* istanbul ignore else */
     if (
       prevIsRegisteredUserCallDone !== isRegisteredUserCallDone &&
@@ -47,12 +60,57 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     ) {
       initCheckout(router, getPayPalFlag(navigation), navigation);
     }
+
+    const events = this.getAnalyticsEvents();
+    if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
+      const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      setClickAnalyticsDataCheckout({
+        customEvents: events,
+        products: productsData,
+      });
+      trackPageViewCheckout({
+        currentScreen: currentStage.toLowerCase(),
+        pageData: {
+          pageName: `checkout:${currentStage.toLowerCase()}`,
+          pageSection: 'checkout',
+          pageSubSection: 'checkout',
+          pageType: 'checkout',
+          pageShortName: `checkout:${currentStage.toLowerCase()}`,
+        },
+      });
+    }
   }
 
   componentWillUnmount() {
     const { clearIsBillingVisitedState } = this.props;
     clearIsBillingVisitedState();
   }
+
+  getAnalyticsEvents = () => {
+    const { currentStage } = this.props;
+    const events = [];
+    if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.PICKUP) {
+      events.push('scCheckout', 'event86', 'event69');
+    } else if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.SHIPPING) {
+      events.push('scCheckout', 'event86', 'event9');
+    } else if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.BILLING) {
+      events.push('scCheckout', 'event86', 'event11');
+    } else if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.REVIEW) {
+      events.push('scCheckout', 'event86', 'event12');
+    } else if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.CONFIRMATION) {
+      events.push(
+        'purchase',
+        'event5',
+        'event6',
+        'event7',
+        'event22',
+        'event78',
+        'event79',
+        'event99'
+      );
+    }
+    return events;
+  };
 
   shippingDidMount = () => {
     intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this, {
@@ -72,72 +130,18 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this);
   };
 
-  setAnalyticsData = (eventsInfo, name, additionalData = {}) => {
-    const {
-      setClickAnalyticsDataCheckout,
-      cartOrderItems,
-      trackClickAnalytics,
-      currentStage,
-    } = this.props;
-    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
-    setClickAnalyticsDataCheckout({
-      customEvents: eventsInfo,
-      products: productsData,
-      ...additionalData,
-    });
-
-    trackClickAnalytics({
-      name: name,
-      module: 'checkout',
-      pageData: {
-        pageName: `checkout:${currentStage.toLowerCase()}`,
-        pageSection: 'checkout',
-        pageType: 'checkout',
-        pageShortName: `checkout:${currentStage.toLowerCase()}`,
-        ...additionalData,
-      },
-    });
-  };
-
   handleSubmitShippingSection = payload => {
     const { submitShipping } = this.props;
-    const events = ['scCheckout', 'event86', 'event11'];
-    this.setAnalyticsData(events, 'submit_shipping');
     submitShipping(payload);
   };
 
   handleSubmitBillingSection = payload => {
     const { submitBilling } = this.props;
-    const events = ['scCheckout', 'event86', 'event12'];
-    this.setAnalyticsData(events, 'submit_billing');
     submitBilling(payload);
   };
 
   handleReviewSubmit = payload => {
-    const {
-      submitReview,
-      currentOrderId,
-      paymentMethodId,
-      billingAddress,
-      orderSubTotal,
-    } = this.props;
-    const events = [
-      'purchase',
-      'event5',
-      'event6',
-      'event7',
-      'event22',
-      'event78',
-      'event79',
-      'event99',
-    ];
-    const additionalData = {
-      orderId: currentOrderId,
-      paymentMethod: paymentMethodId,
-      billingZip: billingAddress && billingAddress.zipCode,
-      orderSubtotal: orderSubTotal,
-    };
-    this.setAnalyticsData(events, 'submit_review', additionalData);
+    const { submitReview } = this.props;
     submitReview(payload);
   };
 
@@ -169,7 +173,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       orderHasShipping,
       routeToPickupPage,
       setCheckoutStage,
-      billingProps,
       router,
       updateShippingMethodSelection,
       updateShippingAddressData,
@@ -217,7 +220,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
         billingProps={{
-          ...billingProps,
           billingDidMount: this.billingDidMount,
           isRegisteredUserCallDone,
         }}
@@ -314,6 +316,7 @@ CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
       pageData: {
         pageName: `checkout:${loadedComponent}`,
         pageSection: 'checkout',
+        pageSubSection: 'checkout',
         pageType: 'checkout',
         pageShortName: `checkout:${loadedComponent}`,
         loadAnalyticsOnload: false,

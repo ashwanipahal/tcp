@@ -28,6 +28,9 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   navigation,
   isGymboreeCanadaSite,
+  isVenmoPaymentInProgress,
+  venmoPayment,
+  venmoOrderConfirmationContent,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -80,6 +83,7 @@ const ConfirmationView = ({
           updateOrderDetailsData={updateOrderDetailsData}
           orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
           isBossInList={isBossInList}
+          venmoOrderConfirmationContent={venmoOrderConfirmationContent}
         />
       </InnerWrapper>
       <CnCTemplate
@@ -87,6 +91,10 @@ const ConfirmationView = ({
         isGuest={isGuest}
         navigation={navigation}
         pageCategory="confirmation"
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        venmoPayment={venmoPayment}
+        pageName="checkout"
+        pageSection="confirmation"
       />
     </Wrapper>
   );
@@ -129,6 +137,9 @@ ConfirmationView.propTypes = {
   }).isRequired,
   navigation: PropTypes.shape({}),
   isGymboreeCanadaSite: PropTypes.bool,
+  venmoPayment: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
+  venmoOrderConfirmationContent: PropTypes.shape({}),
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
@@ -136,5 +147,8 @@ ConfirmationView.defaultProps = {
   encryptedEmailAddress: '',
   navigation: null,
   isGymboreeCanadaSite: false,
+  venmoPayment: null,
+  isVenmoPaymentInProgress: false,
+  venmoOrderConfirmationContent: null,
 };
 export default ConfirmationView;

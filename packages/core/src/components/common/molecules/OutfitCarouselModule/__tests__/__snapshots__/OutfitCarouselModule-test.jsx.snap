@@ -48,8 +48,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     carouselConfig={
       Object {
         "autoplay": false,
-        "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-        "customArrowRight": "/static/images/right-carousel-carrot.svg",
+        "customArrowLeft": "/static/version-not-available/images/right-carousel-carrot.svg",
+        "customArrowRight": "/static/version-not-available/images/right-carousel-carrot.svg",
       }
     }
     options={
@@ -112,7 +112,20 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         fontSizeVariation="small"
         to="/node/product/<uuid>"
       >
-        Tropical blush &gt;
+        <ForwardRef
+          className={null}
+          color="text.primary"
+          component="pre"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="normal"
+          letterSpacing="normal"
+          lineHeight="14px"
+          link={null}
+          textAlign="center"
+        >
+          Tropical blush  &gt;
+        </ForwardRef>
       </ForwardRef>
     </div>
     <div>
@@ -139,7 +152,20 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         fontSizeVariation="small"
         to="/node/product/<uuid>"
       >
-        Tropical blush &gt;
+        <ForwardRef
+          className={null}
+          color="text.primary"
+          component="pre"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="normal"
+          letterSpacing="normal"
+          lineHeight="14px"
+          link={null}
+          textAlign="center"
+        >
+          Tropical blush  &gt;
+        </ForwardRef>
       </ForwardRef>
     </div>
     <div>
@@ -166,7 +192,20 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         fontSizeVariation="small"
         to="/node/product/<uuid>"
       >
-        Tropical blush &gt;
+        <ForwardRef
+          className={null}
+          color="text.primary"
+          component="pre"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="normal"
+          letterSpacing="normal"
+          lineHeight="14px"
+          link={null}
+          textAlign="center"
+        >
+          Tropical blush  &gt;
+        </ForwardRef>
       </ForwardRef>
     </div>
     <div>
@@ -193,7 +232,20 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         fontSizeVariation="small"
         to="/node/product/<uuid>"
       >
-        Tropical blush &gt;
+        <ForwardRef
+          className={null}
+          color="text.primary"
+          component="pre"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="normal"
+          letterSpacing="normal"
+          lineHeight="14px"
+          link={null}
+          textAlign="center"
+        >
+          Tropical blush  &gt;
+        </ForwardRef>
       </ForwardRef>
     </div>
   </ForwardRef>

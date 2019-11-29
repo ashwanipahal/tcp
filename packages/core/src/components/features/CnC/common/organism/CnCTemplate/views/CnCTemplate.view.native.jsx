@@ -8,6 +8,8 @@ import Recommendations from '../../../../../../../../../mobileapp/src/components
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
+import CardImage from '../../../../../../common/molecules/CardImage';
+
 import {
   ButtonWrapper,
   CheckoutButton,
@@ -19,6 +21,8 @@ import {
   PayPalButtonContainer,
   CnContainer,
   CnContent,
+  VenmoPaidContainer,
+  VenmoPaidTextContainer,
 } from '../styles/CnCTemplate.style.native';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 import PayPalButton from '../../PayPalButton';
@@ -38,6 +42,7 @@ const getPaymentButton = params => {
     showPayPalButton,
     showVenmoSubmit,
     onVenmoSubmit,
+    onVenmoError,
   } = params;
   return (
     <ButtonWrapper
@@ -56,7 +61,9 @@ const getPaymentButton = params => {
           />
         </PayPalButtonContainer>
       )}
-      {showVenmoSubmit && <VenmoPaymentButton onSuccess={onVenmoSubmit} isVenmoBlueButton />}
+      {showVenmoSubmit && (
+        <VenmoPaymentButton onSuccess={onVenmoSubmit} onError={onVenmoError} isVenmoBlueButton />
+      )}
       {!showPayPalButton && !showVenmoSubmit && (
         <CheckoutButton onPress={onPress}>
           <BodyCopy
@@ -102,7 +109,10 @@ const CnCCommonTemplate = ({
   showPayPalButton,
   showVenmoSubmit,
   onVenmoSubmit,
+  venmoPayment,
+  onVenmoError,
 }) => {
+  const userName = venmoPayment ? venmoPayment.userName : '';
   return (
     <CnContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
       {!isConfirmationPage ? (
@@ -110,7 +120,7 @@ const CnCCommonTemplate = ({
           {!isPayPalWebViewEnable && (
             <>
               <CouponAndPromosWrapper>
-                <CouponAndPromos isCheckout navigation={navigation} />
+                <CouponAndPromos isCheckout pageCategory={pageCategory} navigation={navigation} />
               </CouponAndPromosWrapper>
               <View>
                 <OrderLedgerContainer
@@ -136,6 +146,7 @@ const CnCCommonTemplate = ({
             showPayPalButton,
             showVenmoSubmit,
             onVenmoSubmit,
+            onVenmoError,
           })}
         </CnContent>
       ) : (
@@ -145,6 +156,19 @@ const CnCCommonTemplate = ({
             pageCategory={pageCategory}
             showAccordian
           />
+          {venmoPayment && venmoPayment.isVenmoPaymentSelected && (
+            <VenmoPaidContainer>
+              <VenmoPaidTextContainer>
+                <BodyCopy
+                  fontWeight="regular"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  text="Paid with "
+                />
+              </VenmoPaidTextContainer>
+              <CardImage card={venmoPayment} cardNumber={userName} />
+            </VenmoPaidContainer>
+          )}
           {isGuest && <ConfirmationAccountFormContainer />}
           <PersonalizedCoupons />
           <Recommendations
@@ -173,6 +197,7 @@ CnCCommonTemplate.propTypes = {
   showPayPalButton: PropTypes.bool,
   showVenmoSubmit: PropTypes.bool,
   onVenmoSubmit: PropTypes.func,
+  venmoPayment: PropTypes.shape({}),
 };
 
 CnCCommonTemplate.defaultProps = {
@@ -183,6 +208,7 @@ CnCCommonTemplate.defaultProps = {
   showPayPalButton: false,
   showVenmoSubmit: false,
   onVenmoSubmit: () => {},
+  venmoPayment: null,
 };
 
 export default CnCCommonTemplate;

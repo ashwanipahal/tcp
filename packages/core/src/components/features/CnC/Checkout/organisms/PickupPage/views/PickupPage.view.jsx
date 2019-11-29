@@ -14,7 +14,6 @@ import Button from '../../../../../../common/atoms/Button';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import { scrollToFirstError } from '../../../util/utility';
-import PickupAnalytics from './PickupAnalytics.view';
 import EmailSignUpCheckBox from '../../../molecules/EmailSignUpCheckBox';
 
 class PickUpFormPart extends React.Component {
@@ -318,7 +317,6 @@ class PickUpFormPart extends React.Component {
                 bagLoading={bagLoading}
               />
             </form>
-            <PickupAnalytics {...this.props} />
           </div>
         )}
       </>

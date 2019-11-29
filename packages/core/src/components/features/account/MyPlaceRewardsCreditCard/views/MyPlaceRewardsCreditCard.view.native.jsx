@@ -67,7 +67,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
         <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-LRG">
           <ButtonWrapper>
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={{ customEvents: ['event113'] }}
+              name="manage_plcc"
+              module="account"
               fill="BLUE"
               type="submit"
               color="white"
@@ -80,11 +84,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             />
           </ButtonWrapper>
           <ButtonWrapper>
-            <ClickTracker
-              as={Button}
-              clickData={{ customEvents: ['event113'] }}
-              name="manage_plcc"
-              module="account"
+            <Button
               fill="WHITE"
               type="submit"
               text={getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}

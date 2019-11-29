@@ -18,6 +18,7 @@ import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 class GiftServices extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { isGiftServicesChecked, initialValues } = this.props;
     this.state = {
       detailStatus: false,
       isChecked: isGiftServicesChecked,

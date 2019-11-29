@@ -256,7 +256,18 @@ export default function create(store) {
       get() {
         return store
           .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], []);
+      },
+    },
+    currentState: {
+      get() {
+        return store.getState();
+      },
+    },
+    brandId: {
+      get() {
+        const { brandId = '' } = store.getState().APIConfig;
+        return brandId.toUpperCase();
       },
     },
   });

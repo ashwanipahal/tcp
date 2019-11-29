@@ -37,7 +37,7 @@ describe('Venmo Payment Button', () => {
     },
     allowNewBrowserTab: true,
     isGuest: false,
-    orderId: 3000332630,
+    orderId: '3000332630',
     setVenmoPaymentInProgress: jest.fn(),
     getVenmoPaymentTokenAction: jest.fn(),
     setVenmoDataAction: jest.fn(),
@@ -74,24 +74,6 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     componentInstance.handleVenmoError({ code: 'error code 400' });
     expect(props.onVenmoPaymentButtonError).toBeCalled();
-  });
-
-  it('calling handleVenmoInstanceError method', () => {
-    const tree = shallow(<VenmoPaymentButton {...props} />);
-    const componentInstance = tree.instance();
-    tree.setState({ hasVenmoError: true });
-    componentInstance.handleVenmoInstanceError({ code: 'error code 400' });
-    expect(tree.state('hasVenmoError')).toBeTruthy();
-  });
-
-  it('calling handleVenmoInstanceError method without error arg', () => {
-    const tree = shallow(<VenmoPaymentButton {...props} />);
-    const componentInstance = tree.instance();
-    tree.setState({ hasVenmoError: false });
-    const handleVenmoClickedError = jest.spyOn(componentInstance, 'handleVenmoClickedError');
-    componentInstance.handleVenmoInstanceError();
-    expect(tree.state('hasVenmoError')).toBe(true);
-    expect(handleVenmoClickedError).toHaveBeenCalled();
   });
 
   it('calling canCallVenmoApi method', () => {

@@ -49,6 +49,13 @@ export const getActiveWishlistAction = wishListId => {
   };
 };
 
+export const getActiveWishlistGuestAction = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST_GUEST,
+    payload,
+  };
+};
+
 export const createNewWishListAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST,
@@ -73,6 +80,13 @@ export const deleteWishListAction = payload => {
 export const setLastDeletedItemIdAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.DELETE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
+export const setReplaceWishlistItem = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM,
     payload,
   };
 };

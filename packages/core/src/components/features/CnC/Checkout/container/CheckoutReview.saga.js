@@ -29,7 +29,7 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import CHECKOUT_ACTIONS from './Checkout.action';
+import CHECKOUT_ACTIONS, { getSetCheckoutStage } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import {
   resetCouponReducer,
@@ -365,6 +365,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
     yield put(BagActions.resetCartReducer());
+    yield put(getSetCheckoutStage('confirmation'));
     yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
     //   RECOMMENDATIONS_SECTIONS.CHECKOUT,

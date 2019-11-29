@@ -227,9 +227,6 @@ class PickUpFormPart extends React.Component {
               availableStages={availableStages}
               setCheckoutStage={setCheckoutStage}
             />
-            {this.isShowVenmoBanner(CONSTANTS.CHECKOUT_STAGES.PICKUP) && (
-              <VenmoBanner labels={pickUpLabels} />
-            )}
             <ScrollView
               ref={ref => {
                 this.scrollView = ref;
@@ -246,6 +243,9 @@ class PickUpFormPart extends React.Component {
                   />
                 </PickupError>
                 <PickupContainer>
+                  {this.isShowVenmoBanner(CONSTANTS.CHECKOUT_STAGES.PICKUP) && (
+                    <VenmoBanner labels={pickUpLabels} />
+                  )}
                   {isGuest && <PickUpHeading>{pickUpLabels.pickupContactText}</PickUpHeading>}
                   {!isGuest && (
                     <CheckoutSectionTitleDisplay
@@ -368,6 +368,8 @@ class PickUpFormPart extends React.Component {
                 onPress={handleSubmit(this.pickupSubmit)}
                 pageCategory="pickupPage"
                 showAccordian
+                pageName="checkout"
+                pageSection="pickup"
               />
             </ScrollView>
           </>

@@ -53,7 +53,7 @@ class GuestBillingForm extends React.Component {
     isPayPalWebViewEnable: PropTypes.func,
     bagLoading: PropTypes.bool.isRequired,
     isVenmoEnabled: PropTypes.bool,
-    venmoError: PropTypes.string,
+    onVenmoError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -75,7 +75,7 @@ class GuestBillingForm extends React.Component {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
     isVenmoEnabled: false,
-    venmoError: '',
+    onVenmoError: () => {},
   };
 
   /**
@@ -161,7 +161,7 @@ class GuestBillingForm extends React.Component {
       isPayPalWebViewEnable,
       bagLoading,
       isVenmoEnabled,
-      venmoError,
+      onVenmoError,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -256,7 +256,9 @@ class GuestBillingForm extends React.Component {
           showVenmoSubmit={paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit(onSubmit)}
-          venmoError={venmoError}
+          onVenmoError={onVenmoError}
+          pageName="checkout"
+          pageSection="billing"
         />
       </>
     );

@@ -13,7 +13,6 @@ export class ClickTracker extends React.PureComponent {
       clickData,
       name,
       module,
-      ...otherprops
     } = this.props;
     setClickAnalyticsDataAction(clickData);
     trackClickAction({ name, module });

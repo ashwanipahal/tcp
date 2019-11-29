@@ -312,6 +312,22 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_RAYGUN_API_KEY_GYM",
+      "value": "zRKcWgFKi42LdRUfEG6FWQ"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_GYM",
+      "value": "https://test5.gymboree.com"
     }
   ],
   "signed": true,
@@ -342,7 +358,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "f50cbc6e-db20-471e-8a0a-c9a13fd799a4"
+        "e1a1bd2c-bf4e-444f-beb2-40c909b37d7d"
       ],
       "isSilent": false
     },

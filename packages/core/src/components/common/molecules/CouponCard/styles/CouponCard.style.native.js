@@ -24,14 +24,14 @@ const CardSavingHeader = styled.View`
 const CardRewardHeader = styled.View`
   flex-direction: row;
   height: 16px;
-  background: ${props => props.theme.colors.BRAND.GIRLS};
+  background: ${props => props.theme.colorPalette.orange[800]};
   justify-content: center;
 `;
 
 const CardPublicCashHeader = styled.View`
   flex-direction: row;
   height: 16px;
-  background: ${props => props.theme.colors.BRAND.GIRLS};
+  background: ${props => props.theme.colors.PRIMARY.GREEN};
   justify-content: center;
 `;
 
