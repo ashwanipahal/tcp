@@ -11,7 +11,7 @@ import ModuleX from '../../ModuleX';
  * @param {*} props
  */
 const AccordionModule = props => {
-  const { className, accordionWrapper } = props;
+  const { className, accordionWrapper, moduleClassName } = props;
   const accordionItems = [];
   if (accordionWrapper && accordionWrapper.length > 0) {
     accordionWrapper.map(({ styled }) => {
@@ -29,7 +29,7 @@ const AccordionModule = props => {
   }
 
   return accordionWrapper ? (
-    <Row className={className}>
+    <Row className={`${className} ${moduleClassName}`}>
       <Col
         colSize={{
           small: 6,
@@ -53,6 +53,10 @@ const AccordionModule = props => {
 AccordionModule.propTypes = {
   className: PropTypes.string.isRequired,
   accordionWrapper: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
+  moduleClassName: PropTypes.string,
+};
+AccordionModule.defaultProps = {
+  moduleClassName: '',
 };
 
 export default withStyles(AccordionModule, style);

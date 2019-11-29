@@ -174,7 +174,7 @@ const RenderCol = props => {
  */
 
 const ImageTextModule = props => {
-  const { className } = props;
+  const { className, moduleClassName } = props;
   return (
     <Row
       fullBleed={{
@@ -182,7 +182,7 @@ const ImageTextModule = props => {
         medium: false,
         large: true,
       }}
-      className={className}
+      className={`${className} ${moduleClassName}`}
     >
       {RenderCol(props)}
     </Row>
@@ -217,9 +217,12 @@ RenderCol.propTypes = {
 
 ImageTextModule.propTypes = {
   className: PropTypes.string.isRequired,
+  moduleClassName: PropTypes.string,
 };
 
-ImageTextModule.defaultProps = {};
+ImageTextModule.defaultProps = {
+  moduleClassName: '',
+};
 
 export default withStyles(ImageTextModule, style);
 

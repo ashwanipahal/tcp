@@ -70,6 +70,7 @@ class ModuleA extends React.Component {
       className,
       accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
       fullBleed,
+      moduleClassName,
     } = this.props;
 
     const buttonListCtaType = ctaTypes[ctaType];
@@ -111,7 +112,7 @@ class ModuleA extends React.Component {
 
     return (
       <Row
-        className={`${className} ${
+        className={`${className} ${moduleClassName} ${
           isGymboree() ? 'gymboree-module-a' : ''
         } ${this.getRibbonClass()} moduleA`}
         fullBleed={fullBleed || { small: true, medium: true, large: false }}
@@ -200,6 +201,7 @@ class ModuleA extends React.Component {
 ModuleA.defaultProps = {
   accessibility: {},
   fullBleed: false,
+  moduleClassName: '',
 };
 
 ModuleA.propTypes = {
@@ -227,6 +229,7 @@ ModuleA.propTypes = {
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
   fullBleed: PropTypes.bool,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);
