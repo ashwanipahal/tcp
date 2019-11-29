@@ -177,6 +177,7 @@ class SearchDetailContainer extends React.PureComponent {
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,
+      trackPageLoad,
       ...otherProps
     } = this.props;
 
