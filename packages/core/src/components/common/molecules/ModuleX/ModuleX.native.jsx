@@ -5,8 +5,10 @@ import RichText from '../../atoms/RichText';
 const ModuleX = props => {
   const {
     richTextList: [{ text: html }],
+    navigation,
   } = props;
-  return <RichText isNativeView source={html} />;
+
+  return <RichText isNativeView source={html} navigation={navigation} />;
 };
 
 ModuleX.propTypes = {

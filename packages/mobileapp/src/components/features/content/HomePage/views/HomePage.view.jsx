@@ -2,9 +2,7 @@ import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
 import ErrorBoundary from 'react-native-error-boundary';
 import { Button } from '@tcp/core/src/components/common/atoms';
-
 import queryString from 'query-string';
-
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -32,6 +30,8 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import ModuleX from '@tcp/core/src/components/common/molecules/ModuleX';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -62,6 +62,7 @@ const modulesMap = {
   moduleT: ModuleT,
   moduleE: ModuleE,
   moduleG: ModuleG,
+  moduleX: ModuleX,
 };
 
 const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {

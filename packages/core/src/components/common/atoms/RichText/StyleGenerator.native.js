@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
-import { View, Text } from 'react-native';
-import Image from '@tcp/core/src/components/common/atoms/Image';
+import { View, Text, Image } from 'react-native';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor/views/Anchor.native';
+import { getScreenWidth } from '../../../../utils/utils.app';
 
 const cssRuleParser = (StyledStrings, className) => {
   if (!StyledStrings[className]) {
@@ -99,6 +100,7 @@ export const getStyledImageComponent = (StyledStrings, classNames) => {
 
     if (!styledObject.final) {
       styledObject.final = styled.Image`
+        width: ${getScreenWidth()};
         ${ruleTemplateString}
       `;
     } else {
@@ -110,3 +112,5 @@ export const getStyledImageComponent = (StyledStrings, classNames) => {
 
   return styledObject.final;
 };
+
+export const ImageWrapperView = styled.View``;

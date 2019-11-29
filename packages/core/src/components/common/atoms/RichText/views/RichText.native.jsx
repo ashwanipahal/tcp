@@ -4,7 +4,7 @@ import { Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import { PropTypes } from 'prop-types';
-import CustomComponentMap from '../ComponentMap.native';
+import generateComponentMap from '../ComponentMap.native';
 
 /**
  * @param {object} props : Props for RichText
@@ -41,13 +41,11 @@ class RichText extends PureComponent {
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
-      source,
-      ...others
     } = this.props;
     const screenHeight = Math.round(Dimensions.get('window').height);
     const style = { backgroundColor: 'transparent' };
     const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
-    const { html } = source;
+
     return (
       <WebView
         style={isApplyDeviceHeight ? styleWithHeight : style}
@@ -55,10 +53,7 @@ class RichText extends PureComponent {
         javaScriptEnabled={javaScriptEnabled}
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-        source={{
-          html: `<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </head><body>${html}</body></html>`,
-        }}
-        {...others}
+        {...this.props}
       />
     );
   };
@@ -71,7 +66,7 @@ class RichText extends PureComponent {
   };
 
   renderNativeView = () => {
-    const { source } = this.props;
+    const { source, navigation } = this.props;
     return (
       <View>
         <RenderTree
@@ -79,7 +74,7 @@ class RichText extends PureComponent {
           tools={{ navigate: this.handleNativeNavigation }}
           componentMap={{
             ...ComponentMap,
-            ...CustomComponentMap,
+            ...generateComponentMap(navigation),
           }}
         />
       </View>
