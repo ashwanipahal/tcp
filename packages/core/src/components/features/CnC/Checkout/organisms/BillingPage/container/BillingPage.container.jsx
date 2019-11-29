@@ -23,6 +23,7 @@ class BillingPageContainer extends React.Component {
    * @description - Error notification for venmo authorization
    */
   onVenmoError = payload => {
+    const { toastMessage } = this.props;
     if (payload && payload.venmoErrorMessage) {
       toastMessage(payload.venmoErrorMessage);
     }
@@ -67,11 +68,13 @@ BillingPageContainer.propTypes = {
   clearCheckoutServerError: PropTypes.func.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
   isPayPalHidden: PropTypes.bool,
+  toastMessage: PropTypes.func,
 };
 
 BillingPageContainer.defaultProps = {
   getCVVCodeInfo: null,
   isPayPalHidden: false,
+  toastMessage: () => {},
 };
 
 export default connect(

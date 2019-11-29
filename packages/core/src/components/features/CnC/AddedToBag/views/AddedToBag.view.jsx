@@ -68,7 +68,6 @@ class AddedToBag extends React.PureComponent {
       isInternationalShipping,
       hideHeader,
       addedToBagLoaderState,
-      pointsSummary,
     } = this.props;
     return (
       <Modal
