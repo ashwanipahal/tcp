@@ -104,7 +104,6 @@ ModuleP.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   viaModule: PropTypes.string,
-  isPromoAvailable: PropTypes.bool,
 };
 
 ModuleP.defaultProps = {
@@ -129,7 +128,6 @@ ModuleP.defaultProps = {
   isEvenElement: false,
   gridIndex: 0,
   viaModule: '',
-  isPromoAvailable: false,
 };
 
 export { ModuleP as ModulePVanilla };

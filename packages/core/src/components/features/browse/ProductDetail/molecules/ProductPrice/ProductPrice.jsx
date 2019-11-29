@@ -96,7 +96,7 @@ class ProductPrice extends React.Component {
       className,
       currencySymbol,
       currencyAttributes,
-      customFonts: { listPriceFont },
+      customFonts: { listPriceFont, offerPriceFont },
     } = this.props;
     if (this.isCurrencyExchangeValid(currencyAttributes)) {
       offerPrice = currencyConversion(offerPrice, currencyAttributes);
@@ -110,12 +110,13 @@ class ProductPrice extends React.Component {
     const showBothPrice =
       (offerPrice && offerPrice !== listPrice) ||
       (highOfferPrice && highOfferPrice !== highListPrice);
+    const offerPriceFontSize = offerPriceFont || 'fs16';
     if (showBothPrice) {
       return (
         <div className={`${className} price-container`}>
           <BodyCopy
             className="price-item actual-price"
-            fontSize="fs16"
+            fontSize={offerPriceFontSize}
             fontFamily="secondary"
             fontWeight="black"
             color="red.500"
@@ -146,7 +147,7 @@ class ProductPrice extends React.Component {
       return (
         <BodyCopy
           className="price-item actual-price"
-          fontSize="fs16"
+          fontSize={offerPriceFontSize}
           fontFamily="secondary"
           fontWeight="black"
           color="red.500"

@@ -23,6 +23,10 @@ export const getSitesTable = state => {
   return siteOptions && siteOptions.sitesTable;
 };
 
+export const getSelectedCountryName = state => {
+  return getCountrySelectorState(state).get('countryName');
+};
+
 export const getCurrentCountry = state => {
   return getCountrySelectorState(state).get('country');
 };

@@ -187,6 +187,7 @@ const styles = css`
   }
 
   .loyalty-text-container {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     visibility: hidden;
     color: ${props =>
       props.isPlcc
@@ -204,9 +205,13 @@ const styles = css`
 
   .product-image-container {
     position: relative;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 320px;
+    }
   }
 
   .extended-sizes-text {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     display: block;
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {

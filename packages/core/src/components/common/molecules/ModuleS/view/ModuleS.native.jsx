@@ -68,6 +68,32 @@ const getImageHeight = (hasRibbon, hasVideo = false) => {
 };
 
 /**
+ * To Render the Dam Image or Video Component
+ */
+const renderDamImage = (link, imgData, videoData, navigation, hasRibbon) => {
+  const damImageComp = (
+    <StyledImage
+      width={getImageWidth(hasRibbon)}
+      height={getImageHeight(hasRibbon)}
+      url={imgData && imgData.url}
+      host={LAZYLOAD_HOST_NAME.HOME}
+      videoData={videoData}
+      imgConfig={imgData && (imgData.crop_m || getImageConfig(hasRibbon))}
+    />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
+  ) : null;
+};
+
+/**
  * This method return image wrapped inside an anchor tag
  * @param {*} props
  * @param {*} hasRibbon
@@ -79,32 +105,17 @@ const getLinkedImage = (props, hasRibbon) => {
   } = props;
 
   let hasVideo = false;
+  let videoData = {};
   if (video && video.url) {
     hasVideo = true;
-    video.poster = image ? image.url : '';
-    video.videoWidth = getImageWidth(hasRibbon);
-    video.videoHeight = getImageHeight(hasRibbon, hasVideo);
+    videoData = {
+      ...video,
+      videoWidth: getImageWidth(hasRibbon),
+      videoHeight: getImageHeight(hasRibbon, hasVideo),
+    };
   }
-
-  return link ? (
-    <Anchor url={link.url} navigation={navigation}>
-      <StyledImage
-        width={getImageWidth(hasRibbon)}
-        height={getImageHeight(hasRibbon)}
-        url={image.url}
-        host={LAZYLOAD_HOST_NAME.HOME}
-        imgConfig={image.crop_m || getImageConfig(hasRibbon)}
-      />
-    </Anchor>
-  ) : (
-    <StyledImage
-      width={getImageWidth(hasRibbon)}
-      height={getImageHeight(hasRibbon)}
-      url={image.url}
-      host={LAZYLOAD_HOST_NAME.HOME}
-      videoData={video}
-      imgConfig={image.crop_m || getImageConfig(hasRibbon)}
-    />
+  return (
+    <React.Fragment>{renderDamImage(link, image, videoData, navigation, hasRibbon)}</React.Fragment>
   );
 };
 

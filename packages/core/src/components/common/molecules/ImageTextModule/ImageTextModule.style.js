@@ -71,9 +71,12 @@ const style = css`
   .bg-wrapper {
     margin: 0 auto;
   }
+<<<<<<< HEAD
   .cta-button-text {
     width: auto;
   }
+=======
+>>>>>>> ab5c17ed18a497aa63b0d82fbcfefa3287a3e2b3
 `;
 
 export { ContentContainer, BgWrapper, style };
