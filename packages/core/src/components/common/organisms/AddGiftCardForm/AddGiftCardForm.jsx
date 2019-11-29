@@ -47,6 +47,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
     const { onAddGiftCardClick } = this.props;
     onAddGiftCardClick(data);
+    this.resetReCaptcha();
   };
 
   handleRecaptchaVerify = (token: string) => {
