@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClickTracker should render correctly 1`] = `
+<[object Object]
+  clickData={Object {}}
+  module="test"
+  name="test"
+  onPress={[Function]}
+  pageData={null}
+  setClickAnalyticsDataAction={[MockFunction]}
+  trackClickAction={[MockFunction]}
+/>
+`;

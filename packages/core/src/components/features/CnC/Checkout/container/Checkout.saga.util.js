@@ -18,7 +18,6 @@ import {
   acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
-import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {

@@ -51,7 +51,7 @@ export function* applyCoupon({ payload }) {
       const productDetail = getProductDetails(tile);
       const {
         itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
-        productInfo: { skuId, upc, productPartNumber },
+        productInfo: { skuId, generalProductId, upc, productPartNumber },
       } = productDetail;
 
       const prodData = {
@@ -66,6 +66,7 @@ export function* applyCoupon({ payload }) {
         upc,
         sku: skuId.toString(),
         quantity: qty,
+        colorId: generalProductId,
       };
       productsData.push(prodData);
       return prodData;

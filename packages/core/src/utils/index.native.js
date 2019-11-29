@@ -70,6 +70,8 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   isTCP,
+  formatDate,
+  isValidDate,
   convertNumToBool,
 } from './utils';
 
