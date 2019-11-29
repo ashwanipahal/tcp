@@ -60,10 +60,13 @@ const SHARE_LIST_BY_COPY_LINK = 'shareListByCopyLink';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
+
   addListFromMoveOption = false;
+
   selectedItemId = '';
 
   brandOptions;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -773,6 +776,7 @@ FavoritesView.propTypes = {
   isLoggedIn: PropTypes.func.isRequired,
   onLoadRecommendations: PropTypes.func.isRequired,
   onReplaceWishlistItem: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -782,6 +786,7 @@ FavoritesView.defaultProps = {
   selectedColorProductId: '',
   filteredId: 'ALL',
   outOfStockLabels: {},
+  formErrorMessage: {},
 };
 
 export default FavoritesView;
