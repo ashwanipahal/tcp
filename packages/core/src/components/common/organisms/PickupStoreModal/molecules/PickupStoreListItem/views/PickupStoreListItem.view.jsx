@@ -17,10 +17,7 @@ import {
 import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/PickupStoreListItem.style';
-import {
-  setFavStoreToLocalStorage,
-  getFavStoreFromLocalStorage,
-} from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
+import { setFavStoreToLocalStorage } from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosingTimeTomorrow) => {
   const storeName = capitalize(basicInfo.storeName);
@@ -220,6 +217,10 @@ class PickupStoreListItem extends React.Component {
     pageNameProp: PropTypes.string,
     setClickAnalyticsData: PropTypes.func,
     trackClick: PropTypes.func,
+    storeSearchCriteria: PropTypes.string,
+    storeSearchDistance: PropTypes.string,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
   };
 
   static defaultProps = {
@@ -228,6 +229,10 @@ class PickupStoreListItem extends React.Component {
     pageNameProp: '',
     setClickAnalyticsData: () => {},
     trackClick: () => {},
+    storeSearchCriteria: '',
+    storeSearchDistance: '',
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {

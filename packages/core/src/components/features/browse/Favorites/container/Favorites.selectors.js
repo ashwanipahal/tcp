@@ -1,12 +1,5 @@
 import { createSelector } from 'reselect';
-import {
-  FAVORITES_REDUCER_KEY,
-  RECOMMENDATIONS_REDUCER_KEY,
-} from '../../../../../constants/reducer.constants';
-
-const getRecommendationListState = state => {
-  return state[RECOMMENDATIONS_REDUCER_KEY];
-};
+import { FAVORITES_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
 const getFavoriteListState = state => {
   return state[FAVORITES_REDUCER_KEY];
