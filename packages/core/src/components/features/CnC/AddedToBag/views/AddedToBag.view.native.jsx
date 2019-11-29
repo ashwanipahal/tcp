@@ -93,12 +93,19 @@ const AddedToBag = ({
   navigation,
   addedToBagInterval,
   totalBagItems,
+  isPayPalButtonRendered,
 }) => {
   const [counter, setCounter] = useState(0);
   const [resetTimer, resetTimerStatus] = useState(false);
   const [totalItems, setTotalItems] = useState(totalBagItems);
   useEffect(() => {
-    if (counter === 0 && addedToBagInterval > 0 && totalBagItems > 0 && openState) {
+    if (
+      counter === 0 &&
+      addedToBagInterval > 0 &&
+      totalBagItems > 0 &&
+      openState &&
+      isPayPalButtonRendered
+    ) {
       timer = setTimeout(() => {
         onRequestClose();
       }, addedToBagInterval);

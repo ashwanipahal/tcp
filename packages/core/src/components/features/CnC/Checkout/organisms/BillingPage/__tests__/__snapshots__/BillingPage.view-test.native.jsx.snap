@@ -10,7 +10,12 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
     navigation={Object {}}
   />
   <ScrollViewMock
-    disableScrollViewPanResponder={true}
+    contentContainerStyle={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+    scrollEnabled={true}
   >
     <Styled(View)
       isPayPalWebViewEnable={false}
@@ -45,7 +50,12 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
     navigation={Object {}}
   />
   <ScrollViewMock
-    disableScrollViewPanResponder={true}
+    contentContainerStyle={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+    scrollEnabled={true}
   >
     <Styled(View)
       isPayPalWebViewEnable={false}

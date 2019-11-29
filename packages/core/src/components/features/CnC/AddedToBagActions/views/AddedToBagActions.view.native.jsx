@@ -69,6 +69,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isPayPalWebViewEnable,
       hideHeader,
       fromAddedToBagModal,
+      resetTimerStatus,
     } = this.props;
     if (orderId && isPayPalEnabled) {
       if (addWrapper) {
@@ -78,11 +79,15 @@ class AddedToBagActions extends React.PureComponent<Props> {
               getPayPalSettings={getPayPalSettings}
               navigation={navigation}
               setVenmoState={() => {
-                if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+                if (fromAddedToBagModal) {
+                  resetTimerStatus(isPayPalWebViewEnable);
+                  hideHeader(!isPayPalWebViewEnable);
+                }
               }}
               closeModal={this.closeModal}
               top={payPalTop}
               fullWidth
+              resetTimerStatus={resetTimerStatus}
             />
           </PaypalPaymentsButtonWrapper>
         );
@@ -92,7 +97,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
           getPayPalSettings={getPayPalSettings}
           navigation={navigation}
           setVenmoState={() => {
-            if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+            const buyModal = fromAddedToBagModal;
+            if (buyModal) {
+              resetTimerStatus(isPayPalWebViewEnable);
+              hideHeader(!isPayPalWebViewEnable);
+            }
           }}
           closeModal={this.closeModal}
           top={payPalTop}
