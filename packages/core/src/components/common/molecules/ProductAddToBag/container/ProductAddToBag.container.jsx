@@ -168,7 +168,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: this.getColor(),
+        name: this.getColor(colorFitsSizesMapEntry),
       },
       Fit:
         colorFitsSizesMapEntry && colorFitsSizesMapEntry.hasFits
