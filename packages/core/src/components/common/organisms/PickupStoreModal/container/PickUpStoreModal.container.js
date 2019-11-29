@@ -71,12 +71,21 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess, navigation } = ownProps;
+  const {
+    isShowAddItemSuccessNotification,
+    onSubmit,
+    onSubmitSuccess,
+    navigation,
+    reduxFormName,
+    isNotProductAddToBag,
+  } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
 
   const currentProduct = PickupSelectors.getCurrentProduct(state);
   const generalProductId = currentProduct && currentProduct.generalProductId;
-  const atbProductFormId = `${PRODUCT_ADD_TO_BAG}-${generalProductId}`;
+  const atbProductFormId = !isNotProductAddToBag
+    ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+    : `${reduxFormName}-${generalProductId}`;
   const initialValueFromQuickView = {
     ...PickupSelectors.getInitialValues(state, atbProductFormId),
   }; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
