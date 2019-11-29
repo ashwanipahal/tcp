@@ -7,7 +7,7 @@ const getAdditionalStyle = props => {
     ...(margins && { margin: margins }),
     ...(paddings && { padding: paddings }),
     ...(isBorder && { border: `1px solid ${borderColor}` }),
-    ...(width && { width: width }),
+    ...(width && { width }),
   };
 };
 

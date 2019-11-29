@@ -49,7 +49,6 @@ class LocationAccessPrompt extends React.PureComponent {
    * @componentDidMount : In this finction to manage the userlogin or not.
    */
   componentDidMount() {
-    const { isUserLoggedIn } = this.props;
     this.checkLocationAccess();
   }
 

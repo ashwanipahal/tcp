@@ -26,6 +26,7 @@ class BonusPointsView extends React.Component {
     orderDetails: PropTypes.shape({}),
     isBagPage: PropTypes.bool,
     showAccordian: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ class BonusPointsView extends React.Component {
     getBonusDaysData: () => {},
     orderDetails: {},
     isBagPage: false,
+    isFetching: false,
   };
 
   constructor(props) {

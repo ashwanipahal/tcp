@@ -2,7 +2,7 @@ import { call, takeLatest, put, take } from 'redux-saga/effects';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
-import { resetUserInfo } from '../../User/container/User.actions';
+import { resetUserInfo, getUserInfo } from '../../User/container/User.actions';
 import CONSTANTS from '../../User/User.constants';
 import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
@@ -11,11 +11,9 @@ import { LogoutApplication } from '../../../../../services/abstractors/account';
 import {
   resetWalletAppState,
   resetCouponReducer,
-  getCouponList,
 } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
-import { getUserInfo } from '../../User/container/User.actions';
 import { resetAirmilesReducer } from '../../../CnC/common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import CHECKOUT_ACTIONS from '../../../CnC/Checkout/container/Checkout.action';
 
