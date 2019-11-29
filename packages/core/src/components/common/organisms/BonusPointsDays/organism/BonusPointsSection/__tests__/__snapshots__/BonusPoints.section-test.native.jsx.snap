@@ -84,6 +84,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
+          title=""
           underline={true}
           visible={false}
         />
@@ -242,6 +243,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
+          title=""
           underline={true}
           visible={false}
         />
@@ -400,6 +402,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
+          title=""
           underline={true}
           visible={false}
         />
@@ -558,6 +561,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
+          title=""
           underline={true}
           visible={false}
         />
@@ -689,6 +693,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
+          title=""
           underline={true}
           visible={false}
         />
