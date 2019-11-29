@@ -123,4 +123,5 @@ export default {
   'app-store': '/static/images/app-store-logo.png',
   'google-play': '/static/images/google-play-badge.svg',
   'header-icon__heart': '/static/images/heart-icon.png',
+  'down-arrow-sitemap': '/static/images/down-arrow-sitemap.png',
 };

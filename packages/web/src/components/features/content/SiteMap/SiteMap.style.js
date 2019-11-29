@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   .siteMap_heading-container {
@@ -30,12 +31,15 @@ export default css`
 
     h5 {
       margin: 0;
+      background: url(${getIconPath('down-arrow-sitemap')}) no-repeat left 7px;
+      background-size: 8px;
+      padding-left: 15px;
     }
   }
 
   ul {
-    margin: 0 0 10px 15px;
-    padding: 0;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 10px;
     list-style-type: none;
   }
 
@@ -43,6 +47,6 @@ export default css`
     color: ${props => props.theme.colors.PRIMARY.GRAY['400']};
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     line-height: 1.36;
-    margin: 5px 0 0 10px;
+    margin: 5px 0 0 15px;
   }
 `;
