@@ -28,6 +28,9 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     justify-content: space-between;
   }
+  .confirmation-fullfillment-type {
+    min-height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  }
 `;
 
 export default styles;

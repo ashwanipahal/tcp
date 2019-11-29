@@ -278,6 +278,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         }
       }
       errorOnHandleSubmit=""
+      hideAlternateSizes={true}
       onCloseClick={[Function]}
       plpLabels={Object {}}
       showAddToBagCTA={true}

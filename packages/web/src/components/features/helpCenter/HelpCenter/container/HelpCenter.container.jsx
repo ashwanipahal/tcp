@@ -68,7 +68,8 @@ const mapStateToProps = (state, props) => {
         data: Modules[slot.contentId],
       };
     }),
-    labels: state.Labels.HelpCenter,
+    labels: state.Labels.global && state.Labels.global.helpCenter,
+    selectedPage: pageName,
   };
 };
 

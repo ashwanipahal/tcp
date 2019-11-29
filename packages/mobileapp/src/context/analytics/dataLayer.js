@@ -1,6 +1,5 @@
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
-import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { generateClickHandlerDataLayer } from './dataLayers';
 
 /**
@@ -68,8 +67,11 @@ export default function create(store) {
 
     pageType: {
       get() {
-        const { pageData } = store.getState();
-        return pageData.pageType ? pageData.pageType : pageData.pageName;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageType
+          ? clickActionAnalyticsData.pageType
+          : pageData.pageType;
       },
     },
 
@@ -93,13 +95,21 @@ export default function create(store) {
 
     pageSection: {
       get() {
-        return store.getState().pageData.pageSection;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
+          ? clickActionAnalyticsData.pageSection
+          : pageData.pageSection;
       },
     },
 
-    pageSubSubSection: {
+    pageSubSection: {
       get() {
-        return store.getState().pageData.pageSection;
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageSubSection
+          ? clickActionAnalyticsData.pageSubSection
+          : pageData.pageSubSection;
       },
     },
 
@@ -111,9 +121,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store.getState().User.getIn(['personalData', 'isGuest'])
-          ? 'no rewards:guest'
-          : 'no rewards:logged in';
+        return getUserLoggedInState(store.getState()) ? 'no rewards:logged in' : 'no rewards:guest';
       },
     },
 

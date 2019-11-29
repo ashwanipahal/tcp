@@ -6,10 +6,27 @@ export default css`
   input {
     background-color: ${props => props.theme.colorPalette.gray[300]};
   }
+  .billing-items {
+    display: flex;
+    justify-content: space-between;
+  }
   .sub-heading {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     line-height: 0.94;
+  }
+
+  .card-skeleton-wrapper {
+    width: 300px;
+    height: 25px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 180px;
+      height: 25px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 300px;
+      height: 25px;
+    }
   }
 
   .cardImage-card-number {

@@ -40,7 +40,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
         alt="user"
         className="account-info carrot-down-icon"
         height="6px"
-        src="/static/images/carrot-small-down.png"
+        src="/static/version-not-available/images/carrot-small-down.png"
       />
       <Styled(BodyCopy)
         className={null}
@@ -70,7 +70,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
         alt="user"
         className="usericon"
         onClick={[Function]}
-        src="/static/images/user-icon.png"
+        src="/static/version-not-available/images/user-icon.png"
       />
     </Styled(BodyCopy)>
   </Connect(Component)>

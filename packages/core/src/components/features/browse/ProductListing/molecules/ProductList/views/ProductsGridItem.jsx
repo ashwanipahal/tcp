@@ -463,10 +463,7 @@ class ProductsGridItem extends React.PureComponent {
             buttonVariation="fixed-width"
             dataLocator={getLocator('global_addtocart_Button')}
             onClick={
-              // eslint-disable-next-line no-nested-ternary
-              isGiftCard
-                ? () => {} // TODO Gift Card Quick View Modal
-                : isShowQuickView && !isBundleProduct
+              isShowQuickView && !isBundleProduct
                 ? this.handleQuickViewOpenClick
                 : this.handleViewBundleClick
             }
@@ -660,7 +657,7 @@ class ProductsGridItem extends React.PureComponent {
                   fontWeight="extrabold"
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
-                  className="extended-sizes-text"
+                  className="extended-sizes-text elem-mb-SM"
                 >
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>

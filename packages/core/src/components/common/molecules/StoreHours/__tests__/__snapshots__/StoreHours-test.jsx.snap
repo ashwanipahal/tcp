@@ -5220,7 +5220,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 >
                   <Styled(Image)
                     className="collapsible-icon"
-                    src="/static/images/carrot-small-up.png"
+                    src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
                       className="collapsible-icon"
@@ -5255,23 +5255,25 @@ exports[`StoreHours component should render component with timing data 1`] = `
                         }
                       }
                       forwardedRef={null}
-                      src="/static/images/carrot-small-up.png"
+                      src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
+                        role={null}
                         sizes=""
-                        src="/static/images/carrot-small-up.png"
+                        src="/static/version-not-available/images/carrot-small-up.png"
                         srcset=""
                         url=""
                       >
                         <img
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
+                          role={null}
                           sizes={null}
-                          src="/static/images/carrot-small-up.png"
+                          src="/static/version-not-available/images/carrot-small-up.png"
                           srcSet=""
                         />
                       </Image>
@@ -9767,7 +9769,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 >
                   <Styled(Image)
                     className="collapsible-icon"
-                    src="/static/images/carrot-small-up.png"
+                    src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
                       className="collapsible-icon"
@@ -9802,23 +9804,25 @@ exports[`StoreHours component should render component with timing data 2`] = `
                         }
                       }
                       forwardedRef={null}
-                      src="/static/images/carrot-small-up.png"
+                      src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
+                        role={null}
                         sizes=""
-                        src="/static/images/carrot-small-up.png"
+                        src="/static/version-not-available/images/carrot-small-up.png"
                         srcset=""
                         url=""
                       >
                         <img
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
+                          role={null}
                           sizes={null}
-                          src="/static/images/carrot-small-up.png"
+                          src="/static/version-not-available/images/carrot-small-up.png"
                           srcSet=""
                         />
                       </Image>

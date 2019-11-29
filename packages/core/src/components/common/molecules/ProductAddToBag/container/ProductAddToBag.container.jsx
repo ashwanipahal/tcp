@@ -25,7 +25,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
-      keepAlive: this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
+      keepAlive:
+        this.initialColorFitsSizesMapEntry &&
+        this.initialColorFitsSizesMapEntry.miscInfo &&
+        this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
     };
   }
 
@@ -134,6 +137,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return firstSizeName;
   };
 
+  getColor = colorFitsSizesMapEntry => {
+    return (
+      colorFitsSizesMapEntry && colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name
+    );
+  };
+
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
     const colorFitsSizesMapEntry = currentProduct
       ? this.getMapSliceForColorProductId(
@@ -159,15 +168,16 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name,
+        name: this.getColor(colorFitsSizesMapEntry),
       },
-      Fit: colorFitsSizesMapEntry.hasFits
-        ? {
-            name: !initialFormValues
-              ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitName
-              : initialFormValues.Fit,
-          }
-        : null,
+      Fit:
+        colorFitsSizesMapEntry && colorFitsSizesMapEntry.hasFits
+          ? {
+              name: !initialFormValues
+                ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitName
+                : initialFormValues.Fit,
+            }
+          : null,
       Size: {
         name: currentProduct.isGiftCard
           ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
@@ -473,6 +483,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      sizeChartDetails,
       isMultiItemQVModal,
       ...otherProps
     } = this.props;
@@ -543,6 +554,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}
       />

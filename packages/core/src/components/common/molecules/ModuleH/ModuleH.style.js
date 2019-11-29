@@ -64,7 +64,7 @@ export default css`
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy9}px;
-    line-height: 20px;
+    line-height: normal;
     opacity: 0.8;
 
     &:hover {

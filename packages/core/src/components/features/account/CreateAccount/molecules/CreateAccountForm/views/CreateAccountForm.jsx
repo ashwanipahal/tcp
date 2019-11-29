@@ -18,6 +18,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath, isCanada } from '../../../../../../../utils';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
+import constants from '../../../CreateAccount.constants';
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -284,7 +285,7 @@ const validateMethod = createValidateMethod(
 );
 
 CreateAccountForm = reduxForm({
-  form: 'CreateAccountForm', // a unique identifier for this form
+  form: constants.CREATE_ACCOUNT_FORM, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);
