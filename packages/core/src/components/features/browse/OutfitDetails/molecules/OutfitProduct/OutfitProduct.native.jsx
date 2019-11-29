@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import { calculatePriceValue } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/common/molecules/ImageCarousel';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
@@ -46,7 +47,7 @@ const renderPickUpStore = props => {
     return (
       <ProductPickupContainer
         productInfo={currentProduct}
-        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        formName={`${OUTFIT_LISTING_FORM}-${currentProduct.generalProductId}`}
         miscInfo={miscInfo}
         simplifiedProductPickupView
         keepAlive={keepAlive}
@@ -214,6 +215,7 @@ const renderAddToBagContainer = (
       toastMessage={toastMessage}
       isKeepAliveEnabled={isKeepAliveEnabled}
       outOfStockLabels={outOfStockLabels}
+      customFormName={OUTFIT_LISTING_FORM}
     />
   );
 };

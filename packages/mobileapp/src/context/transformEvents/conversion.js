@@ -8,6 +8,7 @@ const staticConversion = {
   prop27: 'D=mid',
   prop28: '2.10.0',
   eVar10: 'D=pageName',
+  eVar33: 'D=pageName',
   eVar29: 'D=c6',
   eVar50: 'D=c11',
   eVar51: 'D=c24',
