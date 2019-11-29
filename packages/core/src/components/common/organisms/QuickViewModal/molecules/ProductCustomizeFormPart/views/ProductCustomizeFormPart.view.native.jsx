@@ -162,6 +162,7 @@ const ProductCustomizeFormPart = props => {
           onCloseClick={onCloseClick}
           isMultiItemQVModal={isMultiItemQVModal}
           isFromBagProductSfl={isFromBagProductSfl}
+          hideAlternateSizes
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>

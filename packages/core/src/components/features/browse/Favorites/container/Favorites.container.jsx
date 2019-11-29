@@ -35,6 +35,7 @@ import {
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
   getFormErrorLabels,
+  fetchErrorMessages,
 } from './Favorites.selectors';
 import {
   getUserEmail,
@@ -184,9 +185,9 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
-      guestAccessKey,
       formErrorMessage,
       isLoggedIn,
+      errorMessages,
     } = this.props;
     const { selectedColorProductId } = this.state;
     return (
@@ -229,6 +230,7 @@ class FavoritesContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         onLoadRecommendations={this.onLoadRecommendations}
         onReplaceWishlistItem={this.onReplaceWishlistItem}
+        errorMessages={errorMessages}
         {...this.state}
       />
     );
@@ -256,6 +258,7 @@ const mapStateToProps = state => {
     wishlistShareStatus: selectWishListShareStatus(state),
     formErrorMessage: getFormErrorLabels(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    errorMessages: fetchErrorMessages(state),
   };
 };
 

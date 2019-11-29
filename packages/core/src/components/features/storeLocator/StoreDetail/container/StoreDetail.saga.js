@@ -4,15 +4,9 @@ import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 import {
   getCurrentStoreInfoApi,
   getNearByStoreApi,
-  calcDistanceByLatLng,
 } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import constants from './StoreDetail.constants';
-import {
-  setCurrentStoreInfo,
-  setNearByStore,
-  setModuleXContent,
-  setDistance,
-} from './StoreDetail.actions';
+import { setCurrentStoreInfo, setNearByStore, setModuleXContent } from './StoreDetail.actions';
 
 export function* getCurrentStore({ payload }) {
   try {
@@ -50,22 +44,11 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-export function* calculateDistance({ payload }) {
-  try {
-    const distance = yield call(calcDistanceByLatLng, payload.destination);
-    yield put(setDistance(distance));
-  } catch (err) {
-    yield put(setDistance(null));
-  }
-}
-
 export function* StoreDetailSaga() {
   const cachedModuleX = validateReduxCache(fetchModuleX);
-  const cachedDistance = validateReduxCache(calculateDistance);
   yield takeLatest(constants.GET_CURRENT_STORE, getCurrentStore);
   yield takeLatest(constants.GET_SUGGESTED_STORE, getNearByStore);
   yield takeLatest(constants.GET_MODULEX_CONTENT, cachedModuleX);
-  yield takeLatest(constants.GET_DISTANCE, cachedDistance);
 }
 
 export default StoreDetailSaga;
