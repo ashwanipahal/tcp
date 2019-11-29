@@ -15,6 +15,7 @@ import {
   StyledImage,
   HeaderContainer,
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
+import ClickTracker from '../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');
@@ -66,7 +67,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
         <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-LRG">
           <ButtonWrapper>
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={{ customEvents: ['event113'] }}
+              name="manage_plcc"
+              module="account"
               fill="BLUE"
               type="submit"
               color="white"

@@ -44,7 +44,9 @@ exports[`OutfitDetail component should renders correctly 1`] = `
     />
   </Styled(View)>
   <Connect(Styled(ErrorBoundary))
+    isNotProductAddToBag={true}
     navigation=""
+    reduxFormName="OutfitListingForm"
   />
 </Styled(ScrollViewMock)>
 `;

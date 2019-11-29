@@ -334,7 +334,7 @@ class DropDown extends React.PureComponent<Props> {
             onPress={this.closeDropDown}
             activeOpacity={1}
             style={{
-              left: this.rowFrame.x,
+              left: this.rowFrame.x ? this.rowFrame.x : 0,
               height: getScreenHeight(),
               paddingTop: flatListTop,
             }}
@@ -345,10 +345,13 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
-                width: this.rowFrame.width,
+                width: this.rowFrame.width ? this.rowFrame.width : 0,
               }}
             >
-              <FlatListWrapper width={this.rowFrame.width} height={flatListHeight}>
+              <FlatListWrapper
+                width={this.rowFrame.width ? this.rowFrame.width : 0}
+                height={flatListHeight}
+              >
                 {dropDownIsOpen && (
                   <FlatList
                     data={data}
