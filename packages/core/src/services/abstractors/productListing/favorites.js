@@ -12,7 +12,7 @@ import {
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import { insertIntoString, isMobileApp } from '@tcp/core/src/utils/utils';
+import { insertIntoString } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
@@ -72,8 +72,8 @@ const addItemToWishlist = wishlistDetails => {
       const errorMssg = getFormattedError(err, errorMapping);
       return {
         errorMessage:
-          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMapping && errorMapping.DEFAULT) ||
           '',
       };
@@ -440,7 +440,12 @@ export const createWishList = (wishlistName, isDefault) => {
     });
 };
 
-export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlistItem) => {
+export const moveItemToNewWishList = (
+  formData,
+  activeWishlistId,
+  activeWishlistItem,
+  errorMapping
+) => {
   const args = {
     fromWishListId: activeWishlistId,
     toWishListId: formData.toWishListId,
@@ -480,7 +485,14 @@ export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlist
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      const errorMssg = getFormattedError(err, errorMapping);
+      return {
+        errorMessage:
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
+          (errorMapping && errorMapping.DEFAULT) ||
+          '',
+      };
     });
 };
 

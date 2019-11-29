@@ -6,6 +6,7 @@ import get from 'lodash/get';
 const staticConversion = {
   prop27: 'D=mid',
   eVar10: 'D=pageName',
+  eVar33: 'D=pageName',
   eVar29: 'D=c6',
   eVar50: 'D=c11',
   eVar51: 'D=c24',
