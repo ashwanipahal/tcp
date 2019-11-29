@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import { calculatePriceValue } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/common/molecules/ImageCarousel';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
@@ -25,6 +26,7 @@ import {
   DiscountedPriceContainer,
   FavoriteView,
   OutfitProductWrapper,
+  ImageWrapper,
 } from '../styles/OutfitProduct.native.style';
 import ProductPickupContainer from '../../../../../common/organisms/ProductPickup';
 
@@ -45,7 +47,7 @@ const renderPickUpStore = props => {
     return (
       <ProductPickupContainer
         productInfo={currentProduct}
-        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        formName={`${OUTFIT_LISTING_FORM}-${currentProduct.generalProductId}`}
         miscInfo={miscInfo}
         simplifiedProductPickupView
         keepAlive={keepAlive}
@@ -83,34 +85,38 @@ const renderImageContainer = ({
     <ImageContainer>
       {!isBundleProduct && (
         <BodyCopy
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
           color="gray.600"
           text={productIndexText}
         />
       )}
-      <ImageCarousel
-        imageUrls={imageUrls}
-        keepAlive={keepAlive}
-        outOfStockLabels={outOfStockLabels}
-        onImageClick={() => navigateToPdp(navigation, outfitProduct)}
-      />
-      <TouchableOpacity
-        onPress={() => navigateToPdp(navigation, outfitProduct)}
-        accessible
-        accessibilityRole="button"
-        accessibilityLabel={`${outfitProduct.name}`}
-      >
-        <BodyCopy
-          textAlign="center"
-          fontSize="fs14"
-          fontWeight="regular"
-          fontFamily="secondary"
-          textDecoration="underline"
-          text="View Product Details"
+      <ImageWrapper>
+        <ImageCarousel
+          imageUrls={imageUrls}
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
+          onImageClick={() => navigateToPdp(navigation, outfitProduct)}
+          imageWidth="134"
+          imageHeight="165"
         />
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigateToPdp(navigation, outfitProduct)}
+          accessible
+          accessibilityRole="button"
+          accessibilityLabel={`${outfitProduct.name}`}
+        >
+          <BodyCopy
+            textAlign="center"
+            fontSize="fs14"
+            fontWeight="regular"
+            fontFamily="secondary"
+            textDecoration="underline"
+            text="View Product Details"
+          />
+        </TouchableOpacity>
+      </ImageWrapper>
     </ImageContainer>
   );
 };
@@ -209,6 +215,7 @@ const renderAddToBagContainer = (
       toastMessage={toastMessage}
       isKeepAliveEnabled={isKeepAliveEnabled}
       outOfStockLabels={outOfStockLabels}
+      customFormName={OUTFIT_LISTING_FORM}
     />
   );
 };
@@ -423,8 +430,16 @@ const OutfitDetailsView = ({
               margin="0 0 4px 0"
             />
           </TouchableOpacity>
+          {renderFavoriteSection(
+            isAddedToFav,
+            setShowModal,
+            isLoggedIn,
+            favoriteCount,
+            handleAddToFavorites,
+            skuId
+          )}
           <BodyCopy
-            margin="4px 0 0 0"
+            margin="8px 0 0 0"
             mobileFontFamily="secondary"
             fontSize="fs22"
             fontWeight="black"
@@ -463,14 +478,6 @@ const OutfitDetailsView = ({
             />
           )}
         </DetailsContainer>
-        {renderFavoriteSection(
-          isAddedToFav,
-          setShowModal,
-          isLoggedIn,
-          favoriteCount,
-          handleAddToFavorites,
-          skuId
-        )}
       </OutfitProductContainer>
       {renderAddToBagContainer(
         setCurrentColorIndex,

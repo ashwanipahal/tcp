@@ -43,6 +43,37 @@ class ProductDetailView extends PureComponent {
       renderReceiveProps: false,
     };
   }
+  componentDidMount() {
+    const { productInfo, trackPageLoad } = this.props;
+    const productsFormatted = this.formatProductsData(productInfo);
+    if (productsFormatted) {
+      trackPageLoad({
+        pageType: 'product',
+        pageName: 'product',
+        pageSection: 'product',
+        pageSubSection: 'product',
+        products: productsFormatted,
+        customEvents: ['event74', 'event76', 'event95'],
+      });
+    }
+  }
+
+  formatProductsData = product => {
+    const productData = [];
+    const colorName = product.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = product.generalProductId.split('_')[0];
+    productData.push({
+      colorId: product.generalProductId,
+      color: colorName,
+      id: productId,
+      price: product.listPrice,
+      rating: product.ratings,
+      reviews: product.reviewsCount,
+    });
+    return productData;
+  };
 
   onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {
@@ -231,7 +262,10 @@ class ProductDetailView extends PureComponent {
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const keepAlive =
-      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+      isKeepAliveEnabled &&
+      currentColorEntry &&
+      currentColorEntry.miscInfo &&
+      currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -255,7 +289,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
-    const itemColor = currentColorEntry.color.name;
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -393,11 +427,6 @@ class ProductDetailView extends PureComponent {
                 {...recommendationAttributes}
               />
             </div>
-          </Col>
-        </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
           </Col>
         </Row>
         <Row>

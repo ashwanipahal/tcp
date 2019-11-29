@@ -227,6 +227,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>
@@ -696,6 +697,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>

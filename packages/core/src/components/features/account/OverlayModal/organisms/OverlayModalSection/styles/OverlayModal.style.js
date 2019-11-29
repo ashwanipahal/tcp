@@ -82,8 +82,8 @@ const StyledModal = css`
   .modal__triangle {
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
     position: absolute;
     top: -10px;
     z-index: 99;

@@ -272,6 +272,7 @@ class CardTile extends React.Component<Props> {
     } else if (card.ccType !== 'GiftCard' && card.ccType !== 'VENMO') {
       cardTopMargin = 'elem-mt-MED';
     }
+    /* eslint-disable jsx-a11y/no-redundant-roles */
     return (
       <div className={`cardTile__img_wrapper ${cardTopMargin}`}>
         <img
@@ -279,9 +280,11 @@ class CardTile extends React.Component<Props> {
           data-locator={card.ccBrand}
           alt={card.ccBrand || card.ccType}
           src={cardIcon}
+          role="img"
         />
       </div>
     );
+    /* eslint-enable jsx-a11y/no-redundant-roles */
   };
 
   render() {
