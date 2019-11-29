@@ -56,23 +56,19 @@ const Product = props => {
     skuId = getMapSliceForSizeSkuID(colorProduct, size);
   }
 
+  const colorProductName = colorProduct && colorProduct.color && colorProduct.color.name;
+
   if (isShowPriceRange) {
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
-    prices = getPricesWithRange(
-      productInfo,
-      colorProduct.color.name,
-      fit,
-      size,
-      isSelectedSizeDisabled
-    );
+    prices = getPricesWithRange(productInfo, colorProductName, fit, size, isSelectedSizeDisabled);
   }
   if (isBundleProduct) {
-    prices = getPricesWithRange(productInfo, colorProduct.color.name);
+    prices = getPricesWithRange(productInfo, colorProductName);
   }
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop hide-on-tablet'}>
         <ProductBasicInfo
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
@@ -97,7 +93,7 @@ const Product = props => {
           skuId={skuId}
         />
       </div>
-      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
         {!isGiftCard ? (
           <>
             <ProductPrice

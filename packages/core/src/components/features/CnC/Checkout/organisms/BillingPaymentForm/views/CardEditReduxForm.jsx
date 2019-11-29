@@ -46,6 +46,7 @@ export const withCardEditReduxForm = Component => {
       form: constants.EDIT_FORM_NAME, // a unique identifier for this form
       enableReinitialize: true,
       keepDirtyOnReinitialize: true,
+      shouldValidate: () => true,
       destroyOnUnmount: false,
       ...validateMethod,
       onSubmitSuccess: () => {

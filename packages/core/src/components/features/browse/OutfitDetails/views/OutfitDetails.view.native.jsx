@@ -9,6 +9,7 @@ import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import { getMapSliceForColorProductId } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { OUTFIT_LISTING_FORM } from '../../../../../constants/reducer.constants';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -38,10 +39,14 @@ const renderItem = ({
   navigation,
   isLoggedIn,
   toastMessage,
+  addToBagError,
+  addToBagErrorId,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
   currentColorIndex,
   setCurrentColorIndex,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   // eslint-disable-next-line no-shadow
   const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
@@ -74,6 +79,7 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      addToBagError={addToBagErrorId === item.generalProductId && addToBagError}
       toastMessage={toastMessage}
       AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
       removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
@@ -82,6 +88,8 @@ const renderItem = ({
       colorindex={colorIndex => {
         getColorindex(colorIndex, setCurrentColorIndex);
       }}
+      isKeepAliveEnabled={isKeepAliveEnabled}
+      outOfStockLabels={outOfStockLabels}
     />
   );
 };
@@ -130,6 +138,10 @@ const OutfitDetailsView = props => {
     pdpLabels,
     unavailableCount,
     toastMessage,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
+    isKeepAliveEnabled,
+    outOfStockLabels,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -163,6 +175,10 @@ const OutfitDetailsView = props => {
             toastMessage,
             currentColorIndex,
             setCurrentColorIndex,
+            AddToFavoriteErrorMsg,
+            removeAddToFavoritesErrorMsg,
+            isKeepAliveEnabled,
+            outOfStockLabels,
           })
         }
       />
@@ -184,7 +200,13 @@ const OutfitDetailsView = props => {
         />
       </RecommendationWrapper>
 
-      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      {isPickupModalOpen ? (
+        <PickupStoreModal
+          navigation={navigation}
+          isNotProductAddToBag
+          reduxFormName={OUTFIT_LISTING_FORM}
+        />
+      ) : null}
     </ScrollViewContainer>
   );
 };
@@ -209,6 +231,8 @@ OutfitDetailsView.propTypes = {
   toastMessage: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  addToBagError: PropTypes.string,
+  addToBagErrorId: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -227,6 +251,8 @@ OutfitDetailsView.defaultProps = {
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  addToBagError: '',
+  addToBagErrorId: '',
 };
 
 export default OutfitDetailsView;

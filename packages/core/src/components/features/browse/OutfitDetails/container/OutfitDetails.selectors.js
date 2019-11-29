@@ -38,5 +38,9 @@ export const getUnavailableCount = state => {
 };
 
 export const getAddedToBagErrorCatId = state => {
-  return state.AddedToBagReducer.errorCatId;
+  return state.AddedToBagReducer.get('errorCatId');
+};
+
+export const getLoadingState = state => {
+  return state[OUTFIT_DETAILS_REDUCER_KEY] && state[OUTFIT_DETAILS_REDUCER_KEY].isLoading;
 };

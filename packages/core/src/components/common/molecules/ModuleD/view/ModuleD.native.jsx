@@ -19,6 +19,36 @@ const imageSize = 164;
 const keyExtractor = (_, index) => index.toString();
 
 /**
+ * To Render the Dam Image or Video Component
+ */
+const renderDamImage = (link, imgData, videoData, navigation, ignoreLazyLoadImage, index) => {
+  const damImageComp = (
+    <DamImage
+      alt={imgData && imgData.alt}
+      videoData={videoData}
+      testID={`${getLocator('moduleD_image')}${index + 1}`}
+      url={imgData && imgData.url}
+      crop={imgData && imgData.crop_m}
+      height={imageSize}
+      marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
+      width={imageSize}
+      imgConfig={config.IMG_DATA_2.imgConfig[0]}
+      host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+    />
+  );
+  if (imgData && Object.keys(imgData).length > 0) {
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        {damImageComp}
+      </Anchor>
+    );
+  }
+  return videoData && Object.keys(videoData).length > 0 ? (
+    <React.Fragment>{damImageComp}</React.Fragment>
+  ) : null;
+};
+
+/**
  * @function renderItem : Render method for Flatlist.
  * @desc This method is rendering Module D items.
  *
@@ -27,10 +57,9 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   const {
-    item: { image, link, video },
+    item: { image, link = {}, video = {} },
     index,
   } = item;
-
   const anchorEnable = true;
   const videoData = video &&
     video.url && {
@@ -40,21 +69,7 @@ const renderItem = (item, navigation, ignoreLazyLoadImage) => {
     };
   return (
     <Tile tileIndex={index} key={index.toString()}>
-      <Anchor url={link.url} navigation={navigation}>
-        <DamImage
-          alt={image.alt}
-          testID={`${getLocator('moduleD_image')}${index + 1}`}
-          url={image.url}
-          crop={image.crop_m}
-          height={imageSize}
-          videoData={videoData}
-          marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
-          width={imageSize}
-          imgConfig={config.IMG_DATA_2.imgConfig[0]}
-          host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
-        />
-      </Anchor>
-
+      {renderDamImage(link, image, videoData, navigation, ignoreLazyLoadImage, index)}
       <Anchor
         testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"

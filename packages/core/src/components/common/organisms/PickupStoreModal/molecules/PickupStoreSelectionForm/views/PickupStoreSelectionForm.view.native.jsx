@@ -1,8 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -41,7 +39,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
-      submitting,
       isSearchOnlyInCartStores,
       onCloseClick,
       addToCartError,
@@ -60,6 +57,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
 
     return (
@@ -85,6 +84,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
         isGiftCard={isGiftCard}
         defaultStore={defaultStore}
         cartBopisStoresList={cartBopisStoresList}
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
       />
     );
   }
@@ -108,7 +109,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       submitting,
       storeSearchError,
       isSkuResolved,
-      onCloseClick,
       handleSubmit,
       onSearch,
       PickupSkuFormValues,
@@ -199,6 +199,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       getIsBopisAvailable,
       isGetUserStoresLoaded,
       handleUpdatePickUpItem,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -224,6 +226,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           updateCartItemStore={updateCartItemStore}
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
         />
       )
     );

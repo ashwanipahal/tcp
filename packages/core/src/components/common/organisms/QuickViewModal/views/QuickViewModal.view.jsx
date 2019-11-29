@@ -15,6 +15,7 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/Produc
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
+import QuickViewSkeleton from '../molecules/QuickViewSkeleton';
 
 class QuickViewModal extends React.Component {
   constructor(props) {
@@ -188,7 +189,7 @@ class QuickViewModal extends React.Component {
             closeIconDataLocator={getLocator('quick_view_icon_btn')}
             heading={this.getHeadingText()}
             widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-            heightConfig={{ height: '95%' }}
+            standardHeight
             fixedWidth
             inheritedStyles={customHeaderStyle}
             headingAlign="center"
@@ -201,7 +202,7 @@ class QuickViewModal extends React.Component {
             fontSize="fs22"
           >
             {isLoading ? (
-              <Spinner inheritedStyles={customSpinnerStyle} />
+              <QuickViewSkeleton inheritedStyles={customSpinnerStyle} />
             ) : (
               <React.Fragment>
                 {this.renderProductCustomizeFormPart()}

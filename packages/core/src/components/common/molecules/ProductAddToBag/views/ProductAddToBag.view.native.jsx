@@ -74,14 +74,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-      plpLabels: { errorMessage },
-      toastMessage,
-      keepAlive,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage, keepAlive } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
@@ -106,9 +99,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className, navigation, plpLabels } = this.props;
+    const { className, navigation, plpLabels, hideAlternateSizes } = this.props;
     const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
-    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    const visibleAlternateSizes =
+      !hideAlternateSizes && alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
@@ -198,6 +192,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       alternateSizes,
       isPickup,
       keepAlive,
+      quickViewPickup,
       isFromBagProductSfl,
     } = this.props;
     const qunatityText = `${quantity}: `;
@@ -267,7 +262,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {this.renderUnavailableLink()}
+        {quickViewPickup() && this.renderUnavailableLink()}
         {!isFromBagProductSfl && (
           <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
             <BodyCopy

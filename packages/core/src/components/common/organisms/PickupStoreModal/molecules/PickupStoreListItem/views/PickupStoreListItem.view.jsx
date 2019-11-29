@@ -17,6 +17,10 @@ import {
 import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/PickupStoreListItem.style';
+import {
+  setFavStoreToLocalStorage,
+  getFavStoreFromLocalStorage,
+} from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosingTimeTomorrow) => {
   const storeName = capitalize(basicInfo.storeName);
@@ -214,14 +218,16 @@ class PickupStoreListItem extends React.Component {
     updateCartItemStore: PropTypes.bool.isRequired,
     currentProduct: PropTypes.string,
     pageNameProp: PropTypes.string,
-    setClickAnalyticsData: PropTypes.func.isRequired,
-    trackClick: PropTypes.func.isRequired,
+    setClickAnalyticsData: PropTypes.func,
+    trackClick: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     currentProduct: '',
     pageNameProp: '',
+    setClickAnalyticsData: () => {},
+    trackClick: () => {},
   };
 
   constructor(props) {
@@ -274,6 +280,8 @@ class PickupStoreListItem extends React.Component {
       isBopisSelected,
       storeSearchCriteria,
       storeSearchDistance,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     let pageName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
@@ -288,6 +296,12 @@ class PickupStoreListItem extends React.Component {
     if (isBossSelected) {
       customEventsVal = 'event133';
     }
+    if (store && store.basicInfo) {
+      setFavoriteStore(store);
+      getDefaultStore(store);
+      setFavStoreToLocalStorage(store);
+    }
+
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
       customEvents: [customEventsVal],

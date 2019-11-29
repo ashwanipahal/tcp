@@ -25,6 +25,7 @@ import {
   getSiteId,
   getModuleXContentId,
   getNoteContent,
+  getSelectedCountryName,
 } from './CountrySelector.selectors';
 import CountrySelectorView from '../views';
 
@@ -73,6 +74,7 @@ const mapStateToProps = state => {
     labels: getLabels(state),
     noteContent: getNoteContent(state),
     noteContentId: getModuleXContentId(state),
+    selectedCountryName: getSelectedCountryName(state),
   };
 };
 

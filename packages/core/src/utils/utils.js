@@ -14,13 +14,28 @@ import constants from '../components/features/account/OrderDetails/OrderDetails.
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const buildId = process.env.NEXT_BUILD_ID || 'version-not-available';
+
+/**
+ * This function returns the static files path with the buildId in place
+ * @param {String} filePath path inside the /static directory
+ */
+export const getStaticFilePath = filePath => {
+  if (!filePath) return filePath;
+
+  // Following Regex to test if filePath is absolute and return the same value if true
+  if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
+    return filePath;
+  }
+  return `/static/${buildId}/${filePath}`;
+};
 
 /**
  * This function returns the path of icons in static/images folder
  * @param {*} icon | String - Identifier for icons in assets
  */
 export const getIconPath = icon => {
-  return icons[icon];
+  return getStaticFilePath(icons[icon]);
 };
 
 /**
@@ -28,7 +43,7 @@ export const getIconPath = icon => {
  * @param {*} icon | String - Country Code Identifier eg. US for USA
  */
 export const getFlagIconPath = code => {
-  return flagIcons[code];
+  return getStaticFilePath(flagIcons[code]);
 };
 
 /**
@@ -37,6 +52,13 @@ export const getFlagIconPath = code => {
  */
 export const getLocator = locator => {
   return locators[locator];
+};
+
+export const getVideoUrl = url => {
+  if (url) {
+    return String(url).match(/\.(mp4|webm|WEBM|MP4)$/g);
+  }
+  return false;
 };
 
 export const isMobileApp = () => {
@@ -623,6 +645,7 @@ export const configureInternalNavigationFromCMSUrl = url => {
   const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
   const searchRoute = `${ROUTE_PATH.search.name}/`;
   const staticContentRoute = `${ROUTE_PATH.content.name}/`;
+  const helpCenterRoute = `${ROUTE_PATH.helpCenter.name}/`;
 
   if (url.includes(plpRoute)) {
     const urlItems = url.split(plpRoute);
@@ -643,6 +666,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
     const urlItems = url.split(staticContentRoute);
     const queryParam = urlItems.join('');
     return `${ROUTE_PATH.content.name}?${ROUTE_PATH.content.param}=${queryParam}`;
+  }
+  if (url.includes(helpCenterRoute)) {
+    const urlItems = url.split(helpCenterRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.helpCenter.name}?${ROUTE_PATH.helpCenter.param}=${queryParam}`;
   }
   return url;
 };
@@ -812,7 +840,7 @@ export const parseUTCDate = dateString => {
  * @param {Array} intervals The store hours array
  * @param {Date} currentDate The current date to be checked against
  */
-export const getCurrentStoreHours = (intervals = [], currentDate) => {
+export const getCurrentStoreHours = (intervals = [], currentDate = new Date()) => {
   let selectedInterval = intervals.filter(hour => {
     const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
     const parsedDate = new Date(parseUTCDate(toInterval));
@@ -1052,10 +1080,10 @@ export const getQueryParamsFromUrl = (url, queryParam) => {
     keyValPairs = queryString.split('&');
     const resultingArray = Object.values(keyValPairs);
 
-    resultingArray.filter(item => {
+    resultingArray.filter((item, index) => {
       const key = item.split('=')[0];
       if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[0].split('=')[1]);
+      params[key].push(resultingArray[index].split('=')[1]);
       return params;
     });
   }
@@ -1143,10 +1171,20 @@ export const validateDiffInDaysNotification = (
   return false;
 };
 
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+export const convertNumToBool = val => {
+  return !!parseInt(val, 10);
+};
+
 export default {
+  getVideoUrl,
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
@@ -1191,4 +1229,5 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
+  convertNumToBool,
 };

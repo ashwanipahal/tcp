@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
@@ -10,11 +11,13 @@ import {
   createNewWishListMoveItemAction,
   deleteWishListAction,
   getActiveWishlistAction,
+  getActiveWishlistGuestAction,
   createNewWishListAction,
   setLastDeletedItemIdAction,
   updateWishListAction,
   sendWishListMailAction,
   setWishListShareSuccess,
+  setReplaceWishlistItem,
 } from './Favorites.actions';
 
 import {
@@ -31,12 +34,23 @@ import {
   selectDefaultWishlist,
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
+  getFormErrorLabels,
+  fetchErrorMessages,
 } from './Favorites.selectors';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import {
+  getUserEmail,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
 class FavoritesContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.guestAccessKey = '';
+    this.wishListId = '';
+  }
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
@@ -46,9 +60,28 @@ class FavoritesContainer extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { loadWishList } = this.props;
-    loadWishList({ isDataLoading: true });
+    const { loadWishList, getActiveWishlistGuest } = this.props;
+
+    if (!isMobileApp()) {
+      this.wishListId = this.getParameterByName('wishlistId');
+      this.guestAccessKey = this.getParameterByName('guestAccessKey');
+      if (this.wishListId !== '' && this.guestAccessKey !== '') {
+        const { wishListId, guestAccessKey } = this;
+        getActiveWishlistGuest({ wishListId, guestAccessKey });
+      }
+    }
+    if (this.wishListId === '' && this.guestAccessKey === '') {
+      loadWishList({ isDataLoading: true });
+    }
   }
+
+  getParameterByName = name => {
+    const location = typeof window !== 'undefined' && window.location && window.location.search;
+    const key = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp(`[\\?&]${key}=([^&#]*)`);
+    const results = regex.exec(location);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
 
   onFilterSelection = filteredId => {
     this.setState({
@@ -108,6 +141,20 @@ class FavoritesContainer extends React.PureComponent {
     }
   };
 
+  onLoadRecommendations = payload => {
+    const { loadRecommendations } = this.props;
+    if (loadRecommendations) {
+      loadRecommendations(payload);
+    }
+  };
+
+  onReplaceWishlistItem = data => {
+    const { replaceWishlistItem } = this.props;
+    if (replaceWishlistItem) {
+      replaceWishlistItem(data);
+    }
+  };
+
   render() {
     const {
       wishlistsSummaries,
@@ -136,10 +183,11 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
+      formErrorMessage,
+      isLoggedIn,
+      errorMessages,
     } = this.props;
-
     const { selectedColorProductId } = this.state;
-
     return (
       <Favorites
         wishlistsSummaries={wishlistsSummaries}
@@ -175,6 +223,12 @@ class FavoritesContainer extends React.PureComponent {
         wishlistShareStatus={wishlistShareStatus}
         setListShareSuccess={setListShareSuccess}
         resetBrandFilters={this.resetBrandFilters}
+        guestAccessKey={this.guestAccessKey}
+        formErrorMessage={formErrorMessage}
+        isLoggedIn={isLoggedIn}
+        onLoadRecommendations={this.onLoadRecommendations}
+        onReplaceWishlistItem={this.onReplaceWishlistItem}
+        errorMessages={errorMessages}
         {...this.state}
       />
     );
@@ -200,6 +254,9 @@ const mapStateToProps = state => {
     isBothTcpAndGymProductAreAvailable: getBothTcpAndGymProductAreAvailability(state),
     userEmail: getUserEmail(state),
     wishlistShareStatus: selectWishListShareStatus(state),
+    formErrorMessage: getFormErrorLabels(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    errorMessages: fetchErrorMessages(state),
   };
 };
 
@@ -212,6 +269,7 @@ const mapDispatchToProps = dispatch => {
     deleteWishList: wishListId => {
       dispatch(deleteWishListAction(wishListId));
     },
+    getActiveWishlistGuest: payload => dispatch(getActiveWishlistGuestAction(payload)),
     getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
     createNewWishList: formData => {
       dispatch(createNewWishListAction(formData));
@@ -227,6 +285,8 @@ const mapDispatchToProps = dispatch => {
     updateWishList: payload => {
       dispatch(updateWishListAction(payload));
     },
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
+    replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
   };
 };
 
@@ -259,6 +319,9 @@ FavoritesContainer.propTypes = {
   userEmail: PropTypes.string.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
+  loadRecommendations: PropTypes.func.isRequired,
+  replaceWishlistItem: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
@@ -274,6 +337,7 @@ FavoritesContainer.defaultProps = {
   outOfStockLabels: {},
   defaultWishList: {},
   wishlistShareStatus: false,
+  isLoggedIn: false,
 };
 
 export default connect(

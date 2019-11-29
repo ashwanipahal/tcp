@@ -22,7 +22,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					crop_d
 					crop_t
 					crop_m
-				}
+        }
 				styled {
 					text
 				}

@@ -1,5 +1,12 @@
 import { createSelector } from 'reselect';
-import { FAVORITES_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import {
+  FAVORITES_REDUCER_KEY,
+  RECOMMENDATIONS_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
+
+const getRecommendationListState = state => {
+  return state[RECOMMENDATIONS_REDUCER_KEY];
+};
 
 const getFavoriteListState = state => {
   return state[FAVORITES_REDUCER_KEY];
@@ -97,4 +104,11 @@ export default fetchCurrencySymbol;
 
 export const getIsDataLoading = state => {
   return state[FAVORITES_REDUCER_KEY].get('isDataLoading');
+};
+
+export const getFormErrorLabels = state =>
+  state.Labels.global && state.Labels.global.formValidation;
+
+export const fetchErrorMessages = state => {
+  return state.Favorites && state.Favorites.get('errorMessages');
 };

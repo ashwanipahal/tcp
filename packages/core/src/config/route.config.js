@@ -17,6 +17,10 @@ const ROUTE_PATH = {
     name: '/content',
     param: 'contentType',
   },
+  helpCenter: {
+    name: '/help-center',
+    param: 'pageName',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 
@@ -67,6 +71,11 @@ const ROUTES_LIST = [
     path: '/account/:id?/:subSection?/:orderId?',
     resolver: '/account',
     params: ['id', 'subSection', 'orderId'],
+  },
+  {
+    noSlugPath: 'favorites',
+    path: '/favorites',
+    resolver: '/Favorites',
   },
   {
     noSlugPath: 'ds',

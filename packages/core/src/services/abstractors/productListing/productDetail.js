@@ -204,20 +204,15 @@ export const layoutResolver = async ({ category, pageName }) => {
         category,
       },
     };
-    let {
+    const {
       data: { contentLayout },
     } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig });
-    if (!(contentLayout && contentLayout.length)) {
-      ({
-        data: { contentLayout },
-      } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig, category: 'global' }));
-    }
     const moduleObjects = [];
     contentLayout.forEach(data => {
       const dataItems = data.items;
       layout[data.key] = dataItems;
       Object.keys(dataItems).forEach(item => {
-        const slotItems = dataItems[item].slots;
+        const slotItems = !!dataItems[item] && dataItems[item].slots;
         if (typeof slotItems === 'object') {
           moduleObjects.push(...slotItems);
         }
@@ -260,7 +255,7 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
   productColorId =
     productColorId.indexOf('-') > -1 ? productColorId.replace('-', '_') : productColorId; // As ProductColorId response has always _ rather than hyphen(-)
   let fields =
-    'alt_img,style_partno,swatchimage,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore';
+    'productimage,alt_img,style_partno,swatchimage,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore';
   let count = 100;
   if (!isBundleProduct) {
     if (isRadialInvEnabled) {
@@ -268,7 +263,7 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
     }
   } else {
     fields =
-      'alt_img,style_partno,swatchimage,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,product_name,TCPColor,imagename,productid,uniqueId,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description,seo_token,prodpartno,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,low_offer_price,high_offer_price,low_list_price,high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products';
+      'productimage,alt_img,style_partno,swatchimage,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,product_name,TCPColor,imagename,productid,uniqueId,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description,seo_token,prodpartno,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,low_offer_price,high_offer_price,low_list_price,high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products';
     count = 0;
   }
 

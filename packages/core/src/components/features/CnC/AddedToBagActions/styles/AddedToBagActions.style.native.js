@@ -8,54 +8,83 @@ const applyPositionClassStyle = `
   z-index:997;
 `;
 
+const payPalDynamicStyle = props => {
+  if (props.isPayPalWebViewEnable) {
+    return `
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:997;
+    margin:0px;
+    padding:0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top: 0px;
+    `;
+  }
+  return '';
+};
+
 export const ActionsWrapper = styled.View`
-  ${props =>
-    props.isPayPalWebViewEnable
-      ? applyPositionClassStyle
-      : `
-    display: flex;
-  `}
+  display: flex;
+  ${payPalDynamicStyle}
 `;
 
-export const ButtonWrapper = styled.View`
+export const ButtonWrapperAddedToBag = styled.View`
   ${props =>
     props.isPayPalWebViewEnable
       ? applyPositionClassStyle
       : `
-  margin: 0 10px;
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
+    margin: 0 10px;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: ${props.isBothDisabled ? 'row' : 'column'};
 `}
 `;
 
+export const ButtonWrapper = styled.View`
+  margin: 0 10px;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: ${props => (props.isBothDisabled ? 'row' : 'column')};
+  ${payPalDynamicStyle}
+`;
+
 export const ButtonViewWrapper = styled.View`
-  ${props =>
-    props.isPayPalWebViewEnable
-      ? applyPositionClassStyle
-      : `
   position: relative;
-  `}
+  bottom: ${props => (props.isBottomGap ? '25px' : '0px')};
+  ${payPalDynamicStyle}
 `;
 
 export const ViewBagButton = styled.TouchableOpacity`
   background: ${props => props.theme.colors.PRIMARY.DARK};
-  display: flex;
-  flex: 1;
   height: 42px;
   justify-content: center;
   align-items: center;
+  margin: -5px 0 -5px;
 `;
 
 export const CheckoutButton = styled.TouchableOpacity`
   background: ${props => props.theme.colors.PRIMARY.BLUE};
   display: flex;
-  flex: 1;
+
   height: 42px;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  ${props =>
+    props.isAddedTobag
+      ? `
+      margin: 0 0 16px;
+      ${props.isHalf ? `flex: 1` : ``};
+    `
+      : `
+      margin: 0 10px 16px;
+      flex: ${props.isHalf ? `0.5` : `1`};
+    `}
 `;
 
 export const PaymentsButtonWrapper = styled.View`
@@ -65,18 +94,24 @@ export const PaymentsButtonWrapper = styled.View`
 `;
 
 export const PaypalPaymentsButtonWrapper = styled.View`
-  margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   display: flex;
-  flex: 0.5;
-  margin-left: 20px;
+  ${props => (props.isAddedTobag ? `flex: 0.8` : `flex: 0.5`)};
+  margin-left: ${props => (props.isAddedTobag ? '0' : '10px')};
+  margin-right: ${props => (props.isAddedTobag && props.isPayPalEnabled ? '10px' : '0')};
+  ${payPalDynamicStyle}
 `;
 
 export const VenmoPaypalWrapper = styled.View`
   flex: 1;
   flex-direction: row;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  ${payPalDynamicStyle}
 `;
 
 export default {
+  ButtonWrapperAddedToBag,
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,

@@ -64,7 +64,6 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
-
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -221,6 +220,7 @@ class ProductDetailView extends PureComponent {
       topPromos,
       middlePromos,
       bottomPromos,
+      sizeChartDetails,
       ...otherProps
     } = this.props;
 
@@ -231,7 +231,10 @@ class ProductDetailView extends PureComponent {
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const keepAlive =
-      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+      isKeepAliveEnabled &&
+      currentColorEntry &&
+      currentColorEntry.miscInfo &&
+      currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -255,6 +258,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -329,6 +333,7 @@ class ProductDetailView extends PureComponent {
                 sizeChartLinkVisibility={sizeChartLinkVisibility}
                 isKeepAliveEnabled={isKeepAliveEnabled}
                 outOfStockLabels={outOfStockLabels}
+                sizeChartDetails={sizeChartDetails}
               />
             )}
 
@@ -363,6 +368,7 @@ class ProductDetailView extends PureComponent {
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
+                color={itemColor}
               />
             </div>
           </Col>
@@ -390,11 +396,6 @@ class ProductDetailView extends PureComponent {
                 {...recommendationAttributes}
               />
             </div>
-          </Col>
-        </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
           </Col>
         </Row>
         <Row>
@@ -439,6 +440,7 @@ ProductDetailView.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
 };
 
 ProductDetailView.defaultProps = {
@@ -460,6 +462,7 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

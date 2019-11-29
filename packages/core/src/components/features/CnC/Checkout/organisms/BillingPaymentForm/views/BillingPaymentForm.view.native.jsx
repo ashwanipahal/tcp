@@ -180,7 +180,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { addNewCCState, editMode, editModeSubmissionError } = this.state;
     const isCardDetailEdit = selectedCard && !editMode;
     const { getAddNewCCForm, unsetFormEditState } = this;
-    const { updateCardDetail, toastMessage } = this.props;
+    const { updateCardDetail, toastMessage, editFormCardType } = this.props;
     return (
       <BillingAddressWrapper>
         <CreditCardWrapper pointerEvents={editMode ? 'none' : 'auto'}>
@@ -222,6 +222,7 @@ export class BillingPaymentForm extends React.PureComponent {
             addressForm={getCheckoutBillingAddress(this)}
             errorMessageRef={this.ediCardErrorRef}
             {...{ getDefaultPayment, toastMessage }}
+            cardType={editFormCardType}
           />
         ) : null}
       </BillingAddressWrapper>
@@ -312,7 +313,7 @@ export class BillingPaymentForm extends React.PureComponent {
       isPayPalEnabled,
       bagLoading,
       isVenmoEnabled,
-      venmoError,
+      onVenmoError,
     } = this.props;
     const paymentMethods = getPaymentMethods(labels);
     const creditCardList = getCreditCardList({ cardList });
@@ -407,7 +408,7 @@ export class BillingPaymentForm extends React.PureComponent {
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
-          venmoError={venmoError}
+          onVenmoError={onVenmoError}
         />
       </>
     );
@@ -421,6 +422,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(BillingPaymentForm);
 export { BillingPaymentForm as BillingPaymentFormVanilla };

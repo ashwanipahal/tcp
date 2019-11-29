@@ -34,6 +34,10 @@ export const getShortDescription = state => {
   return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.shortDescription;
 };
 
+export const getPDPLoadingState = state => {
+  return state.ProductDetail && state.ProductDetail.isLoading;
+};
+
 export const getProductDetailFormValues = state => {
   const generalProductId = getGeneralProductId(state);
   return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
@@ -87,6 +91,8 @@ export const getDefaultImage = state => {
   const firstColor =
     state.ProductDetail.currentProduct &&
     state.ProductDetail.currentProduct.colorFitsSizesMap &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0] &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0].color &&
     state.ProductDetail.currentProduct.colorFitsSizesMap[0].color.name;
   return (
     firstColor &&
@@ -164,11 +170,12 @@ export const getPDPLabels = state => {
 
 export const getPLPPromos = (state, type) => {
   // TODO: Dynamic the productID generation logic
-  const productID = 'global'; // 'global'; '54520|489117';
+  let productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
-  if (Layouts && Layouts.pdp && Layouts.pdp[productID]) {
+  if (Layouts && Layouts.pdp) {
     const { pdp } = Layouts;
+    productID = pdp[productID] ? 'global' : '54520|489117';
     if (pdp[productID]) {
       const promo = pdp[productID][type] && pdp[productID][type].slots;
       result =
@@ -180,4 +187,113 @@ export const getPLPPromos = (state, type) => {
     }
   }
   return result;
+};
+
+const getRefinedNavTree = (catId, navigationTree) => {
+  return navigationTree.find(L1 => L1.categoryId === catId);
+};
+
+const getRefinedNavTreeL2orL3 = (catId, navigationTree) => {
+  return navigationTree.find(L2 => L2.categoryContent.id === catId);
+};
+
+const getCatMapL1Params = catMapL1 => {
+  const menuItems = [];
+  const mainObj = catMapL1 && catMapL1.subCategories;
+  Object.keys(mainObj).forEach(key => {
+    menuItems.push(mainObj[key].items);
+  });
+  return menuItems.flat(2);
+};
+
+const getNavTreeFromCatMap = (navTree, categoryPath) => {
+  if (!categoryPath) return '';
+  const catMapL1Id = categoryPath[0] && categoryPath[0].split('|')[0].split('>')[0];
+  const catMapL2Id = categoryPath[0] && categoryPath[0].split('|')[0].split('>')[1];
+  const catMapL3Id = (categoryPath[0] && categoryPath[0].split('|')[0].split('>')[2]) || null;
+  const catMapL1 = catMapL1Id && getRefinedNavTree(catMapL1Id, navTree);
+  const catMapL1Params = getCatMapL1Params(catMapL1);
+  const catMapL2 = catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params);
+  return (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2.subCategories)) || catMapL2;
+};
+
+const getCatMapFromBreadCrump = (categoryPath, breadCrumbs) => {
+  return (
+    categoryPath &&
+    breadCrumbs[1] &&
+    categoryPath.find(_catMap => _catMap.split('|')[0].includes(breadCrumbs[1].categoryId))
+  );
+};
+
+const getNavTreeFromBreadCrumb = (breadCrumbs, categoryPath, navTree) => {
+  const catMap = getCatMapFromBreadCrump(categoryPath, breadCrumbs);
+  const l3String = catMap ? catMap.split('|')[0].split('>')[2] || '' : '';
+  const l3CatFromString =
+    navTree &&
+    navTree.subCategories &&
+    navTree.subCategories.map(navMap => {
+      return navMap.items.find(cat => cat.id === l3String);
+    });
+
+  return (
+    (l3CatFromString && l3CatFromString.categoryContent.sizeChartSelection) ||
+    (navTree && navTree.categoryContent && navTree.categoryContent.sizeChartSelection) ||
+    ''
+  );
+};
+
+const fetchL2andL3Category = (navTree, breadCrumbs, isBundleProduct, categoryPath) => {
+  let l3Cat = {};
+  let l2Cat = {};
+  if (breadCrumbs && breadCrumbs[0] && breadCrumbs[0].categoryId && !isBundleProduct) {
+    const tree = getRefinedNavTree(breadCrumbs[0].categoryId, navTree);
+    l2Cat =
+      tree &&
+      tree.subCategories &&
+      tree.subCategories.map(navMap => {
+        return navMap.items.find(cat => cat.id === breadCrumbs[1].categoryId);
+      });
+
+    l3Cat =
+      breadCrumbs[2] &&
+      l2Cat &&
+      l2Cat.subCategories &&
+      l2Cat.subCategories.find(cat => cat.categoryId === breadCrumbs[2].categoryId);
+  } else {
+    l3Cat = getNavTreeFromCatMap(navTree, categoryPath);
+  }
+  return { l2Cat: l2Cat, l3Cat: l3Cat };
+};
+
+const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProduct) => {
+  // Return empty if Navigation Tree not available/passed
+  if (!navTree) {
+    return '';
+  }
+  const payload = fetchL2andL3Category(navTree, breadCrumbs, isBundleProduct, categoryPath);
+  if (payload.l3Cat) {
+    return (
+      payload.l3Cat.categoryContent.sizeChartSelection ||
+      (payload.l2Cat &&
+        payload.l2Cat.categoryContent &&
+        payload.l2Cat.categoryContent.sizeChartSelection) ||
+      ''
+    );
+  }
+  return getNavTreeFromBreadCrumb(breadCrumbs, categoryPath, payload.l2Cat);
+};
+
+export const getSizeChartDetails = state => {
+  const breadCrumbs = processBreadCrumbs(state.ProductDetail && state.ProductDetail.breadCrumbs);
+  const navigationTree = state.Navigation && state.Navigation.navigationData;
+  const isBundleProduct =
+    state.ProductDetail &&
+    state.ProductDetail.currentProduct &&
+    state.ProductDetail.currentProduct.bundleProducts &&
+    state.ProductDetail.currentProduct.bundleProducts.length > 0;
+  const categoryPathMap =
+    state.ProductDetail &&
+    state.ProductDetail.currentProduct &&
+    state.ProductDetail.currentProduct.categoryPathMap;
+  return fetchSizeChartDetails(navigationTree, breadCrumbs, categoryPathMap, isBundleProduct);
 };

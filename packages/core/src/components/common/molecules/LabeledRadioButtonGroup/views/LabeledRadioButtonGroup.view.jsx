@@ -129,7 +129,7 @@ class LabeledRadioButtonGroup extends React.Component {
   getTitleOfValue(value) {
     const { optionsMap } = this.props;
     const option = optionsMap.find(item => item.value === value);
-    return option && !option.disabled ? option.title : '';
+    return option && option.title;
   }
 
   // select the item with the given value

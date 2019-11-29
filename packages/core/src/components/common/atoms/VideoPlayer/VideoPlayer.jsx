@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cloudinary from 'cloudinary-core';
 import cloudinaryVideoPlayer from 'cloudinary-video-player'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, convertNumToBool } from '@tcp/core/src/utils';
 import styles from './VideoPlayer.style';
 
 /**
@@ -15,17 +15,33 @@ const parseFileName = url => {
   return urlFragments[urlFragments.length - 1].split('.')[0];
 };
 
+/**
+ * To Generate the unique ids based on the timestap for multiple video players
+ */
+const getUniqueID = () => {
+  return `video_${Date.now() + (Math.random() * 100000).toFixed()}`;
+};
+
 class VideoPlayer extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      uniqueId: getUniqueID(),
+    };
+  }
   componentDidMount() {
-    const { id, autoplay, url, muted } = this.props;
+    const { id, autoplay, url, muted, loop, controls } = this.props;
+    const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
     });
 
-    const player = cloudinaryCore.videoPlayer(id || 'cld-video-player', {
-      autoplay,
-      muted,
+    const player = cloudinaryCore.videoPlayer(id || uniqueId, {
+      autoplay: convertNumToBool(autoplay),
+      muted: convertNumToBool(muted),
+      loop: convertNumToBool(loop),
+      controls: convertNumToBool(controls),
     });
 
     player.fluid(true);
@@ -36,53 +52,15 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { id, controls, muted, loop, url, className, autoplay } = this.props;
+    const { id, url, className, dataLocator } = this.props;
+    const { uniqueId } = this.state;
 
     if (!url) {
       return null;
     }
-
-    let loopVideo;
-    let mutedVideo;
-    let autoplayVideo;
-
-    if (loop) {
-      loopVideo = 'true';
-    }
-    if (muted) {
-      mutedVideo = '';
-    }
-    if (autoplay) {
-      autoplayVideo = '';
-    }
-
     return (
-      <video
-        id={id || 'cld-video-player'}
-        controls={controls}
-        muted={mutedVideo}
-        loop={loopVideo}
-        className={className}
-        autoPlay={autoplayVideo}
-      >
-        <track
-          src="/static/captions/captions_en.vtt"
-          kind="captions"
-          srcLang="en"
-          label="english_captions"
-        />
-        <track
-          src="/static/captions/captions_fr.vtt"
-          kind="captions"
-          srcLang="fr"
-          label="french_captions"
-        />
-        <track
-          src="/static/captions/captions_es.vtt"
-          kind="captions"
-          srcLang="es"
-          label="spanish_captions"
-        />
+      <video id={id || uniqueId} className={className} dataLocator={`${dataLocator}_video`}>
+        <track kind="captions" />
       </video>
     );
   }
@@ -96,6 +74,11 @@ VideoPlayer.propTypes = {
   muted: PropTypes.bool.isRequired,
   className: PropTypes.number.isRequired,
   controls: PropTypes.bool.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+VideoPlayer.defaultProps = {
+  dataLocator: '',
 };
 
 export default withStyles(VideoPlayer, styles);

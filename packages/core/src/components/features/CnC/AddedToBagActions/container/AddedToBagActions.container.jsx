@@ -15,9 +15,12 @@ import CHECKOUT_ACTIONS, {
 } from '../../Checkout/container/Checkout.action';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
@@ -26,11 +29,15 @@ export class AddedToBagContainer extends React.Component<Props> {
    * @param {object} payload - checkout payload for app and web
    */
   onCartCheckout = payload => {
-    const { handleCartCheckout, setVenmoInProgress } = this.props;
+    const { handleCartCheckout, setVenmoInProgress, toastMessage } = this.props;
     if (payload && !payload.isVenmoProgress) {
       setVenmoInProgress(false);
     }
-    handleCartCheckout(payload);
+    if (payload && payload.venmoErrorMessage) {
+      toastMessage(payload.venmoErrorMessage);
+    } else {
+      handleCartCheckout(payload);
+    }
   };
 
   render() {
@@ -138,6 +145,9 @@ const mapDispatchToProps = dispatch => {
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
     setIsPaypalBtnHidden: payload => {
       dispatch(bagPageActions.setIsPaypalBtnHidden(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };

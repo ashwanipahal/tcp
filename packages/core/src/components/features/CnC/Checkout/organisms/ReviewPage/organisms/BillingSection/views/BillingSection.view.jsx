@@ -55,12 +55,20 @@ export class BillingSection extends PureComponent {
   };
 
   getCvvField = () => {
-    const { isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited } = this.props;
+    const {
+      isExpressCheckout,
+      labels,
+      cvvCodeRichText,
+      card,
+      isBillingVisited,
+      venmoPayment: { isVenmoPaymentSelected },
+    } = this.props;
     return (
       isExpressCheckout &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PAYPAL &&
-      !isBillingVisited && (
+      !isBillingVisited &&
+      !isVenmoPaymentSelected && (
         <Col colSize={{ small: 3, medium: 2, large: 2 }} className="cvvCode">
           <Field
             placeholder={labels.lbl_review_cvvCode}
@@ -94,10 +102,9 @@ export class BillingSection extends PureComponent {
         colSize: {
           small: 6,
           medium: isExpressCheckout || !isCreditCardReq ? 8 : 4,
-          large: isCreditCardReq ? 6 : 8,
+          large: isCreditCardReq ? 7 : 8,
         },
         offsetRight: { small: 0, medium: 0, large: isExpressCheckout ? 0 : 1 },
-        offsetLeft: { small: 0, medium: 0, large: isExpressCheckout && isCreditCardReq ? 1 : 0 },
       },
       venmo: {
         colSize: { small: 6, medium: 4, large: 6 },
@@ -142,7 +149,7 @@ export class BillingSection extends PureComponent {
             </Anchor>
           </Col>
         </Row>
-        <Row fullBleed>
+        <Row fullBleed className="billing-items">
           {isCCReq && (
             <>
               <Col {...colProps.cardDetails}>
@@ -161,7 +168,9 @@ export class BillingSection extends PureComponent {
                       {!bagLoading && checkoutRoutingDone ? (
                         <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
                       ) : (
-                        <LoaderSkelton width="300px" height="25px" />
+                        <div className="card-skeleton-wrapper">
+                          <LoaderSkelton />
+                        </div>
                       )}
                     </BodyCopy>
                   </Fragment>

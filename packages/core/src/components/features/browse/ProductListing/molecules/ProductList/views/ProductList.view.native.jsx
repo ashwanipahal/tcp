@@ -1,19 +1,25 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView, Text } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer, HeaderContainer } from '../styles/ProductList.style.native';
+import {
+  styles,
+  PageContainer,
+  HeaderContainer,
+  RecommendationContainer,
+  GridPromoContainer,
+} from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
+import GridPromo from '../../../../../../common/molecules/GridPromo';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
@@ -61,11 +67,19 @@ class ProductList extends React.PureComponent {
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
+  onFavorite = (generalProductId, itemId) => {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      isSearchListing,
+      isFavorite,
+      setLastDeletedItemId,
+    } = this.props;
     if (!isLoggedIn) {
       this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else if (isFavorite) {
+      if (setLastDeletedItemId) setLastDeletedItemId({ itemId });
     } else {
       onAddItemToFavorites({
         colorProductId: generalProductId,
@@ -117,6 +131,27 @@ class ProductList extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  checkAndRenderSuggestedItem = item => {
+    const { seeSuggestedDictionary } = this.props;
+    const suggestedItem = {
+      status: false,
+      attributes: null,
+    };
+    const skuInfoColorProductId = get(item, 'skuInfo.colorProductId', null);
+    const outOfStockProduct =
+      skuInfoColorProductId &&
+      seeSuggestedDictionary &&
+      seeSuggestedDictionary[skuInfoColorProductId];
+    const outOfStockColorProductId = outOfStockProduct && outOfStockProduct.colorProductId;
+    const suggestedAttributes = outOfStockProduct && outOfStockProduct.attributes;
+
+    if (outOfStockColorProductId && outOfStockColorProductId === skuInfoColorProductId) {
+      suggestedItem.status = true;
+      suggestedItem.attributes = suggestedAttributes;
+    }
+    return suggestedItem;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -134,8 +169,28 @@ class ProductList extends React.PureComponent {
       labelsPlpTiles,
       isKeepAliveEnabled,
       outOfStockLabels,
+      renderMoveToList,
+      onSeeSuggestedItems,
     } = this.props;
     const { item } = itemData;
+    const suggestedItem = this.checkAndRenderSuggestedItem(item);
+    if (suggestedItem.status) {
+      return (
+        <RecommendationContainer>
+          <Recommendations {...suggestedItem.attributes} />
+        </RecommendationContainer>
+      );
+    }
+
+    if (item.itemType === 'gridPromo') {
+      const variation = item.gridStyle;
+      return (
+        <GridPromoContainer fullWidth={variation === 'horizontal'}>
+          <GridPromo promoObj={item.itemVal} variation={item.gridStyle} />
+        </GridPromoContainer>
+      );
+    }
+
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -173,6 +228,8 @@ class ProductList extends React.PureComponent {
         labelsPlpTiles={labelsPlpTiles}
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
+        renderMoveToList={renderMoveToList}
+        onSeeSuggestedItems={onSeeSuggestedItems}
       />
     );
   };
@@ -254,7 +311,10 @@ class ProductList extends React.PureComponent {
             ref={ref => this.setListRef(ref)}
             data={products}
             renderItem={this.renderItemList}
-            keyExtractor={item => item.productInfo.generalProductId}
+            keyExtractor={item =>
+              (item.productInfo && item.productInfo.generalProductId) ||
+              (item.itemVal && item.itemVal.slot)
+            }
             initialNumToRender={4}
             maxToRenderPerBatch={2}
             numColumns={2}
@@ -344,6 +404,10 @@ ProductList.propTypes = {
   isSearchListing: PropTypes.bool,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  renderMoveToList: PropTypes.func,
+  onSeeSuggestedItems: PropTypes.func,
+  seeSuggestedDictionary: PropTypes.shape({}),
+  isSuggestedItem: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -379,6 +443,10 @@ ProductList.defaultProps = {
   isSearchListing: false,
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  renderMoveToList: () => {},
+  onSeeSuggestedItems: () => {},
+  seeSuggestedDictionary: null,
+  isSuggestedItem: false,
 };
 
 export default withStyles(ProductList, styles);

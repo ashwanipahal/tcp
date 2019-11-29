@@ -2,7 +2,12 @@ import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import dynamic from 'next/dynamic';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+  getVideoUrl,
+} from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
 
@@ -53,8 +58,13 @@ const getBreakpointImgUrl = (type, props) => {
 
   const brandId = brandName && brandName.toUpperCase();
   const apiConfigObj = getAPIConfig();
-  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  let assetHost = apiConfigObj[`assetHost${brandId}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+
+  const isVideoUrl = getVideoUrl(imgPath);
+  if (isVideoUrl) {
+    assetHost = assetHost.replace('/image/', '/video/');
+  }
 
   return isProductImage
     ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
@@ -88,10 +98,12 @@ const RenderImage = forwardRef((imgProps, ref) => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
+
   return (
     <picture>
       <source
@@ -142,11 +154,12 @@ const DamImage = props => {
     itemBrand,
     showPlaceHolder,
     videoData,
+    isProductImage,
     ...other
   } = props;
 
   if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} />;
+    return <RenderVideo video={videoData} image={imgData} dataLocator={dataLocator} />;
   }
 
   const imgProps = {
@@ -159,9 +172,21 @@ const DamImage = props => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
     ...other,
   };
 
+  if (getVideoUrl(imgData.url) && isProductImage) {
+    const videoDataOptions = {
+      autoplay: false,
+      controls: true,
+      loop: false,
+      muted: true,
+      inline: true,
+      url: getBreakpointImgUrl('lg', imgProps),
+    };
+    return <RenderVideo video={videoDataOptions} dataLocator={dataLocator} />;
+  }
   if (!link) {
     return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
@@ -205,6 +230,7 @@ DamImage.defaultProps = {
   itemBrand: '',
   showPlaceHolder: true,
   videoData: null,
+  isProductImage: false,
 };
 
 DamImage.propTypes = {
@@ -251,10 +277,13 @@ DamImage.propTypes = {
     target: PropTypes.string,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
+    actualUrl: PropTypes.string,
+    className: PropTypes.string,
   }),
   forwardedRef: PropTypes.shape({ current: PropTypes.any }),
   itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
+  isProductImage: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

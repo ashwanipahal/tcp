@@ -1,6 +1,7 @@
 import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import {
   generateBrowseDataLayer,
   generateHomePageDataLayer,
@@ -46,7 +47,8 @@ export default function create(store) {
            to override the pageName value. For instance, onClick event.
          */
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        // We need both the default object and || fallback because Immutable only defaults for `undefined` and not `null`
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
@@ -66,7 +68,7 @@ export default function create(store) {
          */
         const { pageData, AnalyticsDataKey } = store.getState();
 
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageShortName = clickActionAnalyticsData.pageShortName
           ? clickActionAnalyticsData.pageShortName
           : pageData.pageShortName;
@@ -80,7 +82,7 @@ export default function create(store) {
     pageType: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
           : pageData.pageType;
@@ -95,24 +97,24 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+        return 'US:en';
       },
     },
 
     pageSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
-        return clickActionAnalyticsData.pageSection
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
       },
     },
 
-    pageSubSubSection: {
+    pageSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageSubSection
           ? clickActionAnalyticsData.pageSubSection
           : pageData.pageSubSection;
@@ -127,9 +129,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store.getState().User.getIn(['personalData', 'isGuest'])
-          ? 'no rewards:guest'
-          : 'no rewards:logged in';
+        return getUserLoggedInState(store.getState()) ? 'no rewards:logged in' : 'no rewards:guest';
       },
     },
 
@@ -183,7 +183,7 @@ export default function create(store) {
     pageNavigationText: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageNavigationText = clickActionAnalyticsData.pageNavigationText
           ? clickActionAnalyticsData.pageNavigationText
           : pageData.pageNavigationText;
@@ -220,7 +220,18 @@ export default function create(store) {
       get() {
         return store
           .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], []);
+      },
+    },
+    currentState: {
+      get() {
+        return store.getState();
+      },
+    },
+    brandId: {
+      get() {
+        const { brandId = '' } = store.getState().APIConfig;
+        return brandId.toUpperCase();
       },
     },
   });

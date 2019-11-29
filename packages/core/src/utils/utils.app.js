@@ -113,6 +113,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
+    case 'promotion':
+      resolve(require('../services/handler/graphQL/queries/promotion'));
+      break;
     default:
       importOtherGraphQLQueries({
         query,
@@ -478,6 +481,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
     styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
     host: envConfig[`RWD_APP_HOST_${appTypeSuffix}`],
+    webAppDomain: envConfig[`RWD_WEB_APP_DOMAIN_${appTypeSuffix}`],
   };
 };
 
@@ -691,7 +695,11 @@ export const validateColor = color => {
  * @param {upperCase} locale use for convert locate formate
  * @param {upperCase} formate use for convert locate formate
  */
-export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month, date, year }) => {
+export const getTranslatedMomentDate = (
+  dateInput,
+  language = 'en',
+  { day, month, date, year } = {}
+) => {
   moment.locale(language);
   const currentDate = dateInput ? moment(dateInput) : moment();
   return {

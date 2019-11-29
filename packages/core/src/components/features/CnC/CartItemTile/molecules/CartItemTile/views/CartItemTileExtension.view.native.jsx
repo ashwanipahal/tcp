@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 /* TODO to refactor later as per discussion */
 import React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
 import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import PropTypes from 'prop-types';
@@ -32,6 +32,9 @@ import {
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
 } from './CartItemTile.utils';
+import LoginPageContainer from '../../../../../account/LoginPage/index';
+import ModalNative from '../../../../../../common/molecules/Modal/index';
+import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -200,7 +203,7 @@ const getProductName = (productDetail, showOnReviewPage, navigation, updateAppTy
         fontFamily="secondary"
         fontSize="fs14"
         dataLocator={getLocator('cart_item_title')}
-        fontWeight={['semibold']}
+        fontWeight={['extrabold']}
         text={productDetail.itemInfo.name}
         onPress={() => {
           goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
@@ -487,6 +490,42 @@ const renderTogglingError = props => {
   ) : null;
 };
 
+const renderLoginComponent = (isLoggedIn, toggleModal, showloginModal) => {
+  let componentContainer = null;
+  if (!isLoggedIn) {
+    componentContainer = (
+      <LoginPageContainer
+        onRequestClose={toggleModal}
+        isUserLoggedIn={isLoggedIn}
+        showLogin={showloginModal}
+        variation="favorites"
+      />
+    );
+  }
+  return <React.Fragment>{componentContainer}</React.Fragment>;
+};
+
+const renderModal = (isLoggedIn, toggleLoginModal, showLoginModal) => {
+  if (!showLoginModal) {
+    return null;
+  }
+  return (
+    <ModalNative
+      isOpen={showLoginModal}
+      onRequestClose={toggleLoginModal}
+      heading="LOG IN"
+      headingFontFamily="secondary"
+      fontSize="fs16"
+    >
+      <SafeAreaView>
+        <ModalViewWrapper>
+          {renderLoginComponent(isLoggedIn, toggleLoginModal, showLoginModal)}
+        </ModalViewWrapper>
+      </SafeAreaView>
+    </ModalNative>
+  );
+};
+
 renderTogglingError.propTypes = {
   toggleError: PropTypes.shape({}).isRequired,
   productDetail: PropTypes.shape({}).isRequired,
@@ -508,4 +547,6 @@ export default {
   renderImage,
   renderTogglingError,
   goToPdpPage,
+  renderLoginComponent,
+  renderModal,
 };

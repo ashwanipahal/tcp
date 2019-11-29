@@ -107,6 +107,7 @@ const processPdpResponse = ({
       long_product_title: baseProduct.long_product_title || '',
       product_long_description: baseProduct.product_long_description || '',
       bundleProducts: baseProduct.products || [],
+      categoryPathMap: categoryPathMap,
     },
   };
 };

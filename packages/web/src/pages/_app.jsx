@@ -10,19 +10,12 @@ import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
-import {
-  createAPIConfig,
-  getAPIConfig,
-  isDevelopment,
-  fetchStoreIdFromUrlPath,
-  isGymboree,
-} from '@tcp/core/src/utils';
+import { createAPIConfig, getAPIConfig, isDevelopment, isGymboree } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
-import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
@@ -56,7 +49,7 @@ function AnalyticsScript() {
 const updatePayload = (req, payload, Component) => {
   let updatedPayload = { ...payload };
   const { pageInfo } = Component;
-  const { staticPage, paramName } = pageInfo || {};
+  const { staticPage, paramName, defaultName } = pageInfo || {};
 
   // This check ensures this block is executed once since Component is not available in first call
   if (pageInfo) {
@@ -68,7 +61,7 @@ const updatePayload = (req, payload, Component) => {
     if (staticPage && paramName) {
       // staticPage - this var will be passed inside component pageinfo
       // paramName - this keyword will have the variable name to page the page url from the request.
-      const dynamicPageName = req.params[paramName] || null;
+      const dynamicPageName = req.params[paramName] ? req.params[paramName] : defaultName;
       if (!constants.staticPagesWithOwnTemplate.includes(dynamicPageName) && dynamicPageName) {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }
@@ -205,13 +198,13 @@ class TCPWebApp extends App {
   };
 
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
+    const initialProps = pageProps;
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
-    let payload = { siteConfig: false };
-    const initialProps = pageProps;
     // Get initial props is getting called twice on server
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
+      let payload;
       const { locals } = res;
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
@@ -251,10 +244,6 @@ class TCPWebApp extends App {
       payload = updatePayload(req, payload, Component);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
-      if (asPath.includes('store') && query && query.storeStr) {
-        const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-        store.dispatch(getCurrentStoreInfo(storeId));
-      }
     }
     return initialProps;
   }

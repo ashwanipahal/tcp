@@ -106,7 +106,7 @@ function* submitPickupSection({ payload }) {
 
     if (result.addressId) {
       yield call(getAddressList);
-      yield call(getCardList);
+      yield call(getCardList, { ignoreCache: true });
       if (!isMobileApp()) {
         const getIsShippingRequired = yield select(getIsOrderHasShipping);
         const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);

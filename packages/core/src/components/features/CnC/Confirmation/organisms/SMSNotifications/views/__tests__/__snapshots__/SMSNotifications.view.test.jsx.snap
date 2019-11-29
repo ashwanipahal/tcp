@@ -199,7 +199,9 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.svg",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -359,7 +361,9 @@ exports[`SMSNotificationsVanilla should render correctly 1`] = `
                       ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                      "/static/version-not-available/images/circle-alert-fill.svg",
+                      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -487,7 +491,7 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
           <Styled(Image)
             className="activity-complete-icon"
             data-locator="ChkmarkIcon"
-            src="/static/images/done.png"
+            src="/static/version-not-available/images/done.png"
           />
           <Styled(BodyCopy)
             className="elem-ml-XS"

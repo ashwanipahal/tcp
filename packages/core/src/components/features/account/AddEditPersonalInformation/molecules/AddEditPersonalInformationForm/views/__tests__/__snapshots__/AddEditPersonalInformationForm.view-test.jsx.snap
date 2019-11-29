@@ -158,7 +158,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -331,7 +333,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -512,7 +516,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -699,7 +705,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -804,7 +812,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -862,7 +870,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -925,7 +935,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -983,7 +993,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1164,7 +1176,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1419,7 +1433,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1592,7 +1608,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1773,7 +1791,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1960,7 +1980,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2065,7 +2087,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -2123,7 +2145,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2185,7 +2209,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -2243,7 +2267,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -2423,7 +2449,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

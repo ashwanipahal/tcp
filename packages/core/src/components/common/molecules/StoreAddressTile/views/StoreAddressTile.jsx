@@ -13,6 +13,9 @@ import style, {
 } from '../styles/StoreAddressTile.style';
 import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
 
+const storeAddressText = (city, state, zipCode) =>
+  city && state && zipCode ? `${city}, ${state}, ${zipCode}` : '';
+
 class StoreAddressTile extends PureComponent {
   getIsFavStoreIcon() {
     const { labels } = this.props;
@@ -37,6 +40,9 @@ class StoreAddressTile extends PureComponent {
       locatorGetDirections,
       openStoreDirections,
       variation,
+      store: {
+        basicInfo: { storeName },
+      },
       isFavorite,
       showSetFavorite,
     } = this.props;
@@ -47,6 +53,10 @@ class StoreAddressTile extends PureComponent {
             buttonVariation="fixed-width"
             fill="BLUE"
             type="button"
+            aria-label={`${getLabelValue(
+              labels,
+              'lbl_storelanding_getdirections_link'
+            )} for ${storeName}`}
             data-locator={locatorGetDirections}
             onClick={openStoreDirections}
           >
@@ -122,18 +132,20 @@ class StoreAddressTile extends PureComponent {
       dataLocatorKey,
     } = this.props;
     return (
-      <div className="store-details-header">
-        {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
-        {titleClickCb && (
-          <button
-            className="store-name store-name--details-btn"
-            onClick={titleClickCb}
-            data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
-          >
-            {storeName}
-          </button>
-        )}
-      </div>
+      storeName && (
+        <div className="store-details-header">
+          {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
+          {titleClickCb && (
+            <button
+              className="store-name store-name--details-btn"
+              onClick={titleClickCb}
+              data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
+            >
+              {storeName}
+            </button>
+          )}
+        </div>
+      )
     );
   }
 
@@ -300,7 +312,7 @@ class StoreAddressTile extends PureComponent {
             target="_blank"
             className="store-directions-link"
             title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-            clickData={{ customEvents: ['event97'], pageName: 'storelocator:' }}
+            clickData={{ customEvents: ['event97'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </ClickTracker>
@@ -385,6 +397,7 @@ class StoreAddressTile extends PureComponent {
       variation === detailsType && store.distance
         ? `${store.distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
         : null;
+    const cityTxt = storeAddressText(city, state, zipCode);
 
     return (
       <div className="address-wrapper">
@@ -395,7 +408,7 @@ class StoreAddressTile extends PureComponent {
           fontFamily="secondary"
           className="address-details"
         >
-          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map(
+          {[addressLine1, cityTxt, phone, distance].map(
             (item, i) =>
               item && (
                 <BodyCopy

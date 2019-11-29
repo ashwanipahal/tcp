@@ -158,7 +158,9 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -234,6 +236,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
         }
       >
         <Field
+          className=""
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -339,7 +342,9 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
                   ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
