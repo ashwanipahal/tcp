@@ -33,13 +33,10 @@ const DynamicColumns = dynamic({
 });
 
 const ModuleTwoColumns = props => {
-  const { className, moduleClassName } = props;
+  const { className } = props;
 
   return (
-    <Row
-      className={`${className} ${moduleClassName} moduleTwoCol`}
-      fullBleed={{ small: true, medium: true }}
-    >
+    <Row className={`${className} moduleTwoCol`} fullBleed={{ small: true, medium: true }}>
       {<DynamicColumns {...props} />}
     </Row>
   );
@@ -47,10 +44,5 @@ const ModuleTwoColumns = props => {
 
 ModuleTwoColumns.propTypes = {
   className: PropTypes.string.isRequired,
-  moduleClassName: PropTypes.string,
-};
-
-ModuleTwoColumns.defaultProps = {
-  moduleClassName: '',
 };
 export default withStyles(errorBoundary(ModuleTwoColumns), style);
