@@ -195,31 +195,13 @@
 		4C99722C233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
 		4C99722D233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
 		4C99722E233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
-
 		52E2F8A3A812AE2049914EAC /* libPods-gymboree_dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FED26EEEDE07EB6208629 /* libPods-gymboree_dev.a */; };
 		5C658802DBEE101155B3D33B /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C598B9782044E026FB8BD81 /* libPods-mobileapp_preview.a */; };
 		6D40DB93D473EF097D9197A5 /* libPods-mobileapp_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA601903E0D05110E23DD59 /* libPods-mobileapp_uat.a */; };
-
-		4F423250FA434EB16A1EFB8D /* libPods-mobileapp_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4F9C099A974C3D88D3353A /* libPods-mobileapp_int.a */; };
-		502D8870B0623D01256B498E /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 171D9F16111D307A089DB7AC /* libPods-mobileapp_preview.a */; };
 		82FA410D238BE4F3009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		82FA410F238BE50B009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */; };
 		82FA4110238BE510009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */; };
-		846779FF230BC69E001F5301 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
-		84677A00230BC69E001F5301 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		84677A01230BC69E001F5301 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		84677A02230BC69E001F5301 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		84677A03230BC69E001F5301 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
-		84677A04230BC69E001F5301 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
-		84677A05230BC69E001F5301 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
-		84677A06230BC69E001F5301 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
-		84677A07230BC69E001F5301 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
-		84677A08230BC69E001F5301 /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
-		84677A09230BC69E001F5301 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		84677A0A230BC69E001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		84677A0B230BC69E001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
-
 		84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
@@ -298,7 +280,6 @@
 		CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
 		CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
 		CA3106412375C79800D8D91A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
-		CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA8FB17A237B30BE006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA8FB17B237B30C3006C733A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		CA9E21D5236890C100365F24 /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
@@ -1131,7 +1112,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-
 				CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */,
 				82FA410A238BE4E2009ECD1F /* mobileapp_dev */,
 				82FA4107238BE4E2009ECD1F /* mobileapp_int */,
@@ -1225,7 +1205,6 @@
 		D94ECAAD22D70C2600D9D051 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */,
 				16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */,
 				368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */,
 				368BE6552373D931001B33E2 /* Nunito-Bold.ttf */,
@@ -2068,7 +2047,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C47557238D504900B6959B /* FontAwesome.ttf in Resources */,
-				CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */,
 				82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */,
@@ -2295,6 +2273,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2318,6 +2297,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2373,6 +2353,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2396,6 +2377,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2429,6 +2411,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2452,6 +2435,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2485,6 +2469,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2508,6 +2493,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2541,6 +2527,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2564,6 +2551,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2617,6 +2605,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2640,6 +2629,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2771,6 +2761,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2794,6 +2785,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2931,6 +2923,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2954,6 +2947,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3169,6 +3163,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3192,6 +3187,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3225,6 +3221,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3248,6 +3245,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3345,6 +3343,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3368,6 +3367,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3476,6 +3476,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3499,6 +3500,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4203,13 +4205,9 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
-
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-
 				CODE_SIGN_ENTITLEMENTS = mobileapp_int/mobileapp_int.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
@@ -4280,10 +4278,6 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
-
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-
 				CODE_SIGN_ENTITLEMENTS = mobileapp_uat/mobileapp_uat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

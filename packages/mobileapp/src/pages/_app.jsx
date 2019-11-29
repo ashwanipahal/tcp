@@ -92,18 +92,6 @@ export class App extends React.PureComponent {
         envId: RWD_APP_VERSION,
       });
     }
-
-    UrbanAirship.addListener('notificationResponse', response => {
-      console.log('notificationResponse:', JSON.stringify(response));
-    });
-
-    UrbanAirship.addListener('pushReceived', notification => {
-      console.log('pushReceived:', JSON.stringify(notification));
-    });
-
-    UrbanAirship.addListener('deepLink', event => {
-      console.log('deepLink:', JSON.stringify(event));
-    });
   }
 
   setCooKies = () => {
