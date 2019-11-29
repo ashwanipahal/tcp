@@ -239,14 +239,16 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
   /**
    * Handle the drop down item click
    */
-  onDropDownItemClick = item => {
+  onDropDownItemClick = (item, isPreventSelfClose = false) => {
     let { value } = item;
     const { id, displayName } = item;
     if (!value) value = id;
-    this.setState({
-      dropDownIsOpen: false,
-      selectedLabelState: displayName,
-    });
+    if (!isPreventSelfClose) {
+      this.setState({
+        dropDownIsOpen: false,
+        selectedLabelState: displayName,
+      });
+    }
 
     // pass the callback here with value
     const { onValueChange } = this.props;
@@ -366,6 +368,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
                     ListHeaderComponent={renderHeader}
                     ListFooterComponent={this.handleRenderFooter}
                     ItemSeparatorComponent={() => showListSeperator && <Separator />}
+                    showsVerticalScrollIndicator={false}
                   />
                 )}
               </FlatListWrapper>
