@@ -196,7 +196,7 @@ class HomePageView extends React.PureComponent {
             promoHtmlBannerCarousel={promoHtmlBannerCarousel}
           />
         </HeaderPromoContainer>
-        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
+        {loyaltyPromoBanner.length > 0 && <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />}
         <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
         {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
