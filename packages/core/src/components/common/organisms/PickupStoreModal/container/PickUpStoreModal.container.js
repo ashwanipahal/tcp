@@ -16,11 +16,17 @@ import {
   setStoreSearchError,
   getUserCartStores,
 } from './PickUpStoreModal.actions';
+import { setDefaultStore } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+import {
+  setFavoriteStoreActn,
+  getFavoriteStoreActn,
+} from '../../../../features/storeLocator/StoreLanding/container/StoreLanding.actions';
+
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
@@ -47,6 +53,15 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
     },
+    setFavoriteStore: payload => {
+      dispatch(setFavoriteStoreActn(payload));
+    },
+    getFavoriteStore: payload => {
+      dispatch(getFavoriteStoreActn(payload));
+    },
+    getDefaultStore: payload => {
+      dispatch(setDefaultStore(payload));
+    },
   };
 };
 
@@ -65,7 +80,10 @@ const mapStateToProps = (state, ownProps) => {
   const initialValueFromQuickView = {
     ...PickupSelectors.getInitialValues(state, atbProductFormId),
   }; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
-  const itemValues = { showDefaultSizeMsg: false, formValues: initialValueFromQuickView };
+  const itemValues = {
+    showDefaultSizeMsg: false,
+    formValues: initialValueFromQuickView,
+  };
   const { colorFitSizeDisplayNames = null } = currentProduct;
   const isPickupModalOpen = PickupSelectors.getIsPickupModalOpen(state);
   const isBopisCtaEnabled = PickupSelectors.getIsBopisCtaEnabled(state);
@@ -74,7 +92,9 @@ const mapStateToProps = (state, ownProps) => {
   const openSkuSelectionForm = PickupSelectors.getOpenSkuSelectionForm(state);
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
-  const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
+  const PickupSkuFormValues = {
+    ...PickupSelectors.getInitialValues(state, pickupSkuFormId),
+  };
   const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
   const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
   const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
