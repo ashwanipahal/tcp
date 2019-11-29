@@ -196,18 +196,19 @@ android {
             // This property is optional if you are using only one dimension.
             dimension "version"
             applicationIdSuffix ".tcp.dev"
-            versionNameSuffix "-DEV"
-            versionName = 'My Place'
+            versionNameSuffix "-TCP"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", '""'
+            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
 
         }
         gymboree {
             dimension "version"
             applicationIdSuffix ".gymboree.dev"
-            versionNameSuffix "-DEV"
-            versionName = 'Gymboree'
+            versionNameSuffix "-GYMBOREE"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
         }
 
         tcpInt {
@@ -218,6 +219,7 @@ android {
             versionNameSuffix "-INT"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
 
         }
 
@@ -227,6 +229,7 @@ android {
             versionNameSuffix "-INT"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpPreview {
@@ -235,6 +238,7 @@ android {
             versionNameSuffix "-PREVIEW"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         gymboreePreview {
@@ -243,6 +247,7 @@ android {
             versionNameSuffix "-PREVIEW"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpUat {
@@ -253,6 +258,8 @@ android {
             versionNameSuffix "-UAT"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+
 
         }
 
@@ -262,6 +269,7 @@ android {
             versionNameSuffix "-UAT"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpProd {
@@ -272,6 +280,7 @@ android {
             versionNameSuffix ""
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         gymboreeProd {
@@ -280,6 +289,7 @@ android {
             versionNameSuffix ""
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
     }
 
