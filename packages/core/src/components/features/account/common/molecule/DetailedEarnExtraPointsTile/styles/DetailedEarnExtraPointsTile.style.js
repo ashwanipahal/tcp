@@ -68,6 +68,10 @@ const styles = css`
   .Gymboree_TwitterLink {
     background-image: url(${getStaticFilePath('images/twitter.png')});
   }
+  .TwitterPhoto,
+  .Gymboree_TwitterPhoto {
+    background-image: url(${getStaticFilePath('images/share-twitter.png')});
+  }
 
   .tileWrapper {
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};

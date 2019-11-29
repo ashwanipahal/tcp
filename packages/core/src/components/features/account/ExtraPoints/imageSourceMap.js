@@ -10,6 +10,7 @@ const AddShopperTypeImage = require('@tcp/core/src/assets/survey.png');
 const AddBirthDateImage = require('@tcp/core/src/assets/birthday.png');
 const FeedbackSurveyImage = require('@tcp/core/src/assets/oval.png');
 const TwitterLinkImage = require('@tcp/core/src/assets/twitter.png');
+const TwitterPhotoImage = require('@tcp/core/src/assets/share-twitter.png');
 
 /**
  * @sourceMap - sourceMap object for images path
@@ -34,6 +35,8 @@ const sourceMap = {
   FeedbackSurvey: FeedbackSurveyImage,
   TwitterLink: TwitterLinkImage,
   Gymboree_TwitterLink: TwitterLinkImage,
+  TwitterPhoto: TwitterPhotoImage,
+  Gymboree_TwitterPhoto: TwitterPhotoImage,
 };
 
 export default sourceMap;

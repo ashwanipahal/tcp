@@ -80,6 +80,10 @@ const CouponDetailModalStyle = css`
   .Gymboree_TwitterLink {
     background-image: url(${getStaticFilePath('images/twitter.png')});
   }
+  .TwitterPhoto,
+  .Gymboree_TwitterPhoto {
+    background-image: url(${getStaticFilePath('images/share-twitter.png')});
+  }
 `;
 
 export default CouponDetailModalStyle;
