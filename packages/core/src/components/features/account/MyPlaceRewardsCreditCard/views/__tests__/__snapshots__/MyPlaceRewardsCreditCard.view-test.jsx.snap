@@ -91,6 +91,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
                 ],
                 "eventName": "loyaltyclick",
                 "pageName": "myplace:rewardscreditcard",
+                "pageNavigationText": "my account-my place rewards credit card",
                 "pageSection": "myplace",
                 "pageSubSection": "myplace",
                 "pageType": "myplace",

@@ -481,6 +481,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
     styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
     host: envConfig[`RWD_APP_HOST_${appTypeSuffix}`],
+    webAppDomain: envConfig[`RWD_WEB_APP_DOMAIN_${appTypeSuffix}`],
   };
 };
 
