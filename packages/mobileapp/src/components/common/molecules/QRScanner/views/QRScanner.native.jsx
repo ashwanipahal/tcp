@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { connect } from 'react-redux';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Text, Modal } from 'react-native';
 import BagPageHeader from '../../Header/BagPageHeader';
-import NoReadableQRModal from '../../QRCodeNotReadable';
+import ScanErrorModal from '../../scanErrorModal';
 import Style, { HelpText } from '../styles/QRScanner.style.native';
 
 class QRCode extends PureComponent {
@@ -19,6 +19,12 @@ class QRCode extends PureComponent {
     this.scanner = '';
   }
 
+  /**
+   * It redirects to PLP page once camera detected QR.
+   * If there is no readable content in QR then it will not redirect to PLP
+   * and open error modal
+   *
+   */
   redirectToPLP = data => {
     if (data) {
       const { navigation } = this.props;
@@ -27,26 +33,42 @@ class QRCode extends PureComponent {
         showCustomLoader: true,
       });
     } else {
-      this.notReadableQRCode();
+      this.noQRFound();
     }
   };
 
-  notReadableQRCode = () => {
+  /**
+   * Set state to show no QR found modal
+   */
+  noQRFound = () => {
     this.setState({ isQRNotReadable: true, isQRActive: false });
   };
 
-  closeNotReadableQRCodeModal = () => {
+  /**
+   * Set state to close no QR found error modal and reactive the QR scanner to scan another QR code.
+   */
+  closeNoQRFoundModal = () => {
     this.setState({ isQRNotReadable: false, isQRActive: true }, () => this.activateQRScanner());
   };
 
+  /**
+   * Activate QR scanner programmatically because QR scanner will scan only once
+   * If another QR need to scan then QR scanner need to be reactivate
+   */
   activateQRScanner = () => {
     this.scanner.reactivate();
   };
 
+  /**
+   * QR scanner scanned callback.
+   */
   onSuccess = e => {
     this.setState({ isQRActive: false }, () => this.redirectToPLP(e && e.data));
   };
 
+  /**
+   * Render top content on QR scanner page
+   */
   topContent = () => {
     const { qrLabels } = this.props;
     return (
@@ -62,11 +84,11 @@ class QRCode extends PureComponent {
     const { navigation, qrLabels } = this.props;
     return (
       <Modal animationType="fade" transparent={false}>
-        <NoReadableQRModal
+        <ScanErrorModal
           labels={qrLabels}
           isOpen={isQRNotReadable}
           navigation={navigation}
-          onClose={this.closeNotReadableQRCodeModal}
+          onClose={this.closeNoQRFoundModal}
         />
         <BagPageHeader showGobackIcon navigation={navigation} showCloseButton={false} />
         <QRCodeScanner
@@ -88,7 +110,7 @@ class QRCode extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    qrLabels: get(state, 'Labels.Browse.SLP', {}),
+    qrLabels: get(state, 'Labels.global.qrScanner', {}),
   };
 };
 

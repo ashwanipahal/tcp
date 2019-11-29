@@ -5,6 +5,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { BodyCopy } from '../../../atoms';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../atoms/Icon/Icon.constants';
+import QRScannerIcon from '../../../atoms/QRScannerIcon';
 
 import styles, {
   TouchableOpacityContainer,
@@ -25,13 +26,8 @@ class SearchBar extends React.PureComponent {
     if (openSearchProductPage) openSearchProductPage();
   };
 
-  onQRIconFocus = () => {
-    const { navigation } = this.props;
-    navigation.navigate('QRScanner');
-  };
-
   render() {
-    const { showCustomizedSearch, labels } = this.props;
+    const { showCustomizedSearch, labels, navigation } = this.props;
     if (showCustomizedSearch) {
       return (
         <ViewContainer>
@@ -70,13 +66,8 @@ class SearchBar extends React.PureComponent {
             text={getLabelValue(labels, 'lbl_looking_for')}
             color="gray.900"
           />
-          <TouchableQRContainer activeOpacity={1} width="50px" onPress={this.onQRIconFocus}>
-            <CustomIcon
-              iconFontName={ICON_FONT_CLASS.Icomoon}
-              name={ICON_NAME.qrcode}
-              size="fs16"
-              color="gray.600"
-            />
+          <TouchableQRContainer activeOpacity={1} width="50px">
+            <QRScannerIcon size="fs16" navigation={navigation} />
           </TouchableQRContainer>
         </TouchableOpacityContainer>
       </ViewQRContainer>

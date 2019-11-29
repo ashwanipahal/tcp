@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotReadableModal should render correctly 1`] = `
+<ModalNative
+  customTransparent={true}
+  inheritedStyles=""
+  isOverlay={false}
+  onRequestClose={[Function]}
+>
+  <Styled(View)
+    height={1334}
+  >
+    <Styled(View)>
+      <Styled(View)
+        width={690}
+      >
+        <Styled(TouchableOpacity)
+          accessibilityRole="button"
+          onPress={[Function]}
+        >
+          <Styled(Styled(ImageComp))
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(TouchableOpacity)>
+        <Styled(View)>
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="bold"
+            margin={null}
+            marginTop="31px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            margin={null}
+            marginTop="16px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(CustomButton))
+            active={false}
+            buttonVariation="fixed-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill="WHITE"
+            fontWeight="semibold"
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            marginTop="25px"
+            navigation={Object {}}
+            onPress={[Function]}
+            paddings="12px 32px 12px 32px"
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text=""
+            theme={Object {}}
+            url=""
+            width="260px"
+            withNoLineHeight={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;
+
+exports[`NotReadableModal should render with close modal 1`] = `
+<ModalNative
+  customTransparent={true}
+  inheritedStyles=""
+  isOpen={false}
+  isOverlay={false}
+  onRequestClose={[Function]}
+>
+  <Styled(View)
+    height={1334}
+  >
+    <Styled(View)>
+      <Styled(View)
+        width={690}
+      >
+        <Styled(TouchableOpacity)
+          accessibilityRole="button"
+          onPress={[Function]}
+        >
+          <Styled(Styled(ImageComp))
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(TouchableOpacity)>
+        <Styled(View)>
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="bold"
+            margin={null}
+            marginTop="31px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            margin={null}
+            marginTop="16px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(CustomButton))
+            active={false}
+            buttonVariation="fixed-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill="WHITE"
+            fontWeight="semibold"
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            marginTop="25px"
+            navigation={Object {}}
+            onPress={[Function]}
+            paddings="12px 32px 12px 32px"
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text=""
+            theme={Object {}}
+            url=""
+            width="260px"
+            withNoLineHeight={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;
+
+exports[`NotReadableModal should render with open modal 1`] = `
+<ModalNative
+  customTransparent={true}
+  inheritedStyles=""
+  isOpen={true}
+  isOverlay={false}
+  onRequestClose={[Function]}
+>
+  <Styled(View)
+    height={1334}
+  >
+    <Styled(View)>
+      <Styled(View)
+        width={690}
+      >
+        <Styled(TouchableOpacity)
+          accessibilityRole="button"
+          onPress={[Function]}
+        >
+          <Styled(Styled(ImageComp))
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(TouchableOpacity)>
+        <Styled(View)>
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="bold"
+            margin={null}
+            marginTop="31px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(BodyCopy))
+            accessibilityText=""
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs16"
+            margin={null}
+            marginTop="16px"
+            numberOfLines={null}
+            text=""
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Styled(CustomButton))
+            active={false}
+            buttonVariation="fixed-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill="WHITE"
+            fontWeight="semibold"
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            marginTop="25px"
+            navigation={Object {}}
+            onPress={[Function]}
+            paddings="12px 32px 12px 32px"
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text=""
+            theme={Object {}}
+            url=""
+            width="260px"
+            withNoLineHeight={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;

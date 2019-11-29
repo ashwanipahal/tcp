@@ -129,7 +129,7 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       isSearchListing,
       isKeepModalOpen,
-      animationURL,
+      QRAnimationURL,
       ...otherProps
     } = this.props;
 
@@ -165,7 +165,7 @@ class ProductListingContainer extends React.PureComponent {
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}
         showCustomLoader={showCustomLoader}
-        animationURL={animationURL}
+        QRAnimationURL={QRAnimationURL}
         resetCustomLoader={this.resetCustomLoader}
         {...otherProps}
       />
@@ -231,7 +231,7 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
-    animationURL: get(state, 'Labels.Browse.SLP.lbl_animation_plp', ''),
+    QRAnimationURL: get(state, 'Labels.global.qrScanner.lbl_animation_plp', ''),
   };
 }
 
@@ -287,7 +287,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
-  animationURL: PropTypes.string,
+  QRAnimationURL: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -312,7 +312,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
-  animationURL: '',
+  QRAnimationURL: '',
 };
 
 export default connect(

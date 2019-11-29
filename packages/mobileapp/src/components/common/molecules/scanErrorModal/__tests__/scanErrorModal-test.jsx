@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NotReadableModalVanilla } from '../view/notReadableQRModal.native';
+import ScanErrorModal from '../view/scanErrorModal.native';
 
 describe('NotReadableModal', () => {
   let component;
@@ -10,7 +10,7 @@ describe('NotReadableModal', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<NotReadableModalVanilla navigation={navigation} />);
+    component = shallow(<ScanErrorModal navigation={navigation} />);
   });
 
   it('should be defined', () => {
@@ -22,12 +22,12 @@ describe('NotReadableModal', () => {
   });
 
   it('should render with open modal', () => {
-    component = shallow(<NotReadableModalVanilla navigation={navigation} isOpen />);
+    component = shallow(<ScanErrorModal navigation={navigation} isOpen />);
     expect(component).toMatchSnapshot();
   });
 
   it('should render with close modal', () => {
-    component = shallow(<NotReadableModalVanilla navigation={navigation} isOpen={false} />);
+    component = shallow(<ScanErrorModal navigation={navigation} isOpen={false} />);
     expect(component).toMatchSnapshot();
   });
 });

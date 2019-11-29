@@ -13,8 +13,9 @@ import {
   CloseContainer,
   BagPageContainer,
   ArrowBackIcon,
-  BagPageBackContainer,
 } from './Header.style';
+
+import { BagPageBackContainer } from './BagPageHeader.style';
 
 // @flow
 type Props = {
@@ -89,7 +90,7 @@ class BagPageHeader extends React.PureComponent<Props> {
           </BagPageContainer>
         )}
       </SafeAreaViewStyle>
-    )
+    );
   }
 }
 

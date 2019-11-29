@@ -9,7 +9,7 @@ import {
   StyledButton,
   MessageContainer,
   ShadowContainer,
-} from '../styles/notReadableModal.native.style';
+} from '../styles/scanErrorModal.native.style';
 import { getScreenWidth, getScreenHeight } from '@tcp/core/src/utils/utils.app';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal/view/Modal.native';
 
@@ -23,7 +23,7 @@ const closeIconAction = onClose => {
   }
 };
 
-const NotReadableModal = ({ onClose, isOpen, labels }) => {
+const ScanErrorModal = ({ onClose, isOpen, labels }) => {
   return (
     <ModalNative isOpen={isOpen} onRequestClose={() => closeIconAction(onClose)} customTransparent>
       <ShadowContainer height={HEIGHT}>
@@ -66,12 +66,12 @@ const NotReadableModal = ({ onClose, isOpen, labels }) => {
   );
 };
 
-NotReadableModal.propTypes = {
+ScanErrorModal.propTypes = {
   onClose: PropTypes.func,
   labels: PropTypes.shape({}),
 };
 
-NotReadableModal.defaultProps = {
+ScanErrorModal.defaultProps = {
   onClose: () => {},
   labels: {
     lbl_qrscan_no_result: '',
@@ -80,5 +80,4 @@ NotReadableModal.defaultProps = {
   },
 };
 
-export default NotReadableModal;
-export { NotReadableModal as NotReadableModalVanilla };
+export default ScanErrorModal;

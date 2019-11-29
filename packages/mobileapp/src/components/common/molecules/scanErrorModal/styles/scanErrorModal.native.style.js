@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
-import { Image, BodyCopy, Button } from '../../../../../../../core/src/components/common/atoms';
+import { Image, BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
 
 export const Wrapper = styled.View`
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colorPalette.white};
   height: 214px;
   width: ${props => props.width};
   padding: 12px;

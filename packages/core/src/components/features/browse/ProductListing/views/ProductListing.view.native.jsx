@@ -18,7 +18,7 @@ import {
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
-import PLPGifAnimation from '../../../../common/atoms/PLPGifAnimation';
+import PLPQRScannerAnimation from '../molecules/PLPQRScannerAnimation';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 const renderItemCountView = (itemCount, labelsFavorite, isBothTcpAndGymProductAreAvailable) => {
@@ -159,7 +159,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
-  animationURL,
+  QRAnimationURL,
   resetCustomLoader,
   ...otherProps
 }) => {
@@ -188,8 +188,8 @@ const ProductListView = ({
     filtersLength,
   };
   return showCustomLoader ? (
-    <PLPGifAnimation
-      url={animationURL}
+    <PLPQRScannerAnimation
+      url={QRAnimationURL}
       navigation={navigation}
       resetCustomLoader={resetCustomLoader}
       isOpen={showCustomLoader}
