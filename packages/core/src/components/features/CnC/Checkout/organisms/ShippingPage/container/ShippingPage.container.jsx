@@ -14,10 +14,33 @@ class ShippingContainer extends React.Component {
     isRegisteredUserCallDone: PropTypes.bool.isRequired,
     checkoutRoutingDone: PropTypes.bool.isRequired,
     shipmentMethods: PropTypes.shape({}).isRequired,
-
+    address: PropTypes.shape({}).isRequired,
+    selectedShipmentId: PropTypes.string.isRequired,
     addressLabels: PropTypes.shape({}).isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
+    isSubmitting: PropTypes.bool.isRequired,
+    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
+    navigation: PropTypes.shape({}),
+    updateShippingAddressData: PropTypes.func.isRequired,
+    updateShippingMethodSelection: PropTypes.func.isRequired,
+    shippingAddressId: PropTypes.string,
+    loadShipmentMethods: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    defaultShipmentId: PropTypes.string,
+    onFileAddressKey: PropTypes.string,
+    setAsDefaultShipping: PropTypes.bool,
+    saveToAddressBook: PropTypes.bool,
+    addNewShippingAddressData: PropTypes.func.isRequired,
   };
+
+  static defaultProps = {
+    shippingAddressId: null,
+    navigation: null,
+    defaultShipmentId: null,
+    onFileAddressKey: null,
+    setAsDefaultShipping: false,
+    saveToAddressBook: false,
+  }
 
   componentDidMount() {
     const { shippingDidMount } = this.props;

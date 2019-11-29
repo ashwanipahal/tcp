@@ -56,8 +56,8 @@ const getPaymentButton = params => {
             navigation={navigation}
             isBillingPage
             fullWidth
-            setVenmoState={() => {}}
-            closeModal={() => {}}
+            setVenmoState={() => { }}
+            closeModal={() => { }}
           />
         </PayPalButtonContainer>
       )}
@@ -149,35 +149,36 @@ const CnCCommonTemplate = ({
             onVenmoError,
           })}
         </CnContent>
-      ) : (
-        <View>
-          <OrderLedgerContainer
-            isConfirmationPage={isConfirmationPage}
-            pageCategory={pageCategory}
-            showAccordian
-          />
-          {venmoPayment && venmoPayment.isVenmoPaymentSelected && (
-            <VenmoPaidContainer>
-              <VenmoPaidTextContainer>
-                <BodyCopy
-                  fontWeight="regular"
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  text="Paid with "
-                />
-              </VenmoPaidTextContainer>
-              <CardImage card={venmoPayment} cardNumber={userName} />
-            </VenmoPaidContainer>
-          )}
-          {isGuest && <ConfirmationAccountFormContainer />}
-          <PersonalizedCoupons />
-          <Recommendations
-            navigation={navigation}
-            variation="moduleO"
-            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
-          />
-        </View>
-      )}
+      ) :
+        (
+          <View>
+            <OrderLedgerContainer
+              isConfirmationPage={isConfirmationPage}
+              pageCategory={pageCategory}
+              showAccordian
+            />
+            {venmoPayment && venmoPayment.isVenmoPaymentSelected && (
+              <VenmoPaidContainer>
+                <VenmoPaidTextContainer>
+                  <BodyCopy
+                    fontWeight="regular"
+                    fontFamily="secondary"
+                    fontSize="fs16"
+                    text="Paid with "
+                  />
+                </VenmoPaidTextContainer>
+                <CardImage card={venmoPayment} cardNumber={userName} />
+              </VenmoPaidContainer>
+            )}
+            {isGuest && <ConfirmationAccountFormContainer />}
+            <PersonalizedCoupons />
+            <Recommendations
+              navigation={navigation}
+              variation="moduleO"
+              page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+            />
+          </View>
+        )}
     </CnContainer>
   );
 };
@@ -198,6 +199,7 @@ CnCCommonTemplate.propTypes = {
   showVenmoSubmit: PropTypes.bool,
   onVenmoSubmit: PropTypes.func,
   venmoPayment: PropTypes.shape({}),
+  onVenmoError: PropTypes.bool,
 };
 
 CnCCommonTemplate.defaultProps = {
@@ -207,8 +209,9 @@ CnCCommonTemplate.defaultProps = {
   isPayPalWebViewEnable: false,
   showPayPalButton: false,
   showVenmoSubmit: false,
-  onVenmoSubmit: () => {},
+  onVenmoSubmit: () => { },
   venmoPayment: null,
+  onVenmoError: false,
 };
 
 export default CnCCommonTemplate;

@@ -46,15 +46,16 @@ class CheckoutFooter extends React.PureComponent {
       >
         {nextButtonText}
       </Button>
-    ) : (
-      <>
-        {!showVenmoSubmit && !showPayPalButton && (
-          <div className="footer-button footer-button-mob">
-            <LoaderSkelton />
-          </div>
-        )}
-      </>
-    );
+    ) :
+      (
+        <>
+          {!showVenmoSubmit && !showPayPalButton && (
+            <div className="footer-button footer-button-mob">
+              <LoaderSkelton />
+            </div>
+          )}
+        </>
+      );
   };
 
   render() {
@@ -93,8 +94,8 @@ class CheckoutFooter extends React.PureComponent {
               {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
             </>
           ) : (
-            this.renderNextButton()
-          )}
+              this.renderNextButton()
+            )}
           <div className="back-space">
             {hideBackLink && (
               <Button
@@ -135,8 +136,8 @@ class CheckoutFooter extends React.PureComponent {
               {nextButtonText}
             </Button>
           ) : (
-            this.renderSkeleton()
-          )}
+              this.renderSkeleton()
+            )}
         </div>
       </div>
     );
@@ -161,6 +162,7 @@ CheckoutFooter.propTypes = {
   continueWithText: PropTypes.string,
   onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
   venmoError: PropTypes.string,
+  bagLoading: PropTypes.bool,
 };
 
 CheckoutFooter.defaultProps = {
@@ -169,8 +171,9 @@ CheckoutFooter.defaultProps = {
   showPayPalButton: false,
   disableDesktopOnlyNext: false,
   continueWithText: '',
-  onVenmoSubmit: () => {},
+  onVenmoSubmit: () => { },
   venmoError: '',
+  bagLoading: false
 };
 
 export default withStyles(CheckoutFooter, style);

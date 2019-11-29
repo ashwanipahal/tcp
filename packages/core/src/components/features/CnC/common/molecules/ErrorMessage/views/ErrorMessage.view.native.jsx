@@ -24,16 +24,17 @@ class ErrorMessage extends React.PureComponent {
             <Image source={alertTriangleIcon} style={ErrorIcon} />
             {isEspot ? (
               <Espot richTextHtml={error} />
-            ) : (
-              <BodyCopy
-                color="error"
-                fontFamily="secondary"
-                fontSize={fontSize || (bagPage ? 'fs14' : 'fs10')}
-                fontWeight={fontWeight || 'regular'}
-                text={error}
-                style={ErrorText}
-              />
-            )}
+            ) :
+              (
+                <BodyCopy
+                  color="error"
+                  fontFamily="secondary"
+                  fontSize={fontSize || (bagPage ? 'fs14' : 'fs10')}
+                  fontWeight={fontWeight || 'regular'}
+                  text={error}
+                  style={ErrorText}
+                />
+              )}
           </ErrorView>
         )}
       </>
@@ -47,6 +48,7 @@ ErrorMessage.propTypes = {
   bagPage: PropTypes.bool,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  isEspot: PropTypes.bool,
 };
 
 ErrorMessage.defaultProps = {
@@ -54,6 +56,7 @@ ErrorMessage.defaultProps = {
   bagPage: false,
   fontSize: '',
   fontWeight: '',
+  isEspot: false,
 };
 
 export default ErrorMessage;
