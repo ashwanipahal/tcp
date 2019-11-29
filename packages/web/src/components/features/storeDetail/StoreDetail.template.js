@@ -11,4 +11,21 @@ const StoreDetail = ({ router }) => {
 
   return <StoreDetailContainer storeId={fetchStoreIdFromUrlPath(storeStr)} />;
 };
+
+StoreDetail.getInitActions = () => initActions;
+
+StoreDetail.getInitialProps = pageProps => {
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'companyinfo:companyinfo',
+        pageType: 'companyinfo',
+        pageSection: 'companyinfo',
+        pageSubSection: 'companyinfo',
+      },
+    },
+  };
+};
+
 export default withRouter(StoreDetail);
