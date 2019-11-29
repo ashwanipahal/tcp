@@ -249,7 +249,6 @@ class ProductListingContainer extends React.PureComponent {
         navigation={navigation}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-        setClickAnalyticsData={setClickAnalyticsData}
         pageNameProp={pageNameProp}
         pageSectionProp={pageSectionProp}
         pageSubSectionProp={pageSubSectionProp}
@@ -382,7 +381,6 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
-    // setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
     trackPageLoad: payload => {
       const { products } = payload;
       dispatch(

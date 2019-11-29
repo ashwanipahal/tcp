@@ -44,11 +44,6 @@ class ProductDetailView extends PureComponent {
     };
   }
   componentDidMount() {
-    const {
-      store: {
-        pageData: { pageName, pageSection, pageSubSection },
-      },
-    } = this.props;
     const { productInfo, trackPageLoad } = this.props;
     const productsFormatted = this.formatProductsData(productInfo);
     if (productsFormatted) {

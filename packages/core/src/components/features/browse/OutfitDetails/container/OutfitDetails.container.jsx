@@ -3,11 +3,7 @@ import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsom
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
-import {
-  trackPageView,
-  setClickAnalyticsData,
-  updatePageData,
-} from '../../../../../analytics/actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   getLabels,
   getOutfitImage,

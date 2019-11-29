@@ -87,7 +87,6 @@ const ProductListView = ({
   pageItems,
   products,
   store,
-  setClickAnalyticsData,
   pageNameProp,
   pageSectionProp,
   pageSubSectionProp,
@@ -114,7 +113,6 @@ const ProductListView = ({
         pageSection: 'browse',
         pageSubSection: 'browse',
         products: productsFormatted,
-        // customEvents: ['prodView', 'event1'],
       });
     }
   }, [products.length]);
