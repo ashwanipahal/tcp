@@ -47,10 +47,11 @@ const styles = css`
   }
 
   .gift-tile-msg-container {
-    margin-right: 0;
+    margin-right: 0px;
     display: inline-block;
     align-items: center;
-    width: calc(100% - 177px);
+    width: ${props =>
+      !props.isFromReview || props.isExpressCheckout ? 'calc(100% - 177px)' : 'auto'};
   }
 
   .available_giftCards_text {

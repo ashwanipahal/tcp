@@ -18,6 +18,7 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
   />
   <Styled(Image)
     alt="VISA"
+    role="img"
     src="/static/version-not-available/images/visa.svg"
   />
 </Styled(BodyCopy)>

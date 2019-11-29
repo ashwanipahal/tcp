@@ -198,6 +198,7 @@ CnCCommonTemplate.propTypes = {
   showVenmoSubmit: PropTypes.bool,
   onVenmoSubmit: PropTypes.func,
   venmoPayment: PropTypes.shape({}),
+  onVenmoError: PropTypes.bool,
 };
 
 CnCCommonTemplate.defaultProps = {
@@ -209,6 +210,7 @@ CnCCommonTemplate.defaultProps = {
   showVenmoSubmit: false,
   onVenmoSubmit: () => {},
   venmoPayment: null,
+  onVenmoError: false,
 };
 
 export default CnCCommonTemplate;

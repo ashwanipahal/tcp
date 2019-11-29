@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 const ModuleX = ({ html }) => {
   // create new div to modify (won't be rendered to DOM)
   const newDiv = document.createElement('div');
@@ -19,6 +20,7 @@ const ModuleX = ({ html }) => {
       document.getElementsByTagName('body')[0].appendChild(tag);
     } else {
       // evaluate inner html of script
+      // eslint-disable-next-line no-eval
       eval(scripts[i].innerHTML);
       scripts[i].appendChild(document.createTextNode(scripts[i]));
       document.getElementsByTagName('body')[0].appendChild(scripts[i]);
@@ -39,6 +41,7 @@ const ModuleX = ({ html }) => {
     document.getElementsByTagName('head')[0].appendChild(styles[i]);
   }
 
+  // eslint-disable-next-line no-undef
   useEffect(() => {
     return () => {
       for (let i = 0; i < styles.length; i += 1) {
@@ -59,9 +62,8 @@ const ModuleX = ({ html }) => {
   // render leftover tags to dom (h1, p, div, etc.)
   if (newDiv.innerHTML.length > 1) {
     return <div dangerouslySetInnerHTML={{ __html: newDiv.innerHTML }} />;
-  } else {
-    return null;
   }
+  return null;
 };
 
 export default ModuleX;

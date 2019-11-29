@@ -18,6 +18,7 @@ const propTypes = {
     lbl_login_loginCTA: PropTypes.string,
     lbl_login_createAccountCTA: PropTypes.string,
   }),
+  isLoggedIn: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -29,6 +30,7 @@ const defaultProps = {
     lbl_login_loginCTA: '',
     lbl_login_createAccountCTA: '',
   }),
+  isLoggedIn: false,
 };
 
 const TAB_KEY = 9;
@@ -81,7 +83,8 @@ class OverlayModal extends React.Component {
     if (nextTargetComponent !== prevTargetComponent) {
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
-    } else if (condensedStateChanged || loginStateChanged) {
+    }
+    if (condensedStateChanged || loginStateChanged) {
       this.getCustomStyles({ styleModal: true });
     }
 

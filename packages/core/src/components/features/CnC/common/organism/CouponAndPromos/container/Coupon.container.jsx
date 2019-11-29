@@ -112,6 +112,8 @@ CouponContainer.propTypes = {
   idPrefix: PropTypes.string,
   openApplyNowModal: PropTypes.func,
   navigation: PropTypes.shape({}),
+  isNeedHelpModalOpen: PropTypes.bool,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 CouponContainer.defaultProps = {
@@ -120,6 +122,7 @@ CouponContainer.defaultProps = {
   idPrefix: '',
   navigation: null,
   openApplyNowModal: () => {},
+  isNeedHelpModalOpen: false,
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({

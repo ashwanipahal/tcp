@@ -195,6 +195,7 @@ class Drawer extends React.Component {
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
         darkOverlay.style.top = `${headerHeight}px`;
+        darkOverlay.style.position = 'fixed';
 
         this.disableScroll(drawer);
       }

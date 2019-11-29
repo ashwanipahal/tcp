@@ -52,7 +52,7 @@ export const formatGenericMapObject = store => {
   return resultObject;
 };
 
-export const formatCurrentStoreToObject = (store, distance) => {
+export const formatCurrentStoreToObject = store => {
   if (store && store.size > 0) {
     const formattedStore = {};
     const basicInfoState = store.get('basicInfo') || fromJS({});
@@ -81,10 +81,9 @@ export const formatCurrentStoreToObject = (store, distance) => {
     };
     formattedStore.hours = formatHoursToObject(store.get('hours'));
     formattedStore.features = formatGenericMapObject(store.get('features'));
-    formattedStore.distance = distance;
     return formattedStore;
   }
-  return { ...store, distance };
+  return { ...store };
 };
 
 export const getNearByStores = state => state[STORE_DETAIL_REDUCER_KEY].get('suggestedStores');
@@ -125,6 +124,3 @@ export const getReferredContentList = createSelector(
 );
 
 export const getRichTextContent = (state, key) => state[STORE_DETAIL_REDUCER_KEY].get(key);
-
-export const getStoreDistance = state =>
-  state[STORE_DETAIL_REDUCER_KEY].get('storeDistanceFromUser');
