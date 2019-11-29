@@ -22,6 +22,7 @@ class AddGiftCardContainer extends React.Component {
       getAddGiftCardErr,
       showNotification,
       toastMessage,
+      resetNotificationStateAction
     } = this.props;
     if (addGiftCardResponse === 'success') {
       if (isMobileApp()) {
@@ -29,9 +30,9 @@ class AddGiftCardContainer extends React.Component {
         getCardListAction();
       } else this.goBackToPayment();
     }
-
     if (isMobileApp() && !prevProps.showNotification && showNotification) {
       toastMessage(getAddGiftCardErr);
+      resetNotificationStateAction();
     }
   }
 
