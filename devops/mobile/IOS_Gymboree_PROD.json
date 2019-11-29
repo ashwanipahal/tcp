@@ -7,7 +7,7 @@
   "environmentVariables": [
     {
       "name": "ENV",
-      "value": "uat"
+      "value": "prod"
     },
     {
       "name": "RWD_APP_BRANDID_TCP",
