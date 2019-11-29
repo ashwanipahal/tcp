@@ -246,6 +246,8 @@ SmsSignupForm.propTypes = {
     left: PropTypes.shape({}),
     right: PropTypes.shape({}),
   }),
+  noModal: PropTypes.bool,
+  imageData: PropTypes.shape({}),
 };
 
 SmsSignupForm.defaultProps = {
@@ -258,6 +260,8 @@ SmsSignupForm.defaultProps = {
   clearSmsSignupForm: () => {},
   handleSubmit: () => {},
   colProps: {},
+  noModal: false,
+  imageData: {},
 };
 
 export default withStyles(

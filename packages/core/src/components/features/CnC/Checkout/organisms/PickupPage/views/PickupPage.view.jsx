@@ -349,7 +349,6 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
-  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
@@ -360,6 +359,7 @@ PickUpFormPart.propTypes = {
   ServerErrors: PropTypes.node.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   emailSignUpFlags: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 PickUpFormPart.defaultProps = {
@@ -375,6 +375,7 @@ PickUpFormPart.defaultProps = {
   isVenmoPaymentInProgress: false,
   showAccordian: true,
   isVenmoPickupDisplayed: true,
+  bagLoading: false,
 };
 
 const validateMethod = createValidateMethod({

@@ -139,8 +139,7 @@ ApplyNowModalWrapper.propTypes = {
   setIsRTPSFlow: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool,
   submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
-
-  products: PropTypes.shape([]).isRequired,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 ApplyNowModalWrapper.defaultProps = {

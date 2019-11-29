@@ -11,6 +11,7 @@ export class Espot extends PureComponent {
     richTextHtml: PropTypes.string.isRequired,
     togglePlccModal: PropTypes.func.isRequired,
     navigation: PropTypes.func.isRequired,
+    toggleNeedHelpModal: PropTypes.func.isRequired,
   };
 
   /**
