@@ -2,7 +2,6 @@ import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 
 export default {
   CAROUSEL_OPTIONS: {
-    infinite: true,
     autoplay: true,
     arrows: true,
     autoplaySpeed: 4000,
