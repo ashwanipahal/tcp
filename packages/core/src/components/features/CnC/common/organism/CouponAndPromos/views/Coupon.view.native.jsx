@@ -165,7 +165,7 @@ class CouponView extends React.PureComponent {
           />
         ) : (
           <>{body}</>
-          )}
+        )}
       </View>
     );
   }
@@ -188,7 +188,7 @@ CouponView.propTypes = {
 
 CouponView.defaultProps = {
   showAccordian: true,
-  isNeedHelpModalOpen: false
+  isNeedHelpModalOpen: false,
 };
 
 export default withStyles(CouponView, styles);

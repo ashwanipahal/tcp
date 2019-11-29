@@ -111,15 +111,15 @@ CouponContainer.propTypes = {
   openApplyNowModal: PropTypes.func,
   navigation: PropTypes.shape({}),
   isNeedHelpModalOpen: PropTypes.bool,
-  toggleNeedHelpModal: PropTypes.func.isRequired
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 CouponContainer.defaultProps = {
-  closedOverlay: () => { },
+  closedOverlay: () => {},
   isCarouselView: false,
   idPrefix: '',
   navigation: null,
-  openApplyNowModal: () => { },
+  openApplyNowModal: () => {},
   isNeedHelpModalOpen: false,
 };
 
