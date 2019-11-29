@@ -34,6 +34,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         heading=""
         name="expMonth"
         onValueChange={[Function]}
+        placeholder=""
       />
     </Styled(View)>
     <Styled(View)>
@@ -42,6 +43,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         heading=""
         name="expYear"
         onValueChange={[Function]}
+        placeholder=""
       />
     </Styled(View)>
     <Styled(View)>
@@ -209,6 +211,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         heading=""
         name="expMonth"
         onValueChange={[Function]}
+        placeholder=""
       />
     </Styled(View)>
     <Styled(View)>
@@ -217,6 +220,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         heading=""
         name="expYear"
         onValueChange={[Function]}
+        placeholder=""
       />
     </Styled(View)>
     <Styled(View)>

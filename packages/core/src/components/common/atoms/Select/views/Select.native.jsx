@@ -19,7 +19,7 @@ const SelectBox = ({
   meta: { touched, error },
   ...otherProps
 }) => {
-  const isFocussed = !!input.value;
+  const isFocussed = !!input.value || !!placeholder;
   if (placeholder && !input.value && options && options[0].displayName !== placeholder) {
     options.unshift({
       displayName: placeholder,

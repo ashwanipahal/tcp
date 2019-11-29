@@ -137,6 +137,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
           <ExpiryContainer showCvv={showCvv}>
             <ExpiryMonth>
               <Field
+                placeholder={creditFieldLabels.expMonth}
                 heading={creditFieldLabels.expMonth}
                 component={Select}
                 name="expMonth"
@@ -150,6 +151,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             </ExpiryMonth>
             <ExpiryYear>
               <Field
+                placeholder={creditFieldLabels.expYear}
                 heading={creditFieldLabels.expYear}
                 component={Select}
                 name="expYear"
