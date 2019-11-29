@@ -29,7 +29,6 @@ class AddGiftCardForm extends React.PureComponent {
     super(props);
     this.state = {
       setRecaptchaModalMountedState: false,
-      tokenInfomation: '',
     };
   }
 
@@ -47,7 +46,7 @@ class AddGiftCardForm extends React.PureComponent {
       if (['cancel', 'error', 'expired'].includes(value)) {
         value = '';
       }
-      this.setState({ tokenInfomation: value });
+
       handleSubmit(data => {
         const { cardPin, giftCardNumber } = data;
         const addGifteData = {
@@ -74,23 +73,8 @@ class AddGiftCardForm extends React.PureComponent {
   };
 
   handleAddGiftCardClick = e => {
-    const { tokenInfomation } = this.state;
-    const { handleSubmit, onAddGiftCardClick, invalid } = this.props;
     e.preventDefault();
-    if (!tokenInfomation && !invalid) {
-      this.setRecaptchaModalMountState();
-    } else {
-      handleSubmit(data => {
-        const { cardPin, giftCardNumber } = data;
-        const addGifteData = {
-          cardPin,
-          giftCardNumber,
-          recaptchaToken: tokenInfomation,
-        };
-        onAddGiftCardClick(addGifteData);
-      })();
-      this.setState({ tokenInfomation: '' });
-    }
+    this.setRecaptchaModalMountState();
   };
 
   renderSaveToAccount() {
