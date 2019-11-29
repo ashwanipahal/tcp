@@ -41,7 +41,7 @@ class HomePageWrapper extends React.Component {
 
     trackHomepageView({
       customEvents: ['event74', 'event76', 'event95'],
-      products,
+      internalCampaignIdList: products,
       pageName: 'home page',
       pageSection: 'homepage',
       pageSubSection: 'home page',
