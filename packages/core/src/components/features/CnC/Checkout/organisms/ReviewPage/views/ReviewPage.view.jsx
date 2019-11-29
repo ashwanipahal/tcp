@@ -4,11 +4,11 @@ import { FormSection, reduxForm, change } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import utility, { scrollToFirstError } from '../../../util/utility';
-import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
@@ -16,6 +16,7 @@ import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import ContactFormFields from '../../../molecules/ContactFormFields';
+import GenericSkeleton from '../../../../../../common/molecules/GenericSkeleton/GenericSkeleton.view';
 
 const formName = 'expressReviewPage';
 
@@ -45,7 +46,7 @@ class ReviewPage extends React.PureComponent {
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
     bagLoading: PropTypes.bool,
-    cartLoading: PropTypes.func,
+    titleLabel: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -56,14 +57,7 @@ class ReviewPage extends React.PureComponent {
     isPaymentDisabled: false,
     pageCategory: '',
     bagLoading: false,
-    cartLoading: () => {},
   };
-
-  constructor(props) {
-    super(props);
-    const { cartLoading } = props;
-    if (cartLoading) cartLoading();
-  }
 
   componentDidMount() {
     const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
@@ -114,6 +108,7 @@ class ReviewPage extends React.PureComponent {
       reviewFormSubmit,
       checkoutRoutingDone,
       bagLoading,
+      titleLabel,
     } = this.props;
     const {
       header,
@@ -128,14 +123,12 @@ class ReviewPage extends React.PureComponent {
     } = labels;
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
-    // if (!checkoutRoutingDone) {
-    //   return <div>Loading....</div>;
-    // }
+
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {ServerErrors && <ServerErrors />}
-        {(!!orderHasPickUp || !checkoutRoutingDone) && (
+        {!!orderHasPickUp && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer
               isExpressCheckout={isExpressCheckout}
@@ -148,7 +141,7 @@ class ReviewPage extends React.PureComponent {
           </div>
         )}
         <FormSection name={expressReviewShippingSection}>
-          {(!!orderHasShipping || !checkoutRoutingDone) && (
+          {!!orderHasShipping && (
             <div className="review-shipping">
               <ShippingReviewSection
                 isExpressCheckout={isExpressCheckout}
@@ -164,11 +157,24 @@ class ReviewPage extends React.PureComponent {
             </div>
           )}
         </FormSection>
-        <BillingSection
-          isExpressCheckout={isExpressCheckout}
-          bagLoading={bagLoading}
-          checkoutRoutingDone={checkoutRoutingDone}
-        />
+        {!bagLoading ? (
+          <BillingSection
+            isExpressCheckout={isExpressCheckout}
+            bagLoading={bagLoading}
+            checkoutRoutingDone={checkoutRoutingDone}
+          />
+        ) : (
+          <>
+            <Row fullBleed className="review-billing-skeleton">
+              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                <BodyCopy component="span" fontSize="fs26" fontFamily="primary">
+                  {`${titleLabel.lbl_review_billingSectionTitle} `}
+                </BodyCopy>
+              </Col>
+            </Row>
+            <GenericSkeleton />
+          </>
+        )}
         <CheckoutCartItemList
           disableProductRedirect
           bagLoading={bagLoading}

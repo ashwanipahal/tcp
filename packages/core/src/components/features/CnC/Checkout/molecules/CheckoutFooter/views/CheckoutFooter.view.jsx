@@ -13,7 +13,7 @@ class CheckoutFooter extends React.PureComponent {
     return (
       <>
         {!showVenmoSubmit && !showPayPalButton && (
-          <div className="footer-button footer-button-mob">
+          <div className="footer-button footer-button-web">
             <LoaderSkelton />
           </div>
         )}
@@ -135,7 +135,7 @@ class CheckoutFooter extends React.PureComponent {
               {nextButtonText}
             </Button>
           ) : (
-            this.renderSkeleton()
+            this.renderSkeleton(showVenmoSubmit, showPayPalButton)
           )}
         </div>
       </div>

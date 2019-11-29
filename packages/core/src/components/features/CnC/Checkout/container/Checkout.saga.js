@@ -49,6 +49,7 @@ import {
   shouldInvokeReviewCartCall,
   redirectFromExpress,
 } from './Checkout.saga.util';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { submitEmailSignup } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -289,6 +290,7 @@ function* triggerExpressCheckout(
     pageName = pageName.toLowerCase();
   }
   try {
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield startExpressCheckout(shouldPreScreenUser, source);
     if (!res.orderId) {
       return yield redirectFromExpress();
@@ -536,8 +538,12 @@ function* initCheckout({ router, isPaypalFlow, navigation }) {
   }
 
   try {
+    yield put(setLoaderState(true));
     yield call(loadStartupData, isPaypalPostBack, recalc, section, navigation);
+    yield put(setLoaderState(false));
   } catch (e) {
+    yield put(setLoaderState(false));
+
     logger.error(e);
   }
 }
