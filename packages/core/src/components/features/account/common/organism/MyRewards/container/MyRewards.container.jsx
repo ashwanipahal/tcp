@@ -41,16 +41,18 @@ export class MyRewardsContainer extends PureComponent {
     toggleNeedHelpModal: PropTypes.func.isRequired,
     needHelpRichText: PropTypes.string,
     fetchNeedHelpContent: PropTypes.func.isRequired,
+    needHelpContentId: PropTypes.string,
   };
 
   static defaultProps = {
     view: 'reward',
-    onApplyCouponToBagFromList: () => {},
-    handleErrorCoupon: () => {},
-    toastMessage: () => {},
+    onApplyCouponToBagFromList: () => { },
+    handleErrorCoupon: () => { },
+    toastMessage: () => { },
     isApplyingOrRemovingCoupon: false,
     isNeedHelpModalOpen: false,
     needHelpRichText: '',
+    needHelpContentId: ''
   };
 
   constructor(props) {

@@ -18,17 +18,19 @@ const propTypes = {
     lbl_login_loginCTA: PropTypes.string,
     lbl_login_createAccountCTA: PropTypes.string,
   }),
+  isLoggedIn: PropTypes.bool,
 };
 
 const defaultProps = {
   component: null,
-  closeOverlay: () => {},
+  closeOverlay: () => { },
   className: '',
   color: '',
   labels: PropTypes.shape({
     lbl_login_loginCTA: '',
     lbl_login_createAccountCTA: '',
   }),
+  isLoggedIn: false,
 };
 
 const TAB_KEY = 9;
@@ -81,7 +83,8 @@ class OverlayModal extends React.Component {
     if (nextTargetComponent !== prevTargetComponent) {
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
-    } else if (condensedStateChanged || loginStateChanged) {
+    }
+    if (condensedStateChanged || loginStateChanged) {
       this.getCustomStyles({ styleModal: true });
     }
 
@@ -256,9 +259,9 @@ class OverlayModal extends React.Component {
     const headingForMobile = this.getHeading();
     const headingProps = headingForMobile
       ? {
-          heading: headingForMobile,
-          headingStyle: modalHeading,
-        }
+        heading: headingForMobile,
+        headingStyle: modalHeading,
+      }
       : {};
 
     return this.isMobile && component !== 'accountDrawer' ? (
@@ -283,35 +286,36 @@ class OverlayModal extends React.Component {
           </div>
         </Modal>
       </div>
-    ) : (
-      <div
-        className={className}
-        id="modalWrapper"
-        color={color}
-        ref={this.setModalRef}
-        tabIndex="-1"
-      >
+    ) :
+      (
         <div
-          id="dialogContent"
-          className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+          className={className}
+          id="modalWrapper"
+          color={color}
+          ref={this.setModalRef}
+          tabIndex="-1"
         >
-          <button
-            className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
-              component === 'accountDrawer' ? 'hide-on-mobile' : ''
-            }`}
-            onClick={this.closeModal}
-          />
           <div
-            className={`${
-              isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
-            } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
-            id="modalTriangle"
-          />
-          <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
-          <ModalContent className="modal__content" {...componentProps} />
+            id="dialogContent"
+            className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+          >
+            <button
+              className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
+                component === 'accountDrawer' ? 'hide-on-mobile' : ''
+                }`}
+              onClick={this.closeModal}
+            />
+            <div
+              className={`${
+                isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
+                } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
+              id="modalTriangle"
+            />
+            <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
+            <ModalContent className="modal__content" {...componentProps} />
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

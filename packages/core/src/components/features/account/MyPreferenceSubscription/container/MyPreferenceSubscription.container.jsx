@@ -305,15 +305,15 @@ export class MyPreferenceSubscription extends PureComponent {
           >
             {(activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE ||
               activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) && (
-              <MyPreferenceSubscribeModal
-                onRequestClose={this.handlePopupSubscribeModal}
-                onSubmit={this.handleSubmitModalPopup}
-                phoneNumber={phoneNumber}
-                initialValues={this.initialValuesSubscribe}
-                labels={labels}
-                activeModal={activeModal}
-              />
-            )}
+                <MyPreferenceSubscribeModal
+                  onRequestClose={this.handlePopupSubscribeModal}
+                  onSubmit={this.handleSubmitModalPopup}
+                  phoneNumber={phoneNumber}
+                  initialValues={this.initialValuesSubscribe}
+                  labels={labels}
+                  activeModal={activeModal}
+                />
+              )}
             {activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_UNSUBSCRIBE && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
@@ -335,26 +335,26 @@ export class MyPreferenceSubscription extends PureComponent {
 
             {(activeModal === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE ||
               activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) && (
-              <MyPreferenceAppSubscribeModal
-                onRequestClose={this.handlePopupSubscribeModal}
-                onSubmit={this.handleSubmitModalPopup}
-                phoneNumber={phoneNumber}
-                initialValues={this.initialValuesSubscribe}
-                labels={labels}
-                activeModal={activeModal}
-              />
-            )}
+                <MyPreferenceAppSubscribeModal
+                  onRequestClose={this.handlePopupSubscribeModal}
+                  onSubmit={this.handleSubmitModalPopup}
+                  phoneNumber={phoneNumber}
+                  initialValues={this.initialValuesSubscribe}
+                  labels={labels}
+                  activeModal={activeModal}
+                />
+              )}
 
             {(activeModal === MyPreferenceSubscriptionConstants.TCP_APP_UNSUBSCRIBE ||
               activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_UNSUBSCRIBE) && (
-              <MyPreferenceAppUnsubscribeModal
-                onRequestClose={this.handlePopupSubscribeModal}
-                onSubmit={this.handleSubmitModalPopup}
-                phoneNumber={gymSmsPhone}
-                labels={labels}
-                activeModal={activeModal}
-              />
-            )}
+                <MyPreferenceAppUnsubscribeModal
+                  onRequestClose={this.handlePopupSubscribeModal}
+                  onSubmit={this.handleSubmitModalPopup}
+                  phoneNumber={gymSmsPhone}
+                  labels={labels}
+                  activeModal={activeModal}
+                />
+              )}
           </Modal>
         )}
       </>
@@ -404,11 +404,12 @@ MyPreferenceSubscription.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({}),
   }),
+  trackSubscriptionEvent: PropTypes.func.isRequired,
 };
 
 MyPreferenceSubscription.defaultProps = {
   labels: {},
-  handleComponentChange: () => {},
+  handleComponentChange: () => { },
   componentProps: {},
   isTcpSubscribe: false,
   isTcpAppSubscribe: false,

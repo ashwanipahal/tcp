@@ -66,10 +66,6 @@ class SettingsView extends PureComponent {
         });
       });
     }
-
-    // checkNotificationPermission().then(result => {
-    //   this.setState({ pushNotificationValue: result });
-    // });
   }
 
   componentWillUnmount() {

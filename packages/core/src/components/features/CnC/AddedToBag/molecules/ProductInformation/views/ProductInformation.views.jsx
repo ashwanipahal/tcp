@@ -13,7 +13,6 @@ import ProductInformationStyle from '../styles/ProductInformation.style';
 type Props = {
   data: Object,
   labels: any,
-  quantity: String,
   inheritedStyles: Object,
 };
 const ProductInformation = ({ data, labels, inheritedStyles }: Props) => {

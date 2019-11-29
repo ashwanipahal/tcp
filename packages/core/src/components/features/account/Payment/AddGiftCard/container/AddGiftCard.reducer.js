@@ -1,4 +1,4 @@
-// @flow
+
 import { fromJS } from 'immutable';
 import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
@@ -12,9 +12,23 @@ const initialState = fromJS({
 });
 let checkErrorReset = false;
 
+// @flow
 type Action = {
   payload: {},
   type: string,
+};
+
+/**
+ * @function defaultStateReducer used for return  default state reducer state
+ * @param {state} state provide initial state to this function.
+ * @return {state} return final state of the reducer.
+ */
+
+const defaultStateReducer = (state = initialState) => {
+  if (state instanceof Object) {
+    return fromJS(state);
+  }
+  return state;
 };
 
 /**
@@ -48,19 +62,6 @@ const resetErrorReducer = (state = initialState, action) => {
     default:
       return defaultStateReducer(state);
   }
-};
-
-/**
- * @function defaultStateReducer used for return  default state reducer state
- * @param {state} state provide initial state to this function.
- * @return {state} return final state of the reducer.
- */
-
-const defaultStateReducer = (state = initialState) => {
-  if (state instanceof Object) {
-    return fromJS(state);
-  }
-  return state;
 };
 
 const AddGiftCardReducer = (state = initialState, action: Action) => {

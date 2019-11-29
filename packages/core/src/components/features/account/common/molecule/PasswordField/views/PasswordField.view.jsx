@@ -16,6 +16,7 @@ export class PasswordField extends React.PureComponent {
     showText: PropTypes.string,
     tooltipContent: PropTypes.node,
     labels: PropTypes.shape([]),
+    tooltipAriaLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -24,6 +25,7 @@ export class PasswordField extends React.PureComponent {
     showText: 'Show',
     tooltipContent: '',
     labels: {},
+    tooltipAriaLabel: ''
   };
 
   constructor(props) {
