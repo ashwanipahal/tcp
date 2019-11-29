@@ -316,7 +316,6 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     const pickupHandler = jest.fn();
     props.isBagPageSflSection = false;
     props.productDetail.miscInfo.orderItemType = 'ECOM';
-    const component = shallow(<CartItemTile {...props} />);
     CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
     expect(props.onQuickViewOpenClick).toHaveBeenCalled();
   });
@@ -325,7 +324,6 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     const pickupHandler = jest.fn();
     props.isBagPageSflSection = true;
     props.productDetail.miscInfo.orderItemType = null;
-    const component = shallow(<CartItemTile {...props} />);
     CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
     expect(props.onQuickViewOpenClick).toHaveBeenCalled();
   });
@@ -334,7 +332,6 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     const pickupHandler = jest.fn();
     props.isBagPageSflSection = false;
     props.productDetail.miscInfo.orderItemType = 'BOSS';
-    const component = shallow(<CartItemTile {...props} />);
     CartItemTileExtension.callEditMethod(props, pickupHandler, props.isBagPageSflSection);
     expect(pickupHandler).toHaveBeenCalled();
   });

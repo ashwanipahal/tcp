@@ -29,7 +29,6 @@ describe('Espot component', () => {
   it('should call handleUrl for target blank', () => {
     component.instance().onClickHandler('/pointsClaimForm', '_blank', '');
 
-    const handleUrl = jest.spyOn(component.instance(), 'handleUrl');
     const richTextInternalRoute = jest.spyOn(component.instance(), 'richTextInternalRoute');
 
     component.instance().handleUrl('/pointsClaim', '_blank');
@@ -41,7 +40,6 @@ describe('Espot component', () => {
   it('should call handleUrl for target self', () => {
     component.instance().onClickHandler('/pointHistoryPage', '_self', '');
 
-    const handleUrl = jest.spyOn(component.instance(), 'handleUrl');
     const richTextInternalRoute = jest.spyOn(component.instance(), 'richTextInternalRoute');
 
     component.instance().handleUrl('/pointHistory', '_self');

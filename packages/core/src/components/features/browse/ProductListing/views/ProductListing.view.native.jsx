@@ -259,6 +259,8 @@ ProductListView.propTypes = {
   labelsFavorite: PropTypes.shape({}),
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   renderMoveToList: PropTypes.func,
+  isPlcc: PropTypes.bool,
+  filtersLength: PropTypes.number,
 };
 
 ProductListView.defaultProps = {
@@ -287,6 +289,8 @@ ProductListView.defaultProps = {
   labelsFavorite: {},
   isBothTcpAndGymProductAreAvailable: false,
   renderMoveToList: () => {},
+  isPlcc: false,
+  filtersLength: 0,
 };
 
 export default withStyles(ProductListView, styles);

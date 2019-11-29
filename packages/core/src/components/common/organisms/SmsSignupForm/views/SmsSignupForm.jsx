@@ -100,7 +100,6 @@ class SmsSignupForm extends React.PureComponent {
       submitting,
       pristine,
       handleSubmit,
-      imageData,
       noModal,
     } = this.props;
     const { left, right } = noModal ? config.pageColProps : config.modalColProps;
@@ -247,6 +246,8 @@ SmsSignupForm.propTypes = {
     left: PropTypes.shape({}),
     right: PropTypes.shape({}),
   }),
+  noModal: PropTypes.bool,
+  imageData: PropTypes.shape({}),
 };
 
 SmsSignupForm.defaultProps = {
@@ -259,6 +260,8 @@ SmsSignupForm.defaultProps = {
   clearSmsSignupForm: () => {},
   handleSubmit: () => {},
   colProps: {},
+  noModal: false,
+  imageData: {},
 };
 
 export default withStyles(
