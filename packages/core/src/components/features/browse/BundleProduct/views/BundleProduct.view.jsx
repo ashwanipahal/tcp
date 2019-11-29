@@ -225,7 +225,7 @@ class BundleProduct extends React.PureComponent {
   };
 
   render() {
-    const { className, currentProduct, pdpLabels } = this.props;
+    const { className, currentProduct } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);

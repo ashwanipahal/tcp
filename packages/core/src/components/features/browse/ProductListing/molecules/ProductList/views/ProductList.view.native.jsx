@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, SafeAreaView, Text } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';

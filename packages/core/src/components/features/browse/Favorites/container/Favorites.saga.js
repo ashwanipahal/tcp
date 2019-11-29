@@ -8,13 +8,14 @@ import {
   setWishlistState,
   setWishlistsSummariesAction,
   getSetIsWishlistReadOnlyAction,
-  getSetActiveWishlistAction,
   setActiveWishlistAction,
   getActiveWishlistAction,
   setDeletedItemAction,
   setLoadingState,
   setAddToFavoriteErrorState,
   setWishListShareSuccess,
+  setMaximumProductAddedErrorState,
+  resetMaximumProductAddedErrorState,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
@@ -89,7 +90,7 @@ export function* addItemsToWishlist({ payload }) {
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: activeWishListId || '',
-        skuIdOrProductId: skuIdOrProductId,
+        skuIdOrProductId,
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,
@@ -119,7 +120,14 @@ export function* addItemsToWishlist({ payload }) {
           default:
             break;
         }
+        // to update favorite page need to load wish list sumamry
+        const activeWishlistObject =
+          state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
+        const activeWishlistId = activeWishlistObject.id;
         yield put(setWishlistState({ colorProductId, isInDefaultWishlist: true }));
+        // Disabling eslint for temporary fix
+        // eslint-disable-next-line no-use-before-define
+        yield* loadWishlistsSummaries(activeWishlistId);
       }
     }
   } catch (err) {
@@ -197,6 +205,9 @@ export function* createNewWishList({ payload: formData }) {
 
 export function* createNewWishListMoveItem({ payload: formData }) {
   try {
+    yield put(resetMaximumProductAddedErrorState({}));
+    const state = yield select();
+    const errorMapping = getErrorList(state);
     let createdWishListResponse;
     if (!formData.wisListId) {
       createdWishListResponse = yield call(
@@ -209,20 +220,31 @@ export function* createNewWishListMoveItem({ payload: formData }) {
       toWishListId: formData.wisListId || createdWishListResponse.id,
       itemId: formData.itemId,
     };
-    const state = yield select();
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
     const activeWishlistItem = activeWishlistObject.items.find(
       item => item.itemInfo.itemId === formData.itemId
     );
+
     const itemMovedResponse = yield call(
       moveItemToNewWishList,
       payload,
       activeWishlistId,
-      activeWishlistItem
+      activeWishlistItem,
+      errorMapping
     );
-    yield* loadWishlistsSummaries(activeWishlistId);
+    if (itemMovedResponse && itemMovedResponse.errorMessage) {
+      const errorMessages = {
+        errorMessage: itemMovedResponse.errorMessage,
+        itemId: formData.itemId,
+      };
+      const data = {};
+      data[formData.itemId] = errorMessages;
+      yield put(setMaximumProductAddedErrorState({ ...data }));
+    } else {
+      yield* loadWishlistsSummaries(activeWishlistId);
+    }
     if (!itemMovedResponse.success) {
       throw itemMovedResponse;
     }

@@ -134,6 +134,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         onPress={null}
         target="_blank"
         text=""
+        title=""
         underline={true}
         visible={false}
       />
@@ -252,6 +253,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         onPress={null}
         target="_blank"
         text=""
+        title=""
         underline={true}
         visible={false}
       />
