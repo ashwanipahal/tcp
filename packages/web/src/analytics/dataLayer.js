@@ -219,11 +219,12 @@ export default function create(store) {
     },
     products: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], []);
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.products ? clickActionAnalyticsData.products : [];
       },
     },
+
     currentState: {
       get() {
         return store.getState();

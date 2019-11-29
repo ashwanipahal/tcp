@@ -12,7 +12,6 @@ import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/mol
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import { setProp } from '@tcp/core/src/analytics/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
-import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
@@ -30,28 +29,33 @@ class HomePageWrapper extends React.Component {
 
   // For Setting the Home Page Analytics Data.
   sHomePageAnalyticsVal = router => {
-    const { setCampaignId } = this.props;
+    const { setCampaignId, trackHomepageView } = this.props;
     const queryParams = getQueryParamsFromUrl(router.asPath);
-    const queryParamsConst = ['cid'];
-    setProp('eVar22', queryParams[queryParamsConst[0]] || '');
+    const campaingnId = 'cid';
+    const products = this.productObjForHomeAnalytics();
+    setProp('eVar22', queryParams[campaingnId] || '');
     setProp('eVar15', 'D-Vo');
-    if (queryParams[queryParamsConst[0]]) {
-      setCampaignId(queryParams[queryParamsConst[0]]);
+    if (queryParams[campaingnId]) {
+      setCampaignId(queryParams[campaingnId]);
     }
-    if (queryParams[queryParamsConst[1]]) {
-      setClickAnalyticsData({
-        customEvents: ['event18', 'event80'],
-        products: this.productObjForHomeAnalytics,
-      });
-    }
+    trackHomepageView({
+      customEvents: ['event18', 'event80'],
+      products,
+      pageName: 'home page',
+      pageSection: 'homepage',
+      pageSubSection: 'home page',
+      pageType: 'home page',
+    });
   };
 
   productObjForHomeAnalytics = () => {
     const aTags = document.getElementsByTagName('a') || [];
+    const internalCampaignId = 'icid';
     const icidLinks = [];
     for (let i = 0; i < aTags.length; i += 1) {
-      if (aTags[i].href.indexOf('icid') > -1) {
-        icidLinks.push(getParam('icid', aTags[i].href));
+      if (aTags[i].href.indexOf(internalCampaignId) > -1) {
+        const val = getQueryParamsFromUrl(aTags[i].href);
+        icidLinks.push(val[internalCampaignId]);
       }
     }
     return icidLinks.length > 0 ? icidLinks : [];
@@ -142,6 +146,7 @@ const HomePageView = dynamic({
       pageName,
       setCampaignId,
       seoData,
+      trackHomepageView,
     } = compProps;
 
     return (
@@ -151,6 +156,7 @@ const HomePageView = dynamic({
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
         setCampaignId={setCampaignId}
+        trackHomepageView={trackHomepageView}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -176,6 +182,7 @@ HomePageWrapper.propTypes = {
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  trackHomepageView: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -187,6 +194,7 @@ HomePageView.propTypes = {
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  trackHomepageView: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
