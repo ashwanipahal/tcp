@@ -219,7 +219,9 @@ HeaderNew.propTypes = {
   isUpdateCartCount: PropTypes.bool,
   updateCartManuallyAction: PropTypes.func,
   updateCartCountAction: PropTypes.func,
-  navigation: PropTypes.shape({}),
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
   cartVal: PropTypes.string,
   slpLabels: PropTypes.shape({}),
 };
@@ -230,7 +232,9 @@ HeaderNew.defaultProps = {
   updateCartCountAction: () => {},
   cartVal: '',
   slpLabels: {},
-  navigation: {},
+  navigation: {
+    navigate: () => {},
+  },
 };
 
 export default connect(

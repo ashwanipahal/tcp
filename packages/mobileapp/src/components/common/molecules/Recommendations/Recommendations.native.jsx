@@ -84,8 +84,8 @@ const ButtonView = buttonProps => {
   );
 };
 
-const renderHeader = (props, variation, isAccordionOpen, setIsAccordionOpen) => {
-  const { moduleOHeaderLabel, modulePHeaderLabel, isHeaderAccordion, isSuggestedItem } = props;
+const renderHeader = (prop, variation, isAccordionOpen, setIsAccordionOpen) => {
+  const { moduleOHeaderLabel, modulePHeaderLabel, isHeaderAccordion, isSuggestedItem } = prop;
   const params = config.params[variation];
   const headerLabel =
     variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
@@ -241,20 +241,12 @@ Recommendations.propTypes = {
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
-  moduleOHeaderLabel: PropTypes.shape({}),
-  modulePHeaderLabel: PropTypes.shape({}),
-  isHeaderAccordion: PropTypes.bool,
-  isSuggestedItem: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
   portalValue: '',
   partNumber: '',
   categoryName: '',
-  moduleOHeaderLabel: {},
-  modulePHeaderLabel: {},
-  isHeaderAccordion: false,
-  isSuggestedItem: false,
 };
 
 export default Recommendations;

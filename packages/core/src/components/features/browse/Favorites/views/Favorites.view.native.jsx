@@ -452,6 +452,8 @@ class FavoritesView extends React.PureComponent {
   renderMoveToList = itemId => {
     const { labels, wishlistsSummaries, defaultWishList, activeWishList } = this.props;
     this.selectedItemId = itemId;
+    const dropDownStyles = { ...dropDownStyle, height: 36 };
+    const itemStyles = { ...itemStyle, height: 36 };
     return (
       <SelectWishListDropdown
         selectedValue={getLabelValue(labels, 'lbl_fav_moveToAnotherList')}
@@ -462,8 +464,8 @@ class FavoritesView extends React.PureComponent {
           this.handleMoveToList(itemValue, itemId);
         }}
         variation="secondary"
-        dropDownStyle={{ ...dropDownStyle, height: 36 }}
-        itemStyle={{ ...itemStyle, height: 36 }}
+        dropDownStyle={dropDownStyles}
+        itemStyle={itemStyles}
         renderHeader={() => this.renderHeader('16px 0 0 12px')}
         renderFooter={closeDropDown => this.renderFooter(closeDropDown, true)}
         renderItems={this.renderMoveToListItems}
