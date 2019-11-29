@@ -19,7 +19,7 @@ const routesBack = e => {
 };
 
 const formatProductsData = outfitProducts => {
-  return outfitProducts.map((tile, index) => {
+  return outfitProducts.map(tile => {
     const colorName = tile.colorFitsSizesMap.map(productTile => {
       return productTile.color.name || '';
     });
@@ -214,6 +214,9 @@ OutfitDetailsView.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -231,8 +234,11 @@ OutfitDetailsView.defaultProps = {
   outfitId: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  asPathVal: '',
+  topPromos: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

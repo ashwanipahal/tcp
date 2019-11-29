@@ -24,6 +24,7 @@ class BonusPointsView extends React.Component {
     additionalClassNameModal: PropTypes.string.isRequired,
     isDefaultOpen: PropTypes.bool,
     isInternationalShipping: PropTypes.bool,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class BonusPointsView extends React.Component {
     orderDetails: {},
     isDefaultOpen: false,
     isInternationalShipping: false,
+    isFetching: false,
   };
 
   constructor(props) {
