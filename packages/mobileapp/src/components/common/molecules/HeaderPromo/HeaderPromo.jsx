@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import { BodyCopy, RichText } from '@tcp/core/src/components/common/atoms';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth, UrlHandler, getLocator } from '@tcp/core/src/utils';
@@ -109,6 +110,17 @@ class HeaderPromo extends React.PureComponent {
     );
   }
 }
+
+HeaderPromo.propTypes = {
+  headerPromo: PropTypes.shape({}),
+  promoHtmlBannerCarousel: PropTypes.shape([]),
+}
+
+ HeaderPromo.defaultProps = {
+  headerPromo: {},
+  promoHtmlBannerCarousel: [],
+}
+
 
 export default HeaderPromo;
 export { HeaderPromo as HeaderPromoVanilla };

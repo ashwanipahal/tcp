@@ -4,7 +4,6 @@ import { ScrollView, Linking, View } from 'react-native';
 import ErrorBoundary from 'react-native-error-boundary';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
-import { Button } from '@tcp/core/src/components/common/atoms';
 
 import queryString from 'query-string';
 
@@ -79,7 +78,6 @@ const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapOb
   return modulesMapWithErrorsBoundary;
 }, {});
 
-const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -89,6 +87,7 @@ class HomePageView extends React.PureComponent {
       value: '',
     };
   }
+
   componentDidMount() {
     this.loadBootstrapData();
 
@@ -125,10 +124,6 @@ class HomePageView extends React.PureComponent {
       },
       apiConfig
     );
-  };
-
-  handleOpenURL = event => {
-    // this.navigate(event.url);
   };
 
   renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
@@ -250,10 +245,22 @@ HomePageView.propTypes = {
   getBootstrapData: PropTypes.func.isRequired,
   screenProps: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
+  loadNavigationData: PropTypes.func,
+  updatePreviewDate: PropTypes.func,
+  loyaltyPromoBanner: PropTypes.shape([]),
+  isUserLoggedIn: PropTypes.bool,
+  headerPromo: PropTypes.shape({}),
+  promoHtmlBannerCarousel: PropTypes.shape([]),
 };
 
 HomePageView.defaultProps = {
   screenProps: {},
+  loadNavigationData: () => {},
+  updatePreviewDate: () => {},
+  loyaltyPromoBanner: [],
+  isUserLoggedIn: false,
+  headerPromo: {},
+  promoHtmlBannerCarousel: [],
 };
 
 export { HomePageView };

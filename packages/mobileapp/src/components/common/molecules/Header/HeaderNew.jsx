@@ -215,6 +215,25 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+HeaderNew.propTypes = {
+  isUpdateCartCount: PropTypes.bool,
+  updateCartManuallyAction: PropTypes.func,
+  updateCartCountAction: PropTypes.func,
+  navigation: PropTypes.shape({}),
+  cartVal: PropTypes.string,
+  slpLabels: PropTypes.shape({}),
+};
+
+HeaderNew.defaultProps = {
+  isUpdateCartCount: false,
+  updateCartManuallyAction: () => {},
+  updateCartCountAction: () => {},
+  cartVal: '',
+  slpLabels: {},
+  navigation: {},
+}
+
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

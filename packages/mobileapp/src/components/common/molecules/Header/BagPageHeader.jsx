@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getLocator, isGymboree } from '@tcp/core/src/utils';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
@@ -76,6 +77,14 @@ const mapStateToProps = state => {
       state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false,
   };
 };
+
+BagPageHeader.propTypes = {
+  isPayPalWebViewEnable: PropTypes.shape({}),
+}
+
+BagPageHeader.defaultProps = {
+  isPayPalWebViewEnable: false,
+}
 
 export default connect(mapStateToProps)(BagPageHeader);
 export { BagPageHeader as BagPageHeaderVanilla };
