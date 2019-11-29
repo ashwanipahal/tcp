@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Notification from '../../../../../../common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles, { customSpinnerStyle } from '../styles/CreateAccounPage.style';
+import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
@@ -25,7 +25,6 @@ class CreateAccounPage extends React.Component {
     formErrorMessage: PropTypes.shape({}).isRequired,
     userplccCardNumber: PropTypes.string.isRequired,
     userplccCardId: PropTypes.string.isRequired,
-    isLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -76,7 +75,6 @@ class CreateAccounPage extends React.Component {
       formErrorMessage,
       userplccCardNumber,
       userplccCardId,
-      isLoading,
     } = this.props;
     return (
       <div className={className}>
@@ -122,7 +120,6 @@ class CreateAccounPage extends React.Component {
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}
           />
-          {isLoading && <SpinnerOverlay inheritedStyles={customSpinnerStyle} />}
         </div>
       </div>
     );

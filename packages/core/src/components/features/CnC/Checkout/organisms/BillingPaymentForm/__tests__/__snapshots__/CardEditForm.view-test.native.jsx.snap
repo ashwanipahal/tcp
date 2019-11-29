@@ -17,6 +17,10 @@ exports[`CardEditForm component CardEditFormViewVanilla with error 1`] = `
       <Styled(View)>
         <ErrorDisplay
           error={true}
+          isBorder={false}
+          margins="5px 0 0 0"
+          paddings={null}
+          width={null}
         />
       </Styled(View)>
     </View>
@@ -152,6 +156,10 @@ exports[`CardEditForm component should renders componentDidUpdate  correctly 1`]
       <Styled(View)>
         <ErrorDisplay
           error={true}
+          isBorder={false}
+          margins="5px 0 0 0"
+          paddings={null}
+          width={null}
         />
       </Styled(View)>
     </View>

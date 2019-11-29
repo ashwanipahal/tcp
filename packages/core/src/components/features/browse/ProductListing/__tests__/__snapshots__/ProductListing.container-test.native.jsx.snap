@@ -115,6 +115,5 @@ exports[`ProductListContainer component should render correctly 1`] = `
   router={Object {}}
   sortLabels={Array []}
   totalProductsCount="0"
-  updateWishListItemFav={[Function]}
 />
 `;

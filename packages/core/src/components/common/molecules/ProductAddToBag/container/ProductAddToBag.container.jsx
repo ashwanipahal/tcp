@@ -3,6 +3,11 @@ import React from 'react';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
 import ProductAddToBag from '../views/ProductAddToBag.view';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 
 /**
  * This class is a container of Product Add to bag view
@@ -169,7 +174,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: this.getColor(),
+        name: this.getColor(colorFitsSizesMapEntry),
       },
       Fit:
         colorFitsSizesMapEntry && colorFitsSizesMapEntry.hasFits
@@ -491,6 +496,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isFavoriteEdit,
       sizeChartDetails,
       isMultiItemQVModal,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
     const {
@@ -564,13 +572,24 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
       />
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
+  };
+}
+
 /* Export container */
 
-export default connect()(ProductAddToBagContainer);
+export default connect(mapStateToProps)(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

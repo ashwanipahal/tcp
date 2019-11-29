@@ -164,6 +164,9 @@ class ProductsGrid extends React.Component {
       removeFavItem,
       openAddNewList,
       activeWishListId,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
 
@@ -210,6 +213,9 @@ class ProductsGrid extends React.Component {
                         removeFavItem={removeFavItem}
                         openAddNewList={openAddNewList}
                         activeWishListId={activeWishListId}
+                        pageNameProp={pageNameProp}
+                        pageSectionProp={pageNameProp}
+                        pageSubSectionProp={pageNameProp}
                         {...otherProps}
                       />
                     );

@@ -193,7 +193,7 @@ const onEditHandler = props => {
     isFavoriteEdit: true,
     isFavorite: true,
   };
-  onCTAHandler(props);
+  onCTAHandler(ctaProps);
 };
 
 const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {

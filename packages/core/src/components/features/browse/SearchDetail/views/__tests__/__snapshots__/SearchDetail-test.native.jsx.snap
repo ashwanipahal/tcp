@@ -68,7 +68,6 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     setListRef={[Function]}
     sortLabels={Object {}}
     totalProductsCount={0}
-    updateWishListItemFav={[Function]}
   />
   <Connect(QuickViewModalContainer)
     navigation={

@@ -38,6 +38,7 @@ import {
   getMapSliceForColorProductId,
   getMapSliceForSizeSkuID,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { updateWishListItemIdAction } from '../../../../features/browse/Favorites/container/Favorites.actions';
 
 class QuickViewModalContainer extends React.PureComponent {
   handleAddToBag = () => {
@@ -92,9 +93,7 @@ class QuickViewModalContainer extends React.PureComponent {
           product,
           callBack: closeQuickViewModalAction,
         };
-        setTimeout(() => {
-          updateWishListItemFav(formData);
-        }, 160);
+        updateWishListItemFav(formData);
       } else {
         updateCartItemAction(payload);
       }
@@ -174,6 +173,9 @@ function mapDispatchToProps(dispatch) {
     },
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
+    },
+    updateWishListItemFav: payload => {
+      dispatch(updateWishListItemIdAction(payload));
     },
   };
 }

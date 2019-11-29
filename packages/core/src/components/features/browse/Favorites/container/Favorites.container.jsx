@@ -17,7 +17,6 @@ import {
   updateWishListAction,
   sendWishListMailAction,
   setWishListShareSuccess,
-  updateWishListItemIdAction,
   setReplaceWishlistItem,
 } from './Favorites.actions';
 
@@ -36,6 +35,7 @@ import {
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
   getFormErrorLabels,
+  fetchErrorMessages,
 } from './Favorites.selectors';
 import {
   getUserEmail,
@@ -184,11 +184,10 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
-      guestAccessKey,
       formErrorMessage,
       isLoggedIn,
       addToBagEcom,
-      updateWishListItemFav,
+      errorMessages,
     } = this.props;
     const { selectedColorProductId } = this.state;
     return (
@@ -230,9 +229,9 @@ class FavoritesContainer extends React.PureComponent {
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
         addToBagEcom={addToBagEcom}
-        updateWishListItemFav={updateWishListItemFav}
         onLoadRecommendations={this.onLoadRecommendations}
         onReplaceWishlistItem={this.onReplaceWishlistItem}
+        errorMessages={errorMessages}
         {...this.state}
       />
     );
@@ -260,6 +259,7 @@ const mapStateToProps = state => {
     wishlistShareStatus: selectWishListShareStatus(state),
     formErrorMessage: getFormErrorLabels(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    errorMessages: fetchErrorMessages(state),
   };
 };
 
@@ -290,9 +290,6 @@ const mapDispatchToProps = dispatch => {
     },
     addToBagEcom: payload => {
       dispatch(addToCartEcom(payload));
-    },
-    updateWishListItemFav: payload => {
-      dispatch(updateWishListItemIdAction(payload));
     },
     loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
@@ -330,7 +327,6 @@ FavoritesContainer.propTypes = {
   setListShareSuccess: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   addToBagEcom: PropTypes.func.isRequired,
-  updateWishListItemFav: PropTypes.func.isRequired,
   loadRecommendations: PropTypes.func.isRequired,
   replaceWishlistItem: PropTypes.func.isRequired,
 };

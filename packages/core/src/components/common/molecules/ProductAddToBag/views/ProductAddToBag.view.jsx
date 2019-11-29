@@ -280,6 +280,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
       quickViewPickup,
       currentProduct,
       isFavoriteEdit,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
     colorFitSizeDisplayNames = {
@@ -330,10 +333,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     eventName: 'cart add',
                     pageShortName,
                     pageName,
-                    pageType: 'product',
-                    pageSection: 'product',
-                    pageSubSection: 'product',
+                    pageType: pageNameProp,
+                    pageSection: pageSectionProp,
+                    pageSubSection: pageSubSectionProp,
                     products: [{ id: `${productId}` }],
+                    customEvents: ['event61', 'event77'],
                   }}
                 >
                   <Button
