@@ -73,11 +73,28 @@ const ProductInformation = ({ data, labels, quantity }) => {
                 fontSize="fs12"
                 fontWeight={['semibold']}
                 textAlign="left"
-                text={`${labels.qtyLabel}: `}
+                text={`${labels.price}: `}
               />
             </ProductSubDetailLabel>
 
-            <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
+            <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.itemPrice} />
+          </ProductDesc>
+          <ProductDesc>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs12"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.points}: `}
+              />
+            </ProductSubDetailLabel>
+
+            <BodyCopy
+              fontSize="fs12"
+              fontWeight={['semibold']}
+              text={data.itemPoints}
+              color="orange.800"
+            />
           </ProductDesc>
         </ProductSubDetails>
       </ProductDescription>

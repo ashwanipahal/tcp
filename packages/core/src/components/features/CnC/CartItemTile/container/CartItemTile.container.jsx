@@ -52,6 +52,7 @@ export class CartItemTileContainer extends React.Component {
     this.state = {
       generalProductId: '',
       productDataforDelete: null,
+      showLoginModal: false,
     };
   }
 
@@ -82,8 +83,18 @@ export class CartItemTileContainer extends React.Component {
     if (isLoggedIn) {
       startSflItemDelete({ ...payloadData });
     } else {
-      this.setState({ generalProductId: generalProductIdState, productDataforDelete: payloadData });
+      this.setState({
+        generalProductId: generalProductIdState,
+        productDataforDelete: payloadData,
+        showLoginModal: true,
+      });
     }
+  };
+
+  toggleLoginModal = () => {
+    this.setState(state => ({
+      showLoginModal: !state.showLoginModal,
+    }));
   };
 
   render() {
@@ -137,7 +148,9 @@ export class CartItemTileContainer extends React.Component {
       disableProductRedirect,
       setClickAnalyticsData,
       closeMiniBag,
+      isLoggedIn,
     } = this.props;
+    const { showLoginModal } = this.state;
     return (
       <CartItemTile
         labels={labels}
@@ -190,6 +203,9 @@ export class CartItemTileContainer extends React.Component {
         setClickAnalyticsData={setClickAnalyticsData}
         closeMiniBag={closeMiniBag}
         handleAddToWishlist={this.handleAddToWishlist}
+        isLoggedIn={isLoggedIn}
+        showLoginModal={showLoginModal}
+        toggleLoginModal={this.toggleLoginModal}
       />
     );
   }

@@ -40,7 +40,10 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import {
+  PRODUCT_ADD_TO_BAG,
+  OUTFIT_LISTING_FORM,
+} from '../../../../../constants/reducer.constants';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -92,10 +95,11 @@ class OutfitDetailsContainer extends React.PureComponent {
   }
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
-    const formValues = getAddedToBagFormValues(
-      currentState,
-      `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
-    );
+    // RWD-16438 Fix: Same form name is removed if user go from outfit to PDP and then press back button.
+    const formName = !isMobileApp()
+      ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+      : `${OUTFIT_LISTING_FORM}-${generalProductId}`;
+    const formValues = getAddedToBagFormValues(currentState, formName);
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
