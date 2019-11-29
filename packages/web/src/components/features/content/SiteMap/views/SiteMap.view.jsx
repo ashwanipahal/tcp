@@ -12,24 +12,10 @@ class SiteMap extends React.PureComponent {
     getSiteMapData();
   }
 
-  printCurrentLink = (items, level) => {
-    return (
-      <Anchor className={`Link_level_${level}`} to={items.href} asPath={items.href}>
-        {items.name}
-      </Anchor>
-    );
-  };
-
-  createLink = (items, level) => {
-    return this.printCurrentLink(items, level);
-    // return items.category && items.category.length > 0 ? items.map(item => this.createLink(items.category, level + 1)) : null;
-  };
-
   render() {
     const { className } = this.props;
     const { siteMap: siteMapData } = mock;
     const { categories, content } = siteMapData;
-    console.log(categories);
     return (
       <Row className={`${className} siteMap`}>
         <Col
@@ -41,7 +27,7 @@ class SiteMap extends React.PureComponent {
             <BodyCopy
               component="h3"
               className="siteMap_heading"
-              fontWeight="medium"
+              fontWeight="semibold"
               fontSize="fs24"
               textAlign="center"
               letterSpacing="normal"
@@ -54,12 +40,12 @@ class SiteMap extends React.PureComponent {
               categories.map(({ name, href, category }) => {
                 return (
                   name && (
-                    <ol className="level-two-container">
+                    <ol className="level-one-container">
                       <BodyCopy
                         component="h4"
-                        className="level-two-title"
+                        className="level-one-title"
                         color="gray.900"
-                        fontWeight="medium"
+                        fontWeight="semibold"
                         fontSize="fs16"
                         textAlign="left"
                         letterSpacing="normal"
@@ -77,13 +63,13 @@ class SiteMap extends React.PureComponent {
                           return (
                             nameL2 && (
                               <li>
-                                <ul className="level-three-container">
+                                <ul className="level-two-container">
                                   <BodyCopy
                                     component="h5"
-                                    className="level-three-title"
+                                    className="level-two-title"
                                     color="gray.900"
-                                    fontWeight="medium"
-                                    fontSize="fs14"
+                                    fontWeight="semibold"
+                                    fontSize="fs16"
                                     textAlign="left"
                                     letterSpacing="normal"
                                   >
@@ -99,7 +85,7 @@ class SiteMap extends React.PureComponent {
                                     categoriesL3.map(({ name: nameL3, href: hrefL3 }) => {
                                       return (
                                         nameL3 && (
-                                          <li>
+                                          <li className="level-three-container">
                                             {href ? (
                                               <Anchor to={hrefL3} asPath={hrefL3}>
                                                 {nameL3}

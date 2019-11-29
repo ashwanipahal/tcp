@@ -6,78 +6,8 @@ export default {
     url: '/',
     categories: [
       {
-        href: 'us/c/toddler-boy-clothes',
+        href: 'us/c/girls-clothing',
         name: 'TODDLER BOY',
-        category: [],
-      },
-      {
-        href: 'us/c/toddler-girl-clothes',
-        name: 'TODDLER GIRL',
-        category: [],
-      },
-      {
-        href: 'us/c/boys-clothing',
-        name: 'BOY',
-        category: [],
-      },
-      {
-        href: 'us/c/baby-clothes',
-        name: 'BABY',
-        category: [],
-      },
-      {
-        href: 'us/c/girls-clothing',
-        name: 'GIRL',
-        category: [],
-      },
-      {
-        href: 'us/c/kids-accessories-us',
-        name: 'ACCESSORIES',
-        category: [],
-      },
-      {
-        href: 'us/c/childrens-shoes-kids-shoes',
-        name: 'SHOES',
-        category: [],
-      },
-      {
-        href: 'us/c/content-gift-cards-us',
-        name: 'Gift Cards',
-        category: [],
-      },
-      {
-        href: 'newrulecat/c/488518',
-        name: 'NewRuleCat',
-        category: [],
-      },
-      {
-        href: 'us/c/clearance-us',
-        name: 'CLEARANCE',
-        category: [],
-      },
-      {
-        href: 'us/c/508524',
-        name: 'Gift Guide',
-        category: [],
-      },
-      {
-        href: 'us/c/508525',
-        name: 'TRENDING',
-        category: [],
-      },
-      {
-        href: '/c/14662',
-        name: 'Tops Boy 18thNov',
-        category: [],
-      },
-      {
-        href: '/c/54167',
-        name: 'Tops',
-        category: [],
-      },
-      {
-        href: 'us/c/girls-clothing',
-        name: 'link',
         category: [
           {
             href: 'us/c/boys-jackets',
@@ -450,7 +380,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'TODDLER GIRL',
         category: [
           {
             href: 'us/c/girls-tops-girls-shirts',
@@ -954,7 +884,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'BOY',
         category: [
           {
             href: 'us/c/baby-clothes-boys-outerwear',
@@ -1013,7 +943,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'BABY',
         category: [
           {
             href: 'us/c/toddler-boy-outerwear',
@@ -1083,7 +1013,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'GIRL',
         category: [
           {
             href: 'us/c/toddler-girl-outfit-sets',
@@ -1204,7 +1134,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'ACCESSORIES',
         category: [
           {
             href: 'us/c/kids-valentine-clothes',
@@ -1225,7 +1155,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'SHOES',
         category: [
           {
             href: 'us/c/54075',
@@ -1293,7 +1223,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'GIFT CARDS',
         category: [
           {
             href: 'us/c/54075',
@@ -1477,7 +1407,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'TRENDING',
         category: [
           {
             href: 'us/c/54075',
@@ -1729,7 +1659,7 @@ export default {
       },
       {
         href: 'us/c/girls-clothing',
-        name: 'link',
+        name: 'CLEARANCE',
         category: [
           {
             href: 'us/c/girls-clothing',

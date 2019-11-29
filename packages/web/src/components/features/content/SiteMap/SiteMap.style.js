@@ -20,20 +20,29 @@ export default css`
     width: 33%;
 
     h4 {
-      color: ${props => props.theme.colors.PRIMARY.GRAY['900']};
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      text-transform: uppercase;
 
       a {
         color: ${props => props.theme.colors.PRIMARY.GRAY['900']};
       }
     }
 
-    li {
-      padding-left: 15px;
-
-      ul {
-        padding-left: 20px;
-      }
+    h5 {
+      margin: 0;
     }
+  }
+
+  ul {
+    margin: 0 0 10px 15px;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  ul > li {
+    color: ${props => props.theme.colors.PRIMARY.GRAY['400']};
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    line-height: 1.36;
+    margin: 5px 0 0 10px;
   }
 `;
