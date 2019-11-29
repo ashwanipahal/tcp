@@ -57,6 +57,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
 
     return (
@@ -82,6 +84,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
         isGiftCard={isGiftCard}
         defaultStore={defaultStore}
         cartBopisStoresList={cartBopisStoresList}
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
       />
     );
   }
@@ -195,6 +199,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       getIsBopisAvailable,
       isGetUserStoresLoaded,
       handleUpdatePickUpItem,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -220,6 +226,8 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           updateCartItemStore={updateCartItemStore}
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
         />
       )
     );

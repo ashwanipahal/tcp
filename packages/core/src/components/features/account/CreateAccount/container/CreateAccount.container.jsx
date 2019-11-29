@@ -148,6 +148,7 @@ export class CreateAccountContainer extends React.Component {
       passwordLabels,
       isLoading,
       updateHeader,
+      showCheckoutModal,
     } = this.props;
     return (
       <CreateAccountView
@@ -170,6 +171,7 @@ export class CreateAccountContainer extends React.Component {
         passwordLabels={passwordLabels}
         isLoading={isLoading}
         updateHeader={updateHeader}
+        showCheckoutModal={showCheckoutModal}
       />
     );
   }

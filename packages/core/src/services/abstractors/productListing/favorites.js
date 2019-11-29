@@ -12,7 +12,7 @@ import {
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import { insertIntoString } from '@tcp/core/src/utils/utils';
+import { insertIntoString, isMobileApp } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
@@ -88,8 +88,9 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
-  const { siteId } = getAPIConfig();
-  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
+  const { siteId, webAppDomain } = getAPIConfig();
+  const assetHost =
+    (typeof window !== 'undefined' && window.location && window.location.origin) || webAppDomain;
 
   return executeStatefulAPICall(payload)
     .then(res => {

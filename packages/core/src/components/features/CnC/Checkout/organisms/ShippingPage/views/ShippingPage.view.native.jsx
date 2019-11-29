@@ -127,15 +127,15 @@ export default class ShippingPage extends React.PureComponent {
                 scrollView={this.scrollView}
                 availableStages={availableStages}
               />
-              {isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING, this.props) && (
-                <VenmoBanner labels={venmoBannerLabel} />
-              )}
               <ScrollView
                 keyboardShouldPersistTaps="handled"
                 ref={scrollView => {
                   this.scrollView = scrollView;
                 }}
               >
+                {isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING, this.props) && (
+                  <VenmoBanner labels={venmoBannerLabel} />
+                )}
                 <HeaderContainer>
                   <CheckoutSectionTitleDisplay
                     title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
