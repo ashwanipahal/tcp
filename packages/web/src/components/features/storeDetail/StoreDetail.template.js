@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import { fetchStoreIdFromUrlPath } from '@tcp/core/src/utils';
 import StoreDetailContainer from '@tcp/core/src/components/features/storeLocator/StoreDetail';
+import { initActions } from '../content/HomePage/container/HomePage.actions';
 
 const StoreDetail = ({ router }) => {
   const {

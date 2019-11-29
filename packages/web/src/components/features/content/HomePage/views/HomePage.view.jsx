@@ -9,7 +9,11 @@ import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
-import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import {
+  isTCP,
+  getQueryParamsFromUrl,
+  internalCampaignProductAnalyticsList,
+} from '@tcp/core/src/utils';
 import { setProp } from '@tcp/core/src/analytics/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -32,7 +36,7 @@ class HomePageWrapper extends React.Component {
     const { setCampaignId, trackHomepageView } = this.props;
     const queryParams = getQueryParamsFromUrl(router.asPath);
     const campaingnId = 'cid';
-    const products = this.productObjForHomeAnalytics();
+    const products = internalCampaignProductAnalyticsList();
     setProp('eVar22', queryParams[campaingnId] || '');
     setProp('eVar15', 'D-Vo');
     if (queryParams[campaingnId]) {
@@ -40,26 +44,13 @@ class HomePageWrapper extends React.Component {
     }
 
     trackHomepageView({
-      customEvents: ['event74', 'event76', 'event95'],
+      customEvents: ['event80', 'event81'],
       internalCampaignIdList: products,
       pageName: 'home page',
       pageSection: 'homepage',
       pageSubSection: 'home page',
       pageType: 'home page',
     });
-  };
-
-  productObjForHomeAnalytics = () => {
-    const aTags = document.getElementsByTagName('a') || [];
-    const internalCampaignId = 'icid';
-    return Array.prototype.slice
-      .call(aTags)
-      .filter(tag => {
-        return tag.href.indexOf(internalCampaignId) !== -1;
-      })
-      .map(tag => {
-        return getQueryParamsFromUrl(tag.href)[internalCampaignId].join(',');
-      });
   };
 
   subscriptionPopUpOnPageLoad = () => {

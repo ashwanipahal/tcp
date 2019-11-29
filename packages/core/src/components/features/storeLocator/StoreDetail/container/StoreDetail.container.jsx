@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { internalCampaignProductAnalyticsList } from '@tcp/core/src/utils';
 import { getNearByStore, getCurrentStoreInfo, getModuleXContent } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
@@ -26,6 +27,7 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
+import { setClickAnalyticsData, trackPageView } from '../../../../../analytics/actions';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -51,7 +53,17 @@ export class StoreDetailContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const { getModuleX, referredContentList } = this.props;
+    const { getModuleX, referredContentList, trackStoreDetailPageView } = this.props;
+
+    trackStoreDetailPageView({
+      customEvents: ['event80', 'event96'],
+      internalCampaignIdList: internalCampaignProductAnalyticsList(),
+      pageName: 'companyinfo:companyinfo',
+      pageType: 'companyinfo',
+      pageSection: 'companyinfo',
+      pageSubSection: 'companyinfo',
+    });
+
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
   }
@@ -247,6 +259,32 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(getModuleXContent(payload));
   },
   fetchCurrentStoreInfo: payload => dispatch(getCurrentStoreInfo(payload)),
+  trackStoreDetailPageView: payload => {
+    const { products } = payload;
+    dispatch(
+      setClickAnalyticsData({
+        products,
+      })
+    );
+    setTimeout(() => {
+      dispatch(
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  ...payload,
+                },
+              },
+            },
+          },
+        })
+      );
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
+    }, 100);
+  },
 });
 
 export default connect(
