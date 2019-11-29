@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
