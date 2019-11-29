@@ -4,12 +4,18 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../../ProductListing/container/ProductListing.util';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../../common/organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -168,6 +174,10 @@ class SearchDetailContainer extends React.PureComponent {
       pdpLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
+      trackPageLoad,
       ...otherProps
     } = this.props;
 
@@ -201,6 +211,10 @@ class SearchDetailContainer extends React.PureComponent {
                 asPathVal={asPathVal}
                 AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                 removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                pageNameProp={pageNameProp}
+                pageSectionProp={pageSectionProp}
+                pageSubSectionProp={pageSubSectionProp}
+                trackPageLoad={trackPageLoad}
                 {...otherProps}
               />
             ) : (
@@ -243,6 +257,10 @@ class SearchDetailContainer extends React.PureComponent {
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              pageNameProp={pageNameProp}
+              pageSectionProp={pageSectionProp}
+              pageSubSectionProp={pageSubSectionProp}
+              trackPageLoad={trackPageLoad}
               {...otherProps}
             />
           </div>
@@ -254,6 +272,12 @@ class SearchDetailContainer extends React.PureComponent {
 
 SearchDetailContainer.pageInfo = {
   pageId: 'search',
+  pageData: {
+    pageName: 'search',
+    pageSection: 'search',
+    pageSubSection: 'search',
+    loadAnalyticsOnload: false,
+  },
 };
 
 SearchDetailContainer.getInitActions = () => initActions;
@@ -320,6 +344,9 @@ function mapStateToProps(state) {
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
   };
 }
 
@@ -339,6 +366,32 @@ function mapDispatchToProps(dispatch) {
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
     },
   };
 }
