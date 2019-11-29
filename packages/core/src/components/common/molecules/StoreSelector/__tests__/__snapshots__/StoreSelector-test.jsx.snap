@@ -4616,7 +4616,7 @@ exports[`StoreSelector component should default set title as value for selected 
                   link={null}
                   placeholderSrc=""
                   ref={[Function]}
-                  role={null}
+                  role="img"
                   sizes=""
                   src="/static/version-not-available/images/store.png"
                   srcset=""
@@ -13656,7 +13656,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                   link={null}
                   placeholderSrc=""
                   ref={[Function]}
-                  role={null}
+                  role="img"
                   sizes=""
                   src="/static/version-not-available/images/store.png"
                   srcset=""

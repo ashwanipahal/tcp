@@ -79,6 +79,10 @@ class StoreAddressTile extends PureComponent {
       store,
       openStoreDetails,
     } = this.props;
+
+    const { basicInfo } = store;
+    const { storeName } = basicInfo;
+
     return (
       <Fragment>
         <div>
@@ -90,7 +94,10 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
-            title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            aria-label={`${storeName} ${getLabelValue(
+              labels,
+              'lbl_storelanding_storedetails_link'
+            )}`}
             noLink
           >
             <ClickTracker
@@ -112,6 +119,7 @@ class StoreAddressTile extends PureComponent {
               buttonVariation="fixed-width"
               type="button"
               data-locator={locatorSetFavStore}
+              aria-label={`${storeName} ${getLabelValue(labels, 'lbl_storelanding_setfavStore')}`}
             >
               <ClickTracker clickData={{ customEvents: ['event67'] }}>
                 {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
@@ -208,8 +216,11 @@ class StoreAddressTile extends PureComponent {
                 anchorVariation="primary"
                 target="_blank"
                 className="store-directions-link"
-                title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
                 clickData={{ customEvents: ['event97'] }}
+                aria-label={`${storeName} ${getLabelValue(
+                  labels,
+                  'lbl_storelanding_getdirections_link'
+                )}`}
               >
                 {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
               </ClickTracker>
@@ -249,8 +260,11 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
-            title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
+            aria-label={`${storeName} ${getLabelValue(
+              labels,
+              'lbl_storelanding_storedetails_link'
+            )}`}
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </Anchor>
@@ -311,7 +325,10 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-directions-link"
-            title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+            aria-label={`${storeName} ${getLabelValue(
+              labels,
+              'lbl_storelanding_getdirections_link'
+            )}`}
             clickData={{ customEvents: ['event97'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
@@ -373,6 +390,8 @@ class StoreAddressTile extends PureComponent {
 
   getFavLink() {
     const { labels, setFavoriteStore, store, locatorSetFavStore } = this.props;
+    const { basicInfo } = store;
+    const { storeName } = basicInfo;
     return (
       <Button
         buttonVariation="fixed-width"
@@ -382,6 +401,7 @@ class StoreAddressTile extends PureComponent {
           setFavoriteStore(store);
         }}
         title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+        aria-label={`${storeName} ${getLabelValue(labels, 'lbl_storelanding_setfavStore')}`}
       >
         {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
       </Button>
