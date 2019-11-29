@@ -3,7 +3,6 @@ import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import CONSTANTS from '../BirthdaySavingsList.constants';
 import { setUserChildren, getUserInfo } from '../../../../User/container/User.actions';
-import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import {
   getChildren,
   deleteChild,
