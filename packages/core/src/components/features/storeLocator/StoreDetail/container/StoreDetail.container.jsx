@@ -211,9 +211,11 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
+  trackStoreDetailPageView: PropTypes.func,
 };
 
 StoreDetailContainer.defaultProps = {
+  trackStoreDetailPageView: () => {},
   currentStoreInfo: fromJS({
     basicInfo: {
       id: '',
