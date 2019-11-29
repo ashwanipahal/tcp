@@ -20,7 +20,9 @@ class ConfirmationContainer extends React.Component {
   static propTypes = {
     /** Flag indicates whether the user is a guest */
     isGuestUser: PropTypes.bool,
-
+    venmoOrderConfirmationId: PropTypes.string,
+    venmoPayment: PropTypes.shape({}),
+    venmoOrderConfirmationContent: PropTypes.string,
     /** indicates order payment is processing */
     isOrderPending: PropTypes.bool,
 
@@ -76,6 +78,9 @@ class ConfirmationContainer extends React.Component {
     placeCashConfirmationContentId: '',
     notificationMsgContentId: '',
     subscribeSuccessMsgContentId: '',
+    venmoOrderConfirmationContent: '',
+    venmoOrderConfirmationId: null,
+    venmoPayment: {},
   };
 
   /**

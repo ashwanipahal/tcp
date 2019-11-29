@@ -162,6 +162,8 @@ PickupStoreList.propTypes = {
   setClickAnalyticsData: PropTypes.func.isRequired,
   trackClick: PropTypes.func.isRequired,
   currentProduct: PropTypes.string,
+  setFavoriteStore: PropTypes.func,
+  getDefaultStore: PropTypes.func,
 };
 
 PickupStoreList.defaultProps = {
@@ -169,6 +171,8 @@ PickupStoreList.defaultProps = {
   isBopisEnabled: true,
   defaultStoreName: '',
   currentProduct: '',
+  setFavoriteStore: () => {},
+  getDefaultStore: () => {},
 };
 
 export default PickupStoreList;

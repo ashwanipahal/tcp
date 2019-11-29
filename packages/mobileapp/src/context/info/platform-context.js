@@ -1,11 +1,11 @@
+// Disabling eslint for temporary fix
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
-
-export { PlatformProvider, usePlatformState };
 
 export const PlatformContext = React.createContext({});
 
-function getInitialContextState(props) {
+function getInitialContextState() {
   return {
     isAndroid: Platform.OS === 'android',
     isIOS: Platform.OS === 'ios',
@@ -13,8 +13,9 @@ function getInitialContextState(props) {
 }
 
 function PlatformProvider({ children, ...props }) {
-  const state = getInitialContextState(props);
+  const state = getInitialContextState();
   return (
+    // eslint-disable-next-line
     <PlatformContext.Provider value={state} {...props}>
       {children}
     </PlatformContext.Provider>
@@ -28,3 +29,12 @@ function usePlatformState() {
   }
   return context;
 }
+
+PlatformProvider.propTypes = {
+  children: PropTypes.node,
+};
+PlatformProvider.defaultProps = {
+  children: null,
+};
+
+export { PlatformProvider, usePlatformState };

@@ -51,6 +51,7 @@ class FavoritesContainer extends React.PureComponent {
     this.guestAccessKey = '';
     this.wishListId = '';
   }
+
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
@@ -322,6 +323,9 @@ FavoritesContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   loadRecommendations: PropTypes.func.isRequired,
   replaceWishlistItem: PropTypes.func.isRequired,
+  getActiveWishlistGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
+  errorMessages: PropTypes.string,
 };
 
 FavoritesContainer.defaultProps = {
@@ -338,6 +342,8 @@ FavoritesContainer.defaultProps = {
   defaultWishList: {},
   wishlistShareStatus: false,
   isLoggedIn: false,
+  errorMessages: '',
+  formErrorMessage: {},
 };
 
 export default connect(

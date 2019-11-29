@@ -7,7 +7,6 @@ import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { Container, InputBoxWrapper } from '../styles/ShareList.style.native';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
@@ -18,6 +17,7 @@ class ShareList extends React.PureComponent {
       message: '',
     };
   }
+
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {

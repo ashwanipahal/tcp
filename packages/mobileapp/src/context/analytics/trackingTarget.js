@@ -1,7 +1,7 @@
 import { ACPCore } from '@adobe/react-native-acpcore';
 import { transformPageEvent, transformClickEvent } from '../transformEvents';
 
-export function trackingTarget(events) {
+function trackingTarget(events) {
   events.forEach(event => {
     if (event.hitType === 'pageView') {
       const { eventName, currentScreen, contextData = {} } = event;
@@ -19,3 +19,5 @@ export function trackingTarget(events) {
     }
   });
 }
+
+export default trackingTarget;
