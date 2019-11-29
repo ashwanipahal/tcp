@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -16,6 +16,25 @@ const routesBack = e => {
   else {
     routerPush('/', '/home');
   }
+};
+
+const formatProductsData = outfitProducts => {
+  return outfitProducts.map(tile => {
+    const colorName = tile.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = tile.generalProductId && tile.generalProductId.split('_')[0];
+    return {
+      colorId: tile.generalProductId,
+      color: colorName,
+      id: productId,
+      outfitId: tile.categoryId,
+      name: tile.name,
+      price: tile.offerPrice,
+      rating: tile.ratings,
+      reviews: tile.reviewsCount,
+    };
+  });
 };
 
 const OutfitDetailsView = ({
@@ -40,6 +59,7 @@ const OutfitDetailsView = ({
   removeAddToFavoritesErrorMsg,
   asPathVal,
   topPromos,
+  trackPageLoad,
   isKeepAliveEnabled,
   outOfStockLabels,
 }) => {
@@ -51,6 +71,21 @@ const OutfitDetailsView = ({
     showLoyaltyPromotionMessage: false,
     headerAlignment: 'left',
   };
+
+  useEffect(() => {
+    const productsFormatted = formatProductsData(outfitProducts);
+    if (outfitProducts.length) {
+      trackPageLoad({
+        products: productsFormatted,
+        pageType: 'outfit',
+        pageName: 'outfit',
+        pageSection: 'outfit',
+        pageSubSection: 'outfit',
+        customEvents: ['prodView', 'event62', 'event75', 'event80'],
+      });
+    }
+  }, [outfitProducts.length]);
+
   return (
     <div className={className}>
       <Row>
@@ -179,6 +214,9 @@ OutfitDetailsView.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -196,8 +234,11 @@ OutfitDetailsView.defaultProps = {
   outfitId: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  asPathVal: '',
+  topPromos: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);
