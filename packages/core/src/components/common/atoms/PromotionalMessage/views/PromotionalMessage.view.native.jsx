@@ -55,6 +55,7 @@ PromotionalMessage.propTypes = {
   marginTop: PropTypes.number,
   dataLocator: PropTypes.string,
   fontSize: PropTypes.string,
+  isFullMessage: PropTypes.bool,
 };
 
 PromotionalMessage.defaultProps = {
@@ -63,6 +64,7 @@ PromotionalMessage.defaultProps = {
   marginTop: null,
   dataLocator: '',
   fontSize: null,
+  isFullMessage: false,
 };
 
 export default withStyles(PromotionalMessage);

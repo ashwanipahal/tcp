@@ -35,7 +35,7 @@ const mapStateToProps = state => {
   } = state.Labels;
   const {
     EmailSignUp: { EmailSignupFormReducer: { subscription } = {} } = {},
-    SmsSignUp = { SmsSignupFormReducer: { subscription } },
+    // SmsSignUp = { SmsSignupFormReducer: { subscription } },
   } = state;
 
   return {

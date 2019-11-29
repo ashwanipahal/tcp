@@ -7,6 +7,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
     error=""
     fontSize=""
     fontWeight=""
+    isEspot={false}
   />
   <Styled(View)>
     <Styled(View)>
