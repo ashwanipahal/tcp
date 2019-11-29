@@ -308,6 +308,8 @@ class PickupStoreListItem extends React.Component {
       storeSearchCriteria,
       storeSearchDistance,
       pageName,
+      eventName: 'cart add',
+      products: [{ id: `${productId}` }],
     });
     trackClick();
 
@@ -318,6 +320,8 @@ class PickupStoreListItem extends React.Component {
         storeSearchCriteria,
         storeSearchDistance,
         pageName,
+        eventName: 'cart add',
+        products: [{ id: `${productId}` }],
       });
       trackClick();
     }, 0);
@@ -364,6 +368,8 @@ class PickupStoreListItem extends React.Component {
       storeSearchCriteria,
       storeSearchDistance,
       pageName,
+      eventName: 'cart add',
+      products: [{ id: `${productId}` }],
     });
     trackClick();
 
@@ -374,6 +380,8 @@ class PickupStoreListItem extends React.Component {
         customEvents: ['scAdd,scOpen,event85,event61'],
         storeSearchCriteria,
         storeSearchDistance,
+        eventName: 'cart add',
+        products: [{ id: `${productId}` }],
       });
       trackClick();
     }, 0);

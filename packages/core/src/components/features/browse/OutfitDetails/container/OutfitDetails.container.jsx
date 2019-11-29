@@ -3,6 +3,7 @@ import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsom
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   getLabels,
   getOutfitImage,
@@ -132,6 +133,7 @@ class OutfitDetailsContainer extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       isLoading,
+      trackPageLoad,
     } = this.props;
     const { outfitIdLocal } = this.state;
     return (
@@ -166,6 +168,7 @@ class OutfitDetailsContainer extends React.PureComponent {
             topPromos={topPromos}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            trackPageLoad={trackPageLoad}
           />
         ) : null}
         {isLoading ? <OutfitProductSkeleton /> : null}
@@ -177,9 +180,10 @@ class OutfitDetailsContainer extends React.PureComponent {
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
   pageData: {
-    pageName: 'product',
-    pageSection: 'product',
-    pageSubSection: 'product',
+    pageName: 'outfit',
+    pageSection: 'outfit',
+    pageSubSection: 'outfit',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -230,6 +234,32 @@ function mapDispatchToProps(dispatch) {
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
     },
   };
 }

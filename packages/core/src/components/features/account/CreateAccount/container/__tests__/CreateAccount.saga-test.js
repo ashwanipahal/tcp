@@ -23,7 +23,6 @@ describe('Create Account Saga', () => {
       createAccountGen.next();
       createAccountGen.next();
       createAccountGen.next();
-      createAccountGen.next();
     });
 
     it('should dispatch getUserInfo action for success response', () => {
@@ -33,7 +32,6 @@ describe('Create Account Saga', () => {
         },
       };
       createAccountGen.next(response);
-      createAccountGen.next();
       createAccountGen.next();
       createAccountGen.next(response);
       const putDescriptor = createAccountGen.next().value;
@@ -56,7 +54,6 @@ describe('Create Account Saga', () => {
       createAccountGen.next();
       createAccountGen.next();
       createAccountGen.next();
-      createAccountGen.next();
       createAccountGen.next(response);
       const putDescriptor = createAccountGen.next().value;
       expect(putDescriptor).toEqual(put(trackClick(data)));
@@ -73,7 +70,6 @@ describe('Create Account Saga', () => {
         },
       };
       createAccountGen.next(response);
-      createAccountGen.next();
       const putDescriptor1 = createAccountGen.next(response).value;
       expect(putDescriptor1).toEqual(put(createAccountErr({ errorMessage: 'foo' })));
     });
@@ -84,7 +80,6 @@ describe('Create Account Saga', () => {
         errorCode: 'foo',
       };
       createAccountGen.throw(error);
-      createAccountGen.next();
       expect(createAccountGen.next().value).toEqual(
         put(createAccountErr({ errorCode: 'foo', errorMessage: 'foo' }))
       );
