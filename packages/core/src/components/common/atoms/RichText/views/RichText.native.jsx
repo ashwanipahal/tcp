@@ -14,27 +14,6 @@ import generateComponentMap from '../ComponentMap.native';
  */
 
 class RichText extends PureComponent {
-  // renderImage = ({ style, source, ...otherProps }) => {
-  //   return <Image url={source} {...otherProps} />;
-  // };
-
-  // renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
-
-  // renderAnchor = ({ style, children }) => {
-  //   const { actionHandler } = this.props;
-  //   const actionProps = children[0].props;
-  //   return (
-  //     <Text
-  //       style={{ ...style }}
-  //       onPress={() =>
-  //         actionHandler(actionProps.href, actionProps.target, actionProps['data-target'])
-  //       }
-  //     >
-  //       {children}
-  //     </Text>
-  //   );
-  // };
-
   renderWebView = () => {
     const {
       javaScriptEnabled,
