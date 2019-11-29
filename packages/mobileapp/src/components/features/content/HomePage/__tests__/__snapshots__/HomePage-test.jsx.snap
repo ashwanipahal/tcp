@@ -10,9 +10,6 @@ exports[`HomePageView should render correctly 1`] = `
       promoHtmlBannerCarousel={Array []}
     />
   </Styled(View)>
-  <LoyaltyPromoBanner
-    richTextList={Array []}
-  />
   <PageSlots
     modules={
       Object {
