@@ -271,7 +271,7 @@ export class CreditCardForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={invalid}
+              disabled={pristine}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"
