@@ -49,7 +49,7 @@ describe('Create Account Saga', () => {
 
       const data = {
         module: 'account',
-        name: 'user_register',
+        name: 'register_success',
       };
 
       createAccountGen.next(response);
