@@ -212,12 +212,6 @@ const styles = css`
     }
   }
 
-  .full-height {
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-height: 300px;
-    }
-  }
-
   .extended-sizes-text {
     display: block;
     height: 10px;
