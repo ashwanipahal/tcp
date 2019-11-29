@@ -14,6 +14,7 @@ describe('dataLayer', () => {
             pageName: 'test',
             pageType: 'myplace',
             pageSection: 'myplace',
+            pageSubSection: 'myplace',
           },
           APIConfig: {
             storeId: '10551',
@@ -72,8 +73,8 @@ describe('dataLayer', () => {
     expect(datalayer.pageSection).toBe('myplace');
   });
 
-  it('pageSubSubSection should return correctly', () => {
-    expect(datalayer.pageSubSubSection).toBe('myplace');
+  it('pageSubSection should return correctly', () => {
+    expect(datalayer.pageSubSection).toBe('myplace');
   });
 
   it('customerType should return correctly', () => {

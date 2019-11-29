@@ -3,7 +3,9 @@ import React from 'react';
 import { View, Share, Dimensions } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { ShareDialog } from 'react-native-fbsdk';
+import get from 'lodash/get';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ErrorDisplay from '@tcp/core/src/components/common/atoms/ErrorDisplay';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
@@ -378,11 +380,16 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  renderFooter = (closeDropDown, addListFromMoveOption) => {
-    const { labels, wishlistsSummaries } = this.props;
+  renderFooter = (closeDropDown, addListFromMoveOption, itemId) => {
+    const { labels, wishlistsSummaries, errorMessages } = this.props;
     const isDisable = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
+    const errorMsg = get(errorMessages[itemId], 'errorMessage', null);
     return (
       <ListFooterContainer>
+        {errorMsg && (
+          <ErrorDisplay error={errorMsg} isBorder margins="0 0 8px 0" paddings="8px 8px 8px 8px" />
+        )}
+
         <Button
           buttonVariation="fixed-width"
           onPress={() => this.handleAddList(closeDropDown, addListFromMoveOption)}
@@ -403,7 +410,7 @@ class FavoritesView extends React.PureComponent {
         onPress={() => onDropDownItemClick && onDropDownItemClick(item)}
         style={itemStyle}
       >
-        <SelectedWishlistContainer width="80%">
+        <SelectedWishlistContainer width="75%">
           {isSelectedFavorites && (
             <CustomIcon
               margins="0 4px 0 0"
@@ -467,7 +474,7 @@ class FavoritesView extends React.PureComponent {
         dropDownStyle={dropDownStyles}
         itemStyle={itemStyles}
         renderHeader={() => this.renderHeader('16px 0 0 12px')}
-        renderFooter={closeDropDown => this.renderFooter(closeDropDown, true)}
+        renderFooter={closeDropDown => this.renderFooter(closeDropDown, true, itemId)}
         renderItems={this.renderMoveToListItems}
         selectedItemFontWeight="regular"
         dropDownItemFontWeight="regular"
@@ -482,14 +489,18 @@ class FavoritesView extends React.PureComponent {
   renderMoveToListItems = ({ item }, onDropDownItemClick) => {
     const { activeWishList, labels } = this.props;
     const { displayName, itemsCount, id } = item;
-    const isSelectedFavorites = activeWishList && activeWishList.id === id;
+    const isSelectedFavorites = item.isDefault;
     const selectedItem = {
       ...item,
       displayName: getLabelValue(labels, 'lbl_fav_moveToAnotherList'),
     };
+    const isPreventSelfClose = itemsCount === 50 || false;
+    if (activeWishList && activeWishList.id === id) {
+      return null;
+    }
     return (
       <DropDownWishlistItemContainer
-        onPress={() => onDropDownItemClick && onDropDownItemClick(selectedItem)}
+        onPress={() => onDropDownItemClick && onDropDownItemClick(selectedItem, isPreventSelfClose)}
         style={itemStyle}
       >
         <SelectedWishlistContainer width="60%">
@@ -779,6 +790,7 @@ FavoritesView.propTypes = {
   onLoadRecommendations: PropTypes.func.isRequired,
   onReplaceWishlistItem: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}),
+  errorMessages: PropTypes.shape({}).isRequired,
 };
 
 FavoritesView.defaultProps = {

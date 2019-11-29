@@ -7,6 +7,7 @@ import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -185,6 +186,7 @@ class ProductDetailContainer extends React.PureComponent {
       bottomPromos,
       isLoading,
       router: { asPath: asPathVal },
+      trackPageLoad,
       sizeChartDetails,
       ...otherProps
     } = this.props;
@@ -225,6 +227,7 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
+              trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
             />
           ) : null}
@@ -240,6 +243,8 @@ ProductDetailContainer.pageInfo = {
   pageData: {
     pageName: 'product',
     pageSection: 'product',
+    pageSubSection: 'product',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -294,6 +299,32 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 
@@ -336,6 +367,7 @@ ProductDetailContainer.propTypes = {
   middlePromos: PropTypes.string,
   bottomPromos: PropTypes.string,
   isLoading: PropTypes.bool,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -365,6 +397,7 @@ ProductDetailContainer.defaultProps = {
   middlePromos: '',
   bottomPromos: '',
   isLoading: false,
+  trackPageLoad: () => {},
 };
 
 export default withIsomorphicRenderer({

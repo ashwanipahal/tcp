@@ -412,6 +412,9 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       isShowQuickView,
       AddToFavoriteErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     const { errorProductId } = this.state;
     const fulfilmentSection =
@@ -430,7 +433,6 @@ class ProductsGridItem extends React.PureComponent {
         .trim()
         .toLowerCase()}`;
     }
-    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -448,11 +450,11 @@ class ProductsGridItem extends React.PureComponent {
         <ClickTracker
           clickData={{
             eventName: 'cart add',
-            pageType: 'product',
-            pageSection: 'product',
-            pageSubSection: 'product',
+            pageType: pageNameProp,
+            pageSection: pageSectionProp,
+            pageSubSection: pageSubSectionProp,
             pageShortName,
-            pageName,
+            pageName: pageNameProp,
             products: [{ id: `${productId}` }],
           }}
         >
