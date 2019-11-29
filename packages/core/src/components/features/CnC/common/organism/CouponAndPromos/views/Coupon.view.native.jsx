@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { Anchor } from '../../../../../../common/atoms';
 import {
   styles,
   WrapperStyle,
@@ -15,7 +14,6 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponDetailModal from './CouponDetailModal.view';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent {
   state = {
