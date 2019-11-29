@@ -38,8 +38,9 @@ class HomePageWrapper extends React.Component {
     if (queryParams[campaingnId]) {
       setCampaignId(queryParams[campaingnId]);
     }
+
     trackHomepageView({
-      customEvents: ['event18', 'event80'],
+      customEvents: ['event74', 'event76', 'event95'],
       products,
       pageName: 'home page',
       pageSection: 'homepage',
@@ -51,14 +52,14 @@ class HomePageWrapper extends React.Component {
   productObjForHomeAnalytics = () => {
     const aTags = document.getElementsByTagName('a') || [];
     const internalCampaignId = 'icid';
-    const icidLinks = [];
-    for (let i = 0; i < aTags.length; i += 1) {
-      if (aTags[i].href.indexOf(internalCampaignId) > -1) {
-        const val = getQueryParamsFromUrl(aTags[i].href);
-        icidLinks.push(val[internalCampaignId]);
-      }
-    }
-    return icidLinks.length > 0 ? icidLinks : [];
+    return Array.prototype.slice
+      .call(aTags)
+      .filter(tag => {
+        return tag.href.indexOf(internalCampaignId) !== -1;
+      })
+      .map(tag => {
+        return getQueryParamsFromUrl(tag.href)[internalCampaignId].join(',');
+      });
   };
 
   subscriptionPopUpOnPageLoad = () => {

@@ -24,7 +24,7 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
         pageSection: 'homepage',
         pageSubSection: 'home page',
         pageType: 'home page',
-        loadAnaalyticsOnload: false,
+        loadAnalyticsOnload: false,
       },
     },
   };
