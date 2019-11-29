@@ -50,6 +50,11 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       setClickAnalyticsDataCheckout,
       trackPageViewCheckout,
+      currentStage,
+      currentOrderId,
+      paymentMethodId,
+      billingAddress,
+      orderSubTotal,
     } = this.props;
     /* istanbul ignore else */
     if (
@@ -63,9 +68,21 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const events = this.getAnalyticsEvents();
     if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
       const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+
+      let additionalData;
+      if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.CONFIRMATION) {
+        additionalData = {
+          orderId: currentOrderId,
+          paymentMethod: paymentMethodId,
+          billingZip: billingAddress && billingAddress.zipCode,
+          billingCountry: billingAddress && billingAddress.country,
+          orderSubtotal: orderSubTotal,
+        };
+      }
       setClickAnalyticsDataCheckout({
         customEvents: events,
         products: productsData,
+        ...additionalData,
       });
       trackPageViewCheckout({});
     }
