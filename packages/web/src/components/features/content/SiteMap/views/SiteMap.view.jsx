@@ -4,7 +4,6 @@ import { PropTypes } from 'prop-types';
 import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import mock from '@tcp/core/src/services/abstractors/common/sitemap/mock';
 import style from '../SiteMap.style';
 
 class SiteMap extends React.PureComponent {
@@ -14,8 +13,7 @@ class SiteMap extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
-    const { siteMap: siteMapData } = mock;
+    const { className, siteMapData } = this.props;
     const { categories, content } = siteMapData;
     return (
       <Row className={`${className} siteMap`}>
