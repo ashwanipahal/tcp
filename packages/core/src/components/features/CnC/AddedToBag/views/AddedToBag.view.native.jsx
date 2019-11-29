@@ -68,13 +68,19 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
   return <RowWrapper />;
 };
 
-const getProductsWrapper = (addedToBagData, labels, quantity) => {
+const getProductsWrapper = (addedToBagData, labels, quantity, pointsSummary) => {
   if (Array.isArray(addedToBagData)) {
     return addedToBagData.map(item => {
       return <ProductInformation data={item} labels={labels} />;
     });
   }
-  return <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />;
+  return (
+    <ProductInformation
+      data={{ ...addedToBagData, ...pointsSummary }}
+      labels={labels}
+      quantity={quantity}
+    />
+  );
 };
 
 const AddedToBag = ({
@@ -87,6 +93,7 @@ const AddedToBag = ({
   navigation,
   addedToBagInterval,
   totalBagItems,
+  pointsSummary,
 }) => {
   useEffect(() => {
     if (addedToBagInterval > 0 && totalBagItems > 0 && openState) {
@@ -129,7 +136,7 @@ const AddedToBag = ({
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
           <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            {getProductsWrapper(addedToBagData, labels, quantity)}
+            {getProductsWrapper(addedToBagData, labels, quantity, pointsSummary)}
             <AddedToBagViewPoints labels={labels} />
             <AddedToBagActions
               labels={labels}
