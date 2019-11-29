@@ -1,4 +1,5 @@
 /* eslint-disable */
+// Disabling eslint for temporary fix
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
