@@ -87,11 +87,15 @@ PromoModules.propTypes = {
       moduleName: PropTypes.string,
     })
   ),
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 PromoModules.defaultProps = {
   asPath: '',
   plpTopPromos: [],
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default PromoModules;
