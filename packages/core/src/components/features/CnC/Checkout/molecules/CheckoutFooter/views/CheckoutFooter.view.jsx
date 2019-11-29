@@ -46,16 +46,15 @@ class CheckoutFooter extends React.PureComponent {
       >
         {nextButtonText}
       </Button>
-    ) :
-      (
-        <>
-          {!showVenmoSubmit && !showPayPalButton && (
-            <div className="footer-button footer-button-mob">
-              <LoaderSkelton />
-            </div>
-          )}
-        </>
-      );
+    ) : (
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
+    );
   };
 
   render() {
@@ -94,8 +93,8 @@ class CheckoutFooter extends React.PureComponent {
               {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
             </>
           ) : (
-              this.renderNextButton()
-            )}
+            this.renderNextButton()
+          )}
           <div className="back-space">
             {hideBackLink && (
               <Button
@@ -136,8 +135,8 @@ class CheckoutFooter extends React.PureComponent {
               {nextButtonText}
             </Button>
           ) : (
-              this.renderSkeleton()
-            )}
+            this.renderSkeleton()
+          )}
         </div>
       </div>
     );
@@ -171,9 +170,9 @@ CheckoutFooter.defaultProps = {
   showPayPalButton: false,
   disableDesktopOnlyNext: false,
   continueWithText: '',
-  onVenmoSubmit: () => { },
+  onVenmoSubmit: () => {},
   venmoError: '',
-  bagLoading: false
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutFooter, style);

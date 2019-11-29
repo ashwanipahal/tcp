@@ -23,7 +23,7 @@ const propTypes = {
 
 const defaultProps = {
   component: null,
-  closeOverlay: () => { },
+  closeOverlay: () => {},
   className: '',
   color: '',
   labels: PropTypes.shape({
@@ -259,9 +259,9 @@ class OverlayModal extends React.Component {
     const headingForMobile = this.getHeading();
     const headingProps = headingForMobile
       ? {
-        heading: headingForMobile,
-        headingStyle: modalHeading,
-      }
+          heading: headingForMobile,
+          headingStyle: modalHeading,
+        }
       : {};
 
     return this.isMobile && component !== 'accountDrawer' ? (
@@ -286,36 +286,35 @@ class OverlayModal extends React.Component {
           </div>
         </Modal>
       </div>
-    ) :
-      (
+    ) : (
+      <div
+        className={className}
+        id="modalWrapper"
+        color={color}
+        ref={this.setModalRef}
+        tabIndex="-1"
+      >
         <div
-          className={className}
-          id="modalWrapper"
-          color={color}
-          ref={this.setModalRef}
-          tabIndex="-1"
+          id="dialogContent"
+          className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
         >
+          <button
+            className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
+              component === 'accountDrawer' ? 'hide-on-mobile' : ''
+            }`}
+            onClick={this.closeModal}
+          />
           <div
-            id="dialogContent"
-            className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
-          >
-            <button
-              className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
-                component === 'accountDrawer' ? 'hide-on-mobile' : ''
-                }`}
-              onClick={this.closeModal}
-            />
-            <div
-              className={`${
-                isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
-                } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
-              id="modalTriangle"
-            />
-            <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
-            <ModalContent className="modal__content" {...componentProps} />
-          </div>
+            className={`${
+              isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
+            } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
+            id="modalTriangle"
+          />
+          <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
+          <ModalContent className="modal__content" {...componentProps} />
         </div>
-      );
+      </div>
+    );
   }
 }
 

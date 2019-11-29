@@ -74,7 +74,7 @@ BillingPageContainer.propTypes = {
 BillingPageContainer.defaultProps = {
   getCVVCodeInfo: null,
   isPayPalHidden: false,
-  toastMessage: () => { }
+  toastMessage: () => {},
 };
 
 export default connect(

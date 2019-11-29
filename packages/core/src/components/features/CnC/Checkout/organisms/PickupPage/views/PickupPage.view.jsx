@@ -249,20 +249,19 @@ class PickUpFormPart extends React.Component {
                       showPhoneNumber
                       labels={pickUpLabels}
                     />
-                  ) :
-                    (
-                      <PickupMainContactEditForm
-                        dispatch={dispatch}
-                        labels={pickUpLabels}
-                        handleSubmit={handleSubmit}
-                        isEditing={isEditing}
-                        className="pickup-contact-guest-form"
-                        showPhoneNumber
-                        formData={pickUpContact}
-                        onEditModeChange={this.handleEditModeChange}
-                        handleExitEditModeClick={this.handleExitEditModeClick}
-                      />
-                    )}
+                  ) : (
+                    <PickupMainContactEditForm
+                      dispatch={dispatch}
+                      labels={pickUpLabels}
+                      handleSubmit={handleSubmit}
+                      isEditing={isEditing}
+                      className="pickup-contact-guest-form"
+                      showPhoneNumber
+                      formData={pickUpContact}
+                      onEditModeChange={this.handleEditModeChange}
+                      handleExitEditModeClick={this.handleExitEditModeClick}
+                    />
+                  )}
                 </FormSection>
               </div>
               {isSmsUpdatesEnabled && (
@@ -360,7 +359,7 @@ PickUpFormPart.propTypes = {
   ServerErrors: PropTypes.node.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   emailSignUpFlags: PropTypes.shape({}).isRequired,
-  bagLoading: PropTypes.bool
+  bagLoading: PropTypes.bool,
 };
 
 PickUpFormPart.defaultProps = {

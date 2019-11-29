@@ -35,7 +35,7 @@ AddressDropdown.propTypes = {
   selectListTitle: PropTypes.string.isRequired,
   customSelectClassName: PropTypes.string,
   dataLocatorObj: PropTypes.shape({}),
-  labels: PropTypes.shape({})
+  labels: PropTypes.shape({}),
 };
 AddressDropdown.defaultProps = {
   customSelectClassName: '',
@@ -43,7 +43,7 @@ AddressDropdown.defaultProps = {
     heading: 'drop-down-heading',
     dropDownList: 'drop-down-list',
   },
-  labels: {}
+  labels: {},
 };
 
 export default AddressDropdown;

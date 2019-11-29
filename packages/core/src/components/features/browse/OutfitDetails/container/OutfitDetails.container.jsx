@@ -261,6 +261,8 @@ OutfitDetailsContainer.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  topPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -287,6 +289,8 @@ OutfitDetailsContainer.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  topPromos: '',
+  isLoading: false,
 };
 
 export default withIsomorphicRenderer({

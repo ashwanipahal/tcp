@@ -150,11 +150,11 @@ OrderNotification.propTypes = {
   limitOfDaysToDisplayNotification: PropTypes.number.isRequired,
   limitOfDaysToDisplayBossNotification: PropTypes.number.isRequired,
   isTransactionNotificationsInMyAccountEnabled: PropTypes.bool.isRequired,
-  closedOverlay: PropTypes.func.isRequired
+  closedOverlay: PropTypes.func.isRequired,
 };
 
 OrderNotification.defaultProps = {
-  fetchOrders: () => { },
+  fetchOrders: () => {},
   orderSTH: {},
   orderBOSS: {},
   orderBOPIS: {},

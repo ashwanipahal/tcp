@@ -9,7 +9,6 @@ const initialState = fromJS({
 
 let checkErrorReset = false;
 
-
 /**
  * @function defaultStateReducer used for return  default state reducer state
  * @param {state} state provide initial state to this function.
@@ -55,7 +54,6 @@ const resetErrorReducer = (state = initialState, action) => {
       return defaultStateReducer(state);
   }
 };
-
 
 const ChangePasswordReducer = (state, action) => {
   switch (action.type) {

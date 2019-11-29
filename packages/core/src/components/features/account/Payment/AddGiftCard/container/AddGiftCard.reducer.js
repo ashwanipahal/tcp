@@ -1,4 +1,3 @@
-
 import { fromJS } from 'immutable';
 import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';

@@ -25,7 +25,7 @@ export class PasswordField extends React.PureComponent {
     showText: 'Show',
     tooltipContent: '',
     labels: {},
-    tooltipAriaLabel: ''
+    tooltipAriaLabel: '',
   };
 
   constructor(props) {

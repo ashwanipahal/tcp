@@ -53,7 +53,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
     isPayPalWebViewEnable: false,
-    onVenmoError: {}
+    onVenmoError: {},
   };
 
   componentDidMount() {
@@ -128,31 +128,30 @@ class BillingPage extends React.PureComponent {
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
                 onVenmoError={onVenmoError}
               />
-            ) :
-              (
-                <BillingPaymentForm
-                  handleSubmit={submitBilling}
-                  orderHasShipping={orderHasShipping}
-                  isGuest={isGuest}
-                  backLinkPickup={backLinkPickup}
-                  backLinkShipping={backLinkShipping}
-                  nextSubmitText={nextSubmitText}
-                  cvvCodeRichText={cvvCodeRichText}
-                  labels={labels}
-                  billingData={billingData}
-                  addressLabels={addressLabels}
-                  shippingAddress={shippingAddress}
-                  userAddresses={userAddresses}
-                  navigation={navigation}
-                  creditFieldLabels={creditFieldLabels}
-                  scrollView={this.scrollView}
-                  setCheckoutStage={setCheckoutStage}
-                  isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-                  isVenmoEnabled={isVenmoEnabled}
-                  isPayPalWebViewEnable={isPayPalWebViewEnable}
-                  onVenmoError={onVenmoError}
-                />
-              )}
+            ) : (
+              <BillingPaymentForm
+                handleSubmit={submitBilling}
+                orderHasShipping={orderHasShipping}
+                isGuest={isGuest}
+                backLinkPickup={backLinkPickup}
+                backLinkShipping={backLinkShipping}
+                nextSubmitText={nextSubmitText}
+                cvvCodeRichText={cvvCodeRichText}
+                labels={labels}
+                billingData={billingData}
+                addressLabels={addressLabels}
+                shippingAddress={shippingAddress}
+                userAddresses={userAddresses}
+                navigation={navigation}
+                creditFieldLabels={creditFieldLabels}
+                scrollView={this.scrollView}
+                setCheckoutStage={setCheckoutStage}
+                isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                isVenmoEnabled={isVenmoEnabled}
+                isPayPalWebViewEnable={isPayPalWebViewEnable}
+                onVenmoError={onVenmoError}
+              />
+            )}
           </Container>
         </ScrollView>
       </BillingPageContainer>

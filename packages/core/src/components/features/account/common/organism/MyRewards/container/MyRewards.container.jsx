@@ -46,13 +46,13 @@ export class MyRewardsContainer extends PureComponent {
 
   static defaultProps = {
     view: 'reward',
-    onApplyCouponToBagFromList: () => { },
-    handleErrorCoupon: () => { },
-    toastMessage: () => { },
+    onApplyCouponToBagFromList: () => {},
+    handleErrorCoupon: () => {},
+    toastMessage: () => {},
     isApplyingOrRemovingCoupon: false,
     isNeedHelpModalOpen: false,
     needHelpRichText: '',
-    needHelpContentId: ''
+    needHelpContentId: '',
   };
 
   constructor(props) {
@@ -138,7 +138,7 @@ export class MyRewardsContainer extends PureComponent {
           openState={isNeedHelpModalOpen}
           coupon={selectedCoupon}
           onRequestClose={() => {
-            this.props.toggleNeedHelpModal();
+            toggleNeedHelpModal();
           }}
           heading="Help Modal"
         />

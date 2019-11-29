@@ -30,7 +30,7 @@ import {
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
-const noop = () => { };
+const noop = () => {};
 
 export class CreateAccountContainer extends React.Component {
   static propTypes = {
@@ -73,8 +73,8 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: noop,
     isUserLoggedIn: false,
     navigation: {},
-    toastMessage: () => { },
-    updateHeader: () => { },
+    toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
