@@ -1,8 +1,8 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import CONSTANTS from '../BirthdaySavingsList.constants';
 import { setUserChildren, getUserInfo } from '../../../../User/container/User.actions';
-import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import {
   getChildren,
   deleteChild,
@@ -38,7 +38,6 @@ export function* getChildrenSaga() {
     yield put(trackClick({ name: 'birthday_success', module: 'account' }));
   } catch (err) {
     yield put(setLoaderState(false));
-    console.log("Error: error in fetching user's children birthday savings list");
   }
 }
 

@@ -10,7 +10,7 @@ import {
   resetPlpProducts,
   setFilter,
 } from './ProductListing.actions';
-import { processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs, getProductsWithPromo } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -23,7 +23,6 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
   getAllProductsSelect,
@@ -45,7 +44,6 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
-import { getProductsWithPromo } from './ProductListing.util';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -269,6 +267,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -293,6 +292,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
+  isPlcc: false,
 };
 
 export default connect(

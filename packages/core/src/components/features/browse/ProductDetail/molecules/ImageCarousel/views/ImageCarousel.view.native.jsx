@@ -192,7 +192,7 @@ class ImageCarousel extends React.PureComponent {
 
   renderFavoriteIcon = () => {
     const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { favoritedCount, isFavorite, miscInfo } = currentColorEntry;
     const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
@@ -331,6 +331,7 @@ ImageCarousel.propTypes = {
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
   keepAlive: PropTypes.bool,
+  skuId: PropTypes.string,
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
@@ -351,6 +352,7 @@ ImageCarousel.defaultProps = {
   outOfStockLabels: {
     outOfStockCaps: '',
   },
+  skuId: '',
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

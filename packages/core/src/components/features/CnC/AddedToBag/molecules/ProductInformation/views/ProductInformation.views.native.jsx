@@ -20,7 +20,7 @@ import { getLocator } from '../../../../../../../utils';
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
-const ProductInformation = ({ data, labels, quantity }) => {
+const ProductInformation = ({ data, labels }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
@@ -110,12 +110,10 @@ const ProductInformation = ({ data, labels, quantity }) => {
 ProductInformation.propTypes = {
   data: PropTypes.shape,
   labels: PropTypes.shape,
-  quantity: PropTypes.string,
 };
 ProductInformation.defaultProps = {
   data: {},
   labels: {},
-  quantity: '',
 };
 export default withStyles(ProductInformation);
 export { ProductInformation as ProductInformationVanilla };

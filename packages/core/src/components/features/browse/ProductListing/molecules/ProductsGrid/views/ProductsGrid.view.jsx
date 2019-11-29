@@ -51,6 +51,11 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: PropTypes.func,
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
+    isFavoriteView: PropTypes.bool,
+    removeFavItem: PropTypes.func.isRequired,
+    pageNameProp: PropTypes.string,
+    pageSectionProp: PropTypes.string,
+    pageSubSectionProp: PropTypes.string,
   };
 
   static defaultProps = {
@@ -73,6 +78,10 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: () => {},
     openAddNewList: () => {},
     activeWishListId: '',
+    isFavoriteView: false,
+    pageNameProp: '',
+    pageSectionProp: '',
+    pageSubSectionProp: '',
   };
 
   constructor(props, context) {
@@ -160,6 +169,9 @@ class ProductsGrid extends React.Component {
       removeFavItem,
       openAddNewList,
       activeWishListId,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
 
@@ -206,6 +218,9 @@ class ProductsGrid extends React.Component {
                         removeFavItem={removeFavItem}
                         openAddNewList={openAddNewList}
                         activeWishListId={activeWishListId}
+                        pageNameProp={pageNameProp}
+                        pageSectionProp={pageNameProp}
+                        pageSubSectionProp={pageNameProp}
                         {...otherProps}
                       />
                     );

@@ -1,5 +1,5 @@
-import { generateClickHandlerDataLayer } from '../clickHandler.dataLayer';
 import { fromJS } from 'immutable';
+import { generateClickHandlerDataLayer } from '../clickHandler.dataLayer';
 
 describe('clickHandler.dataLayer', () => {
   let datalayer;
