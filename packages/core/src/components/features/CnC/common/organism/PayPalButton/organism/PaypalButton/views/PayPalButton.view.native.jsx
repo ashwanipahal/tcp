@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { WebView } from 'react-native-webview';
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { View, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight, isGymboree } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Platform } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
@@ -87,6 +87,7 @@ class BillingPage extends React.PureComponent {
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
+    const isIOS = Platform.OS === 'ios';
     const screenHeight = getScreenHeight();
     return (
       <BillingPageContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
@@ -105,7 +106,12 @@ class BillingPage extends React.PureComponent {
           scrollEnabled={!isPayPalWebViewEnable}
           contentContainerStyle={
             isPayPalWebViewEnable
-              ? { position: 'absolute', zIndex: 992, height: screenHeight, width: '100%' }
+              ? {
+                  position: 'absolute',
+                  zIndex: 992,
+                  height: isIOS ? screenHeight - 40 : screenHeight,
+                  width: '100%',
+                }
               : { flexGrow: 1 }
           }
         >
