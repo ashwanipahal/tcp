@@ -12,7 +12,7 @@ import {
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import { insertIntoString, isMobileApp } from '@tcp/core/src/utils/utils';
+import { insertIntoString } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 

@@ -1,7 +1,4 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../../utils';
-
-const downArrowIcon = getIconPath('down_arrow_icon');
 
 const customSelectStyle = css`
   position: relative;

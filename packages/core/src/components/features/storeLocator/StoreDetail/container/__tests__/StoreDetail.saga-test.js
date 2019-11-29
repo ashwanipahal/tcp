@@ -1,4 +1,4 @@
-import { put, putResolve } from 'redux-saga/effects';
+import { putResolve } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
 import { getCurrentStore, getNearByStore, fetchModuleX } from '../StoreDetail.saga';
 import { setCurrentStoreInfo, setNearByStore } from '../StoreDetail.actions';
