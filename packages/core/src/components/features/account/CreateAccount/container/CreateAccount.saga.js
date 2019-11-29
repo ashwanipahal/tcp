@@ -21,13 +21,11 @@ const getErrorMessage = res => {
 
 export function* createsaga({ payload }) {
   yield put(setLoaderState(true));
-  yield put(setLoadingState({ isLoading: true }));
   try {
     const { emailAddress } = payload;
     const emailValidationStatus = yield call(briteVerifyStatusExtraction, emailAddress);
 
     const res = yield call(createAccountApi, { ...payload, emailValidationStatus });
-    yield put(setLoadingState({ isLoading: false }));
     yield put(
       setClickAnalyticsData({
         eventName: 'create account',
@@ -59,7 +57,6 @@ export function* createsaga({ payload }) {
   } catch (err) {
     const { errorCode, errorMessage } = err;
     yield put(setLoaderState(false));
-    yield put(setLoadingState({ isLoading: false }));
     return yield put(
       createAccountErr({
         errorCode,
