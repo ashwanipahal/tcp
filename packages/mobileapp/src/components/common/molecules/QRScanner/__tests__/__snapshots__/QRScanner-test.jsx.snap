@@ -7,7 +7,7 @@ exports[`QRScanner should render correctly 1`] = `
   transparent={false}
   visible={true}
 >
-  <NotReadableModal
+  <ScanErrorModal
     isOpen={false}
     labels={true}
     navigation={
@@ -78,7 +78,7 @@ exports[`QRScanner should render with QR invalid modal 1`] = `
   transparent={false}
   visible={true}
 >
-  <NotReadableModal
+  <ScanErrorModal
     isOpen={true}
     labels={true}
     navigation={
@@ -149,7 +149,7 @@ exports[`QRScanner should render with inactive state of QR camera 1`] = `
   transparent={false}
   visible={true}
 >
-  <NotReadableModal
+  <ScanErrorModal
     isOpen={false}
     labels={true}
     navigation={
@@ -220,7 +220,7 @@ exports[`QRScanner should render without QR invalid modal 1`] = `
   transparent={false}
   visible={true}
 >
-  <NotReadableModal
+  <ScanErrorModal
     isOpen={false}
     labels={true}
     navigation={

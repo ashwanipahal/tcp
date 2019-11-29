@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ScanErrorModal from '../view/scanErrorModal.native';
 
-describe('NotReadableModal', () => {
+describe('ScanErrorModal', () => {
   let component;
   const getParam = () => 'QRScanner navigation';
   const navigation = {

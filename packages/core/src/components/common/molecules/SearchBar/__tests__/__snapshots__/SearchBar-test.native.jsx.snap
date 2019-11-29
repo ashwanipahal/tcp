@@ -49,19 +49,9 @@ exports[`SearchBar native should render correctly onclick function check onSearc
     />
     <Styled(TouchableOpacity)
       activeOpacity={1}
-      onPress={[Function]}
       width="50px"
     >
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.600"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins={null}
-        name="scan"
-        onPress={[Function]}
+      <QRScannerIcon
         size="fs16"
       />
     </Styled(TouchableOpacity)>
@@ -106,19 +96,9 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
     />
     <Styled(TouchableOpacity)
       activeOpacity={1}
-      onPress={[Function]}
       width="50px"
     >
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.600"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins={null}
-        name="scan"
-        onPress={[Function]}
+      <QRScannerIcon
         size="fs16"
       />
     </Styled(TouchableOpacity)>
@@ -167,19 +147,9 @@ exports[`SearchBar native should render correctly with passed props render showC
     />
     <Styled(TouchableOpacity)
       activeOpacity={1}
-      onPress={[Function]}
       width="50px"
     >
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.600"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins={null}
-        name="scan"
-        onPress={[Function]}
+      <QRScannerIcon
         size="fs16"
       />
     </Styled(TouchableOpacity)>

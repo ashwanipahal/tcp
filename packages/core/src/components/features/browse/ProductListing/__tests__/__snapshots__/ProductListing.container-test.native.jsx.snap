@@ -3,7 +3,7 @@
 exports[`ProductListContainer component should render correctly 1`] = `
 <Styled(ProductListView)
   AddToFavoriteErrorMsg=""
-  animationURL=""
+  QRAnimationURL=""
   breadCrumbs={Array []}
   categoryId=""
   currentNavIds={Array []}
