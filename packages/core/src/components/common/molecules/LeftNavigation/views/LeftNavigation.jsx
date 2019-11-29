@@ -34,7 +34,7 @@ const getNavLink = (data = {}) => {
  * @param {data} data navigation data
  */
 
-const LeftNavigation = ({ data = [], className, selectedPage, defaultPage }) => {
+const LeftNavigation = ({ data = [], className, selectedPage }) => {
   const navData = Object.assign(data);
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
   let activeLink = [];
@@ -71,6 +71,11 @@ const LeftNavigation = ({ data = [], className, selectedPage, defaultPage }) => 
 LeftNavigation.propTypes = {
   className: PropTypes.string.isRequired,
   data: PropTypes.shape([]).isRequired,
+  selectedPage: PropTypes.string,
+};
+
+LeftNavigation.defaultProps = {
+  selectedPage: '',
 };
 
 export default withStyles(LeftNavigation, style);

@@ -362,14 +362,6 @@ export const getLabelsCartItemTile = state => {
   };
 };
 
-function getCurrentCurrency(state) {
-  return state.session.siteDetails.currency;
-}
-
-function getCurrenciesMap(state) {
-  return state.session.siteOptions.currenciesMap;
-}
-
 export const getProductDetails = tile => {
   return {
     itemInfo: {
