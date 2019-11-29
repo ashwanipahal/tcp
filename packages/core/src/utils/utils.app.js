@@ -7,7 +7,7 @@ import CookieManager from 'react-native-cookies';
 import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
@@ -699,13 +699,13 @@ export const getTranslatedMomentDate = (
   language = 'en',
   { day, month, date, year } = {}
 ) => {
-  moment.locale(language);
-  const currentDate = dateInput ? moment(dateInput) : moment();
+  const localeOptions = { locale: language };
+  const dateInputParsed = dateInput ? new Date(dateInput) : new Date();
   return {
-    day: currentDate.format(day),
-    month: currentDate.format(month),
-    date: currentDate.format(date),
-    year: currentDate.format(year),
+    day: format(dateInputParsed, 'EEE', localeOptions),
+    month: format(dateInputParsed, 'MMM', localeOptions),
+    date: format(dateInputParsed, 'dd', localeOptions),
+    year: format(dateInputParsed, 'yyyy', localeOptions),
   };
 };
 

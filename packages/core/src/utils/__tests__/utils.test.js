@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { format } from 'date-fns';
 import {
   getLabelValue,
   formatDate,
@@ -177,6 +177,7 @@ describe('getStoreHours', () => {
 });
 
 describe('getOrderGroupLabelAndMessage', () => {
+  const dateFormat = 'MMMM dd, yyyy';
   const labels = {
     lbl_orders_shippedOn: 'lbl_orders_shippedOn',
     lbl_orders_pickedUpOn: 'lbl_orders_pickedUpOn',
@@ -195,7 +196,7 @@ describe('getOrderGroupLabelAndMessage', () => {
       ordersLabels: labels,
     };
 
-    const message = moment(orderProps.shippedDate).format('LL');
+    const message = format(new Date(orderProps.shippedDate), dateFormat);
     const label = labels.lbl_orders_shippedOn;
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
@@ -209,7 +210,7 @@ describe('getOrderGroupLabelAndMessage', () => {
       ordersLabels: labels,
     };
 
-    const message = moment(orderProps.pickedUpDate).format('LL');
+    const message = format(new Date(orderProps.pickedUpDate), dateFormat);
     const label = labels.lbl_orders_pickedUpOn;
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
@@ -286,7 +287,7 @@ describe('getOrderGroupLabelAndMessage', () => {
     };
 
     const label = labels.lbl_orders_pleasePickupBy;
-    const message = moment(orderProps.pickUpExpirationDate).format('LL');
+    const message = format(new Date(orderProps.pickUpExpirationDate), dateFormat);
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
     expect(labelAndMessage.label).toBe(label);
