@@ -4,8 +4,8 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import DamImage from '../../../../../../common/atoms/DamImage';
-
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
 // @flow
@@ -134,7 +134,7 @@ const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) 
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.qtyLabel}
+                {labels.price}
                 {':'}
               </BodyCopy>
             </Col>
@@ -149,9 +149,41 @@ const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) 
                 fontSize="fs13"
                 textAlign="left"
                 className="itemDesc"
-                dataLocator="addedtobag-productqty"
+                dataLocator="addedtobag-productprice"
+                fontWeight={['semibold']}
               >
-                {quantity || data.quantity}
+                <PriceCurrency price={data.itemPrice} />
+              </BodyCopy>
+            </Col>
+          </Row>
+          <Row tagName="ul" className="product-description">
+            <Col
+              tagName="li"
+              key="product-title"
+              className="itemList"
+              colSize={{ small: 2, medium: 3, large: 4 }}
+            >
+              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+                {labels.points}
+                {':'}
+              </BodyCopy>
+            </Col>
+            <Col
+              tagName="li"
+              key="product-title"
+              className="itemList"
+              colSize={{ small: 4, medium: 5, large: 8 }}
+            >
+              <BodyCopy
+                tag="span"
+                fontSize="fs13"
+                textAlign="left"
+                className="itemDesc"
+                dataLocator="addedtobag-productprice"
+                color="orange.800"
+                fontWeight={['semibold']}
+              >
+                {data.itemPoints}
               </BodyCopy>
             </Col>
           </Row>
