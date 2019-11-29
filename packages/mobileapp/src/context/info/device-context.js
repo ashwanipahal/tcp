@@ -1,41 +1,16 @@
+// Disabling eslint for temporary fix
 import React from 'react';
+import PropTypes from 'prop-types';
 import DeviceInfo from 'react-native-device-info';
-import { usePlatformState } from './platform-context';
 import { Dimensions } from 'react-native';
+import { usePlatformState } from './platform-context';
 
-export { DeviceProvider, useDeviceState };
-
-/**
- * TODO Implement remaining, platform-specific APIs:
- * see https://github.com/react-native-community/react-native-device-info
- */
-
-export const DeviceContext = React.createContext();
-
-function DeviceProvider({ children, ...props }) {
-  const platform = usePlatformState();
-  const [state, setState] = React.useState(null);
-  React.useEffect(() => {
-    async function getDeviceInfo() {
-      const deviceInfo = await getInitialContextState({ platform, ...props });
-      setState(deviceInfo);
-    }
-    getDeviceInfo();
-  }, []);
-
-  if (state === null) {
-    return null;
-  }
-
-  return <DeviceContext.Provider value={state}>{children}</DeviceContext.Provider>;
+async function getAndroidOnlySettings() {
+  return {};
 }
 
-function useDeviceState() {
-  const context = React.useContext(DeviceContext);
-  if (context === undefined) {
-    throw new Error('useDeviceState must be used within a DeviceProvider');
-  }
-  return context;
+async function getIOSOnlySettings() {
+  return {};
 }
 
 async function getCommonPlatformSettings() {
@@ -66,14 +41,6 @@ async function getCommonPlatformSettings() {
   };
 }
 
-async function getAndroidOnlySettings() {
-  return {};
-}
-
-async function getIOSOnlySettings() {
-  return {};
-}
-
 async function getInitialContextState({ platform }) {
   return Object.assign(
     {},
@@ -81,3 +48,46 @@ async function getInitialContextState({ platform }) {
     await (platform.isIOS ? getIOSOnlySettings : getAndroidOnlySettings)()
   );
 }
+
+/**
+ * TODO Implement remaining, platform-specific APIs:
+ * see https://github.com/react-native-community/react-native-device-info
+ */
+
+export const DeviceContext = React.createContext();
+
+function DeviceProvider({ children, ...props }) {
+  const platform = usePlatformState();
+  const [state, setState] = React.useState(null);
+  React.useEffect(() => {
+    async function getDeviceInfo() {
+      const deviceInfo = await getInitialContextState({ platform, ...props });
+      setState(deviceInfo);
+    }
+    getDeviceInfo();
+  }, []);
+
+  if (state === null) {
+    return null;
+  }
+  // eslint-disable-next-line
+  return <DeviceContext.Provider value={state}>{children}</DeviceContext.Provider>;
+}
+
+function useDeviceState() {
+  const context = React.useContext(DeviceContext);
+  if (context === undefined) {
+    throw new Error('useDeviceState must be used within a DeviceProvider');
+  }
+  return context;
+}
+
+export { DeviceProvider, useDeviceState };
+
+DeviceProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+DeviceProvider.defaultProps = {
+  children: null,
+};

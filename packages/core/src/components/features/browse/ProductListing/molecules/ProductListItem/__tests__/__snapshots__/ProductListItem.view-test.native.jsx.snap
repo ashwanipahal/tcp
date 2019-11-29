@@ -10,7 +10,10 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderTopBadge1
     text=""
   />
-  <RenderCloseIcon />
+  <RenderCloseIcon
+    isSuggestedItem={false}
+    outOfStockColorProductId=""
+  />
   <ImageSection
     isFavorite={true}
     item={
@@ -72,6 +75,7 @@ exports[`ProductListItem component should render correctly 1`] = `
     hideFavorite={false}
     isFavorite={true}
     isLoggedIn={false}
+    isSuggestedItem={false}
     item={
       Object {
         "colorsMap": Array [
@@ -174,6 +178,7 @@ exports[`ProductListItem component should render correctly 1`] = `
     text="tcp"
   />
   <RenderSuggestedLabel
+    isSuggestedItem={false}
     labelsPlpTiles={Object {}}
   />
   <RenderColorSwitch
@@ -190,6 +195,7 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
       ]
     }
+    isSuggestedItem={false}
     setSelectedColorIndex={[Function]}
   />
   <RenderSizeFit
@@ -254,7 +260,9 @@ exports[`ProductListItem component should render correctly 1`] = `
     />
   </Styled(View)>
   <RenderDismissLink
+    isSuggestedItem={false}
     labelsPlpTiles={Object {}}
+    outOfStockColorProductId=""
   />
   <RenderPurchasedQuantity
     item={
