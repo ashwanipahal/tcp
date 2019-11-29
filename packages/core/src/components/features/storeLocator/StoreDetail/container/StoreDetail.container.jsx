@@ -62,8 +62,9 @@ export class StoreDetailContainer extends PureComponent {
     const newStore = formatStore(currentStoreInfo);
     if (
       prevProps.storeId !== storeId ||
-      (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
-        (newStore.basicInfo !== undefined && newStore.basicInfo.id) ||
+      (isMobileApp() &&
+        (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
+          (newStore.basicInfo !== undefined && newStore.basicInfo.id)) ||
       prevProps.isUserLoggedIn !== isUserLoggedIn
     ) {
       this.loadCurrentStoreInitialInfo();
