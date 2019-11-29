@@ -10,7 +10,7 @@ import {
   setLoginLoadingState,
 } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { getUserInfo, setUserInfo } from '../../User/container/User.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -53,7 +53,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
 
       // Trgigger analytics event after set user data
       yield take(CONSTANTS.SET_USER_INFO);
-      yield put(trackClick({ name: 'user_login', module: 'account' }));
+      yield put(trackClick({ name: 'login-success', module: 'account' }));
     }
 
     yield putResolve(setLoginInfo(response));
