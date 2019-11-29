@@ -1,18 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LeftNavigation from '../views/LeftNavigation';
+import { LeftNavigationVanilla } from '../views/LeftNavigation';
+import mock from '../views/mock';
 
 describe('LeftNavigation component', () => {
   it('LeftNavigation component renders correctly without props', () => {
-    const component = shallow(<LeftNavigation />);
+    const component = shallow(<LeftNavigationVanilla />);
     expect(component).toMatchSnapshot();
   });
 
-  it('BrandLogo component renders correctly with props', () => {
+  it('LeftNavigation component renders correctly with props', () => {
     const props = {
-      className: 'test-class',
+      data: mock,
+      className: 'test',
+      selectedPage: 'extra-points',
+      defaultPage: 'help-center',
     };
-    const component = shallow(<LeftNavigation {...props} />);
-    expect(component.find('.test-class')).toHaveLength(1);
+    const component = shallow(<LeftNavigationVanilla {...props} />);
+    expect(component).toMatchSnapshot();
   });
 });

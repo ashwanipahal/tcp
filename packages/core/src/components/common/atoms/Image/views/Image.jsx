@@ -94,6 +94,7 @@ Image.propTypes = {
   placeholderSrc: PropTypes.string,
   ref: PropTypes.func,
   url: PropTypes.string,
+  role: PropTypes.string,
 };
 
 Image.defaultProps = {
@@ -104,6 +105,7 @@ Image.defaultProps = {
   ref: () => {},
   url: '',
   link: null,
+  role: null,
 };
 
 export default withStyles(Image, styles);

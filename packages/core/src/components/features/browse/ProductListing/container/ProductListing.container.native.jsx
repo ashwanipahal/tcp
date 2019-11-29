@@ -10,7 +10,7 @@ import {
   resetPlpProducts,
   setFilter,
 } from './ProductListing.actions';
-import { processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs, getProductsWithPromo } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -23,7 +23,6 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
   getAllProductsSelect,
@@ -45,7 +44,6 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
-import { getProductsWithPromo } from './ProductListing.util';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -161,18 +159,25 @@ function mapStateToProps(state) {
   const plpGridPromos = getPLPGridPromos(state);
   const plpHorizontalPromo = getPlpHorizontalPromo(state);
   const products = getAllProductsSelect(state);
-  const productWithGrid = getProductsWithPromo(products, plpGridPromos, plpHorizontalPromo);
 
   // eslint-disable-next-line
   let filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
 
+  const productWithGrid = getProductsWithPromo(
+    products,
+    plpGridPromos,
+    plpHorizontalPromo,
+    filterCount
+  );
   const filters = updateAppliedFiltersInState(state);
 
   return {
@@ -262,6 +267,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -286,6 +292,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
+  isPlcc: false,
 };
 
 export default connect(

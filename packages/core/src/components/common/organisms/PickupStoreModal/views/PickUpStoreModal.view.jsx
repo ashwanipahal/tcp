@@ -166,6 +166,8 @@ class PickUpStoreModalView extends React.Component {
     updatePickUpCartItem: PropTypes.func.isRequired,
     initialValuesFromBagPage: PropTypes.shape({}).isRequired,
     toastMessage: PropTypes.func,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
   };
 
   static defaultProps = {
@@ -199,6 +201,8 @@ class PickUpStoreModalView extends React.Component {
       exchangevalue: 1,
     },
     toastMessage: () => {},
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {
@@ -434,6 +438,8 @@ class PickUpStoreModalView extends React.Component {
       openRestrictedModalForBopis,
       isGetUserStoresLoaded,
       toastMessage,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -505,8 +511,12 @@ class PickUpStoreModalView extends React.Component {
           onCloseClick={this.onCloseClick}
           navigation={navigation}
           toastMessage={toastMessage}
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
         />
         <PickupStoreSelectionFormContainer
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
           isGetUserStoresLoaded={isGetUserStoresLoaded}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           maxAllowedStoresInCart={maxAllowedStoresInCart}

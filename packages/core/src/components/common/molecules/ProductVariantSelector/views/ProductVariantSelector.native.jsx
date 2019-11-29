@@ -41,6 +41,14 @@ class ProductVariantSelector extends React.PureComponent {
     }
   }
 
+  getImgUrl = (item, swatchImageUrl, isGiftCard) => {
+    const giftColor = item && item.color;
+    if (isGiftCard && giftColor && giftColor.imagePath) {
+      return giftColor.imagePath;
+    }
+    return swatchImageUrl && `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
+  };
+
   renderColor = ({ item, index }) => {
     const {
       color: { name, swatchImage },
@@ -54,8 +62,7 @@ class ProductVariantSelector extends React.PureComponent {
     const imageHeight = isSelected ? componentHeight - borderWidth : componentHeight;
 
     const swatchImageUrl = swatchImage && swatchImage.split('_');
-    const imageUrl =
-      swatchImageUrl && `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
+    const imageUrl = this.getImgUrl(item, swatchImageUrl, isGiftCard);
 
     return (
       <LinkImageIcon
@@ -74,6 +81,7 @@ class ProductVariantSelector extends React.PureComponent {
         borderWidth={borderWidth}
         imageWidth={imageWidth}
         imageHeight={imageHeight}
+        isGiftCard={isGiftCard}
       />
     );
   };
@@ -155,7 +163,7 @@ class ProductVariantSelector extends React.PureComponent {
             <BodyCopy
               fontWeight="regular"
               color="gray.900"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs14"
               text={itemValue.toUpperCase()}
               dataLocator={value}

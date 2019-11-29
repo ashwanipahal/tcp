@@ -125,7 +125,9 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
   }
-
+  .dropdownListWrapper li {
+      cursor: pointer;
+  }
   .brand-option-list {
     li {
       &:first-child {
@@ -162,5 +164,8 @@ export default css`
         padding-bottom: 0;
       }
     }
+  }
+  .dropdownliBottomBorder {
+    border-bottom: 0;
   }
 `;

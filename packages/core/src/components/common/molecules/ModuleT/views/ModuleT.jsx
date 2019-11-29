@@ -57,7 +57,6 @@ class ModuleT extends React.PureComponent {
     const { image: promoImage2, link: promoLink2, video: promoVideo2 } =
       promoMediaLinkedList[1] || {};
     const buttonListCtaType = ctaTypes[ctaType];
-
     return (
       <Grid className={`${className} moduleT`}>
         <div className="smallOnlyView">
@@ -81,7 +80,7 @@ class ModuleT extends React.PureComponent {
               medium: true,
             }}
           >
-            {promoImage1 && (
+            {(promoImage1 || promoVideo1) && (
               <DamImage
                 imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage1}
@@ -124,7 +123,7 @@ class ModuleT extends React.PureComponent {
               medium: true,
             }}
           >
-            {promoImage2 && (
+            {(promoImage2 || promoVideo2) && (
               <DamImage
                 imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
