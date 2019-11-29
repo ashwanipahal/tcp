@@ -20,7 +20,7 @@ class ModalWrapper extends React.PureComponent {
   render() {
     const { isOpenModal, margins, modalMargins, heading, children, noscroll } = this.props;
     return (
-      <Container margins={margins}>
+      <Container>
         <ModalNative
           heading={heading}
           isOpen={isOpenModal}
@@ -30,7 +30,6 @@ class ModalWrapper extends React.PureComponent {
           horizontalBar={false}
           headerStyle={fullWidth}
           isOverlay
-          noscroll={noscroll}
           fixedWidth
           fullWidth
           stickyHeader

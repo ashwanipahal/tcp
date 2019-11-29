@@ -9,7 +9,7 @@ const getAdditionalStyle = props => {
 
 const Container = styled.View`
   justify-content: center;
-  ${getAdditionalStyle};
+  margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM} ${getAdditionalStyle};
 `;
 
 const RowContainer = styled.View`
