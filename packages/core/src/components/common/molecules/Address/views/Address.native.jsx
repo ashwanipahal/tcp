@@ -112,7 +112,7 @@ const Address = ({
   regularName,
 }: Props) => {
   return address ? (
-    <ViewWithSpacing spacingStyles="margin-left-XS" style={style}>
+    <View style={style}>
       {showName && getNameFromAddress(address, showDefaultText, regularName)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, fontSize })
@@ -144,7 +144,7 @@ const Address = ({
           color="gray.900"
         />
       )}
-    </ViewWithSpacing>
+    </View>
   ) : null;
 };
 
