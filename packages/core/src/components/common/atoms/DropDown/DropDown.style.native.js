@@ -41,13 +41,6 @@ const Row = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const OverLayView = styled.View`
-  flex-direction: row;
-  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
-  border-top-width: 1px;
-  margin-top: -1px;
-`;
-
 const DropDownItemContainer = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
@@ -99,6 +92,35 @@ const FlatListWrapper = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
+const getAdditionalStyleWrapper = props => {
+  const { left, height, paddingTop } = props;
+  return {
+    ...(left && { left }),
+    ...(height && { height }),
+    ...(paddingTop && { paddingTop }),
+  };
+};
+
+const TouchableOpacityWrapper = styled.TouchableOpacity`
+  ${getAdditionalStyleWrapper}
+`;
+
+const getAdditionalStyleOverlayWrapper = props => {
+  const { top, width } = props;
+  return {
+    ...(top && { top }),
+    ...(width && { width }),
+  };
+};
+
+const OverLayView = styled.View`
+  flex-direction: row;
+  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+  border-top-width: 1px;
+  margin-top: -1px;
+  ${getAdditionalStyleOverlayWrapper}
+`;
+
 export {
   DropDownStyle,
   HeaderContainer,
@@ -111,4 +133,5 @@ export {
   SelectedLabelView,
   FlatListWrapper,
   HeaderItemContainer,
+  TouchableOpacityWrapper,
 };
