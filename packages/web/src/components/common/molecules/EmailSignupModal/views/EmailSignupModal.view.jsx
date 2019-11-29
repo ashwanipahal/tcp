@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '@tcp/web/src/components/common/molecules/SmsSignupModal/SmsSignupModal.style';
