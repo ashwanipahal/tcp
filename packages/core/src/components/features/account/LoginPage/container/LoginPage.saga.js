@@ -53,7 +53,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
 
       // Trgigger analytics event after set user data
       yield take(CONSTANTS.SET_USER_INFO);
-      yield put(trackClick({ name: 'login-success', module: 'account' }));
+      yield put(trackClick({ name: 'login_success', module: 'account' }));
     }
 
     yield putResolve(setLoginInfo(response));

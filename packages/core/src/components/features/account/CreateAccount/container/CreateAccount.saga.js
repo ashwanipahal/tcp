@@ -51,7 +51,7 @@ export function* createsaga({ payload }) {
       yield put(getUserInfo());
       // Trgigger analytics event after register user call done
       yield take(CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE);
-      return yield put(trackClick({ name: 'user_register', module: 'account' }));
+      return yield put(trackClick({ name: 'register_success', module: 'account' }));
     }
     const resErr = getErrorMessage(res);
 
