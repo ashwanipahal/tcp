@@ -183,7 +183,7 @@ describe('ProductSummaryVanilla', () => {
   });
 
   it('should return styled view component value one', () => {
-    expect(component.find('Styled(View)')).toHaveLength(4);
+    expect(component.find('Styled(View)')).toHaveLength(1);
   });
 
   it('should return styled LineComp component value one', () => {
@@ -191,7 +191,7 @@ describe('ProductSummaryVanilla', () => {
   });
 
   it('should return styled BodyCopy component value one', () => {
-    expect(component.find('Styled(BodyCopy)')).toHaveLength(4);
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(3);
   });
 
   it('should return styled PromotionalMessage component value one', () => {
