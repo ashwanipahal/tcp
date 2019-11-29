@@ -2,7 +2,7 @@
 
 exports[`ModuleK component renders correctly 1`] = `
 <StyledComponent
-  className="undefined moduleK"
+  className="undefined  moduleK"
   color="text.primary"
   component="div"
   fontFamily="primary"
