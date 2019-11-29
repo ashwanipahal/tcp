@@ -8,7 +8,6 @@ import {
   setWishlistState,
   setWishlistsSummariesAction,
   getSetIsWishlistReadOnlyAction,
-  getSetActiveWishlistAction,
   setActiveWishlistAction,
   getActiveWishlistAction,
   setDeletedItemAction,
@@ -89,7 +88,7 @@ export function* addItemsToWishlist({ payload }) {
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: activeWishListId || '',
-        skuIdOrProductId: skuIdOrProductId,
+        skuIdOrProductId,
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,

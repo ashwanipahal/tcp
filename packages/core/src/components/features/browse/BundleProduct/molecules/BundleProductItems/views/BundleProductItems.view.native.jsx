@@ -128,6 +128,8 @@ BundleProductItems.propTypes = {
   isKeepAliveEnabled: PropTypes.bool.isRequired,
   outOfStockLabels: PropTypes.shape({}),
   colorProductId: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.func,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 BundleProductItems.defaultProps = {
@@ -136,6 +138,8 @@ BundleProductItems.defaultProps = {
   addToBagErrorId: '',
   outOfStockLabels: {},
   colorProductId: '',
+  AddToFavoriteErrorMsg: () => {},
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default BundleProductItems;

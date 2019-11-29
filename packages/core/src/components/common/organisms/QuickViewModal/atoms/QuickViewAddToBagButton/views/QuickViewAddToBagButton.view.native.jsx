@@ -33,4 +33,7 @@ QuickViewAddToBagButton.defaultProps = {
   dataLocator: '',
 };
 
+QuickViewAddToBagButton.defaultProps = {
+  dataLocator: '',
+};
 export default QuickViewAddToBagButton;
