@@ -180,7 +180,7 @@ class InputCheckBox extends React.Component {
           {isError ? (
             <StyledErrorWrapper>
               <StyledErrorIcon>
-                <Image source={errorIcon} alt="Erro" width="16px" height="14px" />
+                <Image source={errorIcon} alt="Error" width="16px" height="14px" />
               </StyledErrorIcon>
 
               <BodyCopy
