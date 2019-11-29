@@ -11,80 +11,55 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     marginTop={10}
   />
   <Styled(View)>
-    <Styled(View)>
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins="0 0 0 0"
-        name="star-filled"
-        onPress={[Function]}
-        size="fs14"
-      />
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins="0 0 0 4px"
-        name="star-filled"
-        onPress={[Function]}
-        size="fs14"
-      />
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins="0 0 0 4px"
-        name="star-filled"
-        onPress={[Function]}
-        size="fs14"
-      />
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins="0 0 0 4px"
-        name="star-filled"
-        onPress={[Function]}
-        size="fs14"
-      />
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margins="0 0 0 4px"
-        name="star-filled"
-        onPress={[Function]}
-        size="fs14"
-      />
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator="pdp_write_review_icon"
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="regular"
-        margin="0 0 0 12px"
-        numberOfLines={null}
-        text="(0)"
-        textDecoration={null}
-      />
-    </Styled(View)>
+    <TouchableOpacity
+      accessibilityRole="link"
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Styled(View)>
+        <StarReview
+          backingColor="white"
+          count={5}
+          default={0}
+          disabled={true}
+          display={3}
+          emptyStar={
+            Object {
+              "testUri": "../../react-native-stars/example-images/starEmpty.png",
+            }
+          }
+          fullStar={
+            Object {
+              "testUri": "../../../../core/src/assets/star-new.png",
+            }
+          }
+          half={false}
+          halfStar={
+            Object {
+              "testUri": "../../react-native-stars/example-images/starHalf.png",
+            }
+          }
+          opacity={false}
+          rating={0}
+          spacing={8}
+          starSize={15}
+          update={[Function]}
+          value={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator="pdp_write_review_icon"
+          fontSize="fs12"
+          fontWeight="regular"
+          margin="0 0 0 18px"
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text="(12)"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </TouchableOpacity>
     <Styled(View)
       width="30%"
     />

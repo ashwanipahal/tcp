@@ -15,6 +15,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
         currentProduct={
           Object {
+            "bazarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -44,6 +47,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         pdpLabels={Object {}}
         productData={
           Object {
+            "bazarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -53,6 +59,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
             "shortDescription": "",
           }
         }
+        scrollToTarget={[Function]}
         selectedColorProductId=""
         showCompleteTheLook={false}
       />
@@ -62,6 +69,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         alternateSizes={Object {}}
         currentProduct={
           Object {
+            "bazarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -90,6 +100,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         outOfStockLabels={Object {}}
         productInfo={
           Object {
+            "bazarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -116,12 +129,14 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         pdpLabels={Object {}}
         shortDescription=""
       />
-      <RelatedOutfits
-        navigation={Object {}}
-        pdpLabels={Object {}}
-        selectedColorProductId=""
-        setShowCompleteTheLook={[Function]}
-      />
+      <View>
+        <RelatedOutfits
+          navigation={Object {}}
+          pdpLabels={Object {}}
+          selectedColorProductId=""
+          setShowCompleteTheLook={[Function]}
+        />
+      </View>
       <Styled(View)>
         <Connect(Recommendations)
           isHeaderAccordion={true}
@@ -140,6 +155,12 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           variation="moduleO"
         />
       </Styled(View)>
+      <View>
+        <Connect(Styled(ProductReviews))
+          expanded={true}
+          reviewsCount={3}
+        />
+      </View>
     </Styled(View)>
   </Styled(View)>
 </ScrollViewMock>

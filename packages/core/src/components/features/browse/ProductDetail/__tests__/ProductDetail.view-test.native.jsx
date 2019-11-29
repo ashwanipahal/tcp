@@ -16,6 +16,9 @@ describe('ProductDetailView component', () => {
             favoritedCount: 0,
           },
         ],
+        bazarVoice: {
+          totalReviewCount: 3,
+        },
       },
     };
     wrapper = shallow(<ProductDetailViewVanilla {...props} />);

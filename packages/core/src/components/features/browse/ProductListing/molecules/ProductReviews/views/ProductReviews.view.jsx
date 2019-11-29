@@ -61,7 +61,7 @@ class ProductReviews extends React.PureComponent {
   }
 
   captureContainerRef(ref) {
-    const { ratingsProductId, isGuest, userId, mprId } = this.props;
+    const { ratingsProductId, isGuest, userId, mprId, getSecurityToken } = this.props;
     this.containerRef = ref;
 
     const scope = 'rr';
@@ -79,28 +79,9 @@ class ProductReviews extends React.PureComponent {
       .addEventListener('DOMSubtreeModified', this.bindWriteReviewClick);
 
     if (window.$BV) {
-      // NODE: this code was taken (as is) from TCP production
+      // NOTE: this code was taken (as is) from TCP production
       if (!isGuest) {
-        // define the sharedKey
-        const sharedKey = 'Fca3yih00AVeVDFvmaDwnwlWM';
-
-        // obtain current date in the format of yyyyMMdd
-        const rightNow = new Date();
-        const res = rightNow
-          .toISOString()
-          .slice(0, 10)
-          .replace(/-/g, '');
-        const queryString = `date=${res.toString()}&userid=${userId}&MprId=${mprId}`;
-        // define unhashed security key
-        const unhashed = sharedKey.toString().concat(queryString.toString());
-
-        // obtain HEX representation of queryString
-        const hexQueryString = bin2hex(queryString);
-
-        // obtain MD5 hash of the unhashed security key
-        const hashed = md5(unhashed);
-
-        const securityToken = hashed.toString() + hexQueryString.toString();
+        const securityToken = getSecurityToken(userId, mprId);
 
         window.$BV.configure('global', {
           productId: ratingsProductId,
@@ -178,7 +159,8 @@ ProductReviews.propTypes = {
   reviewsCount: PropTypes.number,
   bazaarvoiceApiUrl: PropTypes.string,
   onLoginClick: PropTypes.func,
-  ratingsAndReviewsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  ratingsAndReviewsLabel: PropTypes.string,
+  getSecurityToken: PropTypes.func.isRequired,
 };
 
 ProductReviews.defaultProps = {

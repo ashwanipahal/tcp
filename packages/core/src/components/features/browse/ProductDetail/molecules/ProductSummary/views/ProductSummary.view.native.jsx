@@ -17,10 +17,13 @@ import {
   styles,
   EmptyView,
 } from '../styles/ProductSummary.style.native';
+import Stars from 'react-native-stars';
+import { TouchableOpacity } from 'react-native';
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import { getMapSliceForColorProductId } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { getPromotionalMessage } from '../../../../ProductListing/molecules/ProductList/utils/utility';
+import starImg from '../../../../../../../assets/star-new.png';
 
 class ProductSummary extends React.PureComponent {
   constructor(props) {
@@ -72,49 +75,39 @@ class ProductSummary extends React.PureComponent {
     return <EmptyView width="30%" />;
   };
 
-  /**
-   * @description - This method render star rating icons
-   */
-  renderStarRating = () => {
-    const arr = [1, 2, 3, 4, 5];
-    return arr.map((item, index) => {
-      const margins = index === 0 ? '0 0 0 0' : '0 0 0 4px';
-      return (
-        <CustomIcon
-          margins={margins}
-          iconFontName={ICON_FONT_CLASS.Icomoon}
-          name={ICON_NAME.starFilled}
-          size="fs14"
-          color="gray.500"
-        />
-      );
-    });
-  };
-
-  renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels, isBundleProduct } = this.props;
+  renderBazaarVoiceComponent = bazarVoice => {
+    const { pdpLabels } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
-    if (!isGiftCard) {
-      return (
-        <BazarVoiceContainer>
+    const totalRating = `(${bazarVoice.totalReviewCount})`;
+
+    return (
+      <BazarVoiceContainer>
+        <TouchableOpacity accessibilityRole="link" onPress={() => this.scrollToRatingSection()}>
           <ReviewAndRatingContainer>
-            {this.renderStarRating()}
+            <Stars
+              display={bazarVoice.avgRating}
+              spacing={8}
+              count={5}
+              starSize={15}
+              disabled
+              fullStar={starImg}
+              // emptyStar={bazarVoice.avgRating === 0 ? starEmptyImg : undefined}
+            />
             <BodyCopy
-              margin="0 0 0 12px"
+              margin="0 0 0 18px"
               dataLocator="pdp_write_review_icon"
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               color="gray.900"
-              text="(0)"
+              text={totalRating}
             />
           </ReviewAndRatingContainer>
-          {!isBundleProduct && this.renderWriteAReviewAnchor(writeAReview)}
-          {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
-        </BazarVoiceContainer>
-      );
-    }
-    return null;
+        </TouchableOpacity>
+        {this.renderWriteAReviewAnchor(writeAReview)}
+        {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
+      </BazarVoiceContainer>
+    );
   };
 
   renderPromotionalMessage = () => {
@@ -233,6 +226,10 @@ class ProductSummary extends React.PureComponent {
     return priceValue;
   };
 
+  scrollToRatingSection() {
+    this.props.scrollToTarget('rating');
+  }
+
   renderListPrice = badge2 => {
     const { productData } = this.props;
     const { listPrice, offerPrice, highListPrice } = productData;
@@ -264,7 +261,7 @@ class ProductSummary extends React.PureComponent {
   };
 
   render() {
-    const { productData, selectedColorProductId, isGiftCard } = this.props;
+    const { productData, selectedColorProductId, isGiftCard, renderRatingReview } = this.props;
 
     if (JSON.stringify(productData) !== '{}') {
       const colorFitsSizesMap = get(productData, 'colorFitsSizesMap', null);
@@ -277,11 +274,11 @@ class ProductSummary extends React.PureComponent {
       if (curentColorEntry) {
         badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
       }
-      const { name } = productData;
+      const { name, bazarVoice } = productData;
       return (
         <Container>
           <LineComp marginTop={10} borderColor="gray.500" />
-          {this.renderBazaarVoiceComponent()}
+          {renderRatingReview ? this.renderBazaarVoiceComponent(bazarVoice) : null}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {this.renderTopBadge(badge1Value)}
           {this.renderSoldOutError()}
@@ -320,6 +317,8 @@ ProductSummary.propTypes = {
   outOfStockLabels: PropTypes.shape({
     itemSoldOutMessage: PropTypes.string,
   }),
+  scrollToTarget: PropTypes.func,
+  renderRatingReview: PropTypes.bool,
 };
 
 ProductSummary.defaultProps = {
@@ -334,6 +333,8 @@ ProductSummary.defaultProps = {
   outOfStockLabels: {
     itemSoldOutMessage: '',
   },
+  scrollToTarget: () => {},
+  renderRatingReview: false,
 };
 
 export default withStyles(ProductSummary, styles);

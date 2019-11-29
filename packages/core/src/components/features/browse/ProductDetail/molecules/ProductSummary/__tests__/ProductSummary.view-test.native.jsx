@@ -8,6 +8,10 @@ describe('ProductSummaryVanilla', () => {
     isBundleProduct: false,
     showCompleteTheLook: true,
     productData: {
+      bazarVoice: {
+        totalReviewCount: 12,
+        avgRating: 3,
+      },
       ratingsProductId: '2101089',
       generalProductId: '2101089_142',
       categoryId: '47511>49007',
