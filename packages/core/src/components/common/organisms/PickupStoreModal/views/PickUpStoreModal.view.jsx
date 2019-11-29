@@ -166,6 +166,8 @@ class PickUpStoreModalView extends React.Component {
     updatePickUpCartItem: PropTypes.func.isRequired,
     initialValuesFromBagPage: PropTypes.shape({}).isRequired,
     toastMessage: PropTypes.func,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
   };
 
   static defaultProps = {
@@ -199,6 +201,8 @@ class PickUpStoreModalView extends React.Component {
       exchangevalue: 1,
     },
     toastMessage: () => {},
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {

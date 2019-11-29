@@ -19,7 +19,7 @@ import {
   BUTTON_LABEL_STATUS,
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-const getTrackingObj = (formData, productsData) => {
+const getTrackingObj = (formData, productsData, coupon) => {
   return {
     customEvents: ['event28'],
     products: productsData,
@@ -88,7 +88,7 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData, coupon)));
       yield put(trackClick('coupon applied success'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
