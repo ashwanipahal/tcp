@@ -69,6 +69,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalEnabled,
       setIsPaypalBtnHidden,
       bagLoading,
+      resetTimerStatus,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -106,6 +107,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         setIsPaypalBtnHidden={setIsPaypalBtnHidden}
         bagLoading={bagLoading}
         isPayPalEnabled={isPayPalEnabled}
+        resetTimerStatus={resetTimerStatus}
       />
     );
   }
