@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView, View } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
@@ -89,7 +88,7 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
-  onChangeSize = (color, e, fit, quantity) => {
+  onChangeSize = (color, e) => {
     this.setState({ currentGiftCardValue: e, size: e });
   };
 
@@ -152,12 +151,9 @@ class ProductDetailView extends React.PureComponent {
     }
   };
 
-  scrollPageToTarget = target => {
+  scrollPageToTarget = () => {
     this.ratingViewRef.measure((fx, fy, width, height, px, py) => {
-      // console.log(fx, fy, width, height, px, py);
-      // this.setState({ expanded: true },() =>  {
       this.scrollRef.scrollTo({ y: py, animated: true });
-      // })
     });
   };
 
@@ -402,6 +398,8 @@ ProductDetailView.propTypes = {
   toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
@@ -433,6 +431,8 @@ ProductDetailView.defaultProps = {
   toastMessage: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  bottomPromos: '',
+  middlePromos: '',
 };
 
 export default withStyles(ProductDetailView);

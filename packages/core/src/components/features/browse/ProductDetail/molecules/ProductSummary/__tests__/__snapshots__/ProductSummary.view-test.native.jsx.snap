@@ -58,6 +58,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     dataLocator="pdp_loyalty_text"
     fontSize="fs12"
     height={null}
+    isFullMessage={false}
     isPlcc={false}
     marginTop={8}
     text="<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Uniform!"

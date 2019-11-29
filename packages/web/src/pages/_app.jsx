@@ -197,7 +197,7 @@ class TCPWebApp extends App {
     };
   };
 
-  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     const initialProps = pageProps;
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases

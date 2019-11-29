@@ -8,7 +8,6 @@ import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
