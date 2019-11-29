@@ -8,7 +8,6 @@ import {
   addGiftCard,
 } from '../../../../../../../services/abstractors/CnC';
 import { getCartDataSaga } from '../../../../BagPage/container/BagPage.saga';
-import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import {
   setGiftCardError,

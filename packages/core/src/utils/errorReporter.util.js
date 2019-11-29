@@ -57,7 +57,7 @@ const initErrorReporter = config => {
   }
   if (isNodeServer) {
     initServerErrorReporter(envId, raygunApiKey);
-  } else if (!isNodeServer) {
+  } else {
     initWebClientErrorReporter(envId, raygunApiKey, channelId, rg4js);
   }
   return getRaygunInstance();

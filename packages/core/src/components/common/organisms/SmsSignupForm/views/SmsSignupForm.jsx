@@ -100,7 +100,6 @@ class SmsSignupForm extends React.PureComponent {
       submitting,
       pristine,
       handleSubmit,
-      imageData,
       noModal,
     } = this.props;
     const { left, right } = noModal ? config.pageColProps : config.modalColProps;

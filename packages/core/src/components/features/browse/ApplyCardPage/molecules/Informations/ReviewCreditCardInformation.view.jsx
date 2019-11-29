@@ -21,7 +21,7 @@ const ReviewCreditCardInformation = ({ isPLCCModalFlow = false, creditCardHeader
         <BodyCopy
           component="div"
           className="header-image"
-          tabIndex="0"
+          aria-hidden
           isPLCCModalFlow={isPLCCModalFlow}
         />
       </Col>
