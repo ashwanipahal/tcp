@@ -5,7 +5,6 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
@@ -407,12 +406,15 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard, generalProductId, pdpUrl },
+        productInfo: { bundleProduct, generalProductId, pdpUrl },
       },
       removeFavItem,
       isFavoriteView,
       isShowQuickView,
       AddToFavoriteErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     const { errorProductId } = this.state;
     const fulfilmentSection =
@@ -431,7 +433,6 @@ class ProductsGridItem extends React.PureComponent {
         .trim()
         .toLowerCase()}`;
     }
-    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -449,11 +450,11 @@ class ProductsGridItem extends React.PureComponent {
         <ClickTracker
           clickData={{
             eventName: 'cart add',
-            pageType: 'product',
-            pageSection: 'product',
-            pageSubSection: 'product',
+            pageType: pageNameProp,
+            pageSection: pageSectionProp,
+            pageSubSection: pageSubSectionProp,
             pageShortName,
-            pageName,
+            pageName: pageNameProp,
             products: [{ id: `${productId}` }],
           }}
         >

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
 import Modal from '../../../../Modal';
 import withStyles from '../../../../../hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
 import ApplyNowPLCCModal from '../../ApplyNowPLCCModal/views/ApplyNowPLCCModal';
-import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
@@ -270,6 +270,7 @@ StyledApplyNowModal.propTypes = {
     apply_now_rewardTerms: PropTypes.string.isRequired,
     oneequalstwopointsoffer: PropTypes.bool.isRequired,
   }).isRequired,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default withStyles(StyledApplyNowModal, styles);

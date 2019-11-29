@@ -10,7 +10,6 @@ describe('Shipping Page', () => {
       addressLine1: 'pob',
       addressLine2: '',
     };
-    const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
       addressLabels: {},
