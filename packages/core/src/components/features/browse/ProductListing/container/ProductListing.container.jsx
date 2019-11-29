@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
@@ -394,6 +395,7 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
@@ -436,6 +438,7 @@ ProductListingContainer.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isPlcc: false,
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({
