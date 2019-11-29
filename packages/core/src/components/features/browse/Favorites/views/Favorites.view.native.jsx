@@ -462,7 +462,9 @@ class FavoritesView extends React.PureComponent {
           this.handleMoveToList(itemValue, itemId);
         }}
         variation="secondary"
+        // eslint-disable-next-line react-native/no-inline-styles
         dropDownStyle={{ ...dropDownStyle, height: 36 }}
+        // eslint-disable-next-line react-native/no-inline-styles
         itemStyle={{ ...itemStyle, height: 36 }}
         renderHeader={() => this.renderHeader('16px 0 0 12px')}
         renderFooter={closeDropDown => this.renderFooter(closeDropDown, true)}

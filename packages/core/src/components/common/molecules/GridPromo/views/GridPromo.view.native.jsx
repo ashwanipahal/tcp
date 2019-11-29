@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
-import { Button, BodyCopy } from '../../../atoms';
+import { BodyCopy } from '../../../atoms';
 
 const getSeparatorText = textItems => {
   const headingLine = textItems && textItems[0] && textItems[0].text;
@@ -26,6 +26,7 @@ const GridPromo = props => {
         source={{
           uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
         }}
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           width: '100%',
         }}
@@ -50,6 +51,7 @@ const GridPromo = props => {
       source={{
         uri: `https://test1.theplace.com/image/upload${mediaWrapper[0] && mediaWrapper[0].url}`,
       }}
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         width: '100%',
         flex: 1,
