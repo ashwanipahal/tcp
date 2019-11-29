@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { viewport } from '@tcp/core/src/utils';
 import { PersonalizedCoupon } from '../PersonalizedCoupon.view.native';
 
 let props = {};
@@ -34,11 +33,6 @@ describe('PersonalizedCoupon View', () => {
       },
     };
   });
-
-  const testFilledState = () => {
-    const tree = shallow(<PersonalizedCoupon {...props} />);
-    expect(tree).toMatchSnapshot();
-  };
 
   it('should render correctly', () => {
     const tree = shallow(<PersonalizedCoupon {...props} />);

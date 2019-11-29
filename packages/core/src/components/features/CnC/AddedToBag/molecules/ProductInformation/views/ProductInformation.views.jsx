@@ -13,10 +13,9 @@ import ProductInformationStyle from '../styles/ProductInformation.style';
 type Props = {
   data: Object,
   labels: any,
-  quantity: String,
   inheritedStyles: Object,
 };
-const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) => {
+const ProductInformation = ({ data, labels, inheritedStyles }: Props) => {
   return (
     <ProductInformationStyle inheritedStyles={inheritedStyles}>
       <Row tagName="ul" className="product">

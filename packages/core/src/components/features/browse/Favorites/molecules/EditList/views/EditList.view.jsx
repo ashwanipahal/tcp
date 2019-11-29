@@ -179,11 +179,15 @@ EditList.propTypes = {
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  onDeleteList: PropTypes.func,
+  isCheckBoxDisabled: PropTypes.bool,
 };
 EditList.defaultProps = {
   labels: {},
   className: '',
   handleSubmit: () => {},
+  onDeleteList: () => {},
+  isCheckBoxDisabled: false,
 };
 
 export default reduxForm({
