@@ -57,6 +57,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "signup": "",
           }
         }
+        isNavigationFooter={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {
@@ -169,6 +170,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "isTextOptInSecondBrand": false,
           }
         }
+        isNavigationFooter={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {
