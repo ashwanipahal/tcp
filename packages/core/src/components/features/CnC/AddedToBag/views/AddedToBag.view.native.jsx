@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
@@ -191,5 +192,5 @@ AddedToBag.defaultProps = {
   navigation: null,
 };
 
-export default AddedToBag;
+export default gestureHandlerRootHOC(AddedToBag);
 export { AddedToBag as AddedToBagVanilla };

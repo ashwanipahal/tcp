@@ -146,5 +146,5 @@ PayPalButton.defaultProps = {
   fullWidth: false,
 };
 
-export default gestureHandlerRootHOC(PayPalButton);
+export default PayPalButton;
 export { PayPalButton as PayPalButtonVanilla };

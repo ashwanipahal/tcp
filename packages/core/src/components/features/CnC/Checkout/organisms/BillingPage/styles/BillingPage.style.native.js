@@ -3,16 +3,16 @@ import styled from 'styled-components/native';
 const applyPositionClassStyle = props => {
   if (props.isPayPalWebViewEnable) {
     return `
-    top: 0px;
-    position: absolute;
+    top:0px;
+    position:absolute;
     padding:0px;
     margin:0px;
-    zIndex:999;
-    bottom: 0;
+    zIndex:990;
+    height:100%;
     width:100%;
     `;
   }
-  return 'position: relative;';
+  return null;
 };
 
 const Container = styled.View`
