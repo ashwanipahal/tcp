@@ -840,7 +840,7 @@ export const parseUTCDate = dateString => {
  * @param {Array} intervals The store hours array
  * @param {Date} currentDate The current date to be checked against
  */
-export const getCurrentStoreHours = (intervals = [], currentDate) => {
+export const getCurrentStoreHours = (intervals = [], currentDate = new Date()) => {
   let selectedInterval = intervals.filter(hour => {
     const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
     const parsedDate = new Date(parseUTCDate(toInterval));
@@ -1171,6 +1171,14 @@ export const validateDiffInDaysNotification = (
   return false;
 };
 
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+export const convertNumToBool = val => {
+  return !!parseInt(val, 10);
+};
+
 export default {
   getVideoUrl,
   getOrderStatusForNotification,
@@ -1221,4 +1229,5 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
+  convertNumToBool,
 };

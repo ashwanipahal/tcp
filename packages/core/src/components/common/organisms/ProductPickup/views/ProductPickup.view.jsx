@@ -264,6 +264,11 @@ class ProductPickup extends React.PureComponent {
     }
   };
 
+  showFindInStore = () => {
+    const { userDefaultStore, showPickupInfo, isSkuResolved } = this.props;
+    return showPickupInfo && userDefaultStore && isSkuResolved;
+  };
+
   /**
    * @method handleChangeStoreOnKeyPress
    * handles the change store modal when Enter key is pressed post tabbing on the link
@@ -550,7 +555,7 @@ class ProductPickup extends React.PureComponent {
                     disabled={keepAlive || isSubmitting}
                     onClick={this.handlePickupModalClick}
                   >
-                    {showPickupInfo
+                    {this.showFindInStore()
                       ? labels.lbl_Product_pickup_PICKUP_IN_STORE
                       : labels.lbl_Product_pickup_FIND_STORE}
                   </Button>
