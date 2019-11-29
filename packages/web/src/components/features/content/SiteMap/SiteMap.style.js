@@ -3,7 +3,17 @@ import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   .siteMap_heading-container {
-    margin: 0 auto ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.MED} auto
+      ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: ${props => props.theme.spacing.ELEM_SPACING.MED} auto
+        ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    }
   }
   .siteMap_heading {
     text-transform: uppercase;
@@ -18,7 +28,15 @@ export default css`
   ol {
     margin: 0;
     padding: 0;
-    width: 33%;
+    width: 100%;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 50%;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 33%;
+    }
 
     h4 {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.SM};

@@ -17,23 +17,23 @@ class SiteMap extends React.PureComponent {
     const { categories, content } = siteMapData;
     return (
       <Row className={`${className} siteMap`}>
+        <div className="siteMap_heading-container">
+          <BodyCopy
+            component="h3"
+            className="siteMap_heading"
+            fontWeight="semibold"
+            fontSize={['fs16', 'fs24']}
+            textAlign="center"
+            letterSpacing="normal"
+          >
+            {content}
+          </BodyCopy>
+        </div>
         <Col
-          colSize={{ small: 6, medium: 8, large: 10 }}
-          offsetLeft={{ large: 1 }}
-          offsetRight={{ large: 1 }}
+          colSize={{ small: 4, medium: 6, large: 10 }}
+          offsetLeft={{ small: 1, medium: 1, large: 1 }}
+          offsetRight={{ small: 1, medium: 1, large: 1 }}
         >
-          <div className="siteMap_heading-container">
-            <BodyCopy
-              component="h3"
-              className="siteMap_heading"
-              fontWeight="semibold"
-              fontSize="fs24"
-              textAlign="center"
-              letterSpacing="normal"
-            >
-              {content}
-            </BodyCopy>
-          </div>
           <div className="categories_container">
             {categories &&
               categories.map(({ name, href, category }) => {
