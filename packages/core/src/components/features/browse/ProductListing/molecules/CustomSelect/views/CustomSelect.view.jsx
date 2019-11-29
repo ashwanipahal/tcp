@@ -343,12 +343,26 @@ class CustomSelect extends React.Component {
     }
   }
 
+  setItemValue(onFilterSelection, clickedItemValue, onOptionSelected, onSortSelection) {
+    const { isFavoriteView } = this.props;
+    if (onFilterSelection) {
+      onFilterSelection(clickedItemValue);
+    }
+    if (!isFavoriteView && onOptionSelected) {
+      onOptionSelected(true);
+    } else if (onSortSelection) {
+      onSortSelection(clickedItemValue);
+    }
+    this.setValue(clickedItemValue);
+  }
+
   // handles mouse clicks on items in the dropdown
   handleItemClick(event, clickedItemIndex) {
     const {
       optionsMap,
       allowMultipleSelections,
       input: { value },
+      onFilterSelection,
       onOptionSelected,
       onSortSelection,
     } = this.props;
@@ -359,19 +373,14 @@ class CustomSelect extends React.Component {
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
       const clickedItemValue = optionsMap[clickedItemIndex].value; // value of clicked on item
       const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
-      if (allowMultipleSelections && selectedIndex[clickedItemIndex]) {
+      if (allowMultipleSelections && selectedIndex[clickedItemIndex] && !onFilterSelection) {
         this.unsetValue(clickedItemValue); // remove clickedItemValue from this component's selcted values list
         if (onOptionSelected) {
           onOptionSelected(true);
         }
       } else {
         // set the value (or add to the value if multiple selections is on) of this component to clickedItemValue
-        if (onOptionSelected) {
-          onOptionSelected(true);
-        } else if (onSortSelection) {
-          onSortSelection(clickedItemValue);
-        }
-        this.setValue(clickedItemValue);
+        this.setItemValue(onFilterSelection, clickedItemValue, onOptionSelected, onSortSelection);
       }
     }
   }

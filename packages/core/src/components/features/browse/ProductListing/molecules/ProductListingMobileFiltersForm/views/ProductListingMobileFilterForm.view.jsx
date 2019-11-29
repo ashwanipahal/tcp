@@ -267,6 +267,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         onFilterSelection={onFilterSelection}
         onOptionSelected={handleSubmitOnChange}
         isLoadingMore={isLoadingMore}
+        isFavoriteView={isFavoriteView}
       />
     );
   };
