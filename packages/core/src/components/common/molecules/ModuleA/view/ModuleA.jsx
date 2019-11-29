@@ -62,6 +62,7 @@ class ModuleA extends React.Component {
 
     return ribbonAlignedClass;
   };
+
   render() {
     const {
       largeCompImageCarousel,

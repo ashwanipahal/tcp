@@ -45,14 +45,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
         onError={venmoErrorMessage =>
           handleCartCheckout({
             isVenmoProgress: false,
-            venmoErrorMessage: venmoErrorMessage,
+            venmoErrorMessage,
           })
         }
       />
     );
   };
 
-  getPaypalButton = (addWrapper, fullWidth) => {
+  getPaypalButton = addWrapper => {
     const {
       getPayPalSettings,
       payPalTop,
@@ -79,23 +79,21 @@ class AddedToBagActions extends React.PureComponent<Props> {
             />
           </PaypalPaymentsButtonWrapper>
         );
-      } else {
-        return (
-          <PayPalButton
-            getPayPalSettings={getPayPalSettings}
-            navigation={navigation}
-            setVenmoState={() => {
-              if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
-            }}
-            closeModal={this.closeModal}
-            top={payPalTop}
-            fullWidth
-          />
-        );
       }
-    } else {
-      return null;
+      return (
+        <PayPalButton
+          getPayPalSettings={getPayPalSettings}
+          navigation={navigation}
+          setVenmoState={() => {
+            if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+          }}
+          closeModal={this.closeModal}
+          top={payPalTop}
+          fullWidth
+        />
+      );
     }
+    return null;
   };
 
   /**
@@ -212,9 +210,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </ButtonWrapper>
         </ButtonViewWrapper>
       );
-    } else {
-      return null;
     }
+    return null;
   };
 
   render() {
