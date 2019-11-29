@@ -6,6 +6,7 @@ describe('ProductListItem component', () => {
   let component;
   const props = {
     isFavorite: true,
+    selectedColorIndex: 0,
     item: {
       colorsMap: [
         {
@@ -21,9 +22,11 @@ describe('ProductListItem component', () => {
       productInfo: {
         name: 'tcp',
         pdpUrl: '',
+        keepAlive: true,
       },
       miscInfo: {
         isInDefaultWishlist: '',
+        keepAlive: true,
       },
       quantityPurchased: 1,
       itemInfo: {
@@ -47,6 +50,13 @@ describe('ProductListItem component', () => {
     renderPriceOnly: false,
     productImageWidth: false,
     isDataLoading: false,
+    keepAlive: false,
+    isLoggedIn: false,
+    labelsPlpTiles: {},
+    isKeepAliveEnabled: false,
+    outOfStockLabels: {},
+    renderMoveToList: () => {},
+    onSeeSuggestedItems: () => {},
   };
   beforeEach(() => {
     component = shallow(<ListItemVanilla {...props} />);
@@ -94,5 +104,17 @@ describe('ProductListItem component', () => {
 
   it('should return RenderMoveToListOrSeeSuggestedList component value one', () => {
     expect(component.find('RenderMoveToListOrSeeSuggestedList')).toHaveLength(1);
+  });
+
+  it('should return Styled(Anchor) component value one', () => {
+    expect(component.find('Styled(Anchor)')).toHaveLength(1);
+  });
+
+  it('should return Styled(CustomButton) component value one', () => {
+    expect(component.find('Styled(CustomButton)')).toHaveLength(1);
+  });
+
+  it('should return RenderDismissLink component value one', () => {
+    expect(component.find('RenderDismissLink')).toHaveLength(1);
   });
 });

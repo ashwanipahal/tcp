@@ -11,12 +11,14 @@ import {
   styles,
   PageContainer,
   HeaderContainer,
+  RecommendationContainer,
   GridPromoContainer,
 } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
+import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import GridPromo from '../../../../../../common/molecules/GridPromo';
 
 class ProductList extends React.PureComponent {
@@ -129,6 +131,27 @@ class ProductList extends React.PureComponent {
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
+  checkAndRenderSuggestedItem = item => {
+    const { seeSuggestedDictionary } = this.props;
+    const suggestedItem = {
+      status: false,
+      attributes: null,
+    };
+    const skuInfoColorProductId = get(item, 'skuInfo.colorProductId', null);
+    const outOfStockProduct =
+      skuInfoColorProductId &&
+      seeSuggestedDictionary &&
+      seeSuggestedDictionary[skuInfoColorProductId];
+    const outOfStockColorProductId = outOfStockProduct && outOfStockProduct.colorProductId;
+    const suggestedAttributes = outOfStockProduct && outOfStockProduct.attributes;
+
+    if (outOfStockColorProductId && outOfStockColorProductId === skuInfoColorProductId) {
+      suggestedItem.status = true;
+      suggestedItem.attributes = suggestedAttributes;
+    }
+    return suggestedItem;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -147,8 +170,17 @@ class ProductList extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       renderMoveToList,
+      onSeeSuggestedItems,
     } = this.props;
     const { item } = itemData;
+    const suggestedItem = this.checkAndRenderSuggestedItem(item);
+    if (suggestedItem.status) {
+      return (
+        <RecommendationContainer>
+          <Recommendations {...suggestedItem.attributes} />
+        </RecommendationContainer>
+      );
+    }
 
     if (item.itemType === 'gridPromo') {
       const variation = item.gridStyle;
@@ -197,6 +229,7 @@ class ProductList extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         renderMoveToList={renderMoveToList}
+        onSeeSuggestedItems={onSeeSuggestedItems}
       />
     );
   };
@@ -372,6 +405,9 @@ ProductList.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
+  onSeeSuggestedItems: PropTypes.func,
+  seeSuggestedDictionary: PropTypes.shape({}),
+  isSuggestedItem: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -408,6 +444,9 @@ ProductList.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   renderMoveToList: () => {},
+  onSeeSuggestedItems: () => {},
+  seeSuggestedDictionary: null,
+  isSuggestedItem: false,
 };
 
 export default withStyles(ProductList, styles);

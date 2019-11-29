@@ -68,6 +68,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               },
             }
           }
+          resetTimerStatus={[Function]}
           showAddTobag={true}
         />
         <Styled(BossBanner)

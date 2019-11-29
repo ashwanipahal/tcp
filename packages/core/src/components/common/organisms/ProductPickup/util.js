@@ -62,7 +62,7 @@ function validateBossEligibility({ isBossClearanceProductEnabled, isBossEnabled,
   const bossEligibility = isBossEnabled && miscInfo.isBossEligible;
   // adding this check as productDynamicAbstractor and cartDynamicAbstractor return
   // different keys for clearance item identification
-  return miscInfo.isClearance || miscInfo.clearanceItem
+  return miscInfo && (miscInfo.isClearance || miscInfo.clearanceItem)
     ? isBossClearanceProductEnabled && bossEligibility
     : bossEligibility;
 }
@@ -81,7 +81,7 @@ function validateBossEligibility({ isBossClearanceProductEnabled, isBossEnabled,
 function validateBopisEligibility({ isBopisClearanceProductEnabled, isBopisEnabled, miscInfo }) {
   const bopisEligibility = isBopisEnabled && miscInfo.isBopisEligible;
   // productDynamicAbstractor and cartDynamicAbstractor return different keys for clearance item
-  return miscInfo.isClearance || miscInfo.clearanceItem
+  return miscInfo && (miscInfo.isClearance || miscInfo.clearanceItem)
     ? isBopisClearanceProductEnabled && bopisEligibility
     : bopisEligibility;
 }
