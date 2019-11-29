@@ -179,6 +179,8 @@ OutfitDetailsView.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -198,6 +200,8 @@ OutfitDetailsView.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  asPathVal: '',
+  topPromos: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

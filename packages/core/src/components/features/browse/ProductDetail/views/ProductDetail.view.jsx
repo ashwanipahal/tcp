@@ -64,6 +64,7 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
+
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -441,6 +442,10 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
@@ -463,6 +468,10 @@ ProductDetailView.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   sizeChartDetails: [],
+  asPathVal: '',
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
