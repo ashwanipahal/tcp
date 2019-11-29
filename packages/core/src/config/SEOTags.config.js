@@ -52,6 +52,10 @@ const SEO_CONFIG = {
       description:
         "Check out The Children's Place CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices",
     },
+    OTHER: {
+      title: " | The Children's Place",
+      description: '',
+    },
   },
   GYM: {
     twitter: {
@@ -79,6 +83,10 @@ const SEO_CONFIG = {
       description:
         "Check out The gymboree's Place CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices",
     },
+    OTHER: {
+      title: " | The Gymboree's Place",
+      description: '',
+    },
   },
 };
 
@@ -90,16 +98,22 @@ function getBrandDetails() {
   let BRAND_TWITTER_SITE_TAG;
   let BRAND_TWITTER_SITE_CARD_TYPE;
   let BRAND_NAME;
+  let BRAND_DEFAULT_TITLE_VAL;
+  let BRAND_DEFAULT_DESCRIPTION_VAL;
   if (brand === 'TCP') {
     BRAND_NAME = brand;
     BRAND_BASE_URL = TCP_BASE_URL;
     BRAND_TWITTER_SITE_TAG = TCP_TWITTER_SITE_TAG;
     BRAND_TWITTER_SITE_CARD_TYPE = TCP_TWITTER_SITE_CARD_TYPE;
+    BRAND_DEFAULT_TITLE_VAL = SEO_CONFIG.TCP.OTHER.title;
+    BRAND_DEFAULT_DESCRIPTION_VAL = SEO_CONFIG.TCP.OTHER.description;
   } else {
     BRAND_NAME = brand;
     BRAND_BASE_URL = GYM_BASE_URL;
     BRAND_TWITTER_SITE_TAG = GYM_TWITTER_SITE_TAG;
     BRAND_TWITTER_SITE_CARD_TYPE = GYM_TWITTER_SITE_CARD_TYPE;
+    BRAND_DEFAULT_TITLE_VAL = SEO_CONFIG.GYM.OTHER.title;
+    BRAND_DEFAULT_DESCRIPTION_VAL = SEO_CONFIG.GYM.OTHER.description;
   }
 
   return {
@@ -107,6 +121,8 @@ function getBrandDetails() {
     BRAND_BASE_URL,
     BRAND_TWITTER_SITE_TAG,
     BRAND_TWITTER_SITE_CARD_TYPE,
+    BRAND_DEFAULT_TITLE_VAL,
+    BRAND_DEFAULT_DESCRIPTION_VAL,
   };
 }
 
@@ -139,17 +155,21 @@ const getMetaSEOTags = ({
   ],
 });
 
-export const getSeoConfig = (getSeoMap, categoryKey) => {
+export const getPlpSeoConfig = (getSeoMap, categoryKey, cid) => {
   const brandDetails = getBrandDetails();
 
   const seoTitlesMap = [];
   const seoDescMap = [];
+
   getSeoMap.forEach(item => {
-    if (item.seoTitle) {
-      seoTitlesMap.push(item.seoTitle);
-    }
-    if (item.seoMetaDesc) {
-      seoDescMap.push(item.seoMetaDesc);
+    const searchCid = item.url.search(cid);
+    if (searchCid !== -1) {
+      if (item.seoTitle) {
+        seoTitlesMap.push(item.seoTitle);
+      }
+      if (item.seoMetaDesc) {
+        seoDescMap.push(item.seoMetaDesc);
+      }
     }
   });
 
@@ -226,12 +246,24 @@ function getPlpSEOTags(store, router, categoryKey) {
 }
 
 export const getPdpSEOTags = (productInfo, router, categoryKey) => {
+  const brandDetails = getBrandDetails();
+
+  const hrefLangs = urlConfig({
+    brand: brandDetails.BRAND_NAME,
+    path: categoryKey,
+    withCountry: true,
+  });
+  const twitter = {
+    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
+    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
+  };
+
+  const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
+
   if (productInfo && productInfo.name) {
     const productName = productInfo.name;
     const longProductTitle = productInfo.long_product_title;
     const productLongDescription = productInfo.product_long_description;
-
-    const brandDetails = getBrandDetails();
 
     let title;
     let description;
@@ -254,17 +286,6 @@ export const getPdpSEOTags = (productInfo, router, categoryKey) => {
       description,
     };
 
-    const hrefLangs = urlConfig({
-      brand: brandDetails.BRAND_NAME,
-      path: categoryKey,
-      withCountry: true,
-    });
-    const twitter = {
-      cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
-      site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
-    };
-
-    const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
     return getMetaSEOTags({
       title,
       description,
@@ -287,8 +308,9 @@ export const deriveSEOTags = (pageId, store, router) => {
   }
   if (pageId === PAGES.PRODUCT_LISTING_PAGE) {
     const categoryKey = router.asPath;
+    const { cid } = router.query;
     const getSeoMap = getPlpSEOTags(store, router, categoryKey);
-    return getSeoConfig(getSeoMap, categoryKey);
+    return getPlpSeoConfig(getSeoMap, categoryKey, cid);
   }
   if (pageId === PAGES.SEARCH_PAGE || pageId === PAGES.OUTFIT) {
     const categoryKey = `/${pageId}`;
