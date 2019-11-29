@@ -108,7 +108,6 @@ class ProductBasicInfo extends React.Component {
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
-      AddToFavoriteErrorMsgID,
     } = this.props;
     const { errorProductId } = this.state;
     const isFavorite =
@@ -193,8 +192,9 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
-  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageName: PropTypes.string,
+  skuId: PropTypes.string,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -211,7 +211,8 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
-  AddToFavoriteErrorMsgID: '',
+  pageName: '',
+  skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
 };
 

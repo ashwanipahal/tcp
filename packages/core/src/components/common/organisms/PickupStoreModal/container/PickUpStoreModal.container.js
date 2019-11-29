@@ -4,6 +4,7 @@ import {
   PRODUCT_SKU_SELECTION_FORM,
 } from '@tcp/core/src/constants/reducer.constants';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { setDefaultStore } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
 import * as sessionSelectors from '../../../../../reduxStore/selectors/session.selectors';
@@ -21,6 +22,11 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+import {
+  setFavoriteStoreActn,
+  getFavoriteStoreActn,
+} from '../../../../features/storeLocator/StoreLanding/container/StoreLanding.actions';
+
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
@@ -47,6 +53,15 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
     },
+    setFavoriteStore: payload => {
+      dispatch(setFavoriteStoreActn(payload));
+    },
+    getFavoriteStore: payload => {
+      dispatch(getFavoriteStoreActn(payload));
+    },
+    getDefaultStore: payload => {
+      dispatch(setDefaultStore(payload));
+    },
   };
 };
 
@@ -56,16 +71,28 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess, navigation } = ownProps;
+  const {
+    isShowAddItemSuccessNotification,
+    onSubmit,
+    onSubmitSuccess,
+    navigation,
+    reduxFormName,
+    isNotProductAddToBag,
+  } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
 
   const currentProduct = PickupSelectors.getCurrentProduct(state);
   const generalProductId = currentProduct && currentProduct.generalProductId;
-  const atbProductFormId = `${PRODUCT_ADD_TO_BAG}-${generalProductId}`;
+  const atbProductFormId = !isNotProductAddToBag
+    ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+    : `${reduxFormName}-${generalProductId}`;
   const initialValueFromQuickView = {
     ...PickupSelectors.getInitialValues(state, atbProductFormId),
   }; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
-  const itemValues = { showDefaultSizeMsg: false, formValues: initialValueFromQuickView };
+  const itemValues = {
+    showDefaultSizeMsg: false,
+    formValues: initialValueFromQuickView,
+  };
   const { colorFitSizeDisplayNames = null } = currentProduct;
   const isPickupModalOpen = PickupSelectors.getIsPickupModalOpen(state);
   const isBopisCtaEnabled = PickupSelectors.getIsBopisCtaEnabled(state);
@@ -74,7 +101,9 @@ const mapStateToProps = (state, ownProps) => {
   const openSkuSelectionForm = PickupSelectors.getOpenSkuSelectionForm(state);
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
-  const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
+  const PickupSkuFormValues = {
+    ...PickupSelectors.getInitialValues(state, pickupSkuFormId),
+  };
   const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
   const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
   const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);

@@ -15,7 +15,7 @@ export const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
   return (
     <BodyCopy component="div" className={className}>
       <TextBox maxLength="16" {...otherProps} />
-      {cardType && <Image src={getCardTypeImgUrl(cardType)} alt={cardType} />}
+      {cardType && <Image src={getCardTypeImgUrl(cardType)} alt={cardType} role="img" />}
     </BodyCopy>
   );
 };

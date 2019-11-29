@@ -81,7 +81,7 @@ class StoreAddressTile extends PureComponent {
         <ListingTileWrapper>
           <ListingTitleText>{`(${getStoreHours(hours, labels, currentDate)})`}</ListingTitleText>
           <ListingTitleText>
-            {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
+            {distance && `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
           </ListingTitleText>
           <ListingTitleLink
             onPress={openStoreDirections}

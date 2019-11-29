@@ -37,6 +37,11 @@ describe('FavoritesViewVanilla', () => {
     userEmail: '',
     sendWishListEmail: jest.fn(),
     resetBrandFilters: jest.fn(),
+    createNewWishListMoveItem: jest.fn(),
+    isLoggedIn: jest.fn(),
+    onLoadRecommendations: jest.fn(),
+    onReplaceWishlistItem: jest.fn(),
+    errorMessages: {},
   };
 
   beforeEach(() => {

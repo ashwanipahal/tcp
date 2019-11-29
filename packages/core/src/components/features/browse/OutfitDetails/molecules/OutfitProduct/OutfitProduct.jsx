@@ -119,7 +119,7 @@ const OutfitDetailsView = ({
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   const keepAlive = isKeepAliveEnabled && colorProduct.miscInfo.keepAlive;
 
-  const onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
+  const onChangeColor = e => {
     colorProduct = getMapSliceForColor(colorFitsSizesMap, e);
   };
 
@@ -242,7 +242,7 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
-  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
@@ -263,6 +263,7 @@ OutfitDetailsView.defaultProps = {
   addToBagError: false,
   isLoggedIn: false,
   isBundleProduct: false,
+  isKeepAliveEnabled: false,
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},

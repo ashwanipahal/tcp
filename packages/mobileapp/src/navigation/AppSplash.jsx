@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Animated, Easing, View, Platform } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
 
@@ -152,5 +153,9 @@ class AppSplash extends React.PureComponent {
     );
   }
 }
+
+AppSplash.propTypes = {
+  removeSplash: PropTypes.func.isRequired,
+};
 
 export default AppSplash;

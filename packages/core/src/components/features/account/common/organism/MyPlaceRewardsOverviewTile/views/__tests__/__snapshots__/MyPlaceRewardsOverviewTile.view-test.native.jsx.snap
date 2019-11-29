@@ -15,7 +15,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     textDecoration={null}
   />
   <Styled(LineComp)
-    borderColor="gray"
+    borderColor=""
     borderWidth={0.5}
     marginBottom={20}
     marginLeft={0}
@@ -62,7 +62,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     </Styled(View)>
   </View>
   <Styled(LineComp)
-    borderColor="gray"
+    borderColor=""
     borderWidth={0.5}
     marginBottom={20}
     marginLeft={0}
@@ -113,7 +113,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     textDecoration={null}
   />
   <Styled(LineComp)
-    borderColor="gray"
+    borderColor=""
     borderWidth={0.5}
     marginBottom={20}
     marginLeft={0}
@@ -153,7 +153,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     </Styled(View)>
   </Styled(View)>
   <Styled(LineComp)
-    borderColor="gray"
+    borderColor=""
     borderWidth={0.5}
     marginBottom={20}
     marginLeft={0}
