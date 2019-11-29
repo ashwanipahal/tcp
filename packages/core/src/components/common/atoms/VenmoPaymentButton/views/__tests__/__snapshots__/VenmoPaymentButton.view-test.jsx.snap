@@ -13,7 +13,7 @@ exports[`Venmo Payment Button should render Venmo Button correctly 1`] = `
       <Styled(Image)
         alt="Venmo Payment Button"
         className="venmo-button-image"
-        src="/static/images/venmo_logo_blue.png"
+        src="/static/version-not-available/images/venmo_logo_blue.png"
       />
     </button>
   </div>
@@ -37,7 +37,7 @@ exports[`Venmo Payment Button should render blue venmo button correctly 1`] = `
       <Styled(Image)
         alt="Venmo Payment Button"
         className="venmo-button-image"
-        src="/static/images/venmo_white_logo.svg"
+        src="/static/version-not-available/images/venmo_white_logo.svg"
       />
     </button>
   </div>
@@ -61,7 +61,7 @@ exports[`Venmo Payment Button should render correctly 1`] = `
       <Styled(Image)
         alt="Venmo Payment Button"
         className="venmo-button-image"
-        src="/static/images/venmo_logo_blue.png"
+        src="/static/version-not-available/images/venmo_logo_blue.png"
       />
     </button>
   </div>
@@ -99,7 +99,7 @@ exports[`Venmo Payment Button should render with continueWithText correctly 1`] 
       <Styled(Image)
         alt="Venmo Payment Button"
         className="venmo-button-image"
-        src="/static/images/venmo_logo_blue.png"
+        src="/static/version-not-available/images/venmo_logo_blue.png"
       />
     </button>
   </div>

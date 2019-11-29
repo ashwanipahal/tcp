@@ -1,7 +1,7 @@
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import OUTFIT_DETAILS_CONSTANTS from './OutfitDetails.constants';
-import { setCurrentOutfitAction } from './OutfitDetails.actions';
+import { setCurrentOutfitAction, setLoadingState } from './OutfitDetails.actions';
 import getOutfitProdutsDetails from '../../../../../services/abstractors/productListing/outfitDetails';
 import logger from '../../../../../utils/loggerInstance';
 import { layoutResolver } from '../../../../../services/abstractors/productListing/productDetail';
@@ -11,6 +11,7 @@ function* loadOutfitDetails({ payload: { outfitId, vendorColorProductIdsList } }
     const pageName = 'pdp';
     const state = yield select();
     const navigationTree = state.Navigation.navigationData;
+    yield put(setLoadingState({ isLoading: true }));
     const res = yield call(getOutfitProdutsDetails, {
       outfitId,
       vendorColorProductIdsList,
@@ -25,8 +26,10 @@ function* loadOutfitDetails({ payload: { outfitId, vendorColorProductIdsList } }
       yield put(loadModulesData(modules));
     }
     yield put(setCurrentOutfitAction({ ...res }));
+    yield put(setLoadingState({ isLoading: false }));
   } catch (err) {
     logger.error('error: ', err);
+    yield put(setLoadingState({ isLoading: false }));
   }
 }
 

@@ -79,7 +79,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         <ProductPickupContainer
           productInfo={currentProduct}
           formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-          miscInfo={currentColorEntry.miscInfo}
+          miscInfo={currentColorEntry && currentColorEntry.miscInfo}
           isOutfitVariant
           keepAlive={keepAlive}
         />
@@ -177,7 +177,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         isAnchor
         sizeUnavailable={sizeUnavailable}
         onPickupClickAddon={onCloseClick}
-        miscInfo={currentColorEntry.miscInfo}
+        miscInfo={currentColorEntry && currentColorEntry.miscInfo}
         keepAlive={keepAlive}
       />
     ) : null;
@@ -190,12 +190,16 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectSize,
       isDisableZeroInventoryEntries,
       keepAlive,
+      sizeChartDetails,
     } = this.props;
+
     return (
       sizeList &&
       sizeList.size > 0 && (
         <div className="size-selector">
-          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
+            <SizeChart sizeChartDetails={sizeChartDetails} />
+          )}
           <Field
             width={49}
             className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
@@ -238,7 +242,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     let pageShortName = '';
     let outfitPageShortName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
-    const productName = currentProduct && currentProduct.name.toLowerCase();
+    const productName = currentProduct && currentProduct.name && currentProduct.name.toLowerCase();
     if (productId) {
       pageShortName = `product:${productId}:${productName}`;
       outfitPageShortName = `outfit:${productId}:${productName}`;
@@ -267,6 +271,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed,
       keepAlive,
       isFromBagProductSfl,
+      quickViewPickup,
       currentProduct,
     } = this.props;
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -295,7 +300,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderFitList(fitList, fitTitle)}
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
-              {this.renderUnavailableLink()}
+              {quickViewPickup() && this.renderUnavailableLink()}
               {this.renderQuantitySelector(
                 isFromBagProductSfl,
                 MiniBagSelect,

@@ -4573,7 +4573,7 @@ exports[`StoreSelector component should default set title as value for selected 
           >
             <Styled(Image)
               alt="Store Icon"
-              src="/static/images/store.png"
+              src="/static/version-not-available/images/store.png"
             >
               <StyledComponent
                 alt="Store Icon"
@@ -4608,7 +4608,7 @@ exports[`StoreSelector component should default set title as value for selected 
                   }
                 }
                 forwardedRef={null}
-                src="/static/images/store.png"
+                src="/static/version-not-available/images/store.png"
               >
                 <Image
                   alt="Store Icon"
@@ -4616,8 +4616,9 @@ exports[`StoreSelector component should default set title as value for selected 
                   link={null}
                   placeholderSrc=""
                   ref={[Function]}
+                  role={null}
                   sizes=""
-                  src="/static/images/store.png"
+                  src="/static/version-not-available/images/store.png"
                   srcset=""
                   url=""
                 >
@@ -4625,8 +4626,9 @@ exports[`StoreSelector component should default set title as value for selected 
                     alt="Store Icon"
                     className="sc-bZQynM kRaWkN"
                     onError={null}
+                    role={null}
                     sizes={null}
-                    src="/static/images/store.png"
+                    src="/static/version-not-available/images/store.png"
                     srcSet=""
                   />
                 </Image>
@@ -5911,7 +5913,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       "componentStyle": ComponentStyle {
                         "componentId": "sc-dxgOiQ",
                         "isStatic": false,
-                        "lastClassName": "ibfiZV",
+                        "lastClassName": "kvLFTp",
                         "rules": Array [
                           "
   ",
@@ -6135,7 +6137,7 @@ exports[`StoreSelector component should default set title as value for selected 
 
   .dropdownActiveIcon {
     background-image: url(",
-                          "/static/images/circle-check-no-circle.svg",
+                          "/static/version-not-available/images/circle-check-no-circle.svg",
                           ");
     width: ",
                           [Function],
@@ -7486,7 +7488,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     activeTitle="Canada"
                     activeValue="Canada"
                     childrenComp={null}
-                    className="sc-kpOJdX sc-dxgOiQ ibfiZV"
+                    className="sc-kpOJdX sc-dxgOiQ kvLFTp"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -8747,7 +8749,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                      className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -8759,7 +8761,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                        className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -8818,7 +8820,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -8830,7 +8832,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           textAlign="left"
                         >
                           <div
-                            className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -13611,7 +13613,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           >
             <Styled(Image)
               alt="Store Icon"
-              src="/static/images/store.png"
+              src="/static/version-not-available/images/store.png"
             >
               <StyledComponent
                 alt="Store Icon"
@@ -13646,7 +13648,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                   }
                 }
                 forwardedRef={null}
-                src="/static/images/store.png"
+                src="/static/version-not-available/images/store.png"
               >
                 <Image
                   alt="Store Icon"
@@ -13654,8 +13656,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                   link={null}
                   placeholderSrc=""
                   ref={[Function]}
+                  role={null}
                   sizes=""
-                  src="/static/images/store.png"
+                  src="/static/version-not-available/images/store.png"
                   srcset=""
                   url=""
                 >
@@ -13663,8 +13666,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                     alt="Store Icon"
                     className="sc-bZQynM kRaWkN"
                     onError={null}
+                    role={null}
                     sizes={null}
-                    src="/static/images/store.png"
+                    src="/static/version-not-available/images/store.png"
                     srcSet=""
                   />
                 </Image>
@@ -14949,7 +14953,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "sc-dxgOiQ",
                         "isStatic": false,
-                        "lastClassName": "ibfiZV",
+                        "lastClassName": "kvLFTp",
                         "rules": Array [
                           "
   ",
@@ -15173,7 +15177,7 @@ exports[`StoreSelector component should render correctly 1`] = `
 
   .dropdownActiveIcon {
     background-image: url(",
-                          "/static/images/circle-check-no-circle.svg",
+                          "/static/version-not-available/images/circle-check-no-circle.svg",
                           ");
     width: ",
                           [Function],
@@ -16524,7 +16528,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     activeTitle="Test Text"
                     activeValue={null}
                     childrenComp={null}
-                    className="sc-kpOJdX sc-dxgOiQ ibfiZV"
+                    className="sc-kpOJdX sc-dxgOiQ kvLFTp"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -17785,7 +17789,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                      className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -17797,7 +17801,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                        className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -17856,7 +17860,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -17868,7 +17872,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           textAlign="left"
                         >
                           <div
-                            className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-kpOJdX sc-dxgOiQ kvLFTp custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"

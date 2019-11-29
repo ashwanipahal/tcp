@@ -59,7 +59,7 @@ class ProductImageWrapper extends React.Component {
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
     return (
       <React.Fragment>
-        {images.length > 0 ? (
+        {images && images.length > 0 ? (
           <ProductImages
             productName={productName}
             isThumbnailListVisible={isThumbnailListVisible && !isGiftCard}

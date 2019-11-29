@@ -21,7 +21,7 @@ class CountrySelector extends React.Component {
   };
 
   openModal = () => {
-    const { countriesMap, toggleModal } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
   };
 
@@ -116,6 +116,7 @@ class CountrySelector extends React.Component {
       labels: { countrySelector: labelValues },
       noteContent,
       showInFooter,
+      selectedCountryName,
     } = this.props;
     const languages = this.getLanguageMap();
     const flagIconSrc = getFlagIconPath(savedCountry);
@@ -175,6 +176,7 @@ class CountrySelector extends React.Component {
               width="20px"
               height="20px"
               onClick={this.openModal}
+              alt={selectedCountryName}
               data-locator={getLocator(
                 showInFooter ? 'footer_country_flag' : 'header_country_flag'
               )}
@@ -199,6 +201,8 @@ class CountrySelector extends React.Component {
                     ? 'countrySelector__locale--selected'
                     : 'countrySelector__locale--disabled'
                 } countrySelector__locale`}
+                aria-label={language.displayName}
+                aria-hidden={language.id !== savedLanguage}
               >
                 {language.id}
               </BodyCopy>
@@ -235,6 +239,7 @@ CountrySelector.propTypes = {
   updateLanguage: PropTypes.func,
   updateCurrency: PropTypes.func,
   updateSiteId: PropTypes.func,
+  selectedCountryName: PropTypes.string.isRequired,
 };
 
 CountrySelector.defaultProps = {

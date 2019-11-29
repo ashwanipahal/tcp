@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const iconSpacing = '15px';
 
@@ -81,8 +82,8 @@ const StyledModal = css`
   .modal__triangle {
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
     position: absolute;
     top: -10px;
     z-index: 99;
@@ -117,7 +118,7 @@ const StyledModal = css`
     }
   }
   .modal__closeIcon {
-    background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
+    background: transparent url(${getIconPath('modal-close')}) no-repeat 0 0;
     border: none;
     cursor: pointer;
     position: absolute;
