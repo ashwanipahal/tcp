@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cloudinary from 'cloudinary-core';
+import cloudinaryVideoPlayer from 'cloudinary-video-player'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getAPIConfig, convertNumToBool } from '@tcp/core/src/utils';
 import styles from './VideoPlayer.style';
