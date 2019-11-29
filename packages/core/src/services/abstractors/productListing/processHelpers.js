@@ -69,6 +69,24 @@ function convertToColorArray(colorSwatches, id, color) {
     ? colorSwatches
     : colorSwatchFilter(colorSwatches.split('|'), id, color);
 }
+
+const getDecodedData = filterIds => {
+  const facetKeys = filterIds ? Object.keys(filterIds) : [];
+  let modifiedFilterIds = {};
+
+  facetKeys.forEach(facetKey => {
+    const modifiedFacetKeys =
+      facetKey !== 'sort'
+        ? filterIds[facetKey].map(value => decodeURIComponent(value))
+        : filterIds[facetKey];
+    modifiedFilterIds = {
+      ...modifiedFilterIds,
+      [facetKey]: modifiedFacetKeys,
+    };
+  });
+
+  return modifiedFilterIds;
+};
 /**
  * @function getAppliedFilters
  * @summary To get the applied filters to pass in the PLP/SRP UI to render
@@ -81,18 +99,11 @@ const getAppliedFilters = (filters, filterIds) => {
 
   facetKeys.forEach(facetKey => {
     if (isUnbxdFacetKey(facetKey)) {
-      const modifiedFacetKeys = filterIds[facetKey].map(value => {
-        return decodeURIComponent(value);
-      });
-      const modifiedFilterIds = {
-        ...filterIds,
-        [facetKey]: modifiedFacetKeys,
-      };
       // for facets having facetName as key
       appliedFilters[facetKey] = !filters[facetKey]
         ? []
         : filters[facetKey]
-            .filter(item => modifiedFilterIds[facetKey].indexOf(item.id) > -1)
+            .filter(item => filterIds[facetKey].indexOf(item.id) > -1)
             .map(item => item.id);
     }
   });
@@ -381,6 +392,7 @@ const processHelpers = {
   getCurrentNavigationIds,
   getSearchResultSuggestions,
   convertToColorArray,
+  getDecodedData,
   getAppliedFilters,
   getParticularCategory,
   parseCategoryEntity,

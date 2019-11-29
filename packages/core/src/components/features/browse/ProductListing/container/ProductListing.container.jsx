@@ -118,7 +118,12 @@ class ProductListingContainer extends React.PureComponent {
     const {
       router: { asPath: currentAsPath },
     } = this.props;
-    if (asPath !== currentAsPath) {
+
+    // To restrict unnecessary calls while applying filters and sort
+    const modifiedAsPath = asPath.split('?');
+    const modifiedCurrentAsPath = currentAsPath.split('?');
+
+    if (modifiedAsPath[0] !== modifiedCurrentAsPath[0]) {
       this.makeApiCall();
     }
   }
