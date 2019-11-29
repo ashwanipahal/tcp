@@ -5,19 +5,13 @@ exports[`HomePageView should render correctly 1`] = `
   name="lazyload-home"
 >
   <Styled(View)>
-    <HeaderPromo />
+    <HeaderPromo
+      headerPromo={Object {}}
+      promoHtmlBannerCarousel={Array []}
+    />
   </Styled(View)>
   <LoyaltyPromoBanner
-    richTextList={
-      Array [
-        Object {
-          "link": Object {},
-          "richText": Object {
-            "text": "",
-          },
-        },
-      ]
-    }
+    richTextList={Array []}
   />
   <PageSlots
     modules={
