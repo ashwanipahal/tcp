@@ -56,7 +56,7 @@ export class CreateAccountContainer extends React.Component {
     passwordLabels: PropTypes.shape({}).isRequired,
     isLoading: PropTypes.bool.isRequired,
     updateHeader: PropTypes.func,
-    showCheckoutModal: PropTypes.func,
+    showCheckoutModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -75,7 +75,6 @@ export class CreateAccountContainer extends React.Component {
     navigation: {},
     toastMessage: () => {},
     updateHeader: () => {},
-    showCheckoutModal: () => {},
   };
 
   constructor(props) {

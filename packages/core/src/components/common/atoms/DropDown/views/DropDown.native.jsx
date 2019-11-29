@@ -209,7 +209,7 @@ class DropDown extends React.PureComponent<Props> {
         style={itemStyle}
         // eslint-disable-next-line react-native-a11y/has-valid-accessibility-role
         accessibilityRole="combobox"
-        accessibilityLabel={label}
+        accessibilityLabel={typeof label !== 'function' ? label : ''}
       >
         {typeof label !== 'function' ? (
           <BodyCopy

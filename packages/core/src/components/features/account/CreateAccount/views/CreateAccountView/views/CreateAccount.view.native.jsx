@@ -34,7 +34,7 @@ class CreateAccount extends React.Component<Props> {
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
     updateHeader: PropTypes.func,
-    showCheckoutModal: PropTypes.func,
+    showCheckoutModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -51,7 +51,6 @@ class CreateAccount extends React.Component<Props> {
     userplccCardId: '',
     toastMessage: () => {},
     updateHeader: () => {},
-    showCheckoutModal: () => {},
   };
 
   constructor(props) {

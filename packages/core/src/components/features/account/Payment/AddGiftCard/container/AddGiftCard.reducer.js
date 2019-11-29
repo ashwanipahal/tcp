@@ -1,4 +1,3 @@
-// @flow
 import { fromJS } from 'immutable';
 import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
@@ -12,6 +11,7 @@ const initialState = fromJS({
 });
 let checkErrorReset = false;
 
+// @flow
 type Action = {
   payload: {},
   type: string,

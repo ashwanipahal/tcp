@@ -40,23 +40,6 @@ describe('UpdateProfile Reducer', () => {
   });
 
   it('should call CHANGE  ', () => {
-    UpdateProfileReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: constants.ADD_PROFILE_INFORMATION_FORM,
-      },
-    });
-    expect(
-      UpdateProfileReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: constants.ADD_PROFILE_INFORMATION_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
-  it('should call CHANGE but not change error ', () => {
     expect(
       UpdateProfileReducer(initialState, {
         type: CHANGE,

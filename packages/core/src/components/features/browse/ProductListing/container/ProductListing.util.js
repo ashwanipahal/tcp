@@ -334,7 +334,6 @@ export function getProductsAndTitleBlocks(
     numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
     // Check if the number of products and the promos count sum
     // to understand the number of slots blank at the end of the block
-    const numberOfItemsInBlock = productsAdded + promoAddedInCurrentBlock;
     const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
 
     // For L2 with buckets only

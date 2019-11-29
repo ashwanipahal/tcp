@@ -70,27 +70,6 @@ describe('AddEditCreditCardReducer reducer', () => {
       error: null,
     });
 
-    AddEditCreditCardReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: constants.FORM_NAME,
-      },
-    });
-    expect(
-      AddEditCreditCardReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: constants.FORM_NAME,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
-  it('should call CHANGE but not change error ', () => {
-    const initialState = fromJS({
-      showNotification: false,
-      error: null,
-    });
     expect(
       AddEditCreditCardReducer(initialState, {
         type: CHANGE,

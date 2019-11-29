@@ -35,23 +35,6 @@ describe('CreateAccount Reducer', () => {
     ).toEqual(initialState);
   });
 
-  it('should call CHANGE  ', () => {
-    CreateAccountReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: constants.CREATE_ACCOUNT_FORM,
-      },
-    });
-    expect(
-      CreateAccountReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: constants.CREATE_ACCOUNT_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
   it('should call CHANGE but not change error ', () => {
     expect(
       CreateAccountReducer(initialState, {

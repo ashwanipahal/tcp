@@ -66,23 +66,6 @@ describe('BirthdaySavingsListReducer', () => {
     ).toEqual(initialState);
   });
 
-  it('should call CHANGE  ', () => {
-    BirthdaySavingsListReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: constants.ADD_CHILD_BIRTHDAY_FORM,
-      },
-    });
-    expect(
-      BirthdaySavingsListReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: constants.ADD_CHILD_BIRTHDAY_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
   it('should call CHANGE but not change error ', () => {
     expect(
       BirthdaySavingsListReducer(initialState, {

@@ -91,23 +91,6 @@ describe('AddGiftCard Reducer', () => {
     ).toEqual(initialState);
   });
 
-  it('should call CHANGE  ', () => {
-    AddGiftCardReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM,
-      },
-    });
-    expect(
-      AddGiftCardReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
   it('should call CHANGE but not change error ', () => {
     expect(
       AddGiftCardReducer(initialState, {
