@@ -236,6 +236,7 @@ class CustomSelect extends React.Component {
     onFilterSelection: PropTypes.func,
     onOptionSelected: PropTypes.func,
     isLoadingMore: PropTypes.bool,
+    isFavoriteView: PropTypes.bool,
   };
 
   static customSelectCounter = 0;
@@ -679,5 +680,6 @@ CustomSelect.defaultProps = {
   onFilterSelection: null,
   onOptionSelected: () => {},
   isLoadingMore: false,
+  isFavoriteView: false,
 };
 export default withStyles(CustomSelect, CustomSelectStyle);
