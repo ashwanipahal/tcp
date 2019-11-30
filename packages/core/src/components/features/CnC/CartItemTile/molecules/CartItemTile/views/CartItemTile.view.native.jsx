@@ -387,7 +387,7 @@ class ProductInformation extends PureComponent {
       isBOPISOrder
     );
 
-    const swipeConfig = getSwipeConfig(
+    const swipeConfig = this.getSwipeConfig(
       isBOSSOrder,
       bossDisabled,
       isBOPISOrder,
