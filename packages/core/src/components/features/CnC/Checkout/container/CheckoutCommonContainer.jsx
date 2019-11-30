@@ -190,6 +190,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pageData,
       dispatch,
       titleLabel,
+      initShippingPage,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -283,6 +284,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         updateCheckoutPageData={updateCheckoutPageData}
         pageData={pageData}
         titleLabel={titleLabel}
+        initShippingPage={initShippingPage}
       />
     );
   }

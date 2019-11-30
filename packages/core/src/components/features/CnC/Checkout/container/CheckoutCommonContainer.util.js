@@ -293,6 +293,7 @@ export const mapStateToProps = state => {
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
     titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
+    initShippingPage: selectors.getShippingInitialSectionValues(state),
   };
 };
 

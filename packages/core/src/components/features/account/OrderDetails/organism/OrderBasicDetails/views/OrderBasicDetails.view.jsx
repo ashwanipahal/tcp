@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getDateInformation } from '@tcp/core/src//utils/badge.util';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -13,13 +13,10 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
   const { orderNumber, isBossOrder, status } = orderDetailsData;
-  let { orderDate, pickUpExpirationDate, bossMaxDate, bossMinDate } = orderDetailsData;
-  let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
-  let orderTime = orderDate.split(' ')[1];
-  orderDate = moment(orderDate);
-  pickUpExpirationDate = pickUpExpirationDate && moment(pickUpExpirationDate);
-  orderTime = orderTime && moment(orderTime, 'HH:mm:ss');
-  pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
+  const { orderDate, pickUpExpirationDate } = orderDetailsData;
+  let { bossMaxDate, bossMinDate } = orderDetailsData;
+  const orderDateParsed = new Date(orderDate);
+  const pickUpExpirationDateParsed = new Date(pickUpExpirationDate);
   bossMinDate = getDateInformation(bossMinDate);
   bossMaxDate = getDateInformation(bossMaxDate);
   const bossDate =
@@ -99,8 +96,8 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           {getLabelValue(ordersLabels, 'lbl_orderDetails_orderDate')}
         </BodyCopy>
         <BodyCopy fontSize="fs14" fontFamily="secondary">
-          {orderDate.format('LL')}
-          {orderTime && (
+          {format(orderDateParsed, 'MMMM dd, yyyy')}
+          {
             <>
               <BodyCopy
                 component="span"
@@ -111,10 +108,10 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_at')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                {orderTime.format('hh:mma')}
+                {format(orderDateParsed, 'hh:mmaa')}
               </BodyCopy>
             </>
-          )}
+          }
         </BodyCopy>
       </BodyCopy>
       {!!pickUpExpirationDate && !isBossOrder && (
@@ -128,7 +125,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
             {getLabelValue(ordersLabels, 'lbl_orders_expirationDate')}
           </BodyCopy>
           <BodyCopy fontSize="fs14" fontFamily="secondary">
-            {pickUpExpirationDate.format('LL')}
+            {format(pickUpExpirationDateParsed, 'MMMM dd, yyyy')}
             <BodyCopy
               component="span"
               fontSize="fs14"
@@ -138,7 +135,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
               {getLabelValue(ordersLabels, 'lbl_orderDetails_at')}
             </BodyCopy>
             <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-              {pickUpExpirationTime.format('hh:mma')}
+              {format(pickUpExpirationDateParsed, 'hh:mmaa')}
             </BodyCopy>
           </BodyCopy>
         </BodyCopy>
