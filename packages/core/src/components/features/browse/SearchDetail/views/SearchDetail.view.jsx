@@ -31,13 +31,7 @@ const redirectToSuggestedUrl = (searchText, url) => {
 
 class SearchListingView extends React.Component {
   componentDidUpdate(prevProps) {
-    const {
-      products,
-      trackPageLoad,
-      pageNameProp,
-      pageSectionProp,
-      pageSubSectionProp,
-    } = this.props;
+    const { products, trackPageLoad } = this.props;
     const productsFormatted = this.formatProductsData(products);
     if (prevProps.products !== products && productsFormatted.length) {
       trackPageLoad({
@@ -64,7 +58,7 @@ class SearchListingView extends React.Component {
         colorId: generalProductId,
         name: productName,
         price: offerPrice,
-        listPrice: listPrice,
+        listPrice,
         extPrice: priceRange.lowOfferPrice,
         position: index + 1,
         type: categoryName,
@@ -249,6 +243,10 @@ SearchListingView.propTypes = {
   ),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  trackPageLoad: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -275,6 +273,10 @@ SearchListingView.defaultProps = {
   searchResultSuggestions: [],
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
