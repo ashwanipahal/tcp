@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
+import Stars from 'react-native-stars';
+import { TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
-import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
-import {
-  ICON_NAME,
-  ICON_FONT_CLASS,
-} from '@tcp/core/src/components/common//atoms/Icon/Icon.constants';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -17,8 +14,7 @@ import {
   styles,
   EmptyView,
 } from '../styles/ProductSummary.style.native';
-import Stars from 'react-native-stars';
-import { TouchableOpacity } from 'react-native';
+
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import { getMapSliceForColorProductId } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
@@ -30,10 +26,6 @@ class ProductSummary extends React.PureComponent {
     super(props);
     this.loyaltyPromotionMessage = '';
   }
-
-  onCompleteLook = () => {};
-
-  onWriteReview = () => {};
 
   renderWriteAReviewAnchor = anchorLabel => {
     const { isBundleProduct } = this.props;
@@ -227,7 +219,8 @@ class ProductSummary extends React.PureComponent {
   };
 
   scrollToRatingSection() {
-    this.props.scrollToTarget('rating');
+    const { scrollToTarget } = this.props;
+    scrollToTarget('rating');
   }
 
   renderListPrice = badge2 => {
