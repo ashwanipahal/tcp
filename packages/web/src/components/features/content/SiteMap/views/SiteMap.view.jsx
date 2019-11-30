@@ -108,15 +108,13 @@ class SiteMap extends React.PureComponent {
 }
 
 SiteMap.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.shape({})),
-  content: PropTypes.string,
-  url: PropTypes.string,
+  className: PropTypes.string,
+  siteMapData: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 SiteMap.defaultProps = {
-  categories: [],
-  content: '',
-  url: '',
+  className: '',
+  siteMapData: {},
 };
 
 export default withStyles(errorBoundary(SiteMap), style);
