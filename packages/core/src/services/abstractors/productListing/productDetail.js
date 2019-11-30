@@ -198,7 +198,7 @@ export const layoutResolver = async ({ category, pageName }) => {
       data: {
         brand: brandIdCMS,
         country: siteIdCMS,
-        channel: channelId,
+        channel: channelId || 'Mobile',
         lang: language === 'en' ? '' : language,
         path: pageName,
         category,

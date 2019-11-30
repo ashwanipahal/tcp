@@ -8,6 +8,7 @@ import labelsMock from '../__mocks__/labels.mock';
 import storesMock from '../__mocks__/stores.mock';
 
 jest.mock('@tcp/core/src/utils', () => ({
+  isMobileWeb: jest.fn(),
   getViewportInfo: jest.fn(),
   getAPIConfig: () => ({
     brandId: 'tcp',
