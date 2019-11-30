@@ -121,6 +121,7 @@ const ModuleE = props => {
     divCTALinks,
     linkedImage: linkedImages,
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
+    moduleClassName,
   } = props;
 
   const linkedImage = linkedImages && linkedImages[0];
@@ -155,7 +156,7 @@ const ModuleE = props => {
 
   return (
     <Row
-      className={className}
+      className={`${className} ${moduleClassName}`}
       fullBleed={{
         small: true,
         medium: true,
@@ -403,6 +404,7 @@ ModuleE.defaultProps = {
   ctaType: 'stackedCTAButtons',
   ctaItems: [],
   linkedImage: null,
+  moduleClassName: '',
 };
 
 ModuleE.propTypes = {
@@ -417,6 +419,7 @@ ModuleE.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.object),
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   carouselCtaType: PropTypes.oneOf(['button', 'link']).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(ModuleE, moduleEStyle);
