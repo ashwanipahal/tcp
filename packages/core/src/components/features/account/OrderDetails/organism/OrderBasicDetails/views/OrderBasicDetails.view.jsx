@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format, parse } from 'date-fns';
+import { format } from 'date-fns';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getDateInformation } from '@tcp/core/src//utils/badge.util';
 import { getLabelValue } from '@tcp/core/src/utils/utils';

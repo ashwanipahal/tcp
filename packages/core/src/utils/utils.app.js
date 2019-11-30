@@ -695,11 +695,7 @@ export const validateColor = color => {
  * @param {upperCase} locale use for convert locate formate
  * @param {upperCase} formate use for convert locate formate
  */
-export const getTranslatedMomentDate = (
-  dateInput,
-  language = 'en',
-  { day, month, date, year } = {}
-) => {
+export const getTranslatedMomentDate = dateInput => {
   // TODO: Locale Handling needs to happen.
   const dateInputParsed = dateInput ? new Date(dateInput) : new Date();
   return {
@@ -767,16 +763,11 @@ export const mapHandler = store => {
  * @param {string} date date which is to be mutated
  * @param {upperCase} locale use for convert locate formate
  */
-export const getTranslateDateInformation = (date, language) => {
+export const getTranslateDateInformation = date => {
   // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
   // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
   // To fix this, need to add fallback package for Intl
-  return getTranslatedMomentDate(date, language, {
-    day: 'ddd',
-    month: 'MMM',
-    date: 'D',
-    year: 'YYYY',
-  });
+  return getTranslatedMomentDate(date);
 };
 
 export const onBack = navigation => {
