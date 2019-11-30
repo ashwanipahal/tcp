@@ -12,7 +12,6 @@ const styles = css`
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ${CHECKBOX_SIZE};
     width: ${CHECKBOX_SIZE};

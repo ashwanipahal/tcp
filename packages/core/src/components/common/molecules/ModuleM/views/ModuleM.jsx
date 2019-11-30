@@ -334,11 +334,11 @@ export class ModuleM extends React.PureComponent {
     tabList.map((list, index) => Object.assign({}, list, { id: `tablList-${index}` }));
 
   render() {
-    const { className, headerText, promoBanner, divTabs, flexbox } = this.props;
+    const { className, headerText, promoBanner, divTabs, flexbox, moduleClassName } = this.props;
     const { productCategoryImageList } = this.state;
 
     return (
-      <Grid className={`${className} moduleM`}>
+      <Grid className={`${className} ${moduleClassName} moduleM`}>
         <Row fullBleed={{ small: true, medium: true }} className="topview">
           <Col
             colSize={{
@@ -388,6 +388,7 @@ ModuleM.propTypes = {
   flexbox: PropTypes.bool,
   singleCTAButton: PropTypes.shape({}),
   ctaItems: PropTypes.shape({}),
+  moduleClassName: PropTypes.string,
 };
 
 ModuleM.defaultProps = {
@@ -398,6 +399,7 @@ ModuleM.defaultProps = {
   type: 0,
   singleCTAButton: [],
   ctaItems: [],
+  moduleClassName: '',
 };
 
 const styledModuleM = withStyles(errorBoundary(ModuleM), style);
