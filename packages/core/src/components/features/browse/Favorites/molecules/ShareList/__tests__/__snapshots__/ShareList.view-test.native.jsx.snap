@@ -179,59 +179,14 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
     name="subject"
     type="text"
   />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.900"
-    dataLocator="fav_brand_title"
-    fontSize="fs14"
-    fontWeight="regular"
-    margin="0 0 6px 0"
-    mobileFontFamily="secondary"
-    numberOfLines={null}
-    text="lbl_fav_message"
-    textDecoration={null}
-  />
   <Field
-    autoCapitalize="none"
     bottomBorderColor="gray.600"
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "State": Object {
-          "blurTextInput": [Function],
-          "currentlyFocusedField": [Function],
-          "focusTextInput": [Function],
-        },
-        "attrs": Array [],
-        "displayName": "Styled(TextInput)",
-        "getDefaultProps": [Function],
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-  height: 146px;
-  width: 100%;
-  border: 1px solid ",
-            [Function],
-            ";
-",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    dataLocator="message"
+    component={[Function]}
     id="message"
-    label="lbl_fav_subject"
-    maxLength={100}
+    label="lbl_fav_message"
     multiline={true}
     name="message"
-    onChangeText={[Function]}
-    textAlign="left"
-    type="text"
-    value=""
+    numberOfLines={4}
   />
   <Styled(CustomButton)
     active={false}
