@@ -84,6 +84,10 @@ export default css`
     display: block;
   }
 
+  .image-comp {
+    color: ${props => props.theme.colorPalette.black};
+  }
+
   .small-composite-image img {
     max-height: 164px;
 
