@@ -14,6 +14,7 @@ const propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
+  setNeedHelpModal: PropTypes.func.isRequired,
 };
 
 const defaultProps = {

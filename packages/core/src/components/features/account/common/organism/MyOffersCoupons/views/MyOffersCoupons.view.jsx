@@ -289,6 +289,8 @@ MyOffersCouponView.propTypes = {
   sliceCount: PropTypes.number,
   commonLabels: PropTypes.shape({}).isRequired,
   handleApplyCouponFromList: PropTypes.func.isRequired,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
+  isNeedHelpModalOpen: PropTypes.bool.isRequired,
 };
 
 MyOffersCouponView.defaultProps = {

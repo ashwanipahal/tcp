@@ -19,6 +19,7 @@ const propTypes = {
     lbl_login_createAccountCTA: PropTypes.string,
   }),
   isLoggedIn: PropTypes.bool,
+  setNeedHelpModal: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
