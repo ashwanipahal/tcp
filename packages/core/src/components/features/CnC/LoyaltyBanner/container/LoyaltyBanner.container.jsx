@@ -90,6 +90,7 @@ LoyaltyBannerContainer.propTypes = {
   footerLabels: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   bagLoading: PropTypes.bool,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 LoyaltyBannerContainer.defaultProps = {

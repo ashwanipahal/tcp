@@ -235,6 +235,7 @@ LoyaltyBannerSection.propTypes = {
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
   bagLoading: PropTypes.bool,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {
