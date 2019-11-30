@@ -36,6 +36,9 @@ const QuickViewReducer = (state = initialState, action) => {
         .set('quickViewProducts', null)
         .set('quickViewProductFromBag', null);
 
+    case QUICK_VIEW_CONSTANT.SET_COLOR_PRODUCT_ID:
+      return state.set('selectedColorId', action.payload);
+
     default:
       return getDefaultState(state);
   }

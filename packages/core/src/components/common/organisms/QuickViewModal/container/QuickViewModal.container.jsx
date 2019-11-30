@@ -18,6 +18,7 @@ import {
   getLoadingState,
   getFromBagPage,
   getIsFromBagProductSfl,
+  getSelectedColorId,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -126,6 +127,7 @@ function mapStateToProps(state) {
     productInfoFromBag: getProductInfoFromBag(state),
     fromBagPage: getFromBagPage(state),
     isFromBagProductSfl: getIsFromBagProductSfl(state),
+    selectedColorProductId: getSelectedColorId(state),
   };
 }
 

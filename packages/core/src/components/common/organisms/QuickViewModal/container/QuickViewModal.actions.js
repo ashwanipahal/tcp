@@ -14,6 +14,13 @@ export const setItemFromBagInfoForQuickView = payload => {
   };
 };
 
+export const setColorProductIdForQuickView = payload => {
+  return {
+    type: QUICK_VIEW_CONSTANTS.SET_COLOR_PRODUCT_ID,
+    payload,
+  };
+};
+
 export const openQuickViewWithValues = payload => {
   return {
     payload,

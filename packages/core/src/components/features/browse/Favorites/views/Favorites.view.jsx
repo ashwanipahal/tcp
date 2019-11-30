@@ -5,7 +5,6 @@ import Recommendations from '@tcp/web/src/components/common/molecules/Recommenda
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -105,7 +104,6 @@ class FavoritesView extends React.PureComponent {
       setLastDeletedItemId,
       labels,
       onQuickViewOpenClick,
-      selectedColorProductId,
       isKeepAliveEnabled,
       outOfStockLabels,
       activeWishList,
@@ -131,7 +129,6 @@ class FavoritesView extends React.PureComponent {
             openAddNewList={this.handleAddList}
             activeWishListId={activeWishList.id}
           />
-          <QuickViewModal selectedColorProductId={selectedColorProductId} />
         </>
       )
     );
@@ -561,7 +558,6 @@ FavoritesView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   slpLabels: PropTypes.shape({}),
   onQuickViewOpenClick: PropTypes.func.isRequired,
-  selectedColorProductId: PropTypes.string,
   filteredId: PropTypes.string.isRequired,
   sortId: PropTypes.string.isRequired,
   onFilterSelection: PropTypes.func.isRequired,
@@ -589,7 +585,6 @@ FavoritesView.propTypes = {
 FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
-  selectedColorProductId: '',
   outOfStockLabels: {},
   slpLabels: {},
   defaultWishList: {},

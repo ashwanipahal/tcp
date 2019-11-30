@@ -10,7 +10,6 @@ import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
 
@@ -204,7 +203,6 @@ class SearchListingView extends React.Component {
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
         </Row>
-        <QuickViewModal />
       </div>
     );
   }
