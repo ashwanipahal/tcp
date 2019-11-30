@@ -52,7 +52,9 @@ exports[`SearchBar native should render correctly onclick function check onSearc
       width="50px"
     >
       <QRScannerIcon
+        closeModal={[Function]}
         size="fs16"
+        style={Object {}}
       />
     </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>
@@ -99,7 +101,9 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
       width="50px"
     >
       <QRScannerIcon
+        closeModal={[Function]}
         size="fs16"
+        style={Object {}}
       />
     </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>
@@ -150,7 +154,9 @@ exports[`SearchBar native should render correctly with passed props render showC
       width="50px"
     >
       <QRScannerIcon
+        closeModal={[Function]}
         size="fs16"
+        style={Object {}}
       />
     </Styled(TouchableOpacity)>
   </Styled(TouchableOpacity)>

@@ -4,6 +4,7 @@ exports[`ScanErrorModal should render correctly 1`] = `
 <ModalNative
   customTransparent={true}
   inheritedStyles=""
+  isOpen={false}
   isOverlay={false}
   onRequestClose={[Function]}
 >
