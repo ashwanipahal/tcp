@@ -579,6 +579,14 @@ FavoritesView.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
   appliedFilterLength: PropTypes.number,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
+  guestAccessKey: PropTypes.string,
+  activeDisplayName: PropTypes.string,
+  activeWishListId: PropTypes.string,
+  updateWishList: PropTypes.func,
+  resetBrandFilters: PropTypes.func,
+  formErrorMessage: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -591,6 +599,14 @@ FavoritesView.defaultProps = {
   wishlistShareStatus: false,
   setListShareSuccess: () => {},
   appliedFilterLength: 0,
+  updateWishList: () => {},
+  isBothTcpAndGymProductAreAvailable: false,
+  isDataLoading: false,
+  guestAccessKey: '',
+  activeDisplayName: '',
+  resetBrandFilters: () => {},
+  formErrorMessage: {},
+  activeWishListId: '',
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

@@ -55,7 +55,6 @@ describe('AddAddressReducer reducer', () => {
       showNotification: false,
       error: null,
     });
-    const checkErrorReset = false;
     expect(
       AddAddressReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -66,32 +65,7 @@ describe('AddAddressReducer reducer', () => {
     ).toEqual(initialState);
   });
 
-  it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-    const initialState = fromJS({
-      showNotification: false,
-      error: null,
-    });
-
-    const checkErrorResetValue = AddAddressReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: constants.ADDRESS_FORM,
-      },
-    });
-    checkErrorReset = checkErrorResetValue;
-    expect(
-      AddAddressReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: constants.ADDRESS_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     const initialState = fromJS({
       showNotification: false,
       error: null,

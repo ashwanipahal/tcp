@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import DamImage from '../../../../../../common/atoms/DamImage';
 import { reduxForm, Field } from 'redux-form';
+import DamImage from '../../../../../../common/atoms/DamImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingFiltersFormStyle from '../ProductListingFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
@@ -10,7 +10,6 @@ import CustomSelect from '../../CustomSelect/views';
 import { BodyCopy, Col, Row } from '../../../../../../common/atoms';
 import cssClassName from '../../utils/cssClassName';
 import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
-import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
 import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
@@ -519,6 +518,7 @@ ProductListingFiltersForm.propTypes = {
   defaultPlaceholder: PropTypes.string,
   formValues: PropTypes.shape({}),
   isLoadingMore: PropTypes.bool,
+  appliedFilterLength: PropTypes.number,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -541,6 +541,7 @@ ProductListingFiltersForm.defaultProps = {
   favoriteSortingParams: null,
   formValues: {},
   isLoadingMore: false,
+  appliedFilterLength: 0,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

@@ -5,7 +5,6 @@ import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
 import { getLocator, getProductUrlForDAM, getScreenWidth } from '../../../../../utils/index.native';
 import moduleGConfig from '../moduleG.config';
 import { Carousel } from '../..';
-import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   Container,
   ImageSlidesWrapper,

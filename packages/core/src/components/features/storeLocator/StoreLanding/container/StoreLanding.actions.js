@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 
 export function getSetDefaultStoreActn(payload) {
   return {

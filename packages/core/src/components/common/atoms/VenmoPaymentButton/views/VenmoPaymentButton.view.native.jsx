@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, NativeModules } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
-import logger from '../../../../../utils/loggerInstance';
 import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 import { isAndroid } from '../../../../../utils/index.native';

@@ -106,6 +106,7 @@ Espot.propTypes = {
   togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 export default Espot;
