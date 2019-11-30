@@ -27,7 +27,15 @@ const getMappedPromoBanner = promoBanner => {
 };
 
 const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
+  const {
+    className,
+    ctaItems,
+    headerText,
+    promoBanner,
+    ctaType,
+    expandableTitle,
+    moduleClassName,
+  } = props;
 
   const buttonListProps = getButtonListVariationProps(ctaType);
   let dualVariation = null;
@@ -38,7 +46,7 @@ const ModuleN = props => {
 
   return (
     <Row
-      className={`${className} moduleN`}
+      className={`${className} ${moduleClassName} moduleN`}
       fullBleed={{ small: true, medium: true, large: true }}
       data-locator={getLocator('moduleN_promobanner_img')}
     >
@@ -103,6 +111,7 @@ ModuleN.defaultProps = {
   promoBanner: [],
   ctaType: 'stackedCTAButtons',
   expandableTitle: '',
+  moduleClassName: '',
 };
 
 ModuleN.propTypes = {
@@ -112,6 +121,7 @@ ModuleN.propTypes = {
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   ctaType: PropTypes.string,
   expandableTitle: PropTypes.string,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);
