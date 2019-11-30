@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Text, Modal } from 'react-native';
+import { Modal } from 'react-native';
 import BagPageHeader from '../../Header/BagPageHeader';
 import ScanErrorModal from '../../scanErrorModal';
 import Style, { HelpText } from '../styles/QRScanner.style.native';
@@ -26,10 +26,11 @@ class QRCode extends PureComponent {
    *
    */
   redirectToPLP = data => {
-    if (data) {
+    const qrValidatorString = '/scan-it';
+    if (data && data.match(qrValidatorString)) {
       const { navigation } = this.props;
       navigation.navigate('ProductListing', {
-        url: `/c?cid=${data}`,
+        url: `/c?cid=${data.replace(qrValidatorString, '')}`,
         showCustomLoader: true,
       });
     } else {
@@ -116,6 +117,11 @@ const mapStateToProps = state => {
 
 QRCode.propTypes = {
   qrLabels: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+QRCode.defaultProps = {
+  navigation: {},
 };
 
 export default connect(mapStateToProps)(withStyles(QRCode, Style));
