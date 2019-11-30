@@ -83,6 +83,8 @@ export class CouponContainer extends React.PureComponent {
             additionalClassNameModal={additionalClassNameModal}
             isCarouselView={isCarouselView}
             closedOverlay={closedOverlay}
+            isNeedHelpModalOpen={isNeedHelpModalOpen}
+            toggleNeedHelpModal={toggleNeedHelpModal}
           />
         )}
       </>

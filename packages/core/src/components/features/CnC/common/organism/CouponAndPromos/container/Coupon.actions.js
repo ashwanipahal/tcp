@@ -56,6 +56,13 @@ export const toggleNeedHelpModalState = () => {
   };
 };
 
+export const setNeedHelpModalState = payload => {
+  return {
+    type: COUPON_CONSTANTS.SET_NEED_HELP_MODAL_STATE,
+    payload,
+  };
+};
+
 export const clearCouponTTL = () => {
   return {
     type: COUPON_CONSTANTS.CLEAR_COUPON_TTL,

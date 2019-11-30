@@ -244,6 +244,7 @@ export function* submitVenmoBilling(payload = {}) {
 export default function* submitBilling(action = {}) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
+    const isGuestUser = yield select(isGuest);
     const { payload: { navigation, ...formData } = {} } = action;
     formData.phoneNumber = formData.phoneNumber || '';
     const {
@@ -262,8 +263,10 @@ export default function* submitBilling(action = {}) {
     if (!isPaymentDisabled) {
       yield call(submitBillingData, formData, address);
     }
-    yield call(getAddressList);
-    yield call(getCardList, { ignoreCache: true });
+    if (!isGuestUser) {
+      yield call(getAddressList);
+      yield call(getCardList, { ignoreCache: true });
+    }
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {
@@ -281,9 +284,12 @@ export default function* submitBilling(action = {}) {
 
 export function* updateCardDetails({ payload: { formData, resolve, reject } }) {
   try {
+    const isGuestUser = yield select(isGuest);
     const cardType = yield select(CreditCardSelector.getEditFormCardType);
     yield updateCreditCardSaga({ payload: { ...formData, cardType } }, true);
-    yield call(getCardList, { ignoreCache: true });
+    if (!isGuestUser) {
+      yield call(getCardList, { ignoreCache: true });
+    }
     resolve();
   } catch (err) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);

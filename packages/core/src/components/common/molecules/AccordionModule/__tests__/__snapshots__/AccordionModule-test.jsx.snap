@@ -34,6 +34,7 @@ exports[`Accordion Componenet should match snapshot 1`] = `
       className="module-accordion"
     >
       <ModuleX
+        moduleClassName=""
         richTextList={
           Array [
             Object {
@@ -43,6 +44,7 @@ exports[`Accordion Componenet should match snapshot 1`] = `
         }
       />
       <ModuleX
+        moduleClassName=""
         richTextList={
           Array [
             Object {
@@ -52,6 +54,7 @@ exports[`Accordion Componenet should match snapshot 1`] = `
         }
       />
       <ModuleX
+        moduleClassName=""
         richTextList={
           Array [
             Object {

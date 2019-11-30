@@ -145,7 +145,14 @@ describe('OverlayModal', () => {
       },
     };
     const mockedcloseOverlay = jest.fn();
-    const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
+    const mockedSetNeedHelpModal = jest.fn();
+    const tree = shallow(
+      <OverlayModalVanilla
+        {...props}
+        closeOverlay={mockedcloseOverlay}
+        setNeedHelpModal={mockedSetNeedHelpModal}
+      />
+    );
     tree.instance().componentWillUnmount();
   });
 });
