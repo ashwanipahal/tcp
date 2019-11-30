@@ -1,12 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PromoPDPBannersVanilla } from '../views/PromoPDPBanners.view.native';
+import { PromoModulesVanilla } from '../views/PromoModules.view.native';
 
-describe('PromoPDPBannersVanilla native component', () => {
+describe('PromoModulesVanilla native component', () => {
   let component;
   const props = {
-    asPath: '',
-    promos: [
+    asPath: ['10', '2'],
+    userType: true,
+    plpTopPromos: [
       {
         richTextList: [{ text: 'Hello' }],
         contentId: '123',
@@ -17,19 +18,20 @@ describe('PromoPDPBannersVanilla native component', () => {
   };
 
   it('should match snapshot', () => {
-    component = shallow(<PromoPDPBannersVanilla {...props} />);
+    component = shallow(<PromoModulesVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('should match for moduleA', () => {
     const updatedParams = {
       asPath: '',
+      userType: true,
       navigation: {
         getParam: data => {
           return data;
         },
       },
-      promos: [
+      plpTopPromos: [
         {
           richTextList: [{ text: 'Hello' }],
           contentId: '123',
@@ -38,7 +40,7 @@ describe('PromoPDPBannersVanilla native component', () => {
         },
       ],
     };
-    component = shallow(<PromoPDPBannersVanilla {...updatedParams} />);
+    component = shallow(<PromoModulesVanilla {...updatedParams} />);
     expect(component).toMatchSnapshot();
   });
 });

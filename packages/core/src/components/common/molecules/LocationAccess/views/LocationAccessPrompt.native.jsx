@@ -22,7 +22,7 @@ import {
   StyledAnchor,
   MessageContainer,
   ShadowContainer,
-} from '../styles/LocationAccess.native';
+} from '../styles/LocationAccessPrompt.native';
 
 const locationImage = require('../../../../../../src/assets/location.png');
 const closeImage = require('../../../../../../src/assets/close.png');
