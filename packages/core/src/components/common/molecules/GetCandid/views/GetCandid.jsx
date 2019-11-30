@@ -22,6 +22,7 @@ class GetCandid extends React.PureComponent {
     className: PropTypes.string,
     /* Labels */
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    theme: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {

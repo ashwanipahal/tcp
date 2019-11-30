@@ -580,7 +580,6 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",
@@ -1361,7 +1360,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",
@@ -2868,7 +2866,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",
@@ -4500,7 +4497,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",
@@ -5280,7 +5276,6 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",

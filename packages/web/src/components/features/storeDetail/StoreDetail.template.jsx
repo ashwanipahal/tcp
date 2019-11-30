@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import { fetchStoreIdFromUrlPath } from '@tcp/core/src/utils';
 import StoreDetailContainer from '@tcp/core/src/components/features/storeLocator/StoreDetail';
@@ -28,4 +29,7 @@ StoreDetail.getInitialProps = pageProps => {
   };
 };
 
+StoreDetail.propTypes = {
+  router: PropTypes.shape({}).isRequired,
+};
 export default withRouter(StoreDetail);

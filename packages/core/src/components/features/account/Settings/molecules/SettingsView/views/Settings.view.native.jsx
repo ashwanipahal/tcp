@@ -1,3 +1,8 @@
+/**
+ * Adding eslint disable for now as after RN upgrade this component is not working
+ * Need to correct some linking according to new version.
+ */
+/* eslint-disable extra-rules/no-commented-out-code, no-undef */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 // import {
@@ -66,10 +71,6 @@ class SettingsView extends PureComponent {
         });
       });
     }
-
-    // checkNotificationPermission().then(result => {
-    //   this.setState({ pushNotificationValue: result });
-    // });
   }
 
   componentWillUnmount() {
