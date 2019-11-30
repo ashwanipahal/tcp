@@ -622,6 +622,19 @@ function getPickupInitialPickupSectionValues(state) {
     },
   };
 }
+export const getSmsInfoValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('smsInfo')
+);
+function getShippingInitialSectionValues(state) {
+  const shippingValues = getSmsInfoValues(state);
+  return {
+    smsSignUp: {
+      sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
+      phoneNumber: shippingValues.numberForUpdates || getUserPhoneNumber(state),
+    },
+  };
+}
 
 /**
  * Get if Pickup has values in the redux state
@@ -1053,4 +1066,5 @@ export default {
   getVenmoPayment,
   isVenmoOrderPayment,
   getVenmoOrderUserId,
+  getShippingInitialSectionValues,
 };
