@@ -788,7 +788,6 @@ ListItem.propTypes = {
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
-  onQuickViewOpenClick: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func,
   fullWidth: PropTypes.bool,
@@ -804,6 +803,9 @@ ListItem.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
   onSeeSuggestedItems: PropTypes.func,
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {
@@ -837,6 +839,67 @@ ListItem.defaultProps = {
   outOfStockLabels: {},
   renderMoveToList: () => {},
   onSeeSuggestedItems: () => {},
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
+};
+RenderMoveToListOrSeeSuggestedList.propTypes = {
+  onSeeSuggestedItems: PropTypes.func,
+};
+
+RenderMoveToListOrSeeSuggestedList.defaultProps = {
+  onSeeSuggestedItems: () => {},
+};
+
+RenderDismissLink.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
+  labelsPlpTiles: PropTypes.shape({}),
+};
+
+RenderDismissLink.defaultProps = {
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
+  labelsPlpTiles: {},
+};
+
+RenderSuggestedLabel.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  labelsPlpTiles: PropTypes.shape({}),
+};
+
+RenderSuggestedLabel.defaultProps = {
+  isSuggestedItem: false,
+  labelsPlpTiles: {},
+};
+
+renderAddToBagContainer.propTypes = {
+  renderPriceOnly: PropTypes.bool,
+  bundleProduct: PropTypes.shape({}),
+  labelsPlpTiles: PropTypes.shape({}),
+  outOfStockLabels: PropTypes.shape({}),
+  isFavorite: PropTypes.bool,
+  isSuggestedItem: PropTypes.bool,
+};
+
+renderAddToBagContainer.defaultProps = {
+  renderPriceOnly: false,
+  bundleProduct: {},
+  labelsPlpTiles: {},
+  outOfStockLabels: {},
+  isFavorite: false,
+  isSuggestedItem: false,
+};
+
+RenderCloseIcon.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
+};
+
+RenderCloseIcon.defaultProps = {
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
 };
 
 export default withStyles(ListItem, styles);

@@ -1,9 +1,9 @@
+// Disabling eslint for temporary fix
 import React from 'react';
+import PropTypes from 'prop-types';
 import Geolocation from 'react-native-geolocation-service';
-import { usePermissionState } from '../permissions';
 import { request } from 'react-native-permissions';
-
-export { LocationProvider, useLocationState };
+import { usePermissionState } from '../permissions';
 
 export const LocationContext = React.createContext();
 
@@ -21,7 +21,7 @@ function locationReducer(state, action) {
   }
 }
 
-function LocationProvider({ children, ...props }) {
+function LocationProvider({ children }) {
   const permissions = usePermissionState();
   const { locationWhenInUse } = permissions;
   const [state, dispatch] = React.useReducer(locationReducer, {});
@@ -48,14 +48,24 @@ function LocationProvider({ children, ...props }) {
     }
     getLocationInfo();
   }, [locationWhenInUse]);
-
+  // eslint-disable-next-line
   return <LocationContext.Provider value={state}>{children}</LocationContext.Provider>;
 }
 
 function useLocationState() {
-  context = React.useContext(LocationContext);
+  const context = React.useContext(LocationContext);
   if (context === undefined) {
     throw new Error('useLocationState must be used within a LocationProvider');
   }
   return context;
 }
+
+export { LocationProvider, useLocationState };
+
+LocationProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+LocationProvider.defaultProps = {
+  children: null,
+};

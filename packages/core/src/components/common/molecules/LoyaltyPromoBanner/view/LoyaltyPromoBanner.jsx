@@ -76,7 +76,12 @@ const LoyaltyPromoBanner = props => {
             className="loyalty-promo-close-btn"
             onClick={closeButtonHandler}
           >
-            <svg className="loyalty-promo-close-btn-icon" viewBox="0 0 25 25" aria-hidden="true">
+            <svg
+              className="loyalty-promo-close-btn-icon"
+              viewBox="0 0 25 25"
+              aria-hidden="true"
+              role="img"
+            >
               <path
                 fill="#a0a0a0"
                 fillRule="nonzero"

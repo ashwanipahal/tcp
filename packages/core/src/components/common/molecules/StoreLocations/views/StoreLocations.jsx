@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CollapsibleContainer from '@tcp/core/src/components/common/molecules/CollapsibleContainer';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
-import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import style, { collapsibleStyles, tileStyles } from '../styles/StoreLocations.style';
@@ -63,9 +63,9 @@ class StoreLocations extends PureComponent {
     }
     return (
       <div className={className}>
-        <h3 className="locations-title">
+        <BodyCopy className="locations-title" fontSize="fs16" component="h2" fontWeight="extrabold">
           {getLabelValue(labels, 'lbl_storedetails_locations_title')}
-        </h3>
+        </BodyCopy>
         <Row fullBleed>
           {stores.map(store => (
             <Col key={store.basicInfo.storeName} colSize={{ small: 6, medium: 4, large: 3 }}>

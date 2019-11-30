@@ -34,7 +34,7 @@ const getNavLink = (data = {}) => {
  * @param {data} data navigation data
  */
 
-const LeftNavigation = ({ data = [], className, selectedPage, defaultPage, moduleClassName }) => {
+const LeftNavigation = ({ data = [], className, selectedPage }) => {
   const navData = Object.assign(data);
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
   let activeLink = [];
@@ -43,12 +43,12 @@ const LeftNavigation = ({ data = [], className, selectedPage, defaultPage, modul
   }
   return navDropDown.length ? (
     <React.Fragment>
-      <Row className={`showonlyInMobile ${moduleClassName}`}>
+      <Row className="showonlyInMobile">
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <Dropdown options={navDropDown} active={activeLink[0]} isUpperCase />
         </Col>
       </Row>
-      <Row className={`showonlyInDesktop ${moduleClassName}`}>
+      <Row className="showonlyInDesktop">
         <Col colSize={{ large: 12, medium: 8, small: 6 }} offsetLeft={{ medium: 2 }}>
           <ul className={className}>
             {navData.length &&
@@ -71,11 +71,11 @@ const LeftNavigation = ({ data = [], className, selectedPage, defaultPage, modul
 LeftNavigation.propTypes = {
   className: PropTypes.string.isRequired,
   data: PropTypes.shape([]).isRequired,
-  moduleClassName: PropTypes.string,
+  selectedPage: PropTypes.string,
 };
 
 LeftNavigation.defaultProps = {
-  moduleClassName: '',
+  selectedPage: '',
 };
 
 export default withStyles(LeftNavigation, style);

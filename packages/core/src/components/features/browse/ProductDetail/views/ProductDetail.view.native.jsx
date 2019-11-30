@@ -87,7 +87,7 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
-  onChangeSize = (color, e, fit, quantity) => {
+  onChangeSize = (color, e) => {
     this.setState({ currentGiftCardValue: e, size: e });
   };
 
@@ -343,6 +343,8 @@ ProductDetailView.propTypes = {
   toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
@@ -374,6 +376,8 @@ ProductDetailView.defaultProps = {
   toastMessage: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  bottomPromos: '',
+  middlePromos: '',
 };
 
 export default withStyles(ProductDetailView);

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { ViewWithSpacing } from '../../../atoms/styledWrapper';
