@@ -4,13 +4,17 @@ import { Button, BodyCopy, Anchor } from '../../../atoms';
 import styles from '../styles/GridPromo.style';
 import withStyles from '../../../hoc/withStyles';
 
+const getSplitText = val => {
+  return (val && val[0] && val[0].text) || '';
+};
+
 const GridPromo = props => {
   const { className, promoObj: { textItems, subHeadLine, promoWrapper } = {}, variation } = props;
 
-  const headingLine = textItems[0] && textItems[0].text;
+  const headingLine = getSplitText(textItems);
   const headLineParts = headingLine.split('|');
 
-  const descriptionLine = subHeadLine && subHeadLine[0] && subHeadLine[0].text;
+  const descriptionLine = getSplitText(subHeadLine);
   const descriptionParts = descriptionLine.split('|');
 
   if (variation === 'horizontal') {

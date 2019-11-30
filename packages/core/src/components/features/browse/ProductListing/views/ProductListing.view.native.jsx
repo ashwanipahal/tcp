@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -270,6 +270,11 @@ ProductListView.propTypes = {
   labelsFavorite: PropTypes.shape({}),
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   renderMoveToList: PropTypes.func,
+  isPlcc: PropTypes.bool,
+  filtersLength: PropTypes.number,
+  showCustomLoader: PropTypes.bool,
+  QRAnimationURL: PropTypes.string.isRequired,
+  resetCustomLoader: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -298,6 +303,10 @@ ProductListView.defaultProps = {
   labelsFavorite: {},
   isBothTcpAndGymProductAreAvailable: false,
   renderMoveToList: () => {},
+  isPlcc: false,
+  filtersLength: 0,
+  showCustomLoader: false,
+  resetCustomLoader: () => {},
 };
 
 export default withStyles(ProductListView, styles);

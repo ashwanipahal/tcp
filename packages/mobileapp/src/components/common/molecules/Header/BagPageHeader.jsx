@@ -1,7 +1,7 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getLocator, isGymboree } from '@tcp/core/src/utils';
-import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -28,9 +28,9 @@ type Props = {
  */
 
 const closeIcon = require('@tcp/core/src/assets/close.png');
+const backIcon = require('@tcp/core/src/assets/carrot-large-left.png');
 const tcpIcon = require('../../../../assets/images/tcp/tcpLaunchImage.png');
 const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.png');
-const backIcon = require('@tcp/core/src/assets/carrot-large-left.png');
 
 /**
  * This component creates Mobile Header.
@@ -106,12 +106,14 @@ BagPageHeader.propTypes = {
   showBrandIcon: PropTypes.bool,
   showCloseButton: PropTypes.bool,
   showGobackIcon: PropTypes.bool,
+  isPayPalWebViewEnable: PropTypes.shape({}),
 };
 
 BagPageHeader.defaultProps = {
   showBrandIcon: true,
   showCloseButton: true,
   showGobackIcon: false,
+  isPayPalWebViewEnable: false,
 };
 
 export default connect(mapStateToProps)(BagPageHeader);

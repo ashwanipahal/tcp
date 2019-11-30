@@ -194,7 +194,7 @@ class PickupProductFormPart extends React.PureComponent {
             )}
           </InnerContainer>
         </OfferPriceAndBadge2Container>
-        {promotionalMessage && (
+        {!!promotionalMessage && (
           <PromotionalMsgContainer>
             <PromotionalMessage
               text={getPromotionalMessage(isHasPlcc, {

@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import get from 'lodash/get';
 import ProductListing from '../views';
-import { get } from 'lodash';
 import {
   getPlpProducts,
   getMorePlpProducts,
   resetPlpProducts,
   setFilter,
 } from './ProductListing.actions';
-import { processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs, getProductsWithPromo } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -24,7 +24,6 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
   getAllProductsSelect,
@@ -46,7 +45,6 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
-import { getProductsWithPromo } from './ProductListing.util';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -71,7 +69,8 @@ class ProductListingContainer extends React.PureComponent {
     if (navigation && oldNavigationUrl !== newNavigationUrl) {
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
-    if (this.state.showCustomLoader && !isDataLoading) {
+    const { showCustomLoader } = this.state;
+    if (showCustomLoader && !isDataLoading) {
       this.resetCustomLoader();
     }
   }
@@ -288,6 +287,8 @@ ProductListingContainer.propTypes = {
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
   QRAnimationURL: PropTypes.string,
+  isPlcc: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -313,6 +314,8 @@ ProductListingContainer.defaultProps = {
   isSearchListing: false,
   isKeepModalOpen: false,
   QRAnimationURL: '',
+  isPlcc: false,
+  isDataLoading: false,
 };
 
 export default connect(

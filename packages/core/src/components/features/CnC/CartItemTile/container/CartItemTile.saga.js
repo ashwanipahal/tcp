@@ -205,6 +205,7 @@ export function* updateCartItemSaga({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(errorMessage));
     yield call(updateSagaErrorActions, updateActionType, errorMessage);
     yield setUpdateItemErrorMessages(payload, errorMessage);
     yield put(setLoaderState(false));

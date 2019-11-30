@@ -344,6 +344,14 @@ Header.propTypes = {
   cartVal: PropTypes.number.isRequired,
   showSearch: PropTypes.bool,
   title: PropTypes.string,
+  isUpdateCartCount: PropTypes.bool,
+  updateCartManuallyAction: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
+  updateCartCountAction: PropTypes.func,
+  navigation: PropTypes.shape({}),
+  slpLabels: PropTypes.shape({}),
+  userName: PropTypes.string,
+  headertype: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -351,6 +359,14 @@ Header.defaultProps = {
   loadFavoriteStore: () => null,
   showSearch: false,
   title: '',
+  isUpdateCartCount: false,
+  updateCartManuallyAction: () => {},
+  isUserLoggedIn: false,
+  updateCartCountAction: () => {},
+  navigation: {},
+  slpLabels: {},
+  userName: '',
+  headertype: '',
 };
 
 const mapStateToProps = state => {

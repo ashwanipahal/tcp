@@ -132,7 +132,7 @@ class HeaderNew extends React.PureComponent {
   };
 
   render() {
-    const { title, showSearch, cartVal, slpLabels } = this.props;
+    const { title, showSearch, cartVal, slpLabels, navigation } = this.props;
     const { showSearchModal } = this.state;
     return (
       <SafeAreaViewStyle showSearch={showSearch}>
@@ -218,6 +218,28 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateCartManually(payload));
     },
   };
+};
+
+HeaderNew.propTypes = {
+  isUpdateCartCount: PropTypes.bool,
+  updateCartManuallyAction: PropTypes.func,
+  updateCartCountAction: PropTypes.func,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
+  cartVal: PropTypes.string,
+  slpLabels: PropTypes.shape({}),
+};
+
+HeaderNew.defaultProps = {
+  isUpdateCartCount: false,
+  updateCartManuallyAction: () => {},
+  updateCartCountAction: () => {},
+  cartVal: '',
+  slpLabels: {},
+  navigation: {
+    navigate: () => {},
+  },
 };
 
 export default connect(
