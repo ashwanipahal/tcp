@@ -45,7 +45,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       imageUrls={Array []}
       isMobile={false}
       isPLPredesign={false}
-      isProductBrandOfSameSiteBrand={true}
       isShowVideoOnPlp={false}
       isSoldOut={false}
       loadedProductCount={12}
@@ -125,7 +124,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           "requestId": "",
         }
       }
-      isProductBrandOfSameSiteBrand={true}
       loadedProductCount={12}
     />
     <Styled(ProductColorChipWrapper)

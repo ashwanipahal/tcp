@@ -3,7 +3,7 @@
 
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath, routerPush, getAPIConfig, getBrand } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -48,28 +48,15 @@ class ProductsGridItem extends React.PureComponent {
       };
     }
     const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
-    const {
-      item: {
-        productInfo: { pdpUrl },
-      },
-    } = props;
-    const isTCP = props.item && props.item.itemInfo ? props.item.itemInfo.isTCP : true;
-    const apiConfigObj = getAPIConfig();
-    const { crossDomain } = apiConfigObj;
-    const currentSiteBrand = getBrand();
-    const itemBrand = isTCP ? 'TCP' : 'GYM';
-    const isProductBrandOfSameSiteBrand =
-      currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
       selectedColorProductId: colorProductId,
       currentImageIndex: 0,
-      pdpUrl: isProductBrandOfSameSiteBrand ? pdpUrl : `${crossDomain}${pdpUrl}`,
+      pdpUrl: props.item.productInfo.pdpUrl,
       isAltImgRequested: false,
       isMoveItemOpen: false,
       generalProductId: '',
       errorProductId: '',
-      isProductBrandOfSameSiteBrand: isProductBrandOfSameSiteBrand,
     };
     const {
       onQuickViewOpenClick,
@@ -567,7 +554,6 @@ class ProductsGridItem extends React.PureComponent {
       // error,
       currentImageIndex,
       pdpUrl,
-      isProductBrandOfSameSiteBrand,
     } = this.state;
 
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
@@ -658,7 +644,6 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
             soldOutLabel={outOfStockLabels.outOfStockCaps}
-            isProductBrandOfSameSiteBrand={isProductBrandOfSameSiteBrand}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
@@ -700,7 +685,6 @@ class ProductsGridItem extends React.PureComponent {
             name={name}
             pdpUrl={pdpUrl}
             loadedProductCount={loadedProductCount}
-            isProductBrandOfSameSiteBrand={isProductBrandOfSameSiteBrand}
             analyticsData={{
               pId: generalProductId,
               prank: sqnNmb,
