@@ -138,11 +138,13 @@ PayPalButton.propTypes = {
   top: PropTypes.number,
   isBillingPage: PropTypes.bool.isRequired,
   fullWidth: PropTypes.bool,
+  isRenderDone: PropTypes.bool,
 };
 
 PayPalButton.defaultProps = {
   top: 0,
   fullWidth: false,
+  isRenderDone: false,
 };
 
 export default PayPalButton;

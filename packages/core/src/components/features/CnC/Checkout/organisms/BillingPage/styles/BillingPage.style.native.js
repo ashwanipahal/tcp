@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
 const applyPositionClassStyle = props => {
-  if (props.isPayPalWebViewEnable) {
+  const { isPayPalWebViewEnable } = props;
+  if (isPayPalWebViewEnable) {
     return `
     top:0px;
     position:absolute;
