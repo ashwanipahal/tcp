@@ -197,7 +197,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     padding-top: ",
       [Function],
       ";
-    border-top: 1px solid #d8d8d8;
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
@@ -693,7 +695,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
     padding-top: ",
       [Function],
       ";
-    border-top: 1px solid #d8d8d8;
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
