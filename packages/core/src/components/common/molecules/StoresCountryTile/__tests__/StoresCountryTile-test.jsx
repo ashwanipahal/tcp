@@ -8,6 +8,7 @@ import storesMock from '@tcp/core/src/components/common/molecules/StoreLocations
 import StoresCountryTile from '../views/StoresCountryTile';
 
 jest.mock('@tcp/core/src/utils', () => ({
+  isMobileWeb: jest.fn(),
   getViewportInfo: jest.fn(),
   getAPIConfig: () => ({
     brandId: 'tcp',

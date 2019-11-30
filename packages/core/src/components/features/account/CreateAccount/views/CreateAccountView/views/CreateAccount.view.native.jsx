@@ -1,13 +1,21 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CreateAccounPage from '../../../organisms/CreateAccountPage';
 import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
 import { Styles } from '../styles/CreateAccount.style.native';
-
+import {
+  FormStyleView,
+  DescriptionStyle,
+} from '../../../../LoginPage/molecules/LoginForm/LoginForm.style.native';
+import CustomButton from '../../../../../../common/atoms/Button';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 // @flow
 type Props = {};
+const colorPallete = createThemeColorPalette();
 
 class CreateAccount extends React.Component<Props> {
   static propTypes = {
@@ -26,6 +34,7 @@ class CreateAccount extends React.Component<Props> {
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
     updateHeader: PropTypes.func,
+    showCheckoutModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -56,6 +65,12 @@ class CreateAccount extends React.Component<Props> {
     this.setState({
       resetPassword: !resetPassword,
     });
+  };
+
+  toggleCheckoutModal = () => {
+    const { showCheckoutModal } = this.props;
+    showCheckoutModal();
+    this.showForgotPasswordForm();
   };
 
   render() {
@@ -99,12 +114,40 @@ class CreateAccount extends React.Component<Props> {
           />
         )}
         {resetPassword && (
-          <ForgotPasswordContainer
-            showForgotPasswordForm={this.showForgotPasswordForm}
-            labels={labels}
-            showLogin={showLogin}
-            updateHeader={updateHeader}
-          />
+          <>
+            <ForgotPasswordContainer
+              showForgotPasswordForm={this.showForgotPasswordForm}
+              labels={labels}
+              showLogin={showLogin}
+              updateHeader={updateHeader}
+            />
+            <FormStyleView>
+              <DescriptionStyle>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                  fontSize="fs12"
+                  color="gray.900"
+                  text={getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}
+                />
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                  fontSize="fs12"
+                  color="gray.900"
+                  text={getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}
+                />
+              </DescriptionStyle>
+              <CustomButton
+                color={colorPallete.text.secondary}
+                fill="WHITE"
+                type="submit"
+                data-locator=""
+                text={getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
+                onPress={this.toggleCheckoutModal}
+              />
+            </FormStyleView>
+          </>
         )}
       </View>
     );

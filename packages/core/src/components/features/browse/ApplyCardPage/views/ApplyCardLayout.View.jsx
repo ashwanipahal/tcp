@@ -125,6 +125,11 @@ ApplyCardLayoutView.propTypes = {
   isRtpsFlow: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
   togglePLCCModal: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]),
+};
+
+ApplyCardLayoutView.defaultProps = {
+  cartOrderItems: [],
 };
 
 export default ApplyCardLayoutView;

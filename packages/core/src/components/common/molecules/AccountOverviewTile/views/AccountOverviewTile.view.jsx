@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
@@ -15,6 +16,7 @@ export const AccountOverviewTile = ({
   className,
   linkClick,
   dataLocatorPrefix,
+  clickEventdata,
 }) => {
   return (
     <BodyCopy component="div" className={className}>
@@ -32,21 +34,23 @@ export const AccountOverviewTile = ({
         <BodyCopy component="div" className="elem-pt-LRG elem-pb-XL content">
           {children}
         </BodyCopy>
-        <Anchor
-          to={ctaLink}
-          asPath={ctaPath}
-          onClick={linkClick}
-          anchorVariation="button"
-          buttonVariation="fixed-width"
-          fullWidth
-          fill="BLUE"
-          centered
-          className="elem-mb-SM"
-          target={target}
-          dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
-        >
-          {ctaTitle}
-        </Anchor>
+        <ClickTracker clickData={clickEventdata}>
+          <Anchor
+            to={ctaLink}
+            asPath={ctaPath}
+            onClick={linkClick}
+            anchorVariation="button"
+            buttonVariation="fixed-width"
+            fullWidth
+            fill="BLUE"
+            centered
+            className="elem-mb-SM"
+            target={target}
+            dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
+          >
+            {ctaTitle}
+          </Anchor>
+        </ClickTracker>
       </BodyCopy>
     </BodyCopy>
   );
@@ -62,6 +66,7 @@ AccountOverviewTile.propTypes = {
   dataLocatorPrefix: PropTypes.string,
   target: PropTypes.string,
   linkClick: PropTypes.func,
+  clickEventdata: PropTypes.shape({}),
 };
 
 AccountOverviewTile.defaultProps = {
@@ -73,6 +78,7 @@ AccountOverviewTile.defaultProps = {
   dataLocatorPrefix: '',
   target: '_self',
   linkClick: () => {},
+  clickEventdata: {},
 };
 
 export default withStyles(AccountOverviewTile, styles);

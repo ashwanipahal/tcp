@@ -1,21 +1,22 @@
+// Disabling eslint for temporary fix
 import React from 'react';
+import PropTypes from 'prop-types';
 import { PlatformProvider, usePlatformState } from './platform-context';
 import { DeviceProvider, useDeviceState } from './device-context';
 
-export { InfoProvider, useInfoState };
-
 const InfoContext = React.createContext({});
 
-function getInitialContextState(props) {
+function getInitialContextState() {
   return {
     platform: usePlatformState(),
     device: useDeviceState(),
   };
 }
 
-function InfoProvider({ children, ...props }) {
+function InfoProvider({ children }) {
   return (
-    <InfoContext.Provider value={getInitialContextState(props)}>{children}</InfoContext.Provider>
+    // eslint-disable-next-line
+    <InfoContext.Provider value={getInitialContextState()}>{children}</InfoContext.Provider>
   );
 }
 
@@ -28,13 +29,32 @@ function useInfoState() {
 }
 
 const EnhancedProvider = props => {
+  const { children } = props;
   return (
     <PlatformProvider>
       <DeviceProvider>
-        <InfoProvider>{props.children}</InfoProvider>
+        <InfoProvider>{children}</InfoProvider>
       </DeviceProvider>
     </PlatformProvider>
   );
 };
 
 export default EnhancedProvider;
+
+export { InfoProvider, useInfoState };
+
+EnhancedProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+EnhancedProvider.defaultProps = {
+  children: null,
+};
+
+InfoProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+InfoProvider.defaultProps = {
+  children: null,
+};

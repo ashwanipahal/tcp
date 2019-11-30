@@ -236,6 +236,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
         }
       >
         <Field
+          className=""
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -257,7 +258,6 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",

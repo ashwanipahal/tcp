@@ -2,6 +2,7 @@
 
 exports[`ModuleS Componenet should match snapshot 1`] = `
 <Styled(Row)
+  className="undefined "
   fullBleed={true}
 >
   <Styled(Col)
@@ -64,6 +65,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
           },
         ]
       }
+      moduleClassName=""
       moduleWidth="half"
       ribbonBanner={null}
       singleCTAButton={

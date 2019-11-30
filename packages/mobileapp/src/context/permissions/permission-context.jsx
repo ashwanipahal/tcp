@@ -2,8 +2,6 @@ import React from 'react';
 import { check, request, PERMISSIONS } from 'react-native-permissions';
 import { useInfoState } from '../info';
 
-export { PermissionProvider, usePermissionState };
-
 export const PermissionContext = React.createContext();
 
 async function getInitialContextState({ platform }) {
@@ -13,11 +11,10 @@ async function getInitialContextState({ platform }) {
       locationWhenInUse: await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE),
       locationAlways: await check(PERMISSIONS.IOS.LOCATION_ALWAYS),
     };
-  } else {
-    return {};
   }
+  return {};
 }
-
+// eslint-disable-next-line
 function PermissionProvider({ children, ...props }) {
   const info = useInfoState();
   const [state, setState] = React.useState(null);
@@ -44,9 +41,12 @@ function PermissionProvider({ children, ...props }) {
 }
 
 function usePermissionState() {
-  context = React.useContext(PermissionContext);
+  // eslint-disable-next-line
+  let context = React.useContext(PermissionContext);
   if (context === undefined) {
     throw new Error('usePermissionState must be used within a PermissionProvider');
   }
   return context;
 }
+
+export { PermissionProvider, usePermissionState };

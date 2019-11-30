@@ -2,13 +2,15 @@ import styled from 'styled-components/native';
 import { DamImage } from '../../../../../../common/atoms';
 
 const getImageStyle = props => {
-  const { width, height, resizeMode, borderRadius } = props;
+  const { width, height, resizeMode, borderRadius, selected } = props;
+  const reducedSize = selected ? 4 : 0;
   return `
-    width: ${width};
-    height: ${height};
+    width: ${width - reducedSize};
+    height: ${height - reducedSize};
     resize-mode: ${resizeMode};
     border-width: 0;
     border-radius: ${borderRadius};
+
   `;
 };
 const getImageBorderStyle = props => {
@@ -23,6 +25,7 @@ const getImageBorderStyle = props => {
     border-color: ${borderColor};
     border-width: ${borderWidth};
     border-radius: ${borderRadius + 1};
+    ${selected ? `background-color: ${colorPalette.white} ` : ''};
   `;
 };
 
