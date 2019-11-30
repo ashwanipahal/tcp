@@ -61,7 +61,6 @@ const {
   getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
-  getBillingLabels,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -76,9 +75,7 @@ const {
   getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
-  getBillingValues,
   getShippingPhoneAndEmail,
-  getCreditFieldLabels,
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
   getShippingAddressList,
@@ -295,6 +292,7 @@ export const mapStateToProps = state => {
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    initShippingPage: selectors.getShippingInitialSectionValues(state),
   };
 };
 

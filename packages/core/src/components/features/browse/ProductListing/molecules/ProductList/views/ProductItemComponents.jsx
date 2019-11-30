@@ -343,12 +343,12 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
   if (itemNotAvailable) {
     return null;
   }
-  const { isFavoriteView, labels, onQuickViewOpenClick, productItem } = props;
+  const { isFavoriteView, labels, onQuickViewOpenClick, item } = props;
   if (isFavoriteView) {
     const {
       skuInfo: { skuId, size, fit, color },
-    } = productItem;
-    const { itemId, quantity, isTCP } = productItem.itemInfo;
+    } = item;
+    const { itemId, quantity, isTCP } = item.itemInfo;
     return (
       <Anchor
         className="edit-fav-item__button"
@@ -362,7 +362,7 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
               selectedColor: color.name,
               selectedSize: size || '',
               selectedFit: fit || '',
-              skuId: skuId,
+              skuId,
               itemBrand: isTCP ? 'tcp' : 'gym',
             },
             isFavoriteEdit: true,
@@ -375,6 +375,20 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
     );
   }
   return null;
+};
+
+EditButton.propTypes = {
+  isFavoriteView: PropTypes.bool,
+  labels: PropTypes.shape({}),
+  onQuickViewOpenClick: PropTypes.func,
+  item: PropTypes.shape({}),
+};
+
+EditButton.defaultProps = {
+  isFavoriteView: false,
+  labels: {},
+  onQuickViewOpenClick: () => {},
+  item: {},
 };
 
 ProductSKUInfo.propTypes = {

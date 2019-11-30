@@ -199,7 +199,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       keepAlive,
       quickViewPickup,
       isFromBagProductSfl,
-      isFavoriteEdit,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};

@@ -279,7 +279,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isFromBagProductSfl,
       quickViewPickup,
       currentProduct,
-      isFavoriteEdit,
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,

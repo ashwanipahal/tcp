@@ -260,6 +260,8 @@ ProductListView.propTypes = {
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   renderMoveToList: PropTypes.func,
   addToBagEcom: PropTypes.func,
+  isPlcc: PropTypes.bool,
+  filtersLength: PropTypes.number,
 };
 
 ProductListView.defaultProps = {
@@ -289,6 +291,8 @@ ProductListView.defaultProps = {
   isBothTcpAndGymProductAreAvailable: false,
   renderMoveToList: () => {},
   addToBagEcom: () => {},
+  isPlcc: false,
+  filtersLength: 0,
 };
 
 export default withStyles(ProductListView, styles);

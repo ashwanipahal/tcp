@@ -173,6 +173,7 @@ export const getPDPLabels = state => {
 
 export const getPLPPromos = (state, type) => {
   // TODO: Dynamic the productID generation logic
+  // eslint-disable-next-line extra-rules/no-commented-out-code
   let productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
@@ -265,9 +266,11 @@ const fetchL2andL3Category = (navTree, breadCrumbs, isBundleProduct, categoryPat
   } else {
     l3Cat = getNavTreeFromCatMap(navTree, categoryPath);
   }
-  return { l2Cat: l2Cat, l3Cat: l3Cat };
+  return { l2Cat, l3Cat };
 };
 
+// Disabling eslint for temporary fix
+// eslint-disable-next-line no-unused-vars
 const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProduct) => {
   // Return empty if Navigation Tree not available/passed
   if (!navTree) {
@@ -286,6 +289,8 @@ const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProdu
   return getNavTreeFromBreadCrumb(breadCrumbs, categoryPath, payload.l2Cat);
 };
 
+// Disabling eslint for temporary fix
+// eslint-disable-next-line no-unused-vars
 export const getSizeChartDetails = state => {
   const breadCrumbs = processBreadCrumbs(state.ProductDetail && state.ProductDetail.breadCrumbs);
   const navigationTree = state.Navigation && state.Navigation.navigationData;

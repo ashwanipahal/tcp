@@ -59,7 +59,8 @@ const StyledErrorWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  width: 90%;
 `;
 
 const StyledSuccessIcon = styled.View`

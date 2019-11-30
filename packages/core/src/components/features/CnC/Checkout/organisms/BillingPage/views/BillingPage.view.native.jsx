@@ -39,6 +39,7 @@ class BillingPage extends React.PureComponent {
     isVenmoEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.bool,
     isFetching: PropTypes.bool.isRequired,
+    onVenmoError: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -52,6 +53,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
     isPayPalWebViewEnable: false,
+    onVenmoError: {},
   };
 
   componentDidMount() {

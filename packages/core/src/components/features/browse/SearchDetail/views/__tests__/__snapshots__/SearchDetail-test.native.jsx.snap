@@ -42,6 +42,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     isKeepModalOpen={false}
     isLoadingMore={false}
     isLoggedIn={false}
+    isPlcc={false}
     isSearchListing={true}
     labels={Object {}}
     labelsFavorite={Object {}}

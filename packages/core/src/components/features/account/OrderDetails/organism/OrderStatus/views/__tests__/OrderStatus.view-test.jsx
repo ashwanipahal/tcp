@@ -3,6 +3,11 @@ import { shallow } from 'enzyme';
 import OrderStatus from '../OrderStatus.view';
 import constants from '../../../../OrderDetails.constants';
 
+jest.mock('date-fns', () => ({
+  ...jest.requireActual('date-fns'),
+  format: jest.fn(),
+}));
+
 describe('Order Items component', () => {
   it('should renders tracking header', () => {
     const props = {

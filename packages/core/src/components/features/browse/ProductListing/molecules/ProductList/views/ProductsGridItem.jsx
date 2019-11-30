@@ -5,7 +5,6 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
@@ -312,7 +311,7 @@ class ProductsGridItem extends React.PureComponent {
     const { selectedColorProductId } = this.state;
     if (isFavoriteView) {
       const {
-        skuInfo: { skuId, size, fit, color },
+        skuInfo: { skuId, size },
       } = item;
       if (skuId && size) {
         let cartItemInfo = getCartItemInfo(item, {});
@@ -423,7 +422,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard, generalProductId, pdpUrl },
+        productInfo: { bundleProduct, generalProductId, pdpUrl },
       },
       removeFavItem,
       isFavoriteView,
@@ -450,7 +449,6 @@ class ProductsGridItem extends React.PureComponent {
         .trim()
         .toLowerCase()}`;
     }
-    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -563,6 +561,7 @@ class ProductsGridItem extends React.PureComponent {
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
+      item,
     } = this.props;
 
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -623,7 +622,6 @@ class ProductsGridItem extends React.PureComponent {
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
     const videoUrl = getVideoUrl(curentColorEntry);
-    const productItem = this.props.item;
     return (
       <li
         className={className}
@@ -664,7 +662,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels, productItem },
+            { onQuickViewOpenClick, isFavoriteView, labels, item },
             selectedColorProductId,
             itemNotAvailable
           )}

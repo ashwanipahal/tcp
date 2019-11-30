@@ -53,6 +53,10 @@ class ProductsGrid extends React.Component {
     activeWishListId: PropTypes.number,
     addToBagEcom: PropTypes.func,
     isFavoriteView: PropTypes.bool,
+    removeFavItem: PropTypes.func.isRequired,
+    pageNameProp: PropTypes.string,
+    pageSectionProp: PropTypes.string,
+    pageSubSectionProp: PropTypes.string,
   };
 
   static defaultProps = {
@@ -77,6 +81,9 @@ class ProductsGrid extends React.Component {
     activeWishListId: '',
     addToBagEcom: () => {},
     isFavoriteView: false,
+    pageNameProp: '',
+    pageSectionProp: '',
+    pageSubSectionProp: '',
   };
 
   constructor(props, context) {

@@ -143,6 +143,7 @@ import {
   BUNDLEPRODUCT_REDUCER_KEY,
   ANALYTICS_DATA_KEY,
   SUB_NAVIGATION_REDUCER_KEY,
+  SITEMAP_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
 import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
@@ -156,6 +157,7 @@ import SmsSignupFormReducer from '@tcp/core/src/components/common/organisms/SmsS
 import EmailSignupFormReducer from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.reducer';
 import EmailSignupModalReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
+import SiteMapReducer from '../../components/features/content/SiteMap/container/SiteMap.reducer';
 import SmsSignupModalReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
 const EmailSignupReducers = combineReducers({
@@ -291,4 +293,5 @@ export default combineReducers({
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
   [ANALYTICS_DATA_KEY]: AnalyticsReducer,
   [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
+  [SITEMAP_REDUCER_KEY]: SiteMapReducer,
 });

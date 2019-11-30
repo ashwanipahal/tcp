@@ -8,7 +8,6 @@ import CreateAccounPage from '../../../organisms/CreateAccountPage';
 import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
 import { Styles } from '../styles/CreateAccount.style.native';
 import {
-  FormStyle,
   FormStyleView,
   DescriptionStyle,
 } from '../../../../LoginPage/molecules/LoginForm/LoginForm.style.native';
@@ -35,6 +34,7 @@ class CreateAccount extends React.Component<Props> {
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
     updateHeader: PropTypes.func,
+    showCheckoutModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {

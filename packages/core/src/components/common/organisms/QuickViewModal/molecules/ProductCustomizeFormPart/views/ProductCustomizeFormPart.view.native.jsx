@@ -200,6 +200,7 @@ ProductCustomizeFormPart.propTypes = {
   toastMessage: PropTypes.func,
   onCloseClick: PropTypes.func,
   isFavoriteEdit: PropTypes.bool,
+  isFromBagProductSfl: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -209,6 +210,7 @@ ProductCustomizeFormPart.defaultProps = {
   toastMessage: () => {},
   onCloseClick: () => {},
   isFavoriteEdit: false,
+  isFromBagProductSfl: false,
 };
 
 export default ProductCustomizeFormPart;

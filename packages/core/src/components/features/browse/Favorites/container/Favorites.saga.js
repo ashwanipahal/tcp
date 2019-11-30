@@ -90,7 +90,7 @@ export function* addItemsToWishlist({ payload }) {
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: activeWishListId || '',
-        skuIdOrProductId: skuIdOrProductId,
+        skuIdOrProductId,
         quantity: 1,
         isProduct: true,
         uniqueId: colorProductId,
@@ -125,6 +125,8 @@ export function* addItemsToWishlist({ payload }) {
           state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
         const activeWishlistId = activeWishlistObject.id;
         yield put(setWishlistState({ colorProductId, isInDefaultWishlist: true }));
+        // Disabling eslint for temporary fix
+        // eslint-disable-next-line no-use-before-define
         yield* loadWishlistsSummaries(activeWishlistId);
       }
     }

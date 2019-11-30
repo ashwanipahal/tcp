@@ -12,7 +12,7 @@ import {
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import { insertIntoString, isMobileApp } from '@tcp/core/src/utils/utils';
+import { insertIntoString } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
@@ -485,7 +485,7 @@ export const moveItemToNewWishList = (
       }
     })
     .catch(err => {
-      const errorMssg = getFormattedError(err, errorMapping);
+      const errorMssg = getFormattedError(err, errorMapping, true);
       return {
         errorMessage:
           (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||

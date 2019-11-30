@@ -34,10 +34,6 @@ import {
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
-import {
-  getMapSliceForColorProductId,
-  getMapSliceForSizeSkuID,
-} from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { updateWishListItemIdAction } from '../../../../features/browse/Favorites/container/Favorites.actions';
 
 class QuickViewModalContainer extends React.PureComponent {
@@ -195,6 +191,7 @@ QuickViewModalContainer.propTypes = {
   isFromBagProductSfl: PropTypes.bool,
   updateCartSflItemAction: PropTypes.func.isRequired,
   updateWishListItemFav: PropTypes.func,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -206,6 +203,7 @@ QuickViewModalContainer.defaultProps = {
   toastMessage: () => {},
   isFromBagProductSfl: false,
   updateWishListItemFav: () => {},
+  isFavoriteEdit: false,
 };
 
 export default connect(
