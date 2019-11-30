@@ -48,9 +48,10 @@ class ProductVariantSelector extends React.PureComponent {
     }
     return swatchImageUrl && `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
   };
+
   renderColor = ({ item, index }) => {
     const {
-      color: { name, swatchImage, imagePath },
+      color: { name, swatchImage },
     } = item;
     const { selectedColor, selectColor, isGiftCard } = this.props;
     const isSelected = (selectedColor && name === selectedColor.name) || false;

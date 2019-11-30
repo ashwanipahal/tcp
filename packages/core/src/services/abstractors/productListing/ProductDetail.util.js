@@ -360,6 +360,7 @@ const getCategoryValue = baseProduct => {
   const {
     categoryPath3_catMap: categoryPath3CatMap,
     categoryPath2_catMap: categoryPath2CatMap,
+    primaryKey,
   } = baseProduct;
   try {
     // @TODO name of primaryKey may change in future, so this might need updation

@@ -73,6 +73,7 @@ import BundleProductSaga from '@tcp/core/src/components/features/browse/BundlePr
 import EmailSignupForm from '@tcp/core/src/components/common/organisms/EmailSignupForm/container/EmailSignupForm.saga';
 import SmsSignupForm from '@tcp/core/src/components/common/organisms/SmsSignupForm/container/SmsSignupForm.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
+import SiteMapSaga from '../../components/features/content/SiteMap/container/SiteMap.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -149,5 +150,6 @@ export default function* rootSaga() {
     StoreListSaga(),
     BundleProductSaga(),
     NavigationSaga(),
+    SiteMapSaga(),
   ]);
 }
