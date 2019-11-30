@@ -5,7 +5,7 @@ import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import CONSTANTS from '../../User/User.constants';
 import { getUserInfo } from '../../User/container/User.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { createAccountErr, setLoadingState } from './CreateAccount.actions';
+import { createAccountErr } from './CreateAccount.actions';
 import { createAccountApi } from '../../../../../services/abstractors/account';
 import { setCreateAccountSuccess } from '../../../CnC/Confirmation/container/Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../../../CnC/Confirmation/Confirmation.constants';

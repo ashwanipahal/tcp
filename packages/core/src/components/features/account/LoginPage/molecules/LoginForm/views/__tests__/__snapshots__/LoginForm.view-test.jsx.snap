@@ -309,7 +309,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",
@@ -838,7 +837,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                   "25px",

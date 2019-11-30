@@ -49,6 +49,14 @@ const HelpCenterView = props => {
   );
 };
 
+BackButton.propTypes = {
+  labels: PropTypes.shape({}),
+};
+
+BackButton.defaultProps = {
+  labels: {},
+};
+
 HelpCenterView.propTypes = {
   slotData: PropTypes.shape({}),
   className: PropTypes.string.isRequired,

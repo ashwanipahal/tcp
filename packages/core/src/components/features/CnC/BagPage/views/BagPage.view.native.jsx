@@ -59,7 +59,7 @@ export class BagPage extends React.Component {
   }
 
   async componentDidMount() {
-    const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
+    const { fetchLabels, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
 
     const cartTotalCountCookie = await readCookieMobileApp(CART_ITEM_COUNTER);

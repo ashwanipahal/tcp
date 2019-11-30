@@ -1612,7 +1612,6 @@ exports[`Add gift card form component should render component correctly when sav
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
               "25px",

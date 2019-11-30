@@ -40,6 +40,7 @@ class BillingPage extends React.PureComponent {
     isVenmoEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.bool,
     isFetching: PropTypes.bool.isRequired,
+    onVenmoError: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -53,6 +54,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
     isPayPalWebViewEnable: false,
+    onVenmoError: {},
   };
 
   componentDidMount() {
@@ -87,8 +89,16 @@ class BillingPage extends React.PureComponent {
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
+    // Below Style is Only for handling PayPal FullScreen View
     const isIOS = Platform.OS === 'ios';
     const screenHeight = getScreenHeight();
+    const scrollStyle = {
+      position: 'absolute',
+      zIndex: 992,
+      height: isIOS ? screenHeight - 40 : screenHeight,
+      width: '100%',
+    };
+    const defualtScrollStyle = { flexGrow: 1 };
     return (
       <BillingPageContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
         {!isPayPalWebViewEnable && (
@@ -104,16 +114,7 @@ class BillingPage extends React.PureComponent {
             this.scrollView = scrollView;
           }}
           scrollEnabled={!isPayPalWebViewEnable}
-          contentContainerStyle={
-            isPayPalWebViewEnable
-              ? {
-                  position: 'absolute',
-                  zIndex: 992,
-                  height: isIOS ? screenHeight - 40 : screenHeight,
-                  width: '100%',
-                }
-              : { flexGrow: 1 }
-          }
+          contentContainerStyle={isPayPalWebViewEnable ? scrollStyle : defualtScrollStyle}
         >
           <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />

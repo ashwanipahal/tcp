@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// Disabling eslint for temporary file
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
@@ -43,7 +45,7 @@ const formatProductsData = products => {
       colorId: generalProductId,
       name: productName,
       price: offerPrice,
-      listPrice: listPrice,
+      listPrice,
       extPrice: priceRange.lowOfferPrice,
       position: index + 1,
       type: categoryName,
@@ -253,6 +255,8 @@ ProductListView.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -281,6 +285,8 @@ ProductListView.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

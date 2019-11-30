@@ -33,6 +33,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
         isVenmoPaymentInProgress={false}
         labels={Object {}}
         navigation={Object {}}
+        onVenmoError={Object {}}
         shippingAddress={null}
       />
     </Styled(View)>
@@ -74,6 +75,7 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
         isVenmoPaymentInProgress={false}
         labels={Object {}}
         navigation={Object {}}
+        onVenmoError={Object {}}
         shippingAddress={null}
         userAddresses={null}
       />

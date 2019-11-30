@@ -167,10 +167,12 @@ ApplyCardLayoutContainer.propTypes = {
   isRtpsFlow: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
   togglePLCCModal: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]),
 };
 
 ApplyCardLayoutContainer.defaultProps = {
   closeModal: () => {},
+  cartOrderItems: [],
 };
 
 /* istanbul ignore next */

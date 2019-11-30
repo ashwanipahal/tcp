@@ -5,8 +5,8 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, isCanada } from '@tcp/core/src/utils';
-
+import { getIconPath, isCanada, routerPush } from '@tcp/core/src/utils';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MiniBagHeader.style';
 
@@ -26,6 +26,15 @@ class MiniBagHeader extends React.Component {
       variation: 'primary',
     });
     onRequestClose();
+  };
+
+  /**
+   * This function will handle click to go to respective links
+   * @param {event, link, path} -
+   */
+  onLinkRedirect = ({ e, link, path }) => {
+    e.preventDefault();
+    routerPush(link, path);
   };
 
   render() {
@@ -112,6 +121,16 @@ class MiniBagHeader extends React.Component {
               fontSizeVariation="small"
               anchorVariation="primary"
               noLink
+              onClick={
+                isUserLoggedIn
+                  ? e =>
+                      this.onLinkRedirect({
+                        e,
+                        link: internalEndpoints.favorites.link,
+                        path: internalEndpoints.favorites.path,
+                      })
+                  : e => this.onLinkClick({ e, componentId: login })
+              }
               title={labels.accessibility.favoriteIconButton}
             >
               <Image

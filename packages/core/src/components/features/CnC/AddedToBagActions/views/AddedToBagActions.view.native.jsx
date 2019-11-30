@@ -52,14 +52,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
         onError={venmoErrorMessage =>
           handleCartCheckout({
             isVenmoProgress: false,
-            venmoErrorMessage: venmoErrorMessage,
+            venmoErrorMessage,
           })
         }
       />
     );
   };
 
-  getPaypalButton = (addWrapper, fullWidth) => {
+  getPaypalButton = addWrapper => {
     const {
       getPayPalSettings,
       payPalTop,
@@ -98,7 +98,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
           navigation={navigation}
           setVenmoState={() => {
             const buyModal = fromAddedToBagModal;
-            console.log('PayPalButton 2', isPayPalWebViewEnable);
             if (buyModal) {
               resetTimerStatus(true);
               hideHeader(!isPayPalWebViewEnable);
@@ -229,9 +228,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </ButtonWrapper>
         </ButtonViewWrapper>
       );
-    } else {
-      return null;
     }
+    return null;
   };
 
   render() {
