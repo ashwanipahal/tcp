@@ -4,9 +4,9 @@ import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import CountrySelector from '../../Header/molecules/CountrySelector';
 import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
 import { isClient } from '@tcp/core/src/utils';
+import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
   FooterMiddleMobile,
@@ -68,17 +68,15 @@ class Footer extends React.Component {
     const { key, value } = arg;
     if (isClient()) {
       return window.sessionStorage.setItem(key, value);
-    } else {
-      return setCookie(arg);
     }
+    return setCookie(arg);
   };
 
   getSessionStorage = key => {
     if (isClient()) {
       return window.sessionStorage.getItem(key);
-    } else {
-      return readCookie(key);
     }
+    return readCookie(key);
   };
 
   render() {
