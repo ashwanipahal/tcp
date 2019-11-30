@@ -14,6 +14,7 @@ const propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
+  setNeedHelpModal: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -36,6 +37,7 @@ const OverlayModal = ({
   isLoggedIn,
   showCondensedHeader,
   labels,
+  setNeedHelpModal,
 }) => {
   const ModalContent = OverlayModalComponentMapping[component];
   return openState && ModalContent ? (
@@ -51,6 +53,7 @@ const OverlayModal = ({
       isLoggedIn={isLoggedIn}
       showCondensedHeader={showCondensedHeader}
       labels={labels}
+      setNeedHelpModal={setNeedHelpModal}
     />
   ) : null;
 };

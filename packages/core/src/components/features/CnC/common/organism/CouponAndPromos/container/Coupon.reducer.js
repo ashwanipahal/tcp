@@ -14,6 +14,8 @@ const CouponReducerExtension = (state = initialState, action) => {
   switch (action.type) {
     case COUPON_CONSTANTS.TOGGLE_NEED_HELP_MODAL_STATE:
       return state.set('isCouponHelpModalOpen', !state.get('isCouponHelpModalOpen'));
+    case COUPON_CONSTANTS.SET_NEED_HELP_MODAL_STATE:
+      return state.set('isCouponHelpModalOpen', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (!(state instanceof fromJS)) {
