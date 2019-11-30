@@ -131,6 +131,15 @@ export default css`
   .moduleJ__carousel-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width:100%;
+      overflow:hidden;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width:100%;
+      overflow:hidden;
+    }
+
     .slick-list {
       margin-right: -22%;
 
@@ -183,6 +192,14 @@ export default css`
   .product-image {
     margin-top: 16px;
     margin-bottom: 16px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: calc(100% - 14px);
+      margin-right: 0;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: calc(100% - 15px);
+      margin-right: 0;
+    }
   }
 `;
 
