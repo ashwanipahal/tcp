@@ -151,7 +151,7 @@ export const modalStyles = css`
 
   .separator {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    border-top: 1px solid #d8d8d8;
+    border-top: 1px solid ${props => props.theme.colors.TEXT.GRAY};
   }
 `;
 
