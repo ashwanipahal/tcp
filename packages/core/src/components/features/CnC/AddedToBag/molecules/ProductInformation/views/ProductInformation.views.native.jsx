@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -77,7 +78,11 @@ const ProductInformation = ({ data, labels }) => {
               />
             </ProductSubDetailLabel>
 
-            <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.itemPrice} />
+            <BodyCopy
+              fontSize="fs12"
+              fontWeight={['semibold']}
+              text={<PriceCurrency price={Number(data.itemPrice)} />}
+            />
           </ProductDesc>
           <ProductDesc>
             <ProductSubDetailLabel>

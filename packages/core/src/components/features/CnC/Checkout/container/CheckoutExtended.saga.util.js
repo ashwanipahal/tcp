@@ -4,8 +4,9 @@ import logger from '../../../../../utils/loggerInstance';
 import { isGuest } from './Checkout.selector';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { emailSignupStatus } from './Checkout.action';
-import constants from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
+import utility from '../util/utility';
 
 export function* subscribeEmailAddress(emailObj, status, field1) {
   const { payload } = emailObj;
@@ -66,3 +67,17 @@ export function* submitEmailSignup(emailAddress, formData) {
     );
   }
 }
+
+export const pickUpRouting = ({
+  getIsShippingRequired,
+  isVenmoInProgress,
+  isVenmoPickupDisplayed,
+}) => {
+  if (getIsShippingRequired) {
+    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  }
+};
