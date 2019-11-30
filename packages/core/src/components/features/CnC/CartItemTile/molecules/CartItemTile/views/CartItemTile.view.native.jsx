@@ -335,6 +335,21 @@ class ProductInformation extends PureComponent {
     );
   };
 
+  getSwipeConfig = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled, showOnReviewPage) => {
+    return {
+      rightButtons: showOnReviewPage
+        ? [this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]
+        : null,
+      rightButtonWidth: showOnReviewPage ? 240 : 0,
+      leftButtons: null,
+      onSwipeComplete: showOnReviewPage
+        ? (event, gestureState, swipe) => {
+            CartItemTileExtension.onSwipeComplete(this.props, swipe);
+          }
+        : () => {},
+    };
+  };
+
   render() {
     const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
@@ -375,17 +390,20 @@ class ProductInformation extends PureComponent {
       isBOPISOrder
     );
 
+    const swipeConfig = this.getSwipeConfig(
+      isBOSSOrder,
+      bossDisabled,
+      isBOPISOrder,
+      bopisDisabled,
+      showOnReviewPage
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
-        rightButtonWidth={240}
-        leftButtons={null}
-        onSwipeComplete={(event, gestureState, swipe) => {
-          CartItemTileExtension.onSwipeComplete(this.props, swipe);
-        }}
+        {...swipeConfig}
       >
         <MainWrapper>
           {CartItemTileExtension.renderTogglingError(this.props)}
