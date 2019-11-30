@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, differenceInDays } from 'date-fns';
 import {
   getLabelValue,
   formatDate,
@@ -18,6 +18,13 @@ import constants from '../../components/features/account/OrderDetails/OrderDetai
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
+
+jest.mock('date-fns', () => ({
+  ...jest.requireActual('date-fns'),
+  format: jest.fn(),
+  differenceInDays: jest.fn(),
+  differenceInMilliseconds: jest.fn(),
+}));
 
 describe('getLabelValue', () => {
   const labelState = {
@@ -314,11 +321,13 @@ describe('parseUTCDate', () => {
 
 describe('validateDiffInDaysNotification', () => {
   it('return true if order date is falls with in limit', () => {
-    const returnValue = validateDiffInDaysNotification(new Date(), 30);
+    differenceInDays.mockImplementation(() => 1);
+    const returnValue = validateDiffInDaysNotification(null, 30);
     expect(returnValue).toEqual(true);
   });
 
   it('return false if order date is not falls with in limit', () => {
+    differenceInDays.mockImplementation(() => 16);
     const returnValue = validateDiffInDaysNotification('Oct 16, 2019', 15);
     expect(returnValue).toEqual(false);
   });

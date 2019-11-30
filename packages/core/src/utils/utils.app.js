@@ -700,13 +700,13 @@ export const getTranslatedMomentDate = (
   language = 'en',
   { day, month, date, year } = {}
 ) => {
-  const localeOptions = { locale: language };
+  // TODO: Locale Handling needs to happen.
   const dateInputParsed = dateInput ? new Date(dateInput) : new Date();
   return {
-    day: format(dateInputParsed, 'EEE', localeOptions),
-    month: format(dateInputParsed, 'MMM', localeOptions),
-    date: format(dateInputParsed, 'dd', localeOptions),
-    year: format(dateInputParsed, 'yyyy', localeOptions),
+    day: format(dateInputParsed, 'EEE'),
+    month: format(dateInputParsed, 'MMM'),
+    date: format(dateInputParsed, 'dd'),
+    year: format(dateInputParsed, 'yyyy'),
   };
 };
 

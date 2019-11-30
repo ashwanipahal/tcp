@@ -991,7 +991,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       message =
         shippedDate === constants.STATUS_CONSTANTS.NA
           ? shippedDate
-          : format(shippedDate, dateFormat);
+          : format(new Date(shippedDate), dateFormat);
       break;
     case constants.STATUS_CONSTANTS.ORDER_CANCELED:
     case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
@@ -1004,13 +1004,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       break;
     case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
-      message = format(pickUpExpirationDate, dateFormat);
+      message = format(new Date(pickUpExpirationDate), dateFormat);
       break;
 
     case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
     case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
-      message = format(pickedUpDate, dateFormat);
+      message = format(new Date(pickedUpDate), dateFormat);
       break;
     default:
       ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
