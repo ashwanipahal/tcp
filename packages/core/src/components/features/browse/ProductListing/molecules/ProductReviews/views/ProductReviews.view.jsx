@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getBrand } from '@tcp/core/src/utils';
-import { bin2hex, md5 } from '../encoding';
 import cssClassName from '../../../../../../../utils/cssClassName';
 import { requireUrlScript } from '../../../../../../../utils/resourceLoader';
 import withStyles from '../../../../../../common/hoc/withStyles';
