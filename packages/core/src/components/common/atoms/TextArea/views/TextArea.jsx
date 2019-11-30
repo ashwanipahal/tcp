@@ -28,7 +28,7 @@ type Props = {
   enableSuccessCheck?: boolean,
 };
 
-const TextArea = ({
+export const TextArea = ({
   className,
   id,
   ariaLabel,
@@ -100,4 +100,3 @@ TextArea.defaultProps = {
 };
 
 export default withStyles(TextArea, StyledTextArea);
-export { TextArea as TextAreaVanilla };

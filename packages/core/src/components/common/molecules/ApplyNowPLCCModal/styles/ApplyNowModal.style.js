@@ -7,6 +7,7 @@ export const modalStyles = css`
     ${props => (props.isRtpsFlow ? 'display:none' : '')};
   }
   .apply-now-heading {
+    font-family: ${props => props.theme.typography.fonts.primary};
     margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0px
       ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
@@ -53,7 +54,7 @@ export const modalStyles = css`
   }
 
   .learn_more_link {
-    padding: 14px 0px 28px 0px;
+    padding: 16px 0px 12px 0px;
   }
 
   .learn_more_link_wrapper {
@@ -74,7 +75,7 @@ export const modalStyles = css`
   }
 
   .header__greeting {
-    margin: 9px 0px;
+    margin-top: 9px;
   }
 
   .header-image {
@@ -109,6 +110,7 @@ export const modalStyles = css`
 
   .linkIconSeperator {
     margin-left: 10px;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
   }
 
   .rewards__benefits {
@@ -133,17 +135,23 @@ export const modalStyles = css`
 
   .footerLinks {
     display: flex;
-    margin-top: 38px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .footerLink {
     margin-left: 28px;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
   }
 
   div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
+  }
+
+  .separator {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    border-top: 1px solid ${props => props.theme.colors.TEXT.GRAY};
   }
 `;
 
