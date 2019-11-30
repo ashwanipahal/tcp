@@ -22,6 +22,7 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
 
     CheckoutReviewSaga.next(false);
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next(false).value).toEqual(call(getAddressList));
     expect(CheckoutReviewSaga.next().value).toEqual(call(getCardList, { ignoreCache: true }));
   });

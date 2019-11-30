@@ -60,6 +60,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         className="favIcon"
         fontSizeVariation="small"
         noLink={true}
+        onClick={[Function]}
       >
         <Styled(Image)
           className="product-image"
@@ -162,6 +163,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         className="favIcon"
         fontSizeVariation="small"
         noLink={true}
+        onClick={[Function]}
       >
         <Styled(Image)
           className="product-image"
