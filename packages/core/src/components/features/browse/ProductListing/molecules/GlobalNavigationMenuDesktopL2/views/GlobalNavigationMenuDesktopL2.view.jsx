@@ -151,17 +151,19 @@ const NavGroupContainer = props => {
         );
         return (
           <div key={`group-${groupName}`} className={`${className} ${subMenuOutlinersclassName}`}>
-            <BodyCopy
-              component="h2"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-              color="text.primary"
-              data-locator={`${getLocator('plp_left_Nav_header')}`}
-            >
-              {groupName}
-              {groupName && <p className="group-nav" />}
-            </BodyCopy>
+            {groupName && (
+              <BodyCopy
+                component="h2"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                color="text.primary"
+                data-locator={`${getLocator('plp_left_Nav_header')}`}
+              >
+                {groupName}
+                <p className="group-nav" />
+              </BodyCopy>
+            )}
             <L2 {...{ menuItems, activeCategoryIds, isTopNav, className }} />
           </div>
         );
