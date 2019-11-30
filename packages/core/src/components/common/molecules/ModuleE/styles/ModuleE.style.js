@@ -85,7 +85,7 @@ export default css`
   }
 
   .image-comp {
-    color: ${props => props.theme.colorPalette.black};
+    color: ${props => props.theme.colorPalette.gray[900]};
   }
 
   .small-composite-image img {
