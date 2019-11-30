@@ -14,6 +14,7 @@ describe('ProductReviews component as guest', () => {
     ratingsAndReviewsLabel: 'RATINGS & REVIEWS',
     getSecurityToken: () => {},
   };
+
   beforeEach(() => {
     component = shallow(<ProductReviewsVanilla {...props} />);
   });
@@ -25,10 +26,6 @@ describe('ProductReviews component as guest', () => {
   it('should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
-
-  // it('should return styled View component value two', () => {
-  //   expect(component.find('Styled(View)')).toHaveLength(2);
-  // });
 });
 
 describe('ProductReviews component as logged in user', () => {
