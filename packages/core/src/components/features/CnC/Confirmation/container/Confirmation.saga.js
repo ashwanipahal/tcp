@@ -1,8 +1,7 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
-
 import {
   setUpdateOrderDetailsData,
   setLoadingState,

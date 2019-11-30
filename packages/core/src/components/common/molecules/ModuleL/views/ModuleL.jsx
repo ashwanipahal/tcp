@@ -37,6 +37,7 @@ const ModuleL = ({
   imagesPerSlide,
   promoBanner,
   accessibility,
+  moduleClassName,
 }) => {
   const options = config.CAROUSEL_OPTIONS;
   options.prevArrow = (
@@ -62,7 +63,7 @@ const ModuleL = ({
 
   return (
     <Row
-      className={`${className} moduleL`}
+      className={`${className} ${moduleClassName} moduleL`}
       fullBleed={{
         small: false,
         medium: true,
@@ -110,6 +111,7 @@ const ModuleL = ({
 ModuleL.defaultProps = {
   promoBanner: [],
   accessibility: {},
+  moduleClassName: '',
 };
 
 ModuleL.propTypes = {
@@ -138,6 +140,7 @@ ModuleL.propTypes = {
     previousButton: PropTypes.string,
     nextIconButton: PropTypes.string,
   }),
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleL), style);

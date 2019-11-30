@@ -203,6 +203,7 @@ ProductDetailDescription.propTypes = {
   isShowMore: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  color: PropTypes.string,
   shortDescription: PropTypes.string,
   productInfo: PropTypes.shape({}),
 };
@@ -215,6 +216,7 @@ ProductDetailDescription.defaultProps = {
   pdpLabels: {},
   shortDescription: '',
   productInfo: {},
+  color: '',
 };
 
 export default withStyles(errorBoundary(ProductDetailDescription), style);

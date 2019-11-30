@@ -1092,7 +1092,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2365,7 +2364,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",

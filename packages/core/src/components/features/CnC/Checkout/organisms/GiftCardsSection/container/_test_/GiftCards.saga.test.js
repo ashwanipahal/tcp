@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, call } from 'redux-saga/effects';
 import {
   GiftCardsSaga,
   applyGiftCard,
@@ -7,7 +7,6 @@ import {
 } from '../GiftCards.saga';
 import GIFTCARD_CONSTANTS from '../../GiftCards.constants';
 import { getCartDataSaga } from '../../../../../BagPage/container/BagPage.saga';
-import BAG_PAGE_ACTIONS from '../../../../../BagPage/container/BagPage.actions';
 
 describe('GiftCards saga', () => {
   it('should return correct takeLatest effect', () => {
