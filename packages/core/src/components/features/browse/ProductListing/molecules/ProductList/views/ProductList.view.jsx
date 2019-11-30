@@ -47,6 +47,7 @@ const ProductList = props => {
     siblingProperties,
     loadedProductCount,
     labels,
+    labelsPlpTiles,
     isPlcc,
     productTileVariation,
     isLoggedIn,
@@ -63,6 +64,9 @@ const ProductList = props => {
     removeAddToFavoritesErrorMsg,
     openAddNewList,
     activeWishListId,
+    onSeeSuggestedItems,
+    onCloseSuggestedModal,
+    seeSuggestedDictionary,
   } = props;
   let gridIndex = 0;
 
@@ -138,6 +142,7 @@ const ProductList = props => {
               isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
               isKeepAliveEnabled={isKeepAliveEnabled}
               labels={labels}
+              labelsPlpTiles={labelsPlpTiles}
               isLoggedIn={isLoggedIn}
               wishlistsSummaries={wishlistsSummaries}
               isFavoriteView={isFavoriteView}
@@ -151,6 +156,9 @@ const ProductList = props => {
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               openAddNewList={openAddNewList}
               activeWishListId={activeWishListId}
+              onSeeSuggestedItems={onSeeSuggestedItems}
+              onCloseSuggestedModal={onCloseSuggestedModal}
+              seeSuggestedDictionary={seeSuggestedDictionary}
             />
           </div>
         );
@@ -206,6 +214,10 @@ ProductList.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   openAddNewList: PropTypes.func,
   activeWishListId: PropTypes.number,
+  labelsPlpTiles: PropTypes.shape({}),
+  onSeeSuggestedItems: PropTypes.func,
+  onCloseSuggestedModal: PropTypes.func,
+  seeSuggestedDictionary: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -245,6 +257,10 @@ ProductList.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   openAddNewList: () => {},
   activeWishListId: '',
+  labelsPlpTiles: {},
+  onSeeSuggestedItems: () => {},
+  onCloseSuggestedModal: () => {},
+  seeSuggestedDictionary: {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

@@ -36,10 +36,6 @@ const styles = css`
       display: none;
     }
   }
-
-  .full-height {
-    height: 100%;
-  }
 `;
 
 export const imageAnchorInheritedStyles = css`
