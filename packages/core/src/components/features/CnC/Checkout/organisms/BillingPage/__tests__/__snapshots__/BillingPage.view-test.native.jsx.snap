@@ -43,23 +43,21 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
 
 exports[`PickUpFormPart component should renders correctly props not present 2`] = `
 <Styled(View)
-  isPayPalWebViewEnable={false}
+  isPayPalWebViewEnable={true}
 >
-  <CheckoutProgressIndicator
-    activeStage="billing"
-    availableStages={Object {}}
-    navigation={Object {}}
-  />
   <ScrollViewMock
     contentContainerStyle={
       Object {
-        "flexGrow": 1,
+        "height": 1294,
+        "position": "absolute",
+        "width": "100%",
+        "zIndex": 992,
       }
     }
-    scrollEnabled={true}
+    scrollEnabled={false}
   >
     <Styled(View)
-      isPayPalWebViewEnable={false}
+      isPayPalWebViewEnable={true}
     >
       <CheckoutSectionTitleDisplay />
       <Connect(GiftCardsContainer) />
@@ -70,7 +68,7 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
         cvvCodeRichText={null}
         handleSubmit={[Function]}
         isGuest={false}
-        isPayPalWebViewEnable={false}
+        isPayPalWebViewEnable={true}
         isVenmoEnabled={false}
         isVenmoPaymentInProgress={false}
         labels={Object {}}
