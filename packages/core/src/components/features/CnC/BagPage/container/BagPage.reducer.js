@@ -43,6 +43,11 @@ const initialState = fromJS({
   },
 });
 
+const resetState = initialState
+  .set('bagLoading', false)
+  .set('loaded', true)
+  .set('orderDetails', fromJS({ orderItems: [] }));
+
 function updateItem(state, itemId, status) {
   const indexValue = state
     .getIn(['orderDetails', 'orderItems'])
@@ -140,7 +145,7 @@ const BagPageReducer = (state = initialState, action) => {
     case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:
       return setSflItemDeleted(state, action.payload);
     case BAGPAGE_CONSTANTS.RESET_CART_DATA:
-      return initialState;
+      return resetState;
     default:
       return returnBagPageReducer(state, action);
   }

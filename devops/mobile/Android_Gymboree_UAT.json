@@ -316,6 +316,14 @@
     {
       "name": "isErrorReportingActive",
       "value": "true"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_TCP",
+      "value": "https://test6.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_GYM",
+      "value": "https://test6.gymboree.com"
     }
   ],
   "signed": true,

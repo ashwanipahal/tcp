@@ -36,6 +36,8 @@ const PickupStoreList = props => {
     currentProduct,
     setClickAnalyticsData,
     trackClick,
+    setFavoriteStore,
+    getDefaultStore,
   } = props;
   const InputCheckBoxComponent = StyledInputCheckbox;
   return (
@@ -79,6 +81,8 @@ const PickupStoreList = props => {
           onStoreUpdate={onStoreUpdate}
           setClickAnalyticsData={setClickAnalyticsData}
           trackClick={trackClick}
+          setFavoriteStore={setFavoriteStore}
+          getDefaultStore={getDefaultStore}
         />
       ))}
       {isSearching || !isUserCartStoreLoaded ? <StoreListItemSkeleton col={20} /> : null}
@@ -158,6 +162,8 @@ PickupStoreList.propTypes = {
   setClickAnalyticsData: PropTypes.func.isRequired,
   trackClick: PropTypes.func.isRequired,
   currentProduct: PropTypes.string,
+  setFavoriteStore: PropTypes.func,
+  getDefaultStore: PropTypes.func,
 };
 
 PickupStoreList.defaultProps = {
@@ -165,6 +171,8 @@ PickupStoreList.defaultProps = {
   isBopisEnabled: true,
   defaultStoreName: '',
   currentProduct: '',
+  setFavoriteStore: () => {},
+  getDefaultStore: () => {},
 };
 
 export default PickupStoreList;

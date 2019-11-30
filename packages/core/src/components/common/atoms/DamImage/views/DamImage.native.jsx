@@ -31,7 +31,6 @@ const createURI = properties => {
   const cropVal = crop || '';
   const urlVal = url || '';
   // const ImageComponent = host ? Image : Image;
-  const ImageComponent = Image;
   const namedTransformation = imgConfig || '';
   const apiConfigObj = getAPIConfig();
 
@@ -69,7 +68,7 @@ const DamImage = props => {
     ...otherProps
   } = props;
 
-  const ImageComponent = host ? Image : Image;
+  const ImageComponent = Image;
 
   if (videoData) {
     return <VideoPlayer {...videoData} />;

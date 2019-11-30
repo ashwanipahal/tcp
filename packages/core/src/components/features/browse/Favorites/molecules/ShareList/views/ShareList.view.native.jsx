@@ -105,7 +105,6 @@ ShareList.propTypes = {
   onHandleSubmit: PropTypes.func.isRequired,
   margins: PropTypes.string,
   onCloseModal: PropTypes.func,
-  dispatch: PropTypes.func,
 };
 
 ShareList.defaultProps = {
@@ -113,7 +112,6 @@ ShareList.defaultProps = {
   handleSubmit: () => {},
   margins: null,
   onCloseModal: () => {},
-  dispatch: () => {},
 };
 
 const validateMethod = createValidateMethod(
