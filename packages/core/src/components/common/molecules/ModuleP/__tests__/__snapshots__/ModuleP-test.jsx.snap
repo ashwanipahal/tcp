@@ -25,11 +25,12 @@ exports[`Module P component renders correctly 1`] = `
     isMobile={false}
     isOnModelImgDisplay={false}
     isPLPShowPickupCTA={false}
-    isPLPredesign={true}
+    isPLPredesign={false}
     isPlcc={false}
     isProductsGridCTAView={true}
     isShowQuickView={false}
     isShowVideoOnPlp={false}
+    isSuggestedItem={false}
     item={
       Object {
         "colorsMap": Array [
@@ -56,6 +57,7 @@ exports[`Module P component renders correctly 1`] = `
     onProductCardHover={[Function]}
     onQuickBopisOpenClick={[Function]}
     onQuickViewOpenClick={[Function]}
+    productsBlock={Object {}}
     siblingProperties={
       Object {
         "colorMap": Array [],
