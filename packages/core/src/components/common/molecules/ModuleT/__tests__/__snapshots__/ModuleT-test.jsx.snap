@@ -2,7 +2,7 @@
 
 exports[`ModuleT component renders correctly 1`] = `
 <StyledComponent
-  className=" moduleT"
+  className="  moduleT"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),

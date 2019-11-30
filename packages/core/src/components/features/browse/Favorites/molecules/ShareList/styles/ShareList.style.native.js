@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import TextBox from '../../../../../../common/atoms/TextBox';
 
 const getAdditionalStyle = props => {
   const { margins } = props;
@@ -10,7 +9,7 @@ const getAdditionalStyle = props => {
 
 const Container = styled.View`
   justify-content: center;
-  ${getAdditionalStyle};
+  margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM} ${getAdditionalStyle};
 `;
 
 const RowContainer = styled.View`
