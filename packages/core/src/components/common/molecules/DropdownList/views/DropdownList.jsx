@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils';
 import styles from '../styles/DropdownList.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
-import Badge from '../../../atoms/Badge';
 
 class DropdownList extends React.PureComponent {
   constructor(props) {
@@ -48,7 +46,7 @@ class DropdownList extends React.PureComponent {
   };
 
   render() {
-    const { className, optionsMap, clickHandler, activeValue, dataLocatorObj, labels } = this.props;
+    const { className, optionsMap, clickHandler, activeValue, dataLocatorObj } = this.props;
     const { dropDownList } = dataLocatorObj;
     const nthChild = optionsMap.find(itemValue => itemValue.value === '');
     return (

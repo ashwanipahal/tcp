@@ -161,6 +161,7 @@ CheckoutFooter.propTypes = {
   continueWithText: PropTypes.string,
   onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
   venmoError: PropTypes.string,
+  bagLoading: PropTypes.bool,
 };
 
 CheckoutFooter.defaultProps = {
@@ -171,6 +172,7 @@ CheckoutFooter.defaultProps = {
   continueWithText: '',
   onVenmoSubmit: () => {},
   venmoError: '',
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutFooter, style);

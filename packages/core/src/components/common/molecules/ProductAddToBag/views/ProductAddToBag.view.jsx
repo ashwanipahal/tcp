@@ -140,9 +140,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className, plpLabels } = this.props;
+    const { className, plpLabels, hideAlternateSizes } = this.props;
     const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
-    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    const visibleAlternateSizes =
+      !hideAlternateSizes && alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
@@ -273,6 +274,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isFromBagProductSfl,
       quickViewPickup,
       currentProduct,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
     colorFitSizeDisplayNames = {
@@ -323,10 +327,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     eventName: 'cart add',
                     pageShortName,
                     pageName,
-                    pageType: 'product',
-                    pageSection: 'product',
-                    pageSubSection: 'product',
+                    pageType: pageNameProp,
+                    pageSection: pageSectionProp,
+                    pageSubSection: pageSubSectionProp,
                     products: [{ id: `${productId}` }],
+                    customEvents: ['event61', 'event77'],
                   }}
                 >
                   <Button

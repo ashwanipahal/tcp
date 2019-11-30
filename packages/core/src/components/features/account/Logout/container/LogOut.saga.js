@@ -1,8 +1,8 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, take } from 'redux-saga/effects';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
-import { resetUserInfo } from '../../User/container/User.actions';
+import { resetUserInfo, getUserInfo } from '../../User/container/User.actions';
 import CONSTANTS from '../../User/User.constants';
 import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
@@ -11,7 +11,6 @@ import { LogoutApplication } from '../../../../../services/abstractors/account';
 import {
   resetWalletAppState,
   resetCouponReducer,
-  getCouponList,
 } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
@@ -39,13 +38,11 @@ export function* logoutSaga() {
           customEvents: ['event80'],
         })
       );
-      // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
       yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
       yield put(resetAirmilesReducer());
       yield put(resetCouponReducer());
       yield put(BAG_PAGE_ACTIONS.resetCartReducer());
-
-      yield put(getCouponList({ ignoreCache: true }));
+      yield put(getUserInfo({ ignoreCache: true }));
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());

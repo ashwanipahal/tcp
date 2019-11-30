@@ -39,7 +39,6 @@ import {
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
-  pickUpRouting,
   callPickupSubmitMethod,
   callUpdateRTPS,
   handleServerSideErrorAPI,
@@ -50,7 +49,7 @@ import {
   redirectFromExpress,
 } from './Checkout.saga.util';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import { submitEmailSignup } from './CheckoutExtended.saga.util';
+import { submitEmailSignup, pickUpRouting } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -538,12 +537,8 @@ function* initCheckout({ router, isPaypalFlow, navigation }) {
   }
 
   try {
-    yield put(setLoaderState(true));
     yield call(loadStartupData, isPaypalPostBack, recalc, section, navigation);
-    yield put(setLoaderState(false));
   } catch (e) {
-    yield put(setLoaderState(false));
-
     logger.error(e);
   }
 }

@@ -167,6 +167,7 @@ const ProductCustomizeFormPart = props => {
               onCloseClick={onCloseClick}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
               isMultiItemQVModal={isMultiItemQVModal}
+              hideAlternateSizes
             />
           </div>
         </div>

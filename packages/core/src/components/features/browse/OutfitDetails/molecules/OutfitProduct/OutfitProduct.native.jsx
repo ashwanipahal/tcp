@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import { calculatePriceValue } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/common/molecules/ImageCarousel';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
@@ -46,7 +47,7 @@ const renderPickUpStore = props => {
     return (
       <ProductPickupContainer
         productInfo={currentProduct}
-        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        formName={`${OUTFIT_LISTING_FORM}-${currentProduct.generalProductId}`}
         miscInfo={miscInfo}
         simplifiedProductPickupView
         keepAlive={keepAlive}
@@ -207,13 +208,12 @@ const renderAddToBagContainer = (
         // eslint-disable-next-line sonarjs/no-extra-arguments
         onChangeColor(colorIndex, setCurrentColorIndex, colorindex, generalProductId)
       }
-      onChangeSize={(colorName, selectedSizeName, selectedFitName, selectedQuantity) =>
-        setSelectedSizeName(selectedSizeName)
-      }
+      onChangeSize={(colorName, selectedSizeName) => setSelectedSizeName(selectedSizeName)}
       isBundleProduct={isBundleProduct}
       toastMessage={toastMessage}
       isKeepAliveEnabled={isKeepAliveEnabled}
       outOfStockLabels={outOfStockLabels}
+      customFormName={OUTFIT_LISTING_FORM}
     />
   );
 };
@@ -295,6 +295,7 @@ const OutfitDetailsView = ({
       addToFavorites({
         colorProductId: outfitProduct.productId,
         productSkuId: (skuDetails && skuDetails.skuId) || null,
+        // eslint-disable-next-line no-use-before-define
         pdpColorProductId: colorProduct.colorProductId,
         page: pageName || 'OUTFIT',
       });
@@ -414,7 +415,7 @@ const OutfitDetailsView = ({
           )}
           {renderOutOfStockError(keepAlive, outOfStockLabels)}
           <TouchableOpacity
-            onPress={_ => navigateToPdp(navigation, outfitProduct)}
+            onPress={() => navigateToPdp(navigation, outfitProduct)}
             accessible
             accessibilityRole="button"
             accessibilityLabel={`${name}`}
@@ -545,6 +546,9 @@ OutfitDetailsView.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   productMiscInfo: PropTypes.shape({}),
   colorindex: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  pageName: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -565,6 +569,9 @@ OutfitDetailsView.defaultProps = {
   toastMessage: () => {},
   productMiscInfo: {},
   colorindex: () => {},
+  AddToFavoriteErrorMsg: '',
+  pageName: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);
