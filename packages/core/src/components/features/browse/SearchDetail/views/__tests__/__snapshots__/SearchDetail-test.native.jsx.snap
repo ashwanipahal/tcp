@@ -65,7 +65,9 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     removeAddToFavoritesErrorMsg={[Function]}
     renderBrandFilter={null}
     renderMoveToList={[Function]}
+    resetCustomLoader={[Function]}
     setListRef={[Function]}
+    showCustomLoader={false}
     sortLabels={Object {}}
     totalProductsCount={0}
   />

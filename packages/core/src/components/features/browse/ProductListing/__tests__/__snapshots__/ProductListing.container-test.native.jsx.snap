@@ -43,6 +43,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   }
   initialValues={Object {}}
   isBothTcpAndGymProductAreAvailable={false}
+  isDataLoading={false}
   isFavorite={false}
   isKeepModalOpen={false}
   isLoadingMore={false}
