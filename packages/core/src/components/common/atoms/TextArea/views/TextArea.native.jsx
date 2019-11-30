@@ -14,13 +14,11 @@ const errorIcon = require('../../../../../assets/alert-triangle.png');
 
 const TextArea = ({
   input,
-  meta,
   id,
   name,
   meta: { error, touched },
   label,
   keyboardType,
-  secureTextEntry,
   autoCapitalize,
 }) => {
   const [focused, setFocused] = useState(false);
@@ -93,7 +91,6 @@ TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   keyboardType: PropTypes.string,
-  secureTextEntry: PropTypes.bool,
   autoCapitalize: PropTypes.string,
 };
 
@@ -102,7 +99,6 @@ TextArea.defaultProps = {
   meta: {},
   label: '',
   keyboardType: 'default',
-  secureTextEntry: false,
   autoCapitalize: 'sentences',
 };
 
