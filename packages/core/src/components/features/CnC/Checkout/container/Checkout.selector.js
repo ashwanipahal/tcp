@@ -41,6 +41,8 @@ import {
   isVenmoPaymentAvailable,
   getVenmoUserName,
   getVenmoPayment,
+  isVenmoOrderPayment,
+  getVenmoOrderUserId,
 } from './CheckoutVenmo.selector';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
@@ -1049,4 +1051,6 @@ export default {
   getShowRTPSOnBilling,
   getshowRTPSOnReview,
   getVenmoPayment,
+  isVenmoOrderPayment,
+  getVenmoOrderUserId,
 };
