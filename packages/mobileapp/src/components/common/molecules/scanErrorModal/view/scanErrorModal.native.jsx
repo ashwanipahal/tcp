@@ -1,5 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getScreenWidth, getScreenHeight } from '@tcp/core/src/utils/utils.app';
+import ModalNative from '@tcp/core/src/components/common/molecules/Modal/view/Modal.native';
 import {
   Wrapper,
   Container,
@@ -10,8 +12,6 @@ import {
   MessageContainer,
   ShadowContainer,
 } from '../styles/scanErrorModal.native.style';
-import { getScreenWidth, getScreenHeight } from '@tcp/core/src/utils/utils.app';
-import ModalNative from '@tcp/core/src/components/common/molecules/Modal/view/Modal.native';
 
 const PROPMT_WIDTH = getScreenWidth() - 60;
 const HEIGHT = getScreenHeight();
@@ -69,6 +69,7 @@ const ScanErrorModal = ({ onClose, isOpen, labels }) => {
 ScanErrorModal.propTypes = {
   onClose: PropTypes.func,
   labels: PropTypes.shape({}),
+  isOpen: PropTypes.bool,
 };
 
 ScanErrorModal.defaultProps = {
@@ -78,6 +79,7 @@ ScanErrorModal.defaultProps = {
     lbl_qrscan_no_result_help: '',
     lbl_qrscan_cta_retry: '',
   },
+  isOpen: false,
 };
 
 export default ScanErrorModal;

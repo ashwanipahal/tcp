@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { BodyCopy } from '../../../atoms';
@@ -84,6 +83,7 @@ SearchBar.propTypes = {
     lbl_search_looking_for: PropTypes.string,
     lbl_search_product_matches: PropTypes.string,
   }),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 SearchBar.defaultProps = {

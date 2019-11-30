@@ -4,8 +4,6 @@ import { Dimensions } from 'react-native';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import FastImageNative from '../../../../../../../../../mobileapp/src/components/common/molecules/FastImage';
 
-const closeIcon = require('@tcp/core/src/assets/close.png');
-
 /**
  *
  * @param {*} navigation

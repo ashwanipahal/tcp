@@ -1,5 +1,7 @@
 import React from 'react';
+import PropType from 'prop-types';
 import CustomIcon from '../../Icon';
+
 import { ICON_NAME, ICON_FONT_CLASS } from '../../Icon/Icon.constants';
 
 const onQRIconFocus = (navigation, closeModal) => {
@@ -24,6 +26,19 @@ const QRScannerIcon = ({ navigation, closeModal, style, size }) => {
       isButton
     />
   );
+};
+
+QRScannerIcon.propTypes = {
+  navigation: PropType.shape({}).isRequired,
+  closeModal: PropType.func,
+  style: PropType.shape({}),
+  size: PropType.string,
+};
+
+QRScannerIcon.defaultProps = {
+  closeModal: () => {},
+  style: {},
+  size: '',
 };
 
 export default QRScannerIcon;

@@ -330,6 +330,7 @@ SearchProduct.propTypes = {
   searchResults: PropTypes.instanceOf(Object),
   recentSearches: PropTypes.arrayOf(Object),
   setRecentSearches: PropTypes.func,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 SearchProduct.defaultProps = {
