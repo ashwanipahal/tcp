@@ -16,6 +16,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
           error="Error handle"
           fontSize="fs14"
           fontWeight="black"
+          isEspot={false}
         />
       </Styled(View)>
       <Styled(View)>
@@ -144,6 +145,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
@@ -172,6 +174,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
           error="Error handle"
           fontSize="fs14"
           fontWeight="black"
+          isEspot={false}
         />
       </Styled(View)>
       <Styled(View)>
@@ -300,6 +303,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       isConfirmationPage={false}
       isGuest={true}
       isPayPalWebViewEnable={false}
+      onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
@@ -328,6 +332,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
           error=""
           fontSize="fs14"
           fontWeight="black"
+          isEspot={false}
         />
       </Styled(View)>
       <Styled(View)>
@@ -406,6 +411,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       isConfirmationPage={false}
       isGuest={false}
       isPayPalWebViewEnable={false}
+      onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"

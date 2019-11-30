@@ -153,3 +153,17 @@ export const setWishListShareSuccess = payload => {
     payload,
   };
 };
+
+export const setMaximumProductAddedErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.MAXIMUM_PRODUCT_ADDED_ERROR,
+    payload,
+  };
+};
+
+export const resetMaximumProductAddedErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.RESET_MAXIMUM_PRODUCT_ADDED_ERROR,
+    payload,
+  };
+};

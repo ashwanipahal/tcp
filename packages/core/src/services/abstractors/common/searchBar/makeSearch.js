@@ -2,7 +2,6 @@ import filter from 'lodash/filter';
 import { getLabelValue } from '@tcp/core/src/utils';
 import processHelpers from '../../productListing/processHelpers';
 import { parseBoolean } from '../../productListing/productParser';
-import { extractAttributeValue } from '../../../../utils/badge.util';
 import { executeUnbxdAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
 

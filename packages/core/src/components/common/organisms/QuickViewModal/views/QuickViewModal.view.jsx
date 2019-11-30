@@ -10,7 +10,6 @@ import styles, {
 } from '../styles/QuickViewModal.style';
 import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
-import { Spinner } from '../../../atoms';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
