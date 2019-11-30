@@ -10,16 +10,17 @@ const FavoriteSkeleton = ({ col }) => {
     <>
       <FavoriteListFilterWrapper>
         <ViewWithSpacing spacingStyles="margin-bottom-MED">
-          <LoaderSkelton width="130px" height="40px" />
+          <LoaderSkelton width="100%" height="40px" />
         </ViewWithSpacing>
         <ViewWithSpacing spacingStyles="margin-bottom-MED">
-          <LoaderSkelton width="130px" height="40px" />
+          <LoaderSkelton width="100%" height="40px" />
         </ViewWithSpacing>
         <ViewWithSpacing spacingStyles="margin-bottom-MED">
-          <LoaderSkelton width="130px" height="40px" />
+          <LoaderSkelton width="100%" height="40px" />
         </ViewWithSpacing>
+
+        <PLPSkeleton col={col} />
       </FavoriteListFilterWrapper>
-      <PLPSkeleton col={col} />
     </>
   );
 };
