@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLabelValue } from '@tcp/core/src/utils';
-import { closeAddedToBag } from './AddedToBag.actions';
 import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { closeAddedToBag } from './AddedToBag.actions';
 import {
   getAddedToBagData,
   isOpenAddedToBag,
@@ -31,6 +31,8 @@ type Props = {
   addedToBagInterval: number,
   totalBagItems: number,
   pointsSummary: any,
+  isPayPalButtonRendered: boolean,
+  isPayPalEnabled: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -68,13 +70,13 @@ export class AddedToBagContainer extends React.Component<Props> {
       isInternationalShipping,
       isPayPalWebViewEnable,
       isPayPalButtonRendered,
+      isPayPalEnabled,
       router,
       closeModal,
       addedToBagLoaderState,
       addedToBagInterval,
       totalBagItems,
       pointsSummary,
-      isPayPalEnabled,
     } = this.props;
     return (
       <AddedToBag

@@ -110,7 +110,7 @@ const AddedToBag = ({
   useEffect(() => {
     if (counter === 0 && addedToBagInterval > 0 && totalBagItems > 0 && openState && payPalFlag) {
       timer = setTimeout(() => {
-        // onRequestClose();
+        onRequestClose();
       }, addedToBagInterval);
       setCounter(counter + 1);
       setTotalItems(totalBagItems);
@@ -215,10 +215,14 @@ AddedToBag.propTypes = {
   addedToBagInterval: PropTypes.number.isRequired,
   totalBagItems: PropTypes.number.isRequired,
   pointsSummary: PropTypes.number.isRequired,
+  isPayPalButtonRendered: PropTypes.bool,
+  isPayPalEnabled: PropTypes.bool,
 };
 
 AddedToBag.defaultProps = {
   navigation: null,
+  isPayPalButtonRendered: false,
+  isPayPalEnabled: false,
 };
 
 export default gestureHandlerRootHOC(AddedToBag);
