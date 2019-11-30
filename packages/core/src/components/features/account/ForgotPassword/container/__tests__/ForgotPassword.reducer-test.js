@@ -68,7 +68,6 @@ describe('ForgotPasswordReducer List reducer', () => {
       showNotification: false,
       error: null,
     });
-    const checkErrorReset = false;
     expect(
       ForgotPasswordReducer(initialState, {
         type: SET_SUBMIT_SUCCEEDED,
@@ -79,32 +78,7 @@ describe('ForgotPasswordReducer List reducer', () => {
     ).toEqual(initialState);
   });
 
-  it('should call CHANGE  ', () => {
-    let checkErrorReset = false;
-    const initialState = fromJS({
-      showNotification: false,
-      error: null,
-    });
-
-    const checkErrorResetValue = ForgotPasswordReducer(initialState, {
-      type: SET_SUBMIT_SUCCEEDED,
-      meta: {
-        form: FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM,
-      },
-    });
-    checkErrorReset = checkErrorResetValue;
-    expect(
-      ForgotPasswordReducer(initialState, {
-        type: CHANGE,
-        meta: {
-          form: FORGOTPASSWORD_CONSTANTS.FORGOT_PASSWORD_FORM,
-        },
-      })
-    ).toEqual(initialState);
-  });
-
   it('should call CHANGE but not change error ', () => {
-    const checkErrorReset = false;
     const initialState = fromJS({
       showNotification: false,
       error: null,

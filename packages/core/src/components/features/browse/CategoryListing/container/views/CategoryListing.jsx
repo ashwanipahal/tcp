@@ -111,6 +111,7 @@ CategoryListing.propTypes = {
   breadCrumbs: PropTypes.shape([]),
   seoText: PropTypes.string.isRequired,
   currentNavIds: PropTypes.arrayOf(PropTypes.string),
+  categoryId: PropTypes.string,
 };
 
 CategoryListing.defaultProps = {
@@ -119,6 +120,7 @@ CategoryListing.defaultProps = {
   labels: {},
   currentNavIds: [],
   breadCrumbs: [],
+  categoryId: '',
 };
 
 export default withStyles(CategoryListing, style);
