@@ -23,7 +23,7 @@ class StoreAddressTile extends PureComponent {
       <FavStore>
         <Image
           src={getIconPath('star-icon')}
-          alt={getLabelValue(labels, 'lbl_storelanding_favStore')}
+          alt=""
           title={getLabelValue(labels, 'lbl_storelanding_favStore')}
           className="favorite-store-icon"
         />
@@ -134,7 +134,16 @@ class StoreAddressTile extends PureComponent {
     return (
       storeName && (
         <div className="store-details-header">
-          {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
+          {!titleClickCb && (
+            <BodyCopy
+              className="store-name store-name--details"
+              fontSize="fs16"
+              component="h1"
+              fontWeight="extrabold"
+            >
+              {storeName}
+            </BodyCopy>
+          )}
           {titleClickCb && (
             <button
               className="store-name store-name--details-btn"
