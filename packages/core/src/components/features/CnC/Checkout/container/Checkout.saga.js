@@ -99,6 +99,7 @@ function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
     const { navigation } = payload;
+    const getIsShippingRequired = yield select(getIsOrderHasShipping);
     yield put(setLoaderState(true));
     yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
@@ -108,12 +109,13 @@ function* submitPickupSection({ payload }) {
       yield call(getAddressList);
       yield call(getCardList, { ignoreCache: true });
       if (!isMobileApp()) {
-        const getIsShippingRequired = yield select(getIsOrderHasShipping);
         const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
         const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
         pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
       } else if (navigation) {
-        yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+        if (getIsShippingRequired) {
+          yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+        } else yield put(getSetCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM));
       }
     }
     /* In the future I imagine us sending the SMS to backend for them to
