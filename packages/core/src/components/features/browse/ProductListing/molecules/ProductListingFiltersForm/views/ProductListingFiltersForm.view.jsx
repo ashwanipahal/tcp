@@ -326,6 +326,10 @@ class ProductListingFiltersForm extends React.Component {
     );
   };
 
+  renderMobileFilters(totalProductsCount, appliedFilterLength) {
+    return totalProductsCount > 1 || this.getAppliedFiltersCount() > 0 || appliedFilterLength > 0;
+  }
+
   /**
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
@@ -406,9 +410,7 @@ class ProductListingFiltersForm extends React.Component {
           </Row>
         </form>
         <div className="render-mobile-view">
-          {(totalProductsCount > 1 ||
-            this.getAppliedFiltersCount() > 0 ||
-            appliedFilterLength > 0) && (
+          {this.renderMobileFilters(totalProductsCount, appliedFilterLength) && (
             <ProductListingMobileFiltersForm
               totalProductsCount={totalProductsCount}
               initialValues={initialValues}
