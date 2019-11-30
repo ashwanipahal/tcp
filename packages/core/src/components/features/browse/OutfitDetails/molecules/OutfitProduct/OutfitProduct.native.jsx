@@ -208,9 +208,7 @@ const renderAddToBagContainer = (
         // eslint-disable-next-line sonarjs/no-extra-arguments
         onChangeColor(colorIndex, setCurrentColorIndex, colorindex, generalProductId)
       }
-      onChangeSize={(colorName, selectedSizeName, selectedFitName, selectedQuantity) =>
-        setSelectedSizeName(selectedSizeName)
-      }
+      onChangeSize={(colorName, selectedSizeName) => setSelectedSizeName(selectedSizeName)}
       isBundleProduct={isBundleProduct}
       toastMessage={toastMessage}
       isKeepAliveEnabled={isKeepAliveEnabled}
@@ -297,6 +295,7 @@ const OutfitDetailsView = ({
       addToFavorites({
         colorProductId: outfitProduct.productId,
         productSkuId: (skuDetails && skuDetails.skuId) || null,
+        // eslint-disable-next-line no-use-before-define
         pdpColorProductId: colorProduct.colorProductId,
         page: pageName || 'OUTFIT',
       });
@@ -416,7 +415,7 @@ const OutfitDetailsView = ({
           )}
           {renderOutOfStockError(keepAlive, outOfStockLabels)}
           <TouchableOpacity
-            onPress={_ => navigateToPdp(navigation, outfitProduct)}
+            onPress={() => navigateToPdp(navigation, outfitProduct)}
             accessible
             accessibilityRole="button"
             accessibilityLabel={`${name}`}
@@ -547,6 +546,9 @@ OutfitDetailsView.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   productMiscInfo: PropTypes.shape({}),
   colorindex: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  pageName: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -567,6 +569,9 @@ OutfitDetailsView.defaultProps = {
   toastMessage: () => {},
   productMiscInfo: {},
   colorindex: () => {},
+  AddToFavoriteErrorMsg: '',
+  pageName: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

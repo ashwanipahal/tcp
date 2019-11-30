@@ -6,7 +6,15 @@ import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import { getLabelValue, getOrderGroupLabelAndMessage } from '@tcp/core/src/utils/utils';
 import constants from '../../../OrderDetails.constants';
 import { ContentWrapper } from '../../../styles/OrderDetails.style.native';
+import ClickTracker from '../../../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
+const AnalyticsData = {
+  pageName: 'myplace:orders:order details',
+  pageType: 'myplace',
+  pageSection: 'myplace',
+  pageSubSection: 'myplace',
+  customEvents: 'event118',
+};
 /**
  * This function component use for return the Order Status
  * can be passed in the component.
@@ -39,7 +47,11 @@ const OrderStatus = props => {
       )}
       {!isBopisOrder && trackingUrl && trackingUrl !== constants.STATUS_CONSTANTS.NA && (
         <ContentWrapper>
-          <Button
+          <ClickTracker
+            as={Button}
+            clickData={AnalyticsData}
+            name="order_tracking"
+            module="account"
             width="100%"
             buttonVariation="fixed-width"
             fill="BLUE"

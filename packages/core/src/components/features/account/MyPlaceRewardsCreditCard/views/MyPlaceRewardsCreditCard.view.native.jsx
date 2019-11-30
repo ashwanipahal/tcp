@@ -21,6 +21,14 @@ const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');
 const BenefitImage = require('../../../../../../../core/src/assets/BenefitImageV.png');
 
+const AnalyticsData = {
+  pageName: 'myplace:rewardscreditcard',
+  pageType: 'myplace',
+  pageSection: 'myplace',
+  pageSubSection: 'myplace',
+  customEvents: 'event113',
+};
+
 export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = () => {
     const { labels } = this.props;
@@ -84,7 +92,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             />
           </ButtonWrapper>
           <ButtonWrapper>
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={AnalyticsData}
+              name="manage_plcc"
+              module="account"
               fill="WHITE"
               type="submit"
               text={getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}

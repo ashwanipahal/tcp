@@ -52,21 +52,25 @@ exports[`AccordionList component renders correctly AccountOverviewTile 1`] = `
       link={null}
       textAlign="left"
     />
-    <Styled(Anchor)
-      anchorVariation="button"
-      asPath="test"
-      buttonVariation="fixed-width"
-      centered={true}
-      className="elem-mb-SM"
-      dataLocator="accountoverview-test-viewallcta"
-      fill="BLUE"
-      fullWidth={true}
-      onClick={[Function]}
-      target="_self"
-      to=""
+    <Connect(Component)
+      clickData={Object {}}
     >
-      test
-    </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="button"
+        asPath="test"
+        buttonVariation="fixed-width"
+        centered={true}
+        className="elem-mb-SM"
+        dataLocator="accountoverview-test-viewallcta"
+        fill="BLUE"
+        fullWidth={true}
+        onClick={[Function]}
+        target="_self"
+        to=""
+      >
+        test
+      </Styled(Anchor)>
+    </Connect(Component)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;
@@ -121,19 +125,23 @@ exports[`AccordionList component renders empty correctly AccountOverviewTile 1`]
       link={null}
       textAlign="left"
     />
-    <Styled(Anchor)
-      anchorVariation="button"
-      asPath=""
-      buttonVariation="fixed-width"
-      centered={true}
-      className="elem-mb-SM"
-      dataLocator="accountoverview--viewallcta"
-      fill="BLUE"
-      fullWidth={true}
-      onClick={[Function]}
-      target="_self"
-      to=""
-    />
+    <Connect(Component)
+      clickData={Object {}}
+    >
+      <Styled(Anchor)
+        anchorVariation="button"
+        asPath=""
+        buttonVariation="fixed-width"
+        centered={true}
+        className="elem-mb-SM"
+        dataLocator="accountoverview--viewallcta"
+        fill="BLUE"
+        fullWidth={true}
+        onClick={[Function]}
+        target="_self"
+        to=""
+      />
+    </Connect(Component)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;
