@@ -34,7 +34,7 @@ class SeoCopy extends React.PureComponent {
         tabIndex="0"
       >
         {copyTitle && (
-          <Heading component="h5" variant="h5" className="title" dataLocator="seo_title">
+          <Heading component="h1" variant="h1" className="title" dataLocator="seo_title">
             {copyTitle}
           </Heading>
         )}

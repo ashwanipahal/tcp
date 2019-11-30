@@ -138,6 +138,11 @@ exports[`GiftCardList Component renders correctly 1`] = `
           }
           margin={null}
           numberOfLines={null}
+          text={
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
+          }
           textDecoration={null}
         />
       </Styled(View)>
