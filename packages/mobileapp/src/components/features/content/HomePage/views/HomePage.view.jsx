@@ -16,7 +16,6 @@ import {
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import UserOnBoardingScreen from '@tcp/core/src/components/common/molecules/UserOnboardingScreen/container';
 import {
   ModuleD,
@@ -129,7 +128,6 @@ class HomePageView extends React.PureComponent {
   renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
     return (
       <View>
-        <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
         <LocationAccessPrompt
           navigation={navigation}

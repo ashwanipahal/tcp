@@ -5,7 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -215,7 +214,6 @@ const ProductListView = ({
           />
         )}
         {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
     </ScrollView>
