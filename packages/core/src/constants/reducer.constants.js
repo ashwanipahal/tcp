@@ -221,6 +221,10 @@ export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
 export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
 
+// Site Map Reducer
+export const SITEMAP_REDUCER_KEY = 'SiteMapReducer';
+export const SITEMAP_ACTION_PATTERN = '@@SiteMap-';
+
 // My Profile reducer
 export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
 export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';
@@ -270,4 +274,5 @@ export const REDUCER_ACTION_MAPPING = {
   [BUNDLEPRODUCT_REDUCER_KEY]: BUNDLEPRODUCT_ACTION_PATTERN,
   [COUPON_REDUCER_KEY]: COUPON_ACTION_PATTERN,
   [SOCIAL_REDUCER_KEY]: SOCIAL_ACTION_PATTERN,
+  [SITEMAP_REDUCER_KEY]: SITEMAP_ACTION_PATTERN,
 };
