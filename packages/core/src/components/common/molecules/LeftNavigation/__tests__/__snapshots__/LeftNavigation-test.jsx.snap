@@ -3,7 +3,7 @@
 exports[`LeftNavigation component LeftNavigation component renders correctly with props 1`] = `
 <Fragment>
   <Styled(Row)
-    className="showonlyInMobile "
+    className="showonlyInMobile"
   >
     <Styled(Col)
       colSize={
@@ -164,7 +164,7 @@ exports[`LeftNavigation component LeftNavigation component renders correctly wit
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="showonlyInDesktop "
+    className="showonlyInDesktop"
   >
     <Styled(Col)
       colSize={
