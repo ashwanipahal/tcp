@@ -50,13 +50,15 @@ class Footer extends React.Component {
   getPosition = () => {
     const isSafariBrowser =
       navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+    const Latitude = 'Latitude';
+    const Longitude = 'Longitude';
     if (isSafariBrowser) {
-      const latitude = this.getSessionStorage('Latitude');
-      const longitude = this.getSessionStorage('Longitude');
+      const latitude = this.getSessionStorage(Latitude);
+      const longitude = this.getSessionStorage(Longitude);
       if (!latitude && !longitude) {
         navigator.geolocation.getCurrentPosition(pos => {
-          this.setSessionStorage({ key: 'Latitude', value: pos.coords.latitude });
-          this.setSessionStorage({ key: 'Longitude', value: pos.coords.longitude });
+          this.setSessionStorage({ key: Latitude, value: pos.coords.latitude });
+          this.setSessionStorage({ key: Longitude, value: pos.coords.longitude });
         });
       }
     } else {
