@@ -59,6 +59,9 @@
         },
         '#paypal-button'
       );
+      setTimeout(()=>{
+        window.ReactNativeWebView.postMessage('loadSuccess');
+      },1000)
     </script>
   </body>
 </html>

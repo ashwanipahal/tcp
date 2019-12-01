@@ -688,7 +688,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            <PriceCurrency price={Number(salePrice)} />
+            <PriceCurrency price={Number(price)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy

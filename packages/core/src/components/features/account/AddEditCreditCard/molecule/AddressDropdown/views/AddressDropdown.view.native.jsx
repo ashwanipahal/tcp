@@ -22,13 +22,6 @@ import {
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../../../assets/carrot-small-up.png');
 
-const additionalItemStyle = {
-  marginLeft: -16,
-  marginRight: -16,
-  paddingLeft: 4,
-  paddingRight: 4,
-};
-
 /**
  * This is a AddressDropdown component. Styling of drop down and its item
  * can be passed in the component.
@@ -224,7 +217,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
     return (
       <DropDownItemContainer
         onPress={() => this.onDropDownItemClick(item)}
-        style={{ ...itemStyle, ...additionalItemStyle }}
+        style={{ ...itemStyle }}
       >
         {item.id ? this.getContext(item) : this.renderButton({ item })}
       </DropDownItemContainer>

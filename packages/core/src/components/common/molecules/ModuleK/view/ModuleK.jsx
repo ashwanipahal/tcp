@@ -29,6 +29,7 @@ const ModuleK = props => {
     masonryGrid,
     className,
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
+    moduleClassName,
   } = props;
 
   const { CAROUSEL_OPTIONS, IMG_DATA } = config;
@@ -57,7 +58,7 @@ const ModuleK = props => {
   carouselConfig.playIconButtonLabel = playIconButton;
 
   return (
-    <BodyCopy component="div" className={`${className} moduleK`}>
+    <BodyCopy component="div" className={`${className} ${moduleClassName} moduleK`}>
       <Row>
         <Col
           colSize={{
@@ -165,6 +166,7 @@ ModuleK.propTypes = {
 
 ModuleK.defaultProps = {
   accessibility: {},
+  moduleClassName: '',
 };
 
 ModuleK.propTypes = {
@@ -193,6 +195,7 @@ ModuleK.propTypes = {
       singleCTAButton: PropTypes.shape({}),
     })
   ).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleK), style);
