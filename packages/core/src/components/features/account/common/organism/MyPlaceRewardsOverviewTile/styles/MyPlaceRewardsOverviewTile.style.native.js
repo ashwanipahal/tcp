@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 const UnderlineStyle = {
-  borderColor: 'gray',
   marginBottom: 20,
   marginTop: 24,
   borderWidth: 0.5,

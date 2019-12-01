@@ -47,6 +47,7 @@ ErrorMessage.propTypes = {
   bagPage: PropTypes.bool,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  isEspot: PropTypes.bool,
 };
 
 ErrorMessage.defaultProps = {
@@ -54,6 +55,7 @@ ErrorMessage.defaultProps = {
   bagPage: false,
   fontSize: '',
   fontWeight: '',
+  isEspot: false,
 };
 
 export default ErrorMessage;

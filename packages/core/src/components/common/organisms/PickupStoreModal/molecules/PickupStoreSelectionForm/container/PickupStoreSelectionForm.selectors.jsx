@@ -2,6 +2,17 @@ const getPageName = state => {
   const { pageData = {} } = state;
   return pageData.pageName || '';
 };
+
+const getPageSection = state => {
+  const { pageData = {} } = state;
+  return pageData.pageSection || '';
+};
+
+const getPageSubSection = state => {
+  const { pageData = {} } = state;
+  return pageData.pageSubSection || '';
+};
+
 const getStoreSearchCriteria = state => {
   return (
     state.form &&
@@ -20,4 +31,10 @@ const getStoreSearchDistance = state => {
   );
 };
 
-export { getPageName, getStoreSearchCriteria, getStoreSearchDistance };
+export {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+  getStoreSearchCriteria,
+  getStoreSearchDistance,
+};

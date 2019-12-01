@@ -259,6 +259,7 @@ ProductBundleContainer.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 ProductBundleContainer.defaultProps = {
@@ -287,6 +288,7 @@ ProductBundleContainer.defaultProps = {
   clearBundleDetails: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  isLoading: false,
 };
 
 export default connect(

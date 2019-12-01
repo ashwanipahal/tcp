@@ -404,6 +404,7 @@ MyPreferenceSubscription.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({}),
   }),
+  trackSubscriptionEvent: PropTypes.func.isRequired,
 };
 
 MyPreferenceSubscription.defaultProps = {
