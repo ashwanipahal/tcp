@@ -38,17 +38,11 @@ const FIXED_HEADER = {
 
 export const setSessionStorage = arg => {
   const { key, value } = arg;
-  if (isClient()) {
-    return window.sessionStorage.setItem(key, value);
-  }
-  return setCookie(arg);
+  return window.sessionStorage.setItem(key, value);
 };
 
 export const getSessionStorage = key => {
-  if (isClient()) {
-    return window.sessionStorage.getItem(key);
-  }
-  return readCookie(key);
+  return window.sessionStorage.getItem(key);
 };
 
 export const importGraphQLClientDynamically = module => {
