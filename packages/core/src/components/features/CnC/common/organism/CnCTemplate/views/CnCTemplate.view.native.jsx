@@ -157,6 +157,7 @@ const CnCCommonTemplate = ({
             onBackLinkPress,
             footerBody,
             getPayPalSettings,
+            isPayPalWebViewEnable,
             showPayPalButton,
             showVenmoSubmit,
             onVenmoSubmit,

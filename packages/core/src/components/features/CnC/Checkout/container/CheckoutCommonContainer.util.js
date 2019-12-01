@@ -37,6 +37,7 @@ import selectors, {
   getPageData,
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import BillingSectionSelectors from '../organisms/ReviewPage/organisms/BillingSection/container/BillingSection.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import {
   getUserPhoneNumber,
@@ -271,7 +272,6 @@ export const mapStateToProps = state => {
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
       isFetching: getCardListFetchingState(state),
-      bagLoading: BagPageSelector.isBagLoading(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
@@ -292,6 +292,7 @@ export const mapStateToProps = state => {
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
     initShippingPage: selectors.getShippingInitialSectionValues(state),
   };
 };

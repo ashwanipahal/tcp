@@ -1,143 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FullfillmentSection should render correctly should render component 1`] = `
-<StyledNativeComponent
-  buttonLabel="labelsText"
-  closeQuickViewClick={false}
-  currentProduct="12345"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "buttonLabel": "",
-        "closeQuickViewClick": [Function],
-        "isAnchor": false,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(FulfillmentSection)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  &.fulfillment-section {
-    padding-top: ",
-          [Function],
-          ";
-    padding-left: 57px;
-    padding-right: 50px;
-    padding-bottom: ",
-          [Function],
-          ";
-
-    @media ",
-          [Function],
-          " {
-      padding-left: 90px;
-      padding-right: 89px;
-    }
-
-    @media ",
-          [Function],
-          " {
-      width: 100%;
-    }
-
-    @media ",
-          [Function],
-          " {
-      padding-top: 15px;
-      padding-left: 72px;
-      padding-right: 70px;
-      padding-bottom: ",
-          [Function],
-          ";
-    }
-  }
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  isAnchor={false}
-  onPickUpOpenClick={[MockFunction]}
-/>
-`;
-
-exports[`FullfillmentSection should render correctly should render component with anchor 1`] = `
-<StyledNativeComponent
-  buttonLabel="labelsText"
-  closeQuickViewClick={false}
-  currentProduct="12345"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "buttonLabel": "",
-        "closeQuickViewClick": [Function],
-        "isAnchor": false,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(FulfillmentSection)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  &.fulfillment-section {
-    padding-top: ",
-          [Function],
-          ";
-    padding-left: 57px;
-    padding-right: 50px;
-    padding-bottom: ",
-          [Function],
-          ";
-
-    @media ",
-          [Function],
-          " {
-      padding-left: 90px;
-      padding-right: 89px;
-    }
-
-    @media ",
-          [Function],
-          " {
-      width: 100%;
-    }
-
-    @media ",
-          [Function],
-          " {
-      padding-top: 15px;
-      padding-left: 72px;
-      padding-right: 70px;
-      padding-bottom: ",
-          [Function],
-          ";
-    }
-  }
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  isAnchor={true}
-  onPickUpOpenClick={[MockFunction]}
-/>
+exports[`testing block for FulfillmentSection FulfillmentSection should be rendered correclty  1`] = `
+<Fragment>
+  <Styled(Anchor)
+    accessibilityLabel="Click"
+    accessibilityRole="link"
+    anchorVariation="custom"
+    centered={true}
+    colorName="gray.900"
+    customStyle={Object {}}
+    fontSizeVariation="medium"
+    justifyContent=""
+    locator=""
+    margins={null}
+    noLink={true}
+    onPress={[Function]}
+    text="Click"
+    underline={true}
+    visible={false}
+  />
+</Fragment>
 `;
