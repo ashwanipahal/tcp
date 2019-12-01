@@ -102,7 +102,9 @@ function* bootstrap(params) {
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
     const state = yield select();
-    yield put(setLoaderState(true));
+    if (isMobileApp()) {
+      yield put(setLoaderState(true));
+    }
     const result = yield call(
       bootstrapAbstractor,
       pageName,
@@ -112,7 +114,9 @@ function* bootstrap(params) {
       originalUrl,
       deviceType
     );
-    yield put(setLoaderState(false));
+    if (isMobileApp()) {
+      yield put(setLoaderState(false));
+    }
     const layoutPageName =
       pageName && pageName.match(/-([a-z])/g) ? createLayoutPath(pageName) : pageName;
     if (result.PLP) {
