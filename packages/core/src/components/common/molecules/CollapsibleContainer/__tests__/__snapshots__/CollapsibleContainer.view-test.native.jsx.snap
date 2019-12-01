@@ -12,7 +12,7 @@ exports[`CollapsibleContainer should render correctly 1`] = `
       arrowPos={null}
     >
       <Styled(ImageComp)
-        alt="Dropdown"
+        alt=""
         height={6}
         host=""
         source={
@@ -47,7 +47,7 @@ exports[`CollapsibleContainer should render correctly with getExpandedState and 
       arrowPos={null}
     >
       <Styled(ImageComp)
-        alt="Dropdown"
+        alt=""
         height={6}
         host=""
         source={

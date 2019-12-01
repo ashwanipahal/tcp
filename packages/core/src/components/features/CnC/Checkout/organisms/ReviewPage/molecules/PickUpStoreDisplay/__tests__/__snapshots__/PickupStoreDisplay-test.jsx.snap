@@ -11,7 +11,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
       className="pickup-store-icon"
     >
       <Styled(Image)
-        alt="Pickup Icon"
+        alt=""
         className="back-link-image"
         src="/static/version-not-available/images/marker-icon.png"
       />

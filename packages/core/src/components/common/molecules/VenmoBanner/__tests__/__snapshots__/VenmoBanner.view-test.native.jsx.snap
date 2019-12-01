@@ -4,7 +4,7 @@ exports[`Venmo Banner component should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(ImageComp)
-      alt="Venmo"
+      alt=""
       height="15px"
       host=""
       source={

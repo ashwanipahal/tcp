@@ -15,7 +15,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Checkbox"
+        alt=""
         height="25px"
         host=""
         source={
@@ -66,7 +66,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Checkbox"
+        alt=""
         height="25px"
         host=""
         source={

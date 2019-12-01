@@ -127,7 +127,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={12}
             host=""
             source={
@@ -463,7 +463,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={12}
             host=""
             source={
@@ -902,7 +902,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={12}
             host=""
             source={
@@ -1463,7 +1463,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={12}
             host=""
             source={
@@ -1907,7 +1907,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={12}
             host=""
             source={

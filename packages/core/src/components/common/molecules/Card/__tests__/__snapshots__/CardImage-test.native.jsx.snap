@@ -4,7 +4,7 @@ exports[`Card component renders correctly without props 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(ImageComp)
-      alt="Credit Card Brand"
+      alt=""
       height="30"
       host=""
       source={

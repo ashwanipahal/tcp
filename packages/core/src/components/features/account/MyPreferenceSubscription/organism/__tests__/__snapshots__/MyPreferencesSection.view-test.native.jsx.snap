@@ -57,7 +57,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Alert Icon"
+        alt=""
         height="17"
         host=""
         source={
@@ -135,7 +135,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Text Icon"
+        alt=""
         class="elem-pl-XS"
         height="17"
         host=""

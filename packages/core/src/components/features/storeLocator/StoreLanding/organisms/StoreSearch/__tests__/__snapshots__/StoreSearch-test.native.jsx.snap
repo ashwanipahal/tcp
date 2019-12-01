@@ -30,7 +30,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Location"
+        alt=""
         height="16px"
         host=""
         source={
@@ -72,7 +72,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         visible={false}
       >
         <Styled(ImageComp)
-          alt="Search"
+          alt=""
           height="25px"
           host=""
           source={
@@ -185,7 +185,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Location"
+        alt=""
         height="16px"
         host=""
         source={
@@ -227,7 +227,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         visible={false}
       >
         <Styled(ImageComp)
-          alt="Search"
+          alt=""
           height="25px"
           host=""
           source={
@@ -340,7 +340,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Location"
+        alt=""
         height="16px"
         host=""
         source={
@@ -382,7 +382,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         visible={false}
       >
         <Styled(ImageComp)
-          alt="Search"
+          alt=""
           height="25px"
           host=""
           source={
@@ -495,7 +495,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
   >
     <Styled(View)>
       <Styled(ImageComp)
-        alt="Location"
+        alt=""
         height="16px"
         host=""
         source={
@@ -537,7 +537,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
         visible={false}
       >
         <Styled(ImageComp)
-          alt="Search"
+          alt=""
           height="25px"
           host=""
           source={

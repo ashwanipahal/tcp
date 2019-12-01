@@ -5219,12 +5219,12 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   type="button"
                 >
                   <Styled(Image)
-                    alt="Dropdown"
+                    alt=""
                     className="collapsible-icon"
                     src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
-                      alt="Dropdown"
+                      alt=""
                       className="collapsible-icon"
                       forwardedComponent={
                         Object {
@@ -5260,7 +5260,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
-                        alt="Dropdown"
+                        alt=""
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
@@ -5272,7 +5272,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                         url=""
                       >
                         <img
-                          alt="Dropdown"
+                          alt=""
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
                           role={null}
@@ -9772,12 +9772,12 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   type="button"
                 >
                   <Styled(Image)
-                    alt="Dropdown"
+                    alt=""
                     className="collapsible-icon"
                     src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
-                      alt="Dropdown"
+                      alt=""
                       className="collapsible-icon"
                       forwardedComponent={
                         Object {
@@ -9813,7 +9813,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
-                        alt="Dropdown"
+                        alt=""
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
@@ -9825,7 +9825,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                         url=""
                       >
                         <img
-                          alt="Dropdown"
+                          alt=""
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
                           role={null}

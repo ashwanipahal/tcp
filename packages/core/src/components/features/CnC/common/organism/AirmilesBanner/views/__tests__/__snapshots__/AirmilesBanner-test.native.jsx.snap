@@ -104,7 +104,7 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={15}
             host=""
             source={
@@ -204,7 +204,7 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={15}
             host=""
             source={

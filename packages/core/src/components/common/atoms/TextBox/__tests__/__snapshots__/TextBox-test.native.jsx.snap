@@ -83,7 +83,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
       />
       <Styled(View)>
         <Styled(ImageComp)
-          alt="Success"
+          alt=""
           height="12px"
           host=""
           source={

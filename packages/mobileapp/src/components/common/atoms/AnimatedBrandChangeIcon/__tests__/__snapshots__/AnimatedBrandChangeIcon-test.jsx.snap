@@ -39,7 +39,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
       onPress={[Function]}
     >
       <Styled(ImageComp)
-        alt="The Children's Place"
+        alt=""
         host=""
         source={
           Object {
@@ -82,7 +82,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
       onPress={[Function]}
     >
       <Styled(ImageComp)
-        alt="Gymboree"
+        alt=""
         host=""
         source={
           Object {

@@ -19,7 +19,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
     spacingStyles="margin-top-XS"
   >
     <Styled(ImageComp)
-      alt="Credit Card Brand"
+      alt=""
       height={30}
       host=""
       source={

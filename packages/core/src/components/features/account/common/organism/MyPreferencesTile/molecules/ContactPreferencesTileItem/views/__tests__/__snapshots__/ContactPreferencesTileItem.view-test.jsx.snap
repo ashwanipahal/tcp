@@ -62,7 +62,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
           }
         >
           <Styled(Image)
-            alt="SMS Disabled"
+            alt=""
             className="elem-pr-SM"
             height="30"
             src="/static/version-not-available/images/sms-disabled.svg"
@@ -93,7 +93,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
           }
         >
           <Styled(Image)
-            alt="Push Disabled"
+            alt=""
             className="elem-pr-SM"
             height="30"
             src="/static/version-not-available/images/push-disabled.svg"

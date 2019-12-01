@@ -100,7 +100,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
         }
       >
         <Styled(Image)
-          alt="Info"
+          alt=""
           height="20"
           src="/static/version-not-available/images/info-icon.png"
           width="20"
@@ -157,7 +157,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly without shi
         message=""
       >
         <Styled(Image)
-          alt="Info"
+          alt=""
           height="20"
           src="/static/version-not-available/images/info-icon.png"
           width="20"

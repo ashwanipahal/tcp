@@ -288,7 +288,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
               }
             >
               <Styled(Image)
-                alt="Info"
+                alt=""
                 className="tcp_carousel__play tooltip"
                 src="/static/version-not-available/images/info-icon.png"
               />
@@ -1070,7 +1070,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               }
             >
               <Styled(Image)
-                alt="Info"
+                alt=""
                 className="tcp_carousel__play tooltip"
                 src="/static/version-not-available/images/info-icon.png"
               />
@@ -2200,7 +2200,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               }
             >
               <Styled(Image)
-                alt="Info"
+                alt=""
                 className="tcp_carousel__play tooltip"
                 src="/static/version-not-available/images/info-icon.png"
               />
@@ -3833,7 +3833,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               }
             >
               <Styled(Image)
-                alt="Info"
+                alt=""
                 className="tcp_carousel__play tooltip"
                 src="/static/version-not-available/images/info-icon.png"
               />
@@ -4992,7 +4992,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
               }
             >
               <Styled(Image)
-                alt="Info"
+                alt=""
                 className="tcp_carousel__play tooltip"
                 src="/static/version-not-available/images/info-icon.png"
               />

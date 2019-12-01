@@ -179,7 +179,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
-            alt="Info"
+            alt=""
             height={15}
             host=""
             marginTop={17}
