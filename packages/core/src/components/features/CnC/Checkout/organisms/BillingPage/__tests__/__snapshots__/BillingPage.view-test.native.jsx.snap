@@ -16,6 +16,11 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       }
     }
     scrollEnabled={true}
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
   >
     <Styled(View)
       isPayPalWebViewEnable={false}
@@ -55,6 +60,14 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
       }
     }
     scrollEnabled={false}
+    style={
+      Object {
+        "height": 1294,
+        "position": "absolute",
+        "width": "100%",
+        "zIndex": 992,
+      }
+    }
   >
     <Styled(View)
       isPayPalWebViewEnable={true}
