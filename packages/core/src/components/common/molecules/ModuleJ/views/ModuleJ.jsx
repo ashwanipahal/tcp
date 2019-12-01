@@ -87,7 +87,14 @@ class ModuleJ extends React.PureComponent {
   };
 
   render() {
-    const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
+    const {
+      className,
+      productTabList,
+      mediaLinkedList,
+      layout,
+      divTabs,
+      moduleClassName,
+    } = this.props;
     const { currentCatId } = this.state;
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1, video: promoVideo1 } =
@@ -104,7 +111,7 @@ class ModuleJ extends React.PureComponent {
     }
 
     return (
-      <Grid className={`${className} moduleJ layout-${layout}`}>
+      <Grid className={`${className} ${moduleClassName} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
           <Row fullBleed={{ small: true, medium: true }} className="topview">
             <Col
@@ -276,6 +283,7 @@ ModuleJ.defaultProps = {
   mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
+  moduleClassName: '',
 };
 
 ModuleJ.propTypes = {
@@ -317,6 +325,7 @@ ModuleJ.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 const styledModuleJ = withStyles(errorBoundary(ModuleJ), moduleJStyle);

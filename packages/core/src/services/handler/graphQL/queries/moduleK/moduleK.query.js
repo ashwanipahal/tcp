@@ -4,6 +4,10 @@ const buildQuery = ({ slot, contentId, lang }) => `
     name
     type
     errorMessage
+    set {
+      key
+      val
+    }
     composites {
       masonryGrid {
         promoBanner {

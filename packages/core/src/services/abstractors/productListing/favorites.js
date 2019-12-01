@@ -485,7 +485,7 @@ export const moveItemToNewWishList = (
       }
     })
     .catch(err => {
-      const errorMssg = getFormattedError(err, errorMapping);
+      const errorMssg = getFormattedError(err, errorMapping, true);
       return {
         errorMessage:
           (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
