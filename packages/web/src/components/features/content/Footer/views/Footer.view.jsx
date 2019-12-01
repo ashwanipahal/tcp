@@ -4,8 +4,7 @@ import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
-import { isClient } from '@tcp/core/src/utils';
+import { setSessionStorage, getSessionStorage } from '@tcp/core/src/utils/utils.web';
 import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
@@ -53,32 +52,17 @@ class Footer extends React.Component {
     const Latitude = 'Latitude';
     const Longitude = 'Longitude';
     if (isSafariBrowser) {
-      const latitude = this.getSessionStorage(Latitude);
-      const longitude = this.getSessionStorage(Longitude);
+      const latitude = getSessionStorage(Latitude);
+      const longitude = getSessionStorage(Longitude);
       if (!latitude && !longitude) {
         navigator.geolocation.getCurrentPosition(pos => {
-          this.setSessionStorage({ key: Latitude, value: pos.coords.latitude });
-          this.setSessionStorage({ key: Longitude, value: pos.coords.longitude });
+          setSessionStorage({ key: Latitude, value: pos.coords.latitude });
+          setSessionStorage({ key: Longitude, value: pos.coords.longitude });
         });
       }
     } else {
       navigator.geolocation.getCurrentPosition(() => {});
     }
-  };
-
-  setSessionStorage = arg => {
-    const { key, value } = arg;
-    if (isClient()) {
-      return window.sessionStorage.setItem(key, value);
-    }
-    return setCookie(arg);
-  };
-
-  getSessionStorage = key => {
-    if (isClient()) {
-      return window.sessionStorage.getItem(key);
-    }
-    return readCookie(key);
   };
 
   render() {
