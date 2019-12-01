@@ -221,4 +221,36 @@ describe('Venmo Checkout Selectors', () => {
 
     expect(isVenmoNonceActive(state)).toBeFalsy();
   });
+  it('#isVenmoOrderPayment', () => {
+    const { isVenmoOrderPayment } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+      Confirmation: fromJS({
+        orderConfirmation: {
+          paymentsList: [{ paymentMethod: 'venmo' }],
+        },
+      }),
+    };
+    expect(isVenmoOrderPayment(state)).not.toBeUndefined();
+  });
+  it('#getVenmoOrderUserId', () => {
+    const { getVenmoOrderUserId } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+      Confirmation: fromJS({
+        orderConfirmation: {
+          paymentsList: [{ paymentMethod: 'venmo', venmoUserId: 'test-user' }],
+        },
+      }),
+    };
+    expect(getVenmoOrderUserId(state)).toEqual('');
+  });
 });
