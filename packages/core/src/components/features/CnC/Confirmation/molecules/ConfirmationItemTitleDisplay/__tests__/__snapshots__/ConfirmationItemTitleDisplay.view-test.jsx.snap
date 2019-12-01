@@ -5,13 +5,13 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
   className=""
 >
   <Styled(Image)
-    alt="Pickup"
+    alt=""
     height="37px"
     src="/static/version-not-available/images/marker-icon.svg"
     width="30px"
   />
   <Styled(Image)
-    alt="Shipping"
+    alt=""
     height="37px"
     src="/static/version-not-available/images/fast-shipping.svg"
     width="40px"
