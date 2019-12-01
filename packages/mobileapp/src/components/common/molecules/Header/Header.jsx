@@ -81,10 +81,6 @@ class Header extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.getInitialProps();
-  }
-
   componentDidUpdate(prevProps) {
     const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
     if (
