@@ -157,11 +157,11 @@ class ProductDetailView extends React.PureComponent {
     });
   };
 
-  shouldRenderRatingReview = (isGiftCard, isBundleProduct, bazarVoice) => {
-    return !isGiftCard && !isBundleProduct && bazarVoice;
+  shouldRenderRatingReview = (isGiftCard, isBundleProduct, bazaarVoice) => {
+    return !isGiftCard && !isBundleProduct && bazaarVoice;
   };
 
-  renderProductReview = ({ renderRatingReview, productId, bazarVoice, expanded }) => {
+  renderProductReview = ({ renderRatingReview, productId, bazaarVoice, expanded }) => {
     return renderRatingReview ? (
       <View
         ref={view => {
@@ -169,7 +169,7 @@ class ProductDetailView extends React.PureComponent {
         }}
       >
         <ProductReviewsContainer
-          reviewsCount={bazarVoice.totalReviewCount}
+          reviewsCount={bazaarVoice.totalReviewCount}
           ratingsProductId={productId}
           expanded={expanded}
         />
@@ -181,7 +181,7 @@ class ProductDetailView extends React.PureComponent {
     const {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
-      currentProduct: { bazarVoice },
+      currentProduct: { bazaarVoice },
       plpLabels,
       handleFormSubmit,
       navigation,
@@ -243,7 +243,7 @@ class ProductDetailView extends React.PureComponent {
     const renderRatingReview = this.shouldRenderRatingReview(
       currentProduct.isGiftCard,
       false,
-      bazarVoice
+      bazaarVoice
     );
 
     return (
@@ -354,7 +354,7 @@ class ProductDetailView extends React.PureComponent {
             {this.renderProductReview({
               renderRatingReview,
               productId: currentProduct.ratingsProductId,
-              bazarVoice,
+              bazaarVoice,
               expanded,
             })}
             {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}

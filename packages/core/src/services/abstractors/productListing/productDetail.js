@@ -343,7 +343,7 @@ const getReviewContent = (reviewStats, productId) => {
  */
 export const getProductBVReviewStats = async productId => {
   const apiConfig = getAPIConfig();
-  const serviceConfig = endpoints.getBazarVoiceRatings;
+  const serviceConfig = endpoints.getBazaarVoiceRatings;
   const utilArrayHeader = ({ pId, passKey, limit }) => {
     return [
       {

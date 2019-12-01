@@ -87,7 +87,7 @@ export const API_CONFIG = {
     domain: '/',
     unbxd: 'https://search.unbxd.io',
     BV_SHARED_KEY: 'Fca3yih00AVeVDFvmaDwnwlWM',
-    BV_WEB_VIEW_URL: 'https://test4.childrensplace.com/static/bazarVoice/index.html',
+    BV_WEB_VIEW_URL: 'https://test4.childrensplace.com/static/bazaarVoice/index.html',
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',

@@ -16,7 +16,7 @@ describe('ProductDetailView component', () => {
             favoritedCount: 0,
           },
         ],
-        bazarVoice: {
+        bazaarVoice: {
           totalReviewCount: 3,
         },
       },

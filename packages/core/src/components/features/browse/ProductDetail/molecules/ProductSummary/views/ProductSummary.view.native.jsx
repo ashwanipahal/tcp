@@ -9,7 +9,7 @@ import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
   RowContainer,
-  BazarVoiceContainer,
+  BazaarVoiceContainer,
   ReviewAndRatingContainer,
   styles,
   EmptyView,
@@ -67,23 +67,22 @@ class ProductSummary extends React.PureComponent {
     return <EmptyView width="30%" />;
   };
 
-  renderBazaarVoiceComponent = bazarVoice => {
+  renderBazaarVoiceComponent = bazaarVoice => {
     const { pdpLabels } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
-    const totalRating = `(${bazarVoice.totalReviewCount})`;
+    const totalRating = `(${bazaarVoice.totalReviewCount})`;
 
     return (
-      <BazarVoiceContainer>
+      <BazaarVoiceContainer>
         <TouchableOpacity accessibilityRole="link" onPress={() => this.scrollToRatingSection()}>
           <ReviewAndRatingContainer>
             <Stars
-              display={bazarVoice.avgRating}
+              display={bazaarVoice.avgRating}
               spacing={8}
               count={5}
               starSize={15}
               disabled
               fullStar={starImg}
-              // emptyStar={bazarVoice.avgRating === 0 ? starEmptyImg : undefined}
             />
             <BodyCopy
               margin="0 0 0 18px"
@@ -98,7 +97,7 @@ class ProductSummary extends React.PureComponent {
         </TouchableOpacity>
         {this.renderWriteAReviewAnchor(writeAReview)}
         {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
-      </BazarVoiceContainer>
+      </BazaarVoiceContainer>
     );
   };
 
@@ -267,11 +266,11 @@ class ProductSummary extends React.PureComponent {
       if (curentColorEntry) {
         badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
       }
-      const { name, bazarVoice } = productData;
+      const { name, bazaarVoice } = productData;
       return (
         <Container>
           <LineComp marginTop={10} borderColor="gray.500" />
-          {renderRatingReview ? this.renderBazaarVoiceComponent(bazarVoice) : null}
+          {renderRatingReview ? this.renderBazaarVoiceComponent(bazaarVoice) : null}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {this.renderTopBadge(badge1Value)}
           {this.renderSoldOutError()}

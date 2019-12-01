@@ -30,7 +30,7 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     // fetch review/rating summary from Bazar Voice only for App
     if (isMobileApp) {
       const productId = productDetail.product.ratingsProductId || 0;
-      productDetail.product.bazarVoice = yield call(getProductBVReviewStats, productId);
+      productDetail.product.bazaarVoice = yield call(getProductBVReviewStats, productId);
     }
     const isGuest = !getUserLoggedInState({ ...state });
     const isRemembered = isRememberedUser({ ...state });

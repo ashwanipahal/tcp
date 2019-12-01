@@ -15,7 +15,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
         currentProduct={
           Object {
-            "bazarVoice": Object {
+            "bazaarVoice": Object {
               "totalReviewCount": 3,
             },
             "colorFitsSizesMap": Array [
@@ -47,7 +47,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         pdpLabels={Object {}}
         productData={
           Object {
-            "bazarVoice": Object {
+            "bazaarVoice": Object {
               "totalReviewCount": 3,
             },
             "colorFitsSizesMap": Array [
@@ -70,7 +70,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         alternateSizes={Object {}}
         currentProduct={
           Object {
-            "bazarVoice": Object {
+            "bazaarVoice": Object {
               "totalReviewCount": 3,
             },
             "colorFitsSizesMap": Array [
@@ -101,7 +101,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         outOfStockLabels={Object {}}
         productInfo={
           Object {
-            "bazarVoice": Object {
+            "bazaarVoice": Object {
               "totalReviewCount": 3,
             },
             "colorFitsSizesMap": Array [

@@ -8,7 +8,7 @@ describe('ProductSummaryVanilla', () => {
     isBundleProduct: false,
     showCompleteTheLook: true,
     productData: {
-      bazarVoice: {
+      bazaarVoice: {
         totalReviewCount: 12,
         avgRating: 3,
       },
