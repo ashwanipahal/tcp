@@ -116,7 +116,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly without shi
   className=""
 >
   <Styled(Image)
-    alt="Pickup"
+    alt=""
     height="37px"
     src="/static/version-not-available/images/marker-icon.svg"
     width="30px"
