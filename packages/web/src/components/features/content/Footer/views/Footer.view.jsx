@@ -29,12 +29,6 @@ class Footer extends React.Component {
   }
 
   componentDidMount() {
-    // TODO: Need to change this when proper solution for A/B test come
-    if (window.location.search.match('cand-b')) {
-      this.setState({ showFooterTopCandidateB: true });
-    } else {
-      this.setState({ showFooterTopCandidateB: false });
-    }
     const { isLoggedIn, isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } = this.props;
     if (
       (isLocationEnabledForGuest === 'TRUE' && navigator && navigator.geolocation) ||
@@ -44,6 +38,12 @@ class Footer extends React.Component {
         navigator.geolocation)
     ) {
       this.getPosition();
+    }
+    // TODO: Need to change this when proper solution for A/B test come
+    if (window.location.search.match('cand-b')) {
+      this.setState({ showFooterTopCandidateB: true });
+    } else {
+      this.setState({ showFooterTopCandidateB: false });
     }
   }
 
@@ -58,9 +58,9 @@ class Footer extends React.Component {
           this.setSessionStorage({ key: 'Latitude', value: pos.coords.latitude });
           this.setSessionStorage({ key: 'Longitude', value: pos.coords.longitude });
         });
-      } else {
-        navigator.geolocation.getCurrentPosition(() => {});
       }
+    } else {
+      navigator.geolocation.getCurrentPosition(() => {});
     }
   };
 
