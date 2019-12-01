@@ -91,7 +91,7 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
                 data-locator="my-preference-modal_app_store"
                 target="_blank"
               >
-                <Image class="elem-pl-XS" src={getIconPath('app-store')} alt="App Store" />
+                <Image class="elem-pl-XS" src={getIconPath('app-store')} alt="" />
               </Anchor>
             </Col>
             <Col colSize={{ small: 3, medium: 4, large: 6 }}>
@@ -105,11 +105,7 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
                 target="_blank"
                 data-locator="my-preference-modal_google_play"
               >
-                <Image
-                  class="elem-pl-XS"
-                  src={getIconPath('google-play')}
-                  alt="Google Play Store"
-                />
+                <Image class="elem-pl-XS" src={getIconPath('google-play')} alt="" />
               </Anchor>
             </Col>
           </Row>

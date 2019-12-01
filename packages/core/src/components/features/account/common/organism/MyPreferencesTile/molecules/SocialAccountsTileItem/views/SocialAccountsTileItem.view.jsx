@@ -80,7 +80,7 @@ class SocialAccountsTileItem extends React.PureComponent {
                     width="30"
                     height="30"
                     src={getIconPath('facebook-color-icon')}
-                    alt="Facebook"
+                    alt=""
                   />
                 )}
                 {socialAccountsObject.twitter && (
@@ -89,7 +89,7 @@ class SocialAccountsTileItem extends React.PureComponent {
                     width="30"
                     height="30"
                     src={getIconPath('twitter-color-icon')}
-                    alt="Twitter"
+                    alt=""
                   />
                 )}
                 {socialAccountsObject.instagram && (
@@ -98,7 +98,7 @@ class SocialAccountsTileItem extends React.PureComponent {
                     width="30"
                     height="30"
                     src={getIconPath('instagram-color-icon')}
-                    alt="Instagram"
+                    alt=""
                   />
                 )}
               </>

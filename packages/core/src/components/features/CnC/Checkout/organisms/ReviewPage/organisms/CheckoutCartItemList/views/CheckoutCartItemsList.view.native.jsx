@@ -214,7 +214,7 @@ class CheckoutCartItemsList extends Component {
               />
               <TooltipWrapper>
                 <ReactTooltip withOverlay={false} popover={this.popover(deliveryItem)}>
-                  <Image source={infoIcon} alt="Info" height={15} width={15} />
+                  <Image source={infoIcon} alt="" height={15} width={15} />
                 </ReactTooltip>
               </TooltipWrapper>
             </StoreDetailsWrapper>

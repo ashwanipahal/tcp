@@ -180,7 +180,7 @@ class CheckoutCartItemsList extends Component {
                   className="toolTip"
                   minWidth={toolTipMinWidth}
                 >
-                  <Image height="15" width="15" src={getIconPath('info-icon')} alt="Info" />
+                  <Image height="15" width="15" src={getIconPath('info-icon')} alt="" />
                 </ReactToolTip>
               </Col>
             </Row>

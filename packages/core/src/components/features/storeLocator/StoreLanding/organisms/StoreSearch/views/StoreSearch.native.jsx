@@ -165,7 +165,7 @@ class StoreSearch extends Component {
         </StyledFindStoreTitle>
         <Anchor onPress={getLocationStores}>
           <StyledStoreLocator>
-            <Image source={MarkerIcon} alt="Location" height="16px" width="16px" />
+            <Image source={MarkerIcon} alt="" height="16px" width="16px" />
             <StyledCurrentLocation>
               <BodyCopy
                 mobilefontFamily="primary"
@@ -181,7 +181,7 @@ class StoreSearch extends Component {
           <>
             <StyledSearch>
               <Anchor onPress={() => this.onSearch()}>
-                <Image source={SearchIcon} alt="Search" height="25px" width="25px" />
+                <Image source={SearchIcon} alt="" height="25px" width="25px" />
               </Anchor>
             </StyledSearch>
             <Field

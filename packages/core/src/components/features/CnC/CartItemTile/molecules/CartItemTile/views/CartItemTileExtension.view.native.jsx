@@ -191,7 +191,7 @@ const heartIcon = (isBagPageSflSection, handleAddToWishlist) => {
         handleAddToWishlist();
       }}
     >
-      <Image data-locator="heartIcon" source={heart} alt="Heart Icon" height={13} width={15} />
+      <Image data-locator="heartIcon" source={heart} alt="" height={13} width={15} />
     </HeartIcon>
   );
 };

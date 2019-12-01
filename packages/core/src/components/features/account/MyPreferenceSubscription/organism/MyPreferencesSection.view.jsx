@@ -167,7 +167,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     width="17"
                     height="17"
                     src={getIconPath('icon-alarm')}
-                    alt="Alarm Icon"
+                    alt=""
                   />
                   <Field
                     name={MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE}
@@ -236,7 +236,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     width="17"
                     height="17"
                     src={getIconPath('icon-chat')}
-                    alt="Chat Icon"
+                    alt=""
                   />
 
                   <Field

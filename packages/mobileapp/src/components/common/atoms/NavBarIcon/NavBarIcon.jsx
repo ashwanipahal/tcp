@@ -24,7 +24,7 @@ const NavBarIcon = (props: Props) => {
   if (isBrandIcon) return logocomponent;
   return (
     <View>
-      <Image source={getIcon(icon)} alt="Brand Logo" style={style.icon} />
+      <Image source={getIcon(icon)} alt="" style={style.icon} />
     </View>
   );
 };

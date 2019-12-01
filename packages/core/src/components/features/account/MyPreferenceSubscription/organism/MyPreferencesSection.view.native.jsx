@@ -168,7 +168,7 @@ class MyPrefrenceSection extends React.PureComponent {
             text={getLabelValue(labels, 'lbl_prefrence_app_text')}
           />
           <AppAlertWrapper>
-            <Image width="17" height="17" source={alertIcon} alt="Alert Icon" />
+            <Image width="17" height="17" source={alertIcon} alt="" />
           </AppAlertWrapper>
         </AppTextWrapper>
         <SubscribeCheckWrapper>
@@ -234,7 +234,7 @@ class MyPrefrenceSection extends React.PureComponent {
             text={getLabelValue(labels, 'lbl_prefrence_text_text')}
           />
           <AppAlertWrapper>
-            <Image class="elem-pl-XS" width="17" height="17" source={textIcon} alt="Text Icon" />
+            <Image class="elem-pl-XS" width="17" height="17" source={textIcon} alt="" />
           </AppAlertWrapper>
         </AppTextWrapper>
         <SubscribeCheckWrapper>

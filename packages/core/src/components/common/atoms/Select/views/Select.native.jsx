@@ -51,7 +51,7 @@ const SelectBox = ({
       {touched && error && (
         <StyledErrorWrapper>
           <ViewWithSpacing spacingStyles="margin-right-XS">
-            <Image source={errorIcon} alt="Error" width="16px" height="14px" />
+            <Image source={errorIcon} alt="" width="16px" height="14px" />
           </ViewWithSpacing>
           <BodyCopy
             fontWeight="extrabold"

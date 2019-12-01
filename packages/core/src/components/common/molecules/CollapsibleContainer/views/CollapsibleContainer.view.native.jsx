@@ -72,7 +72,7 @@ class CollapsibleContainer extends React.Component {
           height={height}
         >
           <StyledImageWrapper arrowPos={arrowPos}>
-            <Image source={isExpanded ? upIcon : downIcon} alt="Dropdown" height={6} width={10} />
+            <Image source={isExpanded ? upIcon : downIcon} alt="" height={6} width={10} />
           </StyledImageWrapper>
           <View>{header}</View>
         </StyledTouchableOpacity>

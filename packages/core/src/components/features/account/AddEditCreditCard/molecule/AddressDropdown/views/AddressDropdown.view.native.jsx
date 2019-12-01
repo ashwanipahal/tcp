@@ -318,7 +318,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
               text={selectedLabelState}
             />
           </HeaderContainer>
-          <Image source={dropDownIsOpen ? upIcon : downIcon} alt="Dropdown" />
+          <Image source={dropDownIsOpen ? upIcon : downIcon} alt="" />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity

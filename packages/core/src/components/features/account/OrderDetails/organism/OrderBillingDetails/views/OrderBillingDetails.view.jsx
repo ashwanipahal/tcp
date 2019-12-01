@@ -35,7 +35,7 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
             <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
               <Image
                 src={getIconPath(cardIconMapping[card.cardType.toUpperCase()])}
-                alt="Credit Card Brand"
+                alt=""
                 className="elem-mr-XS card-border"
               />
               <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
@@ -54,7 +54,7 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
                 <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
                   <Image
                     src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
-                    alt="Gift Card"
+                    alt=""
                     className="elem-mr-XS"
                   />
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">

@@ -16,7 +16,7 @@ const AirmilesToolTip = ({ toolTipText }: Props) => {
       <span className="airmileBannerTooltip">
         <span className="info-icon-img-wrapper">
           <ReactToolTip message={toolTipText} aligned="right">
-            <Image src={getIconPath('info-icon')} alt="Info" />
+            <Image src={getIconPath('info-icon')} alt="" />
           </ReactToolTip>
         </span>
       </span>

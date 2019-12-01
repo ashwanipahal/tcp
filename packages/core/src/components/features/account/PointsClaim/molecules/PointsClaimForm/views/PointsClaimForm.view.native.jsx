@@ -120,7 +120,7 @@ export class PointsClaimForm extends PureComponent {
                   textAlign="center"
                 />
               </ImageCaption>
-              <Image height="122px" width="262px" source={receiptImg} alt="Sample Receipt" />
+              <Image height="122px" width="262px" source={receiptImg} alt="" />
             </ImageContainer>
             <FieldWrapper>
               <Field

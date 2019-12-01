@@ -55,7 +55,7 @@ const CreditCardModalInfo = ({
             <Image
               src={getIconPath(CardIconMapping[data.description.ccBrand])}
               className="deleteCreditModal__card__icon"
-              alt="Credit Card Brand"
+              alt=""
             />
           </BodyCopy>
         </Col>

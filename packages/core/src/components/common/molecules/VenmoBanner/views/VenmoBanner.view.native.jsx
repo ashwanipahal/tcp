@@ -14,7 +14,7 @@ const VenmoBanner = ({ labels }) => {
   return (
     <VenmoBannerContainer>
       <ImageWrapper>
-        <Image source={venmoIconBlue} alt="Venmo" width="80px" height="15px" />
+        <Image source={venmoIconBlue} alt="" width="80px" height="15px" />
       </ImageWrapper>
       <VenmoBannerTextContainer>
         <BodyCopy

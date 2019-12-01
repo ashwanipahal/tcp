@@ -24,7 +24,7 @@ const OutfitTile = props => {
         {/* TO DO - image from DAM
         <DamImage className="outfit-tile" imgData={imgData} isProductPage />
         */}
-        <Image className="outfit-tile" src={item.imageUrl} alt="Outfit Image" />
+        <Image className="outfit-tile" src={item.imageUrl} alt="" />
         <BodyCopy className="shop-look-label" fontFamily="secondary" fontSize="fs12">
           {labels.lbl_outfit_shop_this_look}
         </BodyCopy>

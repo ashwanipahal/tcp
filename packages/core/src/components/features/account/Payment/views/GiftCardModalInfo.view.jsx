@@ -36,7 +36,7 @@ class GiftCardModalInfo extends React.Component {
               <Image
                 className="deleteCardModal__img"
                 src={getIconPath('gift-card-small')}
-                alt="Gift Card"
+                alt=""
                 onClick={this.pause}
                 data-locator="deletegcmodalicon"
               />

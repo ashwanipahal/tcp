@@ -124,7 +124,7 @@ export class JeansModule extends PureComponent {
                               <Image
                                 className="done-button"
                                 src={getIconPath('confirmation-check')}
-                                alt="Confirmation Check"
+                                alt=""
                               />
                               <BodyCopy
                                 className="text-item"
@@ -141,7 +141,7 @@ export class JeansModule extends PureComponent {
                         <Image
                           className={`${imageStyled[0].styled.style} plus-icon`}
                           src={getIconPath('plus-icon')}
-                          alt="Plus Icon"
+                          alt=""
                         />
                       </div>
                       <Anchor

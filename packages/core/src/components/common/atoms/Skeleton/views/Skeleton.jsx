@@ -21,8 +21,8 @@ const Skeleton = ({ className, col, showArrows, colSize, removeLastMargin }) => 
           />
         );
       })}
-      {showArrows && <Image src={leftCarouselPath} alt="Previous" className="left-carousel" />}
-      {showArrows && <Image src={rightCarouselPath} alt="Next" className="right-carousel" />}
+      {showArrows && <Image src={leftCarouselPath} alt="" className="left-carousel" />}
+      {showArrows && <Image src={rightCarouselPath} alt="" className="right-carousel" />}
     </Row>
   );
 };

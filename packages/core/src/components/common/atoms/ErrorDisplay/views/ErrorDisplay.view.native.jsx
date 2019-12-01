@@ -9,7 +9,7 @@ const ErrorDisplay = ({ error, margins, isBorder, width, paddings }) => {
   if (!error) return null;
   return (
     <ErrorContainer margins={margins} isBorder={isBorder} width={width} paddings={paddings}>
-      <Image source={errorIcon} alt="Error" style={errorIconStyle} />
+      <Image source={errorIcon} alt="" style={errorIconStyle} />
       <TextWrapper>
         <BodyCopy
           fontWeight="extrabold"

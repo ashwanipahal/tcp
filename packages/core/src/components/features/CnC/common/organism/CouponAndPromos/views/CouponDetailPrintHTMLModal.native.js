@@ -7,7 +7,7 @@ export default function getMarkupForPrint(coupon, labels, validityDate, uri) {
      <div font-weight="bold" font-family="secondaryFontFamily" style='font-size:22px;margin-bottom: 16px;'>${validityDate}</div>
      <hr height"1px" width="100%" style='margin-bottom:16px;'>
      <div>
-        <img width="70px" height="50px" src="data:image/png;base64, ${uri}" alt="Coupon" />
+        <img width="70px" height="50px" src="data:image/png;base64, ${uri}" alt="" />
      </div>
      <hr height"1px" width="100%" style='margin-bottom: 16px;margin-top: 16px;'>
      <div style='font-size:14px;margin-bottom: 16px;margin-top: 16px;'>${coupon.legalText}</div>

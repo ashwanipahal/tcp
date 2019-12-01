@@ -5,8 +5,7 @@ import withStyles from '../../../hoc/withStyles';
 import { getIconPath } from '../../../../../utils';
 import textItemStyle from '../TextItems.style';
 
-const getIcon = icon =>
-  icon && <Image src={getIconPath(icon)} alt="Header Icon" className="header-icon" />;
+const getIcon = icon => icon && <Image src={getIconPath(icon)} alt="" className="header-icon" />;
 
 const finalText = (str, placement, icon) => {
   const text = str.split(' ');

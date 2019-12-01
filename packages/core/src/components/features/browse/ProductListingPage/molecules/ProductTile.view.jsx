@@ -48,7 +48,7 @@ class ProductTile extends React.Component {
           <img
             data-locator={'productImage-PLP-' + index}
             src={endpoints.global.baseURI + imagesByColor[selectedColor].basicImageUrl}
-            alt={item.name}
+            alt=""
           />
         </div>
         <p className="product-name">

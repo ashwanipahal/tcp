@@ -44,7 +44,7 @@ const PickupStoreDisplay = props => {
     <div className={`${className}`}>
       <div className="pickup-store-details">
         <div className="pickup-store-icon">
-          <Image src={pickup} className="back-link-image" alt="Pickup Icon" />
+          <Image src={pickup} className="back-link-image" alt="" />
         </div>
         <div className="pickup-store-content">
           <BodyCopy

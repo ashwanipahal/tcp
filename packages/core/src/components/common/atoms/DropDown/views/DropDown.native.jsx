@@ -318,11 +318,7 @@ class DropDown extends React.PureComponent<Props> {
                 <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
               </HeaderItemContainer>
             )}
-            <Image
-              source={dropDownIsOpen ? upIcon : downIcon}
-              alt="Dropdown"
-              style={arrowImageStyle}
-            />
+            <Image source={dropDownIsOpen ? upIcon : downIcon} alt="" style={arrowImageStyle} />
           </Row>
         )}
 
