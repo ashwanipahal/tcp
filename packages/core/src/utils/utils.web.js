@@ -356,6 +356,10 @@ export const handleGenericKeyDown = (event, key, method) => {
   }
 };
 
+const getBvSharedKey = (processEnv, apiSiteInfo) => {
+  return processEnv.RWD_WEB_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
+};
+
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   const unbxdApiKeyTCP =
@@ -367,6 +371,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    BV_SHARED_KEY: getBvSharedKey(processEnv, apiSiteInfo),
     assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
