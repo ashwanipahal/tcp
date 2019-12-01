@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PromoPDPBannersVanilla native component should match for moduleA 1`] = `
+exports[`PromoModulesVanilla native component should match for moduleA 1`] = `
 <ModuleA
   asPath="url/undefined"
   data={
@@ -33,8 +33,4 @@ exports[`PromoPDPBannersVanilla native component should match for moduleA 1`] = 
 />
 `;
 
-exports[`PromoPDPBannersVanilla native component should match snapshot 1`] = `
-<Connect(withNavigation(Espot))
-  richTextHtml="Hello"
-/>
-`;
+exports[`PromoModulesVanilla native component should match snapshot 1`] = `""`;

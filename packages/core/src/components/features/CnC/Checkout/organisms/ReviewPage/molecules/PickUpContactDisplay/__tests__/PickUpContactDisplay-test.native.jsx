@@ -8,12 +8,10 @@ describe('PickUpContactDisplayVanilla component', () => {
       labels: {},
       className: '',
       formData: {
-        pickUpContact: {
-          firstName: '',
-          lastName: '',
-          emailAddress: '',
-          phoneNumber: '',
-        },
+        firstName: '',
+        lastName: '',
+        emailAddress: 'abc@gmail.com',
+        phoneNumber: '87887788787',
       },
     };
     const component = shallow(<PickUpContactDisplayVanilla {...props} />);
