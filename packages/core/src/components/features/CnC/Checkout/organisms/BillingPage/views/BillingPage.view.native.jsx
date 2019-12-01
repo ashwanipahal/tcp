@@ -110,6 +110,7 @@ class BillingPage extends React.PureComponent {
           />
         )}
         <ScrollView
+          style={isPayPalWebViewEnable ? scrollStyle : defualtScrollStyle}
           ref={scrollView => {
             this.scrollView = scrollView;
           }}
