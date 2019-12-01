@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing block for FulfillmentSection FulfillmentSection should be rendered correclty  1`] = `
+<Fragment>
+  <Styled(Anchor)
+    accessibilityLabel="Click"
+    accessibilityRole="link"
+    anchorVariation="custom"
+    centered={true}
+    colorName="gray.900"
+    customStyle={Object {}}
+    fontSizeVariation="medium"
+    justifyContent=""
+    locator=""
+    margins={null}
+    noLink={true}
+    onPress={[Function]}
+    text="Click"
+    underline={true}
+    visible={false}
+  />
+</Fragment>
+`;

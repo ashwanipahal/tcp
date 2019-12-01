@@ -70,6 +70,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       closeModal,
       top,
       fullWidth,
+      isRenderDone,
     } = this.props;
 
     const apiConfigObj = getAPIConfig();
@@ -92,6 +93,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         top={top}
         isBillingPage={isBillingPage}
         fullWidth={fullWidth}
+        isRenderDone={isRenderDone}
       />
     );
   }
@@ -118,6 +120,9 @@ export const mapDispatchToProps = dispatch => {
     },
     payPalWebViewHandle: payload => {
       dispatch(bagPageActions.getSetPayPalWebView(payload));
+    },
+    isRenderDone: payload => {
+      dispatch(bagPageActions.isPaypalRenderDone(payload));
     },
   };
 };
