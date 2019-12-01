@@ -39,7 +39,6 @@ class ProductReviews extends React.PureComponent {
     const bvBrand = brand && brand.toUpperCase();
     const securityToken = !isGuest ? getSecurityToken(userId, mprId) : '';
 
-    // return `http://local.childrensplace.com:9000/index1.html?securityToken=${securityToken}&brand=${bvBrand}&productId=${ratingsProductId}`
     return `${
       this.apiConfig.BV_WEB_VIEW_URL
     }?securityToken=${securityToken}&brand=${bvBrand}&productId=${ratingsProductId}`;
@@ -90,7 +89,6 @@ class ProductReviews extends React.PureComponent {
     } = this.props;
     const { isAccordionOpen, margins, showModal } = this.state;
 
-    // const bvFormHTML = "http://local.childrensplace.com:9000/?securityToken=9d7f8a4134e47426c24e525538fb2e3d646174653d3230313931313233267573657269643d333030313234303331264d707249643d423130303030303132303630303632&brand=tcp&productId=2043512"
     const bvFormHTML =
       isAccordionOpen && this.getFormattedUrl(isGuest, userId, mprId, ratingsProductId);
 
