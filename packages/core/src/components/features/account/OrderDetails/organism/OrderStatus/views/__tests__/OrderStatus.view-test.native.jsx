@@ -9,8 +9,7 @@ jest.mock('date-fns', () => ({
 }));
 
 describe('Order Items component', () => {
-  // TODO Amit needs to look into this as it is failing on server
-  it.skip('should renders tracking header', () => {
+  it('should renders tracking header', () => {
     const props = {
       status: constants.STATUS_CONSTANTS.ORDER_SHIPPED,
       shippedDate: 'May, 2019',
