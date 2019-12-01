@@ -405,6 +405,7 @@ class FavoritesView extends React.PureComponent {
       isDataLoading,
       guestAccessKey,
       activeDisplayName,
+      appliedFilterLength,
     } = this.props;
 
     const shareOptions = [
@@ -514,6 +515,7 @@ class FavoritesView extends React.PureComponent {
                   onFilterSelection={onFilterSelection}
                   onSortSelection={onSortSelection}
                   defaultPlaceholder={getSortsList(labels)[0].displayName}
+                  appliedFilterLength={appliedFilterLength}
                 />
               </Col>
             </Row>
@@ -577,6 +579,7 @@ FavoritesView.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
   addToBagEcom: PropTypes.func.isRequired,
+  appliedFilterLength: PropTypes.number,
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   isDataLoading: PropTypes.bool,
   guestAccessKey: PropTypes.string,
@@ -595,6 +598,7 @@ FavoritesView.defaultProps = {
   defaultWishList: {},
   wishlistShareStatus: false,
   setListShareSuccess: () => {},
+  appliedFilterLength: 0,
   updateWishList: () => {},
   isBothTcpAndGymProductAreAvailable: false,
   isDataLoading: false,
