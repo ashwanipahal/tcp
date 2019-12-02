@@ -174,6 +174,16 @@ export default function create(store) {
       },
     },
 
+    pageTertiarySection: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageTertiarySection
+          ? clickActionAnalyticsData.pageTertiarySection
+          : pageData.pageTertiarySection;
+      },
+    },
+
     siteType: {
       get() {
         return siteType;
@@ -271,11 +281,17 @@ export default function create(store) {
     },
     products: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], []);
+        const { AnalyticsDataKey, pageData } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+
+        const pageProducts = clickActionAnalyticsData.products
+          ? clickActionAnalyticsData.products
+          : pageData.products;
+
+        return pageProducts || [];
       },
     },
+
     currentState: {
       get() {
         return store.getState();

@@ -321,9 +321,10 @@ export const WishListIcon = (
   isInDefaultWishlist,
   handleAddToWishlist,
   itemNotAvailable,
-  favoritedCount
+  favoritedCount,
+  isSuggestedItem
 ) => {
-  if (itemNotAvailable) {
+  if (itemNotAvailable && !isSuggestedItem) {
     return null;
   }
 
@@ -363,7 +364,7 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
               selectedSize: size || '',
               selectedFit: fit || '',
               skuId,
-              itemBrand: isTCP ? 'tcp' : 'gym',
+              itemBrand: isTCP ? 'TCP' : 'GYM',
             },
             isFavoriteEdit: true,
           });

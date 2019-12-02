@@ -14,7 +14,7 @@ import {
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import withStyles from '../../../../../common/hoc/withStyles';
-import OutfitProductStyle from './OutfitProduct.style';
+import OutfitProductStyle from '../styles/OutfitProduct.style';
 import OutOfStockWaterMarkView from '../../../ProductDetail/molecules/OutOfStockWaterMark';
 import { getIconPath } from '../../../../../../utils';
 
@@ -108,10 +108,6 @@ const OutfitDetailsView = ({
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
-  const imgData = {
-    alt: name,
-    url: imagesByColor[color].basicImageUrl,
-  };
   const images = imagesByColor[color];
 
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
@@ -153,14 +149,7 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <Anchor to={pdpToPath} asPath={outfitProduct.pdpUrl}>
-              <DamImage
-                className="full-size-desktop-image"
-                imgData={imgData}
-                itemProp="contentUrl"
-                isProductImage
-              />
-            </Anchor>
+            {imageDisplay(pageName, images, pdpToPath, outfitProduct.pdpUrl, name)}
             {renderOutOfStock(keepAlive, outOfStockLabels)}
           </BodyCopy>
 

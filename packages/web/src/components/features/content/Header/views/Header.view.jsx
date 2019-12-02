@@ -7,6 +7,7 @@ import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -181,6 +182,7 @@ class Header extends React.PureComponent {
         )}
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
+        <QuickViewModal />
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
