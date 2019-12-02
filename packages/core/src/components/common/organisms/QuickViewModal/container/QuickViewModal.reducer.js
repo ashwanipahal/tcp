@@ -23,7 +23,8 @@ const QuickViewReducer = (state = initialState, action) => {
       return state
         .set('fromBagPage', action.payload.fromBagPage)
         .set('isSflProduct', action.payload.isSflProduct)
-        .set('quickViewProductFromBag', action.payload.orderInfo);
+        .set('quickViewProductFromBag', action.payload.orderInfo)
+        .set('isFavoriteEdit', action.payload.isFavoriteEdit);
     case QUICK_VIEW_CONSTANT.SET_LOADING_STATE:
       return state.set('isLoading', action.payload.isLoading);
     case QUICK_VIEW_CONSTANT.OPEN_QUICK_VIEW_MODAL:
@@ -34,7 +35,8 @@ const QuickViewReducer = (state = initialState, action) => {
         .set('isSflProduct', false)
         .set('isModalOpen', action.payload.isModalOpen)
         .set('quickViewProducts', null)
-        .set('quickViewProductFromBag', null);
+        .set('quickViewProductFromBag', null)
+        .set('isFavoriteEdit', false);
 
     default:
       return getDefaultState(state);

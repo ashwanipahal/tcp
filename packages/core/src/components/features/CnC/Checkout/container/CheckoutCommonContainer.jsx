@@ -189,6 +189,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       dispatchReviewReduxForm,
       pageData,
       dispatch,
+      titleLabel,
       initShippingPage,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate, emailSignUpFlags } = this.props;
@@ -282,6 +283,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         updateCheckoutPageData={updateCheckoutPageData}
         pageData={pageData}
+        titleLabel={titleLabel}
         initShippingPage={initShippingPage}
       />
     );

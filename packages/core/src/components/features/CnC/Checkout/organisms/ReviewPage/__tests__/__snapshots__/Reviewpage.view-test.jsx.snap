@@ -59,32 +59,9 @@ exports[`ReviewPageVanilla component should renders correctly when not routing d
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="review-title"
   />
-  <div
-    className="review-pickup"
-  >
-    <Connect(PickUpReviewContainer)
-      bagLoading={false}
-      checkoutRoutingDone={false}
-      isExpressCheckout={false}
-      onEdit={[Function]}
-    />
-  </div>
   <FormSection
     name="expressReviewShippingSection"
-  >
-    <div
-      className="review-shipping"
-    >
-      <Connect(ShippingReviewContainer)
-        bagLoading={false}
-        checkoutRoutingDone={false}
-        formName="expressReviewPage"
-        formSection="expressReviewShippingSection"
-        isExpressCheckout={false}
-        onEdit={[Function]}
-      />
-    </div>
-  </FormSection>
+  />
   <Connect(BillingSectionContainer)
     bagLoading={false}
     checkoutRoutingDone={false}
