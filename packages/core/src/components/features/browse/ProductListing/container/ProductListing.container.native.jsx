@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import get from 'lodash/get';
 import ProductListing from '../views';
 import {
   getPlpProducts,
@@ -51,7 +52,10 @@ class ProductListingContainer extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    const { resetProducts } = this.props;
+    const { resetProducts, navigation } = this.props;
+    this.state = {
+      showCustomLoader: (navigation && navigation.getParam('showCustomLoader')) || false,
+    };
     resetProducts();
   }
 
@@ -60,13 +64,21 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   componentDidUpdate({ navigation: oldNavigation }) {
-    const { getProducts, navigation } = this.props;
+    const { getProducts, navigation, isDataLoading } = this.props;
     const oldNavigationUrl = oldNavigation.getParam('url');
     const newNavigationUrl = navigation.getParam('url');
     if (navigation && oldNavigationUrl !== newNavigationUrl) {
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
+    const { showCustomLoader } = this.state;
+    if (showCustomLoader && !isDataLoading) {
+      this.resetCustomLoader();
+    }
   }
+
+  resetCustomLoader = () => {
+    this.setState({ showCustomLoader: false });
+  };
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
@@ -117,8 +129,11 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       isSearchListing,
       isKeepModalOpen,
+      QRAnimationURL,
       ...otherProps
     } = this.props;
+
+    const { showCustomLoader } = this.state;
     return (
       <ProductListing
         margins="0 12px 0 12px"
@@ -149,6 +164,9 @@ class ProductListingContainer extends React.PureComponent {
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}
+        showCustomLoader={showCustomLoader}
+        QRAnimationURL={QRAnimationURL}
+        resetCustomLoader={this.resetCustomLoader}
         {...otherProps}
       />
     );
@@ -213,6 +231,7 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    QRAnimationURL: get(state, 'Labels.global.qrScanner.lbl_animation_plp', ''),
     errorMessages: fetchErrorMessages(state),
   };
 }
@@ -269,7 +288,9 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
+  QRAnimationURL: PropTypes.string,
   isPlcc: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -294,7 +315,9 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
+  QRAnimationURL: '',
   isPlcc: false,
+  isDataLoading: false,
 };
 
 export default connect(

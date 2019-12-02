@@ -14,8 +14,8 @@ const Notification = ({ message, children, status, disableSpace }) => {
   return (
     <View>
       <NotificationWrapper status={status} disableSpace={disableSpace}>
-        {status === 'success' && <Image height="25px" width="25px" source={successImg} />}
-        {status === 'info' && <Image height="25px" width="25px" source={infoImg} />}
+        {status === 'success' && <Image height="25px" width="25px" source={successImg} alt="" />}
+        {status === 'info' && <Image height="25px" width="25px" source={infoImg} alt="" />}
         {message ? (
           <ViewWithSpacing spacingStyles="padding-MED padding-top-XXS padding-bottom-XXS">
             <BodyCopy

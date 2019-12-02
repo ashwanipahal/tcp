@@ -152,9 +152,11 @@ exports[`Order Items component should renders Tracking Button 1`] = `
             clickData={
               Object {
                 "customEvents": Array [
-                  "event28",
+                  "event118",
                 ],
                 "eventName": "trackingnumberclick",
+                "pageName": "myplace:orders:order details",
+                "pageShortName": "myplace:orders:order details",
               }
             }
           >

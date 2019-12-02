@@ -164,7 +164,7 @@ export default function create(store) {
       },
     },
 
-    pageSubSection: {
+    pageSubSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
