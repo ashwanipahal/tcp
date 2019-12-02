@@ -208,7 +208,7 @@ describe('loadPersonalizedCoupons saga', () => {
             code: 'Y16905R9YZDDLH',
             description: '20% OFF YOUR ENTIRE PURCHASE',
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
-            endDate: 'Oct 6th, yyyy',
+            endDate: 'Oct 17th, 2020',
             isPastStartDate: true,
             startDate: format(new Date(), 'MMM do, yyyy'),
             categoryType: 'Marketing_Offers',
