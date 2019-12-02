@@ -1071,26 +1071,6 @@ export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
 };
 
-export const getQueryParamsFromUrl = (url, queryParam) => {
-  let queryString = url || '';
-  let keyValPairs = [];
-  const params = {};
-  queryString = queryString.replace(/.*?\?/, '');
-
-  if (queryString.length) {
-    keyValPairs = queryString.split('&');
-    const resultingArray = Object.values(keyValPairs);
-
-    resultingArray.filter((item, index) => {
-      const key = item.split('=')[0];
-      if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[index].split('=')[1]);
-      return params;
-    });
-  }
-  return params[queryParam];
-};
-
 /**
  *
  * Get labels based on pattern
