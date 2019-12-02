@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/skeleton/OrderSummarySkeleton.view.native';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -46,7 +47,7 @@ const getLoyaltybanner = (isConfirmationPage, pageCategory, navigation) => {
   );
 };
 
-export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, labels) => {
+export const createRowForGiftServiceTotal = (giftServiceTotal, labels) => {
   return giftServiceTotal > 0 ? (
     <StyledRowDataContainer>
       <Text>
@@ -66,7 +67,7 @@ export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, l
           fontWeight="regular"
           fontSize="fs13"
           textAlign="right"
-          text={`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
+          text={<PriceCurrency price={giftServiceTotal} />}
         />
       </Text>
     </StyledRowDataContainer>
@@ -118,7 +119,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                 fontWeight="regular"
                 fontSize={fontSize}
                 textAlign="right"
-                text={`${currencySymbol}${subTotal.toFixed(2)}`}
+                text={<PriceCurrency price={subTotal} />}
               />
             </Text>
           </StyledRowDataContainer>
@@ -129,8 +130,8 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
             currencySymbol,
             savingsTotal
           )}
-          {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
-          {orderHasShipping(isOrderHasShipping, fontSize, labels, shippingTotal, currencySymbol)}
+          {createRowForGiftServiceTotal(giftServiceTotal, labels)}
+          {orderHasShipping(isOrderHasShipping, fontSize, labels, shippingTotal)}
           <StyledRowDataContainer>
             {taxesTotal > 0 ? (
               <>
@@ -151,7 +152,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                     fontWeight="regular"
                     fontSize={fontSize}
                     textAlign="right"
-                    text={`${currencySymbol}${taxesTotal.toFixed(2)}`}
+                    text={<PriceCurrency price={taxesTotal} />}
                   />
                 </Text>
               </>
@@ -178,7 +179,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                     fontWeight="regular"
                     fontSize={fontSize}
                     textAlign="right"
-                    text={`${currencySymbol}${grandTotal.toFixed(2)}`}
+                    text={<PriceCurrency price={grandTotal} />}
                   />
                 </Text>
               </StyledRowDataContainer>
@@ -200,7 +201,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                     fontWeight="regular"
                     fontSize={fontSize}
                     textAlign="right"
-                    text={`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
+                    text={<PriceCurrency price={giftCardsTotal} />}
                   />
                 </Text>
               </StyledRowDataContainer>
@@ -224,7 +225,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                 fontWeight="extrabold"
                 fontSize={totalFontSize}
                 textAlign="right"
-                text={`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
+                text={<PriceCurrency price={orderBalanceTotal} />}
               />
             </Text>
           </StyledRowDataContainer>
@@ -252,7 +253,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
                   fontWeight="regular"
                   fontSize={fontSize}
                   textAlign="right"
-                  text={`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
+                  text={<PriceCurrency price={totalOrderSavings} />}
                 />
               </Text>
             </StyledRowDataContainer>
@@ -268,10 +269,8 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
 };
 
 const getHeader = (labels, ledgerSummaryData) => {
-  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
-  const headerText = `${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(
-    2
-  )})`;
+  const { orderBalanceTotal } = ledgerSummaryData;
+  const headerText = `${labels.orderLedgerTitle} (${<PriceCurrency price={orderBalanceTotal} />})`;
   return (
     <StyledHeader>
       <BodyCopy
