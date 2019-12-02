@@ -95,6 +95,9 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
         hasAttribute: jest.fn(),
+        getAttribute: jest.fn(() => {
+          return 'createAccount';
+        }),
       },
       stopImmediatePropagation: jest.fn(),
     };
@@ -123,6 +126,9 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
         hasAttribute: jest.fn(),
+        getAttribute: jest.fn(() => {
+          return 'createAccount';
+        }),
       },
       stopImmediatePropagation: jest.fn(),
     };
@@ -145,7 +151,14 @@ describe('OverlayModal', () => {
       },
     };
     const mockedcloseOverlay = jest.fn();
-    const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
+    const mockedSetNeedHelpModal = jest.fn();
+    const tree = shallow(
+      <OverlayModalVanilla
+        {...props}
+        closeOverlay={mockedcloseOverlay}
+        setNeedHelpModal={mockedSetNeedHelpModal}
+      />
+    );
     tree.instance().componentWillUnmount();
   });
 });

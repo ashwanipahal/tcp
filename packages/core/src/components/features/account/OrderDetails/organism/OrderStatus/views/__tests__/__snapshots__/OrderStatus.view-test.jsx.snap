@@ -152,9 +152,11 @@ exports[`Order Items component should renders Tracking Button 1`] = `
             clickData={
               Object {
                 "customEvents": Array [
-                  "event28",
+                  "event118",
                 ],
                 "eventName": "trackingnumberclick",
+                "pageName": "myplace:orders:order details",
+                "pageShortName": "myplace:orders:order details",
               }
             }
           >
@@ -227,9 +229,7 @@ exports[`Order Items component should renders tracking header 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        May 1, 2019
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="orderDetail-trackingNumber-pipe"
         color="text.primary"

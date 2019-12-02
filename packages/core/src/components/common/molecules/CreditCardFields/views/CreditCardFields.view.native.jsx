@@ -147,6 +147,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                   this.setState({ selectedMonth: itemValue });
                   updateExpiryDate(itemValue, selectedYear);
                 }}
+                isAddNewCC
               />
             </ExpiryMonth>
             <ExpiryYear>
@@ -160,6 +161,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                   this.setState({ selectedYear: itemValue });
                   updateExpiryDate(selectedMonth, itemValue);
                 }}
+                isAddNewCC
               />
             </ExpiryYear>
             {showCvv && (
@@ -174,6 +176,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                   component={TextBox}
                   dataLocator="cvvTxtBox"
                   customStyle={CvvTextboxStyle}
+                  isCVVField
                 />
                 <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
                 <CVVInfo>{cvvInfo}</CVVInfo>

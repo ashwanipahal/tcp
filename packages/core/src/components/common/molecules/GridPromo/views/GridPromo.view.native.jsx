@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../atoms';
 
 const getSeparatorText = textItems => {
-  const headingLine = textItems && textItems[0] && textItems[0].text;
-  return headingLine && headingLine.split('|');
+  const headingLine = (textItems && textItems[0] && textItems[0].text) || '';
+  return headingLine.split('|');
 };
 
 const GridPromo = props => {

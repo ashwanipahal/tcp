@@ -44,20 +44,13 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           returnKeyType="search"
           value=""
         />
-        <Styled(CustomIcon)
-          accessibilityLabel="barcode"
-          color="gray.600"
-          dataLocator=""
-          iconFontName="Icomoon"
-          isButton={false}
+        <QRScannerIcon
+          closeModal={[Function]}
           isDisabled={false}
-          margins={null}
-          name="scan"
-          onPress={[Function]}
           size="fs25"
           style={
             Object {
-              "marginTop": 10,
+              "marginTop": 5,
             }
           }
         />

@@ -515,6 +515,7 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List"
           fullBleed={true}
         >
@@ -1766,6 +1767,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List"
           fullBleed={true}
         />
@@ -2450,6 +2452,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List storeView__ListAndMap"
           fullBleed={true}
         >

@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import { getBrand } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
@@ -20,6 +21,7 @@ import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
 import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import GridPromo from '../../../../../../common/molecules/GridPromo';
+import { APP_TYPE } from '../../../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.constants';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
@@ -95,11 +97,25 @@ class ProductList extends React.PureComponent {
     }));
   };
 
-  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo) => {
-    const { title, onGoToPDPPage, isFavorite } = this.props;
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo, item) => {
+    const { title, onGoToPDPPage, isFavorite, updateAppTypeHandler } = this.props;
     const { name } = productInfo;
+    const currentAppBrand = getBrand();
+    const isTCP = item.itemInfo ? item.itemInfo.isTCP : currentAppBrand.toUpperCase() === 'TCP';
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    const isProductBrandOfSameSiteBrand = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
     const productTitle = isFavorite ? name : title;
-    if (onGoToPDPPage) {
+    if (!isProductBrandOfSameSiteBrand) {
+      updateAppTypeHandler({
+        type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
+        params: {
+          title,
+          pdpUrl,
+          selectedColorProductId: selectedColorIndex,
+          reset: true,
+        },
+      });
+    } else if (onGoToPDPPage) {
       onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex, productInfo);
     }
   };
@@ -170,7 +186,9 @@ class ProductList extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       renderMoveToList,
+      addToBagEcom,
       onSeeSuggestedItems,
+      errorMessages,
     } = this.props;
     const { item } = itemData;
     const suggestedItem = this.checkAndRenderSuggestedItem(item);
@@ -229,7 +247,9 @@ class ProductList extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         renderMoveToList={renderMoveToList}
+        addToBagEcom={addToBagEcom}
         onSeeSuggestedItems={onSeeSuggestedItems}
+        errorMessages={errorMessages}
       />
     );
   };
@@ -405,9 +425,12 @@ ProductList.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
   onSeeSuggestedItems: PropTypes.func,
   seeSuggestedDictionary: PropTypes.shape({}),
   isSuggestedItem: PropTypes.bool,
+  errorMessages: PropTypes.shape({}),
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 ProductList.defaultProps = {
@@ -444,9 +467,11 @@ ProductList.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   renderMoveToList: () => {},
+  addToBagEcom: () => {},
   onSeeSuggestedItems: () => {},
   seeSuggestedDictionary: null,
   isSuggestedItem: false,
+  errorMessages: null,
 };
 
 export default withStyles(ProductList, styles);
