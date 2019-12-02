@@ -46,7 +46,7 @@ const CheckoutHeader = ({
           aria-label={exitCheckoutAriaLabel}
           className="exitFromCheckout"
         >
-          <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
+          <Image src={getIconPath('carrot-large-left')} alt="" className="collapsible-icon" />
         </button>
 
         <Col

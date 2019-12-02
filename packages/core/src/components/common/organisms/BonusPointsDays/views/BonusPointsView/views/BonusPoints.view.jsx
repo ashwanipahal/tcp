@@ -18,7 +18,7 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
-    getBonusDaysData: PropTypes.func,
+    getAvailableBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
     showAccordian: PropTypes.bool.isRequired,
     additionalClassNameModal: PropTypes.string.isRequired,
@@ -34,7 +34,7 @@ class BonusPointsView extends React.Component {
     className: '',
     view: constants.VIEWS.EDIT,
     isPlcc: false,
-    getBonusDaysData: () => {},
+    getAvailableBonusDaysData: () => {},
     orderDetails: {},
     isDefaultOpen: false,
     isInternationalShipping: false,
@@ -69,7 +69,7 @@ class BonusPointsView extends React.Component {
       view,
       className,
       labels,
-      getBonusDaysData,
+      getAvailableBonusDaysData,
       orderDetails,
       showAccordian,
       isDefaultOpen,
@@ -85,7 +85,7 @@ class BonusPointsView extends React.Component {
                 labels={labels && labels.global && labels.global.bonusPoints}
                 bonusData={bonusData}
                 toggleBonusPointsModal={this.toggleBonusPointsModal}
-                getBonusDaysData={getBonusDaysData}
+                getAvailableBonusDaysData={getAvailableBonusDaysData}
                 orderDetails={orderDetails}
                 showAccordian={showAccordian}
                 isDefaultOpen={isDefaultOpen}

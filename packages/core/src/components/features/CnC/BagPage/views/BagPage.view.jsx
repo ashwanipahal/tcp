@@ -19,7 +19,6 @@ import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles, recommendationStyles } from '../styles/BagPage.style';
 import BagPageUtils from './Bagpage.utils';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
 import BagPageAnalytics from './BagPageAnalytics.view';
@@ -439,7 +438,6 @@ class BagPageView extends React.PureComponent {
           isNonEmptySFL={isNonEmptySFL}
           pageCategory={BAGPAGE_CONSTANTS.BAG_PAGE}
         />
-        <QuickViewModal />
       </div>
     );
   }

@@ -26,13 +26,20 @@ export const mapDispatchToProps = dispatch => {
     trackSubscriptionSuccess: () => {
       dispatch(
         setClickAnalyticsData({
-          customEvents: ['event15', 'event80'],
+          customEvents: ['event107', 'event80'],
           pageName: 'content:email confirmation',
           pageShortName: 'content:sms confirmation',
+          pageSection: 'content',
+          pageSubSection: 'content',
+          pageType: 'content',
+          pageTertiarySection: 'content',
         })
       );
 
       dispatch(trackPageView({}));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
     },
   };
 };
@@ -56,7 +63,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignupModalView);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupModalView);

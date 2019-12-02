@@ -139,7 +139,6 @@ export default function* rootSaga() {
     SubscribeStoreSaga(),
     LayoutSaga(),
     NavigateXHRSaga(),
-    SubscribeStoreSaga(),
     ResetPasswordSaga(),
     BundleProductSaga(),
     ProductPickup(),
