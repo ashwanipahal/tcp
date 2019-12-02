@@ -24,4 +24,16 @@ describe('ThankYouComponentVanilla', () => {
     const tree = shallow(<ThankYouComponentVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render correctly with venmo payment', () => {
+    const props = {
+      fullfillmentCenterData: [{}],
+      orderNumbersByFullfillmentCenter: {},
+      labels: {},
+      updateOrderDetailsData: {},
+      isBossInList: true,
+      isVenmoPaymentInProgress: true,
+    };
+    const tree = shallow(<ThankYouComponentVanilla {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
 });
