@@ -6,6 +6,7 @@ import {
   enableBodyScroll as enableBodyScrollLib,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -573,10 +574,27 @@ export const scrollToParticularElement = element => {
   }
 };
 
+/**
+ * openWindow - opens a window with the URL and attributes passed in
+ * @param {string} arg url - URL to open,
+ * @param {string} arg target - where to open the new window; defaults to _blank
+ * @param {string} arg attrs - what attributes to pass to window.open; defaults to empty string
+ * @return {Object} Object handle for the new window
+ */
+export const openWindow = (url, target = '_blank', attrs = '') => {
+  let windowAttributes = attrs;
+  if (target === '_blank') {
+    windowAttributes = windowAttributes.concat('noopener');
+  }
+  logger.info(`Opening ${url} in window with target=${target} and attributes=${windowAttributes}`);
+  return window.open(url, target, windowAttributes);
+};
+
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
-  return window.open(
-    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  return openWindow(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+    '_blank'
   );
 };
 

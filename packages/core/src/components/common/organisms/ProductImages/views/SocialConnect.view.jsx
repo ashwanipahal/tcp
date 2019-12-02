@@ -5,6 +5,7 @@ import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductImages.style';
+import { openWindow } from '../../../../../utils/utils.web';
 
 class SocialConnect extends React.PureComponent {
   static propTypes = {
@@ -26,21 +27,21 @@ class SocialConnect extends React.PureComponent {
     const shareUrl = window.location.href;
     const url = `//twitter.com/share?text=&url=${encodeURIComponent(shareUrl)}&hashtags=`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   handlePinterestShare = () => {
     const shareUrl = window.location.href;
     const url = `http://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   handleFacebookShare = () => {
     const shareUrl = window.location.href;
     const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   render() {
@@ -56,6 +57,7 @@ class SocialConnect extends React.PureComponent {
               onClick={this.handleTwitterShare}
               className="icon-twitter"
               title="Twitter"
+              rel="noopener"
             >
               <Image
                 alt="twitter"
