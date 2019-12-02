@@ -7,7 +7,6 @@ import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader
 import SOCIAL_CONSTANTS from '../social.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';
-import { getUserInfo } from '../../../../features/account/User/container/User.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -49,7 +48,6 @@ export function* savesocialAccounts({ payload }) {
     if (isConnected) {
       yield put(showPointModalDetails({ state: !isConnected }));
     }
-    yield put(getUserInfo({ ignoreCache: true }));
   } catch (err) {
     yield put(setLoaderState(false));
     console.log('err', err);
