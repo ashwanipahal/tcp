@@ -72,11 +72,7 @@ class SettingsView extends PureComponent {
 
   checkNotificationStatus = () => {
     checkNotifications().then(({ status }) => {
-      if (status === RESULTS.GRANTED) {
-        this.setState({ pushNotificationValue: true });
-      } else {
-        this.setState({ pushNotificationValue: false });
-      }
+      this.setState({ pushNotificationValue: status === RESULTS.GRANTED });
     });
   };
 
@@ -148,10 +144,6 @@ class SettingsView extends PureComponent {
     );
   };
 
-  changeNotificationSetting = () => {
-    Linking.openSettings();
-  };
-
   render() {
     const { labels } = this.props;
     const {
@@ -193,7 +185,7 @@ class SettingsView extends PureComponent {
               fontWeight="regular"
               text={getLabelValue(labels, 'lbl_overview_push_notifications')}
             />
-            <Switch value={pushNotificationValue} onValueChange={this.changeNotificationSetting} />
+            <Switch value={pushNotificationValue} onValueChange={() => Linking.openSettings()} />
           </Row>
           <AboutWrapper>
             <BodyCopy
