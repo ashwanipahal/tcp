@@ -173,10 +173,10 @@ class CountrySelector extends React.Component {
           <div className="countrySelector__flag-icon">
             <Image
               src={flagIconSrc}
+              alt={`${selectedCountryName} Flag`}
               width="20px"
               height="20px"
               onClick={this.openModal}
-              alt={selectedCountryName}
               data-locator={getLocator(
                 showInFooter ? 'footer_country_flag' : 'header_country_flag'
               )}

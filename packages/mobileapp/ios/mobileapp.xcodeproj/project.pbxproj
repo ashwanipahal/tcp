@@ -198,6 +198,7 @@
 		52E2F8A3A812AE2049914EAC /* libPods-gymboree_dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FED26EEEDE07EB6208629 /* libPods-gymboree_dev.a */; };
 		5C658802DBEE101155B3D33B /* libPods-mobileapp_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C598B9782044E026FB8BD81 /* libPods-mobileapp_preview.a */; };
 		6D40DB93D473EF097D9197A5 /* libPods-mobileapp_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA601903E0D05110E23DD59 /* libPods-mobileapp_uat.a */; };
+		8209D7962394CF2E00DFD967 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
 		84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
@@ -1950,6 +1951,7 @@
 				16C47574238D541000B6959B /* FontAwesome.ttf in Resources */,
 				16C47550238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				39B94DAF2387BC330068B1E5 /* Nunito-ExtraBold.ttf in Resources */,
+				8209D7962394CF2E00DFD967 /* main.jsbundle in Resources */,
 				39B94DB02387BC330068B1E5 /* Montserrat-Medium.ttf in Resources */,
 				39B94DB12387BC330068B1E5 /* Nunito-Bold.ttf in Resources */,
 				39B94DB22387BC330068B1E5 /* Montserrat-Bold.ttf in Resources */,

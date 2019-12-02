@@ -17,7 +17,24 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
         textDecoration={null}
       />
     </View>
-    <Styled(View) />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        color="gray.900"
+        colorName={null}
+        customStyle={Object {}}
+        fontSize="fs12"
+        justifyContent=""
+        locator=""
+        margins={null}
+        mobileFontFamily="secondary"
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
   </Styled(View)>
   <Styled(Text)>
     <Styled(BodyCopy)
