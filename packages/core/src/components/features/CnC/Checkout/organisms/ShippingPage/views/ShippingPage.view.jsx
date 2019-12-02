@@ -102,6 +102,7 @@ export default class ShippingPage extends React.PureComponent {
       emailSignUpFlags,
       addNewShippingAddress,
       updateShippingAddress,
+      initShippingPage,
     } = this.props;
     const { isMobile, newUserPhoneNo, shippingAddressId, submitShippingForm } = this.props;
     const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
@@ -147,6 +148,7 @@ export default class ShippingPage extends React.PureComponent {
                   emailSignUp: emailSignUpFlags.emailSignUpTCP,
                   emailSignUpGYM: emailSignUpFlags.emailSignUpGYM,
                 },
+                smsSignUp: initShippingPage && initShippingPage.smsSignUp,
               }}
               selectedShipmentId={selectedShipmentId}
               addressPhoneNo={addressPhoneNumber}

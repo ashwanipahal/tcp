@@ -42,7 +42,7 @@ class OutfitListing extends React.PureComponent {
 
     return (
       <View>
-        <Image url={imageURLWithHost} height="427px" width={getScreenWidth() - 24} />
+        <Image url={imageURLWithHost} alt="" height="427px" width={getScreenWidth() - 24} />
         <Anchor
           text={shopThisLookLabel}
           onPress={() => this.navigateToOutfitDetails(item)}

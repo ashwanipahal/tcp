@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoModulesVanilla native component should match for moduleA 1`] = `
+<ModuleA
+  asPath="url/undefined"
+  data={
+    Object {
+      "contentId": "123",
+      "moduleName": "moduleA",
+      "richTextList": Array [
+        Object {
+          "text": "Hello",
+        },
+      ],
+      "slotData": Object {},
+    }
+  }
+  ignoreLazyLoadImage={true}
+  key="123"
+  navigation={
+    Object {
+      "getParam": [Function],
+    }
+  }
+  richTextList={
+    Array [
+      Object {
+        "text": "Hello",
+      },
+    ]
+  }
+  slotData={Object {}}
+/>
+`;
+
+exports[`PromoModulesVanilla native component should match snapshot 1`] = `""`;

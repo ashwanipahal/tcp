@@ -81,10 +81,6 @@ class Header extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.getInitialProps();
-  }
-
   componentDidUpdate(prevProps) {
     const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
     if (
@@ -159,18 +155,23 @@ class Header extends React.PureComponent {
   };
 
   renderSearchBar = () => {
-    const { showSearch, slpLabels } = this.props;
+    const { showSearch, slpLabels, navigation } = this.props;
     const { showSearchModal } = this.state;
     if (!showSearch) return null;
     return (
       <SearchContainer>
         {showSearch && (
-          <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          <SearchBar
+            openSearchProductPage={this.openSearchProductPage}
+            navigation={navigation}
+            labels={slpLabels}
+          />
         )}
         {showSearchModal && (
           <SearchProduct
             closeSearchModal={this.closeSearchProductPage}
             goToSearchResultsPage={this.goToSearchResultsPage}
+            navigation={navigation}
           />
         )}
       </SearchContainer>

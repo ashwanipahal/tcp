@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>BazaarVoice Integration</title>
+    <script charset="utf-8" src="https://display.ugc.bazaarvoice.com/static/ChildrensPlace/en_US/bvapi.js">
+    </script>
+</head>
+<body id="bazaarVoiceContainer">
+    <div id='BVRRContainer' class="ratings-and-reviews-container"></div>
+
+    <script type='text/javascript'>
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+          m,
+          key,
+          value
+        ) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+
+      function handleWriteReviewClick(event) {
+        if(!securityToken && window.ReactNativeWebView) {
+          event.preventDefault();
+          event.stopPropagation();
+          window.ReactNativeWebView.postMessage("openLogin");
+        }
+      }
+
+      function handleCloseClick(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        window.ReactNativeWebView && window.postMessage("closeRating");
+      }
+
+      var securityToken = getUrlVars()['securityToken'];
+      const bvContainer =  'BVRRContainer';
+      const ratingsProductId = getUrlVars()['productId'];
+      const brand = getUrlVars()['brand'];
+      const options = {
+          contentContainerDiv: bvContainer,
+          productId: ratingsProductId,
+      };
+
+      const targetNode = document.getElementById('bazaarVoiceContainer');
+
+      // Options for the observer (which mutations to observe)
+      const config = { attributes: true, childList: true, subtree: true };
+
+      // Callback function to execute when mutations are observed
+      const callback = function(mutationsList, observer) {
+          // Use traditional 'for loops' for IE
+          for(let mutation of mutationsList) {
+              if (mutation.type === 'childList') {
+                  // console.log(mutation.addedNodes[0]);
+                  if(document.querySelector('button.bv-mbox-close')) {
+                    document.querySelector('button.bv-mbox-close').addEventListener('click', handleCloseClick);
+                  }
+                  if(document.querySelector('button.bv-write-review')) {
+                    document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
+                  }
+              }
+          }
+      };
+
+      // Create an observer instance linked to the callback function
+      const observer = new MutationObserver(callback);
+
+      // Start observing the target node for configured mutations
+      observer.observe(targetNode, config);
+
+      window.$BV.configure('global', {
+        productId: ratingsProductId,
+        userToken: securityToken,
+        brandcode: brand,
+      });
+      window.$BV.ui('rr', 'show_reviews',options);
+    </script>
+
+</body>
+</html>
+<!-- test Url: http://local.childrensplace.com:3000/static/bazaarVoice/index.html?securityToken=354tggrwt445w354545=&brand=tcp&productId=2043572 -->

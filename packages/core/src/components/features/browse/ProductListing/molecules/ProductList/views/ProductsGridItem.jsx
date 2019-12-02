@@ -31,6 +31,7 @@ import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -306,11 +307,26 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick } = this.props;
+    const { onQuickViewOpenClick, item, addToBagEcom, isFavoriteView } = this.props;
     const { selectedColorProductId } = this.state;
-    onQuickViewOpenClick({
-      colorProductId: selectedColorProductId,
-    });
+    if (isFavoriteView) {
+      const {
+        skuInfo: { skuId, size },
+      } = item;
+      if (skuId && size) {
+        let cartItemInfo = getCartItemInfo(item, {});
+        cartItemInfo = { ...cartItemInfo };
+        if (addToBagEcom) addToBagEcom(cartItemInfo);
+      } else {
+        onQuickViewOpenClick({
+          colorProductId: selectedColorProductId,
+        });
+      }
+    } else {
+      onQuickViewOpenClick({
+        colorProductId: selectedColorProductId,
+      });
+    }
   };
 
   handleViewBundleClick = () => {
@@ -545,6 +561,7 @@ class ProductsGridItem extends React.PureComponent {
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
+      item,
     } = this.props;
 
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -604,7 +621,6 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
-
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -646,7 +662,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels },
+            { onQuickViewOpenClick, isFavoriteView, labels, item },
             selectedColorProductId,
             itemNotAvailable
           )}

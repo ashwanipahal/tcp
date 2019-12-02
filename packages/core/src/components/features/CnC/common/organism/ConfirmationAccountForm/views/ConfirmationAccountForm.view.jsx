@@ -199,7 +199,11 @@ const ConfirmationCreateAccountForm = ({
             <div className="hide-show">
               <div className="info-icon-img-wrapper">
                 <ReactTooltip message={renderTooltip(passwordLabels)} aligned="right">
-                  <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+                  <Image
+                    className="tcp_carousel__play tooltip"
+                    src={getIconPath('info-icon')}
+                    alt=""
+                  />
                 </ReactTooltip>
               </div>
               <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>

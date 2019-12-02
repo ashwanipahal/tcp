@@ -65,9 +65,9 @@ export const mapStateToProps = state => {
     getIsVenmoEnabled,
     isVenmoNonceNotExpired,
     isVenmoPaymentInProgress,
-    getVenmoData,
     getIsBillingVisited,
     getIsPaymentDisabled,
+    getVenmoUserName,
   } = checkoutSelectors;
   const venmoClientTokenData = getVenmoClientTokenData(state);
   const { venmoPaymentTokenAvailable } = venmoClientTokenData || {};
@@ -76,8 +76,7 @@ export const mapStateToProps = state => {
   const isNonceNotExpired = isVenmoNonceNotExpired(state);
   const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   const isGuest = isGuestUser(state);
-  const venmoData = getVenmoData(state);
-  const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
+  const userName = getVenmoUserName(state);
   const venmoPayment = {
     ccBrand: VenmoConstants.VENMO,
     ccType: VenmoConstants.VENMO,
