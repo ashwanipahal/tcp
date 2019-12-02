@@ -3,10 +3,8 @@ import SiteMapView from '../views';
 import getSiteMapData from './SiteMap.selectors';
 import { fetchSiteMapData } from './SiteMap.actions';
 
-SiteMapView.getInitialProps = async ({ store, isServer }, pageProps) => {
-  if (isServer) {
-    store.dispatch(fetchSiteMapData());
-  }
+SiteMapView.getInitialProps = async ({ store }, pageProps) => {
+  store.dispatch(fetchSiteMapData());
   return {
     ...pageProps,
   };
