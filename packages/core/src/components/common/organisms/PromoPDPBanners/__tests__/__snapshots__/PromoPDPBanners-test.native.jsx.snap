@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoPDPBannersVanilla native component should match for moduleA 1`] = `
+<ModuleA
+  asPath="url/undefined"
+  data={
+    Object {
+      "contentId": "123",
+      "moduleName": "moduleA",
+      "richTextList": Array [
+        Object {
+          "text": "Hello",
+        },
+      ],
+      "slotData": Object {},
+    }
+  }
+  ignoreLazyLoadImage={true}
+  key="123"
+  navigation={
+    Object {
+      "getParam": [Function],
+    }
+  }
+  richTextList={
+    Array [
+      Object {
+        "text": "Hello",
+      },
+    ]
+  }
+  slotData={Object {}}
+/>
+`;
+
+exports[`PromoPDPBannersVanilla native component should match snapshot 1`] = `
+<Connect(withNavigation(Espot))
+  richTextHtml="Hello"
+/>
+`;

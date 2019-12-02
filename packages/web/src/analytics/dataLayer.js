@@ -1,6 +1,7 @@
 import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import {
   generateBrowseDataLayer,
   generateHomePageDataLayer,
@@ -55,7 +56,51 @@ export default function create(store) {
         return `gl:${pageName}`;
       },
     },
-
+    orderId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderId
+          ? clickActionAnalyticsData.orderId
+          : pageData.orderId;
+      },
+    },
+    paymentMethod: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.paymentMethod
+          ? clickActionAnalyticsData.paymentMethod
+          : pageData.paymentMethod;
+      },
+    },
+    billingCountry: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingCountry
+          ? clickActionAnalyticsData.billingCountry
+          : pageData.billingCountry;
+      },
+    },
+    billingZip: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingZip
+          ? clickActionAnalyticsData.billingZip
+          : pageData.billingZip;
+      },
+    },
+    orderSubtotal: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderSubtotal
+          ? clickActionAnalyticsData.orderSubtotal
+          : pageData.orderSubtotal;
+      },
+    },
     isCurrentRoute: () => false,
 
     pageShortName: {
@@ -82,9 +127,18 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData.pageType
+        const pageType = clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
           : pageData.pageType;
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+        return `${pageType || pageName}`;
+      },
+    },
+    pageUrl: {
+      get() {
+        return `https://${document.location.hostname}${document.location.pathname}`;
       },
     },
 
@@ -96,7 +150,7 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+        return 'US:en';
       },
     },
 
@@ -104,7 +158,7 @@ export default function create(store) {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData.pageSection
+        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
       },
@@ -128,9 +182,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store.getState().User.getIn(['personalData', 'isGuest'])
-          ? 'no rewards:guest'
-          : 'no rewards:logged in';
+        return getUserLoggedInState(store.getState()) ? 'no rewards:logged in' : 'no rewards:guest';
       },
     },
 
@@ -227,6 +279,12 @@ export default function create(store) {
     currentState: {
       get() {
         return store.getState();
+      },
+    },
+    brandId: {
+      get() {
+        const { brandId = '' } = store.getState().APIConfig;
+        return brandId.toUpperCase();
       },
     },
   });

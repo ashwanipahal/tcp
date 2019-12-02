@@ -20,6 +20,7 @@ import {
   getBreadCrumbs,
   prodDetails,
   getOutfitLabels,
+  getLoadingState,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
@@ -45,6 +46,7 @@ import {
   getIsKeepAliveProductApp,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
+import BundleProductItemsSkeleton from '../molecules/BundleProductItemsSkeleton';
 
 export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -124,38 +126,45 @@ export class ProductBundleContainer extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       toastMessage,
+      isLoading,
     } = this.props;
     return (
-      <BundleProduct
-        currentProduct={currentProduct}
-        selectedColorProductId={this.selectedColorProductId}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        outfitLabels={outfitLabels}
-        navigation={navigation}
-        shortDescription={shortDescription}
-        itemPartNumber={itemPartNumber}
-        longDescription={longDescription}
-        currency={currency}
-        currencyAttributes={currencyAttributes}
-        currentBundle={currentBundle}
-        handleAddToBag={this.handleAddToBag}
-        addToBagEcom={addToBagEcom}
-        currentState={currentState}
-        addToBagError={addToBagError}
-        addToBagErrorId={addToBagErrorId}
-        isPickupModalOpen={isPickupModalOpen}
-        addToFavorites={addToFavorites}
-        isLoggedIn={isLoggedIn}
-        isPlcc={isPlcc}
-        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-        breadCrumbs={breadCrumbs}
-        productDetails={productDetails}
-        isKeepAliveEnabled={isKeepAliveEnabled}
-        outOfStockLabels={outOfStockLabels}
-        toastMessage={toastMessage}
-      />
+      <>
+        {!isLoading ? (
+          <BundleProduct
+            currentProduct={currentProduct}
+            selectedColorProductId={this.selectedColorProductId}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            outfitLabels={outfitLabels}
+            navigation={navigation}
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            currency={currency}
+            currencyAttributes={currencyAttributes}
+            currentBundle={currentBundle}
+            handleAddToBag={this.handleAddToBag}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            addToBagError={addToBagError}
+            addToBagErrorId={addToBagErrorId}
+            isPickupModalOpen={isPickupModalOpen}
+            addToFavorites={addToFavorites}
+            isLoggedIn={isLoggedIn}
+            isPlcc={isPlcc}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            breadCrumbs={breadCrumbs}
+            productDetails={productDetails}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
+            toastMessage={toastMessage}
+          />
+        ) : (
+          <BundleProductItemsSkeleton />
+        )}
+      </>
     );
   }
 }
@@ -166,6 +175,7 @@ ProductBundleContainer.pageInfo = {
 function mapStateToProps(state) {
   return {
     currentProduct: getCurrentProduct(state),
+    isLoading: getLoadingState(state),
     productDetails: prodDetails(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
@@ -249,6 +259,7 @@ ProductBundleContainer.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 ProductBundleContainer.defaultProps = {
@@ -277,6 +288,7 @@ ProductBundleContainer.defaultProps = {
   clearBundleDetails: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  isLoading: false,
 };
 
 export default connect(

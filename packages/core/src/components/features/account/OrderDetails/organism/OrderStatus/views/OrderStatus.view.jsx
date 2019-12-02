@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, getOrderGroupLabelAndMessage } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import constants from '../../../OrderDetails.constants';
 
 /**
@@ -54,17 +55,26 @@ const OrderStatus = props => {
             <Col colSize={{ large: 5, medium: 8, small: 6 }} />
             <Col colSize={{ large: 7, medium: 8, small: 6 }}>
               <BodyCopy className="button-track" component="div">
-                <Anchor
-                  to={trackingUrl}
-                  anchorVariation="button"
-                  buttonVariation="fixed-width"
-                  fill="BLUE"
-                  centered
-                  dataLocator={trackingNumber}
-                  target="_blank"
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event118'],
+                    eventName: 'trackingnumberclick',
+                    pageName: 'myplace:orders:order details',
+                    pageShortName: 'myplace:orders:order details',
+                  }}
                 >
-                  {getLabelValue(ordersLabels, 'lbl_orders_trackit')}
-                </Anchor>
+                  <Anchor
+                    to={trackingUrl}
+                    anchorVariation="button"
+                    buttonVariation="fixed-width"
+                    fill="BLUE"
+                    centered
+                    dataLocator={trackingNumber}
+                    target="_blank"
+                  >
+                    {getLabelValue(ordersLabels, 'lbl_orders_trackit')}
+                  </Anchor>
+                </ClickTracker>
               </BodyCopy>
             </Col>
           </Row>

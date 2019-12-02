@@ -16,6 +16,7 @@ export class PasswordField extends React.PureComponent {
     showText: PropTypes.string,
     tooltipContent: PropTypes.node,
     labels: PropTypes.shape([]),
+    tooltipAriaLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -24,6 +25,7 @@ export class PasswordField extends React.PureComponent {
     showText: 'Show',
     tooltipContent: '',
     labels: {},
+    tooltipAriaLabel: '',
   };
 
   constructor(props) {
@@ -42,7 +44,15 @@ export class PasswordField extends React.PureComponent {
   };
 
   render() {
-    const { className, showText, hideText, tooltipContent, labels, ...otherProps } = this.props;
+    const {
+      className,
+      showText,
+      hideText,
+      tooltipContent,
+      labels,
+      tooltipAriaLabel,
+      ...otherProps
+    } = this.props;
     const { type } = this.state;
     return (
       <BodyCopy component="div" className={className}>
@@ -59,7 +69,7 @@ export class PasswordField extends React.PureComponent {
               aligned="right"
               minWidth="330px"
             >
-              <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+              <Image className="tooltip" src={getIconPath('info-icon')} alt={tooltipAriaLabel} />
             </ReactTooltip>
           )}
           <Anchor

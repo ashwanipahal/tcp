@@ -23,6 +23,12 @@ export default css`
       height:50px;
     }
 
+    .searchbar-withRecent{
+      border-radius: 0;
+      background-color: ${props => props.theme.colors.WHITE};
+      height:50px;
+    }
+
     .searchbar input {
       width: calc(100% - 205px);
       font-size:${props => props.theme.typography.fontSizes.fs14};
@@ -33,7 +39,21 @@ export default css`
     .searchbar .icon-small {
       vertical-align: middle;
       padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      padding-left:35px;
+      padding-left:25px;
+      cursor: pointer;
+    }
+
+    .searchbar-withRecent input {
+      width: calc(100% - 205px);
+      font-size:${props => props.theme.typography.fontSizes.fs14};
+      background-color: ${props => props.theme.colors.WHITE};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+
+    .searchbar-withRecent .icon-small {
+      vertical-align: middle;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      padding-left:25px;
       cursor: pointer;
     }
 
@@ -61,7 +81,7 @@ export default css`
       display: none;
     }
 
-    .icon-small.close-image-mobile {
+    .close-image-mobile {
       display: inline-block;
       padding-left: 0;
       width: 12px;
@@ -184,7 +204,19 @@ export default css`
       background-color: ${props => props.theme.colors.WHITE};
     }
 
+    .searchbar-withRecent{
+      border-radius: 0;
+      background-color: ${props => props.theme.colors.WHITE};
+    }
+
     .searchbar input {
+      width: calc(100% - 170px);
+      font-size:${props => props.theme.typography.fontSizes.fs14};
+      background-color: ${props => props.theme.colors.WHITE};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+
+    .searchbar-withRecent input {
       width: calc(100% - 170px);
       font-size:${props => props.theme.typography.fontSizes.fs14};
       background-color: ${props => props.theme.colors.WHITE};
@@ -225,6 +257,11 @@ export default css`
     }
 
     .searchbar .icon-small {
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .searchbar-withRecent .icon-small {
       vertical-align: middle;
       cursor: pointer;
     }
@@ -290,7 +327,7 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 120px;
+          right: 13%;
           top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
@@ -302,12 +339,38 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border-radius: 20px;
       width: 100%;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
       height: 40px;
     }
 
+    .searchbar-withRecent {
+      display: inline-block;
+      line-height: 40px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border-radius: 20px;
+      width: 100%;
+      height: 40px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
     .searchbar input {
+      width: calc(100% - 105px);
+      height: 25px;
+      outline: none;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border: 0;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM} 0 ${props =>
+  props.theme.spacing.APP_LAYOUT_SPACING.SM};
+      border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      color: ${props => props.theme.colors.TEXT.DARKGRAY};
+      vertical-align: middle;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .searchbar-withRecent input {
       width: calc(100% - 105px);
       height: 25px;
       outline: none;
@@ -351,7 +414,16 @@ export default css`
       cursor: pointer;
     }
 
-    .icon-small.close-image-toggle {
+    .searchbar-withRecent .icon-small {
+      vertical-align: middle;
+      height: 16px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM} 0 0;
+      width: 20px;
+      cursor: pointer;
+    }
+
+
+    .close-image-toggle {
       display: inline-block;
       height:12px;
       width:12px;

@@ -71,7 +71,7 @@ class RelatedOutfits extends React.PureComponent {
             />
             <ImageStyleWrapper>
               <Anchor onPress={this.handleAccordionToggle}>
-                <Image source={isAccordionOpen ? upIcon : downIcon} />
+                <Image source={isAccordionOpen ? upIcon : downIcon} alt="" />
               </Anchor>
             </ImageStyleWrapper>
           </StyleRelatedOutfits>

@@ -6,7 +6,7 @@ import { FlatList, Text, Dimensions, Share, SafeAreaView } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -77,10 +77,10 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites, skuId, currentColorEntry } = props;
+    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn } = props;
     const { colorProductId } = currentColorEntry;
-    const { productId } = state;
-    if (props.isLoggedIn && state.showModal) {
+    const { productId, showModal } = state;
+    if (isLoggedIn && showModal) {
       if (productId !== '') {
         onAddItemToFavorites({
           colorProductId: productId,
@@ -192,7 +192,7 @@ class ImageCarousel extends React.PureComponent {
 
   renderFavoriteIcon = () => {
     const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { favoritedCount, isFavorite, miscInfo } = currentColorEntry;
     const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
@@ -331,6 +331,7 @@ ImageCarousel.propTypes = {
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
   keepAlive: PropTypes.bool,
+  skuId: PropTypes.string,
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
@@ -351,6 +352,7 @@ ImageCarousel.defaultProps = {
   outOfStockLabels: {
     outOfStockCaps: '',
   },
+  skuId: '',
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

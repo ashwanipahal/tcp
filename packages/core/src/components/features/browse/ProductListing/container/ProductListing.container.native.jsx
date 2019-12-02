@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import get from 'lodash/get';
 import ProductListing from '../views';
 import {
   getPlpProducts,
@@ -10,7 +11,7 @@ import {
   resetPlpProducts,
   setFilter,
 } from './ProductListing.actions';
-import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { processBreadCrumbs, getProductsWithPromo } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
@@ -23,7 +24,6 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
   getAllProductsSelect,
@@ -34,6 +34,8 @@ import {
   getSelectedFilter,
   getPLPTopPromos,
   getLabelsOutOfStock,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -43,13 +45,17 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+import { fetchErrorMessages } from '../../Favorites/container/Favorites.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
 
   constructor(props) {
     super(props);
-    const { resetProducts } = this.props;
+    const { resetProducts, navigation } = this.props;
+    this.state = {
+      showCustomLoader: (navigation && navigation.getParam('showCustomLoader')) || false,
+    };
     resetProducts();
   }
 
@@ -58,13 +64,21 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   componentDidUpdate({ navigation: oldNavigation }) {
-    const { getProducts, navigation } = this.props;
+    const { getProducts, navigation, isDataLoading } = this.props;
     const oldNavigationUrl = oldNavigation.getParam('url');
     const newNavigationUrl = navigation.getParam('url');
     if (navigation && oldNavigationUrl !== newNavigationUrl) {
       getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
     }
+    const { showCustomLoader } = this.state;
+    if (showCustomLoader && !isDataLoading) {
+      this.resetCustomLoader();
+    }
   }
+
+  resetCustomLoader = () => {
+    this.setState({ showCustomLoader: false });
+  };
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
@@ -91,7 +105,6 @@ class ProductListingContainer extends React.PureComponent {
 
   render() {
     const {
-      productsBlock,
       products,
       currentNavIds,
       navTree,
@@ -116,12 +129,14 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       isSearchListing,
       isKeepModalOpen,
+      QRAnimationURL,
       ...otherProps
     } = this.props;
+
+    const { showCustomLoader } = this.state;
     return (
       <ProductListing
         margins="0 12px 0 12px"
-        productsBlock={productsBlock}
         products={products}
         filters={filters}
         currentNavIds={currentNavIds}
@@ -149,6 +164,9 @@ class ProductListingContainer extends React.PureComponent {
         plpTopPromos={plpTopPromos}
         isSearchListing={isSearchListing}
         isKeepModalOpen={isKeepModalOpen}
+        showCustomLoader={showCustomLoader}
+        QRAnimationURL={QRAnimationURL}
+        resetCustomLoader={this.resetCustomLoader}
         {...otherProps}
       />
     );
@@ -157,23 +175,32 @@ class ProductListingContainer extends React.PureComponent {
 
 function mapStateToProps(state) {
   const appliedFilters = getAppliedFilters(state);
-  const productBlocks = getLoadedProductsPages(state);
+  const plpGridPromos = getPLPGridPromos(state);
+  const plpHorizontalPromo = getPlpHorizontalPromo(state);
+  const products = getAllProductsSelect(state);
 
   // eslint-disable-next-line
   let filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
 
+  const productWithGrid = getProductsWithPromo(
+    products,
+    plpGridPromos,
+    plpHorizontalPromo,
+    filterCount
+  );
   const filters = updateAppliedFiltersInState(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getAllProductsSelect(state),
+    products: productWithGrid,
     filters,
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
@@ -204,6 +231,8 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    QRAnimationURL: get(state, 'Labels.global.qrScanner.lbl_animation_plp', ''),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
@@ -235,7 +264,6 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
-  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
@@ -260,11 +288,13 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
   isSearchListing: PropTypes.bool,
   isKeepModalOpen: PropTypes.bool,
+  QRAnimationURL: PropTypes.string,
+  isPlcc: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
   products: [],
-  productsBlock: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
@@ -285,6 +315,9 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   isSearchListing: false,
   isKeepModalOpen: false,
+  QRAnimationURL: '',
+  isPlcc: false,
+  isDataLoading: false,
 };
 
 export default connect(

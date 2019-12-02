@@ -5219,10 +5219,12 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   type="button"
                 >
                   <Styled(Image)
+                    alt=""
                     className="collapsible-icon"
-                    src="/static/images/carrot-small-up.png"
+                    src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
+                      alt=""
                       className="collapsible-icon"
                       forwardedComponent={
                         Object {
@@ -5255,23 +5257,27 @@ exports[`StoreHours component should render component with timing data 1`] = `
                         }
                       }
                       forwardedRef={null}
-                      src="/static/images/carrot-small-up.png"
+                      src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
+                        alt=""
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
+                        role="img"
                         sizes=""
-                        src="/static/images/carrot-small-up.png"
+                        src="/static/version-not-available/images/carrot-small-up.png"
                         srcset=""
                         url=""
                       >
                         <img
+                          alt=""
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
+                          role={null}
                           sizes={null}
-                          src="/static/images/carrot-small-up.png"
+                          src="/static/version-not-available/images/carrot-small-up.png"
                           srcSet=""
                         />
                       </Image>
@@ -9766,10 +9772,12 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   type="button"
                 >
                   <Styled(Image)
+                    alt=""
                     className="collapsible-icon"
-                    src="/static/images/carrot-small-up.png"
+                    src="/static/version-not-available/images/carrot-small-up.png"
                   >
                     <StyledComponent
+                      alt=""
                       className="collapsible-icon"
                       forwardedComponent={
                         Object {
@@ -9802,23 +9810,27 @@ exports[`StoreHours component should render component with timing data 2`] = `
                         }
                       }
                       forwardedRef={null}
-                      src="/static/images/carrot-small-up.png"
+                      src="/static/version-not-available/images/carrot-small-up.png"
                     >
                       <Image
+                        alt=""
                         className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
+                        role="img"
                         sizes=""
-                        src="/static/images/carrot-small-up.png"
+                        src="/static/version-not-available/images/carrot-small-up.png"
                         srcset=""
                         url=""
                       >
                         <img
+                          alt=""
                           className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
+                          role={null}
                           sizes={null}
-                          src="/static/images/carrot-small-up.png"
+                          src="/static/version-not-available/images/carrot-small-up.png"
                           srcSet=""
                         />
                       </Image>

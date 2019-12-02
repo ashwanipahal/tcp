@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// import {
-//   checkNotificationPermission,
-//   changeNotificationSetting,
-// } from 'react-native-check-notification-permission';
-import { Switch, AppState, Alert } from 'react-native';
+import { checkNotifications, RESULTS } from 'react-native-permissions';
+import { Switch, AppState, Alert, Linking } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -66,22 +63,23 @@ class SettingsView extends PureComponent {
         });
       });
     }
-
-    // checkNotificationPermission().then(result => {
-    //   this.setState({ pushNotificationValue: result });
-    // });
+    this.checkNotificationStatus();
   }
 
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange);
   }
 
+  checkNotificationStatus = () => {
+    checkNotifications().then(({ status }) => {
+      this.setState({ pushNotificationValue: status === RESULTS.GRANTED });
+    });
+  };
+
   handleAppStateChange = nextAppState => {
     const { appState } = this.state;
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
-      // checkNotificationPermission().then(result => {
-      //   this.setState({ pushNotificationValue: result });
-      // });
+      this.checkNotificationStatus();
     }
     this.setState({ appState: nextAppState });
   };
@@ -187,10 +185,7 @@ class SettingsView extends PureComponent {
               fontWeight="regular"
               text={getLabelValue(labels, 'lbl_overview_push_notifications')}
             />
-            <Switch
-              value={pushNotificationValue}
-              onValueChange={() => changeNotificationSetting()}
-            />
+            <Switch value={pushNotificationValue} onValueChange={() => Linking.openSettings()} />
           </Row>
           <AboutWrapper>
             <BodyCopy

@@ -111,6 +111,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         }
       >
         <ProductWishlistIcon
+          activeButton={false}
           className="fav-icon"
           onClick={[Function]}
         />
@@ -165,11 +166,11 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           clickData={
             Object {
               "eventName": "cart add",
-              "pageName": "",
-              "pageSection": "product",
+              "pageName": undefined,
+              "pageSection": undefined,
               "pageShortName": "",
-              "pageSubSection": "product",
-              "pageType": "product",
+              "pageSubSection": undefined,
+              "pageType": undefined,
               "products": Array [
                 Object {
                   "id": "undefined",
@@ -191,7 +192,19 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </div>
     <div
       className="favorite-move-purchase-section"
-    />
+    >
+      <div
+        className="purchase-section"
+      >
+        <span>
+          /
+          1
+        </span>
+        <span
+          className="is-purchase-label"
+        />
+      </div>
+    </div>
   </div>
 </li>
 `;

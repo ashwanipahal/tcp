@@ -36,7 +36,7 @@ An online account has been created with your email! Click here to reset your pas
       />
     </Styled(View)>
     <Styled(LineComp)
-      borderColor={null}
+      borderColor=""
       borderWidth={0.65}
       marginBottom={0}
       marginLeft={0}
@@ -154,7 +154,7 @@ An online account has been created with your email! Click here to reset your pas
       </Styled(View)>
     </Styled(View)>
     <Styled(LineComp)
-      borderColor={null}
+      borderColor=""
       borderWidth={0.65}
       marginBottom={0}
       marginLeft={0}

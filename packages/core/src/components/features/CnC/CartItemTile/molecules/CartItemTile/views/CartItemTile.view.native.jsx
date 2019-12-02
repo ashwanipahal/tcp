@@ -335,6 +335,21 @@ class ProductInformation extends PureComponent {
     );
   };
 
+  getSwipeConfig = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled, showOnReviewPage) => {
+    return {
+      rightButtons: showOnReviewPage
+        ? [this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]
+        : null,
+      rightButtonWidth: showOnReviewPage ? 240 : 0,
+      leftButtons: null,
+      onSwipeComplete: showOnReviewPage
+        ? (event, gestureState, swipe) => {
+            CartItemTileExtension.onSwipeComplete(this.props, swipe);
+          }
+        : () => {},
+    };
+  };
+
   render() {
     const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
@@ -355,6 +370,9 @@ class ProductInformation extends PureComponent {
       isBagPageSflSection,
       orderId,
       handleAddToWishlist,
+      isLoggedIn,
+      showLoginModal,
+      toggleLoginModal,
     } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
     const isECOMOrder = isEcomOrder(orderItemType);
@@ -372,17 +390,20 @@ class ProductInformation extends PureComponent {
       isBOPISOrder
     );
 
+    const swipeConfig = this.getSwipeConfig(
+      isBOSSOrder,
+      bossDisabled,
+      isBOPISOrder,
+      bopisDisabled,
+      showOnReviewPage
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
-        rightButtonWidth={240}
-        leftButtons={null}
-        onSwipeComplete={(event, gestureState, swipe) => {
-          CartItemTileExtension.onSwipeComplete(this.props, swipe);
-        }}
+        {...swipeConfig}
       >
         <MainWrapper>
           {CartItemTileExtension.renderTogglingError(this.props)}
@@ -424,6 +445,7 @@ class ProductInformation extends PureComponent {
               )}
               {showOnReviewPage &&
                 CartItemTileExtension.heartIcon(isBagPageSflSection, handleAddToWishlist)}
+              {CartItemTileExtension.renderModal(isLoggedIn, toggleLoginModal, showLoginModal)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -537,6 +559,9 @@ ProductInformation.propTypes = {
     errorMessage: PropTypes.string,
   }),
   handleAddToWishlist: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  showLoginModal: PropTypes.bool.isRequired,
+  toggleLoginModal: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {

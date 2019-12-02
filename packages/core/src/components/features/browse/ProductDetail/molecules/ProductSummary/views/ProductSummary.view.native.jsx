@@ -1,36 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
+import Stars from 'react-native-stars';
+import { TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
-import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
-import {
-  ICON_NAME,
-  ICON_FONT_CLASS,
-} from '@tcp/core/src/components/common//atoms/Icon/Icon.constants';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
   RowContainer,
-  BazarVoiceContainer,
+  BazaarVoiceContainer,
   ReviewAndRatingContainer,
   styles,
   EmptyView,
 } from '../styles/ProductSummary.style.native';
+
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import { getMapSliceForColorProductId } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { getPromotionalMessage } from '../../../../ProductListing/molecules/ProductList/utils/utility';
+import starImg from '../../../../../../../assets/star-new.png';
 
 class ProductSummary extends React.PureComponent {
   constructor(props) {
     super(props);
     this.loyaltyPromotionMessage = '';
   }
-
-  onCompleteLook = () => {};
-
-  onWriteReview = () => {};
 
   renderWriteAReviewAnchor = anchorLabel => {
     const { isBundleProduct } = this.props;
@@ -72,49 +67,38 @@ class ProductSummary extends React.PureComponent {
     return <EmptyView width="30%" />;
   };
 
-  /**
-   * @description - This method render star rating icons
-   */
-  renderStarRating = () => {
-    const arr = [1, 2, 3, 4, 5];
-    return arr.map((item, index) => {
-      const margins = index === 0 ? '0 0 0 0' : '0 0 0 4px';
-      return (
-        <CustomIcon
-          margins={margins}
-          iconFontName={ICON_FONT_CLASS.Icomoon}
-          name={ICON_NAME.starFilled}
-          size="fs14"
-          color="gray.500"
-        />
-      );
-    });
-  };
-
-  renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels } = this.props;
+  renderBazaarVoiceComponent = bazaarVoice => {
+    const { pdpLabels } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
-    if (!isGiftCard) {
-      return (
-        <BazarVoiceContainer>
+    const totalRating = `(${bazaarVoice.totalReviewCount})`;
+
+    return (
+      <BazaarVoiceContainer>
+        <TouchableOpacity accessibilityRole="link" onPress={() => this.scrollToRatingSection()}>
           <ReviewAndRatingContainer>
-            {this.renderStarRating()}
+            <Stars
+              display={bazaarVoice.avgRating}
+              spacing={8}
+              count={5}
+              starSize={15}
+              disabled
+              fullStar={starImg}
+            />
             <BodyCopy
-              margin="0 0 0 12px"
+              margin="0 0 0 18px"
               dataLocator="pdp_write_review_icon"
               mobileFontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
               color="gray.900"
-              text="(0)"
+              text={totalRating}
             />
           </ReviewAndRatingContainer>
-          {this.renderWriteAReviewAnchor(writeAReview)}
-          {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
-        </BazarVoiceContainer>
-      );
-    }
-    return null;
+        </TouchableOpacity>
+        {this.renderWriteAReviewAnchor(writeAReview)}
+        {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
+      </BazaarVoiceContainer>
+    );
   };
 
   renderPromotionalMessage = () => {
@@ -144,7 +128,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_product_badges"
           margin="16px 0 0 0"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
           color="gray.900"
@@ -164,7 +148,7 @@ class ProductSummary extends React.PureComponent {
       <BodyCopy
         margin="4px 0 0 0"
         dataLocator="pdp_current_product_price"
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs22"
         fontWeight="black"
         color="red.600"
@@ -179,7 +163,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_discounted_percentage"
           margin="0 0 0 10px"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="red.600"
@@ -195,7 +179,7 @@ class ProductSummary extends React.PureComponent {
       return (
         <BodyCopy
           dataLocator="pdp_discounted_product_price"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="gray.800"
@@ -212,7 +196,7 @@ class ProductSummary extends React.PureComponent {
         <BodyCopy
           dataLocator="pdp_discounted_product_price"
           textDecoration="line-through"
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           color="gray.800"
@@ -232,6 +216,11 @@ class ProductSummary extends React.PureComponent {
     }
     return priceValue;
   };
+
+  scrollToRatingSection() {
+    const { scrollToTarget } = this.props;
+    scrollToTarget('rating');
+  }
 
   renderListPrice = badge2 => {
     const { productData } = this.props;
@@ -264,7 +253,7 @@ class ProductSummary extends React.PureComponent {
   };
 
   render() {
-    const { productData, selectedColorProductId, isGiftCard } = this.props;
+    const { productData, selectedColorProductId, isGiftCard, renderRatingReview } = this.props;
 
     if (JSON.stringify(productData) !== '{}') {
       const colorFitsSizesMap = get(productData, 'colorFitsSizesMap', null);
@@ -277,18 +266,18 @@ class ProductSummary extends React.PureComponent {
       if (curentColorEntry) {
         badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
       }
-      const { name } = productData;
+      const { name, bazaarVoice } = productData;
       return (
         <Container>
           <LineComp marginTop={10} borderColor="gray.500" />
-          {this.renderBazaarVoiceComponent()}
+          {renderRatingReview ? this.renderBazaarVoiceComponent(bazaarVoice) : null}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {this.renderTopBadge(badge1Value)}
           {this.renderSoldOutError()}
           <BodyCopy
             dataLocator="pdp_product_titles"
             margin={badge1Value !== '' ? '0px' : '16px 0 0 0'}
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs18"
             fontWeight="extrabold"
             color="gray.900"
@@ -320,6 +309,8 @@ ProductSummary.propTypes = {
   outOfStockLabels: PropTypes.shape({
     itemSoldOutMessage: PropTypes.string,
   }),
+  scrollToTarget: PropTypes.func,
+  renderRatingReview: PropTypes.bool,
 };
 
 ProductSummary.defaultProps = {
@@ -334,6 +325,8 @@ ProductSummary.defaultProps = {
   outOfStockLabels: {
     itemSoldOutMessage: '',
   },
+  scrollToTarget: () => {},
+  renderRatingReview: false,
 };
 
 export default withStyles(ProductSummary, styles);

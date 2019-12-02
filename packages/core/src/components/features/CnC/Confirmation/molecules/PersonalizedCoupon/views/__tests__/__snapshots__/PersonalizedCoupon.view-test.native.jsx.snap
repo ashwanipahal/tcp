@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalizedCoupon View should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View) />
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray[900]"
+      dataLocator=""
+      fontSize="fs22"
+      margin={null}
+      numberOfLines={null}
+      text="description"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <TouchableOpacity
+    accessibilityLabel="Tap to show details"
+    accessibilityRole="none"
+    accessible={true}
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Styled(Image)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-down.png",
+        }
+      }
+    />
+  </TouchableOpacity>
+  <Styled(View) />
+  <Styled(View) />
+  <TouchableOpacity
+    accessibilityLabel="Click here to print coupon"
+    accessibilityRole="none"
+    accessible={true}
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Styled(Image)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/icon-printer.png",
+        }
+      }
+    />
+  </TouchableOpacity>
+</Styled(View)>
+`;

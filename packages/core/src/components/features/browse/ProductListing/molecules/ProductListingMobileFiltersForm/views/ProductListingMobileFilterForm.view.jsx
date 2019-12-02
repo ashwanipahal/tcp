@@ -7,7 +7,6 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Image from '../../../../../../common/atoms/Image';
 import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
 import { Row, Col, Button } from '../../../../../../common/atoms';
@@ -267,6 +266,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         onFilterSelection={onFilterSelection}
         onOptionSelected={handleSubmitOnChange}
         isLoadingMore={isLoadingMore}
+        isFavoriteView={isFavoriteView}
       />
     );
   };

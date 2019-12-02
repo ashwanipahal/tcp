@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 /* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
@@ -189,6 +190,7 @@ const processResponse = (
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
+  let modifiedFiltersAndSort = filtersAndSort;
   if (scrollPoint) {
     sessionStorage.setItem('SCROLL_EVENT', 1);
   }
@@ -196,10 +198,12 @@ const processResponse = (
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
   if (isClient() && res.body.redirect && typeof window !== 'undefined') {
-    const redirectUrl = res.body.redirect.value;
+    let redirectUrl = res.body.redirect.value;
     try {
       // If domain matches try routing within the site else page reload is fine
-      if (redirectUrl.indexOf(window.location.hostname) > -1) {
+      if (redirectUrl.length && redirectUrl.indexOf(window.location.hostname) > -1) {
+        redirectUrl = redirectUrl.replace(window.location.origin, '');
+        redirectUrl = redirectUrl.replace(/\/(us|ca)/, '');
         routerPush(redirectUrl, redirectUrl, { shallow: true }); // try and avoid a hard reload
       } else {
         window.location.assign(redirectUrl);
@@ -213,6 +217,10 @@ const processResponse = (
     getPlpUrlQueryValues(filtersAndSort, location);
   }
 
+  if (isMobileApp()) {
+    modifiedFiltersAndSort = processHelpers.getDecodedData(filtersAndSort);
+  }
+
   const pendingPromises = [];
   // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
   const isDepartment = isDepartmentPage(isSearch, breadCrumbs);
@@ -223,7 +231,7 @@ const processResponse = (
     res.body.facets,
     res.body.response.numberOfProducts,
     getFacetSwatchImgPath,
-    filtersAndSort,
+    modifiedFiltersAndSort,
     l1category
   );
 
@@ -273,7 +281,7 @@ const processResponse = (
     // An L2 can be an outfits page, if so we need to store the 3rd party tag associated with this outfits page
     outfitStyliticsTag: getOutfitStyliticsTag(isOutfitPage, searchTerm), // DT-34042: dynamic outfit pages
     filtersMaps: filters,
-    appliedFiltersIds: processHelpers.getAppliedFilters(filters, filtersAndSort),
+    appliedFiltersIds: processHelpers.getAppliedFilters(filters, modifiedFiltersAndSort),
     totalProductsCount,
     productsInCurrCategory: res.body.response.numberOfProducts,
     unbxdId,

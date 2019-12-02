@@ -3,23 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import {
-  getNearByStore,
-  getCurrentStoreInfo,
-  getModuleXContent,
-  getDistance,
-} from './StoreDetail.actions';
+import { getNearByStore, getCurrentStoreInfo, getModuleXContent } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import {
-  routeToStoreDetails,
-  routerPush,
-  fetchStoreIdFromUrlPath,
-  isMobileApp,
-} from '../../../../../utils';
+import { routeToStoreDetails, routerPush, isMobileApp } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -28,7 +18,6 @@ import {
   isFavoriteStore,
   getReferredContentList,
   getRichTextContent,
-  getStoreDistance,
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
@@ -62,26 +51,19 @@ export class StoreDetailContainer extends PureComponent {
     getModuleX(referredContentList);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (snapshot !== null) {
-      this.loadCurrentStoreInitialInfo();
-    }
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    const { currentStoreInfo, formatStore, isUserLoggedIn } = this.props;
+  componentDidUpdate(prevProps) {
+    const { currentStoreInfo, formatStore, isUserLoggedIn, storeId } = this.props;
     const prevStore = formatStore(prevProps.currentStoreInfo);
     const newStore = formatStore(currentStoreInfo);
     if (
-      (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
-        (newStore.basicInfo !== undefined && newStore.basicInfo.id) ||
+      prevProps.storeId !== storeId ||
+      (isMobileApp() &&
+        (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
+          (newStore.basicInfo !== undefined && newStore.basicInfo.id)) ||
       prevProps.isUserLoggedIn !== isUserLoggedIn
     ) {
-      return true;
+      this.loadCurrentStoreInitialInfo();
     }
-    return null;
   }
 
   openMoreStores = () => {
@@ -118,7 +100,9 @@ export class StoreDetailContainer extends PureComponent {
       window.open(
         `${
           googleMapConstants.OPEN_STORE_DIR_WEB
-        }${addressLine1},%20${city},%20${state},%20${zipCode}`
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`,
+        '_blank',
+        'noopener'
       );
     }
   }
@@ -129,8 +113,10 @@ export class StoreDetailContainer extends PureComponent {
       currentStoreInfo,
       formatStore,
       getFavStore,
-      calcDistanceByLatLng,
+      storeId,
+      fetchCurrentStoreInfo,
     } = this.props;
+    if (!isMobileApp()) fetchCurrentStoreInfo(storeId);
     const store = formatStore(currentStoreInfo);
     if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
       const { basicInfo } = store;
@@ -141,10 +127,6 @@ export class StoreDetailContainer extends PureComponent {
         latitude: coordinates.lat,
         longitude: coordinates.long,
       };
-      const distanceArgs = {
-        destination: [{ lat: coordinates.lat, long: coordinates.long }],
-      };
-      calcDistanceByLatLng(distanceArgs);
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
     }
@@ -159,9 +141,8 @@ export class StoreDetailContainer extends PureComponent {
       isFavorite,
       setFavStore,
       getRichContent,
-      distanceFromUser,
     } = this.props;
-    const store = formatStore(currentStoreInfo, distanceFromUser);
+    const store = formatStore(currentStoreInfo);
     const otherStores =
       nearByStores && nearByStores.length > 0
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
@@ -185,12 +166,6 @@ export class StoreDetailContainer extends PureComponent {
     ) : null;
   }
 }
-
-StoreDetailContainer.getInitialProps = async ({ store, query }, pageProps) => {
-  const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-  store.dispatch(getCurrentStoreInfo(storeId));
-  return pageProps;
-};
 
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
@@ -221,8 +196,8 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
-  calcDistanceByLatLng: PropTypes.func,
-  distanceFromUser: PropTypes.string,
+  storeId: PropTypes.string,
+  fetchCurrentStoreInfo: PropTypes.func,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -244,21 +219,20 @@ StoreDetailContainer.defaultProps = {
   getModuleX: () => null,
   referredContentList: [],
   getRichContent: () => null,
-  calcDistanceByLatLng: () => null,
-  distanceFromUser: null,
+  storeId: null,
+  fetchCurrentStoreInfo: () => {},
 };
 
 const mapStateToProps = state => {
   return {
     currentStoreInfo: getCurrentStore(state),
-    formatStore: (store, distance) => formatCurrentStoreToObject(store, distance),
+    formatStore: store => formatCurrentStoreToObject(store),
     nearByStores: getNearByStores(state),
     labels: getLabels(state),
     isFavorite: isFavoriteStore(state),
     isUserLoggedIn: getUserLoggedInState(state),
     referredContentList: getReferredContentList(state),
     getRichContent: key => getRichTextContent(state, key),
-    distanceFromUser: getStoreDistance(state),
   };
 };
 
@@ -273,7 +247,7 @@ export const mapDispatchToProps = dispatch => ({
   getModuleX: payload => {
     dispatch(getModuleXContent(payload));
   },
-  calcDistanceByLatLng: payload => dispatch(getDistance(payload)),
+  fetchCurrentStoreInfo: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 export default connect(

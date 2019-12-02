@@ -22,8 +22,6 @@ const renderOutOfStock = (keepAlive, outOfStockLabels) => {
   return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
 };
 
-const { CAROUSEL_OPTIONS } = config;
-
 const carouselImageCollection = (images, pdpToPath, pdpUrl, name) => {
   return (
     <>
@@ -110,22 +108,17 @@ const OutfitDetailsView = ({
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
-  const imgData = {
-    alt: name,
-    url: imagesByColor[color].basicImageUrl,
-  };
   const images = imagesByColor[color];
 
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   const keepAlive = isKeepAliveEnabled && colorProduct.miscInfo.keepAlive;
 
-  const onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
+  const onChangeColor = e => {
     colorProduct = getMapSliceForColor(colorFitsSizesMap, e);
   };
 
   return (
     <Row className={className}>
-      {/* {JSON.stringify(images)} */}
       <Col
         colSize={{ small: 6, medium: 3, large: 4 }}
         ignoreGutter={{ small: true }}
@@ -236,7 +229,7 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
-  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
@@ -257,6 +250,7 @@ OutfitDetailsView.defaultProps = {
   addToBagError: false,
   isLoggedIn: false,
   isBundleProduct: false,
+  isKeepAliveEnabled: false,
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},

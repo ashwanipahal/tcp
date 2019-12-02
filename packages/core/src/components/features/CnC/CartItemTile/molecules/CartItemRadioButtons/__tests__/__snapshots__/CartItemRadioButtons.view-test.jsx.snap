@@ -100,7 +100,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render for o
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -234,7 +234,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render for o
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -368,7 +368,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -502,7 +502,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -636,7 +636,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -770,7 +770,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -904,7 +904,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -1038,7 +1038,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -1299,7 +1299,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -1433,7 +1433,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)
@@ -1567,7 +1567,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
         alt="disabled"
         className="disabled-icon"
         height="15px"
-        src="/static/images/alert-triangle.png"
+        src="/static/version-not-available/images/alert-triangle.png"
         width="15px"
       />
       <Styled(BodyCopy)

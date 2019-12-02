@@ -42,6 +42,8 @@ class ProductsGrid extends React.Component {
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
     isSearchListing: PropTypes.bool,
+    plpGridPromos: PropTypes.shape({}),
+    plpHorizontalPromos: PropTypes.shape({}),
     // showQuickViewForProductId: PropTypes.string,
     getProducts: PropTypes.func,
     asPathVal: PropTypes.string,
@@ -49,6 +51,12 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: PropTypes.func,
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
+    addToBagEcom: PropTypes.func,
+    isFavoriteView: PropTypes.bool,
+    removeFavItem: PropTypes.func.isRequired,
+    pageNameProp: PropTypes.string,
+    pageSectionProp: PropTypes.string,
+    pageSubSectionProp: PropTypes.string,
   };
 
   static defaultProps = {
@@ -63,12 +71,19 @@ class ProductsGrid extends React.Component {
     currency: 'USD',
     isLoggedIn: false,
     isSearchListing: false,
+    plpGridPromos: {},
+    plpHorizontalPromos: {},
     getProducts: () => {},
     asPathVal: '',
     AddToFavoriteErrorMsg: '',
     removeAddToFavoritesErrorMsg: () => {},
     openAddNewList: () => {},
     activeWishListId: '',
+    addToBagEcom: () => {},
+    isFavoriteView: false,
+    pageNameProp: '',
+    pageSectionProp: '',
+    pageSubSectionProp: '',
   };
 
   constructor(props, context) {
@@ -108,38 +123,6 @@ class ProductsGrid extends React.Component {
     }
   }
 
-  pickUpIconClick = (...args) => {
-    this.setState(
-      {
-        // TODO - fix this - This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: false,
-      },
-      () => {
-        const { onPickUpOpenClick } = this.props;
-        if (onPickUpOpenClick) {
-          onPickUpOpenClick(...args);
-        }
-      }
-    );
-  };
-
-  quickViewOpenClick = (...args) => {
-    this.setState(
-      {
-        // This would be used when integrating BOSS/ BOPIS
-        // eslint-disable-next-line
-        bopisAutoSkipStep1: true,
-      },
-      () => {
-        const { onQuickViewOpenClick } = this.props;
-        if (onQuickViewOpenClick) {
-          onQuickViewOpenClick(...args);
-        }
-      }
-    );
-  };
-
   addRemoveScrollListeners(eventName, isAddEvent = true) {
     const throttleTime = 100;
     const throttleParam = { trailing: true, leading: true };
@@ -155,7 +138,10 @@ class ProductsGrid extends React.Component {
       const offsetY =
         findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
-      if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+      if (
+        window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY &&
+        getMoreProducts
+      ) {
         this.isLoadingMoreState = true;
         getMoreProducts();
       }
@@ -178,6 +164,8 @@ class ProductsGrid extends React.Component {
       onAddItemToFavorites,
       isLoggedIn,
       isSearchListing,
+      plpGridPromos,
+      plpHorizontalPromos,
       // showQuickViewForProductId,
       getProducts,
       asPathVal,
@@ -186,6 +174,9 @@ class ProductsGrid extends React.Component {
       removeFavItem,
       openAddNewList,
       activeWishListId,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
 
@@ -223,6 +214,8 @@ class ProductsGrid extends React.Component {
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
                         isSearchListing={isSearchListing}
+                        plpGridPromos={plpGridPromos}
+                        plpHorizontalPromos={plpHorizontalPromos}
                         getProducts={getProducts}
                         asPathVal={asPathVal}
                         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
@@ -230,6 +223,9 @@ class ProductsGrid extends React.Component {
                         removeFavItem={removeFavItem}
                         openAddNewList={openAddNewList}
                         activeWishListId={activeWishListId}
+                        pageNameProp={pageNameProp}
+                        pageSectionProp={pageNameProp}
+                        pageSubSectionProp={pageNameProp}
                         {...otherProps}
                       />
                     );

@@ -292,15 +292,23 @@ export const getIsDataLoading = state => {
 };
 
 const getTopPromosState = state => {
-  const { bannerInfo: { val: { top: topPromos } = {} } = {} } = state.ProductListing;
-
+  const { productListingPage: { top: topPromos } = {} } = state.Layouts;
   return topPromos;
 };
 
 const getLoyaltyPromosState = state => {
-  const { bannerInfo: { val: { loyalty: loyaltyPromo } = {} } = {} } = state.ProductListing;
-
+  const { productListingPage: { loyalty: loyaltyPromo } = {} } = state.Layouts;
   return loyaltyPromo;
+};
+
+const getGridPromoState = state => {
+  const { productListingPage: { grid: gridPromo } = {} } = state.Layouts;
+  return gridPromo;
+};
+
+const getHorizontalPromoState = state => {
+  const { productListingPage: { horizontal: horizontalPromo } = {} } = state.Layouts;
+  return horizontalPromo;
 };
 
 const getModulesState = state => {
@@ -315,10 +323,9 @@ export const getPLPTopPromos = createSelector(
     const loyaltyPromos =
       (loyaltyPromo &&
         loyaltyPromo.map(loyalPromo => {
-          const loyalPromoModule =
-            loyalPromo.val && loyalPromo.val.cid && modules[loyalPromo.val.cid];
+          const loyalPromoModule = loyalPromo.contentId && modules[loyalPromo.contentId];
           if (loyalPromoModule) {
-            loyalPromoModule.userType = loyalPromo.sub;
+            loyalPromoModule.userType = loyalPromo.name;
           }
           return loyalPromoModule;
         })) ||
@@ -327,10 +334,40 @@ export const getPLPTopPromos = createSelector(
     const promos =
       (topPromos &&
         topPromos.map(promoItem => {
-          return promoItem.val && promoItem.val.cid && modules[promoItem.val.cid];
+          return promoItem.contentId && modules[promoItem.contentId];
         })) ||
       [];
 
     return loyaltyPromos.concat(promos);
+  }
+);
+
+export const getPLPGridPromos = createSelector(
+  getGridPromoState,
+  getModulesState,
+  (gridPromo, modules) => {
+    return (
+      (gridPromo &&
+        gridPromo.map(promoItem => {
+          const moduleInfo = (promoItem.contentId && modules[promoItem.contentId]) || {};
+          return { ...moduleInfo, slot: promoItem && promoItem.name };
+        })) ||
+      []
+    );
+  }
+);
+
+export const getPlpHorizontalPromo = createSelector(
+  getHorizontalPromoState,
+  getModulesState,
+  (horizontalPromo, modules) => {
+    return (
+      (horizontalPromo &&
+        horizontalPromo.map(promoItem => {
+          const horizontalModuleInfo = (promoItem.contentId && modules[promoItem.contentId]) || {};
+          return { ...horizontalModuleInfo, slot: promoItem && promoItem.name };
+        })) ||
+      []
+    );
   }
 );

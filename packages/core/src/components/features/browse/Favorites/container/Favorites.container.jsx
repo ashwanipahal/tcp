@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
@@ -16,6 +17,7 @@ import {
   updateWishListAction,
   sendWishListMailAction,
   setWishListShareSuccess,
+  setReplaceWishlistItem,
 } from './Favorites.actions';
 
 import {
@@ -33,6 +35,7 @@ import {
   getBothTcpAndGymProductAreAvailability,
   selectWishListShareStatus,
   getFormErrorLabels,
+  fetchErrorMessages,
 } from './Favorites.selectors';
 import {
   getUserEmail,
@@ -41,6 +44,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 class FavoritesContainer extends React.PureComponent {
   constructor(props) {
@@ -48,9 +52,11 @@ class FavoritesContainer extends React.PureComponent {
     this.guestAccessKey = '';
     this.wishListId = '';
   }
+
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
+    appliedFilterLength: 0,
     sortId: '',
     gymSelected: false,
     tcpSelected: false,
@@ -83,6 +89,7 @@ class FavoritesContainer extends React.PureComponent {
   onFilterSelection = filteredId => {
     this.setState({
       filteredId,
+      appliedFilterLength: 1,
     });
   };
 
@@ -138,6 +145,20 @@ class FavoritesContainer extends React.PureComponent {
     }
   };
 
+  onLoadRecommendations = payload => {
+    const { loadRecommendations } = this.props;
+    if (loadRecommendations) {
+      loadRecommendations(payload);
+    }
+  };
+
+  onReplaceWishlistItem = data => {
+    const { replaceWishlistItem } = this.props;
+    if (replaceWishlistItem) {
+      replaceWishlistItem(data);
+    }
+  };
+
   render() {
     const {
       wishlistsSummaries,
@@ -166,12 +187,12 @@ class FavoritesContainer extends React.PureComponent {
       sendWishListEmail,
       wishlistShareStatus,
       setListShareSuccess,
-      guestAccessKey,
       formErrorMessage,
       isLoggedIn,
+      addToBagEcom,
+      errorMessages,
     } = this.props;
     const { selectedColorProductId } = this.state;
-
     return (
       <Favorites
         wishlistsSummaries={wishlistsSummaries}
@@ -210,6 +231,10 @@ class FavoritesContainer extends React.PureComponent {
         guestAccessKey={this.guestAccessKey}
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
+        addToBagEcom={addToBagEcom}
+        onLoadRecommendations={this.onLoadRecommendations}
+        onReplaceWishlistItem={this.onReplaceWishlistItem}
+        errorMessages={errorMessages}
         {...this.state}
       />
     );
@@ -237,6 +262,7 @@ const mapStateToProps = state => {
     wishlistShareStatus: selectWishListShareStatus(state),
     formErrorMessage: getFormErrorLabels(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    errorMessages: fetchErrorMessages(state),
   };
 };
 
@@ -265,6 +291,11 @@ const mapDispatchToProps = dispatch => {
     updateWishList: payload => {
       dispatch(updateWishListAction(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
+    replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
   };
 };
 
@@ -298,6 +329,12 @@ FavoritesContainer.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  addToBagEcom: PropTypes.func.isRequired,
+  loadRecommendations: PropTypes.func.isRequired,
+  replaceWishlistItem: PropTypes.func.isRequired,
+  getActiveWishlistGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
+  errorMessages: PropTypes.string,
 };
 
 FavoritesContainer.defaultProps = {
@@ -314,6 +351,8 @@ FavoritesContainer.defaultProps = {
   defaultWishList: {},
   wishlistShareStatus: false,
   isLoggedIn: false,
+  errorMessages: '',
+  formErrorMessage: {},
 };
 
 export default connect(

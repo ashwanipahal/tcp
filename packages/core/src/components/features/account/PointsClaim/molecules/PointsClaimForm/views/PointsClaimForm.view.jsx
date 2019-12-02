@@ -142,7 +142,7 @@ export class PointsClaimForm extends PureComponent {
                   >
                     {getLabelValue(labels, 'lbl_points_claim_sample_receipt', 'myPlaceRewards')}
                   </BodyCopy>
-                  <Image src={getIconPath('sample-receipt')} />
+                  <Image src={getIconPath('sample-receipt')} alt="" />
                 </BodyCopy>
               )}
             </Col>

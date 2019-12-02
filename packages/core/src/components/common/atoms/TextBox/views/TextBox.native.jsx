@@ -95,7 +95,7 @@ export class TextBox extends React.Component {
         <StyledErrorWrapper>
           {showErrorIcon && (
             <StyledErrorIcon>
-              <Image source={errorIcon} width="16px" height="14px" />
+              <Image source={errorIcon} alt="" width="16px" height="14px" />
             </StyledErrorIcon>
           )}
           <BodyCopy
@@ -125,7 +125,7 @@ export class TextBox extends React.Component {
       return (
         <StyledErrorWrapper>
           <StyledSuccessCheck>
-            <Image source={successCircleIcon} width="18px" height="18px" />
+            <Image source={successCircleIcon} alt="" width="18px" height="18px" />
           </StyledSuccessCheck>
           <BodyCopy
             fontFamily="secondary"
@@ -186,7 +186,7 @@ export class TextBox extends React.Component {
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>
-            <Image source={successIcon} width="15px" height="12px" />
+            <Image source={successIcon} alt="" width="15px" height="12px" />
           </StyledSuccessIcon>
         )}
       </View>
@@ -213,7 +213,7 @@ export class TextBox extends React.Component {
           </View>
         ) : (
           <View>
-            {this.renderTextBox({ elemValue, isFocused, others })}
+            {this.renderTextBox({ elemValue, isFocused, ...others })}
             {!this.validateInputSuccess() && (
               <StyledTextBoxWrapper marginBottom={marginBottom}>
                 {this.getErrorMsg()}

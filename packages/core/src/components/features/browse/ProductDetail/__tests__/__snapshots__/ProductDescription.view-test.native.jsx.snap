@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDetailDescriptionView component should renders correctly 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      isAccordionOpen={false}
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Image
+          alt=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/carrot-small-down.png",
+            }
+          }
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`ProductDetailDescriptionView native should render correctly should match snapshot 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      isAccordionOpen={false}
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Image
+          alt=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/carrot-small-down.png",
+            }
+          }
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;

@@ -120,15 +120,18 @@ exports[`Country Selector Component renders correctly 1`] = `
       className="countrySelector__flag-icon"
     >
       <Styled(Image)
+        alt="undefined Flag"
         data-locator="footer_country_flag"
         height="20px"
         onClick={[Function]}
-        src="/static/images/flags/united-states-of-america.svg"
+        src="/static/version-not-available/images/flags/united-states-of-america.svg"
         width="20px"
       />
     </div>
     <div>
       <Styled(BodyCopy)
+        aria-hidden={false}
+        aria-label="English"
         className="countrySelector__locale--selected countrySelector__locale"
         color="text.primary"
         component="span"
@@ -145,6 +148,8 @@ exports[`Country Selector Component renders correctly 1`] = `
         en
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
+        aria-hidden={true}
+        aria-label="Spanish"
         className="countrySelector__locale--disabled countrySelector__locale"
         color="text.primary"
         component="span"

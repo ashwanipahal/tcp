@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 
-import moment from 'moment';
+import { format, differenceInDays } from 'date-fns';
 
 import icons from '../config/icons';
 import locators from '../config/locators';
@@ -14,13 +14,28 @@ import constants from '../components/features/account/OrderDetails/OrderDetails.
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const buildId = process.env.NEXT_BUILD_ID || 'version-not-available';
+
+/**
+ * This function returns the static files path with the buildId in place
+ * @param {String} filePath path inside the /static directory
+ */
+export const getStaticFilePath = filePath => {
+  if (!filePath) return filePath;
+
+  // Following Regex to test if filePath is absolute and return the same value if true
+  if (/^(?:[a-z]+:)?\/\//i.test(filePath)) {
+    return filePath;
+  }
+  return `/static/${buildId}/${filePath}`;
+};
 
 /**
  * This function returns the path of icons in static/images folder
  * @param {*} icon | String - Identifier for icons in assets
  */
 export const getIconPath = icon => {
-  return icons[icon];
+  return getStaticFilePath(icons[icon]);
 };
 
 /**
@@ -28,7 +43,7 @@ export const getIconPath = icon => {
  * @param {*} icon | String - Country Code Identifier eg. US for USA
  */
 export const getFlagIconPath = code => {
-  return flagIcons[code];
+  return getStaticFilePath(flagIcons[code]);
 };
 
 /**
@@ -825,7 +840,7 @@ export const parseUTCDate = dateString => {
  * @param {Array} intervals The store hours array
  * @param {Date} currentDate The current date to be checked against
  */
-export const getCurrentStoreHours = (intervals = [], currentDate) => {
+export const getCurrentStoreHours = (intervals = [], currentDate = new Date()) => {
   let selectedInterval = intervals.filter(hour => {
     const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
     const parsedDate = new Date(parseUTCDate(toInterval));
@@ -965,6 +980,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
     isBopisOrder,
     pickUpExpirationDate,
   } = orderProps;
+  const dateFormat = 'MMMM dd, yyyy';
 
   // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
 
@@ -975,7 +991,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       message =
         shippedDate === constants.STATUS_CONSTANTS.NA
           ? shippedDate
-          : moment(shippedDate).format('LL');
+          : format(new Date(shippedDate), dateFormat);
       break;
     case constants.STATUS_CONSTANTS.ORDER_CANCELED:
     case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
@@ -988,13 +1004,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       break;
     case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
-      message = moment(pickUpExpirationDate).format('LL');
+      message = format(new Date(pickUpExpirationDate), dateFormat);
       break;
 
     case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
     case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
-      message = moment(pickedUpDate).format('LL');
+      message = format(new Date(pickedUpDate), dateFormat);
       break;
     default:
       ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
@@ -1129,7 +1145,7 @@ export const orderStatusMapperForNotification = {
  * @param {String} status -
  * @return orderStatus
  */
-export const getOrderStatusForNotification = status => {
+export const getOrderStatusForNotification = (status = '') => {
   const orderStatus =
     orderStatusMapperForNotification[status] ||
     orderStatusMapperForNotification[status.toLowerCase()] ||
@@ -1148,12 +1164,19 @@ export const validateDiffInDaysNotification = (
   orderDateParam,
   limitOfDaysToDisplayNotification
 ) => {
-  let orderDate = orderDateParam;
-  orderDate = moment(orderDate, 'MMM DD, YYYY');
-  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+  const orderDate = orderDateParam ? new Date(orderDateParam) : new Date();
+  if (differenceInDays(new Date(), orderDate) <= limitOfDaysToDisplayNotification) {
     return true;
   }
   return false;
+};
+
+/**
+ * To convert from string to number.
+ * @param {*} val
+ */
+export const convertNumToBool = val => {
+  return !!parseInt(val, 10);
 };
 
 export default {
@@ -1161,6 +1184,7 @@ export default {
   getOrderStatusForNotification,
   validateDiffInDaysNotification,
   getPromotionalMessage,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
@@ -1205,4 +1229,5 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
+  convertNumToBool,
 };

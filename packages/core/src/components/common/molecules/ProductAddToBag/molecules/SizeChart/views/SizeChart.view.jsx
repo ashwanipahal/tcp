@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from '../../../../Modal';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
 import modalstyles from '../styles/SizeChart.style';
@@ -21,9 +22,18 @@ class SizeChart extends React.Component {
 
   render() {
     const { isOpen } = this.state;
+    const { sizeChartDetails } = this.props;
+    const dataObj = {};
+    if (sizeChartDetails && sizeChartDetails.length) {
+      const values = sizeChartDetails.split('|');
+      for (let indx = 0; indx < values.length; indx += 1) {
+        dataObj[`data-l${+(indx + 1)}`] = values[indx].toLowerCase();
+      }
+    }
+
     return (
       <>
-        <BodyCopy className="size-chart" onClick={this.toggleModal}>
+        <BodyCopy className="size-chart" {...dataObj} onClick={this.toggleModal}>
           Size Chart
         </BodyCopy>
         <Modal
@@ -48,5 +58,13 @@ class SizeChart extends React.Component {
     );
   }
 }
+
+SizeChart.propTypes = {
+  sizeChartDetails: PropTypes.string,
+};
+
+SizeChart.defaultProps = {
+  sizeChartDetails: '',
+};
 
 export default SizeChart;

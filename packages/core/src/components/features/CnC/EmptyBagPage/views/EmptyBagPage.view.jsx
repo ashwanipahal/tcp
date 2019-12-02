@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
-import { BodyCopy, Button, Anchor } from '../../../../common/atoms';
+import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
 import utility from '../../Checkout/util/utility';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
@@ -38,9 +38,7 @@ const EmptyBagPage = ({
   isUserLoggedIn,
   bagLabels,
   isBagPageSflSection,
-  showPlccApplyNow = true,
   onLinkClick,
-  openModalApplyNowModal,
 }) => {
   return (
     <div className={className}>
@@ -111,10 +109,8 @@ EmptyBagPage.propTypes = {
   className: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
-  showPlccApplyNow: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
   onLinkClick: PropTypes.func.isRequired,
-  openModalApplyNowModal: PropTypes.func.isRequired,
 };
 
 EmptyBagPage.defaultProps = {

@@ -21,7 +21,7 @@ const CarouselArrow = ({ arrowType, label, onClick }) => {
       className={`carousel-nav-arrow-button carousel-nav-${arrowType}-button`}
       onClick={onClick}
     >
-      <svg width="15" height="52">
+      <svg width="15" height="52" role="img">
         <path
           fill="#1A1A1A"
           d="M.113 50.539a1 1 0 001.774.923l13-25a1 1 0 000-.923l-13-25a1 1 0 10-1.774.923L12.873 26 .113 50.54z"
@@ -121,6 +121,7 @@ const ModuleE = props => {
     divCTALinks,
     linkedImage: linkedImages,
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
+    moduleClassName,
   } = props;
 
   const linkedImage = linkedImages && linkedImages[0];
@@ -155,7 +156,7 @@ const ModuleE = props => {
 
   return (
     <Row
-      className={className}
+      className={`${className} ${moduleClassName}`}
       fullBleed={{
         small: true,
         medium: true,
@@ -250,7 +251,7 @@ const ModuleE = props => {
             }}
           >
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
-              {largeCompImageSimpleCarousel.map(({ image, singleCTAButton }, index) => {
+              {largeCompImageSimpleCarousel.map(({ image, video, singleCTAButton }, index) => {
                 const { url, text, target } = singleCTAButton || {};
                 return (
                   <div>
@@ -260,6 +261,7 @@ const ModuleE = props => {
                       dataLocator={`${getLocator('moduleE_carousel_image_img')}${index + 1}`}
                       className="module-e-img-full-width"
                       link={singleCTAButton}
+                      videoData={video}
                     />
                     {carouselCtaType === 'link' && singleCTAButton && (
                       <Anchor
@@ -339,7 +341,7 @@ const ModuleE = props => {
                 large: true,
               }}
             >
-              {divCTALinks.map(({ image, link, styled }, index) => {
+              {divCTALinks.map(({ image, link, video, styled }, index) => {
                 const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
 
                 return (
@@ -360,6 +362,7 @@ const ModuleE = props => {
                         dataLocator={`${getLocator('moduleE_small_img')}${index + 1}`}
                         className="module-e-img-full-width"
                         link={link}
+                        videoData={video}
                       />
 
                       <LinkText
@@ -401,6 +404,7 @@ ModuleE.defaultProps = {
   ctaType: 'stackedCTAButtons',
   ctaItems: [],
   linkedImage: null,
+  moduleClassName: '',
 };
 
 ModuleE.propTypes = {
@@ -415,6 +419,7 @@ ModuleE.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.object),
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   carouselCtaType: PropTypes.oneOf(['button', 'link']).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(ModuleE, moduleEStyle);

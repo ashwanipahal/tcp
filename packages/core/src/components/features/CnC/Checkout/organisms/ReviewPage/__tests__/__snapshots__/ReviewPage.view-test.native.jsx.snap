@@ -52,7 +52,9 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
       isConfirmationPage={false}
       isPayPalWebViewEnable={false}
       isReviewPage={true}
+      isVenmoPaymentInProgress={false}
       onBackLinkPress={[Function]}
+      onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="review"
       routeToPage=""

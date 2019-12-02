@@ -5,7 +5,6 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import productGridItemPropTypes, {
@@ -32,6 +31,7 @@ import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -307,11 +307,26 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick } = this.props;
+    const { onQuickViewOpenClick, item, addToBagEcom, isFavoriteView } = this.props;
     const { selectedColorProductId } = this.state;
-    onQuickViewOpenClick({
-      colorProductId: selectedColorProductId,
-    });
+    if (isFavoriteView) {
+      const {
+        skuInfo: { skuId, size },
+      } = item;
+      if (skuId && size) {
+        let cartItemInfo = getCartItemInfo(item, {});
+        cartItemInfo = { ...cartItemInfo };
+        if (addToBagEcom) addToBagEcom(cartItemInfo);
+      } else {
+        onQuickViewOpenClick({
+          colorProductId: selectedColorProductId,
+        });
+      }
+    } else {
+      onQuickViewOpenClick({
+        colorProductId: selectedColorProductId,
+      });
+    }
   };
 
   handleViewBundleClick = () => {
@@ -407,12 +422,15 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct, isGiftCard, generalProductId, pdpUrl },
+        productInfo: { bundleProduct, generalProductId, pdpUrl },
       },
       removeFavItem,
       isFavoriteView,
       isShowQuickView,
       AddToFavoriteErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
     } = this.props;
     const { errorProductId } = this.state;
     const fulfilmentSection =
@@ -431,7 +449,6 @@ class ProductsGridItem extends React.PureComponent {
         .trim()
         .toLowerCase()}`;
     }
-    const pageName = pageShortName;
     return itemNotAvailable ? (
       <div className={fulfilmentSection}>
         <Button
@@ -449,11 +466,11 @@ class ProductsGridItem extends React.PureComponent {
         <ClickTracker
           clickData={{
             eventName: 'cart add',
-            pageType: 'product',
-            pageSection: 'product',
-            pageSubSection: 'product',
+            pageType: pageNameProp,
+            pageSection: pageSectionProp,
+            pageSubSection: pageSubSectionProp,
             pageShortName,
-            pageName,
+            pageName: pageNameProp,
             products: [{ id: `${productId}` }],
           }}
         >
@@ -463,10 +480,7 @@ class ProductsGridItem extends React.PureComponent {
             buttonVariation="fixed-width"
             dataLocator={getLocator('global_addtocart_Button')}
             onClick={
-              // eslint-disable-next-line no-nested-ternary
-              isGiftCard
-                ? () => {} // TODO Gift Card Quick View Modal
-                : isShowQuickView && !isBundleProduct
+              isShowQuickView && !isBundleProduct
                 ? this.handleQuickViewOpenClick
                 : this.handleViewBundleClick
             }
@@ -547,6 +561,7 @@ class ProductsGridItem extends React.PureComponent {
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
+      item,
     } = this.props;
 
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -606,7 +621,6 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
-
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -648,7 +662,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels },
+            { onQuickViewOpenClick, isFavoriteView, labels, item },
             selectedColorProductId,
             itemNotAvailable
           )}

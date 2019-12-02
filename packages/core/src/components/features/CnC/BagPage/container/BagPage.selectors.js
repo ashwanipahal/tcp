@@ -116,7 +116,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.global.addedToBagModal;
+  const { referred = [] } = (state.Labels.global && state.Labels.global.addedToBagModal) || {};
 
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
@@ -227,6 +227,10 @@ const getPayPalWebViewStatus = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
 };
 
+const isPayPalButtonRenderDone = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalRenderDone']) || false;
+};
+
 const isBagLoaded = state => {
   return state.CartPageReducer.getIn(['loaded']);
 };
@@ -260,6 +264,10 @@ const getIfEmailSignUpDone = state => {
   };
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -289,10 +297,12 @@ export default {
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
+  isPayPalButtonRenderDone,
   getIsPayPalHidden,
   isBagLoading,
   getCartLoadedState,
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
 };

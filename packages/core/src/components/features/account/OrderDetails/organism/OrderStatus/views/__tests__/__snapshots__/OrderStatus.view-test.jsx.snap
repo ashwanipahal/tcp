@@ -148,17 +148,30 @@ exports[`Order Items component should renders Tracking Button 1`] = `
           link={null}
           textAlign="left"
         >
-          <Styled(Anchor)
-            anchorVariation="button"
-            buttonVariation="fixed-width"
-            centered={true}
-            dataLocator=""
-            fill="BLUE"
-            target="_blank"
-            to="/test"
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event118",
+                ],
+                "eventName": "trackingnumberclick",
+                "pageName": "myplace:orders:order details",
+                "pageShortName": "myplace:orders:order details",
+              }
+            }
           >
-            lbl_orders_trackit
-          </Styled(Anchor)>
+            <Styled(Anchor)
+              anchorVariation="button"
+              buttonVariation="fixed-width"
+              centered={true}
+              dataLocator=""
+              fill="BLUE"
+              target="_blank"
+              to="/test"
+            >
+              lbl_orders_trackit
+            </Styled(Anchor)>
+          </Connect(Component)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -216,9 +229,7 @@ exports[`Order Items component should renders tracking header 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        May 1, 2019
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="orderDetail-trackingNumber-pipe"
         color="text.primary"

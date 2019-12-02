@@ -36,7 +36,7 @@ const navConfigMap = {
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',
   favorites: 'myFavoritePageMobile',
-  'rewards-credit-card': 'myPlaceRewardsCCPageMobile',
+  rewardsCreditCard: 'myPlaceRewardsCCPageMobile',
 };
 
 export class Account extends React.PureComponent {

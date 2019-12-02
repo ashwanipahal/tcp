@@ -37,6 +37,11 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: PropTypes.func,
     toastMessage: PropTypes.func,
     isApplyingOrRemovingCoupon: PropTypes.bool,
+    isNeedHelpModalOpen: PropTypes.bool,
+    toggleNeedHelpModal: PropTypes.func.isRequired,
+    needHelpRichText: PropTypes.string,
+    fetchNeedHelpContent: PropTypes.func.isRequired,
+    needHelpContentId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -45,6 +50,9 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: () => {},
     toastMessage: () => {},
     isApplyingOrRemovingCoupon: false,
+    isNeedHelpModalOpen: false,
+    needHelpRichText: '',
+    needHelpContentId: '',
   };
 
   constructor(props) {
@@ -130,7 +138,7 @@ export class MyRewardsContainer extends PureComponent {
           openState={isNeedHelpModalOpen}
           coupon={selectedCoupon}
           onRequestClose={() => {
-            this.props.toggleNeedHelpModal();
+            toggleNeedHelpModal();
           }}
           heading="Help Modal"
         />
@@ -150,6 +158,11 @@ const mapStateToProps = state => ({
   needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
 });
 
+const analyticsData = {
+  eventName: 'walletlinksclickevent',
+  pageNavigationText: 'my account-my wallet-apply to bag',
+};
+
 export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
@@ -158,7 +171,7 @@ export const mapDispatchToProps = dispatch => ({
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
-          formData: { couponCode: coupon.id },
+          formData: { couponCode: coupon.id, analyticsData },
           formPromise: { resolve, reject },
           coupon,
         })

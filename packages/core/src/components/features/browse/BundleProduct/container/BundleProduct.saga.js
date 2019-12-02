@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import BUNDLEPRODUCT_CONSTANTS from './BundleProduct.constants';
-import { setProductDetails, setBundleDetails } from './BundleProduct.actions';
+import { setProductDetails, setBundleDetails, setLoadingState } from './BundleProduct.actions';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import getBundleProductsDetails from '../../../../../services/abstractors/productListing/bundleProducts';
 import logger from '../../../../../utils/loggerInstance';
@@ -9,13 +9,16 @@ function* fetchBundleProductDetail({ payload: { productId } }) {
   try {
     yield put(setProductDetails({ product: {} }));
     const state = yield select();
+    yield put(setLoadingState({ isLoading: true }));
     const productDetail = yield call(getProductInfoById, productId, state, null, true);
     yield put(setProductDetails({ ...productDetail }));
     const bundledProducts = productDetail.product.bundleProducts;
     const bundleDetails = yield call(getBundleProductsDetails, { bundleProducts: bundledProducts });
     yield put(setBundleDetails([...bundleDetails]));
+    yield put(setLoadingState({ isLoading: false }));
   } catch (err) {
     logger.error('error: ', err);
+    yield put(setLoadingState({ isLoading: false }));
   }
 }
 

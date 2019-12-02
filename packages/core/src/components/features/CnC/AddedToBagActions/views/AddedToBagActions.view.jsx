@@ -111,7 +111,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </Button>
           </ClickTracker>
         ) : (
-          <div className="checkout">
+          <div className="checkoutSkeleton">
             <LoaderSkelton />
           </div>
         )}

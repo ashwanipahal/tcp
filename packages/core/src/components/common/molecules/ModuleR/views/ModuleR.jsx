@@ -172,7 +172,14 @@ class ModuleR extends React.PureComponent {
   }
 
   render() {
-    const { className, divTabs, productTabList, headerText, bannerPosition } = this.props;
+    const {
+      className,
+      divTabs,
+      productTabList,
+      headerText,
+      bannerPosition,
+      moduleClassName,
+    } = this.props;
     const promoComponent = this.getPromoComponent();
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId] || [];
@@ -186,7 +193,7 @@ class ModuleR extends React.PureComponent {
     }
 
     return (
-      <Grid className={`${className} moduleR`}>
+      <Grid className={`${className} ${moduleClassName} moduleR`}>
         <div>
           {headerText ? (
             <LinkText
@@ -220,6 +227,7 @@ ModuleR.defaultProps = {
   promoBanner: [],
   bannerPosition: 'center',
   productTabList: {},
+  moduleClassName: '',
 };
 
 ModuleR.propTypes = {
@@ -256,6 +264,7 @@ ModuleR.propTypes = {
     })
   ),
   bannerPosition: PropTypes.string,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(ModuleR, moduleRStyle);
