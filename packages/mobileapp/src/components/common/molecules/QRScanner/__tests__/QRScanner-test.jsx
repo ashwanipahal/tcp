@@ -5,16 +5,6 @@ import { QRCodeVanilla } from '../views/QRScanner.native';
 describe('QRScanner', () => {
   let component;
   const getParam = () => 'QRScanner navigation';
-  const qrLabels = {
-    lbl_qrscanner_help_one: 'Scan Animated Tees & More',
-    lbl_qrscanner_help_two: 'Center QR code inside frame to scan.',
-    lbl_qrscanner_not_authorized:
-      'Please go to settings and enable camera access to scan the QR code',
-    lbl_qrscan_no_result: 'No Results or Unreadable Code',
-    lbl_qrscan_no_result_help: 'Scanning code on fabric? Lay flat, smooth wrinkles & rescan.',
-    lbl_qrscan_cta_retry: 'RESCAN CODE',
-  };
-
   beforeEach(() => {
     const navigation = {
       getParam,
