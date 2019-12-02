@@ -14,7 +14,7 @@ import {
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import withStyles from '../../../../../common/hoc/withStyles';
-import OutfitProductStyle from './OutfitProduct.style';
+import OutfitProductStyle from '../styles/OutfitProduct.style';
 import OutOfStockWaterMarkView from '../../../ProductDetail/molecules/OutOfStockWaterMark';
 import { getIconPath } from '../../../../../../utils';
 
@@ -156,12 +156,7 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <DamImage
-              className="full-size-desktop-image"
-              imgData={imgData}
-              itemProp="contentUrl"
-              isProductImage
-            />
+            {imageDisplay(pageName, images, pdpToPath, outfitProduct.pdpUrl, name)}
             {renderOutOfStock(keepAlive, outOfStockLabels)}
           </BodyCopy>
 
