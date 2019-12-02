@@ -164,7 +164,7 @@ describe('submitOrderProcessing saga', () => {
   });
 });
 describe('loadPersonalizedCoupons saga', () => {
-  it.skip('loadPersonalizedCoupons review Page', () => {
+  it('loadPersonalizedCoupons review Page', () => {
     const coupons = [
       {
         couponCode: 'Y16905R9YZDDLH',
