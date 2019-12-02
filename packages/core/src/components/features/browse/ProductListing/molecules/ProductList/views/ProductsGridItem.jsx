@@ -245,9 +245,13 @@ class ProductsGridItem extends React.PureComponent {
       isLoggedIn,
       removeFavItem,
       isSearchListing,
+      isSuggestedItem,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    if (removeFavItem) {
+
+    if (isSuggestedItem) {
+      this.handleQuickViewOpenClick();
+    } else if (removeFavItem) {
       removeFavItem({ itemId });
     } else {
       onAddItemToFavorites({
