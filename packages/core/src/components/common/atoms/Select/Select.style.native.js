@@ -9,7 +9,7 @@ export const StyledHeading = styled(BodyCopy)`
 
 export const Container = styled.View`
   position: relative;
-  height: 72px;
+  ${props => (props.isAddNewCC ? '' : `height: 72px`)};
 `;
 
 export default StyledHeading;
