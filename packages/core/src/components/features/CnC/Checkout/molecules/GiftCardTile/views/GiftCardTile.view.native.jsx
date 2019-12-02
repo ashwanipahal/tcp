@@ -21,7 +21,6 @@ export default class GiftCardTile extends React.PureComponent {
     handleRemoveGiftCard: PropTypes.func.isRequired,
     giftCardErrors: PropTypes.shape({}),
     orderBalanceTotal: PropTypes.number,
-    toastMessage: PropTypes.func.isRequired,
     isFromReview: PropTypes.bool,
     isExpressCheckout: PropTypes.bool,
   };
@@ -35,13 +34,6 @@ export default class GiftCardTile extends React.PureComponent {
     isFromReview: false,
     isExpressCheckout: false,
   };
-
-  componentDidUpdate() {
-    const { giftCardErrors, toastMessage } = this.props;
-    if (giftCardErrors) {
-      toastMessage(giftCardErrors[Object.keys(giftCardErrors)[0]]);
-    }
-  }
 
   showRemoveCtas = () => {
     const { isFromReview, isExpressCheckout } = this.props;

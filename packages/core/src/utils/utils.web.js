@@ -706,6 +706,41 @@ export const createLayoutPath = path =>
     return g[1].toUpperCase();
   });
 
+/* Parse query parameters to an object. For instance, string returned from location.search */
+export const getQueryParamsFromUrl = url => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter((item, index) => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[index].split('=')[1]);
+      return params;
+    });
+  }
+  return params;
+};
+
+/* Returns an array of icid by querying to dom anchor element which has icid on it. */
+export const internalCampaignProductAnalyticsList = () => {
+  const aTags = document.getElementsByTagName('a') || [];
+  const internalCampaignId = 'icid';
+  return Array.prototype.slice
+    .call(aTags)
+    .filter(tag => {
+      return tag.href.indexOf(internalCampaignId) !== -1;
+    })
+    .map(tag => {
+      return getQueryParamsFromUrl(tag.href)[internalCampaignId].join(',');
+    });
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -738,4 +773,6 @@ export default {
   disableBodyScroll,
   isAndroidWeb,
   createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
 };

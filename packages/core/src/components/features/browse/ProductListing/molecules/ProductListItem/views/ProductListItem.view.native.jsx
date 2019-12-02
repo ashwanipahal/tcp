@@ -54,7 +54,8 @@ const handleFavoriteAddOrEdit = (
   const {
     skuInfo: { skuId, size, fit, color },
   } = item;
-  const { itemId, quantity } = item.itemInfo;
+  const { itemId, quantity, isTCP } = item.itemInfo;
+  const itemBrand = isTCP ? 'TCP' : 'GYM';
   const orderInfo = {
     orderItemId: itemId,
     selectedQty: quantity,
@@ -62,6 +63,7 @@ const handleFavoriteAddOrEdit = (
     selectedSize: size,
     selectedFit: fit,
     skuId,
+    itemBrand,
   };
   if (skuId && size) {
     if (isFavoriteEdit) {
@@ -84,6 +86,9 @@ const handleFavoriteAddOrEdit = (
   } else {
     onQuickViewOpenClick({
       colorProductId,
+      orderInfo: {
+        itemBrand,
+      },
     });
   }
 };

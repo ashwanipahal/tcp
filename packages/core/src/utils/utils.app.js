@@ -537,6 +537,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const catalogId =
     API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
+  const enableErrorBoundary = envConfig[`RWP_APP_ENABLE_ERROR_BOUNDARY_${appTypeSuffix}`];
 
   return {
     ...basicConfig,
@@ -547,6 +548,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     cookie: null,
     catalogId,
     language: '',
+    enableErrorBoundary,
   };
 };
 

@@ -432,4 +432,9 @@ export default {
   moduleM_image: 'moduleM_image',
   moduleM_cta_btn: 'moduleM_cta_btn',
   moduleM_cta_links: 'moduleM_cta_links',
+
+  global_bagpagebackbutton: 'global_bagpagebackbutton',
+
+  // QRScanner
+  qrscanner_plp_gif_animation: 'qrscanner_plp_gif_animation',
 };

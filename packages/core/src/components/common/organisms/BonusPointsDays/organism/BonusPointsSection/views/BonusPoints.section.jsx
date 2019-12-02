@@ -121,7 +121,7 @@ const getContent = ({
   bonusPoints,
   bonusData,
   enableApplyCta,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   isPlaceRewardsPage,
 }) => {
@@ -179,7 +179,7 @@ const getContent = ({
             labels={labels}
             bonusPoints={bonusPoints}
             enableApplyCta={enableApplyCta}
-            getBonusDaysData={getBonusDaysData}
+            getAvailableBonusDaysData={getAvailableBonusDaysData}
             orderDetails={orderDetails}
             bonusDayAvailableToday={valueOfbonusDayAvailableToday}
             className="availability-msg"
@@ -211,7 +211,7 @@ const BonusPointsSection = ({
   className,
   toggleBonusPointsModal,
   enableApplyCta,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   isDefaultOpen,
   showAccordian,
@@ -226,7 +226,7 @@ const BonusPointsSection = ({
     bonusPoints,
     bonusData,
     enableApplyCta,
-    getBonusDaysData,
+    getAvailableBonusDaysData,
     orderDetails,
     isPlaceRewardsPage,
   });
@@ -262,7 +262,7 @@ BonusPointsSection.propTypes = {
   toggleBonusPointsModal: PropTypes.func,
   enableApplyCta: PropTypes.bool,
   isDefaultOpen: PropTypes.bool,
-  getBonusDaysData: PropTypes.func,
+  getAvailableBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   showAccordian: PropTypes.bool.isRequired,
 };
@@ -273,7 +273,7 @@ BonusPointsSection.defaultProps = {
   bonusData: {},
   toggleBonusPointsModal: () => {},
   enableApplyCta: false,
-  getBonusDaysData: () => {},
+  getAvailableBonusDaysData: () => {},
   orderDetails: {},
   isDefaultOpen: false,
 };
@@ -284,7 +284,7 @@ getContent.propTypes = {
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
   enableApplyCta: PropTypes.bool,
-  getBonusDaysData: PropTypes.func,
+  getAvailableBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   isPlaceRewardsPage: PropTypes.bool,
 };
@@ -301,7 +301,7 @@ getContent.defaultProps = {
   toggleBonusPointsModal: () => {},
   bonusData: {},
   enableApplyCta: false,
-  getBonusDaysData: () => {},
+  getAvailableBonusDaysData: () => {},
   orderDetails: {},
   isPlaceRewardsPage: false,
 };
