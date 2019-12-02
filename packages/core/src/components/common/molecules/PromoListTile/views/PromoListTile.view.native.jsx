@@ -20,7 +20,7 @@ const PromoListTile = ({ tileData }) => {
   return (
     <TileWrapper>
       <PromoTileImage>
-        <Image url={tileData.image.url} width="60" height="50" />
+        <Image url={tileData.image.url} alt="" width="60" height="50" />
       </PromoTileImage>
       <BodyCopyWithSpacing
         fontSize="fs16"

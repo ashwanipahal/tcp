@@ -17,6 +17,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
     textAlign="left"
   >
     <Styled(Image)
+      alt=""
       className="fast-shipping"
       src="/static/version-not-available/images/fast-shipping.svg"
     />
@@ -60,6 +61,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection with
     textAlign="left"
   >
     <Styled(Image)
+      alt=""
       className="fast-shipping"
       src="/static/version-not-available/images/fast-shipping.svg"
     />
