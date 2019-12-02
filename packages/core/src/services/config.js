@@ -115,6 +115,7 @@ export const API_CONFIG = {
   sessionCookieKey: 'QuantumMetricSessionID',
   pageCountCookieKey: 'pv',
   apiContentType: 'application/json',
+  landingSite: 'ls',
 };
 
 export default {
