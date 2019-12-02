@@ -296,6 +296,10 @@ const getAddressFields = state => {
   return selector(state, 'address');
 };
 
+const getBillingAddressFields = state => {
+  return state.Checkout.getIn(['values', 'billing', 'address']);
+};
+
 const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
@@ -986,6 +990,7 @@ export default {
   getSelectedShipmentId,
   getSendOrderUpdate,
   getAddressFields,
+  getBillingAddressFields,
   getAddressPhoneNo,
   getSmsSignUpLabels,
   getIsOrderHasPickup,
