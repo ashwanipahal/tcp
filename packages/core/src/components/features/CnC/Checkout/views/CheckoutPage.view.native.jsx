@@ -116,6 +116,7 @@ class CheckoutPage extends React.PureComponent {
           <ShippingPage
             {...shippingProps}
             cartOrderItemsCount={cartOrderItemsCount}
+            bagLoading={bagLoading}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             loadShipmentMethods={loadShipmentMethods}
             navigation={navigation}
@@ -145,6 +146,7 @@ class CheckoutPage extends React.PureComponent {
           <BillingPage
             {...billingProps}
             orderHasShipping={orderHasShipping}
+            bagLoading={bagLoading}
             navigation={navigation}
             isGuest={isGuest}
             isUsSite={isUsSite}
@@ -162,6 +164,7 @@ class CheckoutPage extends React.PureComponent {
           <ReviewPage
             {...reviewProps}
             navigation={navigation}
+            bagLoading={bagLoading}
             submitReview={submitReview}
             availableStages={availableStages}
             orderHasPickUp={orderHasPickUp}
@@ -180,6 +183,7 @@ class CheckoutPage extends React.PureComponent {
               expressReviewShippingSection: {
                 shippingMethodId: reviewProps.defaultShipmentId,
               },
+              cardType: reviewProps.cardType,
             }}
             shipmentMethods={shipmentMethods}
             setVenmoShippingState={setVenmoShippingState}

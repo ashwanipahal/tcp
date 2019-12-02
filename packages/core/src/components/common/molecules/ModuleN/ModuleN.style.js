@@ -21,7 +21,7 @@ export default css`
     padding-bottom: 24px;
   }
   .stacked-button-list-wrapper {
-    @media ${props => props.theme.mediaQuery.smallOnly} {
+    @media ${props => props.theme.mediaQuery.smallMax} {
       padding-bottom: 0px;
     }
   }

@@ -63,11 +63,15 @@ def all_env_pods
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
 
+  pod 'React-ART', :path => '../node_modules/react-native/Libraries/ART'
+
   use_native_modules!
 end
 
 target 'mobileapp' do
   all_env_pods
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
 end
 
 target 'mobileapp_dev' do

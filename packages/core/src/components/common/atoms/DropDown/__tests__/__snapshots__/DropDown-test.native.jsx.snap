@@ -53,6 +53,7 @@ exports[`DropDown Test should render correctly 1`] = `
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-down.png",
@@ -143,6 +144,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-up.png",

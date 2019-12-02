@@ -93,7 +93,7 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
-          getBonusDaysData={getAvailableBonusDaysData}
+          getAvailableBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
           showAccordian={showAccordian}
           isBagPage={isBagPage}

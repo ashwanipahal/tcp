@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
 import { ProductsGridItemVanilla } from '../views/ProductsGridItem';
 
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 const props = {
   currencyExchange: [
     {
