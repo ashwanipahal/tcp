@@ -259,8 +259,8 @@
 		84FD9D8F3CDEE146BC7C9D17 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		898C6AED91BE1EF397F3E1B6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9A43AF65CEB0F918C7E1C75C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D92186E2390F77B00BC38C5 /* mobileapp_codepush.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D92186C2390F5E800BC38C5 /* mobileapp_codepush.plist */; };
-		9D9218702390F7A800BC38C5 /* gymboree_codepush.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D92186F2390F7A800BC38C5 /* gymboree_codepush.plist */; };
+		9D1CEE752394EE0C00B43AF1 /* mobileapp_codepush_uat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D1CEE742394EE0C00B43AF1 /* mobileapp_codepush_uat.plist */; };
+		9D1CEE772394EE2000B43AF1 /* gymboree_codepush_uat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D1CEE762394EE2000B43AF1 /* gymboree_codepush_uat.plist */; };
 		A9B1DD75B4BA920EE121F880 /* libPods-gymboree_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C40AD178382E82A7AACC6753 /* libPods-gymboree_int.a */; };
 		AC3892B34C1D2E669CF59232 /* libPods-gymboree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6A72B8494E5EAC3994A2D1 /* libPods-gymboree.a */; };
 		ACB4C22F1276E4FEF77A7CB4 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -689,8 +689,8 @@
 		872335379EE324A5B0FB972D /* libPods-mobileapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE3286F55C040E4667E957A /* libPods-mobileapp_int.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp_int.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C598B9782044E026FB8BD81 /* libPods-mobileapp_preview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp_preview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D92186C2390F5E800BC38C5 /* mobileapp_codepush.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mobileapp_codepush.plist; sourceTree = "<group>"; };
-		9D92186F2390F7A800BC38C5 /* gymboree_codepush.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = gymboree_codepush.plist; sourceTree = "<group>"; };
+		9D1CEE742394EE0C00B43AF1 /* mobileapp_codepush_uat.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = mobileapp_codepush_uat.plist; sourceTree = "<group>"; };
+		9D1CEE762394EE2000B43AF1 /* gymboree_codepush_uat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gymboree_codepush_uat.plist; sourceTree = "<group>"; };
 		A11FED26EEEDE07EB6208629 /* libPods-gymboree_dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gymboree_dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1EC5DBF644823305F5AB9DE /* Pods-gymboree_uat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_uat.release.xcconfig"; path = "Target Support Files/Pods-gymboree_uat/Pods-gymboree_uat.release.xcconfig"; sourceTree = "<group>"; };
 		A236725E98B347E193374BC5 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
@@ -1064,8 +1064,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				9D92186F2390F7A800BC38C5 /* gymboree_codepush.plist */,
-				9D92186C2390F5E800BC38C5 /* mobileapp_codepush.plist */,
+				9D1CEE762394EE2000B43AF1 /* gymboree_codepush_uat.plist */,
+				9D1CEE742394EE0C00B43AF1 /* mobileapp_codepush_uat.plist */,
 				D94ECAAD22D70C2600D9D051 /* fonts */,
 				13B07FAE1A68108700A75B9A /* mobileapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -2019,8 +2019,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C47535238D4CD200B6959B /* Nunito-ExtraBold.ttf in Resources */,
-				9D92186E2390F77B00BC38C5 /* mobileapp_codepush.plist in Resources */,
 				16C47531238D4C3D00B6959B /* Montserrat-Medium.ttf in Resources */,
+				9D1CEE752394EE0C00B43AF1 /* mobileapp_codepush_uat.plist in Resources */,
 				16C47532238D4C3D00B6959B /* Nunito-Bold.ttf in Resources */,
 				16C47533238D4C3D00B6959B /* Nunito.ttf in Resources */,
 				16C47534238D4C3D00B6959B /* Montserrat-Bold.ttf in Resources */,
@@ -2109,11 +2109,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				162BF00E238D61850056246A /* Montserrat-Medium.ttf in Resources */,
-				9D9218702390F7A800BC38C5 /* gymboree_codepush.plist in Resources */,
 				162BEFFF238D5BD90056246A /* gymboree-Info.plist in Resources */,
 				16C47568238D53EB00B6959B /* Nunito-ExtraBold.ttf in Resources */,
 				16C4756A238D53EB00B6959B /* Nunito-Bold.ttf in Resources */,
 				16C4756B238D53EB00B6959B /* Nunito.ttf in Resources */,
+				9D1CEE772394EE2000B43AF1 /* gymboree_codepush_uat.plist in Resources */,
 				16C4756C238D53EB00B6959B /* Montserrat-Bold.ttf in Resources */,
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */,
@@ -4167,7 +4167,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp_codepush.plist;
+				INFOPLIST_FILE = mobileapp_codepush_uat.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4202,7 +4202,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp_codepush.plist;
+				INFOPLIST_FILE = mobileapp_codepush_uat.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4440,7 +4440,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = gymboree_codepush.plist;
+				INFOPLIST_FILE = gymboree_codepush_uat.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4473,7 +4473,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = gymboree_codepush.plist;
+				INFOPLIST_FILE = gymboree_codepush_uat.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
