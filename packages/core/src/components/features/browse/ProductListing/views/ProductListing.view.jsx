@@ -115,6 +115,7 @@ const ProductListView = ({
         pageSection: 'browse',
         pageSubSection: 'browse',
         products: productsFormatted,
+        customEvents: ['event91', 'event92', 'event82', 'event80'],
       });
     }
   }, [products.length]);

@@ -387,10 +387,11 @@ function mapDispatchToProps(dispatch) {
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
     trackPageLoad: payload => {
-      const { products } = payload;
+      const { products, customEvents } = payload;
       dispatch(
         setClickAnalyticsData({
           products,
+          customEvents,
         })
       );
       setTimeout(() => {
