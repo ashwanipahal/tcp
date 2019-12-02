@@ -378,7 +378,7 @@ class BagPageView extends React.PureComponent {
               }}
             >
               <Heading
-                component="h2"
+                component="h1"
                 variant="h6"
                 fontSize="fs16"
                 color="text.primary"

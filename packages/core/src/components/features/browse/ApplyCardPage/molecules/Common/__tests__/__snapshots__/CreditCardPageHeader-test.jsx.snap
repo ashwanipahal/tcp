@@ -60,10 +60,10 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
       <Styled(BodyCopy)
         className="credit_card_heading"
         color="text.primary"
-        component="h2"
+        component="h1"
         data-locator="rewards"
         fontFamily="primary"
-        fontSize={12}
+        fontSize="fs24"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"

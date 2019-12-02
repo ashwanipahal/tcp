@@ -31,9 +31,10 @@ const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
           colSize={{ large: 12, medium: 8, small: 6 }}
         >
           <BodyCopy
-            component="h2"
+            component="h1"
             fontWeight="extrabold"
             className="credit_card_heading"
+            fontSize="fs24"
             data-locator={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           >
             {getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
