@@ -668,6 +668,7 @@ export const createLayoutPath = path =>
     return g[1].toUpperCase();
   });
 
+/* Parse query parameters to an object. For instance, string returned from location.search */
 export const getQueryParamsFromUrl = url => {
   let queryString = url || '';
   let keyValPairs = [];
@@ -688,6 +689,7 @@ export const getQueryParamsFromUrl = url => {
   return params;
 };
 
+/* Returns an array of icid by querying to dom anchor element which has icid on it. */
 export const internalCampaignProductAnalyticsList = () => {
   const aTags = document.getElementsByTagName('a') || [];
   const internalCampaignId = 'icid';

@@ -53,10 +53,6 @@ export class StoreDetailContainer extends PureComponent {
     trackStoreDetailPageView({
       customEvents: ['event80', 'event96'],
       internalCampaignIdList: internalCampaignProductAnalyticsList(),
-      pageName: 'companyinfo:companyinfo',
-      pageType: 'companyinfo',
-      pageSection: 'companyinfo',
-      pageSubSection: 'companyinfo',
     });
 
     this.loadCurrentStoreInitialInfo();

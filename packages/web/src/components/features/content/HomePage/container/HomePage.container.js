@@ -84,30 +84,19 @@ const mapDispatchToProps = dispatch => {
     setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
     setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
     trackHomepageView: payload => {
-      const { products } = payload;
       dispatch(
-        setClickAnalyticsData({
-          products,
-        })
-      );
-      setTimeout(() => {
-        dispatch(
-          trackPageView({
-            props: {
-              initialProps: {
-                pageProps: {
-                  pageData: {
-                    ...payload,
-                  },
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  ...payload,
                 },
               },
             },
-          })
-        );
-        setTimeout(() => {
-          dispatch(setClickAnalyticsData({}));
-        }, 200);
-      }, 100);
+          },
+        })
+      );
     },
   };
 };
