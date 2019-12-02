@@ -226,4 +226,15 @@ export default css`
       }
     }
   }
+  .slick-prev,
+  .slick-next {
+    height: 30px;
+    z-index: 10;
+  }
+  .slick-prev {
+    left: -20px;
+  }
+  .slick-next {
+    right: -20px;
+  }
 `;

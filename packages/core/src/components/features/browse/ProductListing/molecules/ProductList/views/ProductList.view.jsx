@@ -63,6 +63,7 @@ const ProductList = props => {
     removeAddToFavoritesErrorMsg,
     openAddNewList,
     activeWishListId,
+    addToBagEcom,
   } = props;
   let gridIndex = 0;
 
@@ -151,6 +152,7 @@ const ProductList = props => {
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               openAddNewList={openAddNewList}
               activeWishListId={activeWishListId}
+              addToBagEcom={addToBagEcom}
             />
           </div>
         );
@@ -206,6 +208,7 @@ ProductList.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   openAddNewList: PropTypes.func,
   activeWishListId: PropTypes.number,
+  addToBagEcom: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -245,6 +248,7 @@ ProductList.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   openAddNewList: () => {},
   activeWishListId: '',
+  addToBagEcom: () => {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

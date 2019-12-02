@@ -2,6 +2,7 @@
 
 exports[`ImageTextModule Componenet should match snapshot 1`] = `
 <Styled(Row)
+  className="undefined "
   fullBleed={
     Object {
       "large": true,

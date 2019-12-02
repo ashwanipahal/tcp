@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -61,7 +62,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example
           // packages.add(new FBSDKPackage());
           packages.add(new VenmoPackage());
-          packages.add(new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), MainApplication.this, BuildConfig.DEBUG));
+          packages.add(new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG));
           return packages;
         }
 

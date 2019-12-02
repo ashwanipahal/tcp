@@ -198,10 +198,12 @@ const processResponse = (
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
   if (isClient() && res.body.redirect && typeof window !== 'undefined') {
-    const redirectUrl = res.body.redirect.value;
+    let redirectUrl = res.body.redirect.value;
     try {
       // If domain matches try routing within the site else page reload is fine
-      if (redirectUrl.indexOf(window.location.hostname) > -1) {
+      if (redirectUrl.length && redirectUrl.indexOf(window.location.hostname) > -1) {
+        redirectUrl = redirectUrl.replace(window.location.origin, '');
+        redirectUrl = redirectUrl.replace(/\/(us|ca)/, '');
         routerPush(redirectUrl, redirectUrl, { shallow: true }); // try and avoid a hard reload
       } else {
         window.location.assign(redirectUrl);
