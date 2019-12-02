@@ -132,26 +132,30 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
           {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
           {orderHasShipping(isOrderHasShipping, fontSize, labels, shippingTotal, currencySymbol)}
           <StyledRowDataContainer>
-            <Text>
-              <BodyCopy
-                bodySize="one"
-                fontFamily="secondary"
-                textAlign="left"
-                fontWeight="regular"
-                fontSize={fontSize}
-                text={`${labels.taxLabel}:`}
-              />
-            </Text>
-            <Text>
-              <BodyCopy
-                bodySize="one"
-                fontFamily="secondary"
-                fontWeight="regular"
-                fontSize={fontSize}
-                textAlign="right"
-                text={`${currencySymbol}${taxesTotal.toFixed(2)}`}
-              />
-            </Text>
+            {taxesTotal > 0 ? (
+              <>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    textAlign="left"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    text={`${labels.taxLabel}:`}
+                  />
+                </Text>
+                <Text>
+                  <BodyCopy
+                    bodySize="one"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                    fontSize={fontSize}
+                    textAlign="right"
+                    text={`${currencySymbol}${taxesTotal.toFixed(2)}`}
+                  />
+                </Text>
+              </>
+            ) : null}
           </StyledRowDataContainer>
           <LineComp borderColor="gray.600" marginTop={10} marginBottom={10} />
           {giftCardsTotal > 0 ? (
