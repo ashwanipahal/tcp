@@ -1,7 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import POINTSHISTORY_CONSTANTS from '../PointsHistory.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';
-import { setPointsHistoryList, setModuleX, showLoader } from './PointsHistory.actions';
+import { setPointsHistoryList, setModuleX, showLoader, hideLoader } from './PointsHistory.actions';
 import { getModuleX } from '../../../../../../../services/abstractors/common/moduleX';
 import { getPointsHistoryData } from '../../../../../../../services/abstractors/account/PointsHistory';
 
@@ -12,6 +12,7 @@ export function* getPointsHistoryListSaga() {
     yield put(setPointsHistoryList(pointsHistoryData));
   } catch (err) {
     yield null;
+    yield put(hideLoader());
   }
 }
 

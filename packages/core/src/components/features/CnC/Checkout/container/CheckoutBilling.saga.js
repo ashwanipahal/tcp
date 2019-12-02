@@ -112,15 +112,15 @@ export function* updateVenmoPaymentInstruction() {
   const shippingDetails = yield select(getShippingDestinationValues);
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
   const venmoData = yield select(selectors.getVenmoData);
-  const { nonce: venmoNonce, deviceData: venmoDeviceData, details: { username } = {} } =
-    venmoData || {};
+  const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData || {};
+  const userName = yield select(selectors.getVenmoUserName);
   const billingAddressId = shippingDetails.onFileAddressId;
   const paymentMethod = PAYMENT_METHOD_VENMO && PAYMENT_METHOD_VENMO.toUpperCase();
   const requestData = {
     billingAddressId,
     cardType: paymentMethod,
     cc_brand: paymentMethod,
-    cardNumber: username || 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
+    cardNumber: userName || 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
     isDefault: 'false',
     orderGrandTotal: grandTotal,
     applyToOrder: true,
@@ -129,7 +129,7 @@ export function* updateVenmoPaymentInstruction() {
     setAsDefault: false,
     saveToAccount: false,
     venmoDetails: {
-      userId: username || 'test-user',
+      userId: userName || 'test-user',
       saveVenmoTokenIntoProfile: isVenmoSaveSelected,
       nonce: venmoNonce,
       venmoDeviceData,

@@ -11,7 +11,7 @@ import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.s
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import SMSNotificationSelectors from '../organisms/SMSNotifications/container/SMSNotifications.selectors';
 
-const { getVenmoUserName, getVenmoPayment } = checkoutSelectors;
+const { getVenmoOrderUserId, getVenmoPayment, isVenmoOrderPayment } = checkoutSelectors;
 /**
  * @class ConfirmationContainer
  * @description container component to render confirmation component.
@@ -139,12 +139,11 @@ class ConfirmationContainer extends React.Component {
       isUsSiteId,
       orderNumbersByFullfillmentCenter,
       venmoUserName,
-      isVenmoPaymentInProgress,
       pageCategory,
       navigation,
       isGymboreeCanadaSite,
-      venmoPayment,
       venmoOrderConfirmationContent,
+      isVenmoPaymentInProgress,
     } = this.props;
     return (
       <ConfirmationView
@@ -164,7 +163,6 @@ class ConfirmationContainer extends React.Component {
         pageCategory={pageCategory}
         navigation={navigation}
         isGymboreeCanadaSite={isGymboreeCanadaSite}
-        venmoPayment={venmoPayment}
         venmoOrderConfirmationContent={venmoOrderConfirmationContent}
       />
     );
@@ -218,7 +216,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
-    venmoUserName: getVenmoUserName(state),
+    venmoUserName: getVenmoOrderUserId(state),
     isGymboreeCanadaSite: selectors.isGymboreeCanadaSite(state),
     placeCashConfirmationContentId: PlaceCashSelector.getPlaceDetailsContentId(
       state,
@@ -235,6 +233,7 @@ export const mapStateToProps = state => {
       state,
       'Venmo_Order_Confirmation'
     ),
+    isVenmoPaymentInProgress: isVenmoOrderPayment(state),
   };
 };
 
