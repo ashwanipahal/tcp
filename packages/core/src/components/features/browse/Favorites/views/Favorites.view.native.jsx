@@ -608,6 +608,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      updateAppTypeHandler,
       addToBagEcom,
     } = this.props;
 
@@ -751,6 +752,7 @@ class FavoritesView extends React.PureComponent {
               onSeeSuggestedItems={this.onSeeSuggestedItems}
               onCloseSuggestedModal={this.onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
+              updateAppTypeHandler={updateAppTypeHandler}
             />
           </View>
         )}
@@ -799,6 +801,7 @@ FavoritesView.propTypes = {
   onReplaceWishlistItem: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}),
   errorMessages: PropTypes.shape({}).isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

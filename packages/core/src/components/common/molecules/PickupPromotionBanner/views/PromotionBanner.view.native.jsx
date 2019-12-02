@@ -26,12 +26,14 @@ export const modifiedBannerText = (label, props) => {
   const pickupType = bossBanner
     ? CONSTANTS.ORDER_ITEM_TYPE.BOSS.toLowerCase()
     : CONSTANTS.ORDER_ITEM_TYPE.BOPIS.toLowerCase();
-  const labelKey = label.replace(
-    /\$tcpSegmentValue\$/,
-    labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
-      ? labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
-      : labels[`lbl_banner_${pickupType}_disc_${brandName}_default`]
-  );
+  const labelKey =
+    label &&
+    label.replace(
+      /\$tcpSegmentValue\$/,
+      labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
+        ? labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
+        : labels[`lbl_banner_${pickupType}_disc_${brandName}_default`]
+    );
   return getLabelValue(labels, labelKey);
 };
 

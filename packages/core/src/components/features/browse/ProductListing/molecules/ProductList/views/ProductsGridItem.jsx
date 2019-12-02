@@ -3,7 +3,7 @@
 
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush, getBrand, getAPIConfig, getSiteId } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -49,11 +49,28 @@ class ProductsGridItem extends React.PureComponent {
       };
     }
     const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
+    const {
+      item: {
+        productInfo: { pdpUrl },
+      },
+    } = props;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      props.item && props.item.itemInfo
+        ? props.item.itemInfo.isTCP
+        : currentSiteBrand.toUpperCase() === 'TCP';
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    const isProductBrandOfSameSiteBrand =
+      currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
       selectedColorProductId: colorProductId,
       currentImageIndex: 0,
-      pdpUrl: props.item.productInfo.pdpUrl,
+      pdpUrl: isProductBrandOfSameSiteBrand
+        ? props.item.productInfo.pdpUrl
+        : `${crossDomain}/${getSiteId()}${pdpUrl}`,
       isAltImgRequested: false,
       isMoveItemOpen: false,
       generalProductId: '',

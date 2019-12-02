@@ -159,6 +159,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  updateAppTypeHandler,
   QRAnimationURL,
   resetCustomLoader,
   ...otherProps
@@ -222,6 +223,7 @@ const ProductListView = ({
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             isSearchListing={isSearchListing}
             renderMoveToList={renderMoveToList}
+            updateAppTypeHandler={updateAppTypeHandler}
             {...otherProps}
           />
         )}
@@ -276,6 +278,7 @@ ProductListView.propTypes = {
   showCustomLoader: PropTypes.bool,
   QRAnimationURL: PropTypes.string.isRequired,
   resetCustomLoader: PropTypes.func,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {
