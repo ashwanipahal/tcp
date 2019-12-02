@@ -7,7 +7,6 @@
 
 #import "AppDelegate.h"
 #import <CodePush/CodePush.h>
-#import <AppCenter/MSAppCenter.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -60,7 +59,6 @@
   // ********************************
   // AppCenter
   // ********************************
-  [MSAppCenter setLogLevel: MSLogLevelVerbose];
     [AppCenterReactNative register];
     [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
     [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
@@ -86,13 +84,10 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
  [BTAppSwitch setReturnURLScheme:@"com.childrensplace.tcp-ios.payments"];
- //[self performSelector:@selector(crashMethod) withObject:nil afterDelay:3.0 ];
  
   return YES;
 }
-//-(void)crashMethod {
-//   @throw NSInternalInconsistencyException;
-//}
+
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
