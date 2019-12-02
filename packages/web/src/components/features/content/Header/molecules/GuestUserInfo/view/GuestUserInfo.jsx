@@ -61,7 +61,7 @@ const GuestUserInfo = ({
               }
               fontSizeVariation="large"
               anchorVariation="primary"
-              data-overlayTarget="true"
+              data-overlayTarget={createAccount}
             >
               Create Account
             </Button>
@@ -76,7 +76,7 @@ const GuestUserInfo = ({
               onClick={LoginLinkClick}
               fontSizeVariation="large"
               anchorVariation="primary"
-              data-overlayTarget="true"
+              data-overlayTarget={login}
             >
               Login
             </Button>
@@ -93,7 +93,7 @@ const GuestUserInfo = ({
               role="button"
               id={login}
               onClick={LoginLinkClick}
-              data-overlayTarget="true"
+              data-overlayTarget={login}
             >
               {`Hi, ${userName}`}
             </BodyCopy>

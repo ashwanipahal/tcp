@@ -312,7 +312,11 @@ class ProductsGridItem extends React.PureComponent {
     if (isFavoriteView) {
       const {
         skuInfo: { skuId, size },
+        itemInfo: { isTCP },
       } = item;
+      const orderInfo = {
+        itemBrand: isTCP ? 'TCP' : 'GYM',
+      };
       if (skuId && size) {
         let cartItemInfo = getCartItemInfo(item, {});
         cartItemInfo = { ...cartItemInfo };
@@ -320,6 +324,7 @@ class ProductsGridItem extends React.PureComponent {
       } else {
         onQuickViewOpenClick({
           colorProductId: selectedColorProductId,
+          orderInfo,
         });
       }
     } else {
