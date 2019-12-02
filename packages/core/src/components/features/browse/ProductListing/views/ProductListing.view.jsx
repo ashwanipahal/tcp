@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// Disabling eslint for temporary file
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
@@ -29,6 +31,27 @@ import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
 // Minimum number of product results worth measuring with a UX timer
 const MINIMUM_RESULTS_TO_MEASURE = 3;
+
+const formatProductsData = products => {
+  return products.map((tile, index) => {
+    const {
+      productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
+      miscInfo: { categoryName },
+    } = tile;
+    const productId = generalProductId && generalProductId.split('_')[0];
+    const productName = name;
+    return {
+      id: productId,
+      colorId: generalProductId,
+      name: productName,
+      price: offerPrice,
+      listPrice,
+      extPrice: priceRange.lowOfferPrice,
+      position: index + 1,
+      type: categoryName,
+    };
+  });
+};
 
 const ProductListView = ({
   className,
@@ -63,6 +86,13 @@ const ProductListView = ({
   removeAddToFavoritesErrorMsg,
   isLoggedIn,
   isPlcc,
+  pageItems,
+  products,
+  store,
+  pageNameProp,
+  pageSectionProp,
+  pageSubSectionProp,
+  trackPageLoad,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered
@@ -75,6 +105,19 @@ const ProductListView = ({
       setResultsExist(true);
     }
   }, [productsBlock.length]);
+
+  useEffect(() => {
+    const productsFormatted = formatProductsData(products);
+    if (products.length) {
+      trackPageLoad({
+        pageType: 'browse',
+        pageName: 'browse',
+        pageSection: 'browse',
+        pageSubSection: 'browse',
+        products: productsFormatted,
+      });
+    }
+  }, [products.length]);
 
   return (
     <div className={className}>
@@ -147,6 +190,9 @@ const ProductListView = ({
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               isLoggedIn={isLoggedIn}
               isPlcc={isPlcc}
+              pageNameProp={pageNameProp}
+              pageSectionProp={pageNameProp}
+              pageSubSectionProp={pageNameProp}
               {...otherProps}
             />
             {/* UX timer */}
@@ -209,6 +255,8 @@ ProductListView.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -237,6 +285,8 @@ ProductListView.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

@@ -72,8 +72,8 @@ const addItemToWishlist = wishlistDetails => {
       const errorMssg = getFormattedError(err, errorMapping);
       return {
         errorMessage:
-          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMapping && errorMapping.DEFAULT) ||
           '',
       };
@@ -88,8 +88,9 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
-  const { siteId } = getAPIConfig();
-  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
+  const { siteId, webAppDomain } = getAPIConfig();
+  const assetHost =
+    (typeof window !== 'undefined' && window.location && window.location.origin) || webAppDomain;
 
   return executeStatefulAPICall(payload)
     .then(res => {
@@ -439,7 +440,12 @@ export const createWishList = (wishlistName, isDefault) => {
     });
 };
 
-export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlistItem) => {
+export const moveItemToNewWishList = (
+  formData,
+  activeWishlistId,
+  activeWishlistItem,
+  errorMapping
+) => {
   const args = {
     fromWishListId: activeWishlistId,
     toWishListId: formData.toWishListId,
@@ -479,7 +485,14 @@ export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlist
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      const errorMssg = getFormattedError(err, errorMapping, true);
+      return {
+        errorMessage:
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
+          (errorMapping && errorMapping.DEFAULT) ||
+          '',
+      };
     });
 };
 

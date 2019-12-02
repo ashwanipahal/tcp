@@ -7,7 +7,7 @@ import CookieManager from 'react-native-cookies';
 import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
@@ -423,6 +423,14 @@ const getRegion = (configVal, country) => {
   return configVal && country;
 };
 
+const getBvSharedKey = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
+};
+
+const getWebViewBvUrl = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_WEB_VIEW_URL || apiSiteInfo.BV_WEB_VIEW_URL;
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -449,7 +457,11 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
     MELISSA_KEY: envConfig[`RWD_APP_MELISSA_KEY_${appTypeSuffix}`] || apiSiteInfo.MELISSA_KEY,
-    BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
+    //  bazar voice config
+    BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`],
+    BV_API_URL: envConfig.RWD_APP_BV_API_URL || apiSiteInfo.BV_URL,
+    BV_WEB_VIEW_URL: getWebViewBvUrl(envConfig, apiSiteInfo),
+    BV_SHARED_KEY: getBvSharedKey(envConfig, apiSiteInfo),
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
@@ -481,6 +493,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
     styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
     host: envConfig[`RWD_APP_HOST_${appTypeSuffix}`],
+    webAppDomain: envConfig[`RWD_WEB_APP_DOMAIN_${appTypeSuffix}`],
   };
 };
 
@@ -694,18 +707,14 @@ export const validateColor = color => {
  * @param {upperCase} locale use for convert locate formate
  * @param {upperCase} formate use for convert locate formate
  */
-export const getTranslatedMomentDate = (
-  dateInput,
-  language = 'en',
-  { day, month, date, year } = {}
-) => {
-  moment.locale(language);
-  const currentDate = dateInput ? moment(dateInput) : moment();
+export const getTranslatedMomentDate = dateInput => {
+  // TODO: Locale Handling needs to happen.
+  const dateInputParsed = dateInput ? new Date(dateInput) : new Date();
   return {
-    day: currentDate.format(day),
-    month: currentDate.format(month),
-    date: currentDate.format(date),
-    year: currentDate.format(year),
+    day: format(dateInputParsed, 'EEE'),
+    month: format(dateInputParsed, 'MMM'),
+    date: format(dateInputParsed, 'dd'),
+    year: format(dateInputParsed, 'yyyy'),
   };
 };
 
@@ -766,16 +775,11 @@ export const mapHandler = store => {
  * @param {string} date date which is to be mutated
  * @param {upperCase} locale use for convert locate formate
  */
-export const getTranslateDateInformation = (date, language) => {
+export const getTranslateDateInformation = date => {
   // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
   // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
   // To fix this, need to add fallback package for Intl
-  return getTranslatedMomentDate(date, language, {
-    day: 'ddd',
-    month: 'MMM',
-    date: 'D',
-    year: 'YYYY',
-  });
+  return getTranslatedMomentDate(date);
 };
 
 export const onBack = navigation => {

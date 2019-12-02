@@ -81,12 +81,15 @@ class _PickupStoreSelectionForm extends React.Component {
       isBossSelected,
       isShowMessage,
       currentProduct,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
-
     return submitting ? (
       <Spinner />
     ) : (
       <PickupStoreListContainer
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
         isShoppingBag={isShoppingBag}
         currentProduct={currentProduct}
         onStoreSelect={handleAddTobag}
@@ -243,6 +246,8 @@ class _PickupStoreSelectionForm extends React.Component {
       storeSearchDistance,
       setClickAnalyticsData,
       trackClick,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     return (
       !storeLimitReached &&
@@ -275,6 +280,8 @@ class _PickupStoreSelectionForm extends React.Component {
             storeSearchDistance={storeSearchDistance}
             setClickAnalyticsData={setClickAnalyticsData}
             trackClick={trackClick}
+            setFavoriteStore={setFavoriteStore}
+            getDefaultStore={getDefaultStore}
           />
         </div>
       )

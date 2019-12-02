@@ -19,6 +19,7 @@ describe('AddedToBag Component', () => {
     },
     isPayPalWebViewEnable: false,
     hideHeader: false,
+    pointsSummary: {},
   };
 
   beforeEach(() => {

@@ -78,6 +78,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                     pageSubSection: 'myplace',
                     pageName: 'myplace:rewardscreditcard',
                     customEvents: ['event112'],
+                    pageNavigationText: 'my account-my place rewards credit card',
                   }}
                 >
                   <Button

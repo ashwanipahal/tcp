@@ -77,6 +77,7 @@ class SMSFormFields extends React.PureComponent {
                       fontSizeVariation="small"
                       noLink
                       href="#"
+                      title=""
                       target="_blank"
                     >
                       {labels.privacyPolicy}

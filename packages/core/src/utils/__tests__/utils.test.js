@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { format, differenceInDays } from 'date-fns';
 import {
   getLabelValue,
   formatDate,
@@ -19,6 +19,13 @@ import { openWindow } from '../utils.web';
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
+
+jest.mock('date-fns', () => ({
+  ...jest.requireActual('date-fns'),
+  format: jest.fn(),
+  differenceInDays: jest.fn(),
+  differenceInMilliseconds: jest.fn(),
+}));
 
 describe('getLabelValue', () => {
   const labelState = {
@@ -178,6 +185,7 @@ describe('getStoreHours', () => {
 });
 
 describe('getOrderGroupLabelAndMessage', () => {
+  const dateFormat = 'MMMM dd, yyyy';
   const labels = {
     lbl_orders_shippedOn: 'lbl_orders_shippedOn',
     lbl_orders_pickedUpOn: 'lbl_orders_pickedUpOn',
@@ -196,7 +204,7 @@ describe('getOrderGroupLabelAndMessage', () => {
       ordersLabels: labels,
     };
 
-    const message = moment(orderProps.shippedDate).format('LL');
+    const message = format(new Date(orderProps.shippedDate), dateFormat);
     const label = labels.lbl_orders_shippedOn;
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
@@ -210,7 +218,7 @@ describe('getOrderGroupLabelAndMessage', () => {
       ordersLabels: labels,
     };
 
-    const message = moment(orderProps.pickedUpDate).format('LL');
+    const message = format(new Date(orderProps.pickedUpDate), dateFormat);
     const label = labels.lbl_orders_pickedUpOn;
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
@@ -287,7 +295,7 @@ describe('getOrderGroupLabelAndMessage', () => {
     };
 
     const label = labels.lbl_orders_pleasePickupBy;
-    const message = moment(orderProps.pickUpExpirationDate).format('LL');
+    const message = format(new Date(orderProps.pickUpExpirationDate), dateFormat);
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);
     expect(labelAndMessage.label).toBe(label);
@@ -314,11 +322,13 @@ describe('parseUTCDate', () => {
 
 describe('validateDiffInDaysNotification', () => {
   it('return true if order date is falls with in limit', () => {
-    const returnValue = validateDiffInDaysNotification(new Date(), 30);
+    differenceInDays.mockImplementation(() => 1);
+    const returnValue = validateDiffInDaysNotification(null, 30);
     expect(returnValue).toEqual(true);
   });
 
   it('return false if order date is not falls with in limit', () => {
+    differenceInDays.mockImplementation(() => 16);
     const returnValue = validateDiffInDaysNotification('Oct 16, 2019', 15);
     expect(returnValue).toEqual(false);
   });
@@ -384,13 +394,13 @@ describe('getOrderStatusForNotification', () => {
 describe('openWindow', () => {
   const sampleUrl = 'https://example.com';
   it('should open given url in a new window if _blank is passed', () => {
-    const windowSpy = jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
+    jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
     openWindow(sampleUrl);
     expect(window.open).toHaveBeenCalled();
     expect(window.open).toBeCalledWith(sampleUrl, '_blank', 'noopener');
   });
   it('should open given url in same window if _self is passed', () => {
-    const windowSpy = jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
+    jest.spyOn(window, 'open').mockImplementation(() => jest.fn());
     openWindow(sampleUrl, '_self');
     expect(window.open).toHaveBeenCalled();
     expect(window.open).toBeCalledWith(sampleUrl, '_self', '');

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import { getAPIConfig, routerPush } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import { openWindow } from '../../../../../utils/utils.web';
 
 class Espot extends PureComponent {
   /**
@@ -107,6 +106,7 @@ Espot.propTypes = {
   togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 export default Espot;

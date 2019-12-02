@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
-<Styled(View)
-  showSearch={false}
->
+<Styled(View)>
   <Connect(ToastContainer) />
   <Styled(View)>
     <Styled(View)
@@ -46,7 +44,9 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               }
             }
           />
-          <Styled(View)>
+          <Styled(View)
+            cartVal=""
+          >
             <Styled(BodyCopy)
               accessibilityText="Mini bag with count"
               color="white"
@@ -56,6 +56,7 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               fontWeight="extrabold"
               margin={null}
               numberOfLines={null}
+              text=""
               textDecoration={null}
             />
           </Styled(View)>

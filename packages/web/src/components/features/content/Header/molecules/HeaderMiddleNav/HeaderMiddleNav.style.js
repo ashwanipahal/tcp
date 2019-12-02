@@ -11,6 +11,7 @@ const style = css`
   }
 
   .hamburger-menu {
+    outline: none;
     cursor: pointer;
     width: 22px;
     height: 22px;
