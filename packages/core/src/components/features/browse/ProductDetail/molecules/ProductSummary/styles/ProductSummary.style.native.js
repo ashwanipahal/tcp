@@ -16,7 +16,7 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const BazarVoiceContainer = styled.View`
+const BazaarVoiceContainer = styled.View`
   flex-direction: row;
   height: 40px;
   justify-content: space-between;
@@ -43,7 +43,7 @@ export {
   Container,
   RowContainer,
   ReviewAndRatingContainer,
-  BazarVoiceContainer,
+  BazaarVoiceContainer,
   ImageTouchableOpacity,
   EmptyView,
 };

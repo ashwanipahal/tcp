@@ -12,7 +12,35 @@ exports[`PickUpContactDisplayVanilla component should renders correctly when Cou
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="undefined undefined"
+      text=" "
+      textDecoration={null}
+    />
+  </Styled(Text)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-phoneNumber-inp"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="(878) 877-88787"
+      textDecoration={null}
+    />
+  </Styled(Text)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-email-inp"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="abc@gmail.com"
       textDecoration={null}
     />
   </Styled(Text)>

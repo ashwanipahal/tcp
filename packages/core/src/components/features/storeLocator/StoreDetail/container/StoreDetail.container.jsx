@@ -100,7 +100,9 @@ export class StoreDetailContainer extends PureComponent {
       window.open(
         `${
           googleMapConstants.OPEN_STORE_DIR_WEB
-        }${addressLine1},%20${city},%20${state},%20${zipCode}`
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`,
+        '_blank',
+        'noopener'
       );
     }
   }

@@ -15,6 +15,7 @@ describe('GiftWrappingDisplay component', () => {
         lbl_review_sectionShippingGiftServiceTitle: 'Gift Services',
       },
       displayName: 'Free',
+      isExpressCheckout: true,
     };
     const component = shallow(<GiftWrappingDisplayanilla {...props} />);
     expect(component).toMatchSnapshot();

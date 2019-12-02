@@ -44,6 +44,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+import { fetchErrorMessages } from '../../Favorites/container/Favorites.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -212,6 +213,7 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
