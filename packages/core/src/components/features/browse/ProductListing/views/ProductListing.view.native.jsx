@@ -214,10 +214,10 @@ const ProductListView = ({
             {...otherProps}
           />
         )}
-        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
         <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
     </ScrollView>
   );
 };
