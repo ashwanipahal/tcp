@@ -52,4 +52,10 @@ describe('ConfirmationContainer', () => {
     dispatchProps.fetchUpdateOrderDetails();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
+  it('should call fetchModuleXContent in mapDispatchToProps', () => {
+    const dispatch = jest.fn();
+    const dispatchProps = mapDispatchToProps(dispatch);
+    dispatchProps.fetchModuleXContent();
+    expect(dispatch.mock.calls).toHaveLength(1);
+  });
 });
