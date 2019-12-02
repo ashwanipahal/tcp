@@ -32,3 +32,9 @@ export const showLoader = () => {
     type: POINTSHISTORY_CONSTANTS.SHOW_LOADER,
   };
 };
+
+export const hideLoader = () => {
+  return {
+    type: POINTSHISTORY_CONSTANTS.HIDE_LOADER,
+  };
+};

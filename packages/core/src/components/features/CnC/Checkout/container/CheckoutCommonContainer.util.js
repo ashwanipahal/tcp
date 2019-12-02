@@ -54,6 +54,7 @@ import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
 import SMSNotificationSelectors from '../../Confirmation/organisms/SMSNotifications/container/SMSNotifications.selectors';
 import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
+import CreditCardSelector from '../organisms/BillingPaymentForm/container/CreditCard.selectors';
 
 const {
   getSmsSignUpLabels,
@@ -292,6 +293,10 @@ export const mapStateToProps = state => {
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    currentOrderId: selectors.getCurrentOrderId(state),
+    paymentMethodId: CreditCardSelector.getPaymentMethodId(state),
+    orderSubTotal: BagPageSelector.getOrderSubTotal(state),
+    billingAddress: selectors.getBillingAddressFields(state),
     titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
     initShippingPage: selectors.getShippingInitialSectionValues(state),
   };

@@ -264,6 +264,10 @@ const getIfEmailSignUpDone = state => {
   };
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -300,4 +304,5 @@ export default {
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
 };
