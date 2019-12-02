@@ -237,10 +237,10 @@ class OverlayModal extends React.Component {
     ) {
       this.closeModal();
       const nextComponent = e.target;
-      const nextComponentValue =
+      const componentAttributeValue =
         nextComponent.getAttribute('data-overlayTarget') ||
         nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget');
-      if (component === nextComponentValue) {
+      if (component === componentAttributeValue) {
         e.stopImmediatePropagation();
       }
     }
