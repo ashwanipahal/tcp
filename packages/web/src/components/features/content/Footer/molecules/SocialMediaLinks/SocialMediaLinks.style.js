@@ -26,6 +26,16 @@ export default css`
   .social-media-pallete {
     display: flex;
     justify-content: center;
+
+    ul {
+      display: inherit;
+      li {
+        margin-right: 19px;
+      }
+      li:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -35,6 +45,9 @@ export default css`
       height: 39px;
     }
     a {
+      margin-right: 24px;
+    }
+    .social-media-pallete ul li {
       margin-right: 24px;
     }
   }
@@ -54,6 +67,9 @@ export default css`
       height: 50px;
     }
     a {
+      margin-right: 32px;
+    }
+    .social-media-pallete ul li {
       margin-right: 32px;
     }
   }
