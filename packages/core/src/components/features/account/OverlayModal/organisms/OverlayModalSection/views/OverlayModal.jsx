@@ -234,6 +234,7 @@ class OverlayModal extends React.Component {
   }
 
   handleWindowClick(e) {
+    const { component } = this.props;
     /* istanbul ignore else */
     if (
       this.modalRef &&
@@ -242,10 +243,10 @@ class OverlayModal extends React.Component {
     ) {
       this.closeModal();
       const nextComponent = e.target;
-      if (
-        nextComponent.hasAttribute('data-overlayTarget') ||
-        nextComponent.closest('[data-overlayTarget]')
-      ) {
+      const componentAttributeValue =
+        nextComponent.getAttribute('data-overlayTarget') ||
+        nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget');
+      if (component === componentAttributeValue) {
         e.stopImmediatePropagation();
       }
     }

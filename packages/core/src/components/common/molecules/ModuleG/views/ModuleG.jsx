@@ -14,7 +14,6 @@ import {
   getProductUrlForDAM,
   configureInternalNavigationFromCMSUrl,
 } from '../../../../../utils';
-import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
 
 const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
@@ -133,7 +132,6 @@ class ModuleG extends React.PureComponent {
             </Anchor>
           </Col>
         </Row>
-        <QuickViewModal />
       </>
     ) : null;
   };
