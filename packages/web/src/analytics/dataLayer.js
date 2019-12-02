@@ -1,4 +1,4 @@
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
@@ -285,6 +285,19 @@ export default function create(store) {
       get() {
         const { brandId = '' } = store.getState().APIConfig;
         return brandId.toUpperCase();
+      },
+    },
+    landingSiteBrandId: {
+      get() {
+        const { landingSite } = API_CONFIG;
+        if (!readCookie(landingSite) && readCookie(pageCountCookieKey) === '1') {
+          const { brandId = '' } = store.getState().APIConfig;
+          setCookie({
+            key: landingSite,
+            value: brandId.toUpperCase(),
+          });
+        }
+        return readCookie(landingSite);
       },
     },
   });
