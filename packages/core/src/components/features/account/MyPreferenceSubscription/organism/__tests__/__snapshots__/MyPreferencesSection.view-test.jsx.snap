@@ -118,6 +118,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               lbl_prefrence_app_text
             </Styled(BodyCopy)>
             <Styled(Image)
+              alt=""
               class="elem-pl-XS"
               height="17"
               src="/static/version-not-available/images/icon-alarm@2x.png"
@@ -471,6 +472,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               lbl_prefrence_text_text
             </Styled(BodyCopy)>
             <Styled(Image)
+              alt=""
               class="elem-pl-XS"
               height="17"
               src="/static/version-not-available/images/icon-chat@2x.png"

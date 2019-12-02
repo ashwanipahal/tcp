@@ -40,6 +40,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       openApplyNowModal,
       footerLabels,
       bagLoading,
+      cartOrderItems,
     } = this.props;
     return !isInternationalShipping && isUsOnly() ? (
       <div className={className}>
@@ -63,6 +64,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           openApplyNowModal={openApplyNowModal}
           footerLabels={footerLabels}
           bagLoading={bagLoading}
+          cartOrderItems={cartOrderItems}
         />
       </div>
     ) : null;

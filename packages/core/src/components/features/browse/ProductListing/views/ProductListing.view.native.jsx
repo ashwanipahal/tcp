@@ -5,7 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -119,6 +118,19 @@ const onRenderHeader = data => {
   );
 };
 
+const renderPromModules = (isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn) => {
+  return (
+    !isSearchListing && (
+      <PromoModules
+        plpTopPromos={plpTopPromos}
+        navigation={navigation}
+        isPlcc={isPlcc}
+        isLoggedIn={isLoggedIn}
+      />
+    )
+  );
+};
+
 const ProductListView = ({
   products,
   filters,
@@ -159,6 +171,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  updateAppTypeHandler,
   QRAnimationURL,
   resetCustomLoader,
   ...otherProps
@@ -196,14 +209,7 @@ const ProductListView = ({
     />
   ) : (
     <ScrollView>
-      {!isSearchListing && (
-        <PromoModules
-          plpTopPromos={plpTopPromos}
-          navigation={navigation}
-          isPlcc={isPlcc}
-          isLoggedIn={isLoggedIn}
-        />
-      )}
+      {renderPromModules(isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn)}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
         {!isLoadingMore && (
@@ -222,13 +228,13 @@ const ProductListView = ({
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             isSearchListing={isSearchListing}
             renderMoveToList={renderMoveToList}
+            updateAppTypeHandler={updateAppTypeHandler}
             {...otherProps}
           />
         )}
-        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
     </ScrollView>
   );
 };
@@ -276,6 +282,7 @@ ProductListView.propTypes = {
   showCustomLoader: PropTypes.bool,
   QRAnimationURL: PropTypes.string.isRequired,
   resetCustomLoader: PropTypes.func,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {

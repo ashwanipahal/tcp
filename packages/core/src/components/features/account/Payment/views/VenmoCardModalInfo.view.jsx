@@ -24,6 +24,7 @@ class VenmoCardModalInfo extends React.Component<Props> {
           <Image
             className="deleteCardModal__img"
             src={getIconPath('venmo-blue-acceptance-mark')}
+            alt=""
             onClick={this.pause}
           />
           <BodyCopy

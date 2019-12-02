@@ -5,7 +5,6 @@ import Recommendations from '@tcp/web/src/components/common/molecules/Recommenda
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox, FavoriteSkeleton } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -133,7 +132,6 @@ class FavoritesView extends React.PureComponent {
             activeWishListId={activeWishList.id}
             addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal />
         </>
       )
     );

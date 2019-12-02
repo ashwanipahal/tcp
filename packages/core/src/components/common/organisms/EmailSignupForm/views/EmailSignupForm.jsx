@@ -23,6 +23,13 @@ class EmailSignupForm extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { subscription, trackSubscriptionSuccess } = this.props;
+    if (subscription.success) {
+      trackSubscriptionSuccess();
+    }
+  }
+
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription, trackSubscriptionSuccess } = this.props;
     if (subscription.success !== oldSubscription.success && subscription.success) {
