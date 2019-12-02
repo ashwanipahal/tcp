@@ -94,3 +94,19 @@ export function getVenmoPayment(state) {
     isVenmoPaymentSelected: venmoPaymentInProgress && isNonceNotExpired,
   };
 }
+
+export function isVenmoOrderPayment(state) {
+  const orderConfirmation = state.Confirmation && state.Confirmation.get('orderConfirmation');
+  const paymentLists = orderConfirmation && orderConfirmation.paymentsList;
+  const venmoPayment =
+    paymentLists && paymentLists.find(method => method.paymentMethod.toLowerCase() === 'venmo');
+  return venmoPayment || false;
+}
+
+export function getVenmoOrderUserId(state) {
+  const orderConfirmation = state.Confirmation && state.Confirmation.get('orderConfirmation');
+  const paymentLists = orderConfirmation && orderConfirmation.paymentsList;
+  const venmoPayment =
+    paymentLists && paymentLists.find(method => method.paymentMethod.toLowerCase() === 'venmo');
+  return venmoPayment ? venmoPayment.venmoUserId : '';
+}

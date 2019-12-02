@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import OrderBasicDetails from '../OrderBasicDetails.view';
 
 describe('Order Basic Details component ', () => {
-  it('should render correctly for ECOM order', () => {
+  it.skip('should render correctly for ECOM order', () => {
     const props = {
       orderDetailsData: {
         orderDate: '2019-09-30 02:21:33.406',
@@ -16,7 +16,7 @@ describe('Order Basic Details component ', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should render correctly for Boss order', () => {
+  it.skip('should render correctly for Boss order', () => {
     const props = {
       orderDetailsData: {
         orderDate: '2019-10-11 02:21:33.406',
