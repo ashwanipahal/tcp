@@ -104,7 +104,6 @@ class SearchDetailContainer extends React.PureComponent {
       getProducts,
       formValues,
       isLoggedIn: currentLyLoggedIn,
-      redirectToPdp,
     } = this.props;
 
     const {
@@ -113,13 +112,6 @@ class SearchDetailContainer extends React.PureComponent {
       },
       isLoggedIn,
     } = prevProps;
-
-    if (redirectToPdp) {
-      routerPush(`/p?pid=${searchQuery}`, `/p/${searchQuery}`, {
-        shallow: false,
-      });
-    }
-
     if (searchQuery !== currentSearchQuery) {
       const splitAsPathBy = `/search/${searchQuery}?`;
       const queryString = asPath.split(splitAsPathBy);
@@ -339,7 +331,6 @@ function mapStateToProps(state) {
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
-    redirectToPdp: state.SearchListingPage && state.SearchListingPage.redirectToPdp,
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
@@ -426,7 +417,6 @@ SearchDetailContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isLoadingMore: PropTypes.bool,
   isSearchResultsAvailable: PropTypes.bool,
-  redirectToPdp: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   isLoggedIn: PropTypes.bool,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
@@ -442,7 +432,6 @@ SearchDetailContainer.defaultProps = {
   initialValues: {},
   isLoadingMore: false,
   isSearchResultsAvailable: false,
-  redirectToPdp: false,
   pdpLabels: {},
   productsBlock: [],
   isLoggedIn: false,

@@ -252,6 +252,12 @@ const processResponse = (
     totalProductsCount = productListingTotalCount || 0;
   }
 
+  if (totalProductsCount === 1 && isSearch && searchTerm) {
+    routerPush(`/p?pid=${searchTerm}`, `/p/${searchTerm}`, {
+      shallow: false,
+    });
+  }
+
   // WHY DO WE NEED THIS??
   const unbxdId = res.headers && res.headers['unbxd-request-id'];
   // TODO - fix this - this.setUnbxdId(unbxdId);
