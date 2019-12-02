@@ -6,6 +6,7 @@ import {
   enableBodyScroll as enableBodyScrollLib,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -34,6 +35,21 @@ const MONTH_SHORT_FORMAT = {
 const FIXED_HEADER = {
   LG_HEADER: 70,
   SM_HEADER: 60,
+};
+
+export const setSessionStorage = arg => {
+  const { key, value } = arg;
+  if (isClient()) {
+    return window.sessionStorage.setItem(key, value);
+  }
+  return null;
+};
+
+export const getSessionStorage = key => {
+  if (isClient()) {
+    return window.sessionStorage.getItem(key);
+  }
+  return null;
 };
 
 export const importGraphQLClientDynamically = module => {
@@ -573,10 +589,27 @@ export const scrollToParticularElement = element => {
   }
 };
 
+/**
+ * openWindow - opens a window with the URL and attributes passed in
+ * @param {string} arg url - URL to open,
+ * @param {string} arg target - where to open the new window; defaults to _blank
+ * @param {string} arg attrs - what attributes to pass to window.open; defaults to empty string
+ * @return {Object} Object handle for the new window
+ */
+export const openWindow = (url, target = '_blank', attrs = '') => {
+  let windowAttributes = attrs;
+  if (target === '_blank') {
+    windowAttributes = windowAttributes.concat('noopener');
+  }
+  logger.info(`Opening ${url} in window with target=${target} and attributes=${windowAttributes}`);
+  return window.open(url, target, windowAttributes);
+};
+
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
-  return window.open(
-    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  return openWindow(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+    '_blank'
   );
 };
 
@@ -673,6 +706,41 @@ export const createLayoutPath = path =>
     return g[1].toUpperCase();
   });
 
+/* Parse query parameters to an object. For instance, string returned from location.search */
+export const getQueryParamsFromUrl = url => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter((item, index) => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[index].split('=')[1]);
+      return params;
+    });
+  }
+  return params;
+};
+
+/* Returns an array of icid by querying to dom anchor element which has icid on it. */
+export const internalCampaignProductAnalyticsList = () => {
+  const aTags = document.getElementsByTagName('a') || [];
+  const internalCampaignId = 'icid';
+  return Array.prototype.slice
+    .call(aTags)
+    .filter(tag => {
+      return tag.href.indexOf(internalCampaignId) !== -1;
+    })
+    .map(tag => {
+      return getQueryParamsFromUrl(tag.href)[internalCampaignId].join(',');
+    });
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -705,4 +773,6 @@ export default {
   disableBodyScroll,
   isAndroidWeb,
   createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
 };

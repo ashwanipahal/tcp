@@ -56,7 +56,51 @@ export default function create(store) {
         return `gl:${pageName}`;
       },
     },
-
+    orderId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderId
+          ? clickActionAnalyticsData.orderId
+          : pageData.orderId;
+      },
+    },
+    paymentMethod: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.paymentMethod
+          ? clickActionAnalyticsData.paymentMethod
+          : pageData.paymentMethod;
+      },
+    },
+    billingCountry: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingCountry
+          ? clickActionAnalyticsData.billingCountry
+          : pageData.billingCountry;
+      },
+    },
+    billingZip: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingZip
+          ? clickActionAnalyticsData.billingZip
+          : pageData.billingZip;
+      },
+    },
+    orderSubtotal: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderSubtotal
+          ? clickActionAnalyticsData.orderSubtotal
+          : pageData.orderSubtotal;
+      },
+    },
     isCurrentRoute: () => false,
 
     pageShortName: {
@@ -92,6 +136,11 @@ export default function create(store) {
         return `${pageType || pageName}`;
       },
     },
+    pageUrl: {
+      get() {
+        return `https://${document.location.hostname}${document.location.pathname}`;
+      },
+    },
 
     countryId: {
       get() {
@@ -115,13 +164,23 @@ export default function create(store) {
       },
     },
 
-    pageSubSection: {
+    pageSubSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageSubSection
           ? clickActionAnalyticsData.pageSubSection
           : pageData.pageSubSection;
+      },
+    },
+
+    pageTertiarySection: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageTertiarySection
+          ? clickActionAnalyticsData.pageTertiarySection
+          : pageData.pageTertiarySection;
       },
     },
 
@@ -222,11 +281,17 @@ export default function create(store) {
     },
     products: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], []);
+        const { AnalyticsDataKey, pageData } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+
+        const pageProducts = clickActionAnalyticsData.products
+          ? clickActionAnalyticsData.products
+          : pageData.products;
+
+        return pageProducts || [];
       },
     },
+
     currentState: {
       get() {
         return store.getState();

@@ -51,7 +51,7 @@ const PickupStoreDisplay = props => {
   return (
     <PickupStoreDetails>
       <PickupStoreIcon>
-        <Image source={pickupIcon} height="25px" width="19px" />
+        <Image source={pickupIcon} alt="" height="25px" width="19px" />
       </PickupStoreIcon>
       <View>
         <BodyCopy

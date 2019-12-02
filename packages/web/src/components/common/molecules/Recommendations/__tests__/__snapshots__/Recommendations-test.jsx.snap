@@ -73,7 +73,6 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
       </Styled(Col)>
     </Styled(Row)>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -174,7 +173,6 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       />
     </div>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -251,7 +249,6 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -352,6 +349,5 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
       />
     </div>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;

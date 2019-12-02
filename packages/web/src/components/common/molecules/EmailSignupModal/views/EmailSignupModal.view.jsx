@@ -22,6 +22,7 @@ export const DynamicForm = dynamic({
 class EmailSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription } = this.props;
+
     if (
       subscription.success !== oldSubscription.success &&
       subscription.success &&
@@ -84,6 +85,7 @@ EmailSignupModal.propTypes = {
   reset: PropTypes.func,
   subscription: PropTypes.shape({}),
   isModalOpen: PropTypes.bool,
+  trackSubscriptionSuccess: PropTypes.func,
 };
 
 EmailSignupModal.defaultProps = {
@@ -92,6 +94,7 @@ EmailSignupModal.defaultProps = {
   className: '',
   subscription: {},
   isModalOpen: false,
+  trackSubscriptionSuccess: () => {},
 };
 
 export default withStyles(EmailSignupModal, styles);

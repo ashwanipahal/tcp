@@ -3,7 +3,7 @@
 
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush, getBrand, getAPIConfig, getSiteId } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -31,6 +31,7 @@ import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -48,11 +49,28 @@ class ProductsGridItem extends React.PureComponent {
       };
     }
     const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
+    const {
+      item: {
+        productInfo: { pdpUrl },
+      },
+    } = props;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      props.item && props.item.itemInfo
+        ? props.item.itemInfo.isTCP
+        : currentSiteBrand.toUpperCase() === 'TCP';
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    const isProductBrandOfSameSiteBrand =
+      currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
       selectedColorProductId: colorProductId,
       currentImageIndex: 0,
-      pdpUrl: props.item.productInfo.pdpUrl,
+      pdpUrl: isProductBrandOfSameSiteBrand
+        ? props.item.productInfo.pdpUrl
+        : `${crossDomain}/${getSiteId()}${pdpUrl}`,
       isAltImgRequested: false,
       isMoveItemOpen: false,
       generalProductId: '',
@@ -306,11 +324,31 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick } = this.props;
+    const { onQuickViewOpenClick, item, addToBagEcom, isFavoriteView } = this.props;
     const { selectedColorProductId } = this.state;
-    onQuickViewOpenClick({
-      colorProductId: selectedColorProductId,
-    });
+    if (isFavoriteView) {
+      const {
+        skuInfo: { skuId, size },
+        itemInfo: { isTCP },
+      } = item;
+      const orderInfo = {
+        itemBrand: isTCP ? 'TCP' : 'GYM',
+      };
+      if (skuId && size) {
+        let cartItemInfo = getCartItemInfo(item, {});
+        cartItemInfo = { ...cartItemInfo };
+        if (addToBagEcom) addToBagEcom(cartItemInfo);
+      } else {
+        onQuickViewOpenClick({
+          colorProductId: selectedColorProductId,
+          orderInfo,
+        });
+      }
+    } else {
+      onQuickViewOpenClick({
+        colorProductId: selectedColorProductId,
+      });
+    }
   };
 
   handleViewBundleClick = () => {
@@ -545,6 +583,7 @@ class ProductsGridItem extends React.PureComponent {
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
+      item,
     } = this.props;
 
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -604,7 +643,6 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
-
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -646,7 +684,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels },
+            { onQuickViewOpenClick, isFavoriteView, labels, item },
             selectedColorProductId,
             itemNotAvailable
           )}
