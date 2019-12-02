@@ -12,6 +12,11 @@ describe('AddedToBagActions native component', () => {
       modalInfo: {
         showModal: true,
       },
+      navigation: {
+        state: {
+          routeName: 'BagPage',
+        },
+      },
     };
     const component = shallow(<AddedToBagActions {...props} />);
     expect(component).toMatchSnapshot();
@@ -27,6 +32,11 @@ describe('AddedToBagActions native component', () => {
       },
       isNoNEmptyBag: true,
       fromAddedToBagModal: true,
+      navigation: {
+        state: {
+          routeName: 'BagPage',
+        },
+      },
     };
     const component = shallow(<AddedToBagActions {...props} />);
     expect(component).toMatchSnapshot();
@@ -44,7 +54,11 @@ describe('AddedToBagActions native component', () => {
       handleCartCheckout: jest.fn(),
       resetTimerStatus: jest.fn(),
       isEditingItem: false,
-      navigation: jest.fn(),
+      navigation: {
+        state: {
+          routeName: 'BagPage',
+        },
+      },
       closeModal: jest.fn(),
     };
     const component = shallow(<AddedToBagActions {...props} />);

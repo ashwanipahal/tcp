@@ -10,6 +10,15 @@ export const checkout = {
   coupon_success:
     'pageName, Server, prop2, prop4, prop5, prop6, prop27, eVar1, eVar6, eVar7, eVar10, eVar13, eVar14, eVar28, eVar29, eVar32, eVar65, eVar74, eVar86, eVar93, eVar98, currencyCode, events, products',
   coupon_fails: 'pageName, prop27, prop28, eVar10, eVar13, eVar32, eVar93, events, products',
+  checkout_button:
+    'pageName, prop2, prop4, prop5, prop6, prop27, eVar1, eVar7, eVar10, eVar13, eVar28, eVar29, eVar32, eVar65, eVar74, eVar86, eVar93, eVar98, events, products',
+  edit_cart:
+    'pageName, prop2, prop4, prop5, prop6, prop27, eVar1, eVar7, eVar10, eVar13, eVar28, eVar29, eVar32, eVar65, eVar74, eVar86, eVar93, eVar98, events, products, currencyCode',
+  save_for_later:
+    'pageName, prop27, eVar10, eVar13, eVar32, eVar93, events, products, currencyCode',
+  move_to_bag: 'pageName, prop27, eVar10, eVar13, eVar32, eVar93, events, currencyCode, products',
+  apply_gift_card:
+    'pageName,prop2, prop4, prop5, prop6, prop27, eVar1, eVar7, eVar10, eVar13, eVar28, eVar29, eVar32, eVar65, eVar74, eVar86, eVar93, eVar98, currencyCode, events, products',
 };
 
 export default checkout;

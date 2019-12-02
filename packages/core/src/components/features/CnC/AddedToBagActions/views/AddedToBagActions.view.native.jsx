@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ButtonWrapperAddedToBag,
@@ -157,6 +159,20 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return this.isAnyOneEnabled(isVenmoFlag, isPayPalEnabled) && !showVenmoPayPalButton;
   };
 
+  getPageData = () => {
+    const { navigation } = this.props;
+    const { state } = navigation;
+    const page = state.routeName === 'BagPage' ? 'shopping bag' : 'browse';
+    return {
+      pageName: page,
+      pageSection: page,
+      pageSubSection: page,
+      pageType: page,
+      pageShortName: page,
+      pageSubSubSection: page,
+    };
+  };
+
   getRowOneButtons = () => {
     const {
       labels,
@@ -171,12 +187,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isPayPalEnabled,
       resetTimerStatus,
       isPayPalWebViewEnable,
+      cartOrderItems,
     } = this.props;
 
     const { venmoEnable } = this.state;
     const isVenmoFlag = isVenmoEnabled && venmoEnable;
     const showVenmoPayPalButton = this.showVenmoPaypalButton();
-
+    const pageData = this.getPageData();
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     if (isNoNEmptyBag || fromAddedToBagModal) {
       return (
         <ButtonViewWrapper
@@ -198,7 +216,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
               </PaypalPaymentsButtonWrapper>
             )}
             {!isPayPalWebViewEnable && (
-              <CheckoutButton
+              <ClickTracker
+                name="checkout_button"
+                module="checkout"
+                clickData={{ customEvents: ['event8'], products: productsData }}
+                pageData={pageData}
+                as={CheckoutButton}
                 isHalf={this.isCheckoutButtonHalf(
                   isVenmoFlag,
                   isPayPalEnabled,
@@ -223,7 +246,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                   fontSize="fs13"
                   text={labels.checkout && labels.checkout.toUpperCase()}
                 />
-              </CheckoutButton>
+              </ClickTracker>
             )}
           </ButtonWrapper>
         </ButtonViewWrapper>
@@ -290,6 +313,7 @@ AddedToBagActions.propTypes = {
   fromAddedToBagModal: PropTypes.bool,
   payPalTop: PropTypes.number,
   hideHeader: PropTypes.func,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 AddedToBagActions.defaultProps = {

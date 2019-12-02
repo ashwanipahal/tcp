@@ -149,6 +149,7 @@ export class CartItemTileContainer extends React.Component {
       setClickAnalyticsData,
       closeMiniBag,
       isLoggedIn,
+      cartOrderItems,
     } = this.props;
     const { showLoginModal } = this.state;
     return (
@@ -206,6 +207,7 @@ export class CartItemTileContainer extends React.Component {
         isLoggedIn={isLoggedIn}
         showLoginModal={showLoginModal}
         toggleLoginModal={this.toggleLoginModal}
+        cartOrderItems={cartOrderItems}
       />
     );
   }
@@ -344,6 +346,7 @@ export function mapStateToProps(state) {
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
     isMiniBagOpen: getIsMiniBagOpen(state),
     isLoggedIn: getUserLoggedInState(state),
+    cartOrderItems: BAGPAGE_SELECTORS.getOrderItems(state),
   };
 }
 
@@ -401,6 +404,7 @@ CartItemTileContainer.propTypes = {
   isMiniBagOpen: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 CartItemTileContainer.defaultProps = {

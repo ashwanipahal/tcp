@@ -10,6 +10,7 @@ import {
   GiftBoxText,
 } from '../styles/GiftCardTile.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+import ClickTracker from '../../../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 export default class GiftCardTile extends React.PureComponent {
   static propTypes = {
@@ -56,7 +57,7 @@ export default class GiftCardTile extends React.PureComponent {
       labels,
       orderBalanceTotal,
     } = this.props;
-
+    const page = 'checkout';
     if (isGiftCardApplied) {
       return (
         <CustomButton
@@ -71,7 +72,8 @@ export default class GiftCardTile extends React.PureComponent {
     }
 
     return (
-      <CustomButton
+      <ClickTracker
+        as={CustomButton}
         fill="DARK"
         type="submit"
         data-locator=""
@@ -79,6 +81,17 @@ export default class GiftCardTile extends React.PureComponent {
         disableButton={!orderBalanceTotal}
         onPress={() => {
           applyExistingGiftCardToOrder(cardData);
+        }}
+        name="apply_gift_card"
+        module="checkout"
+        clickData={{ customEvents: ['event65'] }}
+        pageData={{
+          pageName: 'checkout:payment',
+          pageSection: page,
+          pageSubSection: page,
+          pageType: page,
+          pageShortName: page,
+          pageSubSubSection: page,
         }}
       />
     );
