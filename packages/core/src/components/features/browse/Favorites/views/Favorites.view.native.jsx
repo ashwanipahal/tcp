@@ -161,9 +161,11 @@ class FavoritesView extends React.PureComponent {
   };
 
   handleShareListByEmail = () => {
+    const { labels } = this.props;
     this.currentPopupName = SHARE_LIST_BY_EMAIL;
     this.setState({
       isOpenModal: true,
+      selectedShareOption: labels.lbl_fav_email,
     });
   };
 
@@ -186,8 +188,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   onCloseModal = () => {
+    const { labels } = this.props;
+    const { selectedShareOption } = this.state;
+    const isSelectedShareOptionIsNotDefault = selectedShareOption !== labels.lbl_fav_share;
     this.setState({
       isOpenModal: false,
+      ...(isSelectedShareOptionIsNotDefault && {
+        selectedShareOption: labels.lbl_fav_share,
+      }),
     });
   };
 
@@ -345,6 +353,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   shareLinkOnFacebook = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_share,
+    });
     const shareLinkContent = {
       contentType: 'link',
       contentUrl: this.getSharableLink(),
@@ -358,6 +370,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   onShareLink = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_copyLink,
+    });
     Share.share({
       message: this.getSharableLink(),
     });
