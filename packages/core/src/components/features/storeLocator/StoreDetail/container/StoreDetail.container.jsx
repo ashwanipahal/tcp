@@ -51,7 +51,7 @@ export class StoreDetailContainer extends PureComponent {
     const { getModuleX, referredContentList, trackStoreDetailPageView } = this.props;
 
     trackStoreDetailPageView({
-      customEvents: ['event80', 'event96'],
+      eventData: { customEvents: ['event80', 'event96'] },
       internalCampaignIdList: internalCampaignProductAnalyticsList(),
     });
 
@@ -106,9 +106,7 @@ export class StoreDetailContainer extends PureComponent {
       this.mapHandler(store);
     } else {
       window.open(
-        `${
-          googleMapConstants.OPEN_STORE_DIR_WEB
-        }${addressLine1},%20${city},%20${state},%20${zipCode}`,
+        `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
         '_blank',
         'noopener'
       );
@@ -275,7 +273,4 @@ export const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StoreDetailContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(StoreDetailContainer);

@@ -64,7 +64,7 @@ class StoreAddressTile extends PureComponent {
           </Button>
         </div>
         <div className="tile-footer__fullwidth">
-          {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
+          {variation === detailsType && !isFavorite && showSetFavorite && this.getFavLink()}
         </div>
       </Fragment>
     );
@@ -114,17 +114,17 @@ class StoreAddressTile extends PureComponent {
         <div>
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={{ customEvents: ['event67'] }}
               onClick={() => setFavoriteStore(store)}
               buttonVariation="fixed-width"
               type="button"
               data-locator={locatorSetFavStore}
               aria-label={`${storeName} ${getLabelValue(labels, 'lbl_storelanding_setfavStore')}`}
             >
-              <ClickTracker clickData={{ customEvents: ['event67'] }}>
-                {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
-              </ClickTracker>
-            </Button>
+              {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+            </ClickTracker>
           )}
         </div>
       </Fragment>
