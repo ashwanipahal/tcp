@@ -121,6 +121,7 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      isFavoriteRecommendation,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -132,14 +133,16 @@ class Recommendations extends Component {
       products &&
       products.length > 0 && (
         <React.Fragment>
-          <Heading
-            variant="h4"
-            className={`recommendations-header ${priceOnlyClass}`}
-            textAlign={headerAlignment || 'center'}
-            dataLocator={params.dataLocator}
-          >
-            {headerLabel}
-          </Heading>
+          {!isFavoriteRecommendation && (
+            <Heading
+              variant="h4"
+              className={`recommendations-header ${priceOnlyClass}`}
+              textAlign={headerAlignment || 'center'}
+              dataLocator={params.dataLocator}
+            >
+              {headerLabel}
+            </Heading>
+          )}
           <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
@@ -262,6 +265,7 @@ Recommendations.propTypes = {
   reduxKey: PropTypes.string.isRequired,
   ariaPrevious: PropTypes.string,
   ariaNext: PropTypes.string,
+  isFavoriteRecommendation: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
@@ -283,6 +287,7 @@ Recommendations.defaultProps = {
   headerAlignment: '',
   ariaPrevious: '',
   ariaNext: '',
+  isFavoriteRecommendation: false,
 };
 
 export { Recommendations as RecommendationsVanilla };
