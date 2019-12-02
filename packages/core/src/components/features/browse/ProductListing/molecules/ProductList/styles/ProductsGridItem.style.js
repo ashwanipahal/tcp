@@ -219,7 +219,7 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
-      margin-bottom: 4px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
