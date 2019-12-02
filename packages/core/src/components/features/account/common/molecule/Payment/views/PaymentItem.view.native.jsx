@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
