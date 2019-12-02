@@ -14,7 +14,6 @@ import {
   getProductUrlForDAM,
   configureInternalNavigationFromCMSUrl,
 } from '../../../../../utils';
-import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
 
 const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
@@ -128,12 +127,11 @@ class ModuleG extends React.PureComponent {
             >
               <span className="shopall_footerlink">{currentSingleCTAButton.title}</span>
               <span className="right_chevron_arrow">
-                <Image src={getIconPath('smallright')} />
+                <Image src={getIconPath('smallright')} alt="" />
               </span>
             </Anchor>
           </Col>
         </Row>
-        <QuickViewModal />
       </>
     ) : null;
   };
@@ -305,7 +303,7 @@ class ModuleG extends React.PureComponent {
 
           <div className="focusAreaView">
             <span className="focusArea-plus">
-              {showPlusButton ? <Image src={getIconPath('plus-icon')} /> : null}
+              {showPlusButton ? <Image src={getIconPath('plus-icon')} alt="" /> : null}
             </span>
           </div>
           {/* carousel bottom */}

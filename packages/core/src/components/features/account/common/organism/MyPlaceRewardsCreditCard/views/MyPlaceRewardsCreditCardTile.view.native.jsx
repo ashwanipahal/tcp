@@ -46,6 +46,7 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
             <CardDetailContainer spacingStyles="margin-top-XS">
               <Image
                 source={getIconCard(cardIconMapping[myPlaceRewardCard.ccBrand])}
+                alt=""
                 width={50}
                 height={30}
               />

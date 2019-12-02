@@ -30,13 +30,13 @@ const getAddressHeader = (label, text) => {
   return (
     <AddressHeaderWrapper>
       <BodyCopy
-        mobilefontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs14"
         textAlign="center"
         style={italicStyle}
         text={`${label}`}
       />
-      <BodyCopy mobilefontFamily="secondary" fontSize="fs14" textAlign="center" text={`${text}`} />
+      <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="center" text={`${text}`} />
     </AddressHeaderWrapper>
   );
 };
@@ -44,21 +44,21 @@ const getAddress = (address, labels, todayOpenRange, tomorrowOpenRange, phoneNum
   return address ? (
     <AddressPopUpWrapper>
       <BodyCopy
-        mobilefontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs14"
         textAlign="center"
         text={`${address.addressLine1}`}
       />
-      {address.addressLine2 && (
+      {!!address.addressLine2 && (
         <BodyCopy
-          mobilefontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           textAlign="center"
           text={`${address.addressLine2}`}
         />
       )}
       <BodyCopy
-        mobilefontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs14"
         textAlign="center"
         text={`${address.city}, ${address.state} ${address.zipCode}`}
@@ -92,7 +92,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
         <>
           <BodyCopyWithSpacing
             fontSize="fs18"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             textAlign="center"
             fontWeight="semibold"
             text={`${labels.shippingTo} `}
@@ -111,7 +111,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
       locationStr = (
         <BodyCopy
           fontSize="fs18"
-          mobilefontFamily="secondary"
+          fontFamily="secondary"
           fontWeight="semibold"
           textAlign="center"
           text={labels.pickupAt}
@@ -149,7 +149,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
             <LocationContainer>
               <BodyCopy
                 fontSize="fs22"
-                mobilefontFamily="secondary"
+                fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="center"
                 text={locationStr}
@@ -163,7 +163,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
           {storeName && (
             <IconContainer>
               <ReactTooltip withOverlay={false} popover={infoMsg} height={150}>
-                <Image source={IconInfoLogo} height={20} width={20} />
+                <Image source={IconInfoLogo} alt="" height={20} width={20} />
               </ReactTooltip>
             </IconContainer>
           )}

@@ -11,17 +11,17 @@ import {
 
 const colorPalette = createThemeColorPalette();
 
-const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
+const applyBonusPoints = (getAvailableBonusDaysData, orderDetails, bonusDayAvailableToday) => {
   const dto = {
     bonusDaySelected: bonusDayAvailableToday ? 0 : 1,
     orderId: orderDetails,
   };
-  return getBonusDaysData(dto);
+  return getAvailableBonusDaysData(dto);
 };
 
 const BonusPointsAvailability = ({
   bonusPoints,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
   isPlaceRewardsPage,
@@ -42,7 +42,11 @@ const BonusPointsAvailability = ({
               ? {}
               : {
                   onPress: () =>
-                    applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday),
+                    applyBonusPoints(
+                      getAvailableBonusDaysData,
+                      orderDetails,
+                      bonusDayAvailableToday
+                    ),
                 };
           return (
             <Component {...componentProps} key={item.id} index={index}>
@@ -64,7 +68,7 @@ const BonusPointsAvailability = ({
 
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
-  getBonusDaysData: PropTypes.func,
+  getAvailableBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   bonusDayAvailableToday: PropTypes.bool,
   isPlaceRewardsPage: PropTypes.bool,
@@ -72,7 +76,7 @@ BonusPointsAvailability.propTypes = {
 
 BonusPointsAvailability.defaultProps = {
   bonusPoints: [{ disabled: false, buttonText: '' }],
-  getBonusDaysData: () => {},
+  getAvailableBonusDaysData: () => {},
   orderDetails: {},
   bonusDayAvailableToday: false,
   isPlaceRewardsPage: false,

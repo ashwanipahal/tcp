@@ -44,6 +44,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
                   width="30"
                   height="30"
                   src={getIconPath('sms-enabled')}
+                  alt=""
                 />
               ) : (
                 <Image
@@ -51,6 +52,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
                   width="30"
                   height="30"
                   src={getIconPath('sms-disabled')}
+                  alt=""
                 />
               )}
               <BodyCopy
@@ -75,6 +77,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
                   width="30"
                   height="30"
                   src={getIconPath('push-enabled')}
+                  alt=""
                 />
               ) : (
                 <Image
@@ -82,6 +85,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
                   width="30"
                   height="30"
                   src={getIconPath('push-disabled')}
+                  alt=""
                 />
               )}
               <BodyCopy

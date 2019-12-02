@@ -127,11 +127,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
 
         <ImageContainer>
-          <Image source={PLCC_LOOKUP_2_POINTS} width="100%" height="60px" />
+          <Image source={PLCC_LOOKUP_2_POINTS} alt="" width="100%" height="60px" />
         </ImageContainer>
 
         <ImageContainer>
-          <Image source={BenefitImage} width="100%" height="600px" />
+          <Image source={BenefitImage} alt="" width="100%" height="600px" />
         </ImageContainer>
 
         <BottomContainer>
