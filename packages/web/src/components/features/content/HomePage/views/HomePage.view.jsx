@@ -9,20 +9,15 @@ import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
-import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import { getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
-import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
+    const { openCountrySelectorModal, router, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
-    }
-
-    if (pageName === 'homepage') {
-      this.subscriptionPopUpOnPageLoad();
     }
     const cid = getQueryParamsFromUrl(router.asPath, 'cid');
     const icid = getQueryParamsFromUrl(router.asPath, 'icid');
@@ -33,50 +28,6 @@ class HomePageWrapper extends React.Component {
       setClickAnalyticsData({ internalCampaignId: icid[0], customEvents: ['event18', 'event80'] });
     }
   }
-
-  subscriptionPopUpOnPageLoad = () => {
-    const { openEmailSignUpModal, openSmsSignUpModal } = this.props;
-    const {
-      COOKIE_EMAIL_PERSISTENT,
-      COOKIE_EMAIL_SESSION,
-      COOKIE_SMS_PERSISTENT,
-      COOKIE_MAX_AGE,
-      TCP_SUB_DOMAIN,
-      GYMBOREE_SUB_DOMAIN,
-    } = FOOTER_CONSTANTS;
-    /**
-     * @function domain check for the domain setting in cookie
-     * using @function isTcp from utils
-     */
-    const domain = isTCP() ? TCP_SUB_DOMAIN : GYMBOREE_SUB_DOMAIN;
-
-    /**
-     * @function checkCookieExist function to check the existence
-     * of cookie in the browser by returning @BOOLEAN
-     */
-    const checkCookieExist = name => document.cookie.indexOf(name) > -1;
-
-    /**
-     * condition checks for the existence of @cookie COOKIE_EMAIL_PERSISTENT
-     * if false, then creates new cookie @cookie COOKIE_EMAIL_PERSISTENT and
-     * COOKIE_EMAIL_SESSION and invoke @function openEmailSignUpModal
-     * else checks for existence of @cookie COOKIE_EMAIL_PERSISTENT and non-existence
-     * of @cookie COOKIE_SMS_PERSISTENT
-     * if the above condition evaluates true then invoke
-     * @function openSmsSignUpModal and set @cookie COOKIE_SMS_PERSISTENT
-     */
-    if (!checkCookieExist(COOKIE_EMAIL_PERSISTENT)) {
-      document.cookie = `${COOKIE_EMAIL_PERSISTENT}=true; domain=${domain}; max-age=${COOKIE_MAX_AGE}`;
-      document.cookie = `${COOKIE_EMAIL_SESSION}=true; domain=${domain};`;
-      openEmailSignUpModal();
-    } else if (
-      checkCookieExist(COOKIE_EMAIL_PERSISTENT) &&
-      !checkCookieExist(COOKIE_SMS_PERSISTENT)
-    ) {
-      document.cookie = `${COOKIE_SMS_PERSISTENT}=true; domain=${domain}; max-age=${COOKIE_MAX_AGE}`;
-      openSmsSignUpModal();
-    }
-  };
 
   render() {
     const { children } = this.props;
@@ -111,22 +62,11 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
-    const {
-      slots,
-      openCountrySelectorModal,
-      openEmailSignUpModal,
-      openSmsSignUpModal,
-      pageName,
-      setCampaignId,
-      seoData,
-    } = compProps;
+    const { slots, openCountrySelectorModal, setCampaignId, seoData } = compProps;
 
     return (
       <HomePageWithRouter
         openCountrySelectorModal={openCountrySelectorModal}
-        openEmailSignUpModal={openEmailSignUpModal}
-        openSmsSignUpModal={openSmsSignUpModal}
-        pageName={pageName}
         setCampaignId={setCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
@@ -146,17 +86,10 @@ HomePageView.defaultProps = {
 };
 
 HomePageWrapper.propTypes = {
-  pageName: PropTypes.string,
   children: PropTypes.element.isRequired,
   openCountrySelectorModal: PropTypes.func.isRequired,
-  openEmailSignUpModal: PropTypes.func.isRequired,
-  openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
-};
-
-HomePageWrapper.defaultProps = {
-  pageName: '',
 };
 
 HomePageView.propTypes = {

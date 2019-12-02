@@ -9,7 +9,7 @@ export default css`
     position: relative;
   }
   .dropdown-icon {
-    background: url(${getIconPath('plus-icon')});
+    background: url(${getIconPath('plus-icon')}) round;
     width: 10px;
     height: 10px;
     display: inline-block;

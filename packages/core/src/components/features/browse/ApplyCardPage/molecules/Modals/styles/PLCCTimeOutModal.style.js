@@ -6,11 +6,9 @@ export const modalStyles = css`
     margin-right: 5px;
   }
 
-  .TCPModal__InnerContent {
+  .plccModal .TCPModal__InnerContent {
     text-align: center;
-    && {
-      padding: 24px 14px;
-    }
+    padding: 24px 14px;
     > h2 {
       ::after {
         content: '§';
