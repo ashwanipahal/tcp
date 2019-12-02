@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
@@ -11,6 +12,7 @@ import {
   BorderWrapper,
 } from '../styles/ThankYouComponent.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+
 /**
  * @function ThankYouComponent
  * @description wrapper for thank you component.
@@ -41,7 +43,6 @@ const ThankYouComponent = ({
         labels={labels}
       />
       {/* Shipping only and mixed orders are handled from one component */}
-
       {fullfillmentCenterData &&
         fullfillmentCenterData.map((center, index) => (
           <ConfirmationFulfillmentCenterItemDisplay
@@ -52,7 +53,6 @@ const ThankYouComponent = ({
             labels={labels}
           />
         ))}
-
       {isGuest && (
         <CashBannerWrapper>
           <BodyCopyWithSpacing
@@ -65,7 +65,6 @@ const ThankYouComponent = ({
           />
         </CashBannerWrapper>
       )}
-
       {orderNumbersByFullfillmentCenter && (
         <>
           <BorderWrapper />
@@ -99,15 +98,17 @@ const ThankYouComponent = ({
           </RichTextContainer>
         </Container>
       )}
-      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
-        <BodyCopyWithSpacing
-          spacingStyles="margin-top-XL margin-left-XS"
-          fontSize="fs16"
-          mobilefontFamily="primary"
-          text={labels.venmoHeading}
-        />
+      {isVenmoPaymentInProgress && (
+        <View>
+          <BodyCopyWithSpacing
+            spacingStyles="margin-top-XL margin-left-XS"
+            fontSize="fs16"
+            mobilefontFamily="primary"
+            text={labels.venmoHeading}
+          />
+        </View>
       )}
-      {isVenmoPaymentInProgress && venmoOrderConfirmationContent && (
+      {isVenmoPaymentInProgress && (
         <Container>
           <RichTextContainer>
             <RichText source={{ html: venmoOrderConfirmationContent }} />
@@ -118,6 +119,7 @@ const ThankYouComponent = ({
   );
 };
 ThankYouComponent.propTypes = {
+  isVenmoPaymentInProgress: PropTypes.bool.isRequired,
   /** Flag indicates whether the user is a guest */
   isGuest: PropTypes.bool,
 

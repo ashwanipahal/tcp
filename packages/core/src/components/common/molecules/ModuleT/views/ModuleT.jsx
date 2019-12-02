@@ -49,7 +49,7 @@ class ModuleT extends React.PureComponent {
   };
 
   render() {
-    const { className, ctaItems, ctaType, mediaLinkedList } = this.props;
+    const { className, ctaItems, ctaType, mediaLinkedList, moduleClassName } = this.props;
     const { ctaTypes, IMG_DATA } = config;
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1, video: promoVideo1 } =
@@ -58,7 +58,7 @@ class ModuleT extends React.PureComponent {
       promoMediaLinkedList[1] || {};
     const buttonListCtaType = ctaTypes[ctaType];
     return (
-      <Grid className={`${className} moduleT`}>
+      <Grid className={`${className} ${moduleClassName} moduleT`}>
         <div className="smallOnlyView">
           {this.getHeader()}
           {this.getPromoBanner()}
@@ -155,6 +155,7 @@ ModuleT.defaultProps = {
   className: '',
   promoBanner: [],
   mediaLinkedList: [],
+  moduleClassName: '',
 };
 
 ModuleT.propTypes = {
@@ -182,6 +183,7 @@ ModuleT.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(ModuleT, moduleTStyle);

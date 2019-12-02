@@ -136,6 +136,11 @@ export default function create(store) {
         return `${pageType || pageName}`;
       },
     },
+    pageUrl: {
+      get() {
+        return `https://${document.location.hostname}${document.location.pathname}`;
+      },
+    },
 
     countryId: {
       get() {

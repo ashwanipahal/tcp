@@ -25,9 +25,10 @@ type Props = {
   dataLocator?: string,
   isRequired?: boolean,
   input: any,
+  enableSuccessCheck?: boolean,
 };
 
-const TextArea = ({
+export const TextArea = ({
   className,
   id,
   ariaLabel,
@@ -36,7 +37,6 @@ const TextArea = ({
   inputRef,
   meta,
   dataLocator,
-  showSuccessCheck,
   enableSuccessCheck,
   isRequired,
   errorDataLocator,
@@ -96,7 +96,7 @@ TextArea.defaultProps = {
   dataLocator: '',
   meta: {},
   isRequired: false,
+  enableSuccessCheck: false,
 };
 
 export default withStyles(TextArea, StyledTextArea);
-export { TextArea as TextAreaVanilla };

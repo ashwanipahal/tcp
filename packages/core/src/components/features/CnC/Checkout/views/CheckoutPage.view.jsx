@@ -170,6 +170,8 @@ class CheckoutPage extends React.PureComponent {
       pickupDidMount,
       cartLoading,
       emailSignUpFlags,
+      bagLoading,
+      titleLabel,
     } = this.props;
     const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
     const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
@@ -303,6 +305,8 @@ class CheckoutPage extends React.PureComponent {
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
             cartLoading={cartLoading}
+            bagLoading={bagLoading}
+            titleLabel={titleLabel}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && isRendorConfirmation && (

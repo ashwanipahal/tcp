@@ -3,10 +3,10 @@ import { DamImage } from '../../../../../../common/atoms';
 
 const getImageStyle = props => {
   const { selected } = props;
-  const size = 13.5;
+  const size = 14;
   const radius = 7.5;
-  const width = selected ? size + 1 : size;
-  const height = selected ? size + 1 : size;
+  const width = selected ? size - 3 : size;
+  const height = selected ? size - 3 : size;
   const borderRadius = selected ? radius + 1 : radius;
   return `
     width: ${width};

@@ -201,13 +201,20 @@ describe('Venmo Checkout Selectors', () => {
           venmoData,
         },
       }),
+      User: fromJS({
+        personalData: fromJS({
+          contextAttributes: {
+            venmoUserId: '@test-user',
+          },
+        }),
+      }),
     };
     getVenmoData.mockImplementation(() => {
       return {
         venmoData,
       };
     });
-    expect(getVenmoUserName(state)).toBeUndefined();
+    expect(getVenmoUserName(state)).toEqual('@test-user');
   });
   it('#isVenmoNonceActive', () => {
     const { isVenmoNonceActive } = CHECKOUT_SELECTORS;
@@ -220,5 +227,37 @@ describe('Venmo Checkout Selectors', () => {
     };
 
     expect(isVenmoNonceActive(state)).toBeFalsy();
+  });
+  it('#isVenmoOrderPayment', () => {
+    const { isVenmoOrderPayment } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+      Confirmation: fromJS({
+        orderConfirmation: {
+          paymentsList: [{ paymentMethod: 'venmo' }],
+        },
+      }),
+    };
+    expect(isVenmoOrderPayment(state)).not.toBeUndefined();
+  });
+  it('#getVenmoOrderUserId', () => {
+    const { getVenmoOrderUserId } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+      Confirmation: fromJS({
+        orderConfirmation: {
+          paymentsList: [{ paymentMethod: 'venmo', venmoUserId: 'test-user' }],
+        },
+      }),
+    };
+    expect(getVenmoOrderUserId(state)).toEqual('');
   });
 });

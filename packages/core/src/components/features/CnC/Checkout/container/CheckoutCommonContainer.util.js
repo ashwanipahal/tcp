@@ -37,6 +37,7 @@ import selectors, {
   getPageData,
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import BillingSectionSelectors from '../organisms/ReviewPage/organisms/BillingSection/container/BillingSection.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import {
   getUserPhoneNumber,
@@ -62,7 +63,6 @@ const {
   getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
-  getBillingLabels,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -77,9 +77,7 @@ const {
   getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
-  getBillingValues,
   getShippingPhoneAndEmail,
-  getCreditFieldLabels,
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
   getShippingAddressList,
@@ -275,7 +273,6 @@ export const mapStateToProps = state => {
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
       isFetching: getCardListFetchingState(state),
-      bagLoading: BagPageSelector.isBagLoading(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
@@ -300,6 +297,8 @@ export const mapStateToProps = state => {
     paymentMethodId: CreditCardSelector.getPaymentMethodId(state),
     orderSubTotal: BagPageSelector.getOrderSubTotal(state),
     billingAddress: selectors.getBillingAddressFields(state),
+    titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
+    initShippingPage: selectors.getShippingInitialSectionValues(state),
   };
 };
 
