@@ -114,16 +114,16 @@ class StoreAddressTile extends PureComponent {
         <div>
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <ClickTracker
-              as={Button}
-              clickData={{ customEvents: ['event67'] }}
-              onClick={() => setFavoriteStore(store)}
-              buttonVariation="fixed-width"
-              type="button"
-              data-locator={locatorSetFavStore}
-              aria-label={`${storeName} ${getLabelValue(labels, 'lbl_storelanding_setfavStore')}`}
-            >
-              {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+            <ClickTracker clickData={{ customEvents: ['event67'] }}>
+              <Button
+                onClick={() => setFavoriteStore(store)}
+                buttonVariation="fixed-width"
+                type="button"
+                data-locator={locatorSetFavStore}
+                aria-label={`${storeName} ${getLabelValue(labels, 'lbl_storelanding_setfavStore')}`}
+              >
+                {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
+              </Button>
             </ClickTracker>
           )}
         </div>
