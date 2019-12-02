@@ -61,6 +61,7 @@ const ModuleX = ({ html }) => {
 
   // render leftover tags to dom (h1, p, div, etc.)
   if (newDiv.innerHTML.length > 1) {
+    // eslint-disable-next-line
     return <div dangerouslySetInnerHTML={{ __html: newDiv.innerHTML }} />;
   }
   return null;

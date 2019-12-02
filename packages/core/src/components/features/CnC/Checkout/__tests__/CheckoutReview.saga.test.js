@@ -1,5 +1,5 @@
 import { call, select, put } from 'redux-saga/effects';
-import moment from 'moment';
+import { format } from 'date-fns';
 import CheckoutReview, {
   submitOrderProcessing,
   loadPersonalizedCoupons,
@@ -210,7 +210,7 @@ describe('loadPersonalizedCoupons saga', () => {
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
             endDate: 'Oct 17th, 2020',
             isPastStartDate: true,
-            startDate: moment(new Date()).format('MMM Do, YYYY'),
+            startDate: format(new Date(), 'MMM do, yyyy'),
             categoryType: 'Marketing_Offers',
           },
         ])

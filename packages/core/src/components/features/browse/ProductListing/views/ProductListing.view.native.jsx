@@ -259,6 +259,7 @@ ProductListView.propTypes = {
   labelsFavorite: PropTypes.shape({}),
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
   isPlcc: PropTypes.bool,
   filtersLength: PropTypes.number,
 };
@@ -289,6 +290,7 @@ ProductListView.defaultProps = {
   labelsFavorite: {},
   isBothTcpAndGymProductAreAvailable: false,
   renderMoveToList: () => {},
+  addToBagEcom: () => {},
   isPlcc: false,
   filtersLength: 0,
 };

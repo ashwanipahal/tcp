@@ -5,6 +5,7 @@ const ProductBasicInfoStyle = css`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0;
   }
   .fav-icon-wrapper {
     display: grid;

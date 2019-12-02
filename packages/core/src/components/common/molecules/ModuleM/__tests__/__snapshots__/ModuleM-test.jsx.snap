@@ -2,7 +2,7 @@
 
 exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
 <Styled(Grid)
-  className=" moduleM"
+  className="  moduleM"
 >
   <Styled(Row)
     className="topview"
@@ -624,7 +624,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
 
 exports[`ModuleM component ModuleM component renders correctly with props 1`] = `
 <Styled(Grid)
-  className=" moduleM"
+  className="  moduleM"
 >
   <Styled(Row)
     className="topview"

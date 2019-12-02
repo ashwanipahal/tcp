@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductReviews component as guest should render correctly 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      isAccordionOpen={true}
+      margin={null}
+      numberOfLines={null}
+      text="undefined (231)"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/carrot-small-up.png",
+            }
+          }
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Styled(View)>
+    <WebView
+      allowUniversalAccessFromFileURLs={true}
+      automaticallyAdjustContentInsets={false}
+      cacheEnabled={true}
+      domStorageEnabled={true}
+      javaScriptEnabled={true}
+      mixedContentMode="always"
+      onMessage={[Function]}
+      originWhitelist={
+        Array [
+          "*",
+        ]
+      }
+      scrollEnabled={true}
+      source={
+        Object {
+          "uri": "undefined?securityToken=&brand=undefined&productId=2323",
+        }
+      }
+      startInLoadingState={true}
+      thirdPartyCookiesEnabled={true}
+      useSharedProcessPool={true}
+      useWebKit={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`ProductReviews component as logged in user should render correctly 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      isAccordionOpen={true}
+      margin={null}
+      numberOfLines={null}
+      text="undefined (231)"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/carrot-small-up.png",
+            }
+          }
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Styled(View)>
+    <WebView
+      allowUniversalAccessFromFileURLs={true}
+      automaticallyAdjustContentInsets={false}
+      cacheEnabled={true}
+      domStorageEnabled={true}
+      javaScriptEnabled={true}
+      mixedContentMode="always"
+      onMessage={[Function]}
+      originWhitelist={
+        Array [
+          "*",
+        ]
+      }
+      scrollEnabled={true}
+      source={
+        Object {
+          "uri": "undefined?securityToken=undefined&brand=undefined&productId=42323",
+        }
+      }
+      startInLoadingState={true}
+      thirdPartyCookiesEnabled={true}
+      useSharedProcessPool={true}
+      useWebKit={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

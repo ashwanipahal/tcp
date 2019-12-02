@@ -39,7 +39,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -222,7 +221,6 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
