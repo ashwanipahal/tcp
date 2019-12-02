@@ -350,6 +350,21 @@ class ProductInformation extends PureComponent {
     };
   };
 
+  renderProductDetail = () => {
+    const { showOnReviewPage, productDetail } = this.props;
+    return (
+      showOnReviewPage &&
+      !!productDetail.miscInfo.badge && (
+        <BodyCopy
+          fontWeight={['semibold']}
+          fontFamily="secondary"
+          fontSize="fs12"
+          text={productDetail.miscInfo.badge}
+        />
+      )
+    );
+  };
+
   render() {
     const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
@@ -408,17 +423,18 @@ class ProductInformation extends PureComponent {
         <MainWrapper>
           {CartItemTileExtension.renderTogglingError(this.props)}
           <UnavailableView>
-            {CartItemTileExtension.renderUnavailableErrorMessage({
-              props: this.props,
-              isEcomSoldout,
-              bossDisabled,
-              isBOSSOrder,
-              bopisDisabled,
-              isBOPISOrder,
-              noBossMessage,
-              noBopisMessage,
-              availability,
-            })}
+            {showOnReviewPage &&
+              CartItemTileExtension.renderUnavailableErrorMessage({
+                props: this.props,
+                isEcomSoldout,
+                bossDisabled,
+                isBOSSOrder,
+                bopisDisabled,
+                isBOPISOrder,
+                noBossMessage,
+                noBopisMessage,
+                availability,
+              })}
           </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(
@@ -429,14 +445,7 @@ class ProductInformation extends PureComponent {
               updateAppTypeHandler
             )}
             <ProductDescription>
-              {showOnReviewPage && !!productDetail.miscInfo.badge && (
-                <BodyCopy
-                  fontWeight={['semibold']}
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  text={productDetail.miscInfo.badge}
-                />
-              )}
+              {this.renderProductDetail()}
               {CartItemTileExtension.getProductName(
                 productDetail,
                 showOnReviewPage,
