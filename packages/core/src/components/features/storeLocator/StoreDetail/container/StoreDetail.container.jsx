@@ -9,12 +9,7 @@ import {
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import {
-  routeToStoreDetails,
-  routerPush,
-  fetchStoreIdFromUrlPath,
-  isMobileApp,
-} from '../../../../../utils';
+import { routeToStoreDetails, routerPush, isMobileApp } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -105,7 +100,9 @@ export class StoreDetailContainer extends PureComponent {
       window.open(
         `${
           googleMapConstants.OPEN_STORE_DIR_WEB
-        }${addressLine1},%20${city},%20${state},%20${zipCode}`
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`,
+        '_blank',
+        'noopener'
       );
     }
   }
@@ -199,6 +196,8 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
+  storeId: PropTypes.string,
+  fetchCurrentStoreInfo: PropTypes.func,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -220,6 +219,8 @@ StoreDetailContainer.defaultProps = {
   getModuleX: () => null,
   referredContentList: [],
   getRichContent: () => null,
+  storeId: null,
+  fetchCurrentStoreInfo: () => {},
 };
 
 const mapStateToProps = state => {

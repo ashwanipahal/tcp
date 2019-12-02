@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, all, select, put } from 'redux-saga/effects';
-import moment from 'moment';
+import { format, differenceInMilliseconds } from 'date-fns';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
@@ -61,10 +61,11 @@ function extractCouponInfo(personalizedOffersResponse) {
       /* istanbul ignore else */
       if (promotion) {
         const { categoryType: catType } = promotion;
-        const proStartDate = promotion.startDate;
-        startDate = proStartDate && moment(proStartDate).format('MMM Do, YYYY');
-        isPastStartDate = proStartDate && moment().diff(proStartDate) > 0; // check user browser date to server date
-        endDate = promotion.endDate && moment(promotion.endDate).format('MMM Do, YYYY');
+        const proStartDate = new Date(promotion.startDate);
+        startDate = promotion.startDate && format(proStartDate, 'MMM do, yyyy');
+        isPastStartDate =
+          promotion.startDate && differenceInMilliseconds(new Date(), proStartDate) > 0; // check user browser date to server date
+        endDate = promotion.endDate && format(new Date(promotion.endDate), 'MMM do, yyyy');
         categoryType = catType;
         description = promotion.shortDescription;
       }

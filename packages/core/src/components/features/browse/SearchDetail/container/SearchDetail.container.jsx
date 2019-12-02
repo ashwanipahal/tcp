@@ -1,3 +1,5 @@
+/* eslint-disable */
+// Disabling eslint for temporary fix
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
@@ -49,7 +51,6 @@ import {
 } from './SearchDetail.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
-import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 
@@ -64,6 +65,7 @@ class SearchDetailContainer extends React.PureComponent {
       pageName: 'search',
     },
   };
+
   static getInitialProps = async ({ props, query, req, isServer }) => {
     const { getProducts, formValues } = props;
     let searchQuery;
@@ -415,6 +417,11 @@ SearchDetailContainer.propTypes = {
   isLoadingMore: PropTypes.bool,
   isSearchResultsAvailable: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool,
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
+  products: PropTypes.shape({}),
+  currentNavIds: PropTypes.arrayOf(PropTypes.string),
+  breadCrumbs: PropTypes.shape({}),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -425,6 +432,11 @@ SearchDetailContainer.defaultProps = {
   isLoadingMore: false,
   isSearchResultsAvailable: false,
   pdpLabels: {},
+  productsBlock: [],
+  isLoggedIn: false,
+  products: {},
+  currentNavIds: [],
+  breadCrumbs: [],
 };
 
 export default withIsomorphicRenderer({

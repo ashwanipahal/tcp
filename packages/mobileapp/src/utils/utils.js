@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { format, differenceInDays } from 'date-fns';
 import CookieManager from 'react-native-cookies';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
@@ -123,7 +123,7 @@ export const updateBrandName = appType => {
 export const updateLastSplashAnimationDate = async () => {
   setValueInAsyncStorage(
     AppAnimationConfig.LAST_ANIMATION_DATE,
-    moment().format(MOMENT_DATE_FORMAT)
+    format(new Date(), MOMENT_DATE_FORMAT)
   );
 };
 
@@ -136,12 +136,13 @@ export const updateLastSplashAnimationDate = async () => {
  * @returns
  */
 export const shouldAnimateLogo = async () => {
-  const today = moment();
+  const today = new Date();
   const { LAST_ANIMATION_DATE, ANIMATION_REPEAT_DAYS } = AppAnimationConfig;
   const lastAnimationDate = await getValueFromAsyncStorage(LAST_ANIMATION_DATE);
   const isLastAnimationDiffValid =
     lastAnimationDate &&
-    today.diff(moment(lastAnimationDate, MOMENT_DATE_FORMAT), 'days') >= ANIMATION_REPEAT_DAYS;
+    differenceInDays(today, format(new Date(lastAnimationDate), MOMENT_DATE_FORMAT)) >=
+      ANIMATION_REPEAT_DAYS;
   return lastAnimationDate ? isLastAnimationDiffValid : true;
 };
 

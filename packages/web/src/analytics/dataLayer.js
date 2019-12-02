@@ -74,6 +74,15 @@ export default function create(store) {
           : pageData.paymentMethod;
       },
     },
+    billingCountry: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingCountry
+          ? clickActionAnalyticsData.billingCountry
+          : pageData.billingCountry;
+      },
+    },
     billingZip: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
@@ -125,6 +134,11 @@ export default function create(store) {
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
         return `${pageType || pageName}`;
+      },
+    },
+    pageUrl: {
+      get() {
+        return `https://${document.location.hostname}${document.location.pathname}`;
       },
     },
 

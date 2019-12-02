@@ -49,6 +49,12 @@ jest.mock('react-native-keychain', () => {
   };
 });
 
+jest.mock('react-native-permissions', () => {
+  return {
+    checkNotifications: jest.fn(() => Promise.resolve('granted')),
+  };
+});
+
 jest.mock('react-native-gesture-handler', () => {
   return {
     gestureHandlerRootHOC: jest.fn(),

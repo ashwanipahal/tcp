@@ -42,10 +42,10 @@ exports[`DropDown Test should render correctly 1`] = `
         accessibilityText=""
         color="gray.800"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs13"
         fontWeight="semibold"
         margin={null}
-        mobileFontFamily="secondary"
         numberOfLines={null}
         text="foo"
         textAlign="center"
@@ -66,34 +66,26 @@ exports[`DropDown Test should render correctly 1`] = `
     transparent={true}
     visible={false}
   >
-    <TouchableOpacity
+    <Styled(TouchableOpacity)
       accessibilityLabel="Tap to close it"
       accessibilityRole="none"
       accessible={true}
       activeOpacity={1}
+      height={1334}
+      left={0}
       onPress={[Function]}
-      style={
-        Object {
-          "height": 1334,
-          "left": 0,
-          "paddingTop": 0,
-        }
-      }
+      paddingTop={0}
     >
       <Styled(View)
-        style={
-          Object {
-            "top": 0,
-            "width": 0,
-          }
-        }
+        top={0}
+        width={0}
       >
         <Styled(View)
           height={0}
           width={0}
         />
       </Styled(View)>
-    </TouchableOpacity>
+    </Styled(TouchableOpacity)>
   </Component>
 </View>
 `;
@@ -140,10 +132,10 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         accessibilityText=""
         color="gray.800"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs13"
         fontWeight="semibold"
         margin={null}
-        mobileFontFamily="secondary"
         numberOfLines={null}
         text="foo"
         textAlign="center"
@@ -164,27 +156,19 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     transparent={true}
     visible={true}
   >
-    <TouchableOpacity
+    <Styled(TouchableOpacity)
       accessibilityLabel="Tap to close it"
       accessibilityRole="none"
       accessible={true}
       activeOpacity={1}
+      height={1334}
+      left={0}
       onPress={[Function]}
-      style={
-        Object {
-          "height": 1334,
-          "left": 0,
-          "paddingTop": 0,
-        }
-      }
+      paddingTop={0}
     >
       <Styled(View)
-        style={
-          Object {
-            "top": 0,
-            "width": 0,
-          }
-        }
+        top={0}
+        width={0}
       >
         <Styled(View)
           height={0}
@@ -211,7 +195,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           />
         </Styled(View)>
       </Styled(View)>
-    </TouchableOpacity>
+    </Styled(TouchableOpacity)>
   </Component>
 </View>
 `;

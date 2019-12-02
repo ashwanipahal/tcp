@@ -11,4 +11,8 @@ const StoreDetail = ({ router }) => {
 
   return <StoreDetailContainer storeId={fetchStoreIdFromUrlPath(storeStr)} />;
 };
+
+StoreDetail.propTypes = {
+  router: PropTypes.shape({}).isRequired,
+};
 export default withRouter(StoreDetail);

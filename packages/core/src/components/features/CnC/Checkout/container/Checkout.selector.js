@@ -41,6 +41,8 @@ import {
   isVenmoPaymentAvailable,
   getVenmoUserName,
   getVenmoPayment,
+  isVenmoOrderPayment,
+  getVenmoOrderUserId,
 } from './CheckoutVenmo.selector';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
@@ -295,8 +297,7 @@ const getAddressFields = state => {
 };
 
 const getBillingAddressFields = state => {
-  const selector = formValueSelector('checkoutBillingPayment');
-  return selector(state, 'address');
+  return state.Checkout.getIn(['values', 'billing', 'address']);
 };
 
 const getAddressPhoneNo = createSelector(
@@ -622,6 +623,19 @@ function getPickupInitialPickupSectionValues(state) {
     emailSignUp: {
       emailSignUp,
       emailSignUpGYM,
+    },
+  };
+}
+export const getSmsInfoValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('smsInfo')
+);
+function getShippingInitialSectionValues(state) {
+  const shippingValues = getSmsInfoValues(state);
+  return {
+    smsSignUp: {
+      sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
+      phoneNumber: shippingValues.numberForUpdates || getUserPhoneNumber(state),
     },
   };
 }
@@ -1055,4 +1069,7 @@ export default {
   getShowRTPSOnBilling,
   getshowRTPSOnReview,
   getVenmoPayment,
+  isVenmoOrderPayment,
+  getVenmoOrderUserId,
+  getShippingInitialSectionValues,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Animated } from 'react-native';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada, readCookieMobileApp } from '@tcp/core/src/utils';
@@ -58,7 +59,7 @@ export class BagPage extends React.Component {
   }
 
   async componentDidMount() {
-    const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
+    const { fetchLabels, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
 
     const cartTotalCountCookie = await readCookieMobileApp(CART_ITEM_COUNTER);
@@ -440,4 +441,4 @@ BagPage.defaultProps = {
   bagPageServerError: null,
 };
 
-export default InitialPropsHOC(BagPage);
+export default InitialPropsHOC(gestureHandlerRootHOC(BagPage));

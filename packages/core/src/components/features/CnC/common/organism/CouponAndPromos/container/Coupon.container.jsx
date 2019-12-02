@@ -37,6 +37,7 @@ export class CouponContainer extends React.PureComponent {
       pageShortName: `${pageName}:${pageSection}`,
     };
   };
+
   render() {
     const {
       labels,
@@ -101,6 +102,8 @@ export class CouponContainer extends React.PureComponent {
             additionalClassNameModal={additionalClassNameModal}
             isCarouselView={isCarouselView}
             closedOverlay={closedOverlay}
+            isNeedHelpModalOpen={isNeedHelpModalOpen}
+            toggleNeedHelpModal={toggleNeedHelpModal}
           />
         )}
       </>
@@ -130,6 +133,9 @@ CouponContainer.propTypes = {
   navigation: PropTypes.shape({}),
   pageName: PropTypes.string,
   pageSection: PropTypes.string,
+  isNeedHelpModalOpen: PropTypes.bool,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
+  updateCouponPageData: PropTypes.func,
 };
 
 CouponContainer.defaultProps = {
@@ -140,6 +146,8 @@ CouponContainer.defaultProps = {
   openApplyNowModal: () => {},
   pageName: '',
   pageSection: '',
+  isNeedHelpModalOpen: false,
+  updateCouponPageData: () => {},
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({

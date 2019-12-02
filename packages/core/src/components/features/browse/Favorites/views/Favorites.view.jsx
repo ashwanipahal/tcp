@@ -19,6 +19,7 @@ import EditList from '../molecules/EditList/views';
 import ShareList from '../molecules/ShareList/views';
 import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
+import { openWindow } from '../../../../../utils/utils.web';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -66,7 +67,7 @@ class FavoritesView extends React.PureComponent {
     const { facebookShareURL } = getAPIConfig();
     const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   shareClickHandler = value => {
@@ -105,10 +106,10 @@ class FavoritesView extends React.PureComponent {
       setLastDeletedItemId,
       labels,
       onQuickViewOpenClick,
-      selectedColorProductId,
       isKeepAliveEnabled,
       outOfStockLabels,
       activeWishList,
+      addToBagEcom,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -130,8 +131,9 @@ class FavoritesView extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             openAddNewList={this.handleAddList}
             activeWishListId={activeWishList.id}
+            addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal selectedColorProductId={selectedColorProductId} />
+          <QuickViewModal />
         </>
       )
     );
@@ -404,6 +406,7 @@ class FavoritesView extends React.PureComponent {
       isDataLoading,
       guestAccessKey,
       activeDisplayName,
+      appliedFilterLength,
     } = this.props;
 
     const shareOptions = [
@@ -513,6 +516,7 @@ class FavoritesView extends React.PureComponent {
                   onFilterSelection={onFilterSelection}
                   onSortSelection={onSortSelection}
                   defaultPlaceholder={getSortsList(labels)[0].displayName}
+                  appliedFilterLength={appliedFilterLength}
                 />
               </Col>
             </Row>
@@ -561,7 +565,6 @@ FavoritesView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   slpLabels: PropTypes.shape({}),
   onQuickViewOpenClick: PropTypes.func.isRequired,
-  selectedColorProductId: PropTypes.string,
   filteredId: PropTypes.string.isRequired,
   sortId: PropTypes.string.isRequired,
   onFilterSelection: PropTypes.func.isRequired,
@@ -576,17 +579,35 @@ FavoritesView.propTypes = {
   sendWishListEmail: PropTypes.func.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
+  addToBagEcom: PropTypes.func.isRequired,
+  appliedFilterLength: PropTypes.number,
+  isBothTcpAndGymProductAreAvailable: PropTypes.bool,
+  isDataLoading: PropTypes.bool,
+  guestAccessKey: PropTypes.string,
+  activeDisplayName: PropTypes.string,
+  activeWishListId: PropTypes.string,
+  updateWishList: PropTypes.func,
+  resetBrandFilters: PropTypes.func,
+  formErrorMessage: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
-  selectedColorProductId: '',
   outOfStockLabels: {},
   slpLabels: {},
   defaultWishList: {},
   wishlistShareStatus: false,
   setListShareSuccess: () => {},
+  appliedFilterLength: 0,
+  updateWishList: () => {},
+  isBothTcpAndGymProductAreAvailable: false,
+  isDataLoading: false,
+  guestAccessKey: '',
+  activeDisplayName: '',
+  resetBrandFilters: () => {},
+  formErrorMessage: {},
+  activeWishListId: '',
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

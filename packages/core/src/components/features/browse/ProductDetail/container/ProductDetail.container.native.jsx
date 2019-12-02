@@ -5,7 +5,6 @@ import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/co
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import ProductDetail from '../views';
-import { Spinner } from '../../../../common/atoms';
 import { getProductDetails } from './ProductDetail.actions';
 import {
   getNavTree,
@@ -234,6 +233,9 @@ ProductDetailContainer.propTypes = {
   toastMessage: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  isLoading: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -259,6 +261,9 @@ ProductDetailContainer.defaultProps = {
   toastMessage: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  middlePromos: '',
+  bottomPromos: '',
+  isLoading: '',
 };
 
 export default connect(

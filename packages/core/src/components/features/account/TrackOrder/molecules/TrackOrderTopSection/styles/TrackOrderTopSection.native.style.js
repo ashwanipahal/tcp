@@ -5,6 +5,7 @@ export const TrackOrderTopSectionView = styled.View``;
 export const TrackOrderTopHeader = styled.View`
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
 `;
 export const ModalHeader = styled.View`
   width: 70%;
