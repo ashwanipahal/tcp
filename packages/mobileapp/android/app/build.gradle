@@ -208,6 +208,7 @@ android {
             versionNameSuffix "-DEV"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpInt {
@@ -218,6 +219,7 @@ android {
             versionNameSuffix "-INT"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
 
         }
 
@@ -227,6 +229,7 @@ android {
             versionNameSuffix "-INT"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpPreview {
@@ -235,6 +238,7 @@ android {
             versionNameSuffix "-PREVIEW"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         gymboreePreview {
@@ -243,6 +247,7 @@ android {
             versionNameSuffix "-PREVIEW"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         tcpUat {
@@ -250,18 +255,21 @@ android {
             // This property is optional if you are using only one dimension.
             dimension "version"
             applicationIdSuffix ".tcp.uat"
-            versionNameSuffix "-UAT"
-            versionName = 'My Place'
+            versionNameSuffix "-tcpUAT"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+
 
         }
 
         gymboreeUat {
             dimension "version"
             applicationIdSuffix ".gymboree.uat"
-            versionNameSuffix "-UAT"
-            versionName = 'Gymboree'
+            versionNameSuffix "-gymboreeUAT"
+            versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
         }
 
         tcpProd {
@@ -272,6 +280,7 @@ android {
             versionNameSuffix ""
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
 
         gymboreeProd {
@@ -280,6 +289,7 @@ android {
             versionNameSuffix ""
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
     }
 
