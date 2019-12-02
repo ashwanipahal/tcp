@@ -1726,7 +1726,6 @@ exports[`AddressFields component should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -6145,6 +6144,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         href="#"
         noLink={true}
         target="_self"
+        title=""
         underline={true}
       />
     </Styled(Col)>

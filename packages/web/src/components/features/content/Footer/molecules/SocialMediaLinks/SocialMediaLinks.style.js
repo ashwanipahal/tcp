@@ -16,16 +16,19 @@ export default css`
     width: 42px;
     height: 42px;
   }
-  a {
-    margin-right: 19px;
-  }
-  a:last-child {
-    margin-right: 0;
-  }
-
   .social-media-pallete {
     display: flex;
     justify-content: center;
+
+    ul {
+      display: inherit;
+      li {
+        margin-right: 19px;
+      }
+      li:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -34,7 +37,7 @@ export default css`
       width: 38px;
       height: 39px;
     }
-    a {
+    .social-media-pallete ul li {
       margin-right: 24px;
     }
   }
@@ -53,7 +56,7 @@ export default css`
       width: 50px;
       height: 50px;
     }
-    a {
+    .social-media-pallete ul li {
       margin-right: 32px;
     }
   }

@@ -4,6 +4,10 @@ const buildQuery = ({ slot, contentId, lang }) => `
     name
     type
     errorMessage
+    set {
+      key
+      val
+    }
     composites {
       headerText {
         textItems {
@@ -53,6 +57,15 @@ const buildQuery = ({ slot, contentId, lang }) => `
             crop_d
             crop_t
             crop_m
+          }
+          video{
+            url
+            title
+            autoplay
+            controls
+            loop
+            muted
+            inline
           }
       }
 

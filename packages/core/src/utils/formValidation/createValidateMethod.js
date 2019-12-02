@@ -214,7 +214,7 @@ function evaluateAllSyncRules(
   messages = {},
   options = DEFAULT_OPTIONS,
   values = {},
-  props
+  props = {}
 ) {
   // returns true iif evaluation of all rules is true
   const errors = {};

@@ -38,7 +38,7 @@ describe('#PlaceCashBanner Selectors', () => {
   });
 
   it('#getPlaceDetailsContentId should return false', () => {
-    const contentId = 'werwqerewtwt12423';
+    const contentId = 0;
     const labelKey = 'PlaceCash_Detail_US_BAG';
     const state = {
       Labels: {

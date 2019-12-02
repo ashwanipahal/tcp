@@ -130,7 +130,7 @@ class Socialview extends React.PureComponent {
           </Row>
           {setPointsModal && this.pointsInformation.points > 0 && (
             <ModalNative
-              visible={setPointsModal}
+              isOpen={setPointsModal}
               onRequestClose={this.onClose}
               heading=" "
               horizontalBar={false}

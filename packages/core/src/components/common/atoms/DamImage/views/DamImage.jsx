@@ -159,7 +159,7 @@ const DamImage = props => {
   } = props;
 
   if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} />;
+    return <RenderVideo video={videoData} image={imgData} dataLocator={dataLocator} />;
   }
 
   const imgProps = {
@@ -176,7 +176,7 @@ const DamImage = props => {
     ...other,
   };
 
-  if (getVideoUrl(imgData.url) && isProductImage) {
+  if (imgData && imgData.url && getVideoUrl(imgData.url) && isProductImage) {
     const videoDataOptions = {
       autoplay: false,
       controls: true,
@@ -185,7 +185,7 @@ const DamImage = props => {
       inline: true,
       url: getBreakpointImgUrl('lg', imgProps),
     };
-    return <RenderVideo video={videoDataOptions} />;
+    return <RenderVideo video={videoDataOptions} dataLocator={dataLocator} />;
   }
   if (!link) {
     return <RenderImage {...imgProps} ref={forwardedRef} />;

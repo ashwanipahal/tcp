@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Selectbox component renders correctly 1`] = `
-<Styled(View)>
+<Styled(View)
+  isAddNewCC={false}
+>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
@@ -42,7 +44,9 @@ exports[`Selectbox component renders correctly 1`] = `
 `;
 
 exports[`Selectbox component renders correctly for error 1`] = `
-<Styled(View)>
+<Styled(View)
+  isAddNewCC={false}
+>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""

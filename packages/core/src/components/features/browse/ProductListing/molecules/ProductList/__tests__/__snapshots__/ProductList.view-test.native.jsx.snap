@@ -21,8 +21,10 @@ exports[`ProductList component should renders correctly 1`] = `
     extraData={
       Object {
         "AddToFavoriteErrorMsg": "",
+        "addToBagEcom": [Function],
         "currencyExchange": Array [],
         "currencySymbol": "",
+        "errorMessages": null,
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
@@ -31,6 +33,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "isMatchingFamily": true,
         "isPlcc": false,
         "isSearchListing": false,
+        "isSuggestedItem": false,
         "labelsLogin": Object {
           "logIn": "",
         },
@@ -45,6 +48,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
         "onRenderHeader": [MockFunction],
+        "onSeeSuggestedItems": [Function],
         "outOfStockLabels": Object {},
         "products": Array [
           Object {
@@ -53,6 +57,7 @@ exports[`ProductList component should renders correctly 1`] = `
         ],
         "removeAddToFavoritesErrorMsg": [Function],
         "renderMoveToList": [Function],
+        "seeSuggestedDictionary": null,
         "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",

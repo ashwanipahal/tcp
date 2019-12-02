@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
@@ -116,7 +117,6 @@ const displayStoreDetailsAnchor = (
     storeClosingTimeTomorrow
   );
   const StoreDetailsAnchorStyled = withStyles(BodyCopyWithSpacing, StoreDetailsAnchorWrapper);
-
   const StoreDetailsAnchor = (
     <StoreDetailsAnchorStyled
       fontFamily="secondary"
@@ -168,7 +168,6 @@ const displayAddToCartError = addToCartError => {
     />
   );
 };
-
 const displayStoreUnavailable = (showBopisCTA, showBossCTA) => {
   const { STORE_UNAVAILABLE } = STORE_DETAILS_LABELS;
   return !showBopisCTA && !showBossCTA ? (
@@ -243,12 +242,10 @@ class PickupStoreListItem extends React.Component {
      * receive one parameter, the id of the clicked store.
      */
     onStoreSelect: PropTypes.func.isRequired,
-
     /** carries the boss information of the store */
     storeBossInfo: PropTypes.shape({
       isBossEligible: PropTypes.string,
     }).isRequired,
-
     /** boolean values of boss availability */
     isBossAvailable: PropTypes.bool.isRequired,
 
@@ -270,6 +267,13 @@ class PickupStoreListItem extends React.Component {
     buttonLabel: PropTypes.string.isRequired,
     onStoreUpdate: PropTypes.func.isRequired,
     updateCartItemStore: PropTypes.bool.isRequired,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
+  };
+
+  static defaultProps = {
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {
@@ -311,7 +315,12 @@ class PickupStoreListItem extends React.Component {
     // TODO - const {  isBoss = false } = e.target.something;
     const isBoss = this.isBossSelected;
     // Fetch isBoss from component instead of a new Arrow funct.
-    const { onStoreSelect, store } = this.props;
+    const { onStoreSelect, store, setFavoriteStore, getDefaultStore } = this.props;
+    if (store && store.basicInfo) {
+      setFavoriteStore(store);
+      getDefaultStore(store);
+    }
+
     return onStoreSelect(store.basicInfo.id, isBoss);
   }
 

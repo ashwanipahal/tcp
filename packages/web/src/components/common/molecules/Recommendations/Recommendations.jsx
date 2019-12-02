@@ -7,7 +7,6 @@ import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import config from './config';
 import constant from './Recommendations.constant';
 import style from './Recommendations.style';
@@ -79,6 +78,7 @@ class Recommendations extends Component {
       currency,
       currencyAttributes,
       onQuickViewOpenClick,
+      ...otherProps
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -104,6 +104,7 @@ class Recommendations extends Component {
           currencyExchange={currencyAttributes.exchangevalue}
           viaModule={RECOMMENDATION}
           isPromoAvailable={isPromoAvailable}
+          {...otherProps}
         />
       );
     });
@@ -121,6 +122,7 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      isSuggestedItem,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -132,14 +134,16 @@ class Recommendations extends Component {
       products &&
       products.length > 0 && (
         <React.Fragment>
-          <Heading
-            variant="h4"
-            className={`recommendations-header ${priceOnlyClass}`}
-            textAlign={headerAlignment || 'center'}
-            dataLocator={params.dataLocator}
-          >
-            {headerLabel}
-          </Heading>
+          {!isSuggestedItem && (
+            <Heading
+              variant="h4"
+              className={`recommendations-header ${priceOnlyClass}`}
+              textAlign={headerAlignment || 'center'}
+              dataLocator={params.dataLocator}
+            >
+              {headerLabel}
+            </Heading>
+          )}
           <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
@@ -229,7 +233,6 @@ class Recommendations extends Component {
             </section>
           );
         })}
-        <QuickViewModal />
       </div>
     );
   }
@@ -260,6 +263,9 @@ Recommendations.propTypes = {
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
+  ariaPrevious: PropTypes.string,
+  ariaNext: PropTypes.string,
+  isSuggestedItem: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
@@ -279,6 +285,9 @@ Recommendations.defaultProps = {
   partNumber: '',
   categoryName: '',
   headerAlignment: '',
+  ariaPrevious: '',
+  ariaNext: '',
+  isSuggestedItem: false,
 };
 
 export { Recommendations as RecommendationsVanilla };

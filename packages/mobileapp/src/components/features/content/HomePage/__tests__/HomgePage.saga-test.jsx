@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import HomePageSaga, { fetchTaxonomy, fetchEspot } from '../container/HomePage.saga';
 import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
 

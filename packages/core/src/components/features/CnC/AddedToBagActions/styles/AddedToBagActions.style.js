@@ -79,6 +79,22 @@ const ctaStyle = css`
     display: inline-flex;
     flex: 1;
   }
+
+  .checkoutSkeleton {
+    padding: 0px;
+    &:hover {
+      background: ${props => props.theme.colorPalette.blue.C900};
+    }
+    height: 48px;
+    margin-left: ${props =>
+      props.isInternationalShipping ? '0px' : props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    ${props => (!props.isVenmoEnabled && !props.isPayPalEnabled ? `margin-left: 0;` : '')};
+    flex: 1;
+    background-color: ${props => props.theme.colorPalette.blue.C900};
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-left: 0;
+    }
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ctaStyle;

@@ -16,6 +16,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       ";
   }
   .apply-now-heading {
+    font-family: ",
+      [Function],
+      ";
     margin: ",
       [Function],
       " 0px
@@ -80,7 +83,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .learn_more_link {
-    padding: 14px 0px 28px 0px;
+    padding: 16px 0px 12px 0px;
   }
 
   .learn_more_link_wrapper {
@@ -103,7 +106,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .header__greeting {
-    margin: 9px 0px;
+    margin-top: 9px;
   }
 
   .header-image {
@@ -137,6 +140,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .linkIconSeperator {
     margin-left: 10px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   .rewards__benefits {
@@ -167,17 +173,33 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .footerLinks {
     display: flex;
-    margin-top: 38px;
+    margin-top: ",
+      [Function],
+      ";
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ",
+      [Function],
+      ";
   }
 
   .footerLink {
     margin-left: 28px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
+  }
+
+  .separator {
+    padding-top: ",
+      [Function],
+      ";
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
@@ -227,6 +249,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>
@@ -371,6 +394,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
     <div
+      className="separator"
+    />
+    <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
       offerType="lbl_PLCCModal_oneEqualsTwoPoints"
@@ -400,7 +426,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         color="text.primary"
         component="span"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs10"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -442,6 +468,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         lbl_PLCCModal_rewardsProgramText
       </Styled(Anchor)>
     </div>
+    <div
+      className="separator"
+    />
     <Styled(Row)>
       <Styled(Col)
         colSize={
@@ -485,6 +514,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       ";
   }
   .apply-now-heading {
+    font-family: ",
+      [Function],
+      ";
     margin: ",
       [Function],
       " 0px
@@ -549,7 +581,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   }
 
   .learn_more_link {
-    padding: 14px 0px 28px 0px;
+    padding: 16px 0px 12px 0px;
   }
 
   .learn_more_link_wrapper {
@@ -572,7 +604,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   }
 
   .header__greeting {
-    margin: 9px 0px;
+    margin-top: 9px;
   }
 
   .header-image {
@@ -606,6 +638,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
 
   .linkIconSeperator {
     margin-left: 10px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   .rewards__benefits {
@@ -636,17 +671,33 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
 
   .footerLinks {
     display: flex;
-    margin-top: 38px;
+    margin-top: ",
+      [Function],
+      ";
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ",
+      [Function],
+      ";
   }
 
   .footerLink {
     margin-left: 28px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
+  }
+
+  .separator {
+    padding-top: ",
+      [Function],
+      ";
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
@@ -696,6 +747,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>
@@ -807,6 +859,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       </Styled(Col)>
     </Styled(Row)>
     <div
+      className="separator"
+    />
+    <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
       offerType="lbl_PLCCModal_oneEqualsTwoPoints"
@@ -836,7 +891,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         color="text.primary"
         component="span"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs10"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -878,6 +933,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         lbl_PLCCModal_rewardsProgramText
       </Styled(Anchor)>
     </div>
+    <div
+      className="separator"
+    />
   </div>
 </Styled(Modal)>
 `;

@@ -101,6 +101,7 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
               fieldName={emailSignupFieldName}
               secondFieldName={emailSignupSecondBrand}
+              isNavigationFooter={isNavigationFooter}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
@@ -152,6 +153,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 checkBox_tcp: 'sms_tcp_opt_in',
               }}
               secondFieldName={textSignupSecondBrand}
+              isNavigationFooter={isNavigationFooter}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>

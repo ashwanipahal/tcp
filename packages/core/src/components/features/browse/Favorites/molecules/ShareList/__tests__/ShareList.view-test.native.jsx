@@ -28,7 +28,7 @@ describe('BundleProductItemsVanilla', () => {
   });
 
   it('should return Styled(BodyCopy) component value two', () => {
-    expect(component.find('Styled(BodyCopy)')).toHaveLength(2);
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(1);
   });
 
   it('should return Field component value four', () => {

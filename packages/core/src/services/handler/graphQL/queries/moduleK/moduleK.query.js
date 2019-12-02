@@ -4,6 +4,10 @@ const buildQuery = ({ slot, contentId, lang }) => `
     name
     type
     errorMessage
+    set {
+      key
+      val
+    }
     composites {
       masonryGrid {
         promoBanner {
@@ -25,6 +29,15 @@ const buildQuery = ({ slot, contentId, lang }) => `
             crop_d
             crop_t
             crop_m
+          }
+          video{
+            url
+            title
+            autoplay
+            controls
+            loop
+            muted
+            inline
           }
           link {
             url

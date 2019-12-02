@@ -83,7 +83,10 @@ export const getUserFullName = createSelector(
   state => {
     return (
       state &&
-      `${state.getIn(['contactInfo', 'firstName'])} ${state.getIn(['contactInfo', 'lastName'])}`
+      `${state.getIn(['contactInfo', 'firstName'], '')} ${state.getIn(
+        ['contactInfo', 'lastName'],
+        ''
+      )}`
     );
   }
 );
@@ -262,3 +265,8 @@ export const getUserInfoFetchingState = createSelector(
   getUserState,
   state => state && state.get('isFetching')
 );
+
+export const getContextVenmoUserId = state => {
+  const personalData = getPersonalDataState(state);
+  return personalData && personalData.getIn(['contextAttributes', 'venmoUserId']);
+};

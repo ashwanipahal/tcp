@@ -1,3 +1,5 @@
+/* eslint-disable */
+// Disabling eslint for temporary fix
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
@@ -9,6 +11,7 @@ import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import { getMapSliceForColorProductId } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { OUTFIT_LISTING_FORM } from '../../../../../constants/reducer.constants';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -44,6 +47,8 @@ const renderItem = ({
   removeAddToFavoritesErrorMsg,
   currentColorIndex,
   setCurrentColorIndex,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   // eslint-disable-next-line no-shadow
   const getColorProductId = (colorProductId, colorFitsSizesMap, currentColorIndex) => {
@@ -85,6 +90,8 @@ const renderItem = ({
       colorindex={colorIndex => {
         getColorindex(colorIndex, setCurrentColorIndex);
       }}
+      isKeepAliveEnabled={isKeepAliveEnabled}
+      outOfStockLabels={outOfStockLabels}
     />
   );
 };
@@ -133,6 +140,10 @@ const OutfitDetailsView = props => {
     pdpLabels,
     unavailableCount,
     toastMessage,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
+    isKeepAliveEnabled,
+    outOfStockLabels,
   } = props;
   const recommendationAttributes = {
     variation: 'moduleO',
@@ -166,6 +177,10 @@ const OutfitDetailsView = props => {
             toastMessage,
             currentColorIndex,
             setCurrentColorIndex,
+            AddToFavoriteErrorMsg,
+            removeAddToFavoritesErrorMsg,
+            isKeepAliveEnabled,
+            outOfStockLabels,
           })
         }
       />
@@ -187,7 +202,13 @@ const OutfitDetailsView = props => {
         />
       </RecommendationWrapper>
 
-      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      {isPickupModalOpen ? (
+        <PickupStoreModal
+          navigation={navigation}
+          isNotProductAddToBag
+          reduxFormName={OUTFIT_LISTING_FORM}
+        />
+      ) : null}
     </ScrollViewContainer>
   );
 };

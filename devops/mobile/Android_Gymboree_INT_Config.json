@@ -312,6 +312,22 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_GYM",
+      "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
+      "value": "true"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
+      "value": "true"
     }
   ],
   "signed": true,

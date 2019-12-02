@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -19,7 +20,7 @@ import { getLocator } from '../../../../../../../utils';
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
-const ProductInformation = ({ data, labels, quantity }) => {
+const ProductInformation = ({ data, labels }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
@@ -73,11 +74,32 @@ const ProductInformation = ({ data, labels, quantity }) => {
                 fontSize="fs12"
                 fontWeight={['semibold']}
                 textAlign="left"
-                text={`${labels.qtyLabel}: `}
+                text={`${labels.price}: `}
               />
             </ProductSubDetailLabel>
 
-            <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
+            <BodyCopy
+              fontSize="fs12"
+              fontWeight={['semibold']}
+              text={<PriceCurrency price={Number(data.itemPrice)} />}
+            />
+          </ProductDesc>
+          <ProductDesc>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs12"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.points}: `}
+              />
+            </ProductSubDetailLabel>
+
+            <BodyCopy
+              fontSize="fs12"
+              fontWeight={['semibold']}
+              text={data.itemPoints}
+              color="orange.800"
+            />
           </ProductDesc>
         </ProductSubDetails>
       </ProductDescription>
@@ -88,12 +110,10 @@ const ProductInformation = ({ data, labels, quantity }) => {
 ProductInformation.propTypes = {
   data: PropTypes.shape,
   labels: PropTypes.shape,
-  quantity: PropTypes.string,
 };
 ProductInformation.defaultProps = {
   data: {},
   labels: {},
-  quantity: '',
 };
 export default withStyles(ProductInformation);
 export { ProductInformation as ProductInformationVanilla };

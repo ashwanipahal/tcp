@@ -20,6 +20,7 @@ describe('ProductItemComponents component', () => {
       pdpUrl: '',
       loadedProductCount: '',
       children: {},
+      isProductBrandOfSameSiteBrand: true,
     };
     expect(ProductTitle(props)).toMatchSnapshot();
   });

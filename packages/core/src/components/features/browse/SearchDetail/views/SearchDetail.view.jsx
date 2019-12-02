@@ -10,7 +10,6 @@ import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
 
@@ -29,146 +28,185 @@ const redirectToSuggestedUrl = (searchText, url) => {
   }
 };
 
-const SearchListingView = ({
-  className,
-  products,
-  productsBlock,
-  labels,
-  totalProductsCount,
-  searchedText,
-  slpLabels,
-  sortLabels,
-  filters,
-  filtersLength,
-  formValues,
-  getProducts,
-  initialValues,
-  labelsFilter,
-  onSubmit,
-  currency,
-  currencyAttributes,
-  onAddItemToFavorites,
-  isLoggedIn,
-  isLoadingMore,
-  isSearchListing,
-  searchResultSuggestions,
-  asPathVal,
-  AddToFavoriteErrorMsg,
-  removeAddToFavoritesErrorMsg,
-  ...otherProps
-}) => {
-  const searchResultSuggestionsArg =
-    searchResultSuggestions && searchResultSuggestions.length
-      ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
-      : slpLabels.lbl_no_suggestion;
-  return (
-    <div className={className}>
-      {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion && (
-        <Row className="empty-search-result-suggestion">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy
-              fontSize={['fs22', 'fs24', 'fs32']}
-              component="div"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              textAlign="center"
-            >
-              {`${slpLabels.lbl_didYouMean} "`}
-              <Anchor
-                noLink
-                className="suggestion-label"
-                to={`/${getSiteId()}/search/${searchResultSuggestionsArg}`}
-                onClick={e => {
-                  e.preventDefault();
-                  redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
-                }}
+class SearchListingView extends React.Component {
+  componentDidUpdate(prevProps) {
+    const { products, trackPageLoad } = this.props;
+    const productsFormatted = this.formatProductsData(products);
+    if (prevProps.products !== products && productsFormatted.length) {
+      trackPageLoad({
+        products: productsFormatted,
+        pageType: 'search',
+        pageName: 'search',
+        pageSection: 'search',
+        pageSubSection: 'search',
+        customEvents: ['prodView', 'event1', 'event80', 'event83', 'event93'],
+      });
+    }
+  }
+
+  formatProductsData = products => {
+    return products.map((tile, index) => {
+      const {
+        productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
+        miscInfo: { categoryName },
+      } = tile;
+      const productId = generalProductId && generalProductId.split('_')[0];
+      const productName = name;
+      return {
+        id: productId,
+        colorId: generalProductId,
+        name: productName,
+        price: offerPrice,
+        listPrice,
+        extPrice: priceRange.lowOfferPrice,
+        position: index + 1,
+        type: categoryName,
+      };
+    });
+  };
+
+  render() {
+    const {
+      className,
+      products,
+      productsBlock,
+      labels,
+      totalProductsCount,
+      searchedText,
+      slpLabels,
+      sortLabels,
+      filters,
+      filtersLength,
+      formValues,
+      getProducts,
+      initialValues,
+      labelsFilter,
+      onSubmit,
+      currency,
+      currencyAttributes,
+      onAddItemToFavorites,
+      isLoggedIn,
+      isLoadingMore,
+      isSearchListing,
+      searchResultSuggestions,
+      asPathVal,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
+      ...otherProps
+    } = this.props;
+
+    const searchResultSuggestionsArg =
+      searchResultSuggestions && searchResultSuggestions.length
+        ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
+        : slpLabels.lbl_no_suggestion;
+    return (
+      <div className={className}>
+        {searchResultSuggestionsArg !== slpLabels.lbl_no_suggestion && (
+          <Row className="empty-search-result-suggestion">
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <BodyCopy
+                fontSize={['fs22', 'fs24', 'fs32']}
+                component="div"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                textAlign="center"
               >
-                {`${searchResultSuggestionsArg}`}
-              </Anchor>
-              {`"?`}
-            </BodyCopy>
+                {`${slpLabels.lbl_didYouMean} "`}
+                <Anchor
+                  noLink
+                  className="suggestion-label"
+                  to={`/${getSiteId()}/search/${searchResultSuggestionsArg}`}
+                  onClick={e => {
+                    e.preventDefault();
+                    redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
+                  }}
+                >
+                  {`${searchResultSuggestionsArg}`}
+                </Anchor>
+                {`"?`}
+              </BodyCopy>
+            </Col>
+          </Row>
+        )}
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            {searchedText && (
+              <BodyCopy
+                className={`${className} searched-text-wrapper`}
+                component="div"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+              >
+                {slpLabels.lbl_searched_for}
+                <BodyCopy
+                  fontFamily="secondary"
+                  className="searched-label"
+                  fontSize={['fs16', 'fs16', 'fs14']}
+                  fontWeight="extrabold"
+                >
+                  {`"${searchedText.split('?')[0]}"`}
+                </BodyCopy>
+              </BodyCopy>
+            )}
           </Col>
         </Row>
-      )}
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          {searchedText && (
-            <BodyCopy
-              className={`${className} searched-text-wrapper`}
-              component="div"
-              fontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-            >
-              {slpLabels.lbl_searched_for}
-              <BodyCopy
-                fontFamily="secondary"
-                className="searched-label"
-                fontSize={['fs16', 'fs16', 'fs14']}
-                fontWeight="extrabold"
-              >
-                {`"${searchedText.split('?')[0]}"`}
-              </BodyCopy>
-            </BodyCopy>
-          )}
-        </Col>
-      </Row>
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <ProductListingFiltersForm
-            isFilterBy={isFiltersAvailable(filters)}
-            filtersMaps={filters}
-            totalProductsCount={totalProductsCount}
-            initialValues={initialValues}
-            filtersLength={filtersLength}
-            labels={labelsFilter}
-            onSubmit={onSubmit}
-            formValues={formValues}
-            sortLabels={sortLabels}
-            getProducts={getProducts}
-            slpLabels={slpLabels}
-            isLoadingMore={isLoadingMore}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <LoadedProductsCount
-            className="show-items-count-section"
-            totalProductsCount={totalProductsCount}
-            showingItemsLabel={slpLabels}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          {productsBlock.length ? (
-            <ProductsGrid
-              className={className}
-              productsBlock={productsBlock}
-              products={products}
-              labels={labels}
-              productTileVariation="search-product-tile"
-              currencyAttributes={currencyAttributes}
-              currency={currency}
-              onAddItemToFavorites={onAddItemToFavorites}
-              isLoggedIn={isLoggedIn}
-              isLoadingMore={isLoadingMore}
-              isSearchListing={isSearchListing}
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ProductListingFiltersForm
+              isFilterBy={isFiltersAvailable(filters)}
+              filtersMaps={filters}
+              totalProductsCount={totalProductsCount}
+              initialValues={initialValues}
+              filtersLength={filtersLength}
+              labels={labelsFilter}
+              onSubmit={onSubmit}
+              formValues={formValues}
+              sortLabels={sortLabels}
               getProducts={getProducts}
-              asPathVal={asPathVal}
-              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-              {...otherProps}
+              slpLabels={slpLabels}
+              isLoadingMore={isLoadingMore}
             />
-          ) : null}
-          {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-        </Col>
-      </Row>
-      <QuickViewModal />
-    </div>
-  );
-};
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <LoadedProductsCount
+              className="show-items-count-section"
+              totalProductsCount={totalProductsCount}
+              showingItemsLabel={slpLabels}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            {productsBlock.length ? (
+              <ProductsGrid
+                className={className}
+                productsBlock={productsBlock}
+                products={products}
+                labels={labels}
+                productTileVariation="search-product-tile"
+                currencyAttributes={currencyAttributes}
+                currency={currency}
+                onAddItemToFavorites={onAddItemToFavorites}
+                isLoggedIn={isLoggedIn}
+                isLoadingMore={isLoadingMore}
+                isSearchListing={isSearchListing}
+                getProducts={getProducts}
+                asPathVal={asPathVal}
+                AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                {...otherProps}
+              />
+            ) : null}
+            {isLoadingMore ? <PLPSkeleton col={20} /> : null}
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
 
 SearchListingView.propTypes = {
   className: PropTypes.string,
@@ -203,6 +241,10 @@ SearchListingView.propTypes = {
   ),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  trackPageLoad: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -229,6 +271,10 @@ SearchListingView.defaultProps = {
   searchResultSuggestions: [],
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

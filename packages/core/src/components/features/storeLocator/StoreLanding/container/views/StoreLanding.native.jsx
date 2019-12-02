@@ -109,7 +109,7 @@ export class StoreLanding extends PureComponent {
     return (
       <StyleStoreLandingContainer>
         <View>
-          <ScrollView>
+          <ScrollView keyboardShouldPersistTaps="handled">
             {favoriteStore && (
               <View>
                 <StyledFavStoreHeading>

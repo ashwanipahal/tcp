@@ -40,6 +40,8 @@ export {
   removeBodyScrollLocks,
   isAndroidWeb,
   createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
 } from './utils.web';
 
 export {
@@ -92,4 +94,5 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   plpRoutingHandling,
+  convertNumToBool,
 } from './utils';
