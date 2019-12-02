@@ -7135,7 +7135,6 @@ exports[`CartItemTile common component renders correctly 1`] = `
       .label-responsive-wrapper {
         padding-top: 2px;
         display: flex;
-        flex: 1;
         padding-right: 0px;
         /* stylelint-disable */
         span:not(.list-price) {
@@ -7706,7 +7705,6 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       .label-responsive-wrapper {
         padding-top: 2px;
         display: flex;
-        flex: 1;
         padding-right: 0px;
         /* stylelint-disable */
         span:not(.list-price) {
