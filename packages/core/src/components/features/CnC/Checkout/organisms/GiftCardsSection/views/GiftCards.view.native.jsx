@@ -33,6 +33,13 @@ class GiftCards extends React.PureComponent {
     return null;
   }
 
+  componentDidUpdate(prevProps) {
+    const { giftCardErrors, toastMessage } = this.props;
+    if (giftCardErrors && prevProps.giftCardErrors !== giftCardErrors) {
+      toastMessage(giftCardErrors[Object.keys(giftCardErrors)[0]]);
+    }
+  }
+
   /**
    * @function getHeading
    * @description returns heading of  gift card
@@ -136,8 +143,6 @@ class GiftCards extends React.PureComponent {
     appliedGiftCards,
     handleRemoveGiftCard,
     labels,
-    giftCardErrors,
-    toastMessage,
     isExpressCheckout,
     isFromReview
   ) => {
@@ -152,8 +157,6 @@ class GiftCards extends React.PureComponent {
               handleRemoveGiftCard={handleRemoveGiftCard}
               labels={labels}
               isGiftCardApplied
-              giftCardErrors={giftCardErrors}
-              toastMessage={toastMessage}
               isExpressCheckout={isExpressCheckout}
               isFromReview={isFromReview}
             />
@@ -218,9 +221,7 @@ class GiftCards extends React.PureComponent {
   render() {
     const {
       labels,
-      toastMessage,
       handleRemoveGiftCard,
-      giftCardErrors,
       appliedGiftCards,
       giftCardList,
       applyExistingGiftCardToOrder,
@@ -270,8 +271,6 @@ class GiftCards extends React.PureComponent {
             appliedGiftCards,
             handleRemoveGiftCard,
             labels,
-            giftCardErrors,
-            toastMessage,
             isExpressCheckout,
             isFromReview
           )}
@@ -297,9 +296,7 @@ class GiftCards extends React.PureComponent {
                     cardData={cardData}
                     applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
                     labels={labels}
-                    giftCardErrors={giftCardErrors}
                     orderBalanceTotal={orderBalanceTotal}
-                    toastMessage={toastMessage}
                     isExpressCheckout={isExpressCheckout}
                     isFromReview={isFromReview}
                   />

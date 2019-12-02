@@ -283,7 +283,7 @@ const styles = css`
   }
 
   .close-btn {
-    padding: 0 8px;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-left: 10px;
     cursor: pointer;
     border: 0;

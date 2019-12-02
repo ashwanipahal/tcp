@@ -40,6 +40,8 @@ export {
   removeBodyScrollLocks,
   isAndroidWeb,
   createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
 } from './utils.web';
 
 export {

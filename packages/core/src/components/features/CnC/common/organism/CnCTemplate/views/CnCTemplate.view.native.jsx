@@ -93,6 +93,19 @@ const getPaymentButton = params => {
   );
 };
 
+const getVenmoPayment = (venmoPayment, userName) => {
+  return (
+    <VenmoPaidContainer>
+      <VenmoPaidTextContainer>
+        <BodyCopy fontWeight="regular" fontFamily="secondary" fontSize="fs16" text="Paid with " />
+      </VenmoPaidTextContainer>
+      <View>
+        <CardImage card={venmoPayment} cardNumber={userName} />
+      </View>
+    </VenmoPaidContainer>
+  );
+};
+
 const CnCCommonTemplate = ({
   btnText,
   onPress,
@@ -111,6 +124,7 @@ const CnCCommonTemplate = ({
   onVenmoSubmit,
   venmoPayment,
   onVenmoError,
+  isVenmoPaymentInProgress,
 }) => {
   const userName = venmoPayment ? venmoPayment.userName : '';
   return (
@@ -157,19 +171,7 @@ const CnCCommonTemplate = ({
             pageCategory={pageCategory}
             showAccordian
           />
-          {venmoPayment && venmoPayment.isVenmoPaymentSelected && (
-            <VenmoPaidContainer>
-              <VenmoPaidTextContainer>
-                <BodyCopy
-                  fontWeight="regular"
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  text="Paid with "
-                />
-              </VenmoPaidTextContainer>
-              <CardImage card={venmoPayment} cardNumber={userName} />
-            </VenmoPaidContainer>
-          )}
+          {isVenmoPaymentInProgress && venmoPayment && getVenmoPayment(venmoPayment, userName)}
           {isGuest && <ConfirmationAccountFormContainer />}
           <PersonalizedCoupons />
           <Recommendations
@@ -200,6 +202,7 @@ CnCCommonTemplate.propTypes = {
   onVenmoSubmit: PropTypes.func,
   venmoPayment: PropTypes.shape({}),
   onVenmoError: PropTypes.bool,
+  isVenmoPaymentInProgress: PropTypes.bool,
 };
 
 CnCCommonTemplate.defaultProps = {
@@ -212,6 +215,7 @@ CnCCommonTemplate.defaultProps = {
   onVenmoSubmit: () => {},
   venmoPayment: null,
   onVenmoError: false,
+  isVenmoPaymentInProgress: false,
 };
 
 export default CnCCommonTemplate;

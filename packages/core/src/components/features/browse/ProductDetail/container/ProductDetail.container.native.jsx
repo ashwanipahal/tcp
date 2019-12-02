@@ -118,7 +118,7 @@ class ProductDetailContainer extends React.PureComponent {
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
       <React.Fragment>
-        {isProductDataAvailable ? (
+        {isProductDataAvailable && currentProduct.productId ? (
           <ProductDetail
             currentProduct={currentProduct}
             breadCrumbs={breadCrumbs}

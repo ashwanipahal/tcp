@@ -7,7 +7,6 @@ import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import config from './config';
 import constant from './Recommendations.constant';
 import style from './Recommendations.style';
@@ -234,7 +233,6 @@ class Recommendations extends Component {
             </section>
           );
         })}
-        <QuickViewModal />
       </div>
     );
   }

@@ -33,10 +33,17 @@ export const mapDispatchToProps = dispatch => {
           customEvents: ['event15', 'event80'],
           pageName: 'content:email confirmation',
           pageShortName: 'content:email confirmation',
+          pageSection: 'content',
+          pageSubSection: 'content',
+          pageType: 'content',
+          pageTertiarySection: 'content',
         })
       );
 
-      dispatch(trackPageView());
+      dispatch(trackPageView({}));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
     },
   };
 };

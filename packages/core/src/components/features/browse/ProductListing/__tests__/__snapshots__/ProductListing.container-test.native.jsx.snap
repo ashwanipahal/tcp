@@ -3,6 +3,7 @@
 exports[`ProductListContainer component should render correctly 1`] = `
 <Styled(ProductListView)
   AddToFavoriteErrorMsg=""
+  QRAnimationURL=""
   addToBagEcom={[Function]}
   breadCrumbs={Array []}
   categoryId=""
@@ -43,6 +44,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   }
   initialValues={Object {}}
   isBothTcpAndGymProductAreAvailable={false}
+  isDataLoading={false}
   isFavorite={false}
   isKeepModalOpen={false}
   isLoadingMore={false}
@@ -62,13 +64,27 @@ exports[`ProductListContainer component should render correctly 1`] = `
       "getParam": [MockFunction] {
         "calls": Array [
           Array [
+            "showCustomLoader",
+          ],
+          Array [
             "url",
+          ],
+          Array [
+            "showCustomLoader",
           ],
           Array [
             "url",
           ],
         ],
         "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
           Object {
             "type": "return",
             "value": undefined,
@@ -95,6 +111,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
   removeAddToFavoritesErrorMsg={[Function]}
   renderBrandFilter={null}
   renderMoveToList={[Function]}
+  resetCustomLoader={[Function]}
   resetProducts={
     [MockFunction] {
       "calls": Array [
@@ -114,6 +131,7 @@ exports[`ProductListContainer component should render correctly 1`] = `
     }
   }
   router={Object {}}
+  showCustomLoader={false}
   sortLabels={Array []}
   totalProductsCount="0"
 />
