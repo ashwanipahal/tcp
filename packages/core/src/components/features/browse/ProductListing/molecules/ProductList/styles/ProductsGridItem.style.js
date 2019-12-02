@@ -203,11 +203,14 @@ const styles = css`
     min-height: 35px;
   }
 
+  /* stylelint-disable-next-line*/
+  _:-ms-fullscreen,
+  .product-image-container {
+    max-height: 320px;
+  }
+
   .product-image-container {
     position: relative;
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 320px;
-    }
   }
 
   .extended-sizes-text {
