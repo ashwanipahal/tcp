@@ -50,3 +50,7 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
   </KeyboardAvoidingView>
 </View>
 `;
+
+exports[`PayPalButton component should render correctly 1`] = `""`;
+
+exports[`PayPalButton component should render correctly isBillingPage 1`] = `""`;

@@ -23,6 +23,10 @@ export const getIsFromBagProductSfl = state => {
   return state.QuickView.get('isSflProduct');
 };
 
+export const getEditFavorite = state => {
+  return state.QuickView.get('isFavoriteEdit');
+};
+
 export const getGeneralProductId = state => {
   return state.QuickView.getIn(['quickViewProducts', 'generalProductId']);
 };
@@ -43,6 +47,7 @@ export const getQuickViewLabels = state => {
   return {
     addToBag: getLabelValue(state.Labels, 'lbl_add_to_bag', 'QuickView', 'Browse'),
     editItem: getLabelValue(state.Labels, 'lbl_edit_item', 'QuickView', 'Browse'),
+    editProduct: getLabelValue(state.Labels, 'lbl_edit_product', 'QuickView', 'Browse'),
     noProductSelected: getLabelValue(
       state.Labels,
       'plp_no_product_selected_error',

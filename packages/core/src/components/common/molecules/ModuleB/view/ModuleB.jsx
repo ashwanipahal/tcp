@@ -54,6 +54,7 @@ const ModuleB = props => {
     ctaType,
     bannerPosition,
     expandableTitle,
+    moduleClassName,
   } = props;
   const buttonListCtaType = getButtonListVariation(ctaType);
   const buttonListProps = getButtonListVariationProps(ctaType);
@@ -71,7 +72,7 @@ const ModuleB = props => {
   };
 
   return (
-    <div className={`${className} moduleB `}>
+    <div className={`${className} ${moduleClassName} moduleB `}>
       <Row>
         <Col colSize={colSize}>
           <ImageBanner {...imageBannerProps} />
@@ -109,10 +110,12 @@ ModuleB.propTypes = {
   ctaType: PropTypes.string.isRequired,
   bannerPosition: PropTypes.string.isRequired,
   expandableTitle: PropTypes.string.isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 ModuleB.defaultProps = {
   moduleWidth: MODULE_WIDTH_HALF,
+  moduleClassName: '',
 };
 
 export { ModuleB as ModuleBVanilla };

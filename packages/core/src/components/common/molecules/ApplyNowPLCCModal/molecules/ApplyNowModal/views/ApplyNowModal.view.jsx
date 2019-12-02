@@ -171,6 +171,7 @@ const StyledApplyNowModal = ({
             </Col>
           </Row>
         )}
+        <div className="separator" />
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
@@ -187,7 +188,7 @@ const StyledApplyNowModal = ({
         </BodyCopy>
         <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
-          <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
+          <BodyCopy component="span" fontSize="fs10" fontFamily="secondary">
             {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
@@ -223,6 +224,7 @@ const StyledApplyNowModal = ({
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
+        <div className="separator" />
         {isRtpsFlow && (
           <Row>
             <Col colSize={{ large: 12, medium: 8, small: 6 }}>

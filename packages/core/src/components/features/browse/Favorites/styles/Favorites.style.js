@@ -38,6 +38,35 @@ export default css`
     margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+
+  .render-mobile-view {
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
+    }
+  }
+
+  .filter-and-sort-form-container .render-mobile-view {
+    position: relative;
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+
+  .filter-and-sort-form-container .filter-row {
+    margin-right: auto;
+    margin-left: 0;
+  }
   .brand-filter-section {
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin: 0;
@@ -94,20 +123,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
-    }
-  }
-
-  .render-mobile-view {
-    width: auto;
-    padding: 0;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      display: none;
-    }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      .filter-row {
-        width: auto;
-      }
     }
   }
 

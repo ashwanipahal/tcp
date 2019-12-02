@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -67,80 +66,78 @@ class EditList extends React.PureComponent {
       return this.renderDeleteListPopup();
     }
     return (
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <Container margins={margins}>
-          <BodyCopy
-            margin="0 0 60px 0"
-            dataLocator="fav_brand_title"
-            mobileFontFamily="secondary"
-            fontSize="fs22"
-            fontWeight="bold"
-            color="gray.900"
-            textAlign="center"
-            text={getLabelValue(labels, 'lbl_fav_edit_list')}
-          />
+      <Container margins={margins}>
+        <BodyCopy
+          margin="0 0 60px 0"
+          dataLocator="fav_brand_title"
+          mobileFontFamily="secondary"
+          fontSize="fs22"
+          fontWeight="bold"
+          color="gray.900"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_fav_edit_list')}
+        />
+        <Field
+          label={getLabelValue(labels, 'lbl_fav_list_name')}
+          name="listName"
+          id="listName"
+          type="text"
+          autoCapitalize="none"
+          component={TextBox}
+          dataLocator="listName"
+          maxLength={50}
+          bottomBorderColor="gray.600"
+        />
+        <RowContainer margins="20px 0 0 0">
           <Field
-            label={getLabelValue(labels, 'lbl_fav_list_name')}
-            name="listName"
-            id="listName"
-            type="text"
-            autoCapitalize="none"
-            component={TextBox}
-            dataLocator="listName"
-            maxLength={50}
-            bottomBorderColor="gray.600"
+            inputVariation="inputVariation-1"
+            name="default_checkbox"
+            component={InputCheckbox}
+            {...initialValues}
+            disabled={isCheckBoxDisabled}
+            dataLocator="default_checkbox"
+            rightText={getLabelValue(labels, 'lbl_fav_default_list')}
+            textMargin="4px 0 0 0"
           />
-          <RowContainer margins="20px 0 0 0">
-            <Field
-              inputVariation="inputVariation-1"
-              name="default_checkbox"
-              component={InputCheckbox}
-              {...initialValues}
-              disabled={isCheckBoxDisabled}
-              dataLocator="default_checkbox"
-              rightText={getLabelValue(labels, 'lbl_fav_default_list')}
-              textMargin="4px 0 0 0"
-            />
-            <CustomIcon
-              margins="0 0 0 8px"
-              iconFontName={ICON_FONT_CLASS.Icomoon}
-              name={ICON_NAME.heart}
-              size="fs12"
-              color="gray.900"
-            />
-          </RowContainer>
-          <Button
-            margin="40px 0 0 0"
-            fill="BLUE"
-            type="submit"
-            color="white"
-            onPress={this.submitHandler}
-            text={getLabelValue(labels, 'btn_fav_save')}
+          <CustomIcon
+            margins="0 0 0 8px"
+            iconFontName={ICON_FONT_CLASS.Icomoon}
+            name={ICON_NAME.heart}
+            size="fs12"
+            color="gray.900"
           />
-          <Button
-            margin="24px 0 0 0"
-            fill="WHITE"
-            type="submit"
-            onPress={onCloseModal}
-            text={getLabelValue(labels, 'btn_fav_cancel')}
+        </RowContainer>
+        <Button
+          margin="40px 0 0 0"
+          fill="BLUE"
+          type="submit"
+          color="white"
+          onPress={this.submitHandler}
+          text={getLabelValue(labels, 'btn_fav_save')}
+        />
+        <Button
+          margin="24px 0 0 0"
+          fill="WHITE"
+          type="submit"
+          onPress={onCloseModal}
+          text={getLabelValue(labels, 'btn_fav_cancel')}
+        />
+        {!isCheckBoxDisabled && (
+          <Anchor
+            locator="btn_fav_delete_list"
+            accessibilityRole="link"
+            accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
+            text={getLabelValue(labels, 'btn_fav_delete_list')}
+            anchorVariation="custom"
+            colorName="gray.900"
+            fontSizeVariation="large"
+            onPress={this.onDeleteListHandler}
+            centered
+            underline
+            margins="22px 0 0 0"
           />
-          {!isCheckBoxDisabled && (
-            <Anchor
-              locator="btn_fav_delete_list"
-              accessibilityRole="link"
-              accessibilityLabel={getLabelValue(labels, 'btn_fav_delete_list')}
-              text={getLabelValue(labels, 'btn_fav_delete_list')}
-              anchorVariation="custom"
-              colorName="gray.900"
-              fontSizeVariation="large"
-              onPress={this.onDeleteListHandler}
-              centered
-              underline
-              margins="22px 0 0 0"
-            />
-          )}
-        </Container>
-      </ScrollView>
+        )}
+      </Container>
     );
   }
 }

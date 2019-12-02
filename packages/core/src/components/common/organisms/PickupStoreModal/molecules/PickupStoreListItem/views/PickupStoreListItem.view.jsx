@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import { BodyCopy, Button, Image } from '../../../../../atoms';
@@ -159,7 +159,7 @@ const displayStoreTitle = basicInfo => {
   );
 };
 
-class PickupStoreListItem extends React.Component {
+class PickupStoreListItem extends PureComponent {
   static propTypes = {
     /** Error message when add to cart */
     addToCartError: PropTypes.string.isRequired,
@@ -240,6 +240,12 @@ class PickupStoreListItem extends React.Component {
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
     this.handleStoreUpdate = this.handleStoreUpdate.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
+    this.isBossSelected = props.isBossSelected;
+  }
+
+  componentDidUpdate() {
+    const { isBossSelected } = this.props;
+    this.isBossSelected = isBossSelected;
   }
 
   getStoreCloseTime() {

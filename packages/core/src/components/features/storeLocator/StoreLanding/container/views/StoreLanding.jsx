@@ -306,6 +306,7 @@ export class StoreLanding extends PureComponent {
               <Row
                 className={`storeView__List${mapView ? ' storeView__ListAndMap' : ''}`}
                 fullBleed
+                aria-live="polite"
               >
                 {mapView
                   ? this.renderMapView(modifiedStoreList)

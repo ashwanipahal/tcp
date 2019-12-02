@@ -88,3 +88,4 @@ PromoModules.defaultProps = {
 };
 
 export default PromoModules;
+export { PromoModules as PromoModulesVanilla };
