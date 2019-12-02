@@ -171,6 +171,7 @@ class ProductList extends React.PureComponent {
       outOfStockLabels,
       renderMoveToList,
       onSeeSuggestedItems,
+      errorMessages,
     } = this.props;
     const { item } = itemData;
     const suggestedItem = this.checkAndRenderSuggestedItem(item);
@@ -230,6 +231,7 @@ class ProductList extends React.PureComponent {
         outOfStockLabels={outOfStockLabels}
         renderMoveToList={renderMoveToList}
         onSeeSuggestedItems={onSeeSuggestedItems}
+        errorMessages={errorMessages}
       />
     );
   };
@@ -408,6 +410,7 @@ ProductList.propTypes = {
   onSeeSuggestedItems: PropTypes.func,
   seeSuggestedDictionary: PropTypes.shape({}),
   isSuggestedItem: PropTypes.bool,
+  errorMessages: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -447,6 +450,7 @@ ProductList.defaultProps = {
   onSeeSuggestedItems: () => {},
   seeSuggestedDictionary: null,
   isSuggestedItem: false,
+  errorMessages: null,
 };
 
 export default withStyles(ProductList, styles);

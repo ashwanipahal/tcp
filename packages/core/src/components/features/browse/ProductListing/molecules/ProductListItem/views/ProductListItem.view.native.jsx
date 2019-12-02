@@ -6,6 +6,7 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getLabelValue } from '@tcp/core/src/utils';
+import ErrorDisplay from '@tcp/core/src/components/common/atoms/ErrorDisplay';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -120,7 +121,7 @@ const renderAddToBagContainer = (props, keepAlive) => {
         }
         onPress={() => onCTAHandler(props)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
-        margin="0 6px 0 0"
+        margin="0 0 0 0"
       />
     </AddToBagContainer>
   );
@@ -179,6 +180,7 @@ const ListItem = props => {
     isSuggestedItem,
     outOfStockColorProductId,
     onDismissSuggestion,
+    errorMessages,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -190,6 +192,9 @@ const ListItem = props => {
   const keepAlive = getKeepAlive(isFavorite, itemInfo, miscInfoData);
   const itemOutOfStock = isItemOutOfStock(isKeepAliveEnabled, keepAlive, itemInfo);
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
+  const { generalProductId } = productInfo;
+  const errorMsg =
+    (errorMessages && get(errorMessages[generalProductId], 'errorMessage', null)) || null;
 
   return (
     <ListContainer
@@ -266,6 +271,9 @@ const ListItem = props => {
         />
       ) : null}
       {renderAddToBagContainer(props, itemOutOfStock)}
+      {errorMsg && (
+        <ErrorDisplay error={errorMsg} isBorder margins="12px 0 0 0" paddings="8px 8px 8px 8px" />
+      )}
       <RenderDismissLink
         isSuggestedItem={isSuggestedItem}
         outOfStockColorProductId={outOfStockColorProductId}
@@ -806,6 +814,7 @@ ListItem.propTypes = {
   isSuggestedItem: PropTypes.bool,
   outOfStockColorProductId: PropTypes.string,
   onDismissSuggestion: PropTypes.func.isRequired,
+  errorMessages: PropTypes.shape({}).isRequired,
 };
 
 ListItem.defaultProps = {

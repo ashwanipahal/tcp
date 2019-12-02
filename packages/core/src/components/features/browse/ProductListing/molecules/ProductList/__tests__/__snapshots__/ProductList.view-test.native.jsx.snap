@@ -23,6 +23,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "AddToFavoriteErrorMsg": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
+        "errorMessages": null,
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
