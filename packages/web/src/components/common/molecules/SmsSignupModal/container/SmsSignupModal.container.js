@@ -26,7 +26,7 @@ export const mapDispatchToProps = dispatch => {
     trackSubscriptionSuccess: () => {
       dispatch(
         setClickAnalyticsData({
-          customEvents: ['event15', 'event80'],
+          customEvents: ['event107', 'event80'],
           pageName: 'content:email confirmation',
           pageShortName: 'content:sms confirmation',
           pageSection: 'content',
