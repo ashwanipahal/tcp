@@ -125,6 +125,16 @@ export default function create(store) {
       },
     },
 
+    pageTertiarySection: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageTertiarySection
+          ? clickActionAnalyticsData.pageTertiarySection
+          : pageData.pageTertiarySection;
+      },
+    },
+
     siteType: {
       get() {
         return siteType;

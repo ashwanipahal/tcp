@@ -21,6 +21,13 @@ class SmsSignupForm extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { subscription, trackSubscriptionSuccess } = this.props;
+    if (subscription.success) {
+      trackSubscriptionSuccess();
+    }
+  }
+
   componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription, trackSubscriptionSuccess } = this.props;
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
@@ -28,7 +35,6 @@ class SmsSignupForm extends React.PureComponent {
         this.formSubmitPromise.reject();
       } else {
         this.formSubmitPromise.resolve();
-        trackSubscriptionSuccess();
       }
       this.formSubmitPromise = null;
     }
