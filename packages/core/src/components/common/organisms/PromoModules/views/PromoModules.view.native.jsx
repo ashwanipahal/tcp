@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import {
   ModuleA,
@@ -89,3 +88,4 @@ PromoModules.defaultProps = {
 };
 
 export default PromoModules;
+export { PromoModules as PromoModulesVanilla };

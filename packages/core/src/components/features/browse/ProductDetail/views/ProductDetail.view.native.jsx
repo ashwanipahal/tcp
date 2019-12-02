@@ -1,7 +1,6 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME, scrollToViewBottom } from '@tcp/core/src/utils';
-import { ScrollView as LazyloadScrollView } from 'react-native';
+import { ScrollView as LazyloadScrollView, View } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
@@ -30,8 +29,9 @@ import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
-
+import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
+import ProductDetailViewPropTypes from '../ProductDetailPropTypes';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -48,8 +48,10 @@ class ProductDetailView extends React.PureComponent {
       selectedColorProductId,
       showCompleteTheLook: false,
       size: '',
+      expanded: true,
     };
     this.currentScrollValue = 0;
+    this.scrollPageToTarget = this.scrollPageToTarget.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -87,7 +89,7 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
-  onChangeSize = (color, e, fit, quantity) => {
+  onChangeSize = (color, e) => {
     this.setState({ currentGiftCardValue: e, size: e });
   };
 
@@ -156,7 +158,7 @@ class ProductDetailView extends React.PureComponent {
       height,
       pageX,
       pageY,
-      callBack: this.scrollView,
+      callBack: this.scrollRef,
       currentScrollValue: this.currentScrollValue,
     });
   };
@@ -165,10 +167,37 @@ class ProductDetailView extends React.PureComponent {
     this.currentScrollValue = event.nativeEvent.contentOffset.y;
   };
 
+  scrollPageToTarget = () => {
+    this.ratingViewRef.measure((fx, fy, width, height, px, py) => {
+      this.scrollRef.scrollTo({ y: py, animated: true });
+    });
+  };
+
+  shouldRenderRatingReview = (isGiftCard, isBundleProduct, bazaarVoice) => {
+    return !isGiftCard && !isBundleProduct && bazaarVoice;
+  };
+
+  renderProductReview = ({ renderRatingReview, productId, bazaarVoice, expanded }) => {
+    return renderRatingReview ? (
+      <View
+        ref={view => {
+          this.ratingViewRef = view;
+        }}
+      >
+        <ProductReviewsContainer
+          reviewsCount={bazaarVoice.totalReviewCount}
+          ratingsProductId={productId}
+          expanded={expanded}
+        />
+      </View>
+    ) : null;
+  };
+
   render() {
     const {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
+      currentProduct: { bazaarVoice },
       plpLabels,
       handleFormSubmit,
       navigation,
@@ -198,6 +227,7 @@ class ProductDetailView extends React.PureComponent {
       selectedColorProductId,
       showCompleteTheLook,
       size,
+      expanded,
     } = this.state;
     let imageUrls = [];
     let skuId = null;
@@ -226,13 +256,19 @@ class ProductDetailView extends React.PureComponent {
       skuId = getMapSliceForSizeSkuID(currentColorEntry, size);
     }
 
+    const renderRatingReview = this.shouldRenderRatingReview(
+      currentProduct.isGiftCard,
+      false,
+      bazaarVoice
+    );
+
     return (
       <LazyloadScrollView
-        ref={ref => {
-          this.scrollView = ref;
-        }}
-        name={LAZYLOAD_HOST_NAME.PDP}
         onScroll={this.handleScroll}
+        name={LAZYLOAD_HOST_NAME.PDP}
+        ref={ref => {
+          this.scrollRef = ref;
+        }}
       >
         <PageContainer>
           <Margin>
@@ -250,6 +286,7 @@ class ProductDetailView extends React.PureComponent {
               outOfStockLabels={outOfStockLabels}
               skuId={skuId}
             />
+
             <ProductSummary
               productData={currentProduct}
               selectedColorProductId={selectedColorProductId}
@@ -270,6 +307,8 @@ class ProductDetailView extends React.PureComponent {
               pdpLabels={pdpLabels}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              scrollToTarget={this.scrollPageToTarget}
+              renderRatingReview
             />
           </Margin>
           {this.renderMiddlePromoBanner(middlePromos)}
@@ -308,12 +347,18 @@ class ProductDetailView extends React.PureComponent {
               scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             {!currentProduct.isGiftCard ? (
-              <RelatedOutfits
-                pdpLabels={pdpLabels}
-                navigation={navigation}
-                selectedColorProductId={selectedColorProductId}
-                setShowCompleteTheLook={this.setShowCompleteTheLook}
-              />
+              <View
+                ref={view => {
+                  this.relatedOutfitRef = view;
+                }}
+              >
+                <RelatedOutfits
+                  pdpLabels={pdpLabels}
+                  navigation={navigation}
+                  selectedColorProductId={selectedColorProductId}
+                  setShowCompleteTheLook={this.setShowCompleteTheLook}
+                />
+              </View>
             ) : null}
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />
@@ -324,6 +369,12 @@ class ProductDetailView extends React.PureComponent {
                 portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
               />
             </RecommendationWrapper>
+            {this.renderProductReview({
+              renderRatingReview,
+              productId: currentProduct.ratingsProductId,
+              bazaarVoice,
+              expanded,
+            })}
             {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
           </Margin>
         </PageContainer>
@@ -332,40 +383,7 @@ class ProductDetailView extends React.PureComponent {
   }
 }
 
-ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({
-    colorFitsSizesMap: PropTypes.shape({}),
-    offerPrice: PropTypes.string,
-    listPrice: PropTypes.string,
-    generalProductId: PropTypes.string,
-    imagesByColor: PropTypes.shape({}),
-    isGiftCard: PropTypes.bool,
-  }),
-  navigation: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
-  clearAddToBagError: PropTypes.func.isRequired,
-  plpLabels: PropTypes.shape({}),
-  handleSubmit: PropTypes.func,
-  isPickupModalOpen: PropTypes.bool,
-  handleFormSubmit: PropTypes.func,
-  addToBagError: PropTypes.string,
-  shortDescription: PropTypes.string,
-  itemPartNumber: PropTypes.string,
-  longDescription: PropTypes.string,
-  pdpLabels: PropTypes.shape({}),
-  currency: PropTypes.string,
-  currencyExchange: PropTypes.number,
-  onAddItemToFavorites: PropTypes.func,
-  isLoggedIn: PropTypes.bool,
-  alternateSizes: PropTypes.shape({
-    key: PropTypes.string,
-  }),
-  AddToFavoriteErrorMsg: PropTypes.string,
-  removeAddToFavoritesErrorMsg: PropTypes.func,
-  toastMessage: PropTypes.func,
-  isKeepAliveEnabled: PropTypes.bool,
-  outOfStockLabels: PropTypes.shape({}),
-};
+ProductDetailView.propTypes = ProductDetailViewPropTypes;
 
 ProductDetailView.defaultProps = {
   currentProduct: {
@@ -396,6 +414,8 @@ ProductDetailView.defaultProps = {
   toastMessage: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  bottomPromos: '',
+  middlePromos: '',
 };
 
 export default withStyles(ProductDetailView);

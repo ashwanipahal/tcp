@@ -36,13 +36,11 @@ describe('AutoCompleteComponent Native', () => {
   });
 
   it('should render correctly for error', () => {
-    component.setState({
-      touched: true,
-      active: false,
-    });
     component.setProps({
       meta: {
         error: 'Test message',
+        touched: true,
+        active: false,
       },
     });
     expect(component.find(StyledErrorWrapper)).toHaveLength(1);

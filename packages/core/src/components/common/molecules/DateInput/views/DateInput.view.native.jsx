@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Keyboard, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { formatDate, isValidDate, isIOS } from '@tcp/core/src/utils';
+import { formatDate, isIOS } from '@tcp/core/src/utils';
 import TextBox from '../../../atoms/TextBox';
 
 export class DateInput extends PureComponent {

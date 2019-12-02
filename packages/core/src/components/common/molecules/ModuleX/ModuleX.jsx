@@ -7,10 +7,11 @@ const ModuleX = props => {
     className,
     richTextList: [{ text }],
     dataLocator,
+    moduleClassName,
   } = props;
   return (
     <RichText
-      className={`${className} moduleX`}
+      className={`${className} ${moduleClassName} moduleX`}
       richTextHtml={text}
       dataLocator={dataLocator || `moduleX`}
     />
@@ -21,5 +22,10 @@ ModuleX.propTypes = {
   className: PropTypes.string.isRequired,
   richTextList: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string)).isRequired,
   dataLocator: PropTypes.string.isRequired,
+  moduleClassName: PropTypes.string,
+};
+
+ModuleX.defaultProps = {
+  moduleClassName: '',
 };
 export default ModuleX;

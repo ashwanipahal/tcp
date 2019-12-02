@@ -227,9 +227,7 @@ exports[`Order Items component should renders tracking header 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        May 1, 2019
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="orderDetail-trackingNumber-pipe"
         color="text.primary"

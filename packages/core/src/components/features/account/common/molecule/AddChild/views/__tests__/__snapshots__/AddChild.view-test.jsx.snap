@@ -1262,7 +1262,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                     "25px",

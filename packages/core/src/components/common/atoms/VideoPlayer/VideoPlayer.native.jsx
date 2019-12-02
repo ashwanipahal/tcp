@@ -49,12 +49,20 @@ VideoPlayer.propTypes = {
   videoHeight: PropTypes.number,
   url: PropTypes.string.isRequired,
   poster: PropTypes.string,
+  muted: PropTypes.string,
+  loop: PropTypes.string,
+  autoplay: PropTypes.string,
+  controls: PropTypes.string,
 };
 
 VideoPlayer.defaultProps = {
   poster: '',
   videoWidth: getScreenWidth(),
   videoHeight: 400,
+  muted: '1',
+  loop: '1',
+  autoplay: '1',
+  controls: '1',
 };
 
 export default VideoPlayer;

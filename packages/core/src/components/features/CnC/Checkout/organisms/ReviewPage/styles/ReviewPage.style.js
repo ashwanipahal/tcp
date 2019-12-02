@@ -15,6 +15,10 @@ const styles = css`
     height: 431px;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
+
+  .review-billing-skeleton {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
 `;
 
 export default styles;

@@ -255,6 +255,7 @@ class ModuleG extends React.PureComponent {
       // mediaLinkedList,
       // layout,
       divTabs,
+      moduleClassName,
     } = this.props;
     firstCarouselOption.afterChange = current => {
       this.setState({ firstCarouselNext: current });
@@ -281,7 +282,7 @@ class ModuleG extends React.PureComponent {
     }
 
     return (
-      <Grid className={`${className} moduleG`}>
+      <Grid className={`${className} ${moduleClassName} moduleG`}>
         <Row>
           <Col
             colSize={{
@@ -320,6 +321,7 @@ ModuleG.defaultProps = {
   // mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
+  moduleClassName: '',
 };
 
 ModuleG.propTypes = {
@@ -362,6 +364,7 @@ ModuleG.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 const styledModuleG = withStyles(errorBoundary(ModuleG), moduleGStyle);

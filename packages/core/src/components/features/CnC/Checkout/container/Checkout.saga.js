@@ -39,7 +39,6 @@ import {
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
-  pickUpRouting,
   callPickupSubmitMethod,
   callUpdateRTPS,
   handleServerSideErrorAPI,
@@ -49,7 +48,8 @@ import {
   shouldInvokeReviewCartCall,
   redirectFromExpress,
 } from './Checkout.saga.util';
-import { submitEmailSignup } from './CheckoutExtended.saga.util';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { submitEmailSignup, pickUpRouting } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -289,6 +289,7 @@ function* triggerExpressCheckout(
     pageName = pageName.toLowerCase();
   }
   try {
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield startExpressCheckout(shouldPreScreenUser, source);
     if (!res.orderId) {
       return yield redirectFromExpress();
