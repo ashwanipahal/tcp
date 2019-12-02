@@ -95,6 +95,9 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
         hasAttribute: jest.fn(),
+        getAttribute: jest.fn(() => {
+          return 'createAccount';
+        }),
       },
       stopImmediatePropagation: jest.fn(),
     };
@@ -123,6 +126,9 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
         hasAttribute: jest.fn(),
+        getAttribute: jest.fn(() => {
+          return 'createAccount';
+        }),
       },
       stopImmediatePropagation: jest.fn(),
     };
