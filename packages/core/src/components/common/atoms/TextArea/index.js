@@ -1,1 +1,1 @@
-export { default, TextAreaVanilla } from './views';
+export { default } from './views';

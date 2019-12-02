@@ -338,3 +338,4 @@ export default connect(
   mapStateToProps,
   {}
 )(GetCandidGallery);
+export { GetCandidGallery as GetCandidGalleryVanilla };
