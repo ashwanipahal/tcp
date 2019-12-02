@@ -128,6 +128,7 @@ export const shippingPropsTypes = {
   venmoBannerLabel: PropTypes.shape({
     venmoBannerText: PropTypes.string,
   }),
+  initShippingPage: PropTypes.shape({}),
 };
 
 export const shippingDefaultProps = {
@@ -166,4 +167,5 @@ export const shippingDefaultProps = {
   venmoBannerLabel: {
     venmoBannerText: '',
   },
+  initShippingPage: null,
 };

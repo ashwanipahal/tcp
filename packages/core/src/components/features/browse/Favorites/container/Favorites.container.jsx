@@ -55,6 +55,7 @@ class FavoritesContainer extends React.PureComponent {
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
+    appliedFilterLength: 0,
     sortId: '',
     gymSelected: false,
     tcpSelected: false,
@@ -87,6 +88,7 @@ class FavoritesContainer extends React.PureComponent {
   onFilterSelection = filteredId => {
     this.setState({
       filteredId,
+      appliedFilterLength: 1,
     });
   };
 

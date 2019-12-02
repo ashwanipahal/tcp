@@ -2,7 +2,7 @@
 
 exports[`ModuleE component Should render component 1`] = `
 <Styled(Row)
-  className=""
+  className=" "
   fullBleed={
     Object {
       "medium": true,

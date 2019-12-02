@@ -18,6 +18,7 @@ const initialState = fromJS({
   uiFlags: {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
+    isPayPalRenderDone: false,
     lastItemUpdatedId: null,
     isTotalEstimated: true,
     isClosenessQualifier: false,
@@ -87,6 +88,8 @@ const returnBagPageReducerExtension = (state = initialState, action) => {
       return state.set('loaded', false);
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ROUTING:
       return state.set('isRouting', action.payload);
+    case BAGPAGE_CONSTANTS.IS_PAYPAL_BUTTON_RENDER_DONE:
+      return state.setIn(['uiFlags', 'isPayPalRenderDone'], action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -140,6 +143,7 @@ const BagPageReducer = (state = initialState, action) => {
       return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
     case BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE:
       return state.setIn(['uiFlags', 'isPayPalWebViewEnable'], action.payload);
+
     case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:

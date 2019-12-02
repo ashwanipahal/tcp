@@ -2,7 +2,7 @@
 
 exports[`N component renders correctly 1`] = `
 <Styled(Row)
-  className=" moduleN"
+  className="  moduleN"
   data-locator="moduleN_promobanner_img"
   fullBleed={
     Object {

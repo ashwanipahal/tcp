@@ -7,7 +7,7 @@ import CookieManager from 'react-native-cookies';
 import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
@@ -707,18 +707,14 @@ export const validateColor = color => {
  * @param {upperCase} locale use for convert locate formate
  * @param {upperCase} formate use for convert locate formate
  */
-export const getTranslatedMomentDate = (
-  dateInput,
-  language = 'en',
-  { day, month, date, year } = {}
-) => {
-  moment.locale(language);
-  const currentDate = dateInput ? moment(dateInput) : moment();
+export const getTranslatedMomentDate = dateInput => {
+  // TODO: Locale Handling needs to happen.
+  const dateInputParsed = dateInput ? new Date(dateInput) : new Date();
   return {
-    day: currentDate.format(day),
-    month: currentDate.format(month),
-    date: currentDate.format(date),
-    year: currentDate.format(year),
+    day: format(dateInputParsed, 'EEE'),
+    month: format(dateInputParsed, 'MMM'),
+    date: format(dateInputParsed, 'dd'),
+    year: format(dateInputParsed, 'yyyy'),
   };
 };
 
@@ -779,16 +775,11 @@ export const mapHandler = store => {
  * @param {string} date date which is to be mutated
  * @param {upperCase} locale use for convert locate formate
  */
-export const getTranslateDateInformation = (date, language) => {
+export const getTranslateDateInformation = date => {
   // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
   // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
   // To fix this, need to add fallback package for Intl
-  return getTranslatedMomentDate(date, language, {
-    day: 'ddd',
-    month: 'MMM',
-    date: 'D',
-    year: 'YYYY',
-  });
+  return getTranslatedMomentDate(date);
 };
 
 export const onBack = navigation => {

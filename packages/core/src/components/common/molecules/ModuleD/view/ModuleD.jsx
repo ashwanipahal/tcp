@@ -42,6 +42,7 @@ const ModuleD = ({
   smallCompImage,
   singleCTAButton,
   fullBleed,
+  moduleClassName,
 }) => {
   let colSize;
   let imgDataConfig;
@@ -58,7 +59,7 @@ const ModuleD = ({
     imgDataConfig = config.IMG_DATA_6.imgConfig;
   }
   return (
-    <Grid className={`${className} moduleD`}>
+    <Grid className={`${className} ${moduleClassName} moduleD`}>
       {headerText && (
         <LinkText
           headerText={headerText}
@@ -141,6 +142,7 @@ ModuleD.defaultProps = {
   promoBanner: [],
   singleCTAButton: {},
   fullBleed: false,
+  moduleClassName: '',
 };
 
 ModuleD.propTypes = {
@@ -165,6 +167,7 @@ ModuleD.propTypes = {
   ).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
   fullBleed: PropTypes.bool,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleD), style);

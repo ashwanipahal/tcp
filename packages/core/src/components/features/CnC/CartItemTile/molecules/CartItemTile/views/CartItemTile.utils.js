@@ -238,7 +238,7 @@ export const getPrices = ({ productDetail, currencyExchange }) => {
     isCurrencyExchange && listPrice
       ? currencyConversion(listPrice, currencyExchange[0])
       : listPrice;
-  price = isCurrencyExchange && price ? currencyConversion(listPrice, currencyExchange[0]) : price;
+  price = isCurrencyExchange && price ? currencyConversion(price, currencyExchange[0]) : price;
   return {
     salePrice,
     wasPrice,
