@@ -310,25 +310,33 @@ export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false
   }
 }
 
-export function* updateWishListItem(formData) {
-  const { itemId, quantity, color, productInfo } = formData;
-  const state = yield select();
-  const activeWishlistObject =
-    state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
-  const activeWishlistId = activeWishlistObject.id;
-  const variantSelected =
-    productInfo.colorFitsSizesMap &&
-    productInfo.colorFitsSizesMap.find(entry => entry.color.name === color);
-  const uniqueId = (variantSelected && variantSelected.colorDisplayId) || '';
-  yield call(deleteWishListItem, activeWishlistId, itemId);
-  yield call(addItemsToWishlistAbstractor, {
-    wishListId: activeWishlistId,
-    skuIdOrProductId: uniqueId,
-    quantity,
-    isProduct: true,
-    uniqueId,
-  });
-  yield* loadWishlistsSummaries();
+export function* updateWishListItem({ payload }) {
+  try {
+    const { itemId, quantity, color, product, callBack } = payload;
+    const state = yield select();
+    const activeWishlistObject =
+      state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
+    const activeWishlistId = activeWishlistObject.id;
+    const variantSelected =
+      product &&
+      product.colorFitsSizesMap &&
+      product.colorFitsSizesMap.find(entry => entry.color.name === color);
+    const uniqueId = (variantSelected && variantSelected.colorDisplayId) || '';
+    yield call(deleteWishListItem, activeWishlistId, itemId);
+    yield call(addItemsToWishlistAbstractor, {
+      wishListId: activeWishlistId,
+      skuIdOrProductId: uniqueId,
+      quantity,
+      isProduct: true,
+      uniqueId,
+    });
+    yield* loadWishlistsSummaries();
+    if (callBack) {
+      callBack();
+    }
+  } catch (err) {
+    yield null;
+  }
 }
 
 export function* sendWishListMail(formData) {

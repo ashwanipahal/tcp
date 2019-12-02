@@ -106,10 +106,10 @@ class FavoritesView extends React.PureComponent {
       setLastDeletedItemId,
       labels,
       onQuickViewOpenClick,
-      selectedColorProductId,
       isKeepAliveEnabled,
       outOfStockLabels,
       activeWishList,
+      addToBagEcom,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -131,8 +131,9 @@ class FavoritesView extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             openAddNewList={this.handleAddList}
             activeWishListId={activeWishList.id}
+            addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal selectedColorProductId={selectedColorProductId} />
+          <QuickViewModal />
         </>
       )
     );
@@ -564,7 +565,6 @@ FavoritesView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   slpLabels: PropTypes.shape({}),
   onQuickViewOpenClick: PropTypes.func.isRequired,
-  selectedColorProductId: PropTypes.string,
   filteredId: PropTypes.string.isRequired,
   sortId: PropTypes.string.isRequired,
   onFilterSelection: PropTypes.func.isRequired,
@@ -579,6 +579,7 @@ FavoritesView.propTypes = {
   sendWishListEmail: PropTypes.func.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
+  addToBagEcom: PropTypes.func.isRequired,
   appliedFilterLength: PropTypes.number,
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   isDataLoading: PropTypes.bool,
@@ -593,7 +594,6 @@ FavoritesView.propTypes = {
 FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
-  selectedColorProductId: '',
   outOfStockLabels: {},
   slpLabels: {},
   defaultWishList: {},

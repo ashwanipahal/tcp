@@ -36,12 +36,57 @@ import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/
 import ImageCarousel from '../../ImageCarousel';
 import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
 };
 
 let renderVariation = false;
+
+const handleFavoriteAddOrEdit = (
+  colorProductId,
+  item,
+  addToBagEcom,
+  onQuickViewOpenClick,
+  isFavoriteEdit
+) => {
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = item;
+  const { itemId, quantity } = item.itemInfo;
+  const orderInfo = {
+    orderItemId: itemId,
+    selectedQty: quantity,
+    selectedColor: color,
+    selectedSize: size,
+    selectedFit: fit,
+    skuId,
+  };
+  if (skuId && size) {
+    if (isFavoriteEdit) {
+      onQuickViewOpenClick({
+        colorProductId,
+        orderInfo,
+        isFavoriteEdit: true,
+      });
+    } else if (addToBagEcom) {
+      let cartItemInfo = getCartItemInfo(item, {});
+      cartItemInfo = { ...cartItemInfo };
+      addToBagEcom(cartItemInfo);
+    }
+  } else if (isFavoriteEdit) {
+    onQuickViewOpenClick({
+      colorProductId,
+      orderInfo,
+      isFavoriteEdit: true,
+    });
+  } else {
+    onQuickViewOpenClick({
+      colorProductId,
+    });
+  }
+};
 
 const onCTAHandler = props => {
   const {
@@ -51,6 +96,9 @@ const onCTAHandler = props => {
     onQuickViewOpenClick,
     isFavoriteOOS,
     setLastDeletedItemId,
+    addToBagEcom,
+    isFavoriteEdit,
+    isFavorite,
     isSuggestedItem,
     onReplaceWishlistItem,
   } = props;
@@ -74,6 +122,14 @@ const onCTAHandler = props => {
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
     onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
+  } else if (isFavorite) {
+    handleFavoriteAddOrEdit(
+      colorProductId,
+      item,
+      addToBagEcom,
+      onQuickViewOpenClick,
+      isFavoriteEdit
+    );
   } else {
     onQuickViewOpenClick({
       colorProductId,
@@ -132,7 +188,12 @@ renderAddToBagContainer.propTypes = {
 };
 
 const onEditHandler = props => {
-  onCTAHandler(props);
+  const ctaProps = {
+    ...props,
+    isFavoriteEdit: true,
+    isFavorite: true,
+  };
+  onCTAHandler(ctaProps);
 };
 
 const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {

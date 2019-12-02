@@ -40,9 +40,14 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels } = this.props;
-    const { addToBag, update } = plpLabels;
-    const addToBagLabel = fromBagPage ? update : addToBag;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels, isFavoriteEdit } = this.props;
+    const { addToBag, update, saveProduct } = plpLabels;
+    let addToBagLabel = addToBag;
+    if (fromBagPage) {
+      addToBagLabel = update;
+    } else if (isFavoriteEdit) {
+      addToBagLabel = saveProduct;
+    }
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
@@ -312,6 +317,7 @@ ProductAddToBag.propTypes = {
   toastMessage: PropTypes.func,
   isBundleProduct: PropTypes.bool,
   isFromBagProductSfl: PropTypes.bool,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductAddToBag.defaultProps = {
@@ -330,6 +336,7 @@ ProductAddToBag.defaultProps = {
   toastMessage: () => {},
   isBundleProduct: false,
   isFromBagProductSfl: false,
+  isFavoriteEdit: false,
 };
 
 /* export view with redux form */
