@@ -122,7 +122,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             }
             margin={null}
             numberOfLines={null}
-            text="Qty: "
+            text="undefined: "
             textAlign="left"
             textDecoration={null}
           />
@@ -131,9 +131,51 @@ exports[`GiftCardList Component renders correctly 1`] = `
           accessibilityText=""
           dataLocator=""
           fontSize="fs12"
+          fontWeight={
+            Array [
+              "semibold",
+            ]
+          }
           margin={null}
           numberOfLines={null}
-          text="1"
+          text={
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
+          }
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            margin={null}
+            numberOfLines={null}
+            text="undefined: "
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="orange.800"
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight={
+            Array [
+              "semibold",
+            ]
+          }
+          margin={null}
+          numberOfLines={null}
           textDecoration={null}
         />
       </Styled(View)>

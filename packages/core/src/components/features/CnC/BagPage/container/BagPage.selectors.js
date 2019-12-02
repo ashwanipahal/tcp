@@ -226,6 +226,10 @@ const getPayPalWebViewStatus = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
 };
 
+const isPayPalButtonRenderDone = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalRenderDone']) || false;
+};
+
 const isBagLoaded = state => {
   return state.CartPageReducer.getIn(['loaded']);
 };
@@ -259,6 +263,10 @@ const getIfEmailSignUpDone = state => {
   };
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -288,10 +296,12 @@ export default {
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
+  isPayPalButtonRenderDone,
   getIsPayPalHidden,
   isBagLoading,
   getCartLoadedState,
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
 };

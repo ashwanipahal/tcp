@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import { Grid } from '../../../../../../common/molecules';
 import { getLabelValue } from '../../../../../../../utils';
@@ -25,7 +26,6 @@ import PLCCTimeoutInterimModal from '../../Modals/PLCCTmeoutInterimModal';
 import { getPageViewGridRowSize, fetchPLCCFormErrors } from '../../../utils/utility';
 import Notification from '../../../../../../common/molecules/Notification';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
-import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 const handleSubmitFail = errors => {
   const formattedErrors = fetchPLCCFormErrors(errors);
@@ -379,10 +379,12 @@ PLCCForm.propTypes = {
   invalid: PropTypes.bool,
   isRtpsFlow: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]),
 };
 
 PLCCForm.defaultProps = {
   invalid: false,
+  cartOrderItems: [],
 };
 
 const validateMethod = createValidateMethod(

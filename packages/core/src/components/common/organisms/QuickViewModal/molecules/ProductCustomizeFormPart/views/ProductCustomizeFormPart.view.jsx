@@ -19,6 +19,11 @@ import {
   getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag, isFavoriteEdit) => {
+  const updateAddedItem = fromBagPage || isFavoriteEdit;
+  return updateAddedItem ? handleUpdateItem : handleAddToBag;
+};
+
 const ProductCustomizeFormPart = props => {
   const {
     className,
@@ -48,6 +53,7 @@ const ProductCustomizeFormPart = props => {
     quickViewColorSwatchesCss,
     onCloseClick,
     isGiftCard,
+    isFavoriteEdit,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -156,7 +162,12 @@ const ProductCustomizeFormPart = props => {
               plpLabels={plpLabels}
               currentProduct={productInfo}
               errorOnHandleSubmit={addToBagError}
-              handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
+              handleFormSubmit={handleFormSubmit(
+                fromBagPage,
+                handleUpdateItem,
+                handleAddToBag,
+                isFavoriteEdit
+              )}
               fromBagPage={fromBagPage}
               productInfoFromBag={productInfoFromBag}
               customSubmitButtonStyle={customSubmitButtonStyle}
@@ -166,7 +177,9 @@ const ProductCustomizeFormPart = props => {
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
+              isFavoriteEdit={isFavoriteEdit}
               isMultiItemQVModal={isMultiItemQVModal}
+              hideAlternateSizes
             />
           </div>
         </div>
@@ -195,7 +208,7 @@ ProductCustomizeFormPart.propTypes = {
   isHasPlcc: PropTypes.bool,
   addToBagError: PropTypes.string,
   imageUrl: PropTypes.string,
-  currentColorEntry: PropTypes.func,
+  currentColorEntry: PropTypes.shape({}),
   goToPDPPage: PropTypes.func,
   colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
   formRef: PropTypes.shape({}).isRequired,
@@ -206,6 +219,7 @@ ProductCustomizeFormPart.propTypes = {
   productInfoFromBag: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func,
   isGiftCard: PropTypes.bool,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -215,13 +229,14 @@ ProductCustomizeFormPart.defaultProps = {
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,
-  currentColorEntry: () => {},
+  currentColorEntry: {},
   goToPDPPage: () => {},
   addToBagError: '',
   imageUrl: '',
   quickViewColorSwatchesCss: '',
   onCloseClick: () => {},
   isGiftCard: false,
+  isFavoriteEdit: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

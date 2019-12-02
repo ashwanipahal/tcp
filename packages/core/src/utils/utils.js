@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 
-import moment from 'moment';
+import { format, differenceInDays } from 'date-fns';
 
 import icons from '../config/icons';
 import locators from '../config/locators';
@@ -991,6 +991,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
     isBopisOrder,
     pickUpExpirationDate,
   } = orderProps;
+  const dateFormat = 'MMMM dd, yyyy';
 
   // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
 
@@ -1001,7 +1002,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       message =
         shippedDate === constants.STATUS_CONSTANTS.NA
           ? shippedDate
-          : moment(shippedDate).format('LL');
+          : format(new Date(shippedDate), dateFormat);
       break;
     case constants.STATUS_CONSTANTS.ORDER_CANCELED:
     case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
@@ -1014,13 +1015,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       break;
     case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
-      message = moment(pickUpExpirationDate).format('LL');
+      message = format(new Date(pickUpExpirationDate), dateFormat);
       break;
 
     case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
     case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
-      message = moment(pickedUpDate).format('LL');
+      message = format(new Date(pickedUpDate), dateFormat);
       break;
     default:
       ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
@@ -1155,7 +1156,7 @@ export const orderStatusMapperForNotification = {
  * @param {String} status -
  * @return orderStatus
  */
-export const getOrderStatusForNotification = status => {
+export const getOrderStatusForNotification = (status = '') => {
   const orderStatus =
     orderStatusMapperForNotification[status] ||
     orderStatusMapperForNotification[status.toLowerCase()] ||
@@ -1174,9 +1175,8 @@ export const validateDiffInDaysNotification = (
   orderDateParam,
   limitOfDaysToDisplayNotification
 ) => {
-  let orderDate = orderDateParam;
-  orderDate = moment(orderDate, 'MMM DD, YYYY');
-  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+  const orderDate = orderDateParam ? new Date(orderDateParam) : new Date();
+  if (differenceInDays(new Date(), orderDate) <= limitOfDaysToDisplayNotification) {
     return true;
   }
   return false;

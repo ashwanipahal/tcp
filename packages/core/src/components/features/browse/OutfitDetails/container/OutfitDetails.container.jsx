@@ -3,6 +3,7 @@ import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsom
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   getLabels,
   getOutfitImage,
@@ -39,7 +40,10 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import {
+  PRODUCT_ADD_TO_BAG,
+  OUTFIT_LISTING_FORM,
+} from '../../../../../constants/reducer.constants';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -91,10 +95,11 @@ class OutfitDetailsContainer extends React.PureComponent {
   }
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
-    const formValues = getAddedToBagFormValues(
-      currentState,
-      `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
-    );
+    // RWD-16438 Fix: Same form name is removed if user go from outfit to PDP and then press back button.
+    const formName = !isMobileApp()
+      ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+      : `${OUTFIT_LISTING_FORM}-${generalProductId}`;
+    const formValues = getAddedToBagFormValues(currentState, formName);
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
@@ -128,6 +133,7 @@ class OutfitDetailsContainer extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       isLoading,
+      trackPageLoad,
     } = this.props;
     const { outfitIdLocal } = this.state;
     return (
@@ -162,6 +168,7 @@ class OutfitDetailsContainer extends React.PureComponent {
             topPromos={topPromos}
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
+            trackPageLoad={trackPageLoad}
           />
         ) : null}
         {isLoading ? <OutfitProductSkeleton /> : null}
@@ -173,9 +180,10 @@ class OutfitDetailsContainer extends React.PureComponent {
 OutfitDetailsContainer.pageInfo = {
   pageId: 'outfit',
   pageData: {
-    pageName: 'product',
-    pageSection: 'product',
-    pageSubSection: 'product',
+    pageName: 'outfit',
+    pageSection: 'outfit',
+    pageSubSection: 'outfit',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -227,6 +235,32 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 
@@ -257,6 +291,9 @@ OutfitDetailsContainer.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  trackPageLoad: PropTypes.func,
+  topPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -278,11 +315,14 @@ OutfitDetailsContainer.defaultProps = {
   isPickupModalOpen: false,
   isLoggedIn: false,
   pdpLabels: {},
+  trackPageLoad: () => {},
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  topPromos: '',
+  isLoading: false,
 };
 
 export default withIsomorphicRenderer({

@@ -15,10 +15,19 @@ import {
   StyledImage,
   HeaderContainer,
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
+import ClickTracker from '../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');
 const BenefitImage = require('../../../../../../../core/src/assets/BenefitImageV.png');
+
+const AnalyticsData = {
+  pageName: 'myplace:rewardscreditcard',
+  pageType: 'myplace',
+  pageSection: 'myplace',
+  pageSubSection: 'myplace',
+  customEvents: 'event113',
+};
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = () => {
@@ -66,7 +75,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
         <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-LRG">
           <ButtonWrapper>
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={{ customEvents: ['event113'] }}
+              name="manage_plcc"
+              module="account"
               fill="BLUE"
               type="submit"
               color="white"
@@ -79,7 +92,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             />
           </ButtonWrapper>
           <ButtonWrapper>
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={AnalyticsData}
+              name="manage_plcc"
+              module="account"
               fill="WHITE"
               type="submit"
               text={getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
@@ -110,11 +127,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
 
         <ImageContainer>
-          <Image source={PLCC_LOOKUP_2_POINTS} width="100%" height="60px" />
+          <Image source={PLCC_LOOKUP_2_POINTS} alt="" width="100%" height="60px" />
         </ImageContainer>
 
         <ImageContainer>
-          <Image source={BenefitImage} width="100%" height="600px" />
+          <Image source={BenefitImage} alt="" width="100%" height="600px" />
         </ImageContainer>
 
         <BottomContainer>

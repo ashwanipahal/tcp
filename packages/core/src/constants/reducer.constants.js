@@ -209,6 +209,7 @@ export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
 export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
 export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
 export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+export const OUTFIT_LISTING_FORM = 'OutfitListingForm';
 // User Order History
 export const ORDERS_REDUCER_KEY = 'Orders';
 export const ORDERS_ACTION_PATTERN = '@@Orders-';
@@ -219,6 +220,10 @@ export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 // Category List Reducer
 export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
 export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
+
+// Site Map Reducer
+export const SITEMAP_REDUCER_KEY = 'SiteMapReducer';
+export const SITEMAP_ACTION_PATTERN = '@@SiteMap-';
 
 // My Profile reducer
 export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
@@ -269,4 +274,5 @@ export const REDUCER_ACTION_MAPPING = {
   [BUNDLEPRODUCT_REDUCER_KEY]: BUNDLEPRODUCT_ACTION_PATTERN,
   [COUPON_REDUCER_KEY]: COUPON_ACTION_PATTERN,
   [SOCIAL_REDUCER_KEY]: SOCIAL_ACTION_PATTERN,
+  [SITEMAP_REDUCER_KEY]: SITEMAP_ACTION_PATTERN,
 };

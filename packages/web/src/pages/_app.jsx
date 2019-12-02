@@ -10,19 +10,12 @@ import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
-import {
-  createAPIConfig,
-  getAPIConfig,
-  isDevelopment,
-  fetchStoreIdFromUrlPath,
-  isGymboree,
-} from '@tcp/core/src/utils';
+import { createAPIConfig, getAPIConfig, isDevelopment, isGymboree } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
-import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
@@ -204,7 +197,7 @@ class TCPWebApp extends App {
     };
   };
 
-  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     const initialProps = pageProps;
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
@@ -251,10 +244,6 @@ class TCPWebApp extends App {
       payload = updatePayload(req, payload, Component);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
-      if (asPath.includes('store') && query && query.storeStr) {
-        const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-        store.dispatch(getCurrentStoreInfo(storeId));
-      }
     }
     return initialProps;
   }

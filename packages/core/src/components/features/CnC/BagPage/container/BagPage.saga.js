@@ -60,6 +60,7 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
+// eslint-disable-next-line
 import {
   handleServerSideErrorAPI,
   getRouteToCheckoutStage,
@@ -314,6 +315,11 @@ function* renderMobileLoader() {
   if (isMobileApp()) yield put(setLoaderState(true));
 }
 
+function* renderBagPageCheckoutLoader(isMiniBag, isAddedToBag) {
+  if (!isAddedToBag && !isMiniBag) {
+    yield put(setLoaderState(true));
+  }
+}
 export function* startCartCheckout({
   payload: {
     isEditingItem,
@@ -321,7 +327,6 @@ export function* startCartCheckout({
     closeModal,
     navigationActions,
     isMiniBag,
-    isBagPage,
     isAddedToBag,
   } = {},
 } = {}) {
@@ -336,9 +341,7 @@ export function* startCartCheckout({
       if (isAddedToBag) {
         yield put(setSectionLoaderState({ addedToBagLoaderState: true, section: 'addedtobag' }));
       }
-      if (isBagPage) {
-        yield put(setLoaderState(true));
-      }
+      yield call(renderBagPageCheckoutLoader);
       // this.store.dispatch(setVenmoPaymentInProgress(false));
       let res = yield call(getUnqualifiedItems);
       res = res || [];

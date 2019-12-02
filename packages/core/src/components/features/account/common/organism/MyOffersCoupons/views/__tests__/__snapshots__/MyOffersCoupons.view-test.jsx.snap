@@ -376,7 +376,6 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
     heading="Help Modal"
     labels={Object {}}
     onRequestClose={[Function]}
-    openState={false}
   />
 </Fragment>
 `;

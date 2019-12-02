@@ -15,8 +15,12 @@ const props = {
   item: {
     productInfo: {},
     miscInfo: {},
-    itemInfo: { isTCP: true },
-
+    skuInfo: {
+      skuId: '',
+      size: '',
+      fit: '',
+      color: '',
+    },
     colorsMap: [
       {
         color: { name: '' },
@@ -26,6 +30,11 @@ const props = {
     ],
     imagesByColor: {},
     sqnNmbr: 123,
+    itemInfo: {
+      itemId: '',
+      quantity: '1',
+      isTCP: true,
+    },
   },
   sqnNmbr: 123,
   isPLPredesign: false,

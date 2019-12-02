@@ -10,7 +10,6 @@ import { DamImage } from '../../../../../../common/atoms';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
-const paddingAroundImage = 24;
 const numberOfColumn = 2;
 const imageWidth = win.width / numberOfColumn;
 const imageHeight = '205px';

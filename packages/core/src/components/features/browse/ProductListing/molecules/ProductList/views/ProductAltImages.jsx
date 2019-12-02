@@ -242,11 +242,10 @@ class ProductAltImages extends React.PureComponent {
       loadedProductCount,
       analyticsData,
       className,
-      isProductBrandOfSameSiteBrand,
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
-    const pdpToPath = isProductBrandOfSameSiteBrand ? getProductListToPath(pdpUrl) : pdpUrl;
+    const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
       alt: productName,
       url: imageUrls[currentIndex],

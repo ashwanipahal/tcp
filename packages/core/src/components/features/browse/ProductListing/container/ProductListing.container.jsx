@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
@@ -7,11 +8,17 @@ import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../../common/organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 import {
   openQuickViewWithValues,
   closeQuickViewModal,
@@ -118,7 +125,12 @@ class ProductListingContainer extends React.PureComponent {
     const {
       router: { asPath: currentAsPath },
     } = this.props;
-    if (asPath !== currentAsPath) {
+
+    // To restrict unnecessary calls while applying filters and sort
+    const modifiedAsPath = asPath.split('?');
+    const modifiedCurrentAsPath = currentAsPath.split('?');
+
+    if (modifiedAsPath[0] !== modifiedCurrentAsPath[0]) {
       this.makeApiCall();
     }
   }
@@ -190,6 +202,10 @@ class ProductListingContainer extends React.PureComponent {
       navigation,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
+      trackPageLoad,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -238,6 +254,10 @@ class ProductListingContainer extends React.PureComponent {
         navigation={navigation}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
         {...otherProps}
       />
     ) : (
@@ -250,6 +270,11 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         categoryId={categoryId}
         plpTopPromos={plpTopPromos}
+        setClickAnalyticsData={setClickAnalyticsData}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
       />
     );
   }
@@ -261,6 +286,7 @@ ProductListingContainer.pageInfo = {
     pageName: 'browse',
     pageSection: 'browse',
     pageSubSection: 'browse',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -303,7 +329,6 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      // TODO - change after site id comes for us or ca
       sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
@@ -330,6 +355,9 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
   };
 }
 
@@ -358,6 +386,32 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
+    trackPageLoad: payload => {
+      const { products } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 
@@ -389,6 +443,7 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
@@ -399,6 +454,10 @@ ProductListingContainer.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -431,6 +490,11 @@ ProductListingContainer.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isPlcc: false,
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
+  trackPageLoad: () => {},
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({
