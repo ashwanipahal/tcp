@@ -230,7 +230,6 @@ const ProductListView = ({
             {...otherProps}
           />
         )}
-        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
