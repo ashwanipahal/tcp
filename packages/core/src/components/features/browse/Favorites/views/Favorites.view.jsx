@@ -6,7 +6,7 @@ import Constants from '@tcp/core/src/components/common/molecules/Recommendations
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
+import { Row, Col, BodyCopy, InputCheckBox, FavoriteSkeleton } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
@@ -437,7 +437,12 @@ class FavoritesView extends React.PureComponent {
 
     const filteredItemsList = this.getFilteredItemsList();
     const myFavLabel = labels.lbl_fav_myFavorites;
-    if (isDataLoading) return '';
+    if (isDataLoading)
+      return (
+        <>
+          <FavoriteSkeleton col={8} />
+        </>
+      );
     return (
       <div className={className}>
         {this.renderModalWrapper()}

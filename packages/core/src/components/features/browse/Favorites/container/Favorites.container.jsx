@@ -1,10 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  openQuickViewWithValues,
-  setColorProductIdForQuickView,
-} from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
@@ -120,7 +117,7 @@ class FavoritesContainer extends React.PureComponent {
   };
 
   openQuickViewModal = (payload, allColors) => {
-    const { onQuickViewOpenClick, setColorProductId } = this.props;
+    const { onQuickViewOpenClick } = this.props;
     const selectedColorProductId = !allColors ? payload.colorProductId : '';
     this.setState(
       {
@@ -128,7 +125,6 @@ class FavoritesContainer extends React.PureComponent {
       },
       () => {
         onQuickViewOpenClick(payload);
-        setColorProductId(selectedColorProductId);
       }
     );
   };
@@ -295,9 +291,6 @@ const mapDispatchToProps = dispatch => {
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
-    setColorProductId: payload => {
-      dispatch(setColorProductIdForQuickView(payload));
-    },
     updateWishList: payload => {
       dispatch(updateWishListAction(payload));
     },
@@ -323,7 +316,6 @@ FavoritesContainer.propTypes = {
   activeWishListProducts: PropTypes.shape({}).isRequired,
   activeDisplayName: PropTypes.string.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
-  setColorProductId: PropTypes.func.isRequired,
   currencySymbol: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   slpLabels: PropTypes.shape({}),

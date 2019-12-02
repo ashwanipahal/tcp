@@ -17,6 +17,7 @@ import {
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
+import PLPQRScannerAnimation from '../molecules/PLPQRScannerAnimation';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 const renderItemCountView = (itemCount, labelsFavorite, isBothTcpAndGymProductAreAvailable) => {
@@ -152,14 +153,17 @@ const ProductListView = ({
   plpTopPromos,
   isSearchListing,
   isKeepModalOpen,
+  showCustomLoader,
   labelsFavorite,
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  QRAnimationURL,
+  resetCustomLoader,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading && !isKeepModalOpen) return <PLPSkeleton col={20} />;
+  if (isDataLoading && !isKeepModalOpen && !showCustomLoader) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -182,7 +186,14 @@ const ProductListView = ({
     isBothTcpAndGymProductAreAvailable,
     filtersLength,
   };
-  return (
+  return showCustomLoader ? (
+    <PLPQRScannerAnimation
+      url={QRAnimationURL}
+      navigation={navigation}
+      resetCustomLoader={resetCustomLoader}
+      isOpen={showCustomLoader}
+    />
+  ) : (
     <ScrollView>
       {!isSearchListing && (
         <PromoModules
@@ -260,6 +271,9 @@ ProductListView.propTypes = {
   addToBagEcom: PropTypes.func,
   isPlcc: PropTypes.bool,
   filtersLength: PropTypes.number,
+  showCustomLoader: PropTypes.bool,
+  QRAnimationURL: PropTypes.string.isRequired,
+  resetCustomLoader: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -291,6 +305,8 @@ ProductListView.defaultProps = {
   addToBagEcom: () => {},
   isPlcc: false,
   filtersLength: 0,
+  showCustomLoader: false,
+  resetCustomLoader: () => {},
 };
 
 export default withStyles(ProductListView, styles);

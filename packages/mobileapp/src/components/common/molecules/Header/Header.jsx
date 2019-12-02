@@ -25,7 +25,6 @@ import {
 import { onBack } from '@tcp/core/src/utils/utils.app';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import { readCookieMobileApp } from '../../../../utils/utils';
 
@@ -156,18 +155,23 @@ class Header extends React.PureComponent {
   };
 
   renderSearchBar = () => {
-    const { showSearch, slpLabels } = this.props;
+    const { showSearch, slpLabels, navigation } = this.props;
     const { showSearchModal } = this.state;
     if (!showSearch) return null;
     return (
       <SearchContainer>
         {showSearch && (
-          <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          <SearchBar
+            openSearchProductPage={this.openSearchProductPage}
+            navigation={navigation}
+            labels={slpLabels}
+          />
         )}
         {showSearchModal && (
           <SearchProduct
             closeSearchModal={this.closeSearchProductPage}
             goToSearchResultsPage={this.goToSearchResultsPage}
+            navigation={navigation}
           />
         )}
       </SearchContainer>
@@ -233,105 +237,98 @@ class Header extends React.PureComponent {
       : headerLabels.lbl_header_welcomeMessage;
 
     return (
-      <>
-        <SafeAreaViewStyle>
-          <ToastContainer />
-          <Container>
-            <HeaderContainer data-locator={getLocator('global_headerpanel')}>
-              {headertype === STORE_TYPE ? (
-                <BackContainer position="row">
-                  <TouchableOpacity
-                    accessible
-                    onPress={() => onBack(navigation)}
-                    accessibilityRole="button"
-                    accessibilityLabel="back button"
-                  >
-                    <ArrowBackIcon source={backicon} />
-                  </TouchableOpacity>
-                  <MiddleSection>
-                    <TitleText
-                      numberOfLines={1}
-                      accessibilityRole="text"
-                      accessibilityLabel={title}
-                    >
-                      {title}
-                    </TitleText>
-                  </MiddleSection>
-                </BackContainer>
-              ) : (
-                <MessageContainer>
+      <SafeAreaViewStyle>
+        <ToastContainer />
+        <Container>
+          <HeaderContainer data-locator={getLocator('global_headerpanel')}>
+            {headertype === STORE_TYPE ? (
+              <BackContainer position="row">
+                <TouchableOpacity
+                  accessible
+                  onPress={() => onBack(navigation)}
+                  accessibilityRole="button"
+                  accessibilityLabel="back button"
+                >
+                  <ArrowBackIcon source={backicon} />
+                </TouchableOpacity>
+                <MiddleSection>
+                  <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
+                    {title}
+                  </TitleText>
+                </MiddleSection>
+              </BackContainer>
+            ) : (
+              <MessageContainer>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs14"
+                  textAlign="center"
+                  color="black"
+                  fontWeight="semibold"
+                  text={welcomeMessage}
+                  data-locator={getLocator('global_headerpanelwelcometext')}
+                />
+                <StoreContainer onPress={this.validateIcon}>
                   <BodyCopy
                     fontFamily="secondary"
-                    fontSize="fs14"
+                    fontSize="fs12"
                     textAlign="center"
-                    color="black"
-                    fontWeight="semibold"
-                    text={welcomeMessage}
-                    data-locator={getLocator('global_headerpanelwelcometext')}
+                    color="text.primary"
+                    fontWeight="regular"
+                    text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
+                    data-locator={getLocator('global_findastoretext')}
+                    accessibilityText="Drop Down"
                   />
-                  <StoreContainer onPress={this.validateIcon}>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      fontSize="fs12"
-                      textAlign="center"
-                      color="text.primary"
-                      fontWeight="regular"
-                      text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
-                      data-locator={getLocator('global_findastoretext')}
-                      accessibilityText="Drop Down"
+                  {isDownIcon ? (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelexpandedicon')}
                     />
-                    {isDownIcon ? (
-                      <Icon
-                        source={downIcon}
-                        style={ImageColor}
-                        data-locator={getLocator('global_headerpanelexpandedicon')}
-                      />
-                    ) : (
-                      <Icon
-                        source={downIcon}
-                        style={ImageColor}
-                        data-locator={getLocator('global_headerpanelcollapsedicon')}
-                      />
-                    )}
-                  </StoreContainer>
-                </MessageContainer>
-              )}
+                  ) : (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelcollapsedicon')}
+                    />
+                  )}
+                </StoreContainer>
+              </MessageContainer>
+            )}
 
-              <CartContainer>
-                <Touchable
-                  accessibilityRole="button"
-                  onPress={() => {
-                    // eslint-disable-next-line react/destructuring-assignment
-                    // if labels not null then click work .
-                    if (labels) navigation.navigate('BagPage');
-                  }}
-                >
-                  <CartIconView
-                    source={cartIcon}
-                    data-locator={getLocator('global_headerpanelbagicon')}
-                    cartVal={cartVal}
-                  />
-                  <RoundCircle cartVal={cartVal}>
-                    <RoundView cartVal={cartVal}>
-                      <BodyCopy
-                        text={cartVal}
-                        color="white"
-                        style={TextStyle}
-                        fontSize="fs10"
-                        data-locator={getLocator('global_headerpanelbagitemtext')}
-                        accessibilityText="Mini bag with count"
-                        fontWeight="extrabold"
-                      />
-                    </RoundView>
-                  </RoundCircle>
-                </Touchable>
-              </CartContainer>
-            </HeaderContainer>
-            {this.renderSearchBar()}
-          </Container>
-        </SafeAreaViewStyle>
-        <QuickViewModal navigation={navigation} />
-      </>
+            <CartContainer>
+              <Touchable
+                accessibilityRole="button"
+                onPress={() => {
+                  // eslint-disable-next-line react/destructuring-assignment
+                  // if labels not null then click work .
+                  if (labels) navigation.navigate('BagPage');
+                }}
+              >
+                <CartIconView
+                  source={cartIcon}
+                  data-locator={getLocator('global_headerpanelbagicon')}
+                  cartVal={cartVal}
+                />
+                <RoundCircle cartVal={cartVal}>
+                  <RoundView cartVal={cartVal}>
+                    <BodyCopy
+                      text={cartVal}
+                      color="white"
+                      style={TextStyle}
+                      fontSize="fs10"
+                      data-locator={getLocator('global_headerpanelbagitemtext')}
+                      accessibilityText="Mini bag with count"
+                      fontWeight="extrabold"
+                    />
+                  </RoundView>
+                </RoundCircle>
+              </Touchable>
+            </CartContainer>
+          </HeaderContainer>
+          {this.renderSearchBar()}
+        </Container>
+      </SafeAreaViewStyle>
     );
   }
 }

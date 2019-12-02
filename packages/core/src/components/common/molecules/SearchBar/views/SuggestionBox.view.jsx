@@ -47,6 +47,10 @@ class SuggestionBox extends React.PureComponent {
                         fontSize="fs14"
                         key={item.id}
                         className="recentTag"
+                        onClick={e => {
+                          e.preventDefault();
+                          redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
+                        }}
                       >
                         <Anchor
                           noLink
@@ -56,10 +60,6 @@ class SuggestionBox extends React.PureComponent {
                               ? `/${getSiteId()}${itemParts[1]}`
                               : `/${getSiteId()}/search/${itemParts[0]}`
                           }
-                          onClick={e => {
-                            e.preventDefault();
-                            redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
-                          }}
                         >
                           {itemParts[0].charAt(0).toUpperCase() + itemParts[0].slice(1)}
                         </Anchor>
