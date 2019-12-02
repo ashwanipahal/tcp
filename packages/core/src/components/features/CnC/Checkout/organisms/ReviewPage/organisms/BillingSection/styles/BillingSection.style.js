@@ -88,4 +88,21 @@ export default css`
     width: 30px;
     top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .cardImage-card-number {
+      width: 100%;
+      vertical-align: middle;
+      padding: 0px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      font-size: 12px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.small} {
+    .cardImage-card-number {
+      font-size: 16px;
+    }
+  }
 `;
