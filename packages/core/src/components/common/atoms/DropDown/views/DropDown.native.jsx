@@ -306,7 +306,7 @@ class DropDown extends React.PureComponent<Props> {
             {typeof selectedLabelState !== 'function' ? (
               <HeaderContainer>
                 <BodyCopy
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   fontSize="fs13"
                   textAlign="center"
                   color="gray.800"
