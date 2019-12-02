@@ -207,7 +207,7 @@ export function PromotionalMessage(props) {
     </Dotdotdot>
   ) : (
     <>
-      <BodyCopy className="loyalty-text-container" />
+      <div className="loyalty-text-container" />
     </>
   );
 }
