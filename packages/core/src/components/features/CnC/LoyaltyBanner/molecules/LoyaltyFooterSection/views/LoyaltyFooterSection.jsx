@@ -50,6 +50,7 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal, cartO
 
 const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal, cartOrderItems) => {
   const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+
   return (
     <Anchor
       fontSizeVariation="medium"

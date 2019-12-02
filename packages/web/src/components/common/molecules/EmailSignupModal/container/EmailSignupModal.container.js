@@ -41,7 +41,9 @@ export const mapDispatchToProps = dispatch => {
       );
 
       dispatch(trackPageView({}));
-      dispatch(setClickAnalyticsData({}));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
     },
   };
 };
@@ -66,7 +68,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignupModalView);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupModalView);

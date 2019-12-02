@@ -34,7 +34,9 @@ export const mapDispatchToProps = dispatch => {
       );
 
       dispatch(trackPageView());
-      dispatch(setClickAnalyticsData({}));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
     },
   };
 };
@@ -52,7 +54,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EmailSignupFormView);
+export default connect(mapStateToProps, mapDispatchToProps)(EmailSignupFormView);

@@ -31,7 +31,9 @@ export const mapDispatchToProps = dispatch => {
       );
 
       dispatch(trackPageView({}));
-      dispatch(setClickAnalyticsData({}));
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
     },
   };
 };
