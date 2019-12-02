@@ -42,6 +42,7 @@ describe('AddedToBagActions native component', () => {
       },
       isInternationalShipping: false,
       handleCartCheckout: jest.fn(),
+      resetTimerStatus: jest.fn(),
       isEditingItem: false,
       navigation: jest.fn(),
       closeModal: jest.fn(),

@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { WebView } from 'react-native-webview';
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { View, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight, isGymboree } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
@@ -26,6 +25,7 @@ class PayPalButton extends React.PureComponent {
       navigation,
       setVenmoState,
       closeModal,
+      isRenderDone,
     } = this.props;
 
     switch (event.nativeEvent.data) {
@@ -46,6 +46,9 @@ class PayPalButton extends React.PureComponent {
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });
+        break;
+      case 'loadSuccess':
+        isRenderDone(true);
         break;
       default:
         payPalWebViewHandle(false);
@@ -135,12 +138,14 @@ PayPalButton.propTypes = {
   top: PropTypes.number,
   isBillingPage: PropTypes.bool.isRequired,
   fullWidth: PropTypes.bool,
+  isRenderDone: PropTypes.bool,
 };
 
 PayPalButton.defaultProps = {
   top: 0,
   fullWidth: false,
+  isRenderDone: false,
 };
 
-export default gestureHandlerRootHOC(PayPalButton);
+export default PayPalButton;
 export { PayPalButton as PayPalButtonVanilla };

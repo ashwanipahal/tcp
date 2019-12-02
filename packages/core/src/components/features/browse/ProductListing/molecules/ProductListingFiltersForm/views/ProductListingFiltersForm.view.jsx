@@ -306,6 +306,30 @@ class ProductListingFiltersForm extends React.Component {
     );
   }
 
+  renderFilterByLabel = (labels, isFilterBy) => {
+    return (
+      isFilterBy && (
+        <BodyCopy
+          component="span"
+          role="option"
+          textAlign="center"
+          tabIndex={0}
+          fontSize="fs14"
+          fontFamily="secondary"
+          color="gray.900"
+          outline="none"
+          data-locator={getLocator('plp_filter_label_filterby')}
+        >
+          {`${labels.lbl_filter_by}`}
+        </BodyCopy>
+      )
+    );
+  };
+
+  renderMobileFilters(totalProductsCount, appliedFilterLength) {
+    return totalProductsCount > 1 || this.getAppliedFiltersCount() > 0 || appliedFilterLength > 0;
+  }
+
   /**
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
@@ -329,6 +353,8 @@ class ProductListingFiltersForm extends React.Component {
       isFavoriteView,
       change,
       isLoadingMore,
+      onFilterSelection,
+      appliedFilterLength,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
 
@@ -341,21 +367,7 @@ class ProductListingFiltersForm extends React.Component {
           {(totalProductsCount > 1 || isFavoriteView) && (
             <div className={`${className} desktop-dropdown`}>
               <div className="filters-only-container">
-                {isFilterBy && (
-                  <BodyCopy
-                    component="span"
-                    role="option"
-                    textAlign="center"
-                    tabIndex={0}
-                    fontSize="fs14"
-                    fontFamily="secondary"
-                    color="gray.900"
-                    outline="none"
-                    data-locator={getLocator('plp_filter_label_filterby')}
-                  >
-                    {`${labels.lbl_filter_by}`}
-                  </BodyCopy>
-                )}
+                {this.renderFilterByLabel(labels, isFilterBy)}
 
                 {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
               </div>
@@ -398,7 +410,7 @@ class ProductListingFiltersForm extends React.Component {
           </Row>
         </form>
         <div className="render-mobile-view">
-          {(totalProductsCount > 1 || this.getAppliedFiltersCount() > 0) && (
+          {this.renderMobileFilters(totalProductsCount, appliedFilterLength) && (
             <ProductListingMobileFiltersForm
               totalProductsCount={totalProductsCount}
               initialValues={initialValues}
@@ -416,6 +428,7 @@ class ProductListingFiltersForm extends React.Component {
               onSortSelection={onSortSelection}
               onChange={change}
               isLoadingMore={isLoadingMore}
+              onFilterSelection={onFilterSelection}
             />
           )}
         </div>
@@ -507,6 +520,7 @@ ProductListingFiltersForm.propTypes = {
   defaultPlaceholder: PropTypes.string,
   formValues: PropTypes.shape({}),
   isLoadingMore: PropTypes.bool,
+  appliedFilterLength: PropTypes.number,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -529,6 +543,7 @@ ProductListingFiltersForm.defaultProps = {
   favoriteSortingParams: null,
   formValues: {},
   isLoadingMore: false,
+  appliedFilterLength: 0,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

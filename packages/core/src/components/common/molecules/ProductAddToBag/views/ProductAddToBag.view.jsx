@@ -58,9 +58,14 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
 
 class ProductAddToBag extends React.PureComponent<Props> {
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {} } = this.props;
-    const { addToBag, update } = plpLabels;
-    const addToBagLabel = fromBagPage ? update : addToBag;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {}, isFavoriteEdit } = this.props;
+    const { addToBag, update, saveProduct } = plpLabels;
+    let addToBagLabel = addToBag;
+    if (fromBagPage) {
+      addToBagLabel = update;
+    } else if (isFavoriteEdit) {
+      addToBagLabel = saveProduct;
+    }
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 

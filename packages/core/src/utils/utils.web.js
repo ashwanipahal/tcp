@@ -6,6 +6,7 @@ import {
   enableBodyScroll as enableBodyScrollLib,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -356,6 +357,10 @@ export const handleGenericKeyDown = (event, key, method) => {
   }
 };
 
+const getBvSharedKey = (processEnv, apiSiteInfo) => {
+  return processEnv.RWD_WEB_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
+};
+
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   const unbxdApiKeyTCP =
@@ -367,6 +372,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    BV_SHARED_KEY: getBvSharedKey(processEnv, apiSiteInfo),
     assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
@@ -568,10 +574,27 @@ export const scrollToParticularElement = element => {
   }
 };
 
+/**
+ * openWindow - opens a window with the URL and attributes passed in
+ * @param {string} arg url - URL to open,
+ * @param {string} arg target - where to open the new window; defaults to _blank
+ * @param {string} arg attrs - what attributes to pass to window.open; defaults to empty string
+ * @return {Object} Object handle for the new window
+ */
+export const openWindow = (url, target = '_blank', attrs = '') => {
+  let windowAttributes = attrs;
+  if (target === '_blank') {
+    windowAttributes = windowAttributes.concat('noopener');
+  }
+  logger.info(`Opening ${url} in window with target=${target} and attributes=${windowAttributes}`);
+  return window.open(url, target, windowAttributes);
+};
+
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
-  return window.open(
-    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  return openWindow(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+    '_blank'
   );
 };
 
