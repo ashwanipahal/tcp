@@ -6,9 +6,9 @@ const initialState = fromJS({
   orderDetails: {},
   sfl: [],
   errors: false,
-  loaded: false,
-  bagLoading: true,
-  isRouting: false,
+  loaded: false, // flag to check if cart data is fetched for the first time.
+  bagLoading: true, // flag to check if cart data is loading (set/unset every time cart API invokes)
+  isRouting: false, // flag to check if cart page is routing to some other page.
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],

@@ -21,7 +21,7 @@ class ErrorMessage extends React.PureComponent {
       <>
         {!!error && (
           <ErrorView showAccordian={showAccordian} bagPage={bagPage} {...restProps}>
-            <Image source={alertTriangleIcon} style={ErrorIcon} />
+            <Image source={alertTriangleIcon} alt="" style={ErrorIcon} />
             {isEspot ? (
               <Espot richTextHtml={error} />
             ) : (

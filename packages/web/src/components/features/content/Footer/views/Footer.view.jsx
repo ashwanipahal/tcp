@@ -4,6 +4,7 @@ import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { setSessionStorage, getSessionStorage } from '@tcp/core/src/utils/utils.web';
 import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
@@ -27,12 +28,6 @@ class Footer extends React.Component {
   }
 
   componentDidMount() {
-    // TODO: Need to change this when proper solution for A/B test come
-    if (window.location.search.match('cand-b')) {
-      this.setState({ showFooterTopCandidateB: true });
-    } else {
-      this.setState({ showFooterTopCandidateB: false });
-    }
     const { isLoggedIn, isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } = this.props;
     if (
       (isLocationEnabledForGuest === 'TRUE' && navigator && navigator.geolocation) ||
@@ -41,9 +36,34 @@ class Footer extends React.Component {
         navigator &&
         navigator.geolocation)
     ) {
-      navigator.geolocation.getCurrentPosition(() => {});
+      this.getPosition();
+    }
+    // TODO: Need to change this when proper solution for A/B test come
+    if (window.location.search.match('cand-b')) {
+      this.setState({ showFooterTopCandidateB: true });
+    } else {
+      this.setState({ showFooterTopCandidateB: false });
     }
   }
+
+  getPosition = () => {
+    const isSafariBrowser =
+      navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+    const Latitude = 'Latitude';
+    const Longitude = 'Longitude';
+    if (isSafariBrowser) {
+      const latitude = getSessionStorage(Latitude);
+      const longitude = getSessionStorage(Longitude);
+      if (!latitude && !longitude) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          setSessionStorage({ key: Latitude, value: pos.coords.latitude });
+          setSessionStorage({ key: Longitude, value: pos.coords.longitude });
+        });
+      }
+    } else {
+      navigator.geolocation.getCurrentPosition(() => {});
+    }
+  };
 
   render() {
     const { props } = this;

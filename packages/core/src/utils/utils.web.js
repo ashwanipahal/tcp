@@ -37,6 +37,21 @@ const FIXED_HEADER = {
   SM_HEADER: 60,
 };
 
+export const setSessionStorage = arg => {
+  const { key, value } = arg;
+  if (isClient()) {
+    return window.sessionStorage.setItem(key, value);
+  }
+  return null;
+};
+
+export const getSessionStorage = key => {
+  if (isClient()) {
+    return window.sessionStorage.getItem(key);
+  }
+  return null;
+};
+
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };

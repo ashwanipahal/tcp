@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PLPQRScannerAnimation should render with close modal 1`] = `
+<ModalNative
+  fullWidth={true}
+  horizontalBar={false}
+  inheritedStyles=""
+  isOpen={false}
+  isOverlay={false}
+  onRequestClose={[Function]}
+  rightAlignCrossIcon={true}
+  stickyCloseIcon={true}
+>
+  <FastImageNative
+    style={
+      Object {
+        "height": 1044,
+        "marginBottom": 100,
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "marginTop": 100,
+        "width": 722,
+      }
+    }
+    url="http://fake-image-url"
+  />
+</ModalNative>
+`;
+
+exports[`PLPQRScannerAnimation should render with open modal 1`] = `
+<ModalNative
+  fullWidth={true}
+  horizontalBar={false}
+  inheritedStyles=""
+  isOpen={false}
+  isOverlay={false}
+  onRequestClose={[Function]}
+  rightAlignCrossIcon={true}
+  stickyCloseIcon={true}
+>
+  <FastImageNative
+    style={
+      Object {
+        "height": 1044,
+        "marginBottom": 100,
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "marginTop": 100,
+        "width": 722,
+      }
+    }
+    url="http://fake-image-url"
+  />
+</ModalNative>
+`;

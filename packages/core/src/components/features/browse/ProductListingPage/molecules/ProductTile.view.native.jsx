@@ -46,6 +46,7 @@ class ProductTile extends React.Component {
               source={{
                 uri: `${endpoints.global.baseURI + imagesByColor[selectedColor].basicImageUrl}`,
               }}
+              alt=""
             />
           </View>
           <Text style={{ fontSize: 10 }}>selectedColor :{selectedColor}</Text>

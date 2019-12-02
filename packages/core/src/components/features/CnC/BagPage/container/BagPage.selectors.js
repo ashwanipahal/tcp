@@ -116,7 +116,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.global.addedToBagModal;
+  const { referred = [] } = (state.Labels.global && state.Labels.global.addedToBagModal) || {};
 
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
@@ -264,6 +264,10 @@ const getIfEmailSignUpDone = state => {
   };
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -300,4 +304,5 @@ export default {
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
 };

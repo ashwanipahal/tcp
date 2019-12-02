@@ -306,7 +306,7 @@ class DropDown extends React.PureComponent<Props> {
             {typeof selectedLabelState !== 'function' ? (
               <HeaderContainer>
                 <BodyCopy
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   fontSize="fs13"
                   textAlign="center"
                   color="gray.800"
@@ -319,7 +319,7 @@ class DropDown extends React.PureComponent<Props> {
                 <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
               </HeaderItemContainer>
             )}
-            <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
+            <Image source={dropDownIsOpen ? upIcon : downIcon} alt="" style={arrowImageStyle} />
           </Row>
         )}
 
