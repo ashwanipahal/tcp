@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getDateInformation } from '@tcp/core/src/utils/badge.util';
 import {
@@ -10,13 +10,10 @@ import {
 
 export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
   const { orderNumber, isBossOrder, status } = orderDetailsData;
-  let { orderDate, pickUpExpirationDate, bossMaxDate, bossMinDate } = orderDetailsData;
-  let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
-  let orderTime = orderDate.split(' ')[1];
-  orderDate = moment(orderDate);
-  pickUpExpirationDate = pickUpExpirationDate && moment(pickUpExpirationDate);
-  orderTime = orderTime && moment(orderTime, 'HH:mm:ss');
-  pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
+  const { orderDate, pickUpExpirationDate } = orderDetailsData;
+  let { bossMaxDate, bossMinDate } = orderDetailsData;
+  const orderDateParsed = new Date(orderDate);
+  const pickUpExpirationDateParsed = new Date(pickUpExpirationDate);
   bossMinDate = getDateInformation(bossMinDate);
   bossMaxDate = getDateInformation(bossMaxDate);
   const bossDate =
@@ -97,10 +94,10 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
               fontFamily="primary"
               fontSize="fs14"
               spacingStyles="margin-bottom-XS"
-              text={`${orderDate.format('LL')} ${getLabelValue(
+              text={`${format(orderDateParsed, 'MMMM dd, yyyy')} ${getLabelValue(
                 ordersLabels,
                 'lbl_orderDetails_at'
-              )} ${orderTime.format('hh:mma')}`}
+              )} ${format(orderDateParsed, 'hh:mmaa')}`}
             />
           </ViewWithSpacing>
           {!!pickUpExpirationDate && !isBossOrder && (
@@ -116,10 +113,10 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
                 fontFamily="primary"
                 fontSize="fs14"
                 spacingStyles="margin-top-XXS margin-bottom-XS"
-                text={`${pickUpExpirationDate.format('LL')} ${getLabelValue(
+                text={`${format(pickUpExpirationDateParsed, 'MMMM dd, yyyy')} ${getLabelValue(
                   ordersLabels,
                   'lbl_orderDetails_at'
-                )} ${pickUpExpirationTime.format('hh:mma')}`}
+                )} ${format(pickUpExpirationDateParsed, 'hh:mmaa')}`}
               />
             </ViewWithSpacing>
           )}

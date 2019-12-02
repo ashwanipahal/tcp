@@ -45,6 +45,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+import { fetchErrorMessages } from '../../Favorites/container/Favorites.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   categoryUrl;
@@ -231,6 +232,7 @@ function mapStateToProps(state) {
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     QRAnimationURL: get(state, 'Labels.global.qrScanner.lbl_animation_plp', ''),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
