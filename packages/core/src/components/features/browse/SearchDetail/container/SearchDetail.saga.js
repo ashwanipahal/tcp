@@ -44,6 +44,7 @@ export function* fetchSlpProducts({ payload }) {
         isScrollToTop: scrollToTop || false,
         isKeepModalOpen,
         isSearchResultsAvailable: false,
+        redirectToPdp: false,
       })
     );
 
@@ -76,11 +77,13 @@ export function* fetchSlpProducts({ payload }) {
     if (res) {
       yield putResolve(setListingFirstProductsPage({ ...res }));
     }
+    const redirectToPdp = res.totalProductsCount === 1;
     yield put(
       setSlpLoadingState({
         isLoadingMore: false,
         isScrollToTop: false,
         isSearchResultsAvailable: true,
+        redirectToPdp,
       })
     );
   } catch (err) {
@@ -90,6 +93,7 @@ export function* fetchSlpProducts({ payload }) {
         isLoadingMore: false,
         isScrollToTop: false,
         isSearchResultsAvailable: true,
+        redirectToPdp: false,
       })
     );
   }
