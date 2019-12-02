@@ -321,9 +321,10 @@ export const WishListIcon = (
   isInDefaultWishlist,
   handleAddToWishlist,
   itemNotAvailable,
-  favoritedCount
+  favoritedCount,
+  isSuggestedItem
 ) => {
-  if (itemNotAvailable) {
+  if (itemNotAvailable && !isSuggestedItem) {
     return null;
   }
 

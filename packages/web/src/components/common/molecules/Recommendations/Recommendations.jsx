@@ -78,6 +78,7 @@ class Recommendations extends Component {
       currency,
       currencyAttributes,
       onQuickViewOpenClick,
+      ...otherProps
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -103,6 +104,7 @@ class Recommendations extends Component {
           currencyExchange={currencyAttributes.exchangevalue}
           viaModule={RECOMMENDATION}
           isPromoAvailable={isPromoAvailable}
+          {...otherProps}
         />
       );
     });
@@ -120,6 +122,7 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      isSuggestedItem,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -131,14 +134,16 @@ class Recommendations extends Component {
       products &&
       products.length > 0 && (
         <React.Fragment>
-          <Heading
-            variant="h4"
-            className={`recommendations-header ${priceOnlyClass}`}
-            textAlign={headerAlignment || 'center'}
-            dataLocator={params.dataLocator}
-          >
-            {headerLabel}
-          </Heading>
+          {!isSuggestedItem && (
+            <Heading
+              variant="h4"
+              className={`recommendations-header ${priceOnlyClass}`}
+              textAlign={headerAlignment || 'center'}
+              dataLocator={params.dataLocator}
+            >
+              {headerLabel}
+            </Heading>
+          )}
           <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
@@ -260,6 +265,7 @@ Recommendations.propTypes = {
   reduxKey: PropTypes.string.isRequired,
   ariaPrevious: PropTypes.string,
   ariaNext: PropTypes.string,
+  isSuggestedItem: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
@@ -281,6 +287,7 @@ Recommendations.defaultProps = {
   headerAlignment: '',
   ariaPrevious: '',
   ariaNext: '',
+  isSuggestedItem: false,
 };
 
 export { Recommendations as RecommendationsVanilla };
