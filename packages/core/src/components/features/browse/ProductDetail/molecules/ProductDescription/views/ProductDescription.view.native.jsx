@@ -140,6 +140,7 @@ ProductDetailDescription.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   margins: PropTypes.string,
+  scrollToAccordionBottom: PropTypes.func,
 };
 
 ProductDetailDescription.defaultProps = {
@@ -148,6 +149,7 @@ ProductDetailDescription.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   margins: null,
+  scrollToAccordionBottom: () => {},
 };
 
 export default ProductDetailDescription;
