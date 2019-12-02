@@ -33,6 +33,7 @@ import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -388,10 +389,15 @@ class ProductsGridItem extends React.PureComponent {
       onReplaceWishlistItem,
       activeWishListId,
       suggestedOOSItemId,
-      item: {
-        productInfo: { generalProductId },
-      },
+      item,
+      addToBagEcom,
+      isFavoriteView,
     } = this.props;
+
+    const {
+      productInfo: { generalProductId },
+      skuInfo: { skuId, size },
+    } = item;
     const { selectedColorProductId } = this.state;
 
     if (isSuggestedItem && onReplaceWishlistItem) {
@@ -401,6 +407,16 @@ class ProductsGridItem extends React.PureComponent {
         colorProductId: generalProductId,
       };
       onReplaceWishlistItem(formData);
+    } else if (isFavoriteView) {
+      if (skuId && size) {
+        let cartItemInfo = getCartItemInfo(item, {});
+        cartItemInfo = { ...cartItemInfo };
+        if (addToBagEcom) addToBagEcom(cartItemInfo);
+      } else {
+        onQuickViewOpenClick({
+          colorProductId: selectedColorProductId,
+        });
+      }
     } else {
       onQuickViewOpenClick({
         colorProductId: selectedColorProductId,
@@ -765,7 +781,6 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
-
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -808,7 +823,7 @@ class ProductsGridItem extends React.PureComponent {
             soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
-            { onQuickViewOpenClick, isFavoriteView, labels },
+            { onQuickViewOpenClick, isFavoriteView, labels, item },
             selectedColorProductId,
             itemNotAvailable
           )}

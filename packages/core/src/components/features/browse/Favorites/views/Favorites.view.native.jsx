@@ -608,6 +608,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      addToBagEcom,
     } = this.props;
 
     const { selectedShareOption, seeSuggestedDictionary } = this.state;
@@ -741,6 +742,7 @@ class FavoritesView extends React.PureComponent {
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
+              addToBagEcom={addToBagEcom}
               onSeeSuggestedItems={this.onSeeSuggestedItems}
               onCloseSuggestedModal={this.onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
@@ -787,6 +789,7 @@ FavoritesView.propTypes = {
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
   onLoadRecommendations: PropTypes.func.isRequired,
   onReplaceWishlistItem: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}),

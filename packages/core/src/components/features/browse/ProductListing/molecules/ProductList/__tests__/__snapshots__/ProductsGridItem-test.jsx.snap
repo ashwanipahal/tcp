@@ -111,6 +111,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         }
       >
         <ProductWishlistIcon
+          activeButton={false}
           className="fav-icon"
           favoritedCount=""
           onClick={[Function]}
@@ -192,7 +193,19 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </div>
     <div
       className="favorite-move-purchase-section"
-    />
+    >
+      <div
+        className="purchase-section"
+      >
+        <span>
+          /
+          1
+        </span>
+        <span
+          className="is-purchase-label"
+        />
+      </div>
+    </div>
   </div>
 </li>
 `;

@@ -423,6 +423,14 @@ const getRegion = (configVal, country) => {
   return configVal && country;
 };
 
+const getBvSharedKey = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
+};
+
+const getWebViewBvUrl = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_WEB_VIEW_URL || apiSiteInfo.BV_WEB_VIEW_URL;
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -449,7 +457,11 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
     MELISSA_KEY: envConfig[`RWD_APP_MELISSA_KEY_${appTypeSuffix}`] || apiSiteInfo.MELISSA_KEY,
-    BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
+    //  bazar voice config
+    BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`],
+    BV_API_URL: envConfig.RWD_APP_BV_API_URL || apiSiteInfo.BV_URL,
+    BV_WEB_VIEW_URL: getWebViewBvUrl(envConfig, apiSiteInfo),
+    BV_SHARED_KEY: getBvSharedKey(envConfig, apiSiteInfo),
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,

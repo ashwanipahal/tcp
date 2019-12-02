@@ -344,21 +344,52 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
   if (itemNotAvailable) {
     return null;
   }
-  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
-  return (
-    isFavoriteView && (
+  const { isFavoriteView, labels, onQuickViewOpenClick, item } = props;
+  if (isFavoriteView) {
+    const {
+      skuInfo: { skuId, size, fit, color },
+    } = item;
+    const { itemId, quantity, isTCP } = item.itemInfo;
+    return (
       <Anchor
         className="edit-fav-item__button"
         handleLinkClick={event => {
           event.preventDefault();
-          onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+          onQuickViewOpenClick({
+            colorProductId: selectedColorProductId,
+            orderInfo: {
+              orderItemId: itemId,
+              selectedQty: quantity,
+              selectedColor: color.name,
+              selectedSize: size || '',
+              selectedFit: fit || '',
+              skuId,
+              itemBrand: isTCP ? 'tcp' : 'gym',
+            },
+            isFavoriteEdit: true,
+          });
         }}
         noLink
       >
         {labels.lbl_fav_edit}
       </Anchor>
-    )
-  );
+    );
+  }
+  return null;
+};
+
+EditButton.propTypes = {
+  isFavoriteView: PropTypes.bool,
+  labels: PropTypes.shape({}),
+  onQuickViewOpenClick: PropTypes.func,
+  item: PropTypes.shape({}),
+};
+
+EditButton.defaultProps = {
+  isFavoriteView: false,
+  labels: {},
+  onQuickViewOpenClick: () => {},
+  item: {},
 };
 
 ProductSKUInfo.propTypes = {
