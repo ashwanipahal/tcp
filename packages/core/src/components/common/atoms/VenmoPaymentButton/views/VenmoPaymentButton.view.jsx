@@ -17,7 +17,7 @@ export class VenmoPaymentButton extends Component {
     super(props);
     this.venmoButtonRef = null;
     this.state = {
-      hasVenmoError: true,
+      hasVenmoError: false,
       venmoErrorMessage: null,
     };
   }
@@ -233,40 +233,36 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { venmoData, mode, enabled, className, continueWithText, isVenmoBlueButton } = this.props;
+    const { mode, className, continueWithText, isVenmoBlueButton } = this.props;
     const { hasVenmoError } = this.state;
-    const { supportedByBrowser } = venmoData || {};
     const venmoIcon = isVenmoBlueButton
       ? getIconPath('venmo-button')
       : getIconPath('venmo-logo-blue');
     return (
       <div className={className}>
-        {enabled &&
-          supportedByBrowser &&
-          (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
-          (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-            <div>
-              {continueWithText && (
-                <BodyCopy
-                  component="div"
-                  fontSize="fs15"
-                  fontWeight="semibold"
-                  fontFamily="secondary"
-                  className="venmo-continue-text"
-                >
-                  {continueWithText}
-                </BodyCopy>
-              )}
-              <button
-                onClick={this.handleVenmoClick}
-                ref={this.setVenmoButtonRef}
-                className="venmo-button"
-                aria-label="Venmo Payment Button"
+        {!hasVenmoError && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
+          <div>
+            {continueWithText && (
+              <BodyCopy
+                component="div"
+                fontSize="fs15"
+                fontWeight="semibold"
+                fontFamily="secondary"
+                className="venmo-continue-text"
               >
-                <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
-              </button>
-            </div>
-          )}
+                {continueWithText}
+              </BodyCopy>
+            )}
+            <button
+              onClick={this.handleVenmoClick}
+              ref={this.setVenmoButtonRef}
+              className="venmo-button"
+              aria-label="Venmo Payment Button"
+            >
+              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
+            </button>
+          </div>
+        )}
         {this.renderServerError()}
       </div>
     );

@@ -201,13 +201,20 @@ describe('Venmo Checkout Selectors', () => {
           venmoData,
         },
       }),
+      User: fromJS({
+        personalData: fromJS({
+          contextAttributes: {
+            venmoUserId: '@test-user',
+          },
+        }),
+      }),
     };
     getVenmoData.mockImplementation(() => {
       return {
         venmoData,
       };
     });
-    expect(getVenmoUserName(state)).toBeUndefined();
+    expect(getVenmoUserName(state)).toEqual('@test-user');
   });
   it('#isVenmoNonceActive', () => {
     const { isVenmoNonceActive } = CHECKOUT_SELECTORS;

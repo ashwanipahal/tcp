@@ -265,3 +265,8 @@ export const getUserInfoFetchingState = createSelector(
   getUserState,
   state => state && state.get('isFetching')
 );
+
+export const getContextVenmoUserId = state => {
+  const personalData = getPersonalDataState(state);
+  return personalData && personalData.getIn(['contextAttributes', 'venmoUserId']);
+};
