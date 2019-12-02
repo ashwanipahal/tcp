@@ -83,7 +83,7 @@ exports[`Order Basic Details component  should render correctly for Boss order 1
       link={null}
       textAlign="left"
     >
-      October 11, 2019
+      October Fr, yyyy
       <Styled(BodyCopy)
         className="elem-mr-XXS elem-ml-XXS"
         color="text.primary"
@@ -110,7 +110,7 @@ exports[`Order Basic Details component  should render correctly for Boss order 1
         link={null}
         textAlign="left"
       >
-        02:21AM
+        02:21a.m.
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
@@ -200,7 +200,7 @@ exports[`Order Basic Details component  should render correctly for ECOM order 1
       link={null}
       textAlign="left"
     >
-      September 30, 2019
+      September Mo, yyyy
       <Styled(BodyCopy)
         className="elem-mr-XXS elem-ml-XXS"
         color="text.primary"
@@ -227,7 +227,7 @@ exports[`Order Basic Details component  should render correctly for ECOM order 1
         link={null}
         textAlign="left"
       >
-        02:21AM
+        02:21a.m.
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
