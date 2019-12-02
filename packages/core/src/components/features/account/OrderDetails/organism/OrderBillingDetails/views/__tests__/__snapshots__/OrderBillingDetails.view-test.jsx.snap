@@ -54,6 +54,7 @@ exports[`Order Billing Details component should renders correctly with credit ca
         }
       >
         <Styled(Image)
+          alt=""
           className="elem-mr-XS card-border"
           src="/static/version-not-available/images/visa.svg"
         />
@@ -148,6 +149,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
         }
       >
         <Styled(Image)
+          alt=""
           className="elem-mr-XS card-border"
           src="/static/version-not-available/images/venmo.svg"
         />

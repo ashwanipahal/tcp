@@ -87,61 +87,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
               <ForwardRef
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
-              >
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
-                    }
-                  }
-                >
-                  <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    tag="span"
-                    textAlign="left"
-                  >
-                    undefined:
-                  </ForwardRef>
-                </ForwardRef>
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
-                    }
-                  }
-                >
-                  <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    textAlign="right"
-                  >
-                    <Connect(PriceCurrency)
-                      price={0}
-                    />
-                  </ForwardRef>
-                </ForwardRef>
-              </ForwardRef>
+              />
               <ForwardRef
                 className="balance-total rowMargin"
                 data-locator="orderLedgerBalanceTotalLbl"
@@ -520,59 +466,61 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
               >
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
-                    }
-                  }
-                >
+                <React.Fragment>
                   <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    tag="span"
-                    textAlign="left"
-                  >
-                    undefined:
-                  </ForwardRef>
-                </ForwardRef>
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
+                    colSize={
+                      Object {
+                        "large": 6,
+                        "medium": 4,
+                        "small": 3,
+                      }
                     }
-                  }
-                >
-                  <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    textAlign="right"
                   >
-                    <Connect(PriceCurrency)
-                      price={1}
-                    />
+                    <ForwardRef
+                      bodySize="one"
+                      className={null}
+                      color="primary"
+                      component="p"
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      letterSpacing="normal"
+                      lineHeight="normal"
+                      link={null}
+                      tag="span"
+                      textAlign="left"
+                    >
+                      undefined:
+                    </ForwardRef>
                   </ForwardRef>
-                </ForwardRef>
+                  <ForwardRef
+                    colSize={
+                      Object {
+                        "large": 6,
+                        "medium": 4,
+                        "small": 3,
+                      }
+                    }
+                  >
+                    <ForwardRef
+                      bodySize="one"
+                      className={null}
+                      color="primary"
+                      component="p"
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      letterSpacing="normal"
+                      lineHeight="normal"
+                      link={null}
+                      textAlign="right"
+                    >
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
+                    </ForwardRef>
+                  </ForwardRef>
+                </React.Fragment>
               </ForwardRef>
               <React.Fragment>
                 <ForwardRef
@@ -1081,59 +1029,61 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
               >
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
-                    }
-                  }
-                >
+                <React.Fragment>
                   <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    tag="span"
-                    textAlign="left"
-                  >
-                    undefined:
-                  </ForwardRef>
-                </ForwardRef>
-                <ForwardRef
-                  colSize={
-                    Object {
-                      "large": 6,
-                      "medium": 4,
-                      "small": 3,
+                    colSize={
+                      Object {
+                        "large": 6,
+                        "medium": 4,
+                        "small": 3,
+                      }
                     }
-                  }
-                >
-                  <ForwardRef
-                    bodySize="one"
-                    className={null}
-                    color="primary"
-                    component="p"
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    letterSpacing="normal"
-                    lineHeight="normal"
-                    link={null}
-                    textAlign="right"
                   >
-                    <Connect(PriceCurrency)
-                      price={1}
-                    />
+                    <ForwardRef
+                      bodySize="one"
+                      className={null}
+                      color="primary"
+                      component="p"
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      letterSpacing="normal"
+                      lineHeight="normal"
+                      link={null}
+                      tag="span"
+                      textAlign="left"
+                    >
+                      undefined:
+                    </ForwardRef>
                   </ForwardRef>
-                </ForwardRef>
+                  <ForwardRef
+                    colSize={
+                      Object {
+                        "large": 6,
+                        "medium": 4,
+                        "small": 3,
+                      }
+                    }
+                  >
+                    <ForwardRef
+                      bodySize="one"
+                      className={null}
+                      color="primary"
+                      component="p"
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      letterSpacing="normal"
+                      lineHeight="normal"
+                      link={null}
+                      textAlign="right"
+                    >
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
+                    </ForwardRef>
+                  </ForwardRef>
+                </React.Fragment>
               </ForwardRef>
               <React.Fragment>
                 <ForwardRef

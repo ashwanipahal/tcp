@@ -17,6 +17,7 @@ import StoreStaticMap from './StoreStaticMap';
 import Skeleton from './Skeleton';
 import BackToTop from './BackToTop';
 import PLPSkeleton from './PLPSkeleton';
+import FavoriteSkeleton from './FavoriteSkeleton';
 import Spinner from './Spinner';
 import TextArea from './TextArea';
 
@@ -42,4 +43,5 @@ export {
   PLPSkeleton,
   Spinner,
   TextArea,
+  FavoriteSkeleton,
 };

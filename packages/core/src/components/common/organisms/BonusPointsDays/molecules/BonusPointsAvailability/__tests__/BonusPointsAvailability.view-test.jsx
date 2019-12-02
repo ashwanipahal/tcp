@@ -40,7 +40,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with click', () => {
-    const getBonusDaysData = jest.fn();
+    const getAvailableBonusDaysData = jest.fn();
     const orderDetails = jest.fn();
     const bonusDayAvailableToday = jest.fn();
     const bonusPoints = [
@@ -52,7 +52,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
     const tree = shallow(
       <BonusPointsAvailabilityVanilla
         bonusPoints={bonusPoints}
-        getBonusDaysData={getBonusDaysData}
+        getAvailableBonusDaysData={getAvailableBonusDaysData}
         orderDetails={orderDetails}
         bonusDayAvailableToday={bonusDayAvailableToday}
       />

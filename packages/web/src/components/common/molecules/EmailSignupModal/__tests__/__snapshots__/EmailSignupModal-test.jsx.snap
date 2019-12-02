@@ -52,6 +52,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
           "success": false,
         }
       }
+      trackSubscriptionSuccess={[Function]}
     />
   </Styled(Modal)>
 </Fragment>
@@ -110,6 +111,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       }
       reset={[Function]}
       subscription={Object {}}
+      trackSubscriptionSuccess={[Function]}
     />
   </Styled(Modal)>
 </Fragment>
@@ -168,6 +170,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       }
       reset={[Function]}
       subscription={Object {}}
+      trackSubscriptionSuccess={[Function]}
     />
   </Styled(Modal)>
 </Fragment>

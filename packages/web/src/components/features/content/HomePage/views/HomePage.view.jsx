@@ -9,25 +9,40 @@ import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import SeoCopy from '@tcp/core/src/components/features/browse/ProductListing/molecules/SeoCopy/views';
-import { getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
+import { getQueryParamsFromUrl, internalCampaignProductAnalyticsList } from '@tcp/core/src/utils';
+import { setProp } from '@tcp/core/src/analytics/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
-import { setClickAnalyticsData } from '../../../../../../../core/src/analytics/actions';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, setCampaignId } = this.props;
+    const { openCountrySelectorModal, router } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
-    const cid = getQueryParamsFromUrl(router.asPath, 'cid');
-    const icid = getQueryParamsFromUrl(router.asPath, 'icid');
-    if (cid) {
-      setCampaignId(cid[0]);
-    }
-    if (icid) {
-      setClickAnalyticsData({ internalCampaignId: icid[0], customEvents: ['event18', 'event80'] });
-    }
+    this.sHomePageAnalyticsVal(router);
   }
+
+  // For Setting the Home Page Analytics Data.
+  sHomePageAnalyticsVal = router => {
+    const { setCampaignId, trackHomepageView } = this.props;
+    const queryParams = getQueryParamsFromUrl(router.asPath);
+    const campaingnId = 'cid';
+    const products = internalCampaignProductAnalyticsList();
+    setProp('eVar22', queryParams[campaingnId] || '');
+    setProp('eVar15', 'D-Vo');
+    if (queryParams[campaingnId]) {
+      setCampaignId(queryParams[campaingnId]);
+    }
+
+    trackHomepageView({
+      customEvents: ['event80', 'event81'],
+      internalCampaignIdList: products,
+      pageName: 'home page',
+      pageSection: 'homepage',
+      pageSubSection: 'home page',
+      pageType: 'home page',
+    });
+  };
 
   render() {
     const { children } = this.props;
@@ -62,12 +77,19 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ImageTextModule').then(returnModule),
   }),
   render: (compProps, modules) => {
-    const { slots, openCountrySelectorModal, setCampaignId, seoData } = compProps;
+    const {
+      slots,
+      openCountrySelectorModal,
+      setCampaignId,
+      seoData,
+      trackHomepageView,
+    } = compProps;
 
     return (
       <HomePageWithRouter
         openCountrySelectorModal={openCountrySelectorModal}
         setCampaignId={setCampaignId}
+        trackHomepageView={trackHomepageView}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -90,6 +112,7 @@ HomePageWrapper.propTypes = {
   openCountrySelectorModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  trackHomepageView: PropTypes.func.isRequired,
 };
 
 HomePageView.propTypes = {
@@ -97,6 +120,7 @@ HomePageView.propTypes = {
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
+  trackHomepageView: PropTypes.func.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);

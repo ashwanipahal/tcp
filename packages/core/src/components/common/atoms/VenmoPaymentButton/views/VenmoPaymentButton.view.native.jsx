@@ -166,7 +166,7 @@ export class VenmoPaymentButton extends Component {
             onPress={this.handleVenmoClick}
             isVenmoBlue={isVenmoBlueButton}
           >
-            <Image source={venmoIcon} width="80px" height="15px" />
+            <Image source={venmoIcon} alt="" width="80px" height="15px" />
           </VenmoButton>
         )}
       </View>

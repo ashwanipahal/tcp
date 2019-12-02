@@ -1,8 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
+import {
+  openQuickViewWithValues,
+  updateAppTypeWithParams,
+} from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
@@ -189,6 +192,7 @@ class FavoritesContainer extends React.PureComponent {
       setListShareSuccess,
       formErrorMessage,
       isLoggedIn,
+      updateAppTypeHandler,
       addToBagEcom,
       errorMessages,
     } = this.props;
@@ -234,6 +238,7 @@ class FavoritesContainer extends React.PureComponent {
         addToBagEcom={addToBagEcom}
         onLoadRecommendations={this.onLoadRecommendations}
         onReplaceWishlistItem={this.onReplaceWishlistItem}
+        updateAppTypeHandler={updateAppTypeHandler}
         errorMessages={errorMessages}
         {...this.state}
       />
@@ -296,6 +301,9 @@ const mapDispatchToProps = dispatch => {
     },
     loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
+    },
   };
 };
 
@@ -335,6 +343,7 @@ FavoritesContainer.propTypes = {
   getActiveWishlistGuest: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}),
   errorMessages: PropTypes.string,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
