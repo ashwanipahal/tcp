@@ -121,11 +121,14 @@ class FavoritesContainer extends React.PureComponent {
 
   openQuickViewModal = (payload, allColors) => {
     const { onQuickViewOpenClick } = this.props;
+    const selectedColorProductId = !allColors ? payload.colorProductId : '';
     this.setState(
       {
-        selectedColorProductId: !allColors ? payload.colorProductId : '',
+        selectedColorProductId,
       },
-      () => onQuickViewOpenClick(payload)
+      () => {
+        onQuickViewOpenClick(payload);
+      }
     );
   };
 

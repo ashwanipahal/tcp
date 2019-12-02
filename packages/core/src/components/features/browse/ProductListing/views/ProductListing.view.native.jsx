@@ -5,7 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -119,6 +118,19 @@ const onRenderHeader = data => {
   );
 };
 
+const renderPromModules = (isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn) => {
+  return (
+    !isSearchListing && (
+      <PromoModules
+        plpTopPromos={plpTopPromos}
+        navigation={navigation}
+        isPlcc={isPlcc}
+        isLoggedIn={isLoggedIn}
+      />
+    )
+  );
+};
+
 const ProductListView = ({
   products,
   filters,
@@ -197,14 +209,7 @@ const ProductListView = ({
     />
   ) : (
     <ScrollView>
-      {!isSearchListing && (
-        <PromoModules
-          plpTopPromos={plpTopPromos}
-          navigation={navigation}
-          isPlcc={isPlcc}
-          isLoggedIn={isLoggedIn}
-        />
-      )}
+      {renderPromModules(isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn)}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
         {!isLoadingMore && (
@@ -227,7 +232,6 @@ const ProductListView = ({
             {...otherProps}
           />
         )}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
