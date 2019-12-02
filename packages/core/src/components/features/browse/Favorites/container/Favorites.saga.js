@@ -88,6 +88,7 @@ export function* addItemsToWishlist({ payload }) {
     if (isGuest) {
       yield put(setLoginModalMountedState({ state: true }));
     } else {
+      yield put(resetMaximumProductAddedErrorState({}));
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: activeWishListId || '',
         skuIdOrProductId,
@@ -99,7 +100,15 @@ export function* addItemsToWishlist({ payload }) {
 
       if (res && res.errorMessage) {
         yield put(setAddToFavoriteErrorState(res));
+        const errorMessages = {
+          errorMessage: res.errorMessage,
+          itemId: colorProductId,
+        };
+        const data = {};
+        data[colorProductId] = errorMessages;
+        yield put(setMaximumProductAddedErrorState({ ...data }));
       }
+
       if (res && res.newItemId) {
         switch (page) {
           case 'PDP':

@@ -227,6 +227,13 @@ const getSetPayPalWebView = payload => {
   };
 };
 
+const isPaypalRenderDone = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.IS_PAYPAL_BUTTON_RENDER_DONE,
+    payload,
+  };
+};
+
 const setBagPageLoading = () => ({
   type: BAGPAGE_CONSTANTS.FETCHING_CART_DATA,
 });
@@ -265,6 +272,7 @@ export default {
   setItemOOS,
   paypalAuthorization,
   startPaypalCheckout,
+  isPaypalRenderDone,
   startPaypalNativeCheckout,
   setCartItemsUpdating,
   setItemUnavailable,

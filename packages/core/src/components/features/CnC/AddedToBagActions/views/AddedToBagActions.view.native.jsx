@@ -29,19 +29,26 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getVenmoButton = () => {
-    const { handleCartCheckout, isEditingItem, navigation, closeModal } = this.props;
+    const {
+      handleCartCheckout,
+      isEditingItem,
+      navigation,
+      closeModal,
+      resetTimerStatus,
+    } = this.props;
     return (
       <VenmoPaymentButton
         className="venmo-container"
-        onSuccess={() =>
+        onSuccess={() => {
+          if (resetTimerStatus) resetTimerStatus(true);
           handleCartCheckout({
             isEditingItem,
             navigation,
             closeModal,
             navigationActions: NavigationActions,
             isVenmoProgress: true,
-          })
-        }
+          });
+        }}
         onError={venmoErrorMessage =>
           handleCartCheckout({
             isVenmoProgress: false,
@@ -62,6 +69,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isPayPalWebViewEnable,
       hideHeader,
       fromAddedToBagModal,
+      resetTimerStatus,
     } = this.props;
     if (orderId && isPayPalEnabled) {
       if (addWrapper) {
@@ -71,11 +79,15 @@ class AddedToBagActions extends React.PureComponent<Props> {
               getPayPalSettings={getPayPalSettings}
               navigation={navigation}
               setVenmoState={() => {
-                if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+                if (fromAddedToBagModal) {
+                  resetTimerStatus(true);
+                  hideHeader(!isPayPalWebViewEnable);
+                }
               }}
               closeModal={this.closeModal}
               top={payPalTop}
               fullWidth
+              resetTimerStatus={resetTimerStatus}
             />
           </PaypalPaymentsButtonWrapper>
         );
@@ -85,7 +97,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
           getPayPalSettings={getPayPalSettings}
           navigation={navigation}
           setVenmoState={() => {
-            if (fromAddedToBagModal) hideHeader(!isPayPalWebViewEnable);
+            const buyModal = fromAddedToBagModal;
+            if (buyModal) {
+              resetTimerStatus(true);
+              hideHeader(!isPayPalWebViewEnable);
+            }
           }}
           closeModal={this.closeModal}
           top={payPalTop}
@@ -153,6 +169,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       fromAddedToBagModal,
       isVenmoEnabled,
       isPayPalEnabled,
+      resetTimerStatus,
       isPayPalWebViewEnable,
     } = this.props;
 
@@ -189,6 +206,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 )}
                 isAddedTobag={showAddTobag}
                 onPress={() => {
+                  if (resetTimerStatus) resetTimerStatus(true);
                   handleCartCheckout({
                     isEditingItem,
                     navigation,
@@ -222,6 +240,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isPayPalWebViewEnable,
       navigation,
       closeModal,
+      resetTimerStatus,
     } = this.props;
     const { venmoEnable } = this.state;
     const isVenmoFlag = isVenmoEnabled && venmoEnable;
@@ -232,6 +251,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <ButtonWrapperAddedToBag isPayPalWebViewEnable={!isVenmoFlag && !showAddTobag}>
             <ViewBagButton
               onPress={() => {
+                if (resetTimerStatus) resetTimerStatus(true);
                 navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
                 if (closeModal) {
                   closeModal();

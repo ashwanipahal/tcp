@@ -35,6 +35,7 @@ describe('PickUpFormPart component', () => {
       availableStages: {},
       labels: {},
       isGuest: false,
+      isPayPalWebViewEnable: true,
     };
     const component = shallow(<BillingPageVanilla {...props} />);
     expect(component).toMatchSnapshot();

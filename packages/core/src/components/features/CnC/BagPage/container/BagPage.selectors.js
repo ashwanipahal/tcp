@@ -227,6 +227,10 @@ const getPayPalWebViewStatus = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
 };
 
+const isPayPalButtonRenderDone = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalRenderDone']) || false;
+};
+
 const isBagLoaded = state => {
   return state.CartPageReducer.getIn(['loaded']);
 };
@@ -289,6 +293,7 @@ export default {
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
+  isPayPalButtonRenderDone,
   getIsPayPalHidden,
   isBagLoading,
   getCartLoadedState,

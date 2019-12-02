@@ -24,6 +24,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "addToBagEcom": [Function],
         "currencyExchange": Array [],
         "currencySymbol": "",
+        "errorMessages": null,
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
