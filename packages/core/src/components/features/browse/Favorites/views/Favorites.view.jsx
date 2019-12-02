@@ -18,6 +18,7 @@ import EditList from '../molecules/EditList/views';
 import ShareList from '../molecules/ShareList/views';
 import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
+import { openWindow } from '../../../../../utils/utils.web';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -65,7 +66,7 @@ class FavoritesView extends React.PureComponent {
     const { facebookShareURL } = getAPIConfig();
     const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
 
-    window.open(url);
+    openWindow(url);
   };
 
   shareClickHandler = value => {
@@ -107,6 +108,7 @@ class FavoritesView extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       activeWishList,
+      addToBagEcom,
     } = this.props;
 
     const filteredItemsList = this.getFilteredItemsList();
@@ -128,6 +130,7 @@ class FavoritesView extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             openAddNewList={this.handleAddList}
             activeWishListId={activeWishList.id}
+            addToBagEcom={addToBagEcom}
           />
         </>
       )
@@ -574,6 +577,7 @@ FavoritesView.propTypes = {
   sendWishListEmail: PropTypes.func.isRequired,
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func,
+  addToBagEcom: PropTypes.func.isRequired,
   appliedFilterLength: PropTypes.number,
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
   isDataLoading: PropTypes.bool,

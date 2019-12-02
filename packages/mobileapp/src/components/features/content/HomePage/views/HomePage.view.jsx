@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-import ErrorBoundary from 'react-native-error-boundary';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 
@@ -47,6 +46,7 @@ import {
   ButtonComponent,
 } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import withErrorBoundary from '../../../../common/hoc/ErrorBoundary';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -69,11 +69,7 @@ const modulesMap = {
 const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
   const modulesMapWithErrorsBoundary = modulesMapObj;
   const Module = modulesMap[key];
-  modulesMapWithErrorsBoundary[key] = props => (
-    <ErrorBoundary>
-      <Module {...props} />
-    </ErrorBoundary>
-  );
+  modulesMapWithErrorsBoundary[key] = props => withErrorBoundary(Module)(props);
   return modulesMapWithErrorsBoundary;
 }, {});
 

@@ -36,6 +36,7 @@ import {
 } from '../context';
 import { getOnNavigationStateChange } from '../navigation/helpers';
 import constants from '../constants/config.constants';
+import withErrorBoundary from '../components/common/hoc/ErrorBoundary';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -203,7 +204,7 @@ App.defaultProps = {
 
 // @anup_mankar to look into this assignment
 // eslint-disable-next-line no-class-assign
-App = codePush(App);
+App = codePush(withErrorBoundary(App));
 
 function RenderApp(props) {
   const info = useInfoState();

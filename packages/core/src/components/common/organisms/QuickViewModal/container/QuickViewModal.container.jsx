@@ -18,7 +18,7 @@ import {
   getLoadingState,
   getFromBagPage,
   getIsFromBagProductSfl,
-  getSelectedColorId,
+  getEditFavorite,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -34,6 +34,7 @@ import {
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
+import { updateWishListItemIdAction } from '../../../../features/browse/Favorites/container/Favorites.actions';
 
 class QuickViewModalContainer extends React.PureComponent {
   handleAddToBag = () => {
@@ -54,12 +55,14 @@ class QuickViewModalContainer extends React.PureComponent {
       isFromBagProductSfl,
       productInfoFromBag,
       updateCartSflItemAction,
+      isFavoriteEdit,
+      updateWishListItemFav,
     } = this.props;
     const [{ product }] = productInfo;
     const [formValue] = formValues;
     const cartItemInfo = getCartItemInfo(product, formValue);
     const {
-      skuInfo: { skuId, variantNo, variantId },
+      skuInfo: { skuId, variantNo, variantId, color },
     } = cartItemInfo;
     if (isFromBagProductSfl) {
       updateCartSflItemAction({
@@ -78,7 +81,18 @@ class QuickViewModalContainer extends React.PureComponent {
         itemPartNumber: variantId,
         callBack: closeQuickViewModalAction,
       };
-      updateCartItemAction(payload);
+      if (isFavoriteEdit && updateWishListItemFav) {
+        const formData = {
+          itemId: orderItemId,
+          quantity,
+          color: color.name,
+          product,
+          callBack: closeQuickViewModalAction,
+        };
+        updateWishListItemFav(formData);
+      } else {
+        updateCartItemAction(payload);
+      }
     }
   };
 
@@ -111,7 +125,6 @@ class QuickViewModalContainer extends React.PureComponent {
 function mapStateToProps(state) {
   const productInfo = getProductInfo(state);
   const isMultiItemQVModal = productInfo && productInfo.length > 1;
-
   return {
     isModalOpen: getModalState(state),
     isLoading: getLoadingState(state),
@@ -127,7 +140,7 @@ function mapStateToProps(state) {
     productInfoFromBag: getProductInfoFromBag(state),
     fromBagPage: getFromBagPage(state),
     isFromBagProductSfl: getIsFromBagProductSfl(state),
-    selectedColorProductId: getSelectedColorId(state),
+    isFavoriteEdit: getEditFavorite(state),
   };
 }
 
@@ -157,6 +170,9 @@ function mapDispatchToProps(dispatch) {
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
     },
+    updateWishListItemFav: payload => {
+      dispatch(updateWishListItemIdAction(payload));
+    },
   };
 }
 
@@ -174,6 +190,8 @@ QuickViewModalContainer.propTypes = {
   toastMessage: PropTypes.func,
   isFromBagProductSfl: PropTypes.bool,
   updateCartSflItemAction: PropTypes.func.isRequired,
+  updateWishListItemFav: PropTypes.func,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -184,6 +202,8 @@ QuickViewModalContainer.defaultProps = {
   },
   toastMessage: () => {},
   isFromBagProductSfl: false,
+  updateWishListItemFav: () => {},
+  isFavoriteEdit: false,
 };
 
 export default connect(

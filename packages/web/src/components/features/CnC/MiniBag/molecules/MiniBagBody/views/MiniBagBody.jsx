@@ -33,7 +33,7 @@ class MiniBagBody extends React.PureComponent {
     const { addedToBagError } = this.props;
     const { addedToBagError: prevAddedToBagError } = prevProps;
     const { isShowServerError } = this.state;
-    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.isShowServerError();
+    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.setisShowServerError();
   }
 
   componentWillUnmount() {
