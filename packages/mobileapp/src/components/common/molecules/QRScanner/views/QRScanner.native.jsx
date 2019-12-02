@@ -26,7 +26,7 @@ class QRCode extends PureComponent {
    *
    */
   redirectToPLP = data => {
-    const qrValidatorString = '/scan-it';
+    const qrValidatorString = '/scan-it/';
     if (data && data.match(qrValidatorString)) {
       const { navigation } = this.props;
       navigation.navigate('ProductListing', {
