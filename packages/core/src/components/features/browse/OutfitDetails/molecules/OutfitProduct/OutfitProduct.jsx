@@ -22,8 +22,6 @@ const renderOutOfStock = (keepAlive, outOfStockLabels) => {
   return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
 };
 
-const { CAROUSEL_OPTIONS } = config;
-
 const carouselImageCollection = (images, pdpToPath, pdpUrl, name) => {
   return (
     <>
