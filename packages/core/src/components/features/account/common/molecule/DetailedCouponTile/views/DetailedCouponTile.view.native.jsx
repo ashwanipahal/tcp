@@ -137,7 +137,7 @@ export class DetailedCouponTile extends React.Component {
           <Overlay />
           <OverlayContent>
             <OverlayContentText>
-              <Image height="25px" width="25px" source={bagIcon} />
+              <Image height="25px" width="25px" source={bagIcon} alt="" />
             </OverlayContentText>
             <OverlayContentText>
               <BodyCopy
