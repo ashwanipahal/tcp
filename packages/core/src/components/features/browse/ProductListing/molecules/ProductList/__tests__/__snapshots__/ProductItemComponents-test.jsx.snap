@@ -181,17 +181,8 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 
 exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
 <React.Fragment>
-  <ForwardRef
+  <div
     className="loyalty-text-container"
-    color="text.primary"
-    component="p"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
   />
 </React.Fragment>
 `;
