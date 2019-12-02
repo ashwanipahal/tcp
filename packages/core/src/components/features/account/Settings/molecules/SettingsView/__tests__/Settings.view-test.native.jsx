@@ -58,6 +58,4 @@ describe('SettingsView component', () => {
     component.instance().handleAppStateChange('active');
     expect(component.state('appState')).toEqual('active');
   });
-
-  it('test checkNotificationStatus', () => {});
 });
