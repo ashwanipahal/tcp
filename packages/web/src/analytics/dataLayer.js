@@ -222,9 +222,14 @@ export default function create(store) {
     },
     products: {
       get() {
-        const { AnalyticsDataKey } = store.getState();
+        const { AnalyticsDataKey, pageData } = store.getState();
         const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        return clickActionAnalyticsData.products ? clickActionAnalyticsData.products : [];
+
+        const pageProducts = clickActionAnalyticsData.products
+          ? clickActionAnalyticsData.products
+          : pageData.products;
+
+        return pageProducts || [];
       },
     },
 

@@ -22,7 +22,7 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
-import { setClickAnalyticsData, trackPageView } from '../../../../../analytics/actions';
+import { trackPageView } from '../../../../../analytics/actions';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -261,30 +261,19 @@ export const mapDispatchToProps = dispatch => ({
   },
   fetchCurrentStoreInfo: payload => dispatch(getCurrentStoreInfo(payload)),
   trackStoreDetailPageView: payload => {
-    const { products } = payload;
     dispatch(
-      setClickAnalyticsData({
-        products,
-      })
-    );
-    setTimeout(() => {
-      dispatch(
-        trackPageView({
-          props: {
-            initialProps: {
-              pageProps: {
-                pageData: {
-                  ...payload,
-                },
+      trackPageView({
+        props: {
+          initialProps: {
+            pageProps: {
+              pageData: {
+                ...payload,
               },
             },
           },
-        })
-      );
-      setTimeout(() => {
-        dispatch(setClickAnalyticsData({}));
-      }, 200);
-    }, 100);
+        },
+      })
+    );
   },
 });
 
