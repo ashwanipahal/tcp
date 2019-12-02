@@ -265,7 +265,6 @@ export default css`
       .label-responsive-wrapper {
         padding-top: 2px;
         display: flex;
-        flex: 1;
         padding-right: 0px;
         /* stylelint-disable */
         span:not(.list-price) {

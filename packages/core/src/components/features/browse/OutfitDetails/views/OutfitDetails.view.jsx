@@ -124,7 +124,7 @@ const OutfitDetailsView = ({
           ignoreGutter={{ small: true }}
           className="outfit-image"
         >
-          <Image className="promo-area-0" src={outfitImageUrl} />
+          <Image className="promo-area-0" src={outfitImageUrl} alt="" />
         </Col>
         <hr className="outfit-line-break" />
         <Col

@@ -439,18 +439,29 @@ export const childOptionsMap = () => {
   };
 };
 
+const returnValue = (condition, conditionTrueValue, conditionFalseValue) => {
+  return condition ? conditionTrueValue : conditionFalseValue;
+};
+
 /**
  *
  * @param {object} labelState object in which key needs to be searched
  * @param {string} labelKey string whose value
  * @param {string} subCategory label subCategory
  * @param {string} category label category
+ * @param {boolean} isreferredContent is label referred content (moduleXContent)
  * This function will return label value if labelKey is present in the object
  * or labelKey itself if its not present in the labelState.
  */
-export const getLabelValue = (labelState, labelKey, subCategory, category) => {
+export const getLabelValue = (
+  labelState,
+  labelKey,
+  subCategory,
+  category,
+  isreferredContent = false
+) => {
   if (typeof labelState !== 'object') {
-    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
+    return typeof labelKey !== 'string' ? returnValue(isreferredContent, [], '') : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -469,7 +480,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
     labelValue = labelState[labelKey];
   }
 
-  return typeof labelValue === 'string' ? labelValue : labelKey;
+  return typeof labelValue === 'string' ? labelValue : returnValue(isreferredContent, [], labelKey);
 };
 
 // eslint-disable-next-line
@@ -1069,26 +1080,6 @@ export const canUseDOM = () => {
 
 export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
-};
-
-export const getQueryParamsFromUrl = (url, queryParam) => {
-  let queryString = url || '';
-  let keyValPairs = [];
-  const params = {};
-  queryString = queryString.replace(/.*?\?/, '');
-
-  if (queryString.length) {
-    keyValPairs = queryString.split('&');
-    const resultingArray = Object.values(keyValPairs);
-
-    resultingArray.filter((item, index) => {
-      const key = item.split('=')[0];
-      if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[index].split('=')[1]);
-      return params;
-    });
-  }
-  return params[queryParam];
 };
 
 /**

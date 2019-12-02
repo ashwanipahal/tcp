@@ -5,9 +5,8 @@ import Recommendations from '@tcp/web/src/components/common/molecules/Recommenda
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
+import { Row, Col, BodyCopy, InputCheckBox, FavoriteSkeleton } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
@@ -30,6 +29,7 @@ class FavoritesView extends React.PureComponent {
       isOpenModal: false,
       itemToMove: '',
       addListFromMoveOption: false,
+      seeSuggestedDictionary: {},
     };
   }
 
@@ -49,6 +49,47 @@ class FavoritesView extends React.PureComponent {
       setListShareSuccess(false);
     }
   }
+
+  onSeeSuggestedItems = (colorProductId, itemId) => {
+    const { activeWishListId, onReplaceWishlistItem, labelsPlpTiles } = this.props;
+    const { seeSuggestedDictionary } = this.state;
+    const { navigation } = this.props;
+
+    const recommendationAttributes = {
+      variation: 'moduleP',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.FAVORITES,
+      partNumber: colorProductId,
+      isHeaderAccordion: true,
+      isSuggestedItem: true,
+      labelsPlpTiles,
+      outOfStockColorProductId: colorProductId,
+      onDismissSuggestion: this.onCloseSuggestedModal,
+      onReplaceWishlistItem,
+      suggestedOOSItemId: itemId,
+      activeWishListId,
+    };
+    const suggestedData = {
+      colorProductId,
+      attributes: recommendationAttributes,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
+
+  onCloseSuggestedModal = colorProductId => {
+    const { seeSuggestedDictionary } = this.state;
+    const suggestedData = {
+      colorProductId: null,
+      attributes: null,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
 
   getSharableLink = () => {
     const { activeWishList, wishlistsSummaries } = this.props;
@@ -105,6 +146,7 @@ class FavoritesView extends React.PureComponent {
       createNewWishList,
       setLastDeletedItemId,
       labels,
+      labelsPlpTiles,
       onQuickViewOpenClick,
       isKeepAliveEnabled,
       outOfStockLabels,
@@ -112,6 +154,7 @@ class FavoritesView extends React.PureComponent {
       addToBagEcom,
     } = this.props;
 
+    const { seeSuggestedDictionary } = this.state;
     const filteredItemsList = this.getFilteredItemsList();
 
     return (
@@ -121,6 +164,7 @@ class FavoritesView extends React.PureComponent {
             products={filteredItemsList}
             productsBlock={[filteredItemsList]}
             labels={labels}
+            labelsPlpTiles={labelsPlpTiles}
             wishlistsSummaries={wishlistsSummaries}
             createNewWishList={createNewWishList}
             onQuickViewOpenClick={onQuickViewOpenClick}
@@ -131,9 +175,11 @@ class FavoritesView extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             openAddNewList={this.handleAddList}
             activeWishListId={activeWishList.id}
+            onSeeSuggestedItems={this.onSeeSuggestedItems}
+            onCloseSuggestedModal={this.onCloseSuggestedModal}
+            seeSuggestedDictionary={seeSuggestedDictionary}
             addToBagEcom={addToBagEcom}
           />
-          <QuickViewModal />
         </>
       )
     );
@@ -439,7 +485,12 @@ class FavoritesView extends React.PureComponent {
 
     const filteredItemsList = this.getFilteredItemsList();
     const myFavLabel = labels.lbl_fav_myFavorites;
-    if (isDataLoading) return '';
+    if (isDataLoading)
+      return (
+        <>
+          <FavoriteSkeleton col={8} />
+        </>
+      );
     return (
       <div className={className}>
         {this.renderModalWrapper()}
@@ -589,6 +640,9 @@ FavoritesView.propTypes = {
   updateWishList: PropTypes.func,
   resetBrandFilters: PropTypes.func,
   formErrorMessage: PropTypes.shape({}),
+  labelsPlpTiles: PropTypes.shape({}),
+  onReplaceWishlistItem: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -608,6 +662,8 @@ FavoritesView.defaultProps = {
   resetBrandFilters: () => {},
   formErrorMessage: {},
   activeWishListId: '',
+  labelsPlpTiles: {},
+  navigation: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
