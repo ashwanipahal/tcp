@@ -11,7 +11,7 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
       <Styled(BonusPointsSection)
         bonusData={Object {}}
         bonusDetailsData="hello"
-        getBonusDaysData={[Function]}
+        getAvailableBonusDaysData={[Function]}
         isDefaultOpen={false}
         isInternationalShipping={false}
         isPlcc={false}

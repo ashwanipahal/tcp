@@ -34,7 +34,9 @@ const bagIcon = require('../../../../../../../assets/white-bag.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
-    coupon: PropTypes.shape({}).isRequired,
+    coupon: PropTypes.shape({
+      error: PropTypes.string,
+    }).isRequired,
     labels: PropTypes.shape({
       lbl_coupon_expiringSoon: PropTypes.string,
       lbl_coupon_couponValid: PropTypes.string,
@@ -72,9 +74,10 @@ export class DetailedCouponTile extends React.Component {
     },
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { coupon, toastMessage } = this.props;
-    if (coupon.error) {
+    const prevCouponError = prevProps.coupon && prevProps.coupon.error;
+    if (!prevCouponError && coupon.error) {
       toastMessage(coupon);
     }
   }
