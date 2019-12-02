@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import { BodyCopy, Button, Image } from '../../../../../atoms';
@@ -17,10 +17,7 @@ import {
 import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/PickupStoreListItem.style';
-import {
-  setFavStoreToLocalStorage,
-  getFavStoreFromLocalStorage,
-} from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
+import { setFavStoreToLocalStorage } from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosingTimeTomorrow) => {
   const storeName = capitalize(basicInfo.storeName);
@@ -162,7 +159,7 @@ const displayStoreTitle = basicInfo => {
   );
 };
 
-class PickupStoreListItem extends React.Component {
+class PickupStoreListItem extends PureComponent {
   static propTypes = {
     /** Error message when add to cart */
     addToCartError: PropTypes.string.isRequired,
@@ -220,6 +217,10 @@ class PickupStoreListItem extends React.Component {
     pageNameProp: PropTypes.string,
     setClickAnalyticsData: PropTypes.func,
     trackClick: PropTypes.func,
+    storeSearchCriteria: PropTypes.string,
+    storeSearchDistance: PropTypes.string,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
   };
 
   static defaultProps = {
@@ -228,6 +229,10 @@ class PickupStoreListItem extends React.Component {
     pageNameProp: '',
     setClickAnalyticsData: () => {},
     trackClick: () => {},
+    storeSearchCriteria: '',
+    storeSearchDistance: '',
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {
@@ -235,6 +240,12 @@ class PickupStoreListItem extends React.Component {
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
     this.handleStoreUpdate = this.handleStoreUpdate.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
+    this.isBossSelected = props.isBossSelected;
+  }
+
+  componentDidUpdate() {
+    const { isBossSelected } = this.props;
+    this.isBossSelected = isBossSelected;
   }
 
   getStoreCloseTime() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, SafeAreaView, Text } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -170,7 +170,9 @@ class ProductList extends React.PureComponent {
       isKeepAliveEnabled,
       outOfStockLabels,
       renderMoveToList,
+      addToBagEcom,
       onSeeSuggestedItems,
+      errorMessages,
     } = this.props;
     const { item } = itemData;
     const suggestedItem = this.checkAndRenderSuggestedItem(item);
@@ -229,7 +231,9 @@ class ProductList extends React.PureComponent {
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
         renderMoveToList={renderMoveToList}
+        addToBagEcom={addToBagEcom}
         onSeeSuggestedItems={onSeeSuggestedItems}
+        errorMessages={errorMessages}
       />
     );
   };
@@ -405,9 +409,11 @@ ProductList.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
   onSeeSuggestedItems: PropTypes.func,
   seeSuggestedDictionary: PropTypes.shape({}),
   isSuggestedItem: PropTypes.bool,
+  errorMessages: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -444,9 +450,11 @@ ProductList.defaultProps = {
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
   renderMoveToList: () => {},
+  addToBagEcom: () => {},
   onSeeSuggestedItems: () => {},
   seeSuggestedDictionary: null,
   isSuggestedItem: false,
+  errorMessages: null,
 };
 
 export default withStyles(ProductList, styles);

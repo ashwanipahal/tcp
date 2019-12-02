@@ -62,10 +62,13 @@ const SHARE_LIST_BY_COPY_LINK = 'shareListByCopyLink';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
+
   addListFromMoveOption = false;
+
   selectedItemId = '';
 
   brandOptions;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -456,6 +459,8 @@ class FavoritesView extends React.PureComponent {
   renderMoveToList = itemId => {
     const { labels, wishlistsSummaries, defaultWishList, activeWishList } = this.props;
     this.selectedItemId = itemId;
+    const dropDownStyles = { ...dropDownStyle, height: 36 };
+    const itemStyles = { ...itemStyle, height: 36 };
     return (
       <SelectWishListDropdown
         selectedValue={getLabelValue(labels, 'lbl_fav_moveToAnotherList')}
@@ -466,8 +471,8 @@ class FavoritesView extends React.PureComponent {
           this.handleMoveToList(itemValue, itemId);
         }}
         variation="secondary"
-        dropDownStyle={{ ...dropDownStyle, height: 36 }}
-        itemStyle={{ ...itemStyle, height: 36 }}
+        dropDownStyle={dropDownStyles}
+        itemStyle={itemStyles}
         renderHeader={() => this.renderHeader('16px 0 0 12px')}
         renderFooter={closeDropDown => this.renderFooter(closeDropDown, true, itemId)}
         renderItems={this.renderMoveToListItems}
@@ -482,7 +487,7 @@ class FavoritesView extends React.PureComponent {
   };
 
   renderMoveToListItems = ({ item }, onDropDownItemClick) => {
-    const { activeWishList, labels, defaultWishList } = this.props;
+    const { activeWishList, labels } = this.props;
     const { displayName, itemsCount, id } = item;
     const isSelectedFavorites = item.isDefault;
     const selectedItem = {
@@ -603,6 +608,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      addToBagEcom,
     } = this.props;
 
     const { selectedShareOption, seeSuggestedDictionary } = this.state;
@@ -736,6 +742,7 @@ class FavoritesView extends React.PureComponent {
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
+              addToBagEcom={addToBagEcom}
               onSeeSuggestedItems={this.onSeeSuggestedItems}
               onCloseSuggestedModal={this.onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
@@ -782,8 +789,10 @@ FavoritesView.propTypes = {
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
   onLoadRecommendations: PropTypes.func.isRequired,
   onReplaceWishlistItem: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
   errorMessages: PropTypes.shape({}).isRequired,
 };
 
@@ -794,6 +803,7 @@ FavoritesView.defaultProps = {
   selectedColorProductId: '',
   filteredId: 'ALL',
   outOfStockLabels: {},
+  formErrorMessage: {},
 };
 
 export default FavoritesView;

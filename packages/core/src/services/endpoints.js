@@ -440,5 +440,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/ads_dms/processMadeOffer',
   },
+  getBazaarVoiceRatings: {
+    method: API_METHODS.GET,
+    URI:
+      'data/reviews.json?ApiVersion=5.4&Passkey=#pass-key#&Include=Products&Stats=reviews&Filter=ProductId:#product-id#&Limit=#limit#',
+  },
 };
 export default endpoints;

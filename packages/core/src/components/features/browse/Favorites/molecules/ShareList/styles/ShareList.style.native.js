@@ -9,7 +9,7 @@ const getAdditionalStyle = props => {
 
 const Container = styled.View`
   justify-content: center;
-  ${getAdditionalStyle};
+  margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM} ${getAdditionalStyle};
 `;
 
 const RowContainer = styled.View`
@@ -17,10 +17,5 @@ const RowContainer = styled.View`
   align-items: center;
   ${getAdditionalStyle};
 `;
-const InputBoxWrapper = styled.TextInput`
-  height: 146px;
-  width: 100%;
-  border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
-`;
 
-export { Container, RowContainer, InputBoxWrapper };
+export { Container, RowContainer };

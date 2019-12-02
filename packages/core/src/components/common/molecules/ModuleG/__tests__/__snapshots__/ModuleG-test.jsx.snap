@@ -2,7 +2,7 @@
 
 exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
 <Styled(Grid)
-  className="undefined moduleG"
+  className="undefined  moduleG"
 >
   <Styled(Row)>
     <Styled(Col)

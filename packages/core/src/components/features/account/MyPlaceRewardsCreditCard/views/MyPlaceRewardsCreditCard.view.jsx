@@ -7,12 +7,13 @@ import { BodyCopy, Button, Anchor, Row, Col } from '../../../../common/atoms';
 import styles from '../styles/MyPlaceRewardsCreditCard.style';
 import withStyles from '../../../../common/hoc/withStyles';
 import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
+import { openWindow } from '../../../../../utils/utils.web';
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = e => {
     e.preventDefault();
     const { labels } = this.props;
-    window.open(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank');
+    openWindow(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank', 'noopener');
   };
 
   render() {
