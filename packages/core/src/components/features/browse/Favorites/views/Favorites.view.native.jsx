@@ -9,7 +9,7 @@ import ErrorDisplay from '@tcp/core/src/components/common/atoms/ErrorDisplay';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import { getLoading, getLabelValue } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import {
   PageContainer,
@@ -26,7 +26,7 @@ import {
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
 import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWishListDropdown.native';
-import { Button } from '../../../../common/atoms';
+import { Button, FavoriteSkeleton } from '../../../../common/atoms';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 import CustomIcon from '../../../../common/atoms/Icon';
 import ModalWrapper from '../molecules/ModalWrapper';
@@ -612,7 +612,12 @@ class FavoritesView extends React.PureComponent {
     } = this.props;
 
     const { selectedShareOption, seeSuggestedDictionary } = this.state;
-    if (isDataLoading) return getLoading();
+    if (isDataLoading)
+      return (
+        <>
+          <FavoriteSkeleton col={8} />
+        </>
+      );
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
       : [];
