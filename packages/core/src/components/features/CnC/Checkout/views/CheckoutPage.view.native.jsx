@@ -180,6 +180,7 @@ class CheckoutPage extends React.PureComponent {
               expressReviewShippingSection: {
                 shippingMethodId: reviewProps.defaultShipmentId,
               },
+              cardType: reviewProps.cardType,
             }}
             shipmentMethods={shipmentMethods}
             setVenmoShippingState={setVenmoShippingState}

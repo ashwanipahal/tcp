@@ -17,6 +17,7 @@ const SelectBox = ({
   onValueChange,
   placeholder,
   meta: { touched, error },
+  isAddNewCC,
   ...otherProps
 }) => {
   const isFocussed = !!input.value;
@@ -27,7 +28,7 @@ const SelectBox = ({
     });
   }
   return (
-    <Container>
+    <Container isAddNewCC={isAddNewCC}>
       <StyledHeading
         isFocussed={isFocussed}
         fontSize={isFocussed ? 'fs10' : 'fs14'}
@@ -78,6 +79,7 @@ SelectBox.propTypes = {
     touched: PropTypes.bool,
     error: PropTypes.bool,
   }),
+  isAddNewCC: PropTypes.bool,
 };
 
 SelectBox.defaultProps = {
@@ -86,6 +88,7 @@ SelectBox.defaultProps = {
   onValueChange: () => {},
   heading: '',
   meta: {},
+  isAddNewCC: false,
 };
 
 export default SelectBox;
