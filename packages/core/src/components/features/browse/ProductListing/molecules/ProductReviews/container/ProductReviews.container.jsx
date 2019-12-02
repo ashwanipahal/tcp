@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import ProductReviews from '../views/ProductReviews';
+import ProductReviews from '../views/ProductReviews.view';
 import { getBazaarvoiceApiUrl } from '../../../container/ProductListing.selectors';
-import { getLabels } from './ProductReviews.selectors';
+import { getLabels, getUserToken } from './ProductReviews.selectors';
 import {
   mprUserId,
   getUserId,
@@ -23,6 +23,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onLoginClick: () => {
       dispatch(setLoginModalMountedState({ state: true }));
+    },
+    getSecurityToken: (userId, mprId) => {
+      return getUserToken(userId, mprId);
     },
   };
 }
