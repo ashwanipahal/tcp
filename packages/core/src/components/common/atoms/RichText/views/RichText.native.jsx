@@ -73,7 +73,7 @@ RichText.propTypes = {
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
   actionHandler: PropTypes.func,
-  navigation: PropTypes.shape({}),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 RichText.defaultProps = {
@@ -84,7 +84,6 @@ RichText.defaultProps = {
   thirdPartyCookiesEnabled: false,
   isApplyDeviceHeight: false,
   actionHandler: () => {},
-  navigation: {},
 };
 
 export default RichText;

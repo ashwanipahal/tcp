@@ -56,7 +56,7 @@ export const RenderAnchor = (props, className) => {
 
 RenderAnchor.propTypes = {
   style: PropTypes.shape({}).isRequired,
-  children: PropTypes.Array({}).isRequired,
+  children: PropTypes.arrayOf({}).isRequired,
   href: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
