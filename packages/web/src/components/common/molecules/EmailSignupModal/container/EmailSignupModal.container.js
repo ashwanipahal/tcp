@@ -68,4 +68,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupModalView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupModalView);
