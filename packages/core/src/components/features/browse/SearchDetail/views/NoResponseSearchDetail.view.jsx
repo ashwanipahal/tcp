@@ -31,10 +31,26 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
+  trimStart = v => {
+    if (!v) {
+      return v;
+    }
+    if (String.prototype.trimStart) {
+      return v.trimStart();
+    }
+    if (String.prototype.trimLeft) {
+      return v.trimLeft();
+    }
+    const trimmed = v.trim();
+    const indexOfWord = v.indexOf(trimmed);
+    return v.slice(indexOfWord, v.length);
+  };
+
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, slpLabels, searchResults } = this.props;
-    const searchText = this.searchInput.current.value;
+    let searchText = this.searchInput.current.value;
+    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
 
     const showMatchBox = this.getMatchBoxStatus(searchResults);
 
@@ -53,7 +69,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
   getSearchResults = e => {
     e.preventDefault();
-    const searchText = this.searchInput.current.value;
+    let searchText = this.searchInput.current.value;
+    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
     if (searchText) {
       this.redirectToSuggestedUrl(searchText);
     }
@@ -63,6 +80,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     let searchText = this.searchInput.current.value;
     if (searchText) {
       searchText = searchText.toLowerCase();
+      searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
       this.redirectToSuggestedUrl(searchText);
     }
   };
@@ -175,7 +193,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
             >
               {slpLabels.lbl_nothing_matched}
               <span className="empty-searched-label-title">
-                {`"${searchedText.split('?')[0]}"`}
+                {` "${searchedText.split('?')[0]}"`}
               </span>
             </BodyCopy>
           </Col>
@@ -223,7 +241,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   placeholder={slpLabels.lbl_looking_for}
                   onChange={this.changeSearchText}
                   ref={this.searchInput}
-                  onClick={this.openSearchBar}
+                  autoComplete="off"
                 />
               </form>
 
