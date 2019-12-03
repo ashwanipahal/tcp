@@ -182,7 +182,6 @@ class ShippingContainer extends React.Component {
       defaultShipping,
       saveToAddressBook,
       smsSignUp = {},
-      emailSignUp,
     } = data;
     const {
       isGuest,
@@ -220,7 +219,6 @@ class ShippingContainer extends React.Component {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
       hasSetGiftOptions,
-      emailSignUp,
     };
     const { handleSubmit, verifyAddressAction } = scope.props;
     if (!onFileAddressKey) {
