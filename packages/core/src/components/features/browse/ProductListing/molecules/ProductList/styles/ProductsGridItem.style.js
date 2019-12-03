@@ -208,7 +208,8 @@ const styles = css`
   }
 
   /* stylelint-disable-next-line*/
-  _:-ms-fullscreen {
+  _:-ms-fullscreen,
+  .product-image-container {
     max-height: 320px;
   }
 
