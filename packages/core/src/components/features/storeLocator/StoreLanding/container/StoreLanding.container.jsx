@@ -133,14 +133,12 @@ StoreLanding.getInitActions = () => initActions;
 StoreLanding.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
-    {
-      pageData: {
-        pageName: 'storelocator',
-        pageType: 'companyinfo',
-        pageSection: 'storelocator',
-        pageSubSection: 'storelocator',
-        pageNavigationText: 'header-find a store',
-      },
+    pageData: {
+      pageName: 'storelocator',
+      pageType: 'companyinfo',
+      pageSection: 'storelocator',
+      pageSubSection: 'storelocator',
+      pageNavigationText: 'header-find a store',
     },
   };
 };
@@ -182,7 +180,4 @@ const mapStateToProps = state => ({
   searchDone: state.StoreLocatorReducer && state.StoreLocatorReducer.get('searchDone'),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StoreLanding);
+export default connect(mapStateToProps, mapDispatchToProps)(StoreLanding);
