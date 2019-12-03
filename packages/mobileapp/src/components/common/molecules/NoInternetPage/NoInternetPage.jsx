@@ -46,7 +46,6 @@ class NoInternetPage extends React.PureComponent {
 }
 
 NoInternetPage.propTypes = {
-  navigation: PropTypes.shape({}).isRequired,
   screenProps: PropTypes.shape({}).isRequired,
 };
 
