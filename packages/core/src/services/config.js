@@ -88,6 +88,11 @@ export const API_CONFIG = {
     unbxd: 'https://search.unbxd.io',
     BV_SHARED_KEY: 'Fca3yih00AVeVDFvmaDwnwlWM',
     BV_WEB_VIEW_URL: 'https://test5.childrensplace.com/static/bazaarVoice/index.html',
+    BV_ENV: 'staging',
+    BV_SUBMISSION_URL:
+      'https://display.ugc.bazaarvoice.com/static/ChildrensPlace/#INSTANCE#/en_US/container.htm?bvaction=rr_submit_review&bvproductId=#PRODUCTID#&bvuserToken=#TOKEN#',
+    BV_TCP_INSTANCE: 'main_site',
+    BV_GYM_INSTANCE: 'main_implementation_gymboree',
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',

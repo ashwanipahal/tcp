@@ -360,6 +360,10 @@
     {
       "name": "RWD_APP_BV_SHARED_KEY",
       "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+    },
+    {
+      "name": "RWD_APP_BV_ENV",
+      "value": "production"
     }
   ],
   "signed": true,

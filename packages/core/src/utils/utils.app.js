@@ -431,6 +431,10 @@ const getWebViewBvUrl = (envConfig, apiSiteInfo) => {
   return envConfig.RWD_APP_BV_WEB_VIEW_URL || apiSiteInfo.BV_WEB_VIEW_URL;
 };
 
+const getBvEnvironment = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_ENV || apiSiteInfo.BV_ENV;
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -462,6 +466,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     BV_API_URL: envConfig.RWD_APP_BV_API_URL || apiSiteInfo.BV_URL,
     BV_WEB_VIEW_URL: getWebViewBvUrl(envConfig, apiSiteInfo),
     BV_SHARED_KEY: getBvSharedKey(envConfig, apiSiteInfo),
+    BV_ENVIRONMENT: getBvEnvironment(envConfig, apiSiteInfo),
+    BV_SUBMISSION_URL: apiSiteInfo.BV_SUBMISSION_URL,
+    BV_INSTANCE: apiSiteInfo[`BV_${appTypeSuffix}_INSTANCE`],
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
