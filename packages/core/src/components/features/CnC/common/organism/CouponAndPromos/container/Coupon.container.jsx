@@ -23,7 +23,6 @@ export class CouponContainer extends React.PureComponent {
     const {
       labels,
       commonLabels,
-      isFetching,
       handleApplyCoupon,
       handleApplyCouponFromList,
       handleRemoveCoupon,
@@ -42,7 +41,10 @@ export class CouponContainer extends React.PureComponent {
       navigation,
       isNeedHelpModalOpen,
       toggleNeedHelpModal,
+      isFetchingCouponState,
+      bagLoading,
     } = this.props;
+    const isFetching = isFetchingCouponState === true || bagLoading === true || false;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
       <>
@@ -93,7 +95,8 @@ export class CouponContainer extends React.PureComponent {
 }
 
 CouponContainer.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
+  isFetchingCouponState: PropTypes.bool.isRequired,
+  bagLoading: PropTypes.bool.isRequired,
   isCheckout: PropTypes.bool.isRequired,
   labels: PropTypes.shape.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
@@ -174,7 +177,7 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
 });
 
 export const mapStateToProps = state => ({
-  isFetching: getCouponFetchingState(state),
+  isFetchingCouponState: getCouponFetchingState(state),
   labels: getCouponsLabels(state),
   appliedCouponList: getAppliedCouponListState(state),
   availableCouponList: getAvailableCouponListState(state),

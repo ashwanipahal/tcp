@@ -44,81 +44,86 @@ export class ShippingReviewSection extends React.PureComponent {
     } = labels;
     return (
       <>
-        <TitlePlusEditSection>
-          <TitlePlusEditButton
-            title={title}
-            editTitle={edit}
-            onEdit={onEdit}
-            dataLocator="shipping-section"
-          />
-        </TitlePlusEditSection>
         {!bagLoading ? (
-          <ShippingReviewContainer>
-            <View>
-              <AddressTitle>
-                <BodyCopy
-                  fontSize="fs16"
-                  dataLocator=""
-                  fontFamily="secondary"
-                  color="gray.900"
-                  fontWeight="extrabold"
-                  text={addressTitle}
-                />
-              </AddressTitle>
-              <AddressSection>
-                {!!shippingAddress.address && (
-                  <Address address={shippingAddress.address} regularName />
-                )}
-                <BodyCopy
-                  fontSize="fs16"
-                  dataLocator=""
-                  fontFamily="secondary"
-                  color="gray.900"
-                  fontWeight="regular"
-                  text={shippingAddress.emailAddress}
-                />
-                {!!shippingAddress.phoneNumber && (
+          <>
+            <TitlePlusEditSection>
+              <TitlePlusEditButton
+                title={title}
+                editTitle={edit}
+                onEdit={onEdit}
+                dataLocator="shipping-section"
+              />
+            </TitlePlusEditSection>
+            <ShippingReviewContainer>
+              <View>
+                <AddressTitle>
+                  <BodyCopy
+                    fontSize="fs16"
+                    dataLocator=""
+                    fontFamily="secondary"
+                    color="gray.900"
+                    fontWeight="extrabold"
+                    text={addressTitle}
+                  />
+                </AddressTitle>
+                <AddressSection>
+                  {!!shippingAddress.address && (
+                    <Address address={shippingAddress.address} regularName />
+                  )}
                   <BodyCopy
                     fontSize="fs16"
                     dataLocator=""
                     fontFamily="secondary"
                     color="gray.900"
                     fontWeight="regular"
-                    text={formatPhoneNumber(shippingAddress.phoneNumber)}
+                    text={shippingAddress.emailAddress}
+                  />
+                  {!!shippingAddress.phoneNumber && (
+                    <BodyCopy
+                      fontSize="fs16"
+                      dataLocator=""
+                      fontFamily="secondary"
+                      color="gray.900"
+                      fontWeight="regular"
+                      text={formatPhoneNumber(shippingAddress.phoneNumber)}
+                    />
+                  )}
+                </AddressSection>
+              </View>
+              <View>
+                {!isExpressCheckout && shippingMethod && (
+                  <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
+                )}
+                {isExpressCheckout && shippingMethod && (
+                  <ShipmentMethods
+                    shipmentMethods={shipmentMethods}
+                    formName={formName}
+                    formSection={formSection}
+                    selectedShipmentId={
+                      expressReviewShippingSectionId &&
+                      expressReviewShippingSectionId.shippingMethodId
+                    }
+                    shipmentHeader={shippingMethodTitle}
+                    dispatch={dispatch}
                   />
                 )}
-              </AddressSection>
-            </View>
-            <View>
-              {!isExpressCheckout && shippingMethod && (
-                <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
-              )}
-              {isExpressCheckout && shippingMethod && (
-                <ShipmentMethods
-                  shipmentMethods={shipmentMethods}
-                  formName={formName}
-                  formSection={formSection}
-                  selectedShipmentId={
-                    expressReviewShippingSectionId &&
-                    expressReviewShippingSectionId.shippingMethodId
-                  }
-                  shipmentHeader={shippingMethodTitle}
-                  dispatch={dispatch}
-                />
-              )}
-              {isGiftOptionsEnabled && (
-                <GiftWrappingDisplay
-                  labels={labels}
-                  displayName={giftWrappingDisplayName}
-                  onEdit={onEdit}
-                  editTitle={edit}
-                  isExpressCheckout={isExpressCheckout}
-                />
-              )}
-            </View>
-          </ShippingReviewContainer>
+                {isGiftOptionsEnabled && (
+                  <GiftWrappingDisplay
+                    labels={labels}
+                    displayName={giftWrappingDisplayName}
+                    onEdit={onEdit}
+                    editTitle={edit}
+                    isExpressCheckout={isExpressCheckout}
+                  />
+                )}
+              </View>
+            </ShippingReviewContainer>
+          </>
         ) : (
           <>
+            <TitlePlusEditSection>
+              <TitlePlusEditButton title={title} dataLocator="shipping-section" />
+            </TitlePlusEditSection>
             <SkeletonWrapper>
               <GenericSkeleton />
             </SkeletonWrapper>

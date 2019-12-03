@@ -35,7 +35,8 @@ export class BonusPointsDays extends React.Component {
     additionalClassNameModal: PropTypes.string.isRequired,
     isDefaultOpen: PropTypes.bool,
     isInternationalShipping: PropTypes.bool,
-    isFetching: PropTypes.bool,
+    isFetchingStateSection: PropTypes.bool.isRequired,
+    isFetchingStatePageLevel: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -54,7 +55,6 @@ export class BonusPointsDays extends React.Component {
     isBagPage: false,
     isDefaultOpen: false,
     isInternationalShipping: false,
-    isFetching: false,
   };
 
   componentDidMount() {
@@ -81,9 +81,12 @@ export class BonusPointsDays extends React.Component {
       additionalClassNameModal,
       isDefaultOpen,
       isInternationalShipping,
-      isFetching,
+      isFetchingStateSection,
+      isFetchingStatePageLevel,
       ...otherProps
     } = this.props;
+    const isFetching =
+      isFetchingStateSection === true || isFetchingStatePageLevel === true || false;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
@@ -118,7 +121,7 @@ export const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     orderId: getCartOrderId(state),
     isInternationalShipping: getIsInternationalShipping(state),
-    isFetching: getIsFetching(state),
+    isFetchingStateSection: getIsFetching(state),
   };
 };
 

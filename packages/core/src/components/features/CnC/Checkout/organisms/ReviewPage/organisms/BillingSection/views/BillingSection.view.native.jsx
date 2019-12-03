@@ -152,67 +152,83 @@ export class BillingSection extends PureComponent {
     } = this.props;
     return (
       <Fragment>
-        <Heading>
-          <BodyCopy
-            fontSize="fs26"
-            mobileFontFamily="primary"
-            text={`${labels.lbl_review_billingSectionTitle} `}
-          />
-          <EditLink>
-            <Anchor
-              fontSizeVariation="large"
-              underline
-              anchorVariation="primary"
-              onPress={onEdit}
-              text={labels.lbl_review_billingEdit}
-            />
-          </EditLink>
-        </Heading>
-        {!isPaymentDisabled && !isVenmoPaymentSelected && (
-          <PaymentMethodWrapper>
-            <PaymentMethodImage>
-              {card && (
-                <PaymentMethod>
-                  <SubHeading>
-                    <BodyCopy
-                      fontSize="fs16"
-                      fontWeight="semibold"
-                      color="gray.900"
-                      mobileFontFamily="secondary"
-                      text={labels.lbl_review_paymentMethod}
-                    />
-                  </SubHeading>
-                  <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
-                </PaymentMethod>
-              )}
-              {address && (
-                <BillingAddress>
-                  <SubHeading>
-                    <BodyCopy
-                      fontSize="fs16"
-                      fontWeight="semibold"
-                      color="gray.900"
-                      mobileFontFamily="secondary"
-                      text={labels.lbl_review_billingAddress}
-                    />
-                  </SubHeading>
-                  <Address address={address} fontSize="fs16" regularName />
-                </BillingAddress>
-              )}
-            </PaymentMethodImage>
-            {getCvvField({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited })}
-          </PaymentMethodWrapper>
-        )}
         {!bagLoading ? (
-          <>{!isPaymentDisabled && isVenmoPaymentSelected && this.getVenmoBillingView()}</>
+          <>
+            <Heading>
+              <BodyCopy
+                fontSize="fs26"
+                mobileFontFamily="primary"
+                text={`${labels.lbl_review_billingSectionTitle} `}
+              />
+              <EditLink>
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  anchorVariation="primary"
+                  onPress={onEdit}
+                  text={labels.lbl_review_billingEdit}
+                />
+              </EditLink>
+            </Heading>
+            {!isPaymentDisabled && !isVenmoPaymentSelected && (
+              <PaymentMethodWrapper>
+                <PaymentMethodImage>
+                  {card && (
+                    <PaymentMethod>
+                      <SubHeading>
+                        <BodyCopy
+                          fontSize="fs16"
+                          fontWeight="semibold"
+                          color="gray.900"
+                          mobileFontFamily="secondary"
+                          text={labels.lbl_review_paymentMethod}
+                        />
+                      </SubHeading>
+                      <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                    </PaymentMethod>
+                  )}
+                  {address && (
+                    <BillingAddress>
+                      <SubHeading>
+                        <BodyCopy
+                          fontSize="fs16"
+                          fontWeight="semibold"
+                          color="gray.900"
+                          mobileFontFamily="secondary"
+                          text={labels.lbl_review_billingAddress}
+                        />
+                      </SubHeading>
+                      <Address address={address} fontSize="fs16" regularName />
+                    </BillingAddress>
+                  )}
+                </PaymentMethodImage>
+                {getCvvField({
+                  isExpressCheckout,
+                  labels,
+                  cvvCodeRichText,
+                  card,
+                  isBillingVisited,
+                })}
+              </PaymentMethodWrapper>
+            )}
+
+            {!isPaymentDisabled && isVenmoPaymentSelected && this.getVenmoBillingView()}
+          </>
         ) : (
           <>
+            <Heading>
+              <BodyCopy
+                fontSize="fs26"
+                mobileFontFamily="primary"
+                text={`${labels.lbl_review_billingSectionTitle} `}
+              />
+            </Heading>
             <SkeletonWrapper>
               <GenericSkeleton />
             </SkeletonWrapper>
           </>
         )}
-        <GiftCardsContainer isFromReview />
+        <GiftCardsContainer isFromReview isFetching={bagLoading} />
       </Fragment>
     );
   }
