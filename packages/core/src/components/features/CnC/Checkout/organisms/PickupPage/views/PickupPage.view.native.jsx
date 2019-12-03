@@ -28,6 +28,7 @@ import {
   CheckBoxSubWrapper,
   TextWrapper,
   PickUpHeading,
+  PickupPageSkeletonWrapper,
 } from '../styles/PickupPage.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import ContactFormFields from '../../../molecules/ContactFormFields';
@@ -254,7 +255,16 @@ class PickUpFormPart extends React.Component {
                     />
                   )}
                   {bagLoading ? (
-                    <PickupPageSkeleton />
+                    <PickupPageSkeletonWrapper>
+                      <BodyCopy
+                        dataLocator="pickup-email-signUp-heading-lbl"
+                        fontSize="fs26"
+                        mobileFontFamily="primary"
+                        fontWeight="regular"
+                        text={pickUpLabels.pickupContactText}
+                      />
+                      <PickupPageSkeleton />
+                    </PickupPageSkeletonWrapper>
                   ) : (
                     <PickUpForm>
                       <FormSection name="pickUpContact">
